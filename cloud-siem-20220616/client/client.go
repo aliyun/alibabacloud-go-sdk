@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,24 +11,54 @@ import (
 
 type DataProductListLogMapValue struct {
 	// The code of the log.
+	//
+	// example:
+	//
+	// cloud_siem_config_log
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// audit log
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// audit log
 	LogNameEn *string `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
 	// The language code of the log that is used to indicate the language in which the log is displayed.
+	//
+	// example:
+	//
+	// ${sas.cloudsiem.prod.cloud_siem_aegis_crack_from_beaver}
 	LogNameKey *string `json:"LogNameKey,omitempty" xml:"LogNameKey,omitempty"`
 	// The status of the log delivery. Valid values:
 	//
-	// *   true: The logs are being delivered.
-	// *   false: The log delivery feature is disabled.
+	// 	- true: The logs are being delivered.
+	//
+	// 	- false: The log delivery feature is disabled.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the log delivery feature can be enabled or disabled. The feature can be enabled or disabled only by the administrator of the threat analysis feature. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	CanOperateOrNot *bool `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
 	// The topic of the log in the Logstore. The value is an index field in the Logstore that can be used to distinguish different logs.
+	//
+	// example:
+	//
+	// sas_login_event
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	// The extended parameter.
 	ExtraParameters []*DataProductListLogMapValueExtraParameters `json:"ExtraParameters,omitempty" xml:"ExtraParameters,omitempty" type:"Repeated"`
@@ -87,8 +114,16 @@ func (s *DataProductListLogMapValue) SetExtraParameters(v []*DataProductListLogM
 
 type DataProductListLogMapValueExtraParameters struct {
 	// The ID of the extended parameter.
+	//
+	// example:
+	//
+	// flag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the extended parameter.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -112,31 +147,66 @@ func (s *DataProductListLogMapValueExtraParameters) SetValue(v string) *DataProd
 
 type AddDataSourceRequest struct {
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider.
 	//
 	// Valid values:
 	//
-	// *   qcloud
-	// *   hcloud
-	// *   aliyun
+	// 	- qcloud
+	//
+	// 	- hcloud
+	//
+	// 	- aliyun
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The name of the data source.
+	//
+	// example:
+	//
+	// beijing_waf_kafka
 	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
 	// The parameters of the data source. Set this parameter to a JSON array.
+	//
+	// example:
+	//
+	// [{"paraCode":"region_code","paraValue":"ap-guangzhou"}]
 	DataSourceInstanceParams *string `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty"`
 	// The remarks on the data source.
+	//
+	// example:
+	//
+	// waf_alert_log
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   obs: Huawei Cloud Object Storage Service (OBS)
-	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
-	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	//
+	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	//
+	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	//
+	// example:
+	//
+	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -187,6 +257,10 @@ type AddDataSourceResponseBody struct {
 	// The data returned.
 	Data *AddDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -210,8 +284,16 @@ func (s *AddDataSourceResponseBody) SetRequestId(v string) *AddDataSourceRespons
 
 type AddDataSourceResponseBodyData struct {
 	// The number of data sources that are added. The value 1 indicates that data source is added, and a value less than or equal to 0 indicates that the data source failed to be added.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 }
 
@@ -264,23 +346,58 @@ func (s *AddDataSourceResponse) SetBody(v *AddDataSourceResponseBody) *AddDataSo
 
 type AddDataSourceLogRequest struct {
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The parameters of the data source. Set this parameter to a JSON array.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"LogCode":"cloud_siem_qcloud_waf_alert_log","LogParas":"[{\\"ParaCode\\":\\"api_name\\",\\"ParaValue\\":\\"GetAttackDownloadRecords\\"}]"}]
 	DataSourceInstanceLogs *string `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty"`
 	// The log code.
+	//
+	// example:
+	//
+	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -326,6 +443,10 @@ type AddDataSourceLogResponseBody struct {
 	// The data returned.
 	Data *AddDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -349,8 +470,16 @@ func (s *AddDataSourceLogResponseBody) SetRequestId(v string) *AddDataSourceLogR
 
 type AddDataSourceLogResponseBodyData struct {
 	// The number of logs that are added. The value 1 indicates that the log is added, and a value less than or equal to 0 indicates that the log failed to be added.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	//
+	// example:
+	//
+	// ef33097c9d1fdb0b9c7e8c7ca320pkl1
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 }
 
@@ -403,11 +532,22 @@ func (s *AddDataSourceLogResponse) SetBody(v *AddDataSourceLogResponseBody) *Add
 
 type AddUserRequest struct {
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	AddedUserId *int64 `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -431,8 +571,16 @@ func (s *AddUserRequest) SetRegionId(v string) *AddUserRequest {
 
 type AddUserResponseBody struct {
 	// Indicates whether the cloud account is added to the threat analysis feature.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -486,23 +634,57 @@ func (s *AddUserResponse) SetBody(v *AddUserResponseBody) *AddUserResponse {
 type AddUserSourceLogConfigRequest struct {
 	// Specifies whether to add logs or delete added logs. Valid values:
 	//
-	// *   \-1: deletes added logs.
-	// *   0: adds logs.
+	// 	- \\-1: deletes added logs.
+	//
+	// 	- 0: adds logs.
+	//
+	// example:
+	//
+	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
 	// The display details of the Logstore.
+	//
+	// example:
+	//
+	// cn-shanghai.siem-project.siem-logstore
 	DisPlayLine *string `json:"DisPlayLine,omitempty" xml:"DisPlayLine,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The log code.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
 	// The details of the Logstore that you want to use in the JSON string format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"project":"wafnew-project-1335759343513432-cn-hangzhou","logStore":"wafnew-logstore","regionCode":"cn-hangzhou","prodCode":"waf"}
 	SourceLogInfo *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
 	// The code of the cloud service.
+	//
+	// example:
+	//
+	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123XXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -553,6 +735,10 @@ type AddUserSourceLogConfigResponseBody struct {
 	// The data returned.
 	Data *AddUserSourceLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -576,20 +762,52 @@ func (s *AddUserSourceLogConfigResponseBody) SetRequestId(v string) *AddUserSour
 
 type AddUserSourceLogConfigResponseBodyData struct {
 	// The display details of the Logstore.
+	//
+	// example:
+	//
+	// cn-shanghai.siem-project.siem-logstore
 	DiplayLine *string `json:"DiplayLine,omitempty" xml:"DiplayLine,omitempty"`
 	// Indicates whether the details of added logs are returned. Valid values: true false
+	//
+	// example:
+	//
+	// 0
 	Displayed *bool `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
 	// Indicates whether the logs are added to the threat analysis feature. Valid values: true false
+	//
+	// example:
+	//
+	// 0
 	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The log code.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
 	// The code of the cloud service.
+	//
+	// example:
+	//
+	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
@@ -670,286 +888,22 @@ func (s *AddUserSourceLogConfigResponse) SetBody(v *AddUserSourceLogConfigRespon
 	return s
 }
 
-type BatchJobCheckRequest struct {
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The id of task.
-	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-}
-
-func (s BatchJobCheckRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobCheckRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobCheckRequest) SetRegionId(v string) *BatchJobCheckRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *BatchJobCheckRequest) SetSubmitId(v string) *BatchJobCheckRequest {
-	s.SubmitId = &v
-	return s
-}
-
-type BatchJobCheckResponseBody struct {
-	// The HTTP status code.
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data *BatchJobCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   true
-	// *   false
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s BatchJobCheckResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobCheckResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobCheckResponseBody) SetCode(v int32) *BatchJobCheckResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBody) SetData(v *BatchJobCheckResponseBodyData) *BatchJobCheckResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchJobCheckResponseBody) SetErrCode(v string) *BatchJobCheckResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBody) SetMessage(v string) *BatchJobCheckResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBody) SetRequestId(v string) *BatchJobCheckResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBody) SetSuccess(v bool) *BatchJobCheckResponseBody {
-	s.Success = &v
-	return s
-}
-
-type BatchJobCheckResponseBodyData struct {
-	// The ID of the task configuration.
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The list of error task.
-	ErrTaskList []*BatchJobCheckResponseBodyDataErrTaskList `json:"ErrTaskList,omitempty" xml:"ErrTaskList,omitempty" type:"Repeated"`
-	// The number of custom route entries that failed to be added.
-	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The number of scan tasks that are complete.
-	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The ID of the folder.
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The number of existing tasks that are created to add logs within the data source.
-	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-	// The status of task.
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-}
-
-func (s BatchJobCheckResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobCheckResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobCheckResponseBodyData) SetConfigId(v string) *BatchJobCheckResponseBodyData {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyData) SetErrTaskList(v []*BatchJobCheckResponseBodyDataErrTaskList) *BatchJobCheckResponseBodyData {
-	s.ErrTaskList = v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyData) SetFailedCount(v int32) *BatchJobCheckResponseBodyData {
-	s.FailedCount = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyData) SetFinishCount(v int32) *BatchJobCheckResponseBodyData {
-	s.FinishCount = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyData) SetFolderId(v string) *BatchJobCheckResponseBodyData {
-	s.FolderId = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyData) SetTaskCount(v int32) *BatchJobCheckResponseBodyData {
-	s.TaskCount = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyData) SetTaskStatus(v string) *BatchJobCheckResponseBodyData {
-	s.TaskStatus = &v
-	return s
-}
-
-type BatchJobCheckResponseBodyDataErrTaskList struct {
-	// The list of product.
-	ProductList []*BatchJobCheckResponseBodyDataErrTaskListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	// The account id of aliyun.
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s BatchJobCheckResponseBodyDataErrTaskList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobCheckResponseBodyDataErrTaskList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskList) SetProductList(v []*BatchJobCheckResponseBodyDataErrTaskListProductList) *BatchJobCheckResponseBodyDataErrTaskList {
-	s.ProductList = v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskList) SetUserId(v int64) *BatchJobCheckResponseBodyDataErrTaskList {
-	s.UserId = &v
-	return s
-}
-
-type BatchJobCheckResponseBodyDataErrTaskListProductList struct {
-	// The list of log.
-	LogList []*BatchJobCheckResponseBodyDataErrTaskListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	// The code of the product.
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-}
-
-func (s BatchJobCheckResponseBodyDataErrTaskListProductList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobCheckResponseBodyDataErrTaskListProductList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductList) SetLogList(v []*BatchJobCheckResponseBodyDataErrTaskListProductListLogList) *BatchJobCheckResponseBodyDataErrTaskListProductList {
-	s.LogList = v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductList) SetProductCode(v string) *BatchJobCheckResponseBodyDataErrTaskListProductList {
-	s.ProductCode = &v
-	return s
-}
-
-type BatchJobCheckResponseBodyDataErrTaskListProductListLogList struct {
-	// The error code returned if the request failed.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The log code.
-	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The pattern of SLS log store name.
-	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
-	// The code of product.
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The pattern of SLS project name.
-	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
-	// The ID of the region in which the instance resides.
-	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-}
-
-func (s BatchJobCheckResponseBodyDataErrTaskListProductListLogList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobCheckResponseBodyDataErrTaskListProductListLogList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductListLogList) SetErrorCode(v string) *BatchJobCheckResponseBodyDataErrTaskListProductListLogList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductListLogList) SetLogCode(v string) *BatchJobCheckResponseBodyDataErrTaskListProductListLogList {
-	s.LogCode = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductListLogList) SetLogStoreNamePattern(v string) *BatchJobCheckResponseBodyDataErrTaskListProductListLogList {
-	s.LogStoreNamePattern = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductListLogList) SetProductCode(v string) *BatchJobCheckResponseBodyDataErrTaskListProductListLogList {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductListLogList) SetProjectNamePattern(v string) *BatchJobCheckResponseBodyDataErrTaskListProductListLogList {
-	s.ProjectNamePattern = &v
-	return s
-}
-
-func (s *BatchJobCheckResponseBodyDataErrTaskListProductListLogList) SetRegionCode(v string) *BatchJobCheckResponseBodyDataErrTaskListProductListLogList {
-	s.RegionCode = &v
-	return s
-}
-
-type BatchJobCheckResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *BatchJobCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s BatchJobCheckResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobCheckResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobCheckResponse) SetHeaders(v map[string]*string) *BatchJobCheckResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchJobCheckResponse) SetStatusCode(v int32) *BatchJobCheckResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BatchJobCheckResponse) SetBody(v *BatchJobCheckResponseBody) *BatchJobCheckResponse {
-	s.Body = v
-	return s
-}
-
 type BatchJobSubmitRequest struct {
 	// The detail config of task.
+	//
+	// example:
+	//
+	// {{"autoSubmit":false,"configName":"test_builder","folderConfig":{"folderId":"rd-EUx7Qp","prodConfig":[{"allLogs":false,"allRegions":false,"logConfig":[{"logCode":"cloud_siem_rds_audit_log","logStorePattern":"vpc-test","projectPattern":"vpc-test"}],"prodCode":"rds","regions":["cn-shanghai"]},{"allLogs":true,"allRegions":true,"prodCode":"sas"}],"type":"folder"},"listenRdChange":false,"logConfigs":{"cloud_siem_rds_audit_log":{"logCode":"cloud_siem_rds_audit_log","logStorePattern":"vpc-test","projectPattern":"vpc-test"}}}}
 	JsonConfig *string `json:"JsonConfig,omitempty" xml:"JsonConfig,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -973,19 +927,40 @@ func (s *BatchJobSubmitRequest) SetRegionId(v string) *BatchJobSubmitRequest {
 
 type BatchJobSubmitResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *BatchJobSubmitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
+	//
+	// example:
+	//
+	// ServerError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5B0DFF6D-XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1029,12 +1004,24 @@ func (s *BatchJobSubmitResponseBody) SetSuccess(v bool) *BatchJobSubmitResponseB
 
 type BatchJobSubmitResponseBodyData struct {
 	// The ID of the task configuration.
+	//
+	// example:
+	//
+	// xxxx_folder_xxxx
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The list of task configure.
 	ConfigList []*BatchJobSubmitResponseBodyDataConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
 	// The id of task.
+	//
+	// example:
+	//
+	// BATCH_JOB_XXXXXX
 	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
 	// The number of existing tasks that are created to add logs within the data source.
+	//
+	// example:
+	//
+	// 20
 	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
 }
 
@@ -1070,6 +1057,10 @@ type BatchJobSubmitResponseBodyDataConfigList struct {
 	// The list of product.
 	ProductList []*BatchJobSubmitResponseBodyDataConfigListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
 	// The account id of aliyun.
+	//
+	// example:
+	//
+	// 123xxxxxx
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1095,6 +1086,10 @@ type BatchJobSubmitResponseBodyDataConfigListProductList struct {
 	// The list of log.
 	LogList []*BatchJobSubmitResponseBodyDataConfigListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
 	// The code of the product.
+	//
+	// example:
+	//
+	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -1118,16 +1113,40 @@ func (s *BatchJobSubmitResponseBodyDataConfigListProductList) SetProductCode(v s
 
 type BatchJobSubmitResponseBodyDataConfigListProductListLogList struct {
 	// The error code returned.
+	//
+	// example:
+	//
+	// ProjectLogstoreNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The log code.
+	//
+	// example:
+	//
+	// cloud_siem_cfw_flow
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The pattern of SLS log store name.
+	//
+	// example:
+	//
+	// vpc-test-logstore
 	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
 	// The code of product.
+	//
+	// example:
+	//
+	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The pattern of SLS project name.
+	//
+	// example:
+	//
+	// vpc-test-project
 	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 }
 
@@ -1200,23 +1219,55 @@ func (s *BatchJobSubmitResponse) SetBody(v *BatchJobSubmitResponseBody) *BatchJo
 
 type BindAccountRequest struct {
 	// The AccessKey ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The username of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The code of the cloud service provider.
+	// The code of the cloud service provider. Valid values:
 	//
-	// Valid values:
+	// 	- aliyun: Alibaba Cloud
 	//
-	// *   qcloud
-	// *   hcloud
+	// 	- hcloud: Huawei Cloud
+	//
+	// 	- qcloud: Tencent Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s BindAccountRequest) String() string {
@@ -1252,10 +1303,24 @@ func (s *BindAccountRequest) SetRegionId(v string) *BindAccountRequest {
 	return s
 }
 
+func (s *BindAccountRequest) SetRoleFor(v int64) *BindAccountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *BindAccountRequest) SetRoleType(v int32) *BindAccountRequest {
+	s.RoleType = &v
+	return s
+}
+
 type BindAccountResponseBody struct {
-	// The response parameters.
+	// The data returned.
 	Data *BindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1278,7 +1343,11 @@ func (s *BindAccountResponseBody) SetRequestId(v string) *BindAccountResponseBod
 }
 
 type BindAccountResponseBodyData struct {
-	// The number of the cloud accounts that are added to the threat analysis feature. The value 1 indicates that the account is added, and a value less than or equal to 0 indicates that the account failed to be added.
+	// The number of the cloud accounts that are added to the threat analysis feature.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -1326,40 +1395,91 @@ func (s *BindAccountResponse) SetBody(v *BindAccountResponseBody) *BindAccountRe
 
 type CloseDeliveryRequest struct {
 	// The log code of the cloud service, such as the code of the process log for Security Center. You can obtain the log code from the response of the ListDelivery operation.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The code of the cloud service. Valid values:
 	//
-	// *   qcloud_waf
-	// *   qlcoud_cfw
-	// *   hcloud_waf
-	// *   hcloud_cfw
-	// *   ddos
-	// *   sas
-	// *   cfw
-	// *   config
-	// *   csk
-	// *   fc
-	// *   rds
-	// *   nas
-	// *   apigateway
-	// *   cdn
-	// *   mongodb
-	// *   eip
-	// *   slb
-	// *   vpc
-	// *   actiontrail
-	// *   waf
-	// *   bastionhost
-	// *   oss
-	// *   polardb
+	// 	- qcloud_waf
+	//
+	// 	- qlcoud_cfw
+	//
+	// 	- hcloud_waf
+	//
+	// 	- hcloud_cfw
+	//
+	// 	- ddos
+	//
+	// 	- sas
+	//
+	// 	- cfw
+	//
+	// 	- config
+	//
+	// 	- csk
+	//
+	// 	- fc
+	//
+	// 	- rds
+	//
+	// 	- nas
+	//
+	// 	- apigateway
+	//
+	// 	- cdn
+	//
+	// 	- mongodb
+	//
+	// 	- eip
+	//
+	// 	- slb
+	//
+	// 	- vpc
+	//
+	// 	- actiontrail
+	//
+	// 	- waf
+	//
+	// 	- bastionhost
+	//
+	// 	- oss
+	//
+	// 	- polardb
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s CloseDeliveryRequest) String() string {
@@ -1398,10 +1518,19 @@ func (s *CloseDeliveryRequest) SetRoleType(v int32) *CloseDeliveryRequest {
 type CloseDeliveryResponseBody struct {
 	// Indicates whether the threat analysis feature was disabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F375A043-4F5B-55F2-A564-CC47FFC6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1454,14 +1583,37 @@ func (s *CloseDeliveryResponse) SetBody(v *CloseDeliveryResponseBody) *CloseDeli
 
 type DeleteAutomateResponseConfigRequest struct {
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DeleteAutomateResponseConfigRequest) String() string {
@@ -1494,17 +1646,38 @@ func (s *DeleteAutomateResponseConfigRequest) SetRoleType(v int32) *DeleteAutoma
 
 type DeleteAutomateResponseConfigResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1572,22 +1745,53 @@ func (s *DeleteAutomateResponseConfigResponse) SetBody(v *DeleteAutomateResponse
 
 type DeleteBindAccountRequest struct {
 	// The AccessKey ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID generated when the account is added to the threat analysis feature. You can call the [ListBindAccount](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListBindAccount) operation to query the ID.
+	// The ID generated when the account is added to the threat analysis feature. You can call the [ListBindAccount](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListBindAccount) operation to query the ID.
+	//
+	// example:
+	//
+	// 10
 	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DeleteBindAccountRequest) String() string {
@@ -1623,10 +1827,24 @@ func (s *DeleteBindAccountRequest) SetRegionId(v string) *DeleteBindAccountReque
 	return s
 }
 
+func (s *DeleteBindAccountRequest) SetRoleFor(v int64) *DeleteBindAccountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DeleteBindAccountRequest) SetRoleType(v int32) *DeleteBindAccountRequest {
+	s.RoleType = &v
+	return s
+}
+
 type DeleteBindAccountResponseBody struct {
 	// The data returned.
 	Data *DeleteBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1650,6 +1868,10 @@ func (s *DeleteBindAccountResponseBody) SetRequestId(v string) *DeleteBindAccoun
 
 type DeleteBindAccountResponseBodyData struct {
 	// The number of cloud accounts that are removed. The value 1 indicates that cloud account is removed, and a value less than or equal to 0 indicates that the cloud account failed to be removed.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -1697,10 +1919,32 @@ func (s *DeleteBindAccountResponse) SetBody(v *DeleteBindAccountResponseBody) *D
 
 type DeleteCustomizeRuleRequest struct {
 	// The region in which the service is deployed.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -1734,17 +1978,38 @@ func (s *DeleteCustomizeRuleRequest) SetRuleId(v int64) *DeleteCustomizeRuleRequ
 
 type DeleteCustomizeRuleResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1812,19 +2077,44 @@ func (s *DeleteCustomizeRuleResponse) SetBody(v *DeleteCustomizeRuleResponseBody
 
 type DeleteDataSourceRequest struct {
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1860,6 +2150,10 @@ type DeleteDataSourceResponseBody struct {
 	// The data returned.
 	Data *DeleteDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1883,6 +2177,10 @@ func (s *DeleteDataSourceResponseBody) SetRequestId(v string) *DeleteDataSourceR
 
 type DeleteDataSourceResponseBodyData struct {
 	// The number of data sources that are removed. The value 1 indicates that data source is removed, and a value less than or equal to 0 indicates that the data source failed to be removed.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -1930,21 +2228,52 @@ func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *Del
 
 type DeleteDataSourceLogRequest struct {
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of logs.
+	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of logs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ef33097c9d1fdb0b9c7e8c7ca320pkl1
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1985,6 +2314,10 @@ type DeleteDataSourceLogResponseBody struct {
 	// The data returned.
 	Data *DeleteDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2008,8 +2341,16 @@ func (s *DeleteDataSourceLogResponseBody) SetRequestId(v string) *DeleteDataSour
 
 type DeleteDataSourceLogResponseBodyData struct {
 	// The number of logs that are removed. The value 1 indicates that the log is removed, and a value less than or equal to 0 indicates that the log failed to be removed.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	//
+	// example:
+	//
+	// ef33097c9d1fdb0b9c7e8c7ca320pkl1
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 }
 
@@ -2060,98 +2401,24 @@ func (s *DeleteDataSourceLogResponse) SetBody(v *DeleteDataSourceLogResponseBody
 	return s
 }
 
-type DeleteQuickQueryRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the saved search.
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-}
-
-func (s DeleteQuickQueryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteQuickQueryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteQuickQueryRequest) SetRegionId(v string) *DeleteQuickQueryRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteQuickQueryRequest) SetSearchName(v string) *DeleteQuickQueryRequest {
-	s.SearchName = &v
-	return s
-}
-
-type DeleteQuickQueryResponseBody struct {
-	// Indicates whether the saved search is deleted. Valid values:
-	//
-	// *   true
-	// *   false
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteQuickQueryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteQuickQueryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteQuickQueryResponseBody) SetData(v bool) *DeleteQuickQueryResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteQuickQueryResponseBody) SetRequestId(v string) *DeleteQuickQueryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteQuickQueryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteQuickQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteQuickQueryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteQuickQueryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteQuickQueryResponse) SetHeaders(v map[string]*string) *DeleteQuickQueryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteQuickQueryResponse) SetStatusCode(v int32) *DeleteQuickQueryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteQuickQueryResponse) SetBody(v *DeleteQuickQueryResponseBody) *DeleteQuickQueryResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteUserRequest struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	AddedUserId *int64 `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2176,10 +2443,19 @@ func (s *DeleteUserRequest) SetRegionId(v string) *DeleteUserRequest {
 type DeleteUserResponseBody struct {
 	// Indicates whether the Alibaba Cloud account is removed. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2232,14 +2508,39 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 
 type DeleteWhiteRuleListRequest struct {
 	// The unique ID of the whitelist rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DeleteWhiteRuleListRequest) String() string {
@@ -2272,17 +2573,38 @@ func (s *DeleteWhiteRuleListRequest) SetRoleType(v int32) *DeleteWhiteRuleListRe
 
 type DeleteWhiteRuleListResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2351,11 +2673,30 @@ func (s *DeleteWhiteRuleListResponse) SetBody(v *DeleteWhiteRuleListResponseBody
 type DescribeAggregateFunctionRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAggregateFunctionRequest) String() string {
@@ -2383,17 +2724,38 @@ func (s *DescribeAggregateFunctionRequest) SetRoleType(v int32) *DescribeAggrega
 
 type DescribeAggregateFunctionResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAggregateFunctionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2432,8 +2794,16 @@ func (s *DescribeAggregateFunctionResponseBody) SetSuccess(v bool) *DescribeAggr
 
 type DescribeAggregateFunctionResponseBodyData struct {
 	// The aggregate function.
+	//
+	// example:
+	//
+	// count
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
 	// The display name of the aggregate function.
+	//
+	// example:
+	//
+	// Count
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
@@ -2487,11 +2857,30 @@ func (s *DescribeAggregateFunctionResponse) SetBody(v *DescribeAggregateFunction
 type DescribeAlertSceneRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAlertSceneRequest) String() string {
@@ -2519,17 +2908,38 @@ func (s *DescribeAlertSceneRequest) SetRoleType(v int32) *DescribeAlertSceneRequ
 
 type DescribeAlertSceneResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAlertSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2568,18 +2978,46 @@ func (s *DescribeAlertSceneResponseBody) SetSuccess(v bool) *DescribeAlertSceneR
 
 type DescribeAlertSceneResponseBodyData struct {
 	// The name of the alert. The value varies based on the display language (Chinese or English) of the Security Center console.
+	//
+	// example:
+	//
+	// login_common_ip
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The ID of the alert name.
+	//
+	// example:
+	//
+	// login_common_ip
 	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
 	// The title of the alert notification. The value varies based on the display language (Chinese or English) of the Security Center console.
+	//
+	// example:
+	//
+	// unusual login-login_common_ip
 	AlertTile *string `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
 	// The ID of the alert title.
+	//
+	// example:
+	//
+	// unusual login-login_common_ip
 	AlertTileId *string `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
 	// The type of the alert. The value varies based on the display language (Chinese or English) of the Security Center console.
+	//
+	// example:
+	//
+	// unusual login
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The ID of the alert type.
+	//
+	// example:
+	//
+	// unusual login
 	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
 	// The information about the entities for which you need to add the alert to the whitelist.
+	//
+	// example:
+	//
+	// [{"Type": "host_uuid","Value": "441862da-a539-4cc0-a00d-473955826881","Values": ["441862da-a539-4cc0-a00d-473955826881"],"Name": "${aliyun.siem.entity.host_uuid}"}]
 	Targets []*DescribeAlertSceneResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
@@ -2628,12 +3066,28 @@ func (s *DescribeAlertSceneResponseBodyData) SetTargets(v []*DescribeAlertSceneR
 
 type DescribeAlertSceneResponseBodyDataTargets struct {
 	// The display name of the attribute for the entity.
+	//
+	// example:
+	//
+	// HOST UUID
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The attribute of the entity.
+	//
+	// example:
+	//
+	// host_uuid
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The right operand that is displayed by default in the whitelist rule.
+	//
+	// example:
+	//
+	// 441862da-a539-4cc0-a00d-47395582****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The right operands supported by the whitelist rule.
+	//
+	// example:
+	//
+	// ["441862da-a539-4cc0-a00d-473955826881"]
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2696,14 +3150,39 @@ func (s *DescribeAlertSceneResponse) SetBody(v *DescribeAlertSceneResponseBody) 
 
 type DescribeAlertSceneByEventRequest struct {
 	// The ID of the event.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAlertSceneByEventRequest) String() string {
@@ -2736,17 +3215,38 @@ func (s *DescribeAlertSceneByEventRequest) SetRoleType(v int32) *DescribeAlertSc
 
 type DescribeAlertSceneByEventResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAlertSceneByEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2785,18 +3285,46 @@ func (s *DescribeAlertSceneByEventResponseBody) SetSuccess(v bool) *DescribeAler
 
 type DescribeAlertSceneByEventResponseBodyData struct {
 	// The alert name. The display name of the alert name varies based on the language of the system, such as Chinese and English.
+	//
+	// example:
+	//
+	// login_common_ip
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The ID of the alert name.
+	//
+	// example:
+	//
+	// login_common_ip
 	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
 	// The alert title. The display name of the alert title varies based on the language of the system, such as Chinese and English.
+	//
+	// example:
+	//
+	// Unusual Logon-login_common_ip
 	AlertTile *string `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
 	// The ID of the alert title.
+	//
+	// example:
+	//
+	// Unusual Logon-login_common_ip
 	AlertTileId *string `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
 	// The alert type. The display name of the alert type varies based on the language of the system, such as Chinese and English.
+	//
+	// example:
+	//
+	// Unusual Logon
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The ID of the alert type.
+	//
+	// example:
+	//
+	// Unusual Logon
 	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
 	// The objects that can be added to the whitelist.
+	//
+	// example:
+	//
+	// [{"Type": "host_uuid","Value": "441862da-a539-4cc0-a00d-473955826881","Values": ["441862da-a539-4cc0-a00d-473955826881"],"Name": "${aliyun.siem.entity.host_uuid}"}]
 	Targets []*DescribeAlertSceneByEventResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
@@ -2845,12 +3373,28 @@ func (s *DescribeAlertSceneByEventResponseBodyData) SetTargets(v []*DescribeAler
 
 type DescribeAlertSceneByEventResponseBodyDataTargets struct {
 	// The display name of the entity attribute field that can be added to the whitelist.
+	//
+	// example:
+	//
+	// host uuid
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The entity attribute field that can be added to the whitelist.
+	//
+	// example:
+	//
+	// host_uuid
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The right operand that is displayed by default in the whitelist rule.
+	//
+	// example:
+	//
+	// 441862da-a539-4cc0-a00d-47395582****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The supported right operands of the whitelist rule.
+	//
+	// example:
+	//
+	// ["441862da-a539-4cc0-a00d-473955826881"]
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -2913,21 +3457,54 @@ func (s *DescribeAlertSceneByEventResponse) SetBody(v *DescribeAlertSceneByEvent
 
 type DescribeAlertSourceRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The risk levels. The value is a JSON array. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// ["serious","suspicious","remind"]
 	Level []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2971,17 +3548,38 @@ func (s *DescribeAlertSourceRequest) SetStartTime(v int64) *DescribeAlertSourceR
 
 type DescribeAlertSourceResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAlertSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3020,8 +3618,16 @@ func (s *DescribeAlertSourceResponseBody) SetSuccess(v bool) *DescribeAlertSourc
 
 type DescribeAlertSourceResponseBodyData struct {
 	// The internal code of the alert data source.
+	//
+	// example:
+	//
+	// aliyun.siem.alert_datasource.sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The name of the alert data source.
+	//
+	// example:
+	//
+	// sas
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
 }
 
@@ -3074,14 +3680,37 @@ func (s *DescribeAlertSourceResponse) SetBody(v *DescribeAlertSourceResponseBody
 
 type DescribeAlertSourceWithEventRequest struct {
 	// The UUID of the event.
-	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// 	- Valid values: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAlertSourceWithEventRequest) String() string {
@@ -3114,17 +3743,38 @@ func (s *DescribeAlertSourceWithEventRequest) SetRoleType(v int32) *DescribeAler
 
 type DescribeAlertSourceWithEventResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAlertSourceWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3163,8 +3813,16 @@ func (s *DescribeAlertSourceWithEventResponseBody) SetSuccess(v bool) *DescribeA
 
 type DescribeAlertSourceWithEventResponseBodyData struct {
 	// The internal code of the alert data source.
+	//
+	// example:
+	//
+	// aliyun.siem.alert_datasource.sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The name of the alert data source.
+	//
+	// example:
+	//
+	// sas
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
 }
 
@@ -3218,11 +3876,39 @@ func (s *DescribeAlertSourceWithEventResponse) SetBody(v *DescribeAlertSourceWit
 type DescribeAlertTypeRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The type of rule. Valid values:
+	//
+	// - predefine: the defined rule by system
+	//
+	// - customize: the customed rule by user
+	//
+	// example:
+	//
+	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -3256,17 +3942,38 @@ func (s *DescribeAlertTypeRequest) SetRuleType(v string) *DescribeAlertTypeReque
 
 type DescribeAlertTypeResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAlertTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3305,8 +4012,16 @@ func (s *DescribeAlertTypeResponseBody) SetSuccess(v bool) *DescribeAlertTypeRes
 
 type DescribeAlertTypeResponseBodyData struct {
 	// The type of the risk.
+	//
+	// example:
+	//
+	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the risk type.
+	//
+	// example:
+	//
+	// siem_rule_type_process_abnormal_command
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
 }
 
@@ -3359,38 +4074,104 @@ func (s *DescribeAlertTypeResponse) SetBody(v *DescribeAlertTypeResponseBody) *D
 
 type DescribeAlertsRequest struct {
 	// The title of the alert.
+	//
+	// example:
+	//
+	// Unusual Logon-login_common_account
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
 	// The UUID of the alert.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether an attack is defended. Valid values:
 	//
-	// *   0: detected.
-	// *   1: blocked.
+	// 	- 0: detected.
+	//
+	// 	- 1: blocked.
+	//
+	// example:
+	//
+	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
 	// The risk level. The value is a JSON array. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// ["serious","suspicious","remind"]
 	Level []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The source of the alert.
+	//
+	// example:
+	//
+	// sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the Alibaba Cloud account within which the alert is generated.
+	//
+	// example:
+	//
+	// 176555323***
 	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -3469,17 +4250,38 @@ func (s *DescribeAlertsRequest) SetSubUserId(v string) *DescribeAlertsRequest {
 
 type DescribeAlertsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeAlertsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3543,10 +4345,22 @@ func (s *DescribeAlertsResponseBodyData) SetResponseData(v []*DescribeAlertsResp
 
 type DescribeAlertsResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3575,79 +4389,234 @@ func (s *DescribeAlertsResponseBodyDataPageInfo) SetTotalCount(v int64) *Describ
 
 type DescribeAlertsResponseBodyDataResponseData struct {
 	// The description of the alert.
+	//
+	// example:
+	//
+	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
 	// The internal code of the alert description.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshell
 	AlertDescCode *string `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
 	// The description of the alert in English.
+	//
+	// example:
+	//
+	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDescEn *string `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
 	// The details of the alert.
+	//
+	// example:
+	//
+	// {"main_user_id": "165295629792****";"log_uuid_count": "99";"attack_ip": "21.92.*.*"}
 	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
 	// The displayed details of the alert.
+	//
+	// example:
+	//
+	// aliyun
 	AlertInfoList []*DescribeAlertsResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
 	// The threat level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// remind
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
 	// The name of the alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The internal code of the alert name.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshell
 	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
 	// The name of the alert in English.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
 	// The service for which the alert associated with the event is generated.
+	//
+	// example:
+	//
+	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
 	// The sub-module of ther alert source.
+	//
+	// example:
+	//
+	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
 	// The title of the alert.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
 	// The title of the alert in English.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
 	// The alert type.
+	//
+	// example:
+	//
+	// Scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the alert type.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshellName
 	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
 	// The type of the alert in English.
+	//
+	// example:
+	//
+	// Scan
 	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
 	// The UUID of the alert.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The details of the asset.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "is_main_asset": "1",
+	//
+	//             "asset_name": "47.245.*",
+	//
+	//             "port": "22",
+	//
+	//             "ip": "47.245.*",
+	//
+	//             "asset_type": "ip",
+	//
+	//             "location": "ap-southeast-1",
+	//
+	//             "asset_id": "47.245.*",
+	//
+	//             "net_connect_dir": "in"
+	//
+	//       }
+	//
+	// ]
 	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	// The tag of the ATT\&CK attack.
+	// The tag of the ATT\\&CK attack.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The cloud code. Valid values:
 	//
-	// *   aliyun: Alibaba Cloud
-	// *   qcloud: Tencent Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// aliyun
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The time when the alert was closed.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time when the alert was received.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the alert was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The unique ID of the alert.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// Indicates whether an attack is defended. Valid values:
 	//
-	// *   0: detected.
-	// *   1: blocked.
+	// 	- 0: detected.
+	//
+	// 	- 1: blocked.
+	//
+	// example:
+	//
+	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
 	// The time when the alert was recorded.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 	// The UUID of the alert log.
+	//
+	// example:
+	//
+	// cfw_d12e285a-a042-4d7e-be89-f8a795ef****
 	LogUuid *string `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
 	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	//
+	// example:
+	//
+	// 127608589417****
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The time when the alert is triggered.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
 	// The time at which the alert was first generated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the Alibaba Cloud account within which the alert is generated.
+	//
+	// example:
+	//
+	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -3821,10 +4790,22 @@ func (s *DescribeAlertsResponseBodyDataResponseData) SetSubUserId(v int64) *Desc
 
 type DescribeAlertsResponseBodyDataResponseDataAlertInfoList struct {
 	// The attribute key.
+	//
+	// example:
+	//
+	// suspicious.wbd.wb.trojanpath
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// Trojan Path
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
 	// The value of the key.
+	//
+	// example:
+	//
+	// /root/test33.php
 	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
@@ -3882,15 +4863,42 @@ func (s *DescribeAlertsResponse) SetBody(v *DescribeAlertsResponseBody) *Describ
 
 type DescribeAlertsCountRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3929,17 +4937,38 @@ func (s *DescribeAlertsCountRequest) SetStartTime(v int64) *DescribeAlertsCountR
 
 type DescribeAlertsCountResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeAlertsCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3978,14 +5007,34 @@ func (s *DescribeAlertsCountResponseBody) SetSuccess(v bool) *DescribeAlertsCoun
 
 type DescribeAlertsCountResponseBodyData struct {
 	// The total number of alerts.
+	//
+	// example:
+	//
+	// 75
 	All *int64 `json:"All,omitempty" xml:"All,omitempty"`
 	// The number of high-risk alerts.
+	//
+	// example:
+	//
+	// 25
 	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
 	// The number of low-risk alerts.
+	//
+	// example:
+	//
+	// 25
 	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
 	// The number of medium-risk alerts.
+	//
+	// example:
+	//
+	// 25
 	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
 	// The number of connected services.
+	//
+	// example:
+	//
+	// 3
 	ProductNum *int32 `json:"ProductNum,omitempty" xml:"ProductNum,omitempty"`
 }
 
@@ -4053,21 +5102,64 @@ func (s *DescribeAlertsCountResponse) SetBody(v *DescribeAlertsCountResponseBody
 
 type DescribeAlertsWithEntityRequest struct {
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The ID of the entity.
+	//
+	// example:
+	//
+	// 123456789
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the SOAR handing policy.
+	//
+	// example:
+	//
+	// 577bbf90-a770-44a7-8154-586aa2d318fa
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 }
 
@@ -4121,17 +5213,38 @@ func (s *DescribeAlertsWithEntityRequest) SetSophonTaskId(v string) *DescribeAle
 
 type DescribeAlertsWithEntityResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeAlertsWithEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4195,10 +5308,22 @@ func (s *DescribeAlertsWithEntityResponseBodyData) SetResponseData(v []*Describe
 
 type DescribeAlertsWithEntityResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4227,79 +5352,234 @@ func (s *DescribeAlertsWithEntityResponseBodyDataPageInfo) SetTotalCount(v int64
 
 type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
 	// The description of the alert.
+	//
+	// example:
+	//
+	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
 	// The internal code of the alert description.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshell
 	AlertDescCode *string `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
 	// The alert description in English.
+	//
+	// example:
+	//
+	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDescEn *string `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
 	// The details of the alert.
+	//
+	// example:
+	//
+	// {"main_user_id": "165295629792****";"log_uuid_count": "99";"attack_ip": "21.92.*.*"}
 	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
 	// The displayed details of the alert.
+	//
+	// example:
+	//
+	// aliyun
 	AlertInfoList []*DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
 	// The risk level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// remind
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
 	// The name of the alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The internal code of the alert name.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshell
 	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
 	// The name of the alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
 	// The source of the alert.
+	//
+	// example:
+	//
+	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
 	// The sub-module of the alert source.
+	//
+	// example:
+	//
+	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
 	// The title of the alert.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
 	// The alert title in English.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
 	// The type of the alert.
+	//
+	// example:
+	//
+	// Scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the alert type.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshellName
 	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
 	// The alert type in English.
+	//
+	// example:
+	//
+	// Scan
 	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
 	// The UUID of the alert.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The details of the asset.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "is_main_asset": "1",
+	//
+	//             "asset_name": "47.245.*",
+	//
+	//             "port": "22",
+	//
+	//             "ip": "47.245.*",
+	//
+	//             "asset_type": "ip",
+	//
+	//             "location": "ap-southeast-1",
+	//
+	//             "asset_id": "47.245.*",
+	//
+	//             "net_connect_dir": "in"
+	//
+	//       }
+	//
+	// ]
 	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	// The tag of the ATT\&CK attack.
+	// The tag of the ATT\\&CK attack.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The cloud code. Valid values:
 	//
-	// *   aliyun: Alibaba Cloud
-	// *   qcloud: Tencent Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// aliyun
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The time when the alert was closed.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time when the alert was received.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the alert was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The unique ID of the alert.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// Specifies whether an attack is defended. Valid values:
 	//
-	// *   0: detected
-	// *   1: blocked
+	// 	- 0: detected
+	//
+	// 	- 1: blocked
+	//
+	// example:
+	//
+	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
 	// The time when the alert was recorded.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 	// The UUID of the alert log.
+	//
+	// example:
+	//
+	// cfw_d12e285a-a042-4d7e-be89-f8a795ef****
 	LogUuid *string `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
 	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	//
+	// example:
+	//
+	// 127608589417****
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The time when the alert was triggered.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
 	// The time at which the alert was first generated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the Alibaba Cloud account within which the alert is generated.
+	//
+	// example:
+	//
+	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -4473,10 +5753,22 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetSubUserId(v in
 
 type DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList struct {
 	// The attribute key.
+	//
+	// example:
+	//
+	// suspicious.wbd.wb.trojanpath
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// Trojan Path
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
 	// The value of the key.
+	//
+	// example:
+	//
+	// /root/test33.php
 	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
@@ -4534,34 +5826,92 @@ func (s *DescribeAlertsWithEntityResponse) SetBody(v *DescribeAlertsWithEntityRe
 
 type DescribeAlertsWithEventRequest struct {
 	// The title of the alert.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The ID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// Specifies whether an attack is defended. Valid values:
 	//
-	// *   0: detected
-	// *   1: blocked
+	// 	- 0: detected
+	//
+	// 	- 1: blocked
+	//
+	// example:
+	//
+	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
 	// The risk levels. The value is a JSON array. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// ["serious","suspicious","remind"]
 	Level []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view.
+	//
+	// 	- 0: view of the current Alibaba Cloud account.
+	//
+	// 	- 1: view of all accounts for the enterprise.
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The data source of the alert.
+	//
+	// example:
+	//
+	// sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The ID of the account within which the alert is generated.
+	//
+	// example:
+	//
+	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -4630,17 +5980,38 @@ func (s *DescribeAlertsWithEventRequest) SetSubUserId(v int64) *DescribeAlertsWi
 
 type DescribeAlertsWithEventResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeAlertsWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4704,10 +6075,22 @@ func (s *DescribeAlertsWithEventResponseBodyData) SetResponseData(v []*DescribeA
 
 type DescribeAlertsWithEventResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4736,80 +6119,240 @@ func (s *DescribeAlertsWithEventResponseBodyDataPageInfo) SetTotalCount(v int64)
 
 type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	// The description of the alert.
+	//
+	// example:
+	//
+	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
 	// The internal code of the alert description.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshell
 	AlertDescCode *string `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
 	// The alert description in English.
+	//
+	// example:
+	//
+	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDescEn *string `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
 	// The details of the alert.
+	//
+	// example:
+	//
+	// {"main_user_id": "165295629792****";"log_uuid_count": "99";"attack_ip": "21.92.*.*"}
 	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
 	// The displayed details of the alert.
+	//
+	// example:
+	//
+	// aliyun
 	AlertInfoList []*DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
 	// The risk level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high.
+	//
+	// 	- suspicious: medium.
+	//
+	// 	- remind: low.
+	//
+	// example:
+	//
+	// remind
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
 	// The name of the alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The internal code of the alert name.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshell
 	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
 	// The alert name in English.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
 	// The source of the alert.
+	//
+	// example:
+	//
+	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
 	// The sub-module of the alert source.
+	//
+	// example:
+	//
+	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
 	// The title of the alert.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
 	// The alert title in English.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
 	// The type of the alert.
+	//
+	// example:
+	//
+	// Scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the alert type.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshellName
 	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
 	// The alert type in English.
+	//
+	// example:
+	//
+	// Scan
 	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
 	// The UUID of the alert.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The details of the asset.
-	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	// The tag of the ATT\&CK attack.
-	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The cloud code. Valid values:
 	//
-	// *   aliyun: Alibaba Cloud
-	// *   qcloud: Tencent Cloud
-	// *   hcloud: Huawei Cloud
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "is_main_asset": "1",
+	//
+	//             "asset_name": "47.245.*",
+	//
+	//             "port": "22",
+	//
+	//             "ip": "47.245.*",
+	//
+	//             "asset_type": "ip",
+	//
+	//             "location": "ap-southeast-1",
+	//
+	//             "asset_id": "47.245.*",
+	//
+	//             "net_connect_dir": "in"
+	//
+	//       }
+	//
+	// ]
+	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	// The tag of the ATT\\&CK technique.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The code of the cloud service provider. Valid values:
+	//
+	// 	- aliyun: Alibaba Cloud.
+	//
+	// 	- qcloud: Tencent Cloud.
+	//
+	// 	- hcloud: Huawei Cloud.
+	//
+	// example:
+	//
+	// aliyun
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The time when the alert was closed.
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The details of the entity.
+	//
+	// example:
+	//
+	// [{&quot;entity_user_id&quot;:&quot;198921674491****&quot;,&quot;entity_account_id&quot;:&quot;N/A&quot;,&quot;entity_uuid&quot;:&quot;6245f979d5dd9ef8dd19bdc72228****&quot;,&quot;entity_type&quot;:&quot;host&quot;,&quot;entity_name&quot;:&quot;zhh-test-20240409&quot;,&quot;is_comprised&quot;:&quot;1&quot;,&quot;os_type&quot;:&quot;linux&quot;,&quot;entity_id&quot;:&quot;a88f44dd-b8d4-4ded-831c-77a4835****&quot;,&quot;host_uuid&quot;:&quot;a88f44dd-b8d4-4ded-831c-77a4835****&quot;,&quot;host_name&quot;:&quot;zhh-test-2024****&quot;}]
 	EntityList *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
 	// The time when the alert was received.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the alert was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The unique ID of the alert.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The UUID of the event.
-	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// Indicates whether an attack is defended. Valid values:
 	//
-	// *   0: detected
-	// *   1: blocked
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// Indicates whether an attack is defended against. Valid values:
+	//
+	// 	- 0: detected.
+	//
+	// 	- 1: blocked.
+	//
+	// example:
+	//
+	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
 	// The time when the alert was recorded.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 	// The UUID of the alert log.
+	//
+	// example:
+	//
+	// cfw_d12e285a-a042-4d7e-be89-f8a795ef****
 	LogUuid *string `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
 	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	//
+	// example:
+	//
+	// 127608589417****
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The time when the alert was triggered.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
 	// The time at which the alert was first generated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the Alibaba Cloud account within which the alert is generated.
+	//
+	// example:
+	//
+	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -4988,10 +6531,22 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetSubUserId(v int
 
 type DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList struct {
 	// The attribute key.
+	//
+	// example:
+	//
+	// suspicious.wbd.wb.trojanpath
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// Trojan Path
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
 	// The value of the key.
+	//
+	// example:
+	//
+	// /root/test33.php
 	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
@@ -5049,19 +6604,54 @@ func (s *DescribeAlertsWithEventResponse) SetBody(v *DescribeAlertsWithEventResp
 
 type DescribeAttackTimeLineRequest struct {
 	// The name of the asset.
+	//
+	// example:
+	//
+	// zsw-agentless-centos****
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577803000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5110,17 +6700,38 @@ func (s *DescribeAttackTimeLineRequest) SetStartTime(v int64) *DescribeAttackTim
 
 type DescribeAttackTimeLineResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAttackTimeLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5160,51 +6771,157 @@ func (s *DescribeAttackTimeLineResponseBody) SetSuccess(v bool) *DescribeAttackT
 type DescribeAttackTimeLineResponseBodyData struct {
 	// The risk level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// remind
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
 	// The alert name in English.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The internal code of the alert name.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshell
 	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
 	// The alert name in English.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
 	// The source of the alert.
+	//
+	// example:
+	//
+	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
 	// The sub-module of the alert source.
+	//
+	// example:
+	//
+	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
 	// The time when the alert was triggered.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
 	// The title of the alert.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
 	// The alert title in English.
+	//
+	// example:
+	//
+	// Scan-Try SNMP weak password
 	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
 	// The type of the alert.
+	//
+	// example:
+	//
+	// Scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the alert type.
+	//
+	// example:
+	//
+	// security_event_config.event_name.webshellName
 	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
 	// The alert type in English.
+	//
+	// example:
+	//
+	// Scan
 	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
 	// The UUID of the alert
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The logical ID of the asset.
+	//
+	// example:
+	//
+	// 0616caeb-acb8-45e0-8520-4ee5fbe251f0
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
 	// The details of the asset.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "is_main_asset": "1",
+	//
+	//             "asset_name": "47.245.*",
+	//
+	//             "port": "22",
+	//
+	//             "ip": "47.245.*",
+	//
+	//             "asset_type": "ip",
+	//
+	//             "location": "ap-southeast-1",
+	//
+	//             "asset_id": "47.245.*",
+	//
+	//             "net_connect_dir": "in"
+	//
+	//       }
+	//
+	// ]
 	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
 	// The name of the asset.
+	//
+	// example:
+	//
+	// zsw-agentless-centos****
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The tag of the ATT\&CK attack.
+	// The tag of the ATT\\&CK attack.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The cloud code. Valid values:
 	//
-	// *   aliyun: Alibaba Cloud
-	// *   qcloud: Tencent Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// aliyun
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The time when the alert was recorded.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 }
 
@@ -5348,8 +7065,13 @@ func (s *DescribeAttackTimeLineResponse) SetBody(v *DescribeAttackTimeLineRespon
 type DescribeAuthRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5369,10 +7091,19 @@ func (s *DescribeAuthRequest) SetRegionId(v string) *DescribeAuthRequest {
 type DescribeAuthResponseBody struct {
 	// Indicates whether the SIEM system is granted the required permissions. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 4F539347-7D9A-51EA-8ABF-5D5507045C5C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5426,11 +7157,30 @@ func (s *DescribeAuthResponse) SetBody(v *DescribeAuthResponseBody) *DescribeAut
 type DescribeAutomateResponseConfigCounterRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigCounterRequest) String() string {
@@ -5458,17 +7208,38 @@ func (s *DescribeAutomateResponseConfigCounterRequest) SetRoleType(v int32) *Des
 
 type DescribeAutomateResponseConfigCounterResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeAutomateResponseConfigCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5507,8 +7278,16 @@ func (s *DescribeAutomateResponseConfigCounterResponseBody) SetSuccess(v bool) *
 
 type DescribeAutomateResponseConfigCounterResponseBodyData struct {
 	// The total number of rules.
+	//
+	// example:
+	//
+	// 20
 	All *int64 `json:"All,omitempty" xml:"All,omitempty"`
 	// The number of enabled rules.
+	//
+	// example:
+	//
+	// 10
 	Online *int64 `json:"Online,omitempty" xml:"Online,omitempty"`
 }
 
@@ -5562,16 +7341,40 @@ func (s *DescribeAutomateResponseConfigCounterResponse) SetBody(v *DescribeAutom
 type DescribeAutomateResponseConfigFeatureRequest struct {
 	// The type of the automated response rule. Valid values:
 	//
-	// *   event
-	// *   alert
+	// 	- event
+	//
+	// 	- alert
+	//
+	// example:
+	//
+	// event
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigFeatureRequest) String() string {
@@ -5604,17 +7407,38 @@ func (s *DescribeAutomateResponseConfigFeatureRequest) SetRoleType(v int32) *Des
 
 type DescribeAutomateResponseConfigFeatureResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAutomateResponseConfigFeatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5653,8 +7477,16 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBody) SetSuccess(v bool) *
 
 type DescribeAutomateResponseConfigFeatureResponseBodyData struct {
 	// The data type of the condition field in the automated response rule.
+	//
+	// example:
+	//
+	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The name of the condition field in the automated response rule.
+	//
+	// example:
+	//
+	// alert_desc
 	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
 	// The enumerated values of the right operand for the field.
 	RightValueEnums []*DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums `json:"RightValueEnums,omitempty" xml:"RightValueEnums,omitempty" type:"Repeated"`
@@ -5692,8 +7524,16 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyData) SetSupportOperat
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums struct {
 	// The enumerated value of the right operand.
+	//
+	// example:
+	//
+	// serious
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The internal code of the enumerated value.
+	//
+	// example:
+	//
+	// aliyun.siem.automate.feature.alert_level.serious
 	ValueMds *string `json:"ValueMds,omitempty" xml:"ValueMds,omitempty"`
 }
 
@@ -5718,22 +7558,55 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums) S
 type DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators struct {
 	// Indicates whether the right operand is required. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	HasRightValue *bool `json:"HasRightValue,omitempty" xml:"HasRightValue,omitempty"`
 	// The position of the operator in the operator list.
+	//
+	// example:
+	//
+	// 3
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The operator.
+	//
+	// example:
+	//
+	// <=
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The description of the operator in Chinese.
+	//
+	// example:
+	//
+	// larger than or equal to
 	OperatorDescCn *string `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
 	// The description of the operator in English.
+	//
+	// example:
+	//
+	// larger than or equal to
 	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// <=
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 	// The data types that are supported by the operator. The data types are separated by commas (,).
+	//
+	// example:
+	//
+	// varchar
 	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
 	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as aggregation scenarios. By default, this parameter is empty.
+	//
+	// example:
+	//
+	// [AGGREGATE]
 	SupportTag []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
 }
 
@@ -5817,22 +7690,52 @@ func (s *DescribeAutomateResponseConfigFeatureResponse) SetBody(v *DescribeAutom
 type DescribeAutomateResponseConfigPlayBooksRequest struct {
 	// The type of the automated response rule. Valid values:
 	//
-	// *   event
-	// *   alert
+	// 	- event
+	//
+	// 	- alert
+	//
+	// example:
+	//
+	// event
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
 	// The entity type of the playbook. Valid values:
 	//
-	// *   ip
-	// *   process
-	// *   file
+	// 	- ip
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// example:
+	//
+	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigPlayBooksRequest) String() string {
@@ -5870,17 +7773,38 @@ func (s *DescribeAutomateResponseConfigPlayBooksRequest) SetRoleType(v int32) *D
 
 type DescribeAutomateResponseConfigPlayBooksResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeAutomateResponseConfigPlayBooksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5919,18 +7843,40 @@ func (s *DescribeAutomateResponseConfigPlayBooksResponseBody) SetSuccess(v bool)
 
 type DescribeAutomateResponseConfigPlayBooksResponseBodyData struct {
 	// The description of the playbook.
+	//
+	// example:
+	//
+	// Waf Block IP
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the playbook.
+	//
+	// example:
+	//
+	// WafBlockIP
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The unique identifier name of the playbook.
+	//
+	// example:
+	//
+	// WafBlockIP
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The input parameter template of the playbook. Valid values:
 	//
-	// *   template-ip: IP address
-	// *   template-process: process
-	// *   template-filee: file
+	// 	- template-ip: IP address
+	//
+	// 	- template-process: process
+	//
+	// 	- template-filee: file
+	//
+	// example:
+	//
+	// template-ip
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The UUID of the playbook.
+	//
+	// example:
+	//
+	// system_aliyun_clb_process_book
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -5999,26 +7945,70 @@ func (s *DescribeAutomateResponseConfigPlayBooksResponse) SetBody(v *DescribeAut
 type DescribeCloudSiemAssetsRequest struct {
 	// The type of the asset. Valid values:
 	//
-	// *   ip
-	// *   domain
-	// *   url
-	// *   process
-	// *   file
-	// *   host
+	// 	- ip
+	//
+	// 	- domain
+	//
+	// 	- url
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// 	- host
+	//
+	// example:
+	//
+	// ip
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsRequest) String() string {
@@ -6066,17 +8056,38 @@ func (s *DescribeCloudSiemAssetsRequest) SetRoleType(v int32) *DescribeCloudSiem
 
 type DescribeCloudSiemAssetsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeCloudSiemAssetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6140,10 +8151,22 @@ func (s *DescribeCloudSiemAssetsResponseBodyData) SetResponseData(v []*DescribeC
 
 type DescribeCloudSiemAssetsResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6172,39 +8195,94 @@ func (s *DescribeCloudSiemAssetsResponseBodyDataPageInfo) SetTotalCount(v int64)
 
 type DescribeCloudSiemAssetsResponseBodyDataResponseData struct {
 	// The UUID of the alert associated with the event.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The ID of the Alibaba Cloud account in SIEM.
+	//
+	// example:
+	//
+	// 1276085894174392
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The logical ID of the asset.
+	//
+	// example:
+	//
+	// 0616caeb-acb8-45e0-8520-4ee5fbe251f0
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
 	// The display information of the asset is in the JSON format.
+	//
+	// example:
+	//
+	// [{"KeyName": "${aliyun.siem.asset.asset_name}","Values": "zsw-agentless-ubuntu20","Key": "asset_name"}]
 	AssetInfo []*DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo `json:"AssetInfo,omitempty" xml:"AssetInfo,omitempty" type:"Repeated"`
 	// The name of the asset.
+	//
+	// example:
+	//
+	// zsw-agentless-centos****
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   ip
-	// *   domain
-	// *   url
-	// *   process
-	// *   file
-	// *   host
+	// 	- ip
+	//
+	// 	- domain
+	//
+	// 	- url
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// 	- host
+	//
+	// example:
+	//
+	// domain
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	// The cloud code of the entity. Valid values:
 	//
-	// *   aliyun: Alibaba Cloud
-	// *   qcloud: Tencent Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// aliyun
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The time when the asset was synchronized.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the asset was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the asset.
+	//
+	// example:
+	//
+	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The ID of the associated account to which the asset belongs.
+	//
+	// example:
+	//
+	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -6278,10 +8356,22 @@ func (s *DescribeCloudSiemAssetsResponseBodyDataResponseData) SetSubUserId(v int
 
 type DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo struct {
 	// The attribute key.
+	//
+	// example:
+	//
+	// suspicious.wbd.wb.trojanpath
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// Trojan Path
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
 	// The value of the key.
+	//
+	// example:
+	//
+	// /root/test33.php
 	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
@@ -6339,14 +8429,39 @@ func (s *DescribeCloudSiemAssetsResponse) SetBody(v *DescribeCloudSiemAssetsResp
 
 type DescribeCloudSiemAssetsCounterRequest struct {
 	// The UUID of the event.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsCounterRequest) String() string {
@@ -6379,17 +8494,38 @@ func (s *DescribeCloudSiemAssetsCounterRequest) SetRoleType(v int32) *DescribeCl
 
 type DescribeCloudSiemAssetsCounterResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeCloudSiemAssetsCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6428,15 +8564,28 @@ func (s *DescribeCloudSiemAssetsCounterResponseBody) SetSuccess(v bool) *Describ
 
 type DescribeCloudSiemAssetsCounterResponseBodyData struct {
 	// The number of assets.
+	//
+	// example:
+	//
+	// 1
 	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   ip
-	// *   domain
-	// *   url
-	// *   process
-	// *   file
-	// *   host
+	// 	- ip
+	//
+	// 	- domain
+	//
+	// 	- url
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// 	- host
+	//
+	// example:
+	//
+	// domain
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 }
 
@@ -6489,14 +8638,39 @@ func (s *DescribeCloudSiemAssetsCounterResponse) SetBody(v *DescribeCloudSiemAss
 
 type DescribeCloudSiemEventDetailRequest struct {
 	// The UUID of the event.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCloudSiemEventDetailRequest) String() string {
@@ -6529,17 +8703,38 @@ func (s *DescribeCloudSiemEventDetailRequest) SetRoleType(v int32) *DescribeClou
 
 type DescribeCloudSiemEventDetailResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeCloudSiemEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6578,48 +8773,122 @@ func (s *DescribeCloudSiemEventDetailResponseBody) SetSuccess(v bool) *DescribeC
 
 type DescribeCloudSiemEventDetailResponseBodyData struct {
 	// The number of alerts that are associated with the event.
+	//
+	// example:
+	//
+	// 4
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
 	// The ID of the Alibaba Cloud account to which the event belongs.
+	//
+	// example:
+	//
+	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The number of assets that are associated with the event.
+	//
+	// example:
+	//
+	// 4
 	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	// The tags of the ATT\&CK attacks.
+	// The tags of the ATT\\&CK attacks.
+	//
+	// example:
+	//
+	// ["T1595.002 Vulnerability Scanning"]
 	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
 	// The source of the alert.
+	//
+	// example:
+	//
+	// [sas,waf]
 	DataSources []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// The description of the event.
+	//
+	// example:
+	//
+	// The threat event contains 13 Miner Network,1 Execute suspicious encoded commands on Linux, etc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The description of the event in English.
+	//
+	// example:
+	//
+	// The threat event contains 13 Miner Network,1 Execute suspicious encoded commands on Linux, etc
 	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
 	// The extended information of the event in the JSON format.
+	//
+	// example:
+	//
+	// {"event_transfer_type":"customize_rule"}
 	ExtContent *string `json:"ExtContent,omitempty" xml:"ExtContent,omitempty"`
 	// The time when the event occurred.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the event was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The name of the event.
+	//
+	// example:
+	//
+	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
 	// The name of the event in English.
+	//
+	// example:
+	//
+	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// Users associated with the event.
 	ReferAccount *string `json:"ReferAccount,omitempty" xml:"ReferAccount,omitempty"`
 	// The remarks of the event.
+	//
+	// example:
+	//
+	// dealed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// *   0: not handled
-	// *   1: handing
-	// *   5: handling failed
-	// *   10: handled
+	// 	- 0: not handled
+	//
+	// 	- 1: handing
+	//
+	// 	- 5: handling failed
+	//
+	// 	- 10: handled
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The risk level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 	// The risk score of the event. The score ranges from 0 to 100. A higher score indicates a higher risk level.
+	//
+	// example:
+	//
+	// 90.2
 	ThreatScore *float32 `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
 }
 
@@ -6752,48 +9021,122 @@ func (s *DescribeCloudSiemEventDetailResponse) SetBody(v *DescribeCloudSiemEvent
 
 type DescribeCloudSiemEventsRequest struct {
 	// The ID of the asset that is associated with the event.
+	//
+	// example:
+	//
+	// 6c740667-80b2-476d-8924-2e706feb****
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the event.
+	//
+	// example:
+	//
+	// ECS unusual log in
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The ID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The sort order. Valid values:
 	//
-	// *   desc: descending order
-	// *   asc: ascending order
+	// 	- desc: descending order
+	//
+	// 	- asc: ascending order
+	//
+	// example:
+	//
+	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The sort field. Valid values:
 	//
-	// *   GmtModified: sorts the events by creation time. This is the default value.
-	// *   ThreatScore: sorts the events by risk score.
+	// 	- GmtModified: sorts the events by creation time. This is the default value.
+	//
+	// 	- ThreatScore: sorts the events by risk score.
+	//
+	// example:
+	//
+	// ThreatScore
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// *   0: unhandled
-	// *   1: handling
-	// *   5: handling failed
-	// *   10: handled
+	// 	- 0: unhandled
+	//
+	// 	- 1: handling
+	//
+	// 	- 5: handling failed
+	//
+	// 	- 10: handled
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The risk levels of the events. The value is a JSON array. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// ["serious","suspicious","remind"]
 	ThreadLevel []*string `json:"ThreadLevel,omitempty" xml:"ThreadLevel,omitempty" type:"Repeated"`
 }
 
@@ -6877,17 +9220,38 @@ func (s *DescribeCloudSiemEventsRequest) SetThreadLevel(v []*string) *DescribeCl
 
 type DescribeCloudSiemEventsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeCloudSiemEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6951,10 +9315,22 @@ func (s *DescribeCloudSiemEventsResponseBodyData) SetResponseData(v []*DescribeC
 
 type DescribeCloudSiemEventsResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6983,48 +9359,126 @@ func (s *DescribeCloudSiemEventsResponseBodyDataPageInfo) SetTotalCount(v int64)
 
 type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	// The number of alerts that are associated with the event.
+	//
+	// example:
+	//
+	// 4
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
 	// The ID of the Alibaba Cloud account to which the event belongs.
+	//
+	// example:
+	//
+	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The number of assets that are associated with the event.
+	//
+	// example:
+	//
+	// 4
 	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	// The tags of the ATT\&CK attack.
+	// The tags of the ATT\\&CK techniques.
+	//
+	// example:
+	//
+	// ["T1595.002 Vulnerability Scanning"]
 	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
 	// The sources of the alert.
+	//
+	// example:
+	//
+	// [sas,waf]
 	DataSources []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// The description of the event.
+	//
+	// example:
+	//
+	// The threat event contains 13 Miner Network,1 Execute suspicious encoded commands on Linux, etc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The event description in English.
+	//
+	// example:
+	//
+	// The threat event contains 13 Miner Network,1 Execute suspicious encoded commands on Linux, etc
 	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
 	// The extended event information in the JSON format.
+	//
+	// example:
+	//
+	// {"event_transfer_type":"customize_rule"}
 	ExtContent *string `json:"ExtContent,omitempty" xml:"ExtContent,omitempty"`
 	// The time when the event occurred.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the event was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The name of the event.
+	//
+	// example:
+	//
+	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
 	// The event name in English.
+	//
+	// example:
+	//
+	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// the refer account info.
+	//
+	// example:
+	//
+	// 127608589417****
 	ReferAccount *string `json:"ReferAccount,omitempty" xml:"ReferAccount,omitempty"`
 	// The remarks of the event.
+	//
+	// example:
+	//
+	// dealed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// *   0: unhandled
-	// *   1: handling
-	// *   5: handling failed
-	// *   10: handled
+	// 	- 0: unhandled.
+	//
+	// 	- 1: handling.
+	//
+	// 	- 5: handling failed.
+	//
+	// 	- 10: handled.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The risk level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high.
+	//
+	// 	- suspicious: medium.
+	//
+	// 	- remind: low.
+	//
+	// example:
+	//
+	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 	// The risk score of the event. Valid values: 0 to 100. A higher value indicates a higher risk level.
+	//
+	// example:
+	//
+	// 90.2
 	ThreatScore *float32 `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
 }
 
@@ -7158,12 +9612,25 @@ func (s *DescribeCloudSiemEventsResponse) SetBody(v *DescribeCloudSiemEventsResp
 type DescribeCsImportedProdStatusByUserRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The code of the cloud service.
+	//
+	// example:
+	//
+	// sas
 	SourceLogProd *string `json:"SourceLogProd,omitempty" xml:"SourceLogProd,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 123XXXXXX
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7193,10 +9660,19 @@ func (s *DescribeCsImportedProdStatusByUserRequest) SetUserId(v int64) *Describe
 type DescribeCsImportedProdStatusByUserResponseBody struct {
 	// Indicates whether the cloud service is activated for the account. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7247,305 +9723,33 @@ func (s *DescribeCsImportedProdStatusByUserResponse) SetBody(v *DescribeCsImport
 	return s
 }
 
-type DescribeCustomizeRuleRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the rule.
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-}
-
-func (s DescribeCustomizeRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCustomizeRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCustomizeRuleRequest) SetRegionId(v string) *DescribeCustomizeRuleRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleRequest) SetRuleId(v int64) *DescribeCustomizeRuleRequest {
-	s.RuleId = &v
-	return s
-}
-
-type DescribeCustomizeRuleResponseBody struct {
-	// The HTTP status code.
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value for the request.
-	Data *DescribeCustomizeRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   **true**
-	// *   **false**
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeCustomizeRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCustomizeRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCustomizeRuleResponseBody) SetCode(v int32) *DescribeCustomizeRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBody) SetData(v *DescribeCustomizeRuleResponseBodyData) *DescribeCustomizeRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBody) SetMessage(v string) *DescribeCustomizeRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBody) SetRequestId(v string) *DescribeCustomizeRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBody) SetSuccess(v bool) *DescribeCustomizeRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeCustomizeRuleResponseBodyData struct {
-	// The risk type.
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the risk type.
-	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	// The ID of the Alibaba Cloud account for which the threat analysis feature is enabled.
-	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The extended information about event generation. If **eventTransferType** is set to **allToSingle**, a value is returned for EventTransferExt. The return value indicates the length and time unit of the alert aggregation window. The HTML escape characters are reversed.
-	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	// Indicates whether the alert generates an event. Valid values:
-	//
-	// *   0: no
-	// *   1: yes
-	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
-	// The event generation method. Valid values:
-	//
-	// *   **default**: The default method is used.
-	// *   **singleToSingle**: The system generates an event for each alert.
-	// *   **allToSingle**: The system generates an event for alerts within a period of time.
-	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
-	// The time when the custom rule was created.
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the custom rule was last updated.
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the custom rule.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The log source of the rule.
-	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The internal code of the log source.
-	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
-	// The log type of the rule.
-	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The internal code of the log type.
-	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	// The window length of the rule. The HTML escape characters are reversed.
-	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
-	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
-	// The description of the rule.
-	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
-	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
-	// The name of the rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
-	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
-	// The rule type. Valid values:
-	//
-	// *   predefine
-	// *   customize
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The rule status. Valid values:
-	//
-	// *   **0**: the initial status.
-	// *   **10**: The simulation data is tested.
-	// *   **15**: The business data is being tested.
-	// *   **20**: The business data test ends.
-	// *   **100**: The rule takes effect.
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The threat level. Valid values:
-	//
-	// *   **serious**: high risk
-	// *   **suspicious**: medium risk
-	// *   **remind**: low risk
-	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
-}
-
-func (s DescribeCustomizeRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCustomizeRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetAlertType(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.AlertType = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetAlertTypeMds(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.AlertTypeMds = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetAliuid(v int64) *DescribeCustomizeRuleResponseBodyData {
-	s.Aliuid = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetEventTransferExt(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.EventTransferExt = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetEventTransferSwitch(v int32) *DescribeCustomizeRuleResponseBodyData {
-	s.EventTransferSwitch = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetEventTransferType(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.EventTransferType = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetGmtCreate(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetGmtModified(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetId(v int64) *DescribeCustomizeRuleResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetLogSource(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.LogSource = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetLogSourceMds(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.LogSourceMds = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetLogType(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.LogType = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetLogTypeMds(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.LogTypeMds = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetQueryCycle(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.QueryCycle = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetRuleCondition(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.RuleCondition = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetRuleDesc(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.RuleDesc = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetRuleGroup(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.RuleGroup = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetRuleName(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.RuleName = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetRuleThreshold(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.RuleThreshold = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetRuleType(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.RuleType = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetStatus(v int32) *DescribeCustomizeRuleResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponseBodyData) SetThreatLevel(v string) *DescribeCustomizeRuleResponseBodyData {
-	s.ThreatLevel = &v
-	return s
-}
-
-type DescribeCustomizeRuleResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeCustomizeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeCustomizeRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCustomizeRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCustomizeRuleResponse) SetHeaders(v map[string]*string) *DescribeCustomizeRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponse) SetStatusCode(v int32) *DescribeCustomizeRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeCustomizeRuleResponse) SetBody(v *DescribeCustomizeRuleResponseBody) *DescribeCustomizeRuleResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeCustomizeRuleCountRequest struct {
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCustomizeRuleCountRequest) String() string {
@@ -7573,17 +9777,38 @@ func (s *DescribeCustomizeRuleCountRequest) SetRoleType(v int32) *DescribeCustom
 
 type DescribeCustomizeRuleCountResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeCustomizeRuleCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7621,22 +9846,78 @@ func (s *DescribeCustomizeRuleCountResponseBody) SetSuccess(v bool) *DescribeCus
 }
 
 type DescribeCustomizeRuleCountResponseBodyData struct {
-	AggregationRuleNum    *int32 `json:"AggregationRuleNum,omitempty" xml:"AggregationRuleNum,omitempty"`
-	CustomizeRuleNum      *int32 `json:"CustomizeRuleNum,omitempty" xml:"CustomizeRuleNum,omitempty"`
-	ExpertRuleNum         *int32 `json:"ExpertRuleNum,omitempty" xml:"ExpertRuleNum,omitempty"`
+	// 同类聚合规则数。
+	//
+	// example:
+	//
+	// 3
+	AggregationRuleNum *int32 `json:"AggregationRuleNum,omitempty" xml:"AggregationRuleNum,omitempty"`
+	// 自定义规则数。
+	//
+	// example:
+	//
+	// 10
+	CustomizeRuleNum *int32 `json:"CustomizeRuleNum,omitempty" xml:"CustomizeRuleNum,omitempty"`
+	// 专家规则数。
+	//
+	// example:
+	//
+	// 7
+	ExpertRuleNum *int32 `json:"ExpertRuleNum,omitempty" xml:"ExpertRuleNum,omitempty"`
+	// 图计算规则数。
+	//
+	// example:
+	//
+	// 2
 	GraphComputingRuleNum *int32 `json:"GraphComputingRuleNum,omitempty" xml:"GraphComputingRuleNum,omitempty"`
 	// The number of rules that are used to identify high-risk threats.
+	//
+	// example:
+	//
+	// 12
 	HighRuleNum *int32 `json:"HighRuleNum,omitempty" xml:"HighRuleNum,omitempty"`
 	// The total number of rules.
+	//
+	// example:
+	//
+	// 20
 	InUseRuleNum *int32 `json:"InUseRuleNum,omitempty" xml:"InUseRuleNum,omitempty"`
 	// The number of rules that are used to identify low-risk threats.
+	//
+	// example:
+	//
+	// 3
 	LowRuleNum *int32 `json:"LowRuleNum,omitempty" xml:"LowRuleNum,omitempty"`
 	// The number of rules that are used to identify medium-risk threats.
-	MediumRuleNum      *int32 `json:"MediumRuleNum,omitempty" xml:"MediumRuleNum,omitempty"`
-	PredefinedRuleNum  *int32 `json:"PredefinedRuleNum,omitempty" xml:"PredefinedRuleNum,omitempty"`
+	//
+	// example:
+	//
+	// 5
+	MediumRuleNum *int32 `json:"MediumRuleNum,omitempty" xml:"MediumRuleNum,omitempty"`
+	// 预定义规则数。
+	//
+	// example:
+	//
+	// 10
+	PredefinedRuleNum *int32 `json:"PredefinedRuleNum,omitempty" xml:"PredefinedRuleNum,omitempty"`
+	// 告警透传规则数。
+	//
+	// example:
+	//
+	// 3
 	SingleAlertRuleNum *int32 `json:"SingleAlertRuleNum,omitempty" xml:"SingleAlertRuleNum,omitempty"`
-	TotalRuleNum       *int32 `json:"TotalRuleNum,omitempty" xml:"TotalRuleNum,omitempty"`
-	UnEventRuleNum     *int32 `json:"UnEventRuleNum,omitempty" xml:"UnEventRuleNum,omitempty"`
+	// 总规则数。
+	//
+	// example:
+	//
+	// 10
+	TotalRuleNum *int32 `json:"TotalRuleNum,omitempty" xml:"TotalRuleNum,omitempty"`
+	// 不产生事件规则数。
+	//
+	// example:
+	//
+	// 3
+	UnEventRuleNum *int32 `json:"UnEventRuleNum,omitempty" xml:"UnEventRuleNum,omitempty"`
 }
 
 func (s DescribeCustomizeRuleCountResponseBodyData) String() string {
@@ -7738,14 +10019,37 @@ func (s *DescribeCustomizeRuleCountResponse) SetBody(v *DescribeCustomizeRuleCou
 
 type DescribeCustomizeRuleTestRequest struct {
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestRequest) String() string {
@@ -7778,17 +10082,38 @@ func (s *DescribeCustomizeRuleTestRequest) SetRoleType(v int32) *DescribeCustomi
 
 type DescribeCustomizeRuleTestResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeCustomizeRuleTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7827,16 +10152,32 @@ func (s *DescribeCustomizeRuleTestResponseBody) SetSuccess(v bool) *DescribeCust
 
 type DescribeCustomizeRuleTestResponseBodyData struct {
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The historical data that is used in the simulation test.
+	//
+	// example:
+	//
+	// [{"key1":"value1","key2":"value2","key3":"value3","key4":"value4","key5":"value5"}]
 	SimulateData *string `json:"SimulateData,omitempty" xml:"SimulateData,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   0: The rule is in the initial state.
-	// *   10: The simulation data is tested.
-	// *   15: The business data is being tested.
-	// *   20: The business data test ends.
-	// *   100: The rule takes effect.
+	// 	- 0: The rule is in the initial state.
+	//
+	// 	- 10: The simulation data is tested.
+	//
+	// 	- 15: The business data is being tested.
+	//
+	// 	- 20: The business data test ends.
+	//
+	// 	- 100: The rule takes effect.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7894,14 +10235,37 @@ func (s *DescribeCustomizeRuleTestResponse) SetBody(v *DescribeCustomizeRuleTest
 
 type DescribeCustomizeRuleTestHistogramRequest struct {
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestHistogramRequest) String() string {
@@ -7934,17 +10298,38 @@ func (s *DescribeCustomizeRuleTestHistogramRequest) SetRoleType(v int32) *Descri
 
 type DescribeCustomizeRuleTestHistogramResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return value for the request.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeCustomizeRuleTestHistogramResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7983,10 +10368,22 @@ func (s *DescribeCustomizeRuleTestHistogramResponseBody) SetSuccess(v bool) *Des
 
 type DescribeCustomizeRuleTestHistogramResponseBodyData struct {
 	// The number of alerts that are generated in the query time range.
+	//
+	// example:
+	//
+	// 125
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The start of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1599897188
 	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
 	// The end of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1599997188
 	To *int64 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
@@ -8044,19 +10441,44 @@ func (s *DescribeCustomizeRuleTestHistogramResponse) SetBody(v *DescribeCustomiz
 
 type DescribeDataSourceInstanceRequest struct {
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8092,6 +10514,10 @@ type DescribeDataSourceInstanceResponseBody struct {
 	// The data returned.
 	Data *DescribeDataSourceInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8115,14 +10541,28 @@ func (s *DescribeDataSourceInstanceResponseBody) SetRequestId(v string) *Describ
 
 type DescribeDataSourceInstanceResponseBodyData struct {
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The parameters of the data source.
 	DataSourceInstanceParams []*DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty" type:"Repeated"`
@@ -8158,8 +10598,16 @@ func (s *DescribeDataSourceInstanceResponseBodyData) SetDataSourceInstanceParams
 
 type DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams struct {
 	// The code of the parameter.
+	//
+	// example:
+	//
+	// region_code
 	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// ap-guangzhou
 	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 }
 
@@ -8215,20 +10663,41 @@ type DescribeDataSourceParametersRequest struct {
 	//
 	// Valid values:
 	//
-	// *   qcloud
-	// *   hcloud
-	// *   aliyun
+	// 	- qcloud
+	//
+	// 	- hcloud
+	//
+	// 	- aliyun
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ckafka**: Tencent Cloud TDMQ for CKafka
-	// *   **obs**: Huawei Cloud Object Storage Service (OBS)
-	// *   **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
+	// 	- **ckafka**: Tencent Cloud TDMQ for CKafka
+	//
+	// 	- **obs**: Huawei Cloud Object Storage Service (OBS)
+	//
+	// 	- **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8259,6 +10728,10 @@ type DescribeDataSourceParametersResponseBody struct {
 	// The data returned.
 	Data []*DescribeDataSourceParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8283,51 +10756,111 @@ func (s *DescribeDataSourceParametersResponseBody) SetRequestId(v string) *Descr
 type DescribeDataSourceParametersResponseBodyData struct {
 	// Indicates whether the edit operation is supported. Valid values:
 	//
-	// *   **0**
-	// *   **1**
+	// 	- **0**
+	//
+	// 	- **1**
+	//
+	// example:
+	//
+	// wafApi
 	CanEditted *int32 `json:"CanEditted,omitempty" xml:"CanEditted,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   **qcloud**: Tencent Cloud
-	// *   **aliyun**: Alibaba Cloud
-	// *   **hcloud**: Huawei Cloud
+	// 	- **qcloud**: Tencent Cloud
+	//
+	// 	- **aliyun**: Alibaba Cloud
+	//
+	// 	- **hcloud**: Huawei Cloud
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **obs**: Huawei Cloud Object Storage Service (OBS)
-	// *   **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
-	// *   **ckafka**: Tencent Cloud TDMQ for CKafka
+	// 	- **obs**: Huawei Cloud Object Storage Service (OBS)
+	//
+	// 	- **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
+	//
+	// 	- **ckafka**: Tencent Cloud TDMQ for CKafka
+	//
+	// example:
+	//
+	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The default value of the parameter.
+	//
+	// example:
+	//
+	// wafApi
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	// Indicates whether the modification operation is forbidden. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// wafApi
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// The method that is used to check the parameter format.
+	//
+	// example:
+	//
+	// email
 	FormatCheck *string `json:"FormatCheck,omitempty" xml:"FormatCheck,omitempty"`
 	// The additional information.
+	//
+	// example:
+	//
+	// obs docment
 	Hit *string `json:"Hit,omitempty" xml:"Hit,omitempty"`
 	// The code of the parameter.
+	//
+	// example:
+	//
+	// region_code
 	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
 	// The parameter level. Valid values:
 	//
-	// *   **1**: the parameters of the data source
-	// *   **2**: the parameters of the log
+	// 	- **1**: the parameters of the data source
+	//
+	// 	- **2**: the parameters of the log
+	//
+	// example:
+	//
+	// 1
 	ParaLevel *int32 `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// region local
 	ParaName *string `json:"ParaName,omitempty" xml:"ParaName,omitempty"`
 	// The data type of the parameter.
+	//
+	// example:
+	//
+	// string
 	ParaType *string `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
 	// The value of the parameter.
 	ParamValue []*DescribeDataSourceParametersResponseBodyDataParamValue `json:"ParamValue,omitempty" xml:"ParamValue,omitempty" type:"Repeated"`
 	// Indicates whether the parameter is required. Valid values:
 	//
-	// *   **1**: required
-	// *   **0**: optional
+	// 	- **1**: required
+	//
+	// 	- **0**: optional
+	//
+	// example:
+	//
+	// string
 	Required *int32 `json:"Required,omitempty" xml:"Required,omitempty"`
 	// The note for the parameter value.
+	//
+	// example:
+	//
+	// obs bucket name
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -8411,8 +10944,16 @@ func (s *DescribeDataSourceParametersResponseBodyData) SetTitle(v string) *Descr
 
 type DescribeDataSourceParametersResponseBodyDataParamValue struct {
 	// The display value.
+	//
+	// example:
+	//
+	// guangzhou
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The actual value.
+	//
+	// example:
+	//
+	// ap-guangzhou
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8465,24 +11006,61 @@ func (s *DescribeDataSourceParametersResponse) SetBody(v *DescribeDataSourcePara
 
 type DescribeDisposeAndPlaybookRequest struct {
 	// The page number. Pages start from page 1.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The entity type. Valid values:
 	//
-	// *   ip
-	// *   process
-	// *   file
+	// 	- ip
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// example:
+	//
+	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeDisposeAndPlaybookRequest) String() string {
@@ -8530,17 +11108,38 @@ func (s *DescribeDisposeAndPlaybookRequest) SetRoleType(v int32) *DescribeDispos
 
 type DescribeDisposeAndPlaybookResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeDisposeAndPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8604,10 +11203,22 @@ func (s *DescribeDisposeAndPlaybookResponseBodyData) SetResponseData(v []*Descri
 
 type DescribeDisposeAndPlaybookResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8636,20 +11247,52 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataPageInfo) SetTotalCount(v int
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	// The number of alerts that are associated with the entity.
+	//
+	// example:
+	//
+	// 1
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
 	// The object for handling.
+	//
+	// example:
+	//
+	// 192.168.1.1
 	Dispose *string `json:"Dispose,omitempty" xml:"Dispose,omitempty"`
 	// The entity ID
+	//
+	// example:
+	//
+	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The entity information.
+	//
+	// example:
+	//
+	// {"file_path": "c:/www/leixi.jsp","file_hash": "aa0ca926ad948cd820e0a3d9a18c09d0","host_uuid": "efed2cf7-0b77-45d9-a97b-d2cf246bcbb3","malware_type": "${aliyun.siem.sas.alert_tag.webshell}","host_name": "launch-advisor-20230531"}
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
 	// The key-value pairs each of which consists of opcode and oplevel.
+	//
+	// example:
+	//
+	// 12345
 	OpcodeMap map[string]*string `json:"OpcodeMap,omitempty" xml:"OpcodeMap,omitempty"`
 	// The codes of the playbooks that are recommended for entity handling.
+	//
+	// example:
+	//
+	// [1,3]
 	OpcodeSet []*string `json:"OpcodeSet,omitempty" xml:"OpcodeSet,omitempty" type:"Repeated"`
 	// The playbooks that can handle the entity.
+	//
+	// example:
+	//
+	// [{"name":"云安全中心-云服务器安全","code":"1"}]
 	PlaybookList []*DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList `json:"PlaybookList,omitempty" xml:"PlaybookList,omitempty" type:"Repeated"`
 	// The IDs of the users who can handle objects.
+	//
+	// example:
+	//
+	// 176618589410****
 	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
 }
 
@@ -8703,26 +11346,56 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetScope(v []in
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	// The playbook description.
+	//
+	// example:
+	//
+	// WafBlockIP
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the playbook.
+	//
+	// example:
+	//
+	// WafBlockIP
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The playbook name, which is the unique identifier of the playbook.
+	//
+	// example:
+	//
+	// kill_process_isolate_file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The opcode of the playbook, which corresponds to the opcode of the playbook recommended for entity handling.
+	//
+	// example:
+	//
+	// 7
 	OpCode *string `json:"OpCode,omitempty" xml:"OpCode,omitempty"`
 	// Indicates whether quick event handling is selected by default. Valid values:
 	//
-	// *   2: Quick event handling is selected.
-	// *   1: Quick event handling is displayed but not selected.
+	// 	- 2: Quick event handling is selected.
+	//
+	// 	- 1: Quick event handling is displayed but not selected.
+	//
+	// example:
+	//
+	// 2
 	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
 	// The playbook parameters and the corresponding properties.
 	ParamConfig []interface{} `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
 	// The opcode configuration.
+	//
+	// example:
+	//
+	// {"opCode":"3"}
 	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
 	// Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	WafPlaybook *bool `json:"WafPlaybook,omitempty" xml:"WafPlaybook,omitempty"`
 }
 
@@ -8805,15 +11478,46 @@ func (s *DescribeDisposeAndPlaybookResponse) SetBody(v *DescribeDisposeAndPlaybo
 
 type DescribeDisposeStrategyPlaybookRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -8852,17 +11556,38 @@ func (s *DescribeDisposeStrategyPlaybookRequest) SetStartTime(v int64) *Describe
 
 type DescribeDisposeStrategyPlaybookResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeDisposeStrategyPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8901,8 +11626,16 @@ func (s *DescribeDisposeStrategyPlaybookResponseBody) SetSuccess(v bool) *Descri
 
 type DescribeDisposeStrategyPlaybookResponseBodyData struct {
 	// The playbook name, which is the unique identifier of the playbook.
+	//
+	// example:
+	//
+	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
 	// The UUID of the playbook.
+	//
+	// example:
+	//
+	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -8955,19 +11688,54 @@ func (s *DescribeDisposeStrategyPlaybookResponse) SetBody(v *DescribeDisposeStra
 
 type DescribeEntityInfoRequest struct {
 	// The logical ID of the entity.
+	//
+	// example:
+	//
+	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The feature value of the entity. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// test22.php
 	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the SOAR handling policy.
+	//
+	// example:
+	//
+	// 577bbf90-a770-44a7-8154-586aa2d318fa
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 }
 
@@ -9016,17 +11784,38 @@ func (s *DescribeEntityInfoRequest) SetSophonTaskId(v string) *DescribeEntityInf
 
 type DescribeEntityInfoResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeEntityInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9065,19 +11854,58 @@ func (s *DescribeEntityInfoResponseBody) SetSuccess(v bool) *DescribeEntityInfoR
 
 type DescribeEntityInfoResponseBodyData struct {
 	// The logical ID of the entity.
+	//
+	// example:
+	//
+	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The information about the entry.
+	//
+	// example:
+	//
+	// { location: "xian", net_connect_dir: "in", malware_type: "${aliyun.siem.sas.alert_tag.login_unusual_account}" }
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
 	// The type of the entity. Valid values:
 	//
-	// *   ip
-	// *   domain
-	// *   url
-	// *   process
-	// *   file
-	// *   host
+	// 	- ip
+	//
+	// 	- domain
+	//
+	// 	- url
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// 	- host
+	//
+	// example:
+	//
+	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The information about the risk Intelligence.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "Ip": {
+	//
+	//             "queryHot": "0",
+	//
+	//             "country": "China",
+	//
+	//             "province": "shanxi",
+	//
+	//             "ip": "221.11.XX.XXX",
+	//
+	//             "asn": "4837",
+	//
+	//             "asn_label": "CHINAXXX-Backbone - CHINA UNICOM ChinaXXX Backbone, CN"
+	//
+	//       }
+	//
+	// }
 	TipInfo map[string]interface{} `json:"TipInfo,omitempty" xml:"TipInfo,omitempty"`
 }
 
@@ -9139,15 +11967,44 @@ func (s *DescribeEntityInfoResponse) SetBody(v *DescribeEntityInfoResponseBody) 
 }
 
 type DescribeEventCountByThreatLevelRequest struct {
+	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor   *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType  *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view.
+	//
+	// 	- 0: view of the current Alibaba Cloud account.
+	//
+	// 	- 1: view of all accounts for the enterprise.
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeEventCountByThreatLevelRequest) String() string {
@@ -9185,17 +12042,38 @@ func (s *DescribeEventCountByThreatLevelRequest) SetStartTime(v int64) *Describe
 
 type DescribeEventCountByThreatLevelResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeEventCountByThreatLevelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9234,14 +12112,34 @@ func (s *DescribeEventCountByThreatLevelResponseBody) SetSuccess(v bool) *Descri
 
 type DescribeEventCountByThreatLevelResponseBodyData struct {
 	// The total number of events.
+	//
+	// example:
+	//
+	// 100
 	EventNum *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
 	// The number of high-risk events.
+	//
+	// example:
+	//
+	// 20
 	HighLevelEventNum *int64 `json:"HighLevelEventNum,omitempty" xml:"HighLevelEventNum,omitempty"`
 	// The number of low-risk events.
+	//
+	// example:
+	//
+	// 52
 	LowLevelEventNum *int64 `json:"LowLevelEventNum,omitempty" xml:"LowLevelEventNum,omitempty"`
 	// The number of medium-risk events.
+	//
+	// example:
+	//
+	// 3
 	MediumLevelEventNum *int64 `json:"MediumLevelEventNum,omitempty" xml:"MediumLevelEventNum,omitempty"`
 	// The number of unhandled events.
+	//
+	// example:
+	//
+	// 75
 	UndealEventNum *int64 `json:"UndealEventNum,omitempty" xml:"UndealEventNum,omitempty"`
 }
 
@@ -9309,18 +12207,49 @@ func (s *DescribeEventCountByThreatLevelResponse) SetBody(v *DescribeEventCountB
 
 type DescribeEventDisposeRequest struct {
 	// The page number. Pages start from page 1.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The number of entries to return on each page. Maximum value: 500.
+	// The number of entries per page. Maximum value: 500.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeEventDisposeRequest) String() string {
@@ -9363,17 +12292,38 @@ func (s *DescribeEventDisposeRequest) SetRoleType(v int32) *DescribeEventDispose
 
 type DescribeEventDisposeResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeEventDisposeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9412,17 +12362,32 @@ func (s *DescribeEventDisposeResponseBody) SetSuccess(v bool) *DescribeEventDisp
 
 type DescribeEventDisposeResponseBodyData struct {
 	// An array consisting of JSON objects that are configured for event handling.
+	//
+	// example:
+	//
+	// { playbookName: "使用安全组封禁入方向IP", sophonTaskId: "400442a5-4f98-45ed-97db-5ab117eb0b8f", … }
 	EventDispose []interface{} `json:"EventDispose,omitempty" xml:"EventDispose,omitempty" type:"Repeated"`
 	// The JSON object that is configured for an alert recipient.
 	ReceiverInfo *DescribeEventDisposeResponseBodyDataReceiverInfo `json:"ReceiverInfo,omitempty" xml:"ReceiverInfo,omitempty" type:"Struct"`
 	// The description of the event.
+	//
+	// example:
+	//
+	// dealed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// *   0: not handled
-	// *   1: handing
-	// *   5: handling failed
-	// *   10: handled
+	// 	- 0: not handled
+	//
+	// 	- 1: handing
+	//
+	// 	- 5: handling failed
+	//
+	// 	- 10: handled
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9457,25 +12422,59 @@ func (s *DescribeEventDisposeResponseBodyData) SetStatus(v int32) *DescribeEvent
 type DescribeEventDisposeResponseBodyDataReceiverInfo struct {
 	// The channel of the contact information. Valid values:
 	//
-	// *   message
-	// *   mail
+	// 	- message
+	//
+	// 	- mail
+	//
+	// example:
+	//
+	// message
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the recipient who receives the event handling result.
+	//
+	// example:
+	//
+	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The message title.
+	//
+	// example:
+	//
+	// siem event dealed message
 	MessageTitle *string `json:"MessageTitle,omitempty" xml:"MessageTitle,omitempty"`
 	// The contact information of the recipient.
+	//
+	// example:
+	//
+	// 138xxxxxx
 	Receiver *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
 	// Indicates whether the message is sent. Valid values:
 	//
-	// *   0: not sent
-	// *   1: sent
+	// 	- 0: not sent
+	//
+	// 	- 1: sent
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9559,9 +12558,16 @@ func (s *DescribeEventDisposeResponse) SetBody(v *DescribeEventDisposeResponseBo
 type DescribeImportedLogCountRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *string `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeImportedLogCountRequest) String() string {
@@ -9577,10 +12583,24 @@ func (s *DescribeImportedLogCountRequest) SetRegionId(v string) *DescribeImporte
 	return s
 }
 
+func (s *DescribeImportedLogCountRequest) SetRoleFor(v string) *DescribeImportedLogCountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeImportedLogCountRequest) SetRoleType(v string) *DescribeImportedLogCountRequest {
+	s.RoleType = &v
+	return s
+}
+
 type DescribeImportedLogCountResponseBody struct {
 	// The data returned.
 	Data *DescribeImportedLogCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9604,10 +12624,22 @@ func (s *DescribeImportedLogCountResponseBody) SetRequestId(v string) *DescribeI
 
 type DescribeImportedLogCountResponseBodyData struct {
 	// The number of logs that are added.
+	//
+	// example:
+	//
+	// 10
 	ImportedLogCount *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
 	// The total number of logs.
+	//
+	// example:
+	//
+	// 59
 	TotalLogCount *int32 `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
 	// The number of logs that are not added.
+	//
+	// example:
+	//
+	// 49
 	UnImportedLogCount *int32 `json:"UnImportedLogCount,omitempty" xml:"UnImportedLogCount,omitempty"`
 }
 
@@ -9664,12 +12696,19 @@ func (s *DescribeImportedLogCountResponse) SetBody(v *DescribeImportedLogCountRe
 }
 
 type DescribeJobStatusRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the service resides. Default value: cn-shanghai.
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The id of collection task.
+	// The ID of the collection task. The ID is the value of the submitId parameter in the response of the [BatchJobSubmit](https://next.api.aliyun.com/api/cloud-siem/2022-06-16/BatchSubmitJob?lang=JAVA\\&useCommon=true) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_folder_xxxxxx
 	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
 }
 
@@ -9692,20 +12731,41 @@ func (s *DescribeJobStatusRequest) SetSubmitId(v string) *DescribeJobStatusReque
 }
 
 type DescribeJobStatusResponseBody struct {
-	// The HTTP status code.
+	// The HTTP status code. If the request is successful, 200 is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. If the request is successful, the parameter is empty. If the request fails, an error code is returned.
+	//
+	// example:
+	//
+	// ServerError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The returned message.
+	// The error message. If the request is successful, the parameter is empty. If the request fails, the reason for the failure is returned.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5B0DFF6D-XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9749,18 +12809,60 @@ func (s *DescribeJobStatusResponseBody) SetSuccess(v bool) *DescribeJobStatusRes
 
 type DescribeJobStatusResponseBodyData struct {
 	// The ID of the task configuration.
+	//
+	// example:
+	//
+	// xxxx_folder_xxxx
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The list of failed task.
+	// The list of failed tasks. The value contains the Alibaba Cloud account and service code of each failed task.
 	ErrTaskList []*DescribeJobStatusResponseBodyDataErrTaskList `json:"ErrTaskList,omitempty" xml:"ErrTaskList,omitempty" type:"Repeated"`
-	// The number of failed tasks.
+	// The total number of tasks that fail.
+	//
+	// example:
+	//
+	// 8
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The number of scan tasks that are complete.
+	// The total number of tasks that are complete.
+	//
+	// example:
+	//
+	// 52
 	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The ID of the folder.
+	// The ID of the resource directory folder.
+	//
+	// example:
+	//
+	// fd-xxxxx
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The number of existing tasks that are created to add logs within the data source.
+	// The total number of collection tasks that are created.
+	//
+	// example:
+	//
+	// 60
 	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-	// The status of submitted task.
+	// The status of the submitted task.
+	//
+	// Valid values:
+	//
+	// 	- submit
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- finish
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// finish
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -9808,9 +12910,13 @@ func (s *DescribeJobStatusResponseBodyData) SetTaskStatus(v string) *DescribeJob
 }
 
 type DescribeJobStatusResponseBodyDataErrTaskList struct {
-	// The list of product.
+	// The list of services in failed tasks.
 	ProductList []*DescribeJobStatusResponseBodyDataErrTaskListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	// The account id of aliyun.
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 123XXXXX
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -9833,9 +12939,13 @@ func (s *DescribeJobStatusResponseBodyDataErrTaskList) SetUserId(v int64) *Descr
 }
 
 type DescribeJobStatusResponseBodyDataErrTaskListProductList struct {
-	// The list of log.
+	// The list of logs that fail to be collected.
 	LogList []*DescribeJobStatusResponseBodyDataErrTaskListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	// The code of product.
+	// The code of the service.
+	//
+	// example:
+	//
+	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -9858,17 +12968,41 @@ func (s *DescribeJobStatusResponseBodyDataErrTaskListProductList) SetProductCode
 }
 
 type DescribeJobStatusResponseBodyDataErrTaskListProductListLogList struct {
-	// The error code.
+	// The reason for the failure.
+	//
+	// example:
+	//
+	// ProjectLogStoreNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The log code.
+	// The code of the logs.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The pattern of SLS logstore name.
+	// The pattern for the name of the Simple Log Service Logstore from which logs are collected.
+	//
+	// example:
+	//
+	// vpc_project_test
 	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
-	// The code of product.
+	// The code of the service.
+	//
+	// example:
+	//
+	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The pattern of SLS project name.
+	// The pattern for the name of the Simple Log Service project from which logs are collected.
+	//
+	// example:
+	//
+	// vpc-project-test
 	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 }
 
@@ -9941,16 +13075,43 @@ func (s *DescribeJobStatusResponse) SetBody(v *DescribeJobStatusResponseBody) *D
 
 type DescribeLogFieldsRequest struct {
 	// The log source of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
 	// The log type of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeLogFieldsRequest) String() string {
@@ -9988,17 +13149,38 @@ func (s *DescribeLogFieldsRequest) SetRoleType(v int32) *DescribeLogFieldsReques
 
 type DescribeLogFieldsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeLogFieldsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10037,17 +13219,38 @@ func (s *DescribeLogFieldsResponseBody) SetSuccess(v bool) *DescribeLogFieldsRes
 
 type DescribeLogFieldsResponseBodyData struct {
 	// The type of the log to which the field belongs.
+	//
+	// example:
+	//
+	// HTTP_ACTIVITY
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
 	// The internal code of the field description.
+	//
+	// example:
+	//
+	// sas.cloudsiem.prod.activity_name
 	FieldDesc *string `json:"FieldDesc,omitempty" xml:"FieldDesc,omitempty"`
 	// The name of the field.
+	//
+	// example:
+	//
+	// activity_name
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The data type of the field. Valid values:
 	//
-	// *   varchar
-	// *   bigint
+	// 	- varchar
+	//
+	// 	- bigint
+	//
+	// example:
+	//
+	// varchar
 	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
 	// The log source to which the field belongs.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 }
 
@@ -10115,14 +13318,37 @@ func (s *DescribeLogFieldsResponse) SetBody(v *DescribeLogFieldsResponseBody) *D
 
 type DescribeLogSourceRequest struct {
 	// The log type of the rule.
+	//
+	// example:
+	//
+	// HTTP_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeLogSourceRequest) String() string {
@@ -10155,17 +13381,38 @@ func (s *DescribeLogSourceRequest) SetRoleType(v int32) *DescribeLogSourceReques
 
 type DescribeLogSourceResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeLogSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10204,8 +13451,16 @@ func (s *DescribeLogSourceResponseBody) SetSuccess(v bool) *DescribeLogSourceRes
 
 type DescribeLogSourceResponseBodyData struct {
 	// The log source of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
 	// The internal code of the log source.
+	//
+	// example:
+	//
+	// sas.cloudsiem.prod.cloud_siem_aegis_sas_alert
 	LogSourceName *string `json:"LogSourceName,omitempty" xml:"LogSourceName,omitempty"`
 }
 
@@ -10259,8 +13514,13 @@ func (s *DescribeLogSourceResponse) SetBody(v *DescribeLogSourceResponseBody) *D
 type DescribeLogStoreRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10281,6 +13541,10 @@ type DescribeLogStoreResponseBody struct {
 	// The response of the threat analysis feature.
 	Data *DescribeLogStoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9B9CBCEE-9225-5069-BC7F-880938A2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10305,26 +13569,57 @@ func (s *DescribeLogStoreResponseBody) SetRequestId(v string) *DescribeLogStoreR
 type DescribeLogStoreResponseBodyData struct {
 	// Indicates whether the following time points are added after the log arrives: the time points when the public IP address of the client and the log arrive. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	AppendMeta *bool `json:"AppendMeta,omitempty" xml:"AppendMeta,omitempty"`
 	// Indicates whether the automatic sharding feature is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	AutoSplit *bool `json:"AutoSplit,omitempty" xml:"AutoSplit,omitempty"`
 	// Indicates whether the web tracking feature is enabled to collect user information from browsers, iOS applications, or Android applications. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	EnableTracking *bool `json:"EnableTracking,omitempty" xml:"EnableTracking,omitempty"`
 	// The name of the Logstore in Simple Log Service.
+	//
+	// example:
+	//
+	// cloud-siem
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	// The maximum number of shards that can be generated by using the automatic sharding feature.
+	//
+	// example:
+	//
+	// 64
 	MaxSplitShard *int32 `json:"MaxSplitShard,omitempty" xml:"MaxSplitShard,omitempty"`
 	// The number of shards in Log Service.
+	//
+	// example:
+	//
+	// 2
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	// The retention period of data. Unit: day.
+	//
+	// example:
+	//
+	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -10403,11 +13698,30 @@ func (s *DescribeLogStoreResponse) SetBody(v *DescribeLogStoreResponseBody) *Des
 type DescribeLogTypeRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeLogTypeRequest) String() string {
@@ -10435,17 +13749,38 @@ func (s *DescribeLogTypeRequest) SetRoleType(v int32) *DescribeLogTypeRequest {
 
 type DescribeLogTypeResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeLogTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10484,8 +13819,16 @@ func (s *DescribeLogTypeResponseBody) SetSuccess(v bool) *DescribeLogTypeRespons
 
 type DescribeLogTypeResponseBodyData struct {
 	// The log type of the rule.
+	//
+	// example:
+	//
+	// HTTP_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The internal code of the log type.
+	//
+	// example:
+	//
+	// sas.cloudsiem.prod.http_activity
 	LogTypeName *string `json:"LogTypeName,omitempty" xml:"LogTypeName,omitempty"`
 }
 
@@ -10539,15 +13882,39 @@ func (s *DescribeLogTypeResponse) SetBody(v *DescribeLogTypeResponseBody) *Descr
 type DescribeOperatorsRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The type of the scenario in which the operator is used. Valid values:
 	//
-	// *   If you do not specify this parameter, the default scenario is used.
-	// *   AGGREGATE: AGGREGATE scenario.
+	// 	- If you do not specify this parameter, the default scenario is used.
+	//
+	// 	- AGGREGATE: AGGREGATE scenario.
+	//
+	// example:
+	//
+	// AGGREGATE
 	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 }
 
@@ -10581,17 +13948,38 @@ func (s *DescribeOperatorsRequest) SetSceneType(v string) *DescribeOperatorsRequ
 
 type DescribeOperatorsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeOperatorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10630,18 +14018,46 @@ func (s *DescribeOperatorsResponseBody) SetSuccess(v bool) *DescribeOperatorsRes
 
 type DescribeOperatorsResponseBodyData struct {
 	// The position of the operator in the operator list.
+	//
+	// example:
+	//
+	// 3
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The operator.
+	//
+	// example:
+	//
+	// <=
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The description of the operator in Chinese.
+	//
+	// example:
+	//
+	// arger than or equal to
 	OperatorDescCn *string `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
 	// The description of the operator in English.
+	//
+	// example:
+	//
+	// larger than or equal to
 	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// <=
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 	// The data types that are supported by the operator. The data types are separated by commas (,).
+	//
+	// example:
+	//
+	// varchar
 	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
 	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as AGGREGATE scenarios. By default, this parameter is empty.
+	//
+	// example:
+	//
+	// [AGGREGATE]
 	SupportTag []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
 }
 
@@ -10720,9 +14136,16 @@ func (s *DescribeOperatorsResponse) SetBody(v *DescribeOperatorsResponseBody) *D
 type DescribeProdCountRequest struct {
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeProdCountRequest) String() string {
@@ -10738,10 +14161,24 @@ func (s *DescribeProdCountRequest) SetRegionId(v string) *DescribeProdCountReque
 	return s
 }
 
+func (s *DescribeProdCountRequest) SetRoleFor(v int64) *DescribeProdCountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeProdCountRequest) SetRoleType(v int32) *DescribeProdCountRequest {
+	s.RoleType = &v
+	return s
+}
+
 type DescribeProdCountResponseBody struct {
 	// The data returned.
 	Data *DescribeProdCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10765,10 +14202,22 @@ func (s *DescribeProdCountResponseBody) SetRequestId(v string) *DescribeProdCoun
 
 type DescribeProdCountResponseBodyData struct {
 	// The number of Alibaba Cloud services.
+	//
+	// example:
+	//
+	// 19
 	AliyunProdCount *int32 `json:"AliyunProdCount,omitempty" xml:"AliyunProdCount,omitempty"`
 	// The number of Huawei Cloud services.
+	//
+	// example:
+	//
+	// 2
 	HcloudProdCount *int32 `json:"HcloudProdCount,omitempty" xml:"HcloudProdCount,omitempty"`
 	// The number of Tencent Cloud services.
+	//
+	// example:
+	//
+	// 2
 	QcloudProdCount *int32 `json:"QcloudProdCount,omitempty" xml:"QcloudProdCount,omitempty"`
 }
 
@@ -10827,11 +14276,30 @@ func (s *DescribeProdCountResponse) SetBody(v *DescribeProdCountResponseBody) *D
 type DescribeScopeUsersRequest struct {
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeScopeUsersRequest) String() string {
@@ -10859,17 +14327,38 @@ func (s *DescribeScopeUsersRequest) SetRoleType(v int32) *DescribeScopeUsersRequ
 
 type DescribeScopeUsersResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeScopeUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10908,14 +14397,44 @@ func (s *DescribeScopeUsersResponseBody) SetSuccess(v bool) *DescribeScopeUsersR
 
 type DescribeScopeUsersResponseBodyData struct {
 	// The ID of the security information and event management (SIEM) user.
-	AliUid    *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	//
+	// example:
+	//
+	// 123456789****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 云code。  取值：
+	//
+	// - qcloud：腾讯云
+	//
+	// - hcloud：华为云
+	//
+	// example:
+	//
+	// qcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// An array consisting of the domain names that are protected by the WAF instance.
+	//
+	// example:
+	//
+	// [123.com, 456.com]
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// example:
+	//
+	// waf-cn-tl123ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 多云用户ID。
+	//
+	// example:
+	//
+	// 123456789****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username.
+	//
+	// example:
+	//
+	// test001
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -10989,8 +14508,13 @@ func (s *DescribeScopeUsersResponse) SetBody(v *DescribeScopeUsersResponseBody) 
 type DescribeServiceStatusRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11010,10 +14534,19 @@ func (s *DescribeServiceStatusRequest) SetRegionId(v string) *DescribeServiceSta
 type DescribeServiceStatusResponseBody struct {
 	// Indicates whether the threat analysis feature is authorized to access the resource directory. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11065,13 +14598,32 @@ func (s *DescribeServiceStatusResponse) SetBody(v *DescribeServiceStatusResponse
 }
 
 type DescribeStorageRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 137820528780****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeStorageRequest) String() string {
@@ -11100,10 +14652,19 @@ func (s *DescribeStorageRequest) SetRoleType(v int32) *DescribeStorageRequest {
 type DescribeStorageResponseBody struct {
 	// Indicates whether the projects and Logstores that are created for the threat analysis feature exist in Simple Log Service. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CCEEE128-6607-503E-AAA6-C5E57D94****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11157,10 +14718,19 @@ func (s *DescribeStorageResponse) SetBody(v *DescribeStorageResponseBody) *Descr
 type DescribeUserBuyStatusRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 123XXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -11186,6 +14756,10 @@ type DescribeUserBuyStatusResponseBody struct {
 	// The data returned.
 	Data *DescribeUserBuyStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 81D8EC0C-0804-51AD-8C38-17ED0BC74892
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11210,29 +14784,77 @@ func (s *DescribeUserBuyStatusResponseBody) SetRequestId(v string) *DescribeUser
 type DescribeUserBuyStatusResponseBodyData struct {
 	// Indicates whether the logon Alibaba Cloud account can be used to place orders for the threat analysis feature, such as purchase, upgrade, and specifications change orders. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	CanBuy *bool `json:"CanBuy,omitempty" xml:"CanBuy,omitempty"`
 	// The log storage capacity that is purchased for the threat analysis feature. Unit: GB.
+	//
+	// example:
+	//
+	// 1024
 	Capacity *int32 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The number of days before the expiration time of the threat analysis feature.
+	//
+	// example:
+	//
+	// 3
 	DurationDays *int64 `json:"DurationDays,omitempty" xml:"DurationDays,omitempty"`
 	// The timestamp when the threat analysis feature expires. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1669823999000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The username of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	MainUserName *string `json:"MainUserName,omitempty" xml:"MainUserName,omitempty"`
 	// The ID of the management account of the resource directory.
+	//
+	// example:
+	//
+	// 123XXXXXX
 	MasterUserId *int64 `json:"MasterUserId,omitempty" xml:"MasterUserId,omitempty"`
 	// The display name of the management account of the resource directory.
+	//
+	// example:
+	//
+	// rd_master_xxx
 	MasterUserName *string `json:"MasterUserName,omitempty" xml:"MasterUserName,omitempty"`
-	RdOrder        *int32  `json:"RdOrder,omitempty" xml:"RdOrder,omitempty"`
+	// example:
+	//
+	// 1
+	RdOrder *int32 `json:"RdOrder,omitempty" xml:"RdOrder,omitempty"`
 	// The instance ID of Security Center.
+	//
+	// example:
+	//
+	// sas-instance-xxxxx
 	SasInstanceId *string `json:"SasInstanceId,omitempty" xml:"SasInstanceId,omitempty"`
 	// The ID of the logon Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 123XXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 	// The username of the logon Alibaba Cloud account.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
@@ -11335,14 +14957,37 @@ func (s *DescribeUserBuyStatusResponse) SetBody(v *DescribeUserBuyStatusResponse
 
 type DescribeWafScopeRequest struct {
 	// The ID of the entity.
+	//
+	// example:
+	//
+	// 20617784
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeWafScopeRequest) String() string {
@@ -11375,17 +15020,38 @@ func (s *DescribeWafScopeRequest) SetRoleType(v int32) *DescribeWafScopeRequest 
 
 type DescribeWafScopeResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data []*DescribeWafScopeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11424,10 +15090,22 @@ func (s *DescribeWafScopeResponseBody) SetSuccess(v bool) *DescribeWafScopeRespo
 
 type DescribeWafScopeResponseBodyData struct {
 	// The ID of the Alibaba Cloud account in SIEM.
+	//
+	// example:
+	//
+	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The domain names that are protected by the WAF instance.
+	//
+	// example:
+	//
+	// [123.com, 456.com]
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf-cn-tl123ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -11485,22 +15163,65 @@ func (s *DescribeWafScopeResponse) SetBody(v *DescribeWafScopeResponseBody) *Des
 
 type DescribeWhiteRuleListRequest struct {
 	// The name of the alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The type of the alert.
+	//
+	// example:
+	//
+	// scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeWhiteRuleListRequest) String() string {
@@ -11553,17 +15274,38 @@ func (s *DescribeWhiteRuleListRequest) SetRoleType(v int32) *DescribeWhiteRuleLi
 
 type DescribeWhiteRuleListResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *DescribeWhiteRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11627,10 +15369,22 @@ func (s *DescribeWhiteRuleListResponseBodyData) SetResponseData(v []*DescribeWhi
 
 type DescribeWhiteRuleListResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11659,33 +15413,86 @@ func (s *DescribeWhiteRuleListResponseBodyDataPageInfo) SetTotalCount(v int64) *
 
 type DescribeWhiteRuleListResponseBodyDataResponseData struct {
 	// The alert name.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The ID of the alert name.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
 	// The alert type.
+	//
+	// example:
+	//
+	// scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The ID of the alert type.
+	//
+	// example:
+	//
+	// scan
 	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
 	// The UUID of the alert.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The conditions in the rule. The value is a JSON array.
+	//
+	// example:
+	//
+	// [{"conditions":[{"isNot":false,"itemId":0,"left":{"value":"host_uuid.host_name"},"operator":"containsString","right":{"value":"Cloud-MCH"}}]}]
 	Expression *DescribeWhiteRuleListResponseBodyDataResponseDataExpression `json:"Expression,omitempty" xml:"Expression,omitempty" type:"Struct"`
 	// The time when the whitelist rule was created.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the whitelist rule was modified.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the whitelist rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The status of the whitelist rule. Valid values:
 	//
-	// *   1: enabled
-	// *   0: disabled
+	// 	- 1: enabled.
+	//
+	// 	- 0: disabled.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the whitelist rule.
+	//
+	// example:
+	//
+	// 176555323***
 	SubAliuid *int64 `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
 }
 
@@ -11766,6 +15573,10 @@ type DescribeWhiteRuleListResponseBodyDataResponseDataExpression struct {
 	// The rule conditions.
 	Conditions []*DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// The logical relationships among the rule conditions.
+	//
+	// example:
+	//
+	// (1&2)|(3&4)
 	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
 }
 
@@ -11790,21 +15601,39 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) SetLogic(v
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions struct {
 	// Indicates whether the result is inverted. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	IsNot *bool `json:"IsNot,omitempty" xml:"IsNot,omitempty"`
 	// The ID of the rule condition.
+	//
+	// example:
+	//
+	// 1
 	ItemId *int32 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	// The left operand of the rule condition.
 	Left *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft `json:"Left,omitempty" xml:"Left,omitempty" type:"Struct"`
 	// The logical operator of the rule condition. Valid values:
 	//
-	// *   `=`: equals to
-	// *   `<>`: does not equal to
-	// *   `in`: contains
-	// *   `not in`: does not contain
-	// *   `REGEXP`: matches a regular expression
-	// *   `NOT REGEXP`: does not match a regular expression
+	// 	- `=`: equals to.
+	//
+	// 	- `<>`: does not equal to.
+	//
+	// 	- `in`: contains.
+	//
+	// 	- `not in`: does not contain.
+	//
+	// 	- `REGEXP`: matches a regular expression.
+	//
+	// 	- `NOT REGEXP`: does not match a regular expression.
+	//
+	// example:
+	//
+	// REGEXP
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The right operand of the rule condition.
 	Right *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight `json:"Right,omitempty" xml:"Right,omitempty" type:"Struct"`
@@ -11846,19 +15675,37 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft struct {
 	// Indicates whether the left operand is a variable. Valid values:
 	//
-	// *   true: variable
-	// *   false: constant
+	// 	- true: variable.
+	//
+	// 	- false: constant.
+	//
+	// example:
+	//
+	// true
 	IsVar *bool `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
-	// The remarks on the left operand.
+	// The remarks on the right operand.
+	//
+	// example:
+	//
+	// length
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
 	// The key-value pair information of the remarks.
 	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
 	// Indicates whether the left operand is a constant. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The variable of the left operand.
+	//
+	// example:
+	//
+	// ip
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11898,16 +15745,33 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLe
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight struct {
 	// Indicates whether the right operand is a constant or a runtime variable that is obtained from the runtime context. Valid values:
 	//
-	// *   true: runtime variable
-	// *   false: constant
+	// 	- true: runtime variable.
+	//
+	// 	- false: constant.
+	//
+	// example:
+	//
+	// false
 	IsVar *bool `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
 	// The remarks on the right operand.
+	//
+	// example:
+	//
+	// length
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
 	// The key-value pair information of the remarks.
 	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
 	// The data type of the right operand.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The right operand.
+	//
+	// example:
+	//
+	// 12345
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11975,21 +15839,56 @@ func (s *DescribeWhiteRuleListResponse) SetBody(v *DescribeWhiteRuleListResponse
 
 type DoQuickFieldRequest struct {
 	// The time when the quick analysis starts. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1684376244
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
 	// The index field.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alert_level
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The number of pages to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sorting of the query and analysis results. By default, the results are sorted in descending order.
+	//
+	// example:
+	//
+	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The time when the quick analysis ends. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1684378090
 	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
@@ -12040,6 +15939,10 @@ type DoQuickFieldResponseBody struct {
 	// The response of the quick analysis.
 	Data *DoQuickFieldResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 06735F17-1EDE-5212-81A3-8585368F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12063,29 +15966,66 @@ func (s *DoQuickFieldResponseBody) SetRequestId(v string) *DoQuickFieldResponseB
 
 type DoQuickFieldResponseBodyData struct {
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// ""
 	AggQueryd *string `json:"AggQueryd,omitempty" xml:"AggQueryd,omitempty"`
 	// Indicates whether the quick analysis was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	CompleteOrNot *bool `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
 	// The number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// true
 	HasSQL *bool `json:"HasSQL,omitempty" xml:"HasSQL,omitempty"`
 	// This parameter is deprecated.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// 0
 	Limited *int64 `json:"Limited,omitempty" xml:"Limited,omitempty"`
 	// The logs queried by using the quick analysis feature.
 	Logs []interface{} `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// ""
 	PQuery *string `json:"PQuery,omitempty" xml:"PQuery,omitempty"`
 	// The number of entries queried.
+	//
+	// example:
+	//
+	// 1000
 	ProcessedRows *int64 `json:"ProcessedRows,omitempty" xml:"ProcessedRows,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// 0
 	QueryMode *int32 `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// 	- and alert_level : remind | with_pack_meta
 	WhereQuery *string `json:"WhereQuery,omitempty" xml:"WhereQuery,omitempty"`
 }
 
@@ -12183,16 +16123,34 @@ func (s *DoQuickFieldResponse) SetBody(v *DoQuickFieldResponseBody) *DoQuickFiel
 
 type DoSelfDelegateRequest struct {
 	// The Alibaba Cloud account of an ordinary member of the threat analysis feature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 104423523217****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	// Specifies whether to use a delegated administrator account. Valid values:
 	//
-	// *   1: use a delegated administrator account.
-	// *   0: do not use a delegated administrator account.
+	// 	- 1: use a delegated administrator account.
+	//
+	// 	- 0: do not use a delegated administrator account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	DelegateOrNot *int32 `json:"DelegateOrNot,omitempty" xml:"DelegateOrNot,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12222,10 +16180,19 @@ func (s *DoSelfDelegateRequest) SetRegionId(v string) *DoSelfDelegateRequest {
 type DoSelfDelegateResponseBody struct {
 	// Indicates whether a regular member is authorized. Valid values:
 	//
-	// *   true: The member is authorized.
-	// *   false: The authorization is canceled.
+	// 	- true: The member is authorized.
+	//
+	// 	- false: The authorization is canceled.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9B9CBCEE-9225-5069-BC7F-880938A2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12277,14 +16244,42 @@ func (s *DoSelfDelegateResponse) SetBody(v *DoSelfDelegateResponseBody) *DoSelfD
 }
 
 type EnableAccessForCloudSiemRequest struct {
+	// Whether import the log of SAS alert, the log of WAF alert, the log of CFW alert or not. Valid values:
+	//
+	// - 0: not imported automatically
+	//
+	// - 1: imported automatically
+	//
+	// example:
+	//
+	// 1
 	AutoSubmit *int32 `json:"AutoSubmit,omitempty" xml:"AutoSubmit,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s EnableAccessForCloudSiemRequest) String() string {
@@ -12317,8 +16312,16 @@ func (s *EnableAccessForCloudSiemRequest) SetRoleType(v int32) *EnableAccessForC
 
 type EnableAccessForCloudSiemResponseBody struct {
 	// The data returned.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12372,8 +16375,13 @@ func (s *EnableAccessForCloudSiemResponse) SetBody(v *EnableAccessForCloudSiemRe
 type EnableServiceForCloudSiemRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12393,10 +16401,19 @@ func (s *EnableServiceForCloudSiemRequest) SetRegionId(v string) *EnableServiceF
 type EnableServiceForCloudSiemResponseBody struct {
 	// Indicates whether the threat analysis feature is authorized to access the resource directory. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12448,13 +16465,32 @@ func (s *EnableServiceForCloudSiemResponse) SetBody(v *EnableServiceForCloudSiem
 }
 
 type GetCapacityRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s GetCapacityRequest) String() string {
@@ -12484,6 +16520,10 @@ type GetCapacityResponseBody struct {
 	// The information about the storage capacity.
 	Data *GetCapacityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 27D27DCB-D76B-5064-8B3B-0900DEF7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12508,12 +16548,25 @@ func (s *GetCapacityResponseBody) SetRequestId(v string) *GetCapacityResponseBod
 type GetCapacityResponseBodyData struct {
 	// Indicates whether the Logstores for the threat analysis feature exist on the user side. Valid values:
 	//
-	// *   true: The logs are in the normal state. The log analysis feature is available.
-	// *   false: The logs are being cleared. The log analysis feature is unavailable.
+	// 	- true: The logs are in the normal state. The log analysis feature is available.
+	//
+	// 	- false: The logs are being cleared. The log analysis feature is unavailable.
+	//
+	// example:
+	//
+	// true
 	ExistLogStore *bool `json:"ExistLogStore,omitempty" xml:"ExistLogStore,omitempty"`
 	// The purchased storage capacity of the threat analysis feature. Unit: GB.
+	//
+	// example:
+	//
+	// 9000
 	PreservedCapacity *int64 `json:"PreservedCapacity,omitempty" xml:"PreservedCapacity,omitempty"`
 	// The billable storage capacity of the threat analysis feature. Unit: GB.
+	//
+	// example:
+	//
+	// 10
 	UsedCapacity *float64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
 }
 
@@ -12571,15 +16624,36 @@ func (s *GetCapacityResponse) SetBody(v *GetCapacityResponseBody) *GetCapacityRe
 
 type GetHistogramsRequest struct {
 	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1409529600
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](~~29060~~).
+	// The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](https://help.aliyun.com/document_detail/29060.html).
+	//
+	// example:
+	//
+	// 	- and status: 401
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1409569200
 	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
@@ -12615,6 +16689,10 @@ type GetHistogramsResponseBody struct {
 	// The data of the charts.
 	Data *GetHistogramsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 97A31C3A-3F9F-5866-8979-5159E3DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12640,8 +16718,16 @@ type GetHistogramsResponseBodyData struct {
 	// The distribution of logs.
 	Histograms []*GetHistogramsResponseBodyDataHistograms `json:"Histograms,omitempty" xml:"Histograms,omitempty" type:"Repeated"`
 	// The name of the server.
+	//
+	// example:
+	//
+	// nginx
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
 	// The number of logs that are generated within the subinterval.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12671,14 +16757,31 @@ func (s *GetHistogramsResponseBodyData) SetTotalCount(v int64) *GetHistogramsRes
 type GetHistogramsResponseBodyDataHistograms struct {
 	// Indicates whether the query results within the subinterval is complete. Valid values:
 	//
-	// *   true: The query is complete and the returned result is complete.
-	// *   false: The query is complete but the returned result is incomplete. You must repeat the request to obtain the complete result.
+	// 	- true: The query is complete and the returned result is complete.
+	//
+	// 	- false: The query is complete but the returned result is incomplete. You must repeat the request to obtain the complete result.
+	//
+	// example:
+	//
+	// true
 	CompletedOrNot *bool `json:"CompletedOrNot,omitempty" xml:"CompletedOrNot,omitempty"`
 	// The number of logs within the subinterval.
+	//
+	// example:
+	//
+	// 100
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1409529600
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
 	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1409569200
 	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
@@ -12741,26 +16844,68 @@ func (s *GetHistogramsResponse) SetBody(v *GetHistogramsResponseBody) *GetHistog
 
 type GetLogsRequest struct {
 	// The time when the query starts. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1684377190
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// The number of entries per page. Valid values: 0 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search statement or the analytic statement. For more information, see [Log search overview](~~43772~~) and [Log analysis overview](~~53608~~).
+	// The search statement or the analytic statement. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+	//
+	// example:
+	//
+	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to sort the results of the log query by time in minutes in descending order. Default value: true. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ReverseOrNot *bool `json:"ReverseOrNot,omitempty" xml:"ReverseOrNot,omitempty"`
 	// The time when the query ends. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1684378326
 	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -12814,17 +16959,38 @@ func (s *GetLogsRequest) SetTotal(v int64) *GetLogsRequest {
 
 type GetLogsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The results of the log query.
+	//
+	// example:
+	//
+	// 123456
 	Data *GetLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 93A8B186-A5F1-5B20-9BCF-5605C5E9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12888,10 +17054,22 @@ func (s *GetLogsResponseBodyData) SetResponseData(v *GetLogsResponseBodyDataResp
 
 type GetLogsResponseBodyDataPageInfo struct {
 	// The page number. Pages start from page 1.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of logs.
+	//
+	// example:
+	//
+	// 200
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12921,17 +17099,35 @@ func (s *GetLogsResponseBodyDataPageInfo) SetTotalCount(v int64) *GetLogsRespons
 type GetLogsResponseBodyDataResponseData struct {
 	// The status of the log query. Valid values:
 	//
-	// *   true: The query is complete and the returned result is complete.
-	// *   false: The query is complete but the returned result is incomplete. You must resend the request to obtain the complete result.
+	// 	- true: The query is complete and the returned result is complete.
+	//
+	// 	- false: The query is complete but the returned result is incomplete. You must resend the request to obtain the complete result.
+	//
+	// example:
+	//
+	// true
 	CompleteOrNot *bool `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
 	// The time period of the log query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 28
 	Cost *int64 `json:"Cost,omitempty" xml:"Cost,omitempty"`
 	// The number of entries returned.
+	//
+	// example:
+	//
+	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// Indicated whether an analytic statement is contained. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	HasSql *bool `json:"HasSql,omitempty" xml:"HasSql,omitempty"`
 	// The index fields of the logs.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
@@ -13009,10 +17205,21 @@ func (s *GetLogsResponse) SetBody(v *GetLogsResponseBody) *GetLogsResponse {
 type GetQuickQueryRequest struct {
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the saved search.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// display_login_ip_search
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -13036,8 +17243,16 @@ func (s *GetQuickQueryRequest) SetSearchName(v string) *GetQuickQueryRequest {
 
 type GetQuickQueryResponseBody struct {
 	// The query statement.
+	//
+	// example:
+	//
+	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 27D27DCB-D76B-5064-8B3B-0900DEF7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13091,11 +17306,30 @@ func (s *GetQuickQueryResponse) SetBody(v *GetQuickQueryResponseBody) *GetQuickQ
 type GetStorageRequest struct {
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 127XXXX
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s GetStorageRequest) String() string {
@@ -13125,6 +17359,10 @@ type GetStorageResponseBody struct {
 	// The information about the storage.
 	Data *GetStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 97A31C3A-3F9F-5866-8979-5159E3DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13149,19 +17387,37 @@ func (s *GetStorageResponseBody) SetRequestId(v string) *GetStorageResponseBody 
 type GetStorageResponseBodyData struct {
 	// Indicates whether the storage region can be changed for once. Default value: false Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	CanOperate *bool `json:"CanOperate,omitempty" xml:"CanOperate,omitempty"`
 	// Indicates whether the storage region can be changed. Default value: false Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	DisplayRegion *bool `json:"DisplayRegion,omitempty" xml:"DisplayRegion,omitempty"`
 	// The region where the data is stored.
 	//
-	// If the data management center is **cn-hangzhou**, the default value of **Region** is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region** is ap-southeast-1, which specifies the Singapore region.
+	// If the data management center is **cn-hangzhou**, the default value of **Region*	- is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region*	- is ap-southeast-1, which specifies the Singapore region.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The storage period of logs. Unit: day. Default value: 180. Valid values: 30 to 3000.
+	//
+	// example:
+	//
+	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -13227,14 +17483,42 @@ type ListAccountAccessIdRequest struct {
 	//
 	// Valid values:
 	//
-	// *   qcloud
-	// *   hcloud
+	// 	- qcloud
+	//
+	// 	- hcloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 0
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListAccountAccessIdRequest) String() string {
@@ -13255,19 +17539,46 @@ func (s *ListAccountAccessIdRequest) SetRegionId(v string) *ListAccountAccessIdR
 	return s
 }
 
+func (s *ListAccountAccessIdRequest) SetRoleFor(v int64) *ListAccountAccessIdRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListAccountAccessIdRequest) SetRoleType(v int32) *ListAccountAccessIdRequest {
+	s.RoleType = &v
+	return s
+}
+
 type ListAccountAccessIdResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data []*ListAccountAccessIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13306,21 +17617,50 @@ func (s *ListAccountAccessIdResponseBody) SetSuccess(v bool) *ListAccountAccessI
 
 type ListAccountAccessIdResponseBodyData struct {
 	// The AccessKey ID of the cloud account that is added to the threat analysis feature.
+	//
+	// example:
+	//
+	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// The MD5 hash value of the AccessKey ID.
+	//
+	// example:
+	//
+	// abcXXXXXXXX
 	AccessIdMd5 *string `json:"AccessIdMd5,omitempty" xml:"AccessIdMd5,omitempty"`
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The information about the cloud account to which the AccessKey ID belongs. The value is in the following format: Alibaba Cloud account ID|Alibaba Cloud account username|AccessKey ID.
+	//
+	// example:
+	//
+	// 123xxxxxx|xxxx|ABCXXXXX
 	AccountStr *string `json:"AccountStr,omitempty" xml:"AccountStr,omitempty"`
 	// Indicates whether the cloud account to which the AccessKey ID belongs is added to the threat analysis feature. Valid values:
 	//
-	// *   0: no
-	// *   1: yes
+	// 	- 0: no
+	//
+	// 	- 1: yes
+	//
+	// example:
+	//
+	// 1
 	Bound *int32 `json:"Bound,omitempty" xml:"Bound,omitempty"`
 	// The code of the cloud service provider.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to add the third-party cloud account.
+	//
+	// example:
+	//
+	// ABCXXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -13399,23 +17739,54 @@ func (s *ListAccountAccessIdResponse) SetBody(v *ListAccountAccessIdResponseBody
 type ListAccountsByLogRequest struct {
 	// The code that is used for multi-cloud environments.
 	//
-	// Valid values:
+	// This parameter is required.
 	//
-	// *   qcloud
-	// *   hcloud
-	// *   aliyun
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The codes of logs. The value is a JSON array.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["cloud_siem_hcloud_waf_alert_log"]
 	LogCodes []*string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty" type:"Repeated"`
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListAccountsByLogRequest) String() string {
@@ -13460,6 +17831,10 @@ type ListAccountsByLogResponseBody struct {
 	// The data returned.
 	Data []*ListAccountsByLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13483,18 +17858,46 @@ func (s *ListAccountsByLogResponseBody) SetRequestId(v string) *ListAccountsByLo
 
 type ListAccountsByLogResponseBodyData struct {
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The name of the cloud account.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Indicates whether the account is added. Valid values: -1: yes -0: no
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	Imported *int32 `json:"Imported,omitempty" xml:"Imported,omitempty"`
 	// The code of the log.
+	//
+	// example:
+	//
+	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The ID of the Alibaba Cloud account for which the threat analysis feature is enabled.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -13573,11 +17976,30 @@ func (s *ListAccountsByLogResponse) SetBody(v *ListAccountsByLogResponseBody) *L
 type ListAllProdsRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListAllProdsRequest) String() string {
@@ -13607,6 +18029,10 @@ type ListAllProdsResponseBody struct {
 	// The data returned.
 	Data *ListAllProdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13630,12 +18056,28 @@ func (s *ListAllProdsResponseBody) SetRequestId(v string) *ListAllProdsResponseB
 
 type ListAllProdsResponseBodyData struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The cloud services.
+	//
+	// example:
+	//
+	// 1
 	ProdList []*ListAllProdsResponseBodyDataProdList `json:"ProdList,omitempty" xml:"ProdList,omitempty" type:"Repeated"`
 	// The total number of logs.
+	//
+	// example:
+	//
+	// 19
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13670,17 +18112,39 @@ func (s *ListAllProdsResponseBodyData) SetTotalCount(v int32) *ListAllProdsRespo
 type ListAllProdsResponseBodyDataProdList struct {
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud.
+	//
+	// 	- aliyun: Alibaba Cloud.
+	//
+	// 	- hcloud: Huawei Cloud.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The number of logs within the cloud service that are added to the threat analysis feature.
+	//
+	// example:
+	//
+	// 10
 	ImportedLogCount *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
 	// The time when the logs within the cloud service were last added to the threat analysis feature.
+	//
+	// example:
+	//
+	// 2023-11-23 12:12:12
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The code of the cloud service.
+	//
+	// example:
+	//
+	// sas
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The total number of logs within the cloud service.
+	//
+	// example:
+	//
+	// 19
 	TotalLogCount *int32 `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
 }
 
@@ -13749,38 +18213,101 @@ func (s *ListAllProdsResponse) SetBody(v *ListAllProdsResponseBody) *ListAllProd
 type ListAutomateResponseConfigsRequest struct {
 	// The type of the handling action. Valid values:
 	//
-	// *   doPlaybook: runs a playbook.
-	// *   changeEventStatus: changes the status of an event.
-	// *   changeThreatLevel: changes the risk level of an event.
+	// 	- doPlaybook: runs a playbook.
+	//
+	// 	- changeEventStatus: changes the status of an event.
+	//
+	// 	- changeThreatLevel: changes the risk level of an event.
+	//
+	// example:
+	//
+	// doPlaybook
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The type of the automated response rule. Valid values:
 	//
-	// *   event
-	// *   alert
+	// 	- event
+	//
+	// 	- alert
+	//
+	// example:
+	//
+	// event
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The ID of the automated response rule.
+	//
+	// example:
+	//
+	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The UUID of the playbook.
+	//
+	// example:
+	//
+	// system_aliyun_aegis_kill_quara_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The name of the automated response rule.
+	//
+	// example:
+	//
+	// cfw kill quara book
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   0: disabled
-	// *   100: enabled
+	// 	- 0: disabled
+	//
+	// 	- 100: enabled
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the user who created the rule.
+	//
+	// example:
+	//
+	// 17108579417****
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -13854,17 +18381,38 @@ func (s *ListAutomateResponseConfigsRequest) SetSubUserId(v int64) *ListAutomate
 
 type ListAutomateResponseConfigsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *ListAutomateResponseConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13928,10 +18476,22 @@ func (s *ListAutomateResponseConfigsResponseBodyData) SetResponseData(v []*ListA
 
 type ListAutomateResponseConfigsResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13959,38 +18519,107 @@ func (s *ListAutomateResponseConfigsResponseBodyDataPageInfo) SetTotalCount(v in
 }
 
 type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
-	// The configuration of the action that is performed after the rule is hit. The value is in JSON format.
+	// The configuration of the action that is performed after the automated response rule is hit. The value is in the JSON format.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "actionType": "doPlaybook",
+	//
+	//             "playbookName": "WafBlockIP",
+	//
+	//             "playbookUuid": "bdad6220-6584-41b2-9704-fc6584568758"
+	//
+	//       }
+	//
+	// ]
 	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
 	// The type of the handling action. Multiple types are separated by commas (,). Valid values:
 	//
-	// *   doPlaybook: runs a playbook.
-	// *   changeEventStatus: changes the status of an event.
-	// *   changeThreatLevel: changes the risk level of an event.
+	// 	- **doPlaybook**: runs the playbook.
+	//
+	// 	- **changeEventStatus**: changes the event status.
+	//
+	// 	- **changeThreatLevel**: changes the risk level of the event.
+	//
+	// example:
+	//
+	// doPlaybook,changeEventStatus
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The ID of the Alibaba Cloud account that is associated with the rule in SIEM.
+	//
+	// example:
+	//
+	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The type of the automated response rule. Valid values:
 	//
-	// *   event
-	// *   alert
+	// 	- **event**
+	//
+	// 	- **alert**
+	//
+	// example:
+	//
+	// event
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
-	DataType         *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The trigger condition of the rule. The value is in the JSON format.
+	// The type of the view. Valid values:
+	//
+	// 0: the current Alibaba Cloud account
+	//
+	// 1: the global account
+	//
+	// example:
+	//
+	// 1
+	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The trigger condition of the automated response rule. The value is in the JSON format.
+	//
+	// example:
+	//
+	// [{"left":{"value":"alert_name"},"operator":"containsString","right":{"value":"webshell_online"}}]
 	ExecutionCondition *string `json:"ExecutionCondition,omitempty" xml:"ExecutionCondition,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The update time.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the automated response rule.
+	//
+	// example:
+	//
+	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the automated response rule.
+	//
+	// example:
+	//
+	// cfw kill quara book
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   0: disabled
-	// *   100: enabled
+	// 	- **0**: disabled.
+	//
+	// 	- **100**: enabled.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the user who created the rule.
+	//
+	// example:
+	//
+	// 17108579417****
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -14094,15 +18723,30 @@ func (s *ListAutomateResponseConfigsResponse) SetBody(v *ListAutomateResponseCon
 type ListBindAccountRequest struct {
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListBindAccountRequest) String() string {
@@ -14123,10 +18767,24 @@ func (s *ListBindAccountRequest) SetRegionId(v string) *ListBindAccountRequest {
 	return s
 }
 
+func (s *ListBindAccountRequest) SetRoleFor(v int64) *ListBindAccountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListBindAccountRequest) SetRoleType(v int32) *ListBindAccountRequest {
+	s.RoleType = &v
+	return s
+}
+
 type ListBindAccountResponseBody struct {
 	// The data returned.
 	Data []*ListBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14150,24 +18808,58 @@ func (s *ListBindAccountResponseBody) SetRequestId(v string) *ListBindAccountRes
 
 type ListBindAccountResponseBodyData struct {
 	// The AccessKey ID of the cloud account.
+	//
+	// example:
+	//
+	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The username of the cloud account.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID that is generated when the cloud account is added.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The ID of the account that is used to add the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The number of data sources that are added to the threat analysis feature within the cloud account.
+	//
+	// example:
+	//
+	// 2
 	DataSourceCount *int64 `json:"DataSourceCount,omitempty" xml:"DataSourceCount,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2023-11-10 12:20:35
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
@@ -14250,19 +18942,38 @@ func (s *ListBindAccountResponse) SetBody(v *ListBindAccountResponseBody) *ListB
 
 type ListBindDataSourcesRequest struct {
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider.
 	//
 	// Valid values:
 	//
-	// *   qcloud
-	// *   hcloud
-	// *   aliyun
+	// 	- qcloud
+	//
+	// 	- hcloud
+	//
+	// 	- aliyun
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14293,6 +19004,10 @@ type ListBindDataSourcesResponseBody struct {
 	// The data returned.
 	Data []*ListBindDataSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14316,30 +19031,70 @@ func (s *ListBindDataSourcesResponseBody) SetRequestId(v string) *ListBindDataSo
 
 type ListBindDataSourcesResponseBodyData struct {
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The username of the cloud account.
+	//
+	// example:
+	//
+	// sas_tq_account_xxxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The name of the data source.
+	//
+	// example:
+	//
+	// waf_kafka
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The remarks on the data source.
+	//
+	// example:
+	//
+	// waf_kafka
 	DataSourceRemark *string `json:"DataSourceRemark,omitempty" xml:"DataSourceRemark,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   obs: Huawei Cloud Object Storage Service (OBS)
-	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
-	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	//
+	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	//
+	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	//
+	// example:
+	//
+	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The number of logs that are added within the data source.
+	//
+	// example:
+	//
+	// 1
 	LogCount *int32 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
 	// The number of existing tasks that are created to add logs within the data source.
+	//
+	// example:
+	//
+	// 0
 	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
 }
 
@@ -14427,46 +19182,134 @@ func (s *ListBindDataSourcesResponse) SetBody(v *ListBindDataSourcesResponseBody
 
 type ListCloudSiemCustomizeRulesRequest struct {
 	// The alert type.
+	//
+	// example:
+	//
+	// scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the custom rule.
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	//
+	// example:
+	//
+	// 10223
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The sort method. Valid values:
+	//
+	// 	- desc: descending order.
+	//
+	// 	- asc: ascending order.
+	//
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field that is used to sort the rules. Valid values:
+	//
+	// 	- GmtModified: The rules are sorted based on the modification time.
+	//
+	// 	- Id (default): The rules are sorted based on the rule ID.
+	//
+	// example:
+	//
+	// Id
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// The number of entries per page. The value can be up to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   **cn-hangzhou**: Your assets reside in regions in China.
-	// *   **ap-southeast-1**: Your assets reside in regions outside China.
+	// 	- **cn-hangzhou**: Your assets reside in regions in China.
+	//
+	// 	- **ap-southeast-1**: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
+	// The ID of the destination account to which you switch the view from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// 	- 0: view of the current Alibaba Cloud account.
+	//
+	// 	- 1: view of all accounts for the enterprise.
+	//
+	// example:
+	//
+	// 0
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The name of the rule. The name can contain letters, digits, underscores (_), and periods (.).
+	//
+	// example:
+	//
+	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   **predefine**
-	// *   **customize**
+	// 	- **predefine**
+	//
+	// 	- **customize**
+	//
+	// example:
+	//
+	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   **0**: The rule is in the initial state.
-	// *   **10**: The simulation data is tested.
-	// *   **15**: The business data is being tested.
-	// *   **20**: The business data test is complete.
-	// *   **100**: The rule is in effect.
+	// 	- **0**: The rule is in the initial state.
+	//
+	// 	- **10**: The simulation data is tested.
+	//
+	// 	- **15**: The business data is being tested.
+	//
+	// 	- **20**: The business data test is complete.
+	//
+	// 	- **100**: The rule is in effect.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The threat level. The value must be a JSON array. Valid values:
 	//
-	// *   **serious**: high-risk.
-	// *   **suspicious**: medium-risk.
-	// *   **remind**: low-risk.
+	// 	- **serious**: high-risk.
+	//
+	// 	- **suspicious**: medium-risk.
+	//
+	// 	- **remind**: low-risk.
+	//
+	// example:
+	//
+	// ["serious","suspicious","remind"]
 	ThreatLevel []*string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty" type:"Repeated"`
 }
 
@@ -14555,17 +19398,38 @@ func (s *ListCloudSiemCustomizeRulesRequest) SetThreatLevel(v []*string) *ListCl
 
 type ListCloudSiemCustomizeRulesResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *ListCloudSiemCustomizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14629,10 +19493,22 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyData) SetResponseData(v []*ListC
 
 type ListCloudSiemCustomizeRulesResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14660,71 +19536,181 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyDataPageInfo) SetTotalCount(v in
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
-	// The threat type.
+	// The type of the risk.
+	//
+	// example:
+	//
+	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the threat type.
+	// The internal code of the risk type.
+	//
+	// example:
+	//
+	// ${siem_rule_type_process_abnormal_command}
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
 	// The ID of the Alibaba Cloud account in SIEM.
-	Aliuid   *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	AttCk    *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	DataType *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The extended information about event generation. If the value of **eventTransferType** is **allToSingle**, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// 127608589417****
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The alert additional field for ATT\\&CK.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// 0: view of the current Alibaba Cloud account. 1: view of all accounts for the enterprise.
+	//
+	// example:
+	//
+	// 1
+	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The extended information about event generation. If the value of **eventTransferType*	- is **allToSingle**, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;MINUTE&quot;}
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
 	// Indicates whether the system generates an event for the alert. Valid values:
 	//
-	// *   **0**: no.
-	// *   **1**: yes.
+	// 	- **0**: no.
+	//
+	// 	- **1**: yes.
+	//
+	// example:
+	//
+	// 1
 	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
 	// The method that is used to generate an event. Valid values:
 	//
-	// *   **default**: The default method is used.
-	// *   **singleToSingle**: The system generates an event for each alert.
-	// *   **allToSingle**: The system generates an event for alerts within a period of time.
+	// 	- **default**: built-in method.
+	//
+	// 	- **singleToSingle**: The system generates an event for each alert.
+	//
+	// 	- **allToSingle**: The system generates an event for alerts within a period of time.
+	//
+	// example:
+	//
+	// allToSingle
 	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The time when the custom rule was created.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the custom rule was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the custom rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The log source of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
 	// The internal code of the log source.
+	//
+	// example:
+	//
+	// ${sas.cloudsiem.prod.cloud_siem_aegis_sas_alert}
 	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
 	// The log type of the rule.
+	//
+	// example:
+	//
+	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The internal code of the log type.
+	//
+	// example:
+	//
+	// ${sas.cloudsiem.prod.alert_activity}
 	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
 	// The window length of the rule. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;HOUR&quot;}
 	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
 	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// [[{&quot;not&quot;:false,&quot;left&quot;:&quot;alert_name&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;right&quot;:&quot;WEBSHELL&quot;}]]
 	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
 	// The description of the rule.
+	//
+	// example:
+	//
+	// this rule is for waf scan
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
 	// The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// [&quot;asset_id&quot;]
 	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The threshold configurations of the rule in the JSON format. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// {&quot;aggregateFunction&quot;:&quot;count&quot;,&quot;aggregateFunctionName&quot;:&quot;count&quot;,&quot;field&quot;:&quot;activity_name&quot;,&quot;operator&quot;:&quot;&lt;=&quot;,&quot;value&quot;:1}
 	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   **predefine**
-	// *   **customize**
+	// 	- **predefine**
+	//
+	// 	- **customize**
+	//
+	// example:
+	//
+	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   **0**: The rule is in the initial state.
-	// *   **10**: The simulation data is tested.
-	// *   **15**: The business data is being tested.
-	// *   **20**: The business data test is complete.
-	// *   **100**: The rule is in effect.
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The threat level. Valid values:
+	// 	- **0**: The rule is in the initial state.
 	//
-	// *   **serious**: high-risk.
-	// *   **suspicious**: medium-risk.
-	// *   **remind**: low-risk.
+	// 	- **10**: The simulation data is tested.
+	//
+	// 	- **15**: The business data is being tested.
+	//
+	// 	- **20**: The business data test is complete.
+	//
+	// 	- **100**: The rule is in effect.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. Valid values:
+	//
+	// 	- **serious**: high-risk.
+	//
+	// 	- **suspicious**: medium-risk.
+	//
+	// 	- **remind**: low-risk.
+	//
+	// example:
+	//
+	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
@@ -14887,49 +19873,158 @@ func (s *ListCloudSiemCustomizeRulesResponse) SetBody(v *ListCloudSiemCustomizeR
 
 type ListCloudSiemPredefinedRulesRequest struct {
 	// The alert type.
+	//
+	// example:
+	//
+	// scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AttCk     *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The ATT\\&CK information.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
-	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	//
+	// example:
+	//
+	// 1577808000000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The method that is used to generate an event. Valid values:
+	//
+	// 	- default: built-in method.
+	//
+	// 	- singleToSingle: The system generates an event for each alert.
+	//
+	// 	- allToSingle: The system generates an event for alerts within a period of time.
+	//
+	// example:
+	//
+	// allToSingle
 	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The ID of the rule.
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LogSource  *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	//
+	// example:
+	//
+	// 10223
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The log source.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The sort method. Valid values:
+	//
+	// 	- desc: descending order.
+	//
+	// 	- asc: ascending order.
+	//
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field that is used to sort the rules. Valid values:
+	//
+	// 	- GmtModified: The rules are sorted based on the modification time.
+	//
+	// 	- Id (default): The rules are sorted based on the rule ID.
+	//
+	// example:
+	//
+	// Id
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
+	// The ID of the destination account to which you switch the view from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view.
+	//
+	// 	- 0: view of the current Alibaba Cloud account.
+	//
+	// 	- 1: view of all accounts for the enterprise.
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The name of the rule. The name can contain letters, digits, underscores (_), and periods (.).
+	//
+	// example:
+	//
+	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   predefine
-	// *   customize
+	// 	- predefine
+	//
+	// 	- customize
+	//
+	// example:
+	//
+	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   0: The rule is in the initial state.
-	// *   10: The simulation data is tested.
-	// *   15: The business data is being tested.
-	// *   20: The business data test ends.
-	// *   100: The rule takes effect.
+	// 	- 0: The rule is in the initial state.
+	//
+	// 	- 10: The simulation data is tested.
+	//
+	// 	- 15: The business data is being tested.
+	//
+	// 	- 20: The business data test ends.
+	//
+	// 	- 100: The rule takes effect.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The risk level. The value is a JSON array. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// ["serious","suspicious","remind"]
 	ThreatLevel []*string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty" type:"Repeated"`
 }
 
@@ -15033,17 +20128,38 @@ func (s *ListCloudSiemPredefinedRulesRequest) SetThreatLevel(v []*string) *ListC
 
 type ListCloudSiemPredefinedRulesResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *ListCloudSiemPredefinedRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15107,10 +20223,22 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyData) SetResponseData(v []*List
 
 type ListCloudSiemPredefinedRulesResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -15139,35 +20267,104 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyDataPageInfo) SetTotalCount(v i
 
 type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
 	// The type of the risk.
-	AlertType         *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AttCk             *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	//
+	// example:
+	//
+	// WEBSHELL
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The alert additional field for ATT\\&CK.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The method that is used to generate an event. Valid values:
+	//
+	// 	- default: built-in method.
+	//
+	// 	- singleToSingle: The system generates an event for each alert.
+	//
+	// 	- allToSingle: The system generates an event for alerts within a period of time.
+	//
+	// example:
+	//
+	// allToSingle
 	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The time when the rule was created.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the rule was modified.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the predefined rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The internal code of the rule description.
+	//
+	// example:
+	//
+	// ${siem_rule_description_siem_cfw-attack-count-level-up_cfw-attack}
 	RuleDescMds *string `json:"RuleDescMds,omitempty" xml:"RuleDescMds,omitempty"`
 	// The name of the rule.
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	//
+	// example:
+	//
+	// siem_base64-command-exec_aegis-proc
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule name in Chinese.
+	//
+	// example:
+	//
+	// siem_base64-command-exec_aegis-proc
 	RuleNameCn *string `json:"RuleNameCn,omitempty" xml:"RuleNameCn,omitempty"`
+	// The rule name in English.
+	//
+	// example:
+	//
+	// siem_base64-command-exec_aegis-proc
 	RuleNameEn *string `json:"RuleNameEn,omitempty" xml:"RuleNameEn,omitempty"`
 	// The internal code of the rule name.
+	//
+	// example:
+	//
+	// ${siem_rule_name_siem_cfw-attack-count-level-up_cfw-attack}
 	RuleNameMds *string `json:"RuleNameMds,omitempty" xml:"RuleNameMds,omitempty"`
 	// The log source of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the predefined rule. Valid values:
 	//
-	// *   0: The rule is in the initial state.
-	// *   100: The rule takes effect.
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The threat level. Valid values:
+	// 	- 0: The rule is in the initial state.
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- 100: The rule takes effect.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. Valid values:
+	//
+	// 	- serious: high.
+	//
+	// 	- suspicious: medium.
+	//
+	// 	- remind: low.
+	//
+	// example:
+	//
+	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
@@ -15280,18 +20477,53 @@ func (s *ListCloudSiemPredefinedRulesResponse) SetBody(v *ListCloudSiemPredefine
 
 type ListCustomizeRuleTestResultRequest struct {
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultRequest) String() string {
@@ -15334,17 +20566,38 @@ func (s *ListCustomizeRuleTestResultRequest) SetRoleType(v int32) *ListCustomize
 
 type ListCustomizeRuleTestResultResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *ListCustomizeRuleTestResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15408,10 +20661,22 @@ func (s *ListCustomizeRuleTestResultResponseBodyData) SetResponseData(v []*ListC
 
 type ListCustomizeRuleTestResultResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -15440,41 +20705,104 @@ func (s *ListCustomizeRuleTestResultResponseBodyDataPageInfo) SetTotalCount(v in
 
 type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	// The description of the alert.
+	//
+	// example:
+	//
+	// The account you logged in this time is not in the legal account category defined by you. Please confirm the legality of the login behavior.
 	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
 	// The alert details in the JSON format.
+	//
+	// example:
+	//
+	// {"main_user_id": "165295629792****";"log_uuid_count": "99";"attack_ip": "218.92.XX.XX"}
 	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
 	// The source of the alert.
+	//
+	// example:
+	//
+	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
 	// The sub-module of the source.
+	//
+	// example:
+	//
+	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	// The tag of the ATT\&CK attack.
+	// The tag of the ATT\\&CK attack.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The name of the alert, which corresponds to the name of the custom rule.
+	//
+	// example:
+	//
+	// waf_scan
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The threat type, which indicates the alert type.
+	//
+	// example:
+	//
+	// WEBSHELL
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The threat level. Valid values:
 	//
-	// *   serious: high.
-	// *   suspicious: medium.
-	// *   remind: low.
+	// 	- serious: high.
+	//
+	// 	- suspicious: medium.
+	//
+	// 	- remind: low.
+	//
+	// example:
+	//
+	// remind
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The log source of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
 	// The time when the alert was recorded.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 	// The log type of the rule.
+	//
+	// example:
+	//
+	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	//
+	// example:
+	//
+	// 127608589417****
 	MainUserId *string `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The status of the alert data. Valid values:
 	//
-	// *   test: business test data.
-	// *   online: online data.
+	// 	- test: business test data.
+	//
+	// 	- online: online data.
+	//
+	// example:
+	//
+	// test
 	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
 	// The ID of the Alibaba Cloud account within which the alert is generated.
+	//
+	// example:
+	//
+	// 176555323***
 	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 	// The UUID of the alert.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -15592,19 +20920,44 @@ func (s *ListCustomizeRuleTestResultResponse) SetBody(v *ListCustomizeRuleTestRe
 
 type ListDataSourceLogsRequest struct {
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code that is used for multi-cloud environments. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15640,6 +20993,10 @@ type ListDataSourceLogsResponseBody struct {
 	// The data returned.
 	Data *ListDataSourceLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15663,22 +21020,48 @@ func (s *ListDataSourceLogsResponseBody) SetRequestId(v string) *ListDataSourceL
 
 type ListDataSourceLogsResponseBodyData struct {
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code that is used for multi-cloud environments. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The logs of the data source.
 	DataSourceInstanceLogs []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty" type:"Repeated"`
 	// The name of the data source.
+	//
+	// example:
+	//
+	// waf kafka
 	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
 	// The remarks of the data source.
+	//
+	// example:
+	//
+	// waf kafka
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -15727,17 +21110,34 @@ func (s *ListDataSourceLogsResponseBodyData) SetSubUserId(v int64) *ListDataSour
 
 type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs struct {
 	// The code of the log.
+	//
+	// example:
+	//
+	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The ID of the log. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 	// The display code of the log.
+	//
+	// example:
+	//
+	// ${siem.prod.cloud_siem_waf_xxxxx}
 	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
 	// The parameters of the log.
 	LogParams []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams `json:"LogParams,omitempty" xml:"LogParams,omitempty" type:"Repeated"`
 	// Indicates whether the task for which logs are collected is enabled. Valid values:
 	//
-	// *   1: yes
-	// *   0: no
+	// 	- 1: yes
+	//
+	// 	- 0: no
+	//
+	// example:
+	//
+	// 1
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -15776,8 +21176,16 @@ func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetTaskStatus
 
 type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams struct {
 	// The parameter code of the log.
+	//
+	// example:
+	//
+	// region_code
 	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
 	// The parameter value of the log.
+	//
+	// example:
+	//
+	// ap-guangzhou
 	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 }
 
@@ -15833,13 +21241,25 @@ type ListDataSourceTypesRequest struct {
 	//
 	// Valid values:
 	//
-	// *   qcloud
-	// *   hcloud
+	// 	- qcloud
+	//
+	// 	- hcloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15865,6 +21285,10 @@ type ListDataSourceTypesResponseBody struct {
 	// The data returned.
 	Data []*ListDataSourceTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15888,12 +21312,22 @@ func (s *ListDataSourceTypesResponseBody) SetRequestId(v string) *ListDataSource
 
 type ListDataSourceTypesResponseBodyData struct {
 	// The code of the third-party cloud service.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   obs: Huawei Cloud Object Storage Service (OBS)
-	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
-	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	//
+	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	//
+	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	//
+	// example:
+	//
+	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 }
 
@@ -15945,13 +21379,32 @@ func (s *ListDataSourceTypesResponse) SetBody(v *ListDataSourceTypesResponseBody
 }
 
 type ListDeliveryRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListDeliveryRequest) String() string {
@@ -15981,6 +21434,10 @@ type ListDeliveryResponseBody struct {
 	// The response parameters.
 	Data *ListDeliveryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-58D4-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16004,19 +21461,44 @@ func (s *ListDeliveryResponseBody) SetRequestId(v string) *ListDeliveryResponseB
 
 type ListDeliveryResponseBodyData struct {
 	// The URL that is displayed in charts.
+	//
+	// example:
+	//
+	// https://sls4service.console.aliyun.com/lognext/project/aliyun-cloudsiem-data-127608589417****-cn-shanghai
+	//
+	// /dashboard/cloud-siem?isShare=true&hideTopbar=true&hideSidebar=true&ignoreTabLocalStorage=true
 	DashboardUrl *string `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
 	// Indicates whether the log delivery switch is displayed. Default value: true. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	DisplaySwitchOrNot *bool `json:"DisplaySwitchOrNot,omitempty" xml:"DisplaySwitchOrNot,omitempty"`
 	// The name of the Logstore for the threat analysis feature on the user side. The value is in the cloud_siem format.
+	//
+	// example:
+	//
+	// cloud-siem
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	// The cloud services.
 	ProductList []*ListDeliveryResponseBodyDataProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
 	// The name of the project for the threat analysis feature in Simple Log service on the user side. The value is in the aliyun-cloudsiem-data-${aliUid}-${region} format.
+	//
+	// example:
+	//
+	// aliyun-cloudsiem-data-127608589417****-cn-shanghai
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The URL that is used for log analysis.
+	//
+	// example:
+	//
+	// https://sls4service.console.aliyun.com/lognext/project/aliyun-cloudsiem-data-127608589417****-cn-shanghai
+	//
+	// /logsearch/cloud-siem?isShare=true&hideTopbar=true&hideSidebar=true&ignoreTabLocalStorage=true
 	SearchUrl *string `json:"SearchUrl,omitempty" xml:"SearchUrl,omitempty"`
 }
 
@@ -16065,31 +21547,61 @@ type ListDeliveryResponseBodyDataProductList struct {
 	LogMap map[string][]*DataProductListLogMapValue `json:"LogMap,omitempty" xml:"LogMap,omitempty"`
 	// The code of the cloud service. Valid values:
 	//
-	// *   qcloud_waf
-	// *   qlcoud_cfw
-	// *   hcloud_waf
-	// *   hcloud_cfw
-	// *   ddos
-	// *   sas
-	// *   cfw
-	// *   config
-	// *   csk
-	// *   fc
-	// *   rds
-	// *   nas
-	// *   apigateway
-	// *   cdn
-	// *   mongodb
-	// *   eip
-	// *   slb
-	// *   vpc
-	// *   actiontrail
-	// *   waf
-	// *   bastionhost
-	// *   oss
-	// *   polardb
+	// 	- qcloud_waf
+	//
+	// 	- qlcoud_cfw
+	//
+	// 	- hcloud_waf
+	//
+	// 	- hcloud_cfw
+	//
+	// 	- ddos
+	//
+	// 	- sas
+	//
+	// 	- cfw
+	//
+	// 	- config
+	//
+	// 	- csk
+	//
+	// 	- fc
+	//
+	// 	- rds
+	//
+	// 	- nas
+	//
+	// 	- apigateway
+	//
+	// 	- cdn
+	//
+	// 	- mongodb
+	//
+	// 	- eip
+	//
+	// 	- slb
+	//
+	// 	- vpc
+	//
+	// 	- actiontrail
+	//
+	// 	- waf
+	//
+	// 	- bastionhost
+	//
+	// 	- oss
+	//
+	// 	- polardb
+	//
+	// example:
+	//
+	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// Security Center
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 }
 
@@ -16124,25 +21636,55 @@ func (s *ListDeliveryResponseBodyDataProductList) SetProductName(v string) *List
 type ListDeliveryResponseBodyDataProductListLogList struct {
 	// Indicates whether the log delivery feature can be enabled or disabled. The feature can be enabled or disabled only by the administrator of the threat analysis feature. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	CanOperateOrNot *bool `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
 	// The extended parameter.
 	ExtraParameters []*ListDeliveryResponseBodyDataProductListLogListExtraParameters `json:"ExtraParameters,omitempty" xml:"ExtraParameters,omitempty" type:"Repeated"`
 	// The code of the log.
+	//
+	// example:
+	//
+	// cloud_siem_config_log
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// audit log
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// audit log
 	LogNameEn *string `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
 	// The language code of the log that is used to indicate the language in which the log is displayed.
+	//
+	// example:
+	//
+	// ${sas.cloudsiem.prod.cloud_siem_aegis_crack_from_beaver}
 	LogNameKey *string `json:"LogNameKey,omitempty" xml:"LogNameKey,omitempty"`
 	// The status of the log delivery. Valid values:
 	//
-	// *   true: The logs are being delivered.
-	// *   false: The log delivery feature is disabled.
+	// 	- true: The logs are being delivered.
+	//
+	// 	- false: The log delivery feature is disabled.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The topic of the log in the Logstore. The value is an index field in the Logstore that can be used to distinguish different logs.
+	//
+	// example:
+	//
+	// sas_login_event
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -16196,8 +21738,16 @@ func (s *ListDeliveryResponseBodyDataProductListLogList) SetTopic(v string) *Lis
 
 type ListDeliveryResponseBodyDataProductListLogListExtraParameters struct {
 	// The ID of the extended parameter.
+	//
+	// example:
+	//
+	// flag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the extended parameter.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16250,57 +21800,146 @@ func (s *ListDeliveryResponse) SetBody(v *ListDeliveryResponseBody) *ListDeliver
 
 type ListDisposeStrategyRequest struct {
 	// The page number. Pages start from page 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The status of the policy. Valid values:
 	//
-	// *   0: invalid
-	// *   1: valid
+	// 	- 0: invalid
+	//
+	// 	- 1: valid
+	//
+	// example:
+	//
+	// 0
 	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The feature value of the entity. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// test22.php
 	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
 	// The entity type of the playbook. Valid values:
 	//
-	// *   ip
-	// *   process
-	// *   file
+	// 	- ip
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// example:
+	//
+	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The sort order. Valid values:
 	//
-	// *   desc: descending order.
-	// *   asc: ascending order.
+	// 	- desc: descending order.
+	//
+	// 	- asc: ascending order.
+	//
+	// example:
+	//
+	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The sort field. Valid values:
 	//
-	// *   GmtModified: sorts the policies by update time.
-	// *   GmtCreate: sorts the policies by creation time.
-	// *   FinishTime: sorts the policies by end time.
+	// 	- GmtModified: sorts the policies by update time.
+	//
+	// 	- GmtCreate: sorts the policies by creation time.
+	//
+	// 	- FinishTime: sorts the policies by end time.
+	//
+	// example:
+	//
+	// GmtModified
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// The number of entries per page. Maximum value: 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the playbook, which is the unique identifier of the playbook.
+	//
+	// example:
+	//
+	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
 	// The type of the playbook. Valid values:
 	//
-	// *   system: user-triggered playbook
-	// *   custom: event-triggered playbook
-	// *   custom_alert: alert-triggered playbook
-	// *   soar-manual: user-run playbook
-	// *   soar-mdr: MDR-run playbook
+	// 	- system: user-triggered playbook
+	//
+	// 	- custom: event-triggered playbook
+	//
+	// 	- custom_alert: alert-triggered playbook
+	//
+	// 	- soar-manual: user-run playbook
+	//
+	// 	- soar-mdr: MDR-run playbook
+	//
+	// example:
+	//
+	// system
 	PlaybookTypes *string `json:"PlaybookTypes,omitempty" xml:"PlaybookTypes,omitempty"`
 	// The UUID of the playbook.
+	//
+	// example:
+	//
+	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the SOAR handling policy.
+	//
+	// example:
+	//
+	// a50a49b7-6044-4593-ab15-2b46567caadd
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16394,17 +22033,38 @@ func (s *ListDisposeStrategyRequest) SetStartTime(v int64) *ListDisposeStrategyR
 
 type ListDisposeStrategyResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *ListDisposeStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16468,10 +22128,22 @@ func (s *ListDisposeStrategyResponseBodyData) SetResponseData(v []*ListDisposeSt
 
 type ListDisposeStrategyResponseBodyDataPageInfo struct {
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -16500,64 +22172,220 @@ func (s *ListDisposeStrategyResponseBodyDataPageInfo) SetTotalCount(v int64) *Li
 
 type ListDisposeStrategyResponseBodyDataResponseData struct {
 	// The UUID of the alert.
+	//
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
 	// The ID of the Alibaba Cloud account that is associated with the policy in SIEM.
+	//
+	// example:
+	//
+	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The status of the policy. Valid values:
 	//
-	// *   0: invalid
-	// *   1: valid
+	// 	- 0: invalid
+	//
+	// 	- 1: valid
+	//
+	// example:
+	//
+	// 0
 	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
 	// The details of the entity. The value is a JSON array.
+	//
+	// example:
+	//
+	// [{"ip":"1.1.1.1"}]
 	Entity []interface{} `json:"Entity,omitempty" xml:"Entity,omitempty" type:"Repeated"`
 	// The ID of the entity.
+	//
+	// example:
+	//
+	// 123456789
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The type of the entity. Valid values:
 	//
-	// *   ip
-	// *   process
-	// *   file
+	// 	- ip
+	//
+	// 	- process
+	//
+	// 	- file
+	//
+	// example:
+	//
+	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The summary information about the failed task.
+	//
+	// example:
+	//
+	// DisposalEntity failed which description is Aegis Quarantine File , return_info failed which description is Check Aegis Process Result , [ERROR DETAIL] *******.php:file not found
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The end time of the task.
+	//
+	// example:
+	//
+	// 2021-08-10 21:34:07
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The update time.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the policy.
+	//
+	// example:
+	//
+	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the event.
+	//
+	// example:
+	//
+	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The name of the playbook, which is the unique identifier of the playbook.
+	//
+	// example:
+	//
+	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
 	// The type of the playbook. Valid values:
 	//
-	// *   system: user-triggered playbook
-	// *   custom: event-triggered playbook
-	// *   custom_alert: alert-triggered playbook
-	// *   soar-manual: user-run playbook
-	// *   soar-mdr: MDR-run playbook
+	// 	- system: user-triggered playbook
+	//
+	// 	- custom: event-triggered playbook
+	//
+	// 	- custom_alert: alert-triggered playbook
+	//
+	// 	- soar-manual: user-run playbook
+	//
+	// 	- soar-mdr: MDR-run playbook
+	//
+	// example:
+	//
+	// system
 	PlaybookType *string `json:"PlaybookType,omitempty" xml:"PlaybookType,omitempty"`
 	// The UUID of the playbook.
+	//
+	// example:
+	//
+	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 	// The scope of the policy.
+	//
+	// example:
+	//
+	// [{ aliUid: 1766185894104675 }]
 	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
 	// The ID of the SOAR handling policy.
+	//
+	// example:
+	//
+	// 577bbf90-a770-44a7-8154-586aa2d318fa
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 	// The running status of the playbook. Valid values:
 	//
-	// *   200: successful
-	// *   10: deleted
-	// *   5: failed
-	// *   0: initial
+	// 	- 200: successful
+	//
+	// 	- 10: deleted
+	//
+	// 	- 5: failed
+	//
+	// 	- 0: initial
+	//
+	// example:
+	//
+	// 10
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the Alibaba account that is used to configure the policy.
+	//
+	// example:
+	//
+	// 176555323***
 	SubAliuid *int64 `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
 	// The parameters that are used to trigger the playbook. The value is in the JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "file": {
+	//
+	//             "op_code": "2",
+	//
+	//             "file_path": "/root/alert0913/a886.jsp",
+	//
+	//             "entity_type": "file",
+	//
+	//             "entity_name": "a886.jsp",
+	//
+	//             "file_name": "a886.jsp",
+	//
+	//             "file_owner": "USER:,GROUP:",
+	//
+	//             "hash_value": "5def10c9a4287d0920d86b42420b20b0",
+	//
+	//             "op_level": "2",
+	//
+	//             "entity_id": "/root/alert0913/a886.jsp",
+	//
+	//             "host_uuid": {
+	//
+	//                   "entity_type": "host",
+	//
+	//                   "entity_name": "N/A",
+	//
+	//                   "is_comprised": "1",
+	//
+	//                   "os_type": "linux",
+	//
+	//                   "entity_id": "5f58ef67-8803-4314-8d67-c87dc92b****",
+	//
+	//                   "host_uuid": "5f58ef67-8803-4314-8d67-c87dc92b****",
+	//
+	//                   "host_name": "N/A"
+	//
+	//             },
+	//
+	//             "malware_type": "${aliyun.siem.sas.alert_tag.webshell}"
+	//
+	//       },
+	//
+	//       "_sys_siem": {
+	//
+	//             "cloudCode": "aliyun",
+	//
+	//             "alertId": "89416745494****"
+	//
+	//       },
+	//
+	//       "scope": [
+	//
+	//             {
+	//
+	//                   "aliUid": 1766185894104****
+	//
+	//             }
+	//
+	//       ]
+	//
+	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
 }
 
@@ -16706,19 +22534,52 @@ func (s *ListDisposeStrategyResponse) SetBody(v *ListDisposeStrategyResponseBody
 type ListImportedLogsByProdRequest struct {
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud.
+	//
+	// 	- aliyun: Alibaba Cloud.
+	//
+	// 	- hcloud: Huawei Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The code of the cloud service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListImportedLogsByProdRequest) String() string {
@@ -16758,6 +22619,10 @@ type ListImportedLogsByProdResponseBody struct {
 	// The data returned.
 	Data []*ListImportedLogsByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16782,34 +22647,89 @@ func (s *ListImportedLogsByProdResponseBody) SetRequestId(v string) *ListImporte
 type ListImportedLogsByProdResponseBodyData struct {
 	// Indicates whether the log is automatically added to the threat analysis feature within newly added accounts. Valid values:
 	//
-	// *   1: yes
-	// *   0: no
+	// 	- 1: yes.
+	//
+	// 	- 0: no.
+	//
+	// example:
+	//
+	// 2023-11-23 12:30:00
 	AutoImported *int32 `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud.
+	//
+	// 	- aliyun: Alibaba Cloud.
+	//
+	// 	- hcloud: Huawei Cloud.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// Indicates whether the log is added to the threat analysis feature. Valid values:
 	//
-	// *   1: yes
-	// *   0: no
+	// 	- 1: yes.
+	//
+	// 	- 0: no.
+	//
+	// example:
+	//
+	// 2023-11-23 12:30:00
 	Imported *int32 `json:"Imported,omitempty" xml:"Imported,omitempty"`
 	// The number of users who have added the log.
+	//
+	// example:
+	//
+	// 2
 	ImportedUserCount *int32 `json:"ImportedUserCount,omitempty" xml:"ImportedUserCount,omitempty"`
-	// The log code.
+	// The code of the log.
+	//
+	// example:
+	//
+	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The display log code.
+	// The display code of the log.
+	//
+	// example:
+	//
+	// ${siem.prod. cloud_siem_waf_xxxxx}
 	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
-	LogType    *int32  `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The type of log. Valid values:
+	//
+	//  - 1: the log produced by other product
+	//
+	//  - 2: the predefined log
+	//
+	//  - 3: the custom log
+	//
+	// example:
+	//
+	// 1
+	LogType *int32 `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The time when the log was last added.
+	//
+	// example:
+	//
+	// 2023-11-23 12:30:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The code of the cloud service to which the log belongs.
+	//
+	// example:
+	//
+	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The total number of users who have the log.
+	//
+	// example:
+	//
+	// 5
 	TotalUserCount *int32 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
 	// The number of users who have not added the log.
+	//
+	// example:
+	//
+	// 3
 	UnImportedUserCount *int32 `json:"UnImportedUserCount,omitempty" xml:"UnImportedUserCount,omitempty"`
 }
 
@@ -16908,8 +22828,13 @@ func (s *ListImportedLogsByProdResponse) SetBody(v *ListImportedLogsByProdRespon
 type ListOperationRequest struct {
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -16930,6 +22855,10 @@ type ListOperationResponseBody struct {
 	// The response parameters.
 	Data *ListOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CCEEE128-6607-503E-AAA6-C5E57D94****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16954,8 +22883,13 @@ func (s *ListOperationResponseBody) SetRequestId(v string) *ListOperationRespons
 type ListOperationResponseBodyData struct {
 	// Indicates whether the user is an administrator. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	AdminOrNot *bool `json:"AdminOrNot,omitempty" xml:"AdminOrNot,omitempty"`
 	// The resources on which the permissions are granted.
 	OperationList []*string `json:"OperationList,omitempty" xml:"OperationList,omitempty" type:"Repeated"`
@@ -17011,14 +22945,37 @@ func (s *ListOperationResponse) SetBody(v *ListOperationResponseBody) *ListOpera
 type ListProjectLogStoresRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The log code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
 	// The code of the cloud service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -17054,6 +23011,10 @@ type ListProjectLogStoresResponseBody struct {
 	// The data returned.
 	Data []*ListProjectLogStoresResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17077,20 +23038,52 @@ func (s *ListProjectLogStoresResponseBody) SetRequestId(v string) *ListProjectLo
 
 type ListProjectLogStoresResponseBodyData struct {
 	// The endpoint of the Simple Log Service project.
+	//
+	// example:
+	//
+	// cn-hangzhou.log.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
 	// The name of the region in which the Simple Log Service project resides.
+	//
+	// example:
+	//
+	// hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The name of the Simple Log Service Logstore.
+	//
+	// example:
+	//
+	// cloud-siem-logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The name of the Simple Log Service project.
+	//
+	// example:
+	//
+	// cloud-siem-project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the region in which the Simple Log Service project resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// sas_account_xxxx
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
@@ -17173,13 +23166,28 @@ func (s *ListProjectLogStoresResponse) SetBody(v *ListProjectLogStoresResponseBo
 
 type ListQuickQueryRequest struct {
 	// The line from which the query starts. Default value: 0.
+	//
+	// example:
+	//
+	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	// The number of entries per page. Valid values: 1 to 500.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -17210,6 +23218,10 @@ type ListQuickQueryResponseBody struct {
 	// The response parameters.
 	Data *ListQuickQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F375A043-4F5B-55F2-A564-CC47FFC6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17233,10 +23245,18 @@ func (s *ListQuickQueryResponseBody) SetRequestId(v string) *ListQuickQueryRespo
 
 type ListQuickQueryResponseBodyData struct {
 	// The number of saved searches per page.
+	//
+	// example:
+	//
+	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The saved search.
 	QuickQueryList []*ListQuickQueryResponseBodyDataQuickQueryList `json:"QuickQueryList,omitempty" xml:"QuickQueryList,omitempty" type:"Repeated"`
 	// The total number of saved searches that meet the query conditions.
+	//
+	// example:
+	//
+	// 101
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -17265,10 +23285,22 @@ func (s *ListQuickQueryResponseBodyData) SetTotal(v int32) *ListQuickQueryRespon
 
 type ListQuickQueryResponseBodyDataQuickQueryList struct {
 	// The alias of the saved search.
+	//
+	// example:
+	//
+	// no_1_created_search_used_for_dispaly_ip
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The query statement corresponding to the saved search.
+	//
+	// example:
+	//
+	// 	- and SamplerAddress:\\"172.18.1.1\\" and OutIf:\\"105\\"
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The name of the saved search.
+	//
+	// example:
+	//
+	// data_analysis
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -17327,8 +23359,13 @@ func (s *ListQuickQueryResponse) SetBody(v *ListQuickQueryResponseBody) *ListQui
 type ListRdUsersRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -17349,6 +23386,10 @@ type ListRdUsersResponseBody struct {
 	// The data returned.
 	Data []*ListRdUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17372,19 +23413,44 @@ func (s *ListRdUsersResponseBody) SetRequestId(v string) *ListRdUsersResponseBod
 
 type ListRdUsersResponseBodyData struct {
 	// Indicates whether the account can be used to view the logs and alerts within the account.
+	//
+	// example:
+	//
+	// true
 	DelegatedOrNot *bool `json:"DelegatedOrNot,omitempty" xml:"DelegatedOrNot,omitempty"`
 	// Indicates whether the account is added to the threat analysis feature for centralized management. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Joined *bool `json:"Joined,omitempty" xml:"Joined,omitempty"`
 	// The time when the account was added to the threat analysis feature.
+	//
+	// example:
+	//
+	// 2013-10-01 00:00:00
 	JoinedTime *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
@@ -17458,14 +23524,45 @@ func (s *ListRdUsersResponse) SetBody(v *ListRdUsersResponseBody) *ListRdUsersRe
 type ListUserProdLogsRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// 管理员切换成其他成员视角的用户ID。
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// 视图类型。
+	//
+	// - 0：当前阿里云账号视图。
+	//
+	// - 1：企业下所有账号的视图。
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The log code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
 	// The code of the cloud service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 }
 
@@ -17506,6 +23603,10 @@ type ListUserProdLogsResponseBody struct {
 	// The data returned.
 	Data []*ListUserProdLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17529,33 +23630,76 @@ func (s *ListUserProdLogsResponseBody) SetRequestId(v string) *ListUserProdLogsR
 
 type ListUserProdLogsResponseBodyData struct {
 	// The display details of the Logstore.
+	//
+	// example:
+	//
+	// cn-shanghai.siem-project.siem-logstore
 	DisplayLine *string `json:"DisplayLine,omitempty" xml:"DisplayLine,omitempty"`
 	// Indicates whether the details of the added log are returned. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Displayed *bool `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
 	// Indicates whether the log is added to the threat analysis feature. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
 	// Indicates whether the log is added to the threat analysis feature. Valid values:
 	//
-	// *   0: yes
-	// *   1: no
+	// 	- 0: yes
+	//
+	// 	- 1: no
+	//
+	// example:
+	//
+	// 0
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The log code.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
 	// The details of the Logstore. The value is a JSON string.
+	//
+	// example:
+	//
+	// {"project":"wafnew-project-1335759343513432-cn-hangzhou","logStore":"wafnew-logstore","regionCode":"cn-hangzhou","prodCode":"waf"}
 	SourceLogInfo *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
 	// The code of the cloud service.
+	//
+	// example:
+	//
+	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
@@ -17649,12 +23793,29 @@ func (s *ListUserProdLogsResponse) SetBody(v *ListUserProdLogsResponseBody) *Lis
 type ListUsersByProdRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The code of the cloud service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 }
 
@@ -17690,6 +23851,10 @@ type ListUsersByProdResponseBody struct {
 	// The data returned.
 	Data []*ListUsersByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17714,25 +23879,63 @@ func (s *ListUsersByProdResponseBody) SetRequestId(v string) *ListUsersByProdRes
 type ListUsersByProdResponseBodyData struct {
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud.
+	//
+	// 	- aliyun: Alibaba Cloud.
+	//
+	// 	- hcloud: Huawei Cloud.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// Indicates whether the log is added to the threat analysis feature.
+	//
+	// example:
+	//
+	// true
 	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	// The display log code. The value is based on your console settings.
+	// The display log code. The value varies based on your console settings.
+	//
+	// example:
+	//
+	// ${siem.xxx.xxxxxxxxx}
 	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	//
+	// example:
+	//
+	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The log code.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
 	// The log name.
+	//
+	// example:
+	//
+	// the process startup log
 	SourceLogName *string `json:"SourceLogName,omitempty" xml:"SourceLogName,omitempty"`
 	// The code of the cloud service.
+	//
+	// example:
+	//
+	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	// The ID of the Alibaba Cloud account for threat analysis.
+	//
+	// example:
+	//
+	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	// The display name of the Alibaba Cloud account for threat analysis.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
@@ -17820,25 +24023,53 @@ func (s *ListUsersByProdResponse) SetBody(v *ListUsersByProdResponseBody) *ListU
 
 type ModifyBindAccountRequest struct {
 	// The AccessKey ID of the cloud account.
+	//
+	// example:
+	//
+	// ABCXXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// The ID of the cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The username of the cloud account.
+	//
+	// example:
+	//
+	// sas_account_xxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID that is generated by the system when the account is added. You can call the ListBindAccount operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
 	// The code of the cloud service provider.
 	//
-	// Enumeration values:
+	// This parameter is required.
 	//
-	// *   qcloud
-	// *   hcloud
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ModifyBindAccountRequest) String() string {
@@ -17879,10 +24110,24 @@ func (s *ModifyBindAccountRequest) SetRegionId(v string) *ModifyBindAccountReque
 	return s
 }
 
+func (s *ModifyBindAccountRequest) SetRoleFor(v int64) *ModifyBindAccountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ModifyBindAccountRequest) SetRoleType(v int32) *ModifyBindAccountRequest {
+	s.RoleType = &v
+	return s
+}
+
 type ModifyBindAccountResponseBody struct {
 	// The data returned.
 	Data *ModifyBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17906,6 +24151,10 @@ func (s *ModifyBindAccountResponseBody) SetRequestId(v string) *ModifyBindAccoun
 
 type ModifyBindAccountResponseBodyData struct {
 	// The number of the accounts that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -17953,31 +24202,74 @@ func (s *ModifyBindAccountResponse) SetBody(v *ModifyBindAccountResponseBody) *M
 
 type ModifyDataSourceRequest struct {
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The name of the data source.
+	//
+	// example:
+	//
+	// beijing_waf_kafka
 	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
 	// The parameters of the data source in the JSON string format.
+	//
+	// example:
+	//
+	// [{"paraCode":"region_code","paraValue":"ap-guangzhou"}]
 	DataSourceInstanceParams *string `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty"`
 	// The remarks on the data source.
+	//
+	// example:
+	//
+	// waf_alert_log
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   ckafka: Tencent Cloud Kafka (CKafka)
-	// *   obs: Huawei Cloud Object Storage Service (OBS)
-	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	//
+	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	//
+	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -18033,6 +24325,10 @@ type ModifyDataSourceResponseBody struct {
 	// The data returned.
 	Data *ModifyDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18056,8 +24352,16 @@ func (s *ModifyDataSourceResponseBody) SetRequestId(v string) *ModifyDataSourceR
 
 type ModifyDataSourceResponseBodyData struct {
 	// The number of data sources that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 }
 
@@ -18110,31 +24414,76 @@ func (s *ModifyDataSourceResponse) SetBody(v *ModifyDataSourceResponseBody) *Mod
 
 type ModifyDataSourceLogRequest struct {
 	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// 	- qcloud: Tencent Cloud
+	//
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ef33097c9d1fdb0b9c7e8c7ca320pkl1
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
 	// The parameters of the data source. Set this parameter to a JSON string.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"LogCode":"cloud_siem_qcloud_waf_alert_log","LogParas":"[{\\"ParaCode\\":\\"api_name\\",\\"ParaValue\\":\\"GetAttackDownloadRecords\\"}]"}]
 	DataSourceInstanceLogs *string `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   obs: Huawei Cloud Object Storage Service (OBS)
-	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
-	// *   ckafka: Tencent Cloud Kafka (CKafka)
+	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	//
+	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	//
+	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	//
+	// example:
+	//
+	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The log code.
+	//
+	// example:
+	//
+	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) to query log IDs.
+	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) to query log IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ef33097c9d1fdb0b9c7e8c7ca320pkl1
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -18190,6 +24539,10 @@ type ModifyDataSourceLogResponseBody struct {
 	// The data returned.
 	Data *ModifyDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18213,8 +24566,16 @@ func (s *ModifyDataSourceLogResponseBody) SetRequestId(v string) *ModifyDataSour
 
 type ModifyDataSourceLogResponseBodyData struct {
 	// The number of logs that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	//
+	// example:
+	//
+	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
 }
 
@@ -18266,41 +24627,92 @@ func (s *ModifyDataSourceLogResponse) SetBody(v *ModifyDataSourceLogResponseBody
 }
 
 type OpenDeliveryRequest struct {
-	// The log code of the cloud service, such as the code of the process log for Security Center. If you leave this parameter empty, operations are performed on all logs of the cloud service.
+	// The log code of the cloud service, such as the code of the process log for Security Center. This parameter is optional. If you leave this parameter empty, operations are performed on all logs of the cloud service.
+	//
+	// example:
+	//
+	// cloud_siem_cfw_flow
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The code of the cloud service. Valid values:
 	//
-	// *   qcloud_waf
-	// *   qlcoud_cfw
-	// *   hcloud_waf
-	// *   hcloud_cfw
-	// *   ddos
-	// *   sas
-	// *   cfw
-	// *   config
-	// *   csk
-	// *   fc
-	// *   rds
-	// *   nas
-	// *   apigateway
-	// *   cdn
-	// *   mongodb
-	// *   eip
-	// *   slb
-	// *   vpc
-	// *   actiontrail
-	// *   waf
-	// *   bastionhost
-	// *   oss
-	// *   polardb
+	// 	- qcloud_waf
+	//
+	// 	- qlcoud_cfw
+	//
+	// 	- hcloud_waf
+	//
+	// 	- hcloud_cfw
+	//
+	// 	- ddos
+	//
+	// 	- sas
+	//
+	// 	- cfw
+	//
+	// 	- config
+	//
+	// 	- csk
+	//
+	// 	- fc
+	//
+	// 	- rds
+	//
+	// 	- nas
+	//
+	// 	- apigateway
+	//
+	// 	- cdn
+	//
+	// 	- mongodb
+	//
+	// 	- eip
+	//
+	// 	- slb
+	//
+	// 	- vpc
+	//
+	// 	- actiontrail
+	//
+	// 	- waf
+	//
+	// 	- bastionhost
+	//
+	// 	- oss
+	//
+	// 	- polardb
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cfw
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s OpenDeliveryRequest) String() string {
@@ -18339,10 +24751,19 @@ func (s *OpenDeliveryRequest) SetRoleType(v int32) *OpenDeliveryRequest {
 type OpenDeliveryResponseBody struct {
 	// Indicates whether the log delivery feature is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 15FD134E-D69B-51E8-B052-73F97BD8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18395,32 +24816,94 @@ func (s *OpenDeliveryResponse) SetBody(v *OpenDeliveryResponseBody) *OpenDeliver
 
 type PostAutomateResponseConfigRequest struct {
 	// The action configuration of the automated response rule. The value is in the JSON format.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "actionType": "doPlaybook",
+	//
+	//             "playbookName": "WafBlockIP",
+	//
+	//             "playbookUuid": "bdad6220-6584-41b2-9704-fc6584568758"
+	//
+	//       }
+	//
+	// ]
 	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
 	// The type of the handling action. Multiple types are separated by commas (,). Valid values:
 	//
-	// *   **doPlaybook**: runs the playbook.
-	// *   **changeEventStatus**: changes the event status.
-	// *   **changeThreatLevel**: changes the threat level of the event.
+	// 	- **doPlaybook**: runs the playbook.
+	//
+	// 	- **changeEventStatus**: changes the event status.
+	//
+	// 	- **changeThreatLevel**: changes the threat level of the event.
+	//
+	// example:
+	//
+	// doPlaybook,changeEventStatus
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The type of the automated response rule. Valid values:
 	//
-	// *   **event**
-	// *   **alert**
+	// 	- **event**
+	//
+	// 	- **alert**
+	//
+	// example:
+	//
+	// event
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
 	// The trigger condition of the automated response rule. The value is in the JSON format.
+	//
+	// example:
+	//
+	// [{"left":{"value":"alert_name"},"operator":"containsString","right":{"value":"webshell_online"}}]
 	ExecutionCondition *string `json:"ExecutionCondition,omitempty" xml:"ExecutionCondition,omitempty"`
 	// The rule ID.
+	//
+	// example:
+	//
+	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   **cn-hangzhou**: Your assets reside in regions in China.
-	// *   **ap-southeast-1**: Your assets reside in regions outside China.
+	// 	- **cn-hangzhou**: Your assets reside in regions in China.
+	//
+	// 	- **ap-southeast-1**: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The rule name.
+	//
+	// example:
+	//
+	// cfw kill quara book
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The ID of the user who created the rule.
+	//
+	// example:
+	//
+	// 17108579417****
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
@@ -18484,17 +24967,38 @@ func (s *PostAutomateResponseConfigRequest) SetSubUserId(v int64) *PostAutomateR
 
 type PostAutomateResponseConfigResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18562,57 +25066,154 @@ func (s *PostAutomateResponseConfigResponse) SetBody(v *PostAutomateResponseConf
 
 type PostCustomizeRuleRequest struct {
 	// The risk type.
+	//
+	// example:
+	//
+	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the risk type.
+	//
+	// example:
+	//
+	// ${siem_rule_type_process_abnormal_command}
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	AttCk        *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// att&ck.
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window.
+	//
+	// example:
+	//
+	// {"time":"1","unit":"MINUTE"}
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
 	// Specifies whether to convert an alert to an event. Valid values:
 	//
-	// *   0: no
-	// *   1: yes
+	// 	- 0: no
+	//
+	// 	- 1: yes
+	//
+	// example:
+	//
+	// 1
 	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
 	// The event generation method. Valid values:
 	//
-	// *   default: The default method is used.
-	// *   singleToSingle: The system generates an event for each alert.
-	// *   allToSingle: The system generates an event for alerts within a period of time.
+	// 	- default: The default method is used.
+	//
+	// 	- singleToSingle: The system generates an event for each alert.
+	//
+	// 	- allToSingle: The system generates an event for alerts within a period of time.
+	//
+	// example:
+	//
+	// allToSingle
 	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The log source of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
 	// The internal code of the log source.
+	//
+	// example:
+	//
+	// ${sas.cloudsiem.prod.cloud_siem_aegis_sas_alert}
 	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
 	// The log type of the rule.
+	//
+	// example:
+	//
+	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The internal code of the log type.
+	//
+	// example:
+	//
+	// ${security_event_config.event_name.webshellName_clientav}
 	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
 	// The window length of the rule.
+	//
+	// example:
+	//
+	// {"time":"1","unit":"HOUR"}
 	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The query condition of the rule. The value is in the JSON format.
+	//
+	// example:
+	//
+	// [[{"not":false,"left":"alert_name","operator":"=","right":"WEBSHELL"}]]
 	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
 	// The description of the rule.
+	//
+	// example:
+	//
+	// this rule is for waf scan
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
 	// The log aggregation field of the rule. The value is a JSON string.
+	//
+	// example:
+	//
+	// ["asset_id"]
 	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The threshold configuration of the rule. The value is in the JSON format.
+	//
+	// example:
+	//
+	// {"aggregateFunction":"count","aggregateFunctionName":"count","field":"activity_name","operator":"&lt;=","value":1}
 	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
 	// The risk level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
@@ -18731,17 +25332,38 @@ func (s *PostCustomizeRuleRequest) SetThreatLevel(v string) *PostCustomizeRuleRe
 
 type PostCustomizeRuleResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *PostCustomizeRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18780,70 +25402,178 @@ func (s *PostCustomizeRuleResponseBody) SetSuccess(v bool) *PostCustomizeRuleRes
 
 type PostCustomizeRuleResponseBodyData struct {
 	// The risk type.
+	//
+	// example:
+	//
+	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the risk type.
+	//
+	// example:
+	//
+	// ${siem_rule_type_process_abnormal_command}
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
-	Aliuid   *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	AttCk    *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	DataType *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	//
+	// example:
+	//
+	// 127608589417****
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// 告警附加字段attck
+	//
+	// example:
+	//
+	// T1595.002 Vulnerability Scanning
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// 自动化响应规则条件字段数据类型。
+	//
+	// example:
+	//
+	// varchar
+	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;MINUTE&quot;}
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
 	// Indicates whether the system generates an event for the alert. Valid values:
 	//
-	// *   0: no
-	// *   1: yes
+	// 	- 0: no
+	//
+	// 	- 1: yes
+	//
+	// example:
+	//
+	// 1
 	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
 	// The event generation method. Valid values:
 	//
-	// *   default: The default method is used.
-	// *   singleToSingle: The system generates an event for each alert.
-	// *   allToSingle: The system generates an event for alerts within a period of time.
+	// 	- default: The default method is used.
+	//
+	// 	- singleToSingle: The system generates an event for each alert.
+	//
+	// 	- allToSingle: The system generates an event for alerts within a period of time.
+	//
+	// example:
+	//
+	// allToSingle
 	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The time when the custom rule was created.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the custom rule was last updated.
+	//
+	// example:
+	//
+	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the custom rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The log source of the rule.
+	//
+	// example:
+	//
+	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
 	// The internal code of the log source.
+	//
+	// example:
+	//
+	// ${sas.cloudsiem.prod.cloud_siem_aegis_sas_alert}
 	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
 	// The log type of the rule.
+	//
+	// example:
+	//
+	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The internal code of the log type.
+	//
+	// example:
+	//
+	// ${security_event_config.event_name.webshellName_clientav}
 	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
 	// The window length of the rule. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;HOUR&quot;}
 	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
 	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// [[{&quot;not&quot;:false,&quot;left&quot;:&quot;alert_name&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;right&quot;:&quot;WEBSHELL&quot;}]]
 	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
 	// The description of the rule.
+	//
+	// example:
+	//
+	// this rule is for waf scan
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
 	// The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// [&quot;asset_id&quot;]
 	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	//
+	// example:
+	//
+	// {&quot;aggregateFunction&quot;:&quot;count&quot;,&quot;aggregateFunctionName&quot;:&quot;count&quot;,&quot;field&quot;:&quot;activity_name&quot;,&quot;operator&quot;:&quot;&lt;=&quot;,&quot;value&quot;:1}
 	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   predefine
-	// *   customize
+	// 	- predefine
+	//
+	// 	- customize
+	//
+	// example:
+	//
+	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The rule status. Valid values:
 	//
-	// *   0: The rule is in the initial state.
-	// *   10: The simulation data is tested.
-	// *   15: The business data is being tested.
-	// *   20: The business data test ends.
-	// *   100: The rule takes effect.
+	// 	- 0: The rule is in the initial state.
+	//
+	// 	- 10: The simulation data is tested.
+	//
+	// 	- 15: The business data is being tested.
+	//
+	// 	- 20: The business data test ends.
+	//
+	// 	- 100: The rule takes effect.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The risk level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// 	- serious: high
+	//
+	// 	- suspicious: medium
+	//
+	// 	- remind: low
+	//
+	// example:
+	//
+	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
@@ -19006,20 +25736,52 @@ func (s *PostCustomizeRuleResponse) SetBody(v *PostCustomizeRuleResponseBody) *P
 
 type PostCustomizeRuleTestRequest struct {
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The simulation data for the test. This parameter is available only when TestType is set to simulate.
+	//
+	// example:
+	//
+	// [{"key1":"value1","key2":"value2","key3":"value3","key4":"value4","key5":"value5"}]
 	SimulatedData *string `json:"SimulatedData,omitempty" xml:"SimulatedData,omitempty"`
 	// The test type. Valid values:
 	//
-	// *   simulate: simulation data test
-	// *   business: business data test
+	// 	- simulate: simulation data test
+	//
+	// 	- business: business data test
+	//
+	// example:
+	//
+	// simulate
 	TestType *string `json:"TestType,omitempty" xml:"TestType,omitempty"`
 }
 
@@ -19063,17 +25825,38 @@ func (s *PostCustomizeRuleTestRequest) SetTestType(v string) *PostCustomizeRuleT
 
 type PostCustomizeRuleTestResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19141,26 +25924,124 @@ func (s *PostCustomizeRuleTestResponse) SetBody(v *PostCustomizeRuleTestResponse
 
 type PostEventDisposeAndWhiteruleListRequest struct {
 	// The configuration of event handling. The value is a JSON object.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "playbookName": "WafBlockIP",
+	//
+	//             "entityId": "104466118",
+	//
+	//             "scope": [
+	//
+	//                   "176618589410****"
+	//
+	//             ],
+	//
+	//             "startTime": 1604168946281,
+	//
+	//             "endTime": 1614168946281
+	//
+	//       },
+	//
+	//       {
+	//
+	//             "playbookName": "WafBlockIP",
+	//
+	//             "entityId": "104466118",
+	//
+	//             "scope": [
+	//
+	//                   {
+	//
+	//                         "instanceId": "waf-cn-n6w1oy1****",
+	//
+	//                         "domains": [
+	//
+	//                               "lmfip.wafqax.***"
+	//
+	//                         ]
+	//
+	//                   }
+	//
+	//             ],
+	//
+	//             "startTime": 1604168946281,
+	//
+	//             "endTime": 1614168946281
+	//
+	//       }
+	//
+	// ]
 	EventDispose *string `json:"EventDispose,omitempty" xml:"EventDispose,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The configuration of the alert recipient. The value is a JSON object.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "messageTitle": "test",
+	//
+	//       "receiver": "xiaowang",
+	//
+	//       "channel": "message"
+	//
+	// }
 	ReceiverInfo *string `json:"ReceiverInfo,omitempty" xml:"ReceiverInfo,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The remarks of the event.
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	//
+	// example:
+	//
+	// dealed
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// *   0: unhandled
-	// *   1: handing
-	// *   5: handling failed
-	// *   10: handled
+	// 	- 0: unhandled
+	//
+	// 	- 1: handing
+	//
+	// 	- 5: handling failed
+	//
+	// 	- 10: handled
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -19214,17 +26095,38 @@ func (s *PostEventDisposeAndWhiteruleListRequest) SetStatus(v int32) *PostEventD
 
 type PostEventDisposeAndWhiteruleListResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19292,15 +26194,88 @@ func (s *PostEventDisposeAndWhiteruleListResponse) SetBody(v *PostEventDisposeAn
 
 type PostEventWhiteruleListRequest struct {
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The alert whitelist rule. The value is a JSON object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "alertName": "webshell",
+	//
+	//             "alertNameId": "webshell",
+	//
+	//             "alertType": "command",
+	//
+	//             "alertTypeId": "command",
+	//
+	//             "expression": {
+	//
+	//                   "status": 1,
+	//
+	//                   "conditions": [
+	//
+	//                         {
+	//
+	//                               "isNot": false,
+	//
+	//                               "left": {
+	//
+	//                                     "value": "file_path"
+	//
+	//                               },
+	//
+	//                               "operator": "gt",
+	//
+	//                               "right": {
+	//
+	//                                     "value": "cp"
+	//
+	//                               }
+	//
+	//                         }
+	//
+	//                   ]
+	//
+	//             }
+	//
+	//       }
+	//
+	// ]
 	WhiteruleList *string `json:"WhiteruleList,omitempty" xml:"WhiteruleList,omitempty"`
 }
 
@@ -19339,17 +26314,38 @@ func (s *PostEventWhiteruleListRequest) SetWhiteruleList(v string) *PostEventWhi
 
 type PostEventWhiteruleListResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19417,14 +26413,37 @@ func (s *PostEventWhiteruleListResponse) SetBody(v *PostEventWhiteruleListRespon
 
 type PostFinishCustomizeRuleTestRequest struct {
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s PostFinishCustomizeRuleTestRequest) String() string {
@@ -19457,17 +26476,38 @@ func (s *PostFinishCustomizeRuleTestRequest) SetRoleType(v int32) *PostFinishCus
 
 type PostFinishCustomizeRuleTestResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19535,23 +26575,56 @@ func (s *PostFinishCustomizeRuleTestResponse) SetBody(v *PostFinishCustomizeRule
 
 type PostRuleStatusChangeRequest struct {
 	// The rule IDs. The value is a JSON array.
+	//
+	// example:
+	//
+	// [123,345]
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// Specifies whether to enable the rule. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	InUse *bool `json:"InUse,omitempty" xml:"InUse,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   predefine
-	// *   customize
+	// 	- predefine
+	//
+	// 	- customize
+	//
+	// example:
+	//
+	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -19595,17 +26668,38 @@ func (s *PostRuleStatusChangeRequest) SetRuleType(v string) *PostRuleStatusChang
 
 type PostRuleStatusChangeResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19672,13 +26766,32 @@ func (s *PostRuleStatusChangeResponse) SetBody(v *PostRuleStatusChangeResponseBo
 }
 
 type RestoreCapacityRequest struct {
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s RestoreCapacityRequest) String() string {
@@ -19707,10 +26820,19 @@ func (s *RestoreCapacityRequest) SetRoleType(v int32) *RestoreCapacityRequest {
 type RestoreCapacityResponseBody struct {
 	// Indicates whether the release command has been sent. Valid values:
 	//
-	// *   true: The command has been sent and the storage space is being released.
-	// *   false: The command failed to be sent.
+	// 	- true: The command has been sent and the storage space is being released.
+	//
+	// 	- false: The command failed to be sent.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-58D4-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19763,13 +26885,30 @@ func (s *RestoreCapacityResponse) SetBody(v *RestoreCapacityResponseBody) *Resto
 
 type SaveQuickQueryRequest struct {
 	// The name of the saved search.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// no_1_created_search_used_for_dispaly_ip
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The query statement.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 	- and dst_ip : "121.43.234.***"
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -19799,10 +26938,19 @@ func (s *SaveQuickQueryRequest) SetRegionId(v string) *SaveQuickQueryRequest {
 type SaveQuickQueryResponseBody struct {
 	// Indicates whether the query statement is saved as a saved search. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 06735F17-1EDE-5212-81A3-8585368F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19856,18 +27004,47 @@ func (s *SaveQuickQueryResponse) SetBody(v *SaveQuickQueryResponseBody) *SaveQui
 type SetStorageRequest struct {
 	// The storage region of logs.
 	//
-	// If the data management center is **cn-hangzhou**, the default value of **Region** is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region** is ap-southeast-1, which specifies the Singapore region.
+	// If the data management center is **cn-hangzhou**, the default value of **Region*	- is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region*	- is ap-southeast-1, which specifies the Singapore region.
 	//
 	// The region for log storage cannot be changed. To change the region, contact the technical support of threat analysis.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The storage duration of logs. Default value: 180. Minimum value: 30. Maximum value: 3000. Unit: days.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -19907,10 +27084,19 @@ func (s *SetStorageRequest) SetTtl(v int32) *SetStorageRequest {
 type SetStorageResponseBody struct {
 	// Indicates whether the settings are saved. Valid values:
 	//
-	// *   true:
-	// *   false:
+	// 	- true:
+	//
+	// 	- false:
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-58D4-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19964,8 +27150,13 @@ func (s *SetStorageResponse) SetBody(v *SetStorageResponseBody) *SetStorageRespo
 type ShowQuickAnalysisRequest struct {
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -19986,6 +27177,10 @@ type ShowQuickAnalysisResponseBody struct {
 	// The index fields.
 	Data *ShowQuickAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 2A4FBD89-C29D-5973-B882-CB2D23F6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20057,35 +27252,82 @@ func (s *ShowQuickAnalysisResponse) SetBody(v *ShowQuickAnalysisResponseBody) *S
 type SubmitImportLogTasksRequest struct {
 	// The accounts that you want to add. The value is a JSON array. Valid values:
 	//
-	// *   AccountId: the IDs of the accounts.
+	// 	- AccountId: the IDs of the accounts.
 	//
-	// *   Imported: specifies whether to add the accounts. Valid values:
+	// 	- Imported: specifies whether to add the accounts. Valid values:
 	//
-	//     *   0: no
-	//     *   1: yes
+	//     	- 0: no
+	//
+	//     	- 1: yes
+	//
+	// example:
+	//
+	// [{"AccountId":"123123","Imported":1}]
 	Accounts *string `json:"Accounts,omitempty" xml:"Accounts,omitempty"`
 	// Specifies whether to automatically add the account for which the logging feature is configured. Valid values:
 	//
-	// *   1: yes
-	// *   0: no
+	// 	- 1: yes
+	//
+	// 	- 0: no
+	//
+	// example:
+	//
+	// ["cloud_siem_qcloud_cfw_alert_log"]
 	AutoImported *int32 `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
-	// The code that is used for multi-cloud environments.
+	// The code that is used for multi-cloud environments. Valid values:
 	//
-	// Valid values:
+	// 	- qcloud: Tencent Cloud
 	//
-	// *   qcloud.
-	// *   hcloud.
-	// *   aliyun.
+	// 	- aliyun: Alibaba Cloud
+	//
+	// 	- hcloud: Huawei Cloud
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The logs that you want to collect. The value is a JSON array.
+	//
+	// example:
+	//
+	// ["cloud_siem_qcloud_cfw_alert_log"]
 	LogCodes *string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty"`
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 0
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s SubmitImportLogTasksRequest) String() string {
@@ -20126,10 +27368,24 @@ func (s *SubmitImportLogTasksRequest) SetRegionId(v string) *SubmitImportLogTask
 	return s
 }
 
+func (s *SubmitImportLogTasksRequest) SetRoleFor(v int64) *SubmitImportLogTasksRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *SubmitImportLogTasksRequest) SetRoleType(v int32) *SubmitImportLogTasksRequest {
+	s.RoleType = &v
+	return s
+}
+
 type SubmitImportLogTasksResponseBody struct {
 	// The data returned.
 	Data *SubmitImportLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20153,6 +27409,10 @@ func (s *SubmitImportLogTasksResponseBody) SetRequestId(v string) *SubmitImportL
 
 type SubmitImportLogTasksResponseBodyData struct {
 	// The number of log collection tasks that are submitted.
+	//
+	// example:
+	//
+	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -20199,22 +27459,34 @@ func (s *SubmitImportLogTasksResponse) SetBody(v *SubmitImportLogTasksResponseBo
 }
 
 type SubmitJobsRequest struct {
-	// The parameters of the logs that you want to add. The value is a JSON array, which contains the following parameters:\
+	// The parameters of the logs that you want to add. The value is a JSON array, which contains the following parameters:\\
 	//
 	//
-	// *   SourceProdCode: the code of the cloud service.
+	// 	- SourceProdCode: the code of the cloud service.
 	//
-	// *   SourceLogCode: the code of the log.
+	// 	- SourceLogCode: the code of the log.
 	//
-	// *   Deleted: specifies whether to add the log. Valid values:
+	// 	- Deleted: specifies whether to add the log. Valid values:
 	//
-	//     *   0: yes
-	//     *   1: no
+	//     	- 0: yes
+	//
+	//     	- 1: no
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"SourceLogCode":"cloud_siem_aegis_health_check","SourceProdCode":"sas","SubUserId":120xxxxxxx,"Deleted":0},{"SourceLogCode":"cloud_siem_aegis_health_check","SourceProdCode":"sas","SubUserId":121xxxxxxxx,"Deleted":0},{"SourceLogCode":"cloud_siem_aegis_health_check","SourceProdCode":"sas","SubUserId":122xxxxxxx,"Deleted":1}]
 	JsonParam *string `json:"JsonParam,omitempty" xml:"JsonParam,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -20238,8 +27510,16 @@ func (s *SubmitJobsRequest) SetRegionId(v string) *SubmitJobsRequest {
 
 type SubmitJobsResponseBody struct {
 	// The total number of tasks.
+	//
+	// example:
+	//
+	// 5
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20292,19 +27572,47 @@ func (s *SubmitJobsResponse) SetBody(v *SubmitJobsResponseBody) *SubmitJobsRespo
 
 type UpdateAutomateResponseConfigStatusRequest struct {
 	// The IDs of the automatic response rules. The value is a JSON array.
+	//
+	// example:
+	//
+	// [123,345]
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// Specifies whether the rule is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	InUse *bool `json:"InUse,omitempty" xml:"InUse,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the account that you switch from the management account.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view. Valid values:
+	//
+	// - 0: the current Alibaba Cloud account
+	//
+	// - 1: the global account
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s UpdateAutomateResponseConfigStatusRequest) String() string {
@@ -20342,17 +27650,38 @@ func (s *UpdateAutomateResponseConfigStatusRequest) SetRoleType(v int32) *Update
 
 type UpdateAutomateResponseConfigStatusResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20420,17 +27749,82 @@ func (s *UpdateAutomateResponseConfigStatusResponse) SetBody(v *UpdateAutomateRe
 
 type UpdateWhiteRuleListRequest struct {
 	// The alert whitelist rule. The value is a JSON object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "alertName": "webshell",
+	//
+	//             "alertNameId": "webshell",
+	//
+	//             "alertType": "command",
+	//
+	//             "alertTypeId": "command",
+	//
+	//             "expression": {
+	//
+	//                   "status": 1,
+	//
+	//                   "conditions": [
+	//
+	//                         {
+	//
+	//                               "isNot": false,
+	//
+	//                               "left": {
+	//
+	//                                     "value": "file_path"
+	//
+	//                               },
+	//
+	//                               "operator": "gt",
+	//
+	//                               "right": {
+	//
+	//                                     "value": "cp"
+	//
+	//                               }
+	//
+	//                         }
+	//
+	//                   ]
+	//
+	//             }
+	//
+	//       }
+	//
+	// ]
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The UUID of the event.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// 	- cn-hangzhou: Your assets reside in regions in China.
+	//
+	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The unique ID of the whitelist rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789
 	WhiteRuleId *int64 `json:"WhiteRuleId,omitempty" xml:"WhiteRuleId,omitempty"`
 }
 
@@ -20474,17 +27868,38 @@ func (s *UpdateWhiteRuleListRequest) SetWhiteRuleId(v int64) *UpdateWhiteRuleLis
 
 type UpdateWhiteRuleListResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20597,6 +28012,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a data source to a cloud account that is added to the threat analysis feature.
+//
+// @param request - AddDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataSourceResponse
 func (client *Client) AddDataSourceWithOptions(request *AddDataSourceRequest, runtime *util.RuntimeOptions) (_result *AddDataSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20654,6 +28078,13 @@ func (client *Client) AddDataSourceWithOptions(request *AddDataSourceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a data source to a cloud account that is added to the threat analysis feature.
+//
+// @param request - AddDataSourceRequest
+//
+// @return AddDataSourceResponse
 func (client *Client) AddDataSource(request *AddDataSourceRequest) (_result *AddDataSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataSourceResponse{}
@@ -20665,6 +28096,15 @@ func (client *Client) AddDataSource(request *AddDataSourceRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds logs of a cloud account to the threat analysis feature.
+//
+// @param request - AddDataSourceLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataSourceLogResponse
 func (client *Client) AddDataSourceLogWithOptions(request *AddDataSourceLogRequest, runtime *util.RuntimeOptions) (_result *AddDataSourceLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20718,6 +28158,13 @@ func (client *Client) AddDataSourceLogWithOptions(request *AddDataSourceLogReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds logs of a cloud account to the threat analysis feature.
+//
+// @param request - AddDataSourceLogRequest
+//
+// @return AddDataSourceLogResponse
 func (client *Client) AddDataSourceLog(request *AddDataSourceLogRequest) (_result *AddDataSourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataSourceLogResponse{}
@@ -20729,6 +28176,15 @@ func (client *Client) AddDataSourceLog(request *AddDataSourceLogRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
+//
+// @param request - AddUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserResponse
 func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.RuntimeOptions) (_result *AddUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20766,6 +28222,13 @@ func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
+//
+// @param request - AddUserRequest
+//
+// @return AddUserResponse
 func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserResponse{}
@@ -20777,6 +28240,15 @@ func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
+//
+// @param request - AddUserSourceLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserSourceLogConfigResponse
 func (client *Client) AddUserSourceLogConfigWithOptions(request *AddUserSourceLogConfigRequest, runtime *util.RuntimeOptions) (_result *AddUserSourceLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20834,6 +28306,13 @@ func (client *Client) AddUserSourceLogConfigWithOptions(request *AddUserSourceLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
+//
+// @param request - AddUserSourceLogConfigRequest
+//
+// @return AddUserSourceLogConfigResponse
 func (client *Client) AddUserSourceLogConfig(request *AddUserSourceLogConfigRequest) (_result *AddUserSourceLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserSourceLogConfigResponse{}
@@ -20845,54 +28324,15 @@ func (client *Client) AddUserSourceLogConfig(request *AddUserSourceLogConfigRequ
 	return _result, _err
 }
 
-func (client *Client) BatchJobCheckWithOptions(request *BatchJobCheckRequest, runtime *util.RuntimeOptions) (_result *BatchJobCheckResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubmitId)) {
-		body["SubmitId"] = request.SubmitId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchJobCheck"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BatchJobCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchJobCheck(request *BatchJobCheckRequest) (_result *BatchJobCheckResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchJobCheckResponse{}
-	_body, _err := client.BatchJobCheckWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// Configures log collection tasks based on resource directories.
+//
+// @param request - BatchJobSubmitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchJobSubmitResponse
 func (client *Client) BatchJobSubmitWithOptions(request *BatchJobSubmitRequest, runtime *util.RuntimeOptions) (_result *BatchJobSubmitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20930,6 +28370,13 @@ func (client *Client) BatchJobSubmitWithOptions(request *BatchJobSubmitRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures log collection tasks based on resource directories.
+//
+// @param request - BatchJobSubmitRequest
+//
+// @return BatchJobSubmitResponse
 func (client *Client) BatchJobSubmit(request *BatchJobSubmitRequest) (_result *BatchJobSubmitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchJobSubmitResponse{}
@@ -20941,6 +28388,15 @@ func (client *Client) BatchJobSubmit(request *BatchJobSubmitRequest) (_result *B
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a third-party cloud account that is displayed on the Multi-cloud assets tab of the Feature Settings page to the threat analysis feature.
+//
+// @param request - BindAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAccountResponse
 func (client *Client) BindAccountWithOptions(request *BindAccountRequest, runtime *util.RuntimeOptions) (_result *BindAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20967,6 +28423,14 @@ func (client *Client) BindAccountWithOptions(request *BindAccountRequest, runtim
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -20990,6 +28454,13 @@ func (client *Client) BindAccountWithOptions(request *BindAccountRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a third-party cloud account that is displayed on the Multi-cloud assets tab of the Feature Settings page to the threat analysis feature.
+//
+// @param request - BindAccountRequest
+//
+// @return BindAccountResponse
 func (client *Client) BindAccount(request *BindAccountRequest) (_result *BindAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAccountResponse{}
@@ -21001,6 +28472,15 @@ func (client *Client) BindAccount(request *BindAccountRequest) (_result *BindAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the log delivery feature for a cloud service.
+//
+// @param request - CloseDeliveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseDeliveryResponse
 func (client *Client) CloseDeliveryWithOptions(request *CloseDeliveryRequest, runtime *util.RuntimeOptions) (_result *CloseDeliveryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21050,6 +28530,13 @@ func (client *Client) CloseDeliveryWithOptions(request *CloseDeliveryRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the log delivery feature for a cloud service.
+//
+// @param request - CloseDeliveryRequest
+//
+// @return CloseDeliveryResponse
 func (client *Client) CloseDelivery(request *CloseDeliveryRequest) (_result *CloseDeliveryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseDeliveryResponse{}
@@ -21061,6 +28548,15 @@ func (client *Client) CloseDelivery(request *CloseDeliveryRequest) (_result *Clo
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the automated response rule with a specified ID.
+//
+// @param request - DeleteAutomateResponseConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutomateResponseConfigResponse
 func (client *Client) DeleteAutomateResponseConfigWithOptions(request *DeleteAutomateResponseConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteAutomateResponseConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21106,6 +28602,13 @@ func (client *Client) DeleteAutomateResponseConfigWithOptions(request *DeleteAut
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the automated response rule with a specified ID.
+//
+// @param request - DeleteAutomateResponseConfigRequest
+//
+// @return DeleteAutomateResponseConfigResponse
 func (client *Client) DeleteAutomateResponseConfig(request *DeleteAutomateResponseConfigRequest) (_result *DeleteAutomateResponseConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAutomateResponseConfigResponse{}
@@ -21117,6 +28620,15 @@ func (client *Client) DeleteAutomateResponseConfig(request *DeleteAutomateRespon
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a third-party cloud account that is added to the threat analysis feature by using its AccessKey ID. You can add another cloud account based on your business requirements.
+//
+// @param request - DeleteBindAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBindAccountResponse
 func (client *Client) DeleteBindAccountWithOptions(request *DeleteBindAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteBindAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21143,6 +28655,14 @@ func (client *Client) DeleteBindAccountWithOptions(request *DeleteBindAccountReq
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -21166,6 +28686,13 @@ func (client *Client) DeleteBindAccountWithOptions(request *DeleteBindAccountReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a third-party cloud account that is added to the threat analysis feature by using its AccessKey ID. You can add another cloud account based on your business requirements.
+//
+// @param request - DeleteBindAccountRequest
+//
+// @return DeleteBindAccountResponse
 func (client *Client) DeleteBindAccount(request *DeleteBindAccountRequest) (_result *DeleteBindAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBindAccountResponse{}
@@ -21177,6 +28704,15 @@ func (client *Client) DeleteBindAccount(request *DeleteBindAccountRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a rule by rule ID.
+//
+// @param request - DeleteCustomizeRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomizeRuleResponse
 func (client *Client) DeleteCustomizeRuleWithOptions(request *DeleteCustomizeRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomizeRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21222,6 +28758,13 @@ func (client *Client) DeleteCustomizeRuleWithOptions(request *DeleteCustomizeRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a rule by rule ID.
+//
+// @param request - DeleteCustomizeRuleRequest
+//
+// @return DeleteCustomizeRuleResponse
 func (client *Client) DeleteCustomizeRule(request *DeleteCustomizeRuleRequest) (_result *DeleteCustomizeRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomizeRuleResponse{}
@@ -21233,6 +28776,15 @@ func (client *Client) DeleteCustomizeRule(request *DeleteCustomizeRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a data source that is no longer required.
+//
+// @param request - DeleteDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataSourceResponse
 func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21278,6 +28830,13 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a data source that is no longer required.
+//
+// @param request - DeleteDataSourceRequest
+//
+// @return DeleteDataSourceResponse
 func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_result *DeleteDataSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataSourceResponse{}
@@ -21289,6 +28848,15 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a log.
+//
+// @param request - DeleteDataSourceLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataSourceLogResponse
 func (client *Client) DeleteDataSourceLogWithOptions(request *DeleteDataSourceLogRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21338,6 +28906,13 @@ func (client *Client) DeleteDataSourceLogWithOptions(request *DeleteDataSourceLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a log.
+//
+// @param request - DeleteDataSourceLogRequest
+//
+// @return DeleteDataSourceLogResponse
 func (client *Client) DeleteDataSourceLog(request *DeleteDataSourceLogRequest) (_result *DeleteDataSourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataSourceLogResponse{}
@@ -21349,54 +28924,15 @@ func (client *Client) DeleteDataSourceLog(request *DeleteDataSourceLogRequest) (
 	return _result, _err
 }
 
-func (client *Client) DeleteQuickQueryWithOptions(request *DeleteQuickQueryRequest, runtime *util.RuntimeOptions) (_result *DeleteQuickQueryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
-		body["SearchName"] = request.SearchName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteQuickQuery"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteQuickQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteQuickQuery(request *DeleteQuickQueryRequest) (_result *DeleteQuickQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteQuickQueryResponse{}
-	_body, _err := client.DeleteQuickQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
+//
+// @param request - DeleteUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21434,6 +28970,13 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
@@ -21445,6 +28988,15 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert whitelist rule with a specified ID.
+//
+// @param request - DeleteWhiteRuleListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWhiteRuleListResponse
 func (client *Client) DeleteWhiteRuleListWithOptions(request *DeleteWhiteRuleListRequest, runtime *util.RuntimeOptions) (_result *DeleteWhiteRuleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21490,6 +29042,13 @@ func (client *Client) DeleteWhiteRuleListWithOptions(request *DeleteWhiteRuleLis
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert whitelist rule with a specified ID.
+//
+// @param request - DeleteWhiteRuleListRequest
+//
+// @return DeleteWhiteRuleListResponse
 func (client *Client) DeleteWhiteRuleList(request *DeleteWhiteRuleListRequest) (_result *DeleteWhiteRuleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWhiteRuleListResponse{}
@@ -21501,6 +29060,15 @@ func (client *Client) DeleteWhiteRuleList(request *DeleteWhiteRuleListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the aggregate functions that are supported for a custom rule.
+//
+// @param request - DescribeAggregateFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAggregateFunctionResponse
 func (client *Client) DescribeAggregateFunctionWithOptions(request *DescribeAggregateFunctionRequest, runtime *util.RuntimeOptions) (_result *DescribeAggregateFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21542,6 +29110,13 @@ func (client *Client) DescribeAggregateFunctionWithOptions(request *DescribeAggr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the aggregate functions that are supported for a custom rule.
+//
+// @param request - DescribeAggregateFunctionRequest
+//
+// @return DescribeAggregateFunctionResponse
 func (client *Client) DescribeAggregateFunction(request *DescribeAggregateFunctionRequest) (_result *DescribeAggregateFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAggregateFunctionResponse{}
@@ -21553,6 +29128,15 @@ func (client *Client) DescribeAggregateFunction(request *DescribeAggregateFuncti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scenarios in which an alert needs to be added to the whitelist.
+//
+// @param request - DescribeAlertSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertSceneResponse
 func (client *Client) DescribeAlertSceneWithOptions(request *DescribeAlertSceneRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21594,6 +29178,13 @@ func (client *Client) DescribeAlertSceneWithOptions(request *DescribeAlertSceneR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scenarios in which an alert needs to be added to the whitelist.
+//
+// @param request - DescribeAlertSceneRequest
+//
+// @return DescribeAlertSceneResponse
 func (client *Client) DescribeAlertScene(request *DescribeAlertSceneRequest) (_result *DescribeAlertSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertSceneResponse{}
@@ -21605,6 +29196,15 @@ func (client *Client) DescribeAlertScene(request *DescribeAlertSceneRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scenarios and objects that can be added to an alert whitelist rule.
+//
+// @param request - DescribeAlertSceneByEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertSceneByEventResponse
 func (client *Client) DescribeAlertSceneByEventWithOptions(request *DescribeAlertSceneByEventRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertSceneByEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21650,6 +29250,13 @@ func (client *Client) DescribeAlertSceneByEventWithOptions(request *DescribeAler
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scenarios and objects that can be added to an alert whitelist rule.
+//
+// @param request - DescribeAlertSceneByEventRequest
+//
+// @return DescribeAlertSceneByEventResponse
 func (client *Client) DescribeAlertSceneByEvent(request *DescribeAlertSceneByEventRequest) (_result *DescribeAlertSceneByEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertSceneByEventResponse{}
@@ -21661,6 +29268,15 @@ func (client *Client) DescribeAlertSceneByEvent(request *DescribeAlertSceneByEve
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert data sources.
+//
+// @param request - DescribeAlertSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertSourceResponse
 func (client *Client) DescribeAlertSourceWithOptions(request *DescribeAlertSourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21714,6 +29330,13 @@ func (client *Client) DescribeAlertSourceWithOptions(request *DescribeAlertSourc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert data sources.
+//
+// @param request - DescribeAlertSourceRequest
+//
+// @return DescribeAlertSourceResponse
 func (client *Client) DescribeAlertSource(request *DescribeAlertSourceRequest) (_result *DescribeAlertSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertSourceResponse{}
@@ -21725,6 +29348,15 @@ func (client *Client) DescribeAlertSource(request *DescribeAlertSourceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data sources of the alert that is associated with an event.
+//
+// @param request - DescribeAlertSourceWithEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertSourceWithEventResponse
 func (client *Client) DescribeAlertSourceWithEventWithOptions(request *DescribeAlertSourceWithEventRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertSourceWithEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21770,6 +29402,13 @@ func (client *Client) DescribeAlertSourceWithEventWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data sources of the alert that is associated with an event.
+//
+// @param request - DescribeAlertSourceWithEventRequest
+//
+// @return DescribeAlertSourceWithEventResponse
 func (client *Client) DescribeAlertSourceWithEvent(request *DescribeAlertSourceWithEventRequest) (_result *DescribeAlertSourceWithEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertSourceWithEventResponse{}
@@ -21781,6 +29420,15 @@ func (client *Client) DescribeAlertSourceWithEvent(request *DescribeAlertSourceW
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the threat types that you can select when you create a custom rule.
+//
+// @param request - DescribeAlertTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertTypeResponse
 func (client *Client) DescribeAlertTypeWithOptions(request *DescribeAlertTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21826,6 +29474,13 @@ func (client *Client) DescribeAlertTypeWithOptions(request *DescribeAlertTypeReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the threat types that you can select when you create a custom rule.
+//
+// @param request - DescribeAlertTypeRequest
+//
+// @return DescribeAlertTypeResponse
 func (client *Client) DescribeAlertType(request *DescribeAlertTypeRequest) (_result *DescribeAlertTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertTypeResponse{}
@@ -21837,6 +29492,15 @@ func (client *Client) DescribeAlertType(request *DescribeAlertTypeRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alerts within your account.
+//
+// @param request - DescribeAlertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertsResponse
 func (client *Client) DescribeAlertsWithOptions(request *DescribeAlertsRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21918,6 +29582,13 @@ func (client *Client) DescribeAlertsWithOptions(request *DescribeAlertsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alerts within your account.
+//
+// @param request - DescribeAlertsRequest
+//
+// @return DescribeAlertsResponse
 func (client *Client) DescribeAlerts(request *DescribeAlertsRequest) (_result *DescribeAlertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertsResponse{}
@@ -21929,6 +29600,15 @@ func (client *Client) DescribeAlerts(request *DescribeAlertsRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of alerts of different severities.
+//
+// @param request - DescribeAlertsCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertsCountResponse
 func (client *Client) DescribeAlertsCountWithOptions(request *DescribeAlertsCountRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21978,6 +29658,13 @@ func (client *Client) DescribeAlertsCountWithOptions(request *DescribeAlertsCoun
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of alerts of different severities.
+//
+// @param request - DescribeAlertsCountRequest
+//
+// @return DescribeAlertsCountResponse
 func (client *Client) DescribeAlertsCount(request *DescribeAlertsCountRequest) (_result *DescribeAlertsCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertsCountResponse{}
@@ -21989,6 +29676,15 @@ func (client *Client) DescribeAlertsCount(request *DescribeAlertsCountRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alerts that are associated with an entity.
+//
+// @param request - DescribeAlertsWithEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertsWithEntityResponse
 func (client *Client) DescribeAlertsWithEntityWithOptions(request *DescribeAlertsWithEntityRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsWithEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22050,6 +29746,13 @@ func (client *Client) DescribeAlertsWithEntityWithOptions(request *DescribeAlert
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alerts that are associated with an entity.
+//
+// @param request - DescribeAlertsWithEntityRequest
+//
+// @return DescribeAlertsWithEntityResponse
 func (client *Client) DescribeAlertsWithEntity(request *DescribeAlertsWithEntityRequest) (_result *DescribeAlertsWithEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertsWithEntityResponse{}
@@ -22061,6 +29764,15 @@ func (client *Client) DescribeAlertsWithEntity(request *DescribeAlertsWithEntity
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alerts that are associated with an event.
+//
+// @param request - DescribeAlertsWithEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertsWithEventResponse
 func (client *Client) DescribeAlertsWithEventWithOptions(request *DescribeAlertsWithEventRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsWithEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22134,6 +29846,13 @@ func (client *Client) DescribeAlertsWithEventWithOptions(request *DescribeAlerts
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alerts that are associated with an event.
+//
+// @param request - DescribeAlertsWithEventRequest
+//
+// @return DescribeAlertsWithEventResponse
 func (client *Client) DescribeAlertsWithEvent(request *DescribeAlertsWithEventRequest) (_result *DescribeAlertsWithEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertsWithEventResponse{}
@@ -22145,6 +29864,15 @@ func (client *Client) DescribeAlertsWithEvent(request *DescribeAlertsWithEventRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the timeline of the alerts that are associated with an event.
+//
+// @param request - DescribeAttackTimeLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAttackTimeLineResponse
 func (client *Client) DescribeAttackTimeLineWithOptions(request *DescribeAttackTimeLineRequest, runtime *util.RuntimeOptions) (_result *DescribeAttackTimeLineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22202,6 +29930,13 @@ func (client *Client) DescribeAttackTimeLineWithOptions(request *DescribeAttackT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the timeline of the alerts that are associated with an event.
+//
+// @param request - DescribeAttackTimeLineRequest
+//
+// @return DescribeAttackTimeLineResponse
 func (client *Client) DescribeAttackTimeLine(request *DescribeAttackTimeLineRequest) (_result *DescribeAttackTimeLineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAttackTimeLineResponse{}
@@ -22213,6 +29948,15 @@ func (client *Client) DescribeAttackTimeLine(request *DescribeAttackTimeLineRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the security information and event management (SIEM) system is granted the required permissions to access other cloud resources within your Alibaba Cloud account and whether the AliyunServiceRoleForSasCloudSiem service-linked role is created.
+//
+// @param request - DescribeAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAuthResponse
 func (client *Client) DescribeAuthWithOptions(request *DescribeAuthRequest, runtime *util.RuntimeOptions) (_result *DescribeAuthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22246,6 +29990,13 @@ func (client *Client) DescribeAuthWithOptions(request *DescribeAuthRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the security information and event management (SIEM) system is granted the required permissions to access other cloud resources within your Alibaba Cloud account and whether the AliyunServiceRoleForSasCloudSiem service-linked role is created.
+//
+// @param request - DescribeAuthRequest
+//
+// @return DescribeAuthResponse
 func (client *Client) DescribeAuth(request *DescribeAuthRequest) (_result *DescribeAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAuthResponse{}
@@ -22257,6 +30008,15 @@ func (client *Client) DescribeAuth(request *DescribeAuthRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of automated response rules.
+//
+// @param request - DescribeAutomateResponseConfigCounterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutomateResponseConfigCounterResponse
 func (client *Client) DescribeAutomateResponseConfigCounterWithOptions(request *DescribeAutomateResponseConfigCounterRequest, runtime *util.RuntimeOptions) (_result *DescribeAutomateResponseConfigCounterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22298,6 +30058,13 @@ func (client *Client) DescribeAutomateResponseConfigCounterWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of automated response rules.
+//
+// @param request - DescribeAutomateResponseConfigCounterRequest
+//
+// @return DescribeAutomateResponseConfigCounterResponse
 func (client *Client) DescribeAutomateResponseConfigCounter(request *DescribeAutomateResponseConfigCounterRequest) (_result *DescribeAutomateResponseConfigCounterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutomateResponseConfigCounterResponse{}
@@ -22309,6 +30076,15 @@ func (client *Client) DescribeAutomateResponseConfigCounter(request *DescribeAut
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurable fields and operators of an automated response rule.
+//
+// @param request - DescribeAutomateResponseConfigFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutomateResponseConfigFeatureResponse
 func (client *Client) DescribeAutomateResponseConfigFeatureWithOptions(request *DescribeAutomateResponseConfigFeatureRequest, runtime *util.RuntimeOptions) (_result *DescribeAutomateResponseConfigFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22354,6 +30130,13 @@ func (client *Client) DescribeAutomateResponseConfigFeatureWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurable fields and operators of an automated response rule.
+//
+// @param request - DescribeAutomateResponseConfigFeatureRequest
+//
+// @return DescribeAutomateResponseConfigFeatureResponse
 func (client *Client) DescribeAutomateResponseConfigFeature(request *DescribeAutomateResponseConfigFeatureRequest) (_result *DescribeAutomateResponseConfigFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutomateResponseConfigFeatureResponse{}
@@ -22365,6 +30148,15 @@ func (client *Client) DescribeAutomateResponseConfigFeature(request *DescribeAut
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user-defined playbooks.
+//
+// @param request - DescribeAutomateResponseConfigPlayBooksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutomateResponseConfigPlayBooksResponse
 func (client *Client) DescribeAutomateResponseConfigPlayBooksWithOptions(request *DescribeAutomateResponseConfigPlayBooksRequest, runtime *util.RuntimeOptions) (_result *DescribeAutomateResponseConfigPlayBooksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22414,6 +30206,13 @@ func (client *Client) DescribeAutomateResponseConfigPlayBooksWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user-defined playbooks.
+//
+// @param request - DescribeAutomateResponseConfigPlayBooksRequest
+//
+// @return DescribeAutomateResponseConfigPlayBooksResponse
 func (client *Client) DescribeAutomateResponseConfigPlayBooks(request *DescribeAutomateResponseConfigPlayBooksRequest) (_result *DescribeAutomateResponseConfigPlayBooksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutomateResponseConfigPlayBooksResponse{}
@@ -22425,6 +30224,15 @@ func (client *Client) DescribeAutomateResponseConfigPlayBooks(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the assets that are associated with an event.
+//
+// @param request - DescribeCloudSiemAssetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudSiemAssetsResponse
 func (client *Client) DescribeCloudSiemAssetsWithOptions(request *DescribeCloudSiemAssetsRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudSiemAssetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22482,6 +30290,13 @@ func (client *Client) DescribeCloudSiemAssetsWithOptions(request *DescribeCloudS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the assets that are associated with an event.
+//
+// @param request - DescribeCloudSiemAssetsRequest
+//
+// @return DescribeCloudSiemAssetsResponse
 func (client *Client) DescribeCloudSiemAssets(request *DescribeCloudSiemAssetsRequest) (_result *DescribeCloudSiemAssetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudSiemAssetsResponse{}
@@ -22493,6 +30308,15 @@ func (client *Client) DescribeCloudSiemAssets(request *DescribeCloudSiemAssetsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of assets that are associated with an event by asset type.
+//
+// @param request - DescribeCloudSiemAssetsCounterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudSiemAssetsCounterResponse
 func (client *Client) DescribeCloudSiemAssetsCounterWithOptions(request *DescribeCloudSiemAssetsCounterRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudSiemAssetsCounterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22538,6 +30362,13 @@ func (client *Client) DescribeCloudSiemAssetsCounterWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of assets that are associated with an event by asset type.
+//
+// @param request - DescribeCloudSiemAssetsCounterRequest
+//
+// @return DescribeCloudSiemAssetsCounterResponse
 func (client *Client) DescribeCloudSiemAssetsCounter(request *DescribeCloudSiemAssetsCounterRequest) (_result *DescribeCloudSiemAssetsCounterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudSiemAssetsCounterResponse{}
@@ -22549,6 +30380,15 @@ func (client *Client) DescribeCloudSiemAssetsCounter(request *DescribeCloudSiemA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an event.
+//
+// @param request - DescribeCloudSiemEventDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudSiemEventDetailResponse
 func (client *Client) DescribeCloudSiemEventDetailWithOptions(request *DescribeCloudSiemEventDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudSiemEventDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22594,6 +30434,13 @@ func (client *Client) DescribeCloudSiemEventDetailWithOptions(request *DescribeC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an event.
+//
+// @param request - DescribeCloudSiemEventDetailRequest
+//
+// @return DescribeCloudSiemEventDetailResponse
 func (client *Client) DescribeCloudSiemEventDetail(request *DescribeCloudSiemEventDetailRequest) (_result *DescribeCloudSiemEventDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudSiemEventDetailResponse{}
@@ -22605,6 +30452,15 @@ func (client *Client) DescribeCloudSiemEventDetail(request *DescribeCloudSiemEve
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries events in SIEM.
+//
+// @param request - DescribeCloudSiemEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudSiemEventsResponse
 func (client *Client) DescribeCloudSiemEventsWithOptions(request *DescribeCloudSiemEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudSiemEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22690,6 +30546,13 @@ func (client *Client) DescribeCloudSiemEventsWithOptions(request *DescribeCloudS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries events in SIEM.
+//
+// @param request - DescribeCloudSiemEventsRequest
+//
+// @return DescribeCloudSiemEventsResponse
 func (client *Client) DescribeCloudSiemEvents(request *DescribeCloudSiemEventsRequest) (_result *DescribeCloudSiemEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudSiemEventsResponse{}
@@ -22701,6 +30564,15 @@ func (client *Client) DescribeCloudSiemEvents(request *DescribeCloudSiemEventsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
+//
+// @param request - DescribeCsImportedProdStatusByUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCsImportedProdStatusByUserResponse
 func (client *Client) DescribeCsImportedProdStatusByUserWithOptions(request *DescribeCsImportedProdStatusByUserRequest, runtime *util.RuntimeOptions) (_result *DescribeCsImportedProdStatusByUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22742,6 +30614,13 @@ func (client *Client) DescribeCsImportedProdStatusByUserWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
+//
+// @param request - DescribeCsImportedProdStatusByUserRequest
+//
+// @return DescribeCsImportedProdStatusByUserResponse
 func (client *Client) DescribeCsImportedProdStatusByUser(request *DescribeCsImportedProdStatusByUserRequest) (_result *DescribeCsImportedProdStatusByUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCsImportedProdStatusByUserResponse{}
@@ -22753,54 +30632,15 @@ func (client *Client) DescribeCsImportedProdStatusByUser(request *DescribeCsImpo
 	return _result, _err
 }
 
-func (client *Client) DescribeCustomizeRuleWithOptions(request *DescribeCustomizeRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomizeRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
-		body["RuleId"] = request.RuleId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCustomizeRule"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeCustomizeRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeCustomizeRule(request *DescribeCustomizeRuleRequest) (_result *DescribeCustomizeRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCustomizeRuleResponse{}
-	_body, _err := client.DescribeCustomizeRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// Queries the number of custom rules.
+//
+// @param request - DescribeCustomizeRuleCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomizeRuleCountResponse
 func (client *Client) DescribeCustomizeRuleCountWithOptions(request *DescribeCustomizeRuleCountRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomizeRuleCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22842,6 +30682,13 @@ func (client *Client) DescribeCustomizeRuleCountWithOptions(request *DescribeCus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of custom rules.
+//
+// @param request - DescribeCustomizeRuleCountRequest
+//
+// @return DescribeCustomizeRuleCountResponse
 func (client *Client) DescribeCustomizeRuleCount(request *DescribeCustomizeRuleCountRequest) (_result *DescribeCustomizeRuleCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCustomizeRuleCountResponse{}
@@ -22853,6 +30700,15 @@ func (client *Client) DescribeCustomizeRuleCount(request *DescribeCustomizeRuleC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical simulation data that is used in a simulation test scenario.
+//
+// @param request - DescribeCustomizeRuleTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomizeRuleTestResponse
 func (client *Client) DescribeCustomizeRuleTestWithOptions(request *DescribeCustomizeRuleTestRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomizeRuleTestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22898,6 +30754,13 @@ func (client *Client) DescribeCustomizeRuleTestWithOptions(request *DescribeCust
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical simulation data that is used in a simulation test scenario.
+//
+// @param request - DescribeCustomizeRuleTestRequest
+//
+// @return DescribeCustomizeRuleTestResponse
 func (client *Client) DescribeCustomizeRuleTest(request *DescribeCustomizeRuleTestRequest) (_result *DescribeCustomizeRuleTestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCustomizeRuleTestResponse{}
@@ -22909,6 +30772,15 @@ func (client *Client) DescribeCustomizeRuleTest(request *DescribeCustomizeRuleTe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the chart that displays the test results of business data for a custom rule.
+//
+// @param request - DescribeCustomizeRuleTestHistogramRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomizeRuleTestHistogramResponse
 func (client *Client) DescribeCustomizeRuleTestHistogramWithOptions(request *DescribeCustomizeRuleTestHistogramRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomizeRuleTestHistogramResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22954,6 +30826,13 @@ func (client *Client) DescribeCustomizeRuleTestHistogramWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the chart that displays the test results of business data for a custom rule.
+//
+// @param request - DescribeCustomizeRuleTestHistogramRequest
+//
+// @return DescribeCustomizeRuleTestHistogramResponse
 func (client *Client) DescribeCustomizeRuleTestHistogram(request *DescribeCustomizeRuleTestHistogramRequest) (_result *DescribeCustomizeRuleTestHistogramResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCustomizeRuleTestHistogramResponse{}
@@ -22965,6 +30844,15 @@ func (client *Client) DescribeCustomizeRuleTestHistogram(request *DescribeCustom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data source.
+//
+// @param request - DescribeDataSourceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataSourceInstanceResponse
 func (client *Client) DescribeDataSourceInstanceWithOptions(request *DescribeDataSourceInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDataSourceInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23010,6 +30898,13 @@ func (client *Client) DescribeDataSourceInstanceWithOptions(request *DescribeDat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data source.
+//
+// @param request - DescribeDataSourceInstanceRequest
+//
+// @return DescribeDataSourceInstanceResponse
 func (client *Client) DescribeDataSourceInstance(request *DescribeDataSourceInstanceRequest) (_result *DescribeDataSourceInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataSourceInstanceResponse{}
@@ -23021,6 +30916,15 @@ func (client *Client) DescribeDataSourceInstance(request *DescribeDataSourceInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters of a data source.
+//
+// @param request - DescribeDataSourceParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataSourceParametersResponse
 func (client *Client) DescribeDataSourceParametersWithOptions(request *DescribeDataSourceParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeDataSourceParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23062,6 +30966,13 @@ func (client *Client) DescribeDataSourceParametersWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters of a data source.
+//
+// @param request - DescribeDataSourceParametersRequest
+//
+// @return DescribeDataSourceParametersResponse
 func (client *Client) DescribeDataSourceParameters(request *DescribeDataSourceParametersRequest) (_result *DescribeDataSourceParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataSourceParametersResponse{}
@@ -23073,6 +30984,15 @@ func (client *Client) DescribeDataSourceParameters(request *DescribeDataSourcePa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of entities and playbooks that need to be handled.
+//
+// @param request - DescribeDisposeAndPlaybookRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDisposeAndPlaybookResponse
 func (client *Client) DescribeDisposeAndPlaybookWithOptions(request *DescribeDisposeAndPlaybookRequest, runtime *util.RuntimeOptions) (_result *DescribeDisposeAndPlaybookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23130,6 +31050,13 @@ func (client *Client) DescribeDisposeAndPlaybookWithOptions(request *DescribeDis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of entities and playbooks that need to be handled.
+//
+// @param request - DescribeDisposeAndPlaybookRequest
+//
+// @return DescribeDisposeAndPlaybookResponse
 func (client *Client) DescribeDisposeAndPlaybook(request *DescribeDisposeAndPlaybookRequest) (_result *DescribeDisposeAndPlaybookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDisposeAndPlaybookResponse{}
@@ -23141,6 +31068,15 @@ func (client *Client) DescribeDisposeAndPlaybook(request *DescribeDisposeAndPlay
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of playbooks that are used by a handling policy.
+//
+// @param request - DescribeDisposeStrategyPlaybookRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDisposeStrategyPlaybookResponse
 func (client *Client) DescribeDisposeStrategyPlaybookWithOptions(request *DescribeDisposeStrategyPlaybookRequest, runtime *util.RuntimeOptions) (_result *DescribeDisposeStrategyPlaybookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23190,6 +31126,13 @@ func (client *Client) DescribeDisposeStrategyPlaybookWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of playbooks that are used by a handling policy.
+//
+// @param request - DescribeDisposeStrategyPlaybookRequest
+//
+// @return DescribeDisposeStrategyPlaybookResponse
 func (client *Client) DescribeDisposeStrategyPlaybook(request *DescribeDisposeStrategyPlaybookRequest) (_result *DescribeDisposeStrategyPlaybookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDisposeStrategyPlaybookResponse{}
@@ -23201,6 +31144,15 @@ func (client *Client) DescribeDisposeStrategyPlaybook(request *DescribeDisposeSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an entity.
+//
+// @param request - DescribeEntityInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEntityInfoResponse
 func (client *Client) DescribeEntityInfoWithOptions(request *DescribeEntityInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeEntityInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23258,6 +31210,13 @@ func (client *Client) DescribeEntityInfoWithOptions(request *DescribeEntityInfoR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an entity.
+//
+// @param request - DescribeEntityInfoRequest
+//
+// @return DescribeEntityInfoResponse
 func (client *Client) DescribeEntityInfo(request *DescribeEntityInfoRequest) (_result *DescribeEntityInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEntityInfoResponse{}
@@ -23269,6 +31228,15 @@ func (client *Client) DescribeEntityInfo(request *DescribeEntityInfoRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of events by type.
+//
+// @param request - DescribeEventCountByThreatLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEventCountByThreatLevelResponse
 func (client *Client) DescribeEventCountByThreatLevelWithOptions(request *DescribeEventCountByThreatLevelRequest, runtime *util.RuntimeOptions) (_result *DescribeEventCountByThreatLevelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23318,6 +31286,13 @@ func (client *Client) DescribeEventCountByThreatLevelWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of events by type.
+//
+// @param request - DescribeEventCountByThreatLevelRequest
+//
+// @return DescribeEventCountByThreatLevelResponse
 func (client *Client) DescribeEventCountByThreatLevel(request *DescribeEventCountByThreatLevelRequest) (_result *DescribeEventCountByThreatLevelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEventCountByThreatLevelResponse{}
@@ -23329,6 +31304,15 @@ func (client *Client) DescribeEventCountByThreatLevel(request *DescribeEventCoun
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the handling policies of a historical event.
+//
+// @param request - DescribeEventDisposeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEventDisposeResponse
 func (client *Client) DescribeEventDisposeWithOptions(request *DescribeEventDisposeRequest, runtime *util.RuntimeOptions) (_result *DescribeEventDisposeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23382,6 +31366,13 @@ func (client *Client) DescribeEventDisposeWithOptions(request *DescribeEventDisp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the handling policies of a historical event.
+//
+// @param request - DescribeEventDisposeRequest
+//
+// @return DescribeEventDisposeResponse
 func (client *Client) DescribeEventDispose(request *DescribeEventDisposeRequest) (_result *DescribeEventDisposeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEventDisposeResponse{}
@@ -23393,6 +31384,15 @@ func (client *Client) DescribeEventDispose(request *DescribeEventDisposeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of logs that are added to the threat analysis feature.
+//
+// @param request - DescribeImportedLogCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImportedLogCountResponse
 func (client *Client) DescribeImportedLogCountWithOptions(request *DescribeImportedLogCountRequest, runtime *util.RuntimeOptions) (_result *DescribeImportedLogCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23401,6 +31401,14 @@ func (client *Client) DescribeImportedLogCountWithOptions(request *DescribeImpor
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23426,6 +31434,13 @@ func (client *Client) DescribeImportedLogCountWithOptions(request *DescribeImpor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of logs that are added to the threat analysis feature.
+//
+// @param request - DescribeImportedLogCountRequest
+//
+// @return DescribeImportedLogCountResponse
 func (client *Client) DescribeImportedLogCount(request *DescribeImportedLogCountRequest) (_result *DescribeImportedLogCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImportedLogCountResponse{}
@@ -23437,6 +31452,15 @@ func (client *Client) DescribeImportedLogCount(request *DescribeImportedLogCount
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of collection tasks by using the submitId parameter of the tasks.
+//
+// @param request - DescribeJobStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeJobStatusResponse
 func (client *Client) DescribeJobStatusWithOptions(request *DescribeJobStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeJobStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23474,6 +31498,13 @@ func (client *Client) DescribeJobStatusWithOptions(request *DescribeJobStatusReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of collection tasks by using the submitId parameter of the tasks.
+//
+// @param request - DescribeJobStatusRequest
+//
+// @return DescribeJobStatusResponse
 func (client *Client) DescribeJobStatus(request *DescribeJobStatusRequest) (_result *DescribeJobStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeJobStatusResponse{}
@@ -23485,6 +31516,15 @@ func (client *Client) DescribeJobStatus(request *DescribeJobStatusRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the fields that can be configured for a custom rule.
+//
+// @param request - DescribeLogFieldsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogFieldsResponse
 func (client *Client) DescribeLogFieldsWithOptions(request *DescribeLogFieldsRequest, runtime *util.RuntimeOptions) (_result *DescribeLogFieldsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23534,6 +31574,13 @@ func (client *Client) DescribeLogFieldsWithOptions(request *DescribeLogFieldsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the fields that can be configured for a custom rule.
+//
+// @param request - DescribeLogFieldsRequest
+//
+// @return DescribeLogFieldsResponse
 func (client *Client) DescribeLogFields(request *DescribeLogFieldsRequest) (_result *DescribeLogFieldsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogFieldsResponse{}
@@ -23545,6 +31592,15 @@ func (client *Client) DescribeLogFields(request *DescribeLogFieldsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the log sources that can be configured for a custom rule.
+//
+// @param request - DescribeLogSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogSourceResponse
 func (client *Client) DescribeLogSourceWithOptions(request *DescribeLogSourceRequest, runtime *util.RuntimeOptions) (_result *DescribeLogSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23590,6 +31646,13 @@ func (client *Client) DescribeLogSourceWithOptions(request *DescribeLogSourceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the log sources that can be configured for a custom rule.
+//
+// @param request - DescribeLogSourceRequest
+//
+// @return DescribeLogSourceResponse
 func (client *Client) DescribeLogSource(request *DescribeLogSourceRequest) (_result *DescribeLogSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogSourceResponse{}
@@ -23601,6 +31664,15 @@ func (client *Client) DescribeLogSource(request *DescribeLogSourceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
+//
+// @param request - DescribeLogStoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogStoreResponse
 func (client *Client) DescribeLogStoreWithOptions(request *DescribeLogStoreRequest, runtime *util.RuntimeOptions) (_result *DescribeLogStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23634,6 +31706,13 @@ func (client *Client) DescribeLogStoreWithOptions(request *DescribeLogStoreReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
+//
+// @param request - DescribeLogStoreRequest
+//
+// @return DescribeLogStoreResponse
 func (client *Client) DescribeLogStore(request *DescribeLogStoreRequest) (_result *DescribeLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogStoreResponse{}
@@ -23645,6 +31724,15 @@ func (client *Client) DescribeLogStore(request *DescribeLogStoreRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the log types that can be configured for a custom rule.
+//
+// @param request - DescribeLogTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogTypeResponse
 func (client *Client) DescribeLogTypeWithOptions(request *DescribeLogTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeLogTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23686,6 +31774,13 @@ func (client *Client) DescribeLogTypeWithOptions(request *DescribeLogTypeRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the log types that can be configured for a custom rule.
+//
+// @param request - DescribeLogTypeRequest
+//
+// @return DescribeLogTypeResponse
 func (client *Client) DescribeLogType(request *DescribeLogTypeRequest) (_result *DescribeLogTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogTypeResponse{}
@@ -23697,6 +31792,15 @@ func (client *Client) DescribeLogType(request *DescribeLogTypeRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the operator of a custom rule.
+//
+// @param request - DescribeOperatorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOperatorsResponse
 func (client *Client) DescribeOperatorsWithOptions(request *DescribeOperatorsRequest, runtime *util.RuntimeOptions) (_result *DescribeOperatorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23742,6 +31846,13 @@ func (client *Client) DescribeOperatorsWithOptions(request *DescribeOperatorsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the operator of a custom rule.
+//
+// @param request - DescribeOperatorsRequest
+//
+// @return DescribeOperatorsResponse
 func (client *Client) DescribeOperators(request *DescribeOperatorsRequest) (_result *DescribeOperatorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOperatorsResponse{}
@@ -23753,6 +31864,15 @@ func (client *Client) DescribeOperators(request *DescribeOperatorsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of services that can be added to the threat analysis feature in Alibaba Cloud, Tenant Cloud, and Huawei Cloud.
+//
+// @param request - DescribeProdCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProdCountResponse
 func (client *Client) DescribeProdCountWithOptions(request *DescribeProdCountRequest, runtime *util.RuntimeOptions) (_result *DescribeProdCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23761,6 +31881,14 @@ func (client *Client) DescribeProdCountWithOptions(request *DescribeProdCountReq
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23786,6 +31914,13 @@ func (client *Client) DescribeProdCountWithOptions(request *DescribeProdCountReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of services that can be added to the threat analysis feature in Alibaba Cloud, Tenant Cloud, and Huawei Cloud.
+//
+// @param request - DescribeProdCountRequest
+//
+// @return DescribeProdCountResponse
 func (client *Client) DescribeProdCount(request *DescribeProdCountRequest) (_result *DescribeProdCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProdCountResponse{}
@@ -23797,6 +31932,15 @@ func (client *Client) DescribeProdCount(request *DescribeProdCountRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of users in the playbook scope.
+//
+// @param request - DescribeScopeUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeScopeUsersResponse
 func (client *Client) DescribeScopeUsersWithOptions(request *DescribeScopeUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeScopeUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23838,6 +31982,13 @@ func (client *Client) DescribeScopeUsersWithOptions(request *DescribeScopeUsersR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of users in the playbook scope.
+//
+// @param request - DescribeScopeUsersRequest
+//
+// @return DescribeScopeUsersResponse
 func (client *Client) DescribeScopeUsers(request *DescribeScopeUsersRequest) (_result *DescribeScopeUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScopeUsersResponse{}
@@ -23849,6 +32000,15 @@ func (client *Client) DescribeScopeUsers(request *DescribeScopeUsersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the threat analysis feature is authorized to access a resource directory.
+//
+// @param request - DescribeServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceStatusResponse
 func (client *Client) DescribeServiceStatusWithOptions(request *DescribeServiceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23882,6 +32042,13 @@ func (client *Client) DescribeServiceStatusWithOptions(request *DescribeServiceS
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the threat analysis feature is authorized to access a resource directory.
+//
+// @param request - DescribeServiceStatusRequest
+//
+// @return DescribeServiceStatusResponse
 func (client *Client) DescribeServiceStatus(request *DescribeServiceStatusRequest) (_result *DescribeServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServiceStatusResponse{}
@@ -23893,6 +32060,15 @@ func (client *Client) DescribeServiceStatus(request *DescribeServiceStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the Logstores for the threat analysis feature in Simple Log Service on the user side.
+//
+// @param request - DescribeStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStorageResponse
 func (client *Client) DescribeStorageWithOptions(request *DescribeStorageRequest, runtime *util.RuntimeOptions) (_result *DescribeStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23934,6 +32110,13 @@ func (client *Client) DescribeStorageWithOptions(request *DescribeStorageRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the Logstores for the threat analysis feature in Simple Log Service on the user side.
+//
+// @param request - DescribeStorageRequest
+//
+// @return DescribeStorageResponse
 func (client *Client) DescribeStorage(request *DescribeStorageRequest) (_result *DescribeStorageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeStorageResponse{}
@@ -23945,6 +32128,15 @@ func (client *Client) DescribeStorage(request *DescribeStorageRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the current Alibaba Cloud account or the management account of a resource directory is used to purchase the threat analysis feature.
+//
+// @param request - DescribeUserBuyStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserBuyStatusResponse
 func (client *Client) DescribeUserBuyStatusWithOptions(request *DescribeUserBuyStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserBuyStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23982,6 +32174,13 @@ func (client *Client) DescribeUserBuyStatusWithOptions(request *DescribeUserBuyS
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the current Alibaba Cloud account or the management account of a resource directory is used to purchase the threat analysis feature.
+//
+// @param request - DescribeUserBuyStatusRequest
+//
+// @return DescribeUserBuyStatusResponse
 func (client *Client) DescribeUserBuyStatus(request *DescribeUserBuyStatusRequest) (_result *DescribeUserBuyStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserBuyStatusResponse{}
@@ -23993,6 +32192,15 @@ func (client *Client) DescribeUserBuyStatus(request *DescribeUserBuyStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the protected domain names of the WAF instance for a user to which an entity belongs.
+//
+// @param request - DescribeWafScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWafScopeResponse
 func (client *Client) DescribeWafScopeWithOptions(request *DescribeWafScopeRequest, runtime *util.RuntimeOptions) (_result *DescribeWafScopeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24038,6 +32246,13 @@ func (client *Client) DescribeWafScopeWithOptions(request *DescribeWafScopeReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the protected domain names of the WAF instance for a user to which an entity belongs.
+//
+// @param request - DescribeWafScopeRequest
+//
+// @return DescribeWafScopeResponse
 func (client *Client) DescribeWafScope(request *DescribeWafScopeRequest) (_result *DescribeWafScopeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWafScopeResponse{}
@@ -24049,6 +32264,15 @@ func (client *Client) DescribeWafScope(request *DescribeWafScopeRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of whitelist rules for alerts.
+//
+// @param request - DescribeWhiteRuleListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWhiteRuleListResponse
 func (client *Client) DescribeWhiteRuleListWithOptions(request *DescribeWhiteRuleListRequest, runtime *util.RuntimeOptions) (_result *DescribeWhiteRuleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24110,6 +32334,13 @@ func (client *Client) DescribeWhiteRuleListWithOptions(request *DescribeWhiteRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of whitelist rules for alerts.
+//
+// @param request - DescribeWhiteRuleListRequest
+//
+// @return DescribeWhiteRuleListResponse
 func (client *Client) DescribeWhiteRuleList(request *DescribeWhiteRuleListRequest) (_result *DescribeWhiteRuleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWhiteRuleListResponse{}
@@ -24121,6 +32352,15 @@ func (client *Client) DescribeWhiteRuleList(request *DescribeWhiteRuleListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries and analyzes the distribution of specific fields by using quick analysis.
+//
+// @param request - DoQuickFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DoQuickFieldResponse
 func (client *Client) DoQuickFieldWithOptions(request *DoQuickFieldRequest, runtime *util.RuntimeOptions) (_result *DoQuickFieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24178,6 +32418,13 @@ func (client *Client) DoQuickFieldWithOptions(request *DoQuickFieldRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries and analyzes the distribution of specific fields by using quick analysis.
+//
+// @param request - DoQuickFieldRequest
+//
+// @return DoQuickFieldResponse
 func (client *Client) DoQuickField(request *DoQuickFieldRequest) (_result *DoQuickFieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DoQuickFieldResponse{}
@@ -24189,6 +32436,15 @@ func (client *Client) DoQuickField(request *DoQuickFieldRequest) (_result *DoQui
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
+//
+// @param request - DoSelfDelegateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DoSelfDelegateResponse
 func (client *Client) DoSelfDelegateWithOptions(request *DoSelfDelegateRequest, runtime *util.RuntimeOptions) (_result *DoSelfDelegateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24230,6 +32486,13 @@ func (client *Client) DoSelfDelegateWithOptions(request *DoSelfDelegateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
+//
+// @param request - DoSelfDelegateRequest
+//
+// @return DoSelfDelegateResponse
 func (client *Client) DoSelfDelegate(request *DoSelfDelegateRequest) (_result *DoSelfDelegateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DoSelfDelegateResponse{}
@@ -24241,6 +32504,15 @@ func (client *Client) DoSelfDelegate(request *DoSelfDelegateRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
+//
+// @param request - EnableAccessForCloudSiemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableAccessForCloudSiemResponse
 func (client *Client) EnableAccessForCloudSiemWithOptions(request *EnableAccessForCloudSiemRequest, runtime *util.RuntimeOptions) (_result *EnableAccessForCloudSiemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24286,6 +32558,13 @@ func (client *Client) EnableAccessForCloudSiemWithOptions(request *EnableAccessF
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
+//
+// @param request - EnableAccessForCloudSiemRequest
+//
+// @return EnableAccessForCloudSiemResponse
 func (client *Client) EnableAccessForCloudSiem(request *EnableAccessForCloudSiemRequest) (_result *EnableAccessForCloudSiemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableAccessForCloudSiemResponse{}
@@ -24297,6 +32576,15 @@ func (client *Client) EnableAccessForCloudSiem(request *EnableAccessForCloudSiem
 	return _result, _err
 }
 
+// Summary:
+//
+// Authorizes the threat analysis feature to access a resource directory. This operation must be called by the management account of the resource directory.
+//
+// @param request - EnableServiceForCloudSiemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableServiceForCloudSiemResponse
 func (client *Client) EnableServiceForCloudSiemWithOptions(request *EnableServiceForCloudSiemRequest, runtime *util.RuntimeOptions) (_result *EnableServiceForCloudSiemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24330,6 +32618,13 @@ func (client *Client) EnableServiceForCloudSiemWithOptions(request *EnableServic
 	return _result, _err
 }
 
+// Summary:
+//
+// Authorizes the threat analysis feature to access a resource directory. This operation must be called by the management account of the resource directory.
+//
+// @param request - EnableServiceForCloudSiemRequest
+//
+// @return EnableServiceForCloudSiemResponse
 func (client *Client) EnableServiceForCloudSiem(request *EnableServiceForCloudSiemRequest) (_result *EnableServiceForCloudSiemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableServiceForCloudSiemResponse{}
@@ -24341,6 +32636,15 @@ func (client *Client) EnableServiceForCloudSiem(request *EnableServiceForCloudSi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+//
+// @param request - GetCapacityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCapacityResponse
 func (client *Client) GetCapacityWithOptions(request *GetCapacityRequest, runtime *util.RuntimeOptions) (_result *GetCapacityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24382,6 +32686,13 @@ func (client *Client) GetCapacityWithOptions(request *GetCapacityRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+//
+// @param request - GetCapacityRequest
+//
+// @return GetCapacityResponse
 func (client *Client) GetCapacity(request *GetCapacityRequest) (_result *GetCapacityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCapacityResponse{}
@@ -24393,6 +32704,15 @@ func (client *Client) GetCapacity(request *GetCapacityRequest) (_result *GetCapa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the results of of search statements that are displayed in histograms.
+//
+// @param request - GetHistogramsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHistogramsResponse
 func (client *Client) GetHistogramsWithOptions(request *GetHistogramsRequest, runtime *util.RuntimeOptions) (_result *GetHistogramsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24438,6 +32758,13 @@ func (client *Client) GetHistogramsWithOptions(request *GetHistogramsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the results of of search statements that are displayed in histograms.
+//
+// @param request - GetHistogramsRequest
+//
+// @return GetHistogramsResponse
 func (client *Client) GetHistograms(request *GetHistogramsRequest) (_result *GetHistogramsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHistogramsResponse{}
@@ -24449,6 +32776,15 @@ func (client *Client) GetHistograms(request *GetHistogramsRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the results of a log query by using SQL statements.
+//
+// @param request - GetLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLogsResponse
 func (client *Client) GetLogsWithOptions(request *GetLogsRequest, runtime *util.RuntimeOptions) (_result *GetLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24510,6 +32846,13 @@ func (client *Client) GetLogsWithOptions(request *GetLogsRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the results of a log query by using SQL statements.
+//
+// @param request - GetLogsRequest
+//
+// @return GetLogsResponse
 func (client *Client) GetLogs(request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLogsResponse{}
@@ -24521,6 +32864,15 @@ func (client *Client) GetLogs(request *GetLogsRequest) (_result *GetLogsResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a query statement that is saved as a saved search in log analysis by name.
+//
+// @param request - GetQuickQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQuickQueryResponse
 func (client *Client) GetQuickQueryWithOptions(request *GetQuickQueryRequest, runtime *util.RuntimeOptions) (_result *GetQuickQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24558,6 +32910,13 @@ func (client *Client) GetQuickQueryWithOptions(request *GetQuickQueryRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a query statement that is saved as a saved search in log analysis by name.
+//
+// @param request - GetQuickQueryRequest
+//
+// @return GetQuickQueryResponse
 func (client *Client) GetQuickQuery(request *GetQuickQueryRequest) (_result *GetQuickQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQuickQueryResponse{}
@@ -24569,6 +32928,15 @@ func (client *Client) GetQuickQuery(request *GetQuickQueryRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage configurations for the threat analysis feature on the user side.
+//
+// @param request - GetStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStorageResponse
 func (client *Client) GetStorageWithOptions(request *GetStorageRequest, runtime *util.RuntimeOptions) (_result *GetStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24610,6 +32978,13 @@ func (client *Client) GetStorageWithOptions(request *GetStorageRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage configurations for the threat analysis feature on the user side.
+//
+// @param request - GetStorageRequest
+//
+// @return GetStorageResponse
 func (client *Client) GetStorage(request *GetStorageRequest) (_result *GetStorageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStorageResponse{}
@@ -24621,6 +32996,15 @@ func (client *Client) GetStorage(request *GetStorageRequest) (_result *GetStorag
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of AccessKey IDs of third-party cloud accounts that are added to the threat analysis feature.
+//
+// @param request - ListAccountAccessIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccountAccessIdResponse
 func (client *Client) ListAccountAccessIdWithOptions(request *ListAccountAccessIdRequest, runtime *util.RuntimeOptions) (_result *ListAccountAccessIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24633,6 +33017,14 @@ func (client *Client) ListAccountAccessIdWithOptions(request *ListAccountAccessI
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24658,6 +33050,13 @@ func (client *Client) ListAccountAccessIdWithOptions(request *ListAccountAccessI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of AccessKey IDs of third-party cloud accounts that are added to the threat analysis feature.
+//
+// @param request - ListAccountAccessIdRequest
+//
+// @return ListAccountAccessIdResponse
 func (client *Client) ListAccountAccessId(request *ListAccountAccessIdRequest) (_result *ListAccountAccessIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccountAccessIdResponse{}
@@ -24669,6 +33068,15 @@ func (client *Client) ListAccountAccessId(request *ListAccountAccessIdRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Query accounts by log.
+//
+// @param request - ListAccountsByLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccountsByLogResponse
 func (client *Client) ListAccountsByLogWithOptions(request *ListAccountsByLogRequest, runtime *util.RuntimeOptions) (_result *ListAccountsByLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24722,6 +33130,13 @@ func (client *Client) ListAccountsByLogWithOptions(request *ListAccountsByLogReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Query accounts by log.
+//
+// @param request - ListAccountsByLogRequest
+//
+// @return ListAccountsByLogResponse
 func (client *Client) ListAccountsByLog(request *ListAccountsByLogRequest) (_result *ListAccountsByLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccountsByLogResponse{}
@@ -24733,6 +33148,15 @@ func (client *Client) ListAccountsByLog(request *ListAccountsByLogRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of cloud services that can be added to the threat analysis feature.
+//
+// @param request - ListAllProdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAllProdsResponse
 func (client *Client) ListAllProdsWithOptions(request *ListAllProdsRequest, runtime *util.RuntimeOptions) (_result *ListAllProdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24774,6 +33198,13 @@ func (client *Client) ListAllProdsWithOptions(request *ListAllProdsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of cloud services that can be added to the threat analysis feature.
+//
+// @param request - ListAllProdsRequest
+//
+// @return ListAllProdsResponse
 func (client *Client) ListAllProds(request *ListAllProdsRequest) (_result *ListAllProdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAllProdsResponse{}
@@ -24785,6 +33216,15 @@ func (client *Client) ListAllProds(request *ListAllProdsRequest) (_result *ListA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries automated response rules.
+//
+// @param request - ListAutomateResponseConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutomateResponseConfigsResponse
 func (client *Client) ListAutomateResponseConfigsWithOptions(request *ListAutomateResponseConfigsRequest, runtime *util.RuntimeOptions) (_result *ListAutomateResponseConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24862,6 +33302,13 @@ func (client *Client) ListAutomateResponseConfigsWithOptions(request *ListAutoma
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries automated response rules.
+//
+// @param request - ListAutomateResponseConfigsRequest
+//
+// @return ListAutomateResponseConfigsResponse
 func (client *Client) ListAutomateResponseConfigs(request *ListAutomateResponseConfigsRequest) (_result *ListAutomateResponseConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAutomateResponseConfigsResponse{}
@@ -24873,6 +33320,15 @@ func (client *Client) ListAutomateResponseConfigs(request *ListAutomateResponseC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of cloud accounts that are added to the threat analysis feature.
+//
+// @param request - ListBindAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBindAccountResponse
 func (client *Client) ListBindAccountWithOptions(request *ListBindAccountRequest, runtime *util.RuntimeOptions) (_result *ListBindAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24885,6 +33341,14 @@ func (client *Client) ListBindAccountWithOptions(request *ListBindAccountRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24910,6 +33374,13 @@ func (client *Client) ListBindAccountWithOptions(request *ListBindAccountRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of cloud accounts that are added to the threat analysis feature.
+//
+// @param request - ListBindAccountRequest
+//
+// @return ListBindAccountResponse
 func (client *Client) ListBindAccount(request *ListBindAccountRequest) (_result *ListBindAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBindAccountResponse{}
@@ -24921,6 +33392,15 @@ func (client *Client) ListBindAccount(request *ListBindAccountRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of data sources that are added to the threat analysis feature.
+//
+// @param request - ListBindDataSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBindDataSourcesResponse
 func (client *Client) ListBindDataSourcesWithOptions(request *ListBindDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ListBindDataSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24962,6 +33442,13 @@ func (client *Client) ListBindDataSourcesWithOptions(request *ListBindDataSource
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of data sources that are added to the threat analysis feature.
+//
+// @param request - ListBindDataSourcesRequest
+//
+// @return ListBindDataSourcesResponse
 func (client *Client) ListBindDataSources(request *ListBindDataSourcesRequest) (_result *ListBindDataSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBindDataSourcesResponse{}
@@ -24973,6 +33460,15 @@ func (client *Client) ListBindDataSources(request *ListBindDataSourcesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom rules.
+//
+// @param request - ListCloudSiemCustomizeRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudSiemCustomizeRulesResponse
 func (client *Client) ListCloudSiemCustomizeRulesWithOptions(request *ListCloudSiemCustomizeRulesRequest, runtime *util.RuntimeOptions) (_result *ListCloudSiemCustomizeRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25062,6 +33558,13 @@ func (client *Client) ListCloudSiemCustomizeRulesWithOptions(request *ListCloudS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom rules.
+//
+// @param request - ListCloudSiemCustomizeRulesRequest
+//
+// @return ListCloudSiemCustomizeRulesResponse
 func (client *Client) ListCloudSiemCustomizeRules(request *ListCloudSiemCustomizeRulesRequest) (_result *ListCloudSiemCustomizeRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCloudSiemCustomizeRulesResponse{}
@@ -25073,6 +33576,15 @@ func (client *Client) ListCloudSiemCustomizeRules(request *ListCloudSiemCustomiz
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries predefined rules.
+//
+// @param request - ListCloudSiemPredefinedRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudSiemPredefinedRulesResponse
 func (client *Client) ListCloudSiemPredefinedRulesWithOptions(request *ListCloudSiemPredefinedRulesRequest, runtime *util.RuntimeOptions) (_result *ListCloudSiemPredefinedRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25174,6 +33686,13 @@ func (client *Client) ListCloudSiemPredefinedRulesWithOptions(request *ListCloud
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries predefined rules.
+//
+// @param request - ListCloudSiemPredefinedRulesRequest
+//
+// @return ListCloudSiemPredefinedRulesResponse
 func (client *Client) ListCloudSiemPredefinedRules(request *ListCloudSiemPredefinedRulesRequest) (_result *ListCloudSiemPredefinedRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCloudSiemPredefinedRulesResponse{}
@@ -25185,6 +33704,15 @@ func (client *Client) ListCloudSiemPredefinedRules(request *ListCloudSiemPredefi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the test results of a custom rule.
+//
+// @param request - ListCustomizeRuleTestResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomizeRuleTestResultResponse
 func (client *Client) ListCustomizeRuleTestResultWithOptions(request *ListCustomizeRuleTestResultRequest, runtime *util.RuntimeOptions) (_result *ListCustomizeRuleTestResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25238,6 +33766,13 @@ func (client *Client) ListCustomizeRuleTestResultWithOptions(request *ListCustom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the test results of a custom rule.
+//
+// @param request - ListCustomizeRuleTestResultRequest
+//
+// @return ListCustomizeRuleTestResultResponse
 func (client *Client) ListCustomizeRuleTestResult(request *ListCustomizeRuleTestResultRequest) (_result *ListCustomizeRuleTestResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCustomizeRuleTestResultResponse{}
@@ -25249,6 +33784,15 @@ func (client *Client) ListCustomizeRuleTestResult(request *ListCustomizeRuleTest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a data source.
+//
+// @param request - ListDataSourceLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourceLogsResponse
 func (client *Client) ListDataSourceLogsWithOptions(request *ListDataSourceLogsRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25294,6 +33838,13 @@ func (client *Client) ListDataSourceLogsWithOptions(request *ListDataSourceLogsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a data source.
+//
+// @param request - ListDataSourceLogsRequest
+//
+// @return ListDataSourceLogsResponse
 func (client *Client) ListDataSourceLogs(request *ListDataSourceLogsRequest) (_result *ListDataSourceLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataSourceLogsResponse{}
@@ -25305,6 +33856,15 @@ func (client *Client) ListDataSourceLogs(request *ListDataSourceLogsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of data source types in third-party cloud services that can be added to the threat analysis feature.
+//
+// @param request - ListDataSourceTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourceTypesResponse
 func (client *Client) ListDataSourceTypesWithOptions(request *ListDataSourceTypesRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceTypesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25342,6 +33902,13 @@ func (client *Client) ListDataSourceTypesWithOptions(request *ListDataSourceType
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of data source types in third-party cloud services that can be added to the threat analysis feature.
+//
+// @param request - ListDataSourceTypesRequest
+//
+// @return ListDataSourceTypesResponse
 func (client *Client) ListDataSourceTypes(request *ListDataSourceTypesRequest) (_result *ListDataSourceTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataSourceTypesResponse{}
@@ -25353,6 +33920,15 @@ func (client *Client) ListDataSourceTypes(request *ListDataSourceTypesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the cloud services that are integrated with the threat analysis feature, the logs of the cloud services, and the delivery of the logs.
+//
+// @param request - ListDeliveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeliveryResponse
 func (client *Client) ListDeliveryWithOptions(request *ListDeliveryRequest, runtime *util.RuntimeOptions) (_result *ListDeliveryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25394,6 +33970,13 @@ func (client *Client) ListDeliveryWithOptions(request *ListDeliveryRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the cloud services that are integrated with the threat analysis feature, the logs of the cloud services, and the delivery of the logs.
+//
+// @param request - ListDeliveryRequest
+//
+// @return ListDeliveryResponse
 func (client *Client) ListDelivery(request *ListDeliveryRequest) (_result *ListDeliveryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDeliveryResponse{}
@@ -25405,6 +33988,15 @@ func (client *Client) ListDelivery(request *ListDeliveryRequest) (_result *ListD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries handling policies.
+//
+// @param request - ListDisposeStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDisposeStrategyResponse
 func (client *Client) ListDisposeStrategyWithOptions(request *ListDisposeStrategyRequest, runtime *util.RuntimeOptions) (_result *ListDisposeStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25498,6 +34090,13 @@ func (client *Client) ListDisposeStrategyWithOptions(request *ListDisposeStrateg
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries handling policies.
+//
+// @param request - ListDisposeStrategyRequest
+//
+// @return ListDisposeStrategyResponse
 func (client *Client) ListDisposeStrategy(request *ListDisposeStrategyRequest) (_result *ListDisposeStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDisposeStrategyResponse{}
@@ -25509,6 +34108,15 @@ func (client *Client) ListDisposeStrategy(request *ListDisposeStrategyRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the logs in a cloud service that is added to the threat analysis feature.
+//
+// @param request - ListImportedLogsByProdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImportedLogsByProdResponse
 func (client *Client) ListImportedLogsByProdWithOptions(request *ListImportedLogsByProdRequest, runtime *util.RuntimeOptions) (_result *ListImportedLogsByProdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25558,6 +34166,13 @@ func (client *Client) ListImportedLogsByProdWithOptions(request *ListImportedLog
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the logs in a cloud service that is added to the threat analysis feature.
+//
+// @param request - ListImportedLogsByProdRequest
+//
+// @return ListImportedLogsByProdResponse
 func (client *Client) ListImportedLogsByProd(request *ListImportedLogsByProdRequest) (_result *ListImportedLogsByProdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListImportedLogsByProdResponse{}
@@ -25569,6 +34184,15 @@ func (client *Client) ListImportedLogsByProd(request *ListImportedLogsByProdRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
+//
+// @param request - ListOperationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOperationResponse
 func (client *Client) ListOperationWithOptions(request *ListOperationRequest, runtime *util.RuntimeOptions) (_result *ListOperationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25602,6 +34226,13 @@ func (client *Client) ListOperationWithOptions(request *ListOperationRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
+//
+// @param request - ListOperationRequest
+//
+// @return ListOperationResponse
 func (client *Client) ListOperation(request *ListOperationRequest) (_result *ListOperationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOperationResponse{}
@@ -25613,6 +34244,15 @@ func (client *Client) ListOperation(request *ListOperationRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the dedicated Simple Log Service project and Logstore for a cloud service based on the patterns of the project and Logstore names.
+//
+// @param request - ListProjectLogStoresRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectLogStoresResponse
 func (client *Client) ListProjectLogStoresWithOptions(request *ListProjectLogStoresRequest, runtime *util.RuntimeOptions) (_result *ListProjectLogStoresResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25658,6 +34298,13 @@ func (client *Client) ListProjectLogStoresWithOptions(request *ListProjectLogSto
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the dedicated Simple Log Service project and Logstore for a cloud service based on the patterns of the project and Logstore names.
+//
+// @param request - ListProjectLogStoresRequest
+//
+// @return ListProjectLogStoresResponse
 func (client *Client) ListProjectLogStores(request *ListProjectLogStoresRequest) (_result *ListProjectLogStoresResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProjectLogStoresResponse{}
@@ -25669,6 +34316,15 @@ func (client *Client) ListProjectLogStores(request *ListProjectLogStoresRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the saved searches of the Logstore.
+//
+// @param request - ListQuickQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuickQueryResponse
 func (client *Client) ListQuickQueryWithOptions(request *ListQuickQueryRequest, runtime *util.RuntimeOptions) (_result *ListQuickQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25710,6 +34366,13 @@ func (client *Client) ListQuickQueryWithOptions(request *ListQuickQueryRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the saved searches of the Logstore.
+//
+// @param request - ListQuickQueryRequest
+//
+// @return ListQuickQueryResponse
 func (client *Client) ListQuickQuery(request *ListQuickQueryRequest) (_result *ListQuickQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListQuickQueryResponse{}
@@ -25721,6 +34384,15 @@ func (client *Client) ListQuickQuery(request *ListQuickQueryRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
+//
+// @param request - ListRdUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRdUsersResponse
 func (client *Client) ListRdUsersWithOptions(request *ListRdUsersRequest, runtime *util.RuntimeOptions) (_result *ListRdUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25754,6 +34426,13 @@ func (client *Client) ListRdUsersWithOptions(request *ListRdUsersRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
+//
+// @param request - ListRdUsersRequest
+//
+// @return ListRdUsersResponse
 func (client *Client) ListRdUsers(request *ListRdUsersRequest) (_result *ListRdUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRdUsersResponse{}
@@ -25765,6 +34444,15 @@ func (client *Client) ListRdUsers(request *ListRdUsersRequest) (_result *ListRdU
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of logs that are added to the threat analysis feature by cloud service.
+//
+// @param request - ListUserProdLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserProdLogsResponse
 func (client *Client) ListUserProdLogsWithOptions(request *ListUserProdLogsRequest, runtime *util.RuntimeOptions) (_result *ListUserProdLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25814,6 +34502,13 @@ func (client *Client) ListUserProdLogsWithOptions(request *ListUserProdLogsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of logs that are added to the threat analysis feature by cloud service.
+//
+// @param request - ListUserProdLogsRequest
+//
+// @return ListUserProdLogsResponse
 func (client *Client) ListUserProdLogs(request *ListUserProdLogsRequest) (_result *ListUserProdLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserProdLogsResponse{}
@@ -25825,6 +34520,15 @@ func (client *Client) ListUserProdLogs(request *ListUserProdLogsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the logs that are added to the threat analysis feature by cloud service.
+//
+// @param request - ListUsersByProdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersByProdResponse
 func (client *Client) ListUsersByProdWithOptions(request *ListUsersByProdRequest, runtime *util.RuntimeOptions) (_result *ListUsersByProdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25870,6 +34574,13 @@ func (client *Client) ListUsersByProdWithOptions(request *ListUsersByProdRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the logs that are added to the threat analysis feature by cloud service.
+//
+// @param request - ListUsersByProdRequest
+//
+// @return ListUsersByProdResponse
 func (client *Client) ListUsersByProd(request *ListUsersByProdRequest) (_result *ListUsersByProdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersByProdResponse{}
@@ -25881,6 +34592,15 @@ func (client *Client) ListUsersByProd(request *ListUsersByProdRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a third-party cloud account that is added to the threat analysis feature.
+//
+// @param request - ModifyBindAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBindAccountResponse
 func (client *Client) ModifyBindAccountWithOptions(request *ModifyBindAccountRequest, runtime *util.RuntimeOptions) (_result *ModifyBindAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25911,6 +34631,14 @@ func (client *Client) ModifyBindAccountWithOptions(request *ModifyBindAccountReq
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -25934,6 +34662,13 @@ func (client *Client) ModifyBindAccountWithOptions(request *ModifyBindAccountReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a third-party cloud account that is added to the threat analysis feature.
+//
+// @param request - ModifyBindAccountRequest
+//
+// @return ModifyBindAccountResponse
 func (client *Client) ModifyBindAccount(request *ModifyBindAccountRequest) (_result *ModifyBindAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBindAccountResponse{}
@@ -25945,6 +34680,15 @@ func (client *Client) ModifyBindAccount(request *ModifyBindAccountRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a data source that is added to the threat analysis feature.
+//
+// @param request - ModifyDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDataSourceResponse
 func (client *Client) ModifyDataSourceWithOptions(request *ModifyDataSourceRequest, runtime *util.RuntimeOptions) (_result *ModifyDataSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26006,6 +34750,13 @@ func (client *Client) ModifyDataSourceWithOptions(request *ModifyDataSourceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a data source that is added to the threat analysis feature.
+//
+// @param request - ModifyDataSourceRequest
+//
+// @return ModifyDataSourceResponse
 func (client *Client) ModifyDataSource(request *ModifyDataSourceRequest) (_result *ModifyDataSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDataSourceResponse{}
@@ -26017,6 +34768,15 @@ func (client *Client) ModifyDataSource(request *ModifyDataSourceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of the logs that are added to the threat analysis feature for a data source within a cloud account.
+//
+// @param request - ModifyDataSourceLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDataSourceLogResponse
 func (client *Client) ModifyDataSourceLogWithOptions(request *ModifyDataSourceLogRequest, runtime *util.RuntimeOptions) (_result *ModifyDataSourceLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26078,6 +34838,13 @@ func (client *Client) ModifyDataSourceLogWithOptions(request *ModifyDataSourceLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of the logs that are added to the threat analysis feature for a data source within a cloud account.
+//
+// @param request - ModifyDataSourceLogRequest
+//
+// @return ModifyDataSourceLogResponse
 func (client *Client) ModifyDataSourceLog(request *ModifyDataSourceLogRequest) (_result *ModifyDataSourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDataSourceLogResponse{}
@@ -26089,6 +34856,15 @@ func (client *Client) ModifyDataSourceLog(request *ModifyDataSourceLogRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the log delivery feature for a cloud service that is integrated with Simple Log Service.
+//
+// @param request - OpenDeliveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenDeliveryResponse
 func (client *Client) OpenDeliveryWithOptions(request *OpenDeliveryRequest, runtime *util.RuntimeOptions) (_result *OpenDeliveryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26138,6 +34914,13 @@ func (client *Client) OpenDeliveryWithOptions(request *OpenDeliveryRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the log delivery feature for a cloud service that is integrated with Simple Log Service.
+//
+// @param request - OpenDeliveryRequest
+//
+// @return OpenDeliveryResponse
 func (client *Client) OpenDelivery(request *OpenDeliveryRequest) (_result *OpenDeliveryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenDeliveryResponse{}
@@ -26149,6 +34932,15 @@ func (client *Client) OpenDelivery(request *OpenDeliveryRequest) (_result *OpenD
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates an automatic response rule.
+//
+// @param request - PostAutomateResponseConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostAutomateResponseConfigResponse
 func (client *Client) PostAutomateResponseConfigWithOptions(request *PostAutomateResponseConfigRequest, runtime *util.RuntimeOptions) (_result *PostAutomateResponseConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26218,6 +35010,13 @@ func (client *Client) PostAutomateResponseConfigWithOptions(request *PostAutomat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates an automatic response rule.
+//
+// @param request - PostAutomateResponseConfigRequest
+//
+// @return PostAutomateResponseConfigResponse
 func (client *Client) PostAutomateResponseConfig(request *PostAutomateResponseConfigRequest) (_result *PostAutomateResponseConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostAutomateResponseConfigResponse{}
@@ -26229,6 +35028,15 @@ func (client *Client) PostAutomateResponseConfig(request *PostAutomateResponseCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates a custom rule.
+//
+// @param request - PostCustomizeRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostCustomizeRuleResponse
 func (client *Client) PostCustomizeRuleWithOptions(request *PostCustomizeRuleRequest, runtime *util.RuntimeOptions) (_result *PostCustomizeRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26342,6 +35150,13 @@ func (client *Client) PostCustomizeRuleWithOptions(request *PostCustomizeRuleReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates a custom rule.
+//
+// @param request - PostCustomizeRuleRequest
+//
+// @return PostCustomizeRuleResponse
 func (client *Client) PostCustomizeRule(request *PostCustomizeRuleRequest) (_result *PostCustomizeRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostCustomizeRuleResponse{}
@@ -26353,6 +35168,15 @@ func (client *Client) PostCustomizeRule(request *PostCustomizeRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a custom rule for testing.
+//
+// @param request - PostCustomizeRuleTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostCustomizeRuleTestResponse
 func (client *Client) PostCustomizeRuleTestWithOptions(request *PostCustomizeRuleTestRequest, runtime *util.RuntimeOptions) (_result *PostCustomizeRuleTestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26406,6 +35230,13 @@ func (client *Client) PostCustomizeRuleTestWithOptions(request *PostCustomizeRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a custom rule for testing.
+//
+// @param request - PostCustomizeRuleTestRequest
+//
+// @return PostCustomizeRuleTestResponse
 func (client *Client) PostCustomizeRuleTest(request *PostCustomizeRuleTestRequest) (_result *PostCustomizeRuleTestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostCustomizeRuleTestResponse{}
@@ -26417,6 +35248,15 @@ func (client *Client) PostCustomizeRuleTest(request *PostCustomizeRuleTestReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits event handling information.
+//
+// @param request - PostEventDisposeAndWhiteruleListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostEventDisposeAndWhiteruleListResponse
 func (client *Client) PostEventDisposeAndWhiteruleListWithOptions(request *PostEventDisposeAndWhiteruleListRequest, runtime *util.RuntimeOptions) (_result *PostEventDisposeAndWhiteruleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26478,6 +35318,13 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithOptions(request *PostE
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits event handling information.
+//
+// @param request - PostEventDisposeAndWhiteruleListRequest
+//
+// @return PostEventDisposeAndWhiteruleListResponse
 func (client *Client) PostEventDisposeAndWhiteruleList(request *PostEventDisposeAndWhiteruleListRequest) (_result *PostEventDisposeAndWhiteruleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostEventDisposeAndWhiteruleListResponse{}
@@ -26489,6 +35336,15 @@ func (client *Client) PostEventDisposeAndWhiteruleList(request *PostEventDispose
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits an alert whitelist rule.
+//
+// @param request - PostEventWhiteruleListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostEventWhiteruleListResponse
 func (client *Client) PostEventWhiteruleListWithOptions(request *PostEventWhiteruleListRequest, runtime *util.RuntimeOptions) (_result *PostEventWhiteruleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26538,6 +35394,13 @@ func (client *Client) PostEventWhiteruleListWithOptions(request *PostEventWhiter
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits an alert whitelist rule.
+//
+// @param request - PostEventWhiteruleListRequest
+//
+// @return PostEventWhiteruleListResponse
 func (client *Client) PostEventWhiteruleList(request *PostEventWhiteruleListRequest) (_result *PostEventWhiteruleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostEventWhiteruleListResponse{}
@@ -26549,6 +35412,15 @@ func (client *Client) PostEventWhiteruleList(request *PostEventWhiteruleListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Ends the test of a custom rule.
+//
+// @param request - PostFinishCustomizeRuleTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostFinishCustomizeRuleTestResponse
 func (client *Client) PostFinishCustomizeRuleTestWithOptions(request *PostFinishCustomizeRuleTestRequest, runtime *util.RuntimeOptions) (_result *PostFinishCustomizeRuleTestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26594,6 +35466,13 @@ func (client *Client) PostFinishCustomizeRuleTestWithOptions(request *PostFinish
 	return _result, _err
 }
 
+// Summary:
+//
+// Ends the test of a custom rule.
+//
+// @param request - PostFinishCustomizeRuleTestRequest
+//
+// @return PostFinishCustomizeRuleTestResponse
 func (client *Client) PostFinishCustomizeRuleTest(request *PostFinishCustomizeRuleTestRequest) (_result *PostFinishCustomizeRuleTestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostFinishCustomizeRuleTestResponse{}
@@ -26605,6 +35484,15 @@ func (client *Client) PostFinishCustomizeRuleTest(request *PostFinishCustomizeRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status of a custom rule.
+//
+// @param request - PostRuleStatusChangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostRuleStatusChangeResponse
 func (client *Client) PostRuleStatusChangeWithOptions(request *PostRuleStatusChangeRequest, runtime *util.RuntimeOptions) (_result *PostRuleStatusChangeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26658,6 +35546,13 @@ func (client *Client) PostRuleStatusChangeWithOptions(request *PostRuleStatusCha
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status of a custom rule.
+//
+// @param request - PostRuleStatusChangeRequest
+//
+// @return PostRuleStatusChangeResponse
 func (client *Client) PostRuleStatusChange(request *PostRuleStatusChangeRequest) (_result *PostRuleStatusChangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostRuleStatusChangeResponse{}
@@ -26669,6 +35564,15 @@ func (client *Client) PostRuleStatusChange(request *PostRuleStatusChangeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases storage to reduce the storage usage. The release operation is irreversible and may cause data loss. Proceed with caution.
+//
+// @param request - RestoreCapacityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreCapacityResponse
 func (client *Client) RestoreCapacityWithOptions(request *RestoreCapacityRequest, runtime *util.RuntimeOptions) (_result *RestoreCapacityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26710,6 +35614,13 @@ func (client *Client) RestoreCapacityWithOptions(request *RestoreCapacityRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases storage to reduce the storage usage. The release operation is irreversible and may cause data loss. Proceed with caution.
+//
+// @param request - RestoreCapacityRequest
+//
+// @return RestoreCapacityResponse
 func (client *Client) RestoreCapacity(request *RestoreCapacityRequest) (_result *RestoreCapacityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestoreCapacityResponse{}
@@ -26721,6 +35632,15 @@ func (client *Client) RestoreCapacity(request *RestoreCapacityRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
+//
+// @param request - SaveQuickQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveQuickQueryResponse
 func (client *Client) SaveQuickQueryWithOptions(request *SaveQuickQueryRequest, runtime *util.RuntimeOptions) (_result *SaveQuickQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26762,6 +35682,13 @@ func (client *Client) SaveQuickQueryWithOptions(request *SaveQuickQueryRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
+//
+// @param request - SaveQuickQueryRequest
+//
+// @return SaveQuickQueryResponse
 func (client *Client) SaveQuickQuery(request *SaveQuickQueryRequest) (_result *SaveQuickQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveQuickQueryResponse{}
@@ -26773,6 +35700,15 @@ func (client *Client) SaveQuickQuery(request *SaveQuickQueryRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the settings of log storage, such as the storage duration and storage region.
+//
+// @param request - SetStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetStorageResponse
 func (client *Client) SetStorageWithOptions(request *SetStorageRequest, runtime *util.RuntimeOptions) (_result *SetStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26822,6 +35758,13 @@ func (client *Client) SetStorageWithOptions(request *SetStorageRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the settings of log storage, such as the storage duration and storage region.
+//
+// @param request - SetStorageRequest
+//
+// @return SetStorageResponse
 func (client *Client) SetStorage(request *SetStorageRequest) (_result *SetStorageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetStorageResponse{}
@@ -26833,6 +35776,15 @@ func (client *Client) SetStorage(request *SetStorageRequest) (_result *SetStorag
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures index fields to display in log analysis. The index fields can be used for quick analysis.
+//
+// @param request - ShowQuickAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ShowQuickAnalysisResponse
 func (client *Client) ShowQuickAnalysisWithOptions(request *ShowQuickAnalysisRequest, runtime *util.RuntimeOptions) (_result *ShowQuickAnalysisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26866,6 +35818,13 @@ func (client *Client) ShowQuickAnalysisWithOptions(request *ShowQuickAnalysisReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures index fields to display in log analysis. The index fields can be used for quick analysis.
+//
+// @param request - ShowQuickAnalysisRequest
+//
+// @return ShowQuickAnalysisResponse
 func (client *Client) ShowQuickAnalysis(request *ShowQuickAnalysisRequest) (_result *ShowQuickAnalysisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ShowQuickAnalysisResponse{}
@@ -26877,6 +35836,15 @@ func (client *Client) ShowQuickAnalysis(request *ShowQuickAnalysisRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits log collection tasks at a time.
+//
+// @param request - SubmitImportLogTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitImportLogTasksResponse
 func (client *Client) SubmitImportLogTasksWithOptions(request *SubmitImportLogTasksRequest, runtime *util.RuntimeOptions) (_result *SubmitImportLogTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26907,6 +35875,14 @@ func (client *Client) SubmitImportLogTasksWithOptions(request *SubmitImportLogTa
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -26930,6 +35906,13 @@ func (client *Client) SubmitImportLogTasksWithOptions(request *SubmitImportLogTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits log collection tasks at a time.
+//
+// @param request - SubmitImportLogTasksRequest
+//
+// @return SubmitImportLogTasksResponse
 func (client *Client) SubmitImportLogTasks(request *SubmitImportLogTasksRequest) (_result *SubmitImportLogTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitImportLogTasksResponse{}
@@ -26941,6 +35924,15 @@ func (client *Client) SubmitImportLogTasks(request *SubmitImportLogTasksRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
+//
+// @param request - SubmitJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitJobsResponse
 func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime *util.RuntimeOptions) (_result *SubmitJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26978,6 +35970,13 @@ func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
+//
+// @param request - SubmitJobsRequest
+//
+// @return SubmitJobsResponse
 func (client *Client) SubmitJobs(request *SubmitJobsRequest) (_result *SubmitJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitJobsResponse{}
@@ -26989,6 +35988,15 @@ func (client *Client) SubmitJobs(request *SubmitJobsRequest) (_result *SubmitJob
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status of an automatic response rule.
+//
+// @param request - UpdateAutomateResponseConfigStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutomateResponseConfigStatusResponse
 func (client *Client) UpdateAutomateResponseConfigStatusWithOptions(request *UpdateAutomateResponseConfigStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateAutomateResponseConfigStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27038,6 +36046,13 @@ func (client *Client) UpdateAutomateResponseConfigStatusWithOptions(request *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status of an automatic response rule.
+//
+// @param request - UpdateAutomateResponseConfigStatusRequest
+//
+// @return UpdateAutomateResponseConfigStatusResponse
 func (client *Client) UpdateAutomateResponseConfigStatus(request *UpdateAutomateResponseConfigStatusRequest) (_result *UpdateAutomateResponseConfigStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAutomateResponseConfigStatusResponse{}
@@ -27049,6 +36064,15 @@ func (client *Client) UpdateAutomateResponseConfigStatus(request *UpdateAutomate
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates an alert whitelist rule.
+//
+// @param request - UpdateWhiteRuleListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWhiteRuleListResponse
 func (client *Client) UpdateWhiteRuleListWithOptions(request *UpdateWhiteRuleListRequest, runtime *util.RuntimeOptions) (_result *UpdateWhiteRuleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27102,6 +36126,13 @@ func (client *Client) UpdateWhiteRuleListWithOptions(request *UpdateWhiteRuleLis
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates an alert whitelist rule.
+//
+// @param request - UpdateWhiteRuleListRequest
+//
+// @return UpdateWhiteRuleListResponse
 func (client *Client) UpdateWhiteRuleList(request *UpdateWhiteRuleListRequest) (_result *UpdateWhiteRuleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateWhiteRuleListResponse{}
