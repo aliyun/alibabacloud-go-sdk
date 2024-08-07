@@ -13203,6 +13203,138 @@ func (s *GetCaseFileUploadUrlResponse) SetBody(v *GetCaseFileUploadUrlResponseBo
 	return s
 }
 
+type GetChatMediaUrlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// media id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// $iAHNCNQCo3dhdgMGBAAFAAbaACOEAaQhIEeoAqpjjBl42N6o_kg7A88AAAGRIRRuBgTOACrxHgcACM8AAAGRIYJLBQ
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 8707EB29-BAED-4302-B999-40BA61877437
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetChatMediaUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatMediaUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatMediaUrlRequest) SetInstanceId(v string) *GetChatMediaUrlRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetChatMediaUrlRequest) SetMediaId(v string) *GetChatMediaUrlRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetChatMediaUrlRequest) SetRequestId(v string) *GetChatMediaUrlRequest {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatMediaUrlResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Internal service issue. Detail:.
+	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9FBA26B0-462B-4D77-B78F-AF35560DBC71
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetChatMediaUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatMediaUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatMediaUrlResponseBody) SetCode(v string) *GetChatMediaUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetChatMediaUrlResponseBody) SetData(v string) *GetChatMediaUrlResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetChatMediaUrlResponseBody) SetHttpStatusCode(v int32) *GetChatMediaUrlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetChatMediaUrlResponseBody) SetMessage(v string) *GetChatMediaUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChatMediaUrlResponseBody) SetParams(v []*string) *GetChatMediaUrlResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *GetChatMediaUrlResponseBody) SetRequestId(v string) *GetChatMediaUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatMediaUrlResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatMediaUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatMediaUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatMediaUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatMediaUrlResponse) SetHeaders(v map[string]*string) *GetChatMediaUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatMediaUrlResponse) SetStatusCode(v int32) *GetChatMediaUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatMediaUrlResponse) SetBody(v *GetChatMediaUrlResponseBody) *GetChatMediaUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetContactFlowRequest struct {
 	// This parameter is required.
 	//
@@ -67523,6 +67655,66 @@ func (client *Client) GetCaseFileUploadUrl(request *GetCaseFileUploadUrlRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCaseFileUploadUrlResponse{}
 	_body, _err := client.GetCaseFileUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetChatMediaUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatMediaUrlResponse
+func (client *Client) GetChatMediaUrlWithOptions(request *GetChatMediaUrlRequest, runtime *util.RuntimeOptions) (_result *GetChatMediaUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		body["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatMediaUrl"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatMediaUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetChatMediaUrlRequest
+//
+// @return GetChatMediaUrlResponse
+func (client *Client) GetChatMediaUrl(request *GetChatMediaUrlRequest) (_result *GetChatMediaUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetChatMediaUrlResponse{}
+	_body, _err := client.GetChatMediaUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
