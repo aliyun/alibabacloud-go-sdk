@@ -39515,7 +39515,11 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevelWithOptions(reques
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -39524,7 +39528,7 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevelWithOptions(reques
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -40848,7 +40852,7 @@ func (client *Client) GetConfigRuleSummaryByRiskLevelWithOptions(runtime *util.R
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
