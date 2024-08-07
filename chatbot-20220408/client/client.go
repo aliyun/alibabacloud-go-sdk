@@ -6819,11 +6819,14 @@ type GenerateUserAccessTokenRequest struct {
 	// 1000
 	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	ExtraInfo  *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 8882022040000000171
 	ForeignId *string `json:"ForeignId,omitempty" xml:"ForeignId,omitempty"`
-	Nick      *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// This parameter is required.
+	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
 	// example:
 	//
 	// 1381111****
