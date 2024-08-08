@@ -2008,6 +2008,1038 @@ func (s *ListEnrolledAccountsResponse) SetBody(v *ListEnrolledAccountsResponseBo
 	return s
 }
 
+type ListEvaluationMetadataRequest struct {
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEvaluationMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataRequest) SetLanguage(v string) *ListEvaluationMetadataRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataRequest) SetRegionId(v string) *ListEvaluationMetadataRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEvaluationMetadataResponseBody struct {
+	EvaluationMetadata []*ListEvaluationMetadataResponseBodyEvaluationMetadata `json:"EvaluationMetadata,omitempty" xml:"EvaluationMetadata,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16B208DD-86BD-5E7D-AC93-FFD44B6FBDF1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBody) SetEvaluationMetadata(v []*ListEvaluationMetadataResponseBodyEvaluationMetadata) *ListEvaluationMetadataResponseBody {
+	s.EvaluationMetadata = v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBody) SetRequestId(v string) *ListEvaluationMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadata struct {
+	Metadata []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Metric
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadata) SetMetadata(v []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) *ListEvaluationMetadataResponseBodyEvaluationMetadata {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadata) SetType(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadata {
+	s.Type = &v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata struct {
+	// example:
+	//
+	// Security
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// pxgtda****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// High
+	RecommendationLevel *string                                                                          `json:"RecommendationLevel,omitempty" xml:"RecommendationLevel,omitempty"`
+	RemediationMetadata *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata `json:"RemediationMetadata,omitempty" xml:"RemediationMetadata,omitempty" type:"Struct"`
+	ResourceMetadata    *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata    `json:"ResourceMetadata,omitempty" xml:"ResourceMetadata,omitempty" type:"Struct"`
+	// example:
+	//
+	// Account
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// Released
+	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetCategory(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.Category = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetDescription(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetDisplayName(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetId(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetRecommendationLevel(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.RecommendationLevel = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetRemediationMetadata(v *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.RemediationMetadata = v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetResourceMetadata(v *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.ResourceMetadata = v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetScope(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetStage(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata {
+	s.Stage = &v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata struct {
+	Remediation []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation `json:"Remediation,omitempty" xml:"Remediation,omitempty" type:"Repeated"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata) SetRemediation(v []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata {
+	s.Remediation = v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation struct {
+	Actions []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Manual
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation) SetActions(v []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation {
+	s.Actions = v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation) SetRemediationType(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation {
+	s.RemediationType = &v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions struct {
+	// example:
+	//
+	// UnusedAccessKeyInRamUser
+	Classification  *string                                                                                                      `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	CostDescription *string                                                                                                      `json:"CostDescription,omitempty" xml:"CostDescription,omitempty"`
+	Description     *string                                                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	Guidance        []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance `json:"Guidance,omitempty" xml:"Guidance,omitempty" type:"Repeated"`
+	Notice          *string                                                                                                      `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Suggestion      *string                                                                                                      `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) SetClassification(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions {
+	s.Classification = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) SetCostDescription(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions {
+	s.CostDescription = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) SetDescription(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) SetGuidance(v []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions {
+	s.Guidance = v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) SetNotice(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions {
+	s.Notice = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) SetSuggestion(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions {
+	s.Suggestion = &v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance struct {
+	ButtonName *string `json:"ButtonName,omitempty" xml:"ButtonName,omitempty"`
+	// example:
+	//
+	// https://ram.console.aliyun.com/users
+	ButtonRef *string `json:"ButtonRef,omitempty" xml:"ButtonRef,omitempty"`
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) SetButtonName(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance {
+	s.ButtonName = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) SetButtonRef(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance {
+	s.ButtonRef = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) SetContent(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance {
+	s.Content = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) SetTitle(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance {
+	s.Title = &v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata struct {
+	ResourcePropertyMetadata []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata `json:"ResourcePropertyMetadata,omitempty" xml:"ResourcePropertyMetadata,omitempty" type:"Repeated"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata) SetResourcePropertyMetadata(v []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata {
+	s.ResourcePropertyMetadata = v
+	return s
+}
+
+type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// AkLastUsedTime
+	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// example:
+	//
+	// String
+	PropertyType *string `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata) SetDisplayName(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata) SetPropertyName(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata {
+	s.PropertyName = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata) SetPropertyType(v string) *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata {
+	s.PropertyType = &v
+	return s
+}
+
+type ListEvaluationMetadataResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEvaluationMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEvaluationMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetadataResponse) SetHeaders(v map[string]*string) *ListEvaluationMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponse) SetStatusCode(v int32) *ListEvaluationMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEvaluationMetadataResponse) SetBody(v *ListEvaluationMetadataResponseBody) *ListEvaluationMetadataResponse {
+	s.Body = v
+	return s
+}
+
+type ListEvaluationMetricDetailsRequest struct {
+	// example:
+	//
+	// 103144549568****
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// xfyve5****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 5
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAGEaXR18y1rqykZHIqRuBejOqED4S3Xne33c7zbn****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEvaluationMetricDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetricDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetAccountId(v int64) *ListEvaluationMetricDetailsRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetId(v string) *ListEvaluationMetricDetailsRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetMaxResults(v int32) *ListEvaluationMetricDetailsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetNextToken(v string) *ListEvaluationMetricDetailsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetRegionId(v string) *ListEvaluationMetricDetailsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEvaluationMetricDetailsResponseBody struct {
+	// example:
+	//
+	// AAAAAGEaXR18y1rqykZHIqRuBejOqED4S3Xne33c7zbn****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// AC9BD94C-D20C-4D27-88D4-89E8D75C****
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources []*ListEvaluationMetricDetailsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s ListEvaluationMetricDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetricDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetricDetailsResponseBody) SetNextToken(v string) *ListEvaluationMetricDetailsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBody) SetRequestId(v string) *ListEvaluationMetricDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBody) SetResources(v []*ListEvaluationMetricDetailsResponseBodyResources) *ListEvaluationMetricDetailsResponseBody {
+	s.Resources = v
+	return s
+}
+
+type ListEvaluationMetricDetailsResponseBodyResources struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// RecentUnloginRamUser
+	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	// example:
+	//
+	// 26435103783237****
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// 176618589410****
+	ResourceOwnerId    *int64                                                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceProperties []*ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ACS::RAM::User
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListEvaluationMetricDetailsResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetricDetailsResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetRegionId(v string) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetResourceClassification(v string) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.ResourceClassification = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetResourceId(v string) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetResourceName(v string) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetResourceOwnerId(v int64) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetResourceProperties(v []*ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.ResourceProperties = v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetResourceType(v string) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.ResourceType = &v
+	return s
+}
+
+type ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties struct {
+	// example:
+	//
+	// DisplayName
+	PropertyName  *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
+}
+
+func (s ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties) SetPropertyName(v string) *ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties {
+	s.PropertyName = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties) SetPropertyValue(v string) *ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties {
+	s.PropertyValue = &v
+	return s
+}
+
+type ListEvaluationMetricDetailsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEvaluationMetricDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEvaluationMetricDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationMetricDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationMetricDetailsResponse) SetHeaders(v map[string]*string) *ListEvaluationMetricDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponse) SetStatusCode(v int32) *ListEvaluationMetricDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsResponse) SetBody(v *ListEvaluationMetricDetailsResponseBody) *ListEvaluationMetricDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEvaluationResultsRequest struct {
+	// example:
+	//
+	// 176618589410****
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEvaluationResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsRequest) SetAccountId(v int64) *ListEvaluationResultsRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListEvaluationResultsRequest) SetRegionId(v string) *ListEvaluationResultsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEvaluationResultsResponseBody struct {
+	// example:
+	//
+	// 176618589410****
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// BD57329E-131A-59F4-8746-E1CD8D7B****
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *ListEvaluationResultsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+}
+
+func (s ListEvaluationResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponseBody) SetAccountId(v int64) *ListEvaluationResultsResponseBody {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBody) SetRequestId(v string) *ListEvaluationResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBody) SetResults(v *ListEvaluationResultsResponseBodyResults) *ListEvaluationResultsResponseBody {
+	s.Results = v
+	return s
+}
+
+type ListEvaluationResultsResponseBodyResults struct {
+	// example:
+	//
+	// 2023-12-13T03:35:00Z
+	EvaluationTime *string                                                  `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
+	MetricResults  []*ListEvaluationResultsResponseBodyResultsMetricResults `json:"MetricResults,omitempty" xml:"MetricResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0.6453
+	TotalScore *float64 `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
+}
+
+func (s ListEvaluationResultsResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponseBodyResults) SetEvaluationTime(v string) *ListEvaluationResultsResponseBodyResults {
+	s.EvaluationTime = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResults) SetMetricResults(v []*ListEvaluationResultsResponseBodyResultsMetricResults) *ListEvaluationResultsResponseBodyResults {
+	s.MetricResults = v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResults) SetStatus(v string) *ListEvaluationResultsResponseBodyResults {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResults) SetTotalScore(v float64) *ListEvaluationResultsResponseBodyResults {
+	s.TotalScore = &v
+	return s
+}
+
+type ListEvaluationResultsResponseBodyResultsMetricResults struct {
+	// example:
+	//
+	// 2023-12-13T03:34:02Z
+	EvaluationTime *string `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
+	// example:
+	//
+	// r7xdcu****
+	Id               *string                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	ResourcesSummary *ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary `json:"ResourcesSummary,omitempty" xml:"ResourcesSummary,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0.67
+	Result *float64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// Error
+	Risk *string `json:"Risk,omitempty" xml:"Risk,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetEvaluationTime(v string) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.EvaluationTime = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetId(v string) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetResourcesSummary(v *ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.ResourcesSummary = v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetResult(v float64) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.Result = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetRisk(v string) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.Risk = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetStatus(v string) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.Status = &v
+	return s
+}
+
+type ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary struct {
+	// example:
+	//
+	// 2
+	NonCompliant *int32 `json:"NonCompliant,omitempty" xml:"NonCompliant,omitempty"`
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary) SetNonCompliant(v int32) *ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary {
+	s.NonCompliant = &v
+	return s
+}
+
+type ListEvaluationResultsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEvaluationResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponse) SetHeaders(v map[string]*string) *ListEvaluationResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEvaluationResultsResponse) SetStatusCode(v int32) *ListEvaluationResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponse) SetBody(v *ListEvaluationResultsResponseBody) *ListEvaluationResultsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEvaluationScoreHistoryRequest struct {
+	// example:
+	//
+	// 2024-07-11
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2024-06-11
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s ListEvaluationScoreHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationScoreHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationScoreHistoryRequest) SetEndDate(v string) *ListEvaluationScoreHistoryRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ListEvaluationScoreHistoryRequest) SetRegionId(v string) *ListEvaluationScoreHistoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEvaluationScoreHistoryRequest) SetStartDate(v string) *ListEvaluationScoreHistoryRequest {
+	s.StartDate = &v
+	return s
+}
+
+type ListEvaluationScoreHistoryResponseBody struct {
+	// example:
+	//
+	// AC9BD94C-D20C-4D27-88D4-89E8D75C051B
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScoreHistory *ListEvaluationScoreHistoryResponseBodyScoreHistory `json:"ScoreHistory,omitempty" xml:"ScoreHistory,omitempty" type:"Struct"`
+}
+
+func (s ListEvaluationScoreHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationScoreHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationScoreHistoryResponseBody) SetRequestId(v string) *ListEvaluationScoreHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEvaluationScoreHistoryResponseBody) SetScoreHistory(v *ListEvaluationScoreHistoryResponseBodyScoreHistory) *ListEvaluationScoreHistoryResponseBody {
+	s.ScoreHistory = v
+	return s
+}
+
+type ListEvaluationScoreHistoryResponseBodyScoreHistory struct {
+	TotalScoreHistory []*ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory `json:"TotalScoreHistory,omitempty" xml:"TotalScoreHistory,omitempty" type:"Repeated"`
+}
+
+func (s ListEvaluationScoreHistoryResponseBodyScoreHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationScoreHistoryResponseBodyScoreHistory) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationScoreHistoryResponseBodyScoreHistory) SetTotalScoreHistory(v []*ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory) *ListEvaluationScoreHistoryResponseBodyScoreHistory {
+	s.TotalScoreHistory = v
+	return s
+}
+
+type ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory struct {
+	// example:
+	//
+	// 2024-06-30T03:34:02Z
+	EvaluationTime *string `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
+	// example:
+	//
+	// 0.6753
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory) SetEvaluationTime(v string) *ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory {
+	s.EvaluationTime = &v
+	return s
+}
+
+func (s *ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory) SetScore(v float64) *ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory {
+	s.Score = &v
+	return s
+}
+
+type ListEvaluationScoreHistoryResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEvaluationScoreHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEvaluationScoreHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationScoreHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationScoreHistoryResponse) SetHeaders(v map[string]*string) *ListEvaluationScoreHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEvaluationScoreHistoryResponse) SetStatusCode(v int32) *ListEvaluationScoreHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEvaluationScoreHistoryResponse) SetBody(v *ListEvaluationScoreHistoryResponseBody) *ListEvaluationScoreHistoryResponse {
+	s.Body = v
+	return s
+}
+
+type RunEvaluationRequest struct {
+	// example:
+	//
+	// 176618589410****
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ResourceDirectory
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s RunEvaluationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEvaluationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunEvaluationRequest) SetAccountId(v int64) *RunEvaluationRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *RunEvaluationRequest) SetRegionId(v string) *RunEvaluationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RunEvaluationRequest) SetScope(v string) *RunEvaluationRequest {
+	s.Scope = &v
+	return s
+}
+
+type RunEvaluationResponseBody struct {
+	// example:
+	//
+	// 2D3E2A3A-F2B8-578D-9659-3195F94A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunEvaluationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEvaluationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunEvaluationResponseBody) SetRequestId(v string) *RunEvaluationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunEvaluationResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunEvaluationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEvaluationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunEvaluationResponse) SetHeaders(v map[string]*string) *RunEvaluationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunEvaluationResponse) SetStatusCode(v int32) *RunEvaluationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunEvaluationResponse) SetBody(v *RunEvaluationResponseBody) *RunEvaluationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAccountFactoryBaselineRequest struct {
 	BaselineId    *string                                             `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	BaselineItems []*UpdateAccountFactoryBaselineRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
@@ -2837,6 +3869,346 @@ func (client *Client) ListEnrolledAccounts(request *ListEnrolledAccountsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnrolledAccountsResponse{}
 	_body, _err := client.ListEnrolledAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看治理检测定义
+//
+// @param request - ListEvaluationMetadataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluationMetadataResponse
+func (client *Client) ListEvaluationMetadataWithOptions(request *ListEvaluationMetadataRequest, runtime *util.RuntimeOptions) (_result *ListEvaluationMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEvaluationMetadata"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEvaluationMetadataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看治理检测定义
+//
+// @param request - ListEvaluationMetadataRequest
+//
+// @return ListEvaluationMetadataResponse
+func (client *Client) ListEvaluationMetadata(request *ListEvaluationMetadataRequest) (_result *ListEvaluationMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEvaluationMetadataResponse{}
+	_body, _err := client.ListEvaluationMetadataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云治理中心治理检测项结果详情
+//
+// @param request - ListEvaluationMetricDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluationMetricDetailsResponse
+func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvaluationMetricDetailsRequest, runtime *util.RuntimeOptions) (_result *ListEvaluationMetricDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEvaluationMetricDetails"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEvaluationMetricDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云治理中心治理检测项结果详情
+//
+// @param request - ListEvaluationMetricDetailsRequest
+//
+// @return ListEvaluationMetricDetailsResponse
+func (client *Client) ListEvaluationMetricDetails(request *ListEvaluationMetricDetailsRequest) (_result *ListEvaluationMetricDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEvaluationMetricDetailsResponse{}
+	_body, _err := client.ListEvaluationMetricDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看检测结果
+//
+// @param request - ListEvaluationResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluationResultsResponse
+func (client *Client) ListEvaluationResultsWithOptions(request *ListEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListEvaluationResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEvaluationResults"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEvaluationResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看检测结果
+//
+// @param request - ListEvaluationResultsRequest
+//
+// @return ListEvaluationResultsResponse
+func (client *Client) ListEvaluationResults(request *ListEvaluationResultsRequest) (_result *ListEvaluationResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEvaluationResultsResponse{}
+	_body, _err := client.ListEvaluationResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看治理检测定义
+//
+// @param request - ListEvaluationScoreHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluationScoreHistoryResponse
+func (client *Client) ListEvaluationScoreHistoryWithOptions(request *ListEvaluationScoreHistoryRequest, runtime *util.RuntimeOptions) (_result *ListEvaluationScoreHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEvaluationScoreHistory"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEvaluationScoreHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看治理检测定义
+//
+// @param request - ListEvaluationScoreHistoryRequest
+//
+// @return ListEvaluationScoreHistoryResponse
+func (client *Client) ListEvaluationScoreHistory(request *ListEvaluationScoreHistoryRequest) (_result *ListEvaluationScoreHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEvaluationScoreHistoryResponse{}
+	_body, _err := client.ListEvaluationScoreHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行云治理中心治理检测
+//
+// @param request - RunEvaluationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunEvaluationResponse
+func (client *Client) RunEvaluationWithOptions(request *RunEvaluationRequest, runtime *util.RuntimeOptions) (_result *RunEvaluationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunEvaluation"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunEvaluationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行云治理中心治理检测
+//
+// @param request - RunEvaluationRequest
+//
+// @return RunEvaluationResponse
+func (client *Client) RunEvaluation(request *RunEvaluationRequest) (_result *RunEvaluationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunEvaluationResponse{}
+	_body, _err := client.RunEvaluationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
