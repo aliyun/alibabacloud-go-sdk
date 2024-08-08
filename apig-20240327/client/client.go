@@ -857,6 +857,10 @@ func (s *HttpApiApiInfo) SetVersionInfo(v *HttpApiVersionInfo) *HttpApiApiInfo {
 type HttpApiApiInfoEnvironments struct {
 	// example:
 	//
+	// test
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// example:
+	//
 	// SingleService
 	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
 	// example:
@@ -864,11 +868,21 @@ type HttpApiApiInfoEnvironments struct {
 	// Service
 	BackendType        *string                                       `json:"backendType,omitempty" xml:"backendType,omitempty"`
 	CloudProductConfig *HttpApiApiInfoEnvironmentsCloudProductConfig `json:"cloudProductConfig,omitempty" xml:"cloudProductConfig,omitempty" type:"Struct"`
+	CustomDomains      []*HttpApiDomainInfo                          `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
 	DnsConfigs         []*HttpApiApiInfoEnvironmentsDnsConfigs       `json:"dnsConfigs,omitempty" xml:"dnsConfigs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// env-xxx
-	EnvironmentId  *string                                     `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	EnvironmentId *string                                `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	GatewayInfo   *HttpApiApiInfoEnvironmentsGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// Published
+	PublishStatus  *string                                     `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
 	ServiceConfigs []*HttpApiApiInfoEnvironmentsServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 	VipConfigs     []*HttpApiApiInfoEnvironmentsVipConfigs     `json:"vipConfigs,omitempty" xml:"vipConfigs,omitempty" type:"Repeated"`
 }
@@ -879,6 +893,11 @@ func (s HttpApiApiInfoEnvironments) String() string {
 
 func (s HttpApiApiInfoEnvironments) GoString() string {
 	return s.String()
+}
+
+func (s *HttpApiApiInfoEnvironments) SetAlias(v string) *HttpApiApiInfoEnvironments {
+	s.Alias = &v
+	return s
 }
 
 func (s *HttpApiApiInfoEnvironments) SetBackendScene(v string) *HttpApiApiInfoEnvironments {
@@ -896,6 +915,11 @@ func (s *HttpApiApiInfoEnvironments) SetCloudProductConfig(v *HttpApiApiInfoEnvi
 	return s
 }
 
+func (s *HttpApiApiInfoEnvironments) SetCustomDomains(v []*HttpApiDomainInfo) *HttpApiApiInfoEnvironments {
+	s.CustomDomains = v
+	return s
+}
+
 func (s *HttpApiApiInfoEnvironments) SetDnsConfigs(v []*HttpApiApiInfoEnvironmentsDnsConfigs) *HttpApiApiInfoEnvironments {
 	s.DnsConfigs = v
 	return s
@@ -903,6 +927,21 @@ func (s *HttpApiApiInfoEnvironments) SetDnsConfigs(v []*HttpApiApiInfoEnvironmen
 
 func (s *HttpApiApiInfoEnvironments) SetEnvironmentId(v string) *HttpApiApiInfoEnvironments {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *HttpApiApiInfoEnvironments) SetGatewayInfo(v *HttpApiApiInfoEnvironmentsGatewayInfo) *HttpApiApiInfoEnvironments {
+	s.GatewayInfo = v
+	return s
+}
+
+func (s *HttpApiApiInfoEnvironments) SetName(v string) *HttpApiApiInfoEnvironments {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiApiInfoEnvironments) SetPublishStatus(v string) *HttpApiApiInfoEnvironments {
+	s.PublishStatus = &v
 	return s
 }
 
@@ -1169,6 +1208,35 @@ func (s *HttpApiApiInfoEnvironmentsDnsConfigs) SetMatch(v *HttpApiBackendMatchCo
 
 func (s *HttpApiApiInfoEnvironmentsDnsConfigs) SetWeight(v int32) *HttpApiApiInfoEnvironmentsDnsConfigs {
 	s.Weight = &v
+	return s
+}
+
+type HttpApiApiInfoEnvironmentsGatewayInfo struct {
+	// example:
+	//
+	// gw-xxx
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s HttpApiApiInfoEnvironmentsGatewayInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiApiInfoEnvironmentsGatewayInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiApiInfoEnvironmentsGatewayInfo) SetGatewayId(v string) *HttpApiApiInfoEnvironmentsGatewayInfo {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *HttpApiApiInfoEnvironmentsGatewayInfo) SetName(v string) *HttpApiApiInfoEnvironmentsGatewayInfo {
+	s.Name = &v
 	return s
 }
 
