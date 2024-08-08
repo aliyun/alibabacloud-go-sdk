@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -30,22 +27,35 @@ func (s *AddMemberBasicInfoRequest) SetBody(v *AddMemberBasicInfoRequestBody) *A
 }
 
 type AddMemberBasicInfoRequestBody struct {
-	Area           *string                                  `json:"Area,omitempty" xml:"Area,omitempty"`
-	Avatar         *string                                  `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Birthday       *string                                  `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
-	Channels       []*AddMemberBasicInfoRequestBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
-	City           *string                                  `json:"City,omitempty" xml:"City,omitempty"`
-	Country        *string                                  `json:"Country,omitempty" xml:"Country,omitempty"`
-	Email          *string                                  `json:"Email,omitempty" xml:"Email,omitempty"`
-	Extra          *string                                  `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	GmtCreate      *string                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	MemberName     *string                                  `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	MemberNickName *string                                  `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
-	Mobile         *string                                  `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	OpenMerchantId *string                                  `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	PlatFormType   *string                                  `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
-	Province       *string                                  `json:"Province,omitempty" xml:"Province,omitempty"`
-	Sex            *string                                  `json:"Sex,omitempty" xml:"Sex,omitempty"`
+	Area   *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// example:
+	//
+	// 2022-09-08
+	Birthday *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
+	// This parameter is required.
+	Channels []*AddMemberBasicInfoRequestBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	City     *string                                  `json:"City,omitempty" xml:"City,omitempty"`
+	Country  *string                                  `json:"Country,omitempty" xml:"Country,omitempty"`
+	Email    *string                                  `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// ""
+	Extra          *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	MemberName     *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	MemberNickName *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
+	MixMobile      *string `json:"MixMobile,omitempty" xml:"MixMobile,omitempty"`
+	// example:
+	//
+	// 17716699087
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
+	// This parameter is required.
+	PlatFormType *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
+	Province     *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Sex          *string `json:"Sex,omitempty" xml:"Sex,omitempty"`
 }
 
 func (s AddMemberBasicInfoRequestBody) String() string {
@@ -111,6 +121,11 @@ func (s *AddMemberBasicInfoRequestBody) SetMemberNickName(v string) *AddMemberBa
 	return s
 }
 
+func (s *AddMemberBasicInfoRequestBody) SetMixMobile(v string) *AddMemberBasicInfoRequestBody {
+	s.MixMobile = &v
+	return s
+}
+
 func (s *AddMemberBasicInfoRequestBody) SetMobile(v string) *AddMemberBasicInfoRequestBody {
 	s.Mobile = &v
 	return s
@@ -137,7 +152,8 @@ func (s *AddMemberBasicInfoRequestBody) SetSex(v string) *AddMemberBasicInfoRequ
 }
 
 type AddMemberBasicInfoRequestBodyChannels struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	ChannelCode    *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
 	ChannelOpenId  *string `json:"ChannelOpenId,omitempty" xml:"ChannelOpenId,omitempty"`
 	ChannelUnionId *string `json:"ChannelUnionId,omitempty" xml:"ChannelUnionId,omitempty"`
@@ -195,11 +211,23 @@ func (s *AddMemberBasicInfoShrinkRequest) SetBodyShrink(v string) *AddMemberBasi
 }
 
 type AddMemberBasicInfoResponseBody struct {
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// WMS_36606164948078_23218019
 	OuterMemberId *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1DEFC4F1-AF11-5A3C-93B9-2880768DA218
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddMemberBasicInfoResponseBody) String() string {
@@ -236,9 +264,9 @@ func (s *AddMemberBasicInfoResponseBody) SetSuccess(v bool) *AddMemberBasicInfoR
 }
 
 type AddMemberBasicInfoResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddMemberBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddMemberBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddMemberBasicInfoResponse) String() string {
@@ -264,6 +292,838 @@ func (s *AddMemberBasicInfoResponse) SetBody(v *AddMemberBasicInfoResponseBody) 
 	return s
 }
 
+type BatchSaveOrderPopRequest struct {
+	Orders []*BatchSaveOrderPopRequestOrders `json:"Orders,omitempty" xml:"Orders,omitempty" type:"Repeated"`
+}
+
+func (s BatchSaveOrderPopRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveOrderPopRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveOrderPopRequest) SetOrders(v []*BatchSaveOrderPopRequestOrders) *BatchSaveOrderPopRequest {
+	s.Orders = v
+	return s
+}
+
+type BatchSaveOrderPopRequestOrders struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// doudian
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1699b2b974d444e3aa489f96457ef204
+	ChannelOpenId *string `json:"ChannelOpenId,omitempty" xml:"ChannelOpenId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Feature       *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testOpenMerchantId
+	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testOpenOrderId
+	OpenOrderId *string `json:"OpenOrderId,omitempty" xml:"OpenOrderId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-12-20 12:12:12
+	OrderCreateTime *string `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	OrderPayment *string `json:"OrderPayment,omitempty" xml:"OrderPayment,omitempty"`
+	PayTime      *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DOUDIAN
+	PlatformType *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testShopId
+	ShopId *string `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TRADE_FINISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	SubOrderModelList []*BatchSaveOrderPopRequestOrdersSubOrderModelList `json:"SubOrderModelList,omitempty" xml:"SubOrderModelList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	TotalFee     *string `json:"TotalFee,omitempty" xml:"TotalFee,omitempty"`
+	BuyerOpenUid *string `json:"buyerOpenUid,omitempty" xml:"buyerOpenUid,omitempty"`
+}
+
+func (s BatchSaveOrderPopRequestOrders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveOrderPopRequestOrders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetChannelCode(v string) *BatchSaveOrderPopRequestOrders {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetChannelOpenId(v string) *BatchSaveOrderPopRequestOrders {
+	s.ChannelOpenId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetEndTime(v string) *BatchSaveOrderPopRequestOrders {
+	s.EndTime = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetFeature(v string) *BatchSaveOrderPopRequestOrders {
+	s.Feature = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetOpenMerchantId(v string) *BatchSaveOrderPopRequestOrders {
+	s.OpenMerchantId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetOpenOrderId(v string) *BatchSaveOrderPopRequestOrders {
+	s.OpenOrderId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetOrderCreateTime(v string) *BatchSaveOrderPopRequestOrders {
+	s.OrderCreateTime = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetOrderPayment(v string) *BatchSaveOrderPopRequestOrders {
+	s.OrderPayment = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetPayTime(v string) *BatchSaveOrderPopRequestOrders {
+	s.PayTime = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetPlatformType(v string) *BatchSaveOrderPopRequestOrders {
+	s.PlatformType = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetShopId(v string) *BatchSaveOrderPopRequestOrders {
+	s.ShopId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetStatus(v string) *BatchSaveOrderPopRequestOrders {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetSubOrderModelList(v []*BatchSaveOrderPopRequestOrdersSubOrderModelList) *BatchSaveOrderPopRequestOrders {
+	s.SubOrderModelList = v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetTotalFee(v string) *BatchSaveOrderPopRequestOrders {
+	s.TotalFee = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrders) SetBuyerOpenUid(v string) *BatchSaveOrderPopRequestOrders {
+	s.BuyerOpenUid = &v
+	return s
+}
+
+type BatchSaveOrderPopRequestOrdersSubOrderModelList struct {
+	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testSubOrderId
+	OpenSubOrderId *string `json:"OpenSubOrderId,omitempty" xml:"OpenSubOrderId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	OrderPayment *string `json:"OrderPayment,omitempty" xml:"OrderPayment,omitempty"`
+	OutProductId *string `json:"OutProductId,omitempty" xml:"OutProductId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ProductAmount *string `json:"ProductAmount,omitempty" xml:"ProductAmount,omitempty"`
+	ProductId     *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductName   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RefundStatus  *string `json:"RefundStatus,omitempty" xml:"RefundStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TRADE_FINISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	TotalFee *string `json:"TotalFee,omitempty" xml:"TotalFee,omitempty"`
+}
+
+func (s BatchSaveOrderPopRequestOrdersSubOrderModelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveOrderPopRequestOrdersSubOrderModelList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetFeature(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.Feature = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetOpenSubOrderId(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.OpenSubOrderId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetOrderPayment(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.OrderPayment = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetOutProductId(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.OutProductId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetProductAmount(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.ProductAmount = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetProductId(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.ProductId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetProductName(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetRefundStatus(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.RefundStatus = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetStatus(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopRequestOrdersSubOrderModelList) SetTotalFee(v string) *BatchSaveOrderPopRequestOrdersSubOrderModelList {
+	s.TotalFee = &v
+	return s
+}
+
+type BatchSaveOrderPopShrinkRequest struct {
+	OrdersShrink *string `json:"Orders,omitempty" xml:"Orders,omitempty"`
+}
+
+func (s BatchSaveOrderPopShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveOrderPopShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveOrderPopShrinkRequest) SetOrdersShrink(v string) *BatchSaveOrderPopShrinkRequest {
+	s.OrdersShrink = &v
+	return s
+}
+
+type BatchSaveOrderPopResponseBody struct {
+	// example:
+	//
+	// testErrorCode
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// testErrorMessage
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200/400...
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// testRequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchSaveOrderPopResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveOrderPopResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveOrderPopResponseBody) SetErrorCode(v string) *BatchSaveOrderPopResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopResponseBody) SetErrorMessage(v string) *BatchSaveOrderPopResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopResponseBody) SetHttpStatusCode(v string) *BatchSaveOrderPopResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopResponseBody) SetRequestId(v string) *BatchSaveOrderPopResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopResponseBody) SetSuccess(v bool) *BatchSaveOrderPopResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchSaveOrderPopResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchSaveOrderPopResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchSaveOrderPopResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveOrderPopResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveOrderPopResponse) SetHeaders(v map[string]*string) *BatchSaveOrderPopResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchSaveOrderPopResponse) SetStatusCode(v int32) *BatchSaveOrderPopResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchSaveOrderPopResponse) SetBody(v *BatchSaveOrderPopResponseBody) *BatchSaveOrderPopResponse {
+	s.Body = v
+	return s
+}
+
+type CalculateMemberLevelRequest struct {
+	Body *CalculateMemberLevelRequestBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+}
+
+func (s CalculateMemberLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalculateMemberLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CalculateMemberLevelRequest) SetBody(v *CalculateMemberLevelRequestBody) *CalculateMemberLevelRequest {
+	s.Body = v
+	return s
+}
+
+type CalculateMemberLevelRequestBody struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentGrade *int32 `json:"CurrentGrade,omitempty" xml:"CurrentGrade,omitempty"`
+	// This parameter is required.
+	CurrentGradeName *string `json:"CurrentGradeName,omitempty" xml:"CurrentGradeName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4000006009418358
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1230094
+	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TAOBAO
+	PlatformType *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	// example:
+	//
+	// 0
+	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0235b7f20a11de9e2bf4c3494b6d998d
+	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+}
+
+func (s CalculateMemberLevelRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalculateMemberLevelRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *CalculateMemberLevelRequestBody) SetCurrentGrade(v int32) *CalculateMemberLevelRequestBody {
+	s.CurrentGrade = &v
+	return s
+}
+
+func (s *CalculateMemberLevelRequestBody) SetCurrentGradeName(v string) *CalculateMemberLevelRequestBody {
+	s.CurrentGradeName = &v
+	return s
+}
+
+func (s *CalculateMemberLevelRequestBody) SetMemberId(v string) *CalculateMemberLevelRequestBody {
+	s.MemberId = &v
+	return s
+}
+
+func (s *CalculateMemberLevelRequestBody) SetOpenMerchantId(v string) *CalculateMemberLevelRequestBody {
+	s.OpenMerchantId = &v
+	return s
+}
+
+func (s *CalculateMemberLevelRequestBody) SetPlatformType(v string) *CalculateMemberLevelRequestBody {
+	s.PlatformType = &v
+	return s
+}
+
+func (s *CalculateMemberLevelRequestBody) SetScore(v string) *CalculateMemberLevelRequestBody {
+	s.Score = &v
+	return s
+}
+
+func (s *CalculateMemberLevelRequestBody) SetSerialNo(v string) *CalculateMemberLevelRequestBody {
+	s.SerialNo = &v
+	return s
+}
+
+type CalculateMemberLevelShrinkRequest struct {
+	BodyShrink *string `json:"Body,omitempty" xml:"Body,omitempty"`
+}
+
+func (s CalculateMemberLevelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalculateMemberLevelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CalculateMemberLevelShrinkRequest) SetBodyShrink(v string) *CalculateMemberLevelShrinkRequest {
+	s.BodyShrink = &v
+	return s
+}
+
+type CalculateMemberLevelResponseBody struct {
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 1
+	Grade *string `json:"Grade,omitempty" xml:"Grade,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6062f9067f170700a2e7ef5a
+	OuterMemberId *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
+	// example:
+	//
+	// 1DEFC4F1-AF11-5A3C-93B9-2880768DA218
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CalculateMemberLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalculateMemberLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CalculateMemberLevelResponseBody) SetErrorCode(v string) *CalculateMemberLevelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponseBody) SetErrorMessage(v string) *CalculateMemberLevelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponseBody) SetGrade(v string) *CalculateMemberLevelResponseBody {
+	s.Grade = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponseBody) SetHttpStatusCode(v string) *CalculateMemberLevelResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponseBody) SetMessage(v string) *CalculateMemberLevelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponseBody) SetOuterMemberId(v string) *CalculateMemberLevelResponseBody {
+	s.OuterMemberId = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponseBody) SetRequestId(v string) *CalculateMemberLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponseBody) SetSuccess(v bool) *CalculateMemberLevelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CalculateMemberLevelResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CalculateMemberLevelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CalculateMemberLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalculateMemberLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CalculateMemberLevelResponse) SetHeaders(v map[string]*string) *CalculateMemberLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CalculateMemberLevelResponse) SetStatusCode(v int32) *CalculateMemberLevelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CalculateMemberLevelResponse) SetBody(v *CalculateMemberLevelResponseBody) *CalculateMemberLevelResponse {
+	s.Body = v
+	return s
+}
+
+type EditMemberBasicInfoRequest struct {
+	Body *EditMemberBasicInfoRequestBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+}
+
+func (s EditMemberBasicInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMemberBasicInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditMemberBasicInfoRequest) SetBody(v *EditMemberBasicInfoRequestBody) *EditMemberBasicInfoRequest {
+	s.Body = v
+	return s
+}
+
+type EditMemberBasicInfoRequestBody struct {
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// example:
+	//
+	// xxx.jpg
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// example:
+	//
+	// 2024-06-20
+	Birthday *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
+	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country  *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// xxx.com
+	Email      *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// xxxx
+	MemberNickName *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ***********
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1230094
+	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TAOBAO
+	PlatformType *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	Province     *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Sex          *string `json:"Sex,omitempty" xml:"Sex,omitempty"`
+}
+
+func (s EditMemberBasicInfoRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMemberBasicInfoRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetArea(v string) *EditMemberBasicInfoRequestBody {
+	s.Area = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetAvatar(v string) *EditMemberBasicInfoRequestBody {
+	s.Avatar = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetBirthday(v string) *EditMemberBasicInfoRequestBody {
+	s.Birthday = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetCity(v string) *EditMemberBasicInfoRequestBody {
+	s.City = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetCountry(v string) *EditMemberBasicInfoRequestBody {
+	s.Country = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetEmail(v string) *EditMemberBasicInfoRequestBody {
+	s.Email = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetMemberName(v string) *EditMemberBasicInfoRequestBody {
+	s.MemberName = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetMemberNickName(v string) *EditMemberBasicInfoRequestBody {
+	s.MemberNickName = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetMobile(v string) *EditMemberBasicInfoRequestBody {
+	s.Mobile = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetOpenMerchantId(v string) *EditMemberBasicInfoRequestBody {
+	s.OpenMerchantId = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetPlatformType(v string) *EditMemberBasicInfoRequestBody {
+	s.PlatformType = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetProvince(v string) *EditMemberBasicInfoRequestBody {
+	s.Province = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoRequestBody) SetSex(v string) *EditMemberBasicInfoRequestBody {
+	s.Sex = &v
+	return s
+}
+
+type EditMemberBasicInfoShrinkRequest struct {
+	BodyShrink *string `json:"Body,omitempty" xml:"Body,omitempty"`
+}
+
+func (s EditMemberBasicInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMemberBasicInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditMemberBasicInfoShrinkRequest) SetBodyShrink(v string) *EditMemberBasicInfoShrinkRequest {
+	s.BodyShrink = &v
+	return s
+}
+
+type EditMemberBasicInfoResponseBody struct {
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1DEFC4F1-AF11-5A3C-93B9-2880768DA218
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EditMemberBasicInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMemberBasicInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditMemberBasicInfoResponseBody) SetErrorCode(v string) *EditMemberBasicInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoResponseBody) SetErrorMessage(v string) *EditMemberBasicInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoResponseBody) SetHttpStatusCode(v string) *EditMemberBasicInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoResponseBody) SetMessage(v string) *EditMemberBasicInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoResponseBody) SetRequestId(v string) *EditMemberBasicInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoResponseBody) SetSuccess(v bool) *EditMemberBasicInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EditMemberBasicInfoResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditMemberBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EditMemberBasicInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMemberBasicInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EditMemberBasicInfoResponse) SetHeaders(v map[string]*string) *EditMemberBasicInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EditMemberBasicInfoResponse) SetStatusCode(v int32) *EditMemberBasicInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EditMemberBasicInfoResponse) SetBody(v *EditMemberBasicInfoResponseBody) *EditMemberBasicInfoResponse {
+	s.Body = v
+	return s
+}
+
 type MemberAccountDetailPageQueryRequest struct {
 	Body *MemberAccountDetailPageQueryRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
@@ -282,14 +1142,42 @@ func (s *MemberAccountDetailPageQueryRequest) SetBody(v *MemberAccountDetailPage
 }
 
 type MemberAccountDetailPageQueryRequestBody struct {
-	AccountType    *int32  `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// example:
+	//
+	// 2011-09-02 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 750cff00c3e0996d220ac2861dafdfadsf
 	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	OuterMemberId  *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
-	Page           *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlatFormType   *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WMS_36606164948078_23218019
+	OuterMemberId *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	PlatFormType *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
+	// example:
+	//
+	// 2011-09-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s MemberAccountDetailPageQueryRequestBody) String() string {
@@ -358,13 +1246,28 @@ func (s *MemberAccountDetailPageQueryShrinkRequest) SetBodyShrink(v string) *Mem
 }
 
 type MemberAccountDetailPageQueryResponseBody struct {
-	Data         []*MemberAccountDetailPageQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode    *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Data []*MemberAccountDetailPageQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// 1DEFC4F1-AF11-5A3C-93B9-2880768DA218
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 5000
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s MemberAccountDetailPageQueryResponseBody) String() string {
@@ -406,18 +1309,47 @@ func (s *MemberAccountDetailPageQueryResponseBody) SetTotalCount(v int32) *Membe
 }
 
 type MemberAccountDetailPageQueryResponseBodyData struct {
+	// example:
+	//
+	// 100
 	AccountBalance *string `json:"AccountBalance,omitempty" xml:"AccountBalance,omitempty"`
-	AccountType    *int32  `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	ActivityType   *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	ChannelCode    *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
-	DetailValue    *string `json:"DetailValue,omitempty" xml:"DetailValue,omitempty"`
-	Extra          *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 20
+	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// This parameter is required.
+	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	ChannelCode  *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// example:
+	//
+	// 20
+	DetailValue *string `json:"DetailValue,omitempty" xml:"DetailValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ...
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// This parameter is required.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 750cff00c3e0996d220ac2861dafdfadsf
 	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	OperateType    *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	OuterMemberId  *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
-	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 1
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// example:
+	//
+	// MEMBER_fc498a12edd84dafd
+	OuterMemberId *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
+	// example:
+	//
+	// ...
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s MemberAccountDetailPageQueryResponseBodyData) String() string {
@@ -489,9 +1421,9 @@ func (s *MemberAccountDetailPageQueryResponseBodyData) SetRemark(v string) *Memb
 }
 
 type MemberAccountDetailPageQueryResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MemberAccountDetailPageQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MemberAccountDetailPageQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MemberAccountDetailPageQueryResponse) String() string {
@@ -535,15 +1467,45 @@ func (s *MemberPointChangeRequest) SetBody(v *MemberPointChangeRequestBody) *Mem
 }
 
 type MemberPointChangeRequestBody struct {
-	AccountType    *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	ChannelCode    *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
-	Extra          *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// example:
+	//
+	// ""
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 750cff00c3e0996d220ac2861dafdfadsf
 	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	OperateType    *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	OuterMemberId  *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
-	PlatFormType   *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
-	Quantity       *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	SerialNo       *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WMS_36606164948078_23218019
+	OuterMemberId *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
+	// This parameter is required.
+	PlatFormType *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4LJDNJH9JUX48L41
+	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
 }
 
 func (s MemberPointChangeRequestBody) String() string {
@@ -618,11 +1580,25 @@ func (s *MemberPointChangeShrinkRequest) SetBodyShrink(v string) *MemberPointCha
 
 type MemberPointChangeResponseBody struct {
 	AccountBalance *string `json:"AccountBalance,omitempty" xml:"AccountBalance,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	LevelName      *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
+	// example:
+	//
+	// B2CD5682-12C0-51A7-82FC-1D36091CADAD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MemberPointChangeResponseBody) String() string {
@@ -664,9 +1640,9 @@ func (s *MemberPointChangeResponseBody) SetSuccess(v string) *MemberPointChangeR
 }
 
 type MemberPointChangeResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MemberPointChangeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MemberPointChangeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MemberPointChangeResponse) String() string {
@@ -710,13 +1686,30 @@ func (s *QueryMemberBasicInfoRequest) SetBody(v *QueryMemberBasicInfoRequestBody
 }
 
 type QueryMemberBasicInfoRequestBody struct {
-	ChannelCode    *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
-	ChannelOpenId  *string `json:"ChannelOpenId,omitempty" xml:"ChannelOpenId,omitempty"`
-	Mobile         *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ChannelCode   *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	ChannelOpenId *string `json:"ChannelOpenId,omitempty" xml:"ChannelOpenId,omitempty"`
+	// example:
+	//
+	// 18888889999
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 750cff00c3e0996d220ac2861dafdfadsf
 	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	OuterMemberId  *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
-	PlatFormType   *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// WMS_36606164948078_23218019
+	OuterMemberId *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
+	// This parameter is required.
+	PlatFormType *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryMemberBasicInfoRequestBody) String() string {
@@ -780,11 +1773,20 @@ func (s *QueryMemberBasicInfoShrinkRequest) SetBodyShrink(v string) *QueryMember
 }
 
 type QueryMemberBasicInfoResponseBody struct {
-	Data         *QueryMemberBasicInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *QueryMemberBasicInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 1DEFC4F1-AF11-5A3C-93B9-2880768DA218
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMemberBasicInfoResponseBody) String() string {
@@ -821,24 +1823,26 @@ func (s *QueryMemberBasicInfoResponseBody) SetSuccess(v bool) *QueryMemberBasicI
 }
 
 type QueryMemberBasicInfoResponseBodyData struct {
-	Area           *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	Avatar         *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Birthday       *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
-	City           *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Extra          *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	LevelName      *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
-	LevelNum       *string `json:"LevelNum,omitempty" xml:"LevelNum,omitempty"`
-	MemberName     *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	MemberNickName *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
-	Mobile         *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	OuterMemberId  *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
-	Points         *string `json:"Points,omitempty" xml:"Points,omitempty"`
-	Province       *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	Score          *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Sex            *string `json:"Sex,omitempty" xml:"Sex,omitempty"`
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// This parameter is required.
+	Avatar           *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Birthday         *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
+	City             *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Email            *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Extra            *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	LevelName        *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
+	LevelNum         *string `json:"LevelNum,omitempty" xml:"LevelNum,omitempty"`
+	MemberName       *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	MemberNickName   *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
+	Mobile           *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	NearExpiredScore *string `json:"NearExpiredScore,omitempty" xml:"NearExpiredScore,omitempty"`
+	OpenMerchantId   *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
+	OuterMemberId    *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
+	Points           *string `json:"Points,omitempty" xml:"Points,omitempty"`
+	Province         *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Score            *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	Sex              *string `json:"Sex,omitempty" xml:"Sex,omitempty"`
 }
 
 func (s QueryMemberBasicInfoResponseBodyData) String() string {
@@ -909,6 +1913,11 @@ func (s *QueryMemberBasicInfoResponseBodyData) SetMobile(v string) *QueryMemberB
 	return s
 }
 
+func (s *QueryMemberBasicInfoResponseBodyData) SetNearExpiredScore(v string) *QueryMemberBasicInfoResponseBodyData {
+	s.NearExpiredScore = &v
+	return s
+}
+
 func (s *QueryMemberBasicInfoResponseBodyData) SetOpenMerchantId(v string) *QueryMemberBasicInfoResponseBodyData {
 	s.OpenMerchantId = &v
 	return s
@@ -940,9 +1949,9 @@ func (s *QueryMemberBasicInfoResponseBodyData) SetSex(v string) *QueryMemberBasi
 }
 
 type QueryMemberBasicInfoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMemberBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMemberBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMemberBasicInfoResponse) String() string {
@@ -986,19 +1995,46 @@ func (s *SyncCardInfoRequest) SetBody(v *SyncCardInfoRequestBody) *SyncCardInfoR
 }
 
 type SyncCardInfoRequestBody struct {
-	BuyerId        *string                                 `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
-	Extra          *string                                 `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Gifters        *SyncCardInfoRequestBodyGifters         `json:"Gifters,omitempty" xml:"Gifters,omitempty" type:"Struct"`
-	OccurredAt     *string                                 `json:"OccurredAt,omitempty" xml:"OccurredAt,omitempty"`
-	OpenMerchantId *string                                 `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	OrderId        *string                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PresentDetail  []*SyncCardInfoRequestBodyPresentDetail `json:"PresentDetail,omitempty" xml:"PresentDetail,omitempty" type:"Repeated"`
-	ReceivedAt     *string                                 `json:"ReceivedAt,omitempty" xml:"ReceivedAt,omitempty"`
-	Recipient      *SyncCardInfoRequestBodyRecipient       `json:"Recipient,omitempty" xml:"Recipient,omitempty" type:"Struct"`
-	Status         *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Theme          *string                                 `json:"Theme,omitempty" xml:"Theme,omitempty"`
-	TransferId     *string                                 `json:"TransferId,omitempty" xml:"TransferId,omitempty"`
-	TransferredAt  *string                                 `json:"TransferredAt,omitempty" xml:"TransferredAt,omitempty"`
+	// example:
+	//
+	// 1236437142867408
+	BuyerId *string `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
+	// example:
+	//
+	// ""
+	Extra   *string                         `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Gifters *SyncCardInfoRequestBodyGifters `json:"Gifters,omitempty" xml:"Gifters,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2023-05-12 00:00:00
+	OccurredAt *string `json:"OccurredAt,omitempty" xml:"OccurredAt,omitempty"`
+	// example:
+	//
+	// 750cff00c3e0996d220ac2861dafdfadsf
+	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
+	// example:
+	//
+	// 223332140970453
+	OrderId       *string                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PresentDetail []*SyncCardInfoRequestBodyPresentDetail `json:"PresentDetail,omitempty" xml:"PresentDetail,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-05-12 00:00:00
+	ReceivedAt *string                           `json:"ReceivedAt,omitempty" xml:"ReceivedAt,omitempty"`
+	Recipient  *SyncCardInfoRequestBodyRecipient `json:"Recipient,omitempty" xml:"Recipient,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Theme  *string `json:"Theme,omitempty" xml:"Theme,omitempty"`
+	// example:
+	//
+	// 3eecd2b8a6f946ca
+	TransferId *string `json:"TransferId,omitempty" xml:"TransferId,omitempty"`
+	// example:
+	//
+	// 2023-05-12 00:00:00
+	TransferredAt *string `json:"TransferredAt,omitempty" xml:"TransferredAt,omitempty"`
 }
 
 func (s SyncCardInfoRequestBody) String() string {
@@ -1075,12 +2111,25 @@ func (s *SyncCardInfoRequestBody) SetTransferredAt(v string) *SyncCardInfoReques
 }
 
 type SyncCardInfoRequestBodyGifters struct {
+	// example:
+	//
+	// https://xxx/2.jpg
 	HeaderImg *string `json:"HeaderImg,omitempty" xml:"HeaderImg,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Nickname  *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// example:
+	//
+	// 1000030820003
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	// openId
+	//
+	// example:
+	//
+	// 82ace612cd377134d597e32e91562caf
 	OpenId *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
-	Phone  *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// example:
+	//
+	// 13277778888
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s SyncCardInfoRequestBodyGifters) String() string {
@@ -1158,12 +2207,25 @@ func (s *SyncCardInfoRequestBodyPresentDetail) SetSkuId(v string) *SyncCardInfoR
 }
 
 type SyncCardInfoRequestBodyRecipient struct {
+	// example:
+	//
+	// https://xxx/1.jpg
 	HeaderImg *string `json:"HeaderImg,omitempty" xml:"HeaderImg,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Nickname  *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// example:
+	//
+	// 1000030855004
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	// openId
+	//
+	// example:
+	//
+	// 1179ead68b3833fea61a802ddb1dd3ac
 	OpenId *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
-	Phone  *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// example:
+	//
+	// 18899998888
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s SyncCardInfoRequestBodyRecipient) String() string {
@@ -1217,12 +2279,24 @@ func (s *SyncCardInfoShrinkRequest) SetBodyShrink(v string) *SyncCardInfoShrinkR
 }
 
 type SyncCardInfoResponseBody struct {
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1DEFC4F1-AF11-5A3C-93B9-2880768DA218
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SyncCardInfoResponseBody) String() string {
@@ -1264,9 +2338,9 @@ func (s *SyncCardInfoResponseBody) SetSuccess(v string) *SyncCardInfoResponseBod
 }
 
 type SyncCardInfoResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SyncCardInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncCardInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SyncCardInfoResponse) String() string {
@@ -1315,11 +2389,15 @@ type SyncMemberBehaviorInfoRequestBody struct {
 	ActionResult    *bool   `json:"ActionResult,omitempty" xml:"ActionResult,omitempty"`
 	ActionStartDate *string `json:"ActionStartDate,omitempty" xml:"ActionStartDate,omitempty"`
 	ActionSubType   *string `json:"ActionSubType,omitempty" xml:"ActionSubType,omitempty"`
-	ActionType      *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	Extra           *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	OpenMerchantId  *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
-	OuterMemberId   *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
-	PlatFormType    *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
+	// This parameter is required.
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	Extra      *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	OpenMerchantId *string `json:"OpenMerchantId,omitempty" xml:"OpenMerchantId,omitempty"`
+	// This parameter is required.
+	OuterMemberId *string `json:"OuterMemberId,omitempty" xml:"OuterMemberId,omitempty"`
+	// This parameter is required.
+	PlatFormType *string `json:"PlatFormType,omitempty" xml:"PlatFormType,omitempty"`
 }
 
 func (s SyncMemberBehaviorInfoRequestBody) String() string {
@@ -1398,10 +2476,19 @@ func (s *SyncMemberBehaviorInfoShrinkRequest) SetBodyShrink(v string) *SyncMembe
 }
 
 type SyncMemberBehaviorInfoResponseBody struct {
+	// example:
+	//
+	// Lydaas.QuickMember.SystemError
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1DEFC4F1-AF11-5A3C-93B9-2880768DA218
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SyncMemberBehaviorInfoResponseBody) String() string {
@@ -1433,9 +2520,9 @@ func (s *SyncMemberBehaviorInfoResponseBody) SetSuccess(v bool) *SyncMemberBehav
 }
 
 type SyncMemberBehaviorInfoResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SyncMemberBehaviorInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncMemberBehaviorInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SyncMemberBehaviorInfoResponse) String() string {
@@ -1508,6 +2595,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放平台同步会员基础信息
+//
+// @param tmpReq - AddMemberBasicInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMemberBasicInfoResponse
 func (client *Client) AddMemberBasicInfoWithOptions(tmpReq *AddMemberBasicInfoRequest, runtime *util.RuntimeOptions) (_result *AddMemberBasicInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1547,6 +2643,13 @@ func (client *Client) AddMemberBasicInfoWithOptions(tmpReq *AddMemberBasicInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放平台同步会员基础信息
+//
+// @param request - AddMemberBasicInfoRequest
+//
+// @return AddMemberBasicInfoResponse
 func (client *Client) AddMemberBasicInfo(request *AddMemberBasicInfoRequest) (_result *AddMemberBasicInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddMemberBasicInfoResponse{}
@@ -1558,6 +2661,213 @@ func (client *Client) AddMemberBasicInfo(request *AddMemberBasicInfoRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量保存订单信息
+//
+// @param tmpReq - BatchSaveOrderPopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchSaveOrderPopResponse
+func (client *Client) BatchSaveOrderPopWithOptions(tmpReq *BatchSaveOrderPopRequest, runtime *util.RuntimeOptions) (_result *BatchSaveOrderPopResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchSaveOrderPopShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Orders)) {
+		request.OrdersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Orders, tea.String("Orders"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrdersShrink)) {
+		query["Orders"] = request.OrdersShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchSaveOrderPop"),
+		Version:     tea.String("2023-04-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchSaveOrderPopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量保存订单信息
+//
+// @param request - BatchSaveOrderPopRequest
+//
+// @return BatchSaveOrderPopResponse
+func (client *Client) BatchSaveOrderPop(request *BatchSaveOrderPopRequest) (_result *BatchSaveOrderPopResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchSaveOrderPopResponse{}
+	_body, _err := client.BatchSaveOrderPopWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 会员等级初始化
+//
+// @param tmpReq - CalculateMemberLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CalculateMemberLevelResponse
+func (client *Client) CalculateMemberLevelWithOptions(tmpReq *CalculateMemberLevelRequest, runtime *util.RuntimeOptions) (_result *CalculateMemberLevelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CalculateMemberLevelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Body)) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, tea.String("Body"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BodyShrink)) {
+		query["Body"] = request.BodyShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CalculateMemberLevel"),
+		Version:     tea.String("2023-04-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CalculateMemberLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 会员等级初始化
+//
+// @param request - CalculateMemberLevelRequest
+//
+// @return CalculateMemberLevelResponse
+func (client *Client) CalculateMemberLevel(request *CalculateMemberLevelRequest) (_result *CalculateMemberLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CalculateMemberLevelResponse{}
+	_body, _err := client.CalculateMemberLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 会员信息编辑API
+//
+// @param tmpReq - EditMemberBasicInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditMemberBasicInfoResponse
+func (client *Client) EditMemberBasicInfoWithOptions(tmpReq *EditMemberBasicInfoRequest, runtime *util.RuntimeOptions) (_result *EditMemberBasicInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &EditMemberBasicInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Body)) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, tea.String("Body"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BodyShrink)) {
+		query["Body"] = request.BodyShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EditMemberBasicInfo"),
+		Version:     tea.String("2023-04-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EditMemberBasicInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 会员信息编辑API
+//
+// @param request - EditMemberBasicInfoRequest
+//
+// @return EditMemberBasicInfoResponse
+func (client *Client) EditMemberBasicInfo(request *EditMemberBasicInfoRequest) (_result *EditMemberBasicInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EditMemberBasicInfoResponse{}
+	_body, _err := client.EditMemberBasicInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开放平台会员积分明细查询
+//
+// @param tmpReq - MemberAccountDetailPageQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MemberAccountDetailPageQueryResponse
 func (client *Client) MemberAccountDetailPageQueryWithOptions(tmpReq *MemberAccountDetailPageQueryRequest, runtime *util.RuntimeOptions) (_result *MemberAccountDetailPageQueryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1597,6 +2907,13 @@ func (client *Client) MemberAccountDetailPageQueryWithOptions(tmpReq *MemberAcco
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放平台会员积分明细查询
+//
+// @param request - MemberAccountDetailPageQueryRequest
+//
+// @return MemberAccountDetailPageQueryResponse
 func (client *Client) MemberAccountDetailPageQuery(request *MemberAccountDetailPageQueryRequest) (_result *MemberAccountDetailPageQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MemberAccountDetailPageQueryResponse{}
@@ -1608,6 +2925,15 @@ func (client *Client) MemberAccountDetailPageQuery(request *MemberAccountDetailP
 	return _result, _err
 }
 
+// Summary:
+//
+// 会员积分变更
+//
+// @param tmpReq - MemberPointChangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MemberPointChangeResponse
 func (client *Client) MemberPointChangeWithOptions(tmpReq *MemberPointChangeRequest, runtime *util.RuntimeOptions) (_result *MemberPointChangeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1647,6 +2973,13 @@ func (client *Client) MemberPointChangeWithOptions(tmpReq *MemberPointChangeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 会员积分变更
+//
+// @param request - MemberPointChangeRequest
+//
+// @return MemberPointChangeResponse
 func (client *Client) MemberPointChange(request *MemberPointChangeRequest) (_result *MemberPointChangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MemberPointChangeResponse{}
@@ -1658,6 +2991,15 @@ func (client *Client) MemberPointChange(request *MemberPointChangeRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会员基础信息
+//
+// @param tmpReq - QueryMemberBasicInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMemberBasicInfoResponse
 func (client *Client) QueryMemberBasicInfoWithOptions(tmpReq *QueryMemberBasicInfoRequest, runtime *util.RuntimeOptions) (_result *QueryMemberBasicInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1697,6 +3039,13 @@ func (client *Client) QueryMemberBasicInfoWithOptions(tmpReq *QueryMemberBasicIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会员基础信息
+//
+// @param request - QueryMemberBasicInfoRequest
+//
+// @return QueryMemberBasicInfoResponse
 func (client *Client) QueryMemberBasicInfo(request *QueryMemberBasicInfoRequest) (_result *QueryMemberBasicInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMemberBasicInfoResponse{}
@@ -1708,6 +3057,15 @@ func (client *Client) QueryMemberBasicInfo(request *QueryMemberBasicInfoRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 卡券信息同步
+//
+// @param tmpReq - SyncCardInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncCardInfoResponse
 func (client *Client) SyncCardInfoWithOptions(tmpReq *SyncCardInfoRequest, runtime *util.RuntimeOptions) (_result *SyncCardInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1747,6 +3105,13 @@ func (client *Client) SyncCardInfoWithOptions(tmpReq *SyncCardInfoRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 卡券信息同步
+//
+// @param request - SyncCardInfoRequest
+//
+// @return SyncCardInfoResponse
 func (client *Client) SyncCardInfo(request *SyncCardInfoRequest) (_result *SyncCardInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncCardInfoResponse{}
@@ -1758,6 +3123,15 @@ func (client *Client) SyncCardInfo(request *SyncCardInfoRequest) (_result *SyncC
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放平台会员行为信息同步
+//
+// @param tmpReq - SyncMemberBehaviorInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncMemberBehaviorInfoResponse
 func (client *Client) SyncMemberBehaviorInfoWithOptions(tmpReq *SyncMemberBehaviorInfoRequest, runtime *util.RuntimeOptions) (_result *SyncMemberBehaviorInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1797,6 +3171,13 @@ func (client *Client) SyncMemberBehaviorInfoWithOptions(tmpReq *SyncMemberBehavi
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放平台会员行为信息同步
+//
+// @param request - SyncMemberBehaviorInfoRequest
+//
+// @return SyncMemberBehaviorInfoResponse
 func (client *Client) SyncMemberBehaviorInfo(request *SyncMemberBehaviorInfoRequest) (_result *SyncMemberBehaviorInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncMemberBehaviorInfoResponse{}
