@@ -5687,6 +5687,84 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 	return s
 }
 
+type DescribeUserServiceStatusRequest struct {
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeUserServiceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserServiceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserServiceStatusRequest) SetLang(v string) *DescribeUserServiceStatusRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeUserServiceStatusResponseBody struct {
+	// example:
+	//
+	// 99626905-678A-4E8A-984E-6AEB09993996
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OPENED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeUserServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserServiceStatusResponseBody) SetRequestId(v string) *DescribeUserServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserServiceStatusResponseBody) SetStatus(v string) *DescribeUserServiceStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeUserServiceStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserServiceStatusResponse) SetHeaders(v map[string]*string) *DescribeUserServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserServiceStatusResponse) SetStatusCode(v int32) *DescribeUserServiceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserServiceStatusResponse) SetBody(v *DescribeUserServiceStatusResponseBody) *DescribeUserServiceStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUserVpcAuthorizationsRequest struct {
 	// The authorization scope. Valid values:
 	//
@@ -12286,6 +12364,58 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagsResponse{}
 	_body, _err := client.DescribeTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeUserServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserServiceStatusResponse
+func (client *Client) DescribeUserServiceStatusWithOptions(request *DescribeUserServiceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserServiceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserServiceStatus"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeUserServiceStatusRequest
+//
+// @return DescribeUserServiceStatusResponse
+func (client *Client) DescribeUserServiceStatus(request *DescribeUserServiceStatusRequest) (_result *DescribeUserServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserServiceStatusResponse{}
+	_body, _err := client.DescribeUserServiceStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
