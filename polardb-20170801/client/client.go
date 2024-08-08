@@ -8922,6 +8922,9 @@ func (s *DescribeDBClusterAttributeRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
+	// example:
+	//
+	// 2024-03-13T01:20:28Z
 	AiCreatingTime *string `json:"AiCreatingTime,omitempty" xml:"AiCreatingTime,omitempty"`
 	// The information status of the AI node. Valid values:
 	//
@@ -8932,7 +8935,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// DLNode
-	AiType       *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
+	AiType *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
+	// example:
+	//
+	// X86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// Maximum blktags in file system.
 	//
@@ -8967,9 +8973,15 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// Normal
-	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// ON
 	CompressStorageMode *string `json:"CompressStorageMode,omitempty" xml:"CompressStorageMode,omitempty"`
-	CompressStorageUsed *int64  `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
+	// example:
+	//
+	// 15529410560
+	CompressStorageUsed *int64 `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
 	// The time when the cluster was created.
 	//
 	// example:
@@ -9000,7 +9012,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The details of the nodes.
+	// The information about the nodes.
 	DBNodes []*DescribeDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The type of the database engine.
 	//
@@ -9077,8 +9089,11 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// false
-	HasCompleteStandbyRes *bool   `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
-	HotStandbyCluster     *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
+	HasCompleteStandbyRes *bool `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
+	// example:
+	//
+	// StandbyClusterON
+	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
 	// Maximum inodes in file system.
 	//
 	// example:
@@ -9129,7 +9144,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 18:00Z-19:00Z
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	Orca         *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
+	// example:
+	//
+	// ON
+	Orca *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
@@ -9139,7 +9157,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// Prepaid
-	PayType         *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 2500
 	ProvisionedIops *string `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The number of CPU cores for PolarProxy.
 	//
@@ -9214,9 +9235,15 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// rg-***************
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 2179639137
 	RestoreDataPoint *string `json:"RestoreDataPoint,omitempty" xml:"RestoreDataPoint,omitempty"`
-	RestoreType      *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	// example:
+	//
+	// RestoreByTime
+	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	// The storage of SQL. Unit: bytes. If the value is -1, no data is stored.
 	//
 	// example:
@@ -9228,7 +9255,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// AgileServerless
-	ServerlessType  *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	// example:
+	//
+	// pc-pz51ziv48317b2880
 	SourceDBCluster *string `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty"`
 	// Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
 	//
@@ -9630,7 +9660,10 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 6
 	AddedCpuCores *string `json:"AddedCpuCores,omitempty" xml:"AddedCpuCores,omitempty"`
-	CpuCores      *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	// example:
+	//
+	// 2
+	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The time when the node was created.
 	//
 	// example:
@@ -9734,10 +9767,19 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// example:
 	//
 	// 32000
-	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	MemorySize       *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	MirrorInsName    *string `json:"MirrorInsName,omitempty" xml:"MirrorInsName,omitempty"`
-	Orca             *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
+	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	// example:
+	//
+	// 8192
+	MemorySize    *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MirrorInsName *string `json:"MirrorInsName,omitempty" xml:"MirrorInsName,omitempty"`
+	// example:
+	//
+	// off
+	Orca *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
+	// example:
+	//
+	// 3072
 	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
 	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
 	//
@@ -9765,7 +9807,10 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	SubCluster     *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
+	// example:
+	//
+	// Primary
+	SubCluster *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
 	// The ID of the zone.
 	//
 	// example:
@@ -16523,6 +16568,10 @@ func (s *DescribeDBProxyPerformanceResponse) SetBody(v *DescribeDBProxyPerforman
 }
 
 type DescribeDasConfigRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16575,10 +16624,16 @@ type DescribeDasConfigResponseBody struct {
 	//
 	// 593AE1C5-B70C-463F-9207-074639******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the automatic storage expansion feature is enabled for the standard cluster.
+	//
 	// example:
 	//
 	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
+	// The maximum storage capacity of the standard cluster that is scaled up. Unit: GB.
+	//
+	// >  This parameter is returned when the StorageAutoScale parameter is set to Enable.
+	//
 	// example:
 	//
 	// 800
@@ -24299,6 +24354,7 @@ type FailoverDBClusterRequest struct {
 	//
 	// pi-***********
 	TargetDBNodeId *string `json:"TargetDBNodeId,omitempty" xml:"TargetDBNodeId,omitempty"`
+	TargetZoneType *string `json:"TargetZoneType,omitempty" xml:"TargetZoneType,omitempty"`
 }
 
 func (s FailoverDBClusterRequest) String() string {
@@ -24346,6 +24402,11 @@ func (s *FailoverDBClusterRequest) SetRollBackForDisaster(v bool) *FailoverDBClu
 
 func (s *FailoverDBClusterRequest) SetTargetDBNodeId(v string) *FailoverDBClusterRequest {
 	s.TargetDBNodeId = &v
+	return s
+}
+
+func (s *FailoverDBClusterRequest) SetTargetZoneType(v string) *FailoverDBClusterRequest {
+	s.TargetZoneType = &v
 	return s
 }
 
@@ -39425,7 +39486,7 @@ func (client *Client) DescribeDBProxyPerformance(request *DescribeDBProxyPerform
 
 // Summary:
 //
-// 查看实例的 DAS 配置
+// Queries the configurations of a cluster in Database Autonomy Service (DAS).
 //
 // @param request - DescribeDasConfigRequest
 //
@@ -39483,7 +39544,7 @@ func (client *Client) DescribeDasConfigWithOptions(request *DescribeDasConfigReq
 
 // Summary:
 //
-// 查看实例的 DAS 配置
+// Queries the configurations of a cluster in Database Autonomy Service (DAS).
 //
 // @param request - DescribeDasConfigRequest
 //
@@ -41972,6 +42033,10 @@ func (client *Client) FailoverDBClusterWithOptions(request *FailoverDBClusterReq
 
 	if !tea.BoolValue(util.IsUnset(request.TargetDBNodeId)) {
 		query["TargetDBNodeId"] = request.TargetDBNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetZoneType)) {
+		query["TargetZoneType"] = request.TargetZoneType
 	}
 
 	req := &openapi.OpenApiRequest{
