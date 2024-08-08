@@ -9,6 +9,44 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DentryAppPropertiesValue struct {
+	// example:
+	//
+	// dentry_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// dentry_value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+}
+
+func (s DentryAppPropertiesValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DentryAppPropertiesValue) GoString() string {
+	return s.String()
+}
+
+func (s *DentryAppPropertiesValue) SetName(v string) *DentryAppPropertiesValue {
+	s.Name = &v
+	return s
+}
+
+func (s *DentryAppPropertiesValue) SetValue(v string) *DentryAppPropertiesValue {
+	s.Value = &v
+	return s
+}
+
+func (s *DentryAppPropertiesValue) SetVisibility(v string) *DentryAppPropertiesValue {
+	s.Visibility = &v
+	return s
+}
+
 type DentriesAppPropertiesValue struct {
 	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -5251,6 +5289,607 @@ func (s *CommentListReportResponse) SetStatusCode(v int32) *CommentListReportRes
 }
 
 func (s *CommentListReportResponse) SetBody(v *CommentListReportResponseBody) *CommentListReportResponse {
+	s.Body = v
+	return s
+}
+
+type CommitFileHeaders struct {
+	CommonHeaders  map[string]*string               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CommitFileHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CommitFileHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileHeaders) SetCommonHeaders(v map[string]*string) *CommitFileHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CommitFileHeaders) SetAccountContext(v *CommitFileHeadersAccountContext) *CommitFileHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CommitFileHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CommitFileHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileHeadersAccountContext) SetAccountId(v string) *CommitFileHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CommitFileShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CommitFileShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileShrinkHeaders) SetCommonHeaders(v map[string]*string) *CommitFileShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CommitFileShrinkHeaders) SetAccountContextShrink(v string) *CommitFileShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CommitFileRequest struct {
+	// example:
+	//
+	// None
+	Name   *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Option *CommitFileRequestOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
+	// example:
+	//
+	// dentryUuid
+	ParentDentryUuid *string                         `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
+	TenantContext    *CommitFileRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// upload_key
+	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+}
+
+func (s CommitFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileRequest) SetName(v string) *CommitFileRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CommitFileRequest) SetOption(v *CommitFileRequestOption) *CommitFileRequest {
+	s.Option = v
+	return s
+}
+
+func (s *CommitFileRequest) SetParentDentryUuid(v string) *CommitFileRequest {
+	s.ParentDentryUuid = &v
+	return s
+}
+
+func (s *CommitFileRequest) SetTenantContext(v *CommitFileRequestTenantContext) *CommitFileRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CommitFileRequest) SetUploadKey(v string) *CommitFileRequest {
+	s.UploadKey = &v
+	return s
+}
+
+type CommitFileRequestOption struct {
+	AppProperties []*CommitFileRequestOptionAppProperties `json:"AppProperties,omitempty" xml:"AppProperties,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AUTO_RENAME
+	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
+	// example:
+	//
+	// false
+	ConvertToOnlineDoc *bool `json:"ConvertToOnlineDoc,omitempty" xml:"ConvertToOnlineDoc,omitempty"`
+	// example:
+	//
+	// DOC
+	ConvertToOnlineDocTargetDocumentType *string `json:"ConvertToOnlineDocTargetDocumentType,omitempty" xml:"ConvertToOnlineDocTargetDocumentType,omitempty"`
+	// example:
+	//
+	// 512
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CommitFileRequestOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileRequestOption) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileRequestOption) SetAppProperties(v []*CommitFileRequestOptionAppProperties) *CommitFileRequestOption {
+	s.AppProperties = v
+	return s
+}
+
+func (s *CommitFileRequestOption) SetConflictStrategy(v string) *CommitFileRequestOption {
+	s.ConflictStrategy = &v
+	return s
+}
+
+func (s *CommitFileRequestOption) SetConvertToOnlineDoc(v bool) *CommitFileRequestOption {
+	s.ConvertToOnlineDoc = &v
+	return s
+}
+
+func (s *CommitFileRequestOption) SetConvertToOnlineDocTargetDocumentType(v string) *CommitFileRequestOption {
+	s.ConvertToOnlineDocTargetDocumentType = &v
+	return s
+}
+
+func (s *CommitFileRequestOption) SetSize(v int64) *CommitFileRequestOption {
+	s.Size = &v
+	return s
+}
+
+type CommitFileRequestOptionAppProperties struct {
+	// example:
+	//
+	// property_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// property_value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+}
+
+func (s CommitFileRequestOptionAppProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileRequestOptionAppProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileRequestOptionAppProperties) SetName(v string) *CommitFileRequestOptionAppProperties {
+	s.Name = &v
+	return s
+}
+
+func (s *CommitFileRequestOptionAppProperties) SetValue(v string) *CommitFileRequestOptionAppProperties {
+	s.Value = &v
+	return s
+}
+
+func (s *CommitFileRequestOptionAppProperties) SetVisibility(v string) *CommitFileRequestOptionAppProperties {
+	s.Visibility = &v
+	return s
+}
+
+type CommitFileRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CommitFileRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileRequestTenantContext) SetTenantId(v string) *CommitFileRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CommitFileShrinkRequest struct {
+	// example:
+	//
+	// None
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// dentryUuid
+	ParentDentryUuid    *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// upload_key
+	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+}
+
+func (s CommitFileShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileShrinkRequest) SetName(v string) *CommitFileShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CommitFileShrinkRequest) SetOptionShrink(v string) *CommitFileShrinkRequest {
+	s.OptionShrink = &v
+	return s
+}
+
+func (s *CommitFileShrinkRequest) SetParentDentryUuid(v string) *CommitFileShrinkRequest {
+	s.ParentDentryUuid = &v
+	return s
+}
+
+func (s *CommitFileShrinkRequest) SetTenantContextShrink(v string) *CommitFileShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CommitFileShrinkRequest) SetUploadKey(v string) *CommitFileShrinkRequest {
+	s.UploadKey = &v
+	return s
+}
+
+type CommitFileResponseBody struct {
+	Dentry *CommitFileResponseBodyDentry `json:"dentry,omitempty" xml:"dentry,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CommitFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileResponseBody) SetDentry(v *CommitFileResponseBodyDentry) *CommitFileResponseBody {
+	s.Dentry = v
+	return s
+}
+
+func (s *CommitFileResponseBody) SetRequestId(v string) *CommitFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CommitFileResponseBody) SetVendorRequestId(v string) *CommitFileResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CommitFileResponseBody) SetVendorType(v string) *CommitFileResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CommitFileResponseBodyDentry struct {
+	AppProperties map[string][]*DentryAppPropertiesValue `json:"AppProperties,omitempty" xml:"AppProperties,omitempty"`
+	// example:
+	//
+	// DOCUMENT
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 2022-01-01T10:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// creator_id
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// txt
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// dentry_id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-01-01T10:00:00Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// modifier_id
+	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// example:
+	//
+	// dentry_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// parent_id
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// PUBLIC_OSS_PARTITION
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	// example:
+	//
+	// dentry_path
+	Path       *string                                 `json:"Path,omitempty" xml:"Path,omitempty"`
+	Properties *CommitFileResponseBodyDentryProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// example:
+	//
+	// 512
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// space_id
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DINGTALK
+	StorageDriver *string                                `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
+	Thumbnail     *CommitFileResponseBodyDentryThumbnail `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty" type:"Struct"`
+	// example:
+	//
+	// FILE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// uuid
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CommitFileResponseBodyDentry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileResponseBodyDentry) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileResponseBodyDentry) SetAppProperties(v map[string][]*DentryAppPropertiesValue) *CommitFileResponseBodyDentry {
+	s.AppProperties = v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetCategory(v string) *CommitFileResponseBodyDentry {
+	s.Category = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetCreateTime(v string) *CommitFileResponseBodyDentry {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetCreatorId(v string) *CommitFileResponseBodyDentry {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetExtension(v string) *CommitFileResponseBodyDentry {
+	s.Extension = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetId(v string) *CommitFileResponseBodyDentry {
+	s.Id = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetModifiedTime(v string) *CommitFileResponseBodyDentry {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetModifierId(v string) *CommitFileResponseBodyDentry {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetName(v string) *CommitFileResponseBodyDentry {
+	s.Name = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetParentId(v string) *CommitFileResponseBodyDentry {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetPartitionType(v string) *CommitFileResponseBodyDentry {
+	s.PartitionType = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetPath(v string) *CommitFileResponseBodyDentry {
+	s.Path = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetProperties(v *CommitFileResponseBodyDentryProperties) *CommitFileResponseBodyDentry {
+	s.Properties = v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetSize(v int64) *CommitFileResponseBodyDentry {
+	s.Size = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetSpaceId(v string) *CommitFileResponseBodyDentry {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetStatus(v string) *CommitFileResponseBodyDentry {
+	s.Status = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetStorageDriver(v string) *CommitFileResponseBodyDentry {
+	s.StorageDriver = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetThumbnail(v *CommitFileResponseBodyDentryThumbnail) *CommitFileResponseBodyDentry {
+	s.Thumbnail = v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetType(v string) *CommitFileResponseBodyDentry {
+	s.Type = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetUuid(v string) *CommitFileResponseBodyDentry {
+	s.Uuid = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentry) SetVersion(v int64) *CommitFileResponseBodyDentry {
+	s.Version = &v
+	return s
+}
+
+type CommitFileResponseBodyDentryProperties struct {
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+}
+
+func (s CommitFileResponseBodyDentryProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileResponseBodyDentryProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileResponseBodyDentryProperties) SetReadOnly(v bool) *CommitFileResponseBodyDentryProperties {
+	s.ReadOnly = &v
+	return s
+}
+
+type CommitFileResponseBodyDentryThumbnail struct {
+	// example:
+	//
+	// 64
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// url
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 64
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s CommitFileResponseBodyDentryThumbnail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileResponseBodyDentryThumbnail) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileResponseBodyDentryThumbnail) SetHeight(v int32) *CommitFileResponseBodyDentryThumbnail {
+	s.Height = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentryThumbnail) SetUrl(v string) *CommitFileResponseBodyDentryThumbnail {
+	s.Url = &v
+	return s
+}
+
+func (s *CommitFileResponseBodyDentryThumbnail) SetWidth(v int32) *CommitFileResponseBodyDentryThumbnail {
+	s.Width = &v
+	return s
+}
+
+type CommitFileResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CommitFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CommitFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CommitFileResponse) SetHeaders(v map[string]*string) *CommitFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CommitFileResponse) SetStatusCode(v int32) *CommitFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CommitFileResponse) SetBody(v *CommitFileResponseBody) *CommitFileResponse {
 	s.Body = v
 	return s
 }
@@ -18484,6 +19123,7 @@ type GetDocContentTakIdRequest struct {
 	//
 	// qnYMoO1rWxrkmoj2I5L2PYkoJ47Z3je9
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
 	// example:
 	//
 	// markdown
@@ -18501,6 +19141,11 @@ func (s GetDocContentTakIdRequest) GoString() string {
 
 func (s *GetDocContentTakIdRequest) SetDentryUuid(v string) *GetDocContentTakIdRequest {
 	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetDocContentTakIdRequest) SetGenerateCp(v bool) *GetDocContentTakIdRequest {
+	s.GenerateCp = &v
 	return s
 }
 
@@ -18541,6 +19186,7 @@ type GetDocContentTakIdShrinkRequest struct {
 	//
 	// qnYMoO1rWxrkmoj2I5L2PYkoJ47Z3je9
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
 	// example:
 	//
 	// markdown
@@ -18558,6 +19204,11 @@ func (s GetDocContentTakIdShrinkRequest) GoString() string {
 
 func (s *GetDocContentTakIdShrinkRequest) SetDentryUuid(v string) *GetDocContentTakIdShrinkRequest {
 	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetDocContentTakIdShrinkRequest) SetGenerateCp(v bool) *GetDocContentTakIdShrinkRequest {
+	s.GenerateCp = &v
 	return s
 }
 
@@ -20078,6 +20729,396 @@ func (s *GetFileDownloadInfoResponse) SetStatusCode(v int32) *GetFileDownloadInf
 }
 
 func (s *GetFileDownloadInfoResponse) SetBody(v *GetFileDownloadInfoResponseBody) *GetFileDownloadInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetFileUploadInfoHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetFileUploadInfoHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetFileUploadInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoHeaders) SetCommonHeaders(v map[string]*string) *GetFileUploadInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFileUploadInfoHeaders) SetAccountContext(v *GetFileUploadInfoHeadersAccountContext) *GetFileUploadInfoHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetFileUploadInfoHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetFileUploadInfoHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoHeadersAccountContext) SetAccountId(v string) *GetFileUploadInfoHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetFileUploadInfoShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetFileUploadInfoShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetFileUploadInfoShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFileUploadInfoShrinkHeaders) SetAccountContextShrink(v string) *GetFileUploadInfoShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetFileUploadInfoRequest struct {
+	Option *GetFileUploadInfoRequestOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
+	// example:
+	//
+	// dentryUuid
+	ParentDentryUuid *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
+	// example:
+	//
+	// HEADER_SIGNATURE
+	Protocol      *string                                `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	TenantContext *GetFileUploadInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetFileUploadInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoRequest) SetOption(v *GetFileUploadInfoRequestOption) *GetFileUploadInfoRequest {
+	s.Option = v
+	return s
+}
+
+func (s *GetFileUploadInfoRequest) SetParentDentryUuid(v string) *GetFileUploadInfoRequest {
+	s.ParentDentryUuid = &v
+	return s
+}
+
+func (s *GetFileUploadInfoRequest) SetProtocol(v string) *GetFileUploadInfoRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetFileUploadInfoRequest) SetTenantContext(v *GetFileUploadInfoRequestTenantContext) *GetFileUploadInfoRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetFileUploadInfoRequestOption struct {
+	PreCheckParam *GetFileUploadInfoRequestOptionPreCheckParam `json:"PreCheckParam,omitempty" xml:"PreCheckParam,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	PreferIntranet *bool `json:"PreferIntranet,omitempty" xml:"PreferIntranet,omitempty"`
+	// example:
+	//
+	// ZHANGJIAKOU
+	PreferRegion *string `json:"PreferRegion,omitempty" xml:"PreferRegion,omitempty"`
+	// example:
+	//
+	// DINGTALK
+	StorageDriver *string `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
+}
+
+func (s GetFileUploadInfoRequestOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoRequestOption) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoRequestOption) SetPreCheckParam(v *GetFileUploadInfoRequestOptionPreCheckParam) *GetFileUploadInfoRequestOption {
+	s.PreCheckParam = v
+	return s
+}
+
+func (s *GetFileUploadInfoRequestOption) SetPreferIntranet(v bool) *GetFileUploadInfoRequestOption {
+	s.PreferIntranet = &v
+	return s
+}
+
+func (s *GetFileUploadInfoRequestOption) SetPreferRegion(v string) *GetFileUploadInfoRequestOption {
+	s.PreferRegion = &v
+	return s
+}
+
+func (s *GetFileUploadInfoRequestOption) SetStorageDriver(v string) *GetFileUploadInfoRequestOption {
+	s.StorageDriver = &v
+	return s
+}
+
+type GetFileUploadInfoRequestOptionPreCheckParam struct {
+	// example:
+	//
+	// None
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// None
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s GetFileUploadInfoRequestOptionPreCheckParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoRequestOptionPreCheckParam) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoRequestOptionPreCheckParam) SetName(v string) *GetFileUploadInfoRequestOptionPreCheckParam {
+	s.Name = &v
+	return s
+}
+
+func (s *GetFileUploadInfoRequestOptionPreCheckParam) SetSize(v int64) *GetFileUploadInfoRequestOptionPreCheckParam {
+	s.Size = &v
+	return s
+}
+
+type GetFileUploadInfoRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetFileUploadInfoRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoRequestTenantContext) SetTenantId(v string) *GetFileUploadInfoRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetFileUploadInfoShrinkRequest struct {
+	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// dentryUuid
+	ParentDentryUuid *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
+	// example:
+	//
+	// HEADER_SIGNATURE
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetFileUploadInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoShrinkRequest) SetOptionShrink(v string) *GetFileUploadInfoShrinkRequest {
+	s.OptionShrink = &v
+	return s
+}
+
+func (s *GetFileUploadInfoShrinkRequest) SetParentDentryUuid(v string) *GetFileUploadInfoShrinkRequest {
+	s.ParentDentryUuid = &v
+	return s
+}
+
+func (s *GetFileUploadInfoShrinkRequest) SetProtocol(v string) *GetFileUploadInfoShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetFileUploadInfoShrinkRequest) SetTenantContextShrink(v string) *GetFileUploadInfoShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetFileUploadInfoResponseBody struct {
+	HeaderSignatureInfo *GetFileUploadInfoResponseBodyHeaderSignatureInfo `json:"headerSignatureInfo,omitempty" xml:"headerSignatureInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// HEADER_SIGNATURE
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// DINGTALK
+	StorageDriver *string `json:"storageDriver,omitempty" xml:"storageDriver,omitempty"`
+	// example:
+	//
+	// upload_key
+	UploadKey *string `json:"uploadKey,omitempty" xml:"uploadKey,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetFileUploadInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoResponseBody) SetHeaderSignatureInfo(v *GetFileUploadInfoResponseBodyHeaderSignatureInfo) *GetFileUploadInfoResponseBody {
+	s.HeaderSignatureInfo = v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBody) SetProtocol(v string) *GetFileUploadInfoResponseBody {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBody) SetRequestId(v string) *GetFileUploadInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBody) SetStorageDriver(v string) *GetFileUploadInfoResponseBody {
+	s.StorageDriver = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBody) SetUploadKey(v string) *GetFileUploadInfoResponseBody {
+	s.UploadKey = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBody) SetVendorRequestId(v string) *GetFileUploadInfoResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBody) SetVendorType(v string) *GetFileUploadInfoResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetFileUploadInfoResponseBodyHeaderSignatureInfo struct {
+	// example:
+	//
+	// 900
+	ExpirationSeconds    *int32             `json:"ExpirationSeconds,omitempty" xml:"ExpirationSeconds,omitempty"`
+	Headers              map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	InternalResourceUrls []*string          `json:"InternalResourceUrls,omitempty" xml:"InternalResourceUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ZHANGJIAKOU
+	Region       *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceUrls []*string `json:"ResourceUrls,omitempty" xml:"ResourceUrls,omitempty" type:"Repeated"`
+}
+
+func (s GetFileUploadInfoResponseBodyHeaderSignatureInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoResponseBodyHeaderSignatureInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoResponseBodyHeaderSignatureInfo) SetExpirationSeconds(v int32) *GetFileUploadInfoResponseBodyHeaderSignatureInfo {
+	s.ExpirationSeconds = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBodyHeaderSignatureInfo) SetHeaders(v map[string]*string) *GetFileUploadInfoResponseBodyHeaderSignatureInfo {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBodyHeaderSignatureInfo) SetInternalResourceUrls(v []*string) *GetFileUploadInfoResponseBodyHeaderSignatureInfo {
+	s.InternalResourceUrls = v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBodyHeaderSignatureInfo) SetRegion(v string) *GetFileUploadInfoResponseBodyHeaderSignatureInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponseBodyHeaderSignatureInfo) SetResourceUrls(v []*string) *GetFileUploadInfoResponseBodyHeaderSignatureInfo {
+	s.ResourceUrls = v
+	return s
+}
+
+type GetFileUploadInfoResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFileUploadInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFileUploadInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileUploadInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileUploadInfoResponse) SetHeaders(v map[string]*string) *GetFileUploadInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileUploadInfoResponse) SetStatusCode(v int32) *GetFileUploadInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFileUploadInfoResponse) SetBody(v *GetFileUploadInfoResponseBody) *GetFileUploadInfoResponse {
 	s.Body = v
 	return s
 }
@@ -24571,6 +25612,336 @@ func (s *GetMineWorkspaceResponse) SetStatusCode(v int32) *GetMineWorkspaceRespo
 }
 
 func (s *GetMineWorkspaceResponse) SetBody(v *GetMineWorkspaceResponseBody) *GetMineWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultipartFileUploadInfosHeaders struct {
+	CommonHeaders  map[string]*string                                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetMultipartFileUploadInfosHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultipartFileUploadInfosHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosHeaders) SetCommonHeaders(v map[string]*string) *GetMultipartFileUploadInfosHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosHeaders) SetAccountContext(v *GetMultipartFileUploadInfosHeadersAccountContext) *GetMultipartFileUploadInfosHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetMultipartFileUploadInfosHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosHeadersAccountContext) SetAccountId(v string) *GetMultipartFileUploadInfosHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetMultipartFileUploadInfosShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosShrinkHeaders) SetAccountContextShrink(v string) *GetMultipartFileUploadInfosShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosRequest struct {
+	Option        *GetMultipartFileUploadInfosRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
+	PartNumbers   []*int32                                         `json:"PartNumbers,omitempty" xml:"PartNumbers,omitempty" type:"Repeated"`
+	TenantContext *GetMultipartFileUploadInfosRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// hwHPAAAAAipHxxxxx
+	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosRequest) SetOption(v *GetMultipartFileUploadInfosRequestOption) *GetMultipartFileUploadInfosRequest {
+	s.Option = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosRequest) SetPartNumbers(v []*int32) *GetMultipartFileUploadInfosRequest {
+	s.PartNumbers = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosRequest) SetTenantContext(v *GetMultipartFileUploadInfosRequestTenantContext) *GetMultipartFileUploadInfosRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosRequest) SetUploadKey(v string) *GetMultipartFileUploadInfosRequest {
+	s.UploadKey = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosRequestOption struct {
+	// example:
+	//
+	// true
+	PreferIntranet *bool `json:"PreferIntranet,omitempty" xml:"PreferIntranet,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosRequestOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosRequestOption) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosRequestOption) SetPreferIntranet(v bool) *GetMultipartFileUploadInfosRequestOption {
+	s.PreferIntranet = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosRequestTenantContext) SetTenantId(v string) *GetMultipartFileUploadInfosRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosShrinkRequest struct {
+	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	PartNumbersShrink   *string `json:"PartNumbers,omitempty" xml:"PartNumbers,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// hwHPAAAAAipHxxxxx
+	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosShrinkRequest) SetOptionShrink(v string) *GetMultipartFileUploadInfosShrinkRequest {
+	s.OptionShrink = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosShrinkRequest) SetPartNumbersShrink(v string) *GetMultipartFileUploadInfosShrinkRequest {
+	s.PartNumbersShrink = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosShrinkRequest) SetTenantContextShrink(v string) *GetMultipartFileUploadInfosShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosShrinkRequest) SetUploadKey(v string) *GetMultipartFileUploadInfosShrinkRequest {
+	s.UploadKey = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosResponseBody struct {
+	MultipartHeaderSignatureInfos []*GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos `json:"multipartHeaderSignatureInfos,omitempty" xml:"multipartHeaderSignatureInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosResponseBody) SetMultipartHeaderSignatureInfos(v []*GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos) *GetMultipartFileUploadInfosResponseBody {
+	s.MultipartHeaderSignatureInfos = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBody) SetRequestId(v string) *GetMultipartFileUploadInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBody) SetVendorRequestId(v string) *GetMultipartFileUploadInfosResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBody) SetVendorType(v string) *GetMultipartFileUploadInfosResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos struct {
+	HeaderSignatureInfo *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo `json:"HeaderSignatureInfo,omitempty" xml:"HeaderSignatureInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PartNumber *int32 `json:"PartNumber,omitempty" xml:"PartNumber,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos) SetHeaderSignatureInfo(v *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos {
+	s.HeaderSignatureInfo = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos) SetPartNumber(v int32) *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos {
+	s.PartNumber = &v
+	return s
+}
+
+type GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo struct {
+	// example:
+	//
+	// 900
+	ExpirationSeconds    *int32             `json:"ExpirationSeconds,omitempty" xml:"ExpirationSeconds,omitempty"`
+	Headers              map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	InternalResourceUrls []*string          `json:"InternalResourceUrls,omitempty" xml:"InternalResourceUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ZHANGJIAKOU
+	Region       *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceUrls []*string `json:"ResourceUrls,omitempty" xml:"ResourceUrls,omitempty" type:"Repeated"`
+}
+
+func (s GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) SetExpirationSeconds(v int32) *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo {
+	s.ExpirationSeconds = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) SetHeaders(v map[string]*string) *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) SetInternalResourceUrls(v []*string) *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo {
+	s.InternalResourceUrls = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) SetRegion(v string) *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo) SetResourceUrls(v []*string) *GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo {
+	s.ResourceUrls = v
+	return s
+}
+
+type GetMultipartFileUploadInfosResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultipartFileUploadInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultipartFileUploadInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultipartFileUploadInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultipartFileUploadInfosResponse) SetHeaders(v map[string]*string) *GetMultipartFileUploadInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponse) SetStatusCode(v int32) *GetMultipartFileUploadInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultipartFileUploadInfosResponse) SetBody(v *GetMultipartFileUploadInfosResponseBody) *GetMultipartFileUploadInfosResponse {
 	s.Body = v
 	return s
 }
@@ -29291,6 +30662,392 @@ func (s *GetRunningTasksResponse) SetBody(v *GetRunningTasksResponseBody) *GetRu
 	return s
 }
 
+type GetScheduleHeaders struct {
+	CommonHeaders  map[string]*string                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetScheduleHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetScheduleHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleHeaders) SetCommonHeaders(v map[string]*string) *GetScheduleHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetScheduleHeaders) SetAccountContext(v *GetScheduleHeadersAccountContext) *GetScheduleHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetScheduleHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetScheduleHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleHeadersAccountContext) SetAccountId(v string) *GetScheduleHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetScheduleShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetScheduleShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetScheduleShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetScheduleShrinkHeaders) SetAccountContextShrink(v string) *GetScheduleShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetScheduleRequest struct {
+	// example:
+	//
+	// 2020-01-01T10:15:30+08:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2020-01-01T10:15:30+08:00
+	StartTime     *string                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *GetScheduleRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	UserIds       []*string                        `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s GetScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleRequest) SetEndTime(v string) *GetScheduleRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetScheduleRequest) SetStartTime(v string) *GetScheduleRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetScheduleRequest) SetTenantContext(v *GetScheduleRequestTenantContext) *GetScheduleRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *GetScheduleRequest) SetUserIds(v []*string) *GetScheduleRequest {
+	s.UserIds = v
+	return s
+}
+
+type GetScheduleRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetScheduleRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleRequestTenantContext) SetTenantId(v string) *GetScheduleRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetScheduleShrinkRequest struct {
+	// example:
+	//
+	// 2020-01-01T10:15:30+08:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2020-01-01T10:15:30+08:00
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	UserIdsShrink       *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+}
+
+func (s GetScheduleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleShrinkRequest) SetEndTime(v string) *GetScheduleShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetScheduleShrinkRequest) SetStartTime(v string) *GetScheduleShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetScheduleShrinkRequest) SetTenantContextShrink(v string) *GetScheduleShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *GetScheduleShrinkRequest) SetUserIdsShrink(v string) *GetScheduleShrinkRequest {
+	s.UserIdsShrink = &v
+	return s
+}
+
+type GetScheduleResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId           *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScheduleInformation []*GetScheduleResponseBodyScheduleInformation `json:"scheduleInformation,omitempty" xml:"scheduleInformation,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponseBody) SetRequestId(v string) *GetScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetScheduleResponseBody) SetScheduleInformation(v []*GetScheduleResponseBodyScheduleInformation) *GetScheduleResponseBody {
+	s.ScheduleInformation = v
+	return s
+}
+
+func (s *GetScheduleResponseBody) SetVendorRequestId(v string) *GetScheduleResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetScheduleResponseBody) SetVendorType(v string) *GetScheduleResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetScheduleResponseBodyScheduleInformation struct {
+	// example:
+	//
+	// 无权限
+	Error         *string                                                    `json:"Error,omitempty" xml:"Error,omitempty"`
+	ScheduleItems []*GetScheduleResponseBodyScheduleInformationScheduleItems `json:"ScheduleItems,omitempty" xml:"ScheduleItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetScheduleResponseBodyScheduleInformation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponseBodyScheduleInformation) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponseBodyScheduleInformation) SetError(v string) *GetScheduleResponseBodyScheduleInformation {
+	s.Error = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformation) SetScheduleItems(v []*GetScheduleResponseBodyScheduleInformationScheduleItems) *GetScheduleResponseBodyScheduleInformation {
+	s.ScheduleItems = v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformation) SetUserId(v string) *GetScheduleResponseBodyScheduleInformation {
+	s.UserId = &v
+	return s
+}
+
+type GetScheduleResponseBodyScheduleInformationScheduleItems struct {
+	End   *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd   `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
+	Start *GetScheduleResponseBodyScheduleInformationScheduleItemsStart `json:"Start,omitempty" xml:"Start,omitempty" type:"Struct"`
+	// example:
+	//
+	// BUSY
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetScheduleResponseBodyScheduleInformationScheduleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponseBodyScheduleInformationScheduleItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItems) SetEnd(v *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd) *GetScheduleResponseBodyScheduleInformationScheduleItems {
+	s.End = v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItems) SetStart(v *GetScheduleResponseBodyScheduleInformationScheduleItemsStart) *GetScheduleResponseBodyScheduleInformationScheduleItems {
+	s.Start = v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItems) SetStatus(v string) *GetScheduleResponseBodyScheduleInformationScheduleItems {
+	s.Status = &v
+	return s
+}
+
+type GetScheduleResponseBodyScheduleInformationScheduleItemsEnd struct {
+	// example:
+	//
+	// 2020-01-01
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// 2020-01-01T10:15:30+08:00
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s GetScheduleResponseBodyScheduleInformationScheduleItemsEnd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponseBodyScheduleInformationScheduleItemsEnd) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd) SetDate(v string) *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd {
+	s.Date = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd) SetDateTime(v string) *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd {
+	s.DateTime = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd) SetTimeZone(v string) *GetScheduleResponseBodyScheduleInformationScheduleItemsEnd {
+	s.TimeZone = &v
+	return s
+}
+
+type GetScheduleResponseBodyScheduleInformationScheduleItemsStart struct {
+	// example:
+	//
+	// 2020-01-01
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// 2020-01-01T10:15:30+08:00
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s GetScheduleResponseBodyScheduleInformationScheduleItemsStart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponseBodyScheduleInformationScheduleItemsStart) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItemsStart) SetDate(v string) *GetScheduleResponseBodyScheduleInformationScheduleItemsStart {
+	s.Date = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItemsStart) SetDateTime(v string) *GetScheduleResponseBodyScheduleInformationScheduleItemsStart {
+	s.DateTime = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyScheduleInformationScheduleItemsStart) SetTimeZone(v string) *GetScheduleResponseBodyScheduleInformationScheduleItemsStart {
+	s.TimeZone = &v
+	return s
+}
+
+type GetScheduleResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponse) SetHeaders(v map[string]*string) *GetScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetScheduleResponse) SetStatusCode(v int32) *GetScheduleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetScheduleResponse) SetBody(v *GetScheduleResponseBody) *GetScheduleResponse {
+	s.Body = v
+	return s
+}
+
 type GetSheetHeaders struct {
 	CommonHeaders  map[string]*string             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetSheetHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -33539,6 +35296,325 @@ func (s *GrantHonorResponse) SetBody(v *GrantHonorResponseBody) *GrantHonorRespo
 	return s
 }
 
+type InitMultipartFileUploadHeaders struct {
+	CommonHeaders  map[string]*string                            `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *InitMultipartFileUploadHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s InitMultipartFileUploadHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadHeaders) SetCommonHeaders(v map[string]*string) *InitMultipartFileUploadHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InitMultipartFileUploadHeaders) SetAccountContext(v *InitMultipartFileUploadHeadersAccountContext) *InitMultipartFileUploadHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type InitMultipartFileUploadHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s InitMultipartFileUploadHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadHeadersAccountContext) SetAccountId(v string) *InitMultipartFileUploadHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type InitMultipartFileUploadShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s InitMultipartFileUploadShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadShrinkHeaders) SetCommonHeaders(v map[string]*string) *InitMultipartFileUploadShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InitMultipartFileUploadShrinkHeaders) SetAccountContextShrink(v string) *InitMultipartFileUploadShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type InitMultipartFileUploadRequest struct {
+	Option *InitMultipartFileUploadRequestOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
+	// example:
+	//
+	// dentryUuid
+	ParentDentryUuid *string                                      `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
+	TenantContext    *InitMultipartFileUploadRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s InitMultipartFileUploadRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadRequest) SetOption(v *InitMultipartFileUploadRequestOption) *InitMultipartFileUploadRequest {
+	s.Option = v
+	return s
+}
+
+func (s *InitMultipartFileUploadRequest) SetParentDentryUuid(v string) *InitMultipartFileUploadRequest {
+	s.ParentDentryUuid = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadRequest) SetTenantContext(v *InitMultipartFileUploadRequestTenantContext) *InitMultipartFileUploadRequest {
+	s.TenantContext = v
+	return s
+}
+
+type InitMultipartFileUploadRequestOption struct {
+	PreCheckParam *InitMultipartFileUploadRequestOptionPreCheckParam `json:"PreCheckParam,omitempty" xml:"PreCheckParam,omitempty" type:"Struct"`
+	// example:
+	//
+	// ZHANGJIAKOU
+	PreferRegion *string `json:"PreferRegion,omitempty" xml:"PreferRegion,omitempty"`
+	// example:
+	//
+	// DINGTALK
+	StorageDriver *string `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
+}
+
+func (s InitMultipartFileUploadRequestOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadRequestOption) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadRequestOption) SetPreCheckParam(v *InitMultipartFileUploadRequestOptionPreCheckParam) *InitMultipartFileUploadRequestOption {
+	s.PreCheckParam = v
+	return s
+}
+
+func (s *InitMultipartFileUploadRequestOption) SetPreferRegion(v string) *InitMultipartFileUploadRequestOption {
+	s.PreferRegion = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadRequestOption) SetStorageDriver(v string) *InitMultipartFileUploadRequestOption {
+	s.StorageDriver = &v
+	return s
+}
+
+type InitMultipartFileUploadRequestOptionPreCheckParam struct {
+	// example:
+	//
+	// md5
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// 100
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s InitMultipartFileUploadRequestOptionPreCheckParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadRequestOptionPreCheckParam) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadRequestOptionPreCheckParam) SetMd5(v string) *InitMultipartFileUploadRequestOptionPreCheckParam {
+	s.Md5 = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadRequestOptionPreCheckParam) SetName(v string) *InitMultipartFileUploadRequestOptionPreCheckParam {
+	s.Name = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadRequestOptionPreCheckParam) SetParentId(v string) *InitMultipartFileUploadRequestOptionPreCheckParam {
+	s.ParentId = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadRequestOptionPreCheckParam) SetSize(v int64) *InitMultipartFileUploadRequestOptionPreCheckParam {
+	s.Size = &v
+	return s
+}
+
+type InitMultipartFileUploadRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s InitMultipartFileUploadRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadRequestTenantContext) SetTenantId(v string) *InitMultipartFileUploadRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type InitMultipartFileUploadShrinkRequest struct {
+	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// dentryUuid
+	ParentDentryUuid    *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s InitMultipartFileUploadShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadShrinkRequest) SetOptionShrink(v string) *InitMultipartFileUploadShrinkRequest {
+	s.OptionShrink = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadShrinkRequest) SetParentDentryUuid(v string) *InitMultipartFileUploadShrinkRequest {
+	s.ParentDentryUuid = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadShrinkRequest) SetTenantContextShrink(v string) *InitMultipartFileUploadShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type InitMultipartFileUploadResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// DINGTALK
+	StorageDriver *string `json:"storageDriver,omitempty" xml:"storageDriver,omitempty"`
+	// example:
+	//
+	// xhy89xxxxx
+	UploadKey *string `json:"uploadKey,omitempty" xml:"uploadKey,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s InitMultipartFileUploadResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadResponseBody) SetRequestId(v string) *InitMultipartFileUploadResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadResponseBody) SetStorageDriver(v string) *InitMultipartFileUploadResponseBody {
+	s.StorageDriver = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadResponseBody) SetUploadKey(v string) *InitMultipartFileUploadResponseBody {
+	s.UploadKey = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadResponseBody) SetVendorRequestId(v string) *InitMultipartFileUploadResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadResponseBody) SetVendorType(v string) *InitMultipartFileUploadResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type InitMultipartFileUploadResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitMultipartFileUploadResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InitMultipartFileUploadResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitMultipartFileUploadResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitMultipartFileUploadResponse) SetHeaders(v map[string]*string) *InitMultipartFileUploadResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitMultipartFileUploadResponse) SetStatusCode(v int32) *InitMultipartFileUploadResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitMultipartFileUploadResponse) SetBody(v *InitMultipartFileUploadResponseBody) *InitMultipartFileUploadResponse {
+	s.Body = v
+	return s
+}
+
 type InsertColumnsBeforeHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *InsertColumnsBeforeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -34235,8 +36311,10 @@ func (s *InviteUsersRequestTenantContext) SetTenantId(v string) *InviteUsersRequ
 }
 
 type InviteUsersRequestPhoneInviteeList struct {
-	Nick        *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	InviteClient *bool   `json:"InviteClient,omitempty" xml:"InviteClient,omitempty"`
+	Nick         *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	StatusCode   *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s InviteUsersRequestPhoneInviteeList) String() string {
@@ -34247,6 +36325,11 @@ func (s InviteUsersRequestPhoneInviteeList) GoString() string {
 	return s.String()
 }
 
+func (s *InviteUsersRequestPhoneInviteeList) SetInviteClient(v bool) *InviteUsersRequestPhoneInviteeList {
+	s.InviteClient = &v
+	return s
+}
+
 func (s *InviteUsersRequestPhoneInviteeList) SetNick(v string) *InviteUsersRequestPhoneInviteeList {
 	s.Nick = &v
 	return s
@@ -34254,6 +36337,11 @@ func (s *InviteUsersRequestPhoneInviteeList) SetNick(v string) *InviteUsersReque
 
 func (s *InviteUsersRequestPhoneInviteeList) SetPhoneNumber(v string) *InviteUsersRequestPhoneInviteeList {
 	s.PhoneNumber = &v
+	return s
+}
+
+func (s *InviteUsersRequestPhoneInviteeList) SetStatusCode(v string) *InviteUsersRequestPhoneInviteeList {
+	s.StatusCode = &v
 	return s
 }
 
@@ -34307,7 +36395,9 @@ type InviteUsersResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success         *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
 func (s InviteUsersResponseBody) String() string {
@@ -34325,6 +36415,16 @@ func (s *InviteUsersResponseBody) SetRequestId(v string) *InviteUsersResponseBod
 
 func (s *InviteUsersResponseBody) SetSuccess(v bool) *InviteUsersResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *InviteUsersResponseBody) SetVendorRequestId(v string) *InviteUsersResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *InviteUsersResponseBody) SetVendorType(v string) *InviteUsersResponseBody {
+	s.VendorType = &v
 	return s
 }
 
@@ -64947,6 +67047,111 @@ func (client *Client) CommentListReport(request *CommentListReportRequest) (_res
 
 // Summary:
 //
+// 提交文件
+//
+// @param tmpReq - CommitFileRequest
+//
+// @param tmpHeader - CommitFileHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommitFileResponse
+func (client *Client) CommitFileWithOptions(tmpReq *CommitFileRequest, tmpHeader *CommitFileHeaders, runtime *util.RuntimeOptions) (_result *CommitFileResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CommitFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CommitFileShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Option)) {
+		request.OptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Option, tea.String("Option"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptionShrink)) {
+		body["Option"] = request.OptionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentDentryUuid)) {
+		body["ParentDentryUuid"] = request.ParentDentryUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadKey)) {
+		body["UploadKey"] = request.UploadKey
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CommitFile"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/commitFile"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CommitFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交文件
+//
+// @param request - CommitFileRequest
+//
+// @return CommitFileResponse
+func (client *Client) CommitFile(request *CommitFileRequest) (_result *CommitFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CommitFileHeaders{}
+	_result = &CommitFileResponse{}
+	_body, _err := client.CommitFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 发布钉钉投放活动
 //
 // @param tmpReq - CreateDeliveryPlanRequest
@@ -69671,6 +71876,10 @@ func (client *Client) GetDocContentTakIdWithOptions(tmpReq *GetDocContentTakIdRe
 		body["DentryUuid"] = request.DentryUuid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GenerateCp)) {
+		body["GenerateCp"] = request.GenerateCp
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TargetFormat)) {
 		body["TargetFormat"] = request.TargetFormat
 	}
@@ -70001,6 +72210,107 @@ func (client *Client) GetFileDownloadInfo(request *GetFileDownloadInfoRequest) (
 	headers := &GetFileDownloadInfoHeaders{}
 	_result = &GetFileDownloadInfoResponse{}
 	_body, _err := client.GetFileDownloadInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件上传信息
+//
+// @param tmpReq - GetFileUploadInfoRequest
+//
+// @param tmpHeader - GetFileUploadInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileUploadInfoResponse
+func (client *Client) GetFileUploadInfoWithOptions(tmpReq *GetFileUploadInfoRequest, tmpHeader *GetFileUploadInfoHeaders, runtime *util.RuntimeOptions) (_result *GetFileUploadInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetFileUploadInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetFileUploadInfoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Option)) {
+		request.OptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Option, tea.String("Option"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OptionShrink)) {
+		body["Option"] = request.OptionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentDentryUuid)) {
+		body["ParentDentryUuid"] = request.ParentDentryUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFileUploadInfo"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/getFileUploadInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFileUploadInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件上传信息
+//
+// @param request - GetFileUploadInfoRequest
+//
+// @return GetFileUploadInfoResponse
+func (client *Client) GetFileUploadInfo(request *GetFileUploadInfoRequest) (_result *GetFileUploadInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetFileUploadInfoHeaders{}
+	_result = &GetFileUploadInfoResponse{}
+	_body, _err := client.GetFileUploadInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71211,6 +73521,111 @@ func (client *Client) GetMineWorkspace(request *GetMineWorkspaceRequest) (_resul
 	headers := &GetMineWorkspaceHeaders{}
 	_result = &GetMineWorkspaceResponse{}
 	_body, _err := client.GetMineWorkspaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件分片上传信息
+//
+// @param tmpReq - GetMultipartFileUploadInfosRequest
+//
+// @param tmpHeader - GetMultipartFileUploadInfosHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultipartFileUploadInfosResponse
+func (client *Client) GetMultipartFileUploadInfosWithOptions(tmpReq *GetMultipartFileUploadInfosRequest, tmpHeader *GetMultipartFileUploadInfosHeaders, runtime *util.RuntimeOptions) (_result *GetMultipartFileUploadInfosResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetMultipartFileUploadInfosShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetMultipartFileUploadInfosShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Option)) {
+		request.OptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Option, tea.String("Option"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PartNumbers)) {
+		request.PartNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PartNumbers, tea.String("PartNumbers"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OptionShrink)) {
+		body["Option"] = request.OptionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartNumbersShrink)) {
+		body["PartNumbers"] = request.PartNumbersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadKey)) {
+		body["UploadKey"] = request.UploadKey
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultipartFileUploadInfos"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/GetMultipartFileUploadInfos"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultipartFileUploadInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件分片上传信息
+//
+// @param request - GetMultipartFileUploadInfosRequest
+//
+// @return GetMultipartFileUploadInfosResponse
+func (client *Client) GetMultipartFileUploadInfos(request *GetMultipartFileUploadInfosRequest) (_result *GetMultipartFileUploadInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetMultipartFileUploadInfosHeaders{}
+	_result = &GetMultipartFileUploadInfosResponse{}
+	_body, _err := client.GetMultipartFileUploadInfosWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -72487,6 +74902,107 @@ func (client *Client) GetRunningTasks(request *GetRunningTasksRequest) (_result 
 
 // Summary:
 //
+// 获取用户忙闲信息
+//
+// @param tmpReq - GetScheduleRequest
+//
+// @param tmpHeader - GetScheduleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScheduleResponse
+func (client *Client) GetScheduleWithOptions(tmpReq *GetScheduleRequest, tmpHeader *GetScheduleHeaders, runtime *util.RuntimeOptions) (_result *GetScheduleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetScheduleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetScheduleShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIds)) {
+		request.UserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIds, tea.String("UserIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdsShrink)) {
+		body["UserIds"] = request.UserIdsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSchedule"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/calendar/getSchedule"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户忙闲信息
+//
+// @param request - GetScheduleRequest
+//
+// @return GetScheduleResponse
+func (client *Client) GetSchedule(request *GetScheduleRequest) (_result *GetScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetScheduleHeaders{}
+	_result = &GetScheduleResponse{}
+	_body, _err := client.GetScheduleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取工作表
 //
 // @param tmpReq - GetSheetRequest
@@ -73456,6 +75972,103 @@ func (client *Client) GrantHonor(request *GrantHonorRequest) (_result *GrantHono
 	headers := &GrantHonorHeaders{}
 	_result = &GrantHonorResponse{}
 	_body, _err := client.GrantHonorWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 初始化文件分片上传
+//
+// @param tmpReq - InitMultipartFileUploadRequest
+//
+// @param tmpHeader - InitMultipartFileUploadHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitMultipartFileUploadResponse
+func (client *Client) InitMultipartFileUploadWithOptions(tmpReq *InitMultipartFileUploadRequest, tmpHeader *InitMultipartFileUploadHeaders, runtime *util.RuntimeOptions) (_result *InitMultipartFileUploadResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InitMultipartFileUploadShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &InitMultipartFileUploadShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Option)) {
+		request.OptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Option, tea.String("Option"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OptionShrink)) {
+		body["Option"] = request.OptionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentDentryUuid)) {
+		body["ParentDentryUuid"] = request.ParentDentryUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitMultipartFileUpload"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/initMultipartFileUpload"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitMultipartFileUploadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 初始化文件分片上传
+//
+// @param request - InitMultipartFileUploadRequest
+//
+// @return InitMultipartFileUploadResponse
+func (client *Client) InitMultipartFileUpload(request *InitMultipartFileUploadRequest) (_result *InitMultipartFileUploadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InitMultipartFileUploadHeaders{}
+	_result = &InitMultipartFileUploadResponse{}
+	_body, _err := client.InitMultipartFileUploadWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
