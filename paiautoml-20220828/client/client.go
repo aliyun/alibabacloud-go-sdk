@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,12 @@ import (
 )
 
 type AutofeExperimentConfiguration struct {
+	// This parameter is required.
 	OdpsConfig *AutofeExperimentConfigurationOdpsConfig `json:"odps_config,omitempty" xml:"odps_config,omitempty" type:"Struct"`
-	OssConfig  *AutofeExperimentConfigurationOssConfig  `json:"oss_config,omitempty" xml:"oss_config,omitempty" type:"Struct"`
-	YmlConfig  *AutofeExperimentConfigurationYmlConfig  `json:"yml_config,omitempty" xml:"yml_config,omitempty" type:"Struct"`
+	// This parameter is required.
+	OssConfig *AutofeExperimentConfigurationOssConfig `json:"oss_config,omitempty" xml:"oss_config,omitempty" type:"Struct"`
+	// This parameter is required.
+	YmlConfig *AutofeExperimentConfigurationYmlConfig `json:"yml_config,omitempty" xml:"yml_config,omitempty" type:"Struct"`
 }
 
 func (s AutofeExperimentConfiguration) String() string {
@@ -42,12 +42,23 @@ func (s *AutofeExperimentConfiguration) SetYmlConfig(v *AutofeExperimentConfigur
 }
 
 type AutofeExperimentConfigurationOdpsConfig struct {
-	OdpsAccessId    *string `json:"odps_access_id,omitempty" xml:"odps_access_id,omitempty"`
-	OdpsAccessKey   *string `json:"odps_access_key,omitempty" xml:"odps_access_key,omitempty"`
-	OdpsEndpoint    *string `json:"odps_endpoint,omitempty" xml:"odps_endpoint,omitempty"`
+	OdpsAccessId  *string `json:"odps_access_id,omitempty" xml:"odps_access_id,omitempty"`
+	OdpsAccessKey *string `json:"odps_access_key,omitempty" xml:"odps_access_key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://service.cn-beijing.maxcompute.aliyun.com/api
+	OdpsEndpoint *string `json:"odps_endpoint,omitempty" xml:"odps_endpoint,omitempty"`
+	// This parameter is required.
 	OdpsProjectName *string `json:"odps_project_name,omitempty" xml:"odps_project_name,omitempty"`
-	OdpsRegionId    *string `json:"odps_region_id,omitempty" xml:"odps_region_id,omitempty"`
-	OdpsRoleArn     *string `json:"odps_role_arn,omitempty" xml:"odps_role_arn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	OdpsRegionId *string `json:"odps_region_id,omitempty" xml:"odps_region_id,omitempty"`
+	OdpsRoleArn  *string `json:"odps_role_arn,omitempty" xml:"odps_role_arn,omitempty"`
 }
 
 func (s AutofeExperimentConfigurationOdpsConfig) String() string {
@@ -91,9 +102,19 @@ func (s *AutofeExperimentConfigurationOdpsConfig) SetOdpsRoleArn(v string) *Auto
 type AutofeExperimentConfigurationOssConfig struct {
 	OssAccessId  *string `json:"oss_access_id,omitempty" xml:"oss_access_id,omitempty"`
 	OssAccessKey *string `json:"oss_access_key,omitempty" xml:"oss_access_key,omitempty"`
-	OssBucket    *string `json:"oss_bucket,omitempty" xml:"oss_bucket,omitempty"`
-	OssEndpoint  *string `json:"oss_endpoint,omitempty" xml:"oss_endpoint,omitempty"`
-	OssRoleArn   *string `json:"oss_role_arn,omitempty" xml:"oss_role_arn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// autofe-service
+	OssBucket *string `json:"oss_bucket,omitempty" xml:"oss_bucket,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss-cn-beijing.aliyuncs.com
+	OssEndpoint *string `json:"oss_endpoint,omitempty" xml:"oss_endpoint,omitempty"`
+	OssRoleArn  *string `json:"oss_role_arn,omitempty" xml:"oss_role_arn,omitempty"`
 }
 
 func (s AutofeExperimentConfigurationOssConfig) String() string {
@@ -130,29 +151,84 @@ func (s *AutofeExperimentConfigurationOssConfig) SetOssRoleArn(v string) *Autofe
 }
 
 type AutofeExperimentConfigurationYmlConfig struct {
-	Action             *string `json:"action,omitempty" xml:"action,omitempty"`
-	AggregateOnly      *string `json:"aggregate_only,omitempty" xml:"aggregate_only,omitempty"`
-	AnalyzeExpId       *string `json:"analyze_exp_id,omitempty" xml:"analyze_exp_id,omitempty"`
-	Cpu                *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	DataPartition      *string `json:"data_partition,omitempty" xml:"data_partition,omitempty"`
-	DataSource         *string `json:"data_source,omitempty" xml:"data_source,omitempty"`
-	DataType           *string `json:"data_type,omitempty" xml:"data_type,omitempty"`
-	DebugMode          *string `json:"debug_mode,omitempty" xml:"debug_mode,omitempty"`
-	ExcludeColumns     *string `json:"exclude_columns,omitempty" xml:"exclude_columns,omitempty"`
-	FeatureSelection   *string `json:"feature_selection,omitempty" xml:"feature_selection,omitempty"`
-	FilterThresh       *string `json:"filter_thresh,omitempty" xml:"filter_thresh,omitempty"`
-	IvThresh           *string `json:"iv_thresh,omitempty" xml:"iv_thresh,omitempty"`
-	Label              *string `json:"label,omitempty" xml:"label,omitempty"`
-	Memory             *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// example:
+	//
+	// train
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// true
+	AggregateOnly *string `json:"aggregate_only,omitempty" xml:"aggregate_only,omitempty"`
+	AnalyzeExpId  *string `json:"analyze_exp_id,omitempty" xml:"analyze_exp_id,omitempty"`
+	// example:
+	//
+	// 2
+	Cpu           *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	DataPartition *string `json:"data_partition,omitempty" xml:"data_partition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// odps_table_name
+	DataSource *string `json:"data_source,omitempty" xml:"data_source,omitempty"`
+	// example:
+	//
+	// odps
+	DataType *string `json:"data_type,omitempty" xml:"data_type,omitempty"`
+	// example:
+	//
+	// false
+	DebugMode        *string `json:"debug_mode,omitempty" xml:"debug_mode,omitempty"`
+	ExcludeColumns   *string `json:"exclude_columns,omitempty" xml:"exclude_columns,omitempty"`
+	FeatureSelection *string `json:"feature_selection,omitempty" xml:"feature_selection,omitempty"`
+	// example:
+	//
+	// 10
+	FilterThresh *string `json:"filter_thresh,omitempty" xml:"filter_thresh,omitempty"`
+	// example:
+	//
+	// 0.02
+	IvThresh *string `json:"iv_thresh,omitempty" xml:"iv_thresh,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// label
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// 4000
+	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket_name/
 	OutputConfigOssDir *string `json:"output_config_oss_dir,omitempty" xml:"output_config_oss_dir,omitempty"`
 	PipelineExpId      *string `json:"pipeline_exp_id,omitempty" xml:"pipeline_exp_id,omitempty"`
-	ReuseResults       *string `json:"reuse_results,omitempty" xml:"reuse_results,omitempty"`
-	SampleRatio        *string `json:"sample_ratio,omitempty" xml:"sample_ratio,omitempty"`
-	SampleSize         *string `json:"sample_size,omitempty" xml:"sample_size,omitempty"`
-	SelectionExpId     *string `json:"selection_exp_id,omitempty" xml:"selection_exp_id,omitempty"`
-	SkipSelect         *string `json:"skip_select,omitempty" xml:"skip_select,omitempty"`
-	Workers            *string `json:"workers,omitempty" xml:"workers,omitempty"`
-	WorkspaceName      *string `json:"workspace_name,omitempty" xml:"workspace_name,omitempty"`
+	// example:
+	//
+	// false
+	ReuseResults *string `json:"reuse_results,omitempty" xml:"reuse_results,omitempty"`
+	// example:
+	//
+	// 0
+	SampleRatio *string `json:"sample_ratio,omitempty" xml:"sample_ratio,omitempty"`
+	// example:
+	//
+	// 5000000
+	SampleSize     *string `json:"sample_size,omitempty" xml:"sample_size,omitempty"`
+	SelectionExpId *string `json:"selection_exp_id,omitempty" xml:"selection_exp_id,omitempty"`
+	// example:
+	//
+	// true
+	SkipSelect *string `json:"skip_select,omitempty" xml:"skip_select,omitempty"`
+	// example:
+	//
+	// 10
+	Workers *string `json:"workers,omitempty" xml:"workers,omitempty"`
+	// This parameter is required.
+	WorkspaceName *string `json:"workspace_name,omitempty" xml:"workspace_name,omitempty"`
 }
 
 func (s AutofeExperimentConfigurationYmlConfig) String() string {
@@ -279,15 +355,17 @@ func (s *AutofeExperimentConfigurationYmlConfig) SetWorkspaceName(v string) *Aut
 }
 
 type HpoExperimentConfig struct {
-	DlcConfig      *HpoExperimentConfigDlcConfig      `json:"dlc_config,omitempty" xml:"dlc_config,omitempty" type:"Struct"`
-	K8sConfig      *HpoExperimentConfigK8sConfig      `json:"k8s_config,omitempty" xml:"k8s_config,omitempty" type:"Struct"`
-	MetricConfig   *HpoExperimentConfigMetricConfig   `json:"metric_config,omitempty" xml:"metric_config,omitempty" type:"Struct"`
-	MonitorConfig  *HpoExperimentConfigMonitorConfig  `json:"monitor_config,omitempty" xml:"monitor_config,omitempty" type:"Struct"`
-	OdpsConfig     *HpoExperimentConfigOdpsConfig     `json:"odps_config,omitempty" xml:"odps_config,omitempty" type:"Struct"`
-	OssConfig      *HpoExperimentConfigOssConfig      `json:"oss_config,omitempty" xml:"oss_config,omitempty" type:"Struct"`
-	OutputConfig   *HpoExperimentConfigOutputConfig   `json:"output_config,omitempty" xml:"output_config,omitempty" type:"Struct"`
-	PaiflowConfig  *HpoExperimentConfigPaiflowConfig  `json:"paiflow_config,omitempty" xml:"paiflow_config,omitempty" type:"Struct"`
-	ParamsConfig   *HpoExperimentConfigParamsConfig   `json:"params_config,omitempty" xml:"params_config,omitempty" type:"Struct"`
+	DlcConfig *HpoExperimentConfigDlcConfig `json:"dlc_config,omitempty" xml:"dlc_config,omitempty" type:"Struct"`
+	K8sConfig *HpoExperimentConfigK8sConfig `json:"k8s_config,omitempty" xml:"k8s_config,omitempty" type:"Struct"`
+	// This parameter is required.
+	MetricConfig  *HpoExperimentConfigMetricConfig  `json:"metric_config,omitempty" xml:"metric_config,omitempty" type:"Struct"`
+	MonitorConfig *HpoExperimentConfigMonitorConfig `json:"monitor_config,omitempty" xml:"monitor_config,omitempty" type:"Struct"`
+	OdpsConfig    *HpoExperimentConfigOdpsConfig    `json:"odps_config,omitempty" xml:"odps_config,omitempty" type:"Struct"`
+	OssConfig     *HpoExperimentConfigOssConfig     `json:"oss_config,omitempty" xml:"oss_config,omitempty" type:"Struct"`
+	OutputConfig  *HpoExperimentConfigOutputConfig  `json:"output_config,omitempty" xml:"output_config,omitempty" type:"Struct"`
+	PaiflowConfig *HpoExperimentConfigPaiflowConfig `json:"paiflow_config,omitempty" xml:"paiflow_config,omitempty" type:"Struct"`
+	ParamsConfig  *HpoExperimentConfigParamsConfig  `json:"params_config,omitempty" xml:"params_config,omitempty" type:"Struct"`
+	// This parameter is required.
 	PlatformConfig *HpoExperimentConfigPlatformConfig `json:"platform_config,omitempty" xml:"platform_config,omitempty" type:"Struct"`
 	ScheduleConfig *HpoExperimentConfigScheduleConfig `json:"schedule_config,omitempty" xml:"schedule_config,omitempty" type:"Struct"`
 	SearchSpace    map[string]interface{}             `json:"search_space,omitempty" xml:"search_space,omitempty"`
@@ -450,11 +528,15 @@ func (s *HpoExperimentConfigK8sConfig) SetNniContainerRequestedMemory(v string) 
 }
 
 type HpoExperimentConfigMetricConfig struct {
-	FinalMode           *string                `json:"final_mode,omitempty" xml:"final_mode,omitempty"`
-	MetricDict          map[string]interface{} `json:"metric_dict,omitempty" xml:"metric_dict,omitempty"`
-	MetricSource        []*string              `json:"metric_source,omitempty" xml:"metric_source,omitempty" type:"Repeated"`
-	MetricType          *string                `json:"metric_type,omitempty" xml:"metric_type,omitempty"`
-	SourceListFinalMode *string                `json:"source_list_final_mode,omitempty" xml:"source_list_final_mode,omitempty"`
+	// This parameter is required.
+	FinalMode *string `json:"final_mode,omitempty" xml:"final_mode,omitempty"`
+	// This parameter is required.
+	MetricDict map[string]interface{} `json:"metric_dict,omitempty" xml:"metric_dict,omitempty"`
+	// This parameter is required.
+	MetricSource []*string `json:"metric_source,omitempty" xml:"metric_source,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MetricType          *string `json:"metric_type,omitempty" xml:"metric_type,omitempty"`
+	SourceListFinalMode *string `json:"source_list_final_mode,omitempty" xml:"source_list_final_mode,omitempty"`
 }
 
 func (s HpoExperimentConfigMetricConfig) String() string {
@@ -678,6 +760,9 @@ func (s *HpoExperimentConfigPaiflowConfig) SetWorkspaceId(v string) *HpoExperime
 }
 
 type HpoExperimentConfigParamsConfig struct {
+	// example:
+	//
+	// src_path,dst_file_path
 	ParamsSrcDstFilepath []*string `json:"params_src_dst_filepath,omitempty" xml:"params_src_dst_filepath,omitempty" type:"Repeated"`
 }
 
@@ -695,9 +780,15 @@ func (s *HpoExperimentConfigParamsConfig) SetParamsSrcDstFilepath(v []*string) *
 }
 
 type HpoExperimentConfigPlatformConfig struct {
-	Cmd    []*string `json:"cmd,omitempty" xml:"cmd,omitempty" type:"Repeated"`
-	Name   *string   `json:"name,omitempty" xml:"name,omitempty"`
-	Resume *string   `json:"resume,omitempty" xml:"resume,omitempty"`
+	// This parameter is required.
+	Cmd []*string `json:"cmd,omitempty" xml:"cmd,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DLC, MC,paiflow, etc
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Resume *string `json:"resume,omitempty" xml:"resume,omitempty"`
 }
 
 func (s HpoExperimentConfigPlatformConfig) String() string {
@@ -927,12 +1018,173 @@ func (s *HpoExperimentConfigYmlConfigTuner) SetName(v string) *HpoExperimentConf
 	return s
 }
 
+type CreateAutofeExperimentRequest struct {
+	// example:
+	//
+	// PUBLIC
+	Accessibility                 *string                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AutofeExperimentConfiguration *AutofeExperimentConfiguration `json:"AutofeExperimentConfiguration,omitempty" xml:"AutofeExperimentConfiguration,omitempty"`
+	// example:
+	//
+	// This is an AutoFE experiment.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my experiment x
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 283301
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateAutofeExperimentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutofeExperimentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutofeExperimentRequest) SetAccessibility(v string) *CreateAutofeExperimentRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateAutofeExperimentRequest) SetAutofeExperimentConfiguration(v *AutofeExperimentConfiguration) *CreateAutofeExperimentRequest {
+	s.AutofeExperimentConfiguration = v
+	return s
+}
+
+func (s *CreateAutofeExperimentRequest) SetDescription(v string) *CreateAutofeExperimentRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAutofeExperimentRequest) SetName(v string) *CreateAutofeExperimentRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAutofeExperimentRequest) SetWorkspaceId(v string) *CreateAutofeExperimentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateAutofeExperimentResponseBody struct {
+	// example:
+	//
+	// INVALID_INPUT_PARAMS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// t8cNdMO
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 22A1EC4E-15A2-51FF-BFA3-10D6735BAA69
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAutofeExperimentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutofeExperimentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutofeExperimentResponseBody) SetCode(v string) *CreateAutofeExperimentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAutofeExperimentResponseBody) SetDetail(v map[string]interface{}) *CreateAutofeExperimentResponseBody {
+	s.Detail = v
+	return s
+}
+
+func (s *CreateAutofeExperimentResponseBody) SetExperimentId(v string) *CreateAutofeExperimentResponseBody {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *CreateAutofeExperimentResponseBody) SetMessage(v string) *CreateAutofeExperimentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAutofeExperimentResponseBody) SetRequestId(v string) *CreateAutofeExperimentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAutofeExperimentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAutofeExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAutofeExperimentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutofeExperimentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutofeExperimentResponse) SetHeaders(v map[string]*string) *CreateAutofeExperimentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAutofeExperimentResponse) SetStatusCode(v int32) *CreateAutofeExperimentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAutofeExperimentResponse) SetBody(v *CreateAutofeExperimentResponseBody) *CreateAutofeExperimentResponse {
+	s.Body = v
+	return s
+}
+
 type CreateHpoExperimentRequest struct {
-	Accessibility              *string              `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description                *string              `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Experiment accesibility, public or private.
+	//
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// Experiment description.
+	//
+	// example:
+	//
+	// This is an AutoML HPO experiment.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The config object of the expriment.
 	HpoExperimentConfiguration *HpoExperimentConfig `json:"HpoExperimentConfiguration,omitempty" xml:"HpoExperimentConfiguration,omitempty"`
-	Name                       *string              `json:"Name,omitempty" xml:"Name,omitempty"`
-	WorkspaceId                *string              `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Experiment Name
+	//
+	// example:
+	//
+	// my experiment x
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// AI Workspace ID
+	//
+	// example:
+	//
+	// default
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateHpoExperimentRequest) String() string {
@@ -969,11 +1221,32 @@ func (s *CreateHpoExperimentRequest) SetWorkspaceId(v string) *CreateHpoExperime
 }
 
 type CreateHpoExperimentResponseBody struct {
-	Code         *string            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail       map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	ExperimentId *string            `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	Message      *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// INVALID_INPUT_PARAMS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Detailed information of the failure.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// sORVEck
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateHpoExperimentResponseBody) String() string {
@@ -1038,11 +1311,109 @@ func (s *CreateHpoExperimentResponse) SetBody(v *CreateHpoExperimentResponseBody
 	return s
 }
 
+type CreateServiceIdentityRoleResponseBody struct {
+	// example:
+	//
+	// ExecutionFailure
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Execution failure, please try again.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// AliyunServiceRoleForPaiAutoml
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s CreateServiceIdentityRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceIdentityRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceIdentityRoleResponseBody) SetCode(v string) *CreateServiceIdentityRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateServiceIdentityRoleResponseBody) SetMessage(v string) *CreateServiceIdentityRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateServiceIdentityRoleResponseBody) SetRequestId(v string) *CreateServiceIdentityRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceIdentityRoleResponseBody) SetRoleName(v string) *CreateServiceIdentityRoleResponseBody {
+	s.RoleName = &v
+	return s
+}
+
+type CreateServiceIdentityRoleResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceIdentityRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateServiceIdentityRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceIdentityRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceIdentityRoleResponse) SetHeaders(v map[string]*string) *CreateServiceIdentityRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceIdentityRoleResponse) SetStatusCode(v int32) *CreateServiceIdentityRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceIdentityRoleResponse) SetBody(v *CreateServiceIdentityRoleResponseBody) *CreateServiceIdentityRoleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteHpoExperimentResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail    map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code when the API call is not successful.
+	//
+	// example:
+	//
+	// INVALID_USER_OR_EXP
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra info on the execution failure.
+	//
+	// example:
+	//
+	// {}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteHpoExperimentResponseBody) String() string {
@@ -1102,28 +1473,455 @@ func (s *DeleteHpoExperimentResponse) SetBody(v *DeleteHpoExperimentResponseBody
 	return s
 }
 
+type GetAutofeExperimentResponseBody struct {
+	// example:
+	//
+	// INVALID_USER_OR_EXP
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 266977839132045194
+	Creator *string                `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Detail  map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// tfKs0Ds
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// example:
+	//
+	// 2023-08-18T09:41:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-11-30T02:05:34.000Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// {"action": "fs_train", "request_id": "6B6D4FB6-87AA-5C0E-94AB-E0F830955D1E", "job_num": 7, "job_runs": [{"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-fqlk86bvk68", "duration": 181, "finish_at": 1719158854000, "create_time": "2024-06-23T16:04:31.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-q18k5jo66h3k", "duration": 233, "finish_at": 1719159106000, "create_time": "2024-06-23T16:07:51.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-g7b38dmqes0nm4le", "duration": 173, "finish_at": 1719159306000, "create_time": "2024-06-23T16:12:12.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-524dab97aazs3jmc", "duration": 199, "finish_at": 1719159527000, "create_time": "2024-06-23T16:15:28.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-a8z56wy2ppwmxx04", "duration": 197, "finish_at": 1719159747000, "create_time": "2024-06-23T16:19:08.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-2cgsbxzzzma1j", "duration": 210, "finish_at": 1719159982000, "create_time": "2024-06-23T16:22:51.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-3cgsvf3ien1cw7", "duration": 184, "finish_at": 1719160188000, "create_time": "2024-06-23T16:26:43.000Z", "status": "Succeeded"}], "workspace_id": "86006"}{"action": "fs_train", "request_id": "6B6D4FB6-87AA-5C0E-94AB-E0F830955D1E", "job_num": 7, "job_runs": [{"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-fqlk86betchc69vk68", "duration": 181, "finish_at": 1719158854000, "create_time": "2024-06-23T16:04:31.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-q18ijqak558jo66h3k", "duration": 233, "finish_at": 1719159106000, "create_time": "2024-06-23T16:07:51.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-g7b38df7mqes0nm4le", "duration": 173, "finish_at": 1719159306000, "create_time": "2024-06-23T16:12:12.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-524zedab97aazs3jmc", "duration": 199, "finish_at": 1719159527000, "create_time": "2024-06-23T16:15:28.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-a8z56wy2ppm6wmxx04", "duration": 197, "finish_at": 1719159747000, "create_time": "2024-06-23T16:19:08.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-2cgsbxzx9i35zzma1j", "duration": 210, "finish_at": 1719159982000, "create_time": "2024-06-23T16:22:51.000Z", "status": "Succeeded"}, {"job_url": "https://pai.console.aliyun.com/?projectId=&regionId=cn-beijing#/studio/task/detail/flow-3cgsvf3bprlien1cw7", "duration": 184, "finish_at": 1719160188000, "create_time": "2024-06-23T16:26:43.000Z", "status": "Succeeded"}], "workspace_id": "86006"}
+	JobMeta *string `json:"JobMeta,omitempty" xml:"JobMeta,omitempty"`
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 071A904D-5A49-597F-9F69-81C7701D04AC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// age,sex,education
+	SelectedFeatures *string `json:"SelectedFeatures,omitempty" xml:"SelectedFeatures,omitempty"`
+	// example:
+	//
+	// FINISHED, FAILED, USER_CANCELED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetAutofeExperimentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutofeExperimentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutofeExperimentResponseBody) SetCode(v string) *GetAutofeExperimentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetCreator(v string) *GetAutofeExperimentResponseBody {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetDetail(v map[string]interface{}) *GetAutofeExperimentResponseBody {
+	s.Detail = v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetExperimentId(v string) *GetAutofeExperimentResponseBody {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetGmtCreateTime(v string) *GetAutofeExperimentResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetGmtModifiedTime(v string) *GetAutofeExperimentResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetJobMeta(v string) *GetAutofeExperimentResponseBody {
+	s.JobMeta = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetMessage(v string) *GetAutofeExperimentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetName(v string) *GetAutofeExperimentResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetRequestId(v string) *GetAutofeExperimentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetSelectedFeatures(v string) *GetAutofeExperimentResponseBody {
+	s.SelectedFeatures = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponseBody) SetStatus(v string) *GetAutofeExperimentResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetAutofeExperimentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutofeExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAutofeExperimentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutofeExperimentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutofeExperimentResponse) SetHeaders(v map[string]*string) *GetAutofeExperimentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutofeExperimentResponse) SetStatusCode(v int32) *GetAutofeExperimentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutofeExperimentResponse) SetBody(v *GetAutofeExperimentResponseBody) *GetAutofeExperimentResponse {
+	s.Body = v
+	return s
+}
+
 type GetHpoExperimentResponseBody struct {
-	Accessibility              *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Code                       *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	ConfigIni                  *string                `json:"ConfigIni,omitempty" xml:"ConfigIni,omitempty"`
-	ConfigYml                  *string                `json:"ConfigYml,omitempty" xml:"ConfigYml,omitempty"`
-	Creator                    *string                `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Deleted                    *bool                  `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Description                *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Detail                     map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	ExperimentId               *string                `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	GmtCreateTime              *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime            *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Accessibility of expriment, public or private.
+	//
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// Error when the API call is not success.
+	//
+	// example:
+	//
+	// INVALID_INPUT_PARAMS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Experiment run environment configurations.
+	//
+	// example:
+	//
+	// [odps_config]
+	//
+	// access_id=foo
+	//
+	// access_key=bar
+	//
+	// end_point=http://service.odps.aliyun.com/api
+	//
+	// log_view_host=http://logview.odps.aliyun.com
+	//
+	// project_name=my_project
+	ConfigIni *string `json:"ConfigIni,omitempty" xml:"ConfigIni,omitempty"`
+	// HPO search config yaml.
+	//
+	// example:
+	//
+	// assessor:
+	//
+	//   classArgs:
+	//
+	//     optimize_mode: maximize
+	//
+	//     start_step: 1
+	//
+	//   name: PAIAssessor
+	//
+	// debug: true
+	//
+	// experimentName: maxcompute_kmeans_monitor
+	//
+	// experimentWorkingDirectory: ../expdir
+	//
+	// logLevel: debug
+	//
+	// maxTrialNumber: 10
+	//
+	// searchSpaceFile: search_space.json
+	//
+	// trainingService:
+	//
+	//   platform: local
+	//
+	// trialCommand: python3 -m hpo_tools.core.utils.run --config=./config.ini
+	//
+	// trialConcurrency: 2
+	//
+	// tuner:
+	//
+	//   classArgs:
+	//
+	//     optimize_mode: maximize
+	//
+	//   name: TPE
+	ConfigYml *string `json:"ConfigYml,omitempty" xml:"ConfigYml,omitempty"`
+	// The one who created the experiment.
+	//
+	// example:
+	//
+	// 123456789
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// If the Experiment if deleted.
+	//
+	// example:
+	//
+	// 0
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// Description of the experiment.
+	//
+	// example:
+	//
+	// This is experiment is for tune the LR of model.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Extra error message info.
+	//
+	// example:
+	//
+	// TBD
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Experiment ID.
+	//
+	// example:
+	//
+	// sX5O9Q8
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Experiment create time.
+	//
+	// example:
+	//
+	// 2024-01-01 08:30:11
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Experiment last update time.
+	//
+	// example:
+	//
+	// 2024-01-01 08:30:11
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Experiment configuration in json format.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "output_config": {
+	//
+	//         "model_path": "bi_ps_${exp_id}_${trial_id}"
+	//
+	//     },
+	//
+	//     "platform_config": {
+	//
+	//         "cmd": [
+	//
+	//             "PAI -name ps_smart\\n    -project foo",
+	//
+	//             "PAI -name prediction\\n    -project foo",
+	//
+	//             "PAI -name evaluate -project foo",
+	//
+	//             "INSERT OVERWRITE TABLE my_table;"
+	//
+	//         ],
+	//
+	//         "name": "MaxCompute"
+	//
+	//     },
+	//
+	//     "metric_config": {
+	//
+	//         "metric_dict": {
+	//
+	//             "recall": 0.5,
+	//
+	//             "auc": 0.25,
+	//
+	//             "precision": 0.25
+	//
+	//         },
+	//
+	//         "metric_source": [
+	//
+	//             "select 	- from my_metrics where pt=\\"${exp_id}_${trial_id}\\";"
+	//
+	//         ],
+	//
+	//         "metric_type": "table",
+	//
+	//         "final_mode": "best"
+	//
+	//     },
+	//
+	//     "odps_config": {
+	//
+	//         "project_name": "my_project",
+	//
+	//         "role_arn": "acs:ram::123456789:role/aliyunserviceroleforfoo",
+	//
+	//         "region": "cn-shanghai",
+	//
+	//         "end_point": "http://service.cn.maxcompute.aliyun-inc.com/api",
+	//
+	//         "log_view_host": "http://logview.odps.aliyun.com"
+	//
+	//     },
+	//
+	//     "yml_config": {
+	//
+	//         "max_trial_number": 5,
+	//
+	//         "assessor": {
+	//
+	//             "name": "PAIAssessor",
+	//
+	//             "class_args": {
+	//
+	//                 "earlystop": true,
+	//
+	//                 "start_step": 5,
+	//
+	//                 "optimize_mode": "maximize"
+	//
+	//             }
+	//
+	//         },
+	//
+	//         "experiment_name": "my_exp",
+	//
+	//         "tuner": {
+	//
+	//             "name": "TPE",
+	//
+	//             "class_args": {
+	//
+	//                 "optimize_mode": "maximize"
+	//
+	//             }
+	//
+	//         },
+	//
+	//         "trial_concurrency": 2
+	//
+	//     },
+	//
+	//     "search_space": {
+	//
+	//         "${max_depth}": {
+	//
+	//             "_type": "choice",
+	//
+	//             "_value": [
+	//
+	//                 1,
+	//
+	//                 3,
+	//
+	//                 5
+	//
+	//             ]
+	//
+	//         },
+	//
+	//         "${tree_count}": {
+	//
+	//             "_value": [
+	//
+	//                 50,
+	//
+	//                 100,
+	//
+	//                 150
+	//
+	//             ],
+	//
+	//             "_type": "choice"
+	//
+	//         }
+	//
+	//     }
+	//
+	// }
 	HpoExperimentConfiguration map[string]interface{} `json:"HpoExperimentConfiguration,omitempty" xml:"HpoExperimentConfiguration,omitempty"`
-	JobType                    *string                `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Message                    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name                       *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId                  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SearchSpace                *string                `json:"SearchSpace,omitempty" xml:"SearchSpace,omitempty"`
-	Status                     *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	TrialCount                 *int32                 `json:"TrialCount,omitempty" xml:"TrialCount,omitempty"`
-	TrialStatus                map[string]*string     `json:"TrialStatus,omitempty" xml:"TrialStatus,omitempty"`
-	WorkspaceId                *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Experiment  Job type.
+	//
+	// example:
+	//
+	// 1
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Experiment name.
+	//
+	// example:
+	//
+	// my_hpo_exp_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// HPO hyperparameter search space.
+	//
+	// example:
+	//
+	// {"${centerCount}":{"_type":"choice","_value":[2,3,4,5]},"${distanceType}":{"_type":"choice","_value":["euclidean","cosine","cityblock"]}}
+	SearchSpace *string `json:"SearchSpace,omitempty" xml:"SearchSpace,omitempty"`
+	// Experiment status.
+	//
+	// example:
+	//
+	// INVALID_USER_OR_EXP, SUCCESS, or EXECUTION_FAILURE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Trials amount run till now.
+	//
+	// example:
+	//
+	// 3
+	TrialCount *int32 `json:"TrialCount,omitempty" xml:"TrialCount,omitempty"`
+	// Status if a trial
+	TrialStatus map[string]*string `json:"TrialStatus,omitempty" xml:"TrialStatus,omitempty"`
+	// AI Workspace ID.
+	//
+	// example:
+	//
+	// 12345
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetHpoExperimentResponseBody) String() string {
@@ -1269,24 +2067,114 @@ func (s *GetHpoExperimentResponse) SetBody(v *GetHpoExperimentResponseBody) *Get
 }
 
 type GetHpoTrialResponseBody struct {
-	Code            *string            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail          map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	ExperimentId    *string            `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	FinalMetric     *string            `json:"FinalMetric,omitempty" xml:"FinalMetric,omitempty"`
-	GmtCreateTime   *string            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Hyperparam      *string            `json:"Hyperparam,omitempty" xml:"Hyperparam,omitempty"`
-	JobMeta         *string            `json:"JobMeta,omitempty" xml:"JobMeta,omitempty"`
-	Message         *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	Metric          *string            `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	MetricName      *string            `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Model           *string            `json:"Model,omitempty" xml:"Model,omitempty"`
-	ParameterId     *int32             `json:"ParameterId,omitempty" xml:"ParameterId,omitempty"`
-	RequestId       *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TrialId         *string            `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
-	UserComment     *string            `json:"UserComment,omitempty" xml:"UserComment,omitempty"`
-	UserScore       *int32             `json:"UserScore,omitempty" xml:"UserScore,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// INVALID_INPUT_PARAMS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Experiment ID.
+	//
+	// example:
+	//
+	// abcde
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Final metric of the trial.
+	//
+	// example:
+	//
+	// {"default":0.087745,"type":"FINAL","val_loss=([0-9\\\\\\\\.]+)":0.087745}
+	FinalMetric *string `json:"FinalMetric,omitempty" xml:"FinalMetric,omitempty"`
+	// Trial create time.
+	//
+	// example:
+	//
+	// 2024-01-02 12:34:56
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Trial last update time.
+	//
+	// example:
+	//
+	// 2024-01-02 21:32:56
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Hyperparameters used to run the trial.
+	//
+	// example:
+	//
+	// {"${centerCount}": 5, "${distanceType}": "cosine"}
+	Hyperparam *string `json:"Hyperparam,omitempty" xml:"Hyperparam,omitempty"`
+	// trial meta infomation.
+	//
+	// example:
+	//
+	// {"nni_trial_id": "asdf", "nni_exp_id": "abcde", "nni_trial_sequence_id": 2}
+	JobMeta *string `json:"JobMeta,omitempty" xml:"JobMeta,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// metric details uploaded during running.
+	//
+	// example:
+	//
+	// [{"default":0.087745,"val_loss=([0-9\\\\\\\\.]+)":0.087745},
+	//
+	// {"default":1.085841,"val_loss=([0-9\\\\\\\\.]+)":0.085841},
+	//
+	// {"default":0.087745,"type":"FINAL","val_loss=([0-9\\\\\\\\.]+)":0.087745}]
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// Name of the metric.
+	//
+	// example:
+	//
+	// AUC or F1, Accuracy etc.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// Trial output model.
+	//
+	// example:
+	//
+	// model_table_name_foo
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Parameter id, start from 0.
+	//
+	// example:
+	//
+	// 0
+	ParameterId *int32 `json:"ParameterId,omitempty" xml:"ParameterId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Trial status.
+	//
+	// example:
+	//
+	// FINISHED, FAILED, USER_CANCELED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Trail ID.
+	//
+	// example:
+	//
+	// mf99W4
+	TrialId *string `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
+	// User added comments.
+	//
+	// example:
+	//
+	// best trial till now.
+	UserComment *string `json:"UserComment,omitempty" xml:"UserComment,omitempty"`
+	// User updated score.
+	//
+	// example:
+	//
+	// 0
+	UserScore *int32 `json:"UserScore,omitempty" xml:"UserScore,omitempty"`
 }
 
 func (s GetHpoTrialResponseBody) String() string {
@@ -1416,10 +2304,101 @@ func (s *GetHpoTrialResponse) SetBody(v *GetHpoTrialResponseBody) *GetHpoTrialRe
 	return s
 }
 
+type GetServiceIdentityRoleResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Execution failure, please try again.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// AliyunServiceRoleForPaiAutoml
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s GetServiceIdentityRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceIdentityRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceIdentityRoleResponseBody) SetCode(v string) *GetServiceIdentityRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetServiceIdentityRoleResponseBody) SetMessage(v string) *GetServiceIdentityRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetServiceIdentityRoleResponseBody) SetRequestId(v string) *GetServiceIdentityRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceIdentityRoleResponseBody) SetRoleName(v string) *GetServiceIdentityRoleResponseBody {
+	s.RoleName = &v
+	return s
+}
+
+type GetServiceIdentityRoleResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceIdentityRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetServiceIdentityRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceIdentityRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceIdentityRoleResponse) SetHeaders(v map[string]*string) *GetServiceIdentityRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceIdentityRoleResponse) SetStatusCode(v int32) *GetServiceIdentityRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceIdentityRoleResponse) SetBody(v *GetServiceIdentityRoleResponseBody) *GetServiceIdentityRoleResponse {
+	s.Body = v
+	return s
+}
+
 type ListHpoExperimentLogsRequest struct {
-	LogName    *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Log name to be listed.
+	//
+	// example:
+	//
+	// nnimanager.log
+	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 40
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListHpoExperimentLogsRequest) String() string {
@@ -1446,12 +2425,38 @@ func (s *ListHpoExperimentLogsRequest) SetPageSize(v int32) *ListHpoExperimentLo
 }
 
 type ListHpoExperimentLogsResponseBody struct {
-	Code       *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail     map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Logs       []*string              `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error message.
+	//
+	// example:
+	//
+	// {}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The log.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 071A904D-5A49-597F-9F69-81C7701D04AC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 467
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHpoExperimentLogsResponseBody) String() string {
@@ -1522,18 +2527,80 @@ func (s *ListHpoExperimentLogsResponse) SetBody(v *ListHpoExperimentLogsResponse
 }
 
 type ListHpoExperimentsRequest struct {
-	Accessibility     *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Creator           *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The accessibility of the experiments to be listed.
+	//
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// Who created the expriment.
+	//
+	// example:
+	//
+	// 266977839132045194
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Return experiment detailed configuration or not.
+	//
+	// example:
+	//
+	// True, False
 	IncludeConfigData *string `json:"IncludeConfigData,omitempty" xml:"IncludeConfigData,omitempty"`
-	MaxCreateTime     *string `json:"MaxCreateTime,omitempty" xml:"MaxCreateTime,omitempty"`
-	MinCreateTime     *string `json:"MinCreateTime,omitempty" xml:"MinCreateTime,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order             *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy            *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The maximum create time of the experiment.
+	//
+	// example:
+	//
+	// yyyy-mm-dd hh:mm:ss或着yyyy-mm-dd，比如2023-03-31 10:29:30
+	MaxCreateTime *string `json:"MaxCreateTime,omitempty" xml:"MaxCreateTime,omitempty"`
+	// The minimum create time of the experiment.
+	//
+	// example:
+	//
+	// yyyy-mm-dd hh:mm:ss或着yyyy-mm-dd，比如2023-03-31 10:29:30
+	MinCreateTime *string `json:"MinCreateTime,omitempty" xml:"MinCreateTime,omitempty"`
+	// Experiment name filter.
+	//
+	// example:
+	//
+	// my_hpo_exp_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ASC, DESC.
+	//
+	// example:
+	//
+	// ASC, DESC.
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
+	// Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Record number on each page
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned experiments to be sorted by this column.
+	//
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Experiment status to be listed.
+	//
+	// example:
+	//
+	// CREATED, RUNNING, FINISHED, FAILED, EARLY_STOPPED, USER_CANCELED, SYS_CANCELED, WAITING, NO_MORE_TRIAL, UNKNOWN
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The AI workspace ID the experiments belongs to.
+	//
+	// example:
+	//
+	// default
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListHpoExperimentsRequest) String() string {
@@ -1605,12 +2672,34 @@ func (s *ListHpoExperimentsRequest) SetWorkspaceId(v string) *ListHpoExperiments
 }
 
 type ListHpoExperimentsResponseBody struct {
-	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail      map[string]*string                           `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// INVALID_INPUT_PARAMS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// experiment array.
 	Experiments []*ListHpoExperimentsResponseBodyExperiments `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
-	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total qualified experiment count.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHpoExperimentsResponseBody) String() string {
@@ -1652,22 +2741,134 @@ func (s *ListHpoExperimentsResponseBody) SetTotalCount(v int32) *ListHpoExperime
 }
 
 type ListHpoExperimentsResponseBodyExperiments struct {
-	Accessibility   *string            `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	ConfigIni       *string            `json:"ConfigIni,omitempty" xml:"ConfigIni,omitempty"`
-	ConfigYml       *string            `json:"ConfigYml,omitempty" xml:"ConfigYml,omitempty"`
-	Creator         *string            `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Deleted         *bool              `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Description     *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExperimentId    *string            `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	GmtCreateTime   *string            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	JobType         *string            `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Name            *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	SearchSpace     *string            `json:"SearchSpace,omitempty" xml:"SearchSpace,omitempty"`
-	Status          *string            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TrialCount      *int32             `json:"TrialCount,omitempty" xml:"TrialCount,omitempty"`
-	TrialStatus     map[string]*string `json:"TrialStatus,omitempty" xml:"TrialStatus,omitempty"`
-	WorkspaceId     *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Experiment accessibility, private or public.
+	//
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// Experiment job run environment configurations.
+	//
+	// example:
+	//
+	// [odps_config]
+	//
+	// key1 = value1
+	//
+	// key2 = value2
+	ConfigIni *string `json:"ConfigIni,omitempty" xml:"ConfigIni,omitempty"`
+	// HPO experiment run configuration.
+	//
+	// example:
+	//
+	// experimentName: dlc_oss_mnist
+	//
+	// experimentWorkingDirectory: ../expdir
+	//
+	// searchSpaceFile: search_space.json
+	//
+	// trialCommand: python3 -m hpo_tools.core.utils.run --config=./trial.ini
+	//
+	// trialConcurrency: 1
+	//
+	// maxTrialNumber: 4
+	//
+	// tuner:
+	//
+	//   name: TPE
+	//
+	//   classArgs:
+	//
+	//     optimize_mode: maximize
+	//
+	// trainingService:
+	//
+	//   platform: local
+	//
+	// assessor:
+	//
+	//   name: PAIAssessor
+	//
+	//   classArgs:
+	//
+	//     optimize_mode: maximize
+	//
+	//     start_step: 2
+	ConfigYml *string `json:"ConfigYml,omitempty" xml:"ConfigYml,omitempty"`
+	// The one who created the experiment.
+	//
+	// example:
+	//
+	// 1049310008714189
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// If the experiment is deleted.
+	//
+	// example:
+	//
+	// 1
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The description of the experiment.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Experiment ID.
+	//
+	// example:
+	//
+	// sORVEck
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Experiment Create Time.
+	//
+	// example:
+	//
+	// 2023-03-31T10:29:30Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Last modified time.
+	//
+	// example:
+	//
+	// 2022-10-27T00:55:54Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Experimetn job type.
+	//
+	// example:
+	//
+	// 1
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// Experiment name
+	//
+	// example:
+	//
+	// my experiment x
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Experiment hyperparameter search space.
+	//
+	// example:
+	//
+	// {\\"foo\\":\\"bar\\"}
+	SearchSpace *string `json:"SearchSpace,omitempty" xml:"SearchSpace,omitempty"`
+	// Experiment status.
+	//
+	// example:
+	//
+	// CREATED, RUNNING, FINISHED, FAILED, EARLY_STOPPED, USER_CANCELED, SYS_CANCELED, WAITING, NO_MORE_TRIAL, UNKNOWN
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// How many trials the experiment have.
+	//
+	// example:
+	//
+	// 20
+	TrialCount *int32 `json:"TrialCount,omitempty" xml:"TrialCount,omitempty"`
+	// Trial status map.
+	TrialStatus map[string]*string `json:"TrialStatus,omitempty" xml:"TrialStatus,omitempty"`
+	// The ID of the AI workspace.
+	//
+	// example:
+	//
+	// foo
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListHpoExperimentsResponseBodyExperiments) String() string {
@@ -1788,11 +2989,28 @@ func (s *ListHpoExperimentsResponse) SetBody(v *ListHpoExperimentsResponseBody) 
 }
 
 type ListHpoTrialCommandsResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Commands  []*ListHpoTrialCommandsResponseBodyCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	Detail    map[string]*string                          `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// INVALID_USER_OR_EXP
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of commands.
+	Commands []*ListHpoTrialCommandsResponseBodyCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 071A904D-5A49-597F-9F69-81C7701D04AC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListHpoTrialCommandsResponseBody) String() string {
@@ -1829,9 +3047,24 @@ func (s *ListHpoTrialCommandsResponseBody) SetRequestId(v string) *ListHpoTrialC
 }
 
 type ListHpoTrialCommandsResponseBodyCommands struct {
+	// The command that you want to run.
+	//
+	// example:
+	//
+	// dlc submit pytorch --name=test_nni_foo_bar
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	Id      *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Output  *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The id of the command.
+	//
+	// example:
+	//
+	// 1
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The output of the above command
+	//
+	// example:
+	//
+	// dlc job submitted.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 
 func (s ListHpoTrialCommandsResponseBodyCommands) String() string {
@@ -1887,11 +3120,28 @@ func (s *ListHpoTrialCommandsResponse) SetBody(v *ListHpoTrialCommandsResponseBo
 }
 
 type ListHpoTrialLogNamesResponseBody struct {
-	Code      *string            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail    map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	LogNames  []*string          `json:"LogNames,omitempty" xml:"LogNames,omitempty" type:"Repeated"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// INVALID_INPUT_PARAMS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Existing log files.
+	LogNames []*string `json:"LogNames,omitempty" xml:"LogNames,omitempty" type:"Repeated"`
+	// Error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListHpoTrialLogNamesResponseBody) String() string {
@@ -1957,9 +3207,24 @@ func (s *ListHpoTrialLogNamesResponse) SetBody(v *ListHpoTrialLogNamesResponseBo
 }
 
 type ListHpoTrialLogsRequest struct {
-	LogName    *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Log file name.
+	//
+	// example:
+	//
+	// trial.log
+	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListHpoTrialLogsRequest) String() string {
@@ -1986,12 +3251,38 @@ func (s *ListHpoTrialLogsRequest) SetPageSize(v int32) *ListHpoTrialLogsRequest 
 }
 
 type ListHpoTrialLogsResponseBody struct {
-	Code       *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail     map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Logs       []*string              `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	//
+	// example:
+	//
+	// {}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The log.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// Error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 123
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHpoTrialLogsResponseBody) String() string {
@@ -2062,10 +3353,30 @@ func (s *ListHpoTrialLogsResponse) SetBody(v *ListHpoTrialLogsResponseBody) *Lis
 }
 
 type ListHpoTrialsRequest struct {
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The trial results order.
+	//
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The results to be sorted by which column.
+	//
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListHpoTrialsRequest) String() string {
@@ -2097,12 +3408,34 @@ func (s *ListHpoTrialsRequest) SetSortBy(v string) *ListHpoTrialsRequest {
 }
 
 type ListHpoTrialsResponseBody struct {
-	Code       *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail     map[string]*string                 `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Trials     []*ListHpoTrialsResponseBodyTrials `json:"Trials,omitempty" xml:"Trials,omitempty" type:"Repeated"`
+	// Error code.
+	//
+	// example:
+	//
+	// INVALID_USER_OR_EXP
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries qualified.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Trial array.
+	Trials []*ListHpoTrialsResponseBodyTrials `json:"Trials,omitempty" xml:"Trials,omitempty" type:"Repeated"`
 }
 
 func (s ListHpoTrialsResponseBody) String() string {
@@ -2268,8 +3601,14 @@ func (s *ListHpoTrialsResponse) SetBody(v *ListHpoTrialsResponseBody) *ListHpoTr
 }
 
 type RestartHpoTrialsRequest struct {
-	TrialHyperParameters *string   `json:"TrialHyperParameters,omitempty" xml:"TrialHyperParameters,omitempty"`
-	TrialIds             []*string `json:"TrialIds,omitempty" xml:"TrialIds,omitempty" type:"Repeated"`
+	// A hyperparameter combination instance.
+	//
+	// example:
+	//
+	// ‘{"${batch_size}": "32", "${lr}": "0.01"}\\"
+	TrialHyperParameters *string `json:"TrialHyperParameters,omitempty" xml:"TrialHyperParameters,omitempty"`
+	// Trial ID array.
+	TrialIds []*string `json:"TrialIds,omitempty" xml:"TrialIds,omitempty" type:"Repeated"`
 }
 
 func (s RestartHpoTrialsRequest) String() string {
@@ -2291,11 +3630,38 @@ func (s *RestartHpoTrialsRequest) SetTrialIds(v []*string) *RestartHpoTrialsRequ
 }
 
 type RestartHpoTrialsResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail    map[string]*string     `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty"`
+	// Response code.
+	//
+	// example:
+	//
+	// INVALID_USER_OR_EXP
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Restart status of all the trial IDs.
+	//
+	// example:
+	//
+	// {
+	//
+	// \\"xrYq99\\": TrialJobInfo text,
+	//
+	// \\"xrYq9N\\":TrialJobInfo text
+	//
+	// }
+	Results map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty"`
 }
 
 func (s RestartHpoTrialsResponseBody) String() string {
@@ -2361,11 +3727,33 @@ func (s *RestartHpoTrialsResponse) SetBody(v *RestartHpoTrialsResponseBody) *Res
 }
 
 type StopHpoExperimentResponseBody struct {
-	Code      *string            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail    map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	ExpId     *string            `json:"ExpId,omitempty" xml:"ExpId,omitempty"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response code.
+	//
+	// example:
+	//
+	// INVALID_INPUT_PARAMS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Experiment ID
+	//
+	// example:
+	//
+	// sHpITOH
+	ExpId *string `json:"ExpId,omitempty" xml:"ExpId,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 071A904D-5A49-597F-9F69-81C7701D04AC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s StopHpoExperimentResponseBody) String() string {
@@ -2401,6 +3789,11 @@ func (s *StopHpoExperimentResponseBody) SetRequestId(v string) *StopHpoExperimen
 	return s
 }
 
+func (s *StopHpoExperimentResponseBody) SetStatus(v string) *StopHpoExperimentResponseBody {
+	s.Status = &v
+	return s
+}
+
 type StopHpoExperimentResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -2431,6 +3824,7 @@ func (s *StopHpoExperimentResponse) SetBody(v *StopHpoExperimentResponseBody) *S
 }
 
 type StopHpoTrialsRequest struct {
+	// Trial Ids to be stopped.
 	TrialIds []*string `json:"TrialIds,omitempty" xml:"TrialIds,omitempty" type:"Repeated"`
 }
 
@@ -2448,11 +3842,38 @@ func (s *StopHpoTrialsRequest) SetTrialIds(v []*string) *StopHpoTrialsRequest {
 }
 
 type StopHpoTrialsResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail    map[string]*string     `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// INVALID_USER_OR_EXP
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	Detail map[string]*string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// failed to stop any trial
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 071A904D-5A49-597F-9F69-81C7701D04AC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The results of trial stop.
+	//
+	// example:
+	//
+	// {
+	//
+	//     \\"xrYq99\\":\\"successfully stopped trial,\\",
+	//
+	//     \\"xrYq9N\\":\\"failed to stop trial,\\"
+	//
+	// }
+	Results map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty"`
 }
 
 func (s StopHpoTrialsResponseBody) String() string {
@@ -2518,11 +3939,32 @@ func (s *StopHpoTrialsResponse) SetBody(v *StopHpoTrialsResponseBody) *StopHpoTr
 }
 
 type UpdateHpoExperimentRequest struct {
-	Accessibility              *string              `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description                *string              `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Experiment accessibility, private or public.
+	//
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// Experiment description.
+	//
+	// example:
+	//
+	// This is an AutoML HPO experiment.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Experiment configuration.
 	HpoExperimentConfiguration *HpoExperimentConfig `json:"HpoExperimentConfiguration,omitempty" xml:"HpoExperimentConfiguration,omitempty"`
-	Name                       *string              `json:"Name,omitempty" xml:"Name,omitempty"`
-	WorkspaceId                *string              `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Experiment name.
+	//
+	// example:
+	//
+	// my experiment x
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Expeirment\\"s AI workspace ID.
+	//
+	// example:
+	//
+	// 12345
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateHpoExperimentRequest) String() string {
@@ -2559,10 +4001,30 @@ func (s *UpdateHpoExperimentRequest) SetWorkspaceId(v string) *UpdateHpoExperime
 }
 
 type UpdateHpoExperimentResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Detail    map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Extra error information.
+	//
+	// example:
+	//
+	// {}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// Missing \\"user_id\\" in request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 3F190916-B3E5-5D1E-AD0C-35C0DF105F51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateHpoExperimentResponseBody) String() string {
@@ -2669,6 +4131,97 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateAutofeExperiment
+//
+// @param request - CreateAutofeExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAutofeExperimentResponse
+func (client *Client) CreateAutofeExperimentWithOptions(request *CreateAutofeExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAutofeExperimentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutofeExperimentConfiguration)) {
+		body["AutofeExperimentConfiguration"] = request.AutofeExperimentConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAutofeExperiment"),
+		Version:     tea.String("2022-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/automl/v1/autofe/experiment"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAutofeExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// CreateAutofeExperiment
+//
+// @param request - CreateAutofeExperimentRequest
+//
+// @return CreateAutofeExperimentResponse
+func (client *Client) CreateAutofeExperiment(request *CreateAutofeExperimentRequest) (_result *CreateAutofeExperimentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAutofeExperimentResponse{}
+	_body, _err := client.CreateAutofeExperimentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Create an HyperParameter Optimization experiment.
+//
+// @param request - CreateHpoExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHpoExperimentResponse
 func (client *Client) CreateHpoExperimentWithOptions(request *CreateHpoExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateHpoExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2719,6 +4272,13 @@ func (client *Client) CreateHpoExperimentWithOptions(request *CreateHpoExperimen
 	return _result, _err
 }
 
+// Summary:
+//
+// Create an HyperParameter Optimization experiment.
+//
+// @param request - CreateHpoExperimentRequest
+//
+// @return CreateHpoExperimentResponse
 func (client *Client) CreateHpoExperiment(request *CreateHpoExperimentRequest) (_result *CreateHpoExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2731,6 +4291,65 @@ func (client *Client) CreateHpoExperiment(request *CreateHpoExperimentRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateServiceIdentityRole
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceIdentityRoleResponse
+func (client *Client) CreateServiceIdentityRoleWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceIdentityRoleResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceIdentityRole"),
+		Version:     tea.String("2022-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/automl/v1/serviceidentityrole"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceIdentityRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// CreateServiceIdentityRole
+//
+// @return CreateServiceIdentityRoleResponse
+func (client *Client) CreateServiceIdentityRole() (_result *CreateServiceIdentityRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceIdentityRoleResponse{}
+	_body, _err := client.CreateServiceIdentityRoleWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete an HPO experiment
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHpoExperimentResponse
 func (client *Client) DeleteHpoExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteHpoExperimentResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -2755,6 +4374,11 @@ func (client *Client) DeleteHpoExperimentWithOptions(ExperimentId *string, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete an HPO experiment
+//
+// @return DeleteHpoExperimentResponse
 func (client *Client) DeleteHpoExperiment(ExperimentId *string) (_result *DeleteHpoExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2767,6 +4391,65 @@ func (client *Client) DeleteHpoExperiment(ExperimentId *string) (_result *Delete
 	return _result, _err
 }
 
+// Summary:
+//
+// Get AutoFE Experiment。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutofeExperimentResponse
+func (client *Client) GetAutofeExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAutofeExperimentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutofeExperiment"),
+		Version:     tea.String("2022-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/automl/v1/autofe/experiment/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutofeExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Get AutoFE Experiment。
+//
+// @return GetAutofeExperimentResponse
+func (client *Client) GetAutofeExperiment(ExperimentId *string) (_result *GetAutofeExperimentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAutofeExperimentResponse{}
+	_body, _err := client.GetAutofeExperimentWithOptions(ExperimentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// get hpo experiment by user id and exp id
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHpoExperimentResponse
 func (client *Client) GetHpoExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHpoExperimentResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -2791,6 +4474,11 @@ func (client *Client) GetHpoExperimentWithOptions(ExperimentId *string, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// get hpo experiment by user id and exp id
+//
+// @return GetHpoExperimentResponse
 func (client *Client) GetHpoExperiment(ExperimentId *string) (_result *GetHpoExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2803,6 +4491,15 @@ func (client *Client) GetHpoExperiment(ExperimentId *string) (_result *GetHpoExp
 	return _result, _err
 }
 
+// Summary:
+//
+// Get trial detail information
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHpoTrialResponse
 func (client *Client) GetHpoTrialWithOptions(ExperimentId *string, TrialId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHpoTrialResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -2827,6 +4524,11 @@ func (client *Client) GetHpoTrialWithOptions(ExperimentId *string, TrialId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Get trial detail information
+//
+// @return GetHpoTrialResponse
 func (client *Client) GetHpoTrial(ExperimentId *string, TrialId *string) (_result *GetHpoTrialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2839,6 +4541,67 @@ func (client *Client) GetHpoTrial(ExperimentId *string, TrialId *string) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// GetServiceIdentityRole, return role name if SLR exists, empty otherwise
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceIdentityRoleResponse
+func (client *Client) GetServiceIdentityRoleWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceIdentityRoleResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceIdentityRole"),
+		Version:     tea.String("2022-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/automl/v1/serviceidentityrole"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceIdentityRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GetServiceIdentityRole, return role name if SLR exists, empty otherwise
+//
+// @return GetServiceIdentityRoleResponse
+func (client *Client) GetServiceIdentityRole() (_result *GetServiceIdentityRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetServiceIdentityRoleResponse{}
+	_body, _err := client.GetServiceIdentityRoleWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// list the content of a specified hpo experiment log
+//
+// @param request - ListHpoExperimentLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHpoExperimentLogsResponse
 func (client *Client) ListHpoExperimentLogsWithOptions(ExperimentId *string, request *ListHpoExperimentLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHpoExperimentLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2881,6 +4644,13 @@ func (client *Client) ListHpoExperimentLogsWithOptions(ExperimentId *string, req
 	return _result, _err
 }
 
+// Summary:
+//
+// list the content of a specified hpo experiment log
+//
+// @param request - ListHpoExperimentLogsRequest
+//
+// @return ListHpoExperimentLogsResponse
 func (client *Client) ListHpoExperimentLogs(ExperimentId *string, request *ListHpoExperimentLogsRequest) (_result *ListHpoExperimentLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2893,6 +4663,17 @@ func (client *Client) ListHpoExperimentLogs(ExperimentId *string, request *ListH
 	return _result, _err
 }
 
+// Summary:
+//
+// List HPO experiments
+//
+// @param request - ListHpoExperimentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHpoExperimentsResponse
 func (client *Client) ListHpoExperimentsWithOptions(request *ListHpoExperimentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHpoExperimentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2971,6 +4752,13 @@ func (client *Client) ListHpoExperimentsWithOptions(request *ListHpoExperimentsR
 	return _result, _err
 }
 
+// Summary:
+//
+// List HPO experiments
+//
+// @param request - ListHpoExperimentsRequest
+//
+// @return ListHpoExperimentsResponse
 func (client *Client) ListHpoExperiments(request *ListHpoExperimentsRequest) (_result *ListHpoExperimentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2983,6 +4771,15 @@ func (client *Client) ListHpoExperiments(request *ListHpoExperimentsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 返回一个trial所对应的任务里所有已经执行的命令
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHpoTrialCommandsResponse
 func (client *Client) ListHpoTrialCommandsWithOptions(ExperimentId *string, TrialId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHpoTrialCommandsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3007,6 +4804,11 @@ func (client *Client) ListHpoTrialCommandsWithOptions(ExperimentId *string, Tria
 	return _result, _err
 }
 
+// Summary:
+//
+// 返回一个trial所对应的任务里所有已经执行的命令
+//
+// @return ListHpoTrialCommandsResponse
 func (client *Client) ListHpoTrialCommands(ExperimentId *string, TrialId *string) (_result *ListHpoTrialCommandsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3019,6 +4821,15 @@ func (client *Client) ListHpoTrialCommands(ExperimentId *string, TrialId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// List all log file names a trial have.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHpoTrialLogNamesResponse
 func (client *Client) ListHpoTrialLogNamesWithOptions(ExperimentId *string, TrialId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHpoTrialLogNamesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3043,6 +4854,11 @@ func (client *Client) ListHpoTrialLogNamesWithOptions(ExperimentId *string, Tria
 	return _result, _err
 }
 
+// Summary:
+//
+// List all log file names a trial have.
+//
+// @return ListHpoTrialLogNamesResponse
 func (client *Client) ListHpoTrialLogNames(ExperimentId *string, TrialId *string) (_result *ListHpoTrialLogNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3055,6 +4871,17 @@ func (client *Client) ListHpoTrialLogNames(ExperimentId *string, TrialId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// List Trial log lines
+//
+// @param request - ListHpoTrialLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHpoTrialLogsResponse
 func (client *Client) ListHpoTrialLogsWithOptions(ExperimentId *string, TrialId *string, request *ListHpoTrialLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHpoTrialLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3097,6 +4924,13 @@ func (client *Client) ListHpoTrialLogsWithOptions(ExperimentId *string, TrialId 
 	return _result, _err
 }
 
+// Summary:
+//
+// List Trial log lines
+//
+// @param request - ListHpoTrialLogsRequest
+//
+// @return ListHpoTrialLogsResponse
 func (client *Client) ListHpoTrialLogs(ExperimentId *string, TrialId *string, request *ListHpoTrialLogsRequest) (_result *ListHpoTrialLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3109,6 +4943,17 @@ func (client *Client) ListHpoTrialLogs(ExperimentId *string, TrialId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// List HPO trials
+//
+// @param request - ListHpoTrialsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHpoTrialsResponse
 func (client *Client) ListHpoTrialsWithOptions(ExperimentId *string, request *ListHpoTrialsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHpoTrialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3155,6 +5000,13 @@ func (client *Client) ListHpoTrialsWithOptions(ExperimentId *string, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// List HPO trials
+//
+// @param request - ListHpoTrialsRequest
+//
+// @return ListHpoTrialsResponse
 func (client *Client) ListHpoTrials(ExperimentId *string, request *ListHpoTrialsRequest) (_result *ListHpoTrialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3167,6 +5019,17 @@ func (client *Client) ListHpoTrials(ExperimentId *string, request *ListHpoTrials
 	return _result, _err
 }
 
+// Summary:
+//
+// Restart HPO trials
+//
+// @param request - RestartHpoTrialsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartHpoTrialsResponse
 func (client *Client) RestartHpoTrialsWithOptions(ExperimentId *string, request *RestartHpoTrialsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestartHpoTrialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3205,6 +5068,13 @@ func (client *Client) RestartHpoTrialsWithOptions(ExperimentId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Restart HPO trials
+//
+// @param request - RestartHpoTrialsRequest
+//
+// @return RestartHpoTrialsResponse
 func (client *Client) RestartHpoTrials(ExperimentId *string, request *RestartHpoTrialsRequest) (_result *RestartHpoTrialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3217,6 +5087,15 @@ func (client *Client) RestartHpoTrials(ExperimentId *string, request *RestartHpo
 	return _result, _err
 }
 
+// Summary:
+//
+// calling hpo StopExperiment
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopHpoExperimentResponse
 func (client *Client) StopHpoExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopHpoExperimentResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3241,6 +5120,11 @@ func (client *Client) StopHpoExperimentWithOptions(ExperimentId *string, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// calling hpo StopExperiment
+//
+// @return StopHpoExperimentResponse
 func (client *Client) StopHpoExperiment(ExperimentId *string) (_result *StopHpoExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3253,6 +5137,17 @@ func (client *Client) StopHpoExperiment(ExperimentId *string) (_result *StopHpoE
 	return _result, _err
 }
 
+// Summary:
+//
+// Stop an HPO trial.
+//
+// @param request - StopHpoTrialsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopHpoTrialsResponse
 func (client *Client) StopHpoTrialsWithOptions(ExperimentId *string, request *StopHpoTrialsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopHpoTrialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3287,6 +5182,13 @@ func (client *Client) StopHpoTrialsWithOptions(ExperimentId *string, request *St
 	return _result, _err
 }
 
+// Summary:
+//
+// Stop an HPO trial.
+//
+// @param request - StopHpoTrialsRequest
+//
+// @return StopHpoTrialsResponse
 func (client *Client) StopHpoTrials(ExperimentId *string, request *StopHpoTrialsRequest) (_result *StopHpoTrialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3299,6 +5201,17 @@ func (client *Client) StopHpoTrials(ExperimentId *string, request *StopHpoTrials
 	return _result, _err
 }
 
+// Summary:
+//
+// Update a running HPO experiment\\"s configuration
+//
+// @param request - UpdateHpoExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHpoExperimentResponse
 func (client *Client) UpdateHpoExperimentWithOptions(ExperimentId *string, request *UpdateHpoExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateHpoExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3349,6 +5262,13 @@ func (client *Client) UpdateHpoExperimentWithOptions(ExperimentId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Update a running HPO experiment\\"s configuration
+//
+// @param request - UpdateHpoExperimentRequest
+//
+// @return UpdateHpoExperimentResponse
 func (client *Client) UpdateHpoExperiment(ExperimentId *string, request *UpdateHpoExperimentRequest) (_result *UpdateHpoExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
