@@ -6219,7 +6219,8 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	// example:
 	//
 	// MyApplicationGroup
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	// The creation progress of the application instance.
 	//
 	// example:
@@ -6301,6 +6302,11 @@ func (s *GetApplicationGroupResponseBodyApplicationGroup) SetImportTagValue(v st
 
 func (s *GetApplicationGroupResponseBodyApplicationGroup) SetName(v string) *GetApplicationGroupResponseBodyApplicationGroup {
 	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationGroupResponseBodyApplicationGroup) SetOperationMetadata(v string) *GetApplicationGroupResponseBodyApplicationGroup {
+	s.OperationMetadata = &v
 	return s
 }
 
@@ -21170,7 +21176,9 @@ type UpdateApplicationGroupRequest struct {
 	// example:
 	//
 	// UpdateMyApplicationGroup
-	NewName *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
+	NewName       *string                `json:"NewName,omitempty" xml:"NewName,omitempty"`
+	OperationName *string                `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	Parameters    map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
 	//
 	// example:
@@ -21202,7 +21210,88 @@ func (s *UpdateApplicationGroupRequest) SetNewName(v string) *UpdateApplicationG
 	return s
 }
 
+func (s *UpdateApplicationGroupRequest) SetOperationName(v string) *UpdateApplicationGroupRequest {
+	s.OperationName = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupRequest) SetParameters(v map[string]interface{}) *UpdateApplicationGroupRequest {
+	s.Parameters = v
+	return s
+}
+
 func (s *UpdateApplicationGroupRequest) SetRegionId(v string) *UpdateApplicationGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateApplicationGroupShrinkRequest struct {
+	// The application name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyApplication
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The name of the application group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyApplicationGroup
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new name of the application group.
+	//
+	// example:
+	//
+	// UpdateMyApplicationGroup
+	NewName          *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
+	OperationName    *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateApplicationGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationGroupShrinkRequest) SetApplicationName(v string) *UpdateApplicationGroupShrinkRequest {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupShrinkRequest) SetName(v string) *UpdateApplicationGroupShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupShrinkRequest) SetNewName(v string) *UpdateApplicationGroupShrinkRequest {
+	s.NewName = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupShrinkRequest) SetOperationName(v string) *UpdateApplicationGroupShrinkRequest {
+	s.OperationName = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupShrinkRequest) SetParametersShrink(v string) *UpdateApplicationGroupShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupShrinkRequest) SetRegionId(v string) *UpdateApplicationGroupShrinkRequest {
 	s.RegionId = &v
 	return s
 }
@@ -30638,16 +30727,22 @@ func (client *Client) UpdateApplication(request *UpdateApplicationRequest) (_res
 //
 // Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
 //
-// @param request - UpdateApplicationGroupRequest
+// @param tmpReq - UpdateApplicationGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateApplicationGroupResponse
-func (client *Client) UpdateApplicationGroupWithOptions(request *UpdateApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateApplicationGroupWithOptions(tmpReq *UpdateApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateApplicationGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
 		query["ApplicationName"] = request.ApplicationName
@@ -30659,6 +30754,14 @@ func (client *Client) UpdateApplicationGroupWithOptions(request *UpdateApplicati
 
 	if !tea.BoolValue(util.IsUnset(request.NewName)) {
 		query["NewName"] = request.NewName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationName)) {
+		query["OperationName"] = request.OperationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
