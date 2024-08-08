@@ -25266,7 +25266,8 @@ type UpdateTemplateResponseBody struct {
 	// example:
 	//
 	// 5ecd1e10-b0e9-4389-a565-e4c15efc****
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s UpdateTemplateResponseBody) String() string {
@@ -25284,6 +25285,11 @@ func (s *UpdateTemplateResponseBody) SetRequestId(v string) *UpdateTemplateRespo
 
 func (s *UpdateTemplateResponseBody) SetTemplateId(v string) *UpdateTemplateResponseBody {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateTemplateResponseBody) SetTemplateVersion(v string) *UpdateTemplateResponseBody {
+	s.TemplateVersion = &v
 	return s
 }
 
