@@ -5005,6 +5005,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 145600000
 	LastFinishedTime *int64 `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
+	LastStartTime    *int64 `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
 	// The region in which the data asset resides.
 	//
 	// example:
@@ -5274,6 +5275,11 @@ func (s *DescribeDataLimitsResponseBodyItems) SetInstanceId(v string) *DescribeD
 
 func (s *DescribeDataLimitsResponseBodyItems) SetLastFinishedTime(v int64) *DescribeDataLimitsResponseBodyItems {
 	s.LastFinishedTime = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetLastStartTime(v int64) *DescribeDataLimitsResponseBodyItems {
+	s.LastStartTime = &v
 	return s
 }
 
