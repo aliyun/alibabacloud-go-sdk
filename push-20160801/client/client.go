@@ -1218,7 +1218,16 @@ type MassPushRequestPushTask struct {
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
 	AndroidActivity *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	AndroidBigBody  *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	// example:
+	//
+	// 99
+	AndroidBadgeAddNum *int32  `json:"AndroidBadgeAddNum,omitempty" xml:"AndroidBadgeAddNum,omitempty"`
+	AndroidBadgeClass  *string `json:"AndroidBadgeClass,omitempty" xml:"AndroidBadgeClass,omitempty"`
+	// example:
+	//
+	// 99
+	AndroidBadgeSetNum *int32  `json:"AndroidBadgeSetNum,omitempty" xml:"AndroidBadgeSetNum,omitempty"`
+	AndroidBigBody     *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
 	// example:
 	//
 	// https://imag.example.com/image.png
@@ -1491,6 +1500,21 @@ func (s MassPushRequestPushTask) GoString() string {
 
 func (s *MassPushRequestPushTask) SetAndroidActivity(v string) *MassPushRequestPushTask {
 	s.AndroidActivity = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidBadgeAddNum(v int32) *MassPushRequestPushTask {
+	s.AndroidBadgeAddNum = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidBadgeClass(v string) *MassPushRequestPushTask {
+	s.AndroidBadgeClass = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidBadgeSetNum(v int32) *MassPushRequestPushTask {
+	s.AndroidBadgeSetNum = &v
 	return s
 }
 
@@ -1975,8 +1999,11 @@ type PushRequest struct {
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
-	AndroidActivity *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	AndroidBigBody  *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	AndroidActivity    *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
+	AndroidBadgeAddNum *int32  `json:"AndroidBadgeAddNum,omitempty" xml:"AndroidBadgeAddNum,omitempty"`
+	AndroidBadgeClass  *string `json:"AndroidBadgeClass,omitempty" xml:"AndroidBadgeClass,omitempty"`
+	AndroidBadgeSetNum *int32  `json:"AndroidBadgeSetNum,omitempty" xml:"AndroidBadgeSetNum,omitempty"`
+	AndroidBigBody     *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
 	// example:
 	//
 	// https://imag.example.com/image.png
@@ -2269,6 +2296,21 @@ func (s PushRequest) GoString() string {
 
 func (s *PushRequest) SetAndroidActivity(v string) *PushRequest {
 	s.AndroidActivity = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBadgeAddNum(v int32) *PushRequest {
+	s.AndroidBadgeAddNum = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBadgeClass(v string) *PushRequest {
+	s.AndroidBadgeClass = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBadgeSetNum(v int32) *PushRequest {
+	s.AndroidBadgeSetNum = &v
 	return s
 }
 
@@ -6278,6 +6320,18 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidActivity)) {
 		query["AndroidActivity"] = request.AndroidActivity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidBadgeAddNum)) {
+		query["AndroidBadgeAddNum"] = request.AndroidBadgeAddNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidBadgeClass)) {
+		query["AndroidBadgeClass"] = request.AndroidBadgeClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidBadgeSetNum)) {
+		query["AndroidBadgeSetNum"] = request.AndroidBadgeSetNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidBigBody)) {
