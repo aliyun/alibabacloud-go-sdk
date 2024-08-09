@@ -1041,6 +1041,7 @@ func (s *EventInfo) SetTime(v string) *EventInfo {
 
 type ExtraPodSpec struct {
 	InitContainers         []*ContainerSpec   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
+	Lifecycle              *Lifecycle         `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
 	PodAnnotations         map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
 	PodLabels              map[string]*string `json:"PodLabels,omitempty" xml:"PodLabels,omitempty"`
 	SharedVolumeMountPaths []*string          `json:"SharedVolumeMountPaths,omitempty" xml:"SharedVolumeMountPaths,omitempty" type:"Repeated"`
@@ -1057,6 +1058,11 @@ func (s ExtraPodSpec) GoString() string {
 
 func (s *ExtraPodSpec) SetInitContainers(v []*ContainerSpec) *ExtraPodSpec {
 	s.InitContainers = v
+	return s
+}
+
+func (s *ExtraPodSpec) SetLifecycle(v *Lifecycle) *ExtraPodSpec {
+	s.Lifecycle = v
 	return s
 }
 
@@ -2168,6 +2174,97 @@ func (s *JobSpec) SetType(v string) *JobSpec {
 
 func (s *JobSpec) SetUseSpotInstance(v bool) *JobSpec {
 	s.UseSpotInstance = &v
+	return s
+}
+
+type Lifecycle struct {
+	PostStart *LifecyclePostStart `json:"PostStart,omitempty" xml:"PostStart,omitempty" type:"Struct"`
+	PreStop   *LifecyclePreStop   `json:"PreStop,omitempty" xml:"PreStop,omitempty" type:"Struct"`
+}
+
+func (s Lifecycle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Lifecycle) GoString() string {
+	return s.String()
+}
+
+func (s *Lifecycle) SetPostStart(v *LifecyclePostStart) *Lifecycle {
+	s.PostStart = v
+	return s
+}
+
+func (s *Lifecycle) SetPreStop(v *LifecyclePreStop) *Lifecycle {
+	s.PreStop = v
+	return s
+}
+
+type LifecyclePostStart struct {
+	Exec *LifecyclePostStartExec `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
+}
+
+func (s LifecyclePostStart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LifecyclePostStart) GoString() string {
+	return s.String()
+}
+
+func (s *LifecyclePostStart) SetExec(v *LifecyclePostStartExec) *LifecyclePostStart {
+	s.Exec = v
+	return s
+}
+
+type LifecyclePostStartExec struct {
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+}
+
+func (s LifecyclePostStartExec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LifecyclePostStartExec) GoString() string {
+	return s.String()
+}
+
+func (s *LifecyclePostStartExec) SetCommand(v []*string) *LifecyclePostStartExec {
+	s.Command = v
+	return s
+}
+
+type LifecyclePreStop struct {
+	Exec *LifecyclePreStopExec `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
+}
+
+func (s LifecyclePreStop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LifecyclePreStop) GoString() string {
+	return s.String()
+}
+
+func (s *LifecyclePreStop) SetExec(v *LifecyclePreStopExec) *LifecyclePreStop {
+	s.Exec = v
+	return s
+}
+
+type LifecyclePreStopExec struct {
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+}
+
+func (s LifecyclePreStopExec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LifecyclePreStopExec) GoString() string {
+	return s.String()
+}
+
+func (s *LifecyclePreStopExec) SetCommand(v []*string) *LifecyclePreStopExec {
+	s.Command = v
 	return s
 }
 
@@ -3623,6 +3720,7 @@ type CreateJobRequestDataSources struct {
 	//
 	// /root/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Options   *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// example:
 	//
 	// oss://bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/
@@ -3644,6 +3742,11 @@ func (s *CreateJobRequestDataSources) SetDataSourceId(v string) *CreateJobReques
 
 func (s *CreateJobRequestDataSources) SetMountPath(v string) *CreateJobRequestDataSources {
 	s.MountPath = &v
+	return s
+}
+
+func (s *CreateJobRequestDataSources) SetOptions(v string) *CreateJobRequestDataSources {
+	s.Options = &v
 	return s
 }
 
