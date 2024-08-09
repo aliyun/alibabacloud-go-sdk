@@ -5604,7 +5604,7 @@ type DescribeAccountPrivilegeObjectsRequest struct {
 	//
 	// col1
 	ColumnPrivilegeObject *string `json:"ColumnPrivilegeObject,omitempty" xml:"ColumnPrivilegeObject,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -7236,9 +7236,9 @@ func (s *DescribeAllDataSourceResponse) SetBody(v *DescribeAllDataSourceResponse
 }
 
 type DescribeApsActionLogsRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -11011,9 +11011,9 @@ func (s *DescribeDBClusterAttributeResponse) SetBody(v *DescribeDBClusterAttribu
 }
 
 type DescribeDBClusterHealthStatusRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -11365,9 +11365,9 @@ func (s *DescribeDBClusterHealthStatusResponse) SetBody(v *DescribeDBClusterHeal
 }
 
 type DescribeDBClusterPerformanceRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -11676,7 +11676,7 @@ type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
 	//
 	//         	- AnalyticDB_Max_QueryRT: the maximum amount of time consumed by a single query.
 	//
-	//         	- etl_avg_rt: the average amount of time consumed by extract-transform-load (ETL) operations.
+	//         	- etl_avg_rt: the average amount of time consumed by extract, transform, load (ETL) operations.
 	//
 	//         	- etl_max_rt: the maximum amount of time consumed by a single ETL operation.
 	//
@@ -11792,43 +11792,33 @@ type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
 	//
 	//         	- AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
 	//
-	// 	- APS
+	// 	- AnalyticDB Pipeline Service (APS)
 	//
-	//     	- AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//     	- AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	//         	- APS_Read_BPS: the read BPS of APS.
 	//
-	//     	- AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//     	- AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	//         	- APS_CPU_Avg_Usage_Percentage: the average CPU utilization of APS.
 	//
 	//         	- APS_CPU_Max_Usage_Percentage: the maximum CPU utilization of APS.
 	//
-	//     	- AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//     	- AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	//         	- APS_Memory_Avg_Usage_Percentage: the average memory usage of APS.
 	//
 	//         	- APS_Memory_Max_Usage_Percentage: the maximum memory usage of APS.
 	//
-	//     	- AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//     	- AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	//         	- APS_Read_RPS: the number of read records per second of APS.
 	//
-	//     	- AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//     	- AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	//         	- APS_Read_Avg_RT: the average response time of APS.
 	//
 	//         	- APS_Read_Max_RT: the maximum response time of APS.
-	//
-	// 	- 	- *
-	//
-	//     	- *
-	//
-	//     	- *
-	//
-	//     	- *
-	//
-	//     	- *
 	//
 	// example:
 	//
@@ -11897,7 +11887,7 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 }
 
 type DescribeDBClusterSpaceSummaryRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -16895,7 +16885,7 @@ func (s *DescribeJobResourceUsageResponse) SetBody(v *DescribeJobResourceUsageRe
 type DescribePatternPerformanceRequest struct {
 	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -16913,7 +16903,7 @@ type DescribePatternPerformanceRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The SQL pattern ID.
 	//
-	// >  You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query the information about all SQL patterns in an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a period of time, including SQL pattern IDs.
+	// >  You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query the information about all SQL patterns in an AnalyticDB for MySQL cluster within a period of time, including SQL pattern IDs.
 	//
 	// example:
 	//
@@ -24675,7 +24665,7 @@ func (s *KillSparkLogAnalyzeTaskResponse) SetBody(v *KillSparkLogAnalyzeTaskResp
 }
 
 type KillSparkSQLEngineRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -26815,7 +26805,7 @@ func (s *ModifyDBClusterDescriptionResponse) SetBody(v *ModifyDBClusterDescripti
 }
 
 type ModifyDBClusterMaintainTimeRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -32006,7 +31996,7 @@ func (client *Client) DescribeAllDataSource(request *DescribeAllDataSourceReques
 
 // Summary:
 //
-// Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -32108,7 +32098,7 @@ func (client *Client) DescribeApsActionLogsWithOptions(request *DescribeApsActio
 
 // Summary:
 //
-// Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -33030,11 +33020,11 @@ func (client *Client) DescribeDBClusterAttribute(request *DescribeDBClusterAttri
 
 // Summary:
 //
-// Queries the health status of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the health status of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterHealthStatusRequest
 //
@@ -33080,11 +33070,11 @@ func (client *Client) DescribeDBClusterHealthStatusWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the health status of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the health status of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterHealthStatusRequest
 //
@@ -33106,7 +33096,7 @@ func (client *Client) DescribeDBClusterHealthStatus(request *DescribeDBClusterHe
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -33172,7 +33162,7 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -34470,7 +34460,7 @@ func (client *Client) DescribeJobResourceUsage(request *DescribeJobResourceUsage
 
 // Summary:
 //
-// Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
+// Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL cluster within a time range.
 //
 // Description:
 //
@@ -34536,7 +34526,7 @@ func (client *Client) DescribePatternPerformanceWithOptions(request *DescribePat
 
 // Summary:
 //
-// Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
+// Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL cluster within a time range.
 //
 // Description:
 //
@@ -37876,11 +37866,11 @@ func (client *Client) KillSparkLogAnalyzeTask(request *KillSparkLogAnalyzeTaskRe
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - KillSparkSQLEngineRequest
 //
@@ -37930,11 +37920,11 @@ func (client *Client) KillSparkSQLEngineWithOptions(request *KillSparkSQLEngineR
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - KillSparkSQLEngineRequest
 //
@@ -39066,7 +39056,7 @@ func (client *Client) ModifyDBClusterDescription(request *ModifyDBClusterDescrip
 
 // Summary:
 //
-// Modifies the maintenance window of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Modifies the maintenance window of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -39116,7 +39106,7 @@ func (client *Client) ModifyDBClusterMaintainTimeWithOptions(request *ModifyDBCl
 
 // Summary:
 //
-// Modifies the maintenance window of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Modifies the maintenance window of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
