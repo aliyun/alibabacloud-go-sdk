@@ -30268,6 +30268,394 @@ func (s *ListDocumentsResponse) SetBody(v *ListDocumentsResponseBody) *ListDocum
 	return s
 }
 
+type ListFlashSmsApplicationsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Uincall
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+}
+
+func (s ListFlashSmsApplicationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsApplicationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsApplicationsRequest) SetInstanceId(v string) *ListFlashSmsApplicationsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsRequest) SetName(v string) *ListFlashSmsApplicationsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsRequest) SetPageNumber(v int32) *ListFlashSmsApplicationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsRequest) SetPageSize(v int32) *ListFlashSmsApplicationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsRequest) SetProviderId(v string) *ListFlashSmsApplicationsRequest {
+	s.ProviderId = &v
+	return s
+}
+
+type ListFlashSmsApplicationsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListFlashSmsApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListFlashSmsApplicationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsApplicationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsApplicationsResponseBody) SetCode(v string) *ListFlashSmsApplicationsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBody) SetData(v *ListFlashSmsApplicationsResponseBodyData) *ListFlashSmsApplicationsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBody) SetHttpStatusCode(v int32) *ListFlashSmsApplicationsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBody) SetMessage(v string) *ListFlashSmsApplicationsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBody) SetParams(v []*string) *ListFlashSmsApplicationsResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBody) SetRequestId(v string) *ListFlashSmsApplicationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListFlashSmsApplicationsResponseBodyData struct {
+	List []*ListFlashSmsApplicationsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFlashSmsApplicationsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsApplicationsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyData) SetList(v []*ListFlashSmsApplicationsResponseBodyDataList) *ListFlashSmsApplicationsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyData) SetPageNumber(v int32) *ListFlashSmsApplicationsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyData) SetPageSize(v int32) *ListFlashSmsApplicationsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyData) SetTotalCount(v int32) *ListFlashSmsApplicationsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFlashSmsApplicationsResponseBodyDataList struct {
+	// example:
+	//
+	// 71b396fa-***********-bd80e070b7c0
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Uincall
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// {"user":"600******_dev","pwd":"85abf3**********f494e","account":"6004******"}
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListFlashSmsApplicationsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsApplicationsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyDataList) SetApplicationId(v string) *ListFlashSmsApplicationsResponseBodyDataList {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyDataList) SetInstanceId(v string) *ListFlashSmsApplicationsResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyDataList) SetName(v string) *ListFlashSmsApplicationsResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyDataList) SetProviderId(v string) *ListFlashSmsApplicationsResponseBodyDataList {
+	s.ProviderId = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponseBodyDataList) SetValue(v string) *ListFlashSmsApplicationsResponseBodyDataList {
+	s.Value = &v
+	return s
+}
+
+type ListFlashSmsApplicationsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFlashSmsApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFlashSmsApplicationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsApplicationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsApplicationsResponse) SetHeaders(v map[string]*string) *ListFlashSmsApplicationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponse) SetStatusCode(v int32) *ListFlashSmsApplicationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFlashSmsApplicationsResponse) SetBody(v *ListFlashSmsApplicationsResponseBody) *ListFlashSmsApplicationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListFlashSmsTemplatesRequest struct {
+	// example:
+	//
+	// 71b396fa-1*********-70b7c0
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// Uincall
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+}
+
+func (s ListFlashSmsTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsTemplatesRequest) SetApplicationId(v string) *ListFlashSmsTemplatesRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesRequest) SetInstanceId(v string) *ListFlashSmsTemplatesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesRequest) SetProviderId(v string) *ListFlashSmsTemplatesRequest {
+	s.ProviderId = &v
+	return s
+}
+
+type ListFlashSmsTemplatesResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListFlashSmsTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListFlashSmsTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsTemplatesResponseBody) SetCode(v string) *ListFlashSmsTemplatesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponseBody) SetData(v []*ListFlashSmsTemplatesResponseBodyData) *ListFlashSmsTemplatesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponseBody) SetHttpStatusCode(v int32) *ListFlashSmsTemplatesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponseBody) SetMessage(v string) *ListFlashSmsTemplatesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponseBody) SetParams(v []*string) *ListFlashSmsTemplatesResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponseBody) SetRequestId(v string) *ListFlashSmsTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListFlashSmsTemplatesResponseBodyData struct {
+	// example:
+	//
+	// 1715*****38
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ListFlashSmsTemplatesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsTemplatesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsTemplatesResponseBodyData) SetTemplateId(v string) *ListFlashSmsTemplatesResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponseBodyData) SetTemplateName(v string) *ListFlashSmsTemplatesResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+type ListFlashSmsTemplatesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFlashSmsTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFlashSmsTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlashSmsTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlashSmsTemplatesResponse) SetHeaders(v map[string]*string) *ListFlashSmsTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponse) SetStatusCode(v int32) *ListFlashSmsTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFlashSmsTemplatesResponse) SetBody(v *ListFlashSmsTemplatesResponseBody) *ListFlashSmsTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupChatMessagesRequest struct {
 	// example:
 	//
@@ -71801,6 +72189,134 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDocumentsResponse{}
 	_body, _err := client.ListDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListFlashSmsApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlashSmsApplicationsResponse
+func (client *Client) ListFlashSmsApplicationsWithOptions(request *ListFlashSmsApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListFlashSmsApplicationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProviderId)) {
+		query["ProviderId"] = request.ProviderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFlashSmsApplications"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFlashSmsApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListFlashSmsApplicationsRequest
+//
+// @return ListFlashSmsApplicationsResponse
+func (client *Client) ListFlashSmsApplications(request *ListFlashSmsApplicationsRequest) (_result *ListFlashSmsApplicationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFlashSmsApplicationsResponse{}
+	_body, _err := client.ListFlashSmsApplicationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListFlashSmsTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlashSmsTemplatesResponse
+func (client *Client) ListFlashSmsTemplatesWithOptions(request *ListFlashSmsTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListFlashSmsTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProviderId)) {
+		query["ProviderId"] = request.ProviderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFlashSmsTemplates"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFlashSmsTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListFlashSmsTemplatesRequest
+//
+// @return ListFlashSmsTemplatesResponse
+func (client *Client) ListFlashSmsTemplates(request *ListFlashSmsTemplatesRequest) (_result *ListFlashSmsTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFlashSmsTemplatesResponse{}
+	_body, _err := client.ListFlashSmsTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
