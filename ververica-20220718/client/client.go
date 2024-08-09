@@ -47,6 +47,59 @@ func (s *Artifact) SetSqlArtifact(v *SqlArtifact) *Artifact {
 	return s
 }
 
+type AsyncDraftDeployResult struct {
+	ArtifactValidationDetail *ValidateStatementResult `json:"artifactValidationDetail,omitempty" xml:"artifactValidationDetail,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// "Validation error: SQL validate failed"
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// FINISHED
+	TicketStatus *string `json:"ticketStatus,omitempty" xml:"ticketStatus,omitempty"`
+}
+
+func (s AsyncDraftDeployResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncDraftDeployResult) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncDraftDeployResult) SetArtifactValidationDetail(v *ValidateStatementResult) *AsyncDraftDeployResult {
+	s.ArtifactValidationDetail = v
+	return s
+}
+
+func (s *AsyncDraftDeployResult) SetDeploymentId(v string) *AsyncDraftDeployResult {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *AsyncDraftDeployResult) SetMessage(v string) *AsyncDraftDeployResult {
+	s.Message = &v
+	return s
+}
+
+func (s *AsyncDraftDeployResult) SetSuccess(v bool) *AsyncDraftDeployResult {
+	s.Success = &v
+	return s
+}
+
+func (s *AsyncDraftDeployResult) SetTicketStatus(v string) *AsyncDraftDeployResult {
+	s.TicketStatus = &v
+	return s
+}
+
 type AsyncResourcePlanOperationResult struct {
 	// example:
 	//
@@ -224,6 +277,205 @@ func (s *BriefResourceSetting) SetStreamingResourceSetting(v *StreamingResourceS
 	return s
 }
 
+type Catalog struct {
+	Name       *string                `json:"name,omitempty" xml:"name,omitempty"`
+	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+}
+
+func (s Catalog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Catalog) GoString() string {
+	return s.String()
+}
+
+func (s *Catalog) SetName(v string) *Catalog {
+	s.Name = &v
+	return s
+}
+
+func (s *Catalog) SetProperties(v map[string]interface{}) *Catalog {
+	s.Properties = v
+	return s
+}
+
+type Connector struct {
+	Creator          *string     `json:"creator,omitempty" xml:"creator,omitempty"`
+	CreatorName      *string     `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	Dependencies     []*string   `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
+	Lookup           *bool       `json:"lookup,omitempty" xml:"lookup,omitempty"`
+	Modifier         *string     `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ModifierName     *string     `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	Name             *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Properties       []*Property `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
+	Sink             *bool       `json:"sink,omitempty" xml:"sink,omitempty"`
+	Source           *bool       `json:"source,omitempty" xml:"source,omitempty"`
+	SupportedFormats []*string   `json:"supportedFormats,omitempty" xml:"supportedFormats,omitempty" type:"Repeated"`
+	Type             *string     `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s Connector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Connector) GoString() string {
+	return s.String()
+}
+
+func (s *Connector) SetCreator(v string) *Connector {
+	s.Creator = &v
+	return s
+}
+
+func (s *Connector) SetCreatorName(v string) *Connector {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *Connector) SetDependencies(v []*string) *Connector {
+	s.Dependencies = v
+	return s
+}
+
+func (s *Connector) SetLookup(v bool) *Connector {
+	s.Lookup = &v
+	return s
+}
+
+func (s *Connector) SetModifier(v string) *Connector {
+	s.Modifier = &v
+	return s
+}
+
+func (s *Connector) SetModifierName(v string) *Connector {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *Connector) SetName(v string) *Connector {
+	s.Name = &v
+	return s
+}
+
+func (s *Connector) SetProperties(v []*Property) *Connector {
+	s.Properties = v
+	return s
+}
+
+func (s *Connector) SetSink(v bool) *Connector {
+	s.Sink = &v
+	return s
+}
+
+func (s *Connector) SetSource(v bool) *Connector {
+	s.Source = &v
+	return s
+}
+
+func (s *Connector) SetSupportedFormats(v []*string) *Connector {
+	s.SupportedFormats = v
+	return s
+}
+
+func (s *Connector) SetType(v string) *Connector {
+	s.Type = &v
+	return s
+}
+
+type CreateUdfArtifactResult struct {
+	CollidingClasses []*UdfClass  `json:"collidingClasses,omitempty" xml:"collidingClasses,omitempty" type:"Repeated"`
+	CreateSuccess    *bool        `json:"createSuccess,omitempty" xml:"createSuccess,omitempty"`
+	Message          *string      `json:"message,omitempty" xml:"message,omitempty"`
+	UdfArtifact      *UdfArtifact `json:"udfArtifact,omitempty" xml:"udfArtifact,omitempty"`
+}
+
+func (s CreateUdfArtifactResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfArtifactResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfArtifactResult) SetCollidingClasses(v []*UdfClass) *CreateUdfArtifactResult {
+	s.CollidingClasses = v
+	return s
+}
+
+func (s *CreateUdfArtifactResult) SetCreateSuccess(v bool) *CreateUdfArtifactResult {
+	s.CreateSuccess = &v
+	return s
+}
+
+func (s *CreateUdfArtifactResult) SetMessage(v string) *CreateUdfArtifactResult {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateUdfArtifactResult) SetUdfArtifact(v *UdfArtifact) *CreateUdfArtifactResult {
+	s.UdfArtifact = v
+	return s
+}
+
+type Database struct {
+	Comment    *string                `json:"comment,omitempty" xml:"comment,omitempty"`
+	Name       *string                `json:"name,omitempty" xml:"name,omitempty"`
+	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+}
+
+func (s Database) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Database) GoString() string {
+	return s.String()
+}
+
+func (s *Database) SetComment(v string) *Database {
+	s.Comment = &v
+	return s
+}
+
+func (s *Database) SetName(v string) *Database {
+	s.Name = &v
+	return s
+}
+
+func (s *Database) SetProperties(v map[string]interface{}) *Database {
+	s.Properties = v
+	return s
+}
+
+type DeleteUdfArtifactResult struct {
+	DeleteSuccess     *bool       `json:"deleteSuccess,omitempty" xml:"deleteSuccess,omitempty"`
+	Message           *string     `json:"message,omitempty" xml:"message,omitempty"`
+	ReferencedClasses []*UdfClass `json:"referencedClasses,omitempty" xml:"referencedClasses,omitempty" type:"Repeated"`
+}
+
+func (s DeleteUdfArtifactResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfArtifactResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfArtifactResult) SetDeleteSuccess(v bool) *DeleteUdfArtifactResult {
+	s.DeleteSuccess = &v
+	return s
+}
+
+func (s *DeleteUdfArtifactResult) SetMessage(v string) *DeleteUdfArtifactResult {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteUdfArtifactResult) SetReferencedClasses(v []*UdfClass) *DeleteUdfArtifactResult {
+	s.ReferencedClasses = v
+	return s
+}
+
 type Deployment struct {
 	Artifact             *Artifact             `json:"artifact,omitempty" xml:"artifact,omitempty"`
 	BatchResourceSetting *BatchResourceSetting `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
@@ -262,6 +514,7 @@ type Deployment struct {
 	// {"taskmanager.numberOfTaskSlots":"1"}
 	FlinkConf      map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
 	JobSummary     *JobSummary            `json:"jobSummary,omitempty" xml:"jobSummary,omitempty"`
+	Labels         map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
 	LocalVariables []*LocalVariable       `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
 	Logging        *Logging               `json:"logging,omitempty" xml:"logging,omitempty"`
 	ModifiedAt     *string                `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
@@ -280,8 +533,12 @@ type Deployment struct {
 	// example:
 	//
 	// default-namespace
-	Namespace                *string                   `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	StreamingResourceSetting *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000003
+	ReferencedDeploymentDraftId *string                   `json:"referencedDeploymentDraftId,omitempty" xml:"referencedDeploymentDraftId,omitempty"`
+	StreamingResourceSetting    *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
 	// example:
 	//
 	// edcef******b4f
@@ -361,6 +618,11 @@ func (s *Deployment) SetJobSummary(v *JobSummary) *Deployment {
 	return s
 }
 
+func (s *Deployment) SetLabels(v map[string]interface{}) *Deployment {
+	s.Labels = v
+	return s
+}
+
 func (s *Deployment) SetLocalVariables(v []*LocalVariable) *Deployment {
 	s.LocalVariables = v
 	return s
@@ -396,12 +658,172 @@ func (s *Deployment) SetNamespace(v string) *Deployment {
 	return s
 }
 
+func (s *Deployment) SetReferencedDeploymentDraftId(v string) *Deployment {
+	s.ReferencedDeploymentDraftId = &v
+	return s
+}
+
 func (s *Deployment) SetStreamingResourceSetting(v *StreamingResourceSetting) *Deployment {
 	s.StreamingResourceSetting = v
 	return s
 }
 
 func (s *Deployment) SetWorkspace(v string) *Deployment {
+	s.Workspace = &v
+	return s
+}
+
+type DeploymentDraft struct {
+	Artifact  *Artifact `json:"artifact,omitempty" xml:"artifact,omitempty"`
+	CreatedAt *int64    `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-00000012****
+	DeploymentDraftId *string `json:"deploymentDraftId,omitempty" xml:"deploymentDraftId,omitempty"`
+	// example:
+	//
+	// vvr-6.0.7-flink-1.15
+	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// example:
+	//
+	// STREAMING
+	ExecutionMode  *string                `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	Labels         map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
+	LocalVariables []*LocalVariable       `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
+	Lock           *Lock                  `json:"lock,omitempty" xml:"lock,omitempty"`
+	ModifiedAt     *int64                 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// test-draft
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-00000013****
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-0000012312****
+	ReferencedDeploymentId *string `json:"referencedDeploymentId,omitempty" xml:"referencedDeploymentId,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeploymentDraft) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploymentDraft) GoString() string {
+	return s.String()
+}
+
+func (s *DeploymentDraft) SetArtifact(v *Artifact) *DeploymentDraft {
+	s.Artifact = v
+	return s
+}
+
+func (s *DeploymentDraft) SetCreatedAt(v int64) *DeploymentDraft {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetCreator(v string) *DeploymentDraft {
+	s.Creator = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetCreatorName(v string) *DeploymentDraft {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetDeploymentDraftId(v string) *DeploymentDraft {
+	s.DeploymentDraftId = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetEngineVersion(v string) *DeploymentDraft {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetExecutionMode(v string) *DeploymentDraft {
+	s.ExecutionMode = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetLabels(v map[string]interface{}) *DeploymentDraft {
+	s.Labels = v
+	return s
+}
+
+func (s *DeploymentDraft) SetLocalVariables(v []*LocalVariable) *DeploymentDraft {
+	s.LocalVariables = v
+	return s
+}
+
+func (s *DeploymentDraft) SetLock(v *Lock) *DeploymentDraft {
+	s.Lock = v
+	return s
+}
+
+func (s *DeploymentDraft) SetModifiedAt(v int64) *DeploymentDraft {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetModifier(v string) *DeploymentDraft {
+	s.Modifier = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetModifierName(v string) *DeploymentDraft {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetName(v string) *DeploymentDraft {
+	s.Name = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetNamespace(v string) *DeploymentDraft {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetParentId(v string) *DeploymentDraft {
+	s.ParentId = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetReferencedDeploymentId(v string) *DeploymentDraft {
+	s.ReferencedDeploymentId = &v
+	return s
+}
+
+func (s *DeploymentDraft) SetWorkspace(v string) *DeploymentDraft {
 	s.Workspace = &v
 	return s
 }
@@ -479,6 +901,105 @@ func (s *DeploymentTarget) SetName(v string) *DeploymentTarget {
 
 func (s *DeploymentTarget) SetNamespace(v string) *DeploymentTarget {
 	s.Namespace = &v
+	return s
+}
+
+type DraftDeployParams struct {
+	DeploymentDraftId *string                `json:"deploymentDraftId,omitempty" xml:"deploymentDraftId,omitempty"`
+	DeploymentTarget  *BriefDeploymentTarget `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
+	// example:
+	//
+	// false
+	SkipValidate *bool `json:"skipValidate,omitempty" xml:"skipValidate,omitempty"`
+}
+
+func (s DraftDeployParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DraftDeployParams) GoString() string {
+	return s.String()
+}
+
+func (s *DraftDeployParams) SetDeploymentDraftId(v string) *DraftDeployParams {
+	s.DeploymentDraftId = &v
+	return s
+}
+
+func (s *DraftDeployParams) SetDeploymentTarget(v *BriefDeploymentTarget) *DraftDeployParams {
+	s.DeploymentTarget = v
+	return s
+}
+
+func (s *DraftDeployParams) SetSkipValidate(v bool) *DraftDeployParams {
+	s.SkipValidate = &v
+	return s
+}
+
+type DraftDeployResult struct {
+	ArtifactValidationDetail *ValidateStatementResult `json:"artifactValidationDetail,omitempty" xml:"artifactValidationDetail,omitempty"`
+	// example:
+	//
+	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// ""
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DraftDeployResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DraftDeployResult) GoString() string {
+	return s.String()
+}
+
+func (s *DraftDeployResult) SetArtifactValidationDetail(v *ValidateStatementResult) *DraftDeployResult {
+	s.ArtifactValidationDetail = v
+	return s
+}
+
+func (s *DraftDeployResult) SetDeploymentId(v string) *DraftDeployResult {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *DraftDeployResult) SetMessage(v string) *DraftDeployResult {
+	s.Message = &v
+	return s
+}
+
+func (s *DraftDeployResult) SetSuccess(v bool) *DraftDeployResult {
+	s.Success = &v
+	return s
+}
+
+type Edge struct {
+	ColumnLineage []*Relation `json:"columnLineage,omitempty" xml:"columnLineage,omitempty" type:"Repeated"`
+	TableLineage  []*Relation `json:"tableLineage,omitempty" xml:"tableLineage,omitempty" type:"Repeated"`
+}
+
+func (s Edge) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Edge) GoString() string {
+	return s.String()
+}
+
+func (s *Edge) SetColumnLineage(v []*Relation) *Edge {
+	s.ColumnLineage = v
+	return s
+}
+
+func (s *Edge) SetTableLineage(v []*Relation) *Edge {
+	s.TableLineage = v
 	return s
 }
 
@@ -672,6 +1193,261 @@ func (s *ExpertResourceSetting) SetJobmanagerResourceSettingSpec(v *BasicResourc
 
 func (s *ExpertResourceSetting) SetResourcePlan(v string) *ExpertResourceSetting {
 	s.ResourcePlan = &v
+	return s
+}
+
+type Folder struct {
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-0000012312****
+	FolderId   *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	ModifiedAt *int64  `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-0000012390****
+	ParentId  *string      `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	SubFolder []*SubFolder `json:"subFolder,omitempty" xml:"subFolder,omitempty" type:"Repeated"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s Folder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Folder) GoString() string {
+	return s.String()
+}
+
+func (s *Folder) SetCreatedAt(v int64) *Folder {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Folder) SetFolderId(v string) *Folder {
+	s.FolderId = &v
+	return s
+}
+
+func (s *Folder) SetModifiedAt(v int64) *Folder {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *Folder) SetName(v string) *Folder {
+	s.Name = &v
+	return s
+}
+
+func (s *Folder) SetNamespace(v string) *Folder {
+	s.Namespace = &v
+	return s
+}
+
+func (s *Folder) SetParentId(v string) *Folder {
+	s.ParentId = &v
+	return s
+}
+
+func (s *Folder) SetSubFolder(v []*SubFolder) *Folder {
+	s.SubFolder = v
+	return s
+}
+
+func (s *Folder) SetWorkspace(v string) *Folder {
+	s.Workspace = &v
+	return s
+}
+
+type GetLineageInfoParams struct {
+	Depth         *int64  `json:"depth,omitempty" xml:"depth,omitempty"`
+	Direction     *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
+	IdType        *string `json:"idType,omitempty" xml:"idType,omitempty"`
+	IsColumnLevel *bool   `json:"isColumnLevel,omitempty" xml:"isColumnLevel,omitempty"`
+	IsTemporary   *bool   `json:"isTemporary,omitempty" xml:"isTemporary,omitempty"`
+	Namespace     *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Workspace     *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetLineageInfoParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageInfoParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageInfoParams) SetDepth(v int64) *GetLineageInfoParams {
+	s.Depth = &v
+	return s
+}
+
+func (s *GetLineageInfoParams) SetDirection(v string) *GetLineageInfoParams {
+	s.Direction = &v
+	return s
+}
+
+func (s *GetLineageInfoParams) SetId(v string) *GetLineageInfoParams {
+	s.Id = &v
+	return s
+}
+
+func (s *GetLineageInfoParams) SetIdType(v string) *GetLineageInfoParams {
+	s.IdType = &v
+	return s
+}
+
+func (s *GetLineageInfoParams) SetIsColumnLevel(v bool) *GetLineageInfoParams {
+	s.IsColumnLevel = &v
+	return s
+}
+
+func (s *GetLineageInfoParams) SetIsTemporary(v bool) *GetLineageInfoParams {
+	s.IsTemporary = &v
+	return s
+}
+
+func (s *GetLineageInfoParams) SetNamespace(v string) *GetLineageInfoParams {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetLineageInfoParams) SetWorkspace(v string) *GetLineageInfoParams {
+	s.Workspace = &v
+	return s
+}
+
+type HotUpdateJobFailureInfo struct {
+	FailureSeverity *string `json:"failureSeverity,omitempty" xml:"failureSeverity,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+	Reason          *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s HotUpdateJobFailureInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotUpdateJobFailureInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotUpdateJobFailureInfo) SetFailureSeverity(v string) *HotUpdateJobFailureInfo {
+	s.FailureSeverity = &v
+	return s
+}
+
+func (s *HotUpdateJobFailureInfo) SetMessage(v string) *HotUpdateJobFailureInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *HotUpdateJobFailureInfo) SetReason(v string) *HotUpdateJobFailureInfo {
+	s.Reason = &v
+	return s
+}
+
+type HotUpdateJobParams struct {
+	RescaleJobParam      *RescaleJobParam      `json:"rescaleJobParam,omitempty" xml:"rescaleJobParam,omitempty"`
+	UpdateJobConfigParam *UpdateJobConfigParam `json:"updateJobConfigParam,omitempty" xml:"updateJobConfigParam,omitempty"`
+}
+
+func (s HotUpdateJobParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotUpdateJobParams) GoString() string {
+	return s.String()
+}
+
+func (s *HotUpdateJobParams) SetRescaleJobParam(v *RescaleJobParam) *HotUpdateJobParams {
+	s.RescaleJobParam = v
+	return s
+}
+
+func (s *HotUpdateJobParams) SetUpdateJobConfigParam(v *UpdateJobConfigParam) *HotUpdateJobParams {
+	s.UpdateJobConfigParam = v
+	return s
+}
+
+type HotUpdateJobResult struct {
+	HotUpdateParams       *HotUpdateJobParams   `json:"hotUpdateParams,omitempty" xml:"hotUpdateParams,omitempty"`
+	JobHotUpdateId        *string               `json:"jobHotUpdateId,omitempty" xml:"jobHotUpdateId,omitempty"`
+	JobId                 *string               `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	Status                *HotUpdateJobStatus   `json:"status,omitempty" xml:"status,omitempty"`
+	TargetResourceSetting *BriefResourceSetting `json:"targetResourceSetting,omitempty" xml:"targetResourceSetting,omitempty"`
+}
+
+func (s HotUpdateJobResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotUpdateJobResult) GoString() string {
+	return s.String()
+}
+
+func (s *HotUpdateJobResult) SetHotUpdateParams(v *HotUpdateJobParams) *HotUpdateJobResult {
+	s.HotUpdateParams = v
+	return s
+}
+
+func (s *HotUpdateJobResult) SetJobHotUpdateId(v string) *HotUpdateJobResult {
+	s.JobHotUpdateId = &v
+	return s
+}
+
+func (s *HotUpdateJobResult) SetJobId(v string) *HotUpdateJobResult {
+	s.JobId = &v
+	return s
+}
+
+func (s *HotUpdateJobResult) SetStatus(v *HotUpdateJobStatus) *HotUpdateJobResult {
+	s.Status = v
+	return s
+}
+
+func (s *HotUpdateJobResult) SetTargetResourceSetting(v *BriefResourceSetting) *HotUpdateJobResult {
+	s.TargetResourceSetting = v
+	return s
+}
+
+type HotUpdateJobStatus struct {
+	Failure   *HotUpdateJobFailureInfo `json:"failure,omitempty" xml:"failure,omitempty"`
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status    *string                  `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s HotUpdateJobStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotUpdateJobStatus) GoString() string {
+	return s.String()
+}
+
+func (s *HotUpdateJobStatus) SetFailure(v *HotUpdateJobFailureInfo) *HotUpdateJobStatus {
+	s.Failure = v
+	return s
+}
+
+func (s *HotUpdateJobStatus) SetRequestId(v string) *HotUpdateJobStatus {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotUpdateJobStatus) SetStatus(v string) *HotUpdateJobStatus {
+	s.Status = &v
 	return s
 }
 
@@ -957,6 +1733,29 @@ func (s *JobFailure) SetReason(v string) *JobFailure {
 	return s
 }
 
+type JobInfo struct {
+	Id         *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+}
+
+func (s JobInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobInfo) GoString() string {
+	return s.String()
+}
+
+func (s *JobInfo) SetId(v string) *JobInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *JobInfo) SetProperties(v map[string]interface{}) *JobInfo {
+	s.Properties = v
+	return s
+}
+
 type JobMetric struct {
 	// example:
 	//
@@ -1150,6 +1949,147 @@ func (s *JobSummary) SetStarting(v int32) *JobSummary {
 	return s
 }
 
+type LineageColumn struct {
+	ColumnName       *string `json:"columnName,omitempty" xml:"columnName,omitempty"`
+	ColumnNativeType *string `json:"columnNativeType,omitempty" xml:"columnNativeType,omitempty"`
+	ColumnType       *string `json:"columnType,omitempty" xml:"columnType,omitempty"`
+	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Creator          *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id               *string `json:"id,omitempty" xml:"id,omitempty"`
+	ModifiedAt       *int64  `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	Modifier         *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Nullable         *bool   `json:"nullable,omitempty" xml:"nullable,omitempty"`
+}
+
+func (s LineageColumn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageColumn) GoString() string {
+	return s.String()
+}
+
+func (s *LineageColumn) SetColumnName(v string) *LineageColumn {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *LineageColumn) SetColumnNativeType(v string) *LineageColumn {
+	s.ColumnNativeType = &v
+	return s
+}
+
+func (s *LineageColumn) SetColumnType(v string) *LineageColumn {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *LineageColumn) SetCreatedAt(v int64) *LineageColumn {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *LineageColumn) SetCreator(v string) *LineageColumn {
+	s.Creator = &v
+	return s
+}
+
+func (s *LineageColumn) SetDescription(v string) *LineageColumn {
+	s.Description = &v
+	return s
+}
+
+func (s *LineageColumn) SetId(v string) *LineageColumn {
+	s.Id = &v
+	return s
+}
+
+func (s *LineageColumn) SetModifiedAt(v int64) *LineageColumn {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *LineageColumn) SetModifier(v string) *LineageColumn {
+	s.Modifier = &v
+	return s
+}
+
+func (s *LineageColumn) SetNullable(v bool) *LineageColumn {
+	s.Nullable = &v
+	return s
+}
+
+type LineageInfo struct {
+	Edges    *Edge      `json:"edges,omitempty" xml:"edges,omitempty"`
+	JobInfos []*JobInfo `json:"jobInfos,omitempty" xml:"jobInfos,omitempty" type:"Repeated"`
+	Nodes    []*Node    `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+}
+
+func (s LineageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *LineageInfo) SetEdges(v *Edge) *LineageInfo {
+	s.Edges = v
+	return s
+}
+
+func (s *LineageInfo) SetJobInfos(v []*JobInfo) *LineageInfo {
+	s.JobInfos = v
+	return s
+}
+
+func (s *LineageInfo) SetNodes(v []*Node) *LineageInfo {
+	s.Nodes = v
+	return s
+}
+
+type LineageTable struct {
+	Columns    []*LineageColumn       `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	Id         *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	TableName  *string                `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	With       map[string]interface{} `json:"with,omitempty" xml:"with,omitempty"`
+}
+
+func (s LineageTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageTable) GoString() string {
+	return s.String()
+}
+
+func (s *LineageTable) SetColumns(v []*LineageColumn) *LineageTable {
+	s.Columns = v
+	return s
+}
+
+func (s *LineageTable) SetId(v string) *LineageTable {
+	s.Id = &v
+	return s
+}
+
+func (s *LineageTable) SetProperties(v map[string]interface{}) *LineageTable {
+	s.Properties = v
+	return s
+}
+
+func (s *LineageTable) SetTableName(v string) *LineageTable {
+	s.TableName = &v
+	return s
+}
+
+func (s *LineageTable) SetWith(v map[string]interface{}) *LineageTable {
+	s.With = v
+	return s
+}
+
 type LocalVariable struct {
 	// example:
 	//
@@ -1176,6 +2116,47 @@ func (s *LocalVariable) SetName(v string) *LocalVariable {
 
 func (s *LocalVariable) SetValue(v string) *LocalVariable {
 	s.Value = &v
+	return s
+}
+
+type Lock struct {
+	HolderId   *string `json:"holderId,omitempty" xml:"holderId,omitempty"`
+	HolderName *string `json:"holderName,omitempty" xml:"holderName,omitempty"`
+	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
+	Namespace  *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Workspace  *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s Lock) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Lock) GoString() string {
+	return s.String()
+}
+
+func (s *Lock) SetHolderId(v string) *Lock {
+	s.HolderId = &v
+	return s
+}
+
+func (s *Lock) SetHolderName(v string) *Lock {
+	s.HolderName = &v
+	return s
+}
+
+func (s *Lock) SetId(v string) *Lock {
+	s.Id = &v
+	return s
+}
+
+func (s *Lock) SetNamespace(v string) *Lock {
+	s.Namespace = &v
+	return s
+}
+
+func (s *Lock) SetWorkspace(v string) *Lock {
+	s.Workspace = &v
 	return s
 }
 
@@ -1309,6 +2290,146 @@ func (s *Member) SetRole(v string) *Member {
 	return s
 }
 
+type MetadataInfo struct {
+	Key     *string `json:"key,omitempty" xml:"key,omitempty"`
+	Virtual *bool   `json:"virtual,omitempty" xml:"virtual,omitempty"`
+}
+
+func (s MetadataInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetadataInfo) GoString() string {
+	return s.String()
+}
+
+func (s *MetadataInfo) SetKey(v string) *MetadataInfo {
+	s.Key = &v
+	return s
+}
+
+func (s *MetadataInfo) SetVirtual(v bool) *MetadataInfo {
+	s.Virtual = &v
+	return s
+}
+
+type Node struct {
+	CatalogName  *string         `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	Connector    *string         `json:"connector,omitempty" xml:"connector,omitempty"`
+	DatabaseName *string         `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	Id           *string         `json:"id,omitempty" xml:"id,omitempty"`
+	IsTemporary  *bool           `json:"isTemporary,omitempty" xml:"isTemporary,omitempty"`
+	Tables       []*LineageTable `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+}
+
+func (s Node) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Node) GoString() string {
+	return s.String()
+}
+
+func (s *Node) SetCatalogName(v string) *Node {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *Node) SetConnector(v string) *Node {
+	s.Connector = &v
+	return s
+}
+
+func (s *Node) SetDatabaseName(v string) *Node {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *Node) SetId(v string) *Node {
+	s.Id = &v
+	return s
+}
+
+func (s *Node) SetIsTemporary(v bool) *Node {
+	s.IsTemporary = &v
+	return s
+}
+
+func (s *Node) SetTables(v []*LineageTable) *Node {
+	s.Tables = v
+	return s
+}
+
+type PrimaryKey struct {
+	Columns        []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	ConstraintName *string   `json:"constraintName,omitempty" xml:"constraintName,omitempty"`
+}
+
+func (s PrimaryKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrimaryKey) GoString() string {
+	return s.String()
+}
+
+func (s *PrimaryKey) SetColumns(v []*string) *PrimaryKey {
+	s.Columns = v
+	return s
+}
+
+func (s *PrimaryKey) SetConstraintName(v string) *PrimaryKey {
+	s.ConstraintName = &v
+	return s
+}
+
+type Property struct {
+	DefaultValue  *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
+	DefinesFormat *bool   `json:"definesFormat,omitempty" xml:"definesFormat,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	Key           *string `json:"key,omitempty" xml:"key,omitempty"`
+	Required      *bool   `json:"required,omitempty" xml:"required,omitempty"`
+	Sensitive     *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+}
+
+func (s Property) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Property) GoString() string {
+	return s.String()
+}
+
+func (s *Property) SetDefaultValue(v string) *Property {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *Property) SetDefinesFormat(v bool) *Property {
+	s.DefinesFormat = &v
+	return s
+}
+
+func (s *Property) SetDescription(v string) *Property {
+	s.Description = &v
+	return s
+}
+
+func (s *Property) SetKey(v string) *Property {
+	s.Key = &v
+	return s
+}
+
+func (s *Property) SetRequired(v bool) *Property {
+	s.Required = &v
+	return s
+}
+
+func (s *Property) SetSensitive(v bool) *Property {
+	s.Sensitive = &v
+	return s
+}
+
 type PythonArtifact struct {
 	AdditionalDependencies    []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
 	AdditionalPythonArchives  []*string `json:"additionalPythonArchives,omitempty" xml:"additionalPythonArchives,omitempty" type:"Repeated"`
@@ -1356,6 +2477,58 @@ func (s *PythonArtifact) SetMainArgs(v string) *PythonArtifact {
 
 func (s *PythonArtifact) SetPythonArtifactUri(v string) *PythonArtifact {
 	s.PythonArtifactUri = &v
+	return s
+}
+
+type Relation struct {
+	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	JobId       *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	Source      *string `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s Relation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Relation) GoString() string {
+	return s.String()
+}
+
+func (s *Relation) SetDestination(v string) *Relation {
+	s.Destination = &v
+	return s
+}
+
+func (s *Relation) SetJobId(v string) *Relation {
+	s.JobId = &v
+	return s
+}
+
+func (s *Relation) SetSource(v string) *Relation {
+	s.Source = &v
+	return s
+}
+
+type RescaleJobParam struct {
+	JobParallelism    *int64                 `json:"jobParallelism,omitempty" xml:"jobParallelism,omitempty"`
+	VertexParallelism map[string]interface{} `json:"vertexParallelism,omitempty" xml:"vertexParallelism,omitempty"`
+}
+
+func (s RescaleJobParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RescaleJobParam) GoString() string {
+	return s.String()
+}
+
+func (s *RescaleJobParam) SetJobParallelism(v int64) *RescaleJobParam {
+	s.JobParallelism = &v
+	return s
+}
+
+func (s *RescaleJobParam) SetVertexParallelism(v map[string]interface{}) *RescaleJobParam {
+	s.VertexParallelism = v
 	return s
 }
 
@@ -1530,6 +2703,35 @@ func (s *SavepointStatus) SetState(v string) *SavepointStatus {
 	return s
 }
 
+type Schema struct {
+	Columns        []*TableColumn   `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	PrimaryKey     []*PrimaryKey    `json:"primaryKey,omitempty" xml:"primaryKey,omitempty" type:"Repeated"`
+	WatermarkSpecs []*WatermarkSpec `json:"watermarkSpecs,omitempty" xml:"watermarkSpecs,omitempty" type:"Repeated"`
+}
+
+func (s Schema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Schema) GoString() string {
+	return s.String()
+}
+
+func (s *Schema) SetColumns(v []*TableColumn) *Schema {
+	s.Columns = v
+	return s
+}
+
+func (s *Schema) SetPrimaryKey(v []*PrimaryKey) *Schema {
+	s.PrimaryKey = v
+	return s
+}
+
+func (s *Schema) SetWatermarkSpecs(v []*WatermarkSpec) *Schema {
+	s.WatermarkSpecs = v
+	return s
+}
+
 type SqlArtifact struct {
 	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
 	SqlScript              *string   `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
@@ -1550,6 +2752,35 @@ func (s *SqlArtifact) SetAdditionalDependencies(v []*string) *SqlArtifact {
 
 func (s *SqlArtifact) SetSqlScript(v string) *SqlArtifact {
 	s.SqlScript = &v
+	return s
+}
+
+type SqlStatementExecuteResult struct {
+	ErrorDetails   *ErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
+	ExecuteSuccess *bool         `json:"executeSuccess,omitempty" xml:"executeSuccess,omitempty"`
+	Statement      *string       `json:"statement,omitempty" xml:"statement,omitempty"`
+}
+
+func (s SqlStatementExecuteResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SqlStatementExecuteResult) GoString() string {
+	return s.String()
+}
+
+func (s *SqlStatementExecuteResult) SetErrorDetails(v *ErrorDetails) *SqlStatementExecuteResult {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *SqlStatementExecuteResult) SetExecuteSuccess(v bool) *SqlStatementExecuteResult {
+	s.ExecuteSuccess = &v
+	return s
+}
+
+func (s *SqlStatementExecuteResult) SetStatement(v string) *SqlStatementExecuteResult {
+	s.Statement = &v
 	return s
 }
 
@@ -1717,6 +2948,409 @@ func (s *StreamingResourceSetting) SetResourceSettingMode(v string) *StreamingRe
 	return s
 }
 
+type SubFolder struct {
+	// example:
+	//
+	// a579aec9-1d5e-3382-9d65-9887ff6cfaff
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 95c0787c-408f-4e1f-88ba-ef0a84a2c2ee
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+}
+
+func (s SubFolder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubFolder) GoString() string {
+	return s.String()
+}
+
+func (s *SubFolder) SetFolderId(v string) *SubFolder {
+	s.FolderId = &v
+	return s
+}
+
+func (s *SubFolder) SetName(v string) *SubFolder {
+	s.Name = &v
+	return s
+}
+
+func (s *SubFolder) SetParentId(v string) *SubFolder {
+	s.ParentId = &v
+	return s
+}
+
+type Table struct {
+	Comment       *string                `json:"comment,omitempty" xml:"comment,omitempty"`
+	Name          *string                `json:"name,omitempty" xml:"name,omitempty"`
+	PartitionKeys []*string              `json:"partitionKeys,omitempty" xml:"partitionKeys,omitempty" type:"Repeated"`
+	Properties    map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	Schema        *Schema                `json:"schema,omitempty" xml:"schema,omitempty"`
+}
+
+func (s Table) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Table) GoString() string {
+	return s.String()
+}
+
+func (s *Table) SetComment(v string) *Table {
+	s.Comment = &v
+	return s
+}
+
+func (s *Table) SetName(v string) *Table {
+	s.Name = &v
+	return s
+}
+
+func (s *Table) SetPartitionKeys(v []*string) *Table {
+	s.PartitionKeys = v
+	return s
+}
+
+func (s *Table) SetProperties(v map[string]interface{}) *Table {
+	s.Properties = v
+	return s
+}
+
+func (s *Table) SetSchema(v *Schema) *Table {
+	s.Schema = v
+	return s
+}
+
+type TableColumn struct {
+	Expression   *string       `json:"expression,omitempty" xml:"expression,omitempty"`
+	MetadataInfo *MetadataInfo `json:"metadataInfo,omitempty" xml:"metadataInfo,omitempty"`
+	Name         *string       `json:"name,omitempty" xml:"name,omitempty"`
+	Nullable     *bool         `json:"nullable,omitempty" xml:"nullable,omitempty"`
+	Type         *string       `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s TableColumn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableColumn) GoString() string {
+	return s.String()
+}
+
+func (s *TableColumn) SetExpression(v string) *TableColumn {
+	s.Expression = &v
+	return s
+}
+
+func (s *TableColumn) SetMetadataInfo(v *MetadataInfo) *TableColumn {
+	s.MetadataInfo = v
+	return s
+}
+
+func (s *TableColumn) SetName(v string) *TableColumn {
+	s.Name = &v
+	return s
+}
+
+func (s *TableColumn) SetNullable(v bool) *TableColumn {
+	s.Nullable = &v
+	return s
+}
+
+func (s *TableColumn) SetType(v string) *TableColumn {
+	s.Type = &v
+	return s
+}
+
+type TableMeta struct {
+	CatalogName  *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	TableName    *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+}
+
+func (s TableMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableMeta) GoString() string {
+	return s.String()
+}
+
+func (s *TableMeta) SetCatalogName(v string) *TableMeta {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *TableMeta) SetDatabaseName(v string) *TableMeta {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *TableMeta) SetTableName(v string) *TableMeta {
+	s.TableName = &v
+	return s
+}
+
+type UdfArtifact struct {
+	ArtifactType      *string     `json:"artifactType,omitempty" xml:"artifactType,omitempty"`
+	CreatedAt         *int64      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Creator           *string     `json:"creator,omitempty" xml:"creator,omitempty"`
+	DependencyJarUris []*string   `json:"dependencyJarUris,omitempty" xml:"dependencyJarUris,omitempty" type:"Repeated"`
+	JarUrl            *string     `json:"jarUrl,omitempty" xml:"jarUrl,omitempty"`
+	ModifiedAt        *int64      `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	Name              *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Namespace         *string     `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	UdfClasses        []*UdfClass `json:"udfClasses,omitempty" xml:"udfClasses,omitempty" type:"Repeated"`
+}
+
+func (s UdfArtifact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UdfArtifact) GoString() string {
+	return s.String()
+}
+
+func (s *UdfArtifact) SetArtifactType(v string) *UdfArtifact {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *UdfArtifact) SetCreatedAt(v int64) *UdfArtifact {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *UdfArtifact) SetCreator(v string) *UdfArtifact {
+	s.Creator = &v
+	return s
+}
+
+func (s *UdfArtifact) SetDependencyJarUris(v []*string) *UdfArtifact {
+	s.DependencyJarUris = v
+	return s
+}
+
+func (s *UdfArtifact) SetJarUrl(v string) *UdfArtifact {
+	s.JarUrl = &v
+	return s
+}
+
+func (s *UdfArtifact) SetModifiedAt(v int64) *UdfArtifact {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *UdfArtifact) SetName(v string) *UdfArtifact {
+	s.Name = &v
+	return s
+}
+
+func (s *UdfArtifact) SetNamespace(v string) *UdfArtifact {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UdfArtifact) SetUdfClasses(v []*UdfClass) *UdfArtifact {
+	s.UdfClasses = v
+	return s
+}
+
+type UdfClass struct {
+	ClassName       *string   `json:"className,omitempty" xml:"className,omitempty"`
+	ClassType       *string   `json:"classType,omitempty" xml:"classType,omitempty"`
+	FunctionNames   []*string `json:"functionNames,omitempty" xml:"functionNames,omitempty" type:"Repeated"`
+	UdfArtifactName *string   `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
+}
+
+func (s UdfClass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UdfClass) GoString() string {
+	return s.String()
+}
+
+func (s *UdfClass) SetClassName(v string) *UdfClass {
+	s.ClassName = &v
+	return s
+}
+
+func (s *UdfClass) SetClassType(v string) *UdfClass {
+	s.ClassType = &v
+	return s
+}
+
+func (s *UdfClass) SetFunctionNames(v []*string) *UdfClass {
+	s.FunctionNames = v
+	return s
+}
+
+func (s *UdfClass) SetUdfArtifactName(v string) *UdfClass {
+	s.UdfArtifactName = &v
+	return s
+}
+
+type UdfFunction struct {
+	ClassName       *string `json:"className,omitempty" xml:"className,omitempty"`
+	FunctionName    *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	UdfArtifactName *string `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
+}
+
+func (s UdfFunction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UdfFunction) GoString() string {
+	return s.String()
+}
+
+func (s *UdfFunction) SetClassName(v string) *UdfFunction {
+	s.ClassName = &v
+	return s
+}
+
+func (s *UdfFunction) SetFunctionName(v string) *UdfFunction {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *UdfFunction) SetUdfArtifactName(v string) *UdfFunction {
+	s.UdfArtifactName = &v
+	return s
+}
+
+type UpdateJobConfigParam struct {
+	NewFlinkConf map[string]interface{} `json:"newFlinkConf,omitempty" xml:"newFlinkConf,omitempty"`
+}
+
+func (s UpdateJobConfigParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobConfigParam) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobConfigParam) SetNewFlinkConf(v map[string]interface{}) *UpdateJobConfigParam {
+	s.NewFlinkConf = v
+	return s
+}
+
+type UpdateUdfArtifactResult struct {
+	CollidingClasses []*UdfClass  `json:"collidingClasses,omitempty" xml:"collidingClasses,omitempty" type:"Repeated"`
+	Message          *string      `json:"message,omitempty" xml:"message,omitempty"`
+	MissingClasses   []*UdfClass  `json:"missingClasses,omitempty" xml:"missingClasses,omitempty" type:"Repeated"`
+	UdfArtifact      *UdfArtifact `json:"udfArtifact,omitempty" xml:"udfArtifact,omitempty"`
+	UpdateSuccess    *bool        `json:"updateSuccess,omitempty" xml:"updateSuccess,omitempty"`
+}
+
+func (s UpdateUdfArtifactResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfArtifactResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfArtifactResult) SetCollidingClasses(v []*UdfClass) *UpdateUdfArtifactResult {
+	s.CollidingClasses = v
+	return s
+}
+
+func (s *UpdateUdfArtifactResult) SetMessage(v string) *UpdateUdfArtifactResult {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateUdfArtifactResult) SetMissingClasses(v []*UdfClass) *UpdateUdfArtifactResult {
+	s.MissingClasses = v
+	return s
+}
+
+func (s *UpdateUdfArtifactResult) SetUdfArtifact(v *UdfArtifact) *UpdateUdfArtifactResult {
+	s.UdfArtifact = v
+	return s
+}
+
+func (s *UpdateUdfArtifactResult) SetUpdateSuccess(v bool) *UpdateUdfArtifactResult {
+	s.UpdateSuccess = &v
+	return s
+}
+
+type ValidateStatementResult struct {
+	ErrorDetails *ValidationErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
+	// example:
+	//
+	// "there have some errors""
+	ValidationResult *string `json:"validationResult,omitempty" xml:"validationResult,omitempty"`
+}
+
+func (s ValidateStatementResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateStatementResult) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateStatementResult) SetErrorDetails(v *ValidationErrorDetails) *ValidateStatementResult {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *ValidateStatementResult) SetValidationResult(v string) *ValidateStatementResult {
+	s.ValidationResult = &v
+	return s
+}
+
+type ValidationErrorDetails struct {
+	ColumnNumber    *string `json:"columnNumber,omitempty" xml:"columnNumber,omitempty"`
+	EndColumnNumber *string `json:"endColumnNumber,omitempty" xml:"endColumnNumber,omitempty"`
+	EndLineNumber   *string `json:"endLineNumber,omitempty" xml:"endLineNumber,omitempty"`
+	LineNumber      *string `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s ValidationErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidationErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ValidationErrorDetails) SetColumnNumber(v string) *ValidationErrorDetails {
+	s.ColumnNumber = &v
+	return s
+}
+
+func (s *ValidationErrorDetails) SetEndColumnNumber(v string) *ValidationErrorDetails {
+	s.EndColumnNumber = &v
+	return s
+}
+
+func (s *ValidationErrorDetails) SetEndLineNumber(v string) *ValidationErrorDetails {
+	s.EndLineNumber = &v
+	return s
+}
+
+func (s *ValidationErrorDetails) SetLineNumber(v string) *ValidationErrorDetails {
+	s.LineNumber = &v
+	return s
+}
+
+func (s *ValidationErrorDetails) SetMessage(v string) *ValidationErrorDetails {
+	s.Message = &v
+	return s
+}
+
 type Variable struct {
 	// example:
 	//
@@ -1767,6 +3401,29 @@ func (s *Variable) SetName(v string) *Variable {
 
 func (s *Variable) SetValue(v string) *Variable {
 	s.Value = &v
+	return s
+}
+
+type WatermarkSpec struct {
+	Column              *string `json:"column,omitempty" xml:"column,omitempty"`
+	WatermarkExpression *string `json:"watermarkExpression,omitempty" xml:"watermarkExpression,omitempty"`
+}
+
+func (s WatermarkSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WatermarkSpec) GoString() string {
+	return s.String()
+}
+
+func (s *WatermarkSpec) SetColumn(v string) *WatermarkSpec {
+	s.Column = &v
+	return s
+}
+
+func (s *WatermarkSpec) SetWatermarkExpression(v string) *WatermarkSpec {
+	s.WatermarkExpression = &v
 	return s
 }
 
@@ -5950,6 +7607,8 @@ func (s *ListVariablesResponse) SetBody(v *ListVariablesResponseBody) *ListVaria
 
 type StartJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5977,6 +7636,8 @@ func (s *StartJobHeaders) SetWorkspace(v string) *StartJobHeaders {
 }
 
 type StartJobRequest struct {
+	// The parameter that is used to start the job.
+	//
 	// This parameter is required.
 	Body *StartJobRequestBody `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5995,23 +7656,40 @@ func (s *StartJobRequest) SetBody(v *StartJobRequestBody) *StartJobRequest {
 }
 
 type StartJobResponseBody struct {
+	// 	- If the value of success was true, the job that you created was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -8640,7 +10318,7 @@ func (client *Client) ListVariables(namespace *string, request *ListVariablesReq
 //
 // Summary:
 //
-// start job
+// Creates and starts a job.
 //
 // @param request - StartJobRequest
 //
@@ -8692,7 +10370,7 @@ func (client *Client) StartJobWithOptions(namespace *string, request *StartJobRe
 //
 // Summary:
 //
-// start job
+// Creates and starts a job.
 //
 // @param request - StartJobRequest
 //

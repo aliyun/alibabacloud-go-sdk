@@ -1,3 +1,6 @@
+2024-08-09 Version: v1.4.1
+- Generated golang 2022-07-18 for ververica.
+
 2024-07-23 Version: v1.4.0
 - Support API GetLatestJobStartLog.
 - Support API ListEditableNamespace.
