@@ -3962,6 +3962,7 @@ type Logstore struct {
 	//
 	// standard
 	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
 	// This parameter is required.
 	//
@@ -4038,6 +4039,11 @@ func (s *Logstore) SetMaxSplitShard(v int32) *Logstore {
 
 func (s *Logstore) SetMode(v string) *Logstore {
 	s.Mode = &v
+	return s
+}
+
+func (s *Logstore) SetProcessorId(v string) *Logstore {
+	s.ProcessorId = &v
 	return s
 }
 
@@ -5753,7 +5759,8 @@ type CreateLogStoreRequest struct {
 	// example:
 	//
 	// standard
-	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	// The number of shards.
 	//
 	// > You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
@@ -5834,6 +5841,11 @@ func (s *CreateLogStoreRequest) SetMaxSplitShard(v int32) *CreateLogStoreRequest
 
 func (s *CreateLogStoreRequest) SetMode(v string) *CreateLogStoreRequest {
 	s.Mode = &v
+	return s
+}
+
+func (s *CreateLogStoreRequest) SetProcessorId(v string) *CreateLogStoreRequest {
+	s.ProcessorId = &v
 	return s
 }
 
@@ -15878,7 +15890,8 @@ type UpdateLogStoreRequest struct {
 	// example:
 	//
 	// standard
-	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	// Deprecated
 	//
 	// The number of shards.
@@ -15961,6 +15974,11 @@ func (s *UpdateLogStoreRequest) SetMaxSplitShard(v int32) *UpdateLogStoreRequest
 
 func (s *UpdateLogStoreRequest) SetMode(v string) *UpdateLogStoreRequest {
 	s.Mode = &v
+	return s
+}
+
+func (s *UpdateLogStoreRequest) SetProcessorId(v string) *UpdateLogStoreRequest {
+	s.ProcessorId = &v
 	return s
 }
 
@@ -18823,6 +18841,10 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 		body["mode"] = request.Mode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProcessorId)) {
+		body["processorId"] = request.ProcessorId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
 		body["shardCount"] = request.ShardCount
 	}
@@ -21253,7 +21275,29 @@ func (client *Client) DeleteOSSIngestion(project *string, ossIngestionName *stri
 
 // Summary:
 //
-// 删除project
+// Deletes a project.
+//
+// Description:
+//
+// ### Usage notes
+//
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- After you delete a project, all logs stored in the project and the configurations of the project are deleted and cannot be restored. Proceed with caution.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @param headers - map
 //
@@ -21289,7 +21333,29 @@ func (client *Client) DeleteProjectWithOptions(project *string, headers map[stri
 
 // Summary:
 //
-// 删除project
+// Deletes a project.
+//
+// Description:
+//
+// ### Usage notes
+//
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- After you delete a project, all logs stored in the project and the configurations of the project are deleted and cannot be restored. Proceed with caution.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @return DeleteProjectResponse
 func (client *Client) DeleteProject(project *string) (_result *DeleteProjectResponse, _err error) {
@@ -23515,7 +23581,7 @@ func (client *Client) GetLogtailPipelineConfig(project *string, configName *stri
 
 // Summary:
 //
-// GetMLServiceResults
+// Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
 //
 // @param request - GetMLServiceResultsRequest
 //
@@ -23565,7 +23631,7 @@ func (client *Client) GetMLServiceResultsWithOptions(serviceName *string, reques
 
 // Summary:
 //
-// GetMLServiceResults
+// Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
 //
 // @param request - GetMLServiceResultsRequest
 //
@@ -23928,15 +23994,33 @@ func (client *Client) GetProject(project *string) (_result *GetProjectResponse, 
 //
 // ### Usage notes
 //
-// 	- You can use the query parameter to specify a standard SQL statement.
-//
-// 	- You must specify a project in the domain name of the request.
-//
-// 	- You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
-//
-// 	- You must specify a time range in the SQL statement by using the __date__ parameter or __time__ parameter. The value of the __date__ parameter is a timestamp, and the value of the __time__ parameter is an integer. The unit of the __time__ parameter is seconds.
-//
 // 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// 	- Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+//
+// 	- Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+//
+// 	- You must set query to a standard SQL statement.
+//
+// 	- You must specify a Logstore in the FROM clause of an SQL statement. A Logstore can be used as an SQL table.
+//
+// 	- You must specify a time range in an SQL statement by using the __date__ or __time__ parameter. The value of the __date__ parameter is a timestamp. The value of the __time__ parameter is an integer, and the unit of the value is seconds.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:GetProjectLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @param request - GetProjectLogsRequest
 //
@@ -23994,15 +24078,33 @@ func (client *Client) GetProjectLogsWithOptions(project *string, request *GetPro
 //
 // ### Usage notes
 //
-// 	- You can use the query parameter to specify a standard SQL statement.
-//
-// 	- You must specify a project in the domain name of the request.
-//
-// 	- You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
-//
-// 	- You must specify a time range in the SQL statement by using the __date__ parameter or __time__ parameter. The value of the __date__ parameter is a timestamp, and the value of the __time__ parameter is an integer. The unit of the __time__ parameter is seconds.
-//
 // 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// 	- Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+//
+// 	- Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+//
+// 	- You must set query to a standard SQL statement.
+//
+// 	- You must specify a Logstore in the FROM clause of an SQL statement. A Logstore can be used as an SQL table.
+//
+// 	- You must specify a time range in an SQL statement by using the __date__ or __time__ parameter. The value of the __date__ parameter is a timestamp. The value of the __time__ parameter is an integer, and the unit of the value is seconds.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:GetProjectLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @param request - GetProjectLogsRequest
 //
@@ -28519,6 +28621,10 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 
 	if !tea.BoolValue(util.IsUnset(request.Mode)) {
 		body["mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessorId)) {
+		body["processorId"] = request.ProcessorId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
