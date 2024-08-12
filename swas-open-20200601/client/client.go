@@ -10,18 +10,26 @@ import (
 )
 
 type AddCustomImageShareAccountRequest struct {
+	// The IDs of the Alibaba Cloud accounts with which you want to share the custom image.
+	//
 	// This parameter is required.
 	Account []*int64 `json:"Account,omitempty" xml:"Account,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the custom image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-saacssasc****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -59,6 +67,8 @@ func (s *AddCustomImageShareAccountRequest) SetRegionId(v string) *AddCustomImag
 }
 
 type AddCustomImageShareAccountResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 30637AD6-D977-4833-A54C-CC89483E****
@@ -232,12 +242,6 @@ type ApplyFirewallTemplateRequest struct {
 	//
 	// ft-bcf1a7hrdq717****
 	FirewallTemplateId *string `json:"FirewallTemplateId,omitempty" xml:"FirewallTemplateId,omitempty"`
-	// The ID of the simple application server.
-	//
-	// example:
-	//
-	// ace0706b2ac4454d984295a94213****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the simple application servers.
 	//
 	// This parameter is required.
@@ -267,11 +271,6 @@ func (s *ApplyFirewallTemplateRequest) SetClientToken(v string) *ApplyFirewallTe
 
 func (s *ApplyFirewallTemplateRequest) SetFirewallTemplateId(v string) *ApplyFirewallTemplateRequest {
 	s.FirewallTemplateId = &v
-	return s
-}
-
-func (s *ApplyFirewallTemplateRequest) SetInstanceId(v string) *ApplyFirewallTemplateRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -837,13 +836,8 @@ type CreateCustomImageRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-aek2bti7cf7****
-	ResoureGroupId *string `json:"ResoureGroupId,omitempty" xml:"ResoureGroupId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the system disk snapshot.
 	//
 	// example:
@@ -892,8 +886,8 @@ func (s *CreateCustomImageRequest) SetRegionId(v string) *CreateCustomImageReque
 	return s
 }
 
-func (s *CreateCustomImageRequest) SetResoureGroupId(v string) *CreateCustomImageRequest {
-	s.ResoureGroupId = &v
+func (s *CreateCustomImageRequest) SetResourceGroupId(v string) *CreateCustomImageRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3148,12 +3142,6 @@ type DeleteFirewallTemplateRulesRequest struct {
 	//
 	// This parameter is required.
 	FirewallTemplateRuleId []*string `json:"FirewallTemplateRuleId,omitempty" xml:"FirewallTemplateRuleId,omitempty" type:"Repeated"`
-	// The ID of the simple application server to which the firewall template is applied.
-	//
-	// example:
-	//
-	// 9ae7106e68eb4402b0dcbd48a9de****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -3184,11 +3172,6 @@ func (s *DeleteFirewallTemplateRulesRequest) SetFirewallTemplateId(v string) *De
 
 func (s *DeleteFirewallTemplateRulesRequest) SetFirewallTemplateRuleId(v []*string) *DeleteFirewallTemplateRulesRequest {
 	s.FirewallTemplateRuleId = v
-	return s
-}
-
-func (s *DeleteFirewallTemplateRulesRequest) SetInstanceId(v string) *DeleteFirewallTemplateRulesRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -3259,12 +3242,6 @@ type DeleteFirewallTemplatesRequest struct {
 	//
 	// This parameter is required.
 	FirewallTemplateId []*string `json:"FirewallTemplateId,omitempty" xml:"FirewallTemplateId,omitempty" type:"Repeated"`
-	// The ID of the simple application server to which the firewall templates belong.
-	//
-	// example:
-	//
-	// ace0706b2ac4454d984295a94213****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -3290,11 +3267,6 @@ func (s *DeleteFirewallTemplatesRequest) SetClientToken(v string) *DeleteFirewal
 
 func (s *DeleteFirewallTemplatesRequest) SetFirewallTemplateId(v []*string) *DeleteFirewallTemplatesRequest {
 	s.FirewallTemplateId = v
-	return s
-}
-
-func (s *DeleteFirewallTemplatesRequest) SetInstanceId(v string) *DeleteFirewallTemplatesRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -7071,12 +7043,6 @@ type DescribeFirewallTemplateApplyResultsRequest struct {
 	//
 	// ft-bcf1a7hrdq717****
 	FirewallTemplateId *string `json:"FirewallTemplateId,omitempty" xml:"FirewallTemplateId,omitempty"`
-	// The ID of the simple application server to which the template belongs.
-	//
-	// example:
-	//
-	// ace0706b2ac4454d984295a94213****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -7116,11 +7082,6 @@ func (s *DescribeFirewallTemplateApplyResultsRequest) SetClientToken(v string) *
 
 func (s *DescribeFirewallTemplateApplyResultsRequest) SetFirewallTemplateId(v string) *DescribeFirewallTemplateApplyResultsRequest {
 	s.FirewallTemplateId = &v
-	return s
-}
-
-func (s *DescribeFirewallTemplateApplyResultsRequest) SetInstanceId(v string) *DescribeFirewallTemplateApplyResultsRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -10338,24 +10299,38 @@ func (s *InvokeCommandResponse) SetBody(v *InvokeCommandResponseBody) *InvokeCom
 }
 
 type ListCustomImageShareAccountsRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the shared custom image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-2zehv38jjmwva1ee****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Maximum value: 50.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10398,19 +10373,28 @@ func (s *ListCustomImageShareAccountsRequest) SetRegionId(v string) *ListCustomI
 }
 
 type ListCustomImageShareAccountsResponseBody struct {
+	// The information about the shared custom images.
 	ImageShareUsers []*ListCustomImageShareAccountsResponseBodyImageShareUsers `json:"ImageShareUsers,omitempty" xml:"ImageShareUsers,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 30637AD6-D977-4833-A54C-CC89483E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -10451,7 +10435,14 @@ func (s *ListCustomImageShareAccountsResponseBody) SetTotalCount(v int32) *ListC
 }
 
 type ListCustomImageShareAccountsResponseBodyImageShareUsers struct {
+	// The time when the custom image is shared.
+	//
+	// example:
+	//
+	// 2024-07-15 13:59:21.0
 	SharedTime *string `json:"SharedTime,omitempty" xml:"SharedTime,omitempty"`
+	// The ID of the Alibaba Cloud account whose custom image is shared.
+	//
 	// example:
 	//
 	// 125111425233****
@@ -15331,12 +15322,6 @@ type ModifyFirewallTemplateRequest struct {
 	FirewallTemplateId *string `json:"FirewallTemplateId,omitempty" xml:"FirewallTemplateId,omitempty"`
 	// The firewall rule in the template.
 	FirewallTemplateRule []*ModifyFirewallTemplateRequestFirewallTemplateRule `json:"FirewallTemplateRule,omitempty" xml:"FirewallTemplateRule,omitempty" type:"Repeated"`
-	// The ID of the simple application server to which the firewall template is applied.
-	//
-	// example:
-	//
-	// 2ad1ae67295445f598017499dc****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the firewall template.
 	//
 	// example:
@@ -15378,11 +15363,6 @@ func (s *ModifyFirewallTemplateRequest) SetFirewallTemplateId(v string) *ModifyF
 
 func (s *ModifyFirewallTemplateRequest) SetFirewallTemplateRule(v []*ModifyFirewallTemplateRequestFirewallTemplateRule) *ModifyFirewallTemplateRequest {
 	s.FirewallTemplateRule = v
-	return s
-}
-
-func (s *ModifyFirewallTemplateRequest) SetInstanceId(v string) *ModifyFirewallTemplateRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -16066,18 +16046,26 @@ func (s *ReleasePublicConnectionResponse) SetBody(v *ReleasePublicConnectionResp
 }
 
 type RemoveCustomImageShareAccountRequest struct {
+	// The IDs of the Alibaba Cloud accounts with which you want to unshare the image.
+	//
 	// This parameter is required.
 	Account []*int64 `json:"Account,omitempty" xml:"Account,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the shared custom image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-2zehv38jjmwva1ee****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16115,6 +16103,8 @@ func (s *RemoveCustomImageShareAccountRequest) SetRegionId(v string) *RemoveCust
 }
 
 type RemoveCustomImageShareAccountResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 30637AD6-D977-4833-A54C-CC89483E****
@@ -18939,7 +18929,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 共享镜像给用户
+// Shares a custom image with other Alibaba Cloud accounts in the same region to quickly deploy the same environment configurations for multiple simple application servers at a time. This improves deployment efficiency.
+//
+// Description:
+//
+//   Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+//
+// 	- The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
 //
 // @param request - AddCustomImageShareAccountRequest
 //
@@ -18993,7 +18989,13 @@ func (client *Client) AddCustomImageShareAccountWithOptions(request *AddCustomIm
 
 // Summary:
 //
-// 共享镜像给用户
+// Shares a custom image with other Alibaba Cloud accounts in the same region to quickly deploy the same environment configurations for multiple simple application servers at a time. This improves deployment efficiency.
+//
+// Description:
+//
+//   Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+//
+// 	- The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
 //
 // @param request - AddCustomImageShareAccountRequest
 //
@@ -19118,10 +19120,6 @@ func (client *Client) ApplyFirewallTemplateWithOptions(request *ApplyFirewallTem
 
 	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
@@ -19416,8 +19414,8 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResoureGroupId)) {
-		query["ResoureGroupId"] = request.ResoureGroupId
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemSnapshotId)) {
@@ -20676,10 +20674,6 @@ func (client *Client) DeleteFirewallTemplateRulesWithOptions(request *DeleteFire
 		query["FirewallTemplateRuleId"] = request.FirewallTemplateRuleId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -20754,10 +20748,6 @@ func (client *Client) DeleteFirewallTemplatesWithOptions(request *DeleteFirewall
 
 	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -21990,10 +21980,6 @@ func (client *Client) DescribeFirewallTemplateApplyResultsWithOptions(request *D
 
 	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -23319,7 +23305,7 @@ func (client *Client) InvokeCommand(request *InvokeCommandRequest) (_result *Inv
 
 // Summary:
 //
-// 查询镜像共享给的用户
+// Queries information about custom images that are shared across Alibaba Cloud accounts in a region.
 //
 // @param request - ListCustomImageShareAccountsRequest
 //
@@ -23377,7 +23363,7 @@ func (client *Client) ListCustomImageShareAccountsWithOptions(request *ListCusto
 
 // Summary:
 //
-// 查询镜像共享给的用户
+// Queries information about custom images that are shared across Alibaba Cloud accounts in a region.
 //
 // @param request - ListCustomImageShareAccountsRequest
 //
@@ -24936,10 +24922,6 @@ func (client *Client) ModifyFirewallTemplateWithOptions(request *ModifyFirewallT
 		query["FirewallTemplateRule"] = request.FirewallTemplateRule
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -25415,7 +25397,7 @@ func (client *Client) ReleasePublicConnection(request *ReleasePublicConnectionRe
 
 // Summary:
 //
-// 取消共享镜像到用户
+// Unshares a custom image that is shared across Alibaba Cloud accounts.
 //
 // @param request - RemoveCustomImageShareAccountRequest
 //
@@ -25469,7 +25451,7 @@ func (client *Client) RemoveCustomImageShareAccountWithOptions(request *RemoveCu
 
 // Summary:
 //
-// 取消共享镜像到用户
+// Unshares a custom image that is shared across Alibaba Cloud accounts.
 //
 // @param request - RemoveCustomImageShareAccountRequest
 //
