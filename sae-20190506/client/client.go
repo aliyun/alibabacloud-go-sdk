@@ -15591,6 +15591,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// false
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	EnableIdle         *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The environment variables. Variable description:
 	//
 	// 	- **name**: the name of the environment variable.
@@ -15728,7 +15729,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistration       *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Valid values:
 	//
 	// 	- **-1**: the default value. This value indicates that the minimum number of available instances is not measured by percentage. If you do not configure this parameter, the default value **-1*	- is used.
@@ -16136,6 +16138,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEnableGreyTagRoute(v bool
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetEnableIdle(v bool) *DescribeApplicationConfigResponseBodyData {
+	s.EnableIdle = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetEnvs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Envs = &v
 	return s
@@ -16183,6 +16190,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetMemory(v int32) *Describe
 
 func (s *DescribeApplicationConfigResponseBodyData) SetMicroRegistration(v string) *DescribeApplicationConfigResponseBodyData {
 	s.MicroRegistration = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetMicroRegistrationConfig(v string) *DescribeApplicationConfigResponseBodyData {
+	s.MicroRegistrationConfig = &v
 	return s
 }
 
