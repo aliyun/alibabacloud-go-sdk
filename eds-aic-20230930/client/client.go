@@ -5420,13 +5420,10 @@ func (s *RebootAndroidInstancesInGroupResponse) SetBody(v *RebootAndroidInstance
 type RecoveryFileRequest struct {
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// bf-azhps4rdyi2th****
-	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	// This parameter is required.
+	BackupFileId   *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
 	// example:
 	//
@@ -9233,6 +9230,10 @@ func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// 文件恢复
+//
 // @param request - RecoveryFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9287,6 +9288,10 @@ func (client *Client) RecoveryFileWithOptions(request *RecoveryFileRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 文件恢复
+//
 // @param request - RecoveryFileRequest
 //
 // @return RecoveryFileResponse
