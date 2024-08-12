@@ -4064,11 +4064,12 @@ func (s *Id2MetaVerifyResponse) SetBody(v *Id2MetaVerifyResponseBody) *Id2MetaVe
 }
 
 type InitFaceVerifyRequest struct {
-	AuthId        *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	Birthday      *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
-	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	CallbackUrl   *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	CertName      *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
+	AuthId          *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	Birthday        *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
+	CallbackToken   *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl     *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// example:
 	//
 	// 330103xxxxxxxxxxxx
@@ -4152,6 +4153,11 @@ func (s InitFaceVerifyRequest) String() string {
 
 func (s InitFaceVerifyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InitFaceVerifyRequest) SetAppQualityCheck(v string) *InitFaceVerifyRequest {
+	s.AppQualityCheck = &v
+	return s
 }
 
 func (s *InitFaceVerifyRequest) SetAuthId(v string) *InitFaceVerifyRequest {
@@ -7481,6 +7487,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppQualityCheck)) {
+		query["AppQualityCheck"] = request.AppQualityCheck
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Birthday)) {
 		query["Birthday"] = request.Birthday
 	}
