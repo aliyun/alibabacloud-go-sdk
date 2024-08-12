@@ -6245,7 +6245,8 @@ type ListListenersRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecSensorEnabled *string `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The tags.
 	Tag []*ListListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -6285,6 +6286,11 @@ func (s *ListListenersRequest) SetNextToken(v string) *ListListenersRequest {
 
 func (s *ListListenersRequest) SetRegionId(v string) *ListListenersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListListenersRequest) SetSecSensorEnabled(v string) *ListListenersRequest {
+	s.SecSensorEnabled = &v
 	return s
 }
 
@@ -15609,6 +15615,10 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecSensorEnabled)) {
+		query["SecSensorEnabled"] = request.SecSensorEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
