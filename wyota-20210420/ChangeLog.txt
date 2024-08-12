@@ -1,3 +1,6 @@
+2024-08-12 Version: v1.0.1
+- Generated golang 2021-04-20 for wyota.
+
 2022-04-21 Version: v1.0.0
 - Test wat api.
 
