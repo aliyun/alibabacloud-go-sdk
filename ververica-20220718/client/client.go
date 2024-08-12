@@ -3585,6 +3585,279 @@ func (s *CreateDeploymentResponse) SetBody(v *CreateDeploymentResponseBody) *Cre
 	return s
 }
 
+type CreateDeploymentDraftHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s CreateDeploymentDraftHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentDraftHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentDraftHeaders) SetCommonHeaders(v map[string]*string) *CreateDeploymentDraftHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateDeploymentDraftHeaders) SetWorkspace(v string) *CreateDeploymentDraftHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type CreateDeploymentDraftRequest struct {
+	// This parameter is required.
+	Body *DeploymentDraft `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDeploymentDraftRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentDraftRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentDraftRequest) SetBody(v *DeploymentDraft) *CreateDeploymentDraftRequest {
+	s.Body = v
+	return s
+}
+
+type CreateDeploymentDraftResponseBody struct {
+	Data *DeploymentDraft `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateDeploymentDraftResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentDraftResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentDraftResponseBody) SetData(v *DeploymentDraft) *CreateDeploymentDraftResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDeploymentDraftResponseBody) SetErrorCode(v string) *CreateDeploymentDraftResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDeploymentDraftResponseBody) SetErrorMessage(v string) *CreateDeploymentDraftResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDeploymentDraftResponseBody) SetHttpCode(v int32) *CreateDeploymentDraftResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateDeploymentDraftResponseBody) SetRequestId(v string) *CreateDeploymentDraftResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDeploymentDraftResponseBody) SetSuccess(v bool) *CreateDeploymentDraftResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDeploymentDraftResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDeploymentDraftResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDeploymentDraftResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentDraftResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentDraftResponse) SetHeaders(v map[string]*string) *CreateDeploymentDraftResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeploymentDraftResponse) SetStatusCode(v int32) *CreateDeploymentDraftResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeploymentDraftResponse) SetBody(v *CreateDeploymentDraftResponseBody) *CreateDeploymentDraftResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFolderHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s CreateFolderHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderHeaders) SetCommonHeaders(v map[string]*string) *CreateFolderHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateFolderHeaders) SetWorkspace(v string) *CreateFolderHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type CreateFolderRequest struct {
+	Body *Folder `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderRequest) SetBody(v *Folder) *CreateFolderRequest {
+	s.Body = v
+	return s
+}
+
+type CreateFolderResponseBody struct {
+	Data *Folder `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderResponseBody) SetData(v *Folder) *CreateFolderResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetErrorCode(v string) *CreateFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetErrorMessage(v string) *CreateFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetHttpCode(v int32) *CreateFolderResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetRequestId(v string) *CreateFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetSuccess(v bool) *CreateFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderResponse) SetHeaders(v map[string]*string) *CreateFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFolderResponse) SetStatusCode(v int32) *CreateFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFolderResponse) SetBody(v *CreateFolderResponseBody) *CreateFolderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -3925,6 +4198,162 @@ func (s *CreateSavepointResponse) SetBody(v *CreateSavepointResponseBody) *Creat
 	return s
 }
 
+type CreateUdfArtifactHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s CreateUdfArtifactHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfArtifactHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfArtifactHeaders) SetCommonHeaders(v map[string]*string) *CreateUdfArtifactHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateUdfArtifactHeaders) SetWorkspace(v string) *CreateUdfArtifactHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type CreateUdfArtifactRequest struct {
+	// The resource file of the UDF.
+	//
+	// This parameter is required.
+	Body *UdfArtifact `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateUdfArtifactRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfArtifactRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfArtifactRequest) SetBody(v *UdfArtifact) *CreateUdfArtifactRequest {
+	s.Body = v
+	return s
+}
+
+type CreateUdfArtifactResponseBody struct {
+	// The result of creating an artifact configuration for the UDF.
+	Data *CreateUdfArtifactResult `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateUdfArtifactResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfArtifactResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfArtifactResponseBody) SetData(v *CreateUdfArtifactResult) *CreateUdfArtifactResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateUdfArtifactResponseBody) SetErrorCode(v string) *CreateUdfArtifactResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateUdfArtifactResponseBody) SetErrorMessage(v string) *CreateUdfArtifactResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateUdfArtifactResponseBody) SetHttpCode(v int32) *CreateUdfArtifactResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateUdfArtifactResponseBody) SetRequestId(v string) *CreateUdfArtifactResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateUdfArtifactResponseBody) SetSuccess(v bool) *CreateUdfArtifactResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateUdfArtifactResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUdfArtifactResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateUdfArtifactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfArtifactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfArtifactResponse) SetHeaders(v map[string]*string) *CreateUdfArtifactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUdfArtifactResponse) SetStatusCode(v int32) *CreateUdfArtifactResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUdfArtifactResponse) SetBody(v *CreateUdfArtifactResponseBody) *CreateUdfArtifactResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVariableHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -4083,6 +4512,142 @@ func (s *CreateVariableResponse) SetBody(v *CreateVariableResponseBody) *CreateV
 	return s
 }
 
+type DeleteCustomConnectorHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteCustomConnectorHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomConnectorHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomConnectorHeaders) SetCommonHeaders(v map[string]*string) *DeleteCustomConnectorHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteCustomConnectorHeaders) SetWorkspace(v string) *DeleteCustomConnectorHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteCustomConnectorResponseBody struct {
+	// If the value of success was true, a list of deployments in which custom connectors were deleted was returned. If the value of success was false, a null value was returned.
+	Data []*TableMeta `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteCustomConnectorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomConnectorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomConnectorResponseBody) SetData(v []*TableMeta) *DeleteCustomConnectorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteCustomConnectorResponseBody) SetErrorCode(v string) *DeleteCustomConnectorResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteCustomConnectorResponseBody) SetErrorMessage(v string) *DeleteCustomConnectorResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteCustomConnectorResponseBody) SetHttpCode(v int32) *DeleteCustomConnectorResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteCustomConnectorResponseBody) SetRequestId(v string) *DeleteCustomConnectorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomConnectorResponseBody) SetSuccess(v bool) *DeleteCustomConnectorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCustomConnectorResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomConnectorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomConnectorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomConnectorResponse) SetHeaders(v map[string]*string) *DeleteCustomConnectorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomConnectorResponse) SetStatusCode(v int32) *DeleteCustomConnectorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomConnectorResponse) SetBody(v *DeleteCustomConnectorResponseBody) *DeleteCustomConnectorResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -4208,6 +4773,232 @@ func (s *DeleteDeploymentResponse) SetStatusCode(v int32) *DeleteDeploymentRespo
 }
 
 func (s *DeleteDeploymentResponse) SetBody(v *DeleteDeploymentResponseBody) *DeleteDeploymentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDeploymentDraftHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteDeploymentDraftHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentDraftHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentDraftHeaders) SetCommonHeaders(v map[string]*string) *DeleteDeploymentDraftHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteDeploymentDraftHeaders) SetWorkspace(v string) *DeleteDeploymentDraftHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteDeploymentDraftResponseBody struct {
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteDeploymentDraftResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentDraftResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentDraftResponseBody) SetErrorCode(v string) *DeleteDeploymentDraftResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteDeploymentDraftResponseBody) SetErrorMessage(v string) *DeleteDeploymentDraftResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDeploymentDraftResponseBody) SetHttpCode(v int32) *DeleteDeploymentDraftResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteDeploymentDraftResponseBody) SetRequestId(v string) *DeleteDeploymentDraftResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDeploymentDraftResponseBody) SetSuccess(v bool) *DeleteDeploymentDraftResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDeploymentDraftResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDeploymentDraftResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDeploymentDraftResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentDraftResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentDraftResponse) SetHeaders(v map[string]*string) *DeleteDeploymentDraftResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeploymentDraftResponse) SetStatusCode(v int32) *DeleteDeploymentDraftResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDeploymentDraftResponse) SetBody(v *DeleteDeploymentDraftResponseBody) *DeleteDeploymentDraftResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFolderHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c96306e2b****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteFolderHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderHeaders) SetCommonHeaders(v map[string]*string) *DeleteFolderHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteFolderHeaders) SetWorkspace(v string) *DeleteFolderHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteFolderResponseBody struct {
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderResponseBody) SetErrorCode(v string) *DeleteFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetErrorMessage(v string) *DeleteFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetHttpCode(v int32) *DeleteFolderResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetRequestId(v string) *DeleteFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetSuccess(v bool) *DeleteFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderResponse) SetHeaders(v map[string]*string) *DeleteFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFolderResponse) SetStatusCode(v int32) *DeleteFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFolderResponse) SetBody(v *DeleteFolderResponseBody) *DeleteFolderResponse {
 	s.Body = v
 	return s
 }
@@ -4599,6 +5390,291 @@ func (s *DeleteSavepointResponse) SetBody(v *DeleteSavepointResponseBody) *Delet
 	return s
 }
 
+type DeleteUdfArtifactHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteUdfArtifactHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfArtifactHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfArtifactHeaders) SetCommonHeaders(v map[string]*string) *DeleteUdfArtifactHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteUdfArtifactHeaders) SetWorkspace(v string) *DeleteUdfArtifactHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteUdfArtifactResponseBody struct {
+	Data *DeleteUdfArtifactResult `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCF-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteUdfArtifactResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfArtifactResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfArtifactResponseBody) SetData(v *DeleteUdfArtifactResult) *DeleteUdfArtifactResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteUdfArtifactResponseBody) SetErrorCode(v string) *DeleteUdfArtifactResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteUdfArtifactResponseBody) SetErrorMessage(v string) *DeleteUdfArtifactResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteUdfArtifactResponseBody) SetHttpCode(v int32) *DeleteUdfArtifactResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteUdfArtifactResponseBody) SetRequestId(v string) *DeleteUdfArtifactResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteUdfArtifactResponseBody) SetSuccess(v bool) *DeleteUdfArtifactResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteUdfArtifactResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUdfArtifactResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUdfArtifactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfArtifactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfArtifactResponse) SetHeaders(v map[string]*string) *DeleteUdfArtifactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUdfArtifactResponse) SetStatusCode(v int32) *DeleteUdfArtifactResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUdfArtifactResponse) SetBody(v *DeleteUdfArtifactResponseBody) *DeleteUdfArtifactResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteUdfFunctionHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteUdfFunctionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfFunctionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfFunctionHeaders) SetCommonHeaders(v map[string]*string) *DeleteUdfFunctionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteUdfFunctionHeaders) SetWorkspace(v string) *DeleteUdfFunctionHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteUdfFunctionRequest struct {
+	// The name of the class that corresponds to the UDF.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Category
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// The name of the resource that corresponds to the UDF that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-udf
+	UdfArtifactName *string `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
+}
+
+func (s DeleteUdfFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfFunctionRequest) SetClassName(v string) *DeleteUdfFunctionRequest {
+	s.ClassName = &v
+	return s
+}
+
+func (s *DeleteUdfFunctionRequest) SetUdfArtifactName(v string) *DeleteUdfFunctionRequest {
+	s.UdfArtifactName = &v
+	return s
+}
+
+type DeleteUdfFunctionResponseBody struct {
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteUdfFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfFunctionResponseBody) SetErrorCode(v string) *DeleteUdfFunctionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteUdfFunctionResponseBody) SetErrorMessage(v string) *DeleteUdfFunctionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteUdfFunctionResponseBody) SetHttpCode(v int32) *DeleteUdfFunctionResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteUdfFunctionResponseBody) SetRequestId(v string) *DeleteUdfFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteUdfFunctionResponseBody) SetSuccess(v bool) *DeleteUdfFunctionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteUdfFunctionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUdfFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUdfFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdfFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdfFunctionResponse) SetHeaders(v map[string]*string) *DeleteUdfFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUdfFunctionResponse) SetStatusCode(v int32) *DeleteUdfFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUdfFunctionResponse) SetBody(v *DeleteUdfFunctionResponseBody) *DeleteUdfFunctionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVariableHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -4724,6 +5800,299 @@ func (s *DeleteVariableResponse) SetStatusCode(v int32) *DeleteVariableResponse 
 }
 
 func (s *DeleteVariableResponse) SetBody(v *DeleteVariableResponseBody) *DeleteVariableResponse {
+	s.Body = v
+	return s
+}
+
+type DeployDeploymentDraftAsyncHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeployDeploymentDraftAsyncHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDeploymentDraftAsyncHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDeploymentDraftAsyncHeaders) SetCommonHeaders(v map[string]*string) *DeployDeploymentDraftAsyncHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncHeaders) SetWorkspace(v string) *DeployDeploymentDraftAsyncHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeployDeploymentDraftAsyncRequest struct {
+	// This parameter is required.
+	Body *DraftDeployParams `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployDeploymentDraftAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDeploymentDraftAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDeploymentDraftAsyncRequest) SetBody(v *DraftDeployParams) *DeployDeploymentDraftAsyncRequest {
+	s.Body = v
+	return s
+}
+
+type DeployDeploymentDraftAsyncResponseBody struct {
+	Data *DeployDeploymentDraftAsyncResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeployDeploymentDraftAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDeploymentDraftAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDeploymentDraftAsyncResponseBody) SetData(v *DeployDeploymentDraftAsyncResponseBodyData) *DeployDeploymentDraftAsyncResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncResponseBody) SetErrorCode(v string) *DeployDeploymentDraftAsyncResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncResponseBody) SetErrorMessage(v string) *DeployDeploymentDraftAsyncResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncResponseBody) SetHttpCode(v int32) *DeployDeploymentDraftAsyncResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncResponseBody) SetRequestId(v string) *DeployDeploymentDraftAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncResponseBody) SetSuccess(v bool) *DeployDeploymentDraftAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeployDeploymentDraftAsyncResponseBodyData struct {
+	// example:
+	//
+	// b3dcdb25-bf36-457d-92ba-a36077e8****
+	TicketId *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
+}
+
+func (s DeployDeploymentDraftAsyncResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDeploymentDraftAsyncResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDeploymentDraftAsyncResponseBodyData) SetTicketId(v string) *DeployDeploymentDraftAsyncResponseBodyData {
+	s.TicketId = &v
+	return s
+}
+
+type DeployDeploymentDraftAsyncResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployDeploymentDraftAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployDeploymentDraftAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDeploymentDraftAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDeploymentDraftAsyncResponse) SetHeaders(v map[string]*string) *DeployDeploymentDraftAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncResponse) SetStatusCode(v int32) *DeployDeploymentDraftAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployDeploymentDraftAsyncResponse) SetBody(v *DeployDeploymentDraftAsyncResponseBody) *DeployDeploymentDraftAsyncResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteSqlStatementHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 710d6a64d8c34d
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ExecuteSqlStatementHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlStatementHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlStatementHeaders) SetCommonHeaders(v map[string]*string) *ExecuteSqlStatementHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExecuteSqlStatementHeaders) SetWorkspace(v string) *ExecuteSqlStatementHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ExecuteSqlStatementRequest struct {
+	Body *SqlStatementWithContext `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteSqlStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlStatementRequest) SetBody(v *SqlStatementWithContext) *ExecuteSqlStatementRequest {
+	s.Body = v
+	return s
+}
+
+type ExecuteSqlStatementResponseBody struct {
+	Data *SqlStatementExecuteResult `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteSqlStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlStatementResponseBody) SetData(v *SqlStatementExecuteResult) *ExecuteSqlStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteSqlStatementResponseBody) SetErrorCode(v string) *ExecuteSqlStatementResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ExecuteSqlStatementResponseBody) SetErrorMessage(v string) *ExecuteSqlStatementResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ExecuteSqlStatementResponseBody) SetHttpCode(v int32) *ExecuteSqlStatementResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ExecuteSqlStatementResponseBody) SetRequestId(v string) *ExecuteSqlStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteSqlStatementResponseBody) SetSuccess(v bool) *ExecuteSqlStatementResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteSqlStatementResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteSqlStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteSqlStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlStatementResponse) SetHeaders(v map[string]*string) *ExecuteSqlStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteSqlStatementResponse) SetStatusCode(v int32) *ExecuteSqlStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteSqlStatementResponse) SetBody(v *ExecuteSqlStatementResponseBody) *ExecuteSqlStatementResponse {
 	s.Body = v
 	return s
 }
@@ -5115,6 +6484,403 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncResponse) SetBody(v *GenerateReso
 	return s
 }
 
+type GetCatalogsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetCatalogsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogsHeaders) SetCommonHeaders(v map[string]*string) *GetCatalogsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetCatalogsHeaders) SetWorkspace(v string) *GetCatalogsHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetCatalogsRequest struct {
+	// example:
+	//
+	// paimon
+	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+}
+
+func (s GetCatalogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogsRequest) SetCatalogName(v string) *GetCatalogsRequest {
+	s.CatalogName = &v
+	return s
+}
+
+type GetCatalogsResponseBody struct {
+	Data []*Catalog `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetCatalogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogsResponseBody) SetData(v []*Catalog) *GetCatalogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCatalogsResponseBody) SetErrorCode(v string) *GetCatalogsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetCatalogsResponseBody) SetErrorMessage(v string) *GetCatalogsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCatalogsResponseBody) SetHttpCode(v int32) *GetCatalogsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetCatalogsResponseBody) SetRequestId(v string) *GetCatalogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCatalogsResponseBody) SetSuccess(v bool) *GetCatalogsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCatalogsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCatalogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCatalogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogsResponse) SetHeaders(v map[string]*string) *GetCatalogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCatalogsResponse) SetStatusCode(v int32) *GetCatalogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCatalogsResponse) SetBody(v *GetCatalogsResponseBody) *GetCatalogsResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatabasesHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetDatabasesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabasesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabasesHeaders) SetCommonHeaders(v map[string]*string) *GetDatabasesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDatabasesHeaders) SetWorkspace(v string) *GetDatabasesHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetDatabasesRequest struct {
+	// example:
+	//
+	// paimon-ods
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+}
+
+func (s GetDatabasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabasesRequest) SetDatabaseName(v string) *GetDatabasesRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+type GetDatabasesResponseBody struct {
+	Data []*Database `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabasesResponseBody) SetData(v []*Database) *GetDatabasesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDatabasesResponseBody) SetErrorCode(v string) *GetDatabasesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDatabasesResponseBody) SetErrorMessage(v string) *GetDatabasesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDatabasesResponseBody) SetHttpCode(v int32) *GetDatabasesResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetDatabasesResponseBody) SetRequestId(v string) *GetDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatabasesResponseBody) SetSuccess(v bool) *GetDatabasesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDatabasesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabasesResponse) SetHeaders(v map[string]*string) *GetDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabasesResponse) SetStatusCode(v int32) *GetDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabasesResponse) SetBody(v *GetDatabasesResponseBody) *GetDatabasesResponse {
+	s.Body = v
+	return s
+}
+
+type GetDeployDeploymentDraftResultHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 710d6a64d8****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetDeployDeploymentDraftResultHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeployDeploymentDraftResultHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeployDeploymentDraftResultHeaders) SetCommonHeaders(v map[string]*string) *GetDeployDeploymentDraftResultHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultHeaders) SetWorkspace(v string) *GetDeployDeploymentDraftResultHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetDeployDeploymentDraftResultResponseBody struct {
+	Data *AsyncDraftDeployResult `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDeployDeploymentDraftResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeployDeploymentDraftResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeployDeploymentDraftResultResponseBody) SetData(v *AsyncDraftDeployResult) *GetDeployDeploymentDraftResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultResponseBody) SetErrorCode(v string) *GetDeployDeploymentDraftResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultResponseBody) SetErrorMessage(v string) *GetDeployDeploymentDraftResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultResponseBody) SetHttpCode(v int32) *GetDeployDeploymentDraftResultResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultResponseBody) SetRequestId(v string) *GetDeployDeploymentDraftResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultResponseBody) SetSuccess(v bool) *GetDeployDeploymentDraftResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDeployDeploymentDraftResultResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeployDeploymentDraftResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDeployDeploymentDraftResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeployDeploymentDraftResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeployDeploymentDraftResultResponse) SetHeaders(v map[string]*string) *GetDeployDeploymentDraftResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultResponse) SetStatusCode(v int32) *GetDeployDeploymentDraftResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeployDeploymentDraftResultResponse) SetBody(v *GetDeployDeploymentDraftResultResponseBody) *GetDeployDeploymentDraftResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -5253,6 +7019,405 @@ func (s *GetDeploymentResponse) SetBody(v *GetDeploymentResponseBody) *GetDeploy
 	return s
 }
 
+type GetDeploymentDraftHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetDeploymentDraftHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentDraftHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentDraftHeaders) SetCommonHeaders(v map[string]*string) *GetDeploymentDraftHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDeploymentDraftHeaders) SetWorkspace(v string) *GetDeploymentDraftHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetDeploymentDraftResponseBody struct {
+	Data *DeploymentDraft `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDeploymentDraftResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentDraftResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentDraftResponseBody) SetData(v *DeploymentDraft) *GetDeploymentDraftResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDeploymentDraftResponseBody) SetErrorCode(v string) *GetDeploymentDraftResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDeploymentDraftResponseBody) SetErrorMessage(v string) *GetDeploymentDraftResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDeploymentDraftResponseBody) SetHttpCode(v int32) *GetDeploymentDraftResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetDeploymentDraftResponseBody) SetRequestId(v string) *GetDeploymentDraftResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeploymentDraftResponseBody) SetSuccess(v bool) *GetDeploymentDraftResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDeploymentDraftResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeploymentDraftResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDeploymentDraftResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentDraftResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentDraftResponse) SetHeaders(v map[string]*string) *GetDeploymentDraftResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeploymentDraftResponse) SetStatusCode(v int32) *GetDeploymentDraftResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeploymentDraftResponse) SetBody(v *GetDeploymentDraftResponseBody) *GetDeploymentDraftResponse {
+	s.Body = v
+	return s
+}
+
+type GetDeploymentDraftLockHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetDeploymentDraftLockHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentDraftLockHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentDraftLockHeaders) SetCommonHeaders(v map[string]*string) *GetDeploymentDraftLockHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDeploymentDraftLockHeaders) SetWorkspace(v string) *GetDeploymentDraftLockHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetDeploymentDraftLockRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c84d73be-40ad-4627-8bdd-fa1eba51b234
+	DeploymentDraftId *string `json:"deploymentDraftId,omitempty" xml:"deploymentDraftId,omitempty"`
+}
+
+func (s GetDeploymentDraftLockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentDraftLockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentDraftLockRequest) SetDeploymentDraftId(v string) *GetDeploymentDraftLockRequest {
+	s.DeploymentDraftId = &v
+	return s
+}
+
+type GetDeploymentDraftLockResponseBody struct {
+	Data *Lock `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDeploymentDraftLockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentDraftLockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentDraftLockResponseBody) SetData(v *Lock) *GetDeploymentDraftLockResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDeploymentDraftLockResponseBody) SetErrorCode(v string) *GetDeploymentDraftLockResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDeploymentDraftLockResponseBody) SetErrorMessage(v string) *GetDeploymentDraftLockResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDeploymentDraftLockResponseBody) SetHttpCode(v int32) *GetDeploymentDraftLockResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetDeploymentDraftLockResponseBody) SetRequestId(v string) *GetDeploymentDraftLockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeploymentDraftLockResponseBody) SetSuccess(v bool) *GetDeploymentDraftLockResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDeploymentDraftLockResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeploymentDraftLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDeploymentDraftLockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentDraftLockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentDraftLockResponse) SetHeaders(v map[string]*string) *GetDeploymentDraftLockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeploymentDraftLockResponse) SetStatusCode(v int32) *GetDeploymentDraftLockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeploymentDraftLockResponse) SetBody(v *GetDeploymentDraftLockResponseBody) *GetDeploymentDraftLockResponse {
+	s.Body = v
+	return s
+}
+
+type GetFolderHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetFolderHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderHeaders) SetCommonHeaders(v map[string]*string) *GetFolderHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFolderHeaders) SetWorkspace(v string) *GetFolderHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetFolderRequest struct {
+	// example:
+	//
+	// 89097
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+}
+
+func (s GetFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderRequest) SetFolderId(v string) *GetFolderRequest {
+	s.FolderId = &v
+	return s
+}
+
+type GetFolderResponseBody struct {
+	Data *Folder `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderResponseBody) SetData(v *Folder) *GetFolderResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetErrorCode(v string) *GetFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetErrorMessage(v string) *GetFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetHttpCode(v int32) *GetFolderResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetRequestId(v string) *GetFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetSuccess(v bool) *GetFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFolderResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderResponse) SetHeaders(v map[string]*string) *GetFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFolderResponse) SetStatusCode(v int32) *GetFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFolderResponse) SetBody(v *GetFolderResponseBody) *GetFolderResponse {
+	s.Body = v
+	return s
+}
+
 type GetGenerateResourcePlanResultHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -5387,6 +7552,125 @@ func (s *GetGenerateResourcePlanResultResponse) SetStatusCode(v int32) *GetGener
 }
 
 func (s *GetGenerateResourcePlanResultResponse) SetBody(v *GetGenerateResourcePlanResultResponseBody) *GetGenerateResourcePlanResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotUpdateJobResultHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetHotUpdateJobResultHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotUpdateJobResultHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotUpdateJobResultHeaders) SetCommonHeaders(v map[string]*string) *GetHotUpdateJobResultHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetHotUpdateJobResultHeaders) SetWorkspace(v string) *GetHotUpdateJobResultHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetHotUpdateJobResultResponseBody struct {
+	Data *HotUpdateJobResult `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCF-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetHotUpdateJobResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotUpdateJobResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotUpdateJobResultResponseBody) SetData(v *HotUpdateJobResult) *GetHotUpdateJobResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetHotUpdateJobResultResponseBody) SetErrorCode(v string) *GetHotUpdateJobResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetHotUpdateJobResultResponseBody) SetErrorMessage(v string) *GetHotUpdateJobResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetHotUpdateJobResultResponseBody) SetHttpCode(v int32) *GetHotUpdateJobResultResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetHotUpdateJobResultResponseBody) SetRequestId(v string) *GetHotUpdateJobResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotUpdateJobResultResponseBody) SetSuccess(v bool) *GetHotUpdateJobResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetHotUpdateJobResultResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotUpdateJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHotUpdateJobResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotUpdateJobResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotUpdateJobResultResponse) SetHeaders(v map[string]*string) *GetHotUpdateJobResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotUpdateJobResultResponse) SetStatusCode(v int32) *GetHotUpdateJobResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotUpdateJobResultResponse) SetBody(v *GetHotUpdateJobResultResponseBody) *GetHotUpdateJobResultResponse {
 	s.Body = v
 	return s
 }
@@ -5665,6 +7949,160 @@ func (s *GetLatestJobStartLogResponse) SetBody(v *GetLatestJobStartLogResponseBo
 	return s
 }
 
+type GetLineageInfoHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 710d6a64d8****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetLineageInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageInfoHeaders) SetCommonHeaders(v map[string]*string) *GetLineageInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLineageInfoHeaders) SetWorkspace(v string) *GetLineageInfoHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetLineageInfoRequest struct {
+	// The parameters about the lineage information.
+	Body *GetLineageInfoParams `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLineageInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageInfoRequest) SetBody(v *GetLineageInfoParams) *GetLineageInfoRequest {
+	s.Body = v
+	return s
+}
+
+type GetLineageInfoResponseBody struct {
+	// The lineage information.
+	Data *LineageInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetLineageInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageInfoResponseBody) SetData(v *LineageInfo) *GetLineageInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLineageInfoResponseBody) SetErrorCode(v string) *GetLineageInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetLineageInfoResponseBody) SetErrorMessage(v string) *GetLineageInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetLineageInfoResponseBody) SetHttpCode(v int32) *GetLineageInfoResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetLineageInfoResponseBody) SetRequestId(v string) *GetLineageInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLineageInfoResponseBody) SetSuccess(v bool) *GetLineageInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLineageInfoResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLineageInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLineageInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageInfoResponse) SetHeaders(v map[string]*string) *GetLineageInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLineageInfoResponse) SetStatusCode(v int32) *GetLineageInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLineageInfoResponse) SetBody(v *GetLineageInfoResponseBody) *GetLineageInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -5937,6 +8375,750 @@ func (s *GetSavepointResponse) SetStatusCode(v int32) *GetSavepointResponse {
 }
 
 func (s *GetSavepointResponse) SetBody(v *GetSavepointResponseBody) *GetSavepointResponse {
+	s.Body = v
+	return s
+}
+
+type GetTablesHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetTablesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTablesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTablesHeaders) SetCommonHeaders(v map[string]*string) *GetTablesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTablesHeaders) SetWorkspace(v string) *GetTablesHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetTablesRequest struct {
+	// example:
+	//
+	// item
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+}
+
+func (s GetTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTablesRequest) SetTableName(v string) *GetTablesRequest {
+	s.TableName = &v
+	return s
+}
+
+type GetTablesResponseBody struct {
+	Data []*Table `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// ECE641B2-AB0B-4174-9C3B-885881558637
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTablesResponseBody) SetData(v []*Table) *GetTablesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTablesResponseBody) SetErrorCode(v string) *GetTablesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTablesResponseBody) SetErrorMessage(v string) *GetTablesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTablesResponseBody) SetHttpCode(v int32) *GetTablesResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetTablesResponseBody) SetRequestId(v string) *GetTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTablesResponseBody) SetSuccess(v bool) *GetTablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTablesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTablesResponse) SetHeaders(v map[string]*string) *GetTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTablesResponse) SetStatusCode(v int32) *GetTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTablesResponse) SetBody(v *GetTablesResponseBody) *GetTablesResponse {
+	s.Body = v
+	return s
+}
+
+type GetUdfArtifactsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 710d6a64d8c34d
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetUdfArtifactsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUdfArtifactsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUdfArtifactsHeaders) SetCommonHeaders(v map[string]*string) *GetUdfArtifactsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUdfArtifactsHeaders) SetWorkspace(v string) *GetUdfArtifactsHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetUdfArtifactsRequest struct {
+	// The name of the JAR or Python file that corresponds to the UDF.
+	//
+	// example:
+	//
+	// test-udf
+	UdfArtifactName *string `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
+}
+
+func (s GetUdfArtifactsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUdfArtifactsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUdfArtifactsRequest) SetUdfArtifactName(v string) *GetUdfArtifactsRequest {
+	s.UdfArtifactName = &v
+	return s
+}
+
+type GetUdfArtifactsResponseBody struct {
+	// If the value of success was true, the details of the JAR or Python file that corresponds to the UDF were returned. If the value of success was false, a null value was returned.
+	Data []*UdfArtifact `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetUdfArtifactsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUdfArtifactsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUdfArtifactsResponseBody) SetData(v []*UdfArtifact) *GetUdfArtifactsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUdfArtifactsResponseBody) SetErrorCode(v string) *GetUdfArtifactsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetUdfArtifactsResponseBody) SetErrorMessage(v string) *GetUdfArtifactsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetUdfArtifactsResponseBody) SetHttpCode(v int32) *GetUdfArtifactsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetUdfArtifactsResponseBody) SetRequestId(v string) *GetUdfArtifactsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUdfArtifactsResponseBody) SetSuccess(v bool) *GetUdfArtifactsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetUdfArtifactsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUdfArtifactsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUdfArtifactsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUdfArtifactsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUdfArtifactsResponse) SetHeaders(v map[string]*string) *GetUdfArtifactsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUdfArtifactsResponse) SetStatusCode(v int32) *GetUdfArtifactsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUdfArtifactsResponse) SetBody(v *GetUdfArtifactsResponseBody) *GetUdfArtifactsResponse {
+	s.Body = v
+	return s
+}
+
+type HotUpdateJobHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s HotUpdateJobHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotUpdateJobHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotUpdateJobHeaders) SetCommonHeaders(v map[string]*string) *HotUpdateJobHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotUpdateJobHeaders) SetWorkspace(v string) *HotUpdateJobHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type HotUpdateJobResponseBody struct {
+	// The dynamic update result.
+	Data *HotUpdateJobResult `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s HotUpdateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotUpdateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotUpdateJobResponseBody) SetData(v *HotUpdateJobResult) *HotUpdateJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *HotUpdateJobResponseBody) SetErrorCode(v string) *HotUpdateJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *HotUpdateJobResponseBody) SetErrorMessage(v string) *HotUpdateJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *HotUpdateJobResponseBody) SetHttpCode(v int32) *HotUpdateJobResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *HotUpdateJobResponseBody) SetRequestId(v string) *HotUpdateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotUpdateJobResponseBody) SetSuccess(v bool) *HotUpdateJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type HotUpdateJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotUpdateJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s HotUpdateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotUpdateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotUpdateJobResponse) SetHeaders(v map[string]*string) *HotUpdateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotUpdateJobResponse) SetStatusCode(v int32) *HotUpdateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotUpdateJobResponse) SetBody(v *HotUpdateJobResponseBody) *HotUpdateJobResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomConnectorsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ListCustomConnectorsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomConnectorsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomConnectorsHeaders) SetCommonHeaders(v map[string]*string) *ListCustomConnectorsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListCustomConnectorsHeaders) SetWorkspace(v string) *ListCustomConnectorsHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ListCustomConnectorsResponseBody struct {
+	// If the value of success was true, the list of custom connectors in the namespace was returned. If the value of success was false, a null value was returned.
+	Data []*Connector `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListCustomConnectorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomConnectorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomConnectorsResponseBody) SetData(v []*Connector) *ListCustomConnectorsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCustomConnectorsResponseBody) SetErrorCode(v string) *ListCustomConnectorsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListCustomConnectorsResponseBody) SetErrorMessage(v string) *ListCustomConnectorsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCustomConnectorsResponseBody) SetHttpCode(v int32) *ListCustomConnectorsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListCustomConnectorsResponseBody) SetRequestId(v string) *ListCustomConnectorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomConnectorsResponseBody) SetSuccess(v bool) *ListCustomConnectorsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCustomConnectorsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCustomConnectorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCustomConnectorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomConnectorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomConnectorsResponse) SetHeaders(v map[string]*string) *ListCustomConnectorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomConnectorsResponse) SetStatusCode(v int32) *ListCustomConnectorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomConnectorsResponse) SetBody(v *ListCustomConnectorsResponseBody) *ListCustomConnectorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeploymentDraftsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ListDeploymentDraftsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentDraftsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentDraftsHeaders) SetCommonHeaders(v map[string]*string) *ListDeploymentDraftsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListDeploymentDraftsHeaders) SetWorkspace(v string) *ListDeploymentDraftsHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ListDeploymentDraftsRequest struct {
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListDeploymentDraftsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentDraftsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentDraftsRequest) SetPageIndex(v int32) *ListDeploymentDraftsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsRequest) SetPageSize(v int32) *ListDeploymentDraftsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDeploymentDraftsResponseBody struct {
+	Data []*DeploymentDraft `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 69
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListDeploymentDraftsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentDraftsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetData(v []*DeploymentDraft) *ListDeploymentDraftsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetErrorCode(v string) *ListDeploymentDraftsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetErrorMessage(v string) *ListDeploymentDraftsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetHttpCode(v int32) *ListDeploymentDraftsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetPageIndex(v int32) *ListDeploymentDraftsResponseBody {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetPageSize(v int32) *ListDeploymentDraftsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetRequestId(v string) *ListDeploymentDraftsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetSuccess(v bool) *ListDeploymentDraftsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponseBody) SetTotalSize(v int32) *ListDeploymentDraftsResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type ListDeploymentDraftsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentDraftsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeploymentDraftsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentDraftsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentDraftsResponse) SetHeaders(v map[string]*string) *ListDeploymentDraftsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponse) SetStatusCode(v int32) *ListDeploymentDraftsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeploymentDraftsResponse) SetBody(v *ListDeploymentDraftsResponseBody) *ListDeploymentDraftsResponse {
 	s.Body = v
 	return s
 }
@@ -7605,6 +10787,352 @@ func (s *ListVariablesResponse) SetBody(v *ListVariablesResponseBody) *ListVaria
 	return s
 }
 
+type RegisterCustomConnectorHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s RegisterCustomConnectorHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterCustomConnectorHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterCustomConnectorHeaders) SetCommonHeaders(v map[string]*string) *RegisterCustomConnectorHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RegisterCustomConnectorHeaders) SetWorkspace(v string) *RegisterCustomConnectorHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type RegisterCustomConnectorRequest struct {
+	// The URL in which the JAR package of the custom connector is stored. The URL must be connected to the platform.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://flink/connector/mysql123
+	JarUrl *string `json:"jarUrl,omitempty" xml:"jarUrl,omitempty"`
+}
+
+func (s RegisterCustomConnectorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterCustomConnectorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterCustomConnectorRequest) SetJarUrl(v string) *RegisterCustomConnectorRequest {
+	s.JarUrl = &v
+	return s
+}
+
+type RegisterCustomConnectorResponseBody struct {
+	// If the value of success was true, a list of deployments in which custom connectors were registered was returned. If the value of success was false, a null value was returned.
+	Data []*Connector `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RegisterCustomConnectorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterCustomConnectorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterCustomConnectorResponseBody) SetData(v []*Connector) *RegisterCustomConnectorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RegisterCustomConnectorResponseBody) SetErrorCode(v string) *RegisterCustomConnectorResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RegisterCustomConnectorResponseBody) SetErrorMessage(v string) *RegisterCustomConnectorResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RegisterCustomConnectorResponseBody) SetHttpCode(v int32) *RegisterCustomConnectorResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *RegisterCustomConnectorResponseBody) SetRequestId(v string) *RegisterCustomConnectorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterCustomConnectorResponseBody) SetSuccess(v bool) *RegisterCustomConnectorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RegisterCustomConnectorResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterCustomConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RegisterCustomConnectorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterCustomConnectorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterCustomConnectorResponse) SetHeaders(v map[string]*string) *RegisterCustomConnectorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterCustomConnectorResponse) SetStatusCode(v int32) *RegisterCustomConnectorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RegisterCustomConnectorResponse) SetBody(v *RegisterCustomConnectorResponseBody) *RegisterCustomConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterUdfFunctionHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s RegisterUdfFunctionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUdfFunctionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUdfFunctionHeaders) SetCommonHeaders(v map[string]*string) *RegisterUdfFunctionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RegisterUdfFunctionHeaders) SetWorkspace(v string) *RegisterUdfFunctionHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type RegisterUdfFunctionRequest struct {
+	// The name of the class that corresponds to the UDF.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// orderRank
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// The name of the UDF. In most cases, the name of the UDF is the same as the class name. You can specify a name for the UDF.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// orderRank
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The name of the JAR or Python file that corresponds to the UDF.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-udf
+	UdfArtifactName *string `json:"udfArtifactName,omitempty" xml:"udfArtifactName,omitempty"`
+}
+
+func (s RegisterUdfFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUdfFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUdfFunctionRequest) SetClassName(v string) *RegisterUdfFunctionRequest {
+	s.ClassName = &v
+	return s
+}
+
+func (s *RegisterUdfFunctionRequest) SetFunctionName(v string) *RegisterUdfFunctionRequest {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *RegisterUdfFunctionRequest) SetUdfArtifactName(v string) *RegisterUdfFunctionRequest {
+	s.UdfArtifactName = &v
+	return s
+}
+
+type RegisterUdfFunctionResponseBody struct {
+	// The information about the UDF.
+	Data *UdfFunction `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RegisterUdfFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUdfFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUdfFunctionResponseBody) SetData(v *UdfFunction) *RegisterUdfFunctionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RegisterUdfFunctionResponseBody) SetErrorCode(v string) *RegisterUdfFunctionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RegisterUdfFunctionResponseBody) SetErrorMessage(v string) *RegisterUdfFunctionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RegisterUdfFunctionResponseBody) SetHttpCode(v int32) *RegisterUdfFunctionResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *RegisterUdfFunctionResponseBody) SetRequestId(v string) *RegisterUdfFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterUdfFunctionResponseBody) SetSuccess(v bool) *RegisterUdfFunctionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RegisterUdfFunctionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterUdfFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RegisterUdfFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUdfFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUdfFunctionResponse) SetHeaders(v map[string]*string) *RegisterUdfFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterUdfFunctionResponse) SetStatusCode(v int32) *RegisterUdfFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RegisterUdfFunctionResponse) SetBody(v *RegisterUdfFunctionResponseBody) *RegisterUdfFunctionResponse {
+	s.Body = v
+	return s
+}
+
 type StartJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -8229,6 +11757,280 @@ func (s *UpdateDeploymentResponse) SetBody(v *UpdateDeploymentResponseBody) *Upd
 	return s
 }
 
+type UpdateDeploymentDraftHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateDeploymentDraftHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentDraftHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentDraftHeaders) SetCommonHeaders(v map[string]*string) *UpdateDeploymentDraftHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateDeploymentDraftHeaders) SetWorkspace(v string) *UpdateDeploymentDraftHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateDeploymentDraftRequest struct {
+	// This parameter is required.
+	Body *DeploymentDraft `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDeploymentDraftRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentDraftRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentDraftRequest) SetBody(v *DeploymentDraft) *UpdateDeploymentDraftRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateDeploymentDraftResponseBody struct {
+	Data *DeploymentDraft `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateDeploymentDraftResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentDraftResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentDraftResponseBody) SetData(v *DeploymentDraft) *UpdateDeploymentDraftResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateDeploymentDraftResponseBody) SetErrorCode(v string) *UpdateDeploymentDraftResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentDraftResponseBody) SetErrorMessage(v string) *UpdateDeploymentDraftResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateDeploymentDraftResponseBody) SetHttpCode(v int32) *UpdateDeploymentDraftResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentDraftResponseBody) SetRequestId(v string) *UpdateDeploymentDraftResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDeploymentDraftResponseBody) SetSuccess(v bool) *UpdateDeploymentDraftResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDeploymentDraftResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDeploymentDraftResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDeploymentDraftResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentDraftResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentDraftResponse) SetHeaders(v map[string]*string) *UpdateDeploymentDraftResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeploymentDraftResponse) SetStatusCode(v int32) *UpdateDeploymentDraftResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentDraftResponse) SetBody(v *UpdateDeploymentDraftResponseBody) *UpdateDeploymentDraftResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFolderHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f89a0c1ca8****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateFolderHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFolderHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFolderHeaders) SetCommonHeaders(v map[string]*string) *UpdateFolderHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateFolderHeaders) SetWorkspace(v string) *UpdateFolderHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateFolderRequest struct {
+	// This parameter is required.
+	Body *Folder `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFolderRequest) SetBody(v *Folder) *UpdateFolderRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateFolderResponseBody struct {
+	Data *Folder `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFolderResponseBody) SetData(v *Folder) *UpdateFolderResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetErrorCode(v string) *UpdateFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetErrorMessage(v string) *UpdateFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetHttpCode(v int32) *UpdateFolderResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetRequestId(v string) *UpdateFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetSuccess(v bool) *UpdateFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFolderResponse) SetHeaders(v map[string]*string) *UpdateFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFolderResponse) SetStatusCode(v int32) *UpdateFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFolderResponse) SetBody(v *UpdateFolderResponseBody) *UpdateFolderResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -8379,6 +12181,162 @@ func (s *UpdateMemberResponse) SetStatusCode(v int32) *UpdateMemberResponse {
 }
 
 func (s *UpdateMemberResponse) SetBody(v *UpdateMemberResponseBody) *UpdateMemberResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateUdfArtifactHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateUdfArtifactHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfArtifactHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfArtifactHeaders) SetCommonHeaders(v map[string]*string) *UpdateUdfArtifactHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateUdfArtifactHeaders) SetWorkspace(v string) *UpdateUdfArtifactHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateUdfArtifactRequest struct {
+	// The details of the JAR file of the UDF.
+	//
+	// This parameter is required.
+	Body *UdfArtifact `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUdfArtifactRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfArtifactRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfArtifactRequest) SetBody(v *UdfArtifact) *UpdateUdfArtifactRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateUdfArtifactResponseBody struct {
+	// The result of updating the JAR file of the UDF.
+	Data *UpdateUdfArtifactResult `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateUdfArtifactResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfArtifactResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfArtifactResponseBody) SetData(v *UpdateUdfArtifactResult) *UpdateUdfArtifactResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateUdfArtifactResponseBody) SetErrorCode(v string) *UpdateUdfArtifactResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateUdfArtifactResponseBody) SetErrorMessage(v string) *UpdateUdfArtifactResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateUdfArtifactResponseBody) SetHttpCode(v int32) *UpdateUdfArtifactResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateUdfArtifactResponseBody) SetRequestId(v string) *UpdateUdfArtifactResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateUdfArtifactResponseBody) SetSuccess(v bool) *UpdateUdfArtifactResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateUdfArtifactResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUdfArtifactResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUdfArtifactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfArtifactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfArtifactResponse) SetHeaders(v map[string]*string) *UpdateUdfArtifactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUdfArtifactResponse) SetStatusCode(v int32) *UpdateUdfArtifactResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUdfArtifactResponse) SetBody(v *UpdateUdfArtifactResponseBody) *UpdateUdfArtifactResponse {
 	s.Body = v
 	return s
 }
@@ -8652,6 +12610,142 @@ func (client *Client) CreateDeployment(namespace *string, request *CreateDeploym
 
 // Summary:
 //
+// create a deploymentDraft
+//
+// @param request - CreateDeploymentDraftRequest
+//
+// @param headers - CreateDeploymentDraftHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeploymentDraftResponse
+func (client *Client) CreateDeploymentDraftWithOptions(namespace *string, request *CreateDeploymentDraftRequest, headers *CreateDeploymentDraftHeaders, runtime *util.RuntimeOptions) (_result *CreateDeploymentDraftResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeploymentDraft"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeploymentDraftResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// create a deploymentDraft
+//
+// @param request - CreateDeploymentDraftRequest
+//
+// @return CreateDeploymentDraftResponse
+func (client *Client) CreateDeploymentDraft(namespace *string, request *CreateDeploymentDraftRequest) (_result *CreateDeploymentDraftResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateDeploymentDraftHeaders{}
+	_result = &CreateDeploymentDraftResponse{}
+	_body, _err := client.CreateDeploymentDraftWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// create a folder
+//
+// @param request - CreateFolderRequest
+//
+// @param headers - CreateFolderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFolderResponse
+func (client *Client) CreateFolderWithOptions(namespace *string, request *CreateFolderRequest, headers *CreateFolderHeaders, runtime *util.RuntimeOptions) (_result *CreateFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFolder"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/folder"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// create a folder
+//
+// @param request - CreateFolderRequest
+//
+// @return CreateFolderResponse
+func (client *Client) CreateFolder(namespace *string, request *CreateFolderRequest) (_result *CreateFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateFolderHeaders{}
+	_result = &CreateFolderResponse{}
+	_body, _err := client.CreateFolderWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a user to a namespace as a member and grants permissions to the user.
 //
 // @param request - CreateMemberRequest
@@ -8801,6 +12895,74 @@ func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepoin
 
 // Summary:
 //
+// Parses all user-defined function (UDF) methods in your JAR or Python file and creates an artifact configuration for a UDF.
+//
+// @param request - CreateUdfArtifactRequest
+//
+// @param headers - CreateUdfArtifactHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUdfArtifactResponse
+func (client *Client) CreateUdfArtifactWithOptions(namespace *string, request *CreateUdfArtifactRequest, headers *CreateUdfArtifactHeaders, runtime *util.RuntimeOptions) (_result *CreateUdfArtifactResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUdfArtifact"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/udfartifacts"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUdfArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Parses all user-defined function (UDF) methods in your JAR or Python file and creates an artifact configuration for a UDF.
+//
+// @param request - CreateUdfArtifactRequest
+//
+// @return CreateUdfArtifactResponse
+func (client *Client) CreateUdfArtifact(namespace *string, request *CreateUdfArtifactRequest) (_result *CreateUdfArtifactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateUdfArtifactHeaders{}
+	_result = &CreateUdfArtifactResponse{}
+	_body, _err := client.CreateUdfArtifactWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a variable.
 //
 // @param request - CreateVariableRequest
@@ -8869,6 +13031,65 @@ func (client *Client) CreateVariable(namespace *string, request *CreateVariableR
 
 // Summary:
 //
+// Deletes a registered custom connector from a workspace.
+//
+// @param headers - DeleteCustomConnectorHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomConnectorResponse
+func (client *Client) DeleteCustomConnectorWithOptions(namespace *string, connectorName *string, headers *DeleteCustomConnectorHeaders, runtime *util.RuntimeOptions) (_result *DeleteCustomConnectorResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomConnector"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/connectors/" + tea.StringValue(openapiutil.GetEncodeParam(connectorName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a registered custom connector from a workspace.
+//
+// @return DeleteCustomConnectorResponse
+func (client *Client) DeleteCustomConnector(namespace *string, connectorName *string) (_result *DeleteCustomConnectorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteCustomConnectorHeaders{}
+	_result = &DeleteCustomConnectorResponse{}
+	_body, _err := client.DeleteCustomConnectorWithOptions(namespace, connectorName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a deployment based on the deployment ID.
 //
 // @param headers - DeleteDeploymentHeaders
@@ -8919,6 +13140,124 @@ func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) 
 	headers := &DeleteDeploymentHeaders{}
 	_result = &DeleteDeploymentResponse{}
 	_body, _err := client.DeleteDeploymentWithOptions(namespace, deploymentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// delete a deploymentDraft
+//
+// @param headers - DeleteDeploymentDraftHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeploymentDraftResponse
+func (client *Client) DeleteDeploymentDraftWithOptions(namespace *string, deploymentDraftId *string, headers *DeleteDeploymentDraftHeaders, runtime *util.RuntimeOptions) (_result *DeleteDeploymentDraftResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeploymentDraft"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentDraftId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeploymentDraftResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// delete a deploymentDraft
+//
+// @return DeleteDeploymentDraftResponse
+func (client *Client) DeleteDeploymentDraft(namespace *string, deploymentDraftId *string) (_result *DeleteDeploymentDraftResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteDeploymentDraftHeaders{}
+	_result = &DeleteDeploymentDraftResponse{}
+	_body, _err := client.DeleteDeploymentDraftWithOptions(namespace, deploymentDraftId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// delete a folder
+//
+// @param headers - DeleteFolderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFolderResponse
+func (client *Client) DeleteFolderWithOptions(namespace *string, folderId *string, headers *DeleteFolderHeaders, runtime *util.RuntimeOptions) (_result *DeleteFolderResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFolder"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/folder/" + tea.StringValue(openapiutil.GetEncodeParam(folderId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// delete a folder
+//
+// @return DeleteFolderResponse
+func (client *Client) DeleteFolder(namespace *string, folderId *string) (_result *DeleteFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteFolderHeaders{}
+	_result = &DeleteFolderResponse{}
+	_body, _err := client.DeleteFolderWithOptions(namespace, folderId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9105,6 +13444,142 @@ func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_
 
 // Summary:
 //
+// 删除UdfArtifact
+//
+// @param headers - DeleteUdfArtifactHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUdfArtifactResponse
+func (client *Client) DeleteUdfArtifactWithOptions(namespace *string, udfArtifactName *string, headers *DeleteUdfArtifactHeaders, runtime *util.RuntimeOptions) (_result *DeleteUdfArtifactResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUdfArtifact"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/udfartifacts/" + tea.StringValue(openapiutil.GetEncodeParam(udfArtifactName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUdfArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除UdfArtifact
+//
+// @return DeleteUdfArtifactResponse
+func (client *Client) DeleteUdfArtifact(namespace *string, udfArtifactName *string) (_result *DeleteUdfArtifactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteUdfArtifactHeaders{}
+	_result = &DeleteUdfArtifactResponse{}
+	_body, _err := client.DeleteUdfArtifactWithOptions(namespace, udfArtifactName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an existing user-defined function (UDF) from a Realtime Compute for Apache Flink workspace.
+//
+// @param request - DeleteUdfFunctionRequest
+//
+// @param headers - DeleteUdfFunctionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUdfFunctionResponse
+func (client *Client) DeleteUdfFunctionWithOptions(namespace *string, functionName *string, request *DeleteUdfFunctionRequest, headers *DeleteUdfFunctionHeaders, runtime *util.RuntimeOptions) (_result *DeleteUdfFunctionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassName)) {
+		query["className"] = request.ClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdfArtifactName)) {
+		query["udfArtifactName"] = request.UdfArtifactName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUdfFunction"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/udfartifacts/function/" + tea.StringValue(openapiutil.GetEncodeParam(functionName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUdfFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an existing user-defined function (UDF) from a Realtime Compute for Apache Flink workspace.
+//
+// @param request - DeleteUdfFunctionRequest
+//
+// @return DeleteUdfFunctionResponse
+func (client *Client) DeleteUdfFunction(namespace *string, functionName *string, request *DeleteUdfFunctionRequest) (_result *DeleteUdfFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteUdfFunctionHeaders{}
+	_result = &DeleteUdfFunctionResponse{}
+	_body, _err := client.DeleteUdfFunctionWithOptions(namespace, functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a variable.
 //
 // @param headers - DeleteVariableHeaders
@@ -9155,6 +13630,142 @@ func (client *Client) DeleteVariable(namespace *string, name *string) (_result *
 	headers := &DeleteVariableHeaders{}
 	_result = &DeleteVariableResponse{}
 	_body, _err := client.DeleteVariableWithOptions(namespace, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// deploy deploymentDraft async
+//
+// @param request - DeployDeploymentDraftAsyncRequest
+//
+// @param headers - DeployDeploymentDraftAsyncHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployDeploymentDraftAsyncResponse
+func (client *Client) DeployDeploymentDraftAsyncWithOptions(namespace *string, request *DeployDeploymentDraftAsyncRequest, headers *DeployDeploymentDraftAsyncHeaders, runtime *util.RuntimeOptions) (_result *DeployDeploymentDraftAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployDeploymentDraftAsync"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts/async-deploy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeployDeploymentDraftAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// deploy deploymentDraft async
+//
+// @param request - DeployDeploymentDraftAsyncRequest
+//
+// @return DeployDeploymentDraftAsyncResponse
+func (client *Client) DeployDeploymentDraftAsync(namespace *string, request *DeployDeploymentDraftAsyncRequest) (_result *DeployDeploymentDraftAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeployDeploymentDraftAsyncHeaders{}
+	_result = &DeployDeploymentDraftAsyncResponse{}
+	_body, _err := client.DeployDeploymentDraftAsyncWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行sql语句
+//
+// @param request - ExecuteSqlStatementRequest
+//
+// @param headers - ExecuteSqlStatementHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteSqlStatementResponse
+func (client *Client) ExecuteSqlStatementWithOptions(namespace *string, request *ExecuteSqlStatementRequest, headers *ExecuteSqlStatementHeaders, runtime *util.RuntimeOptions) (_result *ExecuteSqlStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteSqlStatement"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sql-statement/execute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteSqlStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行sql语句
+//
+// @param request - ExecuteSqlStatementRequest
+//
+// @return ExecuteSqlStatementResponse
+func (client *Client) ExecuteSqlStatement(namespace *string, request *ExecuteSqlStatementRequest) (_result *ExecuteSqlStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ExecuteSqlStatementHeaders{}
+	_result = &ExecuteSqlStatementResponse{}
+	_body, _err := client.ExecuteSqlStatementWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9317,6 +13928,211 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, 
 
 // Summary:
 //
+// 获取catalog
+//
+// @param request - GetCatalogsRequest
+//
+// @param headers - GetCatalogsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogsResponse
+func (client *Client) GetCatalogsWithOptions(namespace *string, request *GetCatalogsRequest, headers *GetCatalogsHeaders, runtime *util.RuntimeOptions) (_result *GetCatalogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["catalogName"] = request.CatalogName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCatalogs"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/catalogs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCatalogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取catalog
+//
+// @param request - GetCatalogsRequest
+//
+// @return GetCatalogsResponse
+func (client *Client) GetCatalogs(namespace *string, request *GetCatalogsRequest) (_result *GetCatalogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetCatalogsHeaders{}
+	_result = &GetCatalogsResponse{}
+	_body, _err := client.GetCatalogsWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取database
+//
+// @param request - GetDatabasesRequest
+//
+// @param headers - GetDatabasesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatabasesResponse
+func (client *Client) GetDatabasesWithOptions(namespace *string, catalogName *string, request *GetDatabasesRequest, headers *GetDatabasesHeaders, runtime *util.RuntimeOptions) (_result *GetDatabasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["databaseName"] = request.DatabaseName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabases"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/catalogs/" + tea.StringValue(openapiutil.GetEncodeParam(catalogName)) + "/databases"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取database
+//
+// @param request - GetDatabasesRequest
+//
+// @return GetDatabasesResponse
+func (client *Client) GetDatabases(namespace *string, catalogName *string, request *GetDatabasesRequest) (_result *GetDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetDatabasesHeaders{}
+	_result = &GetDatabasesResponse{}
+	_body, _err := client.GetDatabasesWithOptions(namespace, catalogName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// get deploy deploymentDraft result
+//
+// @param headers - GetDeployDeploymentDraftResultHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeployDeploymentDraftResultResponse
+func (client *Client) GetDeployDeploymentDraftResultWithOptions(namespace *string, ticketId *string, headers *GetDeployDeploymentDraftResultHeaders, runtime *util.RuntimeOptions) (_result *GetDeployDeploymentDraftResultResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeployDeploymentDraftResult"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts/tickets/" + tea.StringValue(openapiutil.GetEncodeParam(ticketId)) + "/async-deploy"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeployDeploymentDraftResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// get deploy deploymentDraft result
+//
+// @return GetDeployDeploymentDraftResultResponse
+func (client *Client) GetDeployDeploymentDraftResult(namespace *string, ticketId *string) (_result *GetDeployDeploymentDraftResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetDeployDeploymentDraftResultHeaders{}
+	_result = &GetDeployDeploymentDraftResultResponse{}
+	_body, _err := client.GetDeployDeploymentDraftResultWithOptions(namespace, ticketId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the details of a deployment.
 //
 // @param headers - GetDeploymentHeaders
@@ -9376,6 +14192,211 @@ func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_r
 
 // Summary:
 //
+// get a deploymentDraft
+//
+// @param headers - GetDeploymentDraftHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeploymentDraftResponse
+func (client *Client) GetDeploymentDraftWithOptions(namespace *string, deploymentDraftId *string, headers *GetDeploymentDraftHeaders, runtime *util.RuntimeOptions) (_result *GetDeploymentDraftResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeploymentDraft"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentDraftId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeploymentDraftResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// get a deploymentDraft
+//
+// @return GetDeploymentDraftResponse
+func (client *Client) GetDeploymentDraft(namespace *string, deploymentDraftId *string) (_result *GetDeploymentDraftResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetDeploymentDraftHeaders{}
+	_result = &GetDeploymentDraftResponse{}
+	_body, _err := client.GetDeploymentDraftWithOptions(namespace, deploymentDraftId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// get deploymentDraft lock
+//
+// @param request - GetDeploymentDraftLockRequest
+//
+// @param headers - GetDeploymentDraftLockHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeploymentDraftLockResponse
+func (client *Client) GetDeploymentDraftLockWithOptions(namespace *string, request *GetDeploymentDraftLockRequest, headers *GetDeploymentDraftLockHeaders, runtime *util.RuntimeOptions) (_result *GetDeploymentDraftLockResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentDraftId)) {
+		query["deploymentDraftId"] = request.DeploymentDraftId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeploymentDraftLock"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts/getLock"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeploymentDraftLockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// get deploymentDraft lock
+//
+// @param request - GetDeploymentDraftLockRequest
+//
+// @return GetDeploymentDraftLockResponse
+func (client *Client) GetDeploymentDraftLock(namespace *string, request *GetDeploymentDraftLockRequest) (_result *GetDeploymentDraftLockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetDeploymentDraftLockHeaders{}
+	_result = &GetDeploymentDraftLockResponse{}
+	_body, _err := client.GetDeploymentDraftLockWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// get a folder
+//
+// @param request - GetFolderRequest
+//
+// @param headers - GetFolderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFolderResponse
+func (client *Client) GetFolderWithOptions(namespace *string, request *GetFolderRequest, headers *GetFolderHeaders, runtime *util.RuntimeOptions) (_result *GetFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["folderId"] = request.FolderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFolder"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/folder"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// get a folder
+//
+// @param request - GetFolderRequest
+//
+// @return GetFolderResponse
+func (client *Client) GetFolder(namespace *string, request *GetFolderRequest) (_result *GetFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetFolderHeaders{}
+	_result = &GetFolderResponse{}
+	_body, _err := client.GetFolderWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the asynchronous generation result of fine-grained resources based on the ID of the ticket that applies for an asynchronous generation.
 //
 // @param headers - GetGenerateResourcePlanResultHeaders
@@ -9426,6 +14447,65 @@ func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId 
 	headers := &GetGenerateResourcePlanResultHeaders{}
 	_result = &GetGenerateResourcePlanResultResponse{}
 	_body, _err := client.GetGenerateResourcePlanResultWithOptions(namespace, ticketId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询动态更新结果
+//
+// @param headers - GetHotUpdateJobResultHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotUpdateJobResultResponse
+func (client *Client) GetHotUpdateJobResultWithOptions(namespace *string, jobHotUpdateId *string, headers *GetHotUpdateJobResultHeaders, runtime *util.RuntimeOptions) (_result *GetHotUpdateJobResultResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotUpdateJobResult"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/jobs/hot-updates/" + tea.StringValue(openapiutil.GetEncodeParam(jobHotUpdateId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotUpdateJobResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询动态更新结果
+//
+// @return GetHotUpdateJobResultResponse
+func (client *Client) GetHotUpdateJobResult(namespace *string, jobHotUpdateId *string) (_result *GetHotUpdateJobResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetHotUpdateJobResultHeaders{}
+	_result = &GetHotUpdateJobResultResponse{}
+	_body, _err := client.GetHotUpdateJobResultWithOptions(namespace, jobHotUpdateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9553,6 +14633,74 @@ func (client *Client) GetLatestJobStartLog(namespace *string, deploymentId *stri
 
 // Summary:
 //
+// Obtains the lineage information of a deployment.
+//
+// @param request - GetLineageInfoRequest
+//
+// @param headers - GetLineageInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLineageInfoResponse
+func (client *Client) GetLineageInfoWithOptions(request *GetLineageInfoRequest, headers *GetLineageInfoHeaders, runtime *util.RuntimeOptions) (_result *GetLineageInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLineageInfo"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/meta/v2/lineage"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLineageInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the lineage information of a deployment.
+//
+// @param request - GetLineageInfoRequest
+//
+// @return GetLineageInfoResponse
+func (client *Client) GetLineageInfo(request *GetLineageInfoRequest) (_result *GetLineageInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetLineageInfoHeaders{}
+	_result = &GetLineageInfoResponse{}
+	_body, _err := client.GetLineageInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the permissions of a member.
 //
 // @param headers - GetMemberHeaders
@@ -9662,6 +14810,347 @@ func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_res
 	headers := &GetSavepointHeaders{}
 	_result = &GetSavepointResponse{}
 	_body, _err := client.GetSavepointWithOptions(namespace, savepointId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取table
+//
+// @param request - GetTablesRequest
+//
+// @param headers - GetTablesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTablesResponse
+func (client *Client) GetTablesWithOptions(namespace *string, catalogName *string, databaseName *string, request *GetTablesRequest, headers *GetTablesHeaders, runtime *util.RuntimeOptions) (_result *GetTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["tableName"] = request.TableName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTables"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/catalogs/" + tea.StringValue(openapiutil.GetEncodeParam(catalogName)) + "/databases/" + tea.StringValue(openapiutil.GetEncodeParam(databaseName)) + "/tables"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取table
+//
+// @param request - GetTablesRequest
+//
+// @return GetTablesResponse
+func (client *Client) GetTables(namespace *string, catalogName *string, databaseName *string, request *GetTablesRequest) (_result *GetTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetTablesHeaders{}
+	_result = &GetTablesResponse{}
+	_body, _err := client.GetTablesWithOptions(namespace, catalogName, databaseName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the details of the JAR or Python file that corresponds to the user-defined function (UDF) that you upload and create.
+//
+// @param request - GetUdfArtifactsRequest
+//
+// @param headers - GetUdfArtifactsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUdfArtifactsResponse
+func (client *Client) GetUdfArtifactsWithOptions(namespace *string, request *GetUdfArtifactsRequest, headers *GetUdfArtifactsHeaders, runtime *util.RuntimeOptions) (_result *GetUdfArtifactsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UdfArtifactName)) {
+		query["udfArtifactName"] = request.UdfArtifactName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUdfArtifacts"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/udfartifacts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUdfArtifactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the details of the JAR or Python file that corresponds to the user-defined function (UDF) that you upload and create.
+//
+// @param request - GetUdfArtifactsRequest
+//
+// @return GetUdfArtifactsResponse
+func (client *Client) GetUdfArtifacts(namespace *string, request *GetUdfArtifactsRequest) (_result *GetUdfArtifactsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUdfArtifactsHeaders{}
+	_result = &GetUdfArtifactsResponse{}
+	_body, _err := client.GetUdfArtifactsWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Dynamically updates parameters or resources of a deployment that is running.
+//
+// @param headers - HotUpdateJobHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotUpdateJobResponse
+func (client *Client) HotUpdateJobWithOptions(namespace *string, jobId *string, headers *HotUpdateJobHeaders, runtime *util.RuntimeOptions) (_result *HotUpdateJobResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotUpdateJob"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(jobId)) + "%3AhotUpdate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotUpdateJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Dynamically updates parameters or resources of a deployment that is running.
+//
+// @return HotUpdateJobResponse
+func (client *Client) HotUpdateJob(namespace *string, jobId *string) (_result *HotUpdateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotUpdateJobHeaders{}
+	_result = &HotUpdateJobResponse{}
+	_body, _err := client.HotUpdateJobWithOptions(namespace, jobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains a list of existing custom connectors.
+//
+// @param headers - ListCustomConnectorsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomConnectorsResponse
+func (client *Client) ListCustomConnectorsWithOptions(namespace *string, headers *ListCustomConnectorsHeaders, runtime *util.RuntimeOptions) (_result *ListCustomConnectorsResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomConnectors"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/connectors"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomConnectorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains a list of existing custom connectors.
+//
+// @return ListCustomConnectorsResponse
+func (client *Client) ListCustomConnectors(namespace *string) (_result *ListCustomConnectorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListCustomConnectorsHeaders{}
+	_result = &ListCustomConnectorsResponse{}
+	_body, _err := client.ListCustomConnectorsWithOptions(namespace, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// list deploymentDrafts
+//
+// @param request - ListDeploymentDraftsRequest
+//
+// @param headers - ListDeploymentDraftsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeploymentDraftsResponse
+func (client *Client) ListDeploymentDraftsWithOptions(namespace *string, request *ListDeploymentDraftsRequest, headers *ListDeploymentDraftsHeaders, runtime *util.RuntimeOptions) (_result *ListDeploymentDraftsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeploymentDrafts"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeploymentDraftsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// list deploymentDrafts
+//
+// @param request - ListDeploymentDraftsRequest
+//
+// @return ListDeploymentDraftsResponse
+func (client *Client) ListDeploymentDrafts(namespace *string, request *ListDeploymentDraftsRequest) (_result *ListDeploymentDraftsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListDeploymentDraftsHeaders{}
+	_result = &ListDeploymentDraftsResponse{}
+	_body, _err := client.ListDeploymentDraftsWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10314,6 +15803,160 @@ func (client *Client) ListVariables(namespace *string, request *ListVariablesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Registers a custom connector in a namespace. The registered custom connector can be used in SQL statements.
+//
+// @param request - RegisterCustomConnectorRequest
+//
+// @param headers - RegisterCustomConnectorHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterCustomConnectorResponse
+func (client *Client) RegisterCustomConnectorWithOptions(namespace *string, request *RegisterCustomConnectorRequest, headers *RegisterCustomConnectorHeaders, runtime *util.RuntimeOptions) (_result *RegisterCustomConnectorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JarUrl)) {
+		query["jarUrl"] = request.JarUrl
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterCustomConnector"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/connectors%3Aregister"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterCustomConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers a custom connector in a namespace. The registered custom connector can be used in SQL statements.
+//
+// @param request - RegisterCustomConnectorRequest
+//
+// @return RegisterCustomConnectorResponse
+func (client *Client) RegisterCustomConnector(namespace *string, request *RegisterCustomConnectorRequest) (_result *RegisterCustomConnectorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RegisterCustomConnectorHeaders{}
+	_result = &RegisterCustomConnectorResponse{}
+	_body, _err := client.RegisterCustomConnectorWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers specific or all of the user-defined functions (UDFs) that are parsed from the JAR files. The registered functions can be used in SQL statements.
+//
+// @param request - RegisterUdfFunctionRequest
+//
+// @param headers - RegisterUdfFunctionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterUdfFunctionResponse
+func (client *Client) RegisterUdfFunctionWithOptions(namespace *string, request *RegisterUdfFunctionRequest, headers *RegisterUdfFunctionHeaders, runtime *util.RuntimeOptions) (_result *RegisterUdfFunctionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassName)) {
+		query["className"] = request.ClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["functionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdfArtifactName)) {
+		query["udfArtifactName"] = request.UdfArtifactName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterUdfFunction"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/udfartifacts/function%3AregisterUdfFunction"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterUdfFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers specific or all of the user-defined functions (UDFs) that are parsed from the JAR files. The registered functions can be used in SQL statements.
+//
+// @param request - RegisterUdfFunctionRequest
+//
+// @return RegisterUdfFunctionResponse
+func (client *Client) RegisterUdfFunction(namespace *string, request *RegisterUdfFunctionRequest) (_result *RegisterUdfFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RegisterUdfFunctionHeaders{}
+	_result = &RegisterUdfFunctionResponse{}
+	_body, _err := client.RegisterUdfFunctionWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Deprecated: OpenAPI StartJob is deprecated
 //
 // Summary:
@@ -10594,6 +16237,142 @@ func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, 
 
 // Summary:
 //
+// update a deploymentDraft
+//
+// @param request - UpdateDeploymentDraftRequest
+//
+// @param headers - UpdateDeploymentDraftHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeploymentDraftResponse
+func (client *Client) UpdateDeploymentDraftWithOptions(namespace *string, deploymentDraftId *string, request *UpdateDeploymentDraftRequest, headers *UpdateDeploymentDraftHeaders, runtime *util.RuntimeOptions) (_result *UpdateDeploymentDraftResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeploymentDraft"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-drafts/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentDraftId))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeploymentDraftResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// update a deploymentDraft
+//
+// @param request - UpdateDeploymentDraftRequest
+//
+// @return UpdateDeploymentDraftResponse
+func (client *Client) UpdateDeploymentDraft(namespace *string, deploymentDraftId *string, request *UpdateDeploymentDraftRequest) (_result *UpdateDeploymentDraftResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateDeploymentDraftHeaders{}
+	_result = &UpdateDeploymentDraftResponse{}
+	_body, _err := client.UpdateDeploymentDraftWithOptions(namespace, deploymentDraftId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// update a folder
+//
+// @param request - UpdateFolderRequest
+//
+// @param headers - UpdateFolderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFolderResponse
+func (client *Client) UpdateFolderWithOptions(namespace *string, folderId *string, request *UpdateFolderRequest, headers *UpdateFolderHeaders, runtime *util.RuntimeOptions) (_result *UpdateFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFolder"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/folder/" + tea.StringValue(openapiutil.GetEncodeParam(folderId))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// update a folder
+//
+// @param request - UpdateFolderRequest
+//
+// @return UpdateFolderResponse
+func (client *Client) UpdateFolder(namespace *string, folderId *string, request *UpdateFolderRequest) (_result *UpdateFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateFolderHeaders{}
+	_result = &UpdateFolderResponse{}
+	_body, _err := client.UpdateFolderWithOptions(namespace, folderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the permissions of one or more members in a specific namespace.
 //
 // @param request - UpdateMemberRequest
@@ -10653,6 +16432,74 @@ func (client *Client) UpdateMember(namespace *string, request *UpdateMemberReque
 	headers := &UpdateMemberHeaders{}
 	_result = &UpdateMemberResponse{}
 	_body, _err := client.UpdateMemberWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the JAR file of the user-defined function (UDF) that you create.
+//
+// @param request - UpdateUdfArtifactRequest
+//
+// @param headers - UpdateUdfArtifactHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUdfArtifactResponse
+func (client *Client) UpdateUdfArtifactWithOptions(namespace *string, udfArtifactName *string, request *UpdateUdfArtifactRequest, headers *UpdateUdfArtifactHeaders, runtime *util.RuntimeOptions) (_result *UpdateUdfArtifactResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUdfArtifact"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/udfartifacts/" + tea.StringValue(openapiutil.GetEncodeParam(udfArtifactName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUdfArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the JAR file of the user-defined function (UDF) that you create.
+//
+// @param request - UpdateUdfArtifactRequest
+//
+// @return UpdateUdfArtifactResponse
+func (client *Client) UpdateUdfArtifact(namespace *string, udfArtifactName *string, request *UpdateUdfArtifactRequest) (_result *UpdateUdfArtifactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateUdfArtifactHeaders{}
+	_result = &UpdateUdfArtifactResponse{}
+	_body, _err := client.UpdateUdfArtifactWithOptions(namespace, udfArtifactName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
