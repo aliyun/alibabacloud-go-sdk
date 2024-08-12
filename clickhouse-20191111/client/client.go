@@ -7218,7 +7218,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// cc-bp125e3uu94wo****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
+	// The end of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in Coordinated Universal Time (UTC).
 	//
 	// example:
 	//
@@ -7232,7 +7232,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// FE242962-6DA3-5FC8-9691-37B62A3210F7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -7781,7 +7781,8 @@ type DescribeDBClustersResponseBodyDBClustersDBCluster struct {
 	// example:
 	//
 	// 100
-	DBNodeStorage *int64 `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	DBNodeStorage *int64  `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	DbVersion     *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
 	// The time when the cluster expired. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
@@ -7993,6 +7994,11 @@ func (s *DescribeDBClustersResponseBodyDBClustersDBCluster) SetDBNodeCount(v int
 
 func (s *DescribeDBClustersResponseBodyDBClustersDBCluster) SetDBNodeStorage(v int64) *DescribeDBClustersResponseBodyDBClustersDBCluster {
 	s.DBNodeStorage = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyDBClustersDBCluster) SetDbVersion(v string) *DescribeDBClustersResponseBodyDBClustersDBCluster {
+	s.DbVersion = &v
 	return s
 }
 
@@ -10404,12 +10410,16 @@ func (s *DescribeTransferHistoryResponseBodyHistoryDetails) SetHistoryDetail(v [
 }
 
 type DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail struct {
+	// if can be null:
+	// false
+	DisableWriteWindows *string `json:"DisableWriteWindows,omitempty" xml:"DisableWriteWindows,omitempty"`
 	// The progress of the data migration.
 	//
 	// example:
 	//
 	// 100%
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress             *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	SourceControlVersion *string `json:"SourceControlVersion,omitempty" xml:"SourceControlVersion,omitempty"`
 	// The ID of the source cluster.
 	//
 	// example:
@@ -10425,7 +10435,8 @@ type DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail struct {
 	// example:
 	//
 	// Finished
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetControlVersion *string `json:"TargetControlVersion,omitempty" xml:"TargetControlVersion,omitempty"`
 	// The ID of the destination cluster.
 	//
 	// example:
@@ -10442,8 +10453,18 @@ func (s DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) GoString
 	return s.String()
 }
 
+func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetDisableWriteWindows(v string) *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail {
+	s.DisableWriteWindows = &v
+	return s
+}
+
 func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetProgress(v string) *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail {
 	s.Progress = &v
+	return s
+}
+
+func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetSourceControlVersion(v string) *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail {
+	s.SourceControlVersion = &v
 	return s
 }
 
@@ -10454,6 +10475,11 @@ func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetSour
 
 func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetStatus(v string) *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) SetTargetControlVersion(v string) *DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail {
+	s.TargetControlVersion = &v
 	return s
 }
 
@@ -12882,9 +12908,10 @@ type TransferVersionRequest struct {
 	// example:
 	//
 	// cc-bp1tm8zf130ew****
-	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DisableWriteWindows *string `json:"DisableWriteWindows,omitempty" xml:"DisableWriteWindows,omitempty"`
+	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -12965,6 +12992,11 @@ func (s TransferVersionRequest) GoString() string {
 
 func (s *TransferVersionRequest) SetDBClusterId(v string) *TransferVersionRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *TransferVersionRequest) SetDisableWriteWindows(v string) *TransferVersionRequest {
+	s.DisableWriteWindows = &v
 	return s
 }
 
@@ -18707,6 +18739,10 @@ func (client *Client) TransferVersionWithOptions(request *TransferVersionRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableWriteWindows)) {
+		query["DisableWriteWindows"] = request.DisableWriteWindows
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
