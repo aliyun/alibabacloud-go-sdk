@@ -27269,6 +27269,209 @@ func (s *ListCallDetailRecordsV2Response) SetBody(v *ListCallDetailRecordsV2Resp
 	return s
 }
 
+type ListCallSummariesRequest struct {
+	ContactIdList []*string `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListCallSummariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallSummariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallSummariesRequest) SetContactIdList(v []*string) *ListCallSummariesRequest {
+	s.ContactIdList = v
+	return s
+}
+
+func (s *ListCallSummariesRequest) SetInstanceId(v string) *ListCallSummariesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListCallSummariesShrinkRequest struct {
+	ContactIdListShrink *string `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListCallSummariesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallSummariesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallSummariesShrinkRequest) SetContactIdListShrink(v string) *ListCallSummariesShrinkRequest {
+	s.ContactIdListShrink = &v
+	return s
+}
+
+func (s *ListCallSummariesShrinkRequest) SetInstanceId(v string) *ListCallSummariesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListCallSummariesResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListCallSummariesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 932579BC-811A-503D-B322-4C2E57087CAA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCallSummariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallSummariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallSummariesResponseBody) SetCode(v string) *ListCallSummariesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBody) SetData(v []*ListCallSummariesResponseBodyData) *ListCallSummariesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCallSummariesResponseBody) SetHttpStatusCode(v int32) *ListCallSummariesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBody) SetMessage(v string) *ListCallSummariesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBody) SetParams(v []*string) *ListCallSummariesResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListCallSummariesResponseBody) SetRequestId(v string) *ListCallSummariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCallSummariesResponseBodyData struct {
+	// example:
+	//
+	// job-544789******759424
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Context   *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// example:
+	//
+	// 1723449513735
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// creator@ccc-test
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// editor@ccc-test
+	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// example:
+	//
+	// ac0dd304-****-****-****-4a90010f0d38
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s ListCallSummariesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallSummariesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallSummariesResponseBodyData) SetContactId(v string) *ListCallSummariesResponseBodyData {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBodyData) SetContext(v string) *ListCallSummariesResponseBodyData {
+	s.Context = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBodyData) SetCreatedTime(v int64) *ListCallSummariesResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBodyData) SetCreator(v string) *ListCallSummariesResponseBodyData {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBodyData) SetEditor(v string) *ListCallSummariesResponseBodyData {
+	s.Editor = &v
+	return s
+}
+
+func (s *ListCallSummariesResponseBodyData) SetTicketId(v string) *ListCallSummariesResponseBodyData {
+	s.TicketId = &v
+	return s
+}
+
+type ListCallSummariesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCallSummariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCallSummariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallSummariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallSummariesResponse) SetHeaders(v map[string]*string) *ListCallSummariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCallSummariesResponse) SetStatusCode(v int32) *ListCallSummariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCallSummariesResponse) SetBody(v *ListCallSummariesResponseBody) *ListCallSummariesResponse {
+	s.Body = v
+	return s
+}
+
 type ListCallTagsRequest struct {
 	// This parameter is required.
 	//
@@ -49830,6 +50033,272 @@ func (s *ListVoicemailsResponse) SetBody(v *ListVoicemailsResponseBody) *ListVoi
 	return s
 }
 
+type ListWaitingChatsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ["skillgroup1@ccc-test", "skillgroup2@ccc-test"]
+	SkillGroupIdList *string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty"`
+}
+
+func (s ListWaitingChatsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaitingChatsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaitingChatsRequest) SetInstanceId(v string) *ListWaitingChatsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListWaitingChatsRequest) SetSkillGroupIdList(v string) *ListWaitingChatsRequest {
+	s.SkillGroupIdList = &v
+	return s
+}
+
+type ListWaitingChatsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListWaitingChatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListWaitingChatsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaitingChatsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaitingChatsResponseBody) SetCode(v string) *ListWaitingChatsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBody) SetData(v []*ListWaitingChatsResponseBodyData) *ListWaitingChatsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBody) SetHttpStatusCode(v int32) *ListWaitingChatsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBody) SetMessage(v string) *ListWaitingChatsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBody) SetRequestId(v string) *ListWaitingChatsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListWaitingChatsResponseBodyData struct {
+	// example:
+	//
+	// 843073c2-*****-49fb-a616-738ddddfebdc
+	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// example:
+	//
+	// Web
+	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// example:
+	//
+	// false
+	BeingAssigned *bool `json:"BeingAssigned,omitempty" xml:"BeingAssigned,omitempty"`
+	// example:
+	//
+	// $23086709$EAUNIT
+	ChatConversationId *string `json:"ChatConversationId,omitempty" xml:"ChatConversationId,omitempty"`
+	// example:
+	//
+	// 1718868572094
+	EnqueueTime *int64 `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
+	// example:
+	//
+	// chat-434537064047960064
+	JobId        *string                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Messages     []*ListWaitingChatsResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	SkillGroupId *string                                     `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	UserList     []*ListWaitingChatsResponseBodyDataUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+}
+
+func (s ListWaitingChatsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaitingChatsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetAccessChannelId(v string) *ListWaitingChatsResponseBodyData {
+	s.AccessChannelId = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetAccessChannelType(v string) *ListWaitingChatsResponseBodyData {
+	s.AccessChannelType = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetBeingAssigned(v bool) *ListWaitingChatsResponseBodyData {
+	s.BeingAssigned = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetChatConversationId(v string) *ListWaitingChatsResponseBodyData {
+	s.ChatConversationId = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetEnqueueTime(v int64) *ListWaitingChatsResponseBodyData {
+	s.EnqueueTime = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetJobId(v string) *ListWaitingChatsResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetMessages(v []*ListWaitingChatsResponseBodyDataMessages) *ListWaitingChatsResponseBodyData {
+	s.Messages = v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetSkillGroupId(v string) *ListWaitingChatsResponseBodyData {
+	s.SkillGroupId = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyData) SetUserList(v []*ListWaitingChatsResponseBodyDataUserList) *ListWaitingChatsResponseBodyData {
+	s.UserList = v
+	return s
+}
+
+type ListWaitingChatsResponseBodyDataMessages struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// c361765f-******-4e07-b81c-4b5d9183fac6
+	SenderId   *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderType *string `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+}
+
+func (s ListWaitingChatsResponseBodyDataMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaitingChatsResponseBodyDataMessages) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaitingChatsResponseBodyDataMessages) SetContent(v string) *ListWaitingChatsResponseBodyDataMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyDataMessages) SetSenderId(v string) *ListWaitingChatsResponseBodyDataMessages {
+	s.SenderId = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyDataMessages) SetSenderType(v string) *ListWaitingChatsResponseBodyDataMessages {
+	s.SenderType = &v
+	return s
+}
+
+type ListWaitingChatsResponseBodyDataUserList struct {
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// example:
+	//
+	// c361765f-******-4e07-b81c-4b5d9183fac6
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// CUSTOMER
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s ListWaitingChatsResponseBodyDataUserList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaitingChatsResponseBodyDataUserList) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaitingChatsResponseBodyDataUserList) SetAvatarUrl(v string) *ListWaitingChatsResponseBodyDataUserList {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyDataUserList) SetUserId(v string) *ListWaitingChatsResponseBodyDataUserList {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyDataUserList) SetUserName(v string) *ListWaitingChatsResponseBodyDataUserList {
+	s.UserName = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponseBodyDataUserList) SetUserType(v string) *ListWaitingChatsResponseBodyDataUserList {
+	s.UserType = &v
+	return s
+}
+
+type ListWaitingChatsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWaitingChatsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWaitingChatsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaitingChatsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaitingChatsResponse) SetHeaders(v map[string]*string) *ListWaitingChatsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWaitingChatsResponse) SetStatusCode(v int32) *ListWaitingChatsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWaitingChatsResponse) SetBody(v *ListWaitingChatsResponseBody) *ListWaitingChatsResponse {
+	s.Body = v
+	return s
+}
+
 type MakeCallRequest struct {
 	// This parameter is required.
 	//
@@ -71356,6 +71825,68 @@ func (client *Client) ListCallDetailRecordsV2(request *ListCallDetailRecordsV2Re
 	return _result, _err
 }
 
+// @param tmpReq - ListCallSummariesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCallSummariesResponse
+func (client *Client) ListCallSummariesWithOptions(tmpReq *ListCallSummariesRequest, runtime *util.RuntimeOptions) (_result *ListCallSummariesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListCallSummariesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContactIdList)) {
+		request.ContactIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactIdList, tea.String("ContactIdList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactIdListShrink)) {
+		query["ContactIdList"] = request.ContactIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallSummaries"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCallSummariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCallSummariesRequest
+//
+// @return ListCallSummariesResponse
+func (client *Client) ListCallSummaries(request *ListCallSummariesRequest) (_result *ListCallSummariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCallSummariesResponse{}
+	_body, _err := client.ListCallSummariesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 列出号码标签
@@ -75017,6 +75548,62 @@ func (client *Client) ListVoicemails(request *ListVoicemailsRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVoicemailsResponse{}
 	_body, _err := client.ListVoicemailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListWaitingChatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWaitingChatsResponse
+func (client *Client) ListWaitingChatsWithOptions(request *ListWaitingChatsRequest, runtime *util.RuntimeOptions) (_result *ListWaitingChatsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWaitingChats"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWaitingChatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListWaitingChatsRequest
+//
+// @return ListWaitingChatsResponse
+func (client *Client) ListWaitingChats(request *ListWaitingChatsRequest) (_result *ListWaitingChatsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWaitingChatsResponse{}
+	_body, _err := client.ListWaitingChatsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
