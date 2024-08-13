@@ -6943,11 +6943,13 @@ type ListTerminalsRequest struct {
 	// example:
 	//
 	// DemoDevice
-	SearchKeyword *string `json:"SearchKeyword,omitempty" xml:"SearchKeyword,omitempty"`
+	SearchKeyword *string   `json:"SearchKeyword,omitempty" xml:"SearchKeyword,omitempty"`
+	SerialNumbers []*string `json:"SerialNumbers,omitempty" xml:"SerialNumbers,omitempty" type:"Repeated"`
 	// example:
 	//
 	// tg-default
-	TerminalGroupId *string `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
+	TerminalGroupId *string   `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
+	Uuids           []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 
 func (s ListTerminalsRequest) String() string {
@@ -6973,8 +6975,18 @@ func (s *ListTerminalsRequest) SetSearchKeyword(v string) *ListTerminalsRequest 
 	return s
 }
 
+func (s *ListTerminalsRequest) SetSerialNumbers(v []*string) *ListTerminalsRequest {
+	s.SerialNumbers = v
+	return s
+}
+
 func (s *ListTerminalsRequest) SetTerminalGroupId(v string) *ListTerminalsRequest {
 	s.TerminalGroupId = &v
+	return s
+}
+
+func (s *ListTerminalsRequest) SetUuids(v []*string) *ListTerminalsRequest {
+	s.Uuids = v
 	return s
 }
 
@@ -13699,6 +13711,15 @@ func (client *Client) ListTerminalsWithOptions(request *ListTerminalsRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SerialNumbers)) {
+		query["SerialNumbers"] = request.SerialNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		body["MaxResults"] = request.MaxResults
@@ -13717,7 +13738,8 @@ func (client *Client) ListTerminalsWithOptions(request *ListTerminalsRequest, ru
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTerminals"),
