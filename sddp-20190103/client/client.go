@@ -10823,6 +10823,7 @@ type DescribeOssObjectsRequest struct {
 	//
 	// 1536751124000
 	LastScanTimeStart *int64 `json:"LastScanTimeStart,omitempty" xml:"LastScanTimeStart,omitempty"`
+	Marker            *int64 `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	// The search keyword. Fuzzy match is supported.
 	//
 	// example:
@@ -10911,6 +10912,11 @@ func (s *DescribeOssObjectsRequest) SetLastScanTimeStart(v int64) *DescribeOssOb
 	return s
 }
 
+func (s *DescribeOssObjectsRequest) SetMarker(v int64) *DescribeOssObjectsRequest {
+	s.Marker = &v
+	return s
+}
+
 func (s *DescribeOssObjectsRequest) SetName(v string) *DescribeOssObjectsRequest {
 	s.Name = &v
 	return s
@@ -10949,7 +10955,9 @@ type DescribeOssObjectsResponseBody struct {
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// A list of OSS objects.
-	Items []*DescribeOssObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Items      []*DescribeOssObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Marker     *string                                `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	NextMarker *string                                `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 	// The number of entries returned per page.
 	//
 	// example:
@@ -10968,6 +10976,7 @@ type DescribeOssObjectsResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Truncated  *bool  `json:"Truncated,omitempty" xml:"Truncated,omitempty"`
 }
 
 func (s DescribeOssObjectsResponseBody) String() string {
@@ -10988,6 +10997,16 @@ func (s *DescribeOssObjectsResponseBody) SetItems(v []*DescribeOssObjectsRespons
 	return s
 }
 
+func (s *DescribeOssObjectsResponseBody) SetMarker(v string) *DescribeOssObjectsResponseBody {
+	s.Marker = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBody) SetNextMarker(v string) *DescribeOssObjectsResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
 func (s *DescribeOssObjectsResponseBody) SetPageSize(v int32) *DescribeOssObjectsResponseBody {
 	s.PageSize = &v
 	return s
@@ -11000,6 +11019,11 @@ func (s *DescribeOssObjectsResponseBody) SetRequestId(v string) *DescribeOssObje
 
 func (s *DescribeOssObjectsResponseBody) SetTotalCount(v int32) *DescribeOssObjectsResponseBody {
 	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBody) SetTruncated(v bool) *DescribeOssObjectsResponseBody {
+	s.Truncated = &v
 	return s
 }
 
@@ -18361,6 +18385,10 @@ func (client *Client) DescribeOssObjectsWithOptions(request *DescribeOssObjectsR
 
 	if !tea.BoolValue(util.IsUnset(request.LastScanTimeStart)) {
 		query["LastScanTimeStart"] = request.LastScanTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
