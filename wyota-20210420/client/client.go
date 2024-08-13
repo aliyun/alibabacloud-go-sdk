@@ -9280,6 +9280,7 @@ func (s *ReportUserFbIssueResponse) SetBody(v *ReportUserFbIssueResponseBody) *R
 }
 
 type SendOpsMessageToTerminalsRequest struct {
+	Delay      *bool     `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	Msg        *string   `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	OpsAction  *string   `json:"OpsAction,omitempty" xml:"OpsAction,omitempty"`
 	Uuids      []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
@@ -9292,6 +9293,11 @@ func (s SendOpsMessageToTerminalsRequest) String() string {
 
 func (s SendOpsMessageToTerminalsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendOpsMessageToTerminalsRequest) SetDelay(v bool) *SendOpsMessageToTerminalsRequest {
+	s.Delay = &v
+	return s
 }
 
 func (s *SendOpsMessageToTerminalsRequest) SetMsg(v string) *SendOpsMessageToTerminalsRequest {
@@ -14737,6 +14743,11 @@ func (client *Client) SendOpsMessageToTerminalsWithOptions(request *SendOpsMessa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Delay)) {
+		query["Delay"] = request.Delay
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Msg)) {
 		body["Msg"] = request.Msg
@@ -14758,7 +14769,8 @@ func (client *Client) SendOpsMessageToTerminalsWithOptions(request *SendOpsMessa
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SendOpsMessageToTerminals"),
