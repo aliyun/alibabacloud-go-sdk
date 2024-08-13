@@ -14201,18 +14201,26 @@ func (s *DescribeProdCountResponseBody) SetRequestId(v string) *DescribeProdCoun
 }
 
 type DescribeProdCountResponseBodyData struct {
+	AliyunImportedCount *int32 `json:"AliyunImportedCount,omitempty" xml:"AliyunImportedCount,omitempty"`
 	// The number of Alibaba Cloud services.
 	//
 	// example:
 	//
 	// 19
-	AliyunProdCount *int32 `json:"AliyunProdCount,omitempty" xml:"AliyunProdCount,omitempty"`
+	AliyunProdCount     *int32 `json:"AliyunProdCount,omitempty" xml:"AliyunProdCount,omitempty"`
+	HcloudImportedCount *int32 `json:"HcloudImportedCount,omitempty" xml:"HcloudImportedCount,omitempty"`
 	// The number of Huawei Cloud services.
 	//
 	// example:
 	//
 	// 2
-	HcloudProdCount *int32 `json:"HcloudProdCount,omitempty" xml:"HcloudProdCount,omitempty"`
+	HcloudProdCount  *int32 `json:"HcloudProdCount,omitempty" xml:"HcloudProdCount,omitempty"`
+	IdcImportedCount *int32 `json:"IdcImportedCount,omitempty" xml:"IdcImportedCount,omitempty"`
+	// example:
+	//
+	// 2
+	IdcProdCount        *int32 `json:"IdcProdCount,omitempty" xml:"IdcProdCount,omitempty"`
+	QcloudImportedCount *int32 `json:"QcloudImportedCount,omitempty" xml:"QcloudImportedCount,omitempty"`
 	// The number of Tencent Cloud services.
 	//
 	// example:
@@ -14229,13 +14237,38 @@ func (s DescribeProdCountResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeProdCountResponseBodyData) SetAliyunImportedCount(v int32) *DescribeProdCountResponseBodyData {
+	s.AliyunImportedCount = &v
+	return s
+}
+
 func (s *DescribeProdCountResponseBodyData) SetAliyunProdCount(v int32) *DescribeProdCountResponseBodyData {
 	s.AliyunProdCount = &v
 	return s
 }
 
+func (s *DescribeProdCountResponseBodyData) SetHcloudImportedCount(v int32) *DescribeProdCountResponseBodyData {
+	s.HcloudImportedCount = &v
+	return s
+}
+
 func (s *DescribeProdCountResponseBodyData) SetHcloudProdCount(v int32) *DescribeProdCountResponseBodyData {
 	s.HcloudProdCount = &v
+	return s
+}
+
+func (s *DescribeProdCountResponseBodyData) SetIdcImportedCount(v int32) *DescribeProdCountResponseBodyData {
+	s.IdcImportedCount = &v
+	return s
+}
+
+func (s *DescribeProdCountResponseBodyData) SetIdcProdCount(v int32) *DescribeProdCountResponseBodyData {
+	s.IdcProdCount = &v
+	return s
+}
+
+func (s *DescribeProdCountResponseBodyData) SetQcloudImportedCount(v int32) *DescribeProdCountResponseBodyData {
+	s.QcloudImportedCount = &v
 	return s
 }
 
