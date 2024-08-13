@@ -320,7 +320,7 @@ func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryRe
 }
 
 type AddEditingProjectRequest struct {
-	// The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
+	// The thumbnail URL of the online editing project. If you leave this parameter empty and materials exist on the video track in the timeline, the thumbnail of the first material is used by default.
 	//
 	// example:
 	//
@@ -332,7 +332,7 @@ type AddEditingProjectRequest struct {
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region where you want to create the online editing project.
+	// The region in which ApsaraVideo VOD is activated.
 	//
 	// example:
 	//
@@ -342,9 +342,9 @@ type AddEditingProjectRequest struct {
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
+	// The timeline of the online editing project in JSON format. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
 	//
-	// If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
+	// If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
 	//
 	// example:
 	//
@@ -455,7 +455,7 @@ type AddEditingProjectResponseBodyProject struct {
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last time when the online editing project was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the online editing project was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -469,13 +469,13 @@ type AddEditingProjectResponseBodyProject struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The status of the online editing project. Valid values:
 	//
-	// - **Normal**: indicates that the online editing project is in draft.
+	// 	- **Normal**: the online editing project is in draft.
 	//
-	// - **Producing**: indicates that the video is being produced.
+	// 	- **Producing**: the video is being produced.
 	//
-	// - **Produced**: indicates that the video was produced.
+	// 	- **Produced**: the video is produced.
 	//
-	// - **ProduceFailed**: indicates that the video failed to be produced.
+	// 	- **ProduceFailed**: the video failed to be produced.
 	//
 	// example:
 	//
@@ -557,12 +557,24 @@ func (s *AddEditingProjectResponse) SetBody(v *AddEditingProjectResponseBody) *A
 }
 
 type AddEditingProjectMaterialsRequest struct {
+	// The ID of the material. Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
+	//
+	// >  If you specify multiple materials, make sure that the materials are of the same type as specified in MaterialType.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d3251979f9fd41f2acb29ccda5a6f772
 	MaterialIds *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
+	// The type of the material. Valid values:
+	//
+	// 	- **video**
+	//
+	// 	- **audio**
+	//
+	// 	- **image**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -571,6 +583,8 @@ type AddEditingProjectMaterialsRequest struct {
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -625,7 +639,10 @@ func (s *AddEditingProjectMaterialsRequest) SetResourceOwnerId(v string) *AddEdi
 }
 
 type AddEditingProjectMaterialsResponseBody struct {
+	// The materials.
 	MaterialList []*AddEditingProjectMaterialsResponseBodyMaterialList `json:"MaterialList,omitempty" xml:"MaterialList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 85237CDA-0B54-5CED-BA10-A8A71AA13C1A
@@ -651,55 +668,96 @@ func (s *AddEditingProjectMaterialsResponseBody) SetRequestId(v string) *AddEdit
 }
 
 type AddEditingProjectMaterialsResponseBodyMaterialList struct {
+	// The ID of the category.
+	//
 	// example:
 	//
 	// 1000487543
-	CateId   *int32  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category name of the material.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The thumbnail URL.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the material was created. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss	- format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2019-10-02T08:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1234751840694470
-	CustomerId  *int64  `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	CustomerId *int64 `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// The description of the material.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The duration of the material. Unit: seconds. The value is accurate to four decimal places.
+	//
 	// example:
 	//
 	// 3690.2332
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the material.
+	//
 	// example:
 	//
 	// 85befc4118b84c6723e53b80b1****
 	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
+	// The type of the material. Valid values:
+	//
+	// 	- **video**
+	//
+	// 	- **audio**
+	//
+	// 	- **image**
+	//
 	// example:
 	//
 	// video
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
+	// The time when the material was last updated. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss	- format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-11-25T07:28:34Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The size of the material.
+	//
 	// example:
 	//
 	// 1682694
-	Size      *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The URLs of snapshots.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The configuration of the sprite snapshot.
+	//
 	// example:
 	//
 	// xxx
-	SpriteConfig *string   `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
-	Sprites      []*string `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
+	SpriteConfig *string `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
+	// The URLs of sprite snapshots.
+	Sprites []*string `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
+	// The status of the material. Valid values:
+	//
+	// 	- **Normal**
+	//
+	// 	- **Uploading**
+	//
+	// 	- **UploadFail**
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag of the material. Multiple tags are separated by commas (,).
+	//
 	// example:
 	//
 	// tag1,tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the material.
+	//
 	// example:
 	//
 	// test
@@ -2133,7 +2191,8 @@ type CreateAppInfoRequest struct {
 	// example:
 	//
 	// myfirstapp
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateAppInfoRequest) String() string {
@@ -2151,6 +2210,11 @@ func (s *CreateAppInfoRequest) SetAppName(v string) *CreateAppInfoRequest {
 
 func (s *CreateAppInfoRequest) SetDescription(v string) *CreateAppInfoRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAppInfoRequest) SetResourceGroupId(v string) *CreateAppInfoRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2294,13 +2358,13 @@ func (s *CreateAuditResponse) SetBody(v *CreateAuditResponseBody) *CreateAuditRe
 }
 
 type CreateUploadAttachedMediaRequest struct {
-	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	// The ID of the application. Default value: **app-1000000**. If you have activated the multi-application service, specify the ID of the application to add the watermark template in the specified application. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The type of the media asset. Valid values:
+	// The type of the auxiliary media asset. Valid values:
 	//
 	// 	- **watermark**
 	//
@@ -2314,13 +2378,13 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// watermark
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The one or more category IDs of the auxiliary media asset. Separate multiple category IDs with commas (,). A maximum of five category IDs can be specified. You can use one of the following methods to obtain the category ID:
+	// The ID of the category. Separate multiple IDs with commas (,). You can specify up to five IDs. You can use one of the following methods to obtain the ID:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Categories**. On the Categories page, you can view the category ID.
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Categories*	- to view the category ID of the media file.
 	//
-	// 	- View the value of the CateId parameter returned by the [AddCategory](https://help.aliyun.com/document_detail/56401.html) operation that you called to create a category.
+	// 	- Obtain the category ID from the response to the [AddCategory](~~AddCategory~~) operation that you call to create a category.
 	//
-	// 	- View the value of the CateId parameter returned by the [GetCategories](https://help.aliyun.com/document_detail/56406.html) operation that you called to query a category.
+	// 	- Obtain the category ID from the response to the [GetCategories](~~GetCategories~~) operation that you call to query categories.
 	//
 	// example:
 	//
@@ -2336,7 +2400,9 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// uploadTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the source file.
+	// The source file URL of the auxiliary media asset.
+	//
+	// >  The file name extension is optional. If the file name extension that you specified for this parameter is different from the value of MediaExt, the value of MediaExt takes effect.
 	//
 	// example:
 	//
@@ -2348,7 +2414,7 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// 123
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The file name extension. Valid values:
+	// The file name extension of the auxiliary media asset.
 	//
 	// 	- Valid values for watermarks: **png, gif, apng, and mov**
 	//
@@ -2360,11 +2426,11 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// png
 	MediaExt *string `json:"MediaExt,omitempty" xml:"MediaExt,omitempty"`
-	// The storage location. You can use one of the following methods to obtain the storage location:
+	// The storage address. Perform the following operations to obtain the storage address:
 	//
-	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Storage**. On the Storage page, you can view the storage location.
+	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Storage**. On the Storage page, view the storage address.
 	//
-	// >  If this parameter is set to a specific value, the auxiliary media asset is uploaded to the specified storage location.
+	// >  If you leave this parameter empty, the auxiliary media asset is uploaded to the default storage address. If you specify this parameter, the auxiliary media asset is uploaded to the specified storage address.
 	//
 	// example:
 	//
@@ -2384,21 +2450,21 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// tag1,tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the media asset. Take note of the following items:
+	// The title of the auxiliary media asset. The following rules apply:
 	//
-	// 	- The title can be up to 128 bytes in length.
+	// 	- The title cannot exceed 128 bytes.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// 	- The title must be encoded in UTF-8.
 	//
 	// example:
 	//
 	// testTitle
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom configurations, including callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
+	// The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see [Request parameters](~~86952#section-6fg-qll-v3w~~).
 	//
-	// > 	- The callback configurations take effect only after you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console. For more information about how to configure an HTTP callback in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
+	// > 	- The callback configurations take effect only after you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
 	//
-	// >	- To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+	// > 	- If you want to enable the upload acceleration feature, submit a ticket. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 	//
 	// example:
 	//
@@ -2470,7 +2536,9 @@ func (s *CreateUploadAttachedMediaRequest) SetUserData(v string) *CreateUploadAt
 }
 
 type CreateUploadAttachedMediaResponseBody struct {
-	// The OSS URL of the file. The URL does not contain the information used for URL signing. You can set the FileUrl parameter to this URL when you call the [AddWatermark](https://help.aliyun.com/document_detail/98617.html) operation.
+	// The URL of the auxiliary media asset file. The URL is an Object Storage Service (OSS) URL and does not contain the information used for URL signing.
+	//
+	// You can use specify this value for the `FileUrl` parameter when you call the [AddWatermark](~~AddWatermark~~) operation to create a watermark template.
 	//
 	// example:
 	//
@@ -2482,9 +2550,11 @@ type CreateUploadAttachedMediaResponseBody struct {
 	//
 	// 97dc17a5abc3668489b84ce9****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The URL of the auxiliary media asset. If a domain name for Alibaba Cloud CDN (CDN) is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+	// The URL of the auxiliary media asset.
 	//
-	// >  If you enable the URL signing feature of ApsaraVideo VOD, you may be unable to access the returned URL of the auxiliary media asset by using a browser and the HTTP status code 403 may be returned. You can disable the [URL signing](https://help.aliyun.com/document_detail/86090.html) feature or [generate an authentication signature](https://help.aliyun.com/document_detail/57007.html).
+	// If a domain name for Alibaba Cloud CDN is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+	//
+	// >  If you enable the URL signing feature of ApsaraVideo VOD, you may be unable to access the returned URL of the auxiliary media asset by using a browser and the HTTP status code 403 may be returned. To resolve this issue, you can disable the [URL signing](https://help.aliyun.com/document_detail/86090.html) feature or [generate a signed URL](https://help.aliyun.com/document_detail/57007.html).
 	//
 	// example:
 	//
@@ -2682,7 +2752,7 @@ type CreateUploadImageRequest struct {
 	//
 	// > 	- The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
 	//
-	// >	- If you want to enable the upload acceleration feature, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply). For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+	// > 	- If you want to enable the upload acceleration feature, submit a ticket. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 	//
 	// example:
 	//
@@ -2867,13 +2937,13 @@ type CreateUploadVideoRequest struct {
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The category ID of the media file. You can use one of the following methods to obtain the category ID:
+	// The ID of the category. You can use one of the following methods to obtain the ID:
 	//
 	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Categories*	- to view the category ID of the media file.
 	//
-	// 	- Obtain the value of CateId from the response to the [AddCategory](https://help.aliyun.com/document_detail/56401.html) operation.
+	// 	- Obtain the value of CateId from the response to the [AddCategory](~~AddCategory~~) operation.
 	//
-	// 	- Obtain the value of CateId from the response to the [GetCategories](https://help.aliyun.com/document_detail/56406.html) operation.
+	// 	- Obtain the value of CateId from the response to the [GetCategories](~~GetCategories~~) operation.
 	//
 	// example:
 	//
@@ -2895,7 +2965,7 @@ type CreateUploadVideoRequest struct {
 	//
 	// UploadTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the audio or video file.
+	// The name of the source file.
 	//
 	// 	- The name must contain a file name extension, which is not case-sensitive.
 	//
@@ -2913,9 +2983,9 @@ type CreateUploadVideoRequest struct {
 	//
 	// 123
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The storage address. To obtain the storage address, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Storage**.
+	// The storage address. Perform the following operations to obtain the storage address: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Storage**. On the Storage page, view the storage address.
 	//
-	// > If you specify a storage address, media files are uploaded to the specified address.
+	// >  If you leave this parameter empty, audio and video files are uploaded to the default storage address. If you specify a storage address, audio and video files are uploaded to the specified address.
 	//
 	// example:
 	//
@@ -2935,15 +3005,21 @@ type CreateUploadVideoRequest struct {
 	//
 	// tag1,tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the transcoding template group. You can use one of the following methods to obtain the ID of the transcoding template group:
+	// The ID of the transcoding template group. You can use one of the following methods to obtain the ID:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Processing*	- > **Transcoding Template Groups*	- to view the ID of the transcoding template group.
+	// 	- Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose Configuration Management > Media Processing > Transcoding Template Groups. On the Transcoding Template Groups page, you can view the ID of the transcoding template group.[](https://vod.console.aliyun.com)************
 	//
-	// 	- Obtain the value of TranscodeTemplateGroupId in the response to the [AddTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102665.html) operation.
+	// 	- Obtain the value of the TranscodeTemplateGroupId parameter from the response to the [AddTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102665.html) operation that you called to create a transcoding template group.
 	//
-	// 	- Obtain the value of TranscodeTemplateGroupId in the response to the [ListTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102669.html) operation.
+	// 	- Obtain the value of the TranscodeTemplateGroupId parameter from the response to the [ListTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102669.html) operation that you called to query transcoding template groups.
 	//
-	// > If you leave this parameter empty, the default transcoding template group is used. If you specify this parameter, the specified transcoding template group is used for transcoding.
+	// > 	- If you specify both WorkflowId and TemplateGroupId, the value of the WorkflowId parameter takes effect.
+	//
+	// > 	- If this parameter is not specified, transcoding is performed based on the default transcoding template group. If the transcoding template group ID is specified, transcoding is performed based on the specified template group.
+	//
+	// > 	- If the **No Transcoding*	- template group is used, only the [FileUploadComplete](https://help.aliyun.com/document_detail/55630.html) event notification is returned after a video is uploaded. The [StreamTranscodeComplete](https://help.aliyun.com/document_detail/55636.html) event notification is not returned.
+	//
+	// > 	- If you use the **No Transcoding*	- template group to upload videos, only videos in the format of MP4, FLV, MP3, M3U8, or WebM can be played. Videos in other formats can only be stored in ApsaraVideo VOD. You can view the file name extension to obtain the video format. If you want to use ApsaraVideo Player, make sure that the version of the player is V3.1.0 or later.
 	//
 	// example:
 	//
@@ -3499,11 +3575,11 @@ func (s *DeleteAppInfoResponse) SetBody(v *DeleteAppInfoResponseBody) *DeleteApp
 }
 
 type DeleteAttachedMediaRequest struct {
-	// The ID of the auxiliary media asset that you want to delete. You can obtain the ID of the auxiliary media asset from the MediaId parameter in the response to the [CreateUploadAttachedMedia](https://help.aliyun.com/document_detail/98467.html) operation.
+	// The ID of the auxiliary media asset that you want to delete.
 	//
-	// 	- Separate multiple IDs with commas (,).
+	// 	- Separate multiple IDs with commas (,). You can specify up to 20 IDs.
 	//
-	// 	- You can specify a maximum of 20 IDs.
+	// 	- You can obtain the ID from the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to obtain the upload URL and credential.
 	//
 	// This parameter is required.
 	//
@@ -3986,53 +4062,55 @@ type DeleteImageRequest struct {
 	//
 	// VideoId
 	DeleteImageType *string `json:"DeleteImageType,omitempty" xml:"DeleteImageType,omitempty"`
-	// The ID of the image file. You can specify multiple image IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the image ID:
+	// The ID of the image. You can specify up to 20 image IDs and separate them with commas (,). You can use one of the following methods to obtain the image ID:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Image*	- to view the image ID. This method is applicable to images that are uploaded by using the ApsaraVideo VOD console.
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Image*	- to view the image ID.
 	//
-	// 	- Obtain the value of the ImageId parameter from the response to the [CreateUploadImage](https://help.aliyun.com/document_detail/55619.html) operation.
+	// 	- Obtain the image ID from the response to the [CreateUploadImage](~~CreateUploadImage~~) operation that you call to obtain the upload credential and URL.
 	//
-	// 	- Obtain the value of the ImageId parameter from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation after you upload images.
+	// 	- Obtain the image ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query images.
 	//
-	// > This parameter is required only if you set **DeleteImageType*	- to **ImageId**.
+	// >  This parameter takes effect and is required only if you set **DeleteImageType*	- to **ImageId**.
 	//
 	// example:
 	//
 	// bbc65bba53fed90de118a7849****,594228cdd14b4d069fc17a8c4a****
 	ImageIds *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
-	// The type of images that you want to delete. The images are associated with the video. This parameter is required only if you set **DeleteImageType*	- to **VideoId**. Valid values:
+	// The type of images that you want to delete. The images are associated with the video. Valid values:
 	//
 	// 	- **CoverSnapshot**: thumbnail snapshot.
 	//
-	// 	- **NormalSnapshot**: normal snapshot.
+	// 	- **NormalSnapshot**: regular snapshot.
 	//
 	// 	- **SpriteSnapshot**: sprite snapshot.
 	//
 	// 	- **SpriteOriginSnapshot**: sprite source snapshot.
 	//
-	// 	- **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate the types with commas (,).
+	// 	- **All**: images of all the preceding types. You can specify multiple types other than `All` for this parameter. Separate multiple types with commas (,).
+	//
+	// >  This parameter takes effect and is required only if you set **DeleteImageType*	- to **VideoId**.
 	//
 	// example:
 	//
 	// All
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The URL of the image. You can obtain the value of ImageURL from the response to the [CreateUploadImage](https://help.aliyun.com/document_detail/55619.html) operation. You can specify multiple URLs. Separate multiple URLs with commas (,).
+	// The URL of the image. You can obtain the value of `ImageURL` from the response to the [CreateUploadImage](~~CreateUploadImage~~) operation. You can specify up to 20 URLs and separate them with commas (,).
 	//
-	// > This parameter is required only if you set **DeleteImageType*	- to **ImageURL**.
+	// >  This parameter takes effect and is required only if you set **DeleteImageType*	- to **ImageURL**.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com/image/default/41AE7ADABBE*****.png
 	ImageURLs *string `json:"ImageURLs,omitempty" xml:"ImageURLs,omitempty"`
-	// The ID of the video file. You can use one of the following methods to obtain the video ID:
+	// The ID of the video. You can specify only one ID. You can use one of the following methods to obtain the ID:
 	//
-	// 	- Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, view the ID of the media file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, view the ID of the media file.
 	//
-	// 	- Obtain the value of the VideoId parameter from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation.
+	// 	- Obtain the video ID from the response to the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload credential and URL.
 	//
-	// 	- Obtain the value of the VideoId parameter from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation after you upload media files.
+	// 	- Obtain the video ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query videos.
 	//
-	// > This parameter is required only if you set **DeleteImageType*	- to **VideoId**.
+	// >  This parameter takes effect and is required only if you set **DeleteImageType*	- to **VideoId**.
 	//
 	// example:
 	//
@@ -4824,7 +4902,7 @@ type DeleteVodSpecificConfigRequest struct {
 	//
 	// 2317****
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The domain name for CDN.
+	// The accelerated domain name.
 	//
 	// This parameter is required.
 	//
@@ -4832,13 +4910,11 @@ type DeleteVodSpecificConfigRequest struct {
 	//
 	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The environment of configuration.
+	// The environment from which the domain name configurations are deleted. Valid values:
 	//
-	// Value:
+	// 	- online: production environment
 	//
-	// online: production environment
-	//
-	// gray: simulation environment
+	// 	- gray: simulation environment
 	//
 	// example:
 	//
@@ -5098,7 +5174,7 @@ func (s *DeleteWatermarkResponse) SetBody(v *DeleteWatermarkResponseBody) *Delet
 }
 
 type DescribePlayTopVideosRequest struct {
-	// The time to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The time to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -5107,13 +5183,13 @@ type DescribePlayTopVideosRequest struct {
 	// 2016-06-29T13:00:00Z
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page. Default value: **100**. Maximum value: **1000**.
+	// The number of entries to return on each page. The default value is **100**. The maximum value is **1000**.
 	//
 	// example:
 	//
@@ -5150,13 +5226,13 @@ func (s *DescribePlayTopVideosRequest) SetPageSize(v int64) *DescribePlayTopVide
 }
 
 type DescribePlayTopVideosResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -5229,7 +5305,7 @@ func (s *DescribePlayTopVideosResponseBodyTopPlayVideos) SetTopPlayVideoStatis(v
 }
 
 type DescribePlayTopVideosResponseBodyTopPlayVideosTopPlayVideoStatis struct {
-	// The playback duration. Unit: milliseconds.
+	// The total playback duration. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -5486,7 +5562,9 @@ func (s *DescribePlayUserAvgResponse) SetBody(v *DescribePlayUserAvgResponseBody
 }
 
 type DescribePlayUserTotalRequest struct {
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 180 days.
 	//
 	// This parameter is required.
 	//
@@ -5495,7 +5573,7 @@ type DescribePlayUserTotalRequest struct {
 	// 2016-06-30T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -5575,7 +5653,7 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotals) SetUserPlayStati
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal struct {
-	// The date. The date is displayed in the *yyyy-MM-dd	- format.
+	// The date. The date is displayed in the yyyy-MM-dd format.
 	//
 	// example:
 	//
@@ -5774,6 +5852,8 @@ func (s *DescribePlayUserTotalResponse) SetBody(v *DescribePlayUserTotalResponse
 type DescribePlayVideoStatisRequest struct {
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
+	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 180 days.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5789,7 +5869,13 @@ type DescribePlayVideoStatisRequest struct {
 	//
 	// 2016-06-29T13:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The video ID.
+	// The ID of the video. You can specify only one ID. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the page that appears, view the video ID.
+	//
+	// 	- Obtain the video ID from the response to the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload URL and credential.
+	//
+	// 	- Obtain the video ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query the audio or video file.
 	//
 	// This parameter is required.
 	//
@@ -5874,13 +5960,13 @@ func (s *DescribePlayVideoStatisResponseBodyVideoPlayStatisDetails) SetVideoPlay
 }
 
 type DescribePlayVideoStatisResponseBodyVideoPlayStatisDetailsVideoPlayStatisDetail struct {
-	// The date. The date is displayed in the *yyyy-MM-dd	- format.
+	// The date. The time follows the ISO 8601 standard in the *YYYY-MM-DD*T*hh:mm:ss	- format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 20170120
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The playback duration. Unit: millisecond.
+	// The total playback duration. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -6268,7 +6354,7 @@ func (s *DescribeVodCertificateListRequest) SetSecurityToken(v string) *Describe
 }
 
 type DescribeVodCertificateListResponseBody struct {
-	// The information about the returned certificates.
+	// The information about each certificate.
 	CertificateListModel *DescribeVodCertificateListResponseBodyCertificateListModel `json:"CertificateListModel,omitempty" xml:"CertificateListModel,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -6297,9 +6383,9 @@ func (s *DescribeVodCertificateListResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeVodCertificateListResponseBodyCertificateListModel struct {
-	// The details of each certificate.
+	// The list of certificates.
 	CertList *DescribeVodCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
-	// The number of certificates.
+	// The number of certificates that are returned.
 	//
 	// example:
 	//
@@ -6343,12 +6429,14 @@ func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertList) Set
 }
 
 type DescribeVodCertificateListResponseBodyCertificateListModelCertListCert struct {
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ID of the certificate.
 	//
 	// example:
 	//
 	// 235437
-	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertId         *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The name of the certificate.
 	//
 	// example:
@@ -6360,13 +6448,17 @@ type DescribeVodCertificateListResponseBodyCertificateListModelCertListCert stru
 	// example:
 	//
 	// test
-	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	Common          *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainMatchCert *bool   `json:"DomainMatchCert,omitempty" xml:"DomainMatchCert,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The fingerprint of the certificate.
 	//
 	// example:
 	//
 	// ****
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The certificate authority (CA) that issued the certificate.
 	//
 	// example:
@@ -6378,7 +6470,8 @@ type DescribeVodCertificateListResponseBodyCertificateListModelCertListCert stru
 	// example:
 	//
 	// 1512388610
-	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime      *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
 }
 
 func (s DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) String() string {
@@ -6389,8 +6482,18 @@ func (s DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) 
 	return s.String()
 }
 
+func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetAlgorithm(v string) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
+	s.Algorithm = &v
+	return s
+}
+
 func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetCertId(v int64) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
 	s.CertId = &v
+	return s
+}
+
+func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetCertIdentifier(v string) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
+	s.CertIdentifier = &v
 	return s
 }
 
@@ -6404,8 +6507,28 @@ func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert)
 	return s
 }
 
+func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetCreateTime(v int64) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetDomainMatchCert(v bool) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
+	s.DomainMatchCert = &v
+	return s
+}
+
+func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetEndTime(v int64) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetFingerprint(v string) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
 	s.Fingerprint = &v
+	return s
+}
+
+func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetInstanceId(v string) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
+	s.InstanceId = &v
 	return s
 }
 
@@ -6416,6 +6539,11 @@ func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert)
 
 func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetLastTime(v int64) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
 	s.LastTime = &v
+	return s
+}
+
+func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) SetSignAlgorithm(v string) *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert {
+	s.SignAlgorithm = &v
 	return s
 }
 
@@ -8074,7 +8202,7 @@ func (s *DescribeVodDomainHitRateDataResponse) SetBody(v *DescribeVodDomainHitRa
 }
 
 type DescribeVodDomainLogRequest struct {
-	// The domain name.
+	// The domain name for CDN.
 	//
 	// >  You can specify only one domain name in each query.
 	//
@@ -11617,7 +11745,11 @@ type DescribeVodMediaPlayDataRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The playback time. You can specify this parameter to query all playback data generated only on the specified date. You can query data only by day. Specify the value in the yyyyMMdd format.
+	// The playback time. Specify the value in the yyyyMMdd format.
+	//
+	// > 	- You can query data only by day.
+	//
+	// > 	- You can query only data within the last 30 days.
 	//
 	// example:
 	//
@@ -11639,7 +11771,7 @@ type DescribeVodMediaPlayDataRequest struct {
 	//
 	// 	- **eu-central-1**: Germany (Frankfurt)
 	//
-	// 	- **ap-south-1**: India (Mumbai)
+	// 	- **ap-south-1**: India (Mumbai) (disabled)
 	//
 	// example:
 	//
@@ -12228,7 +12360,7 @@ type DescribeVodRefreshTasksRequest struct {
 	// file
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
@@ -12549,6 +12681,9 @@ func (s *DescribeVodRefreshTasksResponse) SetBody(v *DescribeVodRefreshTasksResp
 }
 
 type DescribeVodStorageDataRequest struct {
+	// example:
+	//
+	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
@@ -12581,13 +12716,13 @@ type DescribeVodStorageDataRequest struct {
 	//
 	// 2019-02-01T14:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket. If you leave this parameter empty, data of all buckets is returned. Separate multiple bucket names with commas (,).
+	// The name of the Object Storage Service (OSS) bucket. If you leave this parameter empty, data of all buckets is returned. Separate multiple transcoding specifications with commas (,).
 	//
 	// example:
 	//
 	// bucket
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The storage type. Set the value to **OSS**.
+	// The storage class. Set the value to **OSS**.
 	//
 	// example:
 	//
@@ -13918,7 +14053,7 @@ func (s *DescribeVodUserDomainsResponse) SetBody(v *DescribeVodUserDomainsRespon
 }
 
 type DescribeVodVerifyContentRequest struct {
-	// The domain name for which you want to query the ownership verification content. You can specify only one domain name in each call.
+	// The domain name for which you want to verify the ownership. You can specify only one domain name in each call.
 	//
 	// This parameter is required.
 	//
@@ -14714,7 +14849,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJob struct {
 	//
 	// 2017-01-11T12:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The job result data.
+	// The job result.
 	Data *GetAIMediaAuditJobResponseBodyMediaAuditJobData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the job.
 	//
@@ -14748,7 +14883,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJob struct {
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Only the job type is supported.
+	// The type of the job. The value is AIMediaAudit.
 	//
 	// example:
 	//
@@ -14826,21 +14961,21 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobData struct {
 	AudioResult []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Repeated"`
 	// The results of image review.
 	ImageResult []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
-	// The category of the review result. Separate multiple values with commas (,). Valid values:
+	// The category of the review result. Multiple values are separated by commas (,). Valid values:
 	//
-	// 	- **porn**
+	// 	- **porn**: pornographic content
 	//
-	// 	- **terrorism**
+	// 	- **terrorism**: terrorist or politically sensitive content
 	//
-	// 	- **ad**
+	// 	- **ad**: ad violation
 	//
-	// 	- **live**: undesirable scenes
+	// 	- **live**: undesirable scene
 	//
-	// 	- **logo**
+	// 	- **logo**: logo
 	//
 	// 	- **audio**: audio anti-spam
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content
 	//
 	// example:
 	//
@@ -14858,7 +14993,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobData struct {
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The results of text review.
+	// The text moderation results.
 	TextResult []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
 	// The results of video review.
 	VideoResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult `json:"VideoResult,omitempty" xml:"VideoResult,omitempty" type:"Struct"`
@@ -14908,33 +15043,33 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobData) SetVideoResult(v *GetA
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult struct {
-	// The category of the review result. Valid values:
+	// The category of the review result.
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content
 	//
-	// 	- **spam**
+	// 	- **spam**: spam
 	//
-	// 	- **ad**
+	// 	- **ad**: ads
 	//
-	// 	- **politics**
+	// 	- **politics**: political content
 	//
-	// 	- **terrorism**
+	// 	- **terrorism**: terrorist content
 	//
-	// 	- **abuse**
+	// 	- **abuse**: abuse
 	//
-	// 	- **porn**
+	// 	- **porn**: pornographic content.
 	//
-	// 	- **flood**: spam posts
+	// 	- **flood**: excessive junk content
 	//
-	// 	- **contraband**
+	// 	- **contraband**: prohibited content
 	//
-	// 	- **meaningless**
+	// 	- **meaningless**: meaningless content
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The review scenario. Valid value: **antispam**.
+	// The review scenario. The value is **antispam**.
 	//
 	// example:
 	//
@@ -14948,11 +15083,11 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult struct {
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The recommendation for review results. Valid values:
 	//
-	// 	- **block**: The content violates the regulations.
+	// 	- **block**
 	//
-	// 	- **review**: The content may violate the regulations.
+	// 	- **review**
 	//
-	// 	- **pass**: The content passes the review.
+	// 	- **pass**
 	//
 	// example:
 	//
@@ -14989,21 +15124,19 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) SetSuggesti
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult struct {
-	// The category of the review result. Separate multiple values with commas (,). Valid values:
+	// The categories of the image review results. Multiple values are separated by commas (,). Valid values:
 	//
-	// 	- **porn**
+	// 	- **porn**: pornographic content
 	//
-	// 	- **terrorism**
+	// 	- **terrorism**: terrorist or politically sensitive content
 	//
-	// 	- **ad**
+	// 	- **ad**: ad violation
 	//
-	// 	- **live**: undesirable scenes
+	// 	- **live**: undesirable scene
 	//
-	// 	- **logo**
+	// 	- **logo**: logo
 	//
-	// 	- **audio**: audio anti-spam
-	//
-	// 	- **normal**
+	// 	- **normal**: normal content
 	//
 	// example:
 	//
@@ -15013,11 +15146,11 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult struct {
 	Result []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The recommendation for review results. Valid values:
 	//
-	// 	- **block**: The content violates the regulations.
+	// 	- **block**
 	//
-	// 	- **review**: The content may violate the regulations.
+	// 	- **review**
 	//
-	// 	- **pass**: The content passes the review.
+	// 	- **pass**
 	//
 	// example:
 	//
@@ -15113,47 +15246,47 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult struct {
 	//
 	// Valid values if scene is **ad**:
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content
 	//
-	// 	- **ad**
+	// 	- **ad**: ads
 	//
-	// 	- **politics**
+	// 	- **politics**: political content
 	//
-	// 	- **porn**
+	// 	- **porn**: pornographic content
 	//
-	// 	- **abuse**
+	// 	- **abuse**: verbal abuse
 	//
-	// 	- **terrorism**
+	// 	- **terrorism**: terrorist content
 	//
-	// 	- **contraband**
+	// 	- **contraband**: prohibited content
 	//
-	// 	- **spam**
+	// 	- **spam**: spam content
 	//
 	// 	- **npx**: illegal ad
 	//
 	// 	- **qrcode**: QR code
 	//
-	// 	- **programCode**
+	// 	- **programCode**: mini program code
 	//
 	// Valid values if scene is **live**:
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content
 	//
-	// 	- **meaningless**
+	// 	- **meaningless**: meaningless content, such as a black or white screen.
 	//
-	// 	- **PIP**
+	// 	- **PIP**: picture-in-picture
 	//
-	// 	- **smoking**
+	// 	- **smoking**: smoking
 	//
-	// 	- **drivelive**
+	// 	- **drivelive**: live broadcasting in a running vehicle
 	//
 	// Valid values if scene is **logo**:
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content
 	//
-	// 	- **TV**
+	// 	- **TV**: controlled TV station logo
 	//
-	// 	- **trademark**
+	// 	- **trademark**: trademark
 	//
 	// example:
 	//
@@ -15161,15 +15294,15 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult struct {
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The review scenario. Valid values:
 	//
-	// 	- **porn**
+	// 	- **porn**: pornographic content
 	//
-	// 	- **terrorism**
+	// 	- **terrorism**: terrorist or politically sensitive content
 	//
-	// 	- **ad**
+	// 	- **ad**: ad violation
 	//
-	// 	- **live**: undesirable scenes
+	// 	- **live**: undesirable scene
 	//
-	// 	- **logo**
+	// 	- **logo**: logo
 	//
 	// example:
 	//
@@ -15183,11 +15316,11 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult struct {
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The recommendation for review results. Valid values:
 	//
-	// 	- **block**: The content violates the regulations.
+	// 	- **block**
 	//
-	// 	- **review**: The content may violate the regulations.
+	// 	- **review**
 	//
-	// 	- **pass**: The content passes the review.
+	// 	- **pass**
 	//
 	// example:
 	//
@@ -15224,7 +15357,7 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult) SetSu
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult struct {
-	// The text.
+	// The text content.
 	//
 	// example:
 	//
@@ -15232,25 +15365,25 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The category of the review result. Valid values:
 	//
-	// 	- **spam**
+	// 	- **spam**: spam content
 	//
-	// 	- **ad**
+	// 	- **ad**: ads
 	//
-	// 	- **abuse**
+	// 	- **abuse**: abuse
 	//
-	// 	- **flood**: spam posts
+	// 	- **flood**: excessive junk content
 	//
-	// 	- **contraband**
+	// 	- **contraband**: prohibited content
 	//
-	// 	- **meaningless**
+	// 	- **meaningless**: meaningless content
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content
 	//
 	// example:
 	//
 	// ad
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The review scenario. Valid value: **antispam**.
+	// The review scenario. The value is **antispam**.
 	//
 	// example:
 	//
@@ -15264,11 +15397,11 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult struct {
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The recommendation for review results. Valid values:
 	//
-	// 	- **block**: The content violates the regulations.
+	// 	- **block**
 	//
-	// 	- **review**: The content may violate the regulations.
+	// 	- **review**
 	//
-	// 	- **pass**: The content passes the review.
+	// 	- **pass**
 	//
 	// example:
 	//
@@ -15325,7 +15458,15 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult struct {
 	AdResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult `json:"AdResult,omitempty" xml:"AdResult,omitempty" type:"Struct"`
 	// The category of the review result. Valid values:
 	//
-	// 	- **ad**
+	// 	- **porn**: pornographic content
+	//
+	// 	- **terrorism**: terrorist or politically sensitive content
+	//
+	// 	- **ad**: ad violation
+	//
+	// 	- **live**: undesirable scene
+	//
+	// 	- **logo**: logo
 	//
 	// 	- **normal**
 	//
@@ -15337,21 +15478,21 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult struct {
 	LiveResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult `json:"LiveResult,omitempty" xml:"LiveResult,omitempty" type:"Struct"`
 	// The results of logo review.
 	LogoResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult `json:"LogoResult,omitempty" xml:"LogoResult,omitempty" type:"Struct"`
-	// The results of pornography content review.
+	// The results of pornographic content review.
 	PornResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult `json:"PornResult,omitempty" xml:"PornResult,omitempty" type:"Struct"`
-	// The recommendation for review results. Valid values:
+	// The recommendation for video review results. Valid values:
 	//
-	// 	- **block**: The content violates the regulations.
+	// 	- **block**
 	//
-	// 	- **review**: The content may violate the regulations.
+	// 	- **review**
 	//
-	// 	- **pass**: The content passes the review.
+	// 	- **pass**
 	//
 	// example:
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The results of terrorism content review.
+	// The results of terrorist content review.
 	TerrorismResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult `json:"TerrorismResult,omitempty" xml:"TerrorismResult,omitempty" type:"Struct"`
 }
 
@@ -15405,13 +15546,31 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult struct {
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The statistics about tag frames.
+	// The number of snapshots of each category in the review result.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
-	// The category of the review result. Valid values:
+	// The categories of the ad review results. Valid values:
 	//
-	// 	- **ad**
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **ad**: other ads
+	//
+	// 	- **politics**: political content
+	//
+	// 	- **porn**: pornographic content
+	//
+	// 	- **abuse**: abuse
+	//
+	// 	- **terrorism**: terrorist content
+	//
+	// 	- **contraband**: prohibited content
+	//
+	// 	- **spam**: spam content
+	//
+	// 	- **npx**: illegal ad
+	//
+	// 	- **qrcode**: QR code
+	//
+	// 	- **programCode**: mini program code
 	//
 	// example:
 	//
@@ -15435,7 +15594,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult struct {
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the image with the highest score of the category that is indicated by Label.
+	// The information about the snapshot that has the highest score in the category.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -15478,17 +15637,35 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult) Set
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCounterList struct {
-	// The number of images.
+	// The number of video snapshots.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The category of the review result. Valid values:
+	// The categories of the ad review results. Valid values:
 	//
-	// 	- **ad**
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **ad**: other ads
+	//
+	// 	- **politics**: political content
+	//
+	// 	- **porn**: pornographic content
+	//
+	// 	- **abuse**: abuse
+	//
+	// 	- **terrorism**: terrorist content
+	//
+	// 	- **contraband**: prohibited content
+	//
+	// 	- **spam**: spam content
+	//
+	// 	- **npx**: illegal ad
+	//
+	// 	- **qrcode**: QR code
+	//
+	// 	- **programCode**: mini program code
 	//
 	// example:
 	//
@@ -15515,29 +15692,47 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCount
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopList struct {
-	// The category of the review result. Valid values:
+	// The categories of the ad review results. Valid values:
 	//
-	// 	- **ad**
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **ad**: other ads
+	//
+	// 	- **politics**: political content
+	//
+	// 	- **porn**: pornographic content
+	//
+	// 	- **abuse**: abuse
+	//
+	// 	- **terrorism**: terrorist content
+	//
+	// 	- **contraband**: prohibited content
+	//
+	// 	- **spam**: spam content
+	//
+	// 	- **npx**: illegal ad
+	//
+	// 	- **qrcode**: QR code
+	//
+	// 	- **programCode**: mini program code
 	//
 	// example:
 	//
 	// ad
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the image of the category that is indicated by Label.
+	// The score of the snapshot in the category that is indicated by Label.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 500
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The URL of the image.
+	// The URL of the video snapshot.
 	//
 	// example:
 	//
@@ -15580,13 +15775,19 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult struct
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The categories of the review results and the number of images.
+	// The categories of the review results and the number of video snapshots in each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
 	// The category of the review result. Valid values:
 	//
-	// 	- **live**: The content contains undesirable scenes.
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	// 	- **PIP**: picture-in-picture
+	//
+	// 	- **smoking**: smoking
+	//
+	// 	- **drivelive**: live broadcasting in a running vehicle
 	//
 	// example:
 	//
@@ -15610,7 +15811,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult struct
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the image with the highest score of the category that is indicated by Label.
+	// The information about the snapshot that has the highest score in the category.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -15653,7 +15854,7 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult) S
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounterList struct {
-	// The number of images.
+	// The number of video snapshots.
 	//
 	// example:
 	//
@@ -15661,9 +15862,15 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounter
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The category of the review result. Valid values:
 	//
-	// 	- **live**: The content contains undesirable scenes.
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	// 	- **PIP**: picture-in-picture
+	//
+	// 	- **smoking**: smoking
+	//
+	// 	- **drivelive**: live broadcasting in a running vehicle
 	//
 	// example:
 	//
@@ -15692,27 +15899,33 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCou
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTopList struct {
 	// The category of the review result. Valid values:
 	//
-	// 	- **live**: The content contains undesirable scenes.
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	// 	- **PIP**: picture-in-picture
+	//
+	// 	- **smoking**: smoking
+	//
+	// 	- **drivelive**: live broadcasting in a running vehicle
 	//
 	// example:
 	//
 	// live
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the image of the category that is indicated by Label.
+	// The score of the snapshot in the category that is indicated by Label.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 500
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The URL of the image.
+	// The URL of the video snapshot.
 	//
 	// example:
 	//
@@ -15749,25 +15962,27 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTop
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult struct {
-	// The average score of the images of the category that is indicated by Label.
+	// The average score of the snapshots in the category indicated by Label.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The categories of the review results and the number of images.
+	// The categories of the review results and the number of video snapshots in each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
 	// The category of the review result. Valid values:
 	//
-	// 	- **logo**
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **TV**: controlled TV station logo
+	//
+	// 	- **trademark**: trademark
 	//
 	// example:
 	//
 	// logo
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The highest score of the image of the category that is indicated by Label.
+	// The highest score of the snapshot of the category that is indicated by Label.
 	//
 	// example:
 	//
@@ -15785,7 +16000,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult struct
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the image with the highest score of the category that is indicated by Label.
+	// The information about the snapshot that has the highest score in the category.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -15828,7 +16043,7 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult) S
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounterList struct {
-	// The number of images.
+	// The number of video snapshots.
 	//
 	// example:
 	//
@@ -15836,9 +16051,11 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounter
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The category of the review result. Valid values:
 	//
-	// 	- **logo**
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **TV**: controlled TV station logo
+	//
+	// 	- **trademark**: trademark
 	//
 	// example:
 	//
@@ -15867,27 +16084,29 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCou
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopList struct {
 	// The category of the review result. Valid values:
 	//
-	// 	- **logo**
+	// 	- **normal**: normal content
 	//
-	// 	- **normal**
+	// 	- **TV**: controlled TV station logo
+	//
+	// 	- **trademark**: trademark
 	//
 	// example:
 	//
 	// logo
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the image of the category that is indicated by Label.
+	// The score of the snapshot in the category that is indicated by Label.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5000
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The URL of the image.
+	// The URL of the video snapshot.
 	//
 	// example:
 	//
@@ -15924,13 +16143,13 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTop
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult struct {
-	// The average score of the images of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+	// The average score of the snapshots of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The categories of the review results and the number of images.
+	// The number of snapshots of each category in the review result.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
 	// The category of the review result. Valid values:
 	//
@@ -15944,7 +16163,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult struct
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The highest score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+	// The highest score of the snapshot of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
@@ -15962,7 +16181,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult struct
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the image with the highest score of the category that is indicated by Label.
+	// The information about the snapshot that has the highest score in the category.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -16005,13 +16224,13 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult) S
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCounterList struct {
-	// The number of images.
+	// The number of video snapshots.
 	//
 	// example:
 	//
 	// 0
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The category of the review result. Valid values:
+	// The results of pornographic content review. Valid values:
 	//
 	// 	- **porn**
 	//
@@ -16044,7 +16263,7 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCou
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopList struct {
-	// The category of the review result. Valid values:
+	// The results of pornographic content review. Valid values:
 	//
 	// 	- **porn**
 	//
@@ -16056,19 +16275,19 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopList
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+	// The score of the snapshot in the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3005
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The URL of the image.
+	// The URL of the video snapshot.
 	//
 	// example:
 	//
@@ -16105,13 +16324,13 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTop
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult struct {
-	// The average score of the images of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+	// The average score of the snapshots of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The categories of the review results and the number of images.
+	// The categories of terrorist content review results and the number of video snapshots in each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
 	// The category of the review result. Valid values:
 	//
@@ -16147,25 +16366,25 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult s
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The highest score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+	// The highest score of the snapshot of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	MaxScore *string `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	// The recommendation for review results. Valid values:
+	// The recommendation for terrorist content review results. Valid values:
 	//
-	// 	- **block**: The content violates the regulations.
+	// 	- **block**
 	//
-	// 	- **review**: The content may violate the regulations.
+	// 	- **review**
 	//
-	// 	- **pass**: The content passes the review.
+	// 	- **pass**
 	//
 	// example:
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the image with the highest score of the category that is indicated by Label.
+	// The information about the snapshot that has the highest score in the category.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -16208,15 +16427,19 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResu
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultCounterList struct {
-	// The number of images.
+	// The number of video snapshots.
 	//
 	// example:
 	//
 	// 0
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The category of the review result. Valid values:
+	// The results of terrorist content review. Valid values:
 	//
-	// 	- **terrorism**
+	// 	- **normal**
+	//
+	// 	- **bloody**
+	//
+	// 	- **explosion**
 	//
 	// 	- **outfit**
 	//
@@ -16226,9 +16449,19 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultCo
 	//
 	// 	- **politics**
 	//
-	// 	- **others**
+	// 	- **violence**
 	//
-	// 	- **normal**
+	// 	- **crowd**
+	//
+	// 	- **parade**
+	//
+	// 	- **carcrash**
+	//
+	// 	- **flag**
+	//
+	// 	- **location**
+	//
+	// 	- **others**
 	//
 	// example:
 	//
@@ -16255,7 +16488,7 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResu
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultTopList struct {
-	// The category of the review result. Valid values:
+	// The results of terrorist content review. Valid values:
 	//
 	// 	- **normal**
 	//
@@ -16289,19 +16522,19 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultTo
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+	// The score of the snapshot in the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The URL of the image.
+	// The URL of the video snapshot.
 	//
 	// example:
 	//
@@ -16978,6 +17211,7 @@ type GetAppInfosResponseBodyAppInfoList struct {
 	//
 	// 2019-03-01T09:00:00Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the application. Valid values:
 	//
 	// 	- **Normal**
@@ -17033,6 +17267,11 @@ func (s *GetAppInfosResponseBodyAppInfoList) SetModificationTime(v string) *GetA
 	return s
 }
 
+func (s *GetAppInfosResponseBodyAppInfoList) SetResourceGroupId(v string) *GetAppInfosResponseBodyAppInfoList {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetAppInfosResponseBodyAppInfoList) SetStatus(v string) *GetAppInfosResponseBodyAppInfoList {
 	s.Status = &v
 	return s
@@ -17073,33 +17312,37 @@ func (s *GetAppInfosResponse) SetBody(v *GetAppInfosResponseBody) *GetAppInfosRe
 }
 
 type GetAttachedMediaInfoRequest struct {
-	// The validity period of the URL of the auxiliary media asset. Unit: seconds.
+	// The validity period of the URL. Unit: seconds.
 	//
-	// > 	- If the OutputType parameter is set to **cdn**:
+	// 	- If you set the OutputType parameter to **cdn**:
 	//
-	// >     	- The URL of the auxiliary media asset has a validity period only if URL signing is enabled. Otherwise, the URL of the auxiliary media asset is permanently valid.
+	//     	- The URL of the auxiliary media asset has a validity period only if URL signing is enabled. Otherwise, the URL of the auxiliary media asset is permanently valid.
 	//
-	// >     	- Minimum value: **1**.
+	//     	- Minimum value: **1**.
 	//
-	// >     	- Maximum value: unlimited.
+	//     	- Maximum value: unlimited.
 	//
-	// >     	- Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
+	//     	- Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
 	//
-	// > 	- If the OutputType parameter is set to **oss**:
+	// 	- If you set the OutputType parameter to **oss**:
 	//
-	// >     	- The URL of the auxiliary media asset has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the URL of the auxiliary media asset is permanently valid.
+	//     	- The URL of the auxiliary media asset has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the URL of the auxiliary media asset is permanently valid.
 	//
-	// >     	- Minimum value: **1**.
+	//     	- Minimum value: **1**.
 	//
-	// >     	- Maximum value: **2592000*	- (30 days). The maximum value is limited to reduce security risks of the origin.
+	//     	- The maximum value for a media asset stored in the VOD bucket is **2592000*	- (30 days) and the maximum value for a media asset stored in an OSS bucket is **129600*	- (36 hours). The maximum value is limited to reduce security risks of the origin.
 	//
-	// >     	- Default value: If you do not set this parameter, the default value is **3600**.
+	//     	- Default value: If you do not set this parameter, the default value **3600*	- is used.
 	//
 	// example:
 	//
 	// 3600
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The ID of the auxiliary media asset. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified.
+	// The ID of the auxiliary media asset.
+	//
+	// 	- Separate multiple IDs with commas (,). You can specify up to 20 IDs.
+	//
+	// 	- You can obtain the ID from the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to obtain the upload URL and credential.
 	//
 	// This parameter is required.
 	//
@@ -17107,11 +17350,11 @@ type GetAttachedMediaInfoRequest struct {
 	//
 	// eb1861d2c9a842340e989dd56****,0222e203cf80f9c22870a4d2c****
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
-	// The type of the URL of the auxiliary media asset. Valid values:
+	// The type of the media asset URL. Valid values:
 	//
-	// 	- **oss**: OSS URL
+	// 	- **oss**
 	//
-	// 	- **cdn*	- (default): Content Delivery Network (CDN) URL
+	// 	- **cdn*	- (default)
 	//
 	// example:
 	//
@@ -17143,7 +17386,7 @@ func (s *GetAttachedMediaInfoRequest) SetOutputType(v string) *GetAttachedMediaI
 }
 
 type GetAttachedMediaInfoResponseBody struct {
-	// The information about the media asset.
+	// The information about the media assets.
 	AttachedMediaList []*GetAttachedMediaInfoResponseBodyAttachedMediaList `json:"AttachedMediaList,omitempty" xml:"AttachedMediaList,omitempty" type:"Repeated"`
 	// The IDs of the auxiliary media assets that do not exist.
 	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
@@ -17185,7 +17428,7 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	//
 	// app-*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The list of categories.
+	// The categories.
 	Categories []*GetAttachedMediaInfoResponseBodyAttachedMediaListCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	// The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
@@ -17194,6 +17437,8 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	// 2019-01-01T10:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the auxiliary media asset.
+	//
+	// >  This parameter is returned only when a description is specified for the auxiliary media asset.
 	//
 	// example:
 	//
@@ -17205,7 +17450,7 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	//
 	// 0222e203cf80f9c22870a4d2c****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The time when the auxiliary media asset was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the auxiliary media asset was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -17213,23 +17458,25 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The status of the auxiliary media asset. Valid values:
 	//
-	// - **Uploading**: The auxiliary media asset is being uploaded. This is the initial status.
+	// 	- **Uploading**
 	//
-	// - **Normal**: The auxiliary media asset is uploaded.
+	// 	- **Normal**
 	//
-	// - **UploadFail**: The auxiliary media asset fails to be uploaded.
+	// 	- **UploadFail**
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The OSS bucket where the auxiliary media asset is stored.
+	// The storage address of the auxiliary media asset.
 	//
 	// example:
 	//
 	// outin-bfefbb9*****c7426.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags of the auxiliary media asset.
+	//
+	// >  This parameter is returned only when tags are specified for the auxiliary media asset.
 	//
 	// example:
 	//
@@ -17241,13 +17488,13 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	//
 	// subtitle test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The type of the auxiliary media asset. Valid values:
+	// The type of the auxiliary media asset.
 	//
-	// - **watermark**
+	// 	- **watermark**
 	//
-	// - **subtitle**
+	// 	- **subtitle**
 	//
-	// - **material**
+	// 	- **material**
 	//
 	// example:
 	//
@@ -17255,7 +17502,7 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The URL of the auxiliary media asset.
 	//
-	// > If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+	// >  If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
 	//
 	// example:
 	//
@@ -17332,7 +17579,7 @@ func (s *GetAttachedMediaInfoResponseBodyAttachedMediaList) SetURL(v string) *Ge
 }
 
 type GetAttachedMediaInfoResponseBodyAttachedMediaListCategories struct {
-	// The ID of the video category.
+	// The ID of the category.
 	//
 	// example:
 	//
@@ -17340,21 +17587,17 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaListCategories struct {
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The name of the category.
 	//
-	// - The value can be up to 64 bytes in length.
-	//
-	// - The string must be encoded in the UTF-8 format.
-	//
 	// example:
 	//
 	// category test
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The level of the category. A value of 0 indicates a level 1 category.
+	// The level of the category.
 	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the parent category. The parent category ID of a level 1 category is -1.
+	// The ID of the parent category.
 	//
 	// example:
 	//
@@ -19013,33 +19256,39 @@ func (s *GetEditingProjectMaterialsResponse) SetBody(v *GetEditingProjectMateria
 }
 
 type GetImageInfoRequest struct {
-	// The validity period of the image URL. Unit: seconds.
+	// The time when the image URL expires. Unit: seconds.
 	//
-	// > 	- If the OutputType parameter is set to **cdn**:
+	// 	- If you set OutputType to cdn:
 	//
-	// >     	- The image URL has a validity period only if URL signing is enabled. Otherwise, the image URL is permanently valid.
+	//     	- This parameter takes effect only if URL authentication is enabled. Otherwise, the image URL does not expire.
 	//
-	// >     	- Minimum value: **1**.
+	//     	- Minimum value: 1.
 	//
-	// >     	- Maximum value: unlimited.
+	//     	- Maximum value: unlimited.
 	//
-	// >     	- Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
+	//     	- Default value: If you leave this parameter empty, the default validity period that is specified in URL signing is used.
 	//
-	// > 	- If the OutputType parameter is set to **oss**:
+	// 	- If you set OutputType to oss:
 	//
-	// >     	- The image URL has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the image URL is permanently valid.
+	//     	- This parameter takes effect only when the ACL of the Object Storage Service (OSS) bucket is private. Otherwise, the image URL does not expire.
 	//
-	// >     	- Minimum value: **1**.
+	//     	- Minimum value: 1.
 	//
-	// >     	- Maximum value: **2592000*	- (30 days). The maximum value is limited to reduce security risks of the origin.
+	//     	- If you store the image in the VOD bucket, the maximum value of this parameter is **2592000*	- (30 days). If you store the image in an OSS bucket, the maximum value of this parameter is **129600*	- (36 hours). The maximum value is limited to reduce security risks of the origin.
 	//
-	// >     	- Default value: If you do not set this parameter, the default value is **3600**.
+	//     	- Default value: 3600.
 	//
 	// example:
 	//
 	// 3600
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The ID of the image.
+	// The ID of the image. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/). In the left-side navigation pane, choose Media Files > Image. On the Image page, view the image ID.
+	//
+	// 	- Obtain the image ID from the response to the [CreateUploadImage](~~CreateUploadImage~~) operation that you call to obtain the upload URL and credential.
+	//
+	// 	- Obtain the image ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query the image.
 	//
 	// This parameter is required.
 	//
@@ -19047,11 +19296,11 @@ type GetImageInfoRequest struct {
 	//
 	// 3e34733b40b9a96ccf5c1ff6f69****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the image URL. Valid values:
+	// The type of the output image URL. Valid values:
 	//
-	// 	- **oss**: OSS URL
+	// 	- oss: OSS URL
 	//
-	// 	- **cdn*	- (default): Content Delivery Network (CDN) URL
+	// 	- cdn: CDN URL
 	//
 	// example:
 	//
@@ -19130,7 +19379,7 @@ type GetImageInfoResponseBodyImageInfo struct {
 	//
 	// test name
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The time when the image file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the image was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -19150,41 +19399,41 @@ type GetImageInfoResponseBodyImageInfo struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The type of the image. Valid values:
 	//
-	// - **CoverSnapshot**: thumbnail snapshot.
+	// 	- **CoverSnapshot**: thumbnail snapshot.
 	//
-	// - **NormalSnapshot**: normal snapshot.
+	// 	- **NormalSnapshot**: normal snapshot.
 	//
-	// - **SpriteSnapshot**: sprite snapshot.
+	// 	- **SpriteSnapshot**: sprite snapshot.
 	//
-	// - **SpriteOriginSnapshot**: sprite source snapshot.
+	// 	- **SpriteOriginSnapshot**: sprite source snapshot.
 	//
-	// - **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate them with commas (,).
+	// 	- **All**: images of all the preceding types. Multiple types other than All can return for this parameter. Multiple types are separated by commas (,).
 	//
 	// example:
 	//
 	// NormalSnapshot
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The information about the image mezzanine file.
+	// The source information about the image.
 	Mezzanine *GetImageInfoResponseBodyImageInfoMezzanine `json:"Mezzanine,omitempty" xml:"Mezzanine,omitempty" type:"Struct"`
 	// The status of the image. Valid values:
 	//
-	// - **Uploading**: The image is being uploaded. This is the initial status.
+	// 	- **Uploading**: The image is being uploaded. This is the initial status.
 	//
-	// - **Normal**: The image is uploaded.
+	// 	- **Normal**: The image is uploaded.
 	//
-	// - **UploadFail**: The image fails to be uploaded.
+	// 	- **UploadFail**: The image fails to be uploaded.
 	//
 	// example:
 	//
 	// Uploading
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The OSS bucket where the image is stored.
+	// The bucket in which the image is stored.
 	//
 	// example:
 	//
 	// outin-****..oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tag of the image. Multiple tags are separated by commas (,).
+	// The tags of the image. Multiple tags are separated by commas (,).
 	//
 	// example:
 	//
@@ -19196,7 +19445,7 @@ type GetImageInfoResponseBodyImageInfo struct {
 	//
 	// this is a sample
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The URL of the image. If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+	// The image URL. If a domain name for CDN is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
 	//
 	// example:
 	//
@@ -19278,31 +19527,31 @@ func (s *GetImageInfoResponseBodyImageInfo) SetURL(v string) *GetImageInfoRespon
 }
 
 type GetImageInfoResponseBodyImageInfoMezzanine struct {
-	// The size of the file. Unit: byte.
+	// The size of the image. Unit: bytes.
 	//
 	// example:
 	//
 	// 8932
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The OSS URL of the image.
+	// The OSS URL of the image file.
 	//
 	// example:
 	//
 	// https://outin-bfefbb*****163e1c7426.oss-cn-XXXXXXXX.aliyuncs.com/image/default/5E84CD536*****D4DAD.png?Expires=1590982353&OSSAccessKeyId=*****&Signature=ALPET74o*****c%3D
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The height of the image. Unit: pixel.
+	// The height of the image. Unit: pixels.
 	//
 	// example:
 	//
 	// 200
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The name of the uploaded file.
+	// The URL of the source file.
 	//
 	// example:
 	//
 	// ****.gif
 	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
-	// The width of the image. Unit: pixel.
+	// The width of the image. Unit: pixels.
 	//
 	// example:
 	//
@@ -19391,7 +19640,7 @@ type GetImageInfosRequest struct {
 	//
 	//     	- Minimum value: 1.
 	//
-	//     	- Maximum value: 2592000 (30 days). This limit is imposed to reduce security risks of the origin server.
+	//     	- If you store the image in the VOD bucket, the maximum value of this parameter is **2592000*	- (30 days). If you store the image in an OSS bucket, the maximum value of this parameter is **129600*	- (36 hours). The maximum value is limited to reduce security risks of the origin.
 	//
 	//     	- Default value: 3600.
 	//
@@ -19399,13 +19648,13 @@ type GetImageInfosRequest struct {
 	//
 	// 3600
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The image IDs. Separate multiple IDs with commas (,). You can specify a maximum of 20 image IDs. You can use one of the following methods to obtain the image ID:
+	// The image IDs. Separate multiple IDs with commas (,). You can specify up to 20 image IDs. You can use one of the following methods to obtain the ID:
 	//
-	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/) and choose Media Files > Images in the left-side navigation pane. This method is applicable to images that are uploaded by using the ApsaraVideo VOD console.
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/) and choose **Media Files > Images*	- in the left-side navigation pane.
 	//
-	// 	- Obtain the value of ImageId from the response to the [CreateUploadImage](https://help.aliyun.com/document_detail/436544.html) operation that you call to obtain the upload URL and credential.
+	// 	- Obtain the value of ImageId from the response to the CreateUploadImage operation that you call to obtain the upload URL and credential.
 	//
-	// 	- Obtain the value of ImageId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/436559.html) operation after you upload images.
+	// 	- Obtain the value of ImageId from the response to the [SearchMedia](~~SearchMedia~~) operation after you upload images.
 	//
 	// This parameter is required.
 	//
@@ -19491,7 +19740,7 @@ type GetImageInfosResponseBodyImageInfo struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the category to which the image belongs.
+	// The ID of the category.
 	//
 	// example:
 	//
@@ -19515,7 +19764,7 @@ type GetImageInfosResponseBodyImageInfo struct {
 	//
 	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the image file.
+	// The ID of the image.
 	//
 	// example:
 	//
@@ -19523,15 +19772,9 @@ type GetImageInfosResponseBodyImageInfo struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The type of the image. Valid values:
 	//
-	// 	- **CoverSnapshot**: thumbnail snapshot
+	// 	- **default**: regular images
 	//
-	// 	- **NormalSnapshot**: normal snapshot
-	//
-	// 	- **SpriteSnapshot**: sprite snapshot
-	//
-	// 	- **SpriteOriginSnapshot**: sprite source snapshot
-	//
-	// 	- **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate the types with commas (,).
+	// 	- **cover**: video thumbnail
 	//
 	// example:
 	//
@@ -19557,7 +19800,7 @@ type GetImageInfosResponseBodyImageInfo struct {
 	//
 	// outin-****..oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the image. Separate multiple tags with commas (,).
+	// The tags of the image. Multiple tags are separated by commas (,).
 	//
 	// example:
 	//
@@ -19651,7 +19894,7 @@ func (s *GetImageInfosResponseBodyImageInfo) SetURL(v string) *GetImageInfosResp
 }
 
 type GetImageInfosResponseBodyImageInfoMezzanine struct {
-	// The size of the image file. Unit: bytes.
+	// The size of the file to be uploaded. Unit: bytes.
 	//
 	// example:
 	//
@@ -19669,7 +19912,7 @@ type GetImageInfosResponseBodyImageInfoMezzanine struct {
 	//
 	// 200
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The name of the source file.
+	// The URL of the source file.
 	//
 	// example:
 	//
@@ -21534,7 +21777,7 @@ type GetMediaAuditResultDetailRequest struct {
 	//
 	// 93ab850b4f6f*****54b6e91d24d81d4
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The page number of the review result to return. The default value is **1**. A maximum of **20*	- records can be returned on each page.
+	// The page number. The default value is **1**. A maximum of **20*	- records can be returned on each page.
 	//
 	// This parameter is required.
 	//
@@ -21621,55 +21864,81 @@ func (s *GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail) SetTotal(v
 }
 
 type GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList struct {
-	// The category of the ad review result. Valid values:
+	// The category of the review result. Valid values:
 	//
-	// 	- **normal**: normal content
+	// 	- **normal**: normal content.
 	//
-	// 	- **ad**: ad or text violation
+	// 	- **ad**: other ads.
+	//
+	// 	- **politics**: political content in text.
+	//
+	// 	- **porn**: pornographic content in text.
+	//
+	// 	- **abuse**: verbal abuse in text.
+	//
+	// 	- **terrorism**: terrorist content in text.
+	//
+	// 	- **contraband**: prohibited content in text.
+	//
+	// 	- **spam**: spam content in text.
+	//
+	// 	- **npx**: illegal ad
+	//
+	// 	- **qrcode**: QR code.
+	//
+	// 	- **programCode**: mini program code.
 	//
 	// example:
 	//
 	// normal
 	AdLabel *string `json:"AdLabel,omitempty" xml:"AdLabel,omitempty"`
-	// The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+	// The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	AdScore *string `json:"AdScore,omitempty" xml:"AdScore,omitempty"`
-	// The category of the undesirable scene review result. Valid values:
+	// The category of the review result. Valid values:
 	//
-	// 	- **normal**: The video does not contain undesirable scenes.
+	// 	- **normal**: normal content.
 	//
-	// 	- **live**: The video contains undesirable scenes.
+	// 	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	// 	- **PIP**: picture-in-picture.
+	//
+	// 	- **smoking**: smoking.
+	//
+	// 	- **drivelive**: live broadcasting in a running vehicle.
 	//
 	// example:
 	//
 	// normal
 	LiveLabel *string `json:"LiveLabel,omitempty" xml:"LiveLabel,omitempty"`
-	// The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+	// The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	LiveScore *string `json:"LiveScore,omitempty" xml:"LiveScore,omitempty"`
-	// The category of the logo review result. Valid values:
+	// The category of the review result. Valid values:
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content.
 	//
-	// 	- **tlogo**
+	// 	- **TV**: controlled TV station logo.
+	//
+	// 	- **trademark**: trademark.
 	//
 	// example:
 	//
 	// normal
 	LogoLabel *string `json:"LogoLabel,omitempty" xml:"LogoLabel,omitempty"`
-	// The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+	// The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	LogoScore *string `json:"LogoScore,omitempty" xml:"LogoScore,omitempty"`
-	// The category of the pornographic content review result. Valid values:
+	// The category of the review result. Valid values:
 	//
 	// 	- **normal**
 	//
@@ -21681,45 +21950,59 @@ type GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList struct {
 	//
 	// normal
 	PornLabel *string `json:"PornLabel,omitempty" xml:"PornLabel,omitempty"`
-	// The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+	// The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100.00
 	PornScore *string `json:"PornScore,omitempty" xml:"PornScore,omitempty"`
-	// The category of the terrorist content review result.
+	// The category of the review result. Valid values:
 	//
-	// 	- **normal**: normal
+	// 	- **normal**
 	//
-	// 	- **terrorism**: terrorist content
+	// 	- **bloody**
 	//
-	// 	- **outfit**: special costume
+	// 	- **explosion**
 	//
-	// 	- **logo**: special logo
+	// 	- **outfit**
 	//
-	// 	- **weapon**: weapon
+	// 	- **logo**
 	//
-	// 	- **politics**: politically sensitive content
+	// 	- **weapon**
 	//
-	// 	- **others**: other terrorist content and politically sensitive content
+	// 	- **politics**
+	//
+	// 	- **violence**
+	//
+	// 	- **crowd**
+	//
+	// 	- **parade**
+	//
+	// 	- **carcrash**
+	//
+	// 	- **flag**
+	//
+	// 	- **location**
+	//
+	// 	- **others**
 	//
 	// example:
 	//
 	// normal
 	TerrorismLabel *string `json:"TerrorismLabel,omitempty" xml:"TerrorismLabel,omitempty"`
-	// The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+	// The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100.00
 	TerrorismScore *string `json:"TerrorismScore,omitempty" xml:"TerrorismScore,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3005
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The URL of the image.
+	// The URL of the video snapshot.
 	//
 	// example:
 	//
@@ -21880,7 +22163,7 @@ func (s *GetMediaAuditResultTimelineResponseBody) SetRequestId(v string) *GetMed
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline struct {
 	// The collection of ad timelines.
 	Ad []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd `json:"Ad,omitempty" xml:"Ad,omitempty" type:"Repeated"`
-	// The collection of undesirable scene timelines.
+	// The collection of undesirable content timelines.
 	Live []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive `json:"Live,omitempty" xml:"Live,omitempty" type:"Repeated"`
 	// The collection of logo timelines.
 	Logo []*GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLogo `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
@@ -21926,21 +22209,39 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline) SetTer
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd struct {
 	// The category of the review result. Valid values:
 	//
-	// 	- **normal**: normal content
+	// 	- **normal**: normal content.
 	//
-	// 	- **ad**: ad or text violation
+	// 	- **ad**: other ads.
+	//
+	// 	- **politics**: political content in text.
+	//
+	// 	- **porn**: pornographic content in text.
+	//
+	// 	- **abuse**: abuse in text.
+	//
+	// 	- **terrorism**: terrorist content in text.
+	//
+	// 	- **contraband**: prohibited content in text.
+	//
+	// 	- **spam**: spam content.
+	//
+	// 	- **npx**: illegal ad.
+	//
+	// 	- **qrcode**: QR code.
+	//
+	// 	- **programCode**: mini program code.
 	//
 	// example:
 	//
 	// ad
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -21972,23 +22273,29 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd) SetT
 }
 
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive struct {
-	// The category of the review result. Valid values:
+	// The categories of undesired content review results. Valid values:
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content.
 	//
-	// 	- **terrorism**
+	// 	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	// 	- **PIP**: picture-in-picture.
+	//
+	// 	- **smoking**: smoking.
+	//
+	// 	- **drivelive**: live broadcasting in a running vehicle.
 	//
 	// example:
 	//
 	// pip
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -22022,21 +22329,23 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive) Se
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLogo struct {
 	// The category of the review result. Valid values:
 	//
-	// 	- **normal**
+	// 	- **normal**: normal content.
 	//
-	// 	- **logo**
+	// 	- **TV**: controlled TV station logo.
+	//
+	// 	- **trademark**: trademark.
 	//
 	// example:
 	//
 	// logo
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -22080,13 +22389,13 @@ type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn struct 
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+	// The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100.00
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -22120,31 +22429,45 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn) Se
 type GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineTerrorism struct {
 	// The category of the review result. Valid values:
 	//
-	// 	- **terrorism**: terrorist content
+	// 	- **normal**
 	//
-	// 	- **outfit**: special costume
+	// 	- **bloody**
 	//
-	// 	- **logo**: special logo
+	// 	- **explosion**
 	//
-	// 	- **weapon**: weapon
+	// 	- **outfit**
 	//
-	// 	- **politics**: politically sensitive content
+	// 	- **logo**
 	//
-	// 	- **others**: other terrorist and politically sensitive content
+	// 	- **weapon**
 	//
-	// 	- **normal**: normal content
+	// 	- **politics**
+	//
+	// 	- **violence**
+	//
+	// 	- **crowd**
+	//
+	// 	- **parade**
+	//
+	// 	- **carcrash**
+	//
+	// 	- **flag**
+	//
+	// 	- **location**
+	//
+	// 	- **others**
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the review result category.
+	// The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
 	//
 	// example:
 	//
 	// 100.00
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The position in the video. Unit: milliseconds.
+	// The timestamp of the snapshot in the video. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -23072,7 +23395,8 @@ type GetMezzanineInfoResponseBodyMezzanine struct {
 	// example:
 	//
 	// oss
-	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	OutputType       *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	PreprocessStatus *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
 	// The period of time in which the object remains in the restored state.
 	//
 	// example:
@@ -23201,6 +23525,11 @@ func (s *GetMezzanineInfoResponseBodyMezzanine) SetHeight(v int64) *GetMezzanine
 
 func (s *GetMezzanineInfoResponseBodyMezzanine) SetOutputType(v string) *GetMezzanineInfoResponseBodyMezzanine {
 	s.OutputType = &v
+	return s
+}
+
+func (s *GetMezzanineInfoResponseBodyMezzanine) SetPreprocessStatus(v string) *GetMezzanineInfoResponseBodyMezzanine {
+	s.PreprocessStatus = &v
 	return s
 }
 
@@ -28801,7 +29130,8 @@ type ListAppInfoRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the application. After an application is created, it enters the **Normal*	- state. Valid values:
 	//
 	// 	- **Normal**
@@ -28829,6 +29159,11 @@ func (s *ListAppInfoRequest) SetPageNo(v int32) *ListAppInfoRequest {
 
 func (s *ListAppInfoRequest) SetPageSize(v int32) *ListAppInfoRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAppInfoRequest) SetResourceGroupId(v string) *ListAppInfoRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28908,6 +29243,8 @@ type ListAppInfoResponseBodyAppInfoList struct {
 	//
 	// 2019-03-01T09:00:00Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the application. Valid values:
 	//
 	// 	- **Normal**
@@ -28960,6 +29297,16 @@ func (s *ListAppInfoResponseBodyAppInfoList) SetDescription(v string) *ListAppIn
 
 func (s *ListAppInfoResponseBodyAppInfoList) SetModificationTime(v string) *ListAppInfoResponseBodyAppInfoList {
 	s.ModificationTime = &v
+	return s
+}
+
+func (s *ListAppInfoResponseBodyAppInfoList) SetRegionId(v string) *ListAppInfoResponseBodyAppInfoList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAppInfoResponseBodyAppInfoList) SetResourceGroupId(v string) *ListAppInfoResponseBodyAppInfoList {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30021,35 +30368,35 @@ func (s *ListLiveRecordVideoResponse) SetBody(v *ListLiveRecordVideoResponseBody
 }
 
 type ListSnapshotsRequest struct {
-	// The validity period of the snapshot URL. Unit: seconds. Default value: **3600**. Minimum value: **3600**.
+	// The validity period of the snapshot URL. Default value: **3600**. Minimum value: **3600**. Unit: seconds.
 	//
-	// 	- This parameter only takes effect when [URL authentication](https://help.aliyun.com/document_detail/57007.html) is enabled.
+	// 	- This parameter takes effect only when you enable URL signing. For more information, see [Configure URL signing](https://help.aliyun.com/document_detail/57007.html).
 	//
-	// 	- If the specified validity period is less than **3600*	- seconds, the default value is **3600**.
+	// 	- If you specify a value smaller than **3,600 seconds**, **3600*	- is used by default.
 	//
-	// 	- If an Object Storage Service (OSS) URL is returned, the maximum validity period is limited to **2592000*	- seconds (30 days) to reduce security risks of the origin.
+	// 	- If the snapshot URL is an Object Storage Service (OSS) URL, the maximum value for this parameter is **2592000*	- (30 days). This reduces risks on the origin.
 	//
 	// example:
 	//
 	// 3600
 	AuthTimeout *string `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The number of the page to turn. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page. Default value: **20**. Maximum value: **100**.
+	// The number of entries per page. Default value: **20**. Maximum value: **100**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of snapshots that are returned. Valid values:
+	// The type of snapshots to return. Valid values:
 	//
 	// 	- **CoverSnapshot**: thumbnail snapshot
 	//
-	// 	- **NormalSnapshot**: normal snapshot
+	// 	- **NormalSnapshot**: regular snapshot
 	//
 	// 	- **SpriteSnapshot**: sprite snapshot
 	//
@@ -30061,7 +30408,13 @@ type ListSnapshotsRequest struct {
 	//
 	// CoverSnapshot
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The ID of the video.
+	// The ID of the video. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Audio/Video*	- to view the video ID.
+	//
+	// 	- Obtain the video ID from the response to the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload URL and credential.
+	//
+	// 	- Obtain the video ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query videos.
 	//
 	// This parameter is required.
 	//
@@ -30105,7 +30458,7 @@ func (s *ListSnapshotsRequest) SetVideoId(v string) *ListSnapshotsRequest {
 }
 
 type ListSnapshotsResponseBody struct {
-	// The snapshot data of the media.
+	// The information about the snapshot.
 	MediaSnapshot *ListSnapshotsResponseBodyMediaSnapshot `json:"MediaSnapshot,omitempty" xml:"MediaSnapshot,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -30146,13 +30499,13 @@ type ListSnapshotsResponseBodyMediaSnapshot struct {
 	//
 	// ad90a501b1b9472374ad005046****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The rule for generating snapshot URLs.
+	// The rule used to generate snapshot URLs.
 	//
 	// example:
 	//
 	// http://example.aliyundoc.com/snapshot/sample{SnapshotCount}.jpg
 	Regular *string `json:"Regular,omitempty" xml:"Regular,omitempty"`
-	// The snapshot data.
+	// The details of the snapshot.
 	Snapshots *ListSnapshotsResponseBodyMediaSnapshotSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The total number of snapshots.
 	//
@@ -31604,13 +31957,11 @@ type RefreshMediaPlayUrlsRequest struct {
 	//
 	// Preload
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The custom configurations such as callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see [Request parameter](https://help.aliyun.com/document_detail/86952.html).
+	// The custom configurations such as callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section in the [Request parameter](https://help.aliyun.com/document_detail/86952.html) topic.
 	//
-	// >
+	// >	- The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
 	//
-	// - The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
-	//
-	// - You must submit a ticket to enable the upload acceleration feature. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+	// >	- To enable the upload acceleration feature, submit a ticket. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 	//
 	// example:
 	//
@@ -34287,6 +34638,8 @@ type SetAuditSecurityIpRequest struct {
 	//
 	// 	- **Delete**: removes the IP addresses from the original whitelist.
 	//
+	// >  If the value that you specify is invalid, the default value is used.
+	//
 	// example:
 	//
 	// Cover
@@ -34853,7 +35206,7 @@ type SetMessageCallbackRequest struct {
 	//
 	// example:
 	//
-	// dsf346dvet
+	// Dsf346dvet
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	// Specifies whether to enable callback authentication. This parameter takes effect only when you set CallbackType to **HTTP**. Valid values:
 	//
@@ -35172,19 +35525,11 @@ type SubmitAIImageAuditJobRequest struct {
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the review template.
+	// The ID of the AI template. You can use one of the following methods to obtain the ID:
 	//
-	// If you want to use an AI template, you can call the following operations:
+	// 	- Obtain the value of TemplateId from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation that you call to create an AI template.
 	//
-	// 	- [ListAITemplate](https://help.aliyun.com/document_detail/102936.html)
-	//
-	// 	- [AddAITemplate](https://help.aliyun.com/document_detail/102930.html)
-	//
-	// 	- [GetAITemplate](https://help.aliyun.com/document_detail/102933.html)
-	//
-	// 	- [SetDefaultAITemplate](https://help.aliyun.com/document_detail/102937.html)
-	//
-	// If you do not specify this parameter, the ID of the default AI template for automated review is used.
+	// 	- Obtain the value of TemplateId from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation that you call to create an AI template.
 	//
 	// This parameter is required.
 	//
@@ -35302,7 +35647,7 @@ func (s *SubmitAIImageAuditJobResponse) SetBody(v *SubmitAIImageAuditJobResponse
 type SubmitAIImageJobRequest struct {
 	// The ID of the pipeline that is used for the AI processing job.
 	//
-	// >  This parameter is optional if you have specified a default pipeline ID. If you need to submit image AI processing jobs in a batch to a specific pipeline, [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to contact Alibaba Cloud technical support.
+	// >  This parameter is optional if you specify a default pipeline ID. If you want to use a separate pipeline to submit multiple AI processing jobs., submit a ticket or contact Alibaba Cloud after-sales engineers. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 	//
 	// example:
 	//
@@ -35689,7 +36034,7 @@ type SubmitAIMediaAuditJobRequest struct {
 	//
 	// 	- Other configuration items of the review job. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
 	//
-	// 	- If you want to modify the review standard and rules based on ResourceType, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply) to reach technical support.
+	// 	- If you want to modify the review standard and rules based on ResourceType, submit a ticket. For more information, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 	//
 	// 	- The value of ResourceType can contain only letters, digits, and underscores (_).
 	//
@@ -35713,9 +36058,9 @@ type SubmitAIMediaAuditJobRequest struct {
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
 	//
-	// 	- Obtain the ID of the AI template from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation. The value of TemplateId is the ID of the AI template.
+	// 	- Obtain the value of TemplateId from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation that you call to create an AI template.
 	//
-	// 	- Obtain the ID of the AI template from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation. The value of TemplateId is the ID of the AI template.
+	// 	- Obtain the value of TemplateId from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation that you call to create an AI template.
 	//
 	// >  If you do not specify an ID, the ID of the default AI template is used.
 	//
@@ -36215,7 +36560,7 @@ func (s *SubmitMediaDNADeleteJobResponse) SetBody(v *SubmitMediaDNADeleteJobResp
 }
 
 type SubmitPreprocessJobsRequest struct {
-	// The preprocessing type. Set the value to **LivePreprocess**, which indicates that the video is preprocessed in the production studio.
+	// The preprocessing type. Set the value to **LivePreprocess**. LivePreprocess specifies that the video is preprocessed in the production studio.
 	//
 	// This parameter is required.
 	//
@@ -36223,7 +36568,13 @@ type SubmitPreprocessJobsRequest struct {
 	//
 	// LivePreprocess
 	PreprocessType *string `json:"PreprocessType,omitempty" xml:"PreprocessType,omitempty"`
-	// The ID of the video.
+	// The ID of the video. You can use one of the following methods to obtain the ID:
+	//
+	// 	- After you upload a video in the ApsaraVideo VOD console, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files*	- > **Audio/Video*	- to view the ID of the video.
+	//
+	// 	- Obtain the VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you call to upload videos.
+	//
+	// 	- Obtain the VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you call to query videos.
 	//
 	// This parameter is required.
 	//
@@ -36252,7 +36603,7 @@ func (s *SubmitPreprocessJobsRequest) SetVideoId(v string) *SubmitPreprocessJobs
 }
 
 type SubmitPreprocessJobsResponseBody struct {
-	// The job information.
+	// The information about the job.
 	PreprocessJobs *SubmitPreprocessJobsResponseBodyPreprocessJobs `json:"PreprocessJobs,omitempty" xml:"PreprocessJobs,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -37263,7 +37614,11 @@ func (s *UpdateAppInfoResponse) SetBody(v *UpdateAppInfoResponseBody) *UpdateApp
 }
 
 type UpdateAttachedMediaInfosRequest struct {
-	// The new information about auxiliary media assets. You can modify the information about up to 20 auxiliary media assets at a time. For more information, see the **UpdateContent*	- section of this topic.
+	// The new information about the one or more images. You can modify the information about up to 20 auxiliary media assets at a time. For more information, see the **UpdateContent*	- section of this topic.
+	//
+	// > 	- You cannot specify emojis for `Title`, `Description`, or `Tags`.
+	//
+	// > 	- The specific parameter of a video is updated only when a new value is passed in the parameter.
 	//
 	// This parameter is required.
 	//
@@ -37584,9 +37939,9 @@ func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBo
 }
 
 type UpdateImageInfosRequest struct {
-	// The new information about the one or more images. You can modify the information about up to 20 images at a time. For more information, see the **UpdateContent*	- section of this topic.
+	// The new information about the one or more images. You can modify the information about up to 20 images at a time. For more information about the parameter structure, see the **UpdateContent*	- section.
 	//
-	// > The values of the nested parameters Title, Description, and Tags under the UpdateContent parameter cannot contain emoticons.
+	// >  The values of the nested parameters Title, Description, and Tags under the UpdateContent parameter cannot contain emoticons.
 	//
 	// This parameter is required.
 	//
@@ -38294,8 +38649,6 @@ func (s *UpdateVideoInfosResponse) SetBody(v *UpdateVideoInfosResponseBody) *Upd
 }
 
 type UpdateVodDomainRequest struct {
-	// The accelerated domain name.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -38304,14 +38657,10 @@ type UpdateVodDomainRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The information about the addresses of origin servers.
-	//
 	// example:
 	//
 	// [{"content":"1.1.1.1","type":"ipaddr","priority":"20","port":80}]
 	Sources *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	// The top-level domain.
-	//
 	// example:
 	//
 	// example.com
@@ -38352,8 +38701,6 @@ func (s *UpdateVodDomainRequest) SetTopLevelDomain(v string) *UpdateVodDomainReq
 }
 
 type UpdateVodDomainResponseBody struct {
-	// The ID of the request.
-	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-****-2C4477247A74
@@ -39522,6 +39869,10 @@ func (client *Client) AddCategory(request *AddCategoryRequest) (_result *AddCate
 //
 // Creates an online editing project.
 //
+// Description:
+//
+//   For more information about the online editing feature, see [Overview](https://help.aliyun.com/document_detail/95482.html).
+//
 // @param request - AddEditingProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39596,6 +39947,10 @@ func (client *Client) AddEditingProjectWithOptions(request *AddEditingProjectReq
 //
 // Creates an online editing project.
 //
+// Description:
+//
+//   For more information about the online editing feature, see [Overview](https://help.aliyun.com/document_detail/95482.html).
+//
 // @param request - AddEditingProjectRequest
 //
 // @return AddEditingProjectResponse
@@ -39610,6 +39965,10 @@ func (client *Client) AddEditingProject(request *AddEditingProjectRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds one or more materials to an editing project.
+//
 // @param request - AddEditingProjectMaterialsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39672,6 +40031,10 @@ func (client *Client) AddEditingProjectMaterialsWithOptions(request *AddEditingP
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds one or more materials to an editing project.
+//
 // @param request - AddEditingProjectMaterialsRequest
 //
 // @return AddEditingProjectMaterialsResponse
@@ -40492,6 +40855,8 @@ func (client *Client) BatchStopVodDomain(request *BatchStopVodDomainRequest) (_r
 //
 // 	- You cannot cancel an upload job that already starts.
 //
+// 	- You must specify either JobIds or UploadUrls. If you specify both parameters, only JobIds takes effect.
+//
 // @param request - CancelUrlUploadJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -40544,6 +40909,8 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 //
 // 	- You cannot cancel an upload job that already starts.
 //
+// 	- You must specify either JobIds or UploadUrls. If you specify both parameters, only JobIds takes effect.
+//
 // @param request - CancelUrlUploadJobsRequest
 //
 // @return CancelUrlUploadJobsResponse
@@ -40587,6 +40954,10 @@ func (client *Client) CreateAppInfoWithOptions(request *CreateAppInfoRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40700,17 +41071,19 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 
 // Summary:
 //
-// Obtains a URL and a credential for uploading an auxiliary media asset, such as a watermark, subtitle, or material.
+// Obtains an upload URL and an upload credential for an auxiliary media asset such as a watermark image, subtitle file, or material and generates the media ID. ApsaraVideo VOD issues upload URLs and credentials to perform authorization and ensure security. This prevents unauthorized users from uploading media files. ApsaraVideo VOD generates media IDs together with upload URLs and credentials. Media IDs are used in lifecycle management and media processing.
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using SDKs for upload from servers, SDKs for upload from clients, URLs of auxiliary media assets, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html) topic.
+// 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
+// 	- If the upload credential expires after 3,000 seconds, you can call the CreateUploadAttachedMedia operation again to obtain a new upload URL and a new upload credential.
 //
 // 	- You can configure a callback to receive an [AttachedMediaUploadComplete](https://help.aliyun.com/document_detail/103250.html) event notification to determine whether the upload is successful.
+//
+// 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
 // @param request - CreateUploadAttachedMediaRequest
 //
@@ -40792,17 +41165,19 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 
 // Summary:
 //
-// Obtains a URL and a credential for uploading an auxiliary media asset, such as a watermark, subtitle, or material.
+// Obtains an upload URL and an upload credential for an auxiliary media asset such as a watermark image, subtitle file, or material and generates the media ID. ApsaraVideo VOD issues upload URLs and credentials to perform authorization and ensure security. This prevents unauthorized users from uploading media files. ApsaraVideo VOD generates media IDs together with upload URLs and credentials. Media IDs are used in lifecycle management and media processing.
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload auxiliary media assets by using SDKs for upload from servers, SDKs for upload from clients, URLs of auxiliary media assets, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html) topic.
+// 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires, you can call this operation to obtain a new upload URL and credential. The default validity period of an upload credential is 3,000 seconds.
+// 	- If the upload credential expires after 3,000 seconds, you can call the CreateUploadAttachedMedia operation again to obtain a new upload URL and a new upload credential.
 //
 // 	- You can configure a callback to receive an [AttachedMediaUploadComplete](https://help.aliyun.com/document_detail/103250.html) event notification to determine whether the upload is successful.
+//
+// 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
 // @param request - CreateUploadAttachedMediaRequest
 //
@@ -40940,7 +41315,7 @@ func (client *Client) CreateUploadImage(request *CreateUploadImageRequest) (_res
 
 // Summary:
 //
-// Obtains the upload URLs and credentials for media files and creates media assets in ApsaraVideo VOD.
+// Obtains an upload URL and an upload credential for uploading an audio or video file and generates the audio or video ID. ApsaraVideo VOD issues upload URLs and credentials to perform authorization and ensure security. This prevents unauthorized users from uploading media files. ApsaraVideo VOD generates media IDs, video IDs, and image IDs together with upload URLs and credentials. Media IDs are used in lifecycle management and media processing.
 //
 // Description:
 //
@@ -40950,11 +41325,11 @@ func (client *Client) CreateUploadImage(request *CreateUploadImageRequest) (_res
 //
 // 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires, call the [RefreshUploadVideo](https://help.aliyun.com/document_detail/55408.html) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
+// 	- If the upload credential expires, call the [RefreshUploadVideo](~~RefreshUploadVideo~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
 //
-// 	- You can configure a callback to receive an [event notification](https://help.aliyun.com/document_detail/55396.html) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful based on the value of the Status response parameter.
+// 	- You can configure a callback to receive an event notification when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
 //
-// 	- The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
+// 	- The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
 //
 // 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
@@ -41042,7 +41417,7 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 
 // Summary:
 //
-// Obtains the upload URLs and credentials for media files and creates media assets in ApsaraVideo VOD.
+// Obtains an upload URL and an upload credential for uploading an audio or video file and generates the audio or video ID. ApsaraVideo VOD issues upload URLs and credentials to perform authorization and ensure security. This prevents unauthorized users from uploading media files. ApsaraVideo VOD generates media IDs, video IDs, and image IDs together with upload URLs and credentials. Media IDs are used in lifecycle management and media processing.
 //
 // Description:
 //
@@ -41052,11 +41427,11 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 //
 // 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires, call the [RefreshUploadVideo](https://help.aliyun.com/document_detail/55408.html) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
+// 	- If the upload credential expires, call the [RefreshUploadVideo](~~RefreshUploadVideo~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
 //
-// 	- You can configure a callback to receive an [event notification](https://help.aliyun.com/document_detail/55396.html) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful based on the value of the Status response parameter.
+// 	- You can configure a callback to receive an event notification when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
 //
-// 	- The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
+// 	- The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
 //
 // 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
@@ -41364,11 +41739,11 @@ func (client *Client) DeleteAppInfo(request *DeleteAppInfoRequest) (_result *Del
 
 // Summary:
 //
-// Deletes auxiliary media assets.
+// Deletes auxiliary media assets from ApsaraVideo VOD. You can delete multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch.
 //
 // Description:
 //
-//   This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.
+//   **This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.**
 //
 // 	- You can delete a maximum of 20 auxiliary media assets in one request.
 //
@@ -41412,11 +41787,11 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 
 // Summary:
 //
-// Deletes auxiliary media assets.
+// Deletes auxiliary media assets from ApsaraVideo VOD. You can delete multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch.
 //
 // Description:
 //
-//   This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.
+//   **This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.**
 //
 // 	- You can delete a maximum of 20 auxiliary media assets in one request.
 //
@@ -41584,11 +41959,7 @@ func (client *Client) DeleteDynamicImage(request *DeleteDynamicImageRequest) (_r
 //
 // Description:
 //
-// You can call this operation to delete multiple online editing projects at a time.
-//
-// ### QPS limits
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](https://help.aliyun.com/document_detail/342790.html).
+//   You can call this operation to delete multiple online editing projects at a time.
 //
 // @param request - DeleteEditingProjectRequest
 //
@@ -41650,11 +42021,7 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 //
 // Description:
 //
-// You can call this operation to delete multiple online editing projects at a time.
-//
-// ### QPS limits
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](https://help.aliyun.com/document_detail/342790.html).
+//   You can call this operation to delete multiple online editing projects at a time.
 //
 // @param request - DeleteEditingProjectRequest
 //
@@ -41752,13 +42119,11 @@ func (client *Client) DeleteEditingProjectMaterials(request *DeleteEditingProjec
 //
 // Description:
 //
-//   After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
+//   **After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. Exercise caution when you call this operation.**
+//
+// 	- If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
 //
 // 	- You can call this operation to delete uploaded images and video snapshots.
-//
-// ### QPS limits
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - DeleteImageRequest
 //
@@ -41820,13 +42185,11 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 //
 // Description:
 //
-//   After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
+//   **After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. Exercise caution when you call this operation.**
+//
+// 	- If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
 //
 // 	- You can call this operation to delete uploaded images and video snapshots.
-//
-// ### QPS limits
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - DeleteImageRequest
 //
@@ -42384,11 +42747,13 @@ func (client *Client) DeleteVodDomain(request *DeleteVodDomainRequest) (_result 
 //
 // Description:
 //
-// > 	- This operation is available only in the **China (Shanghai)*	- region.
+// >
 //
-// > 	- After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
+// 	- This operation is available only in the **China (Shanghai)*	- region.
 //
-// > 	- After you call this operation to delete the configurations of a domain name for CDN, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
+// 	- After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
+//
+// 	- After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
 //
 // @param request - DeleteVodSpecificConfigRequest
 //
@@ -42450,11 +42815,13 @@ func (client *Client) DeleteVodSpecificConfigWithOptions(request *DeleteVodSpeci
 //
 // Description:
 //
-// > 	- This operation is available only in the **China (Shanghai)*	- region.
+// >
 //
-// > 	- After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
+// 	- This operation is available only in the **China (Shanghai)*	- region.
 //
-// > 	- After you call this operation to delete the configurations of a domain name for CDN, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
+// 	- After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
+//
+// 	- After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
 //
 // @param request - DeleteVodSpecificConfigRequest
 //
@@ -42608,15 +42975,15 @@ func (client *Client) DeleteWatermark(request *DeleteWatermarkRequest) (_result 
 //
 // Description:
 //
-// > 	- This operation is available only in the **China (Shanghai)*	- region.
+//   This operation is available only in the **China (Shanghai)*	- region.
 //
-// > 	- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
+// 	- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
 //
-// > 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// > 	- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
+// 	- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
 //
-// > 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+// 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayTopVideosRequest
 //
@@ -42674,15 +43041,15 @@ func (client *Client) DescribePlayTopVideosWithOptions(request *DescribePlayTopV
 //
 // Description:
 //
-// > 	- This operation is available only in the **China (Shanghai)*	- region.
+//   This operation is available only in the **China (Shanghai)*	- region.
 //
-// > 	- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
+// 	- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
 //
-// > 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// > 	- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
+// 	- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
 //
-// > 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+// 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayTopVideosRequest
 //
@@ -42788,7 +43155,7 @@ func (client *Client) DescribePlayUserAvg(request *DescribePlayUserAvgRequest) (
 
 // Summary:
 //
-// Queries the daily playback statistics in a specified time range.
+// Queries the daily playback statistics in a specified time range. The playback statistics include the total number of views, total number of viewers, total playback duration, and playback duration distribution.
 //
 // Description:
 //
@@ -42848,7 +43215,7 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 
 // Summary:
 //
-// Queries the daily playback statistics in a specified time range.
+// Queries the daily playback statistics in a specified time range. The playback statistics include the total number of views, total number of viewers, total playback duration, and playback duration distribution.
 //
 // Description:
 //
@@ -43060,7 +43427,7 @@ func (client *Client) DescribeVodAIData(request *DescribeVodAIDataRequest) (_res
 //
 // Description:
 //
-// > This operation is available only in the **China (Shanghai)*	- region.
+// >  This operation is available only in the **China (Shanghai)*	- region.
 //
 // @param request - DescribeVodCertificateListRequest
 //
@@ -43114,7 +43481,7 @@ func (client *Client) DescribeVodCertificateListWithOptions(request *DescribeVod
 //
 // Description:
 //
-// > This operation is available only in the **China (Shanghai)*	- region.
+// >  This operation is available only in the **China (Shanghai)*	- region.
 //
 // @param request - DescribeVodCertificateListRequest
 //
@@ -43700,13 +44067,9 @@ func (client *Client) DescribeVodDomainHitRateData(request *DescribeVodDomainHit
 //
 // 	- For more information about the log format and latency, see [Download logs](https://help.aliyun.com/document_detail/86099.html).
 //
-// 	- If you specify neither StartTime nor EndTime, the log data in the previous 24 hours is queried.
+// 	- If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
 //
-// 	- You can specify both StartTime and EndTime to query the log data that is generated in the specified time range.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
+// 	- You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified time range.
 //
 // @param request - DescribeVodDomainLogRequest
 //
@@ -43776,13 +44139,9 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 //
 // 	- For more information about the log format and latency, see [Download logs](https://help.aliyun.com/document_detail/86099.html).
 //
-// 	- If you specify neither StartTime nor EndTime, the log data in the previous 24 hours is queried.
+// 	- If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
 //
-// 	- You can specify both StartTime and EndTime to query the log data that is generated in the specified time range.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
+// 	- You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified time range.
 //
 // @param request - DescribeVodDomainLogRequest
 //
@@ -45242,7 +45601,9 @@ func (client *Client) DescribeVodDomainUsageData(request *DescribeVodDomainUsage
 //
 //   This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- Playback data in ApsaraVideo Player SDK is collected based on media IDs.
+// 	- Only playback data in ApsaraVideo Player SDK is collected.
+//
+// 	- You can query only data within the last 30 days.
 //
 // 	- Before you call this operation, make sure that the following requirements are met:
 //
@@ -45340,7 +45701,9 @@ func (client *Client) DescribeVodMediaPlayDataWithOptions(request *DescribeVodMe
 //
 //   This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- Playback data in ApsaraVideo Player SDK is collected based on media IDs.
+// 	- Only playback data in ApsaraVideo Player SDK is collected.
+//
+// 	- You can query only data within the last 30 days.
 //
 // 	- Before you call this operation, make sure that the following requirements are met:
 //
@@ -45560,9 +45923,9 @@ func (client *Client) DescribeVodRefreshQuota(request *DescribeVodRefreshQuotaRe
 //
 // Description:
 //
-// > 	- This operation is available only in the **China (Shanghai)*	- region.
+//   This operation is available only in the **China (Shanghai)*	- region.
 //
-// >	- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
+// 	- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
 //
 // @param request - DescribeVodRefreshTasksRequest
 //
@@ -45648,9 +46011,9 @@ func (client *Client) DescribeVodRefreshTasksWithOptions(request *DescribeVodRef
 //
 // Description:
 //
-// > 	- This operation is available only in the **China (Shanghai)*	- region.
+//   This operation is available only in the **China (Shanghai)*	- region.
 //
-// >	- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
+// 	- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
 //
 // @param request - DescribeVodRefreshTasksRequest
 //
@@ -46142,6 +46505,10 @@ func (client *Client) DescribeVodUserDomains(request *DescribeVodUserDomainsRequ
 //
 // Queries the ownership verification content.
 //
+// Description:
+//
+//   This operation is available only in the **China (Shanghai)*	- region.
+//
 // @param request - DescribeVodVerifyContentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -46187,6 +46554,10 @@ func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVe
 // Summary:
 //
 // Queries the ownership verification content.
+//
+// Description:
+//
+//   This operation is available only in the **China (Shanghai)*	- region.
 //
 // @param request - DescribeVodVerifyContentRequest
 //
@@ -46830,6 +47201,14 @@ func (client *Client) GetAppInfos(request *GetAppInfosRequest) (_result *GetAppI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the URL and basic information about one or more auxiliary media assets such as watermark images, subtitle files, and materials based on IDs.
+//
+// Description:
+//
+// You can query information about up to 20 auxiliary media assets in a request.
+//
 // @param request - GetAttachedMediaInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -46876,6 +47255,14 @@ func (client *Client) GetAttachedMediaInfoWithOptions(request *GetAttachedMediaI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the URL and basic information about one or more auxiliary media assets such as watermark images, subtitle files, and materials based on IDs.
+//
+// Description:
+//
+// You can query information about up to 20 auxiliary media assets in a request.
+//
 // @param request - GetAttachedMediaInfoRequest
 //
 // @return GetAttachedMediaInfoResponse
@@ -47372,7 +47759,7 @@ func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMater
 
 // Summary:
 //
-// Queries the basic information about an image based on the image ID. The basic information includes the title, type, creation time, and tags of the image.
+// Queries the basic information and access URL of an image based on the image ID.
 //
 // @param request - GetImageInfoRequest
 //
@@ -47422,7 +47809,7 @@ func (client *Client) GetImageInfoWithOptions(request *GetImageInfoRequest, runt
 
 // Summary:
 //
-// Queries the basic information about an image based on the image ID. The basic information includes the title, type, creation time, and tags of the image.
+// Queries the basic information and access URL of an image based on the image ID.
 //
 // @param request - GetImageInfoRequest
 //
@@ -47444,11 +47831,11 @@ func (client *Client) GetImageInfo(request *GetImageInfoRequest) (_result *GetIm
 //
 // Description:
 //
-// You can call this operation to query the basic information about multiple images at a time, such as the image title, type, creation time, tags, and URL.
+//   You can call the [CreateUploadImage](~~CreateUploadImage~~) operation to upload images to ApsaraVideo VOD and call this operation to query the basic information about multiple images at a time.
 //
-// ### Limits
+// 	- To query information about video snapshots, call the [ListSnapshots](~~ListSnapshots~~) operation.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/342790.html).
+// 	- You can specify up to 20 image IDs in one call.
 //
 // @param request - GetImageInfosRequest
 //
@@ -47502,11 +47889,11 @@ func (client *Client) GetImageInfosWithOptions(request *GetImageInfosRequest, ru
 //
 // Description:
 //
-// You can call this operation to query the basic information about multiple images at a time, such as the image title, type, creation time, tags, and URL.
+//   You can call the [CreateUploadImage](~~CreateUploadImage~~) operation to upload images to ApsaraVideo VOD and call this operation to query the basic information about multiple images at a time.
 //
-// ### Limits
+// 	- To query information about video snapshots, call the [ListSnapshots](~~ListSnapshots~~) operation.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/342790.html).
+// 	- You can specify up to 20 image IDs in one call.
 //
 // @param request - GetImageInfosRequest
 //
@@ -47670,11 +48057,17 @@ func (client *Client) GetMediaAuditResult(request *GetMediaAuditResultRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of automated review results. You can call this operation to query the details of review results in real time.
+//
 // Description:
 //
-// - By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
+//   By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
 //
-// - ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+// 	- ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+//
+// 	- This operation is available only in the Singapore region.
 //
 // @param request - GetMediaAuditResultDetailRequest
 //
@@ -47718,11 +48111,17 @@ func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAudi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of automated review results. You can call this operation to query the details of review results in real time.
+//
 // Description:
 //
-// - By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
+//   By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
 //
-// - ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+// 	- ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+//
+// 	- This operation is available only in the Singapore region.
 //
 // @param request - GetMediaAuditResultDetailRequest
 //
@@ -47741,6 +48140,12 @@ func (client *Client) GetMediaAuditResultDetail(request *GetMediaAuditResultDeta
 // Summary:
 //
 // Queries the timelines of all snapshots that violate content regulations.
+//
+// Description:
+//
+// >  By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
+//
+// This operation is available only in the Singapore region.
 //
 // @param request - GetMediaAuditResultTimelineRequest
 //
@@ -47783,6 +48188,12 @@ func (client *Client) GetMediaAuditResultTimelineWithOptions(request *GetMediaAu
 // Summary:
 //
 // Queries the timelines of all snapshots that violate content regulations.
+//
+// Description:
+//
+// >  By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
+//
+// This operation is available only in the Singapore region.
 //
 // @param request - GetMediaAuditResultTimelineRequest
 //
@@ -49317,6 +49728,10 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
 	}
@@ -49660,11 +50075,11 @@ func (client *Client) ListLiveRecordVideo(request *ListLiveRecordVideoRequest) (
 
 // Summary:
 //
-// Queries the snapshots that are captured from the specified media.
+// Queries the snapshots that are captured by submitting snapshot jobs or snapshots that are generated by the system when you upload the video.
 //
 // Description:
 //
-// If multiple snapshots of a video exist, the data of the latest snapshot is returned.
+// If multiple snapshots exist for a video, you can call this operation to query information about the latest snapshot.
 //
 // @param request - ListSnapshotsRequest
 //
@@ -49722,11 +50137,11 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 
 // Summary:
 //
-// Queries the snapshots that are captured from the specified media.
+// Queries the snapshots that are captured by submitting snapshot jobs or snapshots that are generated by the system when you upload the video.
 //
 // Description:
 //
-// If multiple snapshots of a video exist, the data of the latest snapshot is returned.
+// If multiple snapshots exist for a video, you can call this operation to query information about the latest snapshot.
 //
 // @param request - ListSnapshotsRequest
 //
@@ -50192,11 +50607,11 @@ func (client *Client) PreloadVodObjectCaches(request *PreloadVodObjectCachesRequ
 //
 // Description:
 //
-//   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
+//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
 //
 // 	- This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
 //
-// 	- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library.
+// 	- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library. Only media assets that are in the Normal state can be used in the project.
 //
 // 	- Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
 //
@@ -50207,6 +50622,20 @@ func (client *Client) PreloadVodObjectCaches(request *PreloadVodObjectCachesRequ
 //     	- If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
 //
 //     	- If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
+//
+// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//
+// 	- The total size of material files cannot exceed 1 TB.
+//
+// 	- The buckets in which the materials reside and where the exported videos are stored must be in the same region as the region where ApsaraVideo VOD is activated.
+//
+// 	- The exported videos must meet the following requirements:
+//
+//     	- The width and height of the video image cannot be less than 128 pixels.
+//
+//     	- The width and height of the video image cannot exceed 4,096 pixels.
+//
+//     	- The width cannot exceed 2,160 pixels.
 //
 // 	- After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete*	- and **FileUploadComplete*	- event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete*	- and **TranscodeComplete*	- event notifications are sent to you.
 //
@@ -50300,11 +50729,11 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 //
 // Description:
 //
-//   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
+//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
 //
 // 	- This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
 //
-// 	- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library.
+// 	- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library. Only media assets that are in the Normal state can be used in the project.
 //
 // 	- Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
 //
@@ -50315,6 +50744,20 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 //     	- If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
 //
 //     	- If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
+//
+// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//
+// 	- The total size of material files cannot exceed 1 TB.
+//
+// 	- The buckets in which the materials reside and where the exported videos are stored must be in the same region as the region where ApsaraVideo VOD is activated.
+//
+// 	- The exported videos must meet the following requirements:
+//
+//     	- The width and height of the video image cannot be less than 128 pixels.
+//
+//     	- The width and height of the video image cannot exceed 4,096 pixels.
+//
+//     	- The width cannot exceed 2,160 pixels.
 //
 // 	- After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete*	- and **FileUploadComplete*	- event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete*	- and **TranscodeComplete*	- event notifications are sent to you.
 //
@@ -50340,15 +50783,11 @@ func (client *Client) ProduceEditingProjectVideo(request *ProduceEditingProjectV
 //
 // Description:
 //
-// - ApsaraVideo VOD allows you to refresh and prefetch resources. The refresh feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
+//   ApsaraVideo VOD allows you to purge and prefetch resources. The purge feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
 //
-// - You can call this operation to submit refresh or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to refresh or prefetch based on your business requirements.
+// 	- You can call this operation to submit purge or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to purge or prefetch based on your business requirements.
 //
-// - You can submit a maximum of 20 refresh or prefetch tasks at a time.
-//
-// ### QPS limits
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](https://help.aliyun.com/document_detail/342790.html).
+// 	- You can submit a maximum of 20 purge or prefetch tasks at a time.
 //
 // @param request - RefreshMediaPlayUrlsRequest
 //
@@ -50426,15 +50865,11 @@ func (client *Client) RefreshMediaPlayUrlsWithOptions(request *RefreshMediaPlayU
 //
 // Description:
 //
-// - ApsaraVideo VOD allows you to refresh and prefetch resources. The refresh feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
+//   ApsaraVideo VOD allows you to purge and prefetch resources. The purge feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
 //
-// - You can call this operation to submit refresh or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to refresh or prefetch based on your business requirements.
+// 	- You can call this operation to submit purge or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to purge or prefetch based on your business requirements.
 //
-// - You can submit a maximum of 20 refresh or prefetch tasks at a time.
-//
-// ### QPS limits
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](https://help.aliyun.com/document_detail/342790.html).
+// 	- You can submit a maximum of 20 purge or prefetch tasks at a time.
 //
 // @param request - RefreshMediaPlayUrlsRequest
 //
@@ -51848,9 +52283,9 @@ func (client *Client) SubmitAIImageJob(request *SubmitAIImageJobRequest) (_resul
 //
 // 	- Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Video AI](https://help.aliyun.com/document_detail/101148.html).
+// 	- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Overview](https://help.aliyun.com/document_detail/101148.html).
 //
-// 	- If this is the first time you use the video fingerprinting feature, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
+// 	- If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 //
 // 	- After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](https://help.aliyun.com/document_detail/55627.html) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
 //
@@ -51930,9 +52365,9 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 //
 // 	- Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Video AI](https://help.aliyun.com/document_detail/101148.html).
+// 	- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Overview](https://help.aliyun.com/document_detail/101148.html).
 //
-// 	- If this is the first time you use the video fingerprinting feature, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
+// 	- If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 //
 // 	- After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](https://help.aliyun.com/document_detail/55627.html) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
 //
@@ -52322,11 +52757,15 @@ func (client *Client) SubmitMediaDNADeleteJob(request *SubmitMediaDNADeleteJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Transcodes a video by using the production studio.
+//
 // Description:
 //
-//   During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, you are **charged*	- for video preprocessing. You can submit a ticket for information about the **production studio*	- service.
+//   During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, **you are charged for video preprocessing**. For more information about billing, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
 //
-//  	- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If the value of the **Preprocess*	- parameter is true in the event notification, the video is preprocessed.
+// 	- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If **Preprocess=true*	- is returned in the event notification, the video is transcoded.
 //
 // @param request - SubmitPreprocessJobsRequest
 //
@@ -52370,11 +52809,15 @@ func (client *Client) SubmitPreprocessJobsWithOptions(request *SubmitPreprocessJ
 	return _result, _err
 }
 
+// Summary:
+//
+// Transcodes a video by using the production studio.
+//
 // Description:
 //
-//   During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, you are **charged*	- for video preprocessing. You can submit a ticket for information about the **production studio*	- service.
+//   During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, **you are charged for video preprocessing**. For more information about billing, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
 //
-//  	- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If the value of the **Preprocess*	- parameter is true in the event notification, the video is preprocessed.
+// 	- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If **Preprocess=true*	- is returned in the event notification, the video is transcoded.
 //
 // @param request - SubmitPreprocessJobsRequest
 //
@@ -52862,11 +53305,11 @@ func (client *Client) UpdateAppInfo(request *UpdateAppInfoRequest) (_result *Upd
 
 // Summary:
 //
-// Modifies the information about multiple auxiliary media assets at a time.
+// Modifies the information about multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch based on IDs. You can modify information such as the title, description, tags, and category.
 //
 // Description:
 //
-// The specific parameter of an auxiliary media asset is updated only when a new value is passed in the parameter.
+// You can modify the information about up to 20 auxiliary media assets at a time.
 //
 // @param request - UpdateAttachedMediaInfosRequest
 //
@@ -52908,11 +53351,11 @@ func (client *Client) UpdateAttachedMediaInfosWithOptions(request *UpdateAttache
 
 // Summary:
 //
-// Modifies the information about multiple auxiliary media assets at a time.
+// Modifies the information about multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch based on IDs. You can modify information such as the title, description, tags, and category.
 //
 // Description:
 //
-// The specific parameter of an auxiliary media asset is updated only when a new value is passed in the parameter.
+// You can modify the information about up to 20 auxiliary media assets at a time.
 //
 // @param request - UpdateAttachedMediaInfosRequest
 //
@@ -53096,6 +53539,12 @@ func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest)
 //
 // Modifies the information about one or more images at a time.
 //
+// Description:
+//
+//   You can call this operation to modify information such as the title, tags, description, and category about images based on image IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
+//
+// 	- You can modify the information about up to 20 images at a time.
+//
 // @param request - UpdateImageInfosRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -53137,6 +53586,12 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 // Summary:
 //
 // Modifies the information about one or more images at a time.
+//
+// Description:
+//
+//   You can call this operation to modify information such as the title, tags, description, and category about images based on image IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
+//
+// 	- You can modify the information about up to 20 images at a time.
 //
 // @param request - UpdateImageInfosRequest
 //
@@ -53490,7 +53945,7 @@ func (client *Client) UpdateVideoInfos(request *UpdateVideoInfosRequest) (_resul
 //
 // Description:
 //
-// > This operation is available only in the **China (Shanghai)*	- region.
+// UpdateVodDomain
 //
 // @param request - UpdateVodDomainRequest
 //
@@ -53552,7 +54007,7 @@ func (client *Client) UpdateVodDomainWithOptions(request *UpdateVodDomainRequest
 //
 // Description:
 //
-// > This operation is available only in the **China (Shanghai)*	- region.
+// UpdateVodDomain
 //
 // @param request - UpdateVodDomainRequest
 //
