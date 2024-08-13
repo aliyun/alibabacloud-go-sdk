@@ -22955,8 +22955,6 @@ func (s *LaunchAuthenticationResponse) SetBody(v *LaunchAuthenticationResponseBo
 }
 
 type LaunchSurveyRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 4685b65a-eb8f-11ec-8ea0-0242ac120002
