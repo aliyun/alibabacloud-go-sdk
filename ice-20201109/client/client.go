@@ -28340,6 +28340,7 @@ type ListMediaProducingJobsRequest struct {
 	//
 	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// example:
 	//
 	// CreationTime:Desc
@@ -28389,6 +28390,11 @@ func (s *ListMediaProducingJobsRequest) SetMaxResults(v int32) *ListMediaProduci
 
 func (s *ListMediaProducingJobsRequest) SetNextToken(v string) *ListMediaProducingJobsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetProjectId(v string) *ListMediaProducingJobsRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -61516,6 +61522,10 @@ func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProduc
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
