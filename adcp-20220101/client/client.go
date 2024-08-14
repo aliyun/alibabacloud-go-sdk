@@ -165,7 +165,7 @@ func (s *AttachClusterToHubResponse) SetBody(v *AttachClusterToHubResponseBody) 
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the new resource group.
+	// The ID of the new resource group. You can view the available resource groups in the Resource Management console.
 	//
 	// This parameter is required.
 	//
@@ -173,7 +173,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// rg-aekzlvgbhaca***
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The resource ID. If ResourceType=cluster, the resource ID is ClusterId.
+	// The ID of the resource. The value of this parameter varies with the resource type. For example, if you set ResourceType to cluster, this parameter specifies a cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -181,7 +181,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// c9603ee23a84a41d6a1424619cb80****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Only cluster are supported. Set the value to cluster.
+	// The resource type. Set the value to cluster.
 	//
 	// example:
 	//
@@ -338,7 +338,10 @@ type CreateHubClusterRequest struct {
 	//
 	// rg-1exm6tg2h48***
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	Tag             []*Tag  `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The tags.
+	//
+	// You can specify at most 20 tags in each call.
+	Tag []*Tag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// This parameter is required.
@@ -515,7 +518,10 @@ type CreateHubClusterShrinkRequest struct {
 	//
 	// rg-1exm6tg2h48***
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags.
+	//
+	// You can specify at most 20 tags in each call.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The ID of the vSwitch.
 	//
 	// This parameter is required.
@@ -2225,7 +2231,7 @@ func (s *DescribeHubClusterDetailsResponse) SetBody(v *DescribeHubClusterDetails
 }
 
 type DescribeHubClusterKubeconfigRequest struct {
-	// The ID of the master instance.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -2328,7 +2334,7 @@ func (s *DescribeHubClusterKubeconfigResponse) SetBody(v *DescribeHubClusterKube
 }
 
 type DescribeHubClusterLogsRequest struct {
-	// The ID of the master instance.
+	// The ID of the Fleet instance. You can call the [DescribeHubClusters](https://help.aliyun.com/document_detail/424404.html) operation to query the created Fleet instances.
 	//
 	// This parameter is required.
 	//
@@ -2352,9 +2358,9 @@ func (s *DescribeHubClusterLogsRequest) SetClusterId(v string) *DescribeHubClust
 }
 
 type DescribeHubClusterLogsResponseBody struct {
-	// Brief information about operation logs.
+	// The details of operations logs.
 	Logs []*DescribeHubClusterLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2381,25 +2387,31 @@ func (s *DescribeHubClusterLogsResponseBody) SetRequestId(v string) *DescribeHub
 }
 
 type DescribeHubClusterLogsResponseBodyLogs struct {
-	// The ID of the master instance.
+	// The ID of the Fleet instance.
 	//
 	// example:
 	//
 	// c102fe5f1ee5d4c87a68121a77d8b0f38
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A log of the master instance.
+	// The log of the Fleet instance.
 	//
 	// example:
 	//
 	// Cluster Created
 	ClusterLog *string `json:"ClusterLog,omitempty" xml:"ClusterLog,omitempty"`
-	// The time when the log was created. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC time).
+	// The time when the log was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-02T11:48:15+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The severity level of the log. Valid values: - error: errors. - warn: warnings. - info: information.
+	// The log level. Valid values:
+	//
+	// 	- error
+	//
+	// 	- warn
+	//
+	// 	- info
 	//
 	// example:
 	//
@@ -2477,7 +2489,8 @@ type DescribeHubClustersRequest struct {
 	//
 	// rg-aekz77rhypeu***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*Tag  `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The tags.
+	Tag []*Tag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeHubClustersRequest) String() string {
@@ -2516,7 +2529,8 @@ type DescribeHubClustersShrinkRequest struct {
 	//
 	// rg-aekz77rhypeu***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s DescribeHubClustersShrinkRequest) String() string {
@@ -2578,7 +2592,7 @@ type DescribeHubClustersResponseBodyClusters struct {
 	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
 	// The deletion conditions of the cluster.
 	Conditions []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The endpoint of the cluster.
+	// The endpoints of the cluster.
 	Endpoints *DescribeHubClustersResponseBodyClustersEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	// The logging configurations.
 	LogConfig *DescribeHubClustersResponseBodyClustersLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
@@ -2638,7 +2652,7 @@ type DescribeHubClustersResponseBodyClustersApiServer struct {
 	//
 	// eip-xxx
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	// Indicates whether public endpoint is enabled for the API server. Valid values:
+	// Indicates whether the public endpoint is enabled for the API server. Valid values:
 	//
 	// 	- true
 	//
@@ -2686,9 +2700,9 @@ type DescribeHubClustersResponseBodyClustersClusterInfo struct {
 	//
 	// c2d3e0121ea214b438010502a8019****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The specification of the cluster.
+	// The specifications of the cluster.
 	//
-	// 	- Only ack.pro.small is returned.
+	// 	- Only ack.pro.small may be returned.
 	//
 	// example:
 	//
@@ -2706,7 +2720,7 @@ type DescribeHubClustersResponseBodyClustersClusterInfo struct {
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
@@ -2724,13 +2738,13 @@ type DescribeHubClustersResponseBodyClustersClusterInfo struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of Resource Group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-qh2zgjsdv52***
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	// The status of the cluster. Valid values:
+	// The state of the cluster. Valid values:
 	//
 	// 	- initial: The cluster is being initialized.
 	//
@@ -2738,7 +2752,7 @@ type DescribeHubClustersResponseBodyClustersClusterInfo struct {
 	//
 	// 	- running: The cluster is running
 	//
-	// 	- inactive: The cluster is pending.
+	// 	- inactive: The cluster is not activated.
 	//
 	// 	- deleting: The cluster is being deleted.
 	//
@@ -2749,15 +2763,16 @@ type DescribeHubClustersResponseBodyClustersClusterInfo struct {
 	// example:
 	//
 	// running
-	State *string                                                   `json:"State,omitempty" xml:"State,omitempty"`
-	Tags  []*DescribeHubClustersResponseBodyClustersClusterInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the cluster was last updated.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The tags.
+	Tags []*DescribeHubClustersResponseBodyClustersClusterInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The time when the cluster was last modified.
 	//
 	// example:
 	//
 	// 2021-09-02T13:39:50Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The Kubernetes version of the cluster.
+	// The version of the cluster.
 	//
 	// example:
 	//
@@ -2834,7 +2849,17 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetVersion(v string
 }
 
 type DescribeHubClustersResponseBodyClustersClusterInfoTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// headername
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// release
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2857,7 +2882,7 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfoTags) SetValue(v stri
 }
 
 type DescribeHubClustersResponseBodyClustersConditions struct {
-	// The error message that is returned.
+	// The error message returned.
 	//
 	// example:
 	//
@@ -2869,7 +2894,7 @@ type DescribeHubClustersResponseBodyClustersConditions struct {
 	//
 	// Successful
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the cluster that the deletion condition indicates. Valid values:
+	// The state of the cluster that the deletion condition indicates. Valid values:
 	//
 	// 	- True: The cluster cannot be deleted.
 	//
@@ -4629,13 +4654,13 @@ type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances struct {
 	//
 	// Restricts use of the cluster-admin role.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The number of policy instances that are deployed. If this parameter is empty, no policy instance is deployed.
+	// The number of policy instances that are deployed. If this parameter is left empty, no policy instance is deployed.
 	//
 	// example:
 	//
 	// 2
 	PolicyInstancesCount *int64 `json:"PolicyInstancesCount,omitempty" xml:"PolicyInstancesCount,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
@@ -4688,13 +4713,13 @@ func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPo
 }
 
 type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters struct {
-	// The ID of the associated cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c639e5310e73e4a29ab18d6330a633****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The status of the deployment.
+	// The status of the policy deployment.
 	//
 	// example:
 	//
@@ -4727,7 +4752,7 @@ type DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo struct {
 	//
 	// 2
 	SeverityCount *string `json:"SeverityCount,omitempty" xml:"SeverityCount,omitempty"`
-	// The severity level.
+	// The severity level of the policy.
 	//
 	// example:
 	//
@@ -5175,7 +5200,7 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 }
 
 type GrantUserPermissionRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -5189,17 +5214,31 @@ type GrantUserPermissionRequest struct {
 	//
 	// false
 	IsRamRole *bool `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
-	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
+	// The name of the namespace.
+	//
+	// 	- If **RoleType*	- is set to **cluster**, you do not need to specify this parameter.
+	//
+	// 	- This parameter is required if **RoleType*	- is set to **namespace**.
+	//
+	// 	- If **RoleType*	- is set to **namespace*	- and **RoleName*	- is set to **gitops-dev**, this parameter is required and must be set to **argocd**.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The predefined role that you want to assign. Valid values:
+	// The predefined role. Valid values:
 	//
-	// 	- admin: the administrator role.
+	// 	- admin: administrator
 	//
-	// 	- dev: the developer role.
+	// 	- dev: developer
+	//
+	// 	- gitops-dev: GitOps developer. The parameter is available only for Fleet instances.
+	//
+	// The value of RoleName and that of RoleType must meet the following requirements:
+	//
+	// 	- If **RoleType*	- is set to **cluster**, this parameter must be set to **admin**.
+	//
+	// 	- If **RoleType*	- is set to **namespace**, this parameter must be set to **dev*	- or **gitops-dev**.
 	//
 	// This parameter is required.
 	//
@@ -5209,9 +5248,9 @@ type GrantUserPermissionRequest struct {
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// 	- cluster: specifies that the permissions are scoped to a master instance.
+	// 	- cluster: The permissions are granted to a cluster.
 	//
-	// 	- namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	// 	- namespace: The permissions are granted to a namespace of a cluster.
 	//
 	// This parameter is required.
 	//
@@ -6889,7 +6928,7 @@ func (client *Client) DescribeHubClusterDetails(request *DescribeHubClusterDetai
 
 // Summary:
 //
-// Queries the kubeconfig file of a master instance.
+// Queries the kubeconfig file of a Distributed Cloud Container Platform for Kubernetes (ACK One) cluster. In addition to the Container Service for Kubernetes (ACK) console, you can also use the Kubernetes CLI kubectl to manage clusters and applications. If you use kubectl to manage an ACK cluster, you must obtain the kubeconfig file of the cluster and use kubectl to connect to the cluster.
 //
 // @param request - DescribeHubClusterKubeconfigRequest
 //
@@ -6935,7 +6974,7 @@ func (client *Client) DescribeHubClusterKubeconfigWithOptions(request *DescribeH
 
 // Summary:
 //
-// Queries the kubeconfig file of a master instance.
+// Queries the kubeconfig file of a Distributed Cloud Container Platform for Kubernetes (ACK One) cluster. In addition to the Container Service for Kubernetes (ACK) console, you can also use the Kubernetes CLI kubectl to manage clusters and applications. If you use kubectl to manage an ACK cluster, you must obtain the kubeconfig file of the cluster and use kubectl to connect to the cluster.
 //
 // @param request - DescribeHubClusterKubeconfigRequest
 //
@@ -6953,7 +6992,7 @@ func (client *Client) DescribeHubClusterKubeconfig(request *DescribeHubClusterKu
 
 // Summary:
 //
-// 查查HUB集群日志
+// Queries the logs of the Fleet instance of a multi-cluster fleet of Distributed Cloud Container Platform for Kubernetes (ACK One).
 //
 // @param request - DescribeHubClusterLogsRequest
 //
@@ -6995,7 +7034,7 @@ func (client *Client) DescribeHubClusterLogsWithOptions(request *DescribeHubClus
 
 // Summary:
 //
-// 查查HUB集群日志
+// Queries the logs of the Fleet instance of a multi-cluster fleet of Distributed Cloud Container Platform for Kubernetes (ACK One).
 //
 // @param request - DescribeHubClusterLogsRequest
 //
@@ -7624,7 +7663,15 @@ func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest)
 
 // Summary:
 //
-// Schema of Response
+// Grants role-based access control (RBAC) permissions to Resource Access Management (RAM) users or RAM roles. System policies can be attached to RAM users to grant only the operation permissions on Distributed Cloud Container Platform for Kubernetes (ACK One) cluster resources. The operation permissions include creating and viewing instances. If you want to perform operations on Kubernetes resources in a specific cluster by using a RAM user or assuming a RAM role, such as creating GitOps applications and Argo workflows, you must grant RBAC permissions to the RAM user or RAM role to perform operations on the specified ACK One cluster and namespace. This topic describes how to grant RBAC permissions to a RAM user or RAM role.
+//
+// Description:
+//
+//   To call this API operation to grant permissions to a RAM user or RAM role on a specific cluster, you must use an Alibaba Cloud account, the account that is used to create the cluster, or a RAM user that has the cluster administrator permissions. A regular RAM user does not have the permissions to call this operation.
+//
+// 	- Before you grant RBAC permissions to a RAM user or RAM role on a cluster, you must grant the operation permissions to the RAM user or RAM role on the specified cluster. For more information, see [Attach a system permission policy to a RAM user or RAM role](https://help.aliyun.com/document_detail/613486.html).
+//
+// For more information, see [Authorization overview](https://help.aliyun.com/document_detail/613468.html).
 //
 // @param request - GrantUserPermissionRequest
 //
@@ -7686,7 +7733,15 @@ func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissio
 
 // Summary:
 //
-// Schema of Response
+// Grants role-based access control (RBAC) permissions to Resource Access Management (RAM) users or RAM roles. System policies can be attached to RAM users to grant only the operation permissions on Distributed Cloud Container Platform for Kubernetes (ACK One) cluster resources. The operation permissions include creating and viewing instances. If you want to perform operations on Kubernetes resources in a specific cluster by using a RAM user or assuming a RAM role, such as creating GitOps applications and Argo workflows, you must grant RBAC permissions to the RAM user or RAM role to perform operations on the specified ACK One cluster and namespace. This topic describes how to grant RBAC permissions to a RAM user or RAM role.
+//
+// Description:
+//
+//   To call this API operation to grant permissions to a RAM user or RAM role on a specific cluster, you must use an Alibaba Cloud account, the account that is used to create the cluster, or a RAM user that has the cluster administrator permissions. A regular RAM user does not have the permissions to call this operation.
+//
+// 	- Before you grant RBAC permissions to a RAM user or RAM role on a cluster, you must grant the operation permissions to the RAM user or RAM role on the specified cluster. For more information, see [Attach a system permission policy to a RAM user or RAM role](https://help.aliyun.com/document_detail/613486.html).
+//
+// For more information, see [Authorization overview](https://help.aliyun.com/document_detail/613468.html).
 //
 // @param request - GrantUserPermissionRequest
 //
