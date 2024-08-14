@@ -1358,6 +1358,221 @@ func (s *DescribeEmptyNumberResponse) SetBody(v *DescribeEmptyNumberResponseBody
 	return s
 }
 
+type DescribeMobileOperatorAttributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeMobileOperatorAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMobileOperatorAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMobileOperatorAttributeRequest) SetAuthCode(v string) *DescribeMobileOperatorAttributeRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeRequest) SetInputNumber(v string) *DescribeMobileOperatorAttributeRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeRequest) SetMask(v string) *DescribeMobileOperatorAttributeRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeRequest) SetOwnerId(v int64) *DescribeMobileOperatorAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeRequest) SetResourceOwnerAccount(v string) *DescribeMobileOperatorAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeRequest) SetResourceOwnerId(v int64) *DescribeMobileOperatorAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeMobileOperatorAttributeResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeMobileOperatorAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMobileOperatorAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMobileOperatorAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBody) SetAccessDeniedDetail(v string) *DescribeMobileOperatorAttributeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBody) SetCode(v string) *DescribeMobileOperatorAttributeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBody) SetData(v *DescribeMobileOperatorAttributeResponseBodyData) *DescribeMobileOperatorAttributeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBody) SetMessage(v string) *DescribeMobileOperatorAttributeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBody) SetRequestId(v string) *DescribeMobileOperatorAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMobileOperatorAttributeResponseBodyData struct {
+	// example:
+	//
+	// 示例值示例值示例值
+	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	// example:
+	//
+	// 示例值
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// true
+	IsNumberPortability *bool `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	RealNumber *string `json:"RealNumber,omitempty" xml:"RealNumber,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	SegmentCarrier *string `json:"SegmentCarrier,omitempty" xml:"SegmentCarrier,omitempty"`
+}
+
+func (s DescribeMobileOperatorAttributeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMobileOperatorAttributeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBodyData) SetBasicCarrier(v string) *DescribeMobileOperatorAttributeResponseBodyData {
+	s.BasicCarrier = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBodyData) SetCarrier(v string) *DescribeMobileOperatorAttributeResponseBodyData {
+	s.Carrier = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBodyData) SetCity(v string) *DescribeMobileOperatorAttributeResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBodyData) SetIsNumberPortability(v bool) *DescribeMobileOperatorAttributeResponseBodyData {
+	s.IsNumberPortability = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBodyData) SetProvince(v string) *DescribeMobileOperatorAttributeResponseBodyData {
+	s.Province = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBodyData) SetRealNumber(v string) *DescribeMobileOperatorAttributeResponseBodyData {
+	s.RealNumber = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponseBodyData) SetSegmentCarrier(v string) *DescribeMobileOperatorAttributeResponseBodyData {
+	s.SegmentCarrier = &v
+	return s
+}
+
+type DescribeMobileOperatorAttributeResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMobileOperatorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeMobileOperatorAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMobileOperatorAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMobileOperatorAttributeResponse) SetHeaders(v map[string]*string) *DescribeMobileOperatorAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponse) SetStatusCode(v int32) *DescribeMobileOperatorAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMobileOperatorAttributeResponse) SetBody(v *DescribeMobileOperatorAttributeResponseBody) *DescribeMobileOperatorAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePhoneNumberAnalysisRequest struct {
 	// This parameter is required.
 	//
@@ -8917,6 +9132,86 @@ func (client *Client) DescribeEmptyNumber(request *DescribeEmptyNumberRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEmptyNumberResponse{}
 	_body, _err := client.DescribeEmptyNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码归属地查询v2
+//
+// @param request - DescribeMobileOperatorAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMobileOperatorAttributeResponse
+func (client *Client) DescribeMobileOperatorAttributeWithOptions(request *DescribeMobileOperatorAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeMobileOperatorAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMobileOperatorAttribute"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMobileOperatorAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码归属地查询v2
+//
+// @param request - DescribeMobileOperatorAttributeRequest
+//
+// @return DescribeMobileOperatorAttributeResponse
+func (client *Client) DescribeMobileOperatorAttribute(request *DescribeMobileOperatorAttributeRequest) (_result *DescribeMobileOperatorAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMobileOperatorAttributeResponse{}
+	_body, _err := client.DescribeMobileOperatorAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,7 @@
+2024-08-14 Version: v3.10.0
+- Support API DescribeMobileOperatorAttribute.
+
+
 2024-08-06 Version: v3.9.0
 - Support API CertNoThreeElementVerification.
 
