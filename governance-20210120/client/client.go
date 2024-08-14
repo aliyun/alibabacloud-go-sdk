@@ -2704,6 +2704,7 @@ func (s *ListEvaluationResultsResponseBodyResults) SetTotalScore(v float64) *Lis
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResults struct {
+	ErrorInfo *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2023-12-13T03:34:02Z
@@ -2735,6 +2736,11 @@ func (s ListEvaluationResultsResponseBodyResultsMetricResults) GoString() string
 	return s.String()
 }
 
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetErrorInfo(v *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.ErrorInfo = v
+	return s
+}
+
 func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetEvaluationTime(v string) *ListEvaluationResultsResponseBodyResultsMetricResults {
 	s.EvaluationTime = &v
 	return s
@@ -2762,6 +2768,29 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetRisk(v string
 
 func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetStatus(v string) *ListEvaluationResultsResponseBodyResultsMetricResults {
 	s.Status = &v
+	return s
+}
+
+type ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) SetCode(v string) *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) SetMessage(v string) *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo {
+	s.Message = &v
 	return s
 }
 
