@@ -2981,7 +2981,9 @@ type CreateDBResourceGroupRequest struct {
 	// example:
 	//
 	// True
-	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EnableSpot   *bool                  `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	Engine       *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// 	- The name can be up to 255 characters in length.
@@ -3079,6 +3081,16 @@ func (s *CreateDBResourceGroupRequest) SetDBClusterId(v string) *CreateDBResourc
 
 func (s *CreateDBResourceGroupRequest) SetEnableSpot(v bool) *CreateDBResourceGroupRequest {
 	s.EnableSpot = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetEngine(v string) *CreateDBResourceGroupRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetEngineParams(v map[string]interface{}) *CreateDBResourceGroupRequest {
+	s.EngineParams = v
 	return s
 }
 
@@ -3202,7 +3214,9 @@ type CreateDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// True
-	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EnableSpot         *bool   `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// 	- The name can be up to 255 characters in length.
@@ -3300,6 +3314,16 @@ func (s *CreateDBResourceGroupShrinkRequest) SetDBClusterId(v string) *CreateDBR
 
 func (s *CreateDBResourceGroupShrinkRequest) SetEnableSpot(v bool) *CreateDBResourceGroupShrinkRequest {
 	s.EnableSpot = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetEngine(v string) *CreateDBResourceGroupShrinkRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetEngineParamsShrink(v string) *CreateDBResourceGroupShrinkRequest {
+	s.EngineParamsShrink = &v
 	return s
 }
 
@@ -13337,7 +13361,9 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// example:
 	//
 	// True
-	EnableSpot *string `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EnableSpot   *string                `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	Engine       *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// example:
@@ -13374,6 +13400,8 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// 512ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	// This parameter is required.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -13447,6 +13475,16 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetEnableSpot(v string) 
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetEngine(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetEngineParams(v map[string]interface{}) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.EngineParams = v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetGroupName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.GroupName = &v
 	return s
@@ -13469,6 +13507,11 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMaxClusterCount(v int
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMaxComputeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMessage(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.Message = &v
 	return s
 }
 
@@ -26924,7 +26967,8 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// true
-	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EnableSpot   *bool                  `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
@@ -27018,6 +27062,11 @@ func (s *ModifyDBResourceGroupRequest) SetDBClusterId(v string) *ModifyDBResourc
 
 func (s *ModifyDBResourceGroupRequest) SetEnableSpot(v bool) *ModifyDBResourceGroupRequest {
 	s.EnableSpot = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetEngineParams(v map[string]interface{}) *ModifyDBResourceGroupRequest {
+	s.EngineParams = v
 	return s
 }
 
@@ -27135,7 +27184,8 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// true
-	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EnableSpot         *bool   `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
@@ -27229,6 +27279,11 @@ func (s *ModifyDBResourceGroupShrinkRequest) SetDBClusterId(v string) *ModifyDBR
 
 func (s *ModifyDBResourceGroupShrinkRequest) SetEnableSpot(v bool) *ModifyDBResourceGroupShrinkRequest {
 	s.EnableSpot = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetEngineParamsShrink(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.EngineParamsShrink = &v
 	return s
 }
 
@@ -30234,6 +30289,10 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 	}
 	request := &CreateDBResourceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EngineParams)) {
+		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, tea.String("EngineParams"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
 		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
 	}
@@ -30253,6 +30312,14 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 
 	if !tea.BoolValue(util.IsUnset(request.EnableSpot)) {
 		query["EnableSpot"] = request.EnableSpot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineParamsShrink)) {
+		query["EngineParams"] = request.EngineParamsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
@@ -39146,6 +39213,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 	}
 	request := &ModifyDBResourceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EngineParams)) {
+		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, tea.String("EngineParams"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
 		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
 	}
@@ -39165,6 +39236,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 
 	if !tea.BoolValue(util.IsUnset(request.EnableSpot)) {
 		query["EnableSpot"] = request.EnableSpot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineParamsShrink)) {
+		query["EngineParams"] = request.EngineParamsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
