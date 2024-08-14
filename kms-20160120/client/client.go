@@ -31,6 +31,7 @@ type AsymmetricDecryptRequest struct {
 	//
 	// BQKP+1zK6+ZEMxTP5qaVzcsgXtWplYBKm0NXdSnB5FzliFxE1bSiu4dnEIlca2JpeH7yz1/S6fed630H+hIH6DoM25fTLNcKj+mFB0Xnh9m2+HN59Mn4qyTfcUeadnfCXSWcGBouhXFwcdd2rJ3n337bzTf4jm659gZu3L0i6PLuxM9p7mqdwO0cKJPfGVfhnfMz+f4alMg79WB/NNyE2lyX7/qxvV49ObNrrJbKSFiz8Djocaf0IESNLMbfYI5bXjWkJlX92DQbKhibtQW8ZOJ//ZC6t0AWcUoKL6QDm/dg5koQalcleRinpB+QadFm894sLbVZ9+N4GVsv1W****==
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	DryRun         *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
 	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
@@ -66,6 +67,11 @@ func (s *AsymmetricDecryptRequest) SetAlgorithm(v string) *AsymmetricDecryptRequ
 
 func (s *AsymmetricDecryptRequest) SetCiphertextBlob(v string) *AsymmetricDecryptRequest {
 	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *AsymmetricDecryptRequest) SetDryRun(v string) *AsymmetricDecryptRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -174,6 +180,7 @@ type AsymmetricEncryptRequest struct {
 	//
 	// RSAES_OAEP_SHA_1
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	DryRun    *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
 	//
 	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -214,6 +221,11 @@ func (s AsymmetricEncryptRequest) GoString() string {
 
 func (s *AsymmetricEncryptRequest) SetAlgorithm(v string) *AsymmetricEncryptRequest {
 	s.Algorithm = &v
+	return s
+}
+
+func (s *AsymmetricEncryptRequest) SetDryRun(v string) *AsymmetricEncryptRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -335,6 +347,7 @@ type AsymmetricSignRequest struct {
 	//
 	// ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiu****=
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The operation that you want to perform. Set the value to **AsymmetricSign**.
 	//
 	// This parameter is required.
@@ -370,6 +383,11 @@ func (s *AsymmetricSignRequest) SetAlgorithm(v string) *AsymmetricSignRequest {
 
 func (s *AsymmetricSignRequest) SetDigest(v string) *AsymmetricSignRequest {
 	s.Digest = &v
+	return s
+}
+
+func (s *AsymmetricSignRequest) SetDryRun(v string) *AsymmetricSignRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -494,6 +512,7 @@ type AsymmetricVerifyRequest struct {
 	//
 	// ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
 	//
 	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -539,6 +558,11 @@ func (s *AsymmetricVerifyRequest) SetAlgorithm(v string) *AsymmetricVerifyReques
 
 func (s *AsymmetricVerifyRequest) SetDigest(v string) *AsymmetricVerifyRequest {
 	s.Digest = &v
+	return s
+}
+
+func (s *AsymmetricVerifyRequest) SetDryRun(v string) *AsymmetricVerifyRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -3802,6 +3826,7 @@ type DecryptRequest struct {
 	//
 	// DZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmaaSl+TztSIMe43nbTH/Z1Wr4XfLftKhAciUmDQXuMRl4WTvKhxjMThjK****
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	DryRun         *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The JSON string that consists of key-value pairs.
 	//
 	// >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -3822,6 +3847,11 @@ func (s DecryptRequest) GoString() string {
 
 func (s *DecryptRequest) SetCiphertextBlob(v string) *DecryptRequest {
 	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *DecryptRequest) SetDryRun(v string) *DecryptRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -3847,6 +3877,7 @@ type DecryptShrinkRequest struct {
 	//
 	// DZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmaaSl+TztSIMe43nbTH/Z1Wr4XfLftKhAciUmDQXuMRl4WTvKhxjMThjK****
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	DryRun         *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The JSON string that consists of key-value pairs.
 	//
 	// >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -3867,6 +3898,11 @@ func (s DecryptShrinkRequest) GoString() string {
 
 func (s *DecryptShrinkRequest) SetCiphertextBlob(v string) *DecryptShrinkRequest {
 	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *DecryptShrinkRequest) SetDryRun(v string) *DecryptShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -6429,6 +6465,7 @@ func (s *EnableKeyResponse) SetBody(v *EnableKeyResponseBody) *EnableKeyResponse
 }
 
 type EncryptRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -6461,6 +6498,11 @@ func (s EncryptRequest) GoString() string {
 	return s.String()
 }
 
+func (s *EncryptRequest) SetDryRun(v string) *EncryptRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *EncryptRequest) SetEncryptionContext(v map[string]interface{}) *EncryptRequest {
 	s.EncryptionContext = v
 	return s
@@ -6477,6 +6519,7 @@ func (s *EncryptRequest) SetPlaintext(v string) *EncryptRequest {
 }
 
 type EncryptShrinkRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -6507,6 +6550,11 @@ func (s EncryptShrinkRequest) String() string {
 
 func (s EncryptShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EncryptShrinkRequest) SetDryRun(v string) *EncryptShrinkRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *EncryptShrinkRequest) SetEncryptionContextShrink(v string) *EncryptShrinkRequest {
@@ -6617,6 +6665,7 @@ type ExportDataKeyRequest struct {
 	//
 	// ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901q********
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	DryRun         *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -6676,6 +6725,11 @@ func (s *ExportDataKeyRequest) SetCiphertextBlob(v string) *ExportDataKeyRequest
 	return s
 }
 
+func (s *ExportDataKeyRequest) SetDryRun(v string) *ExportDataKeyRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *ExportDataKeyRequest) SetEncryptionContext(v map[string]interface{}) *ExportDataKeyRequest {
 	s.EncryptionContext = v
 	return s
@@ -6705,6 +6759,7 @@ type ExportDataKeyShrinkRequest struct {
 	//
 	// ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901q********
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	DryRun         *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -6761,6 +6816,11 @@ func (s ExportDataKeyShrinkRequest) GoString() string {
 
 func (s *ExportDataKeyShrinkRequest) SetCiphertextBlob(v string) *ExportDataKeyShrinkRequest {
 	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *ExportDataKeyShrinkRequest) SetDryRun(v string) *ExportDataKeyShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -6871,6 +6931,7 @@ func (s *ExportDataKeyResponse) SetBody(v *ExportDataKeyResponseBody) *ExportDat
 }
 
 type GenerateAndExportDataKeyRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -6955,6 +7016,11 @@ func (s GenerateAndExportDataKeyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateAndExportDataKeyRequest) SetDryRun(v string) *GenerateAndExportDataKeyRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *GenerateAndExportDataKeyRequest) SetEncryptionContext(v map[string]interface{}) *GenerateAndExportDataKeyRequest {
 	s.EncryptionContext = v
 	return s
@@ -6991,6 +7057,7 @@ func (s *GenerateAndExportDataKeyRequest) SetWrappingKeySpec(v string) *Generate
 }
 
 type GenerateAndExportDataKeyShrinkRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -7073,6 +7140,11 @@ func (s GenerateAndExportDataKeyShrinkRequest) String() string {
 
 func (s GenerateAndExportDataKeyShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateAndExportDataKeyShrinkRequest) SetDryRun(v string) *GenerateAndExportDataKeyShrinkRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *GenerateAndExportDataKeyShrinkRequest) SetEncryptionContextShrink(v string) *GenerateAndExportDataKeyShrinkRequest {
@@ -7208,6 +7280,7 @@ func (s *GenerateAndExportDataKeyResponse) SetBody(v *GenerateAndExportDataKeyRe
 }
 
 type GenerateDataKeyRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The JSON string that consists of key-value pairs.
 	//
 	// If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -7262,6 +7335,11 @@ func (s GenerateDataKeyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateDataKeyRequest) SetDryRun(v string) *GenerateDataKeyRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *GenerateDataKeyRequest) SetEncryptionContext(v map[string]interface{}) *GenerateDataKeyRequest {
 	s.EncryptionContext = v
 	return s
@@ -7283,6 +7361,7 @@ func (s *GenerateDataKeyRequest) SetNumberOfBytes(v int32) *GenerateDataKeyReque
 }
 
 type GenerateDataKeyShrinkRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The JSON string that consists of key-value pairs.
 	//
 	// If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -7335,6 +7414,11 @@ func (s GenerateDataKeyShrinkRequest) String() string {
 
 func (s GenerateDataKeyShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateDataKeyShrinkRequest) SetDryRun(v string) *GenerateDataKeyShrinkRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *GenerateDataKeyShrinkRequest) SetEncryptionContextShrink(v string) *GenerateDataKeyShrinkRequest {
@@ -7455,6 +7539,7 @@ func (s *GenerateDataKeyResponse) SetBody(v *GenerateDataKeyResponseBody) *Gener
 }
 
 type GenerateDataKeyWithoutPlaintextRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -7501,6 +7586,11 @@ func (s GenerateDataKeyWithoutPlaintextRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateDataKeyWithoutPlaintextRequest) SetDryRun(v string) *GenerateDataKeyWithoutPlaintextRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *GenerateDataKeyWithoutPlaintextRequest) SetEncryptionContext(v map[string]interface{}) *GenerateDataKeyWithoutPlaintextRequest {
 	s.EncryptionContext = v
 	return s
@@ -7522,6 +7612,7 @@ func (s *GenerateDataKeyWithoutPlaintextRequest) SetNumberOfBytes(v int32) *Gene
 }
 
 type GenerateDataKeyWithoutPlaintextShrinkRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
@@ -7566,6 +7657,11 @@ func (s GenerateDataKeyWithoutPlaintextShrinkRequest) String() string {
 
 func (s GenerateDataKeyWithoutPlaintextShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateDataKeyWithoutPlaintextShrinkRequest) SetDryRun(v string) *GenerateDataKeyWithoutPlaintextShrinkRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *GenerateDataKeyWithoutPlaintextShrinkRequest) SetEncryptionContextShrink(v string) *GenerateDataKeyWithoutPlaintextShrinkRequest {
@@ -8539,6 +8635,7 @@ func (s *GetParametersForImportResponse) SetBody(v *GetParametersForImportRespon
 }
 
 type GetPublicKeyRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
 	//
 	// This parameter is required.
@@ -8563,6 +8660,11 @@ func (s GetPublicKeyRequest) String() string {
 
 func (s GetPublicKeyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetPublicKeyRequest) SetDryRun(v string) *GetPublicKeyRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *GetPublicKeyRequest) SetKeyId(v string) *GetPublicKeyRequest {
@@ -8941,6 +9043,7 @@ func (s *GetSecretPolicyResponse) SetBody(v *GetSecretPolicyResponseBody) *GetSe
 }
 
 type GetSecretValueRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to obtain the extended configuration of the secret. Valid values:
 	//
 	// 	- true
@@ -8987,6 +9090,11 @@ func (s GetSecretValueRequest) String() string {
 
 func (s GetSecretValueRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetSecretValueRequest) SetDryRun(v string) *GetSecretValueRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *GetSecretValueRequest) SetFetchExtendedConfig(v bool) *GetSecretValueRequest {
@@ -9125,7 +9233,7 @@ type GetSecretValueResponseBody struct {
 	// 00000000000000000000000000000001
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	// The stage labels that mark the secret versions.
-	VersionStages *GetSecretValueResponseBodyVersionStages `json:"VersionStages,omitempty" xml:"VersionStages,omitempty" type:"Struct"`
+	VersionStages []*string `json:"VersionStages,omitempty" xml:"VersionStages,omitempty" type:"Repeated"`
 }
 
 func (s GetSecretValueResponseBody) String() string {
@@ -9196,25 +9304,8 @@ func (s *GetSecretValueResponseBody) SetVersionId(v string) *GetSecretValueRespo
 	return s
 }
 
-func (s *GetSecretValueResponseBody) SetVersionStages(v *GetSecretValueResponseBodyVersionStages) *GetSecretValueResponseBody {
+func (s *GetSecretValueResponseBody) SetVersionStages(v []*string) *GetSecretValueResponseBody {
 	s.VersionStages = v
-	return s
-}
-
-type GetSecretValueResponseBodyVersionStages struct {
-	VersionStage []*string `json:"VersionStage,omitempty" xml:"VersionStage,omitempty" type:"Repeated"`
-}
-
-func (s GetSecretValueResponseBodyVersionStages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSecretValueResponseBodyVersionStages) GoString() string {
-	return s.String()
-}
-
-func (s *GetSecretValueResponseBodyVersionStages) SetVersionStage(v []*string) *GetSecretValueResponseBodyVersionStages {
-	s.VersionStage = v
 	return s
 }
 
@@ -12298,6 +12389,7 @@ type ReEncryptRequest struct {
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	DestinationKeyId *string `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
+	DryRun           *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
@@ -12365,6 +12457,11 @@ func (s *ReEncryptRequest) SetDestinationKeyId(v string) *ReEncryptRequest {
 	return s
 }
 
+func (s *ReEncryptRequest) SetDryRun(v string) *ReEncryptRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *ReEncryptRequest) SetSourceEncryptionAlgorithm(v string) *ReEncryptRequest {
 	s.SourceEncryptionAlgorithm = &v
 	return s
@@ -12414,6 +12511,7 @@ type ReEncryptShrinkRequest struct {
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	DestinationKeyId *string `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
+	DryRun           *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
@@ -12478,6 +12576,11 @@ func (s *ReEncryptShrinkRequest) SetDestinationEncryptionContextShrink(v string)
 
 func (s *ReEncryptShrinkRequest) SetDestinationKeyId(v string) *ReEncryptShrinkRequest {
 	s.DestinationKeyId = &v
+	return s
+}
+
+func (s *ReEncryptShrinkRequest) SetDryRun(v string) *ReEncryptShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -15138,6 +15241,10 @@ func (client *Client) AsymmetricDecryptWithOptions(request *AsymmetricDecryptReq
 		query["CiphertextBlob"] = request.CiphertextBlob
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
 		query["KeyId"] = request.KeyId
 	}
@@ -15257,6 +15364,10 @@ func (client *Client) AsymmetricEncryptWithOptions(request *AsymmetricEncryptReq
 		query["Algorithm"] = request.Algorithm
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
 		query["KeyId"] = request.KeyId
 	}
@@ -15368,6 +15479,10 @@ func (client *Client) AsymmetricSignWithOptions(request *AsymmetricSignRequest, 
 		query["Digest"] = request.Digest
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
 		query["KeyId"] = request.KeyId
 	}
@@ -15477,6 +15592,10 @@ func (client *Client) AsymmetricVerifyWithOptions(request *AsymmetricVerifyReque
 
 	if !tea.BoolValue(util.IsUnset(request.Digest)) {
 		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
@@ -17213,6 +17332,10 @@ func (client *Client) DecryptWithOptions(tmpReq *DecryptRequest, runtime *util.R
 		query["CiphertextBlob"] = request.CiphertextBlob
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
 		query["EncryptionContext"] = request.EncryptionContextShrink
 	}
@@ -18677,6 +18800,10 @@ func (client *Client) EncryptWithOptions(tmpReq *EncryptRequest, runtime *util.R
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
 		query["EncryptionContext"] = request.EncryptionContextShrink
 	}
@@ -18770,6 +18897,10 @@ func (client *Client) ExportDataKeyWithOptions(tmpReq *ExportDataKeyRequest, run
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
 		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
@@ -18871,6 +19002,10 @@ func (client *Client) GenerateAndExportDataKeyWithOptions(tmpReq *GenerateAndExp
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
 		query["EncryptionContext"] = request.EncryptionContextShrink
 	}
@@ -19002,6 +19137,10 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
 		query["EncryptionContext"] = request.EncryptionContextShrink
 	}
@@ -19123,6 +19262,10 @@ func (client *Client) GenerateDataKeyWithoutPlaintextWithOptions(tmpReq *Generat
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
 		query["EncryptionContext"] = request.EncryptionContextShrink
 	}
@@ -19631,6 +19774,10 @@ func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
 		query["KeyId"] = request.KeyId
 	}
@@ -19872,6 +20019,10 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FetchExtendedConfig)) {
 		query["FetchExtendedConfig"] = request.FetchExtendedConfig
 	}
@@ -21304,6 +21455,10 @@ func (client *Client) ReEncryptWithOptions(tmpReq *ReEncryptRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationKeyId)) {
 		query["DestinationKeyId"] = request.DestinationKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceEncryptionAlgorithm)) {
