@@ -27521,7 +27521,8 @@ type UpgradeClusterRequest struct {
 	// example:
 	//
 	// 1.16.9-aliyun.1
-	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	NextVersion   *string                             `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	RollingPolicy *UpgradeClusterRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 	// Deprecated
 	//
 	// This parameter is discontinued. Specify the Kubernetes version by using the next_version parameter.
@@ -27555,8 +27556,30 @@ func (s *UpgradeClusterRequest) SetNextVersion(v string) *UpgradeClusterRequest 
 	return s
 }
 
+func (s *UpgradeClusterRequest) SetRollingPolicy(v *UpgradeClusterRequestRollingPolicy) *UpgradeClusterRequest {
+	s.RollingPolicy = v
+	return s
+}
+
 func (s *UpgradeClusterRequest) SetVersion(v string) *UpgradeClusterRequest {
 	s.Version = &v
+	return s
+}
+
+type UpgradeClusterRequestRollingPolicy struct {
+	MaxParallelism *int32 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
+}
+
+func (s UpgradeClusterRequestRollingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClusterRequestRollingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClusterRequestRollingPolicy) SetMaxParallelism(v int32) *UpgradeClusterRequestRollingPolicy {
+	s.MaxParallelism = &v
 	return s
 }
 
@@ -37697,6 +37720,10 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 
 	if !tea.BoolValue(util.IsUnset(request.NextVersion)) {
 		body["next_version"] = request.NextVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RollingPolicy)) {
+		body["rolling_policy"] = request.RollingPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
