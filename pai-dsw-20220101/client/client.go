@@ -5408,6 +5408,8 @@ type ListInstancesRequest struct {
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	CreateUserId  *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	GpuType       *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	ImageName     *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
@@ -5417,6 +5419,14 @@ type ListInstancesRequest struct {
 	// training_data
 	InstanceName *string                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Labels       map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	MaxCpu       *string                `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
+	MaxGpu       *string                `json:"MaxGpu,omitempty" xml:"MaxGpu,omitempty"`
+	MaxGpuMemory *string                `json:"MaxGpuMemory,omitempty" xml:"MaxGpuMemory,omitempty"`
+	MaxMemory    *string                `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
+	MinCpu       *string                `json:"MinCpu,omitempty" xml:"MinCpu,omitempty"`
+	MinGpu       *string                `json:"MinGpu,omitempty" xml:"MinGpu,omitempty"`
+	MinGpuMemory *string                `json:"MinGpuMemory,omitempty" xml:"MinGpuMemory,omitempty"`
+	MinMemory    *string                `json:"MinMemory,omitempty" xml:"MinMemory,omitempty"`
 	// example:
 	//
 	// DESC
@@ -5474,6 +5484,16 @@ func (s *ListInstancesRequest) SetCreateUserId(v string) *ListInstancesRequest {
 	return s
 }
 
+func (s *ListInstancesRequest) SetGpuType(v string) *ListInstancesRequest {
+	s.GpuType = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetImageName(v string) *ListInstancesRequest {
+	s.ImageName = &v
+	return s
+}
+
 func (s *ListInstancesRequest) SetInstanceId(v string) *ListInstancesRequest {
 	s.InstanceId = &v
 	return s
@@ -5486,6 +5506,46 @@ func (s *ListInstancesRequest) SetInstanceName(v string) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetLabels(v map[string]interface{}) *ListInstancesRequest {
 	s.Labels = v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMaxCpu(v string) *ListInstancesRequest {
+	s.MaxCpu = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMaxGpu(v string) *ListInstancesRequest {
+	s.MaxGpu = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMaxGpuMemory(v string) *ListInstancesRequest {
+	s.MaxGpuMemory = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMaxMemory(v string) *ListInstancesRequest {
+	s.MaxMemory = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMinCpu(v string) *ListInstancesRequest {
+	s.MinCpu = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMinGpu(v string) *ListInstancesRequest {
+	s.MinGpu = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMinGpuMemory(v string) *ListInstancesRequest {
+	s.MinGpuMemory = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMinMemory(v string) *ListInstancesRequest {
+	s.MinMemory = &v
 	return s
 }
 
@@ -5539,6 +5599,8 @@ type ListInstancesShrinkRequest struct {
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	CreateUserId  *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	GpuType       *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	ImageName     *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
@@ -5548,6 +5610,14 @@ type ListInstancesShrinkRequest struct {
 	// training_data
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	MaxCpu       *string `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
+	MaxGpu       *string `json:"MaxGpu,omitempty" xml:"MaxGpu,omitempty"`
+	MaxGpuMemory *string `json:"MaxGpuMemory,omitempty" xml:"MaxGpuMemory,omitempty"`
+	MaxMemory    *string `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
+	MinCpu       *string `json:"MinCpu,omitempty" xml:"MinCpu,omitempty"`
+	MinGpu       *string `json:"MinGpu,omitempty" xml:"MinGpu,omitempty"`
+	MinGpuMemory *string `json:"MinGpuMemory,omitempty" xml:"MinGpuMemory,omitempty"`
+	MinMemory    *string `json:"MinMemory,omitempty" xml:"MinMemory,omitempty"`
 	// example:
 	//
 	// DESC
@@ -5605,6 +5675,16 @@ func (s *ListInstancesShrinkRequest) SetCreateUserId(v string) *ListInstancesShr
 	return s
 }
 
+func (s *ListInstancesShrinkRequest) SetGpuType(v string) *ListInstancesShrinkRequest {
+	s.GpuType = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetImageName(v string) *ListInstancesShrinkRequest {
+	s.ImageName = &v
+	return s
+}
+
 func (s *ListInstancesShrinkRequest) SetInstanceId(v string) *ListInstancesShrinkRequest {
 	s.InstanceId = &v
 	return s
@@ -5617,6 +5697,46 @@ func (s *ListInstancesShrinkRequest) SetInstanceName(v string) *ListInstancesShr
 
 func (s *ListInstancesShrinkRequest) SetLabelsShrink(v string) *ListInstancesShrinkRequest {
 	s.LabelsShrink = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMaxCpu(v string) *ListInstancesShrinkRequest {
+	s.MaxCpu = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMaxGpu(v string) *ListInstancesShrinkRequest {
+	s.MaxGpu = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMaxGpuMemory(v string) *ListInstancesShrinkRequest {
+	s.MaxGpuMemory = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMaxMemory(v string) *ListInstancesShrinkRequest {
+	s.MaxMemory = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMinCpu(v string) *ListInstancesShrinkRequest {
+	s.MinCpu = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMinGpu(v string) *ListInstancesShrinkRequest {
+	s.MinGpu = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMinGpuMemory(v string) *ListInstancesShrinkRequest {
+	s.MinGpuMemory = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMinMemory(v string) *ListInstancesShrinkRequest {
+	s.MinMemory = &v
 	return s
 }
 
@@ -9079,6 +9199,14 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		query["CreateUserId"] = request.CreateUserId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GpuType)) {
+		query["GpuType"] = request.GpuType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -9089,6 +9217,38 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.LabelsShrink)) {
 		query["Labels"] = request.LabelsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxCpu)) {
+		query["MaxCpu"] = request.MaxCpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxGpu)) {
+		query["MaxGpu"] = request.MaxGpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxGpuMemory)) {
+		query["MaxGpuMemory"] = request.MaxGpuMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxMemory)) {
+		query["MaxMemory"] = request.MaxMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinCpu)) {
+		query["MinCpu"] = request.MinCpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinGpu)) {
+		query["MinGpu"] = request.MinGpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinGpuMemory)) {
+		query["MinGpuMemory"] = request.MinGpuMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinMemory)) {
+		query["MinMemory"] = request.MinMemory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
