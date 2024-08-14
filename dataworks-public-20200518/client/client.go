@@ -215,12 +215,24 @@ func (s *Entity) SetTenantId(v int64) *Entity {
 type LineageEntityVO struct {
 	// example:
 	//
+	// attribute map
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
 	// http://domain.test.url/entity
 	DetailUrl *string `json:"DetailUrl,omitempty" xml:"DetailUrl,omitempty"`
 	// example:
 	//
+	// maxcompute-table
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
 	// tableName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// owner
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// example:
 	//
 	// dbName
@@ -239,13 +251,28 @@ func (s LineageEntityVO) GoString() string {
 	return s.String()
 }
 
+func (s *LineageEntityVO) SetAttributes(v map[string]*string) *LineageEntityVO {
+	s.Attributes = v
+	return s
+}
+
 func (s *LineageEntityVO) SetDetailUrl(v string) *LineageEntityVO {
 	s.DetailUrl = &v
 	return s
 }
 
+func (s *LineageEntityVO) SetEntityType(v string) *LineageEntityVO {
+	s.EntityType = &v
+	return s
+}
+
 func (s *LineageEntityVO) SetName(v string) *LineageEntityVO {
 	s.Name = &v
+	return s
+}
+
+func (s *LineageEntityVO) SetOwner(v string) *LineageEntityVO {
+	s.Owner = &v
 	return s
 }
 
@@ -256,6 +283,44 @@ func (s *LineageEntityVO) SetParentName(v string) *LineageEntityVO {
 
 func (s *LineageEntityVO) SetQualifiedName(v string) *LineageEntityVO {
 	s.QualifiedName = &v
+	return s
+}
+
+type LineageRelationRegisterBulkVO struct {
+	// example:
+	//
+	// 1684327487964
+	CreateTimestamp *int64             `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DestEntities    []*LineageEntityVO `json:"DestEntities,omitempty" xml:"DestEntities,omitempty" type:"Repeated"`
+	Relationship    *RelationshipVO    `json:"Relationship,omitempty" xml:"Relationship,omitempty"`
+	SrcEntities     []*LineageEntityVO `json:"SrcEntities,omitempty" xml:"SrcEntities,omitempty" type:"Repeated"`
+}
+
+func (s LineageRelationRegisterBulkVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageRelationRegisterBulkVO) GoString() string {
+	return s.String()
+}
+
+func (s *LineageRelationRegisterBulkVO) SetCreateTimestamp(v int64) *LineageRelationRegisterBulkVO {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *LineageRelationRegisterBulkVO) SetDestEntities(v []*LineageEntityVO) *LineageRelationRegisterBulkVO {
+	s.DestEntities = v
+	return s
+}
+
+func (s *LineageRelationRegisterBulkVO) SetRelationship(v *RelationshipVO) *LineageRelationRegisterBulkVO {
+	s.Relationship = v
+	return s
+}
+
+func (s *LineageRelationRegisterBulkVO) SetSrcEntities(v []*LineageEntityVO) *LineageRelationRegisterBulkVO {
+	s.SrcEntities = v
 	return s
 }
 
@@ -298,10 +363,12 @@ func (s *LineageRelationRegisterVO) SetSrcEntity(v *LineageEntityVO) *LineageRel
 }
 
 type RelationshipVO struct {
+	Attributes       map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	RelationshipGuid *string            `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
 	// example:
 	//
 	// sql
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	RelationshipType *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
 }
 
 func (s RelationshipVO) String() string {
@@ -312,8 +379,18 @@ func (s RelationshipVO) GoString() string {
 	return s.String()
 }
 
-func (s *RelationshipVO) SetType(v string) *RelationshipVO {
-	s.Type = &v
+func (s *RelationshipVO) SetAttributes(v map[string]*string) *RelationshipVO {
+	s.Attributes = v
+	return s
+}
+
+func (s *RelationshipVO) SetRelationshipGuid(v string) *RelationshipVO {
+	s.RelationshipGuid = &v
+	return s
+}
+
+func (s *RelationshipVO) SetRelationshipType(v string) *RelationshipVO {
+	s.RelationshipType = &v
 	return s
 }
 
@@ -12956,6 +13033,7 @@ type DeleteLineageRelationRequest struct {
 	//
 	// dfazcdfdfccdedd
 	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	RelationshipType *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
 	// The unique identifier of the source entity.
 	//
 	// This parameter is required.
@@ -12981,6 +13059,11 @@ func (s *DeleteLineageRelationRequest) SetDestEntityQualifiedName(v string) *Del
 
 func (s *DeleteLineageRelationRequest) SetRelationshipGuid(v string) *DeleteLineageRelationRequest {
 	s.RelationshipGuid = &v
+	return s
+}
+
+func (s *DeleteLineageRelationRequest) SetRelationshipType(v string) *DeleteLineageRelationRequest {
+	s.RelationshipType = &v
 	return s
 }
 
@@ -26390,7 +26473,13 @@ func (s *GetDISyncTaskResponse) SetBody(v *GetDISyncTaskResponseBody) *GetDISync
 }
 
 type GetDagRequest struct {
-	// The DAG ID. You can set this parameter to the value of the DagId parameter returned by the CreateDagComplement, CreateTest, or CreateManualDag operation.
+	// The ID of the DAG. You can use one of the following method to obtain the ID:
+	//
+	// 	- Call the [RunCycleDagNodes](https://help.aliyun.com/document_detail/2780209.html) operation and obtain the value of the **Data*	- response parameter.
+	//
+	// 	- Call the [RunSmokeTest](https://help.aliyun.com/document_detail/2780210.html) operation and obtain the value of the **Data*	- response parameter.
+	//
+	// 	- Call the [RunManualDagNodes](https://help.aliyun.com/document_detail/2780218.html) operation and obtain the value of the **DagId*	- response parameter.
 	//
 	// This parameter is required.
 	//
@@ -82013,7 +82102,7 @@ func (s *UpdateDataServiceApiResponse) SetBody(v *UpdateDataServiceApiResponseBo
 type UpdateDataSourceRequest struct {
 	// The details about the data source. You are not allowed to change the type of the data source. For example, you are not allowed to change the data source type from MaxCompute to MySQL. Examples of details of some common data sources:
 	//
-	// 	- MaxCompute
+	// 	- odps
 	//
 	//         {
 	//
@@ -82031,7 +82120,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- MySQL
+	// 	- mysql
 	//
 	//         {
 	//
@@ -82051,7 +82140,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- RDS
+	// 	- rds
 	//
 	//         {
 	//
@@ -82071,7 +82160,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- OSS
+	// 	- oss
 	//
 	//         {
 	//
@@ -82087,7 +82176,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- SQL Server
+	// 	- sqlserver
 	//
 	//         {
 	//
@@ -82101,7 +82190,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- PolarDB
+	// 	- polardb
 	//
 	//         {
 	//
@@ -82121,7 +82210,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- Oracle
+	// 	- oracle
 	//
 	//         {
 	//
@@ -82135,7 +82224,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- MongoDB
+	// 	- mongodb
 	//
 	//         {
 	//
@@ -82151,7 +82240,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- EMR
+	// 	- emr
 	//
 	//         {
 	//
@@ -82179,7 +82268,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- PostgreSQL
+	// 	- postgresql
 	//
 	//         {
 	//
@@ -82193,7 +82282,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- AnalyticDB for MySQL
+	// 	- analyticdb_for_mysql
 	//
 	//         {
 	//
@@ -82209,7 +82298,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- HybridDB for PostgreSQL
+	// 	- hybriddb_for_postgresql
 	//
 	//         {
 	//
@@ -82229,7 +82318,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- Hologres
+	// 	- holo
 	//
 	//         {
 	//
@@ -82245,7 +82334,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         }
 	//
-	// 	- Kafka
+	// 	- kafka
 	//
 	//         {
 	//
@@ -91602,6 +91691,10 @@ func (client *Client) DeleteLineageRelationWithOptions(request *DeleteLineageRel
 
 	if !tea.BoolValue(util.IsUnset(request.RelationshipGuid)) {
 		query["RelationshipGuid"] = request.RelationshipGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationshipType)) {
+		query["RelationshipType"] = request.RelationshipType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SrcEntityQualifiedName)) {
