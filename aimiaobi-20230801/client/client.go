@@ -681,10 +681,7 @@ type DeleteCustomTextRequest struct {
 	// example:
 	//
 	// xxxxx_p_efm
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// example:
-	//
-	// 商品code
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// This parameter is required.
 	//
@@ -823,7 +820,8 @@ type DeleteGeneratedContentRequest struct {
 	// example:
 	//
 	// 99
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteGeneratedContentRequest) String() string {
@@ -841,6 +839,11 @@ func (s *DeleteGeneratedContentRequest) SetAgentKey(v string) *DeleteGeneratedCo
 
 func (s *DeleteGeneratedContentRequest) SetId(v int64) *DeleteGeneratedContentRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *DeleteGeneratedContentRequest) SetRegionId(v string) *DeleteGeneratedContentRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6615,6 +6618,7 @@ type ListBuildConfigsRequest struct {
 	//
 	// cd327c3d5d5e44159cc716e23bfa530e_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// media
@@ -6631,6 +6635,11 @@ func (s ListBuildConfigsRequest) GoString() string {
 
 func (s *ListBuildConfigsRequest) SetAgentKey(v string) *ListBuildConfigsRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *ListBuildConfigsRequest) SetRegionId(v string) *ListBuildConfigsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7319,6 +7328,7 @@ type ListGeneratedContentsRequest struct {
 	//
 	// 2024-01-04 11:46:07
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Query   *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// example:
 	//
 	// 10
@@ -7327,6 +7337,7 @@ type ListGeneratedContentsRequest struct {
 	//
 	// 2024-01-04 11:46:07
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -7358,6 +7369,11 @@ func (s *ListGeneratedContentsRequest) SetEndTime(v string) *ListGeneratedConten
 	return s
 }
 
+func (s *ListGeneratedContentsRequest) SetQuery(v string) *ListGeneratedContentsRequest {
+	s.Query = &v
+	return s
+}
+
 func (s *ListGeneratedContentsRequest) SetSize(v int32) *ListGeneratedContentsRequest {
 	s.Size = &v
 	return s
@@ -7365,6 +7381,11 @@ func (s *ListGeneratedContentsRequest) SetSize(v int32) *ListGeneratedContentsRe
 
 func (s *ListGeneratedContentsRequest) SetStartTime(v string) *ListGeneratedContentsRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListGeneratedContentsRequest) SetTaskId(v string) *ListGeneratedContentsRequest {
+	s.TaskId = &v
 	return s
 }
 
@@ -11648,7 +11669,8 @@ type UpdateMaterialDocumentRequest struct {
 	// example:
 	//
 	// 2023-04-11 06:14:07
-	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	PubTime  *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// 1
@@ -11714,6 +11736,11 @@ func (s *UpdateMaterialDocumentRequest) SetPubTime(v string) *UpdateMaterialDocu
 	return s
 }
 
+func (s *UpdateMaterialDocumentRequest) SetRegionId(v string) *UpdateMaterialDocumentRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *UpdateMaterialDocumentRequest) SetShareAttr(v int32) *UpdateMaterialDocumentRequest {
 	s.ShareAttr = &v
 	return s
@@ -11773,7 +11800,8 @@ type UpdateMaterialDocumentShrinkRequest struct {
 	// example:
 	//
 	// 2023-04-11 06:14:07
-	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	PubTime  *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// 1
@@ -11836,6 +11864,11 @@ func (s *UpdateMaterialDocumentShrinkRequest) SetId(v int64) *UpdateMaterialDocu
 
 func (s *UpdateMaterialDocumentShrinkRequest) SetPubTime(v string) *UpdateMaterialDocumentShrinkRequest {
 	s.PubTime = &v
+	return s
+}
+
+func (s *UpdateMaterialDocumentShrinkRequest) SetRegionId(v string) *UpdateMaterialDocumentShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -12385,6 +12418,10 @@ func (client *Client) DeleteGeneratedContentWithOptions(request *DeleteGenerated
 		query["AgentKey"] = request.AgentKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
@@ -12858,6 +12895,10 @@ func (client *Client) FeedbackDialogue(request *FeedbackDialogueRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片任务执行结果
+//
 // @param tmpReq - FetchImageTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12912,6 +12953,10 @@ func (client *Client) FetchImageTaskWithOptions(tmpReq *FetchImageTaskRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片任务执行结果
+//
 // @param request - FetchImageTaskRequest
 //
 // @return FetchImageTaskResponse
@@ -14225,6 +14270,10 @@ func (client *Client) ListBuildConfigsWithOptions(request *ListBuildConfigsReque
 		query["AgentKey"] = request.AgentKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["Type"] = request.Type
@@ -14456,12 +14505,20 @@ func (client *Client) ListGeneratedContentsWithOptions(request *ListGeneratedCon
 		body["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		body["Size"] = request.Size
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
@@ -15777,6 +15834,10 @@ func (client *Client) UpdateMaterialDocumentWithOptions(tmpReq *UpdateMaterialDo
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	body := map[string]interface{}{}
