@@ -3803,8 +3803,6 @@ type ListQueueUpStreamBindingsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum number of entries to return.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
