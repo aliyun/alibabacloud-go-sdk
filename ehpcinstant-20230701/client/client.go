@@ -2407,6 +2407,7 @@ type ListExecutorsResponseBodyExecutors struct {
 	// job-xxxx-task0-1
 	ExecutorId *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
 	HostName   []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	Image      *string   `json:"Image,omitempty" xml:"Image,omitempty"`
 	IpAddress  []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2460,6 +2461,11 @@ func (s *ListExecutorsResponseBodyExecutors) SetExecutorId(v string) *ListExecut
 
 func (s *ListExecutorsResponseBodyExecutors) SetHostName(v []*string) *ListExecutorsResponseBodyExecutors {
 	s.HostName = v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetImage(v string) *ListExecutorsResponseBodyExecutors {
+	s.Image = &v
 	return s
 }
 
@@ -2840,7 +2846,8 @@ func (s *ListJobExecutorsRequest) SetTaskName(v string) *ListJobExecutorsRequest
 }
 
 type ListJobExecutorsResponseBody struct {
-	Executors []*ListJobExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
+	ExecutorStatus *ListJobExecutorsResponseBodyExecutorStatus `json:"ExecutorStatus,omitempty" xml:"ExecutorStatus,omitempty" type:"Struct"`
+	Executors      []*ListJobExecutorsResponseBodyExecutors    `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
 	// example:
 	//
 	// job-xxxx
@@ -2873,6 +2880,11 @@ func (s ListJobExecutorsResponseBody) String() string {
 
 func (s ListJobExecutorsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobExecutorsResponseBody) SetExecutorStatus(v *ListJobExecutorsResponseBodyExecutorStatus) *ListJobExecutorsResponseBody {
+	s.ExecutorStatus = v
+	return s
 }
 
 func (s *ListJobExecutorsResponseBody) SetExecutors(v []*ListJobExecutorsResponseBodyExecutors) *ListJobExecutorsResponseBody {
@@ -2910,6 +2922,59 @@ func (s *ListJobExecutorsResponseBody) SetTotalCount(v string) *ListJobExecutors
 	return s
 }
 
+type ListJobExecutorsResponseBodyExecutorStatus struct {
+	Deleted   *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	Exception *int32 `json:"Exception,omitempty" xml:"Exception,omitempty"`
+	Failed    *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Initing   *int32 `json:"Initing,omitempty" xml:"Initing,omitempty"`
+	Pending   *int32 `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	Running   *int32 `json:"Running,omitempty" xml:"Running,omitempty"`
+	Succeeded *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+}
+
+func (s ListJobExecutorsResponseBodyExecutorStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobExecutorsResponseBodyExecutorStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetDeleted(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Deleted = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetException(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Exception = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetFailed(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetIniting(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Initing = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetPending(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Pending = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetRunning(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Running = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetSucceeded(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Succeeded = &v
+	return s
+}
+
 type ListJobExecutorsResponseBodyExecutors struct {
 	// example:
 	//
@@ -2922,9 +2987,10 @@ type ListJobExecutorsResponseBodyExecutors struct {
 	// example:
 	//
 	// 2024-02-20 10:04:18
-	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HostName  []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	EndTime    *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecutorId *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	HostName   []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	IpAddress  []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Running
@@ -2955,6 +3021,11 @@ func (s *ListJobExecutorsResponseBodyExecutors) SetCreateTime(v string) *ListJob
 
 func (s *ListJobExecutorsResponseBodyExecutors) SetEndTime(v string) *ListJobExecutorsResponseBodyExecutors {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetExecutorId(v string) *ListJobExecutorsResponseBodyExecutors {
+	s.ExecutorId = &v
 	return s
 }
 
