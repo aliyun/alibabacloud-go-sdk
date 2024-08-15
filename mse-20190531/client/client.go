@@ -75120,6 +75120,189 @@ func (s *UpdateNacosConfigResponse) SetBody(v *UpdateNacosConfigResponseBody) *U
 	return s
 }
 
+type UpdateNacosGrayConfigRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// asdf
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// key=value1,value2
+	GrayRule *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tags
+	GrayType *string `json:"GrayType,omitempty" xml:"GrayType,omitempty"`
+	// example:
+	//
+	// DEFAULT_GROUP
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mse_prepaid_public_cn-st2212****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 6cf708a5-****-89f2-3ba62c5ee9ba
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// {}
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// example:
+	//
+	// true
+	StopGray *bool `json:"StopGray,omitempty" xml:"StopGray,omitempty"`
+}
+
+func (s UpdateNacosGrayConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacosGrayConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetAcceptLanguage(v string) *UpdateNacosGrayConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetAppName(v string) *UpdateNacosGrayConfigRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetContent(v string) *UpdateNacosGrayConfigRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetDataId(v string) *UpdateNacosGrayConfigRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetGrayRule(v string) *UpdateNacosGrayConfigRequest {
+	s.GrayRule = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetGrayType(v string) *UpdateNacosGrayConfigRequest {
+	s.GrayType = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetGroup(v string) *UpdateNacosGrayConfigRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetInstanceId(v string) *UpdateNacosGrayConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetNamespaceId(v string) *UpdateNacosGrayConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetRegionId(v string) *UpdateNacosGrayConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetRequestPars(v string) *UpdateNacosGrayConfigRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetStopGray(v bool) *UpdateNacosGrayConfigRequest {
+	s.StopGray = &v
+	return s
+}
+
+type UpdateNacosGrayConfigResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 316F5F64-F73D-42DC-8632-01E308B6****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateNacosGrayConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacosGrayConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacosGrayConfigResponseBody) SetData(v bool) *UpdateNacosGrayConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigResponseBody) SetRequestId(v string) *UpdateNacosGrayConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateNacosGrayConfigResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNacosGrayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateNacosGrayConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacosGrayConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacosGrayConfigResponse) SetHeaders(v map[string]*string) *UpdateNacosGrayConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigResponse) SetStatusCode(v int32) *UpdateNacosGrayConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigResponse) SetBody(v *UpdateNacosGrayConfigResponseBody) *UpdateNacosGrayConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateNacosInstanceRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -95306,6 +95489,110 @@ func (client *Client) UpdateNacosConfig(request *UpdateNacosConfigRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateNacosConfigResponse{}
 	_body, _err := client.UpdateNacosConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新nacos灰度配置
+//
+// @param request - UpdateNacosGrayConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNacosGrayConfigResponse
+func (client *Client) UpdateNacosGrayConfigWithOptions(request *UpdateNacosGrayConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateNacosGrayConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		query["DataId"] = request.DataId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrayRule)) {
+		query["GrayRule"] = request.GrayRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrayType)) {
+		query["GrayType"] = request.GrayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		query["Group"] = request.Group
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopGray)) {
+		query["StopGray"] = request.StopGray
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNacosGrayConfig"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateNacosGrayConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新nacos灰度配置
+//
+// @param request - UpdateNacosGrayConfigRequest
+//
+// @return UpdateNacosGrayConfigResponse
+func (client *Client) UpdateNacosGrayConfig(request *UpdateNacosGrayConfigRequest) (_result *UpdateNacosGrayConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNacosGrayConfigResponse{}
+	_body, _err := client.UpdateNacosGrayConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
