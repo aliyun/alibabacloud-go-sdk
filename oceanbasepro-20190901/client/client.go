@@ -11817,6 +11817,7 @@ func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceR
 }
 
 type DescribeInstanceResponseBodyInstance struct {
+	AllowCreateProxySqlFirewallRule           *bool `json:"AllowCreateProxySqlFirewallRule,omitempty" xml:"AllowCreateProxySqlFirewallRule,omitempty"`
 	AllowModifyInternetAddressConnectionLimit *bool `json:"AllowModifyInternetAddressConnectionLimit,omitempty" xml:"AllowModifyInternetAddressConnectionLimit,omitempty"`
 	// The operation that you want to perform. <br>Set the value to **DescribeInstance**.
 	//
@@ -11981,6 +11982,11 @@ func (s DescribeInstanceResponseBodyInstance) String() string {
 
 func (s DescribeInstanceResponseBodyInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetAllowCreateProxySqlFirewallRule(v bool) *DescribeInstanceResponseBodyInstance {
+	s.AllowCreateProxySqlFirewallRule = &v
+	return s
 }
 
 func (s *DescribeInstanceResponseBodyInstance) SetAllowModifyInternetAddressConnectionLimit(v bool) *DescribeInstanceResponseBodyInstance {
@@ -16597,6 +16603,7 @@ type DescribeOasSQLDetailsRequest struct {
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ParseTable *bool   `json:"ParseTable,omitempty" xml:"ParseTable,omitempty"`
 	// SQL ID.
 	//
 	// This parameter is required.
@@ -16650,6 +16657,11 @@ func (s *DescribeOasSQLDetailsRequest) SetEndTime(v string) *DescribeOasSQLDetai
 
 func (s *DescribeOasSQLDetailsRequest) SetInstanceId(v string) *DescribeOasSQLDetailsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetParseTable(v bool) *DescribeOasSQLDetailsRequest {
+	s.ParseTable = &v
 	return s
 }
 
@@ -17926,7 +17938,9 @@ type DescribeOasSQLPlansResponseBodyData struct {
 	// example:
 	//
 	// 513
-	MergedVersion *int64 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	MergedVersion *int64  `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	OutlineId     *string `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	OutlineStatus *string `json:"OutlineStatus,omitempty" xml:"OutlineStatus,omitempty"`
 	// Execution plan.
 	PlanExplain *DescribeOasSQLPlansResponseBodyDataPlanExplain `json:"PlanExplain,omitempty" xml:"PlanExplain,omitempty" type:"Struct"`
 	// The internal identifier of the SQL execution plan in the diagnostic system.
@@ -17954,7 +17968,8 @@ type DescribeOasSQLPlansResponseBodyData struct {
 	// example:
 	//
 	// "select 1 from t"
-	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	QuerySql  *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	TableScan *bool   `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
 }
 
 func (s DescribeOasSQLPlansResponseBodyData) String() string {
@@ -18000,6 +18015,16 @@ func (s *DescribeOasSQLPlansResponseBodyData) SetMergedVersion(v int64) *Describ
 	return s
 }
 
+func (s *DescribeOasSQLPlansResponseBodyData) SetOutlineId(v string) *DescribeOasSQLPlansResponseBodyData {
+	s.OutlineId = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetOutlineStatus(v string) *DescribeOasSQLPlansResponseBodyData {
+	s.OutlineStatus = &v
+	return s
+}
+
 func (s *DescribeOasSQLPlansResponseBodyData) SetPlanExplain(v *DescribeOasSQLPlansResponseBodyDataPlanExplain) *DescribeOasSQLPlansResponseBodyData {
 	s.PlanExplain = v
 	return s
@@ -18027,6 +18052,11 @@ func (s *DescribeOasSQLPlansResponseBodyData) SetPlans(v []*DescribeOasSQLPlansR
 
 func (s *DescribeOasSQLPlansResponseBodyData) SetQuerySql(v string) *DescribeOasSQLPlansResponseBodyData {
 	s.QuerySql = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansResponseBodyData) SetTableScan(v bool) *DescribeOasSQLPlansResponseBodyData {
+	s.TableScan = &v
 	return s
 }
 
@@ -30474,7 +30504,8 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 100010
-	ObUserId *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
+	ObUserId    *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
+	ParamsValue *string  `json:"ParamsValue,omitempty" xml:"ParamsValue,omitempty"`
 	// Average number of partition accessed during the execution period.
 	//
 	// example:
@@ -30768,6 +30799,11 @@ func (s *DescribeSQLSamplesResponseBodyData) SetObServerId(v float64) *DescribeS
 
 func (s *DescribeSQLSamplesResponseBodyData) SetObUserId(v float64) *DescribeSQLSamplesResponseBodyData {
 	s.ObUserId = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetParamsValue(v string) *DescribeSQLSamplesResponseBodyData {
+	s.ParamsValue = &v
 	return s
 }
 
@@ -33820,7 +33856,8 @@ type DescribeTenantResponseBodyTenant struct {
 	// example:
 	//
 	// 32
-	MaxParallelQueryDegree *int64 `json:"MaxParallelQueryDegree,omitempty" xml:"MaxParallelQueryDegree,omitempty"`
+	MaxParallelQueryDegree *int64  `json:"MaxParallelQueryDegree,omitempty" xml:"MaxParallelQueryDegree,omitempty"`
+	OdpVersion             *string `json:"OdpVersion,omitempty" xml:"OdpVersion,omitempty"`
 	// example:
 	//
 	// POSTPAY
@@ -34112,6 +34149,11 @@ func (s *DescribeTenantResponseBodyTenant) SetMasterIntranetAddressZone(v string
 
 func (s *DescribeTenantResponseBodyTenant) SetMaxParallelQueryDegree(v int64) *DescribeTenantResponseBodyTenant {
 	s.MaxParallelQueryDegree = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetOdpVersion(v string) *DescribeTenantResponseBodyTenant {
+	s.OdpVersion = &v
 	return s
 }
 
@@ -34461,11 +34503,13 @@ type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// 3306
 	IntranetPort       *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
 	IntranetRpcPort    *int32 `json:"IntranetRpcPort,omitempty" xml:"IntranetRpcPort,omitempty"`
+	IntranetSqlPort    *int32 `json:"IntranetSqlPort,omitempty" xml:"IntranetSqlPort,omitempty"`
 	MaxConnectionLimit *int64 `json:"MaxConnectionLimit,omitempty" xml:"MaxConnectionLimit,omitempty"`
 	// example:
 	//
 	// 5000
 	MaxConnectionNum    *int64  `json:"MaxConnectionNum,omitempty" xml:"MaxConnectionNum,omitempty"`
+	OdpVersion          *string `json:"OdpVersion,omitempty" xml:"OdpVersion,omitempty"`
 	ParallelQueryDegree *int64  `json:"ParallelQueryDegree,omitempty" xml:"ParallelQueryDegree,omitempty"`
 	ProxyClusterId      *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
 	// example:
@@ -34591,6 +34635,11 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetIntranetRpcPort(v
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetIntranetSqlPort(v int32) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.IntranetSqlPort = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetMaxConnectionLimit(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.MaxConnectionLimit = &v
 	return s
@@ -34598,6 +34647,11 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetMaxConnectionLimi
 
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetMaxConnectionNum(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.MaxConnectionNum = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetOdpVersion(v string) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.OdpVersion = &v
 	return s
 }
 
@@ -35250,10 +35304,14 @@ type DescribeTenantMetricsRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Deprecated
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tfafd34fs****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [tdak3nac****,tdakc42df****]
@@ -55113,6 +55171,10 @@ func (client *Client) DescribeOasSQLDetailsWithOptions(request *DescribeOasSQLDe
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParseTable)) {
+		body["ParseTable"] = request.ParseTable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
