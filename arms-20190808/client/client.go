@@ -19783,6 +19783,7 @@ func (s *DeleteRumAppResponse) SetBody(v *DeleteRumAppResponseBody) *DeleteRumAp
 }
 
 type DeleteRumUploadFileRequest struct {
+	BatchItems *string `json:"BatchItems,omitempty" xml:"BatchItems,omitempty"`
 	// The file name, with the extension.
 	//
 	// example:
@@ -19790,6 +19791,8 @@ type DeleteRumUploadFileRequest struct {
 	// test.js.map
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The application ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19823,6 +19826,11 @@ func (s DeleteRumUploadFileRequest) String() string {
 
 func (s DeleteRumUploadFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteRumUploadFileRequest) SetBatchItems(v string) *DeleteRumUploadFileRequest {
+	s.BatchItems = &v
+	return s
 }
 
 func (s *DeleteRumUploadFileRequest) SetFileName(v string) *DeleteRumUploadFileRequest {
@@ -74564,6 +74572,10 @@ func (client *Client) DeleteRumUploadFileWithOptions(request *DeleteRumUploadFil
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchItems)) {
+		query["BatchItems"] = request.BatchItems
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		query["FileName"] = request.FileName
 	}
