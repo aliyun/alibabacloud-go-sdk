@@ -8954,6 +8954,7 @@ func (s *DescribeChannelAccountResponse) SetBody(v *DescribeChannelAccountRespon
 }
 
 type DescribeCheckJobsRequest struct {
+	CheckJobId      *string `json:"CheckJobId,omitempty" xml:"CheckJobId,omitempty"`
 	CheckType       *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	JobName         *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
@@ -8968,6 +8969,11 @@ func (s DescribeCheckJobsRequest) String() string {
 
 func (s DescribeCheckJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCheckJobsRequest) SetCheckJobId(v string) *DescribeCheckJobsRequest {
+	s.CheckJobId = &v
+	return s
 }
 
 func (s *DescribeCheckJobsRequest) SetCheckType(v int32) *DescribeCheckJobsRequest {
@@ -18865,7 +18871,8 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	// example:
 	//
 	// RDS_TO_RDS_MIGRATION
-	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	DtsJobName  *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	DuRealUsage *string `json:"DuRealUsage,omitempty" xml:"DuRealUsage,omitempty"`
 	// The number of DUs that have been used.
 	//
 	// example:
@@ -19136,6 +19143,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDtsJobId(v string) *DescribeD
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDtsJobName(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDuRealUsage(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.DuRealUsage = &v
 	return s
 }
 
@@ -49327,6 +49339,10 @@ func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckJobId)) {
+		query["CheckJobId"] = request.CheckJobId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CheckType)) {
 		query["CheckType"] = request.CheckType
 	}
