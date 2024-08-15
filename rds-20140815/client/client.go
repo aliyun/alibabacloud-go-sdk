@@ -1126,131 +1126,6 @@ func (s *CalculateDBInstanceWeightResponse) SetBody(v *CalculateDBInstanceWeight
 	return s
 }
 
-type CancelImportRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The migration task ID.
-	//
-	// >  This parameter is returned when the migration task is started. For more information, see ImportDatabaseBetweenInstances.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 8562584
-	ImportId     *int32  `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s CancelImportRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelImportRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelImportRequest) SetDBInstanceId(v string) *CancelImportRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *CancelImportRequest) SetImportId(v int32) *CancelImportRequest {
-	s.ImportId = &v
-	return s
-}
-
-func (s *CancelImportRequest) SetOwnerAccount(v string) *CancelImportRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CancelImportRequest) SetOwnerId(v int64) *CancelImportRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CancelImportRequest) SetResourceGroupId(v string) *CancelImportRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CancelImportRequest) SetResourceOwnerAccount(v string) *CancelImportRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CancelImportRequest) SetResourceOwnerId(v int64) *CancelImportRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type CancelImportResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CancelImportResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelImportResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CancelImportResponseBody) SetRequestId(v string) *CancelImportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CancelImportResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CancelImportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CancelImportResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelImportResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelImportResponse) SetHeaders(v map[string]*string) *CancelImportResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelImportResponse) SetStatusCode(v int32) *CancelImportResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CancelImportResponse) SetBody(v *CancelImportResponseBody) *CancelImportResponse {
-	s.Body = v
-	return s
-}
-
 type CheckAccountNameAvailableRequest struct {
 	// The username of the account.
 	//
@@ -2222,6 +2097,12 @@ type CloneDBInstanceRequest struct {
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
 	// > By default, the new instance uses the same instance type as the original primary instance.
@@ -2318,7 +2199,7 @@ type CloneDBInstanceRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit that is used to calculate the billing cycle of the new instance. Valid values:
+	// The unit that is used to calculate the billing cycle of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	//
 	// 	- **Year**
 	//
@@ -2454,6 +2335,11 @@ func (s *CloneDBInstanceRequest) SetBurstingEnabled(v bool) *CloneDBInstanceRequ
 
 func (s *CloneDBInstanceRequest) SetCategory(v string) *CloneDBInstanceRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *CloneDBInstanceRequest) SetClientToken(v string) *CloneDBInstanceRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -2741,6 +2627,12 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
 	// > By default, the new instance uses the same instance type as the original primary instance.
@@ -2837,7 +2729,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit that is used to calculate the billing cycle of the new instance. Valid values:
+	// The unit that is used to calculate the billing cycle of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	//
 	// 	- **Year**
 	//
@@ -2973,6 +2865,11 @@ func (s *CloneDBInstanceShrinkRequest) SetBurstingEnabled(v bool) *CloneDBInstan
 
 func (s *CloneDBInstanceShrinkRequest) SetCategory(v string) *CloneDBInstanceShrinkRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *CloneDBInstanceShrinkRequest) SetClientToken(v string) *CloneDBInstanceShrinkRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -3786,7 +3683,7 @@ type CreateAccountRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The account type. Valid values:
 	//
-	// 	- **Normal**: standard account (default).
+	// 	- **Normal*	- (default): standard account.
 	//
 	// 	- **Super**: privileged account.
 	//
@@ -3982,13 +3879,7 @@ type CreateBackupRequest struct {
 	// example:
 	//
 	// rds_mysql
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy*****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	DBName          *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
@@ -4022,11 +3913,6 @@ func (s *CreateBackupRequest) SetDBInstanceId(v string) *CreateBackupRequest {
 
 func (s *CreateBackupRequest) SetDBName(v string) *CreateBackupRequest {
 	s.DBName = &v
-	return s
-}
-
-func (s *CreateBackupRequest) SetResourceGroupId(v string) *CreateBackupRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4507,13 +4393,22 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// 2
-	Amount          *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoCreateProxy *bool  `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 是否自动创建代理。取值范围：
+	//
+	// - **true**：开启自动创建，默认为通用代理。
+	//
+	// - **false**：不开启自动创建。
+	//
+	// example:
+	//
+	// false
+	AutoCreateProxy *bool `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
-	// 	- **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
+	// 	- **true**: enables the feature. Make sure that your account balance is sufficient.
 	//
-	// 	- **false**: does not automatically complete the payment. An unpaid order is generated.
+	// 	- **false**: disables the feature. An unpaid order is generated.
 	//
 	// >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
@@ -5477,7 +5372,7 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
 	//
-	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**
+	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
 	//
 	// >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
 	//
@@ -5592,13 +5487,22 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// 2
-	Amount          *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoCreateProxy *bool  `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 是否自动创建代理。取值范围：
+	//
+	// - **true**：开启自动创建，默认为通用代理。
+	//
+	// - **false**：不开启自动创建。
+	//
+	// example:
+	//
+	// false
+	AutoCreateProxy *bool `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
-	// 	- **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
+	// 	- **true**: enables the feature. Make sure that your account balance is sufficient.
 	//
-	// 	- **false**: does not automatically complete the payment. An unpaid order is generated.
+	// 	- **false**: disables the feature. An unpaid order is generated.
 	//
 	// >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
@@ -8515,15 +8419,9 @@ type CreateDatabaseRequest struct {
 	// example:
 	//
 	// rds_mysql
-	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy*****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -8563,11 +8461,6 @@ func (s *CreateDatabaseRequest) SetOwnerAccount(v string) *CreateDatabaseRequest
 
 func (s *CreateDatabaseRequest) SetOwnerId(v int64) *CreateDatabaseRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateDatabaseRequest) SetResourceGroupId(v string) *CreateDatabaseRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10221,6 +10114,7 @@ type CreateMaskingRulesRequest struct {
 	DefaultAlgo          *string                              `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
 	MaskingAlgo          *string                              `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId              *string                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RuleConfig           *CreateMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
@@ -10253,6 +10147,11 @@ func (s *CreateMaskingRulesRequest) SetMaskingAlgo(v string) *CreateMaskingRules
 
 func (s *CreateMaskingRulesRequest) SetOwnerId(v string) *CreateMaskingRulesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetRegionId(v string) *CreateMaskingRulesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10311,6 +10210,7 @@ type CreateMaskingRulesShrinkRequest struct {
 	DefaultAlgo          *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
 	MaskingAlgo          *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RuleConfigShrink     *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
@@ -10343,6 +10243,11 @@ func (s *CreateMaskingRulesShrinkRequest) SetMaskingAlgo(v string) *CreateMaskin
 
 func (s *CreateMaskingRulesShrinkRequest) SetOwnerId(v string) *CreateMaskingRulesShrinkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetRegionId(v string) *CreateMaskingRulesShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -11724,6 +11629,15 @@ func (s *CreatePostgresExtensionsResponse) SetBody(v *CreatePostgresExtensionsRe
 }
 
 type CreateReadOnlyDBInstanceRequest struct {
+	// 是否自动创建代理。取值范围：
+	//
+	// - **true**：开启自动创建，默认为通用代理。
+	//
+	// - **false**：不开启自动创建。
+	//
+	// example:
+	//
+	// false
 	AutoCreateProxy *bool `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
@@ -11731,7 +11645,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// 2.  **false**: disables the feature. An unpaid order is generated.
 	//
-	// >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+	// >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// example:
 	//
@@ -11843,11 +11757,11 @@ type CreateReadOnlyDBInstanceRequest struct {
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Specifies whether to enable the release protection feature for the read-only instance. Valid values:
 	//
-	// 	- **true**: enables the feature.
+	// 	- **true**
 	//
-	// 	- **false*	- (default): disables the feature.
+	// 	- **false*	- (default)
 	//
-	// >  You can enable the release protection feature for the read-only instance only when you set the **Billing Method*	- parameter to **Pay-As-You-Go**.
+	// >  You can enable the release protection feature for the read-only instance only when you set the **PayType*	- parameter to **Postpaid**.
 	//
 	// example:
 	//
@@ -12819,7 +12733,7 @@ type CreateYouhuiForOrderRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s CreateYouhuiForOrderRequest) String() string {
@@ -12855,7 +12769,7 @@ func (s *CreateYouhuiForOrderRequest) SetResourceOwnerAccount(v string) *CreateY
 	return s
 }
 
-func (s *CreateYouhuiForOrderRequest) SetResourceOwnerId(v string) *CreateYouhuiForOrderRequest {
+func (s *CreateYouhuiForOrderRequest) SetResourceOwnerId(v int64) *CreateYouhuiForOrderRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
@@ -14596,6 +14510,7 @@ type DeleteMaskingRulesRequest struct {
 	// This parameter is required.
 	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
@@ -14617,6 +14532,11 @@ func (s *DeleteMaskingRulesRequest) SetDBInstanceName(v string) *DeleteMaskingRu
 
 func (s *DeleteMaskingRulesRequest) SetOwnerId(v string) *DeleteMaskingRulesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesRequest) SetRegionId(v string) *DeleteMaskingRulesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -14834,7 +14754,7 @@ type DeletePostgresExtensionsRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -16006,6 +15926,7 @@ type DescribeAccountMaskingPrivilegeRequest struct {
 	// This parameter is required.
 	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	UserName             *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
@@ -16026,6 +15947,11 @@ func (s *DescribeAccountMaskingPrivilegeRequest) SetDBInstanceName(v string) *De
 
 func (s *DescribeAccountMaskingPrivilegeRequest) SetOwnerId(v string) *DescribeAccountMaskingPrivilegeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeRequest) SetRegionId(v string) *DescribeAccountMaskingPrivilegeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -20184,14 +20110,8 @@ type DescribeBackupsRequest struct {
 	// example:
 	//
 	// 30
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy*****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
 	// example:
@@ -20245,11 +20165,6 @@ func (s *DescribeBackupsRequest) SetPageNumber(v int32) *DescribeBackupsRequest 
 
 func (s *DescribeBackupsRequest) SetPageSize(v int32) *DescribeBackupsRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetResourceGroupId(v string) *DescribeBackupsRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -20532,12 +20447,6 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	//
 	// OK
 	MetaStatus *string `json:"MetaStatus,omitempty" xml:"MetaStatus,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy*****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The storage class of the backup set. Valid values:
 	//
 	// 	- **0**: regular storage
@@ -20675,11 +20584,6 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetIsAvail(v int32) *DescribeBa
 
 func (s *DescribeBackupsResponseBodyItemsBackup) SetMetaStatus(v string) *DescribeBackupsResponseBodyItemsBackup {
 	s.MetaStatus = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyItemsBackup) SetResourceGroupId(v string) *DescribeBackupsResponseBodyItemsBackup {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28114,7 +28018,7 @@ func (s *DescribeDBInstanceIPArrayListResponse) SetBody(v *DescribeDBInstanceIPA
 }
 
 type DescribeDBInstanceIpHostnameRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28124,7 +28028,7 @@ type DescribeDBInstanceIpHostnameRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// You can call the DescribeDBInstanceAttribute operation to query the region ID.
+	// The region ID. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/2628783.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -28187,7 +28091,7 @@ type DescribeDBInstanceIpHostnameResponseBody struct {
 	//
 	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The internal IP addresses and hostnames of the ECS instances on which the primary and secondary instances reside. Format: `IP address 1,Hostname 1;IP address 2,Hostname 2`.
+	// The internal IP addresses and hostnames of the ECS instance on which a primary ApsaraDB RDS for SQL Server instance and its secondary RDS instance reside. Format: `IP address 1, Hostname 1; IP address 2, Hostname 2`.
 	//
 	// example:
 	//
@@ -36417,13 +36321,7 @@ type DescribeDatabasesRequest struct {
 	// example:
 	//
 	// 30
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -36468,11 +36366,6 @@ func (s *DescribeDatabasesRequest) SetPageNumber(v int32) *DescribeDatabasesRequ
 
 func (s *DescribeDatabasesRequest) SetPageSize(v int32) *DescribeDatabasesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDatabasesRequest) SetResourceGroupId(v string) *DescribeDatabasesRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -36623,12 +36516,6 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The runtime information about the database.
 	//
 	// >  This parameter is returned only for instances that run SQL Server.
@@ -36726,11 +36613,6 @@ func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetPageNumber(v int32) 
 
 func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetPageSize(v int32) *DescribeDatabasesResponseBodyDatabasesDatabase {
 	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDatabasesResponseBodyDatabasesDatabase) SetResourceGroupId(v string) *DescribeDatabasesResponseBodyDatabasesDatabase {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -44064,6 +43946,7 @@ type DescribeMaskingRulesRequest struct {
 	// This parameter is required.
 	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -44084,6 +43967,11 @@ func (s *DescribeMaskingRulesRequest) SetDBInstanceName(v string) *DescribeMaski
 
 func (s *DescribeMaskingRulesRequest) SetOwnerId(v string) *DescribeMaskingRulesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesRequest) SetRegionId(v string) *DescribeMaskingRulesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -48402,21 +48290,21 @@ type DescribePriceRequest struct {
 	//
 	// 	- **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
 	//
-	// 	- **rds**: The instance is a subscription primary instance. This is the default value. This value is available at the China site (aliyun.com).
+	// 	- **rds*	- (default): The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
 	//
 	// 	- **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
 	//
 	// 	- **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
 	//
-	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the International site (alibabacloud.com).
+	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
 	//
-	// 	- **rds_intl**: The instance is a subscription primary instance. This value is available at the International site (alibabacloud.com).
+	// 	- **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
 	//
-	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the International site (alibabacloud.com).
+	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
 	//
-	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the international site (alibabacloud.com).
 	//
-	// > If you want to query the price of a read-only instance, you must specify this parameter.
+	// >  If you want to query the price of a read-only instance, you must specify this parameter.
 	//
 	// example:
 	//
@@ -48786,21 +48674,21 @@ type DescribePriceShrinkRequest struct {
 	//
 	// 	- **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
 	//
-	// 	- **rds**: The instance is a subscription primary instance. This is the default value. This value is available at the China site (aliyun.com).
+	// 	- **rds*	- (default): The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
 	//
 	// 	- **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
 	//
 	// 	- **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
 	//
-	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the International site (alibabacloud.com).
+	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
 	//
-	// 	- **rds_intl**: The instance is a subscription primary instance. This value is available at the International site (alibabacloud.com).
+	// 	- **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
 	//
-	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the International site (alibabacloud.com).
+	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
 	//
-	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the international site (alibabacloud.com).
 	//
-	// > If you want to query the price of a read-only instance, you must specify this parameter.
+	// >  If you want to query the price of a read-only instance, you must specify this parameter.
 	//
 	// example:
 	//
@@ -52303,13 +52191,13 @@ type DescribeSQLLogRecordsRequest struct {
 	//
 	// 2011-06-11T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to generate an SQL audit log file or return SQL audit log entries. Valid values:
+	// Specifies whether to generate an SQL audit log file or return SQL audit logs. Valid values:
 	//
 	// 	- **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the DescribeSQLLogFiles operation to obtain the download URL of the SQL audit log file.
 	//
-	// 	- **Stream*	- (default): If you set this parameter to Stream, this operation returns SQL audit log entries.
+	// 	- **Stream*	- (default): If you set this parameter to Stream, this operation returns SQL audit logs.
 	//
-	// >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of one million log entries are returned.
+	// >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of 1 million logs are returned.
 	//
 	// example:
 	//
@@ -56881,7 +56769,7 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 }
 
 type DescribeWhitelistTemplateRequest struct {
-	// The region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -62834,126 +62722,6 @@ func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigRespon
 	return s
 }
 
-type ModifyDBInstanceConnectionModeRequest struct {
-	// The connection mode of the instance. Valid values:
-	//
-	// 	- **Standard**: standard mode
-	//
-	// 	- **Safe**: database proxy mode
-	//
-	// The system automatically assigns a connection mode to the instance.
-	//
-	// >  SQL Server 2012, SQL Server 2016, and SQL Server 2017 support only the standard mode.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// Performance
-	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// The ID of the instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxx
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ModifyDBInstanceConnectionModeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceConnectionModeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceConnectionModeRequest) SetConnectionMode(v string) *ModifyDBInstanceConnectionModeRequest {
-	s.ConnectionMode = &v
-	return s
-}
-
-func (s *ModifyDBInstanceConnectionModeRequest) SetDBInstanceId(v string) *ModifyDBInstanceConnectionModeRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceConnectionModeRequest) SetOwnerAccount(v string) *ModifyDBInstanceConnectionModeRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ModifyDBInstanceConnectionModeRequest) SetOwnerId(v int64) *ModifyDBInstanceConnectionModeRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceConnectionModeRequest) SetResourceOwnerAccount(v string) *ModifyDBInstanceConnectionModeRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ModifyDBInstanceConnectionModeRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceConnectionModeRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ModifyDBInstanceConnectionModeResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyDBInstanceConnectionModeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceConnectionModeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceConnectionModeResponseBody) SetRequestId(v string) *ModifyDBInstanceConnectionModeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyDBInstanceConnectionModeResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ModifyDBInstanceConnectionModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ModifyDBInstanceConnectionModeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceConnectionModeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceConnectionModeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceConnectionModeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyDBInstanceConnectionModeResponse) SetStatusCode(v int32) *ModifyDBInstanceConnectionModeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyDBInstanceConnectionModeResponse) SetBody(v *ModifyDBInstanceConnectionModeResponseBody) *ModifyDBInstanceConnectionModeResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyDBInstanceConnectionStringRequest struct {
 	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
 	//
@@ -65016,151 +64784,6 @@ func (s *ModifyDBInstancePayTypeResponse) SetBody(v *ModifyDBInstancePayTypeResp
 	return s
 }
 
-type ModifyDBInstanceProxyConfigurationRequest struct {
-	// The ID of the instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The key of the **configuration item*	- for the database proxy. Valid values:
-	//
-	// 	- **TransparentSwitch**: transparent switchover
-	//
-	// 	- **PersistentConnections**: short-lived connection optimization
-	//
-	// 	- **AttacksProtection**: brute-force attack protection
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// TransparentSwitch
-	ProxyConfigurationKey *string `json:"ProxyConfigurationKey,omitempty" xml:"ProxyConfigurationKey,omitempty"`
-	// The features and status of the database proxy:
-	//
-	// 	- **TransparentSwitch**: transparent switchover. Valid values:
-	//
-	//     	- **Enable**: The feature is enabled. This is the default value.
-	//
-	//     	- **Disable**: The feature is disabled.
-	//
-	// 	- **PersistentConnections**: short-lived connection optimization. Valid values:
-	//
-	//     	- **Enable**: The feature is enabled.
-	//
-	//     	- **Disable**: The feature is disabled. This is the default value.
-	//
-	// 	- **AttacksProtection**: brute-force attack protection. Valid values:
-	//
-	//     	- **Enable**: The feature is enabled.
-	//
-	//     	- **Disable**: The feature is disabled. This is the default value.
-	//
-	// Format: {"Feature 1":"Status 1","Feature 2":"Status 2"...}
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// {"status":"Enable"}
-	ProxyConfigurationValue *string `json:"ProxyConfigurationValue,omitempty" xml:"ProxyConfigurationValue,omitempty"`
-	ResourceOwnerAccount    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ModifyDBInstanceProxyConfigurationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceProxyConfigurationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceProxyConfigurationRequest) SetDBInstanceId(v string) *ModifyDBInstanceProxyConfigurationRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceProxyConfigurationRequest) SetOwnerId(v int64) *ModifyDBInstanceProxyConfigurationRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceProxyConfigurationRequest) SetProxyConfigurationKey(v string) *ModifyDBInstanceProxyConfigurationRequest {
-	s.ProxyConfigurationKey = &v
-	return s
-}
-
-func (s *ModifyDBInstanceProxyConfigurationRequest) SetProxyConfigurationValue(v string) *ModifyDBInstanceProxyConfigurationRequest {
-	s.ProxyConfigurationValue = &v
-	return s
-}
-
-func (s *ModifyDBInstanceProxyConfigurationRequest) SetResourceOwnerAccount(v string) *ModifyDBInstanceProxyConfigurationRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ModifyDBInstanceProxyConfigurationRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceProxyConfigurationRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ModifyDBInstanceProxyConfigurationResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 9705B5D2-C5B6-4526-B779-26D755EC1B8C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyDBInstanceProxyConfigurationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceProxyConfigurationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceProxyConfigurationResponseBody) SetRequestId(v string) *ModifyDBInstanceProxyConfigurationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyDBInstanceProxyConfigurationResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ModifyDBInstanceProxyConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ModifyDBInstanceProxyConfigurationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceProxyConfigurationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceProxyConfigurationResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceProxyConfigurationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyDBInstanceProxyConfigurationResponse) SetStatusCode(v int32) *ModifyDBInstanceProxyConfigurationResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyDBInstanceProxyConfigurationResponse) SetBody(v *ModifyDBInstanceProxyConfigurationResponseBody) *ModifyDBInstanceProxyConfigurationResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyDBInstanceSSLRequest struct {
 	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	//
@@ -65176,7 +64799,7 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// cert
 	ACL *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
-	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. If you set SSLEnabled to **1**, the default value of this parameter is **aliyun**. Valid values:
+	// The type of the server certificate. This parameter is supported only when the instance runs MySQL or PostgreSQL with cloud disks. If you set SSLEnabled to **1**, the default value of this parameter is **aliyun**. Valid values:
 	//
 	// 	- **aliyun**: a cloud certificate
 	//
@@ -65780,15 +65403,13 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// Up
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The time when you want the change to take effect. Valid values:
+	// The effective time. Valid values:
 	//
 	// 	- **Immediate*	- (default)
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// <!---->
-	//
-	// 	- ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -65849,8 +65470,6 @@ type ModifyDBInstanceSpecRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The specifications that you want to change for a serverless instance.
-	//
-	// >  This parameter is available only on the China site (aliyun.com).
 	ServerlessConfiguration *ModifyDBInstanceSpecRequestServerlessConfiguration `json:"ServerlessConfiguration,omitempty" xml:"ServerlessConfiguration,omitempty" type:"Struct"`
 	// A deprecated parameter. You do not need to specify this parameter.
 	//
@@ -66040,9 +65659,9 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
+	// >
 	//
-	// > 	- This parameter is available only on the China site (aliyun.com).
+	// 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
 	//
 	// if can be null:
 	// false
@@ -66059,9 +65678,9 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**
 	//
-	// > 	- The value of this parameter must be greater than or equal to the value of **MinCapacity*	- and can be specified only to an **integer**.
+	// >
 	//
-	// > 	- This parameter is available only on the China site (aliyun.com).
+	// 	- The value of this parameter must be greater than or equal to the value of **MinCapacity*	- and can be specified only to an **integer**.
 	//
 	// example:
 	//
@@ -66075,9 +65694,9 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
 	//
-	// > 	- The value of this parameter must be less than or equal to the value of MaxCapacity.
+	// >
 	//
-	// > 	- This parameter is available only on the China site (aliyun.com).
+	// 	- The value of this parameter must be less than or equal to the value of MaxCapacity.
 	//
 	// example:
 	//
@@ -66089,11 +65708,11 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
+	// >
 	//
-	// > 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+	// 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
 	//
-	// > 	- This parameter is available only on the China site (aliyun.com).
+	// 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
 	//
 	// example:
 	//
@@ -66250,15 +65869,13 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// Up
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The time when you want the change to take effect. Valid values:
+	// The effective time. Valid values:
 	//
 	// 	- **Immediate*	- (default)
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// <!---->
-	//
-	// 	- ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -66319,8 +65936,6 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The specifications that you want to change for a serverless instance.
-	//
-	// >  This parameter is available only on the China site (aliyun.com).
 	ServerlessConfigurationShrink *string `json:"ServerlessConfiguration,omitempty" xml:"ServerlessConfiguration,omitempty"`
 	// A deprecated parameter. You do not need to specify this parameter.
 	//
@@ -66852,7 +66467,7 @@ type ModifyDBNodeRequest struct {
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The information about the node.
 	//
-	// >  This parameter is supported for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
+	// >  This parameter is used for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
 	DBNode []*ModifyDBNodeRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
 	// Specifies whether to perform a dry run. Valid values: Valid values:
 	//
@@ -66864,11 +66479,11 @@ type ModifyDBNodeRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Effective time, value:
+	// The time when you want the change to take effect. Valid values:
 	//
-	// - Immediate (default value): takes effect immediately.
+	// 	- **Immediate*	- (default): The change immediately takes effect.
 	//
-	// - MaintainTime: Effective within the operational time period, please refer to ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
 	// example:
 	//
@@ -66966,7 +66581,7 @@ func (s *ModifyDBNodeRequest) SetResourceOwnerId(v int64) *ModifyDBNodeRequest {
 }
 
 type ModifyDBNodeRequestDBNode struct {
-	// The instance type of the node.
+	// The specification information about the node.
 	//
 	// example:
 	//
@@ -67045,7 +66660,7 @@ type ModifyDBNodeShrinkRequest struct {
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The information about the node.
 	//
-	// >  This parameter is supported for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
+	// >  This parameter is used for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
 	DBNodeShrink *string `json:"DBNode,omitempty" xml:"DBNode,omitempty"`
 	// Specifies whether to perform a dry run. Valid values: Valid values:
 	//
@@ -67057,11 +66672,11 @@ type ModifyDBNodeShrinkRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Effective time, value:
+	// The time when you want the change to take effect. Valid values:
 	//
-	// - Immediate (default value): takes effect immediately.
+	// 	- **Immediate*	- (default): The change immediately takes effect.
 	//
-	// - MaintainTime: Effective within the operational time period, please refer to ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
 	// example:
 	//
@@ -76297,127 +75912,6 @@ func (s *SwitchDBInstanceVpcResponse) SetBody(v *SwitchDBInstanceVpcResponseBody
 	return s
 }
 
-type SwitchGuardToMasterInstanceRequest struct {
-	// The ID of the disaster recovery instance. You can call the DescribeDBInstances operation to query the instance ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s SwitchGuardToMasterInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SwitchGuardToMasterInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SwitchGuardToMasterInstanceRequest) SetDBInstanceId(v string) *SwitchGuardToMasterInstanceRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceRequest) SetOwnerAccount(v string) *SwitchGuardToMasterInstanceRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceRequest) SetOwnerId(v int64) *SwitchGuardToMasterInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceRequest) SetResourceGroupId(v string) *SwitchGuardToMasterInstanceRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceRequest) SetResourceOwnerAccount(v string) *SwitchGuardToMasterInstanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceRequest) SetResourceOwnerId(v int64) *SwitchGuardToMasterInstanceRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type SwitchGuardToMasterInstanceResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EFB6083A-7699-489B-8278-C0CB4793A96E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SwitchGuardToMasterInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SwitchGuardToMasterInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SwitchGuardToMasterInstanceResponseBody) SetDBInstanceId(v string) *SwitchGuardToMasterInstanceResponseBody {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceResponseBody) SetRequestId(v string) *SwitchGuardToMasterInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SwitchGuardToMasterInstanceResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SwitchGuardToMasterInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SwitchGuardToMasterInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SwitchGuardToMasterInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SwitchGuardToMasterInstanceResponse) SetHeaders(v map[string]*string) *SwitchGuardToMasterInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceResponse) SetStatusCode(v int32) *SwitchGuardToMasterInstanceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SwitchGuardToMasterInstanceResponse) SetBody(v *SwitchGuardToMasterInstanceResponseBody) *SwitchGuardToMasterInstanceResponse {
-	s.Body = v
-	return s
-}
-
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
@@ -79369,122 +78863,6 @@ func (client *Client) CalculateDBInstanceWeight(request *CalculateDBInstanceWeig
 
 // Summary:
 //
-// Cancels the migration task of an ApsaraDB RDS for SQL Server instance.
-//
-// Description:
-//
-// This operation is phased out.
-//
-// ### [](#)Supported database engines
-//
-// 	- RDS SQL Server
-//
-// ### [](#)Description
-//
-// This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](https://help.aliyun.com/document_detail/610592.html).
-//
-// ### [](#)Usage notes
-//
-// This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-//
-// @param request - CancelImportRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CancelImportResponse
-func (client *Client) CancelImportWithOptions(request *CancelImportRequest, runtime *util.RuntimeOptions) (_result *CancelImportResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImportId)) {
-		query["ImportId"] = request.ImportId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CancelImport"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CancelImportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels the migration task of an ApsaraDB RDS for SQL Server instance.
-//
-// Description:
-//
-// This operation is phased out.
-//
-// ### [](#)Supported database engines
-//
-// 	- RDS SQL Server
-//
-// ### [](#)Description
-//
-// This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](https://help.aliyun.com/document_detail/610592.html).
-//
-// ### [](#)Usage notes
-//
-// This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-//
-// @param request - CancelImportRequest
-//
-// @return CancelImportResponse
-func (client *Client) CancelImport(request *CancelImportRequest) (_result *CancelImportResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelImportResponse{}
-	_body, _err := client.CancelImportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Checks whether the username of the account that you want to create on an instance is available.
 //
 // Description:
@@ -80198,6 +79576,10 @@ func (client *Client) CloneDBInstanceWithOptions(tmpReq *CloneDBInstanceRequest,
 
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceClass)) {
@@ -80984,10 +80366,6 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.DBName)) {
 		query["DBName"] = request.DBName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
@@ -82508,10 +81886,6 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -83144,6 +82518,10 @@ func (client *Client) CreateMaskingRulesWithOptions(tmpReq *CreateMaskingRulesRe
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -85429,15 +84807,13 @@ func (client *Client) DeleteDBInstanceSecurityGroupRule(request *DeleteDBInstanc
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
-// 	- MySQL
-//
-// 	- PostgreSQL
+// MySQL
 //
 // ### [](#)References
 //
-// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
 // [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
 //
@@ -85519,15 +84895,13 @@ func (client *Client) DeleteDBNodesWithOptions(tmpReq *DeleteDBNodesRequest, run
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
-// 	- MySQL
-//
-// 	- PostgreSQL
+// MySQL
 //
 // ### [](#)References
 //
-// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
 // [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
 //
@@ -85886,6 +85260,10 @@ func (client *Client) DeleteMaskingRulesWithOptions(request *DeleteMaskingRulesR
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -86716,6 +86094,10 @@ func (client *Client) DescribeAccountMaskingPrivilegeWithOptions(request *Descri
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -86975,7 +86357,7 @@ func (client *Client) DescribeActionEventPolicy(request *DescribeActionEventPoli
 
 // Summary:
 //
-// Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
+// Queries the details about scheduled O\\\\\\\\\\\\\\\\\\\\&M tasks for an instance.
 //
 // Description:
 //
@@ -87089,7 +86471,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
+// Queries the details about scheduled O\\\\\\\\\\\\\\\\\\\\&M tasks for an instance.
 //
 // Description:
 //
@@ -88254,10 +87636,6 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
@@ -90399,13 +89777,13 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 
 // Summary:
 //
-// Queries the hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
+// Queries the internal IP address and hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
 //
 // Description:
 //
 // ### [](#)Supported database engines
 //
-// RDS SQL Server
+// SQL Server
 //
 // ### [](#)Prerequisites
 //
@@ -90413,13 +89791,15 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 //
 // 	- The RDS instance belongs to a general-purpose or dedicated instance family. The shared instance family is not supported.
 //
-// 	- If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time
+// 	- If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time parameter of an instance in the Status section of the Basic Information page in the ApsaraDB RDS console.
 //
 // ### [](#)References
 //
-// > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// >  Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
 //
-// [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+// 	- [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+//
+// 	- [Connect Kingdee K/3 WISE to an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/124188.html)
 //
 // @param request - DescribeDBInstanceIpHostnameRequest
 //
@@ -90485,13 +89865,13 @@ func (client *Client) DescribeDBInstanceIpHostnameWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
+// Queries the internal IP address and hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
 //
 // Description:
 //
 // ### [](#)Supported database engines
 //
-// RDS SQL Server
+// SQL Server
 //
 // ### [](#)Prerequisites
 //
@@ -90499,13 +89879,15 @@ func (client *Client) DescribeDBInstanceIpHostnameWithOptions(request *DescribeD
 //
 // 	- The RDS instance belongs to a general-purpose or dedicated instance family. The shared instance family is not supported.
 //
-// 	- If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time
+// 	- If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time parameter of an instance in the Status section of the Basic Information page in the ApsaraDB RDS console.
 //
 // ### [](#)References
 //
-// > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// >  Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
 //
-// [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+// 	- [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+//
+// 	- [Connect Kingdee K/3 WISE to an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/124188.html)
 //
 // @param request - DescribeDBInstanceIpHostnameRequest
 //
@@ -92894,10 +92276,6 @@ func (client *Client) DescribeDatabasesWithOptions(request *DescribeDatabasesReq
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -95458,6 +94836,10 @@ func (client *Client) DescribeMaskingRulesWithOptions(request *DescribeMaskingRu
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -98009,6 +97391,10 @@ func (client *Client) DescribeSQLCollectorRetention(request *DescribeSQLCollecto
 //
 // 	- The exported files are retained for only two days.
 //
+//     **
+//
+//     **Note*	- If you have enabled Database Autonomy Service (DAS) Enterprise Edition V2 or V3 and have enabled the SQL Explorer and Audit feature, the exported files are retained for seven days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the information about the enabled DAS Enterprise Edition.
+//
 // @param request - DescribeSQLLogFilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -98100,6 +97486,10 @@ func (client *Client) DescribeSQLLogFilesWithOptions(request *DescribeSQLLogFile
 // 	- The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the request parameter **Form*	- set to **File**.
 //
 // 	- The exported files are retained for only two days.
+//
+//     **
+//
+//     **Note*	- If you have enabled Database Autonomy Service (DAS) Enterprise Edition V2 or V3 and have enabled the SQL Explorer and Audit feature, the exported files are retained for seven days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the information about the enabled DAS Enterprise Edition.
 //
 // @param request - DescribeSQLLogFilesRequest
 //
@@ -102995,94 +102385,6 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 
 // Summary:
 //
-// 修改实例访问模式
-//
-// Description:
-//
-// > The API has been taken offline
-//
-// @param request - ModifyDBInstanceConnectionModeRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ModifyDBInstanceConnectionModeResponse
-func (client *Client) ModifyDBInstanceConnectionModeWithOptions(request *ModifyDBInstanceConnectionModeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConnectionModeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConnectionMode)) {
-		query["ConnectionMode"] = request.ConnectionMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDBInstanceConnectionMode"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyDBInstanceConnectionModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改实例访问模式
-//
-// Description:
-//
-// > The API has been taken offline
-//
-// @param request - ModifyDBInstanceConnectionModeRequest
-//
-// @return ModifyDBInstanceConnectionModeResponse
-func (client *Client) ModifyDBInstanceConnectionMode(request *ModifyDBInstanceConnectionModeRequest) (_result *ModifyDBInstanceConnectionModeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDBInstanceConnectionModeResponse{}
-	_body, _err := client.ModifyDBInstanceConnectionModeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Modifies the endpoint and port of an instance.
 //
 // Description:
@@ -104581,94 +103883,6 @@ func (client *Client) ModifyDBInstancePayType(request *ModifyDBInstancePayTypeRe
 
 // Summary:
 //
-// You can call the ModifyDBInstanceProxyConfiguration operation to configure the database proxy for an instance.
-//
-// Description:
-//
-// > This operation is phased out.
-//
-// @param request - ModifyDBInstanceProxyConfigurationRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ModifyDBInstanceProxyConfigurationResponse
-func (client *Client) ModifyDBInstanceProxyConfigurationWithOptions(request *ModifyDBInstanceProxyConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceProxyConfigurationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProxyConfigurationKey)) {
-		query["ProxyConfigurationKey"] = request.ProxyConfigurationKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProxyConfigurationValue)) {
-		query["ProxyConfigurationValue"] = request.ProxyConfigurationValue
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDBInstanceProxyConfiguration"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyDBInstanceProxyConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call the ModifyDBInstanceProxyConfiguration operation to configure the database proxy for an instance.
-//
-// Description:
-//
-// > This operation is phased out.
-//
-// @param request - ModifyDBInstanceProxyConfigurationRequest
-//
-// @return ModifyDBInstanceProxyConfigurationResponse
-func (client *Client) ModifyDBInstanceProxyConfiguration(request *ModifyDBInstanceProxyConfigurationRequest) (_result *ModifyDBInstanceProxyConfigurationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDBInstanceProxyConfigurationResponse{}
-	_body, _err := client.ModifyDBInstanceProxyConfigurationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Modifies the SSL encryption settings of an instance.
 //
 // Description:
@@ -105319,19 +104533,19 @@ func (client *Client) ModifyDBInstanceTDE(request *ModifyDBInstanceTDERequest) (
 
 // Summary:
 //
-// Changes the specifications and storage capacity of an instance.
+// Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
 // 	- MySQL
 //
 // ### [](#)References
 //
-// > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
+// [Change instance specifications](https://help.aliyun.com/document_detail/2627998.html)
 //
-// 	- [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
+// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
 //
 // @param tmpReq - ModifyDBNodeRequest
 //
@@ -105427,19 +104641,19 @@ func (client *Client) ModifyDBNodeWithOptions(tmpReq *ModifyDBNodeRequest, runti
 
 // Summary:
 //
-// Changes the specifications and storage capacity of an instance.
+// Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
 // 	- MySQL
 //
 // ### [](#)References
 //
-// > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
+// [Change instance specifications](https://help.aliyun.com/document_detail/2627998.html)
 //
-// 	- [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
+// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
 //
 // @param request - ModifyDBNodeRequest
 //
@@ -111580,94 +110794,6 @@ func (client *Client) SwitchDBInstanceVpc(request *SwitchDBInstanceVpcRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchDBInstanceVpcResponse{}
 	_body, _err := client.SwitchDBInstanceVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Switches a disaster recovery instance to a primary instance.
-//
-// Description:
-//
-// This operation is phased out.
-//
-// @param request - SwitchGuardToMasterInstanceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return SwitchGuardToMasterInstanceResponse
-func (client *Client) SwitchGuardToMasterInstanceWithOptions(request *SwitchGuardToMasterInstanceRequest, runtime *util.RuntimeOptions) (_result *SwitchGuardToMasterInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SwitchGuardToMasterInstance"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SwitchGuardToMasterInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Switches a disaster recovery instance to a primary instance.
-//
-// Description:
-//
-// This operation is phased out.
-//
-// @param request - SwitchGuardToMasterInstanceRequest
-//
-// @return SwitchGuardToMasterInstanceResponse
-func (client *Client) SwitchGuardToMasterInstance(request *SwitchGuardToMasterInstanceRequest) (_result *SwitchGuardToMasterInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SwitchGuardToMasterInstanceResponse{}
-	_body, _err := client.SwitchGuardToMasterInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
