@@ -1930,19 +1930,71 @@ func (s *QueryDataResponse) SetResults(v string) *QueryDataResponse {
 	return s
 }
 
-type DataBonreeSDKConfigModuleConfigValue struct {
+type DataBonreeSDKConfigModuleConfigDefaultConfigValue struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 }
 
-func (s DataBonreeSDKConfigModuleConfigValue) String() string {
+func (s DataBonreeSDKConfigModuleConfigDefaultConfigValue) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DataBonreeSDKConfigModuleConfigValue) GoString() string {
+func (s DataBonreeSDKConfigModuleConfigDefaultConfigValue) GoString() string {
 	return s.String()
 }
 
-func (s *DataBonreeSDKConfigModuleConfigValue) SetEnable(v bool) *DataBonreeSDKConfigModuleConfigValue {
+func (s *DataBonreeSDKConfigModuleConfigDefaultConfigValue) SetEnable(v bool) *DataBonreeSDKConfigModuleConfigDefaultConfigValue {
+	s.Enable = &v
+	return s
+}
+
+type DataBonreeSDKConfigModuleConfigVersionConfigsValue struct {
+	UseCustom    *bool                                                                           `json:"useCustom,omitempty" xml:"useCustom,omitempty"`
+	CustomConfig map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
+	Description  *string                                                                         `json:"description,omitempty" xml:"description,omitempty"`
+	UpdateTime   *int64                                                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s DataBonreeSDKConfigModuleConfigVersionConfigsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataBonreeSDKConfigModuleConfigVersionConfigsValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataBonreeSDKConfigModuleConfigVersionConfigsValue) SetUseCustom(v bool) *DataBonreeSDKConfigModuleConfigVersionConfigsValue {
+	s.UseCustom = &v
+	return s
+}
+
+func (s *DataBonreeSDKConfigModuleConfigVersionConfigsValue) SetCustomConfig(v map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue) *DataBonreeSDKConfigModuleConfigVersionConfigsValue {
+	s.CustomConfig = v
+	return s
+}
+
+func (s *DataBonreeSDKConfigModuleConfigVersionConfigsValue) SetDescription(v string) *DataBonreeSDKConfigModuleConfigVersionConfigsValue {
+	s.Description = &v
+	return s
+}
+
+func (s *DataBonreeSDKConfigModuleConfigVersionConfigsValue) SetUpdateTime(v int64) *DataBonreeSDKConfigModuleConfigVersionConfigsValue {
+	s.UpdateTime = &v
+	return s
+}
+
+type DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue) SetEnable(v bool) *DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue {
 	s.Enable = &v
 	return s
 }
@@ -4233,12 +4285,18 @@ func (s *BindPrometheusGrafanaInstanceResponse) SetBody(v *BindPrometheusGrafana
 }
 
 type BlockAlarmNotificationRequest struct {
+	// The ID of the alert.
+	//
+	// For more information about how to obtain the ID of an alert, see [ListAlertEvents](https://help.aliyun.com/document_detail/2612346.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 133
 	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// The ID of the alert handler.
+	//
 	// example:
 	//
 	// 2044049
@@ -4249,6 +4307,8 @@ type BlockAlarmNotificationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of seconds that elapse before alert notifications are blocked. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4371,6 +4431,10 @@ func (s *BlockAlarmNotificationResponse) SetBody(v *BlockAlarmNotificationRespon
 }
 
 type ChangeAlarmSeverityRequest struct {
+	// The ID of the alert.
+	//
+	// For more information about how to obtain the ID of an alert, see [ListAlertEvents](https://help.aliyun.com/document_detail/2612346.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4891,7 +4955,9 @@ func (s *CheckServiceStatusResponse) SetBody(v *CheckServiceStatusResponseBody) 
 }
 
 type ClaimAlarmRequest struct {
-	// The alert ID.
+	// The ID of the alert.
+	//
+	// For more information about how to obtain the ID of an alert, see [ListAlertEvents](https://help.aliyun.com/document_detail/2612346.html).
 	//
 	// This parameter is required.
 	//
@@ -4967,7 +5033,11 @@ type ClaimAlarmResponseBody struct {
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// `true`
+	//
+	// `false`
 	//
 	// example:
 	//
@@ -5038,7 +5108,9 @@ func (s *ClaimAlarmResponse) SetBody(v *ClaimAlarmResponseBody) *ClaimAlarmRespo
 }
 
 type CloseAlarmRequest struct {
-	// The alert ID.
+	// The ID of the alert.
+	//
+	// For more information about how to obtain the ID of an alert, see [ListAlertEvents](https://help.aliyun.com/document_detail/2612346.html).
 	//
 	// This parameter is required.
 	//
@@ -5046,7 +5118,7 @@ type CloseAlarmRequest struct {
 	//
 	// 163
 	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	// The ID of the handler.
+	// The ID of the alert handler.
 	//
 	// example:
 	//
@@ -5060,7 +5132,7 @@ type CloseAlarmRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The solution to the alert.
+	// The alert solution.
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 }
 
@@ -6400,7 +6472,7 @@ type CreateEnvironmentRequest struct {
 	//
 	// 	- CS: Container Service for Kubernetes (ACK) or Distributed Cloud Container Platform for Kubernetes (ACK One)
 	//
-	// 	- ECS: Elastic Compute Service (ECS)
+	// 	- ECS: ECS
 	//
 	// 	- Cloud: cloud service
 	//
@@ -6412,9 +6484,9 @@ type CreateEnvironmentRequest struct {
 	EnvironmentSubType *string `json:"EnvironmentSubType,omitempty" xml:"EnvironmentSubType,omitempty"`
 	// The type of the environment. Valid values:
 	//
-	// 	- CS: ACK
+	// 	- CS: Container Service
 	//
-	// 	- ECS: ECS
+	// 	- ECS: Elastic Compute Service
 	//
 	// 	- Cloud: cloud service
 	//
@@ -6424,7 +6496,7 @@ type CreateEnvironmentRequest struct {
 	//
 	// CS
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
-	// The payable resource plan. Valid values:
+	// The payable resource plan.
 	//
 	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
 	//
@@ -6439,7 +6511,7 @@ type CreateEnvironmentRequest struct {
 	// if can be null:
 	// true
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
-	// Whether to initialize the environment.
+	// Specifies whether to initialize the environment.
 	//
 	// example:
 	//
@@ -7357,17 +7429,19 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// RUNNING
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// 	- APPLICATION_MONITORING_ALERT_RULE
+	// The type of the alert rule. Valid values:
 	//
-	// 	- BROWSER_MONITORING_ALERT_RULE
+	// 	- APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
 	//
-	// 	- XTRACE_MONITORING_ALERT_RULE
+	// 	- BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
 	//
-	// 	- RUM_MONITORING_ALERT_RULE
+	// 	- PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
 	//
-	// 	- EBPF_MONITORING_ALERT_RULE
+	// 	- XTRACE_MONITORING_ALERT_RULE: alert rule for Managed Service for OpenTelemetry
 	//
-	// 	- PROMETHEUS_MONITORING_ALERT_RULE
+	// 	- EBPF_MONITORING_ALERT_RULE: alert rule for Application Monitoring eBPF Edition
+	//
+	// 	- RUM_MONITORING_ALERT_RULE: alert rule for Real User Monitoring
 	//
 	// This parameter is required.
 	//
@@ -7391,7 +7465,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// false
 	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
-	// Application monitoring alarm rules - Alarm application automatically adds configuration. auto Add Match Type: Matching method: regular match (REGULAR)/regular non-match (NOT_REGULAR) auto Add Match Exp: regular expression
+	// The configurations that are automatically appended to monitor the application based on the specified alert rule. autoAddMatchType: the matching mode. Valid values: REGULAR and NOT_REGULAR. autoAddMatchExp: the regular expression
 	//
 	// example:
 	//
@@ -7503,7 +7577,13 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// -
 	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// Notification Mode. Normal mode or Simplified mode.
+	// The notification mode. You can specify the normal mode or simple mode.
+	//
+	// Valid values:
+	//
+	// 	- DIRECTED_MODE
+	//
+	// 	- NORMAL_MODE
 	//
 	// example:
 	//
@@ -9306,7 +9386,7 @@ type CreateOrUpdateIMRobotRequest struct {
 	//
 	// 	- `wechat`: WeCom chatbot
 	//
-	// 	- `feishu`: Lark chatbot.
+	// 	- `feishu`: Lark chatbot
 	//
 	// This parameter is required.
 	//
@@ -10437,6 +10517,10 @@ func (s *CreateOrUpdateNotificationPolicyResponse) SetBody(v *CreateOrUpdateNoti
 }
 
 type CreateOrUpdateSilencePolicyRequest struct {
+	// example:
+	//
+	// PERMANENT
+	EffectiveTimeType *string `json:"EffectiveTimeType,omitempty" xml:"EffectiveTimeType,omitempty"`
 	// The ID of the silence policy.
 	//
 	// 	- If you do not configure this parameter, a new silence policy is created.
@@ -10495,6 +10579,14 @@ type CreateOrUpdateSilencePolicyRequest struct {
 	//
 	// enable
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// DAY
+	TimePeriod *string `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty"`
+	// example:
+	//
+	// [{"startTime":"2024-08-04 22:13","endTime":"2024-08-04 22:21"}]
+	TimeSlots *string `json:"TimeSlots,omitempty" xml:"TimeSlots,omitempty"`
 }
 
 func (s CreateOrUpdateSilencePolicyRequest) String() string {
@@ -10503,6 +10595,11 @@ func (s CreateOrUpdateSilencePolicyRequest) String() string {
 
 func (s CreateOrUpdateSilencePolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateOrUpdateSilencePolicyRequest) SetEffectiveTimeType(v string) *CreateOrUpdateSilencePolicyRequest {
+	s.EffectiveTimeType = &v
+	return s
 }
 
 func (s *CreateOrUpdateSilencePolicyRequest) SetId(v int64) *CreateOrUpdateSilencePolicyRequest {
@@ -10527,6 +10624,16 @@ func (s *CreateOrUpdateSilencePolicyRequest) SetRegionId(v string) *CreateOrUpda
 
 func (s *CreateOrUpdateSilencePolicyRequest) SetState(v string) *CreateOrUpdateSilencePolicyRequest {
 	s.State = &v
+	return s
+}
+
+func (s *CreateOrUpdateSilencePolicyRequest) SetTimePeriod(v string) *CreateOrUpdateSilencePolicyRequest {
+	s.TimePeriod = &v
+	return s
+}
+
+func (s *CreateOrUpdateSilencePolicyRequest) SetTimeSlots(v string) *CreateOrUpdateSilencePolicyRequest {
+	s.TimeSlots = &v
 	return s
 }
 
@@ -10560,6 +10667,7 @@ func (s *CreateOrUpdateSilencePolicyResponseBody) SetSilencePolicy(v *CreateOrUp
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicy struct {
+	EffectiveTimeType *string `json:"EffectiveTimeType,omitempty" xml:"EffectiveTimeType,omitempty"`
 	// The ID of the silence policy.
 	//
 	// example:
@@ -10579,7 +10687,9 @@ type CreateOrUpdateSilencePolicyResponseBodySilencePolicy struct {
 	// example:
 	//
 	// enable
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State      *string `json:"State,omitempty" xml:"State,omitempty"`
+	TimePeriod *string `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty"`
+	TimeSlots  *string `json:"TimeSlots,omitempty" xml:"TimeSlots,omitempty"`
 }
 
 func (s CreateOrUpdateSilencePolicyResponseBodySilencePolicy) String() string {
@@ -10588,6 +10698,11 @@ func (s CreateOrUpdateSilencePolicyResponseBodySilencePolicy) String() string {
 
 func (s CreateOrUpdateSilencePolicyResponseBodySilencePolicy) GoString() string {
 	return s.String()
+}
+
+func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetEffectiveTimeType(v string) *CreateOrUpdateSilencePolicyResponseBodySilencePolicy {
+	s.EffectiveTimeType = &v
+	return s
 }
 
 func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetId(v int64) *CreateOrUpdateSilencePolicyResponseBodySilencePolicy {
@@ -10607,6 +10722,16 @@ func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetName(v string)
 
 func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetState(v string) *CreateOrUpdateSilencePolicyResponseBodySilencePolicy {
 	s.State = &v
+	return s
+}
+
+func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetTimePeriod(v string) *CreateOrUpdateSilencePolicyResponseBodySilencePolicy {
+	s.TimePeriod = &v
+	return s
+}
+
+func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetTimeSlots(v string) *CreateOrUpdateSilencePolicyResponseBodySilencePolicy {
+	s.TimeSlots = &v
 	return s
 }
 
@@ -12269,7 +12394,7 @@ type CreateRumAppRequest struct {
 	//
 	// example:
 	//
-	// test-user
+	// test-app
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The name of the Android application package. This parameter is required if you create an Android application.
 	//
@@ -12425,7 +12550,7 @@ type CreateRumAppShrinkRequest struct {
 	//
 	// example:
 	//
-	// test-user
+	// test-app
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The name of the Android application package. This parameter is required if you create an Android application.
 	//
@@ -12542,7 +12667,7 @@ type CreateRumAppResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -16343,7 +16468,11 @@ func (s *DelAuthTokenResponse) SetBody(v *DelAuthTokenResponseBody) *DelAuthToke
 }
 
 type DeleteAddonReleaseRequest struct {
-	// The name of the add-on.
+	// The name of the add-on. If you assign a value to AddonName, the ReleaseName parameter is ignored and all AddonReleases that belong to the same add-on are deleted.
+	//
+	// example:
+	//
+	// mysql
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
 	// Environment ID.
 	//
@@ -16714,11 +16843,9 @@ func (s *DeleteAlertContactGroupResponse) SetBody(v *DeleteAlertContactGroupResp
 }
 
 type DeleteAlertRuleRequest struct {
-	// Indicates whether the alert rule was successfully deleted.
+	// The alert rule ID.
 	//
-	// 	- `true`: The specified data is deleted.
-	//
-	// 	- `false`: The specified data fails to be deleted.
+	// For more information about how to obtain the ID of an alert rule, see [GetAlertRules](https://help.aliyun.com/document_detail/2612348.html).
 	//
 	// This parameter is required.
 	//
@@ -18073,7 +18200,7 @@ func (s *DeleteEnvironmentFeatureResponse) SetBody(v *DeleteEnvironmentFeatureRe
 }
 
 type DeleteEventBridgeIntegrationRequest struct {
-	// The ID of the EventBridge integration. You can call the **ListEventBridgeIntegrations*	- operation to query the ID.
+	// Required. The ID of the EventBridge notification integration. You can call the **ListEventBridgeIntegrations*	- operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -18728,7 +18855,9 @@ func (s *DeleteIntegrationsResponse) SetBody(v *DeleteIntegrationsResponseBody) 
 }
 
 type DeleteNotificationPolicyRequest struct {
-	// Deletes a notification policy based on its ID.
+	// The ID of the notification policy.
+	//
+	// For more information about how to obtain the ID of a notification policy, see [ListNotificationPolicies](https://help.aliyun.com/document_detail/2612375.html).
 	//
 	// This parameter is required.
 	//
@@ -19929,7 +20058,9 @@ func (s *DeleteScenarioResponse) SetBody(v *DeleteScenarioResponseBody) *DeleteS
 }
 
 type DeleteSilencePolicyRequest struct {
-	// The ID of the request.
+	// The ID of the silence policy.
+	//
+	// For more information about how to obtain the ID of a silence policy, see [ListSilencePolicies](https://help.aliyun.com/document_detail/2612383.html).
 	//
 	// This parameter is required.
 	//
@@ -23254,7 +23385,7 @@ type DescribeEnvironmentResponseBodyData struct {
 	//
 	// rg-aek2vezare****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security group ID bound to the environment.
+	// The ID of the security group associated with the environment.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The tags.
 	Tags []*DescribeEnvironmentResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -23485,6 +23616,11 @@ func (s *DescribeEnvironmentResponse) SetBody(v *DescribeEnvironmentResponseBody
 }
 
 type DescribeEnvironmentFeatureRequest struct {
+	// Language, en | zh.
+	//
+	// example:
+	//
+	// en
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The environment ID.
 	//
@@ -23498,21 +23634,11 @@ type DescribeEnvironmentFeatureRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- app-agent-pilot
+	// 	- app-agent-pilot: App Pilot agent
 	//
-	//     <!-- -->
+	// 	- arms-cmonitor: ARMS CMonitor agent
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- metric-agent
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- metric-agent: Prometheus agent
 	//
 	// This parameter is required.
 	//
@@ -23619,7 +23745,7 @@ func (s *DescribeEnvironmentFeatureResponseBody) SetSuccess(v bool) *DescribeEnv
 }
 
 type DescribeEnvironmentFeatureResponseBodyData struct {
-	// The installation information of the feature.
+	// The installation information about the feature.
 	Feature *DescribeEnvironmentFeatureResponseBodyDataFeature `json:"Feature,omitempty" xml:"Feature,omitempty" type:"Struct"`
 	// The status of the feature.
 	FeatureStatus *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus `json:"FeatureStatus,omitempty" xml:"FeatureStatus,omitempty" type:"Struct"`
@@ -23690,7 +23816,19 @@ type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
 	//
 	// metric-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status.
+	// The installation status of the agent.
+	//
+	// 	- Installing: The agent is being installed.
+	//
+	// 	- Success: The agent is installed.
+	//
+	// 	- Failed: The agent failed to be installed.
+	//
+	// 	- UnInstall: The agent is uninstalled or has not been installed.
+	//
+	// 	- Uninstalling: The agent is being uninstalled.
+	//
+	// 	- UnInstallFailed: The agent failed to be uninstalled.
 	//
 	// example:
 	//
@@ -23768,10 +23906,16 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetVersion(v string)
 }
 
 type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
+	// Binded resource ID.
+	//
+	// example:
+	//
+	// c013823b55e4b4d6bb6b6f28682bd38a7
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// The containers of the feature.
 	FeatureContainers []*DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers `json:"FeatureContainers,omitempty" xml:"FeatureContainers,omitempty" type:"Repeated"`
-	Ips               []*string                                                                   `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	// IPs for Pod.
+	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 	// The Kubernetes resource name of the feature.
 	//
 	// example:
@@ -23783,7 +23927,12 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	// example:
 	//
 	// arms-prom
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-bp1c9fcexoalq9po6cp8
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The status of the agent. Valid values:
 	//
@@ -23796,7 +23945,12 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	// example:
 	//
 	// Success
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-bp1qt6ict0dbxgv4wer8l
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -23851,13 +24005,13 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetVSwitchId(v
 type DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers struct {
 	// The container parameters.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// The image of the container.
+	// The container image.
 	//
 	// example:
 	//
 	// registry-cn-hangzhou-vpc.ack.aliyuncs.com/acs/arms-prometheus-agent:v4.0.0
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The name of the container.
+	// The container name.
 	//
 	// example:
 	//
@@ -25280,19 +25434,19 @@ type GetAlertRulesRequest struct {
 	//
 	// 	- PAUSED
 	//
-	// > The **PAUSED*	- status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
+	// >  The PAUSED state indicates that the alert rule is abnormal and has been suspended. This may be because the specified threshold value is excessively large, or the associated cluster has been deleted.
 	//
 	// example:
 	//
 	// RUNNING
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// The type of the alert rule.
+	// The type of the alert rule. Valid values:
 	//
 	// 	- APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
 	//
-	// 	- BROWSER_MONITORING_ALERT_RULE: an alert rule for Browser Monitoring.
+	// 	- BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
 	//
-	// 	- PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus.
+	// 	- PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
 	//
 	// example:
 	//
@@ -29362,7 +29516,7 @@ func (s *GetPrometheusInstanceResponseBody) SetRequestId(v string) *GetPrometheu
 }
 
 type GetPrometheusInstanceResponseBodyData struct {
-	// Permission type: read Write, read Only, http Read Only
+	// The permission type. Valid values: readWrite, readOnly, and httpReadOnly
 	//
 	// example:
 	//
@@ -29407,9 +29561,19 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// remote-write
-	ClusterType      *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Backend data storage status.
+	//
+	// example:
+	//
+	// RUNNING
 	DbInstanceStatus *string `json:"DbInstanceStatus,omitempty" xml:"DbInstanceStatus,omitempty"`
-	EnableAuthToken  *string `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
+	// Whether to enable access token authentication.
+	//
+	// example:
+	//
+	// true
+	EnableAuthToken *string `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
 	// The ID of the Grafana workspace.
 	//
 	// example:
@@ -29438,7 +29602,16 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// PREPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The product to which the prometheus instance belongs.
+	//
+	// - arms
+	//
+	// - cms
+	//
+	// example:
+	//
+	// arms
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The public URL for Pushgateway.
 	//
 	// example:
@@ -29510,8 +29683,8 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// [{"headers":{},"regionId":"cn-hangzhou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c39a1048921e04fceb039db2fbb73\\*\\*\\*","sourceName":"arms-luyao-test","dataSource":"","userId":"167275301789\\*\\*\\*"},{"headers":{},"regionId":"cn-beijing","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c6b6485496d5b400abde22cb47b5\\*\\*\\*\\*","sourceName":"agent-321-test","dataSource":"","userId":"1672753017899\\*\\*\\*"},{"headers":{},"regionId":"cn-zhangjiakou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c261a4f3200c446659133f1ade789b15e","sourceName":"zaifeng-cardinality-01","dataSource":"","userId":"167275301789\\*\\*\\*"}]
-	SubClustersJson   *string   `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
-	SurpportAuthTypes []*string `json:"SurpportAuthTypes,omitempty" xml:"SurpportAuthTypes,omitempty" type:"Repeated"`
+	SubClustersJson  *string   `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
+	SupportAuthTypes []*string `json:"SupportAuthTypes,omitempty" xml:"SupportAuthTypes,omitempty" type:"Repeated"`
 	// The tags of the instance.
 	Tags []*GetPrometheusInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user ID.
@@ -29667,8 +29840,8 @@ func (s *GetPrometheusInstanceResponseBodyData) SetSubClustersJson(v string) *Ge
 	return s
 }
 
-func (s *GetPrometheusInstanceResponseBodyData) SetSurpportAuthTypes(v []*string) *GetPrometheusInstanceResponseBodyData {
-	s.SurpportAuthTypes = v
+func (s *GetPrometheusInstanceResponseBodyData) SetSupportAuthTypes(v []*string) *GetPrometheusInstanceResponseBodyData {
+	s.SupportAuthTypes = v
 	return s
 }
 
@@ -31185,7 +31358,7 @@ type GetRumAppInfoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -31316,7 +31489,7 @@ type GetRumAppInfoResponseBodyData struct {
 	//
 	// rg-aek2vezare****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Service domain name configuration list (currently only supports mobile applications).
+	// The list of service domain configurations. Only mobile applications are supported.
 	ServiceDomainConfigs []*GetRumAppInfoResponseBodyDataServiceDomainConfigs `json:"ServiceDomainConfigs,omitempty" xml:"ServiceDomainConfigs,omitempty" type:"Repeated"`
 	// The name of the Simple Log Service Logstore that stores application data.
 	//
@@ -31455,8 +31628,7 @@ func (s *GetRumAppInfoResponseBodyData) SetType(v string) *GetRumAppInfoResponse
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfig struct {
-	Enable       *bool                                            `json:"enable,omitempty" xml:"enable,omitempty"`
-	ModuleConfig map[string]*DataBonreeSDKConfigModuleConfigValue `json:"moduleConfig,omitempty" xml:"moduleConfig,omitempty"`
+	ModuleConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig `json:"moduleConfig,omitempty" xml:"moduleConfig,omitempty" type:"Struct"`
 }
 
 func (s GetRumAppInfoResponseBodyDataBonreeSDKConfig) String() string {
@@ -31467,36 +31639,61 @@ func (s GetRumAppInfoResponseBodyDataBonreeSDKConfig) GoString() string {
 	return s.String()
 }
 
-func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) SetEnable(v bool) *GetRumAppInfoResponseBodyDataBonreeSDKConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) SetModuleConfig(v map[string]*DataBonreeSDKConfigModuleConfigValue) *GetRumAppInfoResponseBodyDataBonreeSDKConfig {
+func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) SetModuleConfig(v *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) *GetRumAppInfoResponseBodyDataBonreeSDKConfig {
 	s.ModuleConfig = v
 	return s
 }
 
+type GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig struct {
+	DefaultConfig  map[string]*DataBonreeSDKConfigModuleConfigDefaultConfigValue  `json:"defaultConfig,omitempty" xml:"defaultConfig,omitempty"`
+	Enable         *bool                                                          `json:"enable,omitempty" xml:"enable,omitempty"`
+	VersionConfigs map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValue `json:"versionConfigs,omitempty" xml:"versionConfigs,omitempty"`
+}
+
+func (s GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) SetDefaultConfig(v map[string]*DataBonreeSDKConfigModuleConfigDefaultConfigValue) *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig {
+	s.DefaultConfig = v
+	return s
+}
+
+func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) SetEnable(v bool) *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) SetVersionConfigs(v map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValue) *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig {
+	s.VersionConfigs = v
+	return s
+}
+
 type GetRumAppInfoResponseBodyDataServiceDomainConfigs struct {
-	// Describe.
+	// The description.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Domain name or IP.
+	// The domain name or IP address.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Trace transparent transmission protocol list, must be transmitted when link tracking is enabled.
+	// The trace propagation protocols. This parameter is required if the tracing analysis feature is enabled.
 	PropagatorTypes []*string `json:"PropagatorTypes,omitempty" xml:"PropagatorTypes,omitempty" type:"Repeated"`
-	// Whether to enable link tracking (need to enable the observable link Open Telemetry version), value:
+	SamplingRate    *int32    `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// Indicates whether the tracing analysis feature is enabled. To enable the tracing analysis feature, you must activate Managed Service for OpenTelemetry. Valid values:
 	//
-	// - `true`: Enable link tracking (after enabling, the relevant header will be inserted into the domain name request).
+	// 	- `true`: enables the tracing analysis feature. If you enable the tracing analysis feature, related headers are inserted into requests for the domain name.
 	//
-	// - `false`: Do not enable link tracking.
+	// 	- `false`: disables the tracing analysis feature.
 	//
 	// example:
 	//
@@ -31524,6 +31721,11 @@ func (s *GetRumAppInfoResponseBodyDataServiceDomainConfigs) SetDomain(v string) 
 
 func (s *GetRumAppInfoResponseBodyDataServiceDomainConfigs) SetPropagatorTypes(v []*string) *GetRumAppInfoResponseBodyDataServiceDomainConfigs {
 	s.PropagatorTypes = v
+	return s
+}
+
+func (s *GetRumAppInfoResponseBodyDataServiceDomainConfigs) SetSamplingRate(v int32) *GetRumAppInfoResponseBodyDataServiceDomainConfigs {
+	s.SamplingRate = &v
 	return s
 }
 
@@ -31909,7 +32111,7 @@ type GetRumAppsResponseBodyAppList struct {
 	//
 	// rg-acfmzaq3ypaqkdy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Service domain name configuration list. Currently only supports mobile applications.
+	// The list of service domain configurations. Only mobile applications are supported.
 	ServiceDomainConfigs []*GetRumAppsResponseBodyAppListServiceDomainConfigs `json:"ServiceDomainConfigs,omitempty" xml:"ServiceDomainConfigs,omitempty" type:"Repeated"`
 	// The name of the Simple Log Service Logstore that stores application data.
 	//
@@ -32033,25 +32235,25 @@ func (s *GetRumAppsResponseBodyAppList) SetType(v string) *GetRumAppsResponseBod
 }
 
 type GetRumAppsResponseBodyAppListServiceDomainConfigs struct {
-	// Description.
+	// The description.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Domain name or IP.
+	// The domain name or IP address.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Trace transparent transmission protocol list, which must be transmitted when link tracing is enabled.
+	// The trace propagation protocols. This parameter is required if the tracing analysis feature is enabled.
 	PropagatorTypes []*string `json:"PropagatorTypes,omitempty" xml:"PropagatorTypes,omitempty" type:"Repeated"`
-	// Whether to enable link tracking (need to enable the observable link Open Telemetry version), value:
+	// Indicates whether the tracing analysis feature is enabled. To enable the tracing analysis feature, you must activate Managed Service for OpenTelemetry. Valid values:
 	//
-	// - `true`: Enable link tracking (after enabling, the relevant header will be inserted into the domain name request).
+	// 	- `true`: enables the tracing analysis feature. If you enable the tracing analysis feature, related headers are inserted into requests for the domain name.
 	//
-	// - `false`: Do not enable link tracking.
+	// 	- `false`: disables the tracing analysis feature.
 	//
 	// example:
 	//
@@ -32429,6 +32631,14 @@ type GetRumExceptionStackRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The file type. Valid values:
+	//
+	// 	- source-map: SourceMap files
+	//
+	// 	- mapping: symbol table files for Android
+	//
+	// 	- dsym: dSYM files for iOS
+	//
 	// example:
 	//
 	// source-map
@@ -32595,28 +32805,58 @@ func (s *GetRumExceptionStackResponse) SetBody(v *GetRumExceptionStackResponseBo
 }
 
 type GetRumOcuStatisticDataRequest struct {
+	// The end of the time range to query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1687849260000
-	EndTime *int64                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Filter  []*GetRumOcuStatisticDataRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	Group   []*string                              `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter condition. Three types of filter conditions are provided:
+	//
+	// 	- Application name: pid (Note that the application name is displayed, but the application ID is actually specified)
+	//
+	// 	- Application type: siteType
+	//
+	// 	- Data type: dataType
+	Filter []*GetRumOcuStatisticDataRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The grouping fields. Valid values:
+	//
+	// 	- siteType: The total number of OCUs is grouped by application type.
+	//
+	// 	- dataType: The total number of OCUs is grouped by data type.
+	//
+	// 	- pid: The total number of OCUs is grouped by application ID.
+	//
+	// 	- appName: The total number of OCUs is grouped by application name.
+	//
+	// 	- startTime: The total number of OCUs is grouped by start time.
+	Group []*string `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the query. To query non-time series data, set the value to INSTANT. To query time series data, set the value to TIME_SERIES.
+	//
 	// example:
 	//
 	// TIME_SERIES
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1600063200000
@@ -32672,14 +32912,26 @@ func (s *GetRumOcuStatisticDataRequest) SetStartTime(v int64) *GetRumOcuStatisti
 }
 
 type GetRumOcuStatisticDataRequestFilter struct {
+	// The key of the filter condition. Three types of filter conditions are provided:
+	//
+	// 	- Application name: pid (Note that the application name is displayed, but the application ID is actually specified)
+	//
+	// 	- Application type: siteType
+	//
+	// 	- Data type: dataType
+	//
 	// example:
 	//
 	// pid
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The type of the operator. Valid value: in.
+	//
 	// example:
 	//
 	// in
 	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// The value of the filter condition. The value is a JSON array of strings.
+	//
 	// example:
 	//
 	// ["b590xxxxx@2dcbxxxxx9", "b590xxxxx@2dcbxxxxx8"]
@@ -32710,28 +32962,58 @@ func (s *GetRumOcuStatisticDataRequestFilter) SetValue(v interface{}) *GetRumOcu
 }
 
 type GetRumOcuStatisticDataShrinkRequest struct {
+	// The end of the time range to query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1687849260000
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter condition. Three types of filter conditions are provided:
+	//
+	// 	- Application name: pid (Note that the application name is displayed, but the application ID is actually specified)
+	//
+	// 	- Application type: siteType
+	//
+	// 	- Data type: dataType
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	GroupShrink  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The grouping fields. Valid values:
+	//
+	// 	- siteType: The total number of OCUs is grouped by application type.
+	//
+	// 	- dataType: The total number of OCUs is grouped by data type.
+	//
+	// 	- pid: The total number of OCUs is grouped by application ID.
+	//
+	// 	- appName: The total number of OCUs is grouped by application name.
+	//
+	// 	- startTime: The total number of OCUs is grouped by start time.
+	GroupShrink *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the query. To query non-time series data, set the value to INSTANT. To query time series data, set the value to TIME_SERIES.
+	//
 	// example:
 	//
 	// TIME_SERIES
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1600063200000
@@ -32787,13 +33069,17 @@ func (s *GetRumOcuStatisticDataShrinkRequest) SetStartTime(v int64) *GetRumOcuSt
 }
 
 type GetRumOcuStatisticDataResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetRumOcuStatisticDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *GetRumOcuStatisticDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request failed.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -32830,19 +33116,28 @@ func (s *GetRumOcuStatisticDataResponseBody) SetRequestId(v string) *GetRumOcuSt
 }
 
 type GetRumOcuStatisticDataResponseBodyData struct {
+	// Indicates whether the next page exists.
+	//
 	// example:
 	//
 	// true
-	Complete *bool                    `json:"Complete,omitempty" xml:"Complete,omitempty"`
-	Items    []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
+	// The queried data.
+	Items []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -41015,6 +41310,7 @@ func (s *ListAddonsResponseBodyDataEnvironments) SetPolicies(v *ListAddonsRespon
 }
 
 type ListAddonsResponseBodyDataEnvironmentsDependencies struct {
+	// Dependency cluster types.
 	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
 	// The feature on which the environment depends.
 	Features map[string]*bool `json:"Features,omitempty" xml:"Features,omitempty"`
@@ -41254,7 +41550,7 @@ type ListAlertEventsRequest struct {
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Whether to display the associated notification policies.
+	// Specifies whether to show the associated notification policy.
 	//
 	// example:
 	//
@@ -41473,7 +41769,7 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	//
 	// [{\\"name\\":\\"severity\\",\\"value\\":\\"error\\"}]
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The information about the notification policy.
+	// The associated notification policies.
 	NotificationPolicies []*ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies `json:"NotificationPolicies,omitempty" xml:"NotificationPolicies,omitempty" type:"Repeated"`
 	// The time when the alert event was received.
 	//
@@ -41515,7 +41811,7 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of times the alert is triggered.
+	// The number of times the event is triggered.
 	//
 	// example:
 	//
@@ -45524,7 +45820,8 @@ type ListEnvironmentsRequest struct {
 	// example:
 	//
 	// CS_Pro
-	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// The region IDs.
 	FilterRegionIds *string `json:"FilterRegionIds,omitempty" xml:"FilterRegionIds,omitempty"`
 	// The region ID.
 	//
@@ -45695,7 +45992,8 @@ type ListEnvironmentsShrinkRequest struct {
 	// example:
 	//
 	// CS_Pro
-	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// The region IDs.
 	FilterRegionIds *string `json:"FilterRegionIds,omitempty" xml:"FilterRegionIds,omitempty"`
 	// The region ID.
 	//
@@ -50937,6 +51235,7 @@ func (s *ListSilencePoliciesResponseBodyPageBean) SetTotal(v int64) *ListSilence
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePolicies struct {
+	EffectiveTimeType *string `json:"EffectiveTimeType,omitempty" xml:"EffectiveTimeType,omitempty"`
 	// The ID of the silence policy.
 	//
 	// example:
@@ -50956,7 +51255,9 @@ type ListSilencePoliciesResponseBodyPageBeanSilencePolicies struct {
 	// example:
 	//
 	// enable
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State      *string `json:"State,omitempty" xml:"State,omitempty"`
+	TimePeriod *string `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty"`
+	TimeSlots  *string `json:"TimeSlots,omitempty" xml:"TimeSlots,omitempty"`
 }
 
 func (s ListSilencePoliciesResponseBodyPageBeanSilencePolicies) String() string {
@@ -50965,6 +51266,11 @@ func (s ListSilencePoliciesResponseBodyPageBeanSilencePolicies) String() string 
 
 func (s ListSilencePoliciesResponseBodyPageBeanSilencePolicies) GoString() string {
 	return s.String()
+}
+
+func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetEffectiveTimeType(v string) *ListSilencePoliciesResponseBodyPageBeanSilencePolicies {
+	s.EffectiveTimeType = &v
+	return s
 }
 
 func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetId(v int64) *ListSilencePoliciesResponseBodyPageBeanSilencePolicies {
@@ -50984,6 +51290,16 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetName(v strin
 
 func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetState(v string) *ListSilencePoliciesResponseBodyPageBeanSilencePolicies {
 	s.State = &v
+	return s
+}
+
+func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetTimePeriod(v string) *ListSilencePoliciesResponseBodyPageBeanSilencePolicies {
+	s.TimePeriod = &v
+	return s
+}
+
+func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetTimeSlots(v string) *ListSilencePoliciesResponseBodyPageBeanSilencePolicies {
+	s.TimeSlots = &v
 	return s
 }
 
@@ -51091,11 +51407,32 @@ func (s *ListSilencePoliciesResponse) SetBody(v *ListSilencePoliciesResponseBody
 }
 
 type ListSyntheticDetailRequest struct {
+	// An array of filter conditions. This parameter is required.
+	//
+	// 	- To query the list of synthetic test results, set this parameter in the following format: [{"Key":"taskType","OpType":"in","Value":[Task type]}].
+	//
+	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: [{"Key":"dataId","OpType":"eq","Value":"dataId"}]. dataId is returned when you query the list of synthetic test results.
 	AdvancedFilters []*ListSyntheticDetailRequestAdvancedFilters `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty" type:"Repeated"`
 	// example:
 	//
 	// SYNTHETIC
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The type of the list that contains the results. This parameter is required. Valid values:
+	//
+	// 	- ICMP_LIST
+	//
+	// 	- TCP_LIST
+	//
+	// 	- DNS_LIST
+	//
+	// 	- HTTP_LIST
+	//
+	// 	- WEBSITE_LIST
+	//
+	// 	- DOWNLOAD_LIST
+	//
+	// 	- ALL
+	//
 	// example:
 	//
 	// ICMP_LIST
@@ -51105,7 +51442,12 @@ type ListSyntheticDetailRequest struct {
 	// 1684480557772
 	EndTime      *int64                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExactFilters []*ListSyntheticDetailRequestExactFilters `json:"ExactFilters,omitempty" xml:"ExactFilters,omitempty" type:"Repeated"`
-	Filters      map[string]*string                        `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The filter condition. This parameter is required.
+	//
+	// 	- To query the result of a synthetic monitoring task, set this parameter in the following format: {"taskId":"${taskId}"}.
+	//
+	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: {"taskId":"${taskId}","dataId":"${dataId}"}.
+	Filters map[string]*string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	// example:
 	//
 	// DESC
@@ -51210,14 +51552,24 @@ func (s *ListSyntheticDetailRequest) SetSyntheticType(v int32) *ListSyntheticDet
 }
 
 type ListSyntheticDetailRequestAdvancedFilters struct {
+	// The filter condition. The taskType and dataId fields are supported.
+	//
+	// 	- To query the list of synthetic test results, set the key to taskType.
+	//
+	// 	- To query the result details of a synthetic monitoring task, set the key to dataId.
+	//
 	// example:
 	//
 	// taskType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The type of the filter condition. Valid values: eq and in. eq: equal to. in: include.
+	//
 	// example:
 	//
 	// eq
 	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// The value of the filter condition. The type of the task. Valid values: 1: ICMP 2: TCP 3: DNS 4: HTTP 5: website speed measurement 6: file download
+	//
 	// example:
 	//
 	// 1
@@ -51277,11 +51629,32 @@ func (s *ListSyntheticDetailRequestExactFilters) SetValue(v interface{}) *ListSy
 }
 
 type ListSyntheticDetailShrinkRequest struct {
+	// An array of filter conditions. This parameter is required.
+	//
+	// 	- To query the list of synthetic test results, set this parameter in the following format: [{"Key":"taskType","OpType":"in","Value":[Task type]}].
+	//
+	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: [{"Key":"dataId","OpType":"eq","Value":"dataId"}]. dataId is returned when you query the list of synthetic test results.
 	AdvancedFiltersShrink *string `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty"`
 	// example:
 	//
 	// SYNTHETIC
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The type of the list that contains the results. This parameter is required. Valid values:
+	//
+	// 	- ICMP_LIST
+	//
+	// 	- TCP_LIST
+	//
+	// 	- DNS_LIST
+	//
+	// 	- HTTP_LIST
+	//
+	// 	- WEBSITE_LIST
+	//
+	// 	- DOWNLOAD_LIST
+	//
+	// 	- ALL
+	//
 	// example:
 	//
 	// ICMP_LIST
@@ -51291,7 +51664,12 @@ type ListSyntheticDetailShrinkRequest struct {
 	// 1684480557772
 	EndTime            *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExactFiltersShrink *string `json:"ExactFilters,omitempty" xml:"ExactFilters,omitempty"`
-	FiltersShrink      *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The filter condition. This parameter is required.
+	//
+	// 	- To query the result of a synthetic monitoring task, set this parameter in the following format: {"taskId":"${taskId}"}.
+	//
+	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: {"taskId":"${taskId}","dataId":"${dataId}"}.
+	FiltersShrink *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	// example:
 	//
 	// DESC
@@ -53491,7 +53869,9 @@ func (s *OpenXtraceDefaultSLRResponse) SetBody(v *OpenXtraceDefaultSLRResponseBo
 }
 
 type QueryAppMetadataRequest struct {
-	// The list of metadata IDs. Separate multiple IDs with commas (,).
+	// The metadata IDs. Separate multiple IDs with commas (,).
+	//
+	// You can obtain the exception ID on the **Exception Analysis*	- page of your application in the ARMS console.
 	//
 	// This parameter is required.
 	//
@@ -53499,7 +53879,11 @@ type QueryAppMetadataRequest struct {
 	//
 	// 4c9dd447,3c76c565
 	MetaIds *string `json:"MetaIds,omitempty" xml:"MetaIds,omitempty"`
-	// The metadata type. Valid values: sql: obtains an SQL statement based on sqlId exception: obtains the exception stack based on exceptionId
+	// The metadata type. Valid values:
+	//
+	// 	- sql: obtains an SQL statement based on sqlId.
+	//
+	// 	- exception: obtains the exception stack based on exceptionId.
 	//
 	// This parameter is required.
 	//
@@ -53507,7 +53891,7 @@ type QueryAppMetadataRequest struct {
 	//
 	// sql
 	MetaType *string `json:"MetaType,omitempty" xml:"MetaType,omitempty"`
-	// The process identifier (PID) of the application. For more information about how to obtain the PID, see "Obtain the PID of an application."
+	// The process identifier (PID) of the application. You can obtain the PID of an application by calling the **ListTraceApps*	- operation.
 	//
 	// This parameter is required.
 	//
@@ -53515,7 +53899,7 @@ type QueryAppMetadataRequest struct {
 	//
 	// ggxw4lnjuz@54364d85b97dc56
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The region ID. Default value: cn-hangzhou.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -54089,6 +54473,12 @@ type QueryCommercialUsageRequest struct {
 	// 1699286400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time interval between data slices. Unit: seconds. Minimum value: 3600.
+	//
+	// Valid values:
+	//
+	// 	- 3600: hours
+	//
+	// 	- 86400: days
 	//
 	// example:
 	//
@@ -65347,7 +65737,7 @@ type UpdateRumAppRequest struct {
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// Set the application service domain name, support creation, modification, and deletion of service domain name configuration.
+	// The service domain name of the application. You can create, modify, and delete service domain name configurations.
 	//
 	// example:
 	//
@@ -68851,7 +69241,7 @@ func (client *Client) AddRecordingRule(request *AddRecordingRuleRequest) (_resul
 
 // Summary:
 //
-// Associates a Prometheus instance with the ID and name of a Flink workspace.
+// Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
 //
 // @param request - AddTagToFlinkClusterRequest
 //
@@ -68913,7 +69303,7 @@ func (client *Client) AddTagToFlinkClusterWithOptions(request *AddTagToFlinkClus
 
 // Summary:
 //
-// Associates a Prometheus instance with the ID and name of a Flink workspace.
+// Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
 //
 // @param request - AddTagToFlinkClusterRequest
 //
@@ -71145,6 +71535,19 @@ func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUp
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTimeType)) {
+		query["EffectiveTimeType"] = request.EffectiveTimeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePeriod)) {
+		query["TimePeriod"] = request.TimePeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeSlots)) {
+		query["TimeSlots"] = request.TimeSlots
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
@@ -71167,7 +71570,8 @@ func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUp
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateOrUpdateSilencePolicy"),
@@ -77711,7 +78115,11 @@ func (client *Client) GetRumExceptionStack(request *GetRumExceptionStackRequest)
 
 // Summary:
 //
-// 获取RUM OCU统计数据
+// Queries the observability capacity unit (OCU) usage data of Real User Monitoring (RUM).
+//
+// Description:
+//
+// You can query the usage data for the current day at any time. You can query the usage data for the previous day only after 8:00 today.
 //
 // @param tmpReq - GetRumOcuStatisticDataRequest
 //
@@ -77759,7 +78167,11 @@ func (client *Client) GetRumOcuStatisticDataWithOptions(tmpReq *GetRumOcuStatist
 
 // Summary:
 //
-// 获取RUM OCU统计数据
+// Queries the observability capacity unit (OCU) usage data of Real User Monitoring (RUM).
+//
+// Description:
+//
+// You can query the usage data for the current day at any time. You can query the usage data for the previous day only after 8:00 today.
 //
 // @param request - GetRumOcuStatisticDataRequest
 //
