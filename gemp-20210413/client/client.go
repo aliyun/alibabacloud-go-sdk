@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -119,14 +116,29 @@ func (s *DataProblemLevelGroupValue) SetUpgradeTimeWindowUnit(v string) *DataPro
 }
 
 type DataValue struct {
+	// example:
+	//
+	// SMS
 	Code              *string `json:"code,omitempty" xml:"code,omitempty"`
 	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
 	ConfigDescription *string `json:"configDescription,omitempty" xml:"configDescription,omitempty"`
-	ConfigCode        *string `json:"configCode,omitempty" xml:"configCode,omitempty"`
-	ParentCode        *string `json:"parentCode,omitempty" xml:"parentCode,omitempty"`
-	ConfigKey         *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
-	ConfigValue       *string `json:"configValue,omitempty" xml:"configValue,omitempty"`
-	Requirement       *bool   `json:"requirement,omitempty" xml:"requirement,omitempty"`
+	// example:
+	//
+	// PROBLEM_REASON_DISASTER
+	ConfigCode *string `json:"configCode,omitempty" xml:"configCode,omitempty"`
+	// example:
+	//
+	// PROBLEM_REASON
+	ParentCode *string `json:"parentCode,omitempty" xml:"parentCode,omitempty"`
+	// example:
+	//
+	// 2
+	ConfigKey   *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
+	ConfigValue *string `json:"configValue,omitempty" xml:"configValue,omitempty"`
+	// example:
+	//
+	// true
+	Requirement *bool `json:"requirement,omitempty" xml:"requirement,omitempty"`
 }
 
 func (s DataValue) String() string {
@@ -178,6 +190,9 @@ func (s *DataValue) SetRequirement(v bool) *DataValue {
 }
 
 type AddProblemServiceGroupRequest struct {
+	// example:
+	//
+	// 10
 	ProblemId       *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
@@ -202,6 +217,10 @@ func (s *AddProblemServiceGroupRequest) SetServiceGroupIds(v []*int64) *AddProbl
 
 type AddProblemServiceGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 5AD6E6BC-2582-4E0E-832D-52CB1B922253
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -219,9 +238,9 @@ func (s *AddProblemServiceGroupResponseBody) SetRequestId(v string) *AddProblemS
 }
 
 type AddProblemServiceGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddProblemServiceGroupResponse) String() string {
@@ -408,9 +427,9 @@ func (s *BillingStatisticsResponseBodyData) SetVoiceSendFree(v int64) *BillingSt
 }
 
 type BillingStatisticsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BillingStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BillingStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BillingStatisticsResponse) String() string {
@@ -437,11 +456,26 @@ func (s *BillingStatisticsResponse) SetBody(v *BillingStatisticsResponseBody) *B
 }
 
 type CancelProblemRequest struct {
-	CancelReason            *int64  `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
+	// example:
+	//
+	// 取消原因
+	CancelReason *int64 `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
+	// example:
+	//
+	// 原因描述
 	CancelReasonDescription *string `json:"cancelReasonDescription,omitempty" xml:"cancelReasonDescription,omitempty"`
-	ClientToken             *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId               *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemNotifyType       *int64  `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 312
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// PROBLEM_NOTIFY
+	ProblemNotifyType *int64 `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
 func (s CancelProblemRequest) String() string {
@@ -479,6 +513,10 @@ func (s *CancelProblemRequest) SetProblemNotifyType(v int64) *CancelProblemReque
 
 type CancelProblemResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// B81E84B5-8FD1-45F3-969A-B5067AADCFFF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -496,9 +534,9 @@ func (s *CancelProblemResponseBody) SetRequestId(v string) *CancelProblemRespons
 }
 
 type CancelProblemResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelProblemResponse) String() string {
@@ -525,8 +563,17 @@ func (s *CancelProblemResponse) SetBody(v *CancelProblemResponseBody) *CancelPro
 }
 
 type CheckWebhookRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Webhook     *string `json:"webhook,omitempty" xml:"webhook,omitempty"`
+	// example:
+	//
+	// https://oapi.dingtalk.com/robot/send?access_token=XXX
+	Webhook *string `json:"webhook,omitempty" xml:"webhook,omitempty"`
+	// example:
+	//
+	// DING_GROUP
 	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
@@ -555,6 +602,10 @@ func (s *CheckWebhookRequest) SetWebhookType(v string) *CheckWebhookRequest {
 
 type CheckWebhookResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -572,9 +623,9 @@ func (s *CheckWebhookResponseBody) SetRequestId(v string) *CheckWebhookResponseB
 }
 
 type CheckWebhookResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckWebhookResponse) String() string {
@@ -601,8 +652,14 @@ func (s *CheckWebhookResponse) SetBody(v *CheckWebhookResponseBody) *CheckWebhoo
 }
 
 type ConfirmIntegrationConfigRequest struct {
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 101
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s ConfirmIntegrationConfigRequest) String() string {
@@ -625,6 +682,10 @@ func (s *ConfirmIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Confi
 
 type ConfirmIntegrationConfigResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -642,9 +703,9 @@ func (s *ConfirmIntegrationConfigResponseBody) SetRequestId(v string) *ConfirmIn
 }
 
 type ConfirmIntegrationConfigResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfirmIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfirmIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfirmIntegrationConfigResponse) String() string {
@@ -672,10 +733,26 @@ func (s *ConfirmIntegrationConfigResponse) SetBody(v *ConfirmIntegrationConfigRe
 
 type CreateEscalationPlanRequest struct {
 	// clientToken
-	ClientToken                *string                                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanDescription  *string                                                  `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
-	EscalationPlanName         *string                                                  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	EscalationPlanRules        []*CreateEscalationPlanRequestEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 6b404f14-77d1-4b53-a1a1-30a58bREQUEST
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desc2322424
+	EscalationPlanDescription *string `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name123
+	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	// This parameter is required.
+	EscalationPlanRules []*CreateEscalationPlanRequestEscalationPlanRules `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
+	// This parameter is required.
 	EscalationPlanScopeObjects []*CreateEscalationPlanRequestEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
 	IsGlobal                   *bool                                                    `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
 }
@@ -719,9 +796,14 @@ func (s *CreateEscalationPlanRequest) SetIsGlobal(v bool) *CreateEscalationPlanR
 }
 
 type CreateEscalationPlanRequestEscalationPlanRules struct {
+	// This parameter is required.
 	EscalationPlanConditions []*CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions `json:"escalationPlanConditions,omitempty" xml:"escalationPlanConditions,omitempty" type:"Repeated"`
+	// This parameter is required.
 	EscalationPlanStrategies []*CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies `json:"escalationPlanStrategies,omitempty" xml:"escalationPlanStrategies,omitempty" type:"Repeated"`
-	EscalationPlanType       *string                                                                   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	// example:
+	//
+	// UN_FINISH
+	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRules) String() string {
@@ -748,8 +830,18 @@ func (s *CreateEscalationPlanRequestEscalationPlanRules) SetEscalationPlanType(v
 }
 
 type CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LOW
 	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P1
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions) String() string {
@@ -771,13 +863,25 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions)
 }
 
 type CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies struct {
-	EnableWebhook      *bool     `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	EscalationPlanType *string   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	NoticeChannels     []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	NoticeObjects      []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
-	NoticeRoleList     []*int64  `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
-	NoticeTime         *string   `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupIds    []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableWebhook      *bool   `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	// This parameter is required.
+	NoticeChannels []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	// This parameter is required.
+	NoticeObjects  []*int64 `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
+	NoticeRoleList []*int64 `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40
+	NoticeTime      *string  `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -824,8 +928,16 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 }
 
 type CreateEscalationPlanRequestEscalationPlanScopeObjects struct {
-	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23433
+	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanScopeObjects) String() string {
@@ -850,6 +962,10 @@ type CreateEscalationPlanResponseBody struct {
 	// data
 	Data *CreateEscalationPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC21925D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -872,6 +988,9 @@ func (s *CreateEscalationPlanResponseBody) SetRequestId(v string) *CreateEscalat
 }
 
 type CreateEscalationPlanResponseBodyData struct {
+	// example:
+	//
+	// 234532
 	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
@@ -889,9 +1008,9 @@ func (s *CreateEscalationPlanResponseBodyData) SetEscalationPlanId(v int64) *Cre
 }
 
 type CreateEscalationPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEscalationPlanResponse) String() string {
@@ -918,15 +1037,34 @@ func (s *CreateEscalationPlanResponse) SetBody(v *CreateEscalationPlanResponseBo
 }
 
 type CreateIncidentRequest struct {
-	AssignUserId        *int64    `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	Channels            []*string `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	ClientToken         *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Effect              *string   `json:"effect,omitempty" xml:"effect,omitempty"`
-	IncidentDescription *string   `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
-	IncidentLevel       *string   `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	IncidentTitle       *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	RelatedServiceId    *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// example:
+	//
+	// 12312
+	AssignUserId *int64    `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	Channels     []*string `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2b63cdef-7ac3-4892-a76d-0f3389ef729f
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// LOW
+	Effect              *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentDescription *string `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
+	// example:
+	//
+	// P1
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	// example:
+	//
+	// 12312
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 	// 12000
+	//
+	// example:
+	//
+	// 12312
 	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
@@ -987,6 +1125,10 @@ type CreateIncidentResponseBody struct {
 	// Id of the request
 	Data *CreateIncidentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1026,9 +1168,9 @@ func (s *CreateIncidentResponseBodyData) SetIncidentId(v int64) *CreateIncidentR
 }
 
 type CreateIncidentResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateIncidentResponse) String() string {
@@ -1055,9 +1197,20 @@ func (s *CreateIncidentResponse) SetBody(v *CreateIncidentResponseBody) *CreateI
 }
 
 type CreateIncidentSubtotalRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12312
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s CreateIncidentSubtotalRequest) String() string {
@@ -1087,6 +1240,10 @@ type CreateIncidentSubtotalResponseBody struct {
 	// data
 	Data *CreateIncidentSubtotalResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1109,6 +1266,9 @@ func (s *CreateIncidentSubtotalResponseBody) SetRequestId(v string) *CreateIncid
 }
 
 type CreateIncidentSubtotalResponseBodyData struct {
+	// example:
+	//
+	// 123
 	SubtotalId *int64 `json:"subtotalId,omitempty" xml:"subtotalId,omitempty"`
 }
 
@@ -1126,9 +1286,9 @@ func (s *CreateIncidentSubtotalResponseBodyData) SetSubtotalId(v int64) *CreateI
 }
 
 type CreateIncidentSubtotalResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateIncidentSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIncidentSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateIncidentSubtotalResponse) String() string {
@@ -1155,8 +1315,14 @@ func (s *CreateIncidentSubtotalResponse) SetBody(v *CreateIncidentSubtotalRespon
 }
 
 type CreateIntegrationConfigRequest struct {
-	ClientToken     *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	MonitorSourceId *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 }
 
 func (s CreateIntegrationConfigRequest) String() string {
@@ -1181,6 +1347,10 @@ type CreateIntegrationConfigResponseBody struct {
 	// data
 	Data *CreateIntegrationConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the request
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1203,6 +1373,9 @@ func (s *CreateIntegrationConfigResponseBody) SetRequestId(v string) *CreateInte
 }
 
 type CreateIntegrationConfigResponseBodyData struct {
+	// example:
+	//
+	// 101
 	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
@@ -1220,9 +1393,9 @@ func (s *CreateIntegrationConfigResponseBodyData) SetIntegrationConfigId(v int64
 }
 
 type CreateIntegrationConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateIntegrationConfigResponse) String() string {
@@ -1249,21 +1422,60 @@ func (s *CreateIntegrationConfigResponse) SetBody(v *CreateIntegrationConfigResp
 }
 
 type CreateProblemRequest struct {
-	AffectServiceIds          []*int64 `json:"affectServiceIds,omitempty" xml:"affectServiceIds,omitempty" type:"Repeated"`
-	ClientToken               *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	DiscoverTime              *string  `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	IncidentId                *int64   `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	MainHandlerId             *int64   `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	PreliminaryReason         *string  `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
-	ProblemLevel              *string  `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	ProblemName               *string  `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	ProblemNotifyType         *string  `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
-	ProblemStatus             *string  `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	ProgressSummary           *string  `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	ProgressSummaryRichTextId *int64   `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	RecoveryTime              *string  `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
-	RelatedServiceId          *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	ServiceGroupIds           []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	AffectServiceIds []*int64 `json:"affectServiceIds,omitempty" xml:"affectServiceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// E789D869-DB13-4913-BAA8-A1F56F94B94D
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 2020-10-02 00:00:00
+	DiscoverTime *string `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	// example:
+	//
+	// 123221
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 32121
+	MainHandlerId *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	// example:
+	//
+	// 初步原因
+	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	// example:
+	//
+	// P2
+	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// 故障A
+	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	// example:
+	//
+	// PROBLEM_NOTIFY
+	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
+	// example:
+	//
+	// HANDLING
+	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	// example:
+	//
+	// 进展摘要
+	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// example:
+	//
+	// 343
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	// example:
+	//
+	// 2020-10-02 00:00:00
+	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	// example:
+	//
+	// 123122
+	RelatedServiceId *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceGroupIds  []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateProblemRequest) String() string {
@@ -1353,6 +1565,10 @@ type CreateProblemResponseBody struct {
 	// data
 	Data *CreateProblemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// E789D869-DB13-4933-BAA8-A1F56F94B94D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1375,6 +1591,9 @@ func (s *CreateProblemResponseBody) SetRequestId(v string) *CreateProblemRespons
 }
 
 type CreateProblemResponseBodyData struct {
+	// example:
+	//
+	// 321331
 	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
@@ -1392,9 +1611,9 @@ func (s *CreateProblemResponseBodyData) SetProblemId(v int64) *CreateProblemResp
 }
 
 type CreateProblemResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProblemResponse) String() string {
@@ -1422,13 +1641,34 @@ func (s *CreateProblemResponse) SetBody(v *CreateProblemResponseBody) *CreatePro
 
 type CreateProblemEffectionServiceRequest struct {
 	// clientToken
-	ClientToken *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
-	Level       *string   `json:"level,omitempty" xml:"level,omitempty"`
-	PictureUrl  []*string `json:"pictureUrl,omitempty" xml:"pictureUrl,omitempty" type:"Repeated"`
-	ProblemId   *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ServiceId   *int64    `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	Status      *string   `json:"status,omitempty" xml:"status,omitempty"`
+	//
+	// example:
+	//
+	// e0b6735e-1a04-4d6b-a625-d2350612492c
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// erdwcdc
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// P2
+	Level      *string   `json:"level,omitempty" xml:"level,omitempty"`
+	PictureUrl []*string `json:"pictureUrl,omitempty" xml:"pictureUrl,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 150000000
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 170000000
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// UN_RECOVERED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s CreateProblemEffectionServiceRequest) String() string {
@@ -1478,6 +1718,10 @@ type CreateProblemEffectionServiceResponseBody struct {
 	// data
 	Data *CreateProblemEffectionServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1500,6 +1744,9 @@ func (s *CreateProblemEffectionServiceResponseBody) SetRequestId(v string) *Crea
 }
 
 type CreateProblemEffectionServiceResponseBodyData struct {
+	// example:
+	//
+	// 6442430
 	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
 }
 
@@ -1517,9 +1764,9 @@ func (s *CreateProblemEffectionServiceResponseBodyData) SetEffectionServiceId(v 
 }
 
 type CreateProblemEffectionServiceResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProblemEffectionServiceResponse) String() string {
@@ -1546,16 +1793,48 @@ func (s *CreateProblemEffectionServiceResponse) SetBody(v *CreateProblemEffectio
 }
 
 type CreateProblemMeasureRequest struct {
-	CheckStandard  *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
-	CheckUserId    *int64  `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Content        *string `json:"content,omitempty" xml:"content,omitempty"`
-	DirectorId     *int64  `json:"directorId,omitempty" xml:"directorId,omitempty"`
+	// example:
+	//
+	// 标准
+	CheckStandard *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
+	// example:
+	//
+	// 123
+	CheckUserId *int64 `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 措施内容
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 123
+	DirectorId *int64 `json:"directorId,omitempty" xml:"directorId,omitempty"`
+	// example:
+	//
+	// 2020-01-23 00:00:00
 	PlanFinishTime *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
-	ProblemId      *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	StalkerId      *int64  `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 123
+	StalkerId *int64 `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
+	// example:
+	//
+	// IMPROVED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateProblemMeasureRequest) String() string {
@@ -1620,6 +1899,10 @@ type CreateProblemMeasureResponseBody struct {
 	// data
 	Data *CreateProblemMeasureResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1642,6 +1925,9 @@ func (s *CreateProblemMeasureResponseBody) SetRequestId(v string) *CreateProblem
 }
 
 type CreateProblemMeasureResponseBodyData struct {
+	// example:
+	//
+	// 1231
 	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
 }
 
@@ -1659,9 +1945,9 @@ func (s *CreateProblemMeasureResponseBodyData) SetMeasureId(v int64) *CreateProb
 }
 
 type CreateProblemMeasureResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProblemMeasureResponse) String() string {
@@ -1688,9 +1974,17 @@ func (s *CreateProblemMeasureResponse) SetBody(v *CreateProblemMeasureResponseBo
 }
 
 type CreateProblemSubtotalRequest struct {
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3814
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1231
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s CreateProblemSubtotalRequest) String() string {
@@ -1720,6 +2014,10 @@ type CreateProblemSubtotalResponseBody struct {
 	// object
 	Data *CreateProblemSubtotalResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd381A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1742,6 +2040,9 @@ func (s *CreateProblemSubtotalResponseBody) SetRequestId(v string) *CreateProble
 }
 
 type CreateProblemSubtotalResponseBodyData struct {
+	// example:
+	//
+	// 123
 	SubtotalId *int64 `json:"subtotalId,omitempty" xml:"subtotalId,omitempty"`
 }
 
@@ -1759,9 +2060,9 @@ func (s *CreateProblemSubtotalResponseBodyData) SetSubtotalId(v int64) *CreatePr
 }
 
 type CreateProblemSubtotalResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProblemSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProblemSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProblemSubtotalResponse) String() string {
@@ -1788,11 +2089,28 @@ func (s *CreateProblemSubtotalResponse) SetBody(v *CreateProblemSubtotalResponse
 }
 
 type CreateProblemTimelineRequest struct {
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378FTOKENA11
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
-	KeyNode     *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
-	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	Time        *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// test123
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// NodeTest
+	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 102
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 2021-06-06 12:11:22
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 }
 
 func (s CreateProblemTimelineRequest) String() string {
@@ -1832,6 +2150,10 @@ type CreateProblemTimelineResponseBody struct {
 	// data
 	Data *CreateProblemTimelineResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1854,6 +2176,9 @@ func (s *CreateProblemTimelineResponseBody) SetRequestId(v string) *CreateProble
 }
 
 type CreateProblemTimelineResponseBodyData struct {
+	// example:
+	//
+	// 102
 	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
 }
 
@@ -1871,9 +2196,9 @@ func (s *CreateProblemTimelineResponseBodyData) SetProblemTimelineId(v int64) *C
 }
 
 type CreateProblemTimelineResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProblemTimelineResponse) String() string {
@@ -1901,8 +2226,20 @@ func (s *CreateProblemTimelineResponse) SetBody(v *CreateProblemTimelineResponse
 
 type CreateProblemTimelinesRequest struct {
 	// clientToken
-	ClientToken   *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId     *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	//
+	// example:
+	//
+	// e0b6735e-1a04-4d6b-a625-d2350612492c
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 423
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 2018-01-01 18:01，谁做了什么事情\n2018-01-01 18:01，谁做了什么事情\n2018-01-01 18:01，谁做了什么事情
 	TimelineNodes *string `json:"timelineNodes,omitempty" xml:"timelineNodes,omitempty"`
 }
 
@@ -1933,6 +2270,10 @@ type CreateProblemTimelinesResponseBody struct {
 	// data
 	Data *CreateProblemTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1972,9 +2313,9 @@ func (s *CreateProblemTimelinesResponseBodyData) SetProblemTimelineIds(v []*int6
 }
 
 type CreateProblemTimelinesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProblemTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProblemTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProblemTimelinesResponse) String() string {
@@ -2001,9 +2342,18 @@ func (s *CreateProblemTimelinesResponse) SetBody(v *CreateProblemTimelinesRespon
 }
 
 type CreateRichTextRequest struct {
-	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 12221
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// INCIDENT 事件 ALERT告警 PROBLEM故障
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	// example:
+	//
+	// 这是一个富文本
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
 }
 
 func (s CreateRichTextRequest) String() string {
@@ -2033,6 +2383,10 @@ type CreateRichTextResponseBody struct {
 	// data
 	Data *CreateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -2055,9 +2409,18 @@ func (s *CreateRichTextResponseBody) SetRequestId(v string) *CreateRichTextRespo
 }
 
 type CreateRichTextResponseBodyData struct {
-	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType *int64  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	// example:
+	//
+	// 1231
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 0 事件 1告警 2 故障
+	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// example:
+	//
+	// 这是一个富文本
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
 }
 
 func (s CreateRichTextResponseBodyData) String() string {
@@ -2084,9 +2447,9 @@ func (s *CreateRichTextResponseBodyData) SetRichText(v string) *CreateRichTextRe
 }
 
 type CreateRichTextResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRichTextResponse) String() string {
@@ -2113,26 +2476,89 @@ func (s *CreateRichTextResponse) SetBody(v *CreateRichTextResponseBody) *CreateR
 }
 
 type CreateRouteRuleRequest struct {
-	AssignObjectId           *int64                                   `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	AssignObjectType         *string                                  `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	ChildRuleRelation        *string                                  `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
-	ClientToken              *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ConvergenceFields        []*string                                `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
-	ConvergenceType          *int32                                   `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
-	CoverageProblemLevels    []*string                                `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
-	Effection                *string                                  `json:"effection,omitempty" xml:"effection,omitempty"`
-	EnableStatus             *string                                  `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	IncidentLevel            *string                                  `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	MatchCount               *int32                                   `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
-	NotifyChannels           []*string                                `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	ProblemEffectionServices []*int64                                 `json:"problemEffectionServices,omitempty" xml:"problemEffectionServices,omitempty" type:"Repeated"`
-	ProblemLevelGroup        map[string]*ProblemLevelGroupValue       `json:"problemLevelGroup,omitempty" xml:"problemLevelGroup,omitempty"`
-	RelatedServiceId         *int64                                   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	RouteChildRules          []*CreateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
-	RouteType                *string                                  `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	RuleName                 *string                                  `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	TimeWindow               *int64                                   `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	TimeWindowUnit           *string                                  `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65
+	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SERVICEGROUP
+	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AND
+	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken           *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ConvergenceFields     []*string `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
+	ConvergenceType       *int32    `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
+	CoverageProblemLevels []*string `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LOW
+	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	// example:
+	//
+	// false
+	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P1
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	MatchCount *int32 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	// This parameter is required.
+	NotifyChannels           []*string                          `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	ProblemEffectionServices []*int64                           `json:"problemEffectionServices,omitempty" xml:"problemEffectionServices,omitempty" type:"Repeated"`
+	ProblemLevelGroup        map[string]*ProblemLevelGroupValue `json:"problemLevelGroup,omitempty" xml:"problemLevelGroup,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// This parameter is required.
+	RouteChildRules []*CreateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INCIDENT
+	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 这是一个规则
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	TimeWindow *int64 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINUTE
+	TimeWindowUnit *string `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
 }
 
 func (s CreateRouteRuleRequest) String() string {
@@ -2244,10 +2670,19 @@ func (s *CreateRouteRuleRequest) SetTimeWindowUnit(v string) *CreateRouteRuleReq
 }
 
 type CreateRouteRuleRequestRouteChildRules struct {
-	ChildConditionRelation *int64                                             `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
-	Conditions             []*CreateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	MonitorSourceId        *int64                                             `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	ProblemLevel           *string                                            `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// 0
+	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
+	// This parameter is required.
+	Conditions []*CreateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MonitorSourceId *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	ProblemLevel    *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
 }
 
 func (s CreateRouteRuleRequestRouteChildRules) String() string {
@@ -2279,9 +2714,24 @@ func (s *CreateRouteRuleRequestRouteChildRules) SetProblemLevel(v string) *Creat
 }
 
 type CreateRouteRuleRequestRouteChildRulesConditions struct {
-	Key             *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// payload.summary
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// equals
 	OperationSymbol *string `json:"operationSymbol,omitempty" xml:"operationSymbol,omitempty"`
-	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s CreateRouteRuleRequestRouteChildRulesConditions) String() string {
@@ -2308,8 +2758,14 @@ func (s *CreateRouteRuleRequestRouteChildRulesConditions) SetValue(v string) *Cr
 }
 
 type CreateRouteRuleResponseBody struct {
-	Data      *CreateRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 65
+	Data *CreateRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateRouteRuleResponseBody) String() string {
@@ -2331,6 +2787,9 @@ func (s *CreateRouteRuleResponseBody) SetRequestId(v string) *CreateRouteRuleRes
 }
 
 type CreateRouteRuleResponseBodyData struct {
+	// example:
+	//
+	// 1000
 	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
@@ -2348,9 +2807,9 @@ func (s *CreateRouteRuleResponseBodyData) SetRouteRuleId(v int64) *CreateRouteRu
 }
 
 type CreateRouteRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRouteRuleResponse) String() string {
@@ -2377,11 +2836,22 @@ func (s *CreateRouteRuleResponse) SetBody(v *CreateRouteRuleResponseBody) *Creat
 }
 
 type CreateServiceRequest struct {
-	ClientToken        *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 服务描述
 	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
 	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
-	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 服务名称
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -2418,8 +2888,15 @@ func (s *CreateServiceRequest) SetServiceName(v string) *CreateServiceRequest {
 }
 
 type CreateServiceResponseBody struct {
+	// example:
+	//
+	// 1
 	Data *CreateServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -2442,6 +2919,9 @@ func (s *CreateServiceResponseBody) SetRequestId(v string) *CreateServiceRespons
 }
 
 type CreateServiceResponseBodyData struct {
+	// example:
+	//
+	// 1
 	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
@@ -2459,9 +2939,9 @@ func (s *CreateServiceResponseBodyData) SetServiceId(v int64) *CreateServiceResp
 }
 
 type CreateServiceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceResponse) String() string {
@@ -2488,14 +2968,42 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 }
 
 type CreateServiceGroupRequest struct {
-	ClientToken             *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EnableWebhook           *string                                            `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	MonitorSourceTemplates  []*CreateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
-	ServiceGroupDescription *string                                            `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	ServiceGroupName        *string                                            `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	UserIds                 []*int64                                           `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ENABLE
+	EnableWebhook          *string                                            `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	MonitorSourceTemplates []*CreateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 服务描述
+	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 冲上云霄
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// This parameter is required.
+	UserIds []*int64 `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
 	// webhooklink
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WWWWWWW
 	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WEIXIN_GROUP
 	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
@@ -2548,10 +3056,22 @@ func (s *CreateServiceGroupRequest) SetWebhookType(v string) *CreateServiceGroup
 }
 
 type CreateServiceGroupRequestMonitorSourceTemplates struct {
-	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// 111
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	TemplateContent   *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
-	TemplateId        *int64  `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// xx
+	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	// example:
+	//
+	// 111
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
 func (s CreateServiceGroupRequestMonitorSourceTemplates) String() string {
@@ -2583,8 +3103,15 @@ func (s *CreateServiceGroupRequestMonitorSourceTemplates) SetTemplateId(v int64)
 }
 
 type CreateServiceGroupResponseBody struct {
+	// example:
+	//
+	// 1
 	Data *CreateServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -2607,6 +3134,9 @@ func (s *CreateServiceGroupResponseBody) SetRequestId(v string) *CreateServiceGr
 }
 
 type CreateServiceGroupResponseBodyData struct {
+	// example:
+	//
+	// 1000
 	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
@@ -2624,9 +3154,9 @@ func (s *CreateServiceGroupResponseBodyData) SetServiceGroupId(v int64) *CreateS
 }
 
 type CreateServiceGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceGroupResponse) String() string {
@@ -2653,11 +3183,27 @@ func (s *CreateServiceGroupResponse) SetBody(v *CreateServiceGroupResponseBody) 
 }
 
 type CreateServiceGroupSchedulingRequest struct {
-	ClientToken    *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 12
 	FastScheduling *CreateServiceGroupSchedulingRequestFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
 	FineScheduling *CreateServiceGroupSchedulingRequestFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	SchedulingWay  *string                                            `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	ServiceGroupId *int64                                             `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FAST
+	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequest) String() string {
@@ -2694,10 +3240,19 @@ func (s *CreateServiceGroupSchedulingRequest) SetServiceGroupId(v int64) *Create
 }
 
 type CreateServiceGroupSchedulingRequestFastScheduling struct {
-	DutyPlan           *string                                                             `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
-	SchedulingUsers    []*CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	SingleDuration     *int32                                                              `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
-	SingleDurationUnit *string                                                             `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
+	// example:
+	//
+	// FAST_CHOICE
+	DutyPlan        *string                                                             `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
+	SchedulingUsers []*CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
+	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	// example:
+	//
+	// DAY
+	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFastScheduling) String() string {
@@ -2729,8 +3284,14 @@ func (s *CreateServiceGroupSchedulingRequestFastScheduling) SetSingleDurationUni
 }
 
 type CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers struct {
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 6666
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 }
@@ -2764,11 +3325,20 @@ func (s *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSc
 }
 
 type CreateServiceGroupSchedulingRequestFineScheduling struct {
-	Period                       *int32                                                                           `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// DAY
 	PeriodUnit                   *string                                                                          `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
 	SchedulingFineShifts         []*CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts         `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
 	SchedulingTemplateFineShifts []*CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts `json:"schedulingTemplateFineShifts,omitempty" xml:"schedulingTemplateFineShifts,omitempty" type:"Repeated"`
-	ShiftType                    *string                                                                          `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	// example:
+	//
+	// MORNING_NIGHT
+	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineScheduling) String() string {
@@ -2805,15 +3375,36 @@ func (s *CreateServiceGroupSchedulingRequestFineScheduling) SetShiftType(v strin
 }
 
 type CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts struct {
-	CycleOrder           *int32   `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 1
+	CycleOrder *int32 `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	// example:
+	//
+	// 2020-10-13
+	SchedulingEndTime    *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2020-08-13
+	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 11
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
-	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	// example:
+	//
+	// 早班
+	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	// example:
+	//
+	// fasle
+	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -2870,14 +3461,29 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 }
 
 type CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts struct {
-	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 2021-10-01 08:00:00
+	SchedulingEndTime    *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2021-09-01 08:00:00
+	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 1
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	// example:
+	//
+	// false
+	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -2930,6 +3536,10 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 
 type CreateServiceGroupSchedulingResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -2947,9 +3557,9 @@ func (s *CreateServiceGroupSchedulingResponseBody) SetRequestId(v string) *Creat
 }
 
 type CreateServiceGroupSchedulingResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingResponse) String() string {
@@ -2976,17 +3586,52 @@ func (s *CreateServiceGroupSchedulingResponse) SetBody(v *CreateServiceGroupSche
 }
 
 type CreateSubscriptionRequest struct {
-	ClientToken        *string                                        `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EndTime            *string                                        `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ExpiredType        *int64                                         `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	NotifyObjectList   []*CreateSubscriptionRequestNotifyObjectList   `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
-	NotifyObjectType   *int64                                         `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378FTOKENA11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 2021-11-03 10:10:10
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LONG_TERM
+	ExpiredType *int64 `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	// This parameter is required.
+	NotifyObjectList []*CreateSubscriptionRequestNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// USER
+	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// This parameter is required.
 	NotifyStrategyList []*CreateSubscriptionRequestNotifyStrategyList `json:"notifyStrategyList,omitempty" xml:"notifyStrategyList,omitempty" type:"Repeated"`
-	Period             *string                                        `json:"period,omitempty" xml:"period,omitempty"`
-	Scope              *int64                                         `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectList    []*CreateSubscriptionRequestScopeObjectList    `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	StartTime          *string                                        `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	SubscriptionTitle  *string                                        `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	// example:
+	//
+	// 1个月
+	Period *string `json:"period,omitempty" xml:"period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SERVICE
+	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	ScopeObjectList []*CreateSubscriptionRequestScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-02-03 10:10:10
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testSubscription
+	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s CreateSubscriptionRequest) String() string {
@@ -3053,6 +3698,11 @@ func (s *CreateSubscriptionRequest) SetSubscriptionTitle(v string) *CreateSubscr
 }
 
 type CreateSubscriptionRequestNotifyObjectList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
 }
 
@@ -3070,10 +3720,21 @@ func (s *CreateSubscriptionRequestNotifyObjectList) SetNotifyObjectId(v int64) *
 }
 
 type CreateSubscriptionRequestNotifyStrategyList struct {
-	Channels      *string                                                   `json:"channels,omitempty" xml:"channels,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS,PHONE
+	Channels *string `json:"channels,omitempty" xml:"channels,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INCIDENT
 	InstanceType  *int64                                                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	PeriodChannel *CreateSubscriptionRequestNotifyStrategyListPeriodChannel `json:"periodChannel,omitempty" xml:"periodChannel,omitempty" type:"Struct"`
-	Strategies    []*CreateSubscriptionRequestNotifyStrategyListStrategies  `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Strategies []*CreateSubscriptionRequestNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
 }
 
 func (s CreateSubscriptionRequestNotifyStrategyList) String() string {
@@ -3105,8 +3766,14 @@ func (s *CreateSubscriptionRequestNotifyStrategyList) SetStrategies(v []*CreateS
 }
 
 type CreateSubscriptionRequestNotifyStrategyListPeriodChannel struct {
+	// example:
+	//
+	// SMS,PHONE
 	NonWorkday *string `json:"nonWorkday,omitempty" xml:"nonWorkday,omitempty"`
-	Workday    *string `json:"workday,omitempty" xml:"workday,omitempty"`
+	// example:
+	//
+	// SMS,PHONE
+	Workday *string `json:"workday,omitempty" xml:"workday,omitempty"`
 }
 
 func (s CreateSubscriptionRequestNotifyStrategyListPeriodChannel) String() string {
@@ -3145,9 +3812,21 @@ func (s *CreateSubscriptionRequestNotifyStrategyListStrategies) SetConditions(v 
 }
 
 type CreateSubscriptionRequestNotifyStrategyListStrategiesConditions struct {
-	Action            *string `json:"action,omitempty" xml:"action,omitempty"`
-	Effection         *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	Level             *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// INCIDENT_TRIGGER
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// HIGH
+	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	// example:
+	//
+	// P1
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// PROBLEM_UPDATE
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -3180,6 +3859,11 @@ func (s *CreateSubscriptionRequestNotifyStrategyListStrategiesConditions) SetPro
 }
 
 type CreateSubscriptionRequestScopeObjectList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
@@ -3200,6 +3884,10 @@ type CreateSubscriptionResponseBody struct {
 	// data
 	Data *CreateSubscriptionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// request id
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3222,6 +3910,9 @@ func (s *CreateSubscriptionResponseBody) SetRequestId(v string) *CreateSubscript
 }
 
 type CreateSubscriptionResponseBodyData struct {
+	// example:
+	//
+	// 101
 	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 }
 
@@ -3239,9 +3930,9 @@ func (s *CreateSubscriptionResponseBodyData) SetSubscriptionId(v int64) *CreateS
 }
 
 type CreateSubscriptionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSubscriptionResponse) String() string {
@@ -3268,7 +3959,17 @@ func (s *CreateSubscriptionResponse) SetBody(v *CreateSubscriptionResponseBody) 
 }
 
 type CreateTenantApplicationRequest struct {
-	Channel     *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DINGDING
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7C56D225-7C34-40BB-9624-C8BA449260E6
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -3294,6 +3995,10 @@ type CreateTenantApplicationResponseBody struct {
 	// data
 	Data *CreateTenantApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the req
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3316,7 +4021,13 @@ func (s *CreateTenantApplicationResponseBody) SetRequestId(v string) *CreateTena
 }
 
 type CreateTenantApplicationResponseBodyData struct {
-	OpenUrl  *string `json:"openUrl,omitempty" xml:"openUrl,omitempty"`
+	// example:
+	//
+	// http://xxxx
+	OpenUrl *string `json:"openUrl,omitempty" xml:"openUrl,omitempty"`
+	// example:
+	//
+	// OPENED 已开通 OPENING 开通中
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
 }
 
@@ -3339,9 +4050,9 @@ func (s *CreateTenantApplicationResponseBodyData) SetProgress(v string) *CreateT
 }
 
 type CreateTenantApplicationResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTenantApplicationResponse) String() string {
@@ -3368,12 +4079,24 @@ func (s *CreateTenantApplicationResponse) SetBody(v *CreateTenantApplicationResp
 }
 
 type CreateUserRequest struct {
-	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Email       *string  `json:"email,omitempty" xml:"email,omitempty"`
-	Phone       *string  `json:"phone,omitempty" xml:"phone,omitempty"`
-	RamId       *int64   `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	RoleIdList  []*int64 `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
-	Username    *string  `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 5678@qq.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 188898989892
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 4787654378343
+	RamId      *int64   `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	RoleIdList []*int64 `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
+	Username   *string  `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -3418,6 +4141,10 @@ type CreateUserResponseBody struct {
 	// data
 	Data *CreateUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3440,6 +4167,9 @@ func (s *CreateUserResponseBody) SetRequestId(v string) *CreateUserResponseBody 
 }
 
 type CreateUserResponseBodyData struct {
+	// example:
+	//
+	// 1
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -3457,9 +4187,9 @@ func (s *CreateUserResponseBodyData) SetUserId(v int64) *CreateUserResponseBodyD
 }
 
 type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -3486,8 +4216,16 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type DeleteEscalationPlanRequest struct {
-	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234534
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s DeleteEscalationPlanRequest) String() string {
@@ -3510,6 +4248,10 @@ func (s *DeleteEscalationPlanRequest) SetEscalationPlanId(v int64) *DeleteEscala
 
 type DeleteEscalationPlanResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC21925D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3527,9 +4269,9 @@ func (s *DeleteEscalationPlanResponseBody) SetRequestId(v string) *DeleteEscalat
 }
 
 type DeleteEscalationPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEscalationPlanResponse) String() string {
@@ -3556,8 +4298,14 @@ func (s *DeleteEscalationPlanResponse) SetBody(v *DeleteEscalationPlanResponseBo
 }
 
 type DeleteIncidentRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 12321
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s DeleteIncidentRequest) String() string {
@@ -3580,6 +4328,10 @@ func (s *DeleteIncidentRequest) SetIncidentId(v int64) *DeleteIncidentRequest {
 
 type DeleteIncidentResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3597,9 +4349,9 @@ func (s *DeleteIncidentResponseBody) SetRequestId(v string) *DeleteIncidentRespo
 }
 
 type DeleteIncidentResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteIncidentResponse) String() string {
@@ -3626,8 +4378,14 @@ func (s *DeleteIncidentResponse) SetBody(v *DeleteIncidentResponseBody) *DeleteI
 }
 
 type DeleteIntegrationConfigRequest struct {
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 100
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s DeleteIntegrationConfigRequest) String() string {
@@ -3650,6 +4408,10 @@ func (s *DeleteIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Delete
 
 type DeleteIntegrationConfigResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3667,9 +4429,9 @@ func (s *DeleteIntegrationConfigResponseBody) SetRequestId(v string) *DeleteInte
 }
 
 type DeleteIntegrationConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteIntegrationConfigResponse) String() string {
@@ -3696,8 +4458,14 @@ func (s *DeleteIntegrationConfigResponse) SetBody(v *DeleteIntegrationConfigResp
 }
 
 type DeleteProblemRequest struct {
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 1231
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s DeleteProblemRequest) String() string {
@@ -3720,6 +4488,10 @@ func (s *DeleteProblemRequest) SetProblemId(v int64) *DeleteProblemRequest {
 
 type DeleteProblemResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3737,9 +4509,9 @@ func (s *DeleteProblemResponseBody) SetRequestId(v string) *DeleteProblemRespons
 }
 
 type DeleteProblemResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProblemResponse) String() string {
@@ -3767,9 +4539,19 @@ func (s *DeleteProblemResponse) SetBody(v *DeleteProblemResponseBody) *DeletePro
 
 type DeleteProblemEffectionServiceRequest struct {
 	// clientToken
-	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EffectionServiceId *int64  `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	ProblemId          *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	//
+	// example:
+	//
+	// e0b6735e-1a04-4d6b-a625-d2350612492c
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 567
+	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	// example:
+	//
+	// 876
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s DeleteProblemEffectionServiceRequest) String() string {
@@ -3797,6 +4579,10 @@ func (s *DeleteProblemEffectionServiceRequest) SetProblemId(v int64) *DeleteProb
 
 type DeleteProblemEffectionServiceResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// e0b6735e-1a04-4d6b-a625-d2350612492c
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3814,9 +4600,9 @@ func (s *DeleteProblemEffectionServiceResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteProblemEffectionServiceResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProblemEffectionServiceResponse) String() string {
@@ -3843,9 +4629,18 @@ func (s *DeleteProblemEffectionServiceResponse) SetBody(v *DeleteProblemEffectio
 }
 
 type DeleteProblemMeasureRequest struct {
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	MeasureId   *int64  `json:"measureId,omitempty" xml:"measureId,omitempty"`
-	ProblemId   *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 1213
+	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
+	// example:
+	//
+	// 2131
+	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s DeleteProblemMeasureRequest) String() string {
@@ -3873,6 +4668,10 @@ func (s *DeleteProblemMeasureRequest) SetProblemId(v string) *DeleteProblemMeasu
 
 type DeleteProblemMeasureResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3890,9 +4689,9 @@ func (s *DeleteProblemMeasureResponseBody) SetRequestId(v string) *DeleteProblem
 }
 
 type DeleteProblemMeasureResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProblemMeasureResponse) String() string {
@@ -3919,9 +4718,18 @@ func (s *DeleteProblemMeasureResponse) SetBody(v *DeleteProblemMeasureResponseBo
 }
 
 type DeleteProblemTimelineRequest struct {
-	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemTimelineId *int64  `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378FTOKENA11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 102
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 11
+	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
 }
 
 func (s DeleteProblemTimelineRequest) String() string {
@@ -3949,6 +4757,10 @@ func (s *DeleteProblemTimelineRequest) SetProblemTimelineId(v int64) *DeleteProb
 
 type DeleteProblemTimelineResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3966,9 +4778,9 @@ func (s *DeleteProblemTimelineResponseBody) SetRequestId(v string) *DeleteProble
 }
 
 type DeleteProblemTimelineResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProblemTimelineResponse) String() string {
@@ -3995,8 +4807,16 @@ func (s *DeleteProblemTimelineResponse) SetBody(v *DeleteProblemTimelineResponse
 }
 
 type DeleteRouteRuleRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s DeleteRouteRuleRequest) String() string {
@@ -4018,6 +4838,9 @@ func (s *DeleteRouteRuleRequest) SetRouteRuleId(v int64) *DeleteRouteRuleRequest
 }
 
 type DeleteRouteRuleResponseBody struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *int64 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4035,9 +4858,9 @@ func (s *DeleteRouteRuleResponseBody) SetRequestId(v int64) *DeleteRouteRuleResp
 }
 
 type DeleteRouteRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRouteRuleResponse) String() string {
@@ -4064,8 +4887,14 @@ func (s *DeleteRouteRuleResponse) SetBody(v *DeleteRouteRuleResponseBody) *Delet
 }
 
 type DeleteServiceRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 10002000
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
 func (s DeleteServiceRequest) String() string {
@@ -4088,6 +4917,10 @@ func (s *DeleteServiceRequest) SetServiceId(v int64) *DeleteServiceRequest {
 
 type DeleteServiceResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4105,9 +4938,9 @@ func (s *DeleteServiceResponseBody) SetRequestId(v string) *DeleteServiceRespons
 }
 
 type DeleteServiceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteServiceResponse) String() string {
@@ -4134,8 +4967,14 @@ func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteSer
 }
 
 type DeleteServiceGroupRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1000
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s DeleteServiceGroupRequest) String() string {
@@ -4158,6 +4997,10 @@ func (s *DeleteServiceGroupRequest) SetServiceGroupId(v int64) *DeleteServiceGro
 
 type DeleteServiceGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4175,9 +5018,9 @@ func (s *DeleteServiceGroupResponseBody) SetRequestId(v string) *DeleteServiceGr
 }
 
 type DeleteServiceGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteServiceGroupResponse) String() string {
@@ -4221,9 +5064,9 @@ func (s *DeleteServiceGroupSchedulingResponseBody) SetRequestId(v string) *Delet
 }
 
 type DeleteServiceGroupSchedulingResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteServiceGroupSchedulingResponse) String() string {
@@ -4250,11 +5093,26 @@ func (s *DeleteServiceGroupSchedulingResponse) SetBody(v *DeleteServiceGroupSche
 }
 
 type DeleteServiceGroupUserRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	NewUserId      *int64  `json:"newUserId,omitempty" xml:"newUserId,omitempty"`
-	OldUserId      *int64  `json:"oldUserId,omitempty" xml:"oldUserId,omitempty"`
-	RemoveUser     *bool   `json:"removeUser,omitempty" xml:"removeUser,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 88888
+	NewUserId *int64 `json:"newUserId,omitempty" xml:"newUserId,omitempty"`
+	// example:
+	//
+	// 777777
+	OldUserId *int64 `json:"oldUserId,omitempty" xml:"oldUserId,omitempty"`
+	// example:
+	//
+	// true
+	RemoveUser *bool `json:"removeUser,omitempty" xml:"removeUser,omitempty"`
+	// example:
+	//
+	// 66666
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s DeleteServiceGroupUserRequest) String() string {
@@ -4292,6 +5150,10 @@ func (s *DeleteServiceGroupUserRequest) SetServiceGroupId(v int64) *DeleteServic
 
 type DeleteServiceGroupUserResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4309,9 +5171,9 @@ func (s *DeleteServiceGroupUserResponseBody) SetRequestId(v string) *DeleteServi
 }
 
 type DeleteServiceGroupUserResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteServiceGroupUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceGroupUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteServiceGroupUserResponse) String() string {
@@ -4338,6 +5200,9 @@ func (s *DeleteServiceGroupUserResponse) SetBody(v *DeleteServiceGroupUserRespon
 }
 
 type DeleteSubscriptionRequest struct {
+	// example:
+	//
+	// 10
 	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 }
 
@@ -4356,6 +5221,10 @@ func (s *DeleteSubscriptionRequest) SetSubscriptionId(v int64) *DeleteSubscripti
 
 type DeleteSubscriptionResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4373,9 +5242,9 @@ func (s *DeleteSubscriptionResponseBody) SetRequestId(v string) *DeleteSubscript
 }
 
 type DeleteSubscriptionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSubscriptionResponse) String() string {
@@ -4402,8 +5271,16 @@ func (s *DeleteSubscriptionResponse) SetBody(v *DeleteSubscriptionResponseBody) 
 }
 
 type DeleteUserRequest struct {
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s DeleteUserRequest) String() string {
@@ -4426,6 +5303,10 @@ func (s *DeleteUserRequest) SetUserId(v int64) *DeleteUserRequest {
 
 type DeleteUserResponseBody struct {
 	// id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4443,9 +5324,9 @@ func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody 
 }
 
 type DeleteUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -4472,9 +5353,18 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeliverIncidentRequest struct {
-	AssignUserId *int64  `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	ClientToken  *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IncidentId   *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 212321
+	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61CS9A221
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1223212
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s DeliverIncidentRequest) String() string {
@@ -4502,6 +5392,10 @@ func (s *DeliverIncidentRequest) SetIncidentId(v int64) *DeliverIncidentRequest 
 
 type DeliverIncidentResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2FS
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4519,9 +5413,9 @@ func (s *DeliverIncidentResponseBody) SetRequestId(v string) *DeliverIncidentRes
 }
 
 type DeliverIncidentResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeliverIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeliverIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeliverIncidentResponse) String() string {
@@ -4548,8 +5442,16 @@ func (s *DeliverIncidentResponse) SetBody(v *DeliverIncidentResponseBody) *Deliv
 }
 
 type DisableEscalationPlanRequest struct {
-	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234534
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s DisableEscalationPlanRequest) String() string {
@@ -4572,6 +5474,10 @@ func (s *DisableEscalationPlanRequest) SetEscalationPlanId(v int64) *DisableEsca
 
 type DisableEscalationPlanResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC21925D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4589,9 +5495,9 @@ func (s *DisableEscalationPlanResponseBody) SetRequestId(v string) *DisableEscal
 }
 
 type DisableEscalationPlanResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableEscalationPlanResponse) String() string {
@@ -4618,8 +5524,14 @@ func (s *DisableEscalationPlanResponse) SetBody(v *DisableEscalationPlanResponse
 }
 
 type DisableIntegrationConfigRequest struct {
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 12345703
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s DisableIntegrationConfigRequest) String() string {
@@ -4642,6 +5554,10 @@ func (s *DisableIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Disab
 
 type DisableIntegrationConfigResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4659,9 +5575,9 @@ func (s *DisableIntegrationConfigResponseBody) SetRequestId(v string) *DisableIn
 }
 
 type DisableIntegrationConfigResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableIntegrationConfigResponse) String() string {
@@ -4688,8 +5604,16 @@ func (s *DisableIntegrationConfigResponse) SetBody(v *DisableIntegrationConfigRe
 }
 
 type DisableRouteRuleRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s DisableRouteRuleRequest) String() string {
@@ -4712,7 +5636,16 @@ func (s *DisableRouteRuleRequest) SetRouteRuleId(v int64) *DisableRouteRuleReque
 
 type DisableRouteRuleResponseBody struct {
 	// C4BE3837-1A13-413B-A225-2C88188E8A43
-	Data      *int64  `json:"data,omitempty" xml:"data,omitempty"`
+	//
+	// example:
+	//
+	// null
+	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4735,9 +5668,9 @@ func (s *DisableRouteRuleResponseBody) SetRequestId(v string) *DisableRouteRuleR
 }
 
 type DisableRouteRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableRouteRuleResponse) String() string {
@@ -4764,8 +5697,14 @@ func (s *DisableRouteRuleResponse) SetBody(v *DisableRouteRuleResponseBody) *Dis
 }
 
 type DisableServiceGroupWebhookRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s DisableServiceGroupWebhookRequest) String() string {
@@ -4788,6 +5727,10 @@ func (s *DisableServiceGroupWebhookRequest) SetServiceGroupId(v int64) *DisableS
 
 type DisableServiceGroupWebhookResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4805,9 +5748,9 @@ func (s *DisableServiceGroupWebhookResponseBody) SetRequestId(v string) *Disable
 }
 
 type DisableServiceGroupWebhookResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableServiceGroupWebhookResponse) String() string {
@@ -4834,6 +5777,9 @@ func (s *DisableServiceGroupWebhookResponse) SetBody(v *DisableServiceGroupWebho
 }
 
 type DisableSubscriptionRequest struct {
+	// example:
+	//
+	// 89
 	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 }
 
@@ -4852,6 +5798,10 @@ func (s *DisableSubscriptionRequest) SetSubscriptionId(v int64) *DisableSubscrip
 
 type DisableSubscriptionResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4869,9 +5819,9 @@ func (s *DisableSubscriptionResponseBody) SetRequestId(v string) *DisableSubscri
 }
 
 type DisableSubscriptionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableSubscriptionResponse) String() string {
@@ -4898,8 +5848,16 @@ func (s *DisableSubscriptionResponse) SetBody(v *DisableSubscriptionResponseBody
 }
 
 type EnableEscalationPlanRequest struct {
-	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234534
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s EnableEscalationPlanRequest) String() string {
@@ -4922,6 +5880,10 @@ func (s *EnableEscalationPlanRequest) SetEscalationPlanId(v int64) *EnableEscala
 
 type EnableEscalationPlanResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC21925D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4939,9 +5901,9 @@ func (s *EnableEscalationPlanResponseBody) SetRequestId(v string) *EnableEscalat
 }
 
 type EnableEscalationPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableEscalationPlanResponse) String() string {
@@ -4968,8 +5930,14 @@ func (s *EnableEscalationPlanResponse) SetBody(v *EnableEscalationPlanResponseBo
 }
 
 type EnableIntegrationConfigRequest struct {
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 101
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s EnableIntegrationConfigRequest) String() string {
@@ -4992,6 +5960,10 @@ func (s *EnableIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Enable
 
 type EnableIntegrationConfigResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5009,9 +5981,9 @@ func (s *EnableIntegrationConfigResponseBody) SetRequestId(v string) *EnableInte
 }
 
 type EnableIntegrationConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableIntegrationConfigResponse) String() string {
@@ -5038,8 +6010,18 @@ func (s *EnableIntegrationConfigResponse) SetBody(v *EnableIntegrationConfigResp
 }
 
 type EnableRouteRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s EnableRouteRuleRequest) String() string {
@@ -5061,7 +6043,13 @@ func (s *EnableRouteRuleRequest) SetRouteRuleId(v int64) *EnableRouteRuleRequest
 }
 
 type EnableRouteRuleResponseBody struct {
-	Data      *int32  `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	Data *int32 `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5084,9 +6072,9 @@ func (s *EnableRouteRuleResponseBody) SetRequestId(v string) *EnableRouteRuleRes
 }
 
 type EnableRouteRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableRouteRuleResponse) String() string {
@@ -5113,8 +6101,14 @@ func (s *EnableRouteRuleResponse) SetBody(v *EnableRouteRuleResponseBody) *Enabl
 }
 
 type EnableServiceGroupWebhookRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s EnableServiceGroupWebhookRequest) String() string {
@@ -5137,6 +6131,10 @@ func (s *EnableServiceGroupWebhookRequest) SetServiceGroupId(v int64) *EnableSer
 
 type EnableServiceGroupWebhookResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5154,9 +6152,9 @@ func (s *EnableServiceGroupWebhookResponseBody) SetRequestId(v string) *EnableSe
 }
 
 type EnableServiceGroupWebhookResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableServiceGroupWebhookResponse) String() string {
@@ -5183,6 +6181,9 @@ func (s *EnableServiceGroupWebhookResponse) SetBody(v *EnableServiceGroupWebhook
 }
 
 type EnableSubscriptionRequest struct {
+	// example:
+	//
+	// 10
 	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 }
 
@@ -5201,6 +6202,10 @@ func (s *EnableSubscriptionRequest) SetSubscriptionId(v int64) *EnableSubscripti
 
 type EnableSubscriptionResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5218,9 +6223,9 @@ func (s *EnableSubscriptionResponseBody) SetRequestId(v string) *EnableSubscript
 }
 
 type EnableSubscriptionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableSubscriptionResponse) String() string {
@@ -5247,12 +6252,28 @@ func (s *EnableSubscriptionResponse) SetBody(v *EnableSubscriptionResponseBody) 
 }
 
 type FinishIncidentRequest struct {
-	ClientToken                       *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IncidentFinishReason              *int32   `json:"incidentFinishReason,omitempty" xml:"incidentFinishReason,omitempty"`
-	IncidentFinishReasonDescription   *string  `json:"incidentFinishReasonDescription,omitempty" xml:"incidentFinishReasonDescription,omitempty"`
-	IncidentFinishSolution            *int32   `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
-	IncidentFinishSolutionDescription *string  `json:"incidentFinishSolutionDescription,omitempty" xml:"incidentFinishSolutionDescription,omitempty"`
-	IncidentIds                       []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2DC
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1
+	IncidentFinishReason *int32 `json:"incidentFinishReason,omitempty" xml:"incidentFinishReason,omitempty"`
+	// example:
+	//
+	// 原因描述
+	IncidentFinishReasonDescription *string `json:"incidentFinishReasonDescription,omitempty" xml:"incidentFinishReasonDescription,omitempty"`
+	// example:
+	//
+	// 3
+	IncidentFinishSolution *int32 `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
+	// example:
+	//
+	// 解决方案描述
+	IncidentFinishSolutionDescription *string `json:"incidentFinishSolutionDescription,omitempty" xml:"incidentFinishSolutionDescription,omitempty"`
+	// This parameter is required.
+	IncidentIds []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
 }
 
 func (s FinishIncidentRequest) String() string {
@@ -5295,6 +6316,10 @@ func (s *FinishIncidentRequest) SetIncidentIds(v []*int64) *FinishIncidentReques
 
 type FinishIncidentResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5312,9 +6337,9 @@ func (s *FinishIncidentResponseBody) SetRequestId(v string) *FinishIncidentRespo
 }
 
 type FinishIncidentResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FinishIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FinishIncidentResponse) String() string {
@@ -5341,8 +6366,14 @@ func (s *FinishIncidentResponse) SetBody(v *FinishIncidentResponseBody) *FinishI
 }
 
 type FinishProblemRequest struct {
+	// example:
+	//
+	// 6338F42D-ED0B-442C-932C-657300AFB4BB
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 3123
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s FinishProblemRequest) String() string {
@@ -5365,6 +6396,10 @@ func (s *FinishProblemRequest) SetProblemId(v int64) *FinishProblemRequest {
 
 type FinishProblemResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 6338F42D-ED0B-442C-932C-657300AFB4BB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5382,9 +6417,9 @@ func (s *FinishProblemResponseBody) SetRequestId(v string) *FinishProblemRespons
 }
 
 type FinishProblemResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FinishProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FinishProblemResponse) String() string {
@@ -5412,8 +6447,11 @@ func (s *FinishProblemResponse) SetBody(v *FinishProblemResponseBody) *FinishPro
 
 type GeneratePictureLinkRequest struct {
 	// keys
-	Keys      []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	ProblemId *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50002020
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GeneratePictureLinkRequest) String() string {
@@ -5438,6 +6476,10 @@ type GeneratePictureLinkResponseBody struct {
 	// data
 	Data *GeneratePictureLinkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5479,8 +6521,16 @@ func (s *GeneratePictureLinkResponseBodyData) SetLinks(v []*GeneratePictureLinkR
 
 type GeneratePictureLinkResponseBodyDataLinks struct {
 	// oss key
+	//
+	// example:
+	//
+	// problem/38b2a36d-484d-4242-b9cf-d243e53a82c6
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// url
+	//
+	// example:
+	//
+	// http://gam-objects-bucket.oss-cn-shanghai.aliyuncs.com/problem/38b2a36d-484d-4242-b9cf-d243e53a82c6?Expires=1625662477&OSSAccessKeyId=LTAI5tEoRVPw8GMy1iLRCno7&Signature=1NFnt%2BnudD%2F%2BHVc31b6v5%2FFxoqg%3D
 	Link *string `json:"link,omitempty" xml:"link,omitempty"`
 }
 
@@ -5503,9 +6553,9 @@ func (s *GeneratePictureLinkResponseBodyDataLinks) SetLink(v string) *GeneratePi
 }
 
 type GeneratePictureLinkResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GeneratePictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GeneratePictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GeneratePictureLinkResponse) String() string {
@@ -5532,9 +6582,15 @@ func (s *GeneratePictureLinkResponse) SetBody(v *GeneratePictureLinkResponseBody
 }
 
 type GeneratePictureUploadSignRequest struct {
-	Files        []*GeneratePictureUploadSignRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	InstanceId   *int64                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType *string                                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Files []*GeneratePictureUploadSignRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123123
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// INCIDENT 事件 ALERT告警 PROBLEM故障
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 }
 
 func (s GeneratePictureUploadSignRequest) String() string {
@@ -5561,8 +6617,17 @@ func (s *GeneratePictureUploadSignRequest) SetInstanceType(v string) *GeneratePi
 }
 
 type GeneratePictureUploadSignRequestFiles struct {
+	// example:
+	//
+	// 文件A
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	FileSize *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// example:
+	//
+	// 100
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// example:
+	//
+	// JPG
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
 }
 
@@ -5593,6 +6658,10 @@ type GeneratePictureUploadSignResponseBody struct {
 	// data
 	Data *GeneratePictureUploadSignResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// e2d4306a-bf4d-4345-9ae6-158223c85dbd
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5616,16 +6685,36 @@ func (s *GeneratePictureUploadSignResponseBody) SetRequestId(v string) *Generate
 
 type GeneratePictureUploadSignResponseBodyData struct {
 	// accessKeyId
+	//
+	// example:
+	//
+	// LTAI1tEoRVPw8GMy1iLRCno7
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
 	// oss bucket name
+	//
+	// example:
+	//
+	// gam-objects-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	// files
 	Files []*GeneratePictureUploadSignResponseBodyDataFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 	// policy
+	//
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAyMS0wNy0xM1QwNDowOTo0NS4yODJaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInByb2JsZW0iXV19
 	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
 	// signature
+	//
+	// example:
+	//
+	// SHqvIkwUNQd8Hervklir2K8U+ts=
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 	// url
+	//
+	// example:
+	//
+	// https://gam-objects-bucket.oss-cn-shanghai.aliyuncs.com
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -5668,10 +6757,23 @@ func (s *GeneratePictureUploadSignResponseBodyData) SetUrl(v string) *GeneratePi
 }
 
 type GeneratePictureUploadSignResponseBodyDataFiles struct {
+	// example:
+	//
+	// 文件A
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	FileSize *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// example:
+	//
+	// 100
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// example:
+	//
+	// JPG
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
 	// oss key
+	//
+	// example:
+	//
+	// problem/25a2316c-b08d-41a5-9f41-b3185d529277
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 }
 
@@ -5704,9 +6806,9 @@ func (s *GeneratePictureUploadSignResponseBodyDataFiles) SetKey(v string) *Gener
 }
 
 type GeneratePictureUploadSignResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GeneratePictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GeneratePictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GeneratePictureUploadSignResponse) String() string {
@@ -5734,8 +6836,11 @@ func (s *GeneratePictureUploadSignResponse) SetBody(v *GeneratePictureUploadSign
 
 type GenerateProblemPictureLinkRequest struct {
 	// oss key
-	Keys      []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	ProblemId *string   `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50002021
+	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GenerateProblemPictureLinkRequest) String() string {
@@ -5760,6 +6865,10 @@ type GenerateProblemPictureLinkResponseBody struct {
 	// data
 	Data *GenerateProblemPictureLinkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-88067879ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5800,7 +6909,14 @@ func (s *GenerateProblemPictureLinkResponseBodyData) SetLinks(v []*GenerateProbl
 
 type GenerateProblemPictureLinkResponseBodyDataLinks struct {
 	// oss key
-	Key  *string `json:"key,omitempty" xml:"key,omitempty"`
+	//
+	// example:
+	//
+	// problem/xxxxxxxxxx-484d-4242-b9cf-xxxxxxxxxx
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// http://xxxx-xxxx-bucket.oss-cn-xxxx.aliyuncs.com/pxxxx/38xxxxd-4789-4242-b9cfxxxxxxxxc6?Expires=1xxxxxxxxxx7&OSSAccessKeyId=xxxxxxxxxxxxxx7&Signature=xxxxxxxxxxxxxxxxxxxxxx
 	Link *string `json:"link,omitempty" xml:"link,omitempty"`
 }
 
@@ -5823,9 +6939,9 @@ func (s *GenerateProblemPictureLinkResponseBodyDataLinks) SetLink(v string) *Gen
 }
 
 type GenerateProblemPictureLinkResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateProblemPictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateProblemPictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateProblemPictureLinkResponse) String() string {
@@ -5852,10 +6968,22 @@ func (s *GenerateProblemPictureLinkResponse) SetBody(v *GenerateProblemPictureLi
 }
 
 type GenerateProblemPictureUploadSignRequest struct {
-	FileName  *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	FileSize  *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	FileType  *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	ProblemId *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// test
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// example:
+	//
+	// 1000
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// example:
+	//
+	// png
+	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// example:
+	//
+	// 67876
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GenerateProblemPictureUploadSignRequest) String() string {
@@ -5890,6 +7018,10 @@ type GenerateProblemPictureUploadSignResponseBody struct {
 	// data
 	Data *GenerateProblemPictureUploadSignResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// e2d4306a-bf4d-4345-9ae6-158223c85dbd
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5913,16 +7045,40 @@ func (s *GenerateProblemPictureUploadSignResponseBody) SetRequestId(v string) *G
 
 type GenerateProblemPictureUploadSignResponseBodyData struct {
 	// ossaccessKeyId
+	//
+	// example:
+	//
+	// XXXXXXXH8GMy1iLRCno7
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
 	// oss bucket name
+	//
+	// example:
+	//
+	// xxxx-xxxx-xxxx
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	// oss key
+	//
+	// example:
+	//
+	// problem/xxxxxxxxxxxxxxxx1-b3185d529277
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// policy
+	//
+	// example:
+	//
+	// eyJleHBpcmF0a0p0IjoiMjAyMS0wNy0xM1QwNDowOTo0NS4yODJaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInByb2JsZW0iXV19
 	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
 	// signature
+	//
+	// example:
+	//
+	// SHqvIkwUNQd0o0rvklir2K8U+ts=
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 	// url
+	//
+	// example:
+	//
+	// https://xxx-xxx-bucket.oss-cn-shanghai.aliyuncs.com
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -5965,9 +7121,9 @@ func (s *GenerateProblemPictureUploadSignResponseBodyData) SetUrl(v string) *Gen
 }
 
 type GenerateProblemPictureUploadSignResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateProblemPictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateProblemPictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateProblemPictureUploadSignResponse) String() string {
@@ -5994,8 +7150,16 @@ func (s *GenerateProblemPictureUploadSignResponse) SetBody(v *GenerateProblemPic
 }
 
 type GetEscalationPlanRequest struct {
-	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 345
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s GetEscalationPlanRequest) String() string {
@@ -6020,6 +7184,10 @@ type GetEscalationPlanResponseBody struct {
 	// data
 	Data *GetEscalationPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6042,9 +7210,21 @@ func (s *GetEscalationPlanResponseBody) SetRequestId(v string) *GetEscalationPla
 }
 
 type GetEscalationPlanResponseBodyData struct {
-	CreateTime                 *string                                                        `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	EscalationPlanDescription  *string                                                        `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
-	EscalationPlanId           *int64                                                         `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 2021-09-09 09:09:09
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 描述1234
+	EscalationPlanDescription *string `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
+	// example:
+	//
+	// 2345
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 升级计划234
 	EscalationPlanName         *string                                                        `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanRules        []*GetEscalationPlanResponseBodyDataEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
@@ -6096,6 +7276,9 @@ func (s *GetEscalationPlanResponseBodyData) SetIsGlobal(v bool) *GetEscalationPl
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRules struct {
 	EscalationPlanConditions []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanConditions `json:"escalationPlanConditions,omitempty" xml:"escalationPlanConditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 345
 	EscalationPlanRuleId     *int64                                                                          `json:"escalationPlanRuleId,omitempty" xml:"escalationPlanRuleId,omitempty"`
 	EscalationPlanStrategies []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies `json:"escalationPlanStrategies,omitempty" xml:"escalationPlanStrategies,omitempty" type:"Repeated"`
 }
@@ -6124,8 +7307,14 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRules) SetEscalationPlan
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanConditions struct {
+	// example:
+	//
+	// LOW
 	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// P1
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanConditions) String() string {
@@ -6147,15 +7336,27 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanCondi
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies struct {
-	EnableWebhook        *bool                                                                                               `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	EscalationPlanType   *string                                                                                             `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	// example:
+	//
+	// true
+	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	// example:
+	//
+	// UN_ACKNOWLEDGE
+	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	// example:
+	//
+	// SMS
 	NoticeChannels       *string                                                                                             `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty"`
 	NoticeObjectList     []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList     `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
 	NoticeObjects        []*int64                                                                                            `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
 	NoticeRoleList       []*int64                                                                                            `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
 	NoticeRoleObjectList []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList `json:"noticeRoleObjectList,omitempty" xml:"noticeRoleObjectList,omitempty" type:"Repeated"`
-	NoticeTime           *int64                                                                                              `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroups        []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups        `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 40
+	NoticeTime    *int64                                                                                       `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroups []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -6212,7 +7413,13 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList struct {
-	NoticeObjectId   *int64  `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	// example:
+	//
+	// 234
+	NoticeObjectId *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	// example:
+	//
+	// 张老三
 	NoticeObjectName *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
 }
 
@@ -6258,7 +7465,13 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups struct {
-	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 343
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// VCD是
 	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
@@ -6281,11 +7494,20 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects struct {
-	EscalationPlanScopeObjects *int32  `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty"`
-	Scope                      *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectDeletedType     *int32  `json:"scopeObjectDeletedType,omitempty" xml:"scopeObjectDeletedType,omitempty"`
-	ScopeObjectId              *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
-	ScopeObjectName            *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
+	EscalationPlanScopeObjects *int32 `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope                  *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectDeletedType *int32  `json:"scopeObjectDeletedType,omitempty" xml:"scopeObjectDeletedType,omitempty"`
+	// example:
+	//
+	// 234
+	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	// example:
+	//
+	// xx服务
+	ScopeObjectName *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) String() string {
@@ -6322,9 +7544,9 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) SetScopeOb
 }
 
 type GetEscalationPlanResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEscalationPlanResponse) String() string {
@@ -6351,6 +7573,11 @@ func (s *GetEscalationPlanResponse) SetBody(v *GetEscalationPlanResponseBody) *G
 }
 
 type GetEventRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 }
 
@@ -6370,6 +7597,10 @@ func (s *GetEventRequest) SetMonitorSourceId(v int64) *GetEventRequest {
 type GetEventResponseBody struct {
 	Data *GetEventResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// XXXXXXXXXXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6392,9 +7623,21 @@ func (s *GetEventResponseBody) SetRequestId(v string) *GetEventResponseBody {
 }
 
 type GetEventResponseBodyData struct {
-	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// “”
+	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	// example:
+	//
+	// 2002-09-08 15:30:35
+	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	// example:
+	//
+	// 1
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
@@ -6427,9 +7670,9 @@ func (s *GetEventResponseBodyData) SetMonitorSourceName(v string) *GetEventRespo
 }
 
 type GetEventResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEventResponse) String() string {
@@ -6456,6 +7699,9 @@ func (s *GetEventResponse) SetBody(v *GetEventResponseBody) *GetEventResponse {
 }
 
 type GetHomePageGuidanceRequest struct {
+	// example:
+	//
+	// xxxxxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -6475,6 +7721,10 @@ func (s *GetHomePageGuidanceRequest) SetClientToken(v string) *GetHomePageGuidan
 type GetHomePageGuidanceResponseBody struct {
 	Data *GetHomePageGuidanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6497,10 +7747,22 @@ func (s *GetHomePageGuidanceResponseBody) SetRequestId(v string) *GetHomePageGui
 }
 
 type GetHomePageGuidanceResponseBodyData struct {
+	// example:
+	//
+	// true
 	NotifySubscriptionStatus *bool `json:"notifySubscriptionStatus,omitempty" xml:"notifySubscriptionStatus,omitempty"`
-	ServiceGroupStatus       *bool `json:"serviceGroupStatus,omitempty" xml:"serviceGroupStatus,omitempty"`
-	ServiceStatus            *bool `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
-	UsersStatus              *bool `json:"usersStatus,omitempty" xml:"usersStatus,omitempty"`
+	// example:
+	//
+	// true
+	ServiceGroupStatus *bool `json:"serviceGroupStatus,omitempty" xml:"serviceGroupStatus,omitempty"`
+	// example:
+	//
+	// true
+	ServiceStatus *bool `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
+	// example:
+	//
+	// true
+	UsersStatus *bool `json:"usersStatus,omitempty" xml:"usersStatus,omitempty"`
 }
 
 func (s GetHomePageGuidanceResponseBodyData) String() string {
@@ -6532,9 +7794,9 @@ func (s *GetHomePageGuidanceResponseBodyData) SetUsersStatus(v bool) *GetHomePag
 }
 
 type GetHomePageGuidanceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHomePageGuidanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHomePageGuidanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHomePageGuidanceResponse) String() string {
@@ -6561,8 +7823,14 @@ func (s *GetHomePageGuidanceResponse) SetBody(v *GetHomePageGuidanceResponseBody
 }
 
 type GetIncidentRequest struct {
+	// example:
+	//
+	// 2b63cdef-7ac3-4892-a76d-0f3389ef729f
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 32113
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s GetIncidentRequest) String() string {
@@ -6587,6 +7855,10 @@ type GetIncidentResponseBody struct {
 	// data
 	Data *GetIncidentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 2b63cdef-7ac3-4892-a76d-0f3389ef7291
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6609,37 +7881,109 @@ func (s *GetIncidentResponseBody) SetRequestId(v string) *GetIncidentResponseBod
 }
 
 type GetIncidentResponseBodyData struct {
-	AssignToWhoIsValid        *int32    `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
-	AssignUserId              *int64    `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	AssignUserName            *string   `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	AssignUserPhone           *string   `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
-	CreateTime                *string   `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DefaultAssignToWho        *int32    `json:"defaultAssignToWho,omitempty" xml:"defaultAssignToWho,omitempty"`
-	DefaultAssignToWhoIsValid *int32    `json:"defaultAssignToWhoIsValid,omitempty" xml:"defaultAssignToWhoIsValid,omitempty"`
-	DefaultAssignToWhoName    *string   `json:"defaultAssignToWhoName,omitempty" xml:"defaultAssignToWhoName,omitempty"`
-	DurationTime              *int64    `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	Effect                    *string   `json:"effect,omitempty" xml:"effect,omitempty"`
-	IncidentDescription       *string   `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
-	IncidentId                *int64    `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentLevel             *string   `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	IncidentNumber            *string   `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	IncidentStatus            *string   `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
-	IncidentTitle             *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	IsManual                  *bool     `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	IsUpgrade                 *bool     `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
-	NotifyChannels            []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	ProblemId                 *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemNumber             *string   `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	RelRouteRuleDeleteType    *int32    `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
-	RelServiceDeleteType      *int32    `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
-	RelServiceGroupIsValid    *int32    `json:"relServiceGroupIsValid,omitempty" xml:"relServiceGroupIsValid,omitempty"`
-	RelatedServiceDescription *string   `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
-	RelatedServiceGroupId     *int64    `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
-	RelatedServiceGroupName   *string   `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
-	RelatedServiceId          *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	RelatedServiceName        *string   `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	RouteRuleId               *int64    `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	RouteRuleName             *string   `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
+	AssignToWhoIsValid *int32 `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
+	// example:
+	//
+	// 12312
+	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	// example:
+	//
+	// 小明
+	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	// example:
+	//
+	// 1390000****
+	AssignUserPhone *string `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
+	// example:
+	//
+	// 2020-01-10 00:00:00
+	CreateTime                *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DefaultAssignToWho        *int32  `json:"defaultAssignToWho,omitempty" xml:"defaultAssignToWho,omitempty"`
+	DefaultAssignToWhoIsValid *int32  `json:"defaultAssignToWhoIsValid,omitempty" xml:"defaultAssignToWhoIsValid,omitempty"`
+	DefaultAssignToWhoName    *string `json:"defaultAssignToWhoName,omitempty" xml:"defaultAssignToWhoName,omitempty"`
+	// example:
+	//
+	// 3000000
+	DurationTime *int64 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	// example:
+	//
+	// LOW
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// example:
+	//
+	// 事件描述
+	IncidentDescription *string `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
+	// example:
+	//
+	// 3213
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// P4
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// example:
+	//
+	// I3443831000000016247759753663894
+	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	// example:
+	//
+	// FINISHE
+	IncidentStatus *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
+	// example:
+	//
+	// 事件标题
+	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	// example:
+	//
+	// true
+	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	// example:
+	//
+	// true
+	IsUpgrade *bool `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	// example:
+	//
+	// 1 短信  2  邮件  3  电话  4 企微群 5 钉钉群 6飞书 7 群通知 8 slack
+	NotifyChannels []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 232113
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 3332113231453321
+	ProblemNumber          *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	RelRouteRuleDeleteType *int32  `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	RelServiceDeleteType   *int32  `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	RelServiceGroupIsValid *int32  `json:"relServiceGroupIsValid,omitempty" xml:"relServiceGroupIsValid,omitempty"`
+	// example:
+	//
+	// 关联服务描述
+	RelatedServiceDescription *string `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
+	// example:
+	//
+	// 13000
+	RelatedServiceGroupId *int64 `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
+	// example:
+	//
+	// 服务组A
+	RelatedServiceGroupName *string `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
+	// example:
+	//
+	// 312312
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// example:
+	//
+	// 服务A
+	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	// example:
+	//
+	// 3123
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// example:
+	//
+	// 流转规则A
+	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
 }
 
 func (s GetIncidentResponseBodyData) String() string {
@@ -6806,9 +8150,9 @@ func (s *GetIncidentResponseBodyData) SetRouteRuleName(v string) *GetIncidentRes
 }
 
 type GetIncidentResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIncidentResponse) String() string {
@@ -6835,6 +8179,9 @@ func (s *GetIncidentResponse) SetBody(v *GetIncidentResponseBody) *GetIncidentRe
 }
 
 type GetIncidentListByIdListRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken    *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IncidentIdList []*int64 `json:"incidentIdList,omitempty" xml:"incidentIdList,omitempty" type:"Repeated"`
 }
@@ -6861,6 +8208,10 @@ type GetIncidentListByIdListResponseBody struct {
 	// data
 	Data []*GetIncidentListByIdListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6883,37 +8234,103 @@ func (s *GetIncidentListByIdListResponseBody) SetRequestId(v string) *GetInciden
 }
 
 type GetIncidentListByIdListResponseBodyData struct {
-	AssignToWhoIsValid        *int32    `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
-	AssignUserId              *int64    `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	AssignUserName            *string   `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	AssignUserPhone           *string   `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
-	CreateTime                *string   `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DefaultAssignToWho        *int32    `json:"defaultAssignToWho,omitempty" xml:"defaultAssignToWho,omitempty"`
-	DefaultAssignToWhoIsValid *int32    `json:"defaultAssignToWhoIsValid,omitempty" xml:"defaultAssignToWhoIsValid,omitempty"`
-	DefaultAssignToWhoName    *string   `json:"defaultAssignToWhoName,omitempty" xml:"defaultAssignToWhoName,omitempty"`
-	DurationTime              *string   `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	Effect                    *string   `json:"effect,omitempty" xml:"effect,omitempty"`
-	IncidentDescription       *string   `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
-	IncidentId                *int64    `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentLevel             *string   `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	IncidentNumber            *string   `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	IncidentStatus            *string   `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
-	IncidentTitle             *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	IsManual                  *bool     `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	IsUpgrade                 *bool     `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
-	NotifyChannels            []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	ProblemId                 *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemNumber             *string   `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	RelRouteRuleDeleteType    *int32    `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
-	RelServiceDeleteType      *int32    `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
-	RelServiceGroupIsValid    *int32    `json:"relServiceGroupIsValid,omitempty" xml:"relServiceGroupIsValid,omitempty"`
-	RelatedServiceDescription *string   `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
-	RelatedServiceGroupId     *int64    `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
-	RelatedServiceGroupName   *string   `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
-	RelatedServiceId          *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	RelatedServiceName        *string   `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	RouteRuleId               *int64    `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	RouteRuleName             *string   `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
+	// example:
+	//
+	// 1
+	AssignToWhoIsValid *int32 `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
+	// example:
+	//
+	// 12312
+	AssignUserId   *int64  `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	// example:
+	//
+	// 139****1111
+	AssignUserPhone *string `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
+	// example:
+	//
+	// 2010-03-09 15:53:45
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 1212
+	DefaultAssignToWho *int32 `json:"defaultAssignToWho,omitempty" xml:"defaultAssignToWho,omitempty"`
+	// example:
+	//
+	// 1
+	DefaultAssignToWhoIsValid *int32  `json:"defaultAssignToWhoIsValid,omitempty" xml:"defaultAssignToWhoIsValid,omitempty"`
+	DefaultAssignToWhoName    *string `json:"defaultAssignToWhoName,omitempty" xml:"defaultAssignToWhoName,omitempty"`
+	// example:
+	//
+	// 3000000
+	DurationTime *string `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	// example:
+	//
+	// LOW
+	Effect              *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentDescription *string `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
+	// example:
+	//
+	// 3213
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// P4
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// example:
+	//
+	// I13002001
+	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	// example:
+	//
+	// FINISHE
+	IncidentStatus *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
+	IncidentTitle  *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	// example:
+	//
+	// true
+	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	// example:
+	//
+	// true
+	IsUpgrade      *bool     `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	NotifyChannels []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12312
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// P1231231
+	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	// example:
+	//
+	// 1
+	RelRouteRuleDeleteType *int32 `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	// example:
+	//
+	// 1
+	RelServiceDeleteType *int32 `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	// example:
+	//
+	// 1
+	RelServiceGroupIsValid    *int32  `json:"relServiceGroupIsValid,omitempty" xml:"relServiceGroupIsValid,omitempty"`
+	RelatedServiceDescription *string `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
+	// example:
+	//
+	// 13000
+	RelatedServiceGroupId   *int64  `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
+	RelatedServiceGroupName *string `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
+	// example:
+	//
+	// 213123
+	RelatedServiceId   *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	// example:
+	//
+	// 10000
+	RouteRuleId   *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
 }
 
 func (s GetIncidentListByIdListResponseBodyData) String() string {
@@ -7080,9 +8497,9 @@ func (s *GetIncidentListByIdListResponseBodyData) SetRouteRuleName(v string) *Ge
 }
 
 type GetIncidentListByIdListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIncidentListByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIncidentListByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIncidentListByIdListResponse) String() string {
@@ -7109,6 +8526,9 @@ func (s *GetIncidentListByIdListResponse) SetBody(v *GetIncidentListByIdListResp
 }
 
 type GetIncidentStatisticsRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -7129,6 +8549,10 @@ type GetIncidentStatisticsResponseBody struct {
 	// data
 	Data *GetIncidentStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -7151,10 +8575,22 @@ func (s *GetIncidentStatisticsResponseBody) SetRequestId(v string) *GetIncidentS
 }
 
 type GetIncidentStatisticsResponseBodyData struct {
-	AllFinish   *int32 `json:"allFinish,omitempty" xml:"allFinish,omitempty"`
+	// example:
+	//
+	// 113
+	AllFinish *int32 `json:"allFinish,omitempty" xml:"allFinish,omitempty"`
+	// example:
+	//
+	// 12
 	AllResponse *int32 `json:"allResponse,omitempty" xml:"allResponse,omitempty"`
-	MyFinish    *int32 `json:"myFinish,omitempty" xml:"myFinish,omitempty"`
-	MyResponse  *int32 `json:"myResponse,omitempty" xml:"myResponse,omitempty"`
+	// example:
+	//
+	// 11
+	MyFinish *int32 `json:"myFinish,omitempty" xml:"myFinish,omitempty"`
+	// example:
+	//
+	// 1
+	MyResponse *int32 `json:"myResponse,omitempty" xml:"myResponse,omitempty"`
 }
 
 func (s GetIncidentStatisticsResponseBodyData) String() string {
@@ -7186,9 +8622,9 @@ func (s *GetIncidentStatisticsResponseBodyData) SetMyResponse(v int32) *GetIncid
 }
 
 type GetIncidentStatisticsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIncidentStatisticsResponse) String() string {
@@ -7215,7 +8651,11 @@ func (s *GetIncidentStatisticsResponse) SetBody(v *GetIncidentStatisticsResponse
 }
 
 type GetIncidentSubtotalCountRequest struct {
-	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 7C56D225-7C34-40BB-9624-C8BA449260E6
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
 	IncidentIds []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
 }
 
@@ -7257,8 +8697,16 @@ func (s *GetIncidentSubtotalCountResponseBody) SetData(v *GetIncidentSubtotalCou
 
 type GetIncidentSubtotalCountResponseBodyData struct {
 	// id of the request
+	//
+	// example:
+	//
+	// 24343424234
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// map
+	//
+	// example:
+	//
+	// {12:12}
 	SubtotalCount map[string]interface{} `json:"subtotalCount,omitempty" xml:"subtotalCount,omitempty"`
 }
 
@@ -7281,9 +8729,9 @@ func (s *GetIncidentSubtotalCountResponseBodyData) SetSubtotalCount(v map[string
 }
 
 type GetIncidentSubtotalCountResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIncidentSubtotalCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIncidentSubtotalCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIncidentSubtotalCountResponse) String() string {
@@ -7310,8 +8758,14 @@ func (s *GetIncidentSubtotalCountResponse) SetBody(v *GetIncidentSubtotalCountRe
 }
 
 type GetIntegrationConfigRequest struct {
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 68
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s GetIntegrationConfigRequest) String() string {
@@ -7336,6 +8790,10 @@ type GetIntegrationConfigResponseBody struct {
 	// data
 	Data *GetIntegrationConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -7358,13 +8816,34 @@ func (s *GetIntegrationConfigResponseBody) SetRequestId(v string) *GetIntegratio
 }
 
 type GetIntegrationConfigResponseBodyData struct {
-	AccessKey              *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	IntegrationConfigId    *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
-	IsReceivedEvent        *bool   `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
-	MonitorSourceId        *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	MonitorSourceName      *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// example:
+	//
+	// 101
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// True
+	IsReceivedEvent *bool `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
+	// example:
+	//
+	// 65
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// Zabbix
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// Zabbix
 	MonitorSourceShortName *string `json:"monitorSourceShortName,omitempty" xml:"monitorSourceShortName,omitempty"`
-	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// INTEGRATED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetIntegrationConfigResponseBodyData) String() string {
@@ -7411,9 +8890,9 @@ func (s *GetIntegrationConfigResponseBodyData) SetStatus(v string) *GetIntegrati
 }
 
 type GetIntegrationConfigResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIntegrationConfigResponse) String() string {
@@ -7440,8 +8919,16 @@ func (s *GetIntegrationConfigResponse) SetBody(v *GetIntegrationConfigResponseBo
 }
 
 type GetProblemRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GetProblemRequest) String() string {
@@ -7463,8 +8950,11 @@ func (s *GetProblemRequest) SetProblemId(v int64) *GetProblemRequest {
 }
 
 type GetProblemResponseBody struct {
-	Data      *GetProblemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data *GetProblemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C4BE3837-1A13-41VB-A225-2C88188E8A43
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetProblemResponseBody) String() string {
@@ -7486,41 +8976,110 @@ func (s *GetProblemResponseBody) SetRequestId(v string) *GetProblemResponseBody 
 }
 
 type GetProblemResponseBodyData struct {
-	CancelProblemOperateLogs  []*GetProblemResponseBodyDataCancelProblemOperateLogs  `json:"cancelProblemOperateLogs,omitempty" xml:"cancelProblemOperateLogs,omitempty" type:"Repeated"`
-	CancelReason              *int64                                                 `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
-	CancelReasonDescription   *string                                                `json:"cancelReasonDescription,omitempty" xml:"cancelReasonDescription,omitempty"`
-	CoordinationGroups        []*GetProblemResponseBodyDataCoordinationGroups        `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
-	CreateTime                *string                                                `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DiscoverTime              *string                                                `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	DurationTime              *int64                                                 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	EffectionServices         []*GetProblemResponseBodyDataEffectionServices         `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
+	CancelProblemOperateLogs []*GetProblemResponseBodyDataCancelProblemOperateLogs `json:"cancelProblemOperateLogs,omitempty" xml:"cancelProblemOperateLogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 取消理由
+	CancelReason *int64 `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
+	// example:
+	//
+	// 理由
+	CancelReasonDescription *string                                         `json:"cancelReasonDescription,omitempty" xml:"cancelReasonDescription,omitempty"`
+	CoordinationGroups      []*GetProblemResponseBodyDataCoordinationGroups `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2010-03-09 15:53:45
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 2010-03-09 15:53:45
+	DiscoverTime *string `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	// example:
+	//
+	// 300000
+	DurationTime      *int64                                         `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	EffectionServices []*GetProblemResponseBodyDataEffectionServices `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// feedback
 	Feedback                  *string                                                `json:"feedback,omitempty" xml:"feedback,omitempty"`
 	HandingProblemOperateLogs []*GetProblemResponseBodyDataHandingProblemOperateLogs `json:"handingProblemOperateLogs,omitempty" xml:"handingProblemOperateLogs,omitempty" type:"Repeated"`
-	IncidentId                *int64                                                 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentNumber            *string                                                `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	IsRuleTrigger             *bool                                                  `json:"isRuleTrigger,omitempty" xml:"isRuleTrigger,omitempty"`
-	MainHandler               *int64                                                 `json:"mainHandler,omitempty" xml:"mainHandler,omitempty"`
-	MainHandlerId             *int64                                                 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	MainHandlerIsValid        *int64                                                 `json:"mainHandlerIsValid,omitempty" xml:"mainHandlerIsValid,omitempty"`
-	MainHandlerPhone          *string                                                `json:"mainHandlerPhone,omitempty" xml:"mainHandlerPhone,omitempty"`
-	PreliminaryReason         *string                                                `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	// example:
+	//
+	// 130000032
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// I3443835000012016260833157948165
+	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IsRuleTrigger  *bool   `json:"isRuleTrigger,omitempty" xml:"isRuleTrigger,omitempty"`
+	// example:
+	//
+	// 王宇
+	MainHandler *int64 `json:"mainHandler,omitempty" xml:"mainHandler,omitempty"`
+	// example:
+	//
+	// 2000
+	MainHandlerId      *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	MainHandlerIsValid *int64 `json:"mainHandlerIsValid,omitempty" xml:"mainHandlerIsValid,omitempty"`
+	// example:
+	//
+	// 1308987****
+	MainHandlerPhone *string `json:"mainHandlerPhone,omitempty" xml:"mainHandlerPhone,omitempty"`
+	// example:
+	//
+	// 原因
+	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
 	// ID
-	ProblemId                   *int64                                                   `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemLevel                *int32                                                   `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	ProblemName                 *string                                                  `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	ProblemNumber               *string                                                  `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	ProblemStatus               *int32                                                   `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	ProgressSummary             *string                                                  `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	ProgressSummaryRichTextId   *int64                                                   `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	RecoveryTime                *string                                                  `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// P1
+	ProblemLevel *int32 `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// 故障
+	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	// example:
+	//
+	// P34438300010030116260833538987481
+	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	// example:
+	//
+	// HANDLING
+	ProblemStatus *int32 `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	// example:
+	//
+	// 摘要
+	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// example:
+	//
+	// 1231231
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	// example:
+	//
+	// 2010-03-09 15:53:45
+	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	// example:
+	//
+	// 1
 	RelatedServiceId            *int64                                                   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 	ReplayProblemOperateLogs    []*GetProblemResponseBodyDataReplayProblemOperateLogs    `json:"replayProblemOperateLogs,omitempty" xml:"replayProblemOperateLogs,omitempty" type:"Repeated"`
 	ReplayingProblemOperateLogs []*GetProblemResponseBodyDataReplayingProblemOperateLogs `json:"replayingProblemOperateLogs,omitempty" xml:"replayingProblemOperateLogs,omitempty" type:"Repeated"`
 	RestoredProblemOperateLogs  []*GetProblemResponseBodyDataRestoredProblemOperateLogs  `json:"restoredProblemOperateLogs,omitempty" xml:"restoredProblemOperateLogs,omitempty" type:"Repeated"`
 	// serviceDeleteType
-	ServiceDeleteType *int32                                 `json:"serviceDeleteType,omitempty" xml:"serviceDeleteType,omitempty"`
-	ServiceName       *string                                `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	Timelines         []*GetProblemResponseBodyDataTimelines `json:"timelines,omitempty" xml:"timelines,omitempty" type:"Repeated"`
+	ServiceDeleteType *int32 `json:"serviceDeleteType,omitempty" xml:"serviceDeleteType,omitempty"`
+	// example:
+	//
+	// 服务
+	ServiceName *string                                `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Timelines   []*GetProblemResponseBodyDataTimelines `json:"timelines,omitempty" xml:"timelines,omitempty" type:"Repeated"`
 }
 
 func (s GetProblemResponseBodyData) String() string {
@@ -7697,10 +9256,22 @@ func (s *GetProblemResponseBodyData) SetTimelines(v []*GetProblemResponseBodyDat
 }
 
 type GetProblemResponseBodyDataCancelProblemOperateLogs struct {
+	// example:
+	//
+	// 取消故障
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:38:38
 	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	Operator   *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	UserId     *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 王宇
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// example:
+	//
+	// 66666
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataCancelProblemOperateLogs) String() string {
@@ -7732,8 +9303,14 @@ func (s *GetProblemResponseBodyDataCancelProblemOperateLogs) SetUserId(v int64) 
 }
 
 type GetProblemResponseBodyDataCoordinationGroups struct {
-	IsValid          *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	ServiceGroupId   *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	IsValid *int64 `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 清扫大队
 	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
@@ -7761,12 +9338,27 @@ func (s *GetProblemResponseBodyDataCoordinationGroups) SetServiceGroupName(v str
 }
 
 type GetProblemResponseBodyDataEffectionServices struct {
-	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
-	EffectionLevel     *int64  `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
-	EffectionServiceId *int64  `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	EffectionStatus    *int32  `json:"effectionStatus,omitempty" xml:"effectionStatus,omitempty"`
-	ServiceDeleteType  *int32  `json:"serviceDeleteType,omitempty" xml:"serviceDeleteType,omitempty"`
-	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// P1
+	EffectionLevel *int64 `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
+	// example:
+	//
+	// 1
+	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	// example:
+	//
+	// RESTORED
+	EffectionStatus   *int32 `json:"effectionStatus,omitempty" xml:"effectionStatus,omitempty"`
+	ServiceDeleteType *int32 `json:"serviceDeleteType,omitempty" xml:"serviceDeleteType,omitempty"`
+	// example:
+	//
+	// 购物车
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataEffectionServices) String() string {
@@ -7808,11 +9400,23 @@ func (s *GetProblemResponseBodyDataEffectionServices) SetServiceName(v string) *
 }
 
 type GetProblemResponseBodyDataHandingProblemOperateLogs struct {
-	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
+	// example:
+	//
+	// 取消故障
+	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	// example:
+	//
+	// 2010-03-09 15:53:45
+	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	// example:
+	//
+	// 王宇
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// example:
+	//
+	// 233
+	UserId      *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64 `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataHandingProblemOperateLogs) String() string {
@@ -7849,11 +9453,23 @@ func (s *GetProblemResponseBodyDataHandingProblemOperateLogs) SetUserIsValid(v i
 }
 
 type GetProblemResponseBodyDataReplayProblemOperateLogs struct {
-	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
+	// example:
+	//
+	// 复盘故障
+	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	// example:
+	//
+	// 2020-08-08 15:39:39
+	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	// example:
+	//
+	// 周宇凡
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// example:
+	//
+	// 2323
+	UserId      *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64 `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataReplayProblemOperateLogs) String() string {
@@ -7890,11 +9506,23 @@ func (s *GetProblemResponseBodyDataReplayProblemOperateLogs) SetUserIsValid(v in
 }
 
 type GetProblemResponseBodyDataReplayingProblemOperateLogs struct {
-	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
+	// example:
+	//
+	// 复盘故障
+	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	// example:
+	//
+	// 2020-08-08 15:39:39
+	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	// example:
+	//
+	// 刘杰
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// example:
+	//
+	// 用户id
+	UserId      *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64 `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataReplayingProblemOperateLogs) String() string {
@@ -7931,11 +9559,23 @@ func (s *GetProblemResponseBodyDataReplayingProblemOperateLogs) SetUserIsValid(v
 }
 
 type GetProblemResponseBodyDataRestoredProblemOperateLogs struct {
-	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
+	// example:
+	//
+	// 恢复故障
+	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	// example:
+	//
+	// 2020-08-08 15:39:39
+	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	// example:
+	//
+	// 王宇
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// example:
+	//
+	// 3232
+	UserId      *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64 `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataRestoredProblemOperateLogs) String() string {
@@ -7972,6 +9612,9 @@ func (s *GetProblemResponseBodyDataRestoredProblemOperateLogs) SetUserIsValid(v 
 }
 
 type GetProblemResponseBodyDataTimelines struct {
+	// example:
+	//
+	// 1,2,3,4,5,7,6,8,9,10
 	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
 }
 
@@ -7989,9 +9632,9 @@ func (s *GetProblemResponseBodyDataTimelines) SetKeyNode(v string) *GetProblemRe
 }
 
 type GetProblemResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProblemResponse) String() string {
@@ -8019,9 +9662,19 @@ func (s *GetProblemResponse) SetBody(v *GetProblemResponseBody) *GetProblemRespo
 
 type GetProblemEffectionServiceRequest struct {
 	// clientToken
-	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EffectionServiceId *int64  `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	ProblemId          *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	//
+	// example:
+	//
+	// e2d4306a-bf4d-4345-9ae6-158223c85dbd
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 9
+	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	// example:
+	//
+	// 46
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GetProblemEffectionServiceRequest) String() string {
@@ -8051,6 +9704,10 @@ type GetProblemEffectionServiceResponseBody struct {
 	// data
 	Data *GetProblemEffectionServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// e2d4306a-bf4d-4345-9ae6-158223c85dbd
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8073,13 +9730,31 @@ func (s *GetProblemEffectionServiceResponseBody) SetRequestId(v string) *GetProb
 }
 
 type GetProblemEffectionServiceResponseBodyData struct {
-	Description        *string   `json:"description,omitempty" xml:"description,omitempty"`
-	EffectionServiceId *int64    `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	Level              *int64    `json:"level,omitempty" xml:"level,omitempty"`
-	PicUrl             []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
-	ServiceId          *int64    `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string   `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	Status             *int64    `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// ew
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 6442430
+	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	// example:
+	//
+	// P2
+	Level  *int64    `json:"level,omitempty" xml:"level,omitempty"`
+	PicUrl []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 170000000
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 哈哈
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// UN_RECOVERED
+	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetProblemEffectionServiceResponseBodyData) String() string {
@@ -8126,9 +9801,9 @@ func (s *GetProblemEffectionServiceResponseBodyData) SetStatus(v int64) *GetProb
 }
 
 type GetProblemEffectionServiceResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProblemEffectionServiceResponse) String() string {
@@ -8155,8 +9830,14 @@ func (s *GetProblemEffectionServiceResponse) SetBody(v *GetProblemEffectionServi
 }
 
 type GetProblemImprovementRequest struct {
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId   *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 312312
+	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GetProblemImprovementRequest) String() string {
@@ -8181,6 +9862,10 @@ type GetProblemImprovementResponseBody struct {
 	// data
 	Data *GetProblemImprovementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3811
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8203,29 +9888,68 @@ func (s *GetProblemImprovementResponseBody) SetRequestId(v string) *GetProblemIm
 }
 
 type GetProblemImprovementResponseBodyData struct {
-	CustomProblemReason   *string                                             `json:"customProblemReason,omitempty" xml:"customProblemReason,omitempty"`
-	DiscoverSource        *string                                             `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
-	DutyDepartmentId      *string                                             `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
-	DutyDepartmentName    *string                                             `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
-	DutyUserId            *int64                                              `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
-	DutyUserIsValid       *int64                                              `json:"dutyUserIsValid,omitempty" xml:"dutyUserIsValid,omitempty"`
-	DutyUserName          *string                                             `json:"dutyUserName,omitempty" xml:"dutyUserName,omitempty"`
-	DutyUserPhone         *string                                             `json:"dutyUserPhone,omitempty" xml:"dutyUserPhone,omitempty"`
-	InjectionMode         *string                                             `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
-	IsManual              *bool                                               `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	MeasureList           []*GetProblemImprovementResponseBodyDataMeasureList `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
-	MonitorSourceName     *string                                             `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	ProblemId             *string                                             `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemReason         *string                                             `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
-	RecentActivity        *string                                             `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
-	RecoveryMode          *string                                             `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
-	RelationChanges       *string                                             `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
-	Remark                *string                                             `json:"remark,omitempty" xml:"remark,omitempty"`
-	ReplayDutyUserId      *int64                                              `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
-	ReplayDutyUserIsValid *int64                                              `json:"replayDutyUserIsValid,omitempty" xml:"replayDutyUserIsValid,omitempty"`
-	ReplayDutyUserName    *string                                             `json:"replayDutyUserName,omitempty" xml:"replayDutyUserName,omitempty"`
-	ReplayDutyUserPhone   *string                                             `json:"replayDutyUserPhone,omitempty" xml:"replayDutyUserPhone,omitempty"`
-	UserReport            *int64                                              `json:"userReport,omitempty" xml:"userReport,omitempty"`
+	CustomProblemReason *string `json:"customProblemReason,omitempty" xml:"customProblemReason,omitempty"`
+	// example:
+	//
+	// 1
+	DiscoverSource *string `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
+	// example:
+	//
+	// 12312
+	DutyDepartmentId   *string `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
+	DutyDepartmentName *string `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
+	// example:
+	//
+	// 231
+	DutyUserId      *int64  `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
+	DutyUserIsValid *int64  `json:"dutyUserIsValid,omitempty" xml:"dutyUserIsValid,omitempty"`
+	DutyUserName    *string `json:"dutyUserName,omitempty" xml:"dutyUserName,omitempty"`
+	// example:
+	//
+	// 13098898****
+	DutyUserPhone *string `json:"dutyUserPhone,omitempty" xml:"dutyUserPhone,omitempty"`
+	// example:
+	//
+	// 3
+	InjectionMode *string `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
+	// example:
+	//
+	// true
+	IsManual    *bool                                               `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	MeasureList []*GetProblemImprovementResponseBodyDataMeasureList `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Zabbix
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// 231231
+	ProblemId     *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemReason *string `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
+	// example:
+	//
+	// 2
+	RecentActivity *string `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
+	// example:
+	//
+	// 2
+	RecoveryMode    *string `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
+	RelationChanges *string `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
+	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// 23123
+	ReplayDutyUserId      *int64  `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
+	ReplayDutyUserIsValid *int64  `json:"replayDutyUserIsValid,omitempty" xml:"replayDutyUserIsValid,omitempty"`
+	ReplayDutyUserName    *string `json:"replayDutyUserName,omitempty" xml:"replayDutyUserName,omitempty"`
+	// example:
+	//
+	// 1308787****
+	ReplayDutyUserPhone *string `json:"replayDutyUserPhone,omitempty" xml:"replayDutyUserPhone,omitempty"`
+	// example:
+	//
+	// 1
+	UserReport *int64 `json:"userReport,omitempty" xml:"userReport,omitempty"`
 }
 
 func (s GetProblemImprovementResponseBodyData) String() string {
@@ -8352,21 +10076,42 @@ func (s *GetProblemImprovementResponseBodyData) SetUserReport(v int64) *GetProbl
 }
 
 type GetProblemImprovementResponseBodyDataMeasureList struct {
-	CheckStandard    *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
+	CheckStandard *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
+	// example:
+	//
+	// 12
 	CheckUserId      *int64  `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
 	CheckUserIsValid *int32  `json:"checkUserIsValid,omitempty" xml:"checkUserIsValid,omitempty"`
 	CheckUserName    *string `json:"checkUserName,omitempty" xml:"checkUserName,omitempty"`
 	Content          *string `json:"content,omitempty" xml:"content,omitempty"`
-	DirectorId       *int64  `json:"directorId,omitempty" xml:"directorId,omitempty"`
-	DirectorIsValid  *int32  `json:"directorIsValid,omitempty" xml:"directorIsValid,omitempty"`
-	DirectorName     *string `json:"directorName,omitempty" xml:"directorName,omitempty"`
-	MeasureId        *int64  `json:"measureId,omitempty" xml:"measureId,omitempty"`
-	PlanFinishTime   *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
-	StalkerId        *int64  `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
-	StalkerIsValid   *int32  `json:"stalkerIsValid,omitempty" xml:"stalkerIsValid,omitempty"`
-	StalkerName      *string `json:"stalkerName,omitempty" xml:"stalkerName,omitempty"`
-	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
-	Type             *int64  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 212
+	DirectorId      *int64  `json:"directorId,omitempty" xml:"directorId,omitempty"`
+	DirectorIsValid *int32  `json:"directorIsValid,omitempty" xml:"directorIsValid,omitempty"`
+	DirectorName    *string `json:"directorName,omitempty" xml:"directorName,omitempty"`
+	// example:
+	//
+	// 12312
+	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
+	// example:
+	//
+	// 2021-05-01 00:00:00
+	PlanFinishTime *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
+	// example:
+	//
+	// 3121
+	StalkerId      *int64  `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
+	StalkerIsValid *int32  `json:"stalkerIsValid,omitempty" xml:"stalkerIsValid,omitempty"`
+	StalkerName    *string `json:"stalkerName,omitempty" xml:"stalkerName,omitempty"`
+	// example:
+	//
+	// UNIMPROVED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2
+	Type *int64 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetProblemImprovementResponseBodyDataMeasureList) String() string {
@@ -8453,9 +10198,9 @@ func (s *GetProblemImprovementResponseBodyDataMeasureList) SetType(v int64) *Get
 }
 
 type GetProblemImprovementResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProblemImprovementResponse) String() string {
@@ -8482,14 +10227,32 @@ func (s *GetProblemImprovementResponse) SetBody(v *GetProblemImprovementResponse
 }
 
 type GetProblemPreviewRequest struct {
-	ClientToken       *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EffectServiceIds  []*int64 `json:"effectServiceIds,omitempty" xml:"effectServiceIds,omitempty" type:"Repeated"`
-	IncidentId        *int64   `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	ProblemId         *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemLevel      *string  `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	ProblemNotifyType *string  `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
-	RelatedServiceId  *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	ServiceGroupIds   []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840f13812
+	ClientToken      *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EffectServiceIds []*int64 `json:"effectServiceIds,omitempty" xml:"effectServiceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 213123
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 12312
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// P2
+	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// PROBLEM_NOTIFY
+	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
+	// example:
+	//
+	// 21312
+	RelatedServiceId *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceGroupIds  []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s GetProblemPreviewRequest) String() string {
@@ -8544,6 +10307,10 @@ type GetProblemPreviewResponseBody struct {
 	// data
 	Data *GetProblemPreviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c2840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8633,6 +10400,9 @@ func (s *GetProblemPreviewResponseBodyData) SetWebhook(v *GetProblemPreviewRespo
 }
 
 type GetProblemPreviewResponseBodyDataMail struct {
+	// example:
+	//
+	// 123
 	Count *int64                                        `json:"count,omitempty" xml:"count,omitempty"`
 	Users []*GetProblemPreviewResponseBodyDataMailUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
@@ -8673,24 +10443,57 @@ func (s *GetProblemPreviewResponseBodyDataMailUsers) SetUsername(v string) *GetP
 }
 
 type GetProblemPreviewResponseBodyDataProblem struct {
-	CoordinationGroups        []*GetProblemPreviewResponseBodyDataProblemCoordinationGroups `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
-	CreateTime                *string                                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DiscoverTime              *string                                                       `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	EffectionServices         []*GetProblemPreviewResponseBodyDataProblemEffectionServices  `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
-	IsManual                  *bool                                                         `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	IsUpgrade                 *bool                                                         `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
-	MainHandlerId             *string                                                       `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	MainHandlerName           *string                                                       `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
-	PreliminaryReason         *string                                                       `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
-	ProblemId                 *int64                                                        `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemLevel              *string                                                       `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	ProblemName               *string                                                       `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	ProblemStatus             *string                                                       `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	ProgressSummary           *string                                                       `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	ProgressSummaryRichTextId *int64                                                        `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	RecoveryTime              *string                                                       `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
-	RelatedServiceId          *int64                                                        `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	ServiceName               *string                                                       `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	CoordinationGroups []*GetProblemPreviewResponseBodyDataProblemCoordinationGroups `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-02-21 00:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 2021-02-21 00:00:00
+	DiscoverTime      *string                                                      `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	EffectionServices []*GetProblemPreviewResponseBodyDataProblemEffectionServices `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	// example:
+	//
+	// true
+	IsUpgrade *bool `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	// example:
+	//
+	// 231
+	MainHandlerId     *string `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	MainHandlerName   *string `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
+	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	// example:
+	//
+	// 123123
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// P2
+	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	ProblemName  *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	// example:
+	//
+	// HANDLING
+	ProblemStatus   *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// example:
+	//
+	// 12312
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	// example:
+	//
+	// 2021-02-21 00:00:00
+	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	// example:
+	//
+	// 213123
+	RelatedServiceId *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s GetProblemPreviewResponseBodyDataProblem) String() string {
@@ -8793,8 +10596,11 @@ func (s *GetProblemPreviewResponseBodyDataProblem) SetServiceName(v string) *Get
 
 type GetProblemPreviewResponseBodyDataProblemCoordinationGroups struct {
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	ServiceGroupId          *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	ServiceGroupName        *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// example:
+	//
+	// 1231
+	ServiceGroupId   *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
 func (s GetProblemPreviewResponseBodyDataProblemCoordinationGroups) String() string {
@@ -8821,6 +10627,9 @@ func (s *GetProblemPreviewResponseBodyDataProblemCoordinationGroups) SetServiceG
 }
 
 type GetProblemPreviewResponseBodyDataProblemEffectionServices struct {
+	// example:
+	//
+	// 1231
 	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
@@ -8844,6 +10653,9 @@ func (s *GetProblemPreviewResponseBodyDataProblemEffectionServices) SetServiceNa
 }
 
 type GetProblemPreviewResponseBodyDataSms struct {
+	// example:
+	//
+	// 12
 	Count *int64                                       `json:"count,omitempty" xml:"count,omitempty"`
 	Users []*GetProblemPreviewResponseBodyDataSmsUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
@@ -8884,6 +10696,9 @@ func (s *GetProblemPreviewResponseBodyDataSmsUsers) SetUsername(v string) *GetPr
 }
 
 type GetProblemPreviewResponseBodyDataVoice struct {
+	// example:
+	//
+	// 12
 	Count *int64                                         `json:"count,omitempty" xml:"count,omitempty"`
 	Users []*GetProblemPreviewResponseBodyDataVoiceUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
@@ -8924,6 +10739,9 @@ func (s *GetProblemPreviewResponseBodyDataVoiceUsers) SetUsername(v string) *Get
 }
 
 type GetProblemPreviewResponseBodyDataWebhook struct {
+	// example:
+	//
+	// 32
 	Count         *int64                                                   `json:"count,omitempty" xml:"count,omitempty"`
 	ServiceGroups []*GetProblemPreviewResponseBodyDataWebhookServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
 }
@@ -8964,9 +10782,9 @@ func (s *GetProblemPreviewResponseBodyDataWebhookServiceGroups) SetServiceName(v
 }
 
 type GetProblemPreviewResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProblemPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProblemPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProblemPreviewResponse) String() string {
@@ -8993,6 +10811,9 @@ func (s *GetProblemPreviewResponse) SetBody(v *GetProblemPreviewResponseBody) *G
 }
 
 type GetResourceStatisticsRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -9013,6 +10834,10 @@ type GetResourceStatisticsResponseBody struct {
 	// data
 	Data *GetResourceStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9035,10 +10860,22 @@ func (s *GetResourceStatisticsResponseBody) SetRequestId(v string) *GetResourceS
 }
 
 type GetResourceStatisticsResponseBodyData struct {
-	AlertCount       *int32 `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
-	IncidentCount    *int32 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	// example:
+	//
+	// 123
+	AlertCount *int32 `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
+	// example:
+	//
+	// 1331
+	IncidentCount *int32 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	// example:
+	//
+	// 2211
 	IntegrationCount *int32 `json:"integrationCount,omitempty" xml:"integrationCount,omitempty"`
-	ProblemCount     *int32 `json:"problemCount,omitempty" xml:"problemCount,omitempty"`
+	// example:
+	//
+	// 221
+	ProblemCount *int32 `json:"problemCount,omitempty" xml:"problemCount,omitempty"`
 }
 
 func (s GetResourceStatisticsResponseBodyData) String() string {
@@ -9070,9 +10907,9 @@ func (s *GetResourceStatisticsResponseBodyData) SetProblemCount(v int32) *GetRes
 }
 
 type GetResourceStatisticsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceStatisticsResponse) String() string {
@@ -9099,9 +10936,18 @@ func (s *GetResourceStatisticsResponse) SetBody(v *GetResourceStatisticsResponse
 }
 
 type GetRichTextRequest struct {
-	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// INCIDENT 事件 ALERT告警 PROBLEM故障
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// INCIDENT
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	RichTextId   *int64  `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
+	// example:
+	//
+	// 12221才
+	RichTextId *int64 `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
 }
 
 func (s GetRichTextRequest) String() string {
@@ -9131,6 +10977,10 @@ type GetRichTextResponseBody struct {
 	// data
 	Data *GetRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9153,9 +11003,18 @@ func (s *GetRichTextResponseBody) SetRequestId(v string) *GetRichTextResponseBod
 }
 
 type GetRichTextResponseBodyData struct {
-	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType *int64  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	// example:
+	//
+	// 123123
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 0 事件 1告警 2 故障
+	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// example:
+	//
+	// 这是一个富文本
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
 }
 
 func (s GetRichTextResponseBodyData) String() string {
@@ -9182,9 +11041,9 @@ func (s *GetRichTextResponseBodyData) SetRichText(v string) *GetRichTextResponse
 }
 
 type GetRichTextResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRichTextResponse) String() string {
@@ -9211,8 +11070,16 @@ func (s *GetRichTextResponse) SetBody(v *GetRichTextResponseBody) *GetRichTextRe
 }
 
 type GetRouteRuleRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s GetRouteRuleRequest) String() string {
@@ -9234,8 +11101,11 @@ func (s *GetRouteRuleRequest) SetRouteRuleId(v int64) *GetRouteRuleRequest {
 }
 
 type GetRouteRuleResponseBody struct {
-	Data      *GetRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data *GetRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6B9347ED-FD93-42B4-B9A4-7282962F5D6A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetRouteRuleResponseBody) String() string {
@@ -9257,31 +11127,79 @@ func (s *GetRouteRuleResponseBody) SetRequestId(v string) *GetRouteRuleResponseB
 }
 
 type GetRouteRuleResponseBodyData struct {
-	AssignObjectId           *int64                                              `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	AssignObjectName         *string                                             `json:"assignObjectName,omitempty" xml:"assignObjectName,omitempty"`
-	AssignObjectType         *string                                             `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	ChildRuleRelation        *string                                             `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
-	ConvergenceFields        []*string                                           `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
-	ConvergenceType          *int32                                              `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
-	CoverageProblemLevels    []*string                                           `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
-	CreateTime               *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Effection                *string                                             `json:"effection,omitempty" xml:"effection,omitempty"`
-	EnableStatus             *string                                             `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	EventRouteChildRules     []*GetRouteRuleResponseBodyDataEventRouteChildRules `json:"eventRouteChildRules,omitempty" xml:"eventRouteChildRules,omitempty" type:"Repeated"`
-	IncidentLevel            *string                                             `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	MatchCount               *int64                                              `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
-	NotifyChannelNames       []*string                                           `json:"notifyChannelNames,omitempty" xml:"notifyChannelNames,omitempty" type:"Repeated"`
-	NotifyChannels           []*string                                           `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	ProblemEffectionServices []*int64                                            `json:"problemEffectionServices,omitempty" xml:"problemEffectionServices,omitempty" type:"Repeated"`
-	ProblemLevelGroup        map[string]*DataProblemLevelGroupValue              `json:"problemLevelGroup,omitempty" xml:"problemLevelGroup,omitempty"`
-	RelServiceDeleteType     *int32                                              `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
-	RelatedServiceId         *int64                                              `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	RelatedServiceName       *string                                             `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	RouteRuleId              *int64                                              `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	RouteType                *string                                             `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	RuleName                 *string                                             `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	TimeWindow               *int32                                              `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	UpdateTime               *string                                             `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	// example:
+	//
+	// 刘德华
+	AssignObjectName *string `json:"assignObjectName,omitempty" xml:"assignObjectName,omitempty"`
+	// example:
+	//
+	// SERVICEGROUP
+	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	// example:
+	//
+	// AND、OR
+	ChildRuleRelation     *string   `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
+	ConvergenceFields     []*string `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
+	ConvergenceType       *int32    `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
+	CoverageProblemLevels []*string `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2020-09-08 15:30:30
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// LOW
+	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	// example:
+	//
+	// DISABLE
+	EnableStatus         *string                                             `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
+	EventRouteChildRules []*GetRouteRuleResponseBodyDataEventRouteChildRules `json:"eventRouteChildRules,omitempty" xml:"eventRouteChildRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// P1
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// example:
+	//
+	// 3
+	MatchCount               *int64                                 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	NotifyChannelNames       []*string                              `json:"notifyChannelNames,omitempty" xml:"notifyChannelNames,omitempty" type:"Repeated"`
+	NotifyChannels           []*string                              `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	ProblemEffectionServices []*int64                               `json:"problemEffectionServices,omitempty" xml:"problemEffectionServices,omitempty" type:"Repeated"`
+	ProblemLevelGroup        map[string]*DataProblemLevelGroupValue `json:"problemLevelGroup,omitempty" xml:"problemLevelGroup,omitempty"`
+	RelServiceDeleteType     *int32                                 `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	// example:
+	//
+	// 1000
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// example:
+	//
+	// 冲上云霄
+	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	// example:
+	//
+	// 180000000
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// example:
+	//
+	// INCIDENT
+	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	// example:
+	//
+	// 规则1
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// example:
+	//
+	// 3
+	TimeWindow *int32 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:30:30
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetRouteRuleResponseBodyData) String() string {
@@ -9418,15 +11336,36 @@ func (s *GetRouteRuleResponseBodyData) SetUpdateTime(v string) *GetRouteRuleResp
 }
 
 type GetRouteRuleResponseBodyDataEventRouteChildRules struct {
-	ChildConditionRelation     *int64                                                        `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
-	ChildRouteRuleId           *int64                                                        `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
-	Conditions                 []*GetRouteRuleResponseBodyDataEventRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	IsValidChildRule           *bool                                                         `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
-	MonitorIntegrationConfigId *int64                                                        `json:"monitorIntegrationConfigId,omitempty" xml:"monitorIntegrationConfigId,omitempty"`
-	MonitorSourceId            *int64                                                        `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	MonitorSourceName          *string                                                       `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	ParentRuleId               *int64                                                        `json:"parentRuleId,omitempty" xml:"parentRuleId,omitempty"`
-	ProblemLevel               *string                                                       `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// 1
+	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
+	// example:
+	//
+	// 1000
+	ChildRouteRuleId *int64                                                        `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
+	Conditions       []*GetRouteRuleResponseBodyDataEventRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	IsValidChildRule *bool `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
+	// example:
+	//
+	// 1
+	MonitorIntegrationConfigId *int64 `json:"monitorIntegrationConfigId,omitempty" xml:"monitorIntegrationConfigId,omitempty"`
+	// example:
+	//
+	// 1
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// 1800
+	ParentRuleId *int64  `json:"parentRuleId,omitempty" xml:"parentRuleId,omitempty"`
+	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
 }
 
 func (s GetRouteRuleResponseBodyDataEventRouteChildRules) String() string {
@@ -9483,9 +11422,18 @@ func (s *GetRouteRuleResponseBodyDataEventRouteChildRules) SetProblemLevel(v str
 }
 
 type GetRouteRuleResponseBodyDataEventRouteChildRulesConditions struct {
-	Key             *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// alarmName
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// contain
 	OperationSymbol *string `json:"operationSymbol,omitempty" xml:"operationSymbol,omitempty"`
-	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// Zabbix server
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetRouteRuleResponseBodyDataEventRouteChildRulesConditions) String() string {
@@ -9512,9 +11460,9 @@ func (s *GetRouteRuleResponseBodyDataEventRouteChildRulesConditions) SetValue(v 
 }
 
 type GetRouteRuleResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRouteRuleResponse) String() string {
@@ -9541,8 +11489,16 @@ func (s *GetRouteRuleResponse) SetBody(v *GetRouteRuleResponseBody) *GetRouteRul
 }
 
 type GetServiceRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
 func (s GetServiceRequest) String() string {
@@ -9566,6 +11522,10 @@ func (s *GetServiceRequest) SetServiceId(v int64) *GetServiceRequest {
 type GetServiceResponseBody struct {
 	Data *GetServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9588,12 +11548,23 @@ func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody 
 }
 
 type GetServiceResponseBodyData struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
 	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
-	ServiceId          *int64   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	UpdateTime         *string  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 2020-03-08 12:53:53
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetServiceResponseBodyData) String() string {
@@ -9635,9 +11606,9 @@ func (s *GetServiceResponseBodyData) SetUpdateTime(v string) *GetServiceResponse
 }
 
 type GetServiceResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceResponse) String() string {
@@ -9664,8 +11635,14 @@ func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceRespo
 }
 
 type GetServiceGroupRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 2323232
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s GetServiceGroupRequest) String() string {
@@ -9687,8 +11664,11 @@ func (s *GetServiceGroupRequest) SetServiceGroupId(v int64) *GetServiceGroupRequ
 }
 
 type GetServiceGroupResponseBody struct {
-	Data      *GetServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data *GetServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetServiceGroupResponseBody) String() string {
@@ -9710,15 +11690,39 @@ func (s *GetServiceGroupResponseBody) SetRequestId(v string) *GetServiceGroupRes
 }
 
 type GetServiceGroupResponseBodyData struct {
-	CreateTime              *string                                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	EnableWebhook           *string                                 `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	ServiceGroupDescription *string                                 `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	ServiceGroupId          *int64                                  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	ServiceGroupName        *string                                 `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	UpdateTime              *string                                 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Users                   []*GetServiceGroupResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
-	WebhookLink             *string                                 `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
-	WebhookType             *string                                 `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
+	// example:
+	//
+	// 2020-08-08 10:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// ENABLE
+	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	// example:
+	//
+	// 服务描述
+	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	// example:
+	//
+	// 1000
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 冲上云霄
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// example:
+	//
+	// 2020-05-03 15:39:39
+	UpdateTime *string                                 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Users      []*GetServiceGroupResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// example:
+	//
+	// wwwwwww
+	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	// example:
+	//
+	// WEIXIN_GROUP
+	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
 func (s GetServiceGroupResponseBodyData) String() string {
@@ -9775,11 +11779,23 @@ func (s *GetServiceGroupResponseBodyData) SetWebhookType(v string) *GetServiceGr
 }
 
 type GetServiceGroupResponseBodyDataUsers struct {
-	Phone          *string   `json:"phone,omitempty" xml:"phone,omitempty"`
-	RoleNameList   []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
-	ServiceGroupId *int64    `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	UserId         *int64    `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserName       *string   `json:"userName,omitempty" xml:"userName,omitempty"`
+	// example:
+	//
+	// 1390000****
+	Phone        *string   `json:"phone,omitempty" xml:"phone,omitempty"`
+	RoleNameList []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 10
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// jack
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s GetServiceGroupResponseBodyDataUsers) String() string {
@@ -9816,9 +11832,9 @@ func (s *GetServiceGroupResponseBodyDataUsers) SetUserName(v string) *GetService
 }
 
 type GetServiceGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceGroupResponse) String() string {
@@ -9845,11 +11861,26 @@ func (s *GetServiceGroupResponse) SetBody(v *GetServiceGroupResponseBody) *GetSe
 }
 
 type GetServiceGroupPersonSchedulingRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EndTime        *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	StartTime      *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 2020-09-31 00:00:00
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 77777
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 2020-09-01 00:00:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 66666
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetServiceGroupPersonSchedulingRequest) String() string {
@@ -9888,6 +11919,10 @@ func (s *GetServiceGroupPersonSchedulingRequest) SetUserId(v int64) *GetServiceG
 type GetServiceGroupPersonSchedulingResponseBody struct {
 	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9910,9 +11945,9 @@ func (s *GetServiceGroupPersonSchedulingResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetServiceGroupPersonSchedulingResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceGroupPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceGroupPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceGroupPersonSchedulingResponse) String() string {
@@ -9939,8 +11974,16 @@ func (s *GetServiceGroupPersonSchedulingResponse) SetBody(v *GetServiceGroupPers
 }
 
 type GetServiceGroupSchedulingRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9999
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingRequest) String() string {
@@ -9964,6 +12007,10 @@ func (s *GetServiceGroupSchedulingRequest) SetServiceGroupId(v int64) *GetServic
 type GetServiceGroupSchedulingResponseBody struct {
 	Data *GetServiceGroupSchedulingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9988,9 +12035,15 @@ func (s *GetServiceGroupSchedulingResponseBody) SetRequestId(v string) *GetServi
 type GetServiceGroupSchedulingResponseBodyData struct {
 	FastScheduling *GetServiceGroupSchedulingResponseBodyDataFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
 	FineScheduling *GetServiceGroupSchedulingResponseBodyDataFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	SchedulingWay  *string                                                  `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	ServiceGroupId *int64                                                   `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	Users          []*GetServiceGroupSchedulingResponseBodyDataUsers        `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FINE
+	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	// example:
+	//
+	// 99999
+	ServiceGroupId *int64                                            `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	Users          []*GetServiceGroupSchedulingResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyData) String() string {
@@ -10027,11 +12080,23 @@ func (s *GetServiceGroupSchedulingResponseBodyData) SetUsers(v []*GetServiceGrou
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFastScheduling struct {
-	DutyPlan           *string                                                                   `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
-	Id                 *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
-	SchedulingUsers    []*GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	SingleDuration     *int32                                                                    `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
-	SingleDurationUnit *string                                                                   `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
+	// example:
+	//
+	// FAST_CHOICE
+	DutyPlan *string `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
+	// example:
+	//
+	// 2222
+	Id              *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
+	SchedulingUsers []*GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
+	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	// example:
+	//
+	// DAY
+	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFastScheduling) String() string {
@@ -10068,11 +12133,20 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFastScheduling) SetSingleDurat
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers struct {
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 66666
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
-	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	// example:
+	//
+	// 张杰
+	SchedulingUserName *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers) String() string {
@@ -10110,13 +12184,27 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers)
 
 type GetServiceGroupSchedulingResponseBodyDataFineScheduling struct {
 	// 1
+	//
+	// example:
+	//
+	// 精细排班ID
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	// 1
-	Period                       *int32                                                                                 `json:"period,omitempty" xml:"period,omitempty"`
+	//
+	// example:
+	//
+	// 循环周期
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// DAY
 	PeriodUnit                   *string                                                                                `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
 	SchedulingFineShifts         []*GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts         `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
 	SchedulingTemplateFineShifts []*GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts `json:"schedulingTemplateFineShifts,omitempty" xml:"schedulingTemplateFineShifts,omitempty" type:"Repeated"`
-	ShiftType                    *string                                                                                `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	// example:
+	//
+	// MORNING_NIGHT
+	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineScheduling) String() string {
@@ -10158,16 +12246,40 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineScheduling) SetShiftType(v
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts struct {
-	CycleOrder           *int64   `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 1
+	CycleOrder *int64 `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	// example:
+	//
+	// 2020-10-13
+	SchedulingEndTime    *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2020-08-13
+	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 1111
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
-	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	// example:
+	//
+	// 刘德华
+	SchedulingUserName *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	// example:
+	//
+	// 早班
+	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	// example:
+	//
+	// false
+	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts) String() string {
@@ -10229,15 +12341,30 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineSh
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts struct {
-	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 2021-10-01 00:00:00
+	SchedulingEndTime    *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2021-09-01 00:00:00
+	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 1
 	SchedulingUserId     *string  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
 	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	// example:
+	//
+	// true
+	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -10317,9 +12444,9 @@ func (s *GetServiceGroupSchedulingResponseBodyDataUsers) SetUserName(v string) *
 }
 
 type GetServiceGroupSchedulingResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponse) String() string {
@@ -10346,13 +12473,32 @@ func (s *GetServiceGroupSchedulingResponse) SetBody(v *GetServiceGroupScheduling
 }
 
 type GetServiceGroupSchedulingPreviewRequest struct {
-	ClientToken    *string                                                `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 2021-09-01 00:00:00
 	EndTime        *string                                                `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	FastScheduling *GetServiceGroupSchedulingPreviewRequestFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
 	FineScheduling *GetServiceGroupSchedulingPreviewRequestFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	SchedulingWay  *string                                                `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	ServiceGroupId *int64                                                 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	StartTime      *string                                                `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FAST
+	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 55555
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 2021-11-01 00:00:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewRequest) String() string {
@@ -10400,9 +12546,20 @@ func (s *GetServiceGroupSchedulingPreviewRequest) SetStartTime(v string) *GetSer
 
 type GetServiceGroupSchedulingPreviewRequestFastScheduling struct {
 	// FAST_CHOICE
+	//
+	// example:
+	//
+	// FAST_CHOICE
 	DutyPlan        *string                                                                 `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
 	SchedulingUsers []*GetServiceGroupSchedulingPreviewRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	SingleDuration  *int32                                                                  `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	// example:
+	//
+	// 12
+	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	// DAY
+	//
+	// example:
+	//
 	// DAY
 	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
@@ -10436,7 +12593,13 @@ func (s *GetServiceGroupSchedulingPreviewRequestFastScheduling) SetSingleDuratio
 }
 
 type GetServiceGroupSchedulingPreviewRequestFastSchedulingSchedulingUsers struct {
-	SchedulingOrder  *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 122222
 	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 }
 
@@ -10459,10 +12622,19 @@ func (s *GetServiceGroupSchedulingPreviewRequestFastSchedulingSchedulingUsers) S
 }
 
 type GetServiceGroupSchedulingPreviewRequestFineScheduling struct {
-	Period               *int32                                                                       `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// 2
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// DAY
 	PeriodUnit           *string                                                                      `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
 	SchedulingFineShifts []*GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShifts `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
-	ShiftType            *string                                                                      `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	// example:
+	//
+	// MORNING_NIGHT
+	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewRequestFineScheduling) String() string {
@@ -10494,10 +12666,22 @@ func (s *GetServiceGroupSchedulingPreviewRequestFineScheduling) SetShiftType(v s
 }
 
 type GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShifts struct {
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2020-10-13
+	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2020-08-13
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	// example:
+	//
+	// 早班
+	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -10531,6 +12715,10 @@ func (s *GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShif
 type GetServiceGroupSchedulingPreviewResponseBody struct {
 	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -10553,9 +12741,9 @@ func (s *GetServiceGroupSchedulingPreviewResponseBody) SetRequestId(v string) *G
 }
 
 type GetServiceGroupSchedulingPreviewResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceGroupSchedulingPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceGroupSchedulingPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewResponse) String() string {
@@ -10582,9 +12770,20 @@ func (s *GetServiceGroupSchedulingPreviewResponse) SetBody(v *GetServiceGroupSch
 }
 
 type GetServiceGroupSpecialPersonSchedulingRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 77777
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 66666
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetServiceGroupSpecialPersonSchedulingRequest) String() string {
@@ -10613,6 +12812,10 @@ func (s *GetServiceGroupSpecialPersonSchedulingRequest) SetUserId(v int64) *GetS
 type GetServiceGroupSpecialPersonSchedulingResponseBody struct {
 	Data []*GetServiceGroupSpecialPersonSchedulingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -10635,12 +12838,30 @@ func (s *GetServiceGroupSpecialPersonSchedulingResponseBody) SetRequestId(v stri
 }
 
 type GetServiceGroupSpecialPersonSchedulingResponseBodyData struct {
-	SchedulingDate      *string `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	// example:
+	//
+	// 2021-08-17
+	SchedulingDate *string `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
+	// example:
+	//
+	// 2021-08-17  12:00:00
+	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	// example:
+	//
+	// 2021-08-17  00:00:00
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	ServiceGroupId      *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	ServiceGroupName    *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// example:
+	//
+	// 111111
+	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	// example:
+	//
+	// 8888
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 刘德华
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
 func (s GetServiceGroupSpecialPersonSchedulingResponseBodyData) String() string {
@@ -10682,9 +12903,9 @@ func (s *GetServiceGroupSpecialPersonSchedulingResponseBodyData) SetServiceGroup
 }
 
 type GetServiceGroupSpecialPersonSchedulingResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceGroupSpecialPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceGroupSpecialPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceGroupSpecialPersonSchedulingResponse) String() string {
@@ -10711,12 +12932,36 @@ func (s *GetServiceGroupSpecialPersonSchedulingResponse) SetBody(v *GetServiceGr
 }
 
 type GetSimilarIncidentStatisticsRequest struct {
-	ClientToken      *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	CreateTime       *string   `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Events           []*string `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	IncidentId       *int64    `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentTitle    *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	RelatedServiceId *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// example:
+	//
+	// 7C56D225-7C34-40BB-9624-C8BA449260E6
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-09-09 09:09:09
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// This parameter is required.
+	Events []*string `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 32
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx事件
+	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsRequest) String() string {
@@ -10761,6 +13006,10 @@ type GetSimilarIncidentStatisticsResponseBody struct {
 	// data
 	Data *GetSimilarIncidentStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the request
+	//
+	// example:
+	//
+	// 7C56D225-7C34-40BB-9624-C8BA449260E6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -10783,10 +13032,23 @@ func (s *GetSimilarIncidentStatisticsResponseBody) SetRequestId(v string) *GetSi
 }
 
 type GetSimilarIncidentStatisticsResponseBodyData struct {
-	CountInSevenDays      *int64                                                               `json:"countInSevenDays,omitempty" xml:"countInSevenDays,omitempty"`
-	CountInSixMonths      *int64                                                               `json:"countInSixMonths,omitempty" xml:"countInSixMonths,omitempty"`
+	// example:
+	//
+	// 8
+	CountInSevenDays *int64 `json:"countInSevenDays,omitempty" xml:"countInSevenDays,omitempty"`
+	// example:
+	//
+	// 43
+	CountInSixMonths *int64 `json:"countInSixMonths,omitempty" xml:"countInSixMonths,omitempty"`
+	// example:
+	//
+	// {}
 	DailySimilarIncidents []*GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents `json:"dailySimilarIncidents,omitempty" xml:"dailySimilarIncidents,omitempty" type:"Repeated"`
 	// id of the request
+	//
+	// example:
+	//
+	// uyihg6789
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// topFiveIncidents
 	TopFiveIncidents []*GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents `json:"topFiveIncidents,omitempty" xml:"topFiveIncidents,omitempty" type:"Repeated"`
@@ -10826,12 +13088,27 @@ func (s *GetSimilarIncidentStatisticsResponseBodyData) SetTopFiveIncidents(v []*
 }
 
 type GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents struct {
-	Commitment       *int64                                                                               `json:"commitment,omitempty" xml:"commitment,omitempty"`
-	Date             *string                                                                              `json:"date,omitempty" xml:"date,omitempty"`
-	Day              *int64                                                                               `json:"day,omitempty" xml:"day,omitempty"`
+	// example:
+	//
+	// 0
+	Commitment *int64 `json:"commitment,omitempty" xml:"commitment,omitempty"`
+	// example:
+	//
+	// 2021-03-07
+	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// example:
+	//
+	// 1
+	Day *int64 `json:"day,omitempty" xml:"day,omitempty"`
+	// example:
+	//
+	// 2
 	Month            *int64                                                                               `json:"month,omitempty" xml:"month,omitempty"`
 	SimilarIncidents []*GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimilarIncidents `json:"similarIncidents,omitempty" xml:"similarIncidents,omitempty" type:"Repeated"`
-	Week             *string                                                                              `json:"week,omitempty" xml:"week,omitempty"`
+	// example:
+	//
+	// 1
+	Week *string `json:"week,omitempty" xml:"week,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents) String() string {
@@ -10873,20 +13150,62 @@ func (s *GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents) SetW
 }
 
 type GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimilarIncidents struct {
-	AssignUserId              *int64  `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	AssignUserName            *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	CreateTime                *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DurationTime              *int64  `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	FinishReason              *int64  `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
-	FinishReasonDescription   *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
+	// example:
+	//
+	// 433
+	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	// example:
+	//
+	// 张老三
+	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	// example:
+	//
+	// 2021-09-09 09:09:09
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 6789765678
+	DurationTime *int64 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	// example:
+	//
+	// 1
+	FinishReason *int64 `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// example:
+	//
+	// xx原因
+	FinishReasonDescription *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
+	// example:
+	//
+	// xxx方案
 	FinishSolutionDescription *string `json:"finishSolutionDescription,omitempty" xml:"finishSolutionDescription,omitempty"`
-	IncidentFinishSolution    *int64  `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
-	IncidentId                *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentNumber            *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	IncidentTitle             *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	RelatedRouteRuleId        *int64  `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
-	RelatedRouteRuleName      *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
-	SimilarScore              *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
+	// example:
+	//
+	// 5
+	IncidentFinishSolution *int64 `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
+	// example:
+	//
+	// 5435
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// I234432
+	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	// example:
+	//
+	// 线性代数发多少
+	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	// example:
+	//
+	// 334
+	RelatedRouteRuleId *int64 `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
+	// example:
+	//
+	// xxx规则
+	RelatedRouteRuleName *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
+	// example:
+	//
+	// 1003.567
+	SimilarScore *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimilarIncidents) String() string {
@@ -10968,20 +13287,62 @@ func (s *GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimila
 }
 
 type GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents struct {
-	AssignUserId              *string `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	AssignUserName            *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	CreateTime                *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DurationTime              *int64  `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	FinishReason              *int64  `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
-	FinishReasonDescription   *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
+	// example:
+	//
+	// 43
+	AssignUserId *string `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	// example:
+	//
+	// 张老三
+	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	// example:
+	//
+	// 2021-09-09 09:09:09
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 6787678767
+	DurationTime *int64 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	// example:
+	//
+	// 2
+	FinishReason *int64 `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// example:
+	//
+	// xxxx原因
+	FinishReasonDescription *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
+	// example:
+	//
+	// xxx方案
 	FinishSolutionDescription *string `json:"finishSolutionDescription,omitempty" xml:"finishSolutionDescription,omitempty"`
-	IncidentFinishSolution    *int64  `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
-	IncidentId                *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IncidentNumber            *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	IncidentTitle             *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	RelatedRouteRuleId        *int64  `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
-	RelatedRouteRuleName      *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
-	SimilarScore              *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
+	// example:
+	//
+	// 5
+	IncidentFinishSolution *int64 `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
+	// example:
+	//
+	// 32
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// I34324
+	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	// example:
+	//
+	// xxx事件
+	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	// example:
+	//
+	// 4343
+	RelatedRouteRuleId *int64 `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
+	// example:
+	//
+	// xxx
+	RelatedRouteRuleName *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
+	// example:
+	//
+	// 1992.21
+	SimilarScore *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents) String() string {
@@ -11063,9 +13424,9 @@ func (s *GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents) SetSimila
 }
 
 type GetSimilarIncidentStatisticsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSimilarIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSimilarIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponse) String() string {
@@ -11092,8 +13453,11 @@ func (s *GetSimilarIncidentStatisticsResponse) SetBody(v *GetSimilarIncidentStat
 }
 
 type GetSubscriptionRequest struct {
-	NotFilterScopeObjectDeleted *bool  `json:"notFilterScopeObjectDeleted,omitempty" xml:"notFilterScopeObjectDeleted,omitempty"`
-	SubscriptionId              *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	NotFilterScopeObjectDeleted *bool `json:"notFilterScopeObjectDeleted,omitempty" xml:"notFilterScopeObjectDeleted,omitempty"`
+	// example:
+	//
+	// 10
+	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 }
 
 func (s GetSubscriptionRequest) String() string {
@@ -11118,6 +13482,10 @@ type GetSubscriptionResponseBody struct {
 	// Object
 	Data *GetSubscriptionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -11140,19 +13508,46 @@ func (s *GetSubscriptionResponseBody) SetRequestId(v string) *GetSubscriptionRes
 }
 
 type GetSubscriptionResponseBodyData struct {
-	EndTime            *string                                              `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ExpiredType        *string                                              `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	NotifyObjectList   []*GetSubscriptionResponseBodyDataNotifyObjectList   `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-08-9 10:10:10
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// LONG_TERM
+	ExpiredType      *string                                            `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	NotifyObjectList []*GetSubscriptionResponseBodyDataNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// USER
 	NotifyObjectType   *string                                              `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 	NotifyStrategyList []*GetSubscriptionResponseBodyDataNotifyStrategyList `json:"notifyStrategyList,omitempty" xml:"notifyStrategyList,omitempty" type:"Repeated"`
-	Period             *string                                              `json:"period,omitempty" xml:"period,omitempty"`
-	Scope              *string                                              `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// 1个月
+	Period *string `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	// Array
-	ScopeObjectList   []*GetSubscriptionResponseBodyDataScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	StartTime         *string                                           `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status            *string                                           `json:"status,omitempty" xml:"status,omitempty"`
-	SubscriptionId    *int64                                            `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	SubscriptionTitle *string                                           `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	ScopeObjectList []*GetSubscriptionResponseBodyDataScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2020-05-9 10:10:10
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 68
+	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// example:
+	//
+	// newTitle
+	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyData) String() string {
@@ -11224,10 +13619,22 @@ func (s *GetSubscriptionResponseBodyData) SetSubscriptionTitle(v string) *GetSub
 }
 
 type GetSubscriptionResponseBodyDataNotifyObjectList struct {
-	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyObjectId   *int64  `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
-	NotifyObjectType *int64  `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// example:
+	//
+	// 23
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// TestName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 19
+	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
+	// example:
+	//
+	// USER
+	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyDataNotifyObjectList) String() string {
@@ -11259,6 +13666,9 @@ func (s *GetSubscriptionResponseBodyDataNotifyObjectList) SetNotifyObjectType(v 
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyList struct {
+	// example:
+	//
+	// INCIDENT
 	InstanceType *int64                                                         `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	Strategies   []*GetSubscriptionResponseBodyDataNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
 }
@@ -11282,8 +13692,14 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyList) SetStrategies(v []*G
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyListStrategies struct {
-	Channels      *string                                                                   `json:"channels,omitempty" xml:"channels,omitempty"`
-	Conditions    []*GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions  `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SMS
+	Channels   *string                                                                  `json:"channels,omitempty" xml:"channels,omitempty"`
+	Conditions []*GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
 	Id            *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
 	PeriodChannel *GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChannel `json:"periodChannel,omitempty" xml:"periodChannel,omitempty" type:"Struct"`
 }
@@ -11317,9 +13733,21 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyListStrategies) SetPeriodC
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions struct {
-	Action            *string `json:"action,omitempty" xml:"action,omitempty"`
-	Effection         *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	Level             *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// INCIDENT_TRIGGER
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// HIGH
+	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	// example:
+	//
+	// P1
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// PROBLEM_NOTIFY
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -11352,8 +13780,14 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions) 
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChannel struct {
+	// example:
+	//
+	// DINGDING
 	NonWorkday *string `json:"nonWorkday,omitempty" xml:"nonWorkday,omitempty"`
-	Workday    *string `json:"workday,omitempty" xml:"workday,omitempty"`
+	// example:
+	//
+	// DINGDING
+	Workday *string `json:"workday,omitempty" xml:"workday,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChannel) String() string {
@@ -11375,11 +13809,20 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChanne
 }
 
 type GetSubscriptionResponseBodyDataScopeObjectList struct {
-	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	IsValid       *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObject   *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
-	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	// example:
+	//
+	// 10
+	Id      *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	IsValid *int64 `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope       *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObject *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
+	// example:
+	//
+	// 10
+	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyDataScopeObjectList) String() string {
@@ -11416,9 +13859,9 @@ func (s *GetSubscriptionResponseBodyDataScopeObjectList) SetScopeObjectId(v int6
 }
 
 type GetSubscriptionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSubscriptionResponse) String() string {
@@ -11445,6 +13888,11 @@ func (s *GetSubscriptionResponse) SetBody(v *GetSubscriptionResponseBody) *GetSu
 }
 
 type GetTenantApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7C56D225-7C34-40BB-9624-C8BA449260E6
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -11465,6 +13913,10 @@ type GetTenantApplicationResponseBody struct {
 	// data
 	Data *GetTenantApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -11487,11 +13939,23 @@ func (s *GetTenantApplicationResponseBody) SetRequestId(v string) *GetTenantAppl
 }
 
 type GetTenantApplicationResponseBodyData struct {
-	BizId          *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	Channel        *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// example:
+	//
+	// 7356
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// example:
+	//
+	// DINGDING
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// example:
+	//
+	// ding81913c*
 	CorporationId  *string `json:"corporationId,omitempty" xml:"corporationId,omitempty"`
 	OriginalCorpId *string `json:"originalCorpId,omitempty" xml:"originalCorpId,omitempty"`
-	Progress       *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// example:
+	//
+	// NOT_OPEN
+	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
 }
 
 func (s GetTenantApplicationResponseBodyData) String() string {
@@ -11528,9 +13992,9 @@ func (s *GetTenantApplicationResponseBodyData) SetProgress(v string) *GetTenantA
 }
 
 type GetTenantApplicationResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTenantApplicationResponse) String() string {
@@ -11557,6 +14021,7 @@ func (s *GetTenantApplicationResponse) SetBody(v *GetTenantApplicationResponseBo
 }
 
 type GetTenantStatusRequest struct {
+	// This parameter is required.
 	TenantRamId *int64 `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
 }
 
@@ -11614,9 +14079,9 @@ func (s *GetTenantStatusResponseBodyData) SetTenantStatus(v int32) *GetTenantSta
 }
 
 type GetTenantStatusResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTenantStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTenantStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTenantStatusResponse) String() string {
@@ -11643,8 +14108,16 @@ func (s *GetTenantStatusResponse) SetBody(v *GetTenantStatusResponseBody) *GetTe
 }
 
 type GetUserRequest struct {
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 63
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetUserRequest) String() string {
@@ -11668,6 +14141,10 @@ func (s *GetUserRequest) SetUserId(v int64) *GetUserRequest {
 type GetUserResponseBody struct {
 	Data *GetUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -11690,20 +14167,47 @@ func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
 }
 
 type GetUserResponseBodyData struct {
+	// example:
+	//
+	// SUB
 	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
-	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 2021-09-09 09:09:09
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// email
-	Email          *string `json:"email,omitempty" xml:"email,omitempty"`
-	IsEditableUser *bool   `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
-	IsRelated      *string `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
-	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	//
+	// example:
+	//
+	// 5678***@qq.com
+	Email    *string `json:"email,omitempty" xml:"email,omitempty"`
+	IsActive *int64  `json:"isActive,omitempty" xml:"isActive,omitempty"`
+	// example:
+	//
+	// true
+	IsEditableUser *bool `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
+	// example:
+	//
+	// RELATE
+	IsRelated *string `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
+	// example:
+	//
+	// 1390000****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// ramId
+	//
+	// example:
+	//
+	// 1344383
 	RamId         *string                                 `json:"ramId,omitempty" xml:"ramId,omitempty"`
 	RoleIdList    []*int64                                `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
 	RoleNameList  []*string                               `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 	ServiceGroups []*GetUserResponseBodyDataServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
-	UserId        *int64                                  `json:"userId,omitempty" xml:"userId,omitempty"`
-	Username      *string                                 `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// 63
+	UserId   *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GetUserResponseBodyData) String() string {
@@ -11726,6 +14230,11 @@ func (s *GetUserResponseBodyData) SetCreateTime(v string) *GetUserResponseBodyDa
 
 func (s *GetUserResponseBodyData) SetEmail(v string) *GetUserResponseBodyData {
 	s.Email = &v
+	return s
+}
+
+func (s *GetUserResponseBodyData) SetIsActive(v int64) *GetUserResponseBodyData {
+	s.IsActive = &v
 	return s
 }
 
@@ -11775,8 +14284,14 @@ func (s *GetUserResponseBodyData) SetUsername(v string) *GetUserResponseBodyData
 }
 
 type GetUserResponseBodyDataServiceGroups struct {
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 山口组
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 10000
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s GetUserResponseBodyDataServiceGroups) String() string {
@@ -11798,9 +14313,9 @@ func (s *GetUserResponseBodyDataServiceGroups) SetServiceGroupId(v int64) *GetUs
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -11827,6 +14342,9 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserGuideStatusRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -11845,8 +14363,16 @@ func (s *GetUserGuideStatusRequest) SetClientToken(v string) *GetUserGuideStatus
 
 type GetUserGuideStatusResponseBody struct {
 	// map
+	//
+	// example:
+	//
+	// {   "data": {     "monitorGuide": false,     "userRamId": 1344371,     "serviceGuide": false,     "noticeGuide": false,     "userGuide": true,     "serviceGroupGuide": false,     "routeRuleGuide": false,     "incidentGuide": true   }
 	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -11869,9 +14395,9 @@ func (s *GetUserGuideStatusResponseBody) SetRequestId(v string) *GetUserGuideSta
 }
 
 type GetUserGuideStatusResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserGuideStatusResponse) String() string {
@@ -11898,17 +14424,46 @@ func (s *GetUserGuideStatusResponse) SetBody(v *GetUserGuideStatusResponseBody) 
 }
 
 type ListAlertsRequest struct {
-	AlertLevel      *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
-	AlertName       *string `json:"alertName,omitempty" xml:"alertName,omitempty"`
+	// example:
+	//
+	// P1
+	AlertLevel *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
+	// example:
+	//
+	// 报警
+	AlertName *string `json:"alertName,omitempty" xml:"alertName,omitempty"`
+	// example:
+	//
+	// 流转规则A
 	AlertSourceName *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
 	// 2020-09-10 21:00:00
-	EndTime          *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	MonitorSourceId  *string `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	PageNumber       *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize         *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RelatedServiceId *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	RuleName         *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	//
+	// example:
+	//
+	// 2020-10-01 23:59:59
+	EndTime         *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	MonitorSourceId *string `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// example:
+	//
+	// zabbix
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 	// 2020-09-10 13:00:00
+	//
+	// example:
+	//
+	// 2020-10-01 00:00:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
@@ -11971,11 +14526,23 @@ func (s *ListAlertsRequest) SetStartTime(v string) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
-	Data       []*ListAlertsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int32                        `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                        `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId  *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64                        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data []*ListAlertsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListAlertsResponseBody) String() string {
@@ -12012,20 +14579,53 @@ func (s *ListAlertsResponseBody) SetTotalCount(v int64) *ListAlertsResponseBody 
 }
 
 type ListAlertsResponseBodyData struct {
-	AlertId              *int64  `json:"alertId,omitempty" xml:"alertId,omitempty"`
-	AlertLevel           *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
-	AlertNumber          *string `json:"alertNumber,omitempty" xml:"alertNumber,omitempty"`
-	AlertSourceName      *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
-	CreateTime           *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 20000
+	AlertId *int64 `json:"alertId,omitempty" xml:"alertId,omitempty"`
+	// example:
+	//
+	// P1
+	AlertLevel *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
+	// example:
+	//
+	// A123123123
+	AlertNumber *string `json:"alertNumber,omitempty" xml:"alertNumber,omitempty"`
+	// example:
+	//
+	// zabbix
+	AlertSourceName *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
+	// example:
+	//
+	// 2020-03-05 15:53:55
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 2021-09-08 18:30:00
 	FirstEventTime       *string `json:"firstEventTime,omitempty" xml:"firstEventTime,omitempty"`
 	MonitorSourceName    *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 	RelServiceDeleteType *int32  `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
-	RelatedServiceName   *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	RouteRuleDeleteType  *int32  `json:"routeRuleDeleteType,omitempty" xml:"routeRuleDeleteType,omitempty"`
-	RouteRuleId          *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	RouteRuleName        *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
-	SourceEventCount     *int64  `json:"sourceEventCount,omitempty" xml:"sourceEventCount,omitempty"`
-	Title                *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 服务A
+	RelatedServiceName  *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	RouteRuleDeleteType *int32  `json:"routeRuleDeleteType,omitempty" xml:"routeRuleDeleteType,omitempty"`
+	// example:
+	//
+	// 10000
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// example:
+	//
+	// 流转规则
+	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
+	// example:
+	//
+	// 10
+	SourceEventCount *int64 `json:"sourceEventCount,omitempty" xml:"sourceEventCount,omitempty"`
+	// example:
+	//
+	// 报警
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListAlertsResponseBodyData) String() string {
@@ -12107,9 +14707,9 @@ func (s *ListAlertsResponseBodyData) SetTitle(v string) *ListAlertsResponseBodyD
 }
 
 type ListAlertsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAlertsResponse) String() string {
@@ -12153,8 +14753,11 @@ func (s *ListByMonitorSourceIdRequest) SetMonitorSourceId(v string) *ListByMonit
 }
 
 type ListByMonitorSourceIdResponseBody struct {
-	Data      []*ListByMonitorSourceIdResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data []*ListByMonitorSourceIdResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListByMonitorSourceIdResponseBody) String() string {
@@ -12199,9 +14802,9 @@ func (s *ListByMonitorSourceIdResponseBodyData) SetRuleName(v string) *ListByMon
 }
 
 type ListByMonitorSourceIdResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListByMonitorSourceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListByMonitorSourceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListByMonitorSourceIdResponse) String() string {
@@ -12229,9 +14832,19 @@ func (s *ListByMonitorSourceIdResponse) SetBody(v *ListByMonitorSourceIdResponse
 
 type ListChartDataForServiceGroupRequest struct {
 	// clientToken
+	//
+	// example:
+	//
+	// 23es23s32xas23
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EndTime     *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	StartTime   *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 2021-10-09
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 2021-09-09
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListChartDataForServiceGroupRequest) String() string {
@@ -12261,6 +14874,10 @@ type ListChartDataForServiceGroupResponseBody struct {
 	// data
 	Data []*ListChartDataForServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 1231212
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -12283,16 +14900,46 @@ func (s *ListChartDataForServiceGroupResponseBody) SetRequestId(v string) *ListC
 }
 
 type ListChartDataForServiceGroupResponseBodyData struct {
-	EffectionLevel                        map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
-	EscalationIncidentCount               *int64                 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	IncidentCount                         *int64                 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
-	MeanTimeToAcknowledge                 *int64                 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
-	MeanTimeToRepair                      *int64                 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	Time                                  *string                `json:"time,omitempty" xml:"time,omitempty"`
-	TotalMeanTimeToAcknowledge            *int64                 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
-	TotalMeanTimeToRepair                 *int64                 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
-	UnAcknowledgedEscalationIncidentCount *int64                 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	UnFinishEscalationIncidentCount       *int64                 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	// example:
+	//
+	// {"P1HIGH":32}
+	EffectionLevel map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
+	// example:
+	//
+	// 43
+	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 32
+	IncidentCount *int64 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	// example:
+	//
+	// 323
+	MeanTimeToAcknowledge *int64 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
+	// example:
+	//
+	// 4343
+	MeanTimeToRepair *int64 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	// example:
+	//
+	// 2021-09-09
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// 3334
+	TotalMeanTimeToAcknowledge *int64 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
+	// example:
+	//
+	// 4343
+	TotalMeanTimeToRepair *int64 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
+	// example:
+	//
+	// 23
+	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 23
+	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
 }
 
 func (s ListChartDataForServiceGroupResponseBodyData) String() string {
@@ -12354,9 +15001,9 @@ func (s *ListChartDataForServiceGroupResponseBodyData) SetUnFinishEscalationInci
 }
 
 type ListChartDataForServiceGroupResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChartDataForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChartDataForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChartDataForServiceGroupResponse) String() string {
@@ -12384,9 +15031,19 @@ func (s *ListChartDataForServiceGroupResponse) SetBody(v *ListChartDataForServic
 
 type ListChartDataForUserRequest struct {
 	// clientToken
+	//
+	// example:
+	//
+	// 3232dsd32sd32gr
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EndTime     *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	StartTime   *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 2021-10-09
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 2021-09-09
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListChartDataForUserRequest) String() string {
@@ -12416,6 +15073,10 @@ type ListChartDataForUserResponseBody struct {
 	// data
 	Data []*ListChartDataForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 1231212
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -12438,16 +15099,46 @@ func (s *ListChartDataForUserResponseBody) SetRequestId(v string) *ListChartData
 }
 
 type ListChartDataForUserResponseBodyData struct {
-	EffectionLevel                        map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
-	EscalationIncidentCount               *int64                 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	IncidentCount                         *int64                 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
-	MeanTimeToAcknowledge                 *int64                 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
-	MeanTimeToRepair                      *int64                 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	Time                                  *string                `json:"time,omitempty" xml:"time,omitempty"`
-	TotalMeanTimeToAcknowledge            *int64                 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
-	TotalMeanTimeToRepair                 *int64                 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
-	UnAcknowledgedEscalationIncidentCount *int64                 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	UnFinishEscalationIncidentCount       *int64                 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	// example:
+	//
+	// {"P1HIGH":32}
+	EffectionLevel map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
+	// example:
+	//
+	// 43
+	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 32
+	IncidentCount *int64 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	// example:
+	//
+	// 323
+	MeanTimeToAcknowledge *int64 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
+	// example:
+	//
+	// 4343
+	MeanTimeToRepair *int64 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	// example:
+	//
+	// 2021-09-09
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// 3334
+	TotalMeanTimeToAcknowledge *int64 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
+	// example:
+	//
+	// 4343
+	TotalMeanTimeToRepair *int64 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
+	// example:
+	//
+	// 23
+	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 23
+	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
 }
 
 func (s ListChartDataForUserResponseBodyData) String() string {
@@ -12509,9 +15200,9 @@ func (s *ListChartDataForUserResponseBodyData) SetUnFinishEscalationIncidentCoun
 }
 
 type ListChartDataForUserResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChartDataForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChartDataForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChartDataForUserResponse) String() string {
@@ -12538,6 +15229,9 @@ func (s *ListChartDataForUserResponse) SetBody(v *ListChartDataForUserResponseBo
 }
 
 type ListConfigsRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-CDE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -12558,6 +15252,10 @@ type ListConfigsResponseBody struct {
 	// data
 	Data map[string][]*DataValue `json:"data,omitempty" xml:"data,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// uuid
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -12580,9 +15278,9 @@ func (s *ListConfigsResponseBody) SetRequestId(v string) *ListConfigsResponseBod
 }
 
 type ListConfigsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConfigsResponse) String() string {
@@ -12609,9 +15307,18 @@ func (s *ListConfigsResponse) SetBody(v *ListConfigsResponseBody) *ListConfigsRe
 }
 
 type ListDataReportForServiceGroupRequest struct {
-	EndTime          *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 2021-09-30
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// A服务组
 	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	StartTime        *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 2021-09-09
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListDataReportForServiceGroupRequest) String() string {
@@ -12638,12 +15345,25 @@ func (s *ListDataReportForServiceGroupRequest) SetStartTime(v string) *ListDataR
 }
 
 type ListDataReportForServiceGroupResponseBody struct {
-	Data       []*ListDataReportForServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSIze   *int64                                           `json:"pageSIze,omitempty" xml:"pageSIze,omitempty"`
+	Data []*ListDataReportForServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSIze *int64 `json:"pageSIze,omitempty" xml:"pageSIze,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// xxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListDataReportForServiceGroupResponseBody) String() string {
@@ -12680,18 +15400,50 @@ func (s *ListDataReportForServiceGroupResponseBody) SetTotalCount(v int64) *List
 }
 
 type ListDataReportForServiceGroupResponseBodyData struct {
-	EscalationIncidentCount *int64  `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	FinishIncidentCount     *int64  `json:"finishIncidentCount,omitempty" xml:"finishIncidentCount,omitempty"`
-	FinishProportion        *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
-	IncidentCount           *int64  `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	// example:
+	//
+	// 100
+	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 111
+	FinishIncidentCount *int64 `json:"finishIncidentCount,omitempty" xml:"finishIncidentCount,omitempty"`
+	// example:
+	//
+	// 19%
+	FinishProportion *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
+	// example:
+	//
+	// 1
+	IncidentCount *int64 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
 	// MRRA
+	//
+	// example:
+	//
+	// 3分19秒
 	MeanTimeToAcknowledge *int64 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
 	// MTTR
-	MeanTimeToRepair                      *int64  `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	ServiceGroupId                        *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	ServiceGroupName                      *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	UnAcknowledgedEscalationIncidentCount *int64  `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	UnFinishEscalationIncidentCount       *int64  `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	//
+	// example:
+	//
+	// 3分19秒
+	MeanTimeToRepair *int64 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	// example:
+	//
+	// 100
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 服务组
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// example:
+	//
+	// 200
+	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 200
+	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
 }
 
 func (s ListDataReportForServiceGroupResponseBodyData) String() string {
@@ -12753,9 +15505,9 @@ func (s *ListDataReportForServiceGroupResponseBodyData) SetUnFinishEscalationInc
 }
 
 type ListDataReportForServiceGroupResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataReportForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataReportForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataReportForServiceGroupResponse) String() string {
@@ -12782,10 +15534,22 @@ func (s *ListDataReportForServiceGroupResponse) SetBody(v *ListDataReportForServ
 }
 
 type ListDataReportForUserRequest struct {
-	EndTime    *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	PageNumber *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	StartTime  *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 2021-09-30
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 2021-09-01
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListDataReportForUserRequest) String() string {
@@ -12819,8 +15583,15 @@ func (s *ListDataReportForUserRequest) SetStartTime(v string) *ListDataReportFor
 type ListDataReportForUserResponseBody struct {
 	Data []*ListDataReportForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// xxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListDataReportForUserResponseBody) String() string {
@@ -12847,19 +15618,54 @@ func (s *ListDataReportForUserResponseBody) SetTotalCount(v int64) *ListDataRepo
 }
 
 type ListDataReportForUserResponseBodyData struct {
-	DistributionIncidentCount *int64  `json:"distributionIncidentCount,omitempty" xml:"distributionIncidentCount,omitempty"`
-	EscalationIncidentCount   *int64  `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	FinishIncidentNumber      *int64  `json:"finishIncidentNumber,omitempty" xml:"finishIncidentNumber,omitempty"`
-	FinishProportion          *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
+	// example:
+	//
+	// 100
+	DistributionIncidentCount *int64 `json:"distributionIncidentCount,omitempty" xml:"distributionIncidentCount,omitempty"`
+	// example:
+	//
+	// 100
+	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 100
+	FinishIncidentNumber *int64 `json:"finishIncidentNumber,omitempty" xml:"finishIncidentNumber,omitempty"`
+	// example:
+	//
+	// 20%
+	FinishProportion *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
 	// MRRA
+	//
+	// example:
+	//
+	// 3分50秒
 	MeanTimeToAcknowledge *string `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
 	// MTTA
-	MeanTimeToRepair                      *string `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	UnAcknowledgedEscalationIncidentCount *int64  `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	UnDistributionIncidentCount           *int64  `json:"unDistributionIncidentCount,omitempty" xml:"unDistributionIncidentCount,omitempty"`
-	UnFinishEscalationIncidentCount       *int64  `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
-	UserId                                *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserName                              *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	//
+	// example:
+	//
+	// 3分50秒
+	MeanTimeToRepair *string `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	// example:
+	//
+	// 100
+	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 100
+	UnDistributionIncidentCount *int64 `json:"unDistributionIncidentCount,omitempty" xml:"unDistributionIncidentCount,omitempty"`
+	// example:
+	//
+	// 100
+	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	// example:
+	//
+	// 1111
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// wy
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s ListDataReportForUserResponseBodyData) String() string {
@@ -12926,9 +15732,9 @@ func (s *ListDataReportForUserResponseBodyData) SetUserName(v string) *ListDataR
 }
 
 type ListDataReportForUserResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataReportForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataReportForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataReportForUserResponse) String() string {
@@ -12955,6 +15761,9 @@ func (s *ListDataReportForUserResponse) SetBody(v *ListDataReportForUserResponse
 }
 
 type ListDictionariesRequest struct {
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -12975,6 +15784,10 @@ type ListDictionariesResponseBody struct {
 	// data
 	Data map[string][]*DataValue `json:"data,omitempty" xml:"data,omitempty"`
 	// id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -12997,9 +15810,9 @@ func (s *ListDictionariesResponseBody) SetRequestId(v string) *ListDictionariesR
 }
 
 type ListDictionariesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDictionariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDictionariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDictionariesResponse) String() string {
@@ -13027,6 +15840,10 @@ func (s *ListDictionariesResponse) SetBody(v *ListDictionariesResponseBody) *Lis
 
 type ListEscalationPlanServicesRequest struct {
 	// clientToken
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -13047,6 +15864,10 @@ type ListEscalationPlanServicesResponseBody struct {
 	// data
 	Data []*ListEscalationPlanServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -13069,8 +15890,14 @@ func (s *ListEscalationPlanServicesResponseBody) SetRequestId(v string) *ListEsc
 }
 
 type ListEscalationPlanServicesResponseBodyData struct {
-	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// 23
+	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s ListEscalationPlanServicesResponseBodyData) String() string {
@@ -13092,9 +15919,9 @@ func (s *ListEscalationPlanServicesResponseBodyData) SetScopeObjectId(v int64) *
 }
 
 type ListEscalationPlanServicesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEscalationPlanServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEscalationPlanServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEscalationPlanServicesResponse) String() string {
@@ -13121,13 +15948,28 @@ func (s *ListEscalationPlanServicesResponse) SetBody(v *ListEscalationPlanServic
 }
 
 type ListEscalationPlansRequest struct {
-	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// xxx
 	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	IsGlobal           *bool   `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
-	PageNumber         *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// ssxx
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListEscalationPlansRequest) String() string {
@@ -13175,12 +16017,25 @@ func (s *ListEscalationPlansRequest) SetStatus(v string) *ListEscalationPlansReq
 
 type ListEscalationPlansResponseBody struct {
 	// data
-	Data       []*ListEscalationPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                                 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                                 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListEscalationPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 878
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListEscalationPlansResponseBody) String() string {
@@ -13217,12 +16072,24 @@ func (s *ListEscalationPlansResponseBody) SetTotalCount(v int64) *ListEscalation
 }
 
 type ListEscalationPlansResponseBodyData struct {
-	EscalationPlanId           *int64                                                           `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 43
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 升级计划2345
 	EscalationPlanName         *string                                                          `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanScopeObjects []*ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
 	IsGlobal                   *bool                                                            `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
-	ModifyTime                 *string                                                          `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	Status                     *string                                                          `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2021-09-09 09:09:09
+	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListEscalationPlansResponseBodyData) String() string {
@@ -13264,10 +16131,19 @@ func (s *ListEscalationPlansResponseBodyData) SetStatus(v string) *ListEscalatio
 }
 
 type ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects struct {
+	// example:
+	//
+	// SERVICE
 	Scope                  *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	ScopeObjectDeletedType *int32  `json:"scopeObjectDeletedType,omitempty" xml:"scopeObjectDeletedType,omitempty"`
-	ScopeObjectId          *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
-	ScopeObjectName        *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
+	// example:
+	//
+	// 23
+	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	// example:
+	//
+	// 某服务1
+	ScopeObjectName *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
 }
 
 func (s ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) String() string {
@@ -13299,9 +16175,9 @@ func (s *ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) SetScope
 }
 
 type ListEscalationPlansResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEscalationPlansResponse) String() string {
@@ -13450,9 +16326,9 @@ func (s *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObj
 }
 
 type ListEscalationPlansByNoticeObjectResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEscalationPlansByNoticeObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEscalationPlansByNoticeObjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEscalationPlansByNoticeObjectResponse) String() string {
@@ -13479,8 +16355,14 @@ func (s *ListEscalationPlansByNoticeObjectResponse) SetBody(v *ListEscalationPla
 }
 
 type ListIncidentDetailEscalationPlansRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 2311
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansRequest) String() string {
@@ -13505,6 +16387,10 @@ type ListIncidentDetailEscalationPlansResponseBody struct {
 	// data
 	Data *ListIncidentDetailEscalationPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -13527,8 +16413,14 @@ func (s *ListIncidentDetailEscalationPlansResponseBody) SetRequestId(v string) *
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyData struct {
-	ConvergenceEscalationPlan   []*ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlan   `json:"convergenceEscalationPlan,omitempty" xml:"convergenceEscalationPlan,omitempty" type:"Repeated"`
-	EscalationPlanId            *int64                                                                          `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ConvergenceEscalationPlan []*ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlan `json:"convergenceEscalationPlan,omitempty" xml:"convergenceEscalationPlan,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 312123
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 升级策略A
 	EscalationPlanName          *string                                                                         `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	NuAcknowledgeEscalationPlan []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan `json:"nuAcknowledgeEscalationPlan,omitempty" xml:"nuAcknowledgeEscalationPlan,omitempty" type:"Repeated"`
 	UnFinishEscalationPlan      []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan      `json:"unFinishEscalationPlan,omitempty" xml:"unFinishEscalationPlan,omitempty" type:"Repeated"`
@@ -13568,13 +16460,25 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyData) SetUnFinishEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlan struct {
+	// example:
+	//
+	// UN_ACKNOWLEDGE
 	EscalationPlanType *string                                                                                       `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 	NoticeChannels     []*string                                                                                     `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	NoticeObjectList   []*ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
-	NoticeTime         *int64                                                                                        `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupList   []*ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
-	StartTime          *int64                                                                                        `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status             *string                                                                                       `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 10
+	NoticeTime       *int64                                                                                        `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupList []*ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1629872386027
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// UPGRADE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlan) String() string {
@@ -13621,8 +16525,17 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationP
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList struct {
-	NoticeObjectId    *int64    `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	NoticeObjectName  *string   `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	// example:
+	//
+	// 31231
+	NoticeObjectId *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	// example:
+	//
+	// 小华
+	NoticeObjectName *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	// example:
+	//
+	// 130xxxxxxxxx
 	NoticeObjectPhone *string   `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
 	RoleNameList      []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 }
@@ -13656,7 +16569,13 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationP
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanServiceGroupList struct {
-	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1231
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 服务组A
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -13679,15 +16598,27 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationP
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan struct {
+	// example:
+	//
+	// UN_ACKNOWLEDGE
 	EscalationPlanType   *string                                                                                             `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 	NoticeChannels       []*string                                                                                           `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	NoticeObjectList     []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList     `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
 	NoticeRoleList       []*int64                                                                                            `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
 	NoticeRoleObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList `json:"noticeRoleObjectList,omitempty" xml:"noticeRoleObjectList,omitempty" type:"Repeated"`
-	NoticeTime           *int64                                                                                              `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupList     []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList     `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
-	StartTime            *int64                                                                                              `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status               *string                                                                                             `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 10
+	NoticeTime       *int64                                                                                          `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupList []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1629872386027
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// UPGRADE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) String() string {
@@ -13744,8 +16675,17 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList struct {
-	NoticeObjectId    *int64    `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	NoticeObjectName  *string   `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	// example:
+	//
+	// 31231
+	NoticeObjectId *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	// example:
+	//
+	// 小华
+	NoticeObjectName *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	// example:
+	//
+	// 130xxxxxxxxx
 	NoticeObjectPhone *string   `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
 	RoleNameList      []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 }
@@ -13802,7 +16742,13 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList struct {
-	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1231
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 服务组A
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -13825,15 +16771,27 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan struct {
+	// example:
+	//
+	// UN_FINISH
 	EscalationPlanType   *string                                                                                        `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 	NoticeChannels       []*string                                                                                      `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	NoticeObjectList     []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList     `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
 	NoticeRoleList       []*int64                                                                                       `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
 	NoticeRoleObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList `json:"noticeRoleObjectList,omitempty" xml:"noticeRoleObjectList,omitempty" type:"Repeated"`
-	NoticeTime           *int32                                                                                         `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupList     []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList     `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
-	StartTime            *int64                                                                                         `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status               *string                                                                                        `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 10
+	NoticeTime       *int32                                                                                     `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupList []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1629872386027
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// UPGRADE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) String() string {
@@ -13890,8 +16848,17 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList struct {
-	NoticeObjectId    *int64    `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	NoticeObjectName  *string   `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	// example:
+	//
+	// 2311
+	NoticeObjectId *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	// example:
+	//
+	// 小明
+	NoticeObjectName *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	// example:
+	//
+	// 130xxxxxxxx
 	NoticeObjectPhone *string   `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
 	RoleNameList      []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 }
@@ -13948,7 +16915,13 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList struct {
-	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 123132
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 服务组A
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -13971,9 +16944,9 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 }
 
 type ListIncidentDetailEscalationPlansResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIncidentDetailEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIncidentDetailEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponse) String() string {
@@ -14000,11 +16973,23 @@ func (s *ListIncidentDetailEscalationPlansResponse) SetBody(v *ListIncidentDetai
 }
 
 type ListIncidentDetailTimelinesRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IdSort      *string `json:"idSort,omitempty" xml:"idSort,omitempty"`
-	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 123
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListIncidentDetailTimelinesRequest) String() string {
@@ -14042,10 +17027,20 @@ func (s *ListIncidentDetailTimelinesRequest) SetPageSize(v int64) *ListIncidentD
 
 type ListIncidentDetailTimelinesResponseBody struct {
 	// data
-	Data       []*ListIncidentDetailTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int32                                         `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                                         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListIncidentDetailTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
@@ -14084,6 +17079,9 @@ func (s *ListIncidentDetailTimelinesResponseBody) SetTotalCount(v int32) *ListIn
 }
 
 type ListIncidentDetailTimelinesResponseBodyData struct {
+	// example:
+	//
+	// INCIDENT_ADD
 	Action                 *string `json:"action,omitempty" xml:"action,omitempty"`
 	CreateTime             *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
@@ -14149,9 +17147,9 @@ func (s *ListIncidentDetailTimelinesResponseBodyData) SetTitle(v string) *ListIn
 }
 
 type ListIncidentDetailTimelinesResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIncidentDetailTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIncidentDetailTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIncidentDetailTimelinesResponse) String() string {
@@ -14178,8 +17176,14 @@ func (s *ListIncidentDetailTimelinesResponse) SetBody(v *ListIncidentDetailTimel
 }
 
 type ListIncidentSubtotalsRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE62E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// 3123
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s ListIncidentSubtotalsRequest) String() string {
@@ -14204,6 +17208,10 @@ type ListIncidentSubtotalsResponseBody struct {
 	// data
 	Data []*ListIncidentSubtotalsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -14226,9 +17234,18 @@ func (s *ListIncidentSubtotalsResponseBody) SetRequestId(v string) *ListIncident
 }
 
 type ListIncidentSubtotalsResponseBodyData struct {
-	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CreateUserId    *int64  `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
-	CreateUserName  *string `json:"createUserName,omitempty" xml:"createUserName,omitempty"`
+	// example:
+	//
+	// 2021-06-23 00:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 12312
+	CreateUserId   *int64  `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
+	CreateUserName *string `json:"createUserName,omitempty" xml:"createUserName,omitempty"`
+	// example:
+	//
+	// 130****1111
 	CreateUserPhone *string `json:"createUserPhone,omitempty" xml:"createUserPhone,omitempty"`
 	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
 }
@@ -14267,9 +17284,9 @@ func (s *ListIncidentSubtotalsResponseBodyData) SetDescription(v string) *ListIn
 }
 
 type ListIncidentSubtotalsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIncidentSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIncidentSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIncidentSubtotalsResponse) String() string {
@@ -14296,9 +17313,18 @@ func (s *ListIncidentSubtotalsResponse) SetBody(v *ListIncidentSubtotalsResponse
 }
 
 type ListIncidentTimelinesRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListIncidentTimelinesRequest) String() string {
@@ -14326,12 +17352,25 @@ func (s *ListIncidentTimelinesRequest) SetPageSize(v int64) *ListIncidentTimelin
 
 type ListIncidentTimelinesResponseBody struct {
 	// data
-	Data       []*ListIncidentTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int32                                   `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListIncidentTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// requestId
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 132
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListIncidentTimelinesResponseBody) String() string {
@@ -14368,10 +17407,22 @@ func (s *ListIncidentTimelinesResponseBody) SetTotalCount(v int32) *ListIncident
 }
 
 type ListIncidentTimelinesResponseBodyData struct {
-	Action                 *string `json:"action,omitempty" xml:"action,omitempty"`
-	CreateTime             *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description            *int64  `json:"description,omitempty" xml:"description,omitempty"`
-	IncidentId             *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// INCIDENT_ADD
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// 2021-06-23 00:00:00
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description *int64  `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 3321
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// I13002001
 	IncidentNumber         *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
 	IncidentTitle          *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
 	RelRouteRuleDeleteType *int32  `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
@@ -14445,9 +17496,9 @@ func (s *ListIncidentTimelinesResponseBodyData) SetTitle(v string) *ListIncident
 }
 
 type ListIncidentTimelinesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIncidentTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIncidentTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIncidentTimelinesResponse) String() string {
@@ -14474,17 +17525,50 @@ func (s *ListIncidentTimelinesResponse) SetBody(v *ListIncidentTimelinesResponse
 }
 
 type ListIncidentsRequest struct {
-	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	CreateEndTime     *string `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
-	CreateStartTime   *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
-	Effect            *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	IncidentLevel     *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	IncidentStatus    *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
-	Me                *int32  `json:"me,omitempty" xml:"me,omitempty"`
-	PageNumber        *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize          *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RelationServiceId *int64  `json:"relationServiceId,omitempty" xml:"relationServiceId,omitempty"`
-	RuleName          *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E1
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 2021-11-10 00:00:00
+	CreateEndTime *string `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
+	// example:
+	//
+	// 2021-11-01 00:00:00
+	CreateStartTime *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
+	// example:
+	//
+	// LOW
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// example:
+	//
+	// P1
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// example:
+	//
+	// ASSIGNED
+	IncidentStatus *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
+	// example:
+	//
+	// true
+	Me *int32 `json:"me,omitempty" xml:"me,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 12312
+	RelationServiceId *int64 `json:"relationServiceId,omitempty" xml:"relationServiceId,omitempty"`
+	// example:
+	//
+	// sa
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 }
 
 func (s ListIncidentsRequest) String() string {
@@ -14552,12 +17636,25 @@ func (s *ListIncidentsRequest) SetRuleName(v string) *ListIncidentsRequest {
 
 type ListIncidentsResponseBody struct {
 	// data
-	Data       []*ListIncidentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int32                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListIncidentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// requestId
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 60
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListIncidentsResponseBody) String() string {
@@ -14596,30 +17693,71 @@ func (s *ListIncidentsResponseBody) SetTotalCount(v int32) *ListIncidentsRespons
 type ListIncidentsResponseBodyData struct {
 	AssignToWhoIsValid *int64 `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
 	// 代表创建时间的资源属性字段
+	//
+	// example:
+	//
+	// 21312
 	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
 	// 代表资源一级ID的资源属性字段
-	AssignUserName  *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	// example:
+	//
+	// 1390000****
 	AssignUserPhone *string `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
 	// 事件级别
+	//
+	// example:
+	//
+	// 2020-10-1 00:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// 时间指派人ID
+	//
+	// example:
+	//
+	// HIGH
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
 	// 修改时间
+	//
+	// example:
+	//
+	// 12321
 	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 	// 影响程度
-	IncidentLevel  *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	//
+	// example:
+	//
+	// P4
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// example:
+	//
+	// I3000021
 	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
 	// 关联流转规则ID
+	//
+	// example:
+	//
+	// RESPONDED
 	IncidentStatus *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
 	// 事件内容
-	IncidentTitle          *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	IsManual               *bool   `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	RelRouteRuleDeleteType *int32  `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
-	RelServiceDeleteType   *int32  `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	// example:
+	//
+	// true
+	IsManual               *bool  `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	RelRouteRuleDeleteType *int32 `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	RelServiceDeleteType   *int32 `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
 	// 事件状态
+	//
+	// example:
+	//
+	// 213123
 	RelatedServiceId   *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
 	// 关联的服务ID
+	//
+	// example:
+	//
+	// 123
 	RouteRuleId   *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
 }
@@ -14723,9 +17861,9 @@ func (s *ListIncidentsResponseBodyData) SetRouteRuleName(v string) *ListIncident
 }
 
 type ListIncidentsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIncidentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIncidentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIncidentsResponse) String() string {
@@ -14752,10 +17890,22 @@ func (s *ListIncidentsResponse) SetBody(v *ListIncidentsResponseBody) *ListIncid
 }
 
 type ListIntegrationConfigTimelinesRequest struct {
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
-	PageNumber          *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize            *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 101
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListIntegrationConfigTimelinesRequest) String() string {
@@ -14790,12 +17940,28 @@ type ListIntegrationConfigTimelinesResponseBody struct {
 	// data
 	Data []*ListIntegrationConfigTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// pageNumber
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// pageSize
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// totalCount
+	//
+	// example:
+	//
+	// 103
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -14833,6 +17999,9 @@ func (s *ListIntegrationConfigTimelinesResponseBody) SetTotalCount(v int64) *Lis
 }
 
 type ListIntegrationConfigTimelinesResponseBodyData struct {
+	// example:
+	//
+	// 2021-04-05 10:10:10
 	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
@@ -14862,9 +18031,9 @@ func (s *ListIntegrationConfigTimelinesResponseBodyData) SetTitle(v string) *Lis
 }
 
 type ListIntegrationConfigTimelinesResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIntegrationConfigTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIntegrationConfigTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIntegrationConfigTimelinesResponse) String() string {
@@ -14891,7 +18060,13 @@ func (s *ListIntegrationConfigTimelinesResponse) SetBody(v *ListIntegrationConfi
 }
 
 type ListIntegrationConfigsRequest struct {
-	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// Zabbix
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
@@ -14917,6 +18092,10 @@ type ListIntegrationConfigsResponseBody struct {
 	// data
 	Data []*ListIntegrationConfigsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// id of the request
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -14939,13 +18118,31 @@ func (s *ListIntegrationConfigsResponseBody) SetRequestId(v string) *ListIntegra
 }
 
 type ListIntegrationConfigsResponseBodyData struct {
-	IntegrationConfigId    *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
-	IsReceivedEvent        *bool   `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
-	MonitorSourceId        *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	MonitorSourceName      *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// 1023
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// false
+	IsReceivedEvent *bool `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
+	// example:
+	//
+	// 87
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// Zabbix
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// Zabbix
 	MonitorSourceShortName *string `json:"monitorSourceShortName,omitempty" xml:"monitorSourceShortName,omitempty"`
 	MonitorSourceType      *int32  `json:"monitorSourceType,omitempty" xml:"monitorSourceType,omitempty"`
-	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// NOT_INTEGRATED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIntegrationConfigsResponseBodyData) String() string {
@@ -14992,9 +18189,9 @@ func (s *ListIntegrationConfigsResponseBodyData) SetStatus(v string) *ListIntegr
 }
 
 type ListIntegrationConfigsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIntegrationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIntegrationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIntegrationConfigsResponse) String() string {
@@ -15021,6 +18218,9 @@ func (s *ListIntegrationConfigsResponse) SetBody(v *ListIntegrationConfigsRespon
 }
 
 type ListMonitorSourcesRequest struct {
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378FTOKENA11
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -15041,6 +18241,10 @@ type ListMonitorSourcesResponseBody struct {
 	// data
 	Data []*ListMonitorSourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -15063,9 +18267,15 @@ func (s *ListMonitorSourcesResponseBody) SetRequestId(v string) *ListMonitorSour
 }
 
 type ListMonitorSourcesResponseBodyData struct {
-	FieldKeys         []*string `json:"fieldKeys,omitempty" xml:"fieldKeys,omitempty" type:"Repeated"`
-	MonitorSourceId   *int64    `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	MonitorSourceName *string   `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	FieldKeys []*string `json:"fieldKeys,omitempty" xml:"fieldKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// Zabbix
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
 func (s ListMonitorSourcesResponseBodyData) String() string {
@@ -15092,9 +18302,9 @@ func (s *ListMonitorSourcesResponseBodyData) SetMonitorSourceName(v string) *Lis
 }
 
 type ListMonitorSourcesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMonitorSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMonitorSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMonitorSourcesResponse) String() string {
@@ -15121,11 +18331,28 @@ func (s *ListMonitorSourcesResponse) SetBody(v *ListMonitorSourcesResponseBody) 
 }
 
 type ListProblemDetailOperationsRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// desc,asc
 	CreateTimeSort *string `json:"createTimeSort,omitempty" xml:"createTimeSort,omitempty"`
-	PageNumber     *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ProblemId      *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s ListProblemDetailOperationsRequest) String() string {
@@ -15163,12 +18390,25 @@ func (s *ListProblemDetailOperationsRequest) SetProblemId(v int64) *ListProblemD
 
 type ListProblemDetailOperationsResponseBody struct {
 	// data
-	Data       []*ListProblemDetailOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int32                                         `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                                         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListProblemDetailOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// requestId
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 210
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProblemDetailOperationsResponseBody) String() string {
@@ -15205,13 +18445,34 @@ func (s *ListProblemDetailOperationsResponseBody) SetTotalCount(v int32) *ListPr
 }
 
 type ListProblemDetailOperationsResponseBodyData struct {
-	Action             *string `json:"action,omitempty" xml:"action,omitempty"`
-	CreateTime         *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// PROBLEM_CANCEL
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// 2021-01-23 00:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 服务A
 	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	Remark             *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	SnapshotData       *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
-	Title              *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 备注
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// {“userName”:"小明"}
+	SnapshotData *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
+	// example:
+	//
+	// 动态标题
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListProblemDetailOperationsResponseBodyData) String() string {
@@ -15258,9 +18519,9 @@ func (s *ListProblemDetailOperationsResponseBodyData) SetTitle(v string) *ListPr
 }
 
 type ListProblemDetailOperationsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProblemDetailOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProblemDetailOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProblemDetailOperationsResponse) String() string {
@@ -15287,9 +18548,18 @@ func (s *ListProblemDetailOperationsResponse) SetBody(v *ListProblemDetailOperat
 }
 
 type ListProblemOperationsRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	PageNumber  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListProblemOperationsRequest) String() string {
@@ -15317,12 +18587,25 @@ func (s *ListProblemOperationsRequest) SetPageSize(v int32) *ListProblemOperatio
 
 type ListProblemOperationsResponseBody struct {
 	// data
-	Data       []*ListProblemOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int32                                   `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListProblemOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 132
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProblemOperationsResponseBody) String() string {
@@ -15359,15 +18642,42 @@ func (s *ListProblemOperationsResponseBody) SetTotalCount(v int32) *ListProblemO
 }
 
 type ListProblemOperationsResponseBodyData struct {
-	Action             *string `json:"action,omitempty" xml:"action,omitempty"`
-	CreateTime         *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
-	ProblemId          *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemName        *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	ProblemNumber      *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	// example:
+	//
+	// PROBLEM_CANCEL
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// 2021-01-23 00:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 12312
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 这是一个故障
+	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	// example:
+	//
+	// P1231231
+	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	// example:
+	//
+	// 服务名称
 	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	SnapshotData       *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
-	Title              *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// {“userName”:"小明"}
+	SnapshotData *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
+	// example:
+	//
+	// 动态标题
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListProblemOperationsResponseBodyData) String() string {
@@ -15424,9 +18734,9 @@ func (s *ListProblemOperationsResponseBodyData) SetTitle(v string) *ListProblemO
 }
 
 type ListProblemOperationsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProblemOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProblemOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProblemOperationsResponse) String() string {
@@ -15453,8 +18763,14 @@ func (s *ListProblemOperationsResponse) SetBody(v *ListProblemOperationsResponse
 }
 
 type ListProblemSubtotalsRequest struct {
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fdB812
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 1231
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s ListProblemSubtotalsRequest) String() string {
@@ -15479,6 +18795,10 @@ type ListProblemSubtotalsResponseBody struct {
 	// data
 	Data []*ListProblemSubtotalsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0S4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -15501,9 +18821,18 @@ func (s *ListProblemSubtotalsResponseBody) SetRequestId(v string) *ListProblemSu
 }
 
 type ListProblemSubtotalsResponseBodyData struct {
-	CreateRamName   *string `json:"createRamName,omitempty" xml:"createRamName,omitempty"`
-	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CreateUserId    *int64  `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
+	CreateRamName *string `json:"createRamName,omitempty" xml:"createRamName,omitempty"`
+	// example:
+	//
+	// 2020-10-02 00:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 123123
+	CreateUserId *int64 `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
+	// example:
+	//
+	// 130****11111
 	CreateUserPhone *string `json:"createUserPhone,omitempty" xml:"createUserPhone,omitempty"`
 	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
 }
@@ -15542,9 +18871,9 @@ func (s *ListProblemSubtotalsResponseBodyData) SetDescription(v string) *ListPro
 }
 
 type ListProblemSubtotalsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProblemSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProblemSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProblemSubtotalsResponse) String() string {
@@ -15571,8 +18900,14 @@ func (s *ListProblemSubtotalsResponse) SetBody(v *ListProblemSubtotalsResponseBo
 }
 
 type ListProblemTimeLinesRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 10002010
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s ListProblemTimeLinesRequest) String() string {
@@ -15596,6 +18931,10 @@ func (s *ListProblemTimeLinesRequest) SetProblemId(v int64) *ListProblemTimeLine
 type ListProblemTimeLinesResponseBody struct {
 	Data []*ListProblemTimeLinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -15618,14 +18957,35 @@ func (s *ListProblemTimeLinesResponseBody) SetRequestId(v string) *ListProblemTi
 }
 
 type ListProblemTimeLinesResponseBodyData struct {
-	Content           *string                                               `json:"content,omitempty" xml:"content,omitempty"`
-	CreateTime        *string                                               `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	IsKey             *bool                                                 `json:"isKey,omitempty" xml:"isKey,omitempty"`
-	KeyNode           *string                                               `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
-	ProblemTimelineId *int64                                                `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
-	Time              *string                                               `json:"time,omitempty" xml:"time,omitempty"`
-	UpdateTime        *string                                               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UsersInContent    []*ListProblemTimeLinesResponseBodyDataUsersInContent `json:"usersInContent,omitempty" xml:"usersInContent,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 内容
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 2020-08-08 15:38:38
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// true
+	IsKey *bool `json:"isKey,omitempty" xml:"isKey,omitempty"`
+	// example:
+	//
+	// PROBLEM_INJECTION,PROBLEM_HAPPEN
+	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
+	// example:
+	//
+	// 10000
+	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
+	// example:
+	//
+	// 2020-08-08 15:38:38
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// 2020-08-08 15:38:38
+	UpdateTime     *string                                               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UsersInContent []*ListProblemTimeLinesResponseBodyDataUsersInContent `json:"usersInContent,omitempty" xml:"usersInContent,omitempty" type:"Repeated"`
 }
 
 func (s ListProblemTimeLinesResponseBodyData) String() string {
@@ -15677,8 +19037,14 @@ func (s *ListProblemTimeLinesResponseBodyData) SetUsersInContent(v []*ListProble
 }
 
 type ListProblemTimeLinesResponseBodyDataUsersInContent struct {
-	IsValid  *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	UserId   *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	IsValid *int64 `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	// example:
+	//
+	// 232
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 张老萨
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -15706,9 +19072,9 @@ func (s *ListProblemTimeLinesResponseBodyDataUsersInContent) SetUsername(v strin
 }
 
 type ListProblemTimeLinesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProblemTimeLinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProblemTimeLinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProblemTimeLinesResponse) String() string {
@@ -15735,20 +19101,62 @@ func (s *ListProblemTimeLinesResponse) SetBody(v *ListProblemTimeLinesResponseBo
 }
 
 type ListProblemsRequest struct {
-	AffectServiceId    *int64  `json:"affectServiceId,omitempty" xml:"affectServiceId,omitempty"`
-	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	DiscoveryEndTime   *string `json:"discoveryEndTime,omitempty" xml:"discoveryEndTime,omitempty"`
+	// example:
+	//
+	// 1
+	AffectServiceId *int64 `json:"affectServiceId,omitempty" xml:"affectServiceId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 2020-03-05 15:50:59
+	DiscoveryEndTime *string `json:"discoveryEndTime,omitempty" xml:"discoveryEndTime,omitempty"`
+	// example:
+	//
+	// 2020-03-05 15:50:59
 	DiscoveryStartTime *string `json:"discoveryStartTime,omitempty" xml:"discoveryStartTime,omitempty"`
-	MainHandlerId      *int64  `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	PageNumber         *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ProblemLevel       *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	ProblemStatus      *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	QueryType          *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
-	RepeaterId         *int64  `json:"repeaterId,omitempty" xml:"repeaterId,omitempty"`
-	RestoreEndTime     *string `json:"restoreEndTime,omitempty" xml:"restoreEndTime,omitempty"`
-	RestoreStartTime   *string `json:"restoreStartTime,omitempty" xml:"restoreStartTime,omitempty"`
-	ServiceGroupId     *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	MainHandlerId *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// P2
+	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// HANDLING
+	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	// example:
+	//
+	// RESPONSIBLE
+	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	// example:
+	//
+	// 1
+	RepeaterId *int64 `json:"repeaterId,omitempty" xml:"repeaterId,omitempty"`
+	// example:
+	//
+	// 2020-03-05 15:50:59
+	RestoreEndTime *string `json:"restoreEndTime,omitempty" xml:"restoreEndTime,omitempty"`
+	// example:
+	//
+	// 2020-03-05 15:50:59
+	RestoreStartTime *string `json:"restoreStartTime,omitempty" xml:"restoreStartTime,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s ListProblemsRequest) String() string {
@@ -15830,12 +19238,25 @@ func (s *ListProblemsRequest) SetServiceGroupId(v int64) *ListProblemsRequest {
 }
 
 type ListProblemsResponseBody struct {
-	Data       []*ListProblemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                          `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListProblemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProblemsResponseBody) String() string {
@@ -15872,28 +19293,85 @@ func (s *ListProblemsResponseBody) SetTotalCount(v int64) *ListProblemsResponseB
 }
 
 type ListProblemsResponseBodyData struct {
-	AffectServices     []*ListProblemsResponseBodyDataAffectServices `json:"affectServices,omitempty" xml:"affectServices,omitempty" type:"Repeated"`
-	CancelTime         *string                                       `json:"cancelTime,omitempty" xml:"cancelTime,omitempty"`
-	CreateTime         *string                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DiscoverTime       *string                                       `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	FinishTime         *string                                       `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
-	IncidentId         *int64                                        `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	IsManual           *bool                                         `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	IsUpgrade          *bool                                         `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
-	MainHandlerId      *int64                                        `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	MainHandlerIsValid *int64                                        `json:"mainHandlerIsValid,omitempty" xml:"mainHandlerIsValid,omitempty"`
-	MainHandlerName    *string                                       `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
-	ProblemId          *int64                                        `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemLevel       *string                                       `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	ProblemName        *string                                       `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	ProblemNumber      *string                                       `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	ProblemStatus      *string                                       `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	RecoveryTime       *string                                       `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
-	RelatedServiceId   *string                                       `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	ReplayTime         *string                                       `json:"replayTime,omitempty" xml:"replayTime,omitempty"`
-	ServiceDeletedType *int32                                        `json:"serviceDeletedType,omitempty" xml:"serviceDeletedType,omitempty"`
-	ServiceName        *string                                       `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	UpdateTime         *string                                       `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	AffectServices []*ListProblemsResponseBodyDataAffectServices `json:"affectServices,omitempty" xml:"affectServices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	CancelTime *string `json:"cancelTime,omitempty" xml:"cancelTime,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	DiscoverTime *string `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	// example:
+	//
+	// 10000
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// true
+	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	// example:
+	//
+	// true
+	IsUpgrade *bool `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	// example:
+	//
+	// 100
+	MainHandlerId      *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	MainHandlerIsValid *int64 `json:"mainHandlerIsValid,omitempty" xml:"mainHandlerIsValid,omitempty"`
+	// example:
+	//
+	// 王宇
+	MainHandlerName *string `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
+	// example:
+	//
+	// 1
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// P1
+	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// 故障
+	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	// example:
+	//
+	// P34438300000001116258132229577472
+	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	// example:
+	//
+	// HANDLING
+	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	// example:
+	//
+	// 1
+	RelatedServiceId *string `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	ReplayTime         *string `json:"replayTime,omitempty" xml:"replayTime,omitempty"`
+	ServiceDeletedType *int32  `json:"serviceDeletedType,omitempty" xml:"serviceDeletedType,omitempty"`
+	// example:
+	//
+	// 服务1
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListProblemsResponseBodyData) String() string {
@@ -16015,10 +19493,22 @@ func (s *ListProblemsResponseBodyData) SetUpdateTime(v string) *ListProblemsResp
 }
 
 type ListProblemsResponseBodyDataAffectServices struct {
+	// example:
+	//
+	// 服务描述
 	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	UpdateTime         *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 100
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 冲上云霄
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:59:59
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListProblemsResponseBodyDataAffectServices) String() string {
@@ -16050,9 +19540,9 @@ func (s *ListProblemsResponseBodyDataAffectServices) SetUpdateTime(v string) *Li
 }
 
 type ListProblemsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProblemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProblemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProblemsResponse) String() string {
@@ -16079,13 +19569,31 @@ func (s *ListProblemsResponse) SetBody(v *ListProblemsResponseBody) *ListProblem
 }
 
 type ListRouteRulesRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken               *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	NotFilterRouteRuleDeleted *bool   `json:"notFilterRouteRuleDeleted,omitempty" xml:"notFilterRouteRuleDeleted,omitempty"`
-	PageNumber                *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize                  *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RouteType                 *int64  `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	RuleName                  []byte  `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	ServiceName               []byte  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 0
+	RouteType *int64 `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	// example:
+	//
+	// 规则名字
+	RuleName []byte `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// example:
+	//
+	// 冲上云霄
+	ServiceName []byte `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListRouteRulesRequest) String() string {
@@ -16132,11 +19640,23 @@ func (s *ListRouteRulesRequest) SetServiceName(v []byte) *ListRouteRulesRequest 
 }
 
 type ListRouteRulesResponseBody struct {
-	Data       []*ListRouteRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                            `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId  *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data []*ListRouteRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13B-A225-2C88188E8A43
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListRouteRulesResponseBody) String() string {
@@ -16173,25 +19693,76 @@ func (s *ListRouteRulesResponseBody) SetTotalCount(v int64) *ListRouteRulesRespo
 }
 
 type ListRouteRulesResponseBodyData struct {
-	AssignObjectId       *int64  `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	AssignObjectType     *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	CreateTime           *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Effection            *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	EnableStatus         *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	IncidentLevel        *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	IsValid              *int32  `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	MatchCount           *int64  `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	// example:
+	//
+	// 10
+	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	// example:
+	//
+	// SERVICEGROUP
+	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	// example:
+	//
+	// 2020-03-05 15:53:55
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// LOW
+	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	// example:
+	//
+	// DISABLE
+	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
+	// example:
+	//
+	// P1
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IsValid       *int32  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	// example:
+	//
+	// 10
+	MatchCount *int64 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	// example:
+	//
+	// zabbix
 	MonitorSourceNames   *string `json:"monitorSourceNames,omitempty" xml:"monitorSourceNames,omitempty"`
 	RelServiceDeleteType *int32  `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
-	RelatedServiceId     *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	RelatedServiceName   *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	RouteRuleId          *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	RouteType            *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	RuleName             *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	TenantRamId          *int64  `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
-	TimeWindow           *int64  `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	TimeWindowUnit       *int64  `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
-	UpdateTime           *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 1
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// example:
+	//
+	// 关联服务名字
+	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	// example:
+	//
+	// 10000
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// example:
+	//
+	// INCIDENT
+	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	// example:
+	//
+	// 规则名字
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// example:
+	//
+	// 1344383
+	TenantRamId *int64 `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
+	// example:
+	//
+	// 时间窗口
+	TimeWindow *int64 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	// example:
+	//
+	// MINUTE
+	TimeWindowUnit *int64 `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
+	// example:
+	//
+	// 2020-03-05 15:53:55
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListRouteRulesResponseBodyData) String() string {
@@ -16298,9 +19869,9 @@ func (s *ListRouteRulesResponseBodyData) SetUpdateTime(v string) *ListRouteRules
 }
 
 type ListRouteRulesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRouteRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRouteRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRouteRulesResponse) String() string {
@@ -16402,9 +19973,9 @@ func (s *ListRouteRulesByAssignWhoIdResponseBodyData) SetTenantRamId(v int64) *L
 }
 
 type ListRouteRulesByAssignWhoIdResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRouteRulesByAssignWhoIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRouteRulesByAssignWhoIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRouteRulesByAssignWhoIdResponse) String() string {
@@ -16483,9 +20054,9 @@ func (s *ListRouteRulesByServiceResponseBodyData) SetRuleName(v string) *ListRou
 }
 
 type ListRouteRulesByServiceResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRouteRulesByServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRouteRulesByServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRouteRulesByServiceResponse) String() string {
@@ -16512,9 +20083,18 @@ func (s *ListRouteRulesByServiceResponse) SetBody(v *ListRouteRulesByServiceResp
 }
 
 type ListServiceGroupMonitorSourceTemplatesRequest struct {
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// xxxx
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// xxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1000
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s ListServiceGroupMonitorSourceTemplatesRequest) String() string {
@@ -16543,6 +20123,10 @@ func (s *ListServiceGroupMonitorSourceTemplatesRequest) SetServiceGroupId(v int6
 type ListServiceGroupMonitorSourceTemplatesResponseBody struct {
 	Data []*ListServiceGroupMonitorSourceTemplatesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -16565,11 +20149,23 @@ func (s *ListServiceGroupMonitorSourceTemplatesResponseBody) SetRequestId(v stri
 }
 
 type ListServiceGroupMonitorSourceTemplatesResponseBodyData struct {
-	Fields            []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	MonitorSourceId   *int64    `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	MonitorSourceName *string   `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	TemplateContent   *string   `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
-	TemplateId        *int64    `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1000
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// ""
+	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	// example:
+	//
+	// 1000
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
 func (s ListServiceGroupMonitorSourceTemplatesResponseBodyData) String() string {
@@ -16606,9 +20202,9 @@ func (s *ListServiceGroupMonitorSourceTemplatesResponseBodyData) SetTemplateId(v
 }
 
 type ListServiceGroupMonitorSourceTemplatesResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServiceGroupMonitorSourceTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceGroupMonitorSourceTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServiceGroupMonitorSourceTemplatesResponse) String() string {
@@ -16635,15 +20231,39 @@ func (s *ListServiceGroupMonitorSourceTemplatesResponse) SetBody(v *ListServiceG
 }
 
 type ListServiceGroupsRequest struct {
-	ClientToken           *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IsScheduled           *bool   `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
-	OrderByScheduleStatus *bool   `json:"orderByScheduleStatus,omitempty" xml:"orderByScheduleStatus,omitempty"`
-	PageNumber            *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize              *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	QueryName             *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
-	QueryType             *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
-	ServiceId             *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	UserId                *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// false
+	IsScheduled *bool `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
+	// example:
+	//
+	// false
+	OrderByScheduleStatus *bool `json:"orderByScheduleStatus,omitempty" xml:"orderByScheduleStatus,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 王宇
+	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
+	// example:
+	//
+	// USER
+	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	ServiceId *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 100000
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListServiceGroupsRequest) String() string {
@@ -16700,12 +20320,25 @@ func (s *ListServiceGroupsRequest) SetUserId(v int64) *ListServiceGroupsRequest 
 }
 
 type ListServiceGroupsResponseBody struct {
-	Data       []*ListServiceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListServiceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// sssss
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBody) String() string {
@@ -16742,15 +20375,39 @@ func (s *ListServiceGroupsResponseBody) SetTotalCount(v int64) *ListServiceGroup
 }
 
 type ListServiceGroupsResponseBodyData struct {
-	EnableWebhook           *string                                   `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	IsScheduled             *bool                                     `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
-	ServiceGroupDescription *string                                   `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	ServiceGroupId          *int64                                    `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	ServiceGroupName        *string                                   `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	UpdateTime              *string                                   `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Users                   []*ListServiceGroupsResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
-	WebhookLink             *string                                   `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
-	WebhookType             *string                                   `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
+	// example:
+	//
+	// ENABLE
+	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	// example:
+	//
+	// true
+	IsScheduled *bool `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
+	// example:
+	//
+	// 服务描述
+	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 服务组
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// example:
+	//
+	// 2020-08-09 15:50:30
+	UpdateTime *string                                   `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Users      []*ListServiceGroupsResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// example:
+	//
+	// wwwwwwwwww
+	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	// example:
+	//
+	// WEIXIN_GROUP
+	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBodyData) String() string {
@@ -16807,12 +20464,27 @@ func (s *ListServiceGroupsResponseBodyData) SetWebhookType(v string) *ListServic
 }
 
 type ListServiceGroupsResponseBodyDataUsers struct {
-	Email          *string `json:"email,omitempty" xml:"email,omitempty"`
-	IsRelated      *int32  `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
-	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserName       *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// example:
+	//
+	// wy930***@163.com
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	IsRelated *int32  `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
+	// example:
+	//
+	// 1390000****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 10
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// jack
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBodyDataUsers) String() string {
@@ -16854,9 +20526,9 @@ func (s *ListServiceGroupsResponseBodyDataUsers) SetUserName(v string) *ListServ
 }
 
 type ListServiceGroupsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServiceGroupsResponse) String() string {
@@ -16935,9 +20607,9 @@ func (s *ListServiceGroupsByUserIdResponseBodyData) SetServiceGroupName(v string
 }
 
 type ListServiceGroupsByUserIdResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServiceGroupsByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceGroupsByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServiceGroupsByUserIdResponse) String() string {
@@ -16964,9 +20636,25 @@ func (s *ListServiceGroupsByUserIdResponse) SetBody(v *ListServiceGroupsByUserId
 }
 
 type ListServicesRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 冲上云霄
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
@@ -16999,12 +20687,25 @@ func (s *ListServicesRequest) SetServiceName(v string) *ListServicesRequest {
 }
 
 type ListServicesResponseBody struct {
-	Data       []*ListServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                          `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListServicesResponseBody) String() string {
@@ -17041,14 +20742,26 @@ func (s *ListServicesResponseBody) SetTotalCount(v int64) *ListServicesResponseB
 }
 
 type ListServicesResponseBodyData struct {
-	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
-	EscalationPlanName *string  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	IsValid            *int32   `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	EscalationPlanId   *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	IsValid            *int32  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	// example:
+	//
+	// 服务描述
 	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
 	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
-	ServiceId          *int64   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	UpdateTime         *string  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 冲上云霄
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 2020-09-08 14:30:30
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListServicesResponseBodyData) String() string {
@@ -17100,9 +20813,9 @@ func (s *ListServicesResponseBodyData) SetUpdateTime(v string) *ListServicesResp
 }
 
 type ListServicesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListServicesResponse) String() string {
@@ -17129,16 +20842,49 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ListSourceEventsRequest struct {
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// 2020-09-18 13:00:00
-	EndTime      *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	//
+	// example:
+	//
+	// 2020-10-01 23:59:59
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INCIDENT
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	PageNumber   *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize     *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	StartRowKey  *string `json:"startRowKey,omitempty" xml:"startRowKey,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 9223370410626682599-1344383-78954515-1-0a6e01a1701447fd9ef18b079edd2c6d
+	StartRowKey *string `json:"startRowKey,omitempty" xml:"startRowKey,omitempty"`
 	// 2020-09-10 13:00:00
-	StartTime  *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	//
+	// example:
+	//
+	// 2020-10-01 00:00:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 9223370410626682599-1344383-78954515-1-0a6e01a1701447fd9ef18b079edd2c6d
 	StopRowKey *string `json:"stopRowKey,omitempty" xml:"stopRowKey,omitempty"`
 }
 
@@ -17198,13 +20944,33 @@ func (s *ListSourceEventsRequest) SetStopRowKey(v string) *ListSourceEventsReque
 type ListSourceEventsResponseBody struct {
 	Data []*ListSourceEventsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// firstRowKey
+	//
+	// example:
+	//
+	// 9223370412331485032-1344383-9967-1-08be8b08ef30441390072f3bfba71c94
 	FirstRowKey *string `json:"firstRowKey,omitempty" xml:"firstRowKey,omitempty"`
 	// lastRowKey
+	//
+	// example:
+	//
+	// 9223370412331485036-1344383-9967-1-8d729a1b176f493ca3be643b391d5ced
 	LastRowKey *string `json:"lastRowKey,omitempty" xml:"lastRowKey,omitempty"`
-	PageNumber *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListSourceEventsResponseBody) String() string {
@@ -17251,14 +21017,38 @@ func (s *ListSourceEventsResponseBody) SetTotalCount(v int64) *ListSourceEventsR
 }
 
 type ListSourceEventsResponseBodyData struct {
-	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	InstanceId        *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType      *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// ""
+	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	// example:
+	//
+	// 2020-09-08 15:53:34
+	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// INCIDENT
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// example:
+	//
+	// 1
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	RouteRuleId       *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	TenantRamId       *int64  `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
+	// example:
+	//
+	// 1
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// example:
+	//
+	// 1
+	TenantRamId *int64 `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
 }
 
 func (s ListSourceEventsResponseBodyData) String() string {
@@ -17310,9 +21100,9 @@ func (s *ListSourceEventsResponseBodyData) SetTenantRamId(v int64) *ListSourceEv
 }
 
 type ListSourceEventsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSourceEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSourceEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSourceEventsResponse) String() string {
@@ -17339,6 +21129,9 @@ func (s *ListSourceEventsResponse) SetBody(v *ListSourceEventsResponseBody) *Lis
 }
 
 type ListSourceEventsForMonitorSourceRequest struct {
+	// example:
+	//
+	// 1000
 	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 }
 
@@ -17358,6 +21151,10 @@ func (s *ListSourceEventsForMonitorSourceRequest) SetMonitorSourceId(v int64) *L
 type ListSourceEventsForMonitorSourceResponseBody struct {
 	Data []*ListSourceEventsForMonitorSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17380,9 +21177,21 @@ func (s *ListSourceEventsForMonitorSourceResponseBody) SetRequestId(v string) *L
 }
 
 type ListSourceEventsForMonitorSourceResponseBodyData struct {
-	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	MonitorSourceId   *bool   `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	// example:
+	//
+	// 2020-01-01 18:30:00
+	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	// example:
+	//
+	// 1000
+	MonitorSourceId *bool `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
@@ -17415,9 +21224,9 @@ func (s *ListSourceEventsForMonitorSourceResponseBodyData) SetMonitorSourceName(
 }
 
 type ListSourceEventsForMonitorSourceResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSourceEventsForMonitorSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSourceEventsForMonitorSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSourceEventsForMonitorSourceResponse) String() string {
@@ -17444,6 +21253,9 @@ func (s *ListSourceEventsForMonitorSourceResponse) SetBody(v *ListSourceEventsFo
 }
 
 type ListSubscriptionServiceGroupsRequest struct {
+	// example:
+	//
+	// 89f51d2e-5527-4f6c-a6c6-4411b5496e9f
 	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	ServiceIds  []*int64 `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 }
@@ -17470,6 +21282,10 @@ type ListSubscriptionServiceGroupsResponseBody struct {
 	// data
 	Data []*ListSubscriptionServiceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 89f51d2e-5527-4f6c-a6c6-4411b5496e9f
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17493,8 +21309,11 @@ func (s *ListSubscriptionServiceGroupsResponseBody) SetRequestId(v string) *List
 
 type ListSubscriptionServiceGroupsResponseBodyData struct {
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	ServiceId               *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName             *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 123113
+	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListSubscriptionServiceGroupsResponseBodyData) String() string {
@@ -17521,9 +21340,9 @@ func (s *ListSubscriptionServiceGroupsResponseBodyData) SetServiceName(v string)
 }
 
 type ListSubscriptionServiceGroupsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSubscriptionServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSubscriptionServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSubscriptionServiceGroupsResponse) String() string {
@@ -17550,15 +21369,39 @@ func (s *ListSubscriptionServiceGroupsResponse) SetBody(v *ListSubscriptionServi
 }
 
 type ListSubscriptionsRequest struct {
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378FTOKENA11
 	ClientToken                 *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	NotFilterScopeObjectDeleted *bool   `json:"notFilterScopeObjectDeleted,omitempty" xml:"notFilterScopeObjectDeleted,omitempty"`
-	NotifyObject                *string `json:"notifyObject,omitempty" xml:"notifyObject,omitempty"`
-	NotifyObjectType            *string `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
-	PageNumber                  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize                    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Scope                       *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObject                 *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
-	SubscriptionTitle           *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	// example:
+	//
+	// test
+	NotifyObject *string `json:"notifyObject,omitempty" xml:"notifyObject,omitempty"`
+	// example:
+	//
+	// SERVICE
+	NotifyObjectType *string `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// TestName
+	ScopeObject *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
+	// example:
+	//
+	// newTitle
+	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s ListSubscriptionsRequest) String() string {
@@ -17616,12 +21459,25 @@ func (s *ListSubscriptionsRequest) SetSubscriptionTitle(v string) *ListSubscript
 
 type ListSubscriptionsResponseBody struct {
 	// data
-	Data       []*ListSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBody) String() string {
@@ -17658,16 +21514,40 @@ func (s *ListSubscriptionsResponseBody) SetTotalCount(v int64) *ListSubscription
 }
 
 type ListSubscriptionsResponseBodyData struct {
-	EndTime           *string                                              `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ExpiredType       *string                                              `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	NotifyObjectList  []*ListSubscriptionsResponseBodyDataNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
-	NotifyObjectType  *int64                                               `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
-	Scope             *int64                                               `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectList   []*ListSubscriptionsResponseBodyDataScopeObjectList  `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	StartTime         *string                                              `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status            *string                                              `json:"status,omitempty" xml:"status,omitempty"`
-	SubscriptionId    *int64                                               `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	SubscriptionTitle *string                                              `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	// example:
+	//
+	// 2022-05-09 10:10:10
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// LONG_TERM
+	ExpiredType      *string                                              `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	NotifyObjectList []*ListSubscriptionsResponseBodyDataNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// USER
+	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope           *int64                                              `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectList []*ListSubscriptionsResponseBodyDataScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2020-05-09 10:10:10
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 10
+	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// example:
+	//
+	// test
+	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBodyData) String() string {
@@ -17729,11 +21609,23 @@ func (s *ListSubscriptionsResponseBodyData) SetSubscriptionTitle(v string) *List
 }
 
 type ListSubscriptionsResponseBodyDataNotifyObjectList struct {
-	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	IsValid          *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyObjectId   *int64  `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
-	NotifyObjectType *int64  `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// example:
+	//
+	// 10
+	Id      *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	IsValid *int64 `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	// example:
+	//
+	// 张珊
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 10
+	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
+	// example:
+	//
+	// USER
+	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBodyDataNotifyObjectList) String() string {
@@ -17770,11 +21662,23 @@ func (s *ListSubscriptionsResponseBodyDataNotifyObjectList) SetNotifyObjectType(
 }
 
 type ListSubscriptionsResponseBodyDataScopeObjectList struct {
-	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	IsValid       *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	Scope         *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObject   *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
-	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	// example:
+	//
+	// 10
+	Id      *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	IsValid *int64 `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// 阿里云服务
+	ScopeObject *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
+	// example:
+	//
+	// 10
+	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBodyDataScopeObjectList) String() string {
@@ -17811,9 +21715,9 @@ func (s *ListSubscriptionsResponseBodyDataScopeObjectList) SetScopeObjectId(v in
 }
 
 type ListSubscriptionsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSubscriptionsResponse) String() string {
@@ -17840,12 +21744,30 @@ func (s *ListSubscriptionsResponse) SetBody(v *ListSubscriptionsResponseBody) *L
 }
 
 type ListTrendForSourceEventRequest struct {
-	EndTime      *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 2020-10-10 23:59:59
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1000
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// INCIDENT
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	StartTime    *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	TimeUnit     *int64  `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+	// example:
+	//
+	// xxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 2020-10-10 00:00:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 1000
+	TimeUnit *int64 `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 }
 
 func (s ListTrendForSourceEventRequest) String() string {
@@ -17889,6 +21811,10 @@ func (s *ListTrendForSourceEventRequest) SetTimeUnit(v int64) *ListTrendForSourc
 type ListTrendForSourceEventResponseBody struct {
 	Data []*ListTrendForSourceEventResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17911,11 +21837,26 @@ func (s *ListTrendForSourceEventResponseBody) SetRequestId(v string) *ListTrendF
 }
 
 type ListTrendForSourceEventResponseBodyData struct {
-	ConvergenceRate     *string                `json:"convergenceRate,omitempty" xml:"convergenceRate,omitempty"`
-	MaxSustainTime      *int64                 `json:"maxSustainTime,omitempty" xml:"maxSustainTime,omitempty"`
-	SkipDay             *bool                  `json:"skipDay,omitempty" xml:"skipDay,omitempty"`
+	// example:
+	//
+	// 90.90%
+	ConvergenceRate *string `json:"convergenceRate,omitempty" xml:"convergenceRate,omitempty"`
+	// example:
+	//
+	// 10920312312312
+	MaxSustainTime *int64 `json:"maxSustainTime,omitempty" xml:"maxSustainTime,omitempty"`
+	// example:
+	//
+	// true
+	SkipDay *bool `json:"skipDay,omitempty" xml:"skipDay,omitempty"`
+	// example:
+	//
+	// {             "Grafana": [                 {                     "evenTime": "2021-11-15 14:29:59",                     "eventCount": 4,                     "monitorSourceName": "Grafana",                     "monitorSourceCounts": null,                     "sustainTime": 15646                 },                 {                     "evenTime": "2021-11-15 14:30:36",                     "eventCount": 7,                     "monitorSourceName": "Grafana",                     "monitorSourceCounts": null,                     "sustainTime": 52638                 }             ]         }
 	SourceEventsStatMap map[string]interface{} `json:"sourceEventsStatMap,omitempty" xml:"sourceEventsStatMap,omitempty"`
-	Unit                *string                `json:"unit,omitempty" xml:"unit,omitempty"`
+	// example:
+	//
+	// 1000
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
 }
 
 func (s ListTrendForSourceEventResponseBodyData) String() string {
@@ -17952,9 +21893,9 @@ func (s *ListTrendForSourceEventResponseBodyData) SetUnit(v string) *ListTrendFo
 }
 
 type ListTrendForSourceEventResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTrendForSourceEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTrendForSourceEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTrendForSourceEventResponse) String() string {
@@ -17982,8 +21923,17 @@ func (s *ListTrendForSourceEventResponse) SetBody(v *ListTrendForSourceEventResp
 
 type ListUserSerivceGroupsRequest struct {
 	// clientToken
+	//
+	// example:
+	//
+	// 2b63cdef-7ac3-4892-a76d-0f3389ef729f
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListUserSerivceGroupsRequest) String() string {
@@ -18008,6 +21958,10 @@ type ListUserSerivceGroupsResponseBody struct {
 	// data
 	Data *ListUserSerivceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 2b63cdef-7ac3-4892-a76d-0f3389ef7291
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18030,12 +21984,27 @@ func (s *ListUserSerivceGroupsResponseBody) SetRequestId(v string) *ListUserSeri
 }
 
 type ListUserSerivceGroupsResponseBodyData struct {
-	Email         *string                                               `json:"email,omitempty" xml:"email,omitempty"`
-	Phone         *string                                               `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 12121****@163.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 1390000****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 321
 	RamId         *int64                                                `json:"ramId,omitempty" xml:"ramId,omitempty"`
 	ServiceGroups []*ListUserSerivceGroupsResponseBodyDataServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
-	UserId        *int64                                                `json:"userId,omitempty" xml:"userId,omitempty"`
-	Username      *string                                               `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// 321
+	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 小明
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUserSerivceGroupsResponseBodyData) String() string {
@@ -18077,9 +22046,18 @@ func (s *ListUserSerivceGroupsResponseBodyData) SetUsername(v string) *ListUserS
 }
 
 type ListUserSerivceGroupsResponseBodyDataServiceGroups struct {
+	// example:
+	//
+	// 描述
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	ServiceGroupId          *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	ServiceGroupName        *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// example:
+	//
+	// 123
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// example:
+	//
+	// 服务组A
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
 func (s ListUserSerivceGroupsResponseBodyDataServiceGroups) String() string {
@@ -18106,9 +22084,9 @@ func (s *ListUserSerivceGroupsResponseBodyDataServiceGroups) SetServiceGroupName
 }
 
 type ListUserSerivceGroupsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserSerivceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserSerivceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserSerivceGroupsResponse) String() string {
@@ -18136,14 +22114,39 @@ func (s *ListUserSerivceGroupsResponse) SetBody(v *ListUserSerivceGroupsResponse
 
 type ListUsersRequest struct {
 	// clientToken
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	PageNumber     *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RamId          *string `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	Scene          *int64  `json:"scene,omitempty" xml:"scene,omitempty"`
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1887879****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 1344383
+	RamId *string `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	// example:
+	//
+	// USER_LIST
+	Scene *int64 `json:"scene,omitempty" xml:"scene,omitempty"`
+	// example:
+	//
+	// DINGDING
 	SynergyChannel *string `json:"synergyChannel,omitempty" xml:"synergyChannel,omitempty"`
-	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// 张三
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -18196,12 +22199,25 @@ func (s *ListUsersRequest) SetUsername(v string) *ListUsersRequest {
 
 type ListUsersResponseBody struct {
 	// data
-	Data       []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	PageNumber *int64                       `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Data []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -18238,20 +22254,50 @@ func (s *ListUsersResponseBody) SetTotalCount(v int64) *ListUsersResponseBody {
 }
 
 type ListUsersResponseBodyData struct {
-	AccountType    *int64    `json:"accountType,omitempty" xml:"accountType,omitempty"`
-	AppAccount     *string   `json:"appAccount,omitempty" xml:"appAccount,omitempty"`
-	Email          *string   `json:"email,omitempty" xml:"email,omitempty"`
-	IsEditableUser *int64    `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
-	IsOperation    *int32    `json:"isOperation,omitempty" xml:"isOperation,omitempty"`
-	IsRam          *int32    `json:"isRam,omitempty" xml:"isRam,omitempty"`
-	IsRelated      *string   `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
-	Phone          *string   `json:"phone,omitempty" xml:"phone,omitempty"`
-	RamId          *int64    `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	RoleIdList     []*int64  `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
-	RoleNameList   []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
-	SynergyChannel *string   `json:"synergyChannel,omitempty" xml:"synergyChannel,omitempty"`
-	UserId         *int64    `json:"userId,omitempty" xml:"userId,omitempty"`
-	Username       *string   `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// SUB
+	AccountType *int64 `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	// example:
+	//
+	// 23456tre
+	AppAccount *string `json:"appAccount,omitempty" xml:"appAccount,omitempty"`
+	// example:
+	//
+	// 2345****@qq.com
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	GmtActive *string `json:"gmtActive,omitempty" xml:"gmtActive,omitempty"`
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	IsActive  *int64  `json:"isActive,omitempty" xml:"isActive,omitempty"`
+	// example:
+	//
+	// true
+	IsEditableUser *int64 `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
+	IsOperation    *int32 `json:"isOperation,omitempty" xml:"isOperation,omitempty"`
+	IsRam          *int32 `json:"isRam,omitempty" xml:"isRam,omitempty"`
+	// example:
+	//
+	// RELATED关联  NOT_RELATED 未关联
+	IsRelated *string `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
+	// example:
+	//
+	// 1390000****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 53624523
+	RamId        *int64    `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	RoleIdList   []*int64  `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
+	RoleNameList []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// DINGDING
+	SynergyChannel *string `json:"synergyChannel,omitempty" xml:"synergyChannel,omitempty"`
+	// example:
+	//
+	// 1234
+	UserId   *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUsersResponseBodyData) String() string {
@@ -18274,6 +22320,21 @@ func (s *ListUsersResponseBodyData) SetAppAccount(v string) *ListUsersResponseBo
 
 func (s *ListUsersResponseBodyData) SetEmail(v string) *ListUsersResponseBodyData {
 	s.Email = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetGmtActive(v string) *ListUsersResponseBodyData {
+	s.GmtActive = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetGmtCreate(v string) *ListUsersResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetIsActive(v int64) *ListUsersResponseBodyData {
+	s.IsActive = &v
 	return s
 }
 
@@ -18333,9 +22394,9 @@ func (s *ListUsersResponseBodyData) SetUsername(v string) *ListUsersResponseBody
 }
 
 type ListUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -18379,8 +22440,14 @@ func (s *PushMonitorRequest) SetBody(v string) *PushMonitorRequest {
 }
 
 type PushMonitorResponseBody struct {
-	Data      interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	RequestId *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// null
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 5A30D240-1821-0246-B580-AB1468657AD2
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s PushMonitorResponseBody) String() string {
@@ -18402,9 +22469,9 @@ func (s *PushMonitorResponseBody) SetRequestId(v string) *PushMonitorResponseBod
 }
 
 type PushMonitorResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushMonitorResponse) String() string {
@@ -18431,9 +22498,18 @@ func (s *PushMonitorResponse) SetBody(v *PushMonitorResponseBody) *PushMonitorRe
 }
 
 type RecoverProblemRequest struct {
-	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 123
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// PROBLEM_UPDATE
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
-	RecoveryTime      *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	// example:
+	//
+	// 2020-02-01 00:00:00
+	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
 }
 
 func (s RecoverProblemRequest) String() string {
@@ -18461,6 +22537,10 @@ func (s *RecoverProblemRequest) SetRecoveryTime(v string) *RecoverProblemRequest
 
 type RecoverProblemResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// EBC39DEF-C95B-46F8-9AE3-204F0B0A706D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18478,9 +22558,9 @@ func (s *RecoverProblemResponseBody) SetRequestId(v string) *RecoverProblemRespo
 }
 
 type RecoverProblemResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecoverProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecoverProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecoverProblemResponse) String() string {
@@ -18507,8 +22587,14 @@ func (s *RecoverProblemResponse) SetBody(v *RecoverProblemResponseBody) *Recover
 }
 
 type RefreshIntegrationConfigKeyRequest struct {
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 102
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s RefreshIntegrationConfigKeyRequest) String() string {
@@ -18533,6 +22619,10 @@ type RefreshIntegrationConfigKeyResponseBody struct {
 	// data
 	Data *RefreshIntegrationConfigKeyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18555,6 +22645,9 @@ func (s *RefreshIntegrationConfigKeyResponseBody) SetRequestId(v string) *Refres
 }
 
 type RefreshIntegrationConfigKeyResponseBodyData struct {
+	// example:
+	//
+	// 859FA6A2-AC5C-4B09-BE23-986F887H6A232
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 }
 
@@ -18572,9 +22665,9 @@ func (s *RefreshIntegrationConfigKeyResponseBodyData) SetKey(v string) *RefreshI
 }
 
 type RefreshIntegrationConfigKeyResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshIntegrationConfigKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshIntegrationConfigKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshIntegrationConfigKeyResponse) String() string {
@@ -18641,9 +22734,9 @@ func (s *RemoveIntegrationConfigResponseBody) SetRequestId(v string) *RemoveInte
 }
 
 type RemoveIntegrationConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveIntegrationConfigResponse) String() string {
@@ -18670,6 +22763,9 @@ func (s *RemoveIntegrationConfigResponse) SetBody(v *RemoveIntegrationConfigResp
 }
 
 type RemoveProblemServiceGroupRequest struct {
+	// example:
+	//
+	// 13123
 	ProblemId       *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
@@ -18694,6 +22790,10 @@ func (s *RemoveProblemServiceGroupRequest) SetServiceGroupIds(v []*int64) *Remov
 
 type RemoveProblemServiceGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 5AD6E6BC-2582-4E0E-832D-52CB1B922253
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18711,9 +22811,9 @@ func (s *RemoveProblemServiceGroupResponseBody) SetRequestId(v string) *RemovePr
 }
 
 type RemoveProblemServiceGroupResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveProblemServiceGroupResponse) String() string {
@@ -18740,9 +22840,18 @@ func (s *RemoveProblemServiceGroupResponse) SetBody(v *RemoveProblemServiceGroup
 }
 
 type ReplayProblemRequest struct {
-	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId        *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ReplayDutyUserId *int64  `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3212
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 123
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 3123
+	ReplayDutyUserId *int64 `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
 }
 
 func (s ReplayProblemRequest) String() string {
@@ -18770,6 +22879,10 @@ func (s *ReplayProblemRequest) SetReplayDutyUserId(v int64) *ReplayProblemReques
 
 type ReplayProblemResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// B81E84B5-8FD1-45F3-969A-B5067AADCFFF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18787,9 +22900,9 @@ func (s *ReplayProblemResponseBody) SetRequestId(v string) *ReplayProblemRespons
 }
 
 type ReplayProblemResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReplayProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReplayProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReplayProblemResponse) String() string {
@@ -18816,6 +22929,9 @@ func (s *ReplayProblemResponse) SetBody(v *ReplayProblemResponseBody) *ReplayPro
 }
 
 type RespondIncidentRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A221
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// 影响程度
 	IncidentIds []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
@@ -18841,6 +22957,10 @@ func (s *RespondIncidentRequest) SetIncidentIds(v []*int64) *RespondIncidentRequ
 
 type RespondIncidentResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// 062E6568-E505-49D6-8DD0-8F11283EB0AB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18858,9 +22978,9 @@ func (s *RespondIncidentResponseBody) SetRequestId(v string) *RespondIncidentRes
 }
 
 type RespondIncidentResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RespondIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RespondIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RespondIncidentResponse) String() string {
@@ -18887,8 +23007,17 @@ func (s *RespondIncidentResponse) SetBody(v *RespondIncidentResponseBody) *Respo
 }
 
 type RevokeProblemRecoveryRequest struct {
-	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2EF
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1231
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// PROBLEM_UPGRADE
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -18917,6 +23046,10 @@ func (s *RevokeProblemRecoveryRequest) SetProblemNotifyType(v string) *RevokePro
 
 type RevokeProblemRecoveryResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18934,9 +23067,9 @@ func (s *RevokeProblemRecoveryResponseBody) SetRequestId(v string) *RevokeProble
 }
 
 type RevokeProblemRecoveryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevokeProblemRecoveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeProblemRecoveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokeProblemRecoveryResponse) String() string {
@@ -18980,9 +23113,9 @@ func (s *UnbindUserResponseBody) SetRequestId(v string) *UnbindUserResponseBody 
 }
 
 type UnbindUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindUserResponse) String() string {
@@ -19010,9 +23143,24 @@ func (s *UnbindUserResponse) SetBody(v *UnbindUserResponseBody) *UnbindUserRespo
 
 type UpdateEscalationPlanRequest struct {
 	// clientToken
-	ClientToken                *string                                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanDescription  *string                                                  `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
-	EscalationPlanId           *int64                                                   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	//
+	// example:
+	//
+	// 6b404f14-77d1-4b53-a1a1-30a58bbcfc57
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// xxxx
+	EscalationPlanDescription *string `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 433
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// xxx
 	EscalationPlanName         *string                                                  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanRules        []*UpdateEscalationPlanRequestEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*UpdateEscalationPlanRequestEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
@@ -19065,8 +23213,14 @@ func (s *UpdateEscalationPlanRequest) SetIsGlobal(v bool) *UpdateEscalationPlanR
 type UpdateEscalationPlanRequestEscalationPlanRules struct {
 	EscalationPlanConditions []*UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions `json:"escalationPlanConditions,omitempty" xml:"escalationPlanConditions,omitempty" type:"Repeated"`
 	EscalationPlanStrategies []*UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies `json:"escalationPlanStrategies,omitempty" xml:"escalationPlanStrategies,omitempty" type:"Repeated"`
-	EscalationPlanType       *string                                                                   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	Id                       *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// UN_ACKNOWLEDGE
+	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	// example:
+	//
+	// 872
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanRules) String() string {
@@ -19099,8 +23253,16 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRules) SetId(v int64) *UpdateE
 
 type UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions struct {
 	// LOW HIGH
+	//
+	// example:
+	//
+	// LOW
 	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
 	// P1 P2 P3 P4
+	//
+	// example:
+	//
+	// P1
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
@@ -19123,13 +23285,22 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions)
 }
 
 type UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies struct {
-	EnableWebhook      *bool     `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	// example:
+	//
+	// true
+	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	// example:
+	//
+	// UN_ACKNOWLEDGE
 	EscalationPlanType *string   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 	NoticeChannels     []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	NoticeObjects      []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
 	NoticeRoleList     []*int64  `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
-	NoticeTime         *int64    `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupIds    []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	NoticeTime      *int64   `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -19176,9 +23347,22 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 }
 
 type UpdateEscalationPlanRequestEscalationPlanScopeObjects struct {
-	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 87
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// SERVICE
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234
+	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanScopeObjects) String() string {
@@ -19206,6 +23390,10 @@ func (s *UpdateEscalationPlanRequestEscalationPlanScopeObjects) SetScopeObjectId
 
 type UpdateEscalationPlanResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A5A1FEAE-9C47-011C-9C73-A376BC2REQUEST
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19223,9 +23411,9 @@ func (s *UpdateEscalationPlanResponseBody) SetRequestId(v string) *UpdateEscalat
 }
 
 type UpdateEscalationPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateEscalationPlanResponse) String() string {
@@ -19252,10 +23440,27 @@ func (s *UpdateEscalationPlanResponse) SetBody(v *UpdateEscalationPlanResponseBo
 }
 
 type UpdateIncidentRequest struct {
-	ClientToken   *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Effect        *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	IncidentId    *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A123
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// LOW
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12312
+	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// example:
+	//
+	// P1
 	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// example:
+	//
+	// 事件标题
 	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
 }
 
@@ -19296,6 +23501,10 @@ type UpdateIncidentResponseBody struct {
 	// data
 	Data *UpdateIncidentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19318,6 +23527,9 @@ func (s *UpdateIncidentResponseBody) SetRequestId(v string) *UpdateIncidentRespo
 }
 
 type UpdateIncidentResponseBodyData struct {
+	// example:
+	//
+	// 2312
 	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
@@ -19335,9 +23547,9 @@ func (s *UpdateIncidentResponseBodyData) SetIncidentId(v int64) *UpdateIncidentR
 }
 
 type UpdateIncidentResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateIncidentResponse) String() string {
@@ -19365,9 +23577,19 @@ func (s *UpdateIncidentResponse) SetBody(v *UpdateIncidentResponseBody) *UpdateI
 
 type UpdateIntegrationConfigRequest struct {
 	// accessKey
-	AccessKey           *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	//
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F887A6A11
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// example:
+	//
+	// 601FA6A2-AC5C-4B59-BE11-378F987A6A98
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 103
+	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s UpdateIntegrationConfigRequest) String() string {
@@ -19395,6 +23617,10 @@ func (s *UpdateIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Update
 
 type UpdateIntegrationConfigResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 10REQUES-AC5C-4B59-BE11-378F117A6A88
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19412,9 +23638,9 @@ func (s *UpdateIntegrationConfigResponseBody) SetRequestId(v string) *UpdateInte
 }
 
 type UpdateIntegrationConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateIntegrationConfigResponse) String() string {
@@ -19441,16 +23667,31 @@ func (s *UpdateIntegrationConfigResponse) SetBody(v *UpdateIntegrationConfigResp
 }
 
 type UpdateProblemRequest struct {
-	Feedback                  *string  `json:"feedback,omitempty" xml:"feedback,omitempty"`
-	Level                     *string  `json:"level,omitempty" xml:"level,omitempty"`
-	MainHandlerId             *int64   `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	PreliminaryReason         *string  `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
-	ProblemId                 *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemName               *string  `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	ProgressSummary           *string  `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	ProgressSummaryRichTextId *int64   `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	RelatedServiceId          *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	ServiceGroupIds           []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	Feedback *string `json:"feedback,omitempty" xml:"feedback,omitempty"`
+	// example:
+	//
+	// P1
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// 678
+	MainHandlerId     *int64  `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	// example:
+	//
+	// 213432
+	ProblemId       *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemName     *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// example:
+	//
+	// 23232
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	// example:
+	//
+	// 123
+	RelatedServiceId *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceGroupIds  []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateProblemRequest) String() string {
@@ -19513,6 +23754,10 @@ func (s *UpdateProblemRequest) SetServiceGroupIds(v []*int64) *UpdateProblemRequ
 
 type UpdateProblemResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19530,9 +23775,9 @@ func (s *UpdateProblemResponseBody) SetRequestId(v string) *UpdateProblemRespons
 }
 
 type UpdateProblemResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProblemResponse) String() string {
@@ -19560,14 +23805,36 @@ func (s *UpdateProblemResponse) SetBody(v *UpdateProblemResponseBody) *UpdatePro
 
 type UpdateProblemEffectionServiceRequest struct {
 	// clientToken
-	ClientToken        *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Description        *string   `json:"description,omitempty" xml:"description,omitempty"`
-	EffectionServiceId *int64    `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	Level              *string   `json:"level,omitempty" xml:"level,omitempty"`
-	PicUrl             []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
-	ProblemId          *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ServiceId          *int64    `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	Status             *string   `json:"status,omitempty" xml:"status,omitempty"`
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 乐嘉国际大厦
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 103
+	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	// example:
+	//
+	// P1
+	Level  *string   `json:"level,omitempty" xml:"level,omitempty"`
+	PicUrl []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 190000000
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 33
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// UN_RECOVERED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s UpdateProblemEffectionServiceRequest) String() string {
@@ -19620,6 +23887,10 @@ func (s *UpdateProblemEffectionServiceRequest) SetStatus(v string) *UpdateProble
 
 type UpdateProblemEffectionServiceResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// ffbf594-e093-46ad-bdcd-df4d7097125a
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19637,9 +23908,9 @@ func (s *UpdateProblemEffectionServiceResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateProblemEffectionServiceResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProblemEffectionServiceResponse) String() string {
@@ -19666,22 +23937,55 @@ func (s *UpdateProblemEffectionServiceResponse) SetBody(v *UpdateProblemEffectio
 }
 
 type UpdateProblemImprovementRequest struct {
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3813
 	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	CustomProblemReason *string `json:"customProblemReason,omitempty" xml:"customProblemReason,omitempty"`
-	DiscoverSource      *int64  `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
-	DutyDepartmentId    *int64  `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
-	DutyDepartmentName  *string `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
-	DutyUserId          *int64  `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
-	InjectionMode       *string `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
-	MonitorSourceName   *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	ProblemId           *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemReason       *string `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
-	RecentActivity      *string `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
-	RecoveryMode        *string `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
-	RelationChanges     *string `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
-	Remark              *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	ReplayDutyUserId    *int64  `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
-	UserReport          *int64  `json:"userReport,omitempty" xml:"userReport,omitempty"`
+	// example:
+	//
+	// 1
+	DiscoverSource *int64 `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
+	// example:
+	//
+	// 123123
+	DutyDepartmentId   *int64  `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
+	DutyDepartmentName *string `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
+	// example:
+	//
+	// 1231
+	DutyUserId *int64 `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
+	// example:
+	//
+	// 1
+	InjectionMode *string `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
+	// example:
+	//
+	// Zabbix
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// example:
+	//
+	// 12312
+	ProblemId     *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemReason *string `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
+	// example:
+	//
+	// 2
+	RecentActivity *string `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
+	// example:
+	//
+	// 2
+	RecoveryMode    *string `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
+	RelationChanges *string `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
+	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// 1213
+	ReplayDutyUserId *int64 `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
+	// example:
+	//
+	// 10
+	UserReport *int64 `json:"userReport,omitempty" xml:"userReport,omitempty"`
 }
 
 func (s UpdateProblemImprovementRequest) String() string {
@@ -19774,6 +24078,10 @@ func (s *UpdateProblemImprovementRequest) SetUserReport(v int64) *UpdateProblemI
 
 type UpdateProblemImprovementResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19791,9 +24099,9 @@ func (s *UpdateProblemImprovementResponseBody) SetRequestId(v string) *UpdatePro
 }
 
 type UpdateProblemImprovementResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProblemImprovementResponse) String() string {
@@ -19820,17 +24128,47 @@ func (s *UpdateProblemImprovementResponse) SetBody(v *UpdateProblemImprovementRe
 }
 
 type UpdateProblemMeasureRequest struct {
-	CheckStandard  *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
-	CheckUserId    *int64  `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
-	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Content        *string `json:"content,omitempty" xml:"content,omitempty"`
-	DirectorId     *int64  `json:"directorId,omitempty" xml:"directorId,omitempty"`
-	MeasureId      *int64  `json:"measureId,omitempty" xml:"measureId,omitempty"`
+	// example:
+	//
+	// 2
+	CheckStandard *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
+	// example:
+	//
+	// 123
+	CheckUserId *int64 `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 123
+	DirectorId *int64 `json:"directorId,omitempty" xml:"directorId,omitempty"`
+	// example:
+	//
+	// 1231
+	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
+	// example:
+	//
+	// 2021-01-21 00:00:00
 	PlanFinishTime *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
-	ProblemId      *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	StalkerId      *int64  `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1233
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 123
+	StalkerId *int64 `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
+	// example:
+	//
+	// UNIMPROVED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 3
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateProblemMeasureRequest) String() string {
@@ -19898,6 +24236,10 @@ func (s *UpdateProblemMeasureRequest) SetType(v int32) *UpdateProblemMeasureRequ
 
 type UpdateProblemMeasureResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19915,9 +24257,9 @@ func (s *UpdateProblemMeasureResponseBody) SetRequestId(v string) *UpdateProblem
 }
 
 type UpdateProblemMeasureResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProblemMeasureResponse) String() string {
@@ -19944,8 +24286,17 @@ func (s *UpdateProblemMeasureResponse) SetBody(v *UpdateProblemMeasureResponseBo
 }
 
 type UpdateProblemNoticeRequest struct {
-	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 1312
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// PROBLEM_NOTIFY
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -19974,6 +24325,10 @@ func (s *UpdateProblemNoticeRequest) SetProblemNotifyType(v string) *UpdateProbl
 
 type UpdateProblemNoticeResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 4361a0e1-6747-4834-96ce-0c4840fd3812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19991,9 +24346,9 @@ func (s *UpdateProblemNoticeResponseBody) SetRequestId(v string) *UpdateProblemN
 }
 
 type UpdateProblemNoticeResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProblemNoticeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProblemNoticeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProblemNoticeResponse) String() string {
@@ -20020,12 +24375,27 @@ func (s *UpdateProblemNoticeResponse) SetBody(v *UpdateProblemNoticeResponseBody
 }
 
 type UpdateProblemTimelineRequest struct {
-	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Content           *string `json:"content,omitempty" xml:"content,omitempty"`
-	KeyNode           *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
-	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	ProblemTimelineId *int64  `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
-	Time              *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// NodeTest
+	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
+	// example:
+	//
+	// 234
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	// example:
+	//
+	// 3940
+	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
+	// example:
+	//
+	// 2021-01-08 10:10:10
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 }
 
 func (s UpdateProblemTimelineRequest) String() string {
@@ -20068,6 +24438,10 @@ func (s *UpdateProblemTimelineRequest) SetTime(v string) *UpdateProblemTimelineR
 
 type UpdateProblemTimelineResponseBody struct {
 	// id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -20085,9 +24459,9 @@ func (s *UpdateProblemTimelineResponseBody) SetRequestId(v string) *UpdateProble
 }
 
 type UpdateProblemTimelineResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateProblemTimelineResponse) String() string {
@@ -20114,10 +24488,22 @@ func (s *UpdateProblemTimelineResponse) SetBody(v *UpdateProblemTimelineResponse
 }
 
 type UpdateRichTextRequest struct {
-	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 123123
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// INCIDENT 事件 ALERT告警 PROBLEM故障
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
-	RichTextId   *int64  `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
+	// example:
+	//
+	// 这是一个富文本
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	// example:
+	//
+	// 123112313
+	RichTextId *int64 `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
 }
 
 func (s UpdateRichTextRequest) String() string {
@@ -20152,6 +24538,10 @@ type UpdateRichTextResponseBody struct {
 	// data
 	Data *UpdateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -20174,6 +24564,9 @@ func (s *UpdateRichTextResponseBody) SetRequestId(v string) *UpdateRichTextRespo
 }
 
 type UpdateRichTextResponseBodyData struct {
+	// example:
+	//
+	// 12
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 }
 
@@ -20191,9 +24584,9 @@ func (s *UpdateRichTextResponseBodyData) SetId(v int64) *UpdateRichTextResponseB
 }
 
 type UpdateRichTextResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRichTextResponse) String() string {
@@ -20220,26 +24613,89 @@ func (s *UpdateRichTextResponse) SetBody(v *UpdateRichTextResponseBody) *UpdateR
 }
 
 type UpdateRouteRuleRequest struct {
-	AssignObjectId           *int64                                   `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	AssignObjectType         *string                                  `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	ChildRuleRelation        *string                                  `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
-	ClientToken              *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ConvergenceFields        []*string                                `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
-	ConvergenceType          *int32                                   `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
-	CoverageProblemLevels    []*string                                `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
-	Effection                *string                                  `json:"effection,omitempty" xml:"effection,omitempty"`
-	IncidentLevel            *string                                  `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	MatchCount               *int64                                   `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
-	NotifyChannels           []*string                                `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	ProblemEffectionServices []*int64                                 `json:"problemEffectionServices,omitempty" xml:"problemEffectionServices,omitempty" type:"Repeated"`
-	ProblemLevelGroup        map[string]*ProblemLevelGroupValue       `json:"problemLevelGroup,omitempty" xml:"problemLevelGroup,omitempty"`
-	RelatedServiceId         *int64                                   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	RouteChildRules          []*UpdateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
-	RouteRuleId              *int64                                   `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	RouteType                *string                                  `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	RuleName                 *string                                  `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	TimeWindow               *int32                                   `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	TimeWindowUnit           *string                                  `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SERVICEGROUP
+	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	// example:
+	//
+	// AND
+	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken           *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ConvergenceFields     []*string `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
+	ConvergenceType       *int32    `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
+	CoverageProblemLevels []*string `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LOW
+	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P1
+	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	MatchCount *int64 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	// This parameter is required.
+	NotifyChannels           []*string                          `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	ProblemEffectionServices []*int64                           `json:"problemEffectionServices,omitempty" xml:"problemEffectionServices,omitempty" type:"Repeated"`
+	ProblemLevelGroup        map[string]*ProblemLevelGroupValue `json:"problemLevelGroup,omitempty" xml:"problemLevelGroup,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// This parameter is required.
+	RouteChildRules []*UpdateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALERT
+	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 规则1
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	TimeWindow *int32 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINUTE
+	TimeWindowUnit *string `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
 }
 
 func (s UpdateRouteRuleRequest) String() string {
@@ -20351,12 +24807,31 @@ func (s *UpdateRouteRuleRequest) SetTimeWindowUnit(v string) *UpdateRouteRuleReq
 }
 
 type UpdateRouteRuleRequestRouteChildRules struct {
-	ChildConditionRelation *int64                                             `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
-	ChildRouteRuleId       *int64                                             `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
-	Conditions             []*UpdateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	IsValidChildRule       *bool                                              `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
-	MonitorSourceId        *int64                                             `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	ProblemLevel           *string                                            `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	// example:
+	//
+	// 1
+	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ChildRouteRuleId *int64 `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
+	// This parameter is required.
+	Conditions []*UpdateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsValidChildRule *bool `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MonitorSourceId *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	ProblemLevel    *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
 }
 
 func (s UpdateRouteRuleRequestRouteChildRules) String() string {
@@ -20398,9 +24873,24 @@ func (s *UpdateRouteRuleRequestRouteChildRules) SetProblemLevel(v string) *Updat
 }
 
 type UpdateRouteRuleRequestRouteChildRulesConditions struct {
-	Key             *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// payload.summary
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// equals
 	OperationSymbol *string `json:"operationSymbol,omitempty" xml:"operationSymbol,omitempty"`
-	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s UpdateRouteRuleRequestRouteChildRulesConditions) String() string {
@@ -20427,7 +24917,13 @@ func (s *UpdateRouteRuleRequestRouteChildRulesConditions) SetValue(v string) *Up
 }
 
 type UpdateRouteRuleResponseBody struct {
-	Data      *int64  `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -20450,9 +24946,9 @@ func (s *UpdateRouteRuleResponseBody) SetRequestId(v string) *UpdateRouteRuleRes
 }
 
 type UpdateRouteRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRouteRuleResponse) String() string {
@@ -20479,12 +24975,24 @@ func (s *UpdateRouteRuleResponse) SetBody(v *UpdateRouteRuleResponseBody) *Updat
 }
 
 type UpdateServiceRequest struct {
-	ClientToken        *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 服务描述
 	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
 	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
-	ServiceId          *int64   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// 10002000
+	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 服务名字
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -20526,8 +25034,15 @@ func (s *UpdateServiceRequest) SetServiceName(v string) *UpdateServiceRequest {
 }
 
 type UpdateServiceResponseBody struct {
+	// example:
+	//
+	// null
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -20550,9 +25065,9 @@ func (s *UpdateServiceResponseBody) SetRequestId(v string) *UpdateServiceRespons
 }
 
 type UpdateServiceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateServiceResponse) String() string {
@@ -20579,15 +25094,47 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateServiceGroupRequest struct {
-	ClientToken             *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	EnableWebhook           *string                                            `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	MonitorSourceTemplates  []*UpdateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
-	ServiceGroupDescription *string                                            `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	ServiceGroupId          *int64                                             `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	ServiceGroupName        *string                                            `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	UserIds                 []*int64                                           `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
-	WebhookLink             *string                                            `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
-	WebhookType             *string                                            `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ENABLE
+	EnableWebhook          *string                                            `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	MonitorSourceTemplates []*UpdateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 飞车
+	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 冲上云霄
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	// This parameter is required.
+	UserIds []*int64 `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wwwwwww
+	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WEIXINGROUP
+	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
 func (s UpdateServiceGroupRequest) String() string {
@@ -20644,10 +25191,22 @@ func (s *UpdateServiceGroupRequest) SetWebhookType(v string) *UpdateServiceGroup
 }
 
 type UpdateServiceGroupRequestMonitorSourceTemplates struct {
-	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// 11111
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	TemplateContent   *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
-	TemplateId        *int64  `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// xxxx
+	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	// example:
+	//
+	// 1111
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
 func (s UpdateServiceGroupRequestMonitorSourceTemplates) String() string {
@@ -20680,6 +25239,10 @@ func (s *UpdateServiceGroupRequestMonitorSourceTemplates) SetTemplateId(v int64)
 
 type UpdateServiceGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -20697,9 +25260,9 @@ func (s *UpdateServiceGroupResponseBody) SetRequestId(v string) *UpdateServiceGr
 }
 
 type UpdateServiceGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateServiceGroupResponse) String() string {
@@ -20726,11 +25289,27 @@ func (s *UpdateServiceGroupResponse) SetBody(v *UpdateServiceGroupResponseBody) 
 }
 
 type UpdateServiceGroupSchedulingRequest struct {
-	ClientToken    *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// HOUR
 	FastScheduling *UpdateServiceGroupSchedulingRequestFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
 	FineScheduling *UpdateServiceGroupSchedulingRequestFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	SchedulingWay  *string                                            `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	ServiceGroupId *int64                                             `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FAST
+	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequest) String() string {
@@ -20767,11 +25346,23 @@ func (s *UpdateServiceGroupSchedulingRequest) SetServiceGroupId(v int64) *Update
 }
 
 type UpdateServiceGroupSchedulingRequestFastScheduling struct {
-	DutyPlan           *string                                                             `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
-	Id                 *int64                                                              `json:"id,omitempty" xml:"id,omitempty"`
-	SchedulingUsers    []*UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	SingleDuration     *int32                                                              `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
-	SingleDurationUnit *string                                                             `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
+	// example:
+	//
+	// FAST_CHOICE
+	DutyPlan *string `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
+	// example:
+	//
+	// 1
+	Id              *int64                                                              `json:"id,omitempty" xml:"id,omitempty"`
+	SchedulingUsers []*UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
+	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	// example:
+	//
+	// DAY
+	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFastScheduling) String() string {
@@ -20808,8 +25399,14 @@ func (s *UpdateServiceGroupSchedulingRequestFastScheduling) SetSingleDurationUni
 }
 
 type UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers struct {
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 6666
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 }
@@ -20843,12 +25440,24 @@ func (s *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSc
 }
 
 type UpdateServiceGroupSchedulingRequestFineScheduling struct {
-	Id                           *int64                                                                           `json:"id,omitempty" xml:"id,omitempty"`
-	Period                       *int32                                                                           `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// example:
+	//
+	// DAY
 	PeriodUnit                   *string                                                                          `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
 	SchedulingFineShifts         []*UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts         `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
 	SchedulingTemplateFineShifts []*UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts `json:"schedulingTemplateFineShifts,omitempty" xml:"schedulingTemplateFineShifts,omitempty" type:"Repeated"`
-	ShiftType                    *string                                                                          `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	// example:
+	//
+	// MORNING_NIGHT
+	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineScheduling) String() string {
@@ -20890,15 +25499,36 @@ func (s *UpdateServiceGroupSchedulingRequestFineScheduling) SetShiftType(v strin
 }
 
 type UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts struct {
-	CycleOrder           *int32   `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 123
+	CycleOrder *int32 `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	// example:
+	//
+	// 2020-10-13
+	SchedulingEndTime    *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2020-08-13
+	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 32
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
-	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	// example:
+	//
+	// 早班
+	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	// example:
+	//
+	// true
+	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -20955,14 +25585,29 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 }
 
 type UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts struct {
-	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 2021-11-01 00:00：00
+	SchedulingEndTime    *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// example:
+	//
+	// 2021-10-01 00:00：00
+	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// example:
+	//
+	// 1
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	// example:
+	//
+	// false
+	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -21015,6 +25660,10 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 
 type UpdateServiceGroupSchedulingResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -21032,9 +25681,9 @@ func (s *UpdateServiceGroupSchedulingResponseBody) SetRequestId(v string) *Updat
 }
 
 type UpdateServiceGroupSchedulingResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingResponse) String() string {
@@ -21061,10 +25710,24 @@ func (s *UpdateServiceGroupSchedulingResponse) SetBody(v *UpdateServiceGroupSche
 }
 
 type UpdateServiceGroupSpecialDaySchedulingRequest struct {
-	ClientToken           *string                                                               `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	SchedulingDate        *string                                                               `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
+	// example:
+	//
+	// C4BE3837-1A13-413B-A225-2C88188E8A43
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-08-19
+	SchedulingDate *string `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
+	// This parameter is required.
 	SchedulingSpecialDays []*UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays `json:"schedulingSpecialDays,omitempty" xml:"schedulingSpecialDays,omitempty" type:"Repeated"`
-	ServiceGroupId        *int64                                                                `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6666
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s UpdateServiceGroupSpecialDaySchedulingRequest) String() string {
@@ -21096,10 +25759,28 @@ func (s *UpdateServiceGroupSpecialDaySchedulingRequest) SetServiceGroupId(v int6
 }
 
 type UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays struct {
-	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
-	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-08-19 12:00:00
+	SchedulingEndTime    *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-08-19 08:00:00
+	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 64
 	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 }
@@ -21144,6 +25825,10 @@ func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) Set
 
 type UpdateServiceGroupSpecialDaySchedulingResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -21161,9 +25846,9 @@ func (s *UpdateServiceGroupSpecialDaySchedulingResponseBody) SetRequestId(v stri
 }
 
 type UpdateServiceGroupSpecialDaySchedulingResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateServiceGroupSpecialDaySchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceGroupSpecialDaySchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateServiceGroupSpecialDaySchedulingResponse) String() string {
@@ -21190,17 +25875,54 @@ func (s *UpdateServiceGroupSpecialDaySchedulingResponse) SetBody(v *UpdateServic
 }
 
 type UpdateSubscriptionRequest struct {
-	EndTime            *string                                        `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ExpiredType        *string                                        `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	NotifyObjectList   []*UpdateSubscriptionRequestNotifyObjectList   `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
-	NotifyObjectType   *string                                        `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// example:
+	//
+	// 2022-05-09 10:10:23
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LONG_TERM
+	ExpiredType *string `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	// This parameter is required.
+	NotifyObjectList []*UpdateSubscriptionRequestNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// USER
+	NotifyObjectType *string `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	// This parameter is required.
 	NotifyStrategyList []*UpdateSubscriptionRequestNotifyStrategyList `json:"notifyStrategyList,omitempty" xml:"notifyStrategyList,omitempty" type:"Repeated"`
-	Period             *string                                        `json:"period,omitempty" xml:"period,omitempty"`
-	Scope              *string                                        `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectList    []*UpdateSubscriptionRequestScopeObjectList    `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	StartTime          *string                                        `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	SubscriptionId     *int64                                         `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	SubscriptionTitle  *string                                        `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	// example:
+	//
+	// 1个月
+	Period *string `json:"period,omitempty" xml:"period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SERVICE
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	ScopeObjectList []*UpdateSubscriptionRequestScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-04-04 10:10:11
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80002020
+	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// newSubs244
+	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s UpdateSubscriptionRequest) String() string {
@@ -21267,7 +25989,15 @@ func (s *UpdateSubscriptionRequest) SetSubscriptionTitle(v string) *UpdateSubscr
 }
 
 type UpdateSubscriptionRequestNotifyObjectList struct {
-	Id             *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 10
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 19
 	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
 }
 
@@ -21290,8 +26020,14 @@ func (s *UpdateSubscriptionRequestNotifyObjectList) SetNotifyObjectId(v int64) *
 }
 
 type UpdateSubscriptionRequestNotifyStrategyList struct {
-	InstanceType *int64                                                   `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	Strategies   []*UpdateSubscriptionRequestNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INCIDENT
+	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// This parameter is required.
+	Strategies []*UpdateSubscriptionRequestNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
 }
 
 func (s UpdateSubscriptionRequestNotifyStrategyList) String() string {
@@ -21313,8 +26049,14 @@ func (s *UpdateSubscriptionRequestNotifyStrategyList) SetStrategies(v []*UpdateS
 }
 
 type UpdateSubscriptionRequestNotifyStrategyListStrategies struct {
-	Channels      *string                                                             `json:"channels,omitempty" xml:"channels,omitempty"`
-	Conditions    []*UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions  `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SMS,WEIXIN_GROUP
+	Channels   *string                                                            `json:"channels,omitempty" xml:"channels,omitempty"`
+	Conditions []*UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
 	Id            *string                                                             `json:"id,omitempty" xml:"id,omitempty"`
 	PeriodChannel *UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel `json:"periodChannel,omitempty" xml:"periodChannel,omitempty" type:"Struct"`
 }
@@ -21348,9 +26090,21 @@ func (s *UpdateSubscriptionRequestNotifyStrategyListStrategies) SetPeriodChannel
 }
 
 type UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions struct {
-	Action            *string `json:"action,omitempty" xml:"action,omitempty"`
-	Effection         *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	Level             *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// INCIDENT_TRIGGER
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// example:
+	//
+	// HIGH
+	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	// example:
+	//
+	// P1
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// PROBLEM_NOTIFY
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -21383,8 +26137,14 @@ func (s *UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions) SetPro
 }
 
 type UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel struct {
+	// example:
+	//
+	// SMS,WEIXIN_GROUP
 	NonWorkday *string `json:"nonWorkday,omitempty" xml:"nonWorkday,omitempty"`
-	Workday    *string `json:"workday,omitempty" xml:"workday,omitempty"`
+	// example:
+	//
+	// SMS,WEIXIN_GROUP
+	Workday *string `json:"workday,omitempty" xml:"workday,omitempty"`
 }
 
 func (s UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel) String() string {
@@ -21406,7 +26166,15 @@ func (s *UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel) Set
 }
 
 type UpdateSubscriptionRequestScopeObjectList struct {
-	Id            *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
@@ -21430,6 +26198,10 @@ func (s *UpdateSubscriptionRequestScopeObjectList) SetScopeObjectId(v int64) *Up
 
 type UpdateSubscriptionResponseBody struct {
 	// id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -21447,9 +26219,9 @@ func (s *UpdateSubscriptionResponseBody) SetRequestId(v string) *UpdateSubscript
 }
 
 type UpdateSubscriptionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSubscriptionResponse) String() string {
@@ -21476,13 +26248,30 @@ func (s *UpdateSubscriptionResponse) SetBody(v *UpdateSubscriptionResponseBody) 
 }
 
 type UpdateUserRequest struct {
-	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Email       *string  `json:"email,omitempty" xml:"email,omitempty"`
-	Phone       *string  `json:"phone,omitempty" xml:"phone,omitempty"`
-	RamId       *int64   `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	RoleIdList  []*int64 `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
-	UserId      *int64   `json:"userId,omitempty" xml:"userId,omitempty"`
-	Username    *string  `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// 78799****@qq.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 18887878****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 2243564
+	RamId      *int64   `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	RoleIdList []*int64 `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111
+	UserId   *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -21530,6 +26319,10 @@ func (s *UpdateUserRequest) SetUsername(v string) *UpdateUserRequest {
 
 type UpdateUserResponseBody struct {
 	// id of the request
+	//
+	// example:
+	//
+	// c26f36de-1ec8-496a-a828-880676c5ef81
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -21547,9 +26340,9 @@ func (s *UpdateUserResponseBody) SetRequestId(v string) *UpdateUserResponseBody 
 }
 
 type UpdateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -21576,7 +26369,13 @@ func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserRespo
 }
 
 type UpdateUserGuideStatusRequest struct {
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// SERVICE_GROUP_GUIDE
 	GuideAction *string `json:"guideAction,omitempty" xml:"guideAction,omitempty"`
 }
 
@@ -21600,6 +26399,10 @@ func (s *UpdateUserGuideStatusRequest) SetGuideAction(v string) *UpdateUserGuide
 
 type UpdateUserGuideStatusResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// FD200FAE-E98F-496E-BFE6-4CE61E59A2E9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -21617,9 +26420,9 @@ func (s *UpdateUserGuideStatusResponseBody) SetRequestId(v string) *UpdateUserGu
 }
 
 type UpdateUserGuideStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserGuideStatusResponse) String() string {
@@ -21646,6 +26449,9 @@ func (s *UpdateUserGuideStatusResponse) SetBody(v *UpdateUserGuideStatusResponse
 }
 
 type VerifyRouteRuleRequest struct {
+	// example:
+	//
+	// 1111
 	RouteRuleId      *int64                                    `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 	TestSourceEvents []*VerifyRouteRuleRequestTestSourceEvents `json:"testSourceEvents,omitempty" xml:"testSourceEvents,omitempty" type:"Repeated"`
 }
@@ -21669,9 +26475,21 @@ func (s *VerifyRouteRuleRequest) SetTestSourceEvents(v []*VerifyRouteRuleRequest
 }
 
 type VerifyRouteRuleRequestTestSourceEvents struct {
-	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	// example:
+	//
+	// 2021-09-08 13:00:00
+	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	// example:
+	//
+	// 1
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// example:
+	//
+	// zabbix
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
@@ -21706,6 +26524,10 @@ func (s *VerifyRouteRuleRequestTestSourceEvents) SetMonitorSourceName(v string) 
 type VerifyRouteRuleResponseBody struct {
 	Data *VerifyRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// xxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -21728,12 +26550,18 @@ func (s *VerifyRouteRuleResponseBody) SetRequestId(v string) *VerifyRouteRuleRes
 }
 
 type VerifyRouteRuleResponseBodyData struct {
-	EscalationPlans         []*VerifyRouteRuleResponseBodyDataEscalationPlans         `json:"escalationPlans,omitempty" xml:"escalationPlans,omitempty" type:"Repeated"`
+	EscalationPlans []*VerifyRouteRuleResponseBodyDataEscalationPlans `json:"escalationPlans,omitempty" xml:"escalationPlans,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
 	IsValidRule             *bool                                                     `json:"isValidRule,omitempty" xml:"isValidRule,omitempty"`
 	MonitorSourceIds        []*int64                                                  `json:"monitorSourceIds,omitempty" xml:"monitorSourceIds,omitempty" type:"Repeated"`
 	NotifySubscriptionNames []*VerifyRouteRuleResponseBodyDataNotifySubscriptionNames `json:"notifySubscriptionNames,omitempty" xml:"notifySubscriptionNames,omitempty" type:"Repeated"`
 	RouteRuleFailReason     []*string                                                 `json:"routeRuleFailReason,omitempty" xml:"routeRuleFailReason,omitempty" type:"Repeated"`
-	RouteType               *string                                                   `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	// example:
+	//
+	// INCIDENT、ALERT
+	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
 }
 
 func (s VerifyRouteRuleResponseBodyData) String() string {
@@ -21775,7 +26603,13 @@ func (s *VerifyRouteRuleResponseBodyData) SetRouteType(v string) *VerifyRouteRul
 }
 
 type VerifyRouteRuleResponseBodyDataEscalationPlans struct {
-	EscalationPlanId   *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 111111
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// example:
+	//
+	// 升级计划1
 	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 }
 
@@ -21798,8 +26632,14 @@ func (s *VerifyRouteRuleResponseBodyDataEscalationPlans) SetEscalationPlanName(v
 }
 
 type VerifyRouteRuleResponseBodyDataNotifySubscriptionNames struct {
-	SubscriptionId *int64  `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 111111
+	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// example:
+	//
+	// 订阅名称
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) String() string {
@@ -21821,9 +26661,9 @@ func (s *VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) SetTitle(v stri
 }
 
 type VerifyRouteRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyRouteRuleResponse) String() string {
@@ -21897,6 +26737,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加故障协同组
+//
+// @param request - AddProblemServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddProblemServiceGroupResponse
 func (client *Client) AddProblemServiceGroupWithOptions(request *AddProblemServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddProblemServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21935,6 +26786,13 @@ func (client *Client) AddProblemServiceGroupWithOptions(request *AddProblemServi
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加故障协同组
+//
+// @param request - AddProblemServiceGroupRequest
+//
+// @return AddProblemServiceGroupResponse
 func (client *Client) AddProblemServiceGroup(request *AddProblemServiceGroupRequest) (_result *AddProblemServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21947,6 +26805,15 @@ func (client *Client) AddProblemServiceGroup(request *AddProblemServiceGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 计费展示
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BillingStatisticsResponse
 func (client *Client) BillingStatisticsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *BillingStatisticsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21971,6 +26838,11 @@ func (client *Client) BillingStatisticsWithOptions(headers map[string]*string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 计费展示
+//
+// @return BillingStatisticsResponse
 func (client *Client) BillingStatistics() (_result *BillingStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21983,6 +26855,17 @@ func (client *Client) BillingStatistics() (_result *BillingStatisticsResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障取消
+//
+// @param request - CancelProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelProblemResponse
 func (client *Client) CancelProblemWithOptions(request *CancelProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22033,6 +26916,13 @@ func (client *Client) CancelProblemWithOptions(request *CancelProblemRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障取消
+//
+// @param request - CancelProblemRequest
+//
+// @return CancelProblemResponse
 func (client *Client) CancelProblem(request *CancelProblemRequest) (_result *CancelProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22045,6 +26935,17 @@ func (client *Client) CancelProblem(request *CancelProblemRequest) (_result *Can
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验webhook地址
+//
+// @param request - CheckWebhookRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckWebhookResponse
 func (client *Client) CheckWebhookWithOptions(request *CheckWebhookRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckWebhookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22087,6 +26988,13 @@ func (client *Client) CheckWebhookWithOptions(request *CheckWebhookRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验webhook地址
+//
+// @param request - CheckWebhookRequest
+//
+// @return CheckWebhookResponse
 func (client *Client) CheckWebhook(request *CheckWebhookRequest) (_result *CheckWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22099,6 +27007,17 @@ func (client *Client) CheckWebhook(request *CheckWebhookRequest) (_result *Check
 	return _result, _err
 }
 
+// Summary:
+//
+// 确认集成配置
+//
+// @param request - ConfirmIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmIntegrationConfigResponse
 func (client *Client) ConfirmIntegrationConfigWithOptions(request *ConfirmIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConfirmIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22137,6 +27056,13 @@ func (client *Client) ConfirmIntegrationConfigWithOptions(request *ConfirmIntegr
 	return _result, _err
 }
 
+// Summary:
+//
+// 确认集成配置
+//
+// @param request - ConfirmIntegrationConfigRequest
+//
+// @return ConfirmIntegrationConfigResponse
 func (client *Client) ConfirmIntegrationConfig(request *ConfirmIntegrationConfigRequest) (_result *ConfirmIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22149,6 +27075,17 @@ func (client *Client) ConfirmIntegrationConfig(request *ConfirmIntegrationConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建升级计划
+//
+// @param request - CreateEscalationPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEscalationPlanResponse
 func (client *Client) CreateEscalationPlanWithOptions(request *CreateEscalationPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEscalationPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22203,6 +27140,13 @@ func (client *Client) CreateEscalationPlanWithOptions(request *CreateEscalationP
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建升级计划
+//
+// @param request - CreateEscalationPlanRequest
+//
+// @return CreateEscalationPlanResponse
 func (client *Client) CreateEscalationPlan(request *CreateEscalationPlanRequest) (_result *CreateEscalationPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22215,6 +27159,17 @@ func (client *Client) CreateEscalationPlan(request *CreateEscalationPlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 手动创建事件
+//
+// @param request - CreateIncidentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIncidentResponse
 func (client *Client) CreateIncidentWithOptions(request *CreateIncidentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIncidentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22281,6 +27236,13 @@ func (client *Client) CreateIncidentWithOptions(request *CreateIncidentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 手动创建事件
+//
+// @param request - CreateIncidentRequest
+//
+// @return CreateIncidentResponse
 func (client *Client) CreateIncident(request *CreateIncidentRequest) (_result *CreateIncidentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22293,6 +27255,17 @@ func (client *Client) CreateIncident(request *CreateIncidentRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增事件小计
+//
+// @param request - CreateIncidentSubtotalRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIncidentSubtotalResponse
 func (client *Client) CreateIncidentSubtotalWithOptions(request *CreateIncidentSubtotalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIncidentSubtotalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22335,6 +27308,13 @@ func (client *Client) CreateIncidentSubtotalWithOptions(request *CreateIncidentS
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增事件小计
+//
+// @param request - CreateIncidentSubtotalRequest
+//
+// @return CreateIncidentSubtotalResponse
 func (client *Client) CreateIncidentSubtotal(request *CreateIncidentSubtotalRequest) (_result *CreateIncidentSubtotalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22347,6 +27327,17 @@ func (client *Client) CreateIncidentSubtotal(request *CreateIncidentSubtotalRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建集成配置
+//
+// @param request - CreateIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIntegrationConfigResponse
 func (client *Client) CreateIntegrationConfigWithOptions(request *CreateIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22385,6 +27376,13 @@ func (client *Client) CreateIntegrationConfigWithOptions(request *CreateIntegrat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建集成配置
+//
+// @param request - CreateIntegrationConfigRequest
+//
+// @return CreateIntegrationConfigResponse
 func (client *Client) CreateIntegrationConfig(request *CreateIntegrationConfigRequest) (_result *CreateIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22397,6 +27395,17 @@ func (client *Client) CreateIntegrationConfig(request *CreateIntegrationConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障升级
+//
+// @param request - CreateProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProblemResponse
 func (client *Client) CreateProblemWithOptions(request *CreateProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22487,6 +27496,13 @@ func (client *Client) CreateProblemWithOptions(request *CreateProblemRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障升级
+//
+// @param request - CreateProblemRequest
+//
+// @return CreateProblemResponse
 func (client *Client) CreateProblem(request *CreateProblemRequest) (_result *CreateProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22499,6 +27515,17 @@ func (client *Client) CreateProblem(request *CreateProblemRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建影响服务
+//
+// @param request - CreateProblemEffectionServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProblemEffectionServiceResponse
 func (client *Client) CreateProblemEffectionServiceWithOptions(request *CreateProblemEffectionServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProblemEffectionServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22557,6 +27584,13 @@ func (client *Client) CreateProblemEffectionServiceWithOptions(request *CreatePr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建影响服务
+//
+// @param request - CreateProblemEffectionServiceRequest
+//
+// @return CreateProblemEffectionServiceResponse
 func (client *Client) CreateProblemEffectionService(request *CreateProblemEffectionServiceRequest) (_result *CreateProblemEffectionServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22569,6 +27603,17 @@ func (client *Client) CreateProblemEffectionService(request *CreateProblemEffect
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进措施新增
+//
+// @param request - CreateProblemMeasureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProblemMeasureResponse
 func (client *Client) CreateProblemMeasureWithOptions(request *CreateProblemMeasureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProblemMeasureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22639,6 +27684,13 @@ func (client *Client) CreateProblemMeasureWithOptions(request *CreateProblemMeas
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进措施新增
+//
+// @param request - CreateProblemMeasureRequest
+//
+// @return CreateProblemMeasureResponse
 func (client *Client) CreateProblemMeasure(request *CreateProblemMeasureRequest) (_result *CreateProblemMeasureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22651,6 +27703,17 @@ func (client *Client) CreateProblemMeasure(request *CreateProblemMeasureRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障新增备注小计
+//
+// @param request - CreateProblemSubtotalRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProblemSubtotalResponse
 func (client *Client) CreateProblemSubtotalWithOptions(request *CreateProblemSubtotalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProblemSubtotalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22693,6 +27756,13 @@ func (client *Client) CreateProblemSubtotalWithOptions(request *CreateProblemSub
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障新增备注小计
+//
+// @param request - CreateProblemSubtotalRequest
+//
+// @return CreateProblemSubtotalResponse
 func (client *Client) CreateProblemSubtotal(request *CreateProblemSubtotalRequest) (_result *CreateProblemSubtotalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22705,6 +27775,17 @@ func (client *Client) CreateProblemSubtotal(request *CreateProblemSubtotalReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建故障时间线节点
+//
+// @param request - CreateProblemTimelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProblemTimelineResponse
 func (client *Client) CreateProblemTimelineWithOptions(request *CreateProblemTimelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProblemTimelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22755,6 +27836,13 @@ func (client *Client) CreateProblemTimelineWithOptions(request *CreateProblemTim
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建故障时间线节点
+//
+// @param request - CreateProblemTimelineRequest
+//
+// @return CreateProblemTimelineResponse
 func (client *Client) CreateProblemTimeline(request *CreateProblemTimelineRequest) (_result *CreateProblemTimelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22767,6 +27855,17 @@ func (client *Client) CreateProblemTimeline(request *CreateProblemTimelineReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建故障时间线节点
+//
+// @param request - CreateProblemTimelinesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProblemTimelinesResponse
 func (client *Client) CreateProblemTimelinesWithOptions(request *CreateProblemTimelinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProblemTimelinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22809,6 +27908,13 @@ func (client *Client) CreateProblemTimelinesWithOptions(request *CreateProblemTi
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建故障时间线节点
+//
+// @param request - CreateProblemTimelinesRequest
+//
+// @return CreateProblemTimelinesResponse
 func (client *Client) CreateProblemTimelines(request *CreateProblemTimelinesRequest) (_result *CreateProblemTimelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22821,6 +27927,17 @@ func (client *Client) CreateProblemTimelines(request *CreateProblemTimelinesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建富文本
+//
+// @param request - CreateRichTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRichTextResponse
 func (client *Client) CreateRichTextWithOptions(request *CreateRichTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRichTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22863,6 +27980,13 @@ func (client *Client) CreateRichTextWithOptions(request *CreateRichTextRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建富文本
+//
+// @param request - CreateRichTextRequest
+//
+// @return CreateRichTextResponse
 func (client *Client) CreateRichText(request *CreateRichTextRequest) (_result *CreateRichTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22875,6 +27999,17 @@ func (client *Client) CreateRichText(request *CreateRichTextRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建流转规则
+//
+// @param request - CreateRouteRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRouteRuleResponse
 func (client *Client) CreateRouteRuleWithOptions(request *CreateRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRouteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22985,6 +28120,13 @@ func (client *Client) CreateRouteRuleWithOptions(request *CreateRouteRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建流转规则
+//
+// @param request - CreateRouteRuleRequest
+//
+// @return CreateRouteRuleResponse
 func (client *Client) CreateRouteRule(request *CreateRouteRuleRequest) (_result *CreateRouteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22997,6 +28139,17 @@ func (client *Client) CreateRouteRule(request *CreateRouteRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建服务
+//
+// @param request - CreateServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceResponse
 func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23047,6 +28200,13 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建服务
+//
+// @param request - CreateServiceRequest
+//
+// @return CreateServiceResponse
 func (client *Client) CreateService(request *CreateServiceRequest) (_result *CreateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23059,6 +28219,17 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建服务组
+//
+// @param request - CreateServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceGroupResponse
 func (client *Client) CreateServiceGroupWithOptions(request *CreateServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23121,6 +28292,13 @@ func (client *Client) CreateServiceGroupWithOptions(request *CreateServiceGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建服务组
+//
+// @param request - CreateServiceGroupRequest
+//
+// @return CreateServiceGroupResponse
 func (client *Client) CreateServiceGroup(request *CreateServiceGroupRequest) (_result *CreateServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23133,6 +28311,17 @@ func (client *Client) CreateServiceGroup(request *CreateServiceGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增服务组排班
+//
+// @param request - CreateServiceGroupSchedulingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceGroupSchedulingResponse
 func (client *Client) CreateServiceGroupSchedulingWithOptions(request *CreateServiceGroupSchedulingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceGroupSchedulingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23183,6 +28372,13 @@ func (client *Client) CreateServiceGroupSchedulingWithOptions(request *CreateSer
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增服务组排班
+//
+// @param request - CreateServiceGroupSchedulingRequest
+//
+// @return CreateServiceGroupSchedulingResponse
 func (client *Client) CreateServiceGroupScheduling(request *CreateServiceGroupSchedulingRequest) (_result *CreateServiceGroupSchedulingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23195,6 +28391,17 @@ func (client *Client) CreateServiceGroupScheduling(request *CreateServiceGroupSc
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建通知订阅
+//
+// @param request - CreateSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubscriptionResponse
 func (client *Client) CreateSubscriptionWithOptions(request *CreateSubscriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23269,6 +28476,13 @@ func (client *Client) CreateSubscriptionWithOptions(request *CreateSubscriptionR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建通知订阅
+//
+// @param request - CreateSubscriptionRequest
+//
+// @return CreateSubscriptionResponse
 func (client *Client) CreateSubscription(request *CreateSubscriptionRequest) (_result *CreateSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23281,6 +28495,17 @@ func (client *Client) CreateSubscription(request *CreateSubscriptionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 云钉协同创建移动应用
+//
+// @param request - CreateTenantApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTenantApplicationResponse
 func (client *Client) CreateTenantApplicationWithOptions(request *CreateTenantApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTenantApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23319,6 +28544,13 @@ func (client *Client) CreateTenantApplicationWithOptions(request *CreateTenantAp
 	return _result, _err
 }
 
+// Summary:
+//
+// 云钉协同创建移动应用
+//
+// @param request - CreateTenantApplicationRequest
+//
+// @return CreateTenantApplicationResponse
 func (client *Client) CreateTenantApplication(request *CreateTenantApplicationRequest) (_result *CreateTenantApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23331,6 +28563,17 @@ func (client *Client) CreateTenantApplication(request *CreateTenantApplicationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建用户
+//
+// @param request - CreateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23385,6 +28628,13 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建用户
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
 func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23397,6 +28647,17 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除升级计划
+//
+// @param request - DeleteEscalationPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEscalationPlanResponse
 func (client *Client) DeleteEscalationPlanWithOptions(request *DeleteEscalationPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEscalationPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23435,6 +28696,13 @@ func (client *Client) DeleteEscalationPlanWithOptions(request *DeleteEscalationP
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除升级计划
+//
+// @param request - DeleteEscalationPlanRequest
+//
+// @return DeleteEscalationPlanResponse
 func (client *Client) DeleteEscalationPlan(request *DeleteEscalationPlanRequest) (_result *DeleteEscalationPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23447,6 +28715,17 @@ func (client *Client) DeleteEscalationPlan(request *DeleteEscalationPlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件删除
+//
+// @param request - DeleteIncidentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIncidentResponse
 func (client *Client) DeleteIncidentWithOptions(request *DeleteIncidentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIncidentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23485,6 +28764,13 @@ func (client *Client) DeleteIncidentWithOptions(request *DeleteIncidentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件删除
+//
+// @param request - DeleteIncidentRequest
+//
+// @return DeleteIncidentResponse
 func (client *Client) DeleteIncident(request *DeleteIncidentRequest) (_result *DeleteIncidentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23497,6 +28783,17 @@ func (client *Client) DeleteIncident(request *DeleteIncidentRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除集成配置
+//
+// @param request - DeleteIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIntegrationConfigResponse
 func (client *Client) DeleteIntegrationConfigWithOptions(request *DeleteIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23535,6 +28832,13 @@ func (client *Client) DeleteIntegrationConfigWithOptions(request *DeleteIntegrat
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除集成配置
+//
+// @param request - DeleteIntegrationConfigRequest
+//
+// @return DeleteIntegrationConfigResponse
 func (client *Client) DeleteIntegrationConfig(request *DeleteIntegrationConfigRequest) (_result *DeleteIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23547,6 +28851,17 @@ func (client *Client) DeleteIntegrationConfig(request *DeleteIntegrationConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障刪除
+//
+// @param request - DeleteProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProblemResponse
 func (client *Client) DeleteProblemWithOptions(request *DeleteProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23585,6 +28900,13 @@ func (client *Client) DeleteProblemWithOptions(request *DeleteProblemRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障刪除
+//
+// @param request - DeleteProblemRequest
+//
+// @return DeleteProblemResponse
 func (client *Client) DeleteProblem(request *DeleteProblemRequest) (_result *DeleteProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23597,6 +28919,17 @@ func (client *Client) DeleteProblem(request *DeleteProblemRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除故障影响服务
+//
+// @param request - DeleteProblemEffectionServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProblemEffectionServiceResponse
 func (client *Client) DeleteProblemEffectionServiceWithOptions(request *DeleteProblemEffectionServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProblemEffectionServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23639,6 +28972,13 @@ func (client *Client) DeleteProblemEffectionServiceWithOptions(request *DeletePr
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除故障影响服务
+//
+// @param request - DeleteProblemEffectionServiceRequest
+//
+// @return DeleteProblemEffectionServiceResponse
 func (client *Client) DeleteProblemEffectionService(request *DeleteProblemEffectionServiceRequest) (_result *DeleteProblemEffectionServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23651,6 +28991,17 @@ func (client *Client) DeleteProblemEffectionService(request *DeleteProblemEffect
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进措施删除
+//
+// @param request - DeleteProblemMeasureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProblemMeasureResponse
 func (client *Client) DeleteProblemMeasureWithOptions(request *DeleteProblemMeasureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProblemMeasureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23693,6 +29044,13 @@ func (client *Client) DeleteProblemMeasureWithOptions(request *DeleteProblemMeas
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进措施删除
+//
+// @param request - DeleteProblemMeasureRequest
+//
+// @return DeleteProblemMeasureResponse
 func (client *Client) DeleteProblemMeasure(request *DeleteProblemMeasureRequest) (_result *DeleteProblemMeasureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23705,6 +29063,17 @@ func (client *Client) DeleteProblemMeasure(request *DeleteProblemMeasureRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除影响服务
+//
+// @param request - DeleteProblemTimelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProblemTimelineResponse
 func (client *Client) DeleteProblemTimelineWithOptions(request *DeleteProblemTimelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProblemTimelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23747,6 +29116,13 @@ func (client *Client) DeleteProblemTimelineWithOptions(request *DeleteProblemTim
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除影响服务
+//
+// @param request - DeleteProblemTimelineRequest
+//
+// @return DeleteProblemTimelineResponse
 func (client *Client) DeleteProblemTimeline(request *DeleteProblemTimelineRequest) (_result *DeleteProblemTimelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23759,6 +29135,17 @@ func (client *Client) DeleteProblemTimeline(request *DeleteProblemTimelineReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除流转规则
+//
+// @param request - DeleteRouteRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRouteRuleResponse
 func (client *Client) DeleteRouteRuleWithOptions(request *DeleteRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRouteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23797,6 +29184,13 @@ func (client *Client) DeleteRouteRuleWithOptions(request *DeleteRouteRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除流转规则
+//
+// @param request - DeleteRouteRuleRequest
+//
+// @return DeleteRouteRuleResponse
 func (client *Client) DeleteRouteRule(request *DeleteRouteRuleRequest) (_result *DeleteRouteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23809,6 +29203,17 @@ func (client *Client) DeleteRouteRule(request *DeleteRouteRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除服务
+//
+// @param request - DeleteServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceResponse
 func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23847,6 +29252,13 @@ func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除服务
+//
+// @param request - DeleteServiceRequest
+//
+// @return DeleteServiceResponse
 func (client *Client) DeleteService(request *DeleteServiceRequest) (_result *DeleteServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23859,6 +29271,17 @@ func (client *Client) DeleteService(request *DeleteServiceRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除服务组
+//
+// @param request - DeleteServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceGroupResponse
 func (client *Client) DeleteServiceGroupWithOptions(request *DeleteServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23897,6 +29320,13 @@ func (client *Client) DeleteServiceGroupWithOptions(request *DeleteServiceGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除服务组
+//
+// @param request - DeleteServiceGroupRequest
+//
+// @return DeleteServiceGroupResponse
 func (client *Client) DeleteServiceGroup(request *DeleteServiceGroupRequest) (_result *DeleteServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23909,6 +29339,15 @@ func (client *Client) DeleteServiceGroup(request *DeleteServiceGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除排班
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceGroupSchedulingResponse
 func (client *Client) DeleteServiceGroupSchedulingWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceGroupSchedulingResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -23933,6 +29372,11 @@ func (client *Client) DeleteServiceGroupSchedulingWithOptions(headers map[string
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除排班
+//
+// @return DeleteServiceGroupSchedulingResponse
 func (client *Client) DeleteServiceGroupScheduling() (_result *DeleteServiceGroupSchedulingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23945,6 +29389,17 @@ func (client *Client) DeleteServiceGroupScheduling() (_result *DeleteServiceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除服务组成员
+//
+// @param request - DeleteServiceGroupUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceGroupUserResponse
 func (client *Client) DeleteServiceGroupUserWithOptions(request *DeleteServiceGroupUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceGroupUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23995,6 +29450,13 @@ func (client *Client) DeleteServiceGroupUserWithOptions(request *DeleteServiceGr
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除服务组成员
+//
+// @param request - DeleteServiceGroupUserRequest
+//
+// @return DeleteServiceGroupUserResponse
 func (client *Client) DeleteServiceGroupUser(request *DeleteServiceGroupUserRequest) (_result *DeleteServiceGroupUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24007,6 +29469,17 @@ func (client *Client) DeleteServiceGroupUser(request *DeleteServiceGroupUserRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除通知订阅
+//
+// @param request - DeleteSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubscriptionResponse
 func (client *Client) DeleteSubscriptionWithOptions(request *DeleteSubscriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24041,6 +29514,13 @@ func (client *Client) DeleteSubscriptionWithOptions(request *DeleteSubscriptionR
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除通知订阅
+//
+// @param request - DeleteSubscriptionRequest
+//
+// @return DeleteSubscriptionResponse
 func (client *Client) DeleteSubscription(request *DeleteSubscriptionRequest) (_result *DeleteSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24053,6 +29533,17 @@ func (client *Client) DeleteSubscription(request *DeleteSubscriptionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除用户
+//
+// @param request - DeleteUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24091,6 +29582,13 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除用户
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24103,6 +29601,17 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 转交事件
+//
+// @param request - DeliverIncidentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeliverIncidentResponse
 func (client *Client) DeliverIncidentWithOptions(request *DeliverIncidentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeliverIncidentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24145,6 +29654,13 @@ func (client *Client) DeliverIncidentWithOptions(request *DeliverIncidentRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 转交事件
+//
+// @param request - DeliverIncidentRequest
+//
+// @return DeliverIncidentResponse
 func (client *Client) DeliverIncident(request *DeliverIncidentRequest) (_result *DeliverIncidentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24157,6 +29673,17 @@ func (client *Client) DeliverIncident(request *DeliverIncidentRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用升级计划
+//
+// @param request - DisableEscalationPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableEscalationPlanResponse
 func (client *Client) DisableEscalationPlanWithOptions(request *DisableEscalationPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableEscalationPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24195,6 +29722,13 @@ func (client *Client) DisableEscalationPlanWithOptions(request *DisableEscalatio
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用升级计划
+//
+// @param request - DisableEscalationPlanRequest
+//
+// @return DisableEscalationPlanResponse
 func (client *Client) DisableEscalationPlan(request *DisableEscalationPlanRequest) (_result *DisableEscalationPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24207,6 +29741,17 @@ func (client *Client) DisableEscalationPlan(request *DisableEscalationPlanReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用集成配置
+//
+// @param request - DisableIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableIntegrationConfigResponse
 func (client *Client) DisableIntegrationConfigWithOptions(request *DisableIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24245,6 +29790,13 @@ func (client *Client) DisableIntegrationConfigWithOptions(request *DisableIntegr
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用集成配置
+//
+// @param request - DisableIntegrationConfigRequest
+//
+// @return DisableIntegrationConfigResponse
 func (client *Client) DisableIntegrationConfig(request *DisableIntegrationConfigRequest) (_result *DisableIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24257,6 +29809,17 @@ func (client *Client) DisableIntegrationConfig(request *DisableIntegrationConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用规则
+//
+// @param request - DisableRouteRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableRouteRuleResponse
 func (client *Client) DisableRouteRuleWithOptions(request *DisableRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableRouteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24295,6 +29858,13 @@ func (client *Client) DisableRouteRuleWithOptions(request *DisableRouteRuleReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用规则
+//
+// @param request - DisableRouteRuleRequest
+//
+// @return DisableRouteRuleResponse
 func (client *Client) DisableRouteRule(request *DisableRouteRuleRequest) (_result *DisableRouteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24307,6 +29877,17 @@ func (client *Client) DisableRouteRule(request *DisableRouteRuleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用服务组的webhook
+//
+// @param request - DisableServiceGroupWebhookRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableServiceGroupWebhookResponse
 func (client *Client) DisableServiceGroupWebhookWithOptions(request *DisableServiceGroupWebhookRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableServiceGroupWebhookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24345,6 +29926,13 @@ func (client *Client) DisableServiceGroupWebhookWithOptions(request *DisableServ
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用服务组的webhook
+//
+// @param request - DisableServiceGroupWebhookRequest
+//
+// @return DisableServiceGroupWebhookResponse
 func (client *Client) DisableServiceGroupWebhook(request *DisableServiceGroupWebhookRequest) (_result *DisableServiceGroupWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24357,6 +29945,17 @@ func (client *Client) DisableServiceGroupWebhook(request *DisableServiceGroupWeb
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用集成配置
+//
+// @param request - DisableSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSubscriptionResponse
 func (client *Client) DisableSubscriptionWithOptions(request *DisableSubscriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24391,6 +29990,13 @@ func (client *Client) DisableSubscriptionWithOptions(request *DisableSubscriptio
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用集成配置
+//
+// @param request - DisableSubscriptionRequest
+//
+// @return DisableSubscriptionResponse
 func (client *Client) DisableSubscription(request *DisableSubscriptionRequest) (_result *DisableSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24403,6 +30009,17 @@ func (client *Client) DisableSubscription(request *DisableSubscriptionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用升级计划
+//
+// @param request - EnableEscalationPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableEscalationPlanResponse
 func (client *Client) EnableEscalationPlanWithOptions(request *EnableEscalationPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableEscalationPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24441,6 +30058,13 @@ func (client *Client) EnableEscalationPlanWithOptions(request *EnableEscalationP
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用升级计划
+//
+// @param request - EnableEscalationPlanRequest
+//
+// @return EnableEscalationPlanResponse
 func (client *Client) EnableEscalationPlan(request *EnableEscalationPlanRequest) (_result *EnableEscalationPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24453,6 +30077,17 @@ func (client *Client) EnableEscalationPlan(request *EnableEscalationPlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用集成配置
+//
+// @param request - EnableIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableIntegrationConfigResponse
 func (client *Client) EnableIntegrationConfigWithOptions(request *EnableIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24491,6 +30126,13 @@ func (client *Client) EnableIntegrationConfigWithOptions(request *EnableIntegrat
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用集成配置
+//
+// @param request - EnableIntegrationConfigRequest
+//
+// @return EnableIntegrationConfigResponse
 func (client *Client) EnableIntegrationConfig(request *EnableIntegrationConfigRequest) (_result *EnableIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24503,6 +30145,17 @@ func (client *Client) EnableIntegrationConfig(request *EnableIntegrationConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用规则
+//
+// @param request - EnableRouteRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableRouteRuleResponse
 func (client *Client) EnableRouteRuleWithOptions(request *EnableRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableRouteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24541,6 +30194,13 @@ func (client *Client) EnableRouteRuleWithOptions(request *EnableRouteRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用规则
+//
+// @param request - EnableRouteRuleRequest
+//
+// @return EnableRouteRuleResponse
 func (client *Client) EnableRouteRule(request *EnableRouteRuleRequest) (_result *EnableRouteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24553,6 +30213,17 @@ func (client *Client) EnableRouteRule(request *EnableRouteRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用服务组的webhook
+//
+// @param request - EnableServiceGroupWebhookRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableServiceGroupWebhookResponse
 func (client *Client) EnableServiceGroupWebhookWithOptions(request *EnableServiceGroupWebhookRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableServiceGroupWebhookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24591,6 +30262,13 @@ func (client *Client) EnableServiceGroupWebhookWithOptions(request *EnableServic
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用服务组的webhook
+//
+// @param request - EnableServiceGroupWebhookRequest
+//
+// @return EnableServiceGroupWebhookResponse
 func (client *Client) EnableServiceGroupWebhook(request *EnableServiceGroupWebhookRequest) (_result *EnableServiceGroupWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24603,6 +30281,17 @@ func (client *Client) EnableServiceGroupWebhook(request *EnableServiceGroupWebho
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用通知订阅
+//
+// @param request - EnableSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSubscriptionResponse
 func (client *Client) EnableSubscriptionWithOptions(request *EnableSubscriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24637,6 +30326,13 @@ func (client *Client) EnableSubscriptionWithOptions(request *EnableSubscriptionR
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用通知订阅
+//
+// @param request - EnableSubscriptionRequest
+//
+// @return EnableSubscriptionResponse
 func (client *Client) EnableSubscription(request *EnableSubscriptionRequest) (_result *EnableSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24649,6 +30345,17 @@ func (client *Client) EnableSubscription(request *EnableSubscriptionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 完结事件
+//
+// @param request - FinishIncidentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishIncidentResponse
 func (client *Client) FinishIncidentWithOptions(request *FinishIncidentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishIncidentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24703,6 +30410,13 @@ func (client *Client) FinishIncidentWithOptions(request *FinishIncidentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 完结事件
+//
+// @param request - FinishIncidentRequest
+//
+// @return FinishIncidentResponse
 func (client *Client) FinishIncident(request *FinishIncidentRequest) (_result *FinishIncidentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24715,6 +30429,17 @@ func (client *Client) FinishIncident(request *FinishIncidentRequest) (_result *F
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障完结
+//
+// @param request - FinishProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishProblemResponse
 func (client *Client) FinishProblemWithOptions(request *FinishProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24753,6 +30478,13 @@ func (client *Client) FinishProblemWithOptions(request *FinishProblemRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障完结
+//
+// @param request - FinishProblemRequest
+//
+// @return FinishProblemResponse
 func (client *Client) FinishProblem(request *FinishProblemRequest) (_result *FinishProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24765,6 +30497,17 @@ func (client *Client) FinishProblem(request *FinishProblemRequest) (_result *Fin
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片连接获取
+//
+// @param request - GeneratePictureLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GeneratePictureLinkResponse
 func (client *Client) GeneratePictureLinkWithOptions(request *GeneratePictureLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GeneratePictureLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24803,6 +30546,13 @@ func (client *Client) GeneratePictureLinkWithOptions(request *GeneratePictureLin
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片连接获取
+//
+// @param request - GeneratePictureLinkRequest
+//
+// @return GeneratePictureLinkResponse
 func (client *Client) GeneratePictureLink(request *GeneratePictureLinkRequest) (_result *GeneratePictureLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24815,6 +30565,17 @@ func (client *Client) GeneratePictureLink(request *GeneratePictureLinkRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片批量上传
+//
+// @param request - GeneratePictureUploadSignRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GeneratePictureUploadSignResponse
 func (client *Client) GeneratePictureUploadSignWithOptions(request *GeneratePictureUploadSignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GeneratePictureUploadSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24857,6 +30618,13 @@ func (client *Client) GeneratePictureUploadSignWithOptions(request *GeneratePict
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片批量上传
+//
+// @param request - GeneratePictureUploadSignRequest
+//
+// @return GeneratePictureUploadSignResponse
 func (client *Client) GeneratePictureUploadSign(request *GeneratePictureUploadSignRequest) (_result *GeneratePictureUploadSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24869,6 +30637,17 @@ func (client *Client) GeneratePictureUploadSign(request *GeneratePictureUploadSi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片下载url
+//
+// @param request - GenerateProblemPictureLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateProblemPictureLinkResponse
 func (client *Client) GenerateProblemPictureLinkWithOptions(request *GenerateProblemPictureLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateProblemPictureLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24907,6 +30686,13 @@ func (client *Client) GenerateProblemPictureLinkWithOptions(request *GeneratePro
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片下载url
+//
+// @param request - GenerateProblemPictureLinkRequest
+//
+// @return GenerateProblemPictureLinkResponse
 func (client *Client) GenerateProblemPictureLink(request *GenerateProblemPictureLinkRequest) (_result *GenerateProblemPictureLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24919,6 +30705,17 @@ func (client *Client) GenerateProblemPictureLink(request *GenerateProblemPicture
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片上传验签
+//
+// @param request - GenerateProblemPictureUploadSignRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateProblemPictureUploadSignResponse
 func (client *Client) GenerateProblemPictureUploadSignWithOptions(request *GenerateProblemPictureUploadSignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateProblemPictureUploadSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24965,6 +30762,13 @@ func (client *Client) GenerateProblemPictureUploadSignWithOptions(request *Gener
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片上传验签
+//
+// @param request - GenerateProblemPictureUploadSignRequest
+//
+// @return GenerateProblemPictureUploadSignResponse
 func (client *Client) GenerateProblemPictureUploadSign(request *GenerateProblemPictureUploadSignRequest) (_result *GenerateProblemPictureUploadSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24977,6 +30781,17 @@ func (client *Client) GenerateProblemPictureUploadSign(request *GenerateProblemP
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级计划详情
+//
+// @param request - GetEscalationPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEscalationPlanResponse
 func (client *Client) GetEscalationPlanWithOptions(request *GetEscalationPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEscalationPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25015,6 +30830,13 @@ func (client *Client) GetEscalationPlanWithOptions(request *GetEscalationPlanReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级计划详情
+//
+// @param request - GetEscalationPlanRequest
+//
+// @return GetEscalationPlanResponse
 func (client *Client) GetEscalationPlan(request *GetEscalationPlanRequest) (_result *GetEscalationPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25027,6 +30849,17 @@ func (client *Client) GetEscalationPlan(request *GetEscalationPlanRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询最近一次告警
+//
+// @param request - GetEventRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEventResponse
 func (client *Client) GetEventWithOptions(request *GetEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25061,6 +30894,13 @@ func (client *Client) GetEventWithOptions(request *GetEventRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询最近一次告警
+//
+// @param request - GetEventRequest
+//
+// @return GetEventResponse
 func (client *Client) GetEvent(request *GetEventRequest) (_result *GetEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25073,6 +30913,17 @@ func (client *Client) GetEvent(request *GetEventRequest) (_result *GetEventRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询首页引导信息
+//
+// @param request - GetHomePageGuidanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHomePageGuidanceResponse
 func (client *Client) GetHomePageGuidanceWithOptions(request *GetHomePageGuidanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHomePageGuidanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25107,6 +30958,13 @@ func (client *Client) GetHomePageGuidanceWithOptions(request *GetHomePageGuidanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询首页引导信息
+//
+// @param request - GetHomePageGuidanceRequest
+//
+// @return GetHomePageGuidanceResponse
 func (client *Client) GetHomePageGuidance(request *GetHomePageGuidanceRequest) (_result *GetHomePageGuidanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25119,6 +30977,17 @@ func (client *Client) GetHomePageGuidance(request *GetHomePageGuidanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件详情
+//
+// @param request - GetIncidentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIncidentResponse
 func (client *Client) GetIncidentWithOptions(request *GetIncidentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIncidentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25157,6 +31026,13 @@ func (client *Client) GetIncidentWithOptions(request *GetIncidentRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件详情
+//
+// @param request - GetIncidentRequest
+//
+// @return GetIncidentResponse
 func (client *Client) GetIncident(request *GetIncidentRequest) (_result *GetIncidentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25169,6 +31045,17 @@ func (client *Client) GetIncident(request *GetIncidentRequest) (_result *GetInci
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据事件ID批量查询事件详情
+//
+// @param request - GetIncidentListByIdListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIncidentListByIdListResponse
 func (client *Client) GetIncidentListByIdListWithOptions(request *GetIncidentListByIdListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIncidentListByIdListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25207,6 +31094,13 @@ func (client *Client) GetIncidentListByIdListWithOptions(request *GetIncidentLis
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据事件ID批量查询事件详情
+//
+// @param request - GetIncidentListByIdListRequest
+//
+// @return GetIncidentListByIdListResponse
 func (client *Client) GetIncidentListByIdList(request *GetIncidentListByIdListRequest) (_result *GetIncidentListByIdListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25219,6 +31113,17 @@ func (client *Client) GetIncidentListByIdList(request *GetIncidentListByIdListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件统计
+//
+// @param request - GetIncidentStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIncidentStatisticsResponse
 func (client *Client) GetIncidentStatisticsWithOptions(request *GetIncidentStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIncidentStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25253,6 +31158,13 @@ func (client *Client) GetIncidentStatisticsWithOptions(request *GetIncidentStati
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件统计
+//
+// @param request - GetIncidentStatisticsRequest
+//
+// @return GetIncidentStatisticsResponse
 func (client *Client) GetIncidentStatistics(request *GetIncidentStatisticsRequest) (_result *GetIncidentStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25265,6 +31177,17 @@ func (client *Client) GetIncidentStatistics(request *GetIncidentStatisticsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询事件对应的小计数量
+//
+// @param request - GetIncidentSubtotalCountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIncidentSubtotalCountResponse
 func (client *Client) GetIncidentSubtotalCountWithOptions(request *GetIncidentSubtotalCountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIncidentSubtotalCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25303,6 +31226,13 @@ func (client *Client) GetIncidentSubtotalCountWithOptions(request *GetIncidentSu
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询事件对应的小计数量
+//
+// @param request - GetIncidentSubtotalCountRequest
+//
+// @return GetIncidentSubtotalCountResponse
 func (client *Client) GetIncidentSubtotalCount(request *GetIncidentSubtotalCountRequest) (_result *GetIncidentSubtotalCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25315,6 +31245,17 @@ func (client *Client) GetIncidentSubtotalCount(request *GetIncidentSubtotalCount
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集成配置详情
+//
+// @param request - GetIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIntegrationConfigResponse
 func (client *Client) GetIntegrationConfigWithOptions(request *GetIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25353,6 +31294,13 @@ func (client *Client) GetIntegrationConfigWithOptions(request *GetIntegrationCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集成配置详情
+//
+// @param request - GetIntegrationConfigRequest
+//
+// @return GetIntegrationConfigResponse
 func (client *Client) GetIntegrationConfig(request *GetIntegrationConfigRequest) (_result *GetIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25365,6 +31313,17 @@ func (client *Client) GetIntegrationConfig(request *GetIntegrationConfigRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障详情
+//
+// @param request - GetProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProblemResponse
 func (client *Client) GetProblemWithOptions(request *GetProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25403,6 +31362,13 @@ func (client *Client) GetProblemWithOptions(request *GetProblemRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障详情
+//
+// @param request - GetProblemRequest
+//
+// @return GetProblemResponse
 func (client *Client) GetProblem(request *GetProblemRequest) (_result *GetProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25415,6 +31381,17 @@ func (client *Client) GetProblem(request *GetProblemRequest) (_result *GetProble
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障影响服务
+//
+// @param request - GetProblemEffectionServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProblemEffectionServiceResponse
 func (client *Client) GetProblemEffectionServiceWithOptions(request *GetProblemEffectionServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProblemEffectionServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25457,6 +31434,13 @@ func (client *Client) GetProblemEffectionServiceWithOptions(request *GetProblemE
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障影响服务
+//
+// @param request - GetProblemEffectionServiceRequest
+//
+// @return GetProblemEffectionServiceResponse
 func (client *Client) GetProblemEffectionService(request *GetProblemEffectionServiceRequest) (_result *GetProblemEffectionServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25469,6 +31453,17 @@ func (client *Client) GetProblemEffectionService(request *GetProblemEffectionSer
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进分析详情
+//
+// @param request - GetProblemImprovementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProblemImprovementResponse
 func (client *Client) GetProblemImprovementWithOptions(request *GetProblemImprovementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProblemImprovementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25507,6 +31502,13 @@ func (client *Client) GetProblemImprovementWithOptions(request *GetProblemImprov
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进分析详情
+//
+// @param request - GetProblemImprovementRequest
+//
+// @return GetProblemImprovementResponse
 func (client *Client) GetProblemImprovement(request *GetProblemImprovementRequest) (_result *GetProblemImprovementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25519,6 +31521,17 @@ func (client *Client) GetProblemImprovement(request *GetProblemImprovementReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 通告预览
+//
+// @param request - GetProblemPreviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProblemPreviewResponse
 func (client *Client) GetProblemPreviewWithOptions(request *GetProblemPreviewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProblemPreviewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25581,6 +31594,13 @@ func (client *Client) GetProblemPreviewWithOptions(request *GetProblemPreviewReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 通告预览
+//
+// @param request - GetProblemPreviewRequest
+//
+// @return GetProblemPreviewResponse
 func (client *Client) GetProblemPreview(request *GetProblemPreviewRequest) (_result *GetProblemPreviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25593,6 +31613,17 @@ func (client *Client) GetProblemPreview(request *GetProblemPreviewRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 概览数据统计
+//
+// @param request - GetResourceStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceStatisticsResponse
 func (client *Client) GetResourceStatisticsWithOptions(request *GetResourceStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25627,6 +31658,13 @@ func (client *Client) GetResourceStatisticsWithOptions(request *GetResourceStati
 	return _result, _err
 }
 
+// Summary:
+//
+// 概览数据统计
+//
+// @param request - GetResourceStatisticsRequest
+//
+// @return GetResourceStatisticsResponse
 func (client *Client) GetResourceStatistics(request *GetResourceStatisticsRequest) (_result *GetResourceStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25639,6 +31677,17 @@ func (client *Client) GetResourceStatistics(request *GetResourceStatisticsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询富文本
+//
+// @param request - GetRichTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRichTextResponse
 func (client *Client) GetRichTextWithOptions(request *GetRichTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRichTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25681,6 +31730,13 @@ func (client *Client) GetRichTextWithOptions(request *GetRichTextRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询富文本
+//
+// @param request - GetRichTextRequest
+//
+// @return GetRichTextResponse
 func (client *Client) GetRichText(request *GetRichTextRequest) (_result *GetRichTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25693,6 +31749,17 @@ func (client *Client) GetRichText(request *GetRichTextRequest) (_result *GetRich
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流转规则详情
+//
+// @param request - GetRouteRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRouteRuleResponse
 func (client *Client) GetRouteRuleWithOptions(request *GetRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRouteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25731,6 +31798,13 @@ func (client *Client) GetRouteRuleWithOptions(request *GetRouteRuleRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流转规则详情
+//
+// @param request - GetRouteRuleRequest
+//
+// @return GetRouteRuleResponse
 func (client *Client) GetRouteRule(request *GetRouteRuleRequest) (_result *GetRouteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25743,6 +31817,17 @@ func (client *Client) GetRouteRule(request *GetRouteRuleRequest) (_result *GetRo
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务详情
+//
+// @param request - GetServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceResponse
 func (client *Client) GetServiceWithOptions(request *GetServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25781,6 +31866,13 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务详情
+//
+// @param request - GetServiceRequest
+//
+// @return GetServiceResponse
 func (client *Client) GetService(request *GetServiceRequest) (_result *GetServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25793,6 +31885,17 @@ func (client *Client) GetService(request *GetServiceRequest) (_result *GetServic
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组详情
+//
+// @param request - GetServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceGroupResponse
 func (client *Client) GetServiceGroupWithOptions(request *GetServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25831,6 +31934,13 @@ func (client *Client) GetServiceGroupWithOptions(request *GetServiceGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组详情
+//
+// @param request - GetServiceGroupRequest
+//
+// @return GetServiceGroupResponse
 func (client *Client) GetServiceGroup(request *GetServiceGroupRequest) (_result *GetServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25843,6 +31953,17 @@ func (client *Client) GetServiceGroup(request *GetServiceGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户某个服务组的排班
+//
+// @param request - GetServiceGroupPersonSchedulingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceGroupPersonSchedulingResponse
 func (client *Client) GetServiceGroupPersonSchedulingWithOptions(request *GetServiceGroupPersonSchedulingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceGroupPersonSchedulingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25893,6 +32014,13 @@ func (client *Client) GetServiceGroupPersonSchedulingWithOptions(request *GetSer
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户某个服务组的排班
+//
+// @param request - GetServiceGroupPersonSchedulingRequest
+//
+// @return GetServiceGroupPersonSchedulingResponse
 func (client *Client) GetServiceGroupPersonScheduling(request *GetServiceGroupPersonSchedulingRequest) (_result *GetServiceGroupPersonSchedulingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25905,6 +32033,17 @@ func (client *Client) GetServiceGroupPersonScheduling(request *GetServiceGroupPe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组排班详情
+//
+// @param request - GetServiceGroupSchedulingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceGroupSchedulingResponse
 func (client *Client) GetServiceGroupSchedulingWithOptions(request *GetServiceGroupSchedulingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceGroupSchedulingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25943,6 +32082,13 @@ func (client *Client) GetServiceGroupSchedulingWithOptions(request *GetServiceGr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组排班详情
+//
+// @param request - GetServiceGroupSchedulingRequest
+//
+// @return GetServiceGroupSchedulingResponse
 func (client *Client) GetServiceGroupScheduling(request *GetServiceGroupSchedulingRequest) (_result *GetServiceGroupSchedulingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25955,6 +32101,17 @@ func (client *Client) GetServiceGroupScheduling(request *GetServiceGroupScheduli
 	return _result, _err
 }
 
+// Summary:
+//
+// 预览服务组排班
+//
+// @param request - GetServiceGroupSchedulingPreviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceGroupSchedulingPreviewResponse
 func (client *Client) GetServiceGroupSchedulingPreviewWithOptions(request *GetServiceGroupSchedulingPreviewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceGroupSchedulingPreviewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26013,6 +32170,13 @@ func (client *Client) GetServiceGroupSchedulingPreviewWithOptions(request *GetSe
 	return _result, _err
 }
 
+// Summary:
+//
+// 预览服务组排班
+//
+// @param request - GetServiceGroupSchedulingPreviewRequest
+//
+// @return GetServiceGroupSchedulingPreviewResponse
 func (client *Client) GetServiceGroupSchedulingPreview(request *GetServiceGroupSchedulingPreviewRequest) (_result *GetServiceGroupSchedulingPreviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26025,6 +32189,17 @@ func (client *Client) GetServiceGroupSchedulingPreview(request *GetServiceGroupS
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定人员的服务组排班
+//
+// @param request - GetServiceGroupSpecialPersonSchedulingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceGroupSpecialPersonSchedulingResponse
 func (client *Client) GetServiceGroupSpecialPersonSchedulingWithOptions(request *GetServiceGroupSpecialPersonSchedulingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceGroupSpecialPersonSchedulingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26067,6 +32242,13 @@ func (client *Client) GetServiceGroupSpecialPersonSchedulingWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定人员的服务组排班
+//
+// @param request - GetServiceGroupSpecialPersonSchedulingRequest
+//
+// @return GetServiceGroupSpecialPersonSchedulingResponse
 func (client *Client) GetServiceGroupSpecialPersonScheduling(request *GetServiceGroupSpecialPersonSchedulingRequest) (_result *GetServiceGroupSpecialPersonSchedulingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26079,6 +32261,17 @@ func (client *Client) GetServiceGroupSpecialPersonScheduling(request *GetService
 	return _result, _err
 }
 
+// Summary:
+//
+// 相似事件统计信息
+//
+// @param request - GetSimilarIncidentStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSimilarIncidentStatisticsResponse
 func (client *Client) GetSimilarIncidentStatisticsWithOptions(request *GetSimilarIncidentStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSimilarIncidentStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26133,6 +32326,13 @@ func (client *Client) GetSimilarIncidentStatisticsWithOptions(request *GetSimila
 	return _result, _err
 }
 
+// Summary:
+//
+// 相似事件统计信息
+//
+// @param request - GetSimilarIncidentStatisticsRequest
+//
+// @return GetSimilarIncidentStatisticsResponse
 func (client *Client) GetSimilarIncidentStatistics(request *GetSimilarIncidentStatisticsRequest) (_result *GetSimilarIncidentStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26145,6 +32345,17 @@ func (client *Client) GetSimilarIncidentStatistics(request *GetSimilarIncidentSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 通知订阅详情
+//
+// @param request - GetSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscriptionResponse
 func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26183,6 +32394,13 @@ func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 通知订阅详情
+//
+// @param request - GetSubscriptionRequest
+//
+// @return GetSubscriptionResponse
 func (client *Client) GetSubscription(request *GetSubscriptionRequest) (_result *GetSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26195,6 +32413,17 @@ func (client *Client) GetSubscription(request *GetSubscriptionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 云钉协同移动应用详情
+//
+// @param request - GetTenantApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTenantApplicationResponse
 func (client *Client) GetTenantApplicationWithOptions(request *GetTenantApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTenantApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26229,6 +32458,13 @@ func (client *Client) GetTenantApplicationWithOptions(request *GetTenantApplicat
 	return _result, _err
 }
 
+// Summary:
+//
+// 云钉协同移动应用详情
+//
+// @param request - GetTenantApplicationRequest
+//
+// @return GetTenantApplicationResponse
 func (client *Client) GetTenantApplication(request *GetTenantApplicationRequest) (_result *GetTenantApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26241,6 +32477,17 @@ func (client *Client) GetTenantApplication(request *GetTenantApplicationRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询租户开通运维事件中心的状态
+//
+// @param request - GetTenantStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTenantStatusResponse
 func (client *Client) GetTenantStatusWithOptions(request *GetTenantStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTenantStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26275,6 +32522,13 @@ func (client *Client) GetTenantStatusWithOptions(request *GetTenantStatusRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询租户开通运维事件中心的状态
+//
+// @param request - GetTenantStatusRequest
+//
+// @return GetTenantStatusResponse
 func (client *Client) GetTenantStatus(request *GetTenantStatusRequest) (_result *GetTenantStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26287,6 +32541,17 @@ func (client *Client) GetTenantStatus(request *GetTenantStatusRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户详情
+//
+// @param request - GetUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26325,6 +32590,13 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户详情
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26337,6 +32609,17 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户新手引导状态
+//
+// @param request - GetUserGuideStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserGuideStatusResponse
 func (client *Client) GetUserGuideStatusWithOptions(request *GetUserGuideStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserGuideStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26371,6 +32654,13 @@ func (client *Client) GetUserGuideStatusWithOptions(request *GetUserGuideStatusR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户新手引导状态
+//
+// @param request - GetUserGuideStatusRequest
+//
+// @return GetUserGuideStatusResponse
 func (client *Client) GetUserGuideStatus(request *GetUserGuideStatusRequest) (_result *GetUserGuideStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26383,6 +32673,17 @@ func (client *Client) GetUserGuideStatus(request *GetUserGuideStatusRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 报警列表查询
+//
+// @param request - ListAlertsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertsResponse
 func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26453,6 +32754,13 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 报警列表查询
+//
+// @param request - ListAlertsRequest
+//
+// @return ListAlertsResponse
 func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26465,6 +32773,17 @@ func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlert
 	return _result, _err
 }
 
+// Summary:
+//
+// 监控关联规则列表
+//
+// @param request - ListByMonitorSourceIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListByMonitorSourceIdResponse
 func (client *Client) ListByMonitorSourceIdWithOptions(request *ListByMonitorSourceIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListByMonitorSourceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26499,6 +32818,13 @@ func (client *Client) ListByMonitorSourceIdWithOptions(request *ListByMonitorSou
 	return _result, _err
 }
 
+// Summary:
+//
+// 监控关联规则列表
+//
+// @param request - ListByMonitorSourceIdRequest
+//
+// @return ListByMonitorSourceIdResponse
 func (client *Client) ListByMonitorSourceId(request *ListByMonitorSourceIdRequest) (_result *ListByMonitorSourceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26511,6 +32837,17 @@ func (client *Client) ListByMonitorSourceId(request *ListByMonitorSourceIdReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计图表数据-个人
+//
+// @param request - ListChartDataForServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChartDataForServiceGroupResponse
 func (client *Client) ListChartDataForServiceGroupWithOptions(request *ListChartDataForServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListChartDataForServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26553,6 +32890,13 @@ func (client *Client) ListChartDataForServiceGroupWithOptions(request *ListChart
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计图表数据-个人
+//
+// @param request - ListChartDataForServiceGroupRequest
+//
+// @return ListChartDataForServiceGroupResponse
 func (client *Client) ListChartDataForServiceGroup(request *ListChartDataForServiceGroupRequest) (_result *ListChartDataForServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26565,6 +32909,17 @@ func (client *Client) ListChartDataForServiceGroup(request *ListChartDataForServ
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计图表数据-个人
+//
+// @param request - ListChartDataForUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChartDataForUserResponse
 func (client *Client) ListChartDataForUserWithOptions(request *ListChartDataForUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListChartDataForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26607,6 +32962,13 @@ func (client *Client) ListChartDataForUserWithOptions(request *ListChartDataForU
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计图表数据-个人
+//
+// @param request - ListChartDataForUserRequest
+//
+// @return ListChartDataForUserResponse
 func (client *Client) ListChartDataForUser(request *ListChartDataForUserRequest) (_result *ListChartDataForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26619,6 +32981,17 @@ func (client *Client) ListChartDataForUser(request *ListChartDataForUserRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 全局码表配置
+//
+// @param request - ListConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConfigsResponse
 func (client *Client) ListConfigsWithOptions(request *ListConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26653,6 +33026,13 @@ func (client *Client) ListConfigsWithOptions(request *ListConfigsRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 全局码表配置
+//
+// @param request - ListConfigsRequest
+//
+// @return ListConfigsResponse
 func (client *Client) ListConfigs(request *ListConfigsRequest) (_result *ListConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26665,6 +33045,17 @@ func (client *Client) ListConfigs(request *ListConfigsRequest) (_result *ListCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组事件统计报表
+//
+// @param request - ListDataReportForServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataReportForServiceGroupResponse
 func (client *Client) ListDataReportForServiceGroupWithOptions(request *ListDataReportForServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataReportForServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26707,6 +33098,13 @@ func (client *Client) ListDataReportForServiceGroupWithOptions(request *ListData
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组事件统计报表
+//
+// @param request - ListDataReportForServiceGroupRequest
+//
+// @return ListDataReportForServiceGroupResponse
 func (client *Client) ListDataReportForServiceGroup(request *ListDataReportForServiceGroupRequest) (_result *ListDataReportForServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26719,6 +33117,17 @@ func (client *Client) ListDataReportForServiceGroup(request *ListDataReportForSe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户事件统计报表
+//
+// @param request - ListDataReportForUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataReportForUserResponse
 func (client *Client) ListDataReportForUserWithOptions(request *ListDataReportForUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataReportForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26765,6 +33174,13 @@ func (client *Client) ListDataReportForUserWithOptions(request *ListDataReportFo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户事件统计报表
+//
+// @param request - ListDataReportForUserRequest
+//
+// @return ListDataReportForUserResponse
 func (client *Client) ListDataReportForUser(request *ListDataReportForUserRequest) (_result *ListDataReportForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26777,6 +33193,17 @@ func (client *Client) ListDataReportForUser(request *ListDataReportForUserReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 字典列表
+//
+// @param request - ListDictionariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDictionariesResponse
 func (client *Client) ListDictionariesWithOptions(request *ListDictionariesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDictionariesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26811,6 +33238,13 @@ func (client *Client) ListDictionariesWithOptions(request *ListDictionariesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 字典列表
+//
+// @param request - ListDictionariesRequest
+//
+// @return ListDictionariesResponse
 func (client *Client) ListDictionaries(request *ListDictionariesRequest) (_result *ListDictionariesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26823,6 +33257,17 @@ func (client *Client) ListDictionaries(request *ListDictionariesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取已选中的服务对象
+//
+// @param request - ListEscalationPlanServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEscalationPlanServicesResponse
 func (client *Client) ListEscalationPlanServicesWithOptions(request *ListEscalationPlanServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEscalationPlanServicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26857,6 +33302,13 @@ func (client *Client) ListEscalationPlanServicesWithOptions(request *ListEscalat
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取已选中的服务对象
+//
+// @param request - ListEscalationPlanServicesRequest
+//
+// @return ListEscalationPlanServicesResponse
 func (client *Client) ListEscalationPlanServices(request *ListEscalationPlanServicesRequest) (_result *ListEscalationPlanServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26869,6 +33321,17 @@ func (client *Client) ListEscalationPlanServices(request *ListEscalationPlanServ
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级计划列表添加服务删除字段
+//
+// @param request - ListEscalationPlansRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEscalationPlansResponse
 func (client *Client) ListEscalationPlansWithOptions(request *ListEscalationPlansRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEscalationPlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26927,6 +33390,13 @@ func (client *Client) ListEscalationPlansWithOptions(request *ListEscalationPlan
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级计划列表添加服务删除字段
+//
+// @param request - ListEscalationPlansRequest
+//
+// @return ListEscalationPlansResponse
 func (client *Client) ListEscalationPlans(request *ListEscalationPlansRequest) (_result *ListEscalationPlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26939,6 +33409,17 @@ func (client *Client) ListEscalationPlans(request *ListEscalationPlansRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据推送对象查询升级策略
+//
+// @param request - ListEscalationPlansByNoticeObjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEscalationPlansByNoticeObjectResponse
 func (client *Client) ListEscalationPlansByNoticeObjectWithOptions(request *ListEscalationPlansByNoticeObjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEscalationPlansByNoticeObjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26977,6 +33458,13 @@ func (client *Client) ListEscalationPlansByNoticeObjectWithOptions(request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据推送对象查询升级策略
+//
+// @param request - ListEscalationPlansByNoticeObjectRequest
+//
+// @return ListEscalationPlansByNoticeObjectResponse
 func (client *Client) ListEscalationPlansByNoticeObject(request *ListEscalationPlansByNoticeObjectRequest) (_result *ListEscalationPlansByNoticeObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26989,6 +33477,17 @@ func (client *Client) ListEscalationPlansByNoticeObject(request *ListEscalationP
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件详情升级策略
+//
+// @param request - ListIncidentDetailEscalationPlansRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIncidentDetailEscalationPlansResponse
 func (client *Client) ListIncidentDetailEscalationPlansWithOptions(request *ListIncidentDetailEscalationPlansRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIncidentDetailEscalationPlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27027,6 +33526,13 @@ func (client *Client) ListIncidentDetailEscalationPlansWithOptions(request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件详情升级策略
+//
+// @param request - ListIncidentDetailEscalationPlansRequest
+//
+// @return ListIncidentDetailEscalationPlansResponse
 func (client *Client) ListIncidentDetailEscalationPlans(request *ListIncidentDetailEscalationPlansRequest) (_result *ListIncidentDetailEscalationPlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27039,6 +33545,17 @@ func (client *Client) ListIncidentDetailEscalationPlans(request *ListIncidentDet
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询事件详情动态
+//
+// @param request - ListIncidentDetailTimelinesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIncidentDetailTimelinesResponse
 func (client *Client) ListIncidentDetailTimelinesWithOptions(request *ListIncidentDetailTimelinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIncidentDetailTimelinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27089,6 +33606,13 @@ func (client *Client) ListIncidentDetailTimelinesWithOptions(request *ListIncide
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询事件详情动态
+//
+// @param request - ListIncidentDetailTimelinesRequest
+//
+// @return ListIncidentDetailTimelinesResponse
 func (client *Client) ListIncidentDetailTimelines(request *ListIncidentDetailTimelinesRequest) (_result *ListIncidentDetailTimelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27101,6 +33625,17 @@ func (client *Client) ListIncidentDetailTimelines(request *ListIncidentDetailTim
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询事件小计
+//
+// @param request - ListIncidentSubtotalsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIncidentSubtotalsResponse
 func (client *Client) ListIncidentSubtotalsWithOptions(request *ListIncidentSubtotalsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIncidentSubtotalsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27139,6 +33674,13 @@ func (client *Client) ListIncidentSubtotalsWithOptions(request *ListIncidentSubt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询事件小计
+//
+// @param request - ListIncidentSubtotalsRequest
+//
+// @return ListIncidentSubtotalsResponse
 func (client *Client) ListIncidentSubtotals(request *ListIncidentSubtotalsRequest) (_result *ListIncidentSubtotalsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27151,6 +33693,17 @@ func (client *Client) ListIncidentSubtotals(request *ListIncidentSubtotalsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件动态
+//
+// @param request - ListIncidentTimelinesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIncidentTimelinesResponse
 func (client *Client) ListIncidentTimelinesWithOptions(request *ListIncidentTimelinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIncidentTimelinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27193,6 +33746,13 @@ func (client *Client) ListIncidentTimelinesWithOptions(request *ListIncidentTime
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件动态
+//
+// @param request - ListIncidentTimelinesRequest
+//
+// @return ListIncidentTimelinesResponse
 func (client *Client) ListIncidentTimelines(request *ListIncidentTimelinesRequest) (_result *ListIncidentTimelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27205,6 +33765,17 @@ func (client *Client) ListIncidentTimelines(request *ListIncidentTimelinesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取事件列表
+//
+// @param request - ListIncidentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIncidentsResponse
 func (client *Client) ListIncidentsWithOptions(request *ListIncidentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIncidentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27279,6 +33850,13 @@ func (client *Client) ListIncidentsWithOptions(request *ListIncidentsRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取事件列表
+//
+// @param request - ListIncidentsRequest
+//
+// @return ListIncidentsResponse
 func (client *Client) ListIncidents(request *ListIncidentsRequest) (_result *ListIncidentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27291,6 +33869,17 @@ func (client *Client) ListIncidents(request *ListIncidentsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集成配置动态
+//
+// @param request - ListIntegrationConfigTimelinesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationConfigTimelinesResponse
 func (client *Client) ListIntegrationConfigTimelinesWithOptions(request *ListIntegrationConfigTimelinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIntegrationConfigTimelinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27337,6 +33926,13 @@ func (client *Client) ListIntegrationConfigTimelinesWithOptions(request *ListInt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集成配置动态
+//
+// @param request - ListIntegrationConfigTimelinesRequest
+//
+// @return ListIntegrationConfigTimelinesResponse
 func (client *Client) ListIntegrationConfigTimelines(request *ListIntegrationConfigTimelinesRequest) (_result *ListIntegrationConfigTimelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27349,6 +33945,17 @@ func (client *Client) ListIntegrationConfigTimelines(request *ListIntegrationCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集成配置列表
+//
+// @param request - ListIntegrationConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationConfigsResponse
 func (client *Client) ListIntegrationConfigsWithOptions(request *ListIntegrationConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIntegrationConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27387,6 +33994,13 @@ func (client *Client) ListIntegrationConfigsWithOptions(request *ListIntegration
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集成配置列表
+//
+// @param request - ListIntegrationConfigsRequest
+//
+// @return ListIntegrationConfigsResponse
 func (client *Client) ListIntegrationConfigs(request *ListIntegrationConfigsRequest) (_result *ListIntegrationConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27399,6 +34013,17 @@ func (client *Client) ListIntegrationConfigs(request *ListIntegrationConfigsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// ListMonitorSources
+//
+// @param request - ListMonitorSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMonitorSourcesResponse
 func (client *Client) ListMonitorSourcesWithOptions(request *ListMonitorSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMonitorSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27433,6 +34058,13 @@ func (client *Client) ListMonitorSourcesWithOptions(request *ListMonitorSourcesR
 	return _result, _err
 }
 
+// Summary:
+//
+// ListMonitorSources
+//
+// @param request - ListMonitorSourcesRequest
+//
+// @return ListMonitorSourcesResponse
 func (client *Client) ListMonitorSources(request *ListMonitorSourcesRequest) (_result *ListMonitorSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27445,6 +34077,17 @@ func (client *Client) ListMonitorSources(request *ListMonitorSourcesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障详情动态
+//
+// @param request - ListProblemDetailOperationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProblemDetailOperationsResponse
 func (client *Client) ListProblemDetailOperationsWithOptions(request *ListProblemDetailOperationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProblemDetailOperationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27495,6 +34138,13 @@ func (client *Client) ListProblemDetailOperationsWithOptions(request *ListProble
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障详情动态
+//
+// @param request - ListProblemDetailOperationsRequest
+//
+// @return ListProblemDetailOperationsResponse
 func (client *Client) ListProblemDetailOperations(request *ListProblemDetailOperationsRequest) (_result *ListProblemDetailOperationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27507,6 +34157,17 @@ func (client *Client) ListProblemDetailOperations(request *ListProblemDetailOper
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障7天内动态
+//
+// @param request - ListProblemOperationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProblemOperationsResponse
 func (client *Client) ListProblemOperationsWithOptions(request *ListProblemOperationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProblemOperationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27549,6 +34210,13 @@ func (client *Client) ListProblemOperationsWithOptions(request *ListProblemOpera
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障7天内动态
+//
+// @param request - ListProblemOperationsRequest
+//
+// @return ListProblemOperationsResponse
 func (client *Client) ListProblemOperations(request *ListProblemOperationsRequest) (_result *ListProblemOperationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27561,6 +34229,17 @@ func (client *Client) ListProblemOperations(request *ListProblemOperationsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障小计
+//
+// @param request - ListProblemSubtotalsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProblemSubtotalsResponse
 func (client *Client) ListProblemSubtotalsWithOptions(request *ListProblemSubtotalsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProblemSubtotalsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27599,6 +34278,13 @@ func (client *Client) ListProblemSubtotalsWithOptions(request *ListProblemSubtot
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障小计
+//
+// @param request - ListProblemSubtotalsRequest
+//
+// @return ListProblemSubtotalsResponse
 func (client *Client) ListProblemSubtotals(request *ListProblemSubtotalsRequest) (_result *ListProblemSubtotalsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27611,6 +34297,17 @@ func (client *Client) ListProblemSubtotals(request *ListProblemSubtotalsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障操作时间线列表
+//
+// @param request - ListProblemTimeLinesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProblemTimeLinesResponse
 func (client *Client) ListProblemTimeLinesWithOptions(request *ListProblemTimeLinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProblemTimeLinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27649,6 +34346,13 @@ func (client *Client) ListProblemTimeLinesWithOptions(request *ListProblemTimeLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故障操作时间线列表
+//
+// @param request - ListProblemTimeLinesRequest
+//
+// @return ListProblemTimeLinesResponse
 func (client *Client) ListProblemTimeLines(request *ListProblemTimeLinesRequest) (_result *ListProblemTimeLinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27661,6 +34365,17 @@ func (client *Client) ListProblemTimeLines(request *ListProblemTimeLinesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障列表查询接口
+//
+// @param request - ListProblemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProblemsResponse
 func (client *Client) ListProblemsWithOptions(request *ListProblemsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProblemsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27747,6 +34462,13 @@ func (client *Client) ListProblemsWithOptions(request *ListProblemsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障列表查询接口
+//
+// @param request - ListProblemsRequest
+//
+// @return ListProblemsResponse
 func (client *Client) ListProblems(request *ListProblemsRequest) (_result *ListProblemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27759,6 +34481,17 @@ func (client *Client) ListProblems(request *ListProblemsRequest) (_result *ListP
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流转规则列表
+//
+// @param request - ListRouteRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRouteRulesResponse
 func (client *Client) ListRouteRulesWithOptions(request *ListRouteRulesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRouteRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27817,6 +34550,13 @@ func (client *Client) ListRouteRulesWithOptions(request *ListRouteRulesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流转规则列表
+//
+// @param request - ListRouteRulesRequest
+//
+// @return ListRouteRulesResponse
 func (client *Client) ListRouteRules(request *ListRouteRulesRequest) (_result *ListRouteRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27829,6 +34569,17 @@ func (client *Client) ListRouteRules(request *ListRouteRulesRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定分配对象的流转规则
+//
+// @param request - ListRouteRulesByAssignWhoIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRouteRulesByAssignWhoIdResponse
 func (client *Client) ListRouteRulesByAssignWhoIdWithOptions(request *ListRouteRulesByAssignWhoIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRouteRulesByAssignWhoIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27867,6 +34618,13 @@ func (client *Client) ListRouteRulesByAssignWhoIdWithOptions(request *ListRouteR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定分配对象的流转规则
+//
+// @param request - ListRouteRulesByAssignWhoIdRequest
+//
+// @return ListRouteRulesByAssignWhoIdResponse
 func (client *Client) ListRouteRulesByAssignWhoId(request *ListRouteRulesByAssignWhoIdRequest) (_result *ListRouteRulesByAssignWhoIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27879,6 +34637,15 @@ func (client *Client) ListRouteRulesByAssignWhoId(request *ListRouteRulesByAssig
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据服务id查询流转规则
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRouteRulesByServiceResponse
 func (client *Client) ListRouteRulesByServiceWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRouteRulesByServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -27903,6 +34670,11 @@ func (client *Client) ListRouteRulesByServiceWithOptions(headers map[string]*str
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据服务id查询流转规则
+//
+// @return ListRouteRulesByServiceResponse
 func (client *Client) ListRouteRulesByService() (_result *ListRouteRulesByServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27915,6 +34687,17 @@ func (client *Client) ListRouteRulesByService() (_result *ListRouteRulesByServic
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组监控源模版列表
+//
+// @param request - ListServiceGroupMonitorSourceTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceGroupMonitorSourceTemplatesResponse
 func (client *Client) ListServiceGroupMonitorSourceTemplatesWithOptions(request *ListServiceGroupMonitorSourceTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceGroupMonitorSourceTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27957,6 +34740,13 @@ func (client *Client) ListServiceGroupMonitorSourceTemplatesWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组监控源模版列表
+//
+// @param request - ListServiceGroupMonitorSourceTemplatesRequest
+//
+// @return ListServiceGroupMonitorSourceTemplatesResponse
 func (client *Client) ListServiceGroupMonitorSourceTemplates(request *ListServiceGroupMonitorSourceTemplatesRequest) (_result *ListServiceGroupMonitorSourceTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27969,6 +34759,17 @@ func (client *Client) ListServiceGroupMonitorSourceTemplates(request *ListServic
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组列表
+//
+// @param request - ListServiceGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceGroupsResponse
 func (client *Client) ListServiceGroupsWithOptions(request *ListServiceGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28035,6 +34836,13 @@ func (client *Client) ListServiceGroupsWithOptions(request *ListServiceGroupsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组列表
+//
+// @param request - ListServiceGroupsRequest
+//
+// @return ListServiceGroupsResponse
 func (client *Client) ListServiceGroups(request *ListServiceGroupsRequest) (_result *ListServiceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28047,6 +34855,15 @@ func (client *Client) ListServiceGroups(request *ListServiceGroupsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据成员id查服务组
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceGroupsByUserIdResponse
 func (client *Client) ListServiceGroupsByUserIdWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceGroupsByUserIdResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -28071,6 +34888,11 @@ func (client *Client) ListServiceGroupsByUserIdWithOptions(headers map[string]*s
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据成员id查服务组
+//
+// @return ListServiceGroupsByUserIdResponse
 func (client *Client) ListServiceGroupsByUserId() (_result *ListServiceGroupsByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28083,6 +34905,17 @@ func (client *Client) ListServiceGroupsByUserId() (_result *ListServiceGroupsByU
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组列表
+//
+// @param request - ListServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServicesResponse
 func (client *Client) ListServicesWithOptions(request *ListServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28129,6 +34962,13 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务组列表
+//
+// @param request - ListServicesRequest
+//
+// @return ListServicesResponse
 func (client *Client) ListServices(request *ListServicesRequest) (_result *ListServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28141,6 +34981,17 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// 原始告警列表查询
+//
+// @param request - ListSourceEventsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSourceEventsResponse
 func (client *Client) ListSourceEventsWithOptions(request *ListSourceEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSourceEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28207,6 +35058,13 @@ func (client *Client) ListSourceEventsWithOptions(request *ListSourceEventsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 原始告警列表查询
+//
+// @param request - ListSourceEventsRequest
+//
+// @return ListSourceEventsResponse
 func (client *Client) ListSourceEvents(request *ListSourceEventsRequest) (_result *ListSourceEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28219,6 +35077,17 @@ func (client *Client) ListSourceEvents(request *ListSourceEventsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询监控员最近10次告警
+//
+// @param request - ListSourceEventsForMonitorSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSourceEventsForMonitorSourceResponse
 func (client *Client) ListSourceEventsForMonitorSourceWithOptions(request *ListSourceEventsForMonitorSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSourceEventsForMonitorSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28253,6 +35122,13 @@ func (client *Client) ListSourceEventsForMonitorSourceWithOptions(request *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询监控员最近10次告警
+//
+// @param request - ListSourceEventsForMonitorSourceRequest
+//
+// @return ListSourceEventsForMonitorSourceResponse
 func (client *Client) ListSourceEventsForMonitorSource(request *ListSourceEventsForMonitorSourceRequest) (_result *ListSourceEventsForMonitorSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28265,6 +35141,17 @@ func (client *Client) ListSourceEventsForMonitorSource(request *ListSourceEvents
 	return _result, _err
 }
 
+// Summary:
+//
+// 订阅通知服务组查询
+//
+// @param request - ListSubscriptionServiceGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubscriptionServiceGroupsResponse
 func (client *Client) ListSubscriptionServiceGroupsWithOptions(request *ListSubscriptionServiceGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSubscriptionServiceGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28303,6 +35190,13 @@ func (client *Client) ListSubscriptionServiceGroupsWithOptions(request *ListSubs
 	return _result, _err
 }
 
+// Summary:
+//
+// 订阅通知服务组查询
+//
+// @param request - ListSubscriptionServiceGroupsRequest
+//
+// @return ListSubscriptionServiceGroupsResponse
 func (client *Client) ListSubscriptionServiceGroups(request *ListSubscriptionServiceGroupsRequest) (_result *ListSubscriptionServiceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28315,6 +35209,17 @@ func (client *Client) ListSubscriptionServiceGroups(request *ListSubscriptionSer
 	return _result, _err
 }
 
+// Summary:
+//
+// 通知订阅列表
+//
+// @param request - ListSubscriptionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubscriptionsResponse
 func (client *Client) ListSubscriptionsWithOptions(request *ListSubscriptionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSubscriptionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28381,6 +35286,13 @@ func (client *Client) ListSubscriptionsWithOptions(request *ListSubscriptionsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 通知订阅列表
+//
+// @param request - ListSubscriptionsRequest
+//
+// @return ListSubscriptionsResponse
 func (client *Client) ListSubscriptions(request *ListSubscriptionsRequest) (_result *ListSubscriptionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28393,6 +35305,17 @@ func (client *Client) ListSubscriptions(request *ListSubscriptionsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询原始告警趋势
+//
+// @param request - ListTrendForSourceEventRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTrendForSourceEventResponse
 func (client *Client) ListTrendForSourceEventWithOptions(request *ListTrendForSourceEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTrendForSourceEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28447,6 +35370,13 @@ func (client *Client) ListTrendForSourceEventWithOptions(request *ListTrendForSo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询原始告警趋势
+//
+// @param request - ListTrendForSourceEventRequest
+//
+// @return ListTrendForSourceEventResponse
 func (client *Client) ListTrendForSourceEvent(request *ListTrendForSourceEventRequest) (_result *ListTrendForSourceEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28459,6 +35389,17 @@ func (client *Client) ListTrendForSourceEvent(request *ListTrendForSourceEventRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户预览
+//
+// @param request - ListUserSerivceGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserSerivceGroupsResponse
 func (client *Client) ListUserSerivceGroupsWithOptions(request *ListUserSerivceGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserSerivceGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28497,6 +35438,13 @@ func (client *Client) ListUserSerivceGroupsWithOptions(request *ListUserSerivceG
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户预览
+//
+// @param request - ListUserSerivceGroupsRequest
+//
+// @return ListUserSerivceGroupsResponse
 func (client *Client) ListUserSerivceGroups(request *ListUserSerivceGroupsRequest) (_result *ListUserSerivceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28509,6 +35457,17 @@ func (client *Client) ListUserSerivceGroups(request *ListUserSerivceGroupsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 人员列表
+//
+// @param request - ListUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28571,6 +35530,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 人员列表
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28583,6 +35549,17 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 监控数据接入API
+//
+// @param request - PushMonitorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushMonitorResponse
 func (client *Client) PushMonitorWithOptions(apiKey *string, request *PushMonitorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28612,6 +35589,13 @@ func (client *Client) PushMonitorWithOptions(apiKey *string, request *PushMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// 监控数据接入API
+//
+// @param request - PushMonitorRequest
+//
+// @return PushMonitorResponse
 func (client *Client) PushMonitor(apiKey *string, request *PushMonitorRequest) (_result *PushMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28624,6 +35608,17 @@ func (client *Client) PushMonitor(apiKey *string, request *PushMonitorRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障恢复
+//
+// @param request - RecoverProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecoverProblemResponse
 func (client *Client) RecoverProblemWithOptions(request *RecoverProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RecoverProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28666,6 +35661,13 @@ func (client *Client) RecoverProblemWithOptions(request *RecoverProblemRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障恢复
+//
+// @param request - RecoverProblemRequest
+//
+// @return RecoverProblemResponse
 func (client *Client) RecoverProblem(request *RecoverProblemRequest) (_result *RecoverProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28678,6 +35680,17 @@ func (client *Client) RecoverProblem(request *RecoverProblemRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 刷新集成配置key
+//
+// @param request - RefreshIntegrationConfigKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshIntegrationConfigKeyResponse
 func (client *Client) RefreshIntegrationConfigKeyWithOptions(request *RefreshIntegrationConfigKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RefreshIntegrationConfigKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28716,6 +35729,13 @@ func (client *Client) RefreshIntegrationConfigKeyWithOptions(request *RefreshInt
 	return _result, _err
 }
 
+// Summary:
+//
+// 刷新集成配置key
+//
+// @param request - RefreshIntegrationConfigKeyRequest
+//
+// @return RefreshIntegrationConfigKeyResponse
 func (client *Client) RefreshIntegrationConfigKey(request *RefreshIntegrationConfigKeyRequest) (_result *RefreshIntegrationConfigKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28728,6 +35748,17 @@ func (client *Client) RefreshIntegrationConfigKey(request *RefreshIntegrationCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 解除集成配置
+//
+// @param request - RemoveIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveIntegrationConfigResponse
 func (client *Client) RemoveIntegrationConfigWithOptions(request *RemoveIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28766,6 +35797,13 @@ func (client *Client) RemoveIntegrationConfigWithOptions(request *RemoveIntegrat
 	return _result, _err
 }
 
+// Summary:
+//
+// 解除集成配置
+//
+// @param request - RemoveIntegrationConfigRequest
+//
+// @return RemoveIntegrationConfigResponse
 func (client *Client) RemoveIntegrationConfig(request *RemoveIntegrationConfigRequest) (_result *RemoveIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28778,6 +35816,17 @@ func (client *Client) RemoveIntegrationConfig(request *RemoveIntegrationConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除故障协同组
+//
+// @param request - RemoveProblemServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveProblemServiceGroupResponse
 func (client *Client) RemoveProblemServiceGroupWithOptions(request *RemoveProblemServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveProblemServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28816,6 +35865,13 @@ func (client *Client) RemoveProblemServiceGroupWithOptions(request *RemoveProble
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除故障协同组
+//
+// @param request - RemoveProblemServiceGroupRequest
+//
+// @return RemoveProblemServiceGroupResponse
 func (client *Client) RemoveProblemServiceGroup(request *RemoveProblemServiceGroupRequest) (_result *RemoveProblemServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28828,6 +35884,17 @@ func (client *Client) RemoveProblemServiceGroup(request *RemoveProblemServiceGro
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障复盘
+//
+// @param request - ReplayProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplayProblemResponse
 func (client *Client) ReplayProblemWithOptions(request *ReplayProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReplayProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28870,6 +35937,13 @@ func (client *Client) ReplayProblemWithOptions(request *ReplayProblemRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障复盘
+//
+// @param request - ReplayProblemRequest
+//
+// @return ReplayProblemResponse
 func (client *Client) ReplayProblem(request *ReplayProblemRequest) (_result *ReplayProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28882,6 +35956,17 @@ func (client *Client) ReplayProblem(request *ReplayProblemRequest) (_result *Rep
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件响应
+//
+// @param request - RespondIncidentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RespondIncidentResponse
 func (client *Client) RespondIncidentWithOptions(request *RespondIncidentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RespondIncidentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28920,6 +36005,13 @@ func (client *Client) RespondIncidentWithOptions(request *RespondIncidentRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 事件响应
+//
+// @param request - RespondIncidentRequest
+//
+// @return RespondIncidentResponse
 func (client *Client) RespondIncident(request *RespondIncidentRequest) (_result *RespondIncidentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28932,6 +36024,17 @@ func (client *Client) RespondIncident(request *RespondIncidentRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障撤销恢复
+//
+// @param request - RevokeProblemRecoveryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeProblemRecoveryResponse
 func (client *Client) RevokeProblemRecoveryWithOptions(request *RevokeProblemRecoveryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RevokeProblemRecoveryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28974,6 +36077,13 @@ func (client *Client) RevokeProblemRecoveryWithOptions(request *RevokeProblemRec
 	return _result, _err
 }
 
+// Summary:
+//
+// 故障撤销恢复
+//
+// @param request - RevokeProblemRecoveryRequest
+//
+// @return RevokeProblemRecoveryResponse
 func (client *Client) RevokeProblemRecovery(request *RevokeProblemRecoveryRequest) (_result *RevokeProblemRecoveryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28986,6 +36096,15 @@ func (client *Client) RevokeProblemRecovery(request *RevokeProblemRecoveryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑用户
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindUserResponse
 func (client *Client) UnbindUserWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindUserResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -29010,6 +36129,11 @@ func (client *Client) UnbindUserWithOptions(headers map[string]*string, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑用户
+//
+// @return UnbindUserResponse
 func (client *Client) UnbindUser() (_result *UnbindUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29022,6 +36146,17 @@ func (client *Client) UnbindUser() (_result *UnbindUserResponse, _err error) {
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新升级计划
+//
+// @param request - UpdateEscalationPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEscalationPlanResponse
 func (client *Client) UpdateEscalationPlanWithOptions(request *UpdateEscalationPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEscalationPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29080,6 +36215,13 @@ func (client *Client) UpdateEscalationPlanWithOptions(request *UpdateEscalationP
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新升级计划
+//
+// @param request - UpdateEscalationPlanRequest
+//
+// @return UpdateEscalationPlanResponse
 func (client *Client) UpdateEscalationPlan(request *UpdateEscalationPlanRequest) (_result *UpdateEscalationPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29092,6 +36234,17 @@ func (client *Client) UpdateEscalationPlan(request *UpdateEscalationPlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新事件详情
+//
+// @param request - UpdateIncidentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIncidentResponse
 func (client *Client) UpdateIncidentWithOptions(request *UpdateIncidentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateIncidentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29142,6 +36295,13 @@ func (client *Client) UpdateIncidentWithOptions(request *UpdateIncidentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新事件详情
+//
+// @param request - UpdateIncidentRequest
+//
+// @return UpdateIncidentResponse
 func (client *Client) UpdateIncident(request *UpdateIncidentRequest) (_result *UpdateIncidentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29154,6 +36314,17 @@ func (client *Client) UpdateIncident(request *UpdateIncidentRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新集成配置
+//
+// @param request - UpdateIntegrationConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIntegrationConfigResponse
 func (client *Client) UpdateIntegrationConfigWithOptions(request *UpdateIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateIntegrationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29196,6 +36367,13 @@ func (client *Client) UpdateIntegrationConfigWithOptions(request *UpdateIntegrat
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新集成配置
+//
+// @param request - UpdateIntegrationConfigRequest
+//
+// @return UpdateIntegrationConfigResponse
 func (client *Client) UpdateIntegrationConfig(request *UpdateIntegrationConfigRequest) (_result *UpdateIntegrationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29208,6 +36386,17 @@ func (client *Client) UpdateIntegrationConfig(request *UpdateIntegrationConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障
+//
+// @param request - UpdateProblemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProblemResponse
 func (client *Client) UpdateProblemWithOptions(request *UpdateProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29278,6 +36467,13 @@ func (client *Client) UpdateProblemWithOptions(request *UpdateProblemRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障
+//
+// @param request - UpdateProblemRequest
+//
+// @return UpdateProblemResponse
 func (client *Client) UpdateProblem(request *UpdateProblemRequest) (_result *UpdateProblemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29290,6 +36486,17 @@ func (client *Client) UpdateProblem(request *UpdateProblemRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障影响服务
+//
+// @param request - UpdateProblemEffectionServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProblemEffectionServiceResponse
 func (client *Client) UpdateProblemEffectionServiceWithOptions(request *UpdateProblemEffectionServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProblemEffectionServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29352,6 +36559,13 @@ func (client *Client) UpdateProblemEffectionServiceWithOptions(request *UpdatePr
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障影响服务
+//
+// @param request - UpdateProblemEffectionServiceRequest
+//
+// @return UpdateProblemEffectionServiceResponse
 func (client *Client) UpdateProblemEffectionService(request *UpdateProblemEffectionServiceRequest) (_result *UpdateProblemEffectionServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29364,6 +36578,17 @@ func (client *Client) UpdateProblemEffectionService(request *UpdateProblemEffect
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进分析更新
+//
+// @param request - UpdateProblemImprovementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProblemImprovementResponse
 func (client *Client) UpdateProblemImprovementWithOptions(request *UpdateProblemImprovementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProblemImprovementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29458,6 +36683,13 @@ func (client *Client) UpdateProblemImprovementWithOptions(request *UpdateProblem
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进分析更新
+//
+// @param request - UpdateProblemImprovementRequest
+//
+// @return UpdateProblemImprovementResponse
 func (client *Client) UpdateProblemImprovement(request *UpdateProblemImprovementRequest) (_result *UpdateProblemImprovementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29470,6 +36702,17 @@ func (client *Client) UpdateProblemImprovement(request *UpdateProblemImprovement
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进措施更新
+//
+// @param request - UpdateProblemMeasureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProblemMeasureResponse
 func (client *Client) UpdateProblemMeasureWithOptions(request *UpdateProblemMeasureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProblemMeasureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29544,6 +36787,13 @@ func (client *Client) UpdateProblemMeasureWithOptions(request *UpdateProblemMeas
 	return _result, _err
 }
 
+// Summary:
+//
+// 改进措施更新
+//
+// @param request - UpdateProblemMeasureRequest
+//
+// @return UpdateProblemMeasureResponse
 func (client *Client) UpdateProblemMeasure(request *UpdateProblemMeasureRequest) (_result *UpdateProblemMeasureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29556,6 +36806,17 @@ func (client *Client) UpdateProblemMeasure(request *UpdateProblemMeasureRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障通知
+//
+// @param request - UpdateProblemNoticeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProblemNoticeResponse
 func (client *Client) UpdateProblemNoticeWithOptions(request *UpdateProblemNoticeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProblemNoticeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29598,6 +36859,13 @@ func (client *Client) UpdateProblemNoticeWithOptions(request *UpdateProblemNotic
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障通知
+//
+// @param request - UpdateProblemNoticeRequest
+//
+// @return UpdateProblemNoticeResponse
 func (client *Client) UpdateProblemNotice(request *UpdateProblemNoticeRequest) (_result *UpdateProblemNoticeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29610,6 +36878,17 @@ func (client *Client) UpdateProblemNotice(request *UpdateProblemNoticeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障时间线节点
+//
+// @param request - UpdateProblemTimelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProblemTimelineResponse
 func (client *Client) UpdateProblemTimelineWithOptions(request *UpdateProblemTimelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProblemTimelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29664,6 +36943,13 @@ func (client *Client) UpdateProblemTimelineWithOptions(request *UpdateProblemTim
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故障时间线节点
+//
+// @param request - UpdateProblemTimelineRequest
+//
+// @return UpdateProblemTimelineResponse
 func (client *Client) UpdateProblemTimeline(request *UpdateProblemTimelineRequest) (_result *UpdateProblemTimelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29676,6 +36962,17 @@ func (client *Client) UpdateProblemTimeline(request *UpdateProblemTimelineReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新富文本
+//
+// @param request - UpdateRichTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRichTextResponse
 func (client *Client) UpdateRichTextWithOptions(request *UpdateRichTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRichTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29722,6 +37019,13 @@ func (client *Client) UpdateRichTextWithOptions(request *UpdateRichTextRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新富文本
+//
+// @param request - UpdateRichTextRequest
+//
+// @return UpdateRichTextResponse
 func (client *Client) UpdateRichText(request *UpdateRichTextRequest) (_result *UpdateRichTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29734,6 +37038,17 @@ func (client *Client) UpdateRichText(request *UpdateRichTextRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新流转规则
+//
+// @param request - UpdateRouteRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRouteRuleResponse
 func (client *Client) UpdateRouteRuleWithOptions(request *UpdateRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRouteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29844,6 +37159,13 @@ func (client *Client) UpdateRouteRuleWithOptions(request *UpdateRouteRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新流转规则
+//
+// @param request - UpdateRouteRuleRequest
+//
+// @return UpdateRouteRuleResponse
 func (client *Client) UpdateRouteRule(request *UpdateRouteRuleRequest) (_result *UpdateRouteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29856,6 +37178,17 @@ func (client *Client) UpdateRouteRule(request *UpdateRouteRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新服务
+//
+// @param request - UpdateServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceResponse
 func (client *Client) UpdateServiceWithOptions(request *UpdateServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29910,6 +37243,13 @@ func (client *Client) UpdateServiceWithOptions(request *UpdateServiceRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新服务
+//
+// @param request - UpdateServiceRequest
+//
+// @return UpdateServiceResponse
 func (client *Client) UpdateService(request *UpdateServiceRequest) (_result *UpdateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29922,6 +37262,17 @@ func (client *Client) UpdateService(request *UpdateServiceRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新服务组
+//
+// @param request - UpdateServiceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceGroupResponse
 func (client *Client) UpdateServiceGroupWithOptions(request *UpdateServiceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29988,6 +37339,13 @@ func (client *Client) UpdateServiceGroupWithOptions(request *UpdateServiceGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新服务组
+//
+// @param request - UpdateServiceGroupRequest
+//
+// @return UpdateServiceGroupResponse
 func (client *Client) UpdateServiceGroup(request *UpdateServiceGroupRequest) (_result *UpdateServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -30000,6 +37358,17 @@ func (client *Client) UpdateServiceGroup(request *UpdateServiceGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改服务组排班
+//
+// @param request - UpdateServiceGroupSchedulingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceGroupSchedulingResponse
 func (client *Client) UpdateServiceGroupSchedulingWithOptions(request *UpdateServiceGroupSchedulingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceGroupSchedulingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30050,6 +37419,13 @@ func (client *Client) UpdateServiceGroupSchedulingWithOptions(request *UpdateSer
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改服务组排班
+//
+// @param request - UpdateServiceGroupSchedulingRequest
+//
+// @return UpdateServiceGroupSchedulingResponse
 func (client *Client) UpdateServiceGroupScheduling(request *UpdateServiceGroupSchedulingRequest) (_result *UpdateServiceGroupSchedulingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -30062,6 +37438,17 @@ func (client *Client) UpdateServiceGroupScheduling(request *UpdateServiceGroupSc
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改指定日期的服务组排班
+//
+// @param request - UpdateServiceGroupSpecialDaySchedulingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceGroupSpecialDaySchedulingResponse
 func (client *Client) UpdateServiceGroupSpecialDaySchedulingWithOptions(request *UpdateServiceGroupSpecialDaySchedulingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceGroupSpecialDaySchedulingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30108,6 +37495,13 @@ func (client *Client) UpdateServiceGroupSpecialDaySchedulingWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改指定日期的服务组排班
+//
+// @param request - UpdateServiceGroupSpecialDaySchedulingRequest
+//
+// @return UpdateServiceGroupSpecialDaySchedulingResponse
 func (client *Client) UpdateServiceGroupSpecialDayScheduling(request *UpdateServiceGroupSpecialDaySchedulingRequest) (_result *UpdateServiceGroupSpecialDaySchedulingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -30120,6 +37514,17 @@ func (client *Client) UpdateServiceGroupSpecialDayScheduling(request *UpdateServ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新通知订阅
+//
+// @param request - UpdateSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSubscriptionResponse
 func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30194,6 +37599,13 @@ func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionR
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新通知订阅
+//
+// @param request - UpdateSubscriptionRequest
+//
+// @return UpdateSubscriptionResponse
 func (client *Client) UpdateSubscription(request *UpdateSubscriptionRequest) (_result *UpdateSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -30206,6 +37618,17 @@ func (client *Client) UpdateSubscription(request *UpdateSubscriptionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户
+//
+// @param request - UpdateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30264,6 +37687,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -30276,6 +37706,17 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户新手引导状态
+//
+// @param request - UpdateUserGuideStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserGuideStatusResponse
 func (client *Client) UpdateUserGuideStatusWithOptions(request *UpdateUserGuideStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateUserGuideStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30314,6 +37755,13 @@ func (client *Client) UpdateUserGuideStatusWithOptions(request *UpdateUserGuideS
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户新手引导状态
+//
+// @param request - UpdateUserGuideStatusRequest
+//
+// @return UpdateUserGuideStatusResponse
 func (client *Client) UpdateUserGuideStatus(request *UpdateUserGuideStatusRequest) (_result *UpdateUserGuideStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -30326,6 +37774,17 @@ func (client *Client) UpdateUserGuideStatus(request *UpdateUserGuideStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 验证流转规则
+//
+// @param request - VerifyRouteRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyRouteRuleResponse
 func (client *Client) VerifyRouteRuleWithOptions(request *VerifyRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyRouteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30364,6 +37823,13 @@ func (client *Client) VerifyRouteRuleWithOptions(request *VerifyRouteRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 验证流转规则
+//
+// @param request - VerifyRouteRuleRequest
+//
+// @return VerifyRouteRuleResponse
 func (client *Client) VerifyRouteRule(request *VerifyRouteRuleRequest) (_result *VerifyRouteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)

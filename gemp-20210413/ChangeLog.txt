@@ -1,3 +1,12 @@
+2024-08-15 Version: v2.0.7
+- Update API GeneratePictureLink: update response param.
+- Update API GeneratePictureUploadSign: update response param.
+- Update API GenerateProblemPictureUploadSign: update response param.
+- Update API GetUser: update response param.
+- Update API ListConfigs: update response param.
+- Update API ListUsers: update response param.
+
+
 2023-09-04 Version: v2.0.6
 - Generated golang 2021-04-13 for GEMP.
 
