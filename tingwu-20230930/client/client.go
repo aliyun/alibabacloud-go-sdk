@@ -1078,8 +1078,10 @@ func (s *GetTaskInfoResponseBodyData) SetTaskStatus(v string) *GetTaskInfoRespon
 
 type GetTaskInfoResponseBodyDataResult struct {
 	AutoChapters      *string `json:"AutoChapters,omitempty" xml:"AutoChapters,omitempty"`
+	CustomPrompt      *string `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
 	MeetingAssistance *string `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
 	PptExtraction     *string `json:"PptExtraction,omitempty" xml:"PptExtraction,omitempty"`
+	ServiceInspection *string `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty"`
 	Summarization     *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
 	TextPolish        *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
 	Transcription     *string `json:"Transcription,omitempty" xml:"Transcription,omitempty"`
@@ -1099,6 +1101,11 @@ func (s *GetTaskInfoResponseBodyDataResult) SetAutoChapters(v string) *GetTaskIn
 	return s
 }
 
+func (s *GetTaskInfoResponseBodyDataResult) SetCustomPrompt(v string) *GetTaskInfoResponseBodyDataResult {
+	s.CustomPrompt = &v
+	return s
+}
+
 func (s *GetTaskInfoResponseBodyDataResult) SetMeetingAssistance(v string) *GetTaskInfoResponseBodyDataResult {
 	s.MeetingAssistance = &v
 	return s
@@ -1106,6 +1113,11 @@ func (s *GetTaskInfoResponseBodyDataResult) SetMeetingAssistance(v string) *GetT
 
 func (s *GetTaskInfoResponseBodyDataResult) SetPptExtraction(v string) *GetTaskInfoResponseBodyDataResult {
 	s.PptExtraction = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetServiceInspection(v string) *GetTaskInfoResponseBodyDataResult {
+	s.ServiceInspection = &v
 	return s
 }
 
