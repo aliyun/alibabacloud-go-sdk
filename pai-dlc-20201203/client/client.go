@@ -91,6 +91,44 @@ func (s *AliyunAccounts) SetGmtModifyTime(v string) *AliyunAccounts {
 	return s
 }
 
+type AssignNodeSpec struct {
+	// example:
+	//
+	// lingjxxxxxxxx
+	AntiAffinityNodeNames *string `json:"AntiAffinityNodeNames,omitempty" xml:"AntiAffinityNodeNames,omitempty"`
+	// example:
+	//
+	// true
+	EnableAssignNode *bool `json:"EnableAssignNode,omitempty" xml:"EnableAssignNode,omitempty"`
+	// example:
+	//
+	// lingjxxxxxxxx
+	NodeNames *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
+}
+
+func (s AssignNodeSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignNodeSpec) GoString() string {
+	return s.String()
+}
+
+func (s *AssignNodeSpec) SetAntiAffinityNodeNames(v string) *AssignNodeSpec {
+	s.AntiAffinityNodeNames = &v
+	return s
+}
+
+func (s *AssignNodeSpec) SetEnableAssignNode(v bool) *AssignNodeSpec {
+	s.EnableAssignNode = &v
+	return s
+}
+
+func (s *AssignNodeSpec) SetNodeNames(v string) *AssignNodeSpec {
+	s.NodeNames = &v
+	return s
+}
+
 type AssumeUserInfo struct {
 	AccessKeyId   *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -2098,6 +2136,7 @@ func (s *JobSettings) SetTags(v map[string]*string) *JobSettings {
 }
 
 type JobSpec struct {
+	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	// example:
 	//
 	// ecs.c6.large
@@ -2130,6 +2169,11 @@ func (s JobSpec) String() string {
 
 func (s JobSpec) GoString() string {
 	return s.String()
+}
+
+func (s *JobSpec) SetAssignNodeSpec(v *AssignNodeSpec) *JobSpec {
+	s.AssignNodeSpec = v
+	return s
 }
 
 func (s *JobSpec) SetEcsSpec(v string) *JobSpec {
