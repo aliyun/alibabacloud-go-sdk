@@ -1931,6 +1931,9 @@ func (s *QueryDataResponse) SetResults(v string) *QueryDataResponse {
 }
 
 type DataBonreeSDKConfigModuleConfigDefaultConfigValue struct {
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 }
 
@@ -1948,10 +1951,16 @@ func (s *DataBonreeSDKConfigModuleConfigDefaultConfigValue) SetEnable(v bool) *D
 }
 
 type DataBonreeSDKConfigModuleConfigVersionConfigsValue struct {
+	// example:
+	//
+	// true
 	UseCustom    *bool                                                                           `json:"useCustom,omitempty" xml:"useCustom,omitempty"`
 	CustomConfig map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
 	Description  *string                                                                         `json:"description,omitempty" xml:"description,omitempty"`
-	UpdateTime   *int64                                                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 1721112372055
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s DataBonreeSDKConfigModuleConfigVersionConfigsValue) String() string {
@@ -1983,6 +1992,9 @@ func (s *DataBonreeSDKConfigModuleConfigVersionConfigsValue) SetUpdateTime(v int
 }
 
 type DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue struct {
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 }
 
@@ -3620,10 +3632,20 @@ func (s *AppendInstancesToPrometheusGlobalViewRequest) SetRegionId(v string) *Ap
 }
 
 type AppendInstancesToPrometheusGlobalViewResponseBody struct {
+	// Status code. 200 means success, other status codes are exceptions.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the array object.
-	Data    *AppendInstancesToPrometheusGlobalViewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data *AppendInstancesToPrometheusGlobalViewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Additional message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
@@ -12828,11 +12850,15 @@ type CreateRumUploadFileUrlRequest struct {
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	// The file name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test.js.map
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The application ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18071,18 +18097,24 @@ func (s *DeleteEnvironmentResponse) SetBody(v *DeleteEnvironmentResponseBody) *D
 }
 
 type DeleteEnvironmentFeatureRequest struct {
+	// The ID of the environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The feature name. Valid values: app-agent-pilot, metric-agent, ebpf-agent, and service-check.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// metric-agent
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The region ID. Valid values: cn-beijing and cn-hangzhou.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18113,24 +18145,32 @@ func (s *DeleteEnvironmentFeatureRequest) SetRegionId(v string) *DeleteEnvironme
 }
 
 type DeleteEnvironmentFeatureResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2A0CEDF1-06FE-44AC-8E21-21A5BE65****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -18775,6 +18815,8 @@ func (s *DeleteIntegrationResponse) SetBody(v *DeleteIntegrationResponseBody) *D
 }
 
 type DeleteIntegrationsRequest struct {
+	// The ID of the alert integration.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18797,10 +18839,18 @@ func (s *DeleteIntegrationsRequest) SetIntegrationId(v int64) *DeleteIntegration
 }
 
 type DeleteIntegrationsResponseBody struct {
+	// Indicates whether the alert integration is deleted. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 34ED024E-9E31-434A-9E4E-D9D15C3****
@@ -18943,18 +18993,19 @@ func (s *DeleteNotificationPolicyResponse) SetBody(v *DeleteNotificationPolicyRe
 }
 
 type DeletePrometheusAlertRuleRequest struct {
-	// Indicates whether the alert rule was deleted. Valid values:
-	//
-	// 	- `true`: The alert rule was deleted.
-	//
-	// 	- `false`: The alert rule failed to be deleted.
+	// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3888704
-	AlertId   *int64  `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The cluster ID of the Prometheus monitoring alarm rule.
+	//
+	// example:
+	//
+	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -18977,13 +19028,29 @@ func (s *DeletePrometheusAlertRuleRequest) SetClusterId(v string) *DeletePrometh
 }
 
 type DeletePrometheusAlertRuleResponseBody struct {
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Status code. 200 means success, other status codes are exceptions.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// More Information.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 9FEA6D00-317F-45E3-9004-7FB8B0B7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	// Indicates whether the alert rule was deleted. Valid values:
+	//
+	// 	- `true`: The alert rule was deleted.
+	//
+	// 	- `false`: The alert rule failed to be deleted.
 	//
 	// example:
 	//
@@ -19783,6 +19850,27 @@ func (s *DeleteRumAppResponse) SetBody(v *DeleteRumAppResponseBody) *DeleteRumAp
 }
 
 type DeleteRumUploadFileRequest struct {
+	// Information of files to be deleted in JSON array format. If a single file needs to be deleted, this field should be left empty. If multiple files need to be deleted, just fill in this field.
+	//
+	// example:
+	//
+	// [{
+	//
+	//     "fileName" : "test.js.map",
+	//
+	//     "version" : "1.0.0"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "fileName" : "test.dSYM",
+	//
+	//     "version" : "1.20.1",
+	//
+	//     "uuid" : "xxxx-xxxx-xxxx-xxxx"
+	//
+	//   }]
 	BatchItems *string `json:"BatchItems,omitempty" xml:"BatchItems,omitempty"`
 	// The file name, with the extension.
 	//
@@ -19878,6 +19966,10 @@ type DeleteRumUploadFileResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Internal error, please contact the administrator.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -28267,6 +28359,8 @@ func (s *GetManagedPrometheusStatusResponse) SetBody(v *GetManagedPrometheusStat
 type GetMultipleTraceRequest struct {
 	// The time when the trace ends. The value is a timestamp. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1663999380000
@@ -28280,6 +28374,8 @@ type GetMultipleTraceRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The start time of the trace. The value is a timestamp. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -29479,7 +29575,7 @@ type GetPrometheusInstanceResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned message.
 	Data *GetPrometheusInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	//
@@ -29570,13 +29666,13 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// remote-write
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// Backend data storage status.
+	// The data storage status at the backend.
 	//
 	// example:
 	//
 	// RUNNING
 	DbInstanceStatus *string `json:"DbInstanceStatus,omitempty" xml:"DbInstanceStatus,omitempty"`
-	// Whether to enable access token authentication.
+	// Indicates whether access token authentication is enabled.
 	//
 	// example:
 	//
@@ -29610,11 +29706,7 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// PREPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The product to which the prometheus instance belongs.
-	//
-	// - arms
-	//
-	// - cms
+	// The product to which the Prometheus instance belongs. Valid values: arms and cms.
 	//
 	// example:
 	//
@@ -31314,6 +31406,8 @@ type GetRumAppInfoRequest struct {
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
 	// The application ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
@@ -31429,6 +31523,9 @@ func (s *GetRumAppInfoResponseBody) SetSuccess(v bool) *GetRumAppInfoResponseBod
 }
 
 type GetRumAppInfoResponseBodyData struct {
+	// example:
+	//
+	// default
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
 	// The application type. Valid values: web, miniapp, ios, and android.
 	//
@@ -31437,6 +31534,8 @@ type GetRumAppInfoResponseBodyData struct {
 	// web
 	AppType         *string                                       `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	BonreeSDKConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfig `json:"BonreeSDKConfig,omitempty" xml:"BonreeSDKConfig,omitempty" type:"Struct"`
+	// The domain name of the SDK.
+	//
 	// example:
 	//
 	// b59xxxxxxxx-sdk.rum.aliyuncs.com/v2/browser-sdk.js
@@ -31653,7 +31752,10 @@ func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) SetModuleConfig(v *GetRum
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig struct {
-	DefaultConfig  map[string]*DataBonreeSDKConfigModuleConfigDefaultConfigValue  `json:"defaultConfig,omitempty" xml:"defaultConfig,omitempty"`
+	DefaultConfig map[string]*DataBonreeSDKConfigModuleConfigDefaultConfigValue `json:"defaultConfig,omitempty" xml:"defaultConfig,omitempty"`
+	// example:
+	//
+	// true
 	Enable         *bool                                                          `json:"enable,omitempty" xml:"enable,omitempty"`
 	VersionConfigs map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValue `json:"versionConfigs,omitempty" xml:"versionConfigs,omitempty"`
 }
@@ -32368,6 +32470,8 @@ type GetRumDataForPageRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1713774233
@@ -32380,6 +32484,8 @@ type GetRumDataForPageRequest struct {
 	//
 	// iixxxjcnuk@582846f37******
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 	- and app.id: xxxx@586810fbxxxx19f
@@ -32390,6 +32496,8 @@ type GetRumDataForPageRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1713687833
@@ -32815,6 +32923,8 @@ func (s *GetRumExceptionStackResponse) SetBody(v *GetRumExceptionStackResponseBo
 type GetRumOcuStatisticDataRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687849260000
@@ -32841,11 +32951,15 @@ type GetRumOcuStatisticDataRequest struct {
 	Group []*string `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
 	// The page number.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of entries per page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32864,6 +32978,8 @@ type GetRumOcuStatisticDataRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32972,6 +33088,8 @@ func (s *GetRumOcuStatisticDataRequestFilter) SetValue(v interface{}) *GetRumOcu
 type GetRumOcuStatisticDataShrinkRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687849260000
@@ -32998,11 +33116,15 @@ type GetRumOcuStatisticDataShrinkRequest struct {
 	GroupShrink *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	// The page number.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of entries per page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33021,6 +33143,8 @@ type GetRumOcuStatisticDataShrinkRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33222,6 +33346,8 @@ type GetRumUploadFilesRequest struct {
 	// source-map
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The application ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34334,14 +34460,29 @@ type GetSyntheticTaskDetailResponseBodyTaskDetail struct {
 	//
 	// 20
 	IntervalTime *int64 `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	// 监测周期类型：
+	//
+	// 0：每天
+	//
+	// 1：自定义扩展频率
+	//
 	// example:
 	//
 	// 0
 	IntervalType *int64 `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	// IP类型：
+	//
+	// 0：自动
+	//
+	// 1：IPv4
+	//
+	// 2：IPv6
+	//
 	// example:
 	//
 	// 0
-	IpType      *int64                                                     `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IpType *int64 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// 拨测任务的检测点列表。
 	MonitorList []*GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList `json:"MonitorList,omitempty" xml:"MonitorList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -34362,6 +34503,18 @@ type GetSyntheticTaskDetailResponseBodyTaskDetail struct {
 	//
 	// net-test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// 任务类型：
+	//
+	// 3：网页性能-IE
+	//
+	// 34：网页性能-Chrome
+	//
+	// 0：网络质量
+	//
+	// 40：文件下载
+	//
+	// 7：API性能
+	//
 	// example:
 	//
 	// 0
@@ -34719,6 +34872,8 @@ type GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval struct {
 	//
 	// 20
 	EndMinute *int64 `json:"EndMinute,omitempty" xml:"EndMinute,omitempty"`
+	// 周期结束时间 ，格式为yyyy-MM-dd HH。
+	//
 	// example:
 	//
 	// 2022-05-03 11:40
@@ -34741,6 +34896,8 @@ type GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval struct {
 	//
 	// 20
 	StartMinute *int64 `json:"StartMinute,omitempty" xml:"StartMinute,omitempty"`
+	// 周期开始时间，格式yyyy-MM-dd HH 。
+	//
 	// example:
 	//
 	// 2022-02-26 11:40
@@ -34792,10 +34949,35 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetStartTim
 
 type GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList struct {
 	// 城市编码。
-	CityCode     *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	MonitorType  *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	//
+	// example:
+	//
+	// 110100
+	CityCode *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// 监测类型：
+	//
+	// - IDC
+	//
+	// - LastMilie
+	//
+	// - Mobile
+	//
+	// example:
+	//
+	// IDC
+	MonitorType *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// 运营商ID。
+	//
+	// example:
+	//
+	// 12001
 	NetServiceId *int64 `json:"NetServiceId,omitempty" xml:"NetServiceId,omitempty"`
-	SendCount    *int64 `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
+	// 下发次数。
+	//
+	// example:
+	//
+	// 20
+	SendCount *int64 `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
 }
 
 func (s GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) String() string {
@@ -34878,7 +35060,10 @@ type GetSyntheticTaskDetailResponseBodyTaskDetailNav struct {
 	// example:
 	//
 	// 1
-	NavCustomHost   *int64  `json:"NavCustomHost,omitempty" xml:"NavCustomHost,omitempty"`
+	NavCustomHost *int64 `json:"NavCustomHost,omitempty" xml:"NavCustomHost,omitempty"`
+	// example:
+	//
+	// 119.119.53.156/32
 	NavCustomHostIp *string `json:"NavCustomHostIp,omitempty" xml:"NavCustomHostIp,omitempty"`
 	// example:
 	//
@@ -39851,7 +40036,17 @@ type InstallManagedPrometheusRequest struct {
 	//
 	// prd-ecs
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster. Valid values: ask and ecs.
+	// The cluster type.
+	//
+	// Valid values:
+	//
+	// 	- ecs: ECS
+	//
+	// 	- one: ACK One
+	//
+	// 	- ask: ASK
+	//
+	// 	- pro: Container Monitoring Pro
 	//
 	// This parameter is required.
 	//
@@ -39859,13 +40054,13 @@ type InstallManagedPrometheusRequest struct {
 	//
 	// ask
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The ID of the Grafana workspace in which the cluster resides. If you set this parameter to free or leave this parameter empty, the cluster is deployed in a shared Grafana workspace.
+	// The ID of the managed Grafana workspace that is associated with the cluster. If you set this parameter to free or leave this parameter empty, the cluster is associated with a shared Grafana workspace.
 	//
 	// example:
 	//
 	// grafana-bp1*****
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	// The parameter is not supported.
+	// This parameter is not supported.
 	//
 	// if can be null:
 	// true
@@ -39880,8 +40075,6 @@ type InstallManagedPrometheusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Prometheus实例的资源组ID。
-	//
 	// example:
 	//
 	// rg-acfmxyexli2****
@@ -45504,13 +45697,21 @@ func (s *ListEnvironmentDashboardsResponse) SetBody(v *ListEnvironmentDashboards
 
 type ListEnvironmentFeaturesRequest struct {
 	// The language. Valid values: zh and en. Default value: zh.
+	//
+	// example:
+	//
+	// en
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -45541,12 +45742,16 @@ func (s *ListEnvironmentFeaturesRequest) SetRegionId(v string) *ListEnvironmentF
 }
 
 type ListEnvironmentFeaturesResponseBody struct {
+	// Status Code. Description 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data []*ListEnvironmentFeaturesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
@@ -45557,6 +45762,12 @@ type ListEnvironmentFeaturesResponseBody struct {
 	//
 	// 40B10E04-81E8-4643-970D-F1B38F2E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the alert rule was deleted. Valid values:
+	//
+	// 	- `true`: The alert rule was deleted.
+	//
+	// 	- `false`: The alert rule failed to be deleted.
+	//
 	// example:
 	//
 	// true
@@ -45598,10 +45809,18 @@ func (s *ListEnvironmentFeaturesResponseBody) SetSuccess(v bool) *ListEnvironmen
 
 type ListEnvironmentFeaturesResponseBodyData struct {
 	// The alias of the feature.
+	//
+	// example:
+	//
+	// Prometheus Agent
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The feature configuration.
 	Config map[string]*string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The description of the feature.
+	//
+	// example:
+	//
+	// Collect Metric data using the Prometheus collection specification.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the environment instance.
 	//
@@ -45631,7 +45850,12 @@ type ListEnvironmentFeaturesResponseBodyData struct {
 	//
 	// 1.1.17
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	Managed       *bool   `json:"Managed,omitempty" xml:"Managed,omitempty"`
+	// Whether hosted scenario.
+	//
+	// example:
+	//
+	// true
+	Managed *bool `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	// The name of the feature.
 	//
 	// example:
@@ -49300,6 +49524,8 @@ func (s *ListPrometheusAlertTemplatesResponse) SetBody(v *ListPrometheusAlertTem
 }
 
 type ListPrometheusGlobalViewRequest struct {
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49322,15 +49548,26 @@ func (s *ListPrometheusGlobalViewRequest) SetRegionId(v string) *ListPrometheusG
 }
 
 type ListPrometheusGlobalViewResponseBody struct {
+	// Status code. Description 200 means success.
+	//
 	// example:
 	//
 	// 200
-	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of global aggregation instances. The value of this parameter is a string in the JSON format.
+	//
+	// example:
+	//
+	// [ {groupName: "the name of the global aggregation instance", clusterId: "global-v2-clusterid", endpoint: "cn-hangzhou"}, // ..... more items ]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// More information.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// DBDCE95A-A0DD-5FC5-97CC-EEFC3D814385
@@ -49877,27 +50114,27 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponse) SetBody(v *ListP
 }
 
 type ListPrometheusInstancesRequest struct {
-	// Optional instance types (if left blank, all types of instances will be queried):
+	// The cluster type. If you do not specify this parameter, all cluster types are queried. Valid values:
 	//
-	// - cloud-product-prometheus
+	// 	- cloud-product-prometheus: Prometheus instance for cloud services
 	//
-	// - ManagedKubernetes
+	// 	- ManagedKubernetes: ACK managed cluster
 	//
-	// - satellite
+	// 	- satellite: Prometheus instance for ARMS OpenTelemetry
 	//
-	// - Ask
+	// 	- Ask: ACK Serverless cluster
 	//
-	// - remote-write-prometheus
+	// 	- remote-write-prometheus: general-purpose Prometheus instance
 	//
-	// - cloud-monitor-cmee
+	// 	- cloud-monitor-cmee: Hybrid Cloud Monitoring
 	//
-	// - ExternalKubernetes
+	// 	- ExternalKubernetes: external Kubernetes cluster registered in ACK
 	//
-	// - vpc-prometheus
+	// 	- vpc-prometheus: Prometheus instance for ECS
 	//
-	// - cloud-monitor-direct
+	// 	- cloud-monitor-direct: cloud service self-monitoring
 	//
-	// - Edge Kubernetes
+	// 	- Edge Kubernetes: ACK Edge cluster
 	//
 	// example:
 	//
@@ -54787,7 +55024,7 @@ func (s *QueryCommercialUsageResponse) SetBody(v *QueryCommercialUsageResponseBo
 }
 
 type QueryMetricByPageRequest struct {
-	// The number of the page to return. Default value: `1`.
+	// The page number. Default value: `1`.
 	//
 	// example:
 	//
@@ -54811,7 +55048,7 @@ type QueryMetricByPageRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter conditions.
 	Filters []*QueryMetricByPageRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The time interval at which data entries are aggregated. Unit: milliseconds. Minimum value: 60000.
+	// The time interval at which you want to query metric data. Unit: milliseconds. Minimum value: 60000.
 	//
 	// example:
 	//
@@ -54849,7 +55086,7 @@ type QueryMetricByPageRequest struct {
 	//
 	// pid
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The number of entries to return on each page. This parameter is no longer supported. The number of entries to return on each page.
+	// This parameter is no longer supported. The number of entries per page.
 	//
 	// example:
 	//
@@ -55782,18 +56019,24 @@ func (s *RemoveSourcesFromPrometheusGlobalViewResponse) SetBody(v *RemoveSources
 }
 
 type RestartEnvironmentFeatureRequest struct {
+	// The ID of the environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The feature name. Valid values: app-agent-pilot, metric-agent, ebpf-agent, and service-check.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// metric-agent
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The region ID. Default value: cn-hangzhou.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -55824,24 +56067,32 @@ func (s *RestartEnvironmentFeatureRequest) SetRegionId(v string) *RestartEnviron
 }
 
 type RestartEnvironmentFeatureResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2983BEF7-4A0D-47A2-94A2-8E9C5E63****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true false
+	//
 	// example:
 	//
 	// true
@@ -61468,13 +61719,13 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UninstallManagedPrometheusRequest struct {
-	// The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
+	// The ID of the Container Service for Kubernetes (ACK) cluster. This parameter is required when the ClusterType parameter is set to ask or one.
 	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the monitoring object. Valid values: ask and ecs.
+	// The cluster type. Valid values: ask, ecs, and one.
 	//
 	// This parameter is required.
 	//
@@ -61496,7 +61747,7 @@ type UninstallManagedPrometheusRequest struct {
 	//
 	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
+	// The ID of the virtual private cloud (VPC) where the cluster resides.
 	//
 	// if can be null:
 	// true
@@ -68255,30 +68506,42 @@ func (s *UpgradeAddonReleaseResponse) SetBody(v *UpgradeAddonReleaseResponseBody
 }
 
 type UpgradeEnvironmentFeatureRequest struct {
+	// The language. Valid values: zh and en. Default value: zh.
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The feature name. Valid values: app-agent-pilot, metric-agent, ebpf-agent, and service-check.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// metric-agent
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The version of the feature.
+	//
 	// example:
 	//
 	// 1.1.17
 	FeatureVersion *string `json:"FeatureVersion,omitempty" xml:"FeatureVersion,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable service discovery. For PodAnnotation, set the value to run or mini. For PodMonitor and ServiceMonitor, set the value to true or false.
+	//
 	// example:
 	//
 	// {"PodAnnotation":"run"}
@@ -68324,21 +68587,32 @@ func (s *UpgradeEnvironmentFeatureRequest) SetValues(v string) *UpgradeEnvironme
 }
 
 type UpgradeEnvironmentFeatureResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status of the job.
 	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 01FF8DD9-A09C-47A1-895A-B6E321BE77B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -73623,7 +73897,7 @@ func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_res
 
 // Summary:
 //
-// 删除feature信息
+// Deletes a feature.
 //
 // @param request - DeleteEnvironmentFeatureRequest
 //
@@ -73673,7 +73947,7 @@ func (client *Client) DeleteEnvironmentFeatureWithOptions(request *DeleteEnviron
 
 // Summary:
 //
-// 删除feature信息
+// Deletes a feature.
 //
 // @param request - DeleteEnvironmentFeatureRequest
 //
@@ -74143,7 +74417,7 @@ func (client *Client) DeleteNotificationPolicy(request *DeleteNotificationPolicy
 
 // Summary:
 //
-// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
+// Deletes an alert rule of Prometheus Service.
 //
 // @param request - DeletePrometheusAlertRuleRequest
 //
@@ -74189,7 +74463,7 @@ func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePromet
 
 // Summary:
 //
-// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
+// Deletes an alert rule of Prometheus Service.
 //
 // @param request - DeletePrometheusAlertRuleRequest
 //
@@ -81349,7 +81623,7 @@ func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertT
 
 // Summary:
 //
-// 获取账号下聚合实例列表
+// Creates a global aggregation instance in Prometheus Service and obtains the list of global aggregation instances.
 //
 // @param request - ListPrometheusGlobalViewRequest
 //
@@ -81391,7 +81665,7 @@ func (client *Client) ListPrometheusGlobalViewWithOptions(request *ListPrometheu
 
 // Summary:
 //
-// 获取账号下聚合实例列表
+// Creates a global aggregation instance in Prometheus Service and obtains the list of global aggregation instances.
 //
 // @param request - ListPrometheusGlobalViewRequest
 //
@@ -83191,7 +83465,7 @@ func (client *Client) RemoveSourcesFromPrometheusGlobalView(request *RemoveSourc
 
 // Summary:
 //
-// 重新启动 feature信息
+// Restarts a feature.
 //
 // @param request - RestartEnvironmentFeatureRequest
 //
@@ -83241,7 +83515,7 @@ func (client *Client) RestartEnvironmentFeatureWithOptions(request *RestartEnvir
 
 // Summary:
 //
-// 重新启动 feature信息
+// Restarts a feature.
 //
 // @param request - RestartEnvironmentFeatureRequest
 //
@@ -84455,7 +84729,7 @@ func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAler
 
 // Summary:
 //
-// 启动定时拨测任务
+// Starts scheduled synthetic monitoring tasks.
 //
 // @param tmpReq - StartTimingSyntheticTaskRequest
 //
@@ -84507,7 +84781,7 @@ func (client *Client) StartTimingSyntheticTaskWithOptions(tmpReq *StartTimingSyn
 
 // Summary:
 //
-// 启动定时拨测任务
+// Starts scheduled synthetic monitoring tasks.
 //
 // @param request - StartTimingSyntheticTaskRequest
 //
@@ -84861,11 +85135,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // Summary:
 //
-// Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
+// Uninstalls a managed Prometheus agent for a serverless Kubernetes (ASK) cluster, Distributed Cloud Container Platform for Kubernetes (ACK One) cluster, or Elastic Compute Service (ECS) cluster.
 //
 // Description:
 //
-// Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
+// This operation is available only for ASK, ECS, and ACK One clusters. Before you call this operation, make sure that a managed Prometheus agent is installed for your cluster.
 //
 // @param request - UninstallManagedPrometheusRequest
 //
@@ -84926,11 +85200,11 @@ func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallMa
 //
 // Summary:
 //
-// Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
+// Uninstalls a managed Prometheus agent for a serverless Kubernetes (ASK) cluster, Distributed Cloud Container Platform for Kubernetes (ACK One) cluster, or Elastic Compute Service (ECS) cluster.
 //
 // Description:
 //
-// Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
+// This operation is available only for ASK, ECS, and ACK One clusters. Before you call this operation, make sure that a managed Prometheus agent is installed for your cluster.
 //
 // @param request - UninstallManagedPrometheusRequest
 //
@@ -87055,7 +87329,7 @@ func (client *Client) UpgradeAddonRelease(request *UpgradeAddonReleaseRequest) (
 
 // Summary:
 //
-// 更新 feature信息
+// Updates the feature information of an environment.
 //
 // @param request - UpgradeEnvironmentFeatureRequest
 //
@@ -87117,7 +87391,7 @@ func (client *Client) UpgradeEnvironmentFeatureWithOptions(request *UpgradeEnvir
 
 // Summary:
 //
-// 更新 feature信息
+// Updates the feature information of an environment.
 //
 // @param request - UpgradeEnvironmentFeatureRequest
 //
