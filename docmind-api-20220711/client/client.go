@@ -177,13 +177,110 @@ func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetBody(v *AyncTradeDo
 	return s
 }
 
-type GetDocStructureResultRequest struct {
+type GetDocParserResultRequest struct {
 	// example:
 	//
 	// docmind-20220816-1e89d65c
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImageStrategy  *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	RevealMarkdown *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	LayoutNum      *int32  `json:"LayoutNum,omitempty" xml:"LayoutNum,omitempty"`
+	LayoutStepSize *int32  `json:"LayoutStepSize,omitempty" xml:"LayoutStepSize,omitempty"`
+}
+
+func (s GetDocParserResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocParserResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocParserResultRequest) SetId(v string) *GetDocParserResultRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDocParserResultRequest) SetLayoutNum(v int32) *GetDocParserResultRequest {
+	s.LayoutNum = &v
+	return s
+}
+
+func (s *GetDocParserResultRequest) SetLayoutStepSize(v int32) *GetDocParserResultRequest {
+	s.LayoutStepSize = &v
+	return s
+}
+
+type GetDocParserResultResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDocParserResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocParserResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocParserResultResponseBody) SetCode(v string) *GetDocParserResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDocParserResultResponseBody) SetData(v map[string]interface{}) *GetDocParserResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDocParserResultResponseBody) SetMessage(v string) *GetDocParserResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDocParserResultResponseBody) SetRequestId(v string) *GetDocParserResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDocParserResultResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocParserResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocParserResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocParserResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocParserResultResponse) SetHeaders(v map[string]*string) *GetDocParserResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocParserResultResponse) SetStatusCode(v int32) *GetDocParserResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocParserResultResponse) SetBody(v *GetDocParserResultResponseBody) *GetDocParserResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetDocStructureResultRequest struct {
+	// example:
+	//
+	// docmind-20220816-1e89d65c
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ImageStrategy      *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown     *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	UseUrlResponseBody *bool   `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
 }
 
 func (s GetDocStructureResultRequest) String() string {
@@ -206,6 +303,11 @@ func (s *GetDocStructureResultRequest) SetImageStrategy(v string) *GetDocStructu
 
 func (s *GetDocStructureResultRequest) SetRevealMarkdown(v bool) *GetDocStructureResultRequest {
 	s.RevealMarkdown = &v
+	return s
+}
+
+func (s *GetDocStructureResultRequest) SetUseUrlResponseBody(v bool) *GetDocStructureResultRequest {
+	s.UseUrlResponseBody = &v
 	return s
 }
 
@@ -882,6 +984,122 @@ func (s *GetTableUnderstandingResultResponse) SetStatusCode(v int32) *GetTableUn
 }
 
 func (s *GetTableUnderstandingResultResponse) SetBody(v *GetTableUnderstandingResultResponseBody) *GetTableUnderstandingResultResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDocParserStatusRequest struct {
+	// example:
+	//
+	// docmind-20220816-1e89d65c
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s QueryDocParserStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDocParserStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDocParserStatusRequest) SetId(v string) *QueryDocParserStatusRequest {
+	s.Id = &v
+	return s
+}
+
+type QueryDocParserStatusResponseBody struct {
+	// example:
+	//
+	// noPermission
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QueryDocParserStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryDocParserStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDocParserStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDocParserStatusResponseBody) SetCode(v string) *QueryDocParserStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBody) SetData(v *QueryDocParserStatusResponseBodyData) *QueryDocParserStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBody) SetMessage(v string) *QueryDocParserStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBody) SetRequestId(v string) *QueryDocParserStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryDocParserStatusResponseBodyData struct {
+	NumberOfSuccessfulParsing *int32  `json:"NumberOfSuccessfulParsing,omitempty" xml:"NumberOfSuccessfulParsing,omitempty"`
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryDocParserStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDocParserStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDocParserStatusResponseBodyData) SetNumberOfSuccessfulParsing(v int32) *QueryDocParserStatusResponseBodyData {
+	s.NumberOfSuccessfulParsing = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyData) SetStatus(v string) *QueryDocParserStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type QueryDocParserStatusResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDocParserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDocParserStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDocParserStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDocParserStatusResponse) SetHeaders(v map[string]*string) *QueryDocParserStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDocParserStatusResponse) SetStatusCode(v int32) *QueryDocParserStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponse) SetBody(v *QueryDocParserStatusResponseBody) *QueryDocParserStatusResponse {
 	s.Body = v
 	return s
 }
@@ -2178,9 +2396,10 @@ type SubmitDigitalDocStructureJobRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ImageStrategy  *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	RevealMarkdown *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ImageStrategy      *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown     *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	UseUrlResponseBody *bool   `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobRequest) String() string {
@@ -2216,6 +2435,11 @@ func (s *SubmitDigitalDocStructureJobRequest) SetRevealMarkdown(v bool) *SubmitD
 	return s
 }
 
+func (s *SubmitDigitalDocStructureJobRequest) SetUseUrlResponseBody(v bool) *SubmitDigitalDocStructureJobRequest {
+	s.UseUrlResponseBody = &v
+	return s
+}
+
 type SubmitDigitalDocStructureJobAdvanceRequest struct {
 	// example:
 	//
@@ -2228,9 +2452,10 @@ type SubmitDigitalDocStructureJobAdvanceRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject  io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ImageStrategy  *string   `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	RevealMarkdown *bool     `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ImageStrategy      *string   `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown     *bool     `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	UseUrlResponseBody *bool     `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobAdvanceRequest) String() string {
@@ -2263,6 +2488,11 @@ func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetImageStrategy(v string) 
 
 func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetRevealMarkdown(v bool) *SubmitDigitalDocStructureJobAdvanceRequest {
 	s.RevealMarkdown = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetUseUrlResponseBody(v bool) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.UseUrlResponseBody = &v
 	return s
 }
 
@@ -2347,6 +2577,187 @@ func (s *SubmitDigitalDocStructureJobResponse) SetStatusCode(v int32) *SubmitDig
 }
 
 func (s *SubmitDigitalDocStructureJobResponse) SetBody(v *SubmitDigitalDocStructureJobResponseBody) *SubmitDigitalDocStructureJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDocParserJobRequest struct {
+	// example:
+	//
+	// docStructure.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+}
+
+func (s SubmitDocParserJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParserJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobRequest) SetFileName(v string) *SubmitDocParserJobRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequest) SetFileNameExtension(v string) *SubmitDocParserJobRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequest) SetFileUrl(v string) *SubmitDocParserJobRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequest) SetFormulaEnhancement(v bool) *SubmitDocParserJobRequest {
+	s.FormulaEnhancement = &v
+	return s
+}
+
+type SubmitDocParserJobAdvanceRequest struct {
+	// example:
+	//
+	// docStructure.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+}
+
+func (s SubmitDocParserJobAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParserJobAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetFileName(v string) *SubmitDocParserJobAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetFileNameExtension(v string) *SubmitDocParserJobAdvanceRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocParserJobAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitDocParserJobAdvanceRequest {
+	s.FormulaEnhancement = &v
+	return s
+}
+
+type SubmitDocParserJobResponseBody struct {
+	// example:
+	//
+	// noPermission
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitDocParserJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitDocParserJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParserJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobResponseBody) SetCode(v string) *SubmitDocParserJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitDocParserJobResponseBody) SetData(v *SubmitDocParserJobResponseBodyData) *SubmitDocParserJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitDocParserJobResponseBody) SetMessage(v string) *SubmitDocParserJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitDocParserJobResponseBody) SetRequestId(v string) *SubmitDocParserJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDocParserJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitDocParserJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParserJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobResponseBodyData) SetId(v string) *SubmitDocParserJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type SubmitDocParserJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocParserJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitDocParserJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParserJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobResponse) SetHeaders(v map[string]*string) *SubmitDocParserJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDocParserJobResponse) SetStatusCode(v int32) *SubmitDocParserJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDocParserJobResponse) SetBody(v *SubmitDocParserJobResponseBody) *SubmitDocParserJobResponse {
 	s.Body = v
 	return s
 }
@@ -3071,6 +3482,74 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartApp(request *AyncTrade
 
 // Summary:
 //
+// 文档结构化流式接口
+//
+// @param request - GetDocParserResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocParserResultResponse
+func (client *Client) GetDocParserResultWithOptions(request *GetDocParserResultRequest, runtime *util.RuntimeOptions) (_result *GetDocParserResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutNum)) {
+		query["LayoutNum"] = request.LayoutNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutStepSize)) {
+		query["LayoutStepSize"] = request.LayoutStepSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocParserResult"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocParserResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文档结构化流式接口
+//
+// @param request - GetDocParserResultRequest
+//
+// @return GetDocParserResultResponse
+func (client *Client) GetDocParserResult(request *GetDocParserResultRequest) (_result *GetDocParserResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDocParserResultResponse{}
+	_body, _err := client.GetDocParserResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档智能解析结果查询
 //
 // @param request - GetDocStructureResultRequest
@@ -3094,6 +3573,10 @@ func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureR
 
 	if !tea.BoolValue(util.IsUnset(request.RevealMarkdown)) {
 		query["RevealMarkdown"] = request.RevealMarkdown
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseUrlResponseBody)) {
+		query["UseUrlResponseBody"] = request.UseUrlResponseBody
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3430,6 +3913,66 @@ func (client *Client) GetTableUnderstandingResult(request *GetTableUnderstanding
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableUnderstandingResultResponse{}
 	_body, _err := client.GetTableUnderstandingResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档智能解析处理状态
+//
+// @param request - QueryDocParserStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDocParserStatusResponse
+func (client *Client) QueryDocParserStatusWithOptions(request *QueryDocParserStatusRequest, runtime *util.RuntimeOptions) (_result *QueryDocParserStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDocParserStatus"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDocParserStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档智能解析处理状态
+//
+// @param request - QueryDocParserStatusRequest
+//
+// @return QueryDocParserStatusResponse
+func (client *Client) QueryDocParserStatus(request *QueryDocParserStatusRequest) (_result *QueryDocParserStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDocParserStatusResponse{}
+	_body, _err := client.QueryDocParserStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4500,6 +5043,10 @@ func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDig
 		query["RevealMarkdown"] = request.RevealMarkdown
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UseUrlResponseBody)) {
+		query["UseUrlResponseBody"] = request.UseUrlResponseBody
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4649,6 +5196,189 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 	}
 
 	_result = submitDigitalDocStructureJobResp
+	return _result, _err
+}
+
+// Summary:
+//
+// 文档智能解析流式输出
+//
+// @param request - SubmitDocParserJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDocParserJobResponse
+func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+		query["FileNameExtension"] = request.FileNameExtension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormulaEnhancement)) {
+		query["FormulaEnhancement"] = request.FormulaEnhancement
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDocParserJob"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDocParserJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文档智能解析流式输出
+//
+// @param request - SubmitDocParserJobRequest
+//
+// @return SubmitDocParserJobResponse
+func (client *Client) SubmitDocParserJob(request *SubmitDocParserJobRequest) (_result *SubmitDocParserJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDocParserJobResponse{}
+	_body, _err := client.SubmitDocParserJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDocParserJobAdvance(request *SubmitDocParserJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("docmind-api"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitDocParserJobReq := &SubmitDocParserJobRequest{}
+	openapiutil.Convert(request, submitDocParserJobReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitDocParserJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitDocParserJobResp, _err := client.SubmitDocParserJobWithOptions(submitDocParserJobReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitDocParserJobResp
 	return _result, _err
 }
 
