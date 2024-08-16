@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,13 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
-	InstanceId         *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// hgprecn-cn-zvp25ysv3006
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// rg-acfmxwerqwerasfd
 	NewResourceGroupId *string `json:"newResourceGroupId,omitempty" xml:"newResourceGroupId,omitempty"`
 }
 
@@ -36,8 +39,15 @@ func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeReso
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// AB71198A-2DB1-511B-AE4D-690BAA97F076
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -91,106 +101,201 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 type CreateInstanceRequest struct {
 	// Specifies whether to enable auto-payment. Default value: true. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
 	//
 	// > The default value is true. If the balance of your account is insufficient, you can set this parameter to false. In this case, an unpaid order is generated. You can log on to the User Center to pay for the order.
+	//
+	// example:
+	//
+	// true
 	AutoPay *bool `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
 	// Specifies whether to enable monthly auto-renewal. Default value: false. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   PrePaid: subscription
-	// *   PostPaid: pay-as-you-go
+	// 	- PrePaid: subscription
+	//
+	// 	- PostPaid: pay-as-you-go
 	//
 	// > This parameter is invalid for shared instances. Shared instances have fixed specifications and are pay-as-you-go instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PostPaid
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The infrequent access (IA) storage space of the instance. Unit: GB.
 	//
 	// > This parameter is invalid for pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 500
 	ColdStorageSize *int64 `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
 	// The instance specifications. Valid values:
 	//
-	// *   8-core 32 GB (number of compute nodes: 1)
-	// *   16-core 64 GB (number of compute nodes: 1)
-	// *   32-core 128 GB (number of compute nodes: 2)
-	// *   64-core 256 GB (number of compute nodes: 4)
-	// *   96-core 384 GB (number of compute nodes: 6)
-	// *   128-core 512 GB (number of compute nodes: 8)
-	// *   Others
+	// 	- 8-core 32 GB (number of compute nodes: 1)
+	//
+	// 	- 16-core 64 GB (number of compute nodes: 1)
+	//
+	// 	- 32-core 128 GB (number of compute nodes: 2)
+	//
+	// 	- 64-core 256 GB (number of compute nodes: 4)
+	//
+	// 	- 96-core 384 GB (number of compute nodes: 6)
+	//
+	// 	- 128-core 512 GB (number of compute nodes: 8)
+	//
+	// 	- Others
 	//
 	// >
 	//
-	// *   Set this parameter to the number of cores.
+	// 	- Set this parameter to the number of cores.
 	//
-	// *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
+	// 	- If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
 	//
-	// *   If you want to purchase a shared instance, you do not need to configure this parameter.
+	// 	- If you want to purchase a shared instance, you do not need to configure this parameter.
 	//
-	// *   The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+	// 	- The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+	//
+	// example:
+	//
+	// 64
 	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	// The validity period of the instance that you want to purchase. For example, you can specify a validity period of two months.
 	//
 	// > You do not need to configure this parameter for pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 2
 	Duration                  *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
 	EnableServerlessComputing *bool  `json:"enableServerlessComputing,omitempty" xml:"enableServerlessComputing,omitempty"`
 	// The number of gateways. Valid values: 2 to 50.
 	//
 	// > This parameter is required only for virtual warehouse instances.
+	//
+	// example:
+	//
+	// 4
 	GatewayCount     *int64  `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
 	InitialDatabases *string `json:"initialDatabases,omitempty" xml:"initialDatabases,omitempty"`
 	// The name of the Hologres instance that you want to purchase. The name must be 2 to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_holo
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 	// The type of the instance. Valid values:
 	//
-	// *   Standard: general-purpose instance
-	// *   Follower: read-only secondary instance
-	// *   Warehouse: virtual warehouse instance
-	// *   Shared: shared instance
+	// 	- Standard: general-purpose instance
+	//
+	// 	- Follower: read-only secondary instance
+	//
+	// 	- Warehouse: virtual warehouse instance
+	//
+	// 	- Shared: shared instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Standard
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The ID of the primary instance. This parameter is required for read-only secondary instances.
 	//
 	// > The primary instance and secondary instances must meet the following requirements:
 	//
-	// *   The primary instance is in the Running state.
+	// 	- The primary instance is in the Running state.
 	//
-	// *   The primary instance and secondary instances are deployed in the same region.
+	// 	- The primary instance and secondary instances are deployed in the same region.
 	//
-	// *   The primary instance and secondary instances are deployed in the same zone.
+	// 	- The primary instance and secondary instances are deployed in the same zone.
 	//
-	// *   Less than 10 secondary instances are associated with the primary instance.
+	// 	- Less than 10 secondary instances are associated with the primary instance.
 	//
-	// *   The primary and secondary instances belong to the same Alibaba Cloud account.
+	// 	- The primary and secondary instances belong to the same Alibaba Cloud account.
+	//
+	// example:
+	//
+	// hgpostcn-cn-lbj3aworq112
 	LeaderInstanceId *string `json:"leaderInstanceId,omitempty" xml:"leaderInstanceId,omitempty"`
 	// The billing cycle. Valid values:
 	//
-	// *   Month
-	// *   Hour
+	// 	- Month
+	//
+	// 	- Hour
 	//
 	// >
 	//
-	// *   This parameter can only be set to Month for subscription instances.
+	// 	- This parameter can only be set to Month for subscription instances.
 	//
-	// *   This parameter can only be set to Hour for pay-as-you-go instances.
+	// 	- This parameter can only be set to Hour for pay-as-you-go instances.
 	//
-	// *   By default, this parameter is set to Hour for shared instances.
+	// 	- By default, this parameter is set to Hour for shared instances.
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
 	// The ID of the region. You can go to the [OpenAPI Explorer](https://api.aliyun.com/product/Hologram) or the Usage notes section to view the ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The resource group. If you do not specify this parameter, the default resource group of the account is used.
+	//
+	// example:
+	//
+	// ""
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The standard storage space of the instance. Unit: GB.
 	//
 	// > This parameter is invalid for pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 500
 	StorageSize *int64 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
 	// The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the instance resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-2vccsiymtxxxxxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 	// The ID of the virtual private cloud (VPC). The region in which the VPC resides must be the same as the region in which the Hologres instance resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-t4netc3y5xxxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 	// The ID of the zone. For more information about how to obtain the ID of the zone, see the Usage notes section.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -301,12 +406,28 @@ type CreateInstanceResponseBody struct {
 	// The returned data.
 	Data *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned.
+	//
+	// example:
+	//
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9CC37B9F-F4B4-5FF1-939B-AEE78DC70130
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -345,17 +466,34 @@ func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceRespo
 
 type CreateInstanceResponseBodyData struct {
 	// The error code returned.
+	//
+	// example:
+	//
+	// InvalidVpcOrVSwitch.NotAvailable
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// hgpostcn-cn-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The error details.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 217523224780172
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// Indicates whether the instance was created.
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -423,6 +561,10 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 
 type DeleteInstanceRequest struct {
 	// The ID of the region in which the Hologres instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -444,7 +586,7 @@ type DeleteInstanceResponseBody struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -452,23 +594,47 @@ type DeleteInstanceResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned.
+	//
+	// example:
+	//
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status Code
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CB13FFDD-2DF8-5396-A848-2D6A31245B6D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -540,6 +706,9 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DisableHiveAccessRequest struct {
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -557,13 +726,32 @@ func (s *DisableHiveAccessRequest) SetRegionId(v string) *DisableHiveAccessReque
 }
 
 type DisableHiveAccessResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 404
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Internal server error.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 82B7A554-4D00-50DF-95D9-B59E7B4D5489
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableHiveAccessResponseBody) String() string {
@@ -634,6 +822,9 @@ func (s *DisableHiveAccessResponse) SetBody(v *DisableHiveAccessResponseBody) *D
 }
 
 type EnableHiveAccessRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -651,13 +842,32 @@ func (s *EnableHiveAccessRequest) SetRegionId(v string) *EnableHiveAccessRequest
 }
 
 type EnableHiveAccessResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 404
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Internal server error.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// EA8F0084-5831-5907-BB31-BD05D2617844
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableHiveAccessResponseBody) String() string {
@@ -729,16 +939,36 @@ func (s *EnableHiveAccessResponse) SetBody(v *EnableHiveAccessResponseBody) *Ena
 
 type GetInstanceResponseBody struct {
 	// The error code that is returned if the request failed.
+	//
+	// example:
+	//
+	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The information about the instance.
 	Instance *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 865A02C2-B374-5DD4-9B34-0CA15DA1AEBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The request result, which indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -785,7 +1015,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -793,21 +1023,29 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	AutoRenewal *string `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The cold storage capacity of the instance. Unit: GB. Standard SSD is used for hot storage, and HDD is used for cold storage.
+	//
+	// example:
+	//
+	// 800
 	ColdStorage *int64 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
 	// The commodity code.
 	//
 	// Valid values:
 	//
-	// *   hologram_maxcomputeAccelerate_public_cn
+	// 	- hologram_maxcomputeAccelerate_public_cn
 	//
 	//     <!-- -->
 	//
@@ -821,7 +1059,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   hologram_combo_public_cn
+	// 	- hologram_combo_public_cn
 	//
 	//     <!-- -->
 	//
@@ -835,7 +1073,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   hologram_prepay_public_intl
+	// 	- hologram_prepay_public_intl
 	//
 	//     <!-- -->
 	//
@@ -849,7 +1087,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   hologram_storage_dp_cn
+	// 	- hologram_storage_dp_cn
 	//
 	//     <!-- -->
 	//
@@ -863,7 +1101,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   hologram_postpay_public_cn
+	// 	- hologram_postpay_public_cn
 	//
 	//     <!-- -->
 	//
@@ -877,7 +1115,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   hologram_postpay_public_intl
+	// 	- hologram_postpay_public_intl
 	//
 	//     <!-- -->
 	//
@@ -889,7 +1127,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     <!-- -->
 	//
-	// *   hologram_maxcomputeAccelerate_public_intl
+	// 	- hologram_maxcomputeAccelerate_public_intl
 	//
 	//     <!-- -->
 	//
@@ -903,7 +1141,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   hologram_cu_dp_cn
+	// 	- hologram_cu_dp_cn
 	//
 	//     <!-- -->
 	//
@@ -914,33 +1152,73 @@ type GetInstanceResponseBodyInstance struct {
 	//     China site/Compute plan
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// hologram_combo_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The number of compute nodes. In a typical configuration, a node has 16 CPU cores and 32 GB of memory.
+	//
+	// example:
+	//
+	// 2
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" xml:"ComputeNodeCount,omitempty"`
 	// The number of CPU cores.
+	//
+	// example:
+	//
+	// 32
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 2021-02-03T13:06:06Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The amount of data that can be stored in the disk of the Standard storage class. Unit: GB.
+	//
+	// example:
+	//
+	// 500
 	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
 	// Indicates whether data lake acceleration is enabled.
+	//
+	// example:
+	//
+	// true
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
 	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
 	// The list of endpoints.
 	Endpoints []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time. This parameter is invalid for pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 2021-02-03T13:06:06Z
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	// The number of gateway nodes.
+	//
+	// example:
+	//
+	// 2
 	GatewayCount *int64 `json:"GatewayCount,omitempty" xml:"GatewayCount,omitempty"`
 	// The number of CPU cores of the gateway. Unit: core.
+	//
+	// example:
+	//
+	// 4
 	GatewayCpu *int64 `json:"GatewayCpu,omitempty" xml:"GatewayCpu,omitempty"`
 	// The size of memory resources of the gateway. Unit: GB.
+	//
+	// example:
+	//
+	// 16
 	GatewayMemory *int64 `json:"GatewayMemory,omitempty" xml:"GatewayMemory,omitempty"`
 	// The billing method of the instance.
 	//
 	// Valid values:
 	//
-	// *   PostPaid
+	// 	- PostPaid
 	//
 	//     <!-- -->
 	//
@@ -954,7 +1232,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   PrePaid
+	// 	- PrePaid
 	//
 	//     <!-- -->
 	//
@@ -967,18 +1245,34 @@ type GetInstanceResponseBodyInstance struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// hgpostcn-cn-tl32s6cgw00b
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance name. The instance name must be 2 to 64 characters in length.
+	//
+	// example:
+	//
+	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The owner of the instance.
+	//
+	// example:
+	//
+	// 12345678900000
 	InstanceOwner *string `json:"InstanceOwner,omitempty" xml:"InstanceOwner,omitempty"`
 	// The status of the instance.
 	//
 	// Valid values:
 	//
-	// *   Creating
+	// 	- Creating
 	//
 	//     <!-- -->
 	//
@@ -986,7 +1280,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     <!-- -->
 	//
-	// *   Running
+	// 	- Running
 	//
 	//     <!-- -->
 	//
@@ -994,7 +1288,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     <!-- -->
 	//
-	// *   Suspended
+	// 	- Suspended
 	//
 	//     <!-- -->
 	//
@@ -1002,19 +1296,23 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     <!-- -->
 	//
-	// *   Allocating
+	// 	- Allocating
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The type of the instance.
 	//
 	// Valid values:
 	//
-	// *   Follower
+	// 	- Follower
 	//
 	//     <!-- -->
 	//
@@ -1028,7 +1326,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   Standard
+	// 	- Standard
 	//
 	//     <!-- -->
 	//
@@ -1041,21 +1339,41 @@ type GetInstanceResponseBodyInstance struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// Standard
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The ID of the primary instance.
+	//
+	// example:
+	//
+	// hgpostcn-cn-i7m2ncd6w002
 	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
 	// The memory size. Unit: GB.
+	//
+	// example:
+	//
+	// 128
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplicaRole *string `json:"ReplicaRole,omitempty" xml:"ReplicaRole,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzuq7hpybze2i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The reason for the suspension.
 	//
 	// Valid values:
 	//
-	// *   Indebet
+	// 	- Indebet
 	//
 	//     <!-- -->
 	//
@@ -1069,7 +1387,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   Manual
+	// 	- Manual
 	//
 	//     <!-- -->
 	//
@@ -1083,7 +1401,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	//     .
 	//
-	// *   Overdue
+	// 	- Overdue
 	//
 	//     <!-- -->
 	//
@@ -1096,12 +1414,24 @@ type GetInstanceResponseBodyInstance struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// Manual
 	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
 	// The instance tag.
 	Tags []*GetInstanceResponseBodyInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The instance version.
+	//
+	// example:
+	//
+	// r1.3.37
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The ID of the zone where the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1260,12 +1590,16 @@ func (s *GetInstanceResponseBodyInstance) SetZoneId(v string) *GetInstanceRespon
 
 type GetInstanceResponseBodyInstanceEndpoints struct {
 	// The endpoint. This parameter is returned if both the AnyTunnel and SingleTunnel modes are enabled for an instance, and the instance is switched from the AnyTunnel mode to the SingleTunnel mode. In this case, two endpoints are returned.
+	//
+	// example:
+	//
+	// hgprecn-cn-uqm362o1b001-cn-hangzhou-internal.hologres.aliyuncs.com:80
 	AlternativeEndpoints *string `json:"AlternativeEndpoints,omitempty" xml:"AlternativeEndpoints,omitempty"`
 	// Indicates whether the network is enabled.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -1273,21 +1607,29 @@ type GetInstanceResponseBodyInstanceEndpoints struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The endpoint.
+	//
+	// example:
+	//
+	// hgprecn-cn-uqm362o1b001-cn-hangzhou-internal.hologres.aliyuncs.com:80
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The network type.
 	//
 	// Valid values:
 	//
-	// *   VPCSingleTunnel
+	// 	- VPCSingleTunnel
 	//
 	//     <!-- -->
 	//
@@ -1301,7 +1643,7 @@ type GetInstanceResponseBodyInstanceEndpoints struct {
 	//
 	//     .
 	//
-	// *   Intranet
+	// 	- Intranet
 	//
 	//     <!-- -->
 	//
@@ -1315,7 +1657,7 @@ type GetInstanceResponseBodyInstanceEndpoints struct {
 	//
 	//     .
 	//
-	// *   VPCAnyTunnel
+	// 	- VPCAnyTunnel
 	//
 	//     <!-- -->
 	//
@@ -1327,7 +1669,7 @@ type GetInstanceResponseBodyInstanceEndpoints struct {
 	//
 	//     <!-- -->
 	//
-	// *   Internet
+	// 	- Internet
 	//
 	//     <!-- -->
 	//
@@ -1340,12 +1682,28 @@ type GetInstanceResponseBodyInstanceEndpoints struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// Internet
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bp1jqwp2ys6kp7tc9t983
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the VPC to which the instance belongs.
+	//
+	// example:
+	//
+	// vpc-uf66jjber3hgvwhki3wna
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the instance that is deployed in the VPC.
+	//
+	// example:
+	//
+	// hgprecn-cn-uqm362o1b001-frontend-st
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -1394,8 +1752,16 @@ func (s *GetInstanceResponseBodyInstanceEndpoints) SetVpcInstanceId(v string) *G
 
 type GetInstanceResponseBodyInstanceTags struct {
 	// The key of tag N.
+	//
+	// example:
+	//
+	// tag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1447,8 +1813,13 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetWarehouseDetailResponseBody struct {
-	// Id of the request
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The values returned.
 	WarehouseDetail *GetWarehouseDetailResponseBodyWarehouseDetail `json:"WarehouseDetail,omitempty" xml:"WarehouseDetail,omitempty" type:"Struct"`
 }
 
@@ -1471,8 +1842,20 @@ func (s *GetWarehouseDetailResponseBody) SetWarehouseDetail(v *GetWarehouseDetai
 }
 
 type GetWarehouseDetailResponseBodyWarehouseDetail struct {
-	RemainingCpu  *string                                                       `json:"RemainingCpu,omitempty" xml:"RemainingCpu,omitempty"`
-	ReservedCpu   *string                                                       `json:"ReservedCpu,omitempty" xml:"ReservedCpu,omitempty"`
+	// The remaining unallocated computing resources of the virtual warehouse instance.
+	//
+	// example:
+	//
+	// 32
+	RemainingCpu *string `json:"RemainingCpu,omitempty" xml:"RemainingCpu,omitempty"`
+	// The reserved computing resources. The amount of computing resources in all running virtual warehouses in an instance cannot exceed the amount of reserved computing resources in the virtual warehouses.
+	//
+	// example:
+	//
+	// 64
+	ReservedCpu     *string `json:"ReservedCpu,omitempty" xml:"ReservedCpu,omitempty"`
+	TimedElasticCpu *string `json:"TimedElasticCpu,omitempty" xml:"TimedElasticCpu,omitempty"`
+	// The list of virtual warehouses.
 	WarehouseList []*GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList `json:"WarehouseList,omitempty" xml:"WarehouseList,omitempty" type:"Repeated"`
 }
 
@@ -1494,20 +1877,98 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetail) SetReservedCpu(v string)
 	return s
 }
 
+func (s *GetWarehouseDetailResponseBodyWarehouseDetail) SetTimedElasticCpu(v string) *GetWarehouseDetailResponseBodyWarehouseDetail {
+	s.TimedElasticCpu = &v
+	return s
+}
+
 func (s *GetWarehouseDetailResponseBodyWarehouseDetail) SetWarehouseList(v []*GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) *GetWarehouseDetailResponseBodyWarehouseDetail {
 	s.WarehouseList = v
 	return s
 }
 
 type GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList struct {
-	// cpu
-	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// id
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Mem       *int64  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeCount *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of CPU cores.
+	//
+	// example:
+	//
+	// 32
+	Cpu              *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DefaultWarehouse *bool  `json:"DefaultWarehouse,omitempty" xml:"DefaultWarehouse,omitempty"`
+	ElasticCpu       *int64 `json:"ElasticCpu,omitempty" xml:"ElasticCpu,omitempty"`
+	// The ID.
+	//
+	// example:
+	//
+	// 2
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The memory capacity.
+	//
+	// example:
+	//
+	// 128
+	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The name of the virtual warehouse instance.
+	//
+	// example:
+	//
+	// MyWarehouse
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of compute nodes.
+	//
+	// example:
+	//
+	// 2
+	NodeCount       *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	RebalanceStatus *string `json:"RebalanceStatus,omitempty" xml:"RebalanceStatus,omitempty"`
+	// The status.
+	//
+	// Valid values:
+	//
+	// 	- kRunning
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kSuspended
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kInit
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kFailed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kAllocating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// kRunning
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) String() string {
@@ -1520,6 +1981,16 @@ func (s GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GoString() s
 
 func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetCpu(v int64) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
 	s.Cpu = &v
+	return s
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetDefaultWarehouse(v bool) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.DefaultWarehouse = &v
+	return s
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetElasticCpu(v int64) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.ElasticCpu = &v
 	return s
 }
 
@@ -1540,6 +2011,11 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetName(v s
 
 func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetNodeCount(v int64) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
 	s.NodeCount = &v
+	return s
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetRebalanceStatus(v string) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.RebalanceStatus = &v
 	return s
 }
 
@@ -1580,6 +2056,10 @@ func (s *GetWarehouseDetailResponse) SetBody(v *GetWarehouseDetailResponseBody) 
 type ListInstancesRequest struct {
 	CmsInstanceType *string `json:"cmsInstanceType,omitempty" xml:"cmsInstanceType,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmvscak73zmby
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The tags to add to the resource.
 	Tag []*ListInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
@@ -1610,8 +2090,16 @@ func (s *ListInstancesRequest) SetTag(v []*ListInstancesRequestTag) *ListInstanc
 
 type ListInstancesRequestTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// mytag
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -1635,16 +2123,36 @@ func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
 
 type ListInstancesResponseBody struct {
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The list of queried instances.
 	InstanceList []*ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D1303CD4-AA70-5998-8025-F55B22C50840
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1688,14 +2196,22 @@ func (s *ListInstancesResponseBody) SetSuccess(v string) *ListInstancesResponseB
 
 type ListInstancesResponseBodyInstanceList struct {
 	// The commodity code, which is the same as that on the Billing Management page.
+	//
+	// example:
+	//
+	// hologram_postpay_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2022-12-16T02:24:05Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// Indicates whether lakehouse acceleration is enabled.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -1703,23 +2219,31 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
 	// The list of endpoints.
 	Endpoints []*ListInstancesResponseBodyInstanceListEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The time when the cluster expires.
+	//
+	// example:
+	//
+	// 2023-05-04T16:00:00.000Z
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// Valid values:
 	//
-	// *   PostPaid
+	// 	- PostPaid
 	//
 	//     <!-- -->
 	//
@@ -1733,7 +2257,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	//     .
 	//
-	// *   PrePaid
+	// 	- PrePaid
 	//
 	//     <!-- -->
 	//
@@ -1746,16 +2270,28 @@ type ListInstancesResponseBodyInstanceList struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// hgpostcn-cn-aaab9ad2d8fb
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// test_instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The status of the instance.
 	//
 	// Valid values:
 	//
-	// *   Creating
+	// 	- Creating
 	//
 	//     <!-- -->
 	//
@@ -1763,7 +2299,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	//     <!-- -->
 	//
-	// *   Running
+	// 	- Running
 	//
 	//     <!-- -->
 	//
@@ -1771,7 +2307,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	//     <!-- -->
 	//
-	// *   Suspended
+	// 	- Suspended
 	//
 	//     <!-- -->
 	//
@@ -1779,19 +2315,23 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	//     <!-- -->
 	//
-	// *   Allocating
+	// 	- Allocating
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The type of the instance.
 	//
 	// Valid values:
 	//
-	// *   Follower
+	// 	- Follower
 	//
 	//     <!-- -->
 	//
@@ -1805,7 +2345,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	//     .
 	//
-	// *   Standard
+	// 	- Standard
 	//
 	//     <!-- -->
 	//
@@ -1818,17 +2358,37 @@ type ListInstancesResponseBodyInstanceList struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// Standard
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The ID of the primary instance.
+	//
+	// example:
+	//
+	// hgprecn-cn-2r42sqvxm006
 	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmvscak73zmby
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The reason for the suspension.
+	//
+	// example:
+	//
+	// Manual
 	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
 	// The tags that are added to the resource.
 	Tags []*ListInstancesResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The version of the cluster.
+	//
+	// example:
+	//
+	// 1.3.37
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
@@ -1931,7 +2491,7 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -1939,21 +2499,29 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The endpoint.
+	//
+	// example:
+	//
+	// hgpostcn-cn-aaab9ad2d8fb-cn-hangzhou-internal.hologres.aliyuncs.com:80
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The network type.
 	//
 	// Valid values:
 	//
-	// *   VPCSingleTunnel
+	// 	- VPCSingleTunnel
 	//
 	//     <!-- -->
 	//
@@ -1967,7 +2535,7 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	//
 	//     .
 	//
-	// *   Intranet
+	// 	- Intranet
 	//
 	//     <!-- -->
 	//
@@ -1979,7 +2547,7 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	//
 	//     <!-- -->
 	//
-	// *   VPCAnyTunnel
+	// 	- VPCAnyTunnel
 	//
 	//     <!-- -->
 	//
@@ -1991,7 +2559,7 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	//
 	//     .
 	//
-	// *   Internet
+	// 	- Internet
 	//
 	//     <!-- -->
 	//
@@ -2004,12 +2572,28 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// Internet
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-wz9oap28raidjevhuszg4
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-uf6mrahzyu7uorlqqpz5f
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the VPC to which the instance belongs.
+	//
+	// example:
+	//
+	// hgpostcn-cn-wwo3665tx004-frontend-st
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -2053,8 +2637,16 @@ func (s *ListInstancesResponseBodyInstanceListEndpoints) SetVpcInstanceId(v stri
 
 type ListInstancesResponseBodyInstanceListTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// tag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2106,8 +2698,13 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListWarehousesResponseBody struct {
+	// The list of virtual warehouse instances.
 	WarehouseList []*ListWarehousesResponseBodyWarehouseList `json:"WarehouseList,omitempty" xml:"WarehouseList,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// 819A7F0F-2951-540F-BD94-6A41ECF0281F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -2130,14 +2727,84 @@ func (s *ListWarehousesResponseBody) SetRequestId(v string) *ListWarehousesRespo
 }
 
 type ListWarehousesResponseBodyWarehouseList struct {
-	// cpu
+	// The number of CPU cores.
+	//
+	// example:
+	//
+	// 32
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// id
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Mem       *int64  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeCount *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID.
+	//
+	// example:
+	//
+	// 3
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The memory capacity.
+	//
+	// example:
+	//
+	// 128
+	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The name of the virtual warehouse instance.
+	//
+	// example:
+	//
+	// MyWarehouse
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of compute nodes.
+	//
+	// example:
+	//
+	// 2
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The status.
+	//
+	// Valid values:
+	//
+	// 	- kRunning
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kSuspended
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kInit
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kFailed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- kAllocating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// kRunning
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListWarehousesResponseBodyWarehouseList) String() string {
@@ -2210,12 +2877,23 @@ func (s *ListWarehousesResponse) SetBody(v *ListWarehousesResponseBody) *ListWar
 type RenewInstanceRequest struct {
 	// Specifies whether to enable monthly auto-renewal. The default value is false. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
 	//
 	// >  If you enable auto-renewal for an instance for which auto-renewal is enabled, an error is reported.
+	//
+	// example:
+	//
+	// true
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
 	// The renewal duration. Unit: month.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
 }
 
@@ -2241,14 +2919,34 @@ type RenewInstanceResponseBody struct {
 	// The returned data.
 	Data *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned.
+	//
+	// example:
+	//
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The request result, which indicates whether the request was successful.
+	//
+	// example:
+	//
+	// false
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2292,15 +2990,28 @@ func (s *RenewInstanceResponseBody) SetSuccess(v string) *RenewInstanceResponseB
 
 type RenewInstanceResponseBodyData struct {
 	// The error code returned.
+	//
+	// example:
+	//
+	// InvalidChargeType.UnRenewable
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error details.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 221625608580893
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// Indicates whether the renewal was successful.
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2366,7 +3077,7 @@ type RestartInstanceResponseBody struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -2374,23 +3085,47 @@ type RestartInstanceResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 36291497-CDB0-53DC-8CD7-762E054F57A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The request result, which indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2463,16 +3198,40 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 
 type ResumeInstanceResponseBody struct {
 	// The returned result, which indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The request result, which indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2547,46 +3306,75 @@ type ScaleInstanceRequest struct {
 	// The infrequent access (IA) storage space of the instance. Unit: GB.
 	//
 	// > Ignore this parameter for pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 1000G
 	ColdStorageSize *int64 `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
 	// The specifications of the instance. Valid values:
 	//
-	// *   8-core 32GB (number of compute nodes: 1)
-	// *   16-core 64GB (number of compute nodes: 1)
-	// *   32-core 128GB (number of compute nodes: 2)
-	// *   64-core 256GB (number of compute nodes: 4)
-	// *   96-core 384GB (number of compute nodes: 6)
-	// *   128-core 512GB (number of compute nodes: 8)
-	// *   Others
+	// 	- 8-core 32GB (number of compute nodes: 1)
+	//
+	// 	- 16-core 64GB (number of compute nodes: 1)
+	//
+	// 	- 32-core 128GB (number of compute nodes: 2)
+	//
+	// 	- 64-core 256GB (number of compute nodes: 4)
+	//
+	// 	- 96-core 384GB (number of compute nodes: 6)
+	//
+	// 	- 128-core 512GB (number of compute nodes: 8)
+	//
+	// 	- Others
 	//
 	// >
 	//
-	// *   Set this parameter to the number of cores.
+	// 	- Set this parameter to the number of cores.
 	//
-	// *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
+	// 	- If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
 	//
-	// *   This parameter is invalid for Hologres Shared Cluster instances.
+	// 	- This parameter is invalid for Hologres Shared Cluster instances.
 	//
-	// *   The specifications of 8-core 32GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+	// 	- The specifications of 8-core 32GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+	//
+	// example:
+	//
+	// 128
 	Cpu                       *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	EnableServerlessComputing *bool  `json:"enableServerlessComputing,omitempty" xml:"enableServerlessComputing,omitempty"`
 	// The number of gateways. Valid values: 2 to 50.
 	//
 	// > This parameter is required only for virtual warehouse instances.
+	//
+	// example:
+	//
+	// 4
 	GatewayCount *int64 `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
 	// The specification change type. Valid values:
 	//
-	// *   UPGRADE
-	// *   DOWNGRADE
+	// 	- UPGRADE
+	//
+	// 	- DOWNGRADE
 	//
 	// >
 	//
-	// *   If you set this parameter to UPGRADE, the new specifications must be higher than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
+	// 	- If you set this parameter to UPGRADE, the new specifications must be higher than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
 	//
-	// *   If you set this parameter to DOWNGRADE, the new specifications must be lower than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
+	// 	- If you set this parameter to DOWNGRADE, the new specifications must be lower than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UPGRADE
 	ScaleType *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
 	// The standard storage space of the instance. Unit: GB.
 	//
 	// > Ignore this parameter for pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 1000G
 	StorageSize *int64 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
 }
 
@@ -2632,12 +3420,28 @@ type ScaleInstanceResponseBody struct {
 	// The returned data.
 	Data *ScaleInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned.
+	//
+	// example:
+	//
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2676,16 +3480,28 @@ func (s *ScaleInstanceResponseBody) SetRequestId(v string) *ScaleInstanceRespons
 
 type ScaleInstanceResponseBodyData struct {
 	// The error code returned.
+	//
+	// example:
+	//
+	// InvalidScaleType.Unsupported
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error details.
+	//
+	// example:
+	//
+	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 219183853450000
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// Indicates whether the change to specifications was successful.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -2693,13 +3509,17 @@ type ScaleInstanceResponseBodyData struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2765,7 +3585,7 @@ type StopInstanceResponseBody struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -2773,27 +3593,47 @@ type StopInstanceResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The request result, which indicates whether the request was successful.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -2801,13 +3641,17 @@ type StopInstanceResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2880,6 +3724,10 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 
 type UpdateInstanceNameRequest struct {
 	// The new name of the instance.
+	//
+	// example:
+	//
+	// new_name
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 }
 
@@ -2901,7 +3749,7 @@ type UpdateInstanceNameResponseBody struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -2909,27 +3757,47 @@ type UpdateInstanceNameResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// C6B55032-D41A-5FE0-9C07-8BD81C88422E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The request result, which indicates whether the request was successful.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -2937,13 +3805,17 @@ type UpdateInstanceNameResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3019,7 +3891,7 @@ type UpdateInstanceNetworkTypeRequest struct {
 	//
 	// Valid values:
 	//
-	// *   others/null
+	// 	- others/null
 	//
 	//     <!-- -->
 	//
@@ -3027,23 +3899,47 @@ type UpdateInstanceNetworkTypeRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	AnyTunnelToSingleTunnel *string `json:"anyTunnelToSingleTunnel,omitempty" xml:"anyTunnelToSingleTunnel,omitempty"`
 	// A list of network types that you want to enable. The list of enabled network types is randomly ordered. For example, the Internet, internal network, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
+	//
+	// example:
+	//
+	// Internet,VPCSingleTunnel
 	NetworkTypes *string `json:"networkTypes,omitempty" xml:"networkTypes,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-2vccsiymtqr9aavew0vo3
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 	// The ID of the VPC to which the instance belongs.
+	//
+	// example:
+	//
+	// vpc-t4netc3y5etlondfb5ra7
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 	// The owner ID of the VPC, which is the ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 1999365732646672
 	VpcOwnerId *string `json:"vpcOwnerId,omitempty" xml:"vpcOwnerId,omitempty"`
 	// The region ID of the VPC.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	VpcRegionId *string `json:"vpcRegionId,omitempty" xml:"vpcRegionId,omitempty"`
 }
 
@@ -3090,7 +3986,7 @@ type UpdateInstanceNetworkTypeResponseBody struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -3098,27 +3994,47 @@ type UpdateInstanceNetworkTypeResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9CC37B9F-F4B4-5FF1-939B-AEE78DC70130
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -3126,13 +4042,17 @@ type UpdateInstanceNetworkTypeResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3250,6 +4170,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 更改资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3288,6 +4219,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 更改资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3300,32 +4238,57 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
- * *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
- * <!---->
- *     cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
- *        cn-shanghai: cn-shanghai-e, cn-shanghai-f
- *        cn-beijing: cn-beijing-i, cn-beijing-g
- *        cn-zhangjiakou: cn-zhangjiakou-b
- *        cn-shenzhen: cn-shenzhen-e
- *        cn-hongkong: cn-hongkong-b
- *        cn-shanghai-finance-1: cn-shanghai-finance-1z
- *        ap-northeast-1: ap-northeast-1a
- *        ap-southeast-1: ap-southeast-1c
- *        ap-southeast-3: ap-southeast-3b
- *        ap-southeast-5: ap-southeast-5b
- *        ap-south-1: ap-south-1b
- *        eu-central-1: eu-central-1a
- *        us-east-1: us-east-1a
- *        us-west-1: us-west-1b
- *
- * @param request CreateInstanceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateInstanceResponse
- */
+// Summary:
+//
+// Creates a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//
+// 	- For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+//
+// 	- When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+//
+// <!---->
+//
+//     cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+//
+//        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+//
+//        cn-beijing: cn-beijing-i, cn-beijing-g
+//
+//        cn-zhangjiakou: cn-zhangjiakou-b
+//
+//        cn-shenzhen: cn-shenzhen-e
+//
+//        cn-hongkong: cn-hongkong-b
+//
+//        cn-shanghai-finance-1: cn-shanghai-finance-1z
+//
+//        ap-northeast-1: ap-northeast-1a
+//
+//        ap-southeast-1: ap-southeast-1c
+//
+//        ap-southeast-3: ap-southeast-3b
+//
+//        ap-southeast-5: ap-southeast-5b
+//
+//        ap-south-1: ap-south-1b
+//
+//        eu-central-1: eu-central-1a
+//
+//        us-east-1: us-east-1a
+//
+//        us-west-1: us-west-1b
+//
+// @param request - CreateInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3432,30 +4395,53 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
- * *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
- * <!---->
- *     cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
- *        cn-shanghai: cn-shanghai-e, cn-shanghai-f
- *        cn-beijing: cn-beijing-i, cn-beijing-g
- *        cn-zhangjiakou: cn-zhangjiakou-b
- *        cn-shenzhen: cn-shenzhen-e
- *        cn-hongkong: cn-hongkong-b
- *        cn-shanghai-finance-1: cn-shanghai-finance-1z
- *        ap-northeast-1: ap-northeast-1a
- *        ap-southeast-1: ap-southeast-1c
- *        ap-southeast-3: ap-southeast-3b
- *        ap-southeast-5: ap-southeast-5b
- *        ap-south-1: ap-south-1b
- *        eu-central-1: eu-central-1a
- *        us-east-1: us-east-1a
- *        us-west-1: us-west-1b
- *
- * @param request CreateInstanceRequest
- * @return CreateInstanceResponse
- */
+// Summary:
+//
+// Creates a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//
+// 	- For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+//
+// 	- When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+//
+// <!---->
+//
+//     cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+//
+//        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+//
+//        cn-beijing: cn-beijing-i, cn-beijing-g
+//
+//        cn-zhangjiakou: cn-zhangjiakou-b
+//
+//        cn-shenzhen: cn-shenzhen-e
+//
+//        cn-hongkong: cn-hongkong-b
+//
+//        cn-shanghai-finance-1: cn-shanghai-finance-1z
+//
+//        ap-northeast-1: ap-northeast-1a
+//
+//        ap-southeast-1: ap-southeast-1c
+//
+//        ap-southeast-3: ap-southeast-3b
+//
+//        ap-southeast-5: ap-southeast-5b
+//
+//        ap-south-1: ap-south-1b
+//
+//        eu-central-1: eu-central-1a
+//
+//        us-east-1: us-east-1a
+//
+//        us-west-1: us-west-1b
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3468,17 +4454,27 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
- * *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
- * *   You can delete only pay-as-you-go instances.
- * *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
- *
- * @param request DeleteInstanceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteInstanceResponse
- */
+// Summary:
+//
+// Deletes a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+//
+// 	- After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+//
+// 	- You can delete only pay-as-you-go instances.
+//
+// 	- If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+//
+// @param request - DeleteInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *DeleteInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3513,15 +4509,23 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *Del
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
- * *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
- * *   You can delete only pay-as-you-go instances.
- * *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
- *
- * @param request DeleteInstanceRequest
- * @return DeleteInstanceResponse
- */
+// Summary:
+//
+// Deletes a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+//
+// 	- After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+//
+// 	- You can delete only pay-as-you-go instances.
+//
+// 	- If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(instanceId *string, request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3534,6 +4538,17 @@ func (client *Client) DeleteInstance(instanceId *string, request *DeleteInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭数据湖加速
+//
+// @param request - DisableHiveAccessRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableHiveAccessResponse
 func (client *Client) DisableHiveAccessWithOptions(instanceId *string, request *DisableHiveAccessRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableHiveAccessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3568,6 +4583,13 @@ func (client *Client) DisableHiveAccessWithOptions(instanceId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭数据湖加速
+//
+// @param request - DisableHiveAccessRequest
+//
+// @return DisableHiveAccessResponse
 func (client *Client) DisableHiveAccess(instanceId *string, request *DisableHiveAccessRequest) (_result *DisableHiveAccessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3580,6 +4602,17 @@ func (client *Client) DisableHiveAccess(instanceId *string, request *DisableHive
 	return _result, _err
 }
 
+// Summary:
+//
+// 打开数据湖加速
+//
+// @param request - EnableHiveAccessRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableHiveAccessResponse
 func (client *Client) EnableHiveAccessWithOptions(instanceId *string, request *EnableHiveAccessRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableHiveAccessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3614,6 +4647,13 @@ func (client *Client) EnableHiveAccessWithOptions(instanceId *string, request *E
 	return _result, _err
 }
 
+// Summary:
+//
+// 打开数据湖加速
+//
+// @param request - EnableHiveAccessRequest
+//
+// @return EnableHiveAccessResponse
 func (client *Client) EnableHiveAccess(instanceId *string, request *EnableHiveAccessRequest) (_result *EnableHiveAccessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3626,6 +4666,15 @@ func (client *Client) EnableHiveAccess(instanceId *string, request *EnableHiveAc
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of an instance.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3650,6 +4699,11 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of an instance.
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3662,6 +4716,15 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details of a virtual warehouse instance.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWarehouseDetailResponse
 func (client *Client) GetWarehouseDetailWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWarehouseDetailResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3686,6 +4749,11 @@ func (client *Client) GetWarehouseDetailWithOptions(instanceId *string, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details of a virtual warehouse instance.
+//
+// @return GetWarehouseDetailResponse
 func (client *Client) GetWarehouseDetail(instanceId *string) (_result *GetWarehouseDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3698,6 +4766,17 @@ func (client *Client) GetWarehouseDetail(instanceId *string) (_result *GetWareho
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances.
+//
+// @param request - ListInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3740,6 +4819,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances.
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3752,6 +4838,15 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of virtual warehouse instances.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWarehousesResponse
 func (client *Client) ListWarehousesWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWarehousesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3776,6 +4871,11 @@ func (client *Client) ListWarehousesWithOptions(instanceId *string, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of virtual warehouse instances.
+//
+// @return ListWarehousesResponse
 func (client *Client) ListWarehouses(instanceId *string) (_result *ListWarehousesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3788,17 +4888,27 @@ func (client *Client) ListWarehouses(instanceId *string) (_result *ListWarehouse
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
- * *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
- * *   You can renew only subscription instances.
- *
- * @param request RenewInstanceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return RenewInstanceResponse
- */
+// Summary:
+//
+// Manually renews a Hologres instance. You can enable monthly auto-renewal when you renew a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//
+// 	- For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+//
+// 	- For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+//
+// 	- You can renew only subscription instances.
+//
+// @param request - RenewInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithOptions(instanceId *string, request *RenewInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3837,15 +4947,23 @@ func (client *Client) RenewInstanceWithOptions(instanceId *string, request *Rene
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
- * *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
- * *   You can renew only subscription instances.
- *
- * @param request RenewInstanceRequest
- * @return RenewInstanceResponse
- */
+// Summary:
+//
+// Manually renews a Hologres instance. You can enable monthly auto-renewal when you renew a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//
+// 	- For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+//
+// 	- For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+//
+// 	- You can renew only subscription instances.
+//
+// @param request - RenewInstanceRequest
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstance(instanceId *string, request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3858,6 +4976,15 @@ func (client *Client) RenewInstance(instanceId *string, request *RenewInstanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartInstanceResponse
 func (client *Client) RestartInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3882,6 +5009,11 @@ func (client *Client) RestartInstanceWithOptions(instanceId *string, headers map
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启实例
+//
+// @return RestartInstanceResponse
 func (client *Client) RestartInstance(instanceId *string) (_result *RestartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3894,6 +5026,15 @@ func (client *Client) RestartInstance(instanceId *string) (_result *RestartInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes a suspended instance.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeInstanceResponse
 func (client *Client) ResumeInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3918,6 +5059,11 @@ func (client *Client) ResumeInstanceWithOptions(instanceId *string, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes a suspended instance.
+//
+// @return ResumeInstanceResponse
 func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3930,16 +5076,25 @@ func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanc
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
- * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
- *
- * @param request ScaleInstanceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ScaleInstanceResponse
- */
+// Summary:
+//
+// Changes the specifications and storage space of a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//
+// 	- For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+//
+// 	- During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+//
+// @param request - ScaleInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScaleInstanceResponse
 func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *ScaleInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3994,14 +5149,21 @@ func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *Scal
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
- * *   For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
- * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
- *
- * @param request ScaleInstanceRequest
- * @return ScaleInstanceResponse
- */
+// Summary:
+//
+// Changes the specifications and storage space of a Hologres instance.
+//
+// Description:
+//
+// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//
+// 	- For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+//
+// 	- During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+//
+// @param request - ScaleInstanceRequest
+//
+// @return ScaleInstanceResponse
 func (client *Client) ScaleInstance(instanceId *string, request *ScaleInstanceRequest) (_result *ScaleInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4014,6 +5176,15 @@ func (client *Client) ScaleInstance(instanceId *string, request *ScaleInstanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopInstanceResponse
 func (client *Client) StopInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4038,6 +5209,11 @@ func (client *Client) StopInstanceWithOptions(instanceId *string, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停实例
+//
+// @return StopInstanceResponse
 func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4050,6 +5226,17 @@ func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the name of an instance.
+//
+// @param request - UpdateInstanceNameRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceNameResponse
 func (client *Client) UpdateInstanceNameWithOptions(instanceId *string, request *UpdateInstanceNameRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4084,6 +5271,13 @@ func (client *Client) UpdateInstanceNameWithOptions(instanceId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the name of an instance.
+//
+// @param request - UpdateInstanceNameRequest
+//
+// @return UpdateInstanceNameResponse
 func (client *Client) UpdateInstanceName(instanceId *string, request *UpdateInstanceNameRequest) (_result *UpdateInstanceNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4096,6 +5290,17 @@ func (client *Client) UpdateInstanceName(instanceId *string, request *UpdateInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the network configuration of an instance.
+//
+// @param request - UpdateInstanceNetworkTypeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceNetworkTypeResponse
 func (client *Client) UpdateInstanceNetworkTypeWithOptions(instanceId *string, request *UpdateInstanceNetworkTypeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceNetworkTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4150,6 +5355,13 @@ func (client *Client) UpdateInstanceNetworkTypeWithOptions(instanceId *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the network configuration of an instance.
+//
+// @param request - UpdateInstanceNetworkTypeRequest
+//
+// @return UpdateInstanceNetworkTypeResponse
 func (client *Client) UpdateInstanceNetworkType(instanceId *string, request *UpdateInstanceNetworkTypeRequest) (_result *UpdateInstanceNetworkTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
