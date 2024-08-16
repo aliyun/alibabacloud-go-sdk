@@ -1990,7 +1990,8 @@ type DescribeColumnsRequest struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EngineType  *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The ID of the instance to which data in the column of the table belongs.
 	//
 	// > You can call the [DescribeInstances](~~DescribeRules~~) operation to query the IDs of instances.
@@ -2014,7 +2015,8 @@ type DescribeColumnsRequest struct {
 	// example:
 	//
 	// zh_cn
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ModelTagId *string `json:"ModelTagId,omitempty" xml:"ModelTagId,omitempty"`
 	// The search keyword. Fuzzy match is supported.
 	//
 	// For example, if you enter **test**, all columns whose names contain **test*	- are retrieved.
@@ -2035,6 +2037,7 @@ type DescribeColumnsRequest struct {
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
 	//
 	// 	- **1**: N/A
@@ -2094,7 +2097,9 @@ type DescribeColumnsRequest struct {
 	// example:
 	//
 	// it_table
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateRuleId *string `json:"TemplateRuleId,omitempty" xml:"TemplateRuleId,omitempty"`
 }
 
 func (s DescribeColumnsRequest) String() string {
@@ -2107,6 +2112,11 @@ func (s DescribeColumnsRequest) GoString() string {
 
 func (s *DescribeColumnsRequest) SetCurrentPage(v int32) *DescribeColumnsRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetEngineType(v string) *DescribeColumnsRequest {
+	s.EngineType = &v
 	return s
 }
 
@@ -2125,6 +2135,11 @@ func (s *DescribeColumnsRequest) SetLang(v string) *DescribeColumnsRequest {
 	return s
 }
 
+func (s *DescribeColumnsRequest) SetModelTagId(v string) *DescribeColumnsRequest {
+	s.ModelTagId = &v
+	return s
+}
+
 func (s *DescribeColumnsRequest) SetName(v string) *DescribeColumnsRequest {
 	s.Name = &v
 	return s
@@ -2137,6 +2152,11 @@ func (s *DescribeColumnsRequest) SetPageSize(v int32) *DescribeColumnsRequest {
 
 func (s *DescribeColumnsRequest) SetProductCode(v string) *DescribeColumnsRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetProductId(v string) *DescribeColumnsRequest {
+	s.ProductId = &v
 	return s
 }
 
@@ -2167,6 +2187,16 @@ func (s *DescribeColumnsRequest) SetTableId(v int64) *DescribeColumnsRequest {
 
 func (s *DescribeColumnsRequest) SetTableName(v string) *DescribeColumnsRequest {
 	s.TableName = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetTemplateId(v string) *DescribeColumnsRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetTemplateRuleId(v string) *DescribeColumnsRequest {
+	s.TemplateRuleId = &v
 	return s
 }
 
@@ -2309,6 +2339,7 @@ type DescribeColumnsResponseBodyItems struct {
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the revision record.
 	//
 	// example:
@@ -2464,6 +2495,11 @@ func (s *DescribeColumnsResponseBodyItems) SetOdpsRiskLevelValue(v int32) *Descr
 
 func (s *DescribeColumnsResponseBodyItems) SetProductCode(v string) *DescribeColumnsResponseBodyItems {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetRegionId(v string) *DescribeColumnsResponseBodyItems {
+	s.RegionId = &v
 	return s
 }
 
@@ -10544,6 +10580,7 @@ func (s *DescribeOssObjectDetailResponse) SetBody(v *DescribeOssObjectDetailResp
 }
 
 type DescribeOssObjectDetailV2Request struct {
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	// example:
 	//
 	// 12300
@@ -10551,7 +10588,10 @@ type DescribeOssObjectDetailV2Request struct {
 	// example:
 	//
 	// zh_cn
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ObjectKey       *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	TemplateId      *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeOssObjectDetailV2Request) String() string {
@@ -10562,6 +10602,11 @@ func (s DescribeOssObjectDetailV2Request) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeOssObjectDetailV2Request) SetBucketName(v string) *DescribeOssObjectDetailV2Request {
+	s.BucketName = &v
+	return s
+}
+
 func (s *DescribeOssObjectDetailV2Request) SetId(v string) *DescribeOssObjectDetailV2Request {
 	s.Id = &v
 	return s
@@ -10569,6 +10614,21 @@ func (s *DescribeOssObjectDetailV2Request) SetId(v string) *DescribeOssObjectDet
 
 func (s *DescribeOssObjectDetailV2Request) SetLang(v string) *DescribeOssObjectDetailV2Request {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2Request) SetObjectKey(v string) *DescribeOssObjectDetailV2Request {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2Request) SetServiceRegionId(v string) *DescribeOssObjectDetailV2Request {
+	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2Request) SetTemplateId(v int64) *DescribeOssObjectDetailV2Request {
+	s.TemplateId = &v
 	return s
 }
 
@@ -11875,6 +11935,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// rm-uf6b9897shxxx.test
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// RDS
@@ -11971,6 +12032,11 @@ func (s *DescribeParentInstanceResponseBodyItems) SetMemberAccount(v int64) *Des
 
 func (s *DescribeParentInstanceResponseBodyItems) SetParentId(v string) *DescribeParentInstanceResponseBodyItems {
 	s.ParentId = &v
+	return s
+}
+
+func (s *DescribeParentInstanceResponseBodyItems) SetRegionId(v string) *DescribeParentInstanceResponseBodyItems {
+	s.RegionId = &v
 	return s
 }
 
@@ -16491,6 +16557,10 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -16503,6 +16573,10 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelTagId)) {
+		query["ModelTagId"] = request.ModelTagId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -16513,6 +16587,10 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		query["ProductId"] = request.ProductId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevelId)) {
@@ -16537,6 +16615,14 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.TableName)) {
 		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateRuleId)) {
+		query["TemplateRuleId"] = request.TemplateRuleId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18299,12 +18385,28 @@ func (client *Client) DescribeOssObjectDetailV2WithOptions(request *DescribeOssO
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectKey)) {
+		query["ObjectKey"] = request.ObjectKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceRegionId)) {
+		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	req := &openapi.OpenApiRequest{
