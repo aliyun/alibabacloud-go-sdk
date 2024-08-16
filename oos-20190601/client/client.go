@@ -4508,6 +4508,7 @@ type DeleteExecutionsRequest struct {
 	//
 	// ["exec-xxx"]
 	ExecutionIds *string `json:"ExecutionIds,omitempty" xml:"ExecutionIds,omitempty"`
+	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -4526,6 +4527,11 @@ func (s DeleteExecutionsRequest) GoString() string {
 
 func (s *DeleteExecutionsRequest) SetExecutionIds(v string) *DeleteExecutionsRequest {
 	s.ExecutionIds = &v
+	return s
+}
+
+func (s *DeleteExecutionsRequest) SetForce(v bool) *DeleteExecutionsRequest {
+	s.Force = &v
 	return s
 }
 
@@ -25970,6 +25976,10 @@ func (client *Client) DeleteExecutionsWithOptions(request *DeleteExecutionsReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExecutionIds)) {
 		query["ExecutionIds"] = request.ExecutionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
