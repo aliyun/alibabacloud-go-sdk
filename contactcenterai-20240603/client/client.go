@@ -9,6 +9,404 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AnalyzeConversationRequest struct {
+	// This parameter is required.
+	Dialogue    *AnalyzeConversationRequestDialogue      `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
+	ExampleList []*AnalyzeConversationRequestExampleList `json:"exampleList,omitempty" xml:"exampleList,omitempty" type:"Repeated"`
+	Fields      []*AnalyzeConversationRequestFields      `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tyxmTurbo
+	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// This parameter is required.
+	ResultTypes       []*string                                    `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
+	SceneName         *string                                      `json:"sceneName,omitempty" xml:"sceneName,omitempty"`
+	ServiceInspection *AnalyzeConversationRequestServiceInspection `json:"serviceInspection,omitempty" xml:"serviceInspection,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+}
+
+func (s AnalyzeConversationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequest) SetDialogue(v *AnalyzeConversationRequestDialogue) *AnalyzeConversationRequest {
+	s.Dialogue = v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetExampleList(v []*AnalyzeConversationRequestExampleList) *AnalyzeConversationRequest {
+	s.ExampleList = v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetFields(v []*AnalyzeConversationRequestFields) *AnalyzeConversationRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetModelCode(v string) *AnalyzeConversationRequest {
+	s.ModelCode = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetResultTypes(v []*string) *AnalyzeConversationRequest {
+	s.ResultTypes = v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetSceneName(v string) *AnalyzeConversationRequest {
+	s.SceneName = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetServiceInspection(v *AnalyzeConversationRequestServiceInspection) *AnalyzeConversationRequest {
+	s.ServiceInspection = v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetStream(v bool) *AnalyzeConversationRequest {
+	s.Stream = &v
+	return s
+}
+
+type AnalyzeConversationRequestDialogue struct {
+	// This parameter is required.
+	Sentences []*AnalyzeConversationRequestDialogueSentences `json:"sentences,omitempty" xml:"sentences,omitempty" type:"Repeated"`
+	// example:
+	//
+	// session-01
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s AnalyzeConversationRequestDialogue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestDialogue) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestDialogue) SetSentences(v []*AnalyzeConversationRequestDialogueSentences) *AnalyzeConversationRequestDialogue {
+	s.Sentences = v
+	return s
+}
+
+func (s *AnalyzeConversationRequestDialogue) SetSessionId(v string) *AnalyzeConversationRequestDialogue {
+	s.SessionId = &v
+	return s
+}
+
+type AnalyzeConversationRequestDialogueSentences struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s AnalyzeConversationRequestDialogueSentences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestDialogueSentences) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestDialogueSentences) SetRole(v string) *AnalyzeConversationRequestDialogueSentences {
+	s.Role = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestDialogueSentences) SetText(v string) *AnalyzeConversationRequestDialogueSentences {
+	s.Text = &v
+	return s
+}
+
+type AnalyzeConversationRequestExampleList struct {
+	// This parameter is required.
+	Output *string `json:"output,omitempty" xml:"output,omitempty"`
+	// This parameter is required.
+	SentenceList []*AnalyzeConversationRequestExampleListSentenceList `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
+}
+
+func (s AnalyzeConversationRequestExampleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestExampleList) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestExampleList) SetOutput(v string) *AnalyzeConversationRequestExampleList {
+	s.Output = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestExampleList) SetSentenceList(v []*AnalyzeConversationRequestExampleListSentenceList) *AnalyzeConversationRequestExampleList {
+	s.SentenceList = v
+	return s
+}
+
+type AnalyzeConversationRequestExampleListSentenceList struct {
+	// example:
+	//
+	// chat-01
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s AnalyzeConversationRequestExampleListSentenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestExampleListSentenceList) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestExampleListSentenceList) SetChatId(v string) *AnalyzeConversationRequestExampleListSentenceList {
+	s.ChatId = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestExampleListSentenceList) SetRole(v string) *AnalyzeConversationRequestExampleListSentenceList {
+	s.Role = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestExampleListSentenceList) SetText(v string) *AnalyzeConversationRequestExampleListSentenceList {
+	s.Text = &v
+	return s
+}
+
+type AnalyzeConversationRequestFields struct {
+	// example:
+	//
+	// phoneNumber
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This parameter is required.
+	Desc       *string                                       `json:"desc,omitempty" xml:"desc,omitempty"`
+	EnumValues []*AnalyzeConversationRequestFieldsEnumValues `json:"enumValues,omitempty" xml:"enumValues,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s AnalyzeConversationRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestFields) SetCode(v string) *AnalyzeConversationRequestFields {
+	s.Code = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestFields) SetDesc(v string) *AnalyzeConversationRequestFields {
+	s.Desc = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestFields) SetEnumValues(v []*AnalyzeConversationRequestFieldsEnumValues) *AnalyzeConversationRequestFields {
+	s.EnumValues = v
+	return s
+}
+
+func (s *AnalyzeConversationRequestFields) SetName(v string) *AnalyzeConversationRequestFields {
+	s.Name = &v
+	return s
+}
+
+type AnalyzeConversationRequestFieldsEnumValues struct {
+	// This parameter is required.
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// This parameter is required.
+	EnumValue *string `json:"enumValue,omitempty" xml:"enumValue,omitempty"`
+}
+
+func (s AnalyzeConversationRequestFieldsEnumValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestFieldsEnumValues) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestFieldsEnumValues) SetDesc(v string) *AnalyzeConversationRequestFieldsEnumValues {
+	s.Desc = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestFieldsEnumValues) SetEnumValue(v string) *AnalyzeConversationRequestFieldsEnumValues {
+	s.EnumValue = &v
+	return s
+}
+
+type AnalyzeConversationRequestServiceInspection struct {
+	// This parameter is required.
+	InspectionContents []*AnalyzeConversationRequestServiceInspectionInspectionContents `json:"inspectionContents,omitempty" xml:"inspectionContents,omitempty" type:"Repeated"`
+	// This parameter is required.
+	InspectionIntroduction *string `json:"inspectionIntroduction,omitempty" xml:"inspectionIntroduction,omitempty"`
+	// This parameter is required.
+	SceneIntroduction *string `json:"sceneIntroduction,omitempty" xml:"sceneIntroduction,omitempty"`
+}
+
+func (s AnalyzeConversationRequestServiceInspection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestServiceInspection) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestServiceInspection) SetInspectionContents(v []*AnalyzeConversationRequestServiceInspectionInspectionContents) *AnalyzeConversationRequestServiceInspection {
+	s.InspectionContents = v
+	return s
+}
+
+func (s *AnalyzeConversationRequestServiceInspection) SetInspectionIntroduction(v string) *AnalyzeConversationRequestServiceInspection {
+	s.InspectionIntroduction = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestServiceInspection) SetSceneIntroduction(v string) *AnalyzeConversationRequestServiceInspection {
+	s.SceneIntroduction = &v
+	return s
+}
+
+type AnalyzeConversationRequestServiceInspectionInspectionContents struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s AnalyzeConversationRequestServiceInspectionInspectionContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestServiceInspectionInspectionContents) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestServiceInspectionInspectionContents) SetContent(v string) *AnalyzeConversationRequestServiceInspectionInspectionContents {
+	s.Content = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestServiceInspectionInspectionContents) SetTitle(v string) *AnalyzeConversationRequestServiceInspectionInspectionContents {
+	s.Title = &v
+	return s
+}
+
+type AnalyzeConversationResponseBody struct {
+	// example:
+	//
+	// InvalidUser.NotFound
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorInfo *string `json:"errorInfo,omitempty" xml:"errorInfo,omitempty"`
+	// example:
+	//
+	// stop
+	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// example:
+	//
+	// 968A8634-FA2C-5381-9B3E-C552DED7E8BF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	Text    *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s AnalyzeConversationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationResponseBody) SetErrorCode(v string) *AnalyzeConversationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetErrorInfo(v string) *AnalyzeConversationResponseBody {
+	s.ErrorInfo = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetFinishReason(v string) *AnalyzeConversationResponseBody {
+	s.FinishReason = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetRequestId(v string) *AnalyzeConversationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetSuccess(v bool) *AnalyzeConversationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetText(v string) *AnalyzeConversationResponseBody {
+	s.Text = &v
+	return s
+}
+
+type AnalyzeConversationResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AnalyzeConversationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AnalyzeConversationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationResponse) SetHeaders(v map[string]*string) *AnalyzeConversationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AnalyzeConversationResponse) SetStatusCode(v int32) *AnalyzeConversationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponse) SetBody(v *AnalyzeConversationResponseBody) *AnalyzeConversationResponse {
+	s.Body = v
+	return s
+}
+
 type RunCompletionRequest struct {
 	// This parameter is required.
 	Dialogue *RunCompletionRequestDialogue `json:"Dialogue,omitempty" xml:"Dialogue,omitempty" type:"Struct"`
@@ -468,6 +866,98 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据类型调用大模型
+//
+// @param request - AnalyzeConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeConversationResponse
+func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId *string, request *AnalyzeConversationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AnalyzeConversationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Dialogue)) {
+		body["dialogue"] = request.Dialogue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExampleList)) {
+		body["exampleList"] = request.ExampleList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelCode)) {
+		body["modelCode"] = request.ModelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultTypes)) {
+		body["resultTypes"] = request.ResultTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneName)) {
+		body["sceneName"] = request.SceneName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInspection)) {
+		body["serviceInspection"] = request.ServiceInspection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AnalyzeConversation"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/ccai/app/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/analyze_conversation"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AnalyzeConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据类型调用大模型
+//
+// @param request - AnalyzeConversationRequest
+//
+// @return AnalyzeConversationResponse
+func (client *Client) AnalyzeConversation(workspaceId *string, appId *string, request *AnalyzeConversationRequest) (_result *AnalyzeConversationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AnalyzeConversationResponse{}
+	_body, _err := client.AnalyzeConversationWithOptions(workspaceId, appId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
