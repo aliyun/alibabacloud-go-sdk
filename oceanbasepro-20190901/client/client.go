@@ -35304,14 +35304,10 @@ type DescribeTenantMetricsRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Deprecated
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// tfafd34fs****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// [tdak3nac****,tdakc42df****]
