@@ -16280,6 +16280,7 @@ type ExportInsightSpaceResponseBodyResult struct {
 	//
 	// Project
 	Category    *string `json:"category,omitempty" xml:"category,omitempty"`
+	CustomCode  *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
 	//
@@ -16331,6 +16332,11 @@ func (s ExportInsightSpaceResponseBodyResult) GoString() string {
 
 func (s *ExportInsightSpaceResponseBodyResult) SetCategory(v string) *ExportInsightSpaceResponseBodyResult {
 	s.Category = &v
+	return s
+}
+
+func (s *ExportInsightSpaceResponseBodyResult) SetCustomCode(v string) *ExportInsightSpaceResponseBodyResult {
+	s.CustomCode = &v
 	return s
 }
 
