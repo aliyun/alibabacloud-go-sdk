@@ -522,6 +522,7 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// PostPaid
 	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	GpuAcceleration *bool   `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
 	// This parameter is required.
 	//
@@ -597,6 +598,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetChargeType(v string) *CreateAndro
 	return s
 }
 
+func (s *CreateAndroidInstanceGroupRequest) SetClientToken(v string) *CreateAndroidInstanceGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *CreateAndroidInstanceGroupRequest) SetGpuAcceleration(v bool) *CreateAndroidInstanceGroupRequest {
 	s.GpuAcceleration = &v
 	return s
@@ -648,7 +654,8 @@ func (s *CreateAndroidInstanceGroupRequest) SetVSwitchId(v string) *CreateAndroi
 }
 
 type CreateAndroidInstanceGroupResponseBody struct {
-	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	InstanceGroupIds   []*string                                                   `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	InstanceGroupInfos []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 22365781890****
@@ -672,6 +679,11 @@ func (s *CreateAndroidInstanceGroupResponseBody) SetInstanceGroupIds(v []*string
 	return s
 }
 
+func (s *CreateAndroidInstanceGroupResponseBody) SetInstanceGroupInfos(v []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) *CreateAndroidInstanceGroupResponseBody {
+	s.InstanceGroupInfos = v
+	return s
+}
+
 func (s *CreateAndroidInstanceGroupResponseBody) SetOrderId(v string) *CreateAndroidInstanceGroupResponseBody {
 	s.OrderId = &v
 	return s
@@ -679,6 +691,29 @@ func (s *CreateAndroidInstanceGroupResponseBody) SetOrderId(v string) *CreateAnd
 
 func (s *CreateAndroidInstanceGroupResponseBody) SetRequestId(v string) *CreateAndroidInstanceGroupResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos struct {
+	InstanceGroupId *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) SetInstanceGroupId(v string) *CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) SetInstanceIds(v []*string) *CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos {
+	s.InstanceIds = v
 	return s
 }
 
@@ -842,6 +877,7 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateCustomImageRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// example:
 	//
 	// create for cc5g group auth rules test
@@ -868,6 +904,11 @@ func (s CreateCustomImageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCustomImageRequest) SetClientToken(v string) *CreateCustomImageRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *CreateCustomImageRequest) SetDescription(v string) *CreateCustomImageRequest {
 	s.Description = &v
 	return s
@@ -884,6 +925,7 @@ func (s *CreateCustomImageRequest) SetInstanceId(v string) *CreateCustomImageReq
 }
 
 type CreateCustomImageResponseBody struct {
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// example:
 	//
 	// 20393E53-8FF1-524C-B494-B478A5369733
@@ -896,6 +938,11 @@ func (s CreateCustomImageResponseBody) String() string {
 
 func (s CreateCustomImageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomImageResponseBody) SetImageId(v string) *CreateCustomImageResponseBody {
+	s.ImageId = &v
+	return s
 }
 
 func (s *CreateCustomImageResponseBody) SetRequestId(v string) *CreateCustomImageResponseBody {
@@ -1072,8 +1119,9 @@ type CreatePolicyGroupRequest struct {
 	// example:
 	//
 	// off
-	LocalDrive      *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	LocalDrive        *string                                    `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	NetRedirectPolicy *CreatePolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
+	PolicyGroupName   *string                                    `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	// example:
 	//
 	// 1280
@@ -1112,6 +1160,11 @@ func (s *CreatePolicyGroupRequest) SetLocalDrive(v string) *CreatePolicyGroupReq
 	return s
 }
 
+func (s *CreatePolicyGroupRequest) SetNetRedirectPolicy(v *CreatePolicyGroupRequestNetRedirectPolicy) *CreatePolicyGroupRequest {
+	s.NetRedirectPolicy = v
+	return s
+}
+
 func (s *CreatePolicyGroupRequest) SetPolicyGroupName(v string) *CreatePolicyGroupRequest {
 	s.PolicyGroupName = &v
 	return s
@@ -1123,6 +1176,135 @@ func (s *CreatePolicyGroupRequest) SetResolutionHeight(v int32) *CreatePolicyGro
 }
 
 func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGroupRequest {
+	s.ResolutionWidth = &v
+	return s
+}
+
+type CreatePolicyGroupRequestNetRedirectPolicy struct {
+	NetRedirect     *string                                                     `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	NetRedirectRule []*CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+}
+
+func (s CreatePolicyGroupRequestNetRedirectPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupRequestNetRedirectPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetNetRedirect(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.NetRedirect = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetNetRedirectRule(v []*CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.NetRedirectRule = v
+	return s
+}
+
+type CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule struct {
+	Policy   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetPolicy(v string) *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetRuleType(v string) *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule {
+	s.RuleType = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetTarget(v string) *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule {
+	s.Target = &v
+	return s
+}
+
+type CreatePolicyGroupShrinkRequest struct {
+	// example:
+	//
+	// off
+	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// example:
+	//
+	// readwrite
+	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// off
+	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// example:
+	//
+	// off
+	LocalDrive              *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
+	PolicyGroupName         *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+}
+
+func (s CreatePolicyGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetCameraRedirect(v string) *CreatePolicyGroupShrinkRequest {
+	s.CameraRedirect = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetClipboard(v string) *CreatePolicyGroupShrinkRequest {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetHtml5FileTransfer(v string) *CreatePolicyGroupShrinkRequest {
+	s.Html5FileTransfer = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetLocalDrive(v string) *CreatePolicyGroupShrinkRequest {
+	s.LocalDrive = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetNetRedirectPolicyShrink(v string) *CreatePolicyGroupShrinkRequest {
+	s.NetRedirectPolicyShrink = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetPolicyGroupName(v string) *CreatePolicyGroupShrinkRequest {
+	s.PolicyGroupName = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetResolutionHeight(v int32) *CreatePolicyGroupShrinkRequest {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetResolutionWidth(v int32) *CreatePolicyGroupShrinkRequest {
 	s.ResolutionWidth = &v
 	return s
 }
@@ -2009,7 +2191,8 @@ type DescribeAndroidInstancesRequest struct {
 	// example:
 	//
 	// ag-25nt4kk9whjh****
-	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceGroupId  *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// kp-5hh431emkpuoi****
@@ -2052,6 +2235,11 @@ func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceName(v string) *Desc
 
 func (s *DescribeAndroidInstancesRequest) SetInstanceGroupId(v string) *DescribeAndroidInstancesRequest {
 	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetInstanceGroupIds(v []*string) *DescribeAndroidInstancesRequest {
+	s.InstanceGroupIds = v
 	return s
 }
 
@@ -4607,6 +4795,7 @@ func (s *ImportKeyPairResponse) SetBody(v *ImportKeyPairResponseBody) *ImportKey
 type InstallAppRequest struct {
 	AppIdList           []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
 	InstanceGroupIdList []*string `json:"InstanceGroupIdList,omitempty" xml:"InstanceGroupIdList,omitempty" type:"Repeated"`
+	InstanceIdList      []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 }
 
 func (s InstallAppRequest) String() string {
@@ -4624,6 +4813,11 @@ func (s *InstallAppRequest) SetAppIdList(v []*string) *InstallAppRequest {
 
 func (s *InstallAppRequest) SetInstanceGroupIdList(v []*string) *InstallAppRequest {
 	s.InstanceGroupIdList = v
+	return s
+}
+
+func (s *InstallAppRequest) SetInstanceIdList(v []*string) *InstallAppRequest {
+	s.InstanceIdList = v
 	return s
 }
 
@@ -4781,7 +4975,8 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	// example:
 	//
 	// off
-	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	LocalDrive        *string                                                        `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	NetRedirectPolicy *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
 	// example:
 	//
 	// pg-9q6o8qpiy8opkj****
@@ -4830,6 +5025,11 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetLocalDrive(v string) *
 	return s
 }
 
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetNetRedirectPolicy(v *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) *ListPolicyGroupsResponseBodyPolicyGroupModel {
+	s.NetRedirectPolicy = v
+	return s
+}
+
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetPolicyGroupId(v string) *ListPolicyGroupsResponseBodyPolicyGroupModel {
 	s.PolicyGroupId = &v
 	return s
@@ -4847,6 +5047,58 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionHeigh
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth(v string) *ListPolicyGroupsResponseBodyPolicyGroupModel {
 	s.SessionResolutionWidth = &v
+	return s
+}
+
+type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
+	NetRedirect     *string                                                                         `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	NetRedirectRule []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetNetRedirect(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.NetRedirect = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetNetRedirectRule(v []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.NetRedirectRule = v
+	return s
+}
+
+type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule struct {
+	Policy   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) SetPolicy(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) SetRuleType(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule {
+	s.RuleType = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) SetTarget(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule {
+	s.Target = &v
 	return s
 }
 
@@ -5232,7 +5484,8 @@ type ModifyPolicyGroupRequest struct {
 	// example:
 	//
 	// off
-	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	LocalDrive        *string                                    `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	NetRedirectPolicy *ModifyPolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
 	// example:
 	//
 	// pg-4bi18ebi9tfjh****
@@ -5276,6 +5529,11 @@ func (s *ModifyPolicyGroupRequest) SetLocalDrive(v string) *ModifyPolicyGroupReq
 	return s
 }
 
+func (s *ModifyPolicyGroupRequest) SetNetRedirectPolicy(v *ModifyPolicyGroupRequestNetRedirectPolicy) *ModifyPolicyGroupRequest {
+	s.NetRedirectPolicy = v
+	return s
+}
+
 func (s *ModifyPolicyGroupRequest) SetPolicyGroupId(v string) *ModifyPolicyGroupRequest {
 	s.PolicyGroupId = &v
 	return s
@@ -5292,6 +5550,144 @@ func (s *ModifyPolicyGroupRequest) SetResolutionHeight(v int32) *ModifyPolicyGro
 }
 
 func (s *ModifyPolicyGroupRequest) SetResolutionWidth(v int32) *ModifyPolicyGroupRequest {
+	s.ResolutionWidth = &v
+	return s
+}
+
+type ModifyPolicyGroupRequestNetRedirectPolicy struct {
+	NetRedirect     *string                                                     `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	NetRedirectRule []*ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+}
+
+func (s ModifyPolicyGroupRequestNetRedirectPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyGroupRequestNetRedirectPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetNetRedirect(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.NetRedirect = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetNetRedirectRule(v []*ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.NetRedirectRule = v
+	return s
+}
+
+type ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule struct {
+	Policy   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetPolicy(v string) *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetRuleType(v string) *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule {
+	s.RuleType = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetTarget(v string) *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule {
+	s.Target = &v
+	return s
+}
+
+type ModifyPolicyGroupShrinkRequest struct {
+	// example:
+	//
+	// off
+	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// example:
+	//
+	// readwrite
+	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// off
+	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// example:
+	//
+	// off
+	LocalDrive              *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
+	// example:
+	//
+	// pg-4bi18ebi9tfjh****
+	PolicyGroupId   *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+}
+
+func (s ModifyPolicyGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetCameraRedirect(v string) *ModifyPolicyGroupShrinkRequest {
+	s.CameraRedirect = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetClipboard(v string) *ModifyPolicyGroupShrinkRequest {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetHtml5FileTransfer(v string) *ModifyPolicyGroupShrinkRequest {
+	s.Html5FileTransfer = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetLocalDrive(v string) *ModifyPolicyGroupShrinkRequest {
+	s.LocalDrive = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetNetRedirectPolicyShrink(v string) *ModifyPolicyGroupShrinkRequest {
+	s.NetRedirectPolicyShrink = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetPolicyGroupId(v string) *ModifyPolicyGroupShrinkRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetPolicyGroupName(v string) *ModifyPolicyGroupShrinkRequest {
+	s.PolicyGroupName = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetResolutionHeight(v int32) *ModifyPolicyGroupShrinkRequest {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetResolutionWidth(v int32) *ModifyPolicyGroupShrinkRequest {
 	s.ResolutionWidth = &v
 	return s
 }
@@ -6848,6 +7244,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 		query["ChargeType"] = request.ChargeType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
 		query["GpuAcceleration"] = request.GpuAcceleration
 	}
@@ -7024,6 +7424,10 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
@@ -7141,16 +7545,22 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 //
 // 创建策略
 //
-// @param request - CreatePolicyGroupRequest
+// @param tmpReq - CreatePolicyGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyGroupResponse
-func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreatePolicyGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NetRedirectPolicy)) {
+		request.NetRedirectPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetRedirectPolicy, tea.String("NetRedirectPolicy"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CameraRedirect)) {
 		body["CameraRedirect"] = request.CameraRedirect
@@ -7166,6 +7576,10 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
 		body["LocalDrive"] = request.LocalDrive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirectPolicyShrink)) {
+		body["NetRedirectPolicy"] = request.NetRedirectPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyGroupName)) {
@@ -7640,6 +8054,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceGroupId)) {
 		query["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupIds)) {
+		query["InstanceGroupIds"] = request.InstanceGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairId)) {
@@ -8697,6 +9115,10 @@ func (client *Client) InstallAppWithOptions(request *InstallAppRequest, runtime 
 		query["InstanceGroupIdList"] = request.InstanceGroupIdList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdList)) {
+		query["InstanceIdList"] = request.InstanceIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9082,16 +9504,22 @@ func (client *Client) ModifyKeyPairName(request *ModifyKeyPairNameRequest) (_res
 //
 // 修改policy
 //
-// @param request - ModifyPolicyGroupRequest
+// @param tmpReq - ModifyPolicyGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPolicyGroupResponse
-func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyPolicyGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyPolicyGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ModifyPolicyGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NetRedirectPolicy)) {
+		request.NetRedirectPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetRedirectPolicy, tea.String("NetRedirectPolicy"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CameraRedirect)) {
 		body["CameraRedirect"] = request.CameraRedirect
@@ -9107,6 +9535,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
 		body["LocalDrive"] = request.LocalDrive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirectPolicyShrink)) {
+		body["NetRedirectPolicy"] = request.NetRedirectPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
