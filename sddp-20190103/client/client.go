@@ -15486,6 +15486,180 @@ func (s *ModifyRuleStatusResponse) SetBody(v *ModifyRuleStatusResponseBody) *Mod
 	return s
 }
 
+type ScanOssObjectV1Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sddp-api-demo-bucket
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	ObjectKeyList []*string `json:"ObjectKeyList,omitempty" xml:"ObjectKeyList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s ScanOssObjectV1Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanOssObjectV1Request) GoString() string {
+	return s.String()
+}
+
+func (s *ScanOssObjectV1Request) SetBucketName(v string) *ScanOssObjectV1Request {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ScanOssObjectV1Request) SetLang(v string) *ScanOssObjectV1Request {
+	s.Lang = &v
+	return s
+}
+
+func (s *ScanOssObjectV1Request) SetObjectKeyList(v []*string) *ScanOssObjectV1Request {
+	s.ObjectKeyList = v
+	return s
+}
+
+func (s *ScanOssObjectV1Request) SetServiceRegionId(v string) *ScanOssObjectV1Request {
+	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *ScanOssObjectV1Request) SetTemplateId(v int64) *ScanOssObjectV1Request {
+	s.TemplateId = &v
+	return s
+}
+
+type ScanOssObjectV1ShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sddp-api-demo-bucket
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	ObjectKeyListShrink *string `json:"ObjectKeyList,omitempty" xml:"ObjectKeyList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s ScanOssObjectV1ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanOssObjectV1ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScanOssObjectV1ShrinkRequest) SetBucketName(v string) *ScanOssObjectV1ShrinkRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ScanOssObjectV1ShrinkRequest) SetLang(v string) *ScanOssObjectV1ShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ScanOssObjectV1ShrinkRequest) SetObjectKeyListShrink(v string) *ScanOssObjectV1ShrinkRequest {
+	s.ObjectKeyListShrink = &v
+	return s
+}
+
+func (s *ScanOssObjectV1ShrinkRequest) SetServiceRegionId(v string) *ScanOssObjectV1ShrinkRequest {
+	s.ServiceRegionId = &v
+	return s
+}
+
+func (s *ScanOssObjectV1ShrinkRequest) SetTemplateId(v int64) *ScanOssObjectV1ShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type ScanOssObjectV1ResponseBody struct {
+	// example:
+	//
+	// 268
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 7C3AC882-E5A8-4855-BE77-B6837B695EF1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScanOssObjectV1ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanOssObjectV1ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScanOssObjectV1ResponseBody) SetId(v int64) *ScanOssObjectV1ResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ScanOssObjectV1ResponseBody) SetRequestId(v string) *ScanOssObjectV1ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScanOssObjectV1Response struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ScanOssObjectV1ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ScanOssObjectV1Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanOssObjectV1Response) GoString() string {
+	return s.String()
+}
+
+func (s *ScanOssObjectV1Response) SetHeaders(v map[string]*string) *ScanOssObjectV1Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ScanOssObjectV1Response) SetStatusCode(v int32) *ScanOssObjectV1Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScanOssObjectV1Response) SetBody(v *ScanOssObjectV1ResponseBody) *ScanOssObjectV1Response {
+	s.Body = v
+	return s
+}
+
 type StopMaskingProcessRequest struct {
 	// The unique ID of the de-identification task. You can query the task ID by calling the [DescribeDataMaskingTasks](~~DescribeDataMaskingTasks~~) operation.
 	//
@@ -20095,6 +20269,88 @@ func (client *Client) ModifyRuleStatus(request *ModifyRuleStatusRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyRuleStatusResponse{}
 	_body, _err := client.ModifyRuleStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文件扫描任务
+//
+// @param tmpReq - ScanOssObjectV1Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScanOssObjectV1Response
+func (client *Client) ScanOssObjectV1WithOptions(tmpReq *ScanOssObjectV1Request, runtime *util.RuntimeOptions) (_result *ScanOssObjectV1Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ScanOssObjectV1ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ObjectKeyList)) {
+		request.ObjectKeyListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectKeyList, tea.String("ObjectKeyList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectKeyListShrink)) {
+		query["ObjectKeyList"] = request.ObjectKeyListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceRegionId)) {
+		query["ServiceRegionId"] = request.ServiceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScanOssObjectV1"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScanOssObjectV1Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文件扫描任务
+//
+// @param request - ScanOssObjectV1Request
+//
+// @return ScanOssObjectV1Response
+func (client *Client) ScanOssObjectV1(request *ScanOssObjectV1Request) (_result *ScanOssObjectV1Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScanOssObjectV1Response{}
+	_body, _err := client.ScanOssObjectV1WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
