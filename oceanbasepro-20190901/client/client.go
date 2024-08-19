@@ -10540,6 +10540,111 @@ func (s *DescribeAvailableZoneResponse) SetBody(v *DescribeAvailableZoneResponse
 	return s
 }
 
+type DescribeBackupEncryptedStringRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob4wibn0abo9uo
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// txxxxxxx
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeBackupEncryptedStringRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupEncryptedStringRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupEncryptedStringRequest) SetInstanceId(v string) *DescribeBackupEncryptedStringRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeBackupEncryptedStringRequest) SetTenantId(v string) *DescribeBackupEncryptedStringRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeBackupEncryptedStringResponseBody struct {
+	Data *DescribeBackupEncryptedStringResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// EE205C00-30E4-****-****-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeBackupEncryptedStringResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupEncryptedStringResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupEncryptedStringResponseBody) SetData(v *DescribeBackupEncryptedStringResponseBodyData) *DescribeBackupEncryptedStringResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeBackupEncryptedStringResponseBody) SetRequestId(v string) *DescribeBackupEncryptedStringResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeBackupEncryptedStringResponseBodyData struct {
+	BackupInfoJson *string `json:"BackupInfoJson,omitempty" xml:"BackupInfoJson,omitempty"`
+}
+
+func (s DescribeBackupEncryptedStringResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupEncryptedStringResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupEncryptedStringResponseBodyData) SetBackupInfoJson(v string) *DescribeBackupEncryptedStringResponseBodyData {
+	s.BackupInfoJson = &v
+	return s
+}
+
+type DescribeBackupEncryptedStringResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupEncryptedStringResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBackupEncryptedStringResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupEncryptedStringResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupEncryptedStringResponse) SetHeaders(v map[string]*string) *DescribeBackupEncryptedStringResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupEncryptedStringResponse) SetStatusCode(v int32) *DescribeBackupEncryptedStringResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupEncryptedStringResponse) SetBody(v *DescribeBackupEncryptedStringResponseBody) *DescribeBackupEncryptedStringResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeBackupSetDownloadLinkRequest struct {
 	// The ID of the download task corresponding to the target backup set.
 	//
@@ -13490,6 +13595,271 @@ func (s *DescribeInstanceSecurityConfigsResponse) SetBody(v *DescribeInstanceSec
 	return s
 }
 
+type DescribeInstanceSummaryRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeInstanceSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSummaryRequest) SetPageNumber(v int32) *DescribeInstanceSummaryRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryRequest) SetPageSize(v int32) *DescribeInstanceSummaryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeInstanceSummaryResponseBody struct {
+	InstanceSummary *DescribeInstanceSummaryResponseBodyInstanceSummary `json:"InstanceSummary,omitempty" xml:"InstanceSummary,omitempty" type:"Struct"`
+	// example:
+	//
+	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSummaryResponseBody) SetInstanceSummary(v *DescribeInstanceSummaryResponseBodyInstanceSummary) *DescribeInstanceSummaryResponseBody {
+	s.InstanceSummary = v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBody) SetRequestId(v string) *DescribeInstanceSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceSummaryResponseBodyInstanceSummary struct {
+	// example:
+	//
+	// 1
+	AlarmSummaryCount *int64 `json:"AlarmSummaryCount,omitempty" xml:"AlarmSummaryCount,omitempty"`
+	// example:
+	//
+	// 1
+	AnomalySQLCount *int64 `json:"AnomalySQLCount,omitempty" xml:"AnomalySQLCount,omitempty"`
+	// example:
+	//
+	// 1
+	ClusterInstancesCount *int64 `json:"ClusterInstancesCount,omitempty" xml:"ClusterInstancesCount,omitempty"`
+	// example:
+	//
+	// 1
+	ExpiredInstancesCount *int64 `json:"ExpiredInstancesCount,omitempty" xml:"ExpiredInstancesCount,omitempty"`
+	// example:
+	//
+	// 1
+	ImmediatelyExpiredInstancesCount *int64 `json:"ImmediatelyExpiredInstancesCount,omitempty" xml:"ImmediatelyExpiredInstancesCount,omitempty"`
+	// example:
+	//
+	// 2
+	InsufficientDiskInstancesCount *int64 `json:"InsufficientDiskInstancesCount,omitempty" xml:"InsufficientDiskInstancesCount,omitempty"`
+	// example:
+	//
+	// 1
+	OverLoadInstancesCount      *int64                                                                           `json:"OverLoadInstancesCount,omitempty" xml:"OverLoadInstancesCount,omitempty"`
+	RegionalInstanceSummaryList []*DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList `json:"RegionalInstanceSummaryList,omitempty" xml:"RegionalInstanceSummaryList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	RunningInstancesCount *int64 `json:"RunningInstancesCount,omitempty" xml:"RunningInstancesCount,omitempty"`
+	// example:
+	//
+	// 1
+	TenantInstancesCount *int64 `json:"TenantInstancesCount,omitempty" xml:"TenantInstancesCount,omitempty"`
+	// example:
+	//
+	// 3
+	TotalInstancesCount *int64 `json:"TotalInstancesCount,omitempty" xml:"TotalInstancesCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalOmsInstancesCount *int64 `json:"TotalOmsInstancesCount,omitempty" xml:"TotalOmsInstancesCount,omitempty"`
+}
+
+func (s DescribeInstanceSummaryResponseBodyInstanceSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSummaryResponseBodyInstanceSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetAlarmSummaryCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.AlarmSummaryCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetAnomalySQLCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.AnomalySQLCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetClusterInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.ClusterInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetExpiredInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.ExpiredInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetImmediatelyExpiredInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.ImmediatelyExpiredInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetInsufficientDiskInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.InsufficientDiskInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetOverLoadInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.OverLoadInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetRegionalInstanceSummaryList(v []*DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.RegionalInstanceSummaryList = v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetRunningInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.RunningInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetTenantInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.TenantInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetTotalInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.TotalInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetTotalOmsInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummary {
+	s.TotalOmsInstancesCount = &v
+	return s
+}
+
+type DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList struct {
+	// example:
+	//
+	// 1
+	ExpiredInstancesCount *string `json:"ExpiredInstancesCount,omitempty" xml:"ExpiredInstancesCount,omitempty"`
+	// example:
+	//
+	// 1
+	ImmediatelyExpiredInstancesCount *string `json:"ImmediatelyExpiredInstancesCount,omitempty" xml:"ImmediatelyExpiredInstancesCount,omitempty"`
+	// example:
+	//
+	// 1
+	RecentCreatedInstancesCount *string `json:"RecentCreatedInstancesCount,omitempty" xml:"RecentCreatedInstancesCount,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1
+	RunningInstancesCount *string `json:"RunningInstancesCount,omitempty" xml:"RunningInstancesCount,omitempty"`
+	// example:
+	//
+	// 3
+	TotalInstancesCount *string `json:"TotalInstancesCount,omitempty" xml:"TotalInstancesCount,omitempty"`
+}
+
+func (s DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetExpiredInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+	s.ExpiredInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetImmediatelyExpiredInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+	s.ImmediatelyExpiredInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetRecentCreatedInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+	s.RecentCreatedInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetRegion(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetRunningInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+	s.RunningInstancesCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetTotalInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+	s.TotalInstancesCount = &v
+	return s
+}
+
+type DescribeInstanceSummaryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSummaryResponse) SetHeaders(v map[string]*string) *DescribeInstanceSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponse) SetStatusCode(v int32) *DescribeInstanceSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceSummaryResponse) SetBody(v *DescribeInstanceSummaryResponseBody) *DescribeInstanceSummaryResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceTagsRequest struct {
 	// The list of cluster IDs.
 	//
@@ -14863,7 +15233,8 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 70
-	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Mem          *int64  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
 	// The billing method for the OceanBase cluster. Valid values:
 	//
 	// - PREPAY: the subscription billing method.
@@ -15120,6 +15491,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetMaintainTime(v string) *Desc
 
 func (s *DescribeInstancesResponseBodyInstances) SetMem(v int64) *DescribeInstancesResponseBodyInstances {
 	s.Mem = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetObRpmVersion(v string) *DescribeInstancesResponseBodyInstances {
+	s.ObRpmVersion = &v
 	return s
 }
 
@@ -29192,6 +29568,416 @@ func (s *DescribeRecommendIndexResponse) SetBody(v *DescribeRecommendIndexRespon
 	return s
 }
 
+type DescribeRestorableTenantsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsOnline *bool `json:"IsOnline,omitempty" xml:"IsOnline,omitempty"`
+	// example:
+	//
+	// true
+	IsRemote *bool `json:"IsRemote,omitempty" xml:"IsRemote,omitempty"`
+	// example:
+	//
+	// native_logical
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// from_time_point
+	RestoreMode *string `json:"RestoreMode,omitempty" xml:"RestoreMode,omitempty"`
+	// example:
+	//
+	// tenant
+	RestoreObjectType *string `json:"RestoreObjectType,omitempty" xml:"RestoreObjectType,omitempty"`
+	// example:
+	//
+	// bak-xxxxx
+	SetId *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
+}
+
+func (s DescribeRestorableTenantsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestorableTenantsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestorableTenantsRequest) SetInstanceId(v string) *DescribeRestorableTenantsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsRequest) SetIsOnline(v bool) *DescribeRestorableTenantsRequest {
+	s.IsOnline = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsRequest) SetIsRemote(v bool) *DescribeRestorableTenantsRequest {
+	s.IsRemote = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsRequest) SetMethod(v string) *DescribeRestorableTenantsRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsRequest) SetRestoreMode(v string) *DescribeRestorableTenantsRequest {
+	s.RestoreMode = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsRequest) SetRestoreObjectType(v string) *DescribeRestorableTenantsRequest {
+	s.RestoreObjectType = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsRequest) SetSetId(v string) *DescribeRestorableTenantsRequest {
+	s.SetId = &v
+	return s
+}
+
+type DescribeRestorableTenantsResponseBody struct {
+	// example:
+	//
+	// EE205C00-30E4-****-****-87E3A8A2AA0C
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tenants   []*DescribeRestorableTenantsResponseBodyTenants `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeRestorableTenantsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestorableTenantsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestorableTenantsResponseBody) SetRequestId(v string) *DescribeRestorableTenantsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBody) SetTenants(v []*DescribeRestorableTenantsResponseBodyTenants) *DescribeRestorableTenantsResponseBody {
+	s.Tenants = v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBody) SetTotalCount(v int32) *DescribeRestorableTenantsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeRestorableTenantsResponseBodyTenants struct {
+	// example:
+	//
+	// backup
+	BackupBucketName *string                                                   `json:"BackupBucketName,omitempty" xml:"BackupBucketName,omitempty"`
+	BackupSets       []*DescribeRestorableTenantsResponseBodyTenantsBackupSets `json:"BackupSets,omitempty" xml:"BackupSets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// objnf3b2****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// testCluster
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// 1
+	CpuNum *int64 `json:"CpuNum,omitempty" xml:"CpuNum,omitempty"`
+	// example:
+	//
+	// 100
+	MemoryNum *int64 `json:"MemoryNum,omitempty" xml:"MemoryNum,omitempty"`
+	// example:
+	//
+	// logical
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// 3.2.3.1-2022080510****
+	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
+	// example:
+	//
+	// tvd43v****
+	ObTenantId *string `json:"ObTenantId,omitempty" xml:"ObTenantId,omitempty"`
+	// example:
+	//
+	// 3.2.3.1
+	ObVersion *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// example:
+	//
+	// aaa
+	TenantAlias *string `json:"TenantAlias,omitempty" xml:"TenantAlias,omitempty"`
+	// example:
+	//
+	// 7
+	TenantDataBackupRemainDays *int32 `json:"TenantDataBackupRemainDays,omitempty" xml:"TenantDataBackupRemainDays,omitempty"`
+	// example:
+	//
+	// ob317v4uif****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// Oracle
+	TenantMode *int64 `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
+	// example:
+	//
+	// sbtest1
+	TenantName       *string                                                         `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	TimeIntervalList []*DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList `json:"TimeIntervalList,omitempty" xml:"TimeIntervalList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	UnitNum *int64 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	// example:
+	//
+	// 50
+	UsedDisk *int64 `json:"UsedDisk,omitempty" xml:"UsedDisk,omitempty"`
+}
+
+func (s DescribeRestorableTenantsResponseBodyTenants) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestorableTenantsResponseBodyTenants) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetBackupBucketName(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.BackupBucketName = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetBackupSets(v []*DescribeRestorableTenantsResponseBodyTenantsBackupSets) *DescribeRestorableTenantsResponseBodyTenants {
+	s.BackupSets = v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetClusterId(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetClusterName(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetCpuNum(v int64) *DescribeRestorableTenantsResponseBodyTenants {
+	s.CpuNum = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetMemoryNum(v int64) *DescribeRestorableTenantsResponseBodyTenants {
+	s.MemoryNum = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetMethod(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetObRpmVersion(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.ObRpmVersion = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetObTenantId(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.ObTenantId = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetObVersion(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.ObVersion = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetSourceRegion(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.SourceRegion = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantAlias(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.TenantAlias = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantDataBackupRemainDays(v int32) *DescribeRestorableTenantsResponseBodyTenants {
+	s.TenantDataBackupRemainDays = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantId(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantMode(v int64) *DescribeRestorableTenantsResponseBodyTenants {
+	s.TenantMode = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantName(v string) *DescribeRestorableTenantsResponseBodyTenants {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetTimeIntervalList(v []*DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList) *DescribeRestorableTenantsResponseBodyTenants {
+	s.TimeIntervalList = v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetUnitNum(v int64) *DescribeRestorableTenantsResponseBodyTenants {
+	s.UnitNum = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetUsedDisk(v int64) *DescribeRestorableTenantsResponseBodyTenants {
+	s.UsedDisk = &v
+	return s
+}
+
+type DescribeRestorableTenantsResponseBodyTenantsBackupSets struct {
+	// example:
+	//
+	// bak-4n****gacpa8
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// example:
+	//
+	// 2024-01-01\\"T\\"12:10:10.000\\"Z\\"
+	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	// example:
+	//
+	// bak-xxxxx
+	SetId *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	// example:
+	//
+	// t5********
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeRestorableTenantsResponseBodyTenantsBackupSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestorableTenantsResponseBodyTenantsBackupSets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsBackupSets) SetBackupSetId(v string) *DescribeRestorableTenantsResponseBodyTenantsBackupSets {
+	s.BackupSetId = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsBackupSets) SetCheckpoint(v string) *DescribeRestorableTenantsResponseBodyTenantsBackupSets {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsBackupSets) SetSetId(v string) *DescribeRestorableTenantsResponseBodyTenantsBackupSets {
+	s.SetId = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsBackupSets) SetTenantId(v string) *DescribeRestorableTenantsResponseBodyTenantsBackupSets {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList struct {
+	// example:
+	//
+	// 2023-03-13T02:43:03Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// true
+	FromArchive *bool `json:"FromArchive,omitempty" xml:"FromArchive,omitempty"`
+	// example:
+	//
+	// 2023-01-20T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// standard
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList) SetEndTime(v string) *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList) SetFromArchive(v bool) *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList {
+	s.FromArchive = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList) SetStartTime(v string) *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList) SetStorageType(v string) *DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList {
+	s.StorageType = &v
+	return s
+}
+
+type DescribeRestorableTenantsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRestorableTenantsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRestorableTenantsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestorableTenantsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestorableTenantsResponse) SetHeaders(v map[string]*string) *DescribeRestorableTenantsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponse) SetStatusCode(v int32) *DescribeRestorableTenantsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRestorableTenantsResponse) SetBody(v *DescribeRestorableTenantsResponseBody) *DescribeRestorableTenantsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSQLDetailsRequest struct {
 	// The SQL text.
 	//
@@ -33482,6 +34268,114 @@ func (s *DescribeSlowSQLListResponse) SetStatusCode(v int32) *DescribeSlowSQLLis
 }
 
 func (s *DescribeSlowSQLListResponse) SetBody(v *DescribeSlowSQLListResponseBody) *DescribeSlowSQLListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeStandbyCreateModeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob4wibn0abo9uo
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// txxxxxxx
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeStandbyCreateModeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStandbyCreateModeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStandbyCreateModeRequest) SetInstanceId(v string) *DescribeStandbyCreateModeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeStandbyCreateModeRequest) SetTenantId(v string) *DescribeStandbyCreateModeRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeStandbyCreateModeResponseBody struct {
+	Data *DescribeStandbyCreateModeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// EE205C00-30E4-****-****-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeStandbyCreateModeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStandbyCreateModeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStandbyCreateModeResponseBody) SetData(v *DescribeStandbyCreateModeResponseBodyData) *DescribeStandbyCreateModeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeStandbyCreateModeResponseBody) SetRequestId(v string) *DescribeStandbyCreateModeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeStandbyCreateModeResponseBodyData struct {
+	// example:
+	//
+	// BACKUP_RESTORE
+	CreateMode *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+}
+
+func (s DescribeStandbyCreateModeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStandbyCreateModeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStandbyCreateModeResponseBodyData) SetCreateMode(v string) *DescribeStandbyCreateModeResponseBodyData {
+	s.CreateMode = &v
+	return s
+}
+
+type DescribeStandbyCreateModeResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeStandbyCreateModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeStandbyCreateModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStandbyCreateModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStandbyCreateModeResponse) SetHeaders(v map[string]*string) *DescribeStandbyCreateModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStandbyCreateModeResponse) SetStatusCode(v int32) *DescribeStandbyCreateModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeStandbyCreateModeResponse) SetBody(v *DescribeStandbyCreateModeResponseBody) *DescribeStandbyCreateModeResponse {
 	s.Body = v
 	return s
 }
@@ -54006,6 +54900,70 @@ func (client *Client) DescribeAvailableZone(request *DescribeAvailableZoneReques
 
 // Summary:
 //
+// DescribeBackupEncryptedString
+//
+// @param request - DescribeBackupEncryptedStringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupEncryptedStringResponse
+func (client *Client) DescribeBackupEncryptedStringWithOptions(request *DescribeBackupEncryptedStringRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupEncryptedStringResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupEncryptedString"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupEncryptedStringResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeBackupEncryptedString
+//
+// @param request - DescribeBackupEncryptedStringRequest
+//
+// @return DescribeBackupEncryptedStringResponse
+func (client *Client) DescribeBackupEncryptedString(request *DescribeBackupEncryptedStringRequest) (_result *DescribeBackupEncryptedStringResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupEncryptedStringResponse{}
+	_body, _err := client.DescribeBackupEncryptedStringWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // You can call this operation to query the link for downloading a backup set of OceanBase Database.
 //
 // @param request - DescribeBackupSetDownloadLinkRequest
@@ -54549,6 +55507,70 @@ func (client *Client) DescribeInstanceSecurityConfigs(request *DescribeInstanceS
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSecurityConfigsResponse{}
 	_body, _err := client.DescribeInstanceSecurityConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作台首页获取用户集群数汇总。
+//
+// @param request - DescribeInstanceSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSummaryResponse
+func (client *Client) DescribeInstanceSummaryWithOptions(request *DescribeInstanceSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSummary"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作台首页获取用户集群数汇总。
+//
+// @param request - DescribeInstanceSummaryRequest
+//
+// @return DescribeInstanceSummaryResponse
+func (client *Client) DescribeInstanceSummary(request *DescribeInstanceSummaryRequest) (_result *DescribeInstanceSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceSummaryResponse{}
+	_body, _err := client.DescribeInstanceSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56376,6 +57398,90 @@ func (client *Client) DescribeRecommendIndex(request *DescribeRecommendIndexRequ
 
 // Summary:
 //
+// 获取可恢复租户
+//
+// @param request - DescribeRestorableTenantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestorableTenantsResponse
+func (client *Client) DescribeRestorableTenantsWithOptions(request *DescribeRestorableTenantsRequest, runtime *util.RuntimeOptions) (_result *DescribeRestorableTenantsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOnline)) {
+		body["IsOnline"] = request.IsOnline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRemote)) {
+		body["IsRemote"] = request.IsRemote
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		body["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreMode)) {
+		body["RestoreMode"] = request.RestoreMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreObjectType)) {
+		body["RestoreObjectType"] = request.RestoreObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SetId)) {
+		body["SetId"] = request.SetId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestorableTenants"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRestorableTenantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取可恢复租户
+//
+// @param request - DescribeRestorableTenantsRequest
+//
+// @return DescribeRestorableTenantsResponse
+func (client *Client) DescribeRestorableTenants(request *DescribeRestorableTenantsRequest) (_result *DescribeRestorableTenantsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRestorableTenantsResponse{}
+	_body, _err := client.DescribeRestorableTenantsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // The username.
 //
 // @param request - DescribeSQLDetailsRequest
@@ -57157,6 +58263,70 @@ func (client *Client) DescribeSlowSQLList(request *DescribeSlowSQLListRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlowSQLListResponse{}
 	_body, _err := client.DescribeSlowSQLListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeStandbyCreateMode
+//
+// @param request - DescribeStandbyCreateModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStandbyCreateModeResponse
+func (client *Client) DescribeStandbyCreateModeWithOptions(request *DescribeStandbyCreateModeRequest, runtime *util.RuntimeOptions) (_result *DescribeStandbyCreateModeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStandbyCreateMode"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeStandbyCreateModeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeStandbyCreateMode
+//
+// @param request - DescribeStandbyCreateModeRequest
+//
+// @return DescribeStandbyCreateModeResponse
+func (client *Client) DescribeStandbyCreateMode(request *DescribeStandbyCreateModeRequest) (_result *DescribeStandbyCreateModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStandbyCreateModeResponse{}
+	_body, _err := client.DescribeStandbyCreateModeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
