@@ -257,11 +257,13 @@ func (s *AISearchResponse) SetBody(v *AISearchResponseBody) *AISearchResponse {
 }
 
 type AISearchV2Request struct {
+	// This parameter is required.
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// example:
 	//
 	// 14199B5E-5906-52BD-800D-900268AEC9F6
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 
 func (s AISearchV2Request) String() string {
@@ -279,6 +281,11 @@ func (s *AISearchV2Request) SetQuery(v string) *AISearchV2Request {
 
 func (s *AISearchV2Request) SetSessionId(v string) *AISearchV2Request {
 	s.SessionId = &v
+	return s
+}
+
+func (s *AISearchV2Request) SetTimeRange(v string) *AISearchV2Request {
+	s.TimeRange = &v
 	return s
 }
 
@@ -519,6 +526,10 @@ func (client *Client) AISearchV2WithOptions(request *AISearchV2Request, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["timeRange"] = request.TimeRange
 	}
 
 	req := &openapi.OpenApiRequest{
