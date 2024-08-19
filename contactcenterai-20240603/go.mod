@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/contactcenterai-20240603/v2
+module github.com/alibabacloud-go/contactcenterai-20240603/v3
 
 go 1.14
 

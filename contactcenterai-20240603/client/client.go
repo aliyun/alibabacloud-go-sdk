@@ -11,9 +11,9 @@ import (
 
 type AnalyzeConversationRequest struct {
 	// This parameter is required.
-	Dialogue    *AnalyzeConversationRequestDialogue      `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
-	ExampleList []*AnalyzeConversationRequestExampleList `json:"exampleList,omitempty" xml:"exampleList,omitempty" type:"Repeated"`
-	Fields      []*AnalyzeConversationRequestFields      `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	Dialogue *AnalyzeConversationRequestDialogue   `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
+	Examples []*AnalyzeConversationRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	Fields   []*AnalyzeConversationRequestFields   `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// example:
 	//
 	// tyxmTurbo
@@ -43,8 +43,8 @@ func (s *AnalyzeConversationRequest) SetDialogue(v *AnalyzeConversationRequestDi
 	return s
 }
 
-func (s *AnalyzeConversationRequest) SetExampleList(v []*AnalyzeConversationRequestExampleList) *AnalyzeConversationRequest {
-	s.ExampleList = v
+func (s *AnalyzeConversationRequest) SetExamples(v []*AnalyzeConversationRequestExamples) *AnalyzeConversationRequest {
+	s.Examples = v
 	return s
 }
 
@@ -134,65 +134,58 @@ func (s *AnalyzeConversationRequestDialogueSentences) SetText(v string) *Analyze
 	return s
 }
 
-type AnalyzeConversationRequestExampleList struct {
+type AnalyzeConversationRequestExamples struct {
 	// This parameter is required.
 	Output *string `json:"output,omitempty" xml:"output,omitempty"`
 	// This parameter is required.
-	SentenceList []*AnalyzeConversationRequestExampleListSentenceList `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
+	Sentences []*AnalyzeConversationRequestExamplesSentences `json:"sentences,omitempty" xml:"sentences,omitempty" type:"Repeated"`
 }
 
-func (s AnalyzeConversationRequestExampleList) String() string {
+func (s AnalyzeConversationRequestExamples) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AnalyzeConversationRequestExampleList) GoString() string {
+func (s AnalyzeConversationRequestExamples) GoString() string {
 	return s.String()
 }
 
-func (s *AnalyzeConversationRequestExampleList) SetOutput(v string) *AnalyzeConversationRequestExampleList {
+func (s *AnalyzeConversationRequestExamples) SetOutput(v string) *AnalyzeConversationRequestExamples {
 	s.Output = &v
 	return s
 }
 
-func (s *AnalyzeConversationRequestExampleList) SetSentenceList(v []*AnalyzeConversationRequestExampleListSentenceList) *AnalyzeConversationRequestExampleList {
-	s.SentenceList = v
+func (s *AnalyzeConversationRequestExamples) SetSentences(v []*AnalyzeConversationRequestExamplesSentences) *AnalyzeConversationRequestExamples {
+	s.Sentences = v
 	return s
 }
 
-type AnalyzeConversationRequestExampleListSentenceList struct {
-	// example:
-	//
-	// chat-01
+type AnalyzeConversationRequestExamplesSentences struct {
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 	// This parameter is required.
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
 }
 
-func (s AnalyzeConversationRequestExampleListSentenceList) String() string {
+func (s AnalyzeConversationRequestExamplesSentences) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AnalyzeConversationRequestExampleListSentenceList) GoString() string {
+func (s AnalyzeConversationRequestExamplesSentences) GoString() string {
 	return s.String()
 }
 
-func (s *AnalyzeConversationRequestExampleListSentenceList) SetChatId(v string) *AnalyzeConversationRequestExampleListSentenceList {
+func (s *AnalyzeConversationRequestExamplesSentences) SetChatId(v string) *AnalyzeConversationRequestExamplesSentences {
 	s.ChatId = &v
 	return s
 }
 
-func (s *AnalyzeConversationRequestExampleListSentenceList) SetRole(v string) *AnalyzeConversationRequestExampleListSentenceList {
+func (s *AnalyzeConversationRequestExamplesSentences) SetRole(v string) *AnalyzeConversationRequestExamplesSentences {
 	s.Role = &v
 	return s
 }
 
-func (s *AnalyzeConversationRequestExampleListSentenceList) SetText(v string) *AnalyzeConversationRequestExampleListSentenceList {
+func (s *AnalyzeConversationRequestExamplesSentences) SetText(v string) *AnalyzeConversationRequestExamplesSentences {
 	s.Text = &v
 	return s
 }
@@ -894,8 +887,8 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 		body["dialogue"] = request.Dialogue
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExampleList)) {
-		body["exampleList"] = request.ExampleList
+	if !tea.BoolValue(util.IsUnset(request.Examples)) {
+		body["examples"] = request.Examples
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Fields)) {
