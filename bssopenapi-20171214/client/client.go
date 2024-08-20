@@ -48,6 +48,8 @@ type AddAccountRelationRequest struct {
 	//
 	// 	- CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
 	//
+	// The params[PermissionCodes, RoleCodes] can not be null at the same time.
+	//
 	// example:
 	//
 	// CHECK_TARGET_CONSUMPTION
@@ -182,7 +184,7 @@ func (s *AddAccountRelationResponseBody) SetSuccess(v bool) *AddAccountRelationR
 }
 
 type AddAccountRelationResponseBodyData struct {
-	// HostId
+	// The IP address of the request
 	//
 	// example:
 	//
@@ -2721,6 +2723,8 @@ type CreateSavingsPlansInstanceRequest struct {
 	//
 	// 2021-12-31T00:00:00Z
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	// The extended parameters.
+	//
 	// if can be null:
 	// true
 	ExtendMap map[string]*string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
@@ -2746,7 +2750,7 @@ type CreateSavingsPlansInstanceRequest struct {
 	//
 	// 0.1
 	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	// The unit of the service duration. This parameter is used together with the During parameter. Valid values:
+	// The unit of the subscription duration. This parameter is used together with Duration. Valid values:
 	//
 	// 	- Year
 	//
@@ -2784,7 +2788,7 @@ type CreateSavingsPlansInstanceRequest struct {
 	//
 	// 	- universal: general-purpose type
 	//
-	// 	- ecs: ECS compute type
+	// 	- ecs: Elastic Compute Service (ECS) compute type
 	//
 	// 	- elasticy: elastic type
 	//
@@ -2882,6 +2886,8 @@ type CreateSavingsPlansInstanceShrinkRequest struct {
 	//
 	// 2021-12-31T00:00:00Z
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	// The extended parameters.
+	//
 	// if can be null:
 	// true
 	ExtendMapShrink *string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
@@ -2907,7 +2913,7 @@ type CreateSavingsPlansInstanceShrinkRequest struct {
 	//
 	// 0.1
 	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	// The unit of the service duration. This parameter is used together with the During parameter. Valid values:
+	// The unit of the subscription duration. This parameter is used together with Duration. Valid values:
 	//
 	// 	- Year
 	//
@@ -2945,7 +2951,7 @@ type CreateSavingsPlansInstanceShrinkRequest struct {
 	//
 	// 	- universal: general-purpose type
 	//
-	// 	- ecs: ECS compute type
+	// 	- ecs: Elastic Compute Service (ECS) compute type
 	//
 	// 	- elasticy: elastic type
 	//
@@ -6179,7 +6185,12 @@ type DescribeInstanceBillRequest struct {
 	// CAESEgoQCg4KCm
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PipCode   *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// The code of the service. The code is the same as that in Cost Center.
+	//
+	// example:
+	//
+	// rds
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The code of the service.
 	//
 	// example:
@@ -10677,6 +10688,8 @@ func (s *DescribeResourcePackageProductResponse) SetBody(v *DescribeResourcePack
 }
 
 type DescribeResourceUsageDetailRequest struct {
+	// The ID of the account whose data you want to query. If you do not specify this parameter, the data of the current Alibaba Cloud account and its Resource Access Management (RAM) users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	//
 	// example:
 	//
 	// 123745698925000
@@ -10687,13 +10700,13 @@ type DescribeResourceUsageDetailRequest struct {
 	//
 	// 2021-01-02 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	// The maximum number of entries to return. Default value: 20. The maximum value is 300.
 	//
 	// example:
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more usage details can be queried.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If NextToken is empty, no next page exists.
 	//
 	// example:
 	//
@@ -10707,7 +10720,7 @@ type DescribeResourceUsageDetailRequest struct {
 	//
 	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The type of deduction plans whose usage details are queried. Valid values: RI and SCU.
+	// The type of deduction plan whose usage details are queried. Valid values: RI and SCU.
 	//
 	// This parameter is required.
 	//
@@ -10715,7 +10728,7 @@ type DescribeResourceUsageDetailRequest struct {
 	//
 	// RI
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// This parameter is required.
 	//
@@ -10769,7 +10782,7 @@ func (s *DescribeResourceUsageDetailRequest) SetStartPeriod(v string) *DescribeR
 }
 
 type DescribeResourceUsageDetailResponseBody struct {
-	// The status code.
+	// The response code.
 	//
 	// example:
 	//
@@ -10777,19 +10790,19 @@ type DescribeResourceUsageDetailResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeResourceUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -10839,7 +10852,7 @@ type DescribeResourceUsageDetailResponseBodyData struct {
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token of the next page.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
@@ -10882,15 +10895,15 @@ func (s *DescribeResourceUsageDetailResponseBodyData) SetTotalCount(v int32) *De
 }
 
 type DescribeResourceUsageDetailResponseBodyDataItems struct {
-	// The unit that is used to measure the resources deducted from deduction plans.
+	// The unit that is used to measure the resources that are deducted.
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	// The currency in which deduction plans were priced.
+	// The type of the currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount of the resources deducted from deduction plans.
+	// The amount of the deducted resources.
 	//
 	// example:
 	//
@@ -10908,7 +10921,7 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// linux
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The specifications of a deduction plan.
+	// The instance type.
 	//
 	// example:
 	//
@@ -10940,13 +10953,13 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// cn-hangzhou-dg-a01
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The fee of purchased deduction plans.
+	// The fee of the deduction plan.
 	//
 	// example:
 	//
 	// 0
 	ReservationCost *string `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
-	// The ID of a deduction plan.
+	// The ID of the deduction plan.
 	//
 	// example:
 	//
@@ -10970,21 +10983,21 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// Valid
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the state.
+	// The name of the status.
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	// The total capacity of deduction plans.
+	// The total capacity of the deduction plan.
 	//
 	// example:
 	//
 	// 2
 	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
-	// The usage of deduction plans.
+	// The usage rate of the deduction plan.
 	//
 	// example:
 	//
 	// 0.5
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
@@ -10996,13 +11009,13 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	//
 	// test@aliyun.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The code of the zone.
+	// The zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	// The zone.
+	// The code of the zone.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
@@ -11446,7 +11459,7 @@ func (s *DescribeResourceUsageTotalResponse) SetBody(v *DescribeResourceUsageTot
 }
 
 type DescribeSavingsPlansCoverageDetailRequest struct {
-	// The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	// The ID of the account for which you want to query coverage details.
 	//
 	// example:
 	//
@@ -11665,7 +11678,10 @@ type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
 	//
 	// 7th_generation_X86_group
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1906589291020438
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The pay-as-you-go cost.
 	//
 	// example:
@@ -12712,8 +12728,17 @@ type DescribeSplitItemBillRequest struct {
 	// example:
 	//
 	// i-kjhdskjgshfdlkjfdh
-	InstanceID       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// Specifies whether to filter bills if both the pretax gross amount and pretax amount are 0. Valid values:
+	//
+	// 	- false: does not filter bills.
+	//
+	// 	- true: filters bills.
+	//
+	// example:
+	//
+	// false
+	IsHideZeroCharge *bool `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	// The maximum number of entries to query. Default value: 20. Maximum value: 300.
 	//
 	// example:
@@ -12727,7 +12752,12 @@ type DescribeSplitItemBillRequest struct {
 	// CAESEgoQCg4KCmd
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PipCode   *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// The code of the service. The code is the same as that in Cost Center.
+	//
+	// example:
+	//
+	// rds
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The code of the service.
 	//
 	// example:
@@ -13663,11 +13693,11 @@ func (s *DescribeSplitItemBillResponse) SetBody(v *DescribeSplitItemBillResponse
 }
 
 type GetAccountRelationRequest struct {
-	// The ID of the financial relationship.
+	// The ID of the financial relationship. Value returned by calling the AddAccountRelation operation.
 	//
 	// example:
 	//
-	// Value returned by calling the AddAccountRelation operation
+	// 1234
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	// The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
 	//
@@ -13795,6 +13825,20 @@ type GetAccountRelationResponseBodyData struct {
 	// 2021-11-01
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the financial relationship between the management account and the member.
+	//
+	// - RELATED 【Association established】
+	//
+	// - CONFIRMING 【To be confirmed by the other party】
+	//
+	// - REJECTED 【Refused by the other party】
+	//
+	// - CONNECTION_CANCELED 【Financial sub-account cancel request】
+	//
+	// - CONNECTION_MASTER_CANCEL 【Financial master account cancel invitation】
+	//
+	// - CHANGE_CONFIRMING 【Relationship change to be confirmed】
+	//
+	// - INITIAL 【Initial new relationship status】
 	//
 	// example:
 	//
@@ -17232,7 +17276,12 @@ type QueryAccountBalanceResponseBodyData struct {
 	//
 	// 0.00
 	MybankCreditAmount *string `json:"MybankCreditAmount,omitempty" xml:"MybankCreditAmount,omitempty"`
-	QuotaLimit         *string `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
+	// The quota limit for eco customers.
+	//
+	// example:
+	//
+	// 10000.00
+	QuotaLimit *string `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
 }
 
 func (s QueryAccountBalanceResponseBodyData) String() string {
@@ -18335,13 +18384,13 @@ type QueryAccountTransactionsRequest struct {
 	//
 	// 2020-03-05T01:46:09Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// The number of the page to return.
+	// The number of the page to return. Default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return on each page. Default value is 20.
 	//
 	// example:
 	//
@@ -19435,9 +19484,7 @@ type QueryBillRequest struct {
 	//
 	// 	- PayAsYouGo
 	//
-	// **
-	//
-	// ****This parameter must be used together with the ProductCode parameter.
+	// This parameter must be used together with the ProductCode parameter.
 	//
 	// example:
 	//
@@ -20312,6 +20359,8 @@ type QueryBillOverviewResponseBodyDataItemsItem struct {
 	//
 	// 0
 	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	// The amount paid after the tax is deducted.
+	//
 	// example:
 	//
 	// 0
@@ -20414,6 +20463,8 @@ type QueryBillOverviewResponseBodyDataItemsItem struct {
 	//
 	// 100
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// The currency used for payment.
+	//
 	// example:
 	//
 	// USD
@@ -20430,6 +20481,8 @@ type QueryBillOverviewResponseBodyDataItemsItem struct {
 	//
 	// 100
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// The pretax amount paid in local currency.
+	//
 	// example:
 	//
 	// 0
@@ -20480,6 +20533,8 @@ type QueryBillOverviewResponseBodyDataItemsItem struct {
 	//
 	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// The tax.
+	//
 	// example:
 	//
 	// 0
@@ -21067,7 +21122,12 @@ type QueryCashCouponsResponseBodyDataCashCoupon struct {
 	//
 	// Q-b1485def8f04a
 	CashCouponNo *string `json:"CashCouponNo,omitempty" xml:"CashCouponNo,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the voucher.
+	//
+	// example:
+	//
+	// This voucher is used for testing product function
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the voucher took effect.
 	//
 	// example:
@@ -29665,6 +29725,12 @@ type QuerySavingsPlansDiscountRequest struct {
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
 	// The identifier of the language.
 	//
+	// Valid values:
+	//
+	// 	- EN: English.
+	//
+	// 	- ZH: Chinese.
+	//
 	// example:
 	//
 	// ZH
@@ -29687,7 +29753,7 @@ type QuerySavingsPlansDiscountRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The payment mode.
+	// The payment mode. Valid values: total: all upfront. half: half upfront. zero: no upfront.
 	//
 	// This parameter is required.
 	//
@@ -29706,8 +29772,9 @@ type QuerySavingsPlansDiscountRequest struct {
 	// example:
 	//
 	// ecs.g6
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The type of the savings plan.
+	Spec             *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	SpnCommodityCode *string `json:"SpnCommodityCode,omitempty" xml:"SpnCommodityCode,omitempty"`
+	// The type of the savings plan. Valid values: ecs: Elastic Compute Service (ECS) compute type. universal: general-purpose type.
 	//
 	// This parameter is required.
 	//
@@ -29770,6 +29837,11 @@ func (s *QuerySavingsPlansDiscountRequest) SetSpec(v string) *QuerySavingsPlansD
 	return s
 }
 
+func (s *QuerySavingsPlansDiscountRequest) SetSpnCommodityCode(v string) *QuerySavingsPlansDiscountRequest {
+	s.SpnCommodityCode = &v
+	return s
+}
+
 func (s *QuerySavingsPlansDiscountRequest) SetSpnType(v string) *QuerySavingsPlansDiscountRequest {
 	s.SpnType = &v
 	return s
@@ -29782,7 +29854,7 @@ type QuerySavingsPlansDiscountResponseBody struct {
 	//
 	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// data
 	Data *QuerySavingsPlansDiscountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -29914,7 +29986,12 @@ type QuerySavingsPlansDiscountResponseBodyDataItems struct {
 	// example:
 	//
 	// cn-zhangjiakou-na62-a01
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	// The type of the resource.
 	//
@@ -30018,6 +30095,7 @@ func (s *QuerySavingsPlansDiscountResponse) SetBody(v *QuerySavingsPlansDiscount
 }
 
 type QuerySavingsPlansInstanceRequest struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
@@ -30078,6 +30156,11 @@ func (s QuerySavingsPlansInstanceRequest) String() string {
 
 func (s QuerySavingsPlansInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySavingsPlansInstanceRequest) SetCommodityCode(v string) *QuerySavingsPlansInstanceRequest {
+	s.CommodityCode = &v
+	return s
 }
 
 func (s *QuerySavingsPlansInstanceRequest) SetEndTime(v string) *QuerySavingsPlansInstanceRequest {
@@ -35689,7 +35772,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-// 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+// For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+//
+// If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
 //
 // @param request - AddAccountRelationRequest
 //
@@ -35759,7 +35844,9 @@ func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationR
 //
 // Description:
 //
-// 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+// For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+//
+// If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
 //
 // @param request - AddAccountRelationRequest
 //
@@ -38297,6 +38384,10 @@ func (client *Client) DescribeSavingsPlansCoverageTotal(request *DescribeSavings
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage details of savings plans.
+//
 // @param request - DescribeSavingsPlansUsageDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38355,6 +38446,10 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage details of savings plans.
+//
 // @param request - DescribeSavingsPlansUsageDetailRequest
 //
 // @return DescribeSavingsPlansUsageDetailResponse
@@ -42009,6 +42104,10 @@ func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavings
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -43176,6 +43275,10 @@ func (client *Client) SetResellerUserAlarmThreshold(request *SetResellerUserAlar
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the quota ledger and consumption ledger.
+//
 // @param request - SetResellerUserQuotaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -43226,6 +43329,10 @@ func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQu
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the quota ledger and consumption ledger.
+//
 // @param request - SetResellerUserQuotaRequest
 //
 // @return SetResellerUserQuotaResponse
