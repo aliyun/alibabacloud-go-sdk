@@ -1122,6 +1122,159 @@ func (s *AddTextFeedbackResponse) SetBody(v *AddTextFeedbackResponseBody) *AddTe
 	return s
 }
 
+type BatchGetProjectTaskRequest struct {
+	TaskIdList []*string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetProjectTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetProjectTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetProjectTaskRequest) SetTaskIdList(v []*string) *BatchGetProjectTaskRequest {
+	s.TaskIdList = v
+	return s
+}
+
+type BatchGetProjectTaskShrinkRequest struct {
+	TaskIdListShrink *string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty"`
+}
+
+func (s BatchGetProjectTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetProjectTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetProjectTaskShrinkRequest) SetTaskIdListShrink(v string) *BatchGetProjectTaskShrinkRequest {
+	s.TaskIdListShrink = &v
+	return s
+}
+
+type BatchGetProjectTaskResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 11
+	RequestId  *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultList []*BatchGetProjectTaskResponseBodyResultList `json:"resultList,omitempty" xml:"resultList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetProjectTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetProjectTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetProjectTaskResponseBody) SetRequestId(v string) *BatchGetProjectTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponseBody) SetResultList(v []*BatchGetProjectTaskResponseBodyResultList) *BatchGetProjectTaskResponseBody {
+	s.ResultList = v
+	return s
+}
+
+type BatchGetProjectTaskResponseBodyResultList struct {
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 11
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// http
+	VideoDownloadUrl *string `json:"videoDownloadUrl,omitempty" xml:"videoDownloadUrl,omitempty"`
+	// example:
+	//
+	// 1000
+	VideoDuration *int32 `json:"videoDuration,omitempty" xml:"videoDuration,omitempty"`
+	// example:
+	//
+	// http
+	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+}
+
+func (s BatchGetProjectTaskResponseBodyResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetProjectTaskResponseBodyResultList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetProjectTaskResponseBodyResultList) SetErrorMsg(v string) *BatchGetProjectTaskResponseBodyResultList {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponseBodyResultList) SetStatus(v string) *BatchGetProjectTaskResponseBodyResultList {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponseBodyResultList) SetTaskId(v string) *BatchGetProjectTaskResponseBodyResultList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponseBodyResultList) SetVideoDownloadUrl(v string) *BatchGetProjectTaskResponseBodyResultList {
+	s.VideoDownloadUrl = &v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponseBodyResultList) SetVideoDuration(v int32) *BatchGetProjectTaskResponseBodyResultList {
+	s.VideoDuration = &v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponseBodyResultList) SetVideoUrl(v string) *BatchGetProjectTaskResponseBodyResultList {
+	s.VideoUrl = &v
+	return s
+}
+
+type BatchGetProjectTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetProjectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchGetProjectTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetProjectTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetProjectTaskResponse) SetHeaders(v map[string]*string) *BatchGetProjectTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponse) SetStatusCode(v int32) *BatchGetProjectTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchGetProjectTaskResponse) SetBody(v *BatchGetProjectTaskResponseBody) *BatchGetProjectTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CheckSessionRequest struct {
 	// example:
 	//
@@ -3619,6 +3772,76 @@ func (client *Client) AddTextFeedback(request *AddTextFeedbackRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &AddTextFeedbackResponse{}
 	_body, _err := client.AddTextFeedbackWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询项目信息
+//
+// @param tmpReq - BatchGetProjectTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetProjectTaskResponse
+func (client *Client) BatchGetProjectTaskWithOptions(tmpReq *BatchGetProjectTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGetProjectTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchGetProjectTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIdList)) {
+		request.TaskIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIdList, tea.String("taskIdList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskIdListShrink)) {
+		query["taskIdList"] = request.TaskIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchGetProjectTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/digitalHuman/project/batchGetProjectTask"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchGetProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询项目信息
+//
+// @param request - BatchGetProjectTaskRequest
+//
+// @return BatchGetProjectTaskResponse
+func (client *Client) BatchGetProjectTask(request *BatchGetProjectTaskRequest) (_result *BatchGetProjectTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchGetProjectTaskResponse{}
+	_body, _err := client.BatchGetProjectTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
