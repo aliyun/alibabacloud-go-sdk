@@ -1444,7 +1444,7 @@ type AddWatermarkRequest struct {
 	//
 	// example:
 	//
-	// {"Width":"55","Height":"55","Dx":"9","Dy":"9","ReferPos":"BottonLeft","Type":"Image"}
+	// {"Width":"55","Height":"55","Dx":"9","Dy":"9","ReferPos":"BottonLeft"}
 	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
 }
 
@@ -8526,6 +8526,241 @@ func (s *DescribeVodDomainLogResponse) SetStatusCode(v int32) *DescribeVodDomain
 }
 
 func (s *DescribeVodDomainLogResponse) SetBody(v *DescribeVodDomainLogResponseBody) *DescribeVodDomainLogResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainMax95BpsDataRequest struct {
+	// example:
+	//
+	// month
+	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 2017-01-12T13:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 2017-01-11T12:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2017-12-21T10:00:00Z
+	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+}
+
+func (s DescribeVodDomainMax95BpsDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainMax95BpsDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainMax95BpsDataRequest) SetCycle(v string) *DescribeVodDomainMax95BpsDataRequest {
+	s.Cycle = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataRequest) SetDomainName(v string) *DescribeVodDomainMax95BpsDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataRequest) SetEndTime(v string) *DescribeVodDomainMax95BpsDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataRequest) SetOwnerId(v int64) *DescribeVodDomainMax95BpsDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataRequest) SetStartTime(v string) *DescribeVodDomainMax95BpsDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataRequest) SetTimePoint(v string) *DescribeVodDomainMax95BpsDataRequest {
+	s.TimePoint = &v
+	return s
+}
+
+type DescribeVodDomainMax95BpsDataResponseBody struct {
+	DetailData *DescribeVodDomainMax95BpsDataResponseBodyDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Struct"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 16777590.28
+	DomesticMax95Bps *string `json:"DomesticMax95Bps,omitempty" xml:"DomesticMax95Bps,omitempty"`
+	// example:
+	//
+	// 2017-01-11T13:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 16777590.28
+	Max95Bps *string `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
+	// example:
+	//
+	// 0
+	OverseasMax95Bps *string `json:"OverseasMax95Bps,omitempty" xml:"OverseasMax95Bps,omitempty"`
+	// example:
+	//
+	// 25818875-5F78-4A*****F6-D7393642CA58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2017-01-11T12:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainMax95BpsDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainMax95BpsDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetDetailData(v *DescribeVodDomainMax95BpsDataResponseBodyDetailData) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.DetailData = v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetDomainName(v string) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetDomesticMax95Bps(v string) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.DomesticMax95Bps = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetEndTime(v string) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetMax95Bps(v string) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.Max95Bps = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetOverseasMax95Bps(v string) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.OverseasMax95Bps = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetRequestId(v string) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBody) SetStartTime(v string) *DescribeVodDomainMax95BpsDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainMax95BpsDataResponseBodyDetailData struct {
+	Max95Detail []*DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail `json:"Max95Detail,omitempty" xml:"Max95Detail,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainMax95BpsDataResponseBodyDetailData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainMax95BpsDataResponseBodyDetailData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailData) SetMax95Detail(v []*DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) *DescribeVodDomainMax95BpsDataResponseBodyDetailData {
+	s.Max95Detail = v
+	return s
+}
+
+type DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail struct {
+	// example:
+	//
+	// CN
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// example:
+	//
+	// 16777590.28
+	Max95Bps *float32 `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
+	// example:
+	//
+	// 2015-12-11T21:05:00Z
+	Max95BpsPeakTime *string `json:"Max95BpsPeakTime,omitempty" xml:"Max95BpsPeakTime,omitempty"`
+	// example:
+	//
+	// 2024-01-18 10:11:32
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) SetArea(v string) *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail {
+	s.Area = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) SetMax95Bps(v float32) *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail {
+	s.Max95Bps = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) SetMax95BpsPeakTime(v string) *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail {
+	s.Max95BpsPeakTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) SetTimeStamp(v string) *DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeVodDomainMax95BpsDataResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainMax95BpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainMax95BpsDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainMax95BpsDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainMax95BpsDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponse) SetStatusCode(v int32) *DescribeVodDomainMax95BpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainMax95BpsDataResponse) SetBody(v *DescribeVodDomainMax95BpsDataResponseBody) *DescribeVodDomainMax95BpsDataResponse {
 	s.Body = v
 	return s
 }
@@ -44150,6 +44385,54 @@ func (client *Client) DescribeVodDomainLog(request *DescribeVodDomainLogRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainLogResponse{}
 	_body, _err := client.DescribeVodDomainLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeVodDomainMax95BpsDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVodDomainMax95BpsDataResponse
+func (client *Client) DescribeVodDomainMax95BpsDataWithOptions(request *DescribeVodDomainMax95BpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainMax95BpsDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainMax95BpsData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainMax95BpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeVodDomainMax95BpsDataRequest
+//
+// @return DescribeVodDomainMax95BpsDataResponse
+func (client *Client) DescribeVodDomainMax95BpsData(request *DescribeVodDomainMax95BpsDataRequest) (_result *DescribeVodDomainMax95BpsDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainMax95BpsDataResponse{}
+	_body, _err := client.DescribeVodDomainMax95BpsDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
