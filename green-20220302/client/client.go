@@ -606,7 +606,8 @@ type DescribeImageModerationResultResponseBodyDataResult struct {
 	// example:
 	//
 	// 81.22
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The labels returned after the image moderation.
 	//
 	// example:
@@ -625,6 +626,11 @@ func (s DescribeImageModerationResultResponseBodyDataResult) GoString() string {
 
 func (s *DescribeImageModerationResultResponseBodyDataResult) SetConfidence(v float32) *DescribeImageModerationResultResponseBodyDataResult {
 	s.Confidence = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyDataResult) SetDescription(v string) *DescribeImageModerationResultResponseBodyDataResult {
+	s.Description = &v
 	return s
 }
 
@@ -1129,7 +1135,7 @@ func (s *DescribeUploadTokenResponse) SetBody(v *DescribeUploadTokenResponseBody
 }
 
 type DescribeUrlModerationResultRequest struct {
-	// The reqId field returned by the Url Async Moderation API.
+	// The ReqId field returned by an asynchronous URL moderation operation.
 	//
 	// example:
 	//
@@ -1151,7 +1157,7 @@ func (s *DescribeUrlModerationResultRequest) SetReqId(v string) *DescribeUrlMode
 }
 
 type DescribeUrlModerationResultResponseBody struct {
-	// The returned HTTP status code.
+	// The returned HTTP status code. The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -1202,21 +1208,21 @@ func (s *DescribeUrlModerationResultResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeUrlModerationResultResponseBodyData struct {
-	// The ID of the moderated object.
+	// The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
 	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Supplementary information.
+	// The supplementary information.
 	ExtraInfo *DescribeUrlModerationResultResponseBodyDataExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
-	// The reqId field returned by the Url Async Moderation API.
+	// The ReqId field returned by an asynchronous URL moderation operation.
 	//
 	// example:
 	//
 	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	// The results of url async moderation parameters such as the label parameter and the confidence parameter.
+	// The returned results.
 	Result []*DescribeUrlModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -1249,18 +1255,23 @@ func (s *DescribeUrlModerationResultResponseBodyData) SetResult(v []*DescribeUrl
 }
 
 type DescribeUrlModerationResultResponseBodyDataExtraInfo struct {
-	// ICP record number.
+	// The ICP number.
 	//
 	// example:
 	//
 	// xx
 	IcpNo *string `json:"IcpNo,omitempty" xml:"IcpNo,omitempty"`
-	// ICP filing type.
+	// The type of the ICP filing.
 	//
 	// example:
 	//
 	// xx
-	IcpType  *string `json:"IcpType,omitempty" xml:"IcpType,omitempty"`
+	IcpType *string `json:"IcpType,omitempty" xml:"IcpType,omitempty"`
+	// The type of site
+	//
+	// example:
+	//
+	// game
 	SiteType *string `json:"SiteType,omitempty" xml:"SiteType,omitempty"`
 }
 
@@ -1288,13 +1299,13 @@ func (s *DescribeUrlModerationResultResponseBodyDataExtraInfo) SetSiteType(v str
 }
 
 type DescribeUrlModerationResultResponseBodyDataResult struct {
-	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
 	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The labels returned after the url async moderation.
+	// The labels returned after the asynchronous URL moderation.
 	//
 	// example:
 	//
@@ -1631,13 +1642,51 @@ func (s *ImageAsyncModerationResponse) SetBody(v *ImageAsyncModerationResponseBo
 }
 
 type ImageModerationRequest struct {
-	// The type of the moderation service.
+	// The moderation services supported by Image Moderation 2.0. Valid values:
+	//
+	// 	- baselineCheck: common baseline moderation
+	//
+	// 	- baselineCheck_pro: common baseline moderation_Professional
+	//
+	// 	- baselineCheck_cb: common baseline moderation_For regions outside the Chinese mainland
+	//
+	// 	- tonalityImprove: content governance moderation
+	//
+	// 	- aigcCheck: AI-generated image identification
+	//
+	// 	- profilePhotoCheck: avatar image moderation
+	//
+	// 	- advertisingCheck: marketing material identification
+	//
+	// 	- liveStreamCheck: moderation of screenshots of videos and live streams
+	//
+	// Valid values:
+	//
+	// 	- liveStreamCheck: moderation of screenshots of videos and live streams
+	//
+	// 	- baselineCheck: common baseline moderation
+	//
+	// 	- aigcCheck: AI-generated image identification
+	//
+	// 	- baselineCheck_pro: common baseline moderation_Professional
+	//
+	// 	- advertisingCheck: marketing material identification
+	//
+	// 	- baselineCheck_cb: common baseline moderation_For regions outside the Chinese mainland
+	//
+	// 	- tonalityImprove: content governance moderation
+	//
+	// 	- profilePhotoCheck: avatar image moderation
 	//
 	// example:
 	//
 	// baselineCheck
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	// The parameters required by the moderation service. The value is a JSON string.
+	//
+	// 	- imageUrl: the URL of the object that you want to moderate. This parameter is required.
+	//
+	// 	- dataId: the ID of the object that you want to moderate. This parameter is optional.
 	//
 	// example:
 	//
@@ -1664,13 +1713,13 @@ func (s *ImageModerationRequest) SetServiceParameters(v string) *ImageModeration
 }
 
 type ImageModerationResponseBody struct {
-	// The returned HTTP status code.
+	// The returned HTTP status code. The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The moderation results.
 	Data *ImageModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned in response to the request.
 	//
@@ -1678,7 +1727,7 @@ type ImageModerationResponseBody struct {
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID.
+	// The request ID, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -1717,13 +1766,15 @@ func (s *ImageModerationResponseBody) SetRequestId(v string) *ImageModerationRes
 type ImageModerationResponseBodyData struct {
 	// The ID of the moderated object.
 	//
+	// >  If you specify the dataId parameter in the request, the value of the dataId parameter is returned in the response.
+	//
 	// example:
 	//
 	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// Auxiliary reference information.
 	Ext *ImageModerationResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	// The results of image moderation parameters such as the label parameter and the confidence parameter.
+	// The results of image moderation parameters such as the label parameter and the confidence parameter, which are an array structure.
 	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Risk Level.
 	//
@@ -2078,8 +2129,9 @@ type ImageModerationResponseBodyDataExtPublicFigure struct {
 	// example:
 	//
 	// xx
-	FigureName *string                                                   `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
-	Location   []*ImageModerationResponseBodyDataExtPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
+	FigureName *string `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
+	// the data array of location info
+	Location []*ImageModerationResponseBodyDataExtPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
 }
 
 func (s ImageModerationResponseBodyDataExtPublicFigure) String() string {
@@ -2106,9 +2158,29 @@ func (s *ImageModerationResponseBodyDataExtPublicFigure) SetLocation(v []*ImageM
 }
 
 type ImageModerationResponseBodyDataExtPublicFigureLocation struct {
+	// The height
+	//
+	// example:
+	//
+	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The weight
+	//
+	// example:
+	//
+	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// X coordinate
+	//
+	// example:
+	//
+	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate
+	//
+	// example:
+	//
+	// 22
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -2339,8 +2411,9 @@ type ImageModerationResponseBodyDataResult struct {
 	// example:
 	//
 	// 81.22
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The labels returned after the image moderation.
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The labels returned after the image moderation. Multiple risk labels and the corresponding scores of confidence levels may be returned for an image.
 	//
 	// example:
 	//
@@ -2358,6 +2431,11 @@ func (s ImageModerationResponseBodyDataResult) GoString() string {
 
 func (s *ImageModerationResponseBodyDataResult) SetConfidence(v float32) *ImageModerationResponseBodyDataResult {
 	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataResult) SetDescription(v string) *ImageModerationResponseBodyDataResult {
+	s.Description = &v
 	return s
 }
 
@@ -4748,7 +4826,15 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 
 // Summary:
 //
-// 查询 url 检测结果
+// Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+//
+// Description:
+//
+//   Billing: This operation is free of charge.
+//
+// 	- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+//
+// 	- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeUrlModerationResultRequest
 //
@@ -4790,7 +4876,15 @@ func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUr
 
 // Summary:
 //
-// 查询 url 检测结果
+// Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+//
+// Description:
+//
+//   Billing: This operation is free of charge.
+//
+// 	- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+//
+// 	- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeUrlModerationResultRequest
 //
@@ -4936,7 +5030,11 @@ func (client *Client) ImageAsyncModeration(request *ImageAsyncModerationRequest)
 
 // Summary:
 //
-// 图片审核
+// Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
 //
 // @param request - ImageModerationRequest
 //
@@ -4982,7 +5080,11 @@ func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest
 
 // Summary:
 //
-// 图片审核
+// Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
 //
 // @param request - ImageModerationRequest
 //
