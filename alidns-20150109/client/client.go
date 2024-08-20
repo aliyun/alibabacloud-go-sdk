@@ -26573,7 +26573,8 @@ type DescribeInternetDnsLogsResponseBodyLogsLog struct {
 	// example:
 	//
 	// 1709196249000
-	LogTime *int64 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	LogTime  *int64  `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// example:
 	//
 	// example.com
@@ -26621,6 +26622,11 @@ func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetDnsMsgId(v string) *Desc
 
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetLogTime(v int64) *DescribeInternetDnsLogsResponseBodyLogsLog {
 	s.LogTime = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetProtocol(v string) *DescribeInternetDnsLogsResponseBodyLogsLog {
+	s.Protocol = &v
 	return s
 }
 
