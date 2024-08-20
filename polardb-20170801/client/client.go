@@ -9260,6 +9260,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// pc-pz51ziv48317b2880
 	SourceDBCluster *string `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty"`
+	SourceRegionId  *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
 	//
 	// example:
@@ -9585,6 +9586,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetServerlessType(v string) *De
 
 func (s *DescribeDBClusterAttributeResponseBody) SetSourceDBCluster(v string) *DescribeDBClusterAttributeResponseBody {
 	s.SourceDBCluster = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetSourceRegionId(v string) *DescribeDBClusterAttributeResponseBody {
+	s.SourceRegionId = &v
 	return s
 }
 
