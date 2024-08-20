@@ -98,6 +98,99 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CreateHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 32
+	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_warehouse
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoloWarehouseRequest) SetCpu(v string) *CreateHoloWarehouseRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateHoloWarehouseRequest) SetName(v string) *CreateHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoloWarehouseResponseBody) SetData(v bool) *CreateHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateHoloWarehouseResponseBody) SetRequestId(v string) *CreateHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHoloWarehouseResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoloWarehouseResponse) SetHeaders(v map[string]*string) *CreateHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHoloWarehouseResponse) SetStatusCode(v int32) *CreateHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHoloWarehouseResponse) SetBody(v *CreateHoloWarehouseResponseBody) *CreateHoloWarehouseResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
 	// Specifies whether to enable auto-payment. Default value: true. Valid values:
 	//
@@ -555,6 +648,88 @@ func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse 
 }
 
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_warehouse
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DeleteHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHoloWarehouseRequest) SetName(v string) *DeleteHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+type DeleteHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHoloWarehouseResponseBody) SetData(v bool) *DeleteHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteHoloWarehouseResponseBody) SetRequestId(v string) *DeleteHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHoloWarehouseResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHoloWarehouseResponse) SetHeaders(v map[string]*string) *DeleteHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHoloWarehouseResponse) SetStatusCode(v int32) *DeleteHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHoloWarehouseResponse) SetBody(v *DeleteHoloWarehouseResponseBody) *DeleteHoloWarehouseResponse {
 	s.Body = v
 	return s
 }
@@ -2874,6 +3049,181 @@ func (s *ListWarehousesResponse) SetBody(v *ListWarehousesResponseBody) *ListWar
 	return s
 }
 
+type RebalanceHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_oss
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s RebalanceHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebalanceHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebalanceHoloWarehouseRequest) SetName(v string) *RebalanceHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+type RebalanceHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C0EA5844-AB00-5653-8711-CD9FD1798412
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebalanceHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebalanceHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebalanceHoloWarehouseResponseBody) SetData(v string) *RebalanceHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RebalanceHoloWarehouseResponseBody) SetRequestId(v string) *RebalanceHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebalanceHoloWarehouseResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebalanceHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RebalanceHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebalanceHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebalanceHoloWarehouseResponse) SetHeaders(v map[string]*string) *RebalanceHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebalanceHoloWarehouseResponse) SetStatusCode(v int32) *RebalanceHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebalanceHoloWarehouseResponse) SetBody(v *RebalanceHoloWarehouseResponseBody) *RebalanceHoloWarehouseResponse {
+	s.Body = v
+	return s
+}
+
+type RenameHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_warehouse
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// new_name
+	NewWarehouseName *string `json:"newWarehouseName,omitempty" xml:"newWarehouseName,omitempty"`
+}
+
+func (s RenameHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenameHoloWarehouseRequest) SetName(v string) *RenameHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *RenameHoloWarehouseRequest) SetNewWarehouseName(v string) *RenameHoloWarehouseRequest {
+	s.NewWarehouseName = &v
+	return s
+}
+
+type RenameHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenameHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenameHoloWarehouseResponseBody) SetData(v bool) *RenameHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RenameHoloWarehouseResponseBody) SetRequestId(v string) *RenameHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenameHoloWarehouseResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenameHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RenameHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenameHoloWarehouseResponse) SetHeaders(v map[string]*string) *RenameHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenameHoloWarehouseResponse) SetStatusCode(v int32) *RenameHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenameHoloWarehouseResponse) SetBody(v *RenameHoloWarehouseResponseBody) *RenameHoloWarehouseResponse {
+	s.Body = v
+	return s
+}
+
 type RenewInstanceRequest struct {
 	// Specifies whether to enable monthly auto-renewal. The default value is false. Valid values:
 	//
@@ -3072,6 +3422,88 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 	return s
 }
 
+type RestartHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_warehouse
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s RestartHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartHoloWarehouseRequest) SetName(v string) *RestartHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+type RestartHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestartHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartHoloWarehouseResponseBody) SetData(v bool) *RestartHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RestartHoloWarehouseResponseBody) SetRequestId(v string) *RestartHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestartHoloWarehouseResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestartHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartHoloWarehouseResponse) SetHeaders(v map[string]*string) *RestartHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartHoloWarehouseResponse) SetStatusCode(v int32) *RestartHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartHoloWarehouseResponse) SetBody(v *RestartHoloWarehouseResponseBody) *RestartHoloWarehouseResponse {
+	s.Body = v
+	return s
+}
+
 type RestartInstanceResponseBody struct {
 	// Indicates whether the operation was successful.
 	//
@@ -3196,6 +3628,88 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 	return s
 }
 
+type ResumeHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_warehouse
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ResumeHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeHoloWarehouseRequest) SetName(v string) *ResumeHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+type ResumeHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResumeHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeHoloWarehouseResponseBody) SetData(v bool) *ResumeHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ResumeHoloWarehouseResponseBody) SetRequestId(v string) *ResumeHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResumeHoloWarehouseResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResumeHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResumeHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeHoloWarehouseResponse) SetHeaders(v map[string]*string) *ResumeHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeHoloWarehouseResponse) SetStatusCode(v int32) *ResumeHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeHoloWarehouseResponse) SetBody(v *ResumeHoloWarehouseResponseBody) *ResumeHoloWarehouseResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeInstanceResponseBody struct {
 	// The returned result, which indicates whether the operation was successful.
 	//
@@ -3298,6 +3812,99 @@ func (s *ResumeInstanceResponse) SetStatusCode(v int32) *ResumeInstanceResponse 
 }
 
 func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ScaleHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 64
+	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_warehouse
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ScaleHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleHoloWarehouseRequest) SetCpu(v int64) *ScaleHoloWarehouseRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ScaleHoloWarehouseRequest) SetName(v string) *ScaleHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+type ScaleHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScaleHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleHoloWarehouseResponseBody) SetData(v bool) *ScaleHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ScaleHoloWarehouseResponseBody) SetRequestId(v string) *ScaleHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScaleHoloWarehouseResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ScaleHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ScaleHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleHoloWarehouseResponse) SetHeaders(v map[string]*string) *ScaleHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScaleHoloWarehouseResponse) SetStatusCode(v int32) *ScaleHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScaleHoloWarehouseResponse) SetBody(v *ScaleHoloWarehouseResponseBody) *ScaleHoloWarehouseResponse {
 	s.Body = v
 	return s
 }
@@ -3718,6 +4325,88 @@ func (s *StopInstanceResponse) SetStatusCode(v int32) *StopInstanceResponse {
 }
 
 func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendHoloWarehouseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_warehouse
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s SuspendHoloWarehouseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendHoloWarehouseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendHoloWarehouseRequest) SetName(v string) *SuspendHoloWarehouseRequest {
+	s.Name = &v
+	return s
+}
+
+type SuspendHoloWarehouseResponseBody struct {
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SuspendHoloWarehouseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendHoloWarehouseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendHoloWarehouseResponseBody) SetData(v string) *SuspendHoloWarehouseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SuspendHoloWarehouseResponseBody) SetRequestId(v string) *SuspendHoloWarehouseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SuspendHoloWarehouseResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendHoloWarehouseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SuspendHoloWarehouseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendHoloWarehouseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendHoloWarehouseResponse) SetHeaders(v map[string]*string) *SuspendHoloWarehouseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendHoloWarehouseResponse) SetStatusCode(v int32) *SuspendHoloWarehouseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendHoloWarehouseResponse) SetBody(v *SuspendHoloWarehouseResponseBody) *SuspendHoloWarehouseResponse {
 	s.Body = v
 	return s
 }
@@ -4240,6 +4929,74 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
+// 创建计算组
+//
+// @param request - CreateHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHoloWarehouseResponse
+func (client *Client) CreateHoloWarehouseWithOptions(instanceId *string, request *CreateHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/createHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建计算组
+//
+// @param request - CreateHoloWarehouseRequest
+//
+// @return CreateHoloWarehouseResponse
+func (client *Client) CreateHoloWarehouse(instanceId *string, request *CreateHoloWarehouseRequest) (_result *CreateHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateHoloWarehouseResponse{}
+	_body, _err := client.CreateHoloWarehouseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Hologres instance.
 //
 // Description:
@@ -4447,6 +5204,70 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	headers := make(map[string]*string)
 	_result = &CreateInstanceResponse{}
 	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除计算组
+//
+// @param request - DeleteHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHoloWarehouseResponse
+func (client *Client) DeleteHoloWarehouseWithOptions(instanceId *string, request *DeleteHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/deleteHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除计算组
+//
+// @param request - DeleteHoloWarehouseRequest
+//
+// @return DeleteHoloWarehouseResponse
+func (client *Client) DeleteHoloWarehouse(instanceId *string, request *DeleteHoloWarehouseRequest) (_result *DeleteHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteHoloWarehouseResponse{}
+	_body, _err := client.DeleteHoloWarehouseWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4890,6 +5711,138 @@ func (client *Client) ListWarehouses(instanceId *string) (_result *ListWarehouse
 
 // Summary:
 //
+// 停止计算组
+//
+// @param request - RebalanceHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebalanceHoloWarehouseResponse
+func (client *Client) RebalanceHoloWarehouseWithOptions(instanceId *string, request *RebalanceHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RebalanceHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebalanceHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/rebalanceHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebalanceHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - RebalanceHoloWarehouseRequest
+//
+// @return RebalanceHoloWarehouseResponse
+func (client *Client) RebalanceHoloWarehouse(instanceId *string, request *RebalanceHoloWarehouseRequest) (_result *RebalanceHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RebalanceHoloWarehouseResponse{}
+	_body, _err := client.RebalanceHoloWarehouseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - RenameHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenameHoloWarehouseResponse
+func (client *Client) RenameHoloWarehouseWithOptions(instanceId *string, request *RenameHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenameHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewWarehouseName)) {
+		body["newWarehouseName"] = request.NewWarehouseName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenameHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/renameHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenameHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - RenameHoloWarehouseRequest
+//
+// @return RenameHoloWarehouseResponse
+func (client *Client) RenameHoloWarehouse(instanceId *string, request *RenameHoloWarehouseRequest) (_result *RenameHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RenameHoloWarehouseResponse{}
+	_body, _err := client.RenameHoloWarehouseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Manually renews a Hologres instance. You can enable monthly auto-renewal when you renew a Hologres instance.
 //
 // Description:
@@ -4978,6 +5931,70 @@ func (client *Client) RenewInstance(instanceId *string, request *RenewInstanceRe
 
 // Summary:
 //
+// 停止计算组
+//
+// @param request - RestartHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartHoloWarehouseResponse
+func (client *Client) RestartHoloWarehouseWithOptions(instanceId *string, request *RestartHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestartHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/restartHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - RestartHoloWarehouseRequest
+//
+// @return RestartHoloWarehouseResponse
+func (client *Client) RestartHoloWarehouse(instanceId *string, request *RestartHoloWarehouseRequest) (_result *RestartHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RestartHoloWarehouseResponse{}
+	_body, _err := client.RestartHoloWarehouseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 重启实例
 //
 // @param headers - map
@@ -5028,6 +6045,70 @@ func (client *Client) RestartInstance(instanceId *string) (_result *RestartInsta
 
 // Summary:
 //
+// 停止计算组
+//
+// @param request - ResumeHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeHoloWarehouseResponse
+func (client *Client) ResumeHoloWarehouseWithOptions(instanceId *string, request *ResumeHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/resumeHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - ResumeHoloWarehouseRequest
+//
+// @return ResumeHoloWarehouseResponse
+func (client *Client) ResumeHoloWarehouse(instanceId *string, request *ResumeHoloWarehouseRequest) (_result *ResumeHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeHoloWarehouseResponse{}
+	_body, _err := client.ResumeHoloWarehouseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resumes a suspended instance.
 //
 // @param headers - map
@@ -5069,6 +6150,74 @@ func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanc
 	headers := make(map[string]*string)
 	_result = &ResumeInstanceResponse{}
 	_body, _err := client.ResumeInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - ScaleHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScaleHoloWarehouseResponse
+func (client *Client) ScaleHoloWarehouseWithOptions(instanceId *string, request *ScaleHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScaleHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/scaleHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScaleHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - ScaleHoloWarehouseRequest
+//
+// @return ScaleHoloWarehouseResponse
+func (client *Client) ScaleHoloWarehouse(instanceId *string, request *ScaleHoloWarehouseRequest) (_result *ScaleHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ScaleHoloWarehouseResponse{}
+	_body, _err := client.ScaleHoloWarehouseWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5219,6 +6368,70 @@ func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceRes
 	headers := make(map[string]*string)
 	_result = &StopInstanceResponse{}
 	_body, _err := client.StopInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - SuspendHoloWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendHoloWarehouseResponse
+func (client *Client) SuspendHoloWarehouseWithOptions(instanceId *string, request *SuspendHoloWarehouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SuspendHoloWarehouseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendHoloWarehouse"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/suspendHoloWarehouse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendHoloWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止计算组
+//
+// @param request - SuspendHoloWarehouseRequest
+//
+// @return SuspendHoloWarehouseResponse
+func (client *Client) SuspendHoloWarehouse(instanceId *string, request *SuspendHoloWarehouseRequest) (_result *SuspendHoloWarehouseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SuspendHoloWarehouseResponse{}
+	_body, _err := client.SuspendHoloWarehouseWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
