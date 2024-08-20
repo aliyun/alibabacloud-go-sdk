@@ -25986,6 +25986,7 @@ type ModifyAuditLogConfigRequest struct {
 	//
 	// amv-t4nj8619bz2w3****
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	EngineType   *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
@@ -26017,6 +26018,11 @@ func (s *ModifyAuditLogConfigRequest) SetAuditLogStatus(v string) *ModifyAuditLo
 
 func (s *ModifyAuditLogConfigRequest) SetDBClusterId(v string) *ModifyAuditLogConfigRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyAuditLogConfigRequest) SetEngineType(v string) *ModifyAuditLogConfigRequest {
+	s.EngineType = &v
 	return s
 }
 
@@ -38586,6 +38592,10 @@ func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogCon
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
