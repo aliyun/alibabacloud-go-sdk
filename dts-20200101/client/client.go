@@ -6093,6 +6093,7 @@ type CreateDtsInstanceRequest struct {
 	//
 	// cn-hangzhou
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	DtsRegion         *string `json:"DtsRegion,omitempty" xml:"DtsRegion,omitempty"`
 	// The number of DTS units (DUs) that are assigned to a DTS task that is run on a DTS dedicated cluster. Valid values: **1*	- to **100**.
 	//
 	// >
@@ -6308,6 +6309,11 @@ func (s *CreateDtsInstanceRequest) SetDestinationEndpointEngineName(v string) *C
 
 func (s *CreateDtsInstanceRequest) SetDestinationRegion(v string) *CreateDtsInstanceRequest {
 	s.DestinationRegion = &v
+	return s
+}
+
+func (s *CreateDtsInstanceRequest) SetDtsRegion(v string) *CreateDtsInstanceRequest {
+	s.DtsRegion = &v
 	return s
 }
 
@@ -48115,6 +48121,10 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationRegion)) {
 		query["DestinationRegion"] = request.DestinationRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsRegion)) {
+		query["DtsRegion"] = request.DtsRegion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Du)) {
