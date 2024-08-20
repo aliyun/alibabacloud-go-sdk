@@ -579,6 +579,7 @@ type Task struct {
 	ExtraArtifactIds       []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
 	ExtraSparkSubmitParams *string   `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
 	Files                  []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	Fusion                 *bool     `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// This parameter is required.
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
 	// This parameter is required.
@@ -695,6 +696,11 @@ func (s *Task) SetExtraSparkSubmitParams(v string) *Task {
 
 func (s *Task) SetFiles(v []*string) *Task {
 	s.Files = v
+	return s
+}
+
+func (s *Task) SetFusion(v bool) *Task {
+	s.Fusion = &v
 	return s
 }
 
@@ -927,7 +933,9 @@ func (s *TaskSnapshot) SetVersion(v string) *TaskSnapshot {
 
 type Template struct {
 	// This parameter is required.
-	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
+	Creator             *int64  `json:"creator,omitempty" xml:"creator,omitempty"`
+	DisplaySparkVersion *string `json:"displaySparkVersion,omitempty" xml:"displaySparkVersion,omitempty"`
+	Fusion              *bool   `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// This parameter is required.
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
 	// This parameter is required.
@@ -962,6 +970,16 @@ func (s Template) GoString() string {
 
 func (s *Template) SetCreator(v int64) *Template {
 	s.Creator = &v
+	return s
+}
+
+func (s *Template) SetDisplaySparkVersion(v string) *Template {
+	s.DisplaySparkVersion = &v
+	return s
+}
+
+func (s *Template) SetFusion(v bool) *Template {
+	s.Fusion = &v
 	return s
 }
 
@@ -1730,7 +1748,7 @@ func (s *GetSqlStatementRequest) SetRegionId(v string) *GetSqlStatementRequest {
 }
 
 type GetSqlStatementResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *GetSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -2424,7 +2442,8 @@ type ListJobRunsResponseBodyJobRuns struct {
 	// example:
 	//
 	// 1509789347011222
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Creator               *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	// The end time of the job.
 	//
 	// example:
@@ -2437,6 +2456,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	Fusion                  *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The information about Spark Driver.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The job ID.
@@ -2512,6 +2532,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetCreator(v string) *ListJobRunsRespon
 	return s
 }
 
+func (s *ListJobRunsResponseBodyJobRuns) SetDisplayReleaseVersion(v string) *ListJobRunsResponseBodyJobRuns {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
 func (s *ListJobRunsResponseBodyJobRuns) SetEndTime(v int64) *ListJobRunsResponseBodyJobRuns {
 	s.EndTime = &v
 	return s
@@ -2519,6 +2544,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetEndTime(v int64) *ListJobRunsRespons
 
 func (s *ListJobRunsResponseBodyJobRuns) SetExecutionTimeoutSeconds(v int32) *ListJobRunsResponseBodyJobRuns {
 	s.ExecutionTimeoutSeconds = &v
+	return s
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) SetFusion(v bool) *ListJobRunsResponseBodyJobRuns {
+	s.Fusion = &v
 	return s
 }
 
@@ -2794,7 +2824,9 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	// Spark 3.3.1
 	CommunityVersion *string `json:"communityVersion,omitempty" xml:"communityVersion,omitempty"`
 	// The CPU architectures.
-	CpuArchitectures []*string `json:"cpuArchitectures,omitempty" xml:"cpuArchitectures,omitempty" type:"Repeated"`
+	CpuArchitectures      []*string `json:"cpuArchitectures,omitempty" xml:"cpuArchitectures,omitempty" type:"Repeated"`
+	DisplayReleaseVersion *string   `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	Fusion                *bool     `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -2848,6 +2880,16 @@ func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetCommunityVersion(v s
 
 func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetCpuArchitectures(v []*string) *ListReleaseVersionsResponseBodyReleaseVersions {
 	s.CpuArchitectures = v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetDisplayReleaseVersion(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetFusion(v bool) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.Fusion = &v
 	return s
 }
 
@@ -3051,8 +3093,10 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	AutoStartConfiguration *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// The automatic termination configurations.
 	AutoStopConfiguration *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	DisplayReleaseVersion *string                                                              `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	Domain                *string                                                              `json:"domain,omitempty" xml:"domain,omitempty"`
 	DraftId               *string                                                              `json:"draftId,omitempty" xml:"draftId,omitempty"`
+	Fusion                *bool                                                                `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	Kind                  *string                                                              `json:"kind,omitempty" xml:"kind,omitempty"`
 	// The name of the SQL Compute.
 	//
@@ -3125,6 +3169,11 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetAutoStopConfiguratio
 	return s
 }
 
+func (s *ListSessionClustersResponseBodySessionClusters) SetDisplayReleaseVersion(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
 func (s *ListSessionClustersResponseBodySessionClusters) SetDomain(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.Domain = &v
 	return s
@@ -3132,6 +3181,11 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetDomain(v string) *Li
 
 func (s *ListSessionClustersResponseBodySessionClusters) SetDraftId(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.DraftId = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetFusion(v bool) *ListSessionClustersResponseBodySessionClusters {
+	s.Fusion = &v
 	return s
 }
 
@@ -3852,6 +3906,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// default
 	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
+	DlfType      *string `json:"dlfType,omitempty" xml:"dlfType,omitempty"`
 	// The subscription period. This parameter is required only if the paymentType parameter is set to Subscription.
 	//
 	// example:
@@ -3964,6 +4019,11 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetCreateTime(v int64) *ListWorks
 
 func (s *ListWorkspacesResponseBodyWorkspaces) SetDlfCatalogId(v string) *ListWorkspacesResponseBodyWorkspaces {
 	s.DlfCatalogId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetDlfType(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.DlfType = &v
 	return s
 }
 
@@ -4120,12 +4180,14 @@ type StartJobRunRequest struct {
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
 	// The advanced configurations of Spark.
 	ConfigurationOverrides *StartJobRunRequestConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
+	DisplayReleaseVersion  *string                                   `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	// The timeout period of the job.
 	//
 	// example:
 	//
 	// 100
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	Fusion                  *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The information about Spark Driver.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The job ID.
@@ -4185,8 +4247,18 @@ func (s *StartJobRunRequest) SetConfigurationOverrides(v *StartJobRunRequestConf
 	return s
 }
 
+func (s *StartJobRunRequest) SetDisplayReleaseVersion(v string) *StartJobRunRequest {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
 func (s *StartJobRunRequest) SetExecutionTimeoutSeconds(v int32) *StartJobRunRequest {
 	s.ExecutionTimeoutSeconds = &v
+	return s
+}
+
+func (s *StartJobRunRequest) SetFusion(v bool) *StartJobRunRequest {
+	s.Fusion = &v
 	return s
 }
 
@@ -5363,8 +5435,16 @@ func (client *Client) StartJobRunWithOptions(workspaceId *string, request *Start
 		body["configurationOverrides"] = request.ConfigurationOverrides
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DisplayReleaseVersion)) {
+		body["displayReleaseVersion"] = request.DisplayReleaseVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExecutionTimeoutSeconds)) {
 		body["executionTimeoutSeconds"] = request.ExecutionTimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fusion)) {
+		body["fusion"] = request.Fusion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobDriver)) {
