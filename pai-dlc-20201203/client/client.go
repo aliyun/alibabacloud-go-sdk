@@ -3143,6 +3143,7 @@ func (s *StatusTransitionItem) SetStatus(v string) *StatusTransitionItem {
 }
 
 type Tensorboard struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// datasource-test
@@ -3220,6 +3221,11 @@ func (s Tensorboard) String() string {
 
 func (s Tensorboard) GoString() string {
 	return s.String()
+}
+
+func (s *Tensorboard) SetAccessibility(v string) *Tensorboard {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *Tensorboard) SetDataSourceId(v string) *Tensorboard {
@@ -3538,6 +3544,7 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 }
 
 type CreateJobRequest struct {
+	Accessibility    *string                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	CodeSource       *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	CredentialConfig *CredentialConfig              `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	DataSources      []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
@@ -3606,6 +3613,11 @@ func (s CreateJobRequest) String() string {
 
 func (s CreateJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateJobRequest) SetAccessibility(v string) *CreateJobRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *CreateJobRequest) SetCodeSource(v *CreateJobRequestCodeSource) *CreateJobRequest {
@@ -3908,6 +3920,7 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateTensorboardRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// 1
@@ -3974,6 +3987,11 @@ func (s CreateTensorboardRequest) String() string {
 
 func (s CreateTensorboardRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTensorboardRequest) SetAccessibility(v string) *CreateTensorboardRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *CreateTensorboardRequest) SetCpu(v int64) *CreateTensorboardRequest {
@@ -6089,6 +6107,7 @@ func (s *ListJobSanityCheckResultsResponse) SetBody(v *ListJobSanityCheckResults
 }
 
 type ListJobsRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// 16****
@@ -6169,6 +6188,11 @@ func (s ListJobsRequest) String() string {
 
 func (s ListJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobsRequest) SetAccessibility(v string) *ListJobsRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListJobsRequest) SetBusinessUserId(v string) *ListJobsRequest {
@@ -6277,6 +6301,7 @@ func (s *ListJobsRequest) SetWorkspaceId(v string) *ListJobsRequest {
 }
 
 type ListJobsShrinkRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// 16****
@@ -6357,6 +6382,11 @@ func (s ListJobsShrinkRequest) String() string {
 
 func (s ListJobsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobsShrinkRequest) SetAccessibility(v string) *ListJobsShrinkRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListJobsShrinkRequest) SetBusinessUserId(v string) *ListJobsShrinkRequest {
@@ -6529,6 +6559,7 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListTensorboardsRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// TestTensorboard
@@ -6598,6 +6629,11 @@ func (s ListTensorboardsRequest) String() string {
 
 func (s ListTensorboardsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTensorboardsRequest) SetAccessibility(v string) *ListTensorboardsRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListTensorboardsRequest) SetDisplayName(v string) *ListTensorboardsRequest {
@@ -7254,6 +7290,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CodeSource)) {
 		body["CodeSource"] = request.CodeSource
 	}
@@ -7394,6 +7434,10 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
 		body["Cpu"] = request.Cpu
 	}
@@ -8522,6 +8566,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BusinessUserId)) {
 		query["BusinessUserId"] = request.BusinessUserId
 	}
@@ -8666,6 +8714,10 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
 		query["DisplayName"] = request.DisplayName
 	}
