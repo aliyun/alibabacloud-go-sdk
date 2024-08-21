@@ -11628,6 +11628,112 @@ func (s *CreatePostgresExtensionsResponse) SetBody(v *CreatePostgresExtensionsRe
 	return s
 }
 
+type CreateRCDeploymentSetRequest struct {
+	ClientToken                      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentSetName                *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupCount                       *int64  `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	OnUnableToRedeployFailedInstance *string `json:"OnUnableToRedeployFailedInstance,omitempty" xml:"OnUnableToRedeployFailedInstance,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+}
+
+func (s CreateRCDeploymentSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCDeploymentSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCDeploymentSetRequest) SetClientToken(v string) *CreateRCDeploymentSetRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetRequest) SetDeploymentSetName(v string) *CreateRCDeploymentSetRequest {
+	s.DeploymentSetName = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetRequest) SetDescription(v string) *CreateRCDeploymentSetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetRequest) SetGroupCount(v int64) *CreateRCDeploymentSetRequest {
+	s.GroupCount = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetRequest) SetOnUnableToRedeployFailedInstance(v string) *CreateRCDeploymentSetRequest {
+	s.OnUnableToRedeployFailedInstance = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetRequest) SetRegionId(v string) *CreateRCDeploymentSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetRequest) SetStrategy(v string) *CreateRCDeploymentSetRequest {
+	s.Strategy = &v
+	return s
+}
+
+type CreateRCDeploymentSetResponseBody struct {
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRCDeploymentSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCDeploymentSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCDeploymentSetResponseBody) SetDeploymentSetId(v string) *CreateRCDeploymentSetResponseBody {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetResponseBody) SetRequestId(v string) *CreateRCDeploymentSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRCDeploymentSetResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRCDeploymentSetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRCDeploymentSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCDeploymentSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCDeploymentSetResponse) SetHeaders(v map[string]*string) *CreateRCDeploymentSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRCDeploymentSetResponse) SetStatusCode(v int32) *CreateRCDeploymentSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRCDeploymentSetResponse) SetBody(v *CreateRCDeploymentSetResponseBody) *CreateRCDeploymentSetResponse {
+	s.Body = v
+	return s
+}
+
 type CreateReadOnlyDBInstanceRequest struct {
 	// 是否自动创建代理。取值范围：
 	//
@@ -12202,6 +12308,196 @@ func (s *CreateReadOnlyDBInstanceResponse) SetStatusCode(v int32) *CreateReadOnl
 }
 
 func (s *CreateReadOnlyDBInstanceResponse) SetBody(v *CreateReadOnlyDBInstanceResponseBody) *CreateReadOnlyDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateReplicationLinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// testdbuser
+	ReplicatorAccount *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
+	// example:
+	//
+	// testpassword
+	ReplicatorPassword *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
+	// example:
+	//
+	// pgm-****.pg.rds.aliyuncs.com
+	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
+	// example:
+	//
+	// aliyunRDS
+	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
+	// example:
+	//
+	// testInstance
+	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
+	// example:
+	//
+	// 5432
+	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// example:
+	//
+	// 439946016
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s CreateReplicationLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReplicationLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReplicationLinkRequest) SetDBInstanceId(v string) *CreateReplicationLinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetDryRun(v bool) *CreateReplicationLinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetReplicatorAccount(v string) *CreateReplicationLinkRequest {
+	s.ReplicatorAccount = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetReplicatorPassword(v string) *CreateReplicationLinkRequest {
+	s.ReplicatorPassword = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetSourceAddress(v string) *CreateReplicationLinkRequest {
+	s.SourceAddress = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetSourceCategory(v string) *CreateReplicationLinkRequest {
+	s.SourceCategory = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetSourceInstanceName(v string) *CreateReplicationLinkRequest {
+	s.SourceInstanceName = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetSourceInstanceRegionId(v string) *CreateReplicationLinkRequest {
+	s.SourceInstanceRegionId = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetSourcePort(v int64) *CreateReplicationLinkRequest {
+	s.SourcePort = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetTaskId(v int64) *CreateReplicationLinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateReplicationLinkRequest) SetTaskName(v string) *CreateReplicationLinkRequest {
+	s.TaskName = &v
+	return s
+}
+
+type CreateReplicationLinkResponseBody struct {
+	// example:
+	//
+	// pgm-****.pg.rds.aliyuncs.com
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 564532302
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s CreateReplicationLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReplicationLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReplicationLinkResponseBody) SetDBInstanceId(v string) *CreateReplicationLinkResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateReplicationLinkResponseBody) SetRequestId(v string) *CreateReplicationLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateReplicationLinkResponseBody) SetTaskId(v int64) *CreateReplicationLinkResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateReplicationLinkResponseBody) SetTaskName(v string) *CreateReplicationLinkResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+type CreateReplicationLinkResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateReplicationLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateReplicationLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReplicationLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReplicationLinkResponse) SetHeaders(v map[string]*string) *CreateReplicationLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateReplicationLinkResponse) SetStatusCode(v int32) *CreateReplicationLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateReplicationLinkResponse) SetBody(v *CreateReplicationLinkResponseBody) *CreateReplicationLinkResponse {
 	s.Body = v
 	return s
 }
@@ -14890,6 +15186,399 @@ func (s *DeletePostgresExtensionsResponse) SetStatusCode(v int32) *DeletePostgre
 }
 
 func (s *DeletePostgresExtensionsResponse) SetBody(v *DeletePostgresExtensionsResponseBody) *DeletePostgresExtensionsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRCDeploymentSetRequest struct {
+	// This parameter is required.
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteRCDeploymentSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCDeploymentSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCDeploymentSetRequest) SetDeploymentSetId(v string) *DeleteRCDeploymentSetRequest {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *DeleteRCDeploymentSetRequest) SetRegionId(v string) *DeleteRCDeploymentSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteRCDeploymentSetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRCDeploymentSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCDeploymentSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCDeploymentSetResponseBody) SetRequestId(v string) *DeleteRCDeploymentSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRCDeploymentSetResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRCDeploymentSetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRCDeploymentSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCDeploymentSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCDeploymentSetResponse) SetHeaders(v map[string]*string) *DeleteRCDeploymentSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRCDeploymentSetResponse) SetStatusCode(v int32) *DeleteRCDeploymentSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRCDeploymentSetResponse) SetBody(v *DeleteRCDeploymentSetResponseBody) *DeleteRCDeploymentSetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRCInstanceRequest struct {
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteRCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCInstanceRequest) SetForce(v bool) *DeleteRCInstanceRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeleteRCInstanceRequest) SetInstanceId(v string) *DeleteRCInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRCInstanceRequest) SetRegionId(v string) *DeleteRCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteRCInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCInstanceResponseBody) SetRequestId(v string) *DeleteRCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRCInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCInstanceResponse) SetHeaders(v map[string]*string) *DeleteRCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRCInstanceResponse) SetStatusCode(v int32) *DeleteRCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRCInstanceResponse) SetBody(v *DeleteRCInstanceResponseBody) *DeleteRCInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRCInstancesRequest struct {
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Force  *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	InstanceId            []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TerminateSubscription *bool     `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
+}
+
+func (s DeleteRCInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCInstancesRequest) SetDryRun(v bool) *DeleteRCInstancesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteRCInstancesRequest) SetForce(v bool) *DeleteRCInstancesRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeleteRCInstancesRequest) SetInstanceId(v []*string) *DeleteRCInstancesRequest {
+	s.InstanceId = v
+	return s
+}
+
+func (s *DeleteRCInstancesRequest) SetRegionId(v string) *DeleteRCInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteRCInstancesRequest) SetTerminateSubscription(v bool) *DeleteRCInstancesRequest {
+	s.TerminateSubscription = &v
+	return s
+}
+
+type DeleteRCInstancesShrinkRequest struct {
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Force  *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	InstanceIdShrink      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TerminateSubscription *bool   `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
+}
+
+func (s DeleteRCInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCInstancesShrinkRequest) SetDryRun(v bool) *DeleteRCInstancesShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteRCInstancesShrinkRequest) SetForce(v bool) *DeleteRCInstancesShrinkRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeleteRCInstancesShrinkRequest) SetInstanceIdShrink(v string) *DeleteRCInstancesShrinkRequest {
+	s.InstanceIdShrink = &v
+	return s
+}
+
+func (s *DeleteRCInstancesShrinkRequest) SetRegionId(v string) *DeleteRCInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteRCInstancesShrinkRequest) SetTerminateSubscription(v bool) *DeleteRCInstancesShrinkRequest {
+	s.TerminateSubscription = &v
+	return s
+}
+
+type DeleteRCInstancesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRCInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCInstancesResponseBody) SetRequestId(v string) *DeleteRCInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRCInstancesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRCInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRCInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCInstancesResponse) SetHeaders(v map[string]*string) *DeleteRCInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRCInstancesResponse) SetStatusCode(v int32) *DeleteRCInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRCInstancesResponse) SetBody(v *DeleteRCInstancesResponseBody) *DeleteRCInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteReplicationLinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	PromoteToMaster *bool  `json:"PromoteToMaster,omitempty" xml:"PromoteToMaster,omitempty"`
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteReplicationLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteReplicationLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteReplicationLinkRequest) SetDBInstanceId(v string) *DeleteReplicationLinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteReplicationLinkRequest) SetPromoteToMaster(v bool) *DeleteReplicationLinkRequest {
+	s.PromoteToMaster = &v
+	return s
+}
+
+func (s *DeleteReplicationLinkRequest) SetResourceOwnerId(v int64) *DeleteReplicationLinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteReplicationLinkResponseBody struct {
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 847BA085-B377-4BFA-8267-F82345ECE1D2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3472****
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s DeleteReplicationLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteReplicationLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteReplicationLinkResponseBody) SetDBInstanceId(v string) *DeleteReplicationLinkResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteReplicationLinkResponseBody) SetRequestId(v string) *DeleteReplicationLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteReplicationLinkResponseBody) SetTaskId(v int64) *DeleteReplicationLinkResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DeleteReplicationLinkResponseBody) SetTaskName(v string) *DeleteReplicationLinkResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+type DeleteReplicationLinkResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteReplicationLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteReplicationLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteReplicationLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteReplicationLinkResponse) SetHeaders(v map[string]*string) *DeleteReplicationLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteReplicationLinkResponse) SetStatusCode(v int32) *DeleteReplicationLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteReplicationLinkResponse) SetBody(v *DeleteReplicationLinkResponseBody) *DeleteReplicationLinkResponse {
 	s.Body = v
 	return s
 }
@@ -31012,11 +31701,11 @@ type DescribeDBInstancesRequest struct {
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Specifies whether to query instances that have expired. Valid values:
+	// Specifies whether the instances have expired. Valid values:
 	//
-	// 	- **True**: queries instances that have expired.
+	// 	- **True**
 	//
-	// 	- **False**: does not query instances that have expired.
+	// 	- **False**
 	//
 	// example:
 	//
@@ -31068,7 +31757,7 @@ type DescribeDBInstancesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any non-zero positive integer.
+	// The page number. Pages start from 1.
 	//
 	// Default value: **1**.
 	//
@@ -36300,7 +36989,7 @@ type DescribeDatabasesRequest struct {
 	DBStatus     *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any non-zero positive integer.
+	// The page number. Pages start from 1.
 	//
 	// Default value: **1**.
 	//
@@ -39742,7 +40431,7 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Valid values: any non-zero positive integer. Default value: **1**.
+	// The page number. Pages start from page 1. Default value: **1**.
 	//
 	// example:
 	//
@@ -49652,6 +50341,1373 @@ func (s *DescribeQuickSaleConfigResponse) SetBody(v *DescribeQuickSaleConfigResp
 	return s
 }
 
+type DescribeRCDeploymentSetsRequest struct {
+	DeploymentSetIds  *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
+	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+}
+
+func (s DescribeRCDeploymentSetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsRequest) SetDeploymentSetIds(v string) *DescribeRCDeploymentSetsRequest {
+	s.DeploymentSetIds = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsRequest) SetDeploymentSetName(v string) *DescribeRCDeploymentSetsRequest {
+	s.DeploymentSetName = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsRequest) SetPageNumber(v int32) *DescribeRCDeploymentSetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsRequest) SetPageSize(v int32) *DescribeRCDeploymentSetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsRequest) SetRegionId(v string) *DescribeRCDeploymentSetsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsRequest) SetStrategy(v string) *DescribeRCDeploymentSetsRequest {
+	s.Strategy = &v
+	return s
+}
+
+type DescribeRCDeploymentSetsResponseBody struct {
+	DeploymentSets *DescribeRCDeploymentSetsResponseBodyDeploymentSets `json:"DeploymentSets,omitempty" xml:"DeploymentSets,omitempty" type:"Struct"`
+	PageNumber     *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId       *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeRCDeploymentSetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsResponseBody) SetDeploymentSets(v *DescribeRCDeploymentSetsResponseBodyDeploymentSets) *DescribeRCDeploymentSetsResponseBody {
+	s.DeploymentSets = v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBody) SetPageNumber(v int32) *DescribeRCDeploymentSetsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBody) SetPageSize(v int32) *DescribeRCDeploymentSetsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBody) SetRegionId(v string) *DescribeRCDeploymentSetsResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBody) SetRequestId(v string) *DescribeRCDeploymentSetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBody) SetTotalCount(v int32) *DescribeRCDeploymentSetsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeRCDeploymentSetsResponseBodyDeploymentSets struct {
+	DeploymentSet []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet `json:"DeploymentSet,omitempty" xml:"DeploymentSet,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSets) SetDeploymentSet(v []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) *DescribeRCDeploymentSetsResponseBodyDeploymentSets {
+	s.DeploymentSet = v
+	return s
+}
+
+type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
+	Capacities               *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities  `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
+	CreateTime               *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeploymentSetDescription *string                                                                     `json:"DeploymentSetDescription,omitempty" xml:"DeploymentSetDescription,omitempty"`
+	DeploymentSetId          *string                                                                     `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	DeploymentSetName        *string                                                                     `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	DeploymentStrategy       *string                                                                     `json:"DeploymentStrategy,omitempty" xml:"DeploymentStrategy,omitempty"`
+	Domain                   *string                                                                     `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Granularity              *string                                                                     `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	GroupCount               *int32                                                                      `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	InstanceAmount           *int32                                                                      `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
+	InstanceIds              *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	Strategy                 *string                                                                     `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetCapacities(v *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.Capacities = v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetCreateTime(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetDeploymentSetDescription(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.DeploymentSetDescription = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetDeploymentSetId(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetDeploymentSetName(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.DeploymentSetName = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetDeploymentStrategy(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.DeploymentStrategy = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetDomain(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetGranularity(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.Granularity = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetGroupCount(v int32) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.GroupCount = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetInstanceAmount(v int32) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.InstanceAmount = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetInstanceIds(v *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetStrategy(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.Strategy = &v
+	return s
+}
+
+type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities struct {
+	Capacity []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity `json:"Capacity,omitempty" xml:"Capacity,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities) SetCapacity(v []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities {
+	s.Capacity = v
+	return s
+}
+
+type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity struct {
+	AvailableAmount *int32  `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	UsedAmount      *int32  `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) SetAvailableAmount(v int32) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity {
+	s.AvailableAmount = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) SetUsedAmount(v int32) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity {
+	s.UsedAmount = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) SetZoneId(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds struct {
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds) SetInstanceId(v []*string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds {
+	s.InstanceId = v
+	return s
+}
+
+type DescribeRCDeploymentSetsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRCDeploymentSetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRCDeploymentSetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCDeploymentSetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCDeploymentSetsResponse) SetHeaders(v map[string]*string) *DescribeRCDeploymentSetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponse) SetStatusCode(v int32) *DescribeRCDeploymentSetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRCDeploymentSetsResponse) SetBody(v *DescribeRCDeploymentSetsResponseBody) *DescribeRCDeploymentSetsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRCImageListRequest struct {
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeRCImageListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCImageListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCImageListRequest) SetArchitecture(v string) *DescribeRCImageListRequest {
+	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeRCImageListRequest) SetPageNumber(v int32) *DescribeRCImageListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRCImageListRequest) SetPageSize(v int32) *DescribeRCImageListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRCImageListRequest) SetRegionId(v string) *DescribeRCImageListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCImageListRequest) SetType(v string) *DescribeRCImageListRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeRCImageListResponseBody struct {
+	Images     []*DescribeRCImageListResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeRCImageListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCImageListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCImageListResponseBody) SetImages(v []*DescribeRCImageListResponseBodyImages) *DescribeRCImageListResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBody) SetPageNumber(v int32) *DescribeRCImageListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBody) SetPageSize(v int32) *DescribeRCImageListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBody) SetRegionId(v string) *DescribeRCImageListResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBody) SetRequestId(v string) *DescribeRCImageListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBody) SetTotalCount(v int32) *DescribeRCImageListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeRCImageListResponseBodyImages struct {
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	IsPublic     *bool   `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	OSName       *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	OSNameEn     *string `json:"OSNameEn,omitempty" xml:"OSNameEn,omitempty"`
+	OSType       *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	Size         *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Usage        *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s DescribeRCImageListResponseBodyImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCImageListResponseBodyImages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetArchitecture(v string) *DescribeRCImageListResponseBodyImages {
+	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetCreationTime(v string) *DescribeRCImageListResponseBodyImages {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetDescription(v string) *DescribeRCImageListResponseBodyImages {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetImageId(v string) *DescribeRCImageListResponseBodyImages {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetImageName(v string) *DescribeRCImageListResponseBodyImages {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetImageVersion(v string) *DescribeRCImageListResponseBodyImages {
+	s.ImageVersion = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetIsPublic(v bool) *DescribeRCImageListResponseBodyImages {
+	s.IsPublic = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetOSName(v string) *DescribeRCImageListResponseBodyImages {
+	s.OSName = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetOSNameEn(v string) *DescribeRCImageListResponseBodyImages {
+	s.OSNameEn = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetOSType(v string) *DescribeRCImageListResponseBodyImages {
+	s.OSType = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetSize(v int64) *DescribeRCImageListResponseBodyImages {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetStatus(v string) *DescribeRCImageListResponseBodyImages {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponseBodyImages) SetUsage(v string) *DescribeRCImageListResponseBodyImages {
+	s.Usage = &v
+	return s
+}
+
+type DescribeRCImageListResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRCImageListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRCImageListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCImageListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCImageListResponse) SetHeaders(v map[string]*string) *DescribeRCImageListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRCImageListResponse) SetStatusCode(v int32) *DescribeRCImageListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRCImageListResponse) SetBody(v *DescribeRCImageListResponseBody) *DescribeRCImageListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRCInstanceAttributeRequest struct {
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeRequest) SetInstanceId(v string) *DescribeRCInstanceAttributeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeRequest) SetRegionId(v string) *DescribeRCInstanceAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBody struct {
+	ClusterId           *string                                           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Cpu                 *int32                                            `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreationTime        *string                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreditSpecification *string                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	DataDisks           *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
+	// if can be null:
+	// true
+	DedicatedHostAttribute  *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute `json:"DedicatedHostAttribute,omitempty" xml:"DedicatedHostAttribute,omitempty" type:"Struct"`
+	DeploymentSetId         *string                                                        `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	Description             *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiskType                *string                                                        `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	EcsInstanceType         *string                                                        `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	EipAddress              *DescribeRCInstanceAttributeResponseBodyEipAddress             `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
+	EnableJumboFrame        *bool                                                          `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	ExpiredTime             *string                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HostName                *string                                                        `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	HostType                *string                                                        `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	ImageId                 *string                                                        `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InnerIpAddress          *DescribeRCInstanceAttributeResponseBodyInnerIpAddress         `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	InstanceId              *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName            *string                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceNetworkType     *string                                                        `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceType            *string                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthIn  *int32                                                         `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	InternetMaxBandwidthOut *int32                                                         `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IoOptimized             *string                                                        `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	Memory                  *int32                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	OperationLocks          *DescribeRCInstanceAttributeResponseBodyOperationLocks         `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
+	PublicIpAddress         *DescribeRCInstanceAttributeResponseBodyPublicIpAddress        `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
+	RegionId                *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityGroupIds        *DescribeRCInstanceAttributeResponseBodySecurityGroupIds       `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	SerialNumber            *string                                                        `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Status                  *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StoppedMode             *string                                                        `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	VlanId                  *string                                                        `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	// if can be null:
+	// true
+	VpcAttributes *DescribeRCInstanceAttributeResponseBodyVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
+	ZoneId        *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetClusterId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetCpu(v int32) *DescribeRCInstanceAttributeResponseBody {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetCreationTime(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetCreditSpecification(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.CreditSpecification = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetDataDisks(v *DescribeRCInstanceAttributeResponseBodyDataDisks) *DescribeRCInstanceAttributeResponseBody {
+	s.DataDisks = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetDedicatedHostAttribute(v *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute) *DescribeRCInstanceAttributeResponseBody {
+	s.DedicatedHostAttribute = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetDeploymentSetId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetDescription(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetDiskType(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.DiskType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetEcsInstanceType(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.EcsInstanceType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetEipAddress(v *DescribeRCInstanceAttributeResponseBodyEipAddress) *DescribeRCInstanceAttributeResponseBody {
+	s.EipAddress = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetEnableJumboFrame(v bool) *DescribeRCInstanceAttributeResponseBody {
+	s.EnableJumboFrame = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetExpiredTime(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetHostName(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetHostType(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.HostType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetImageId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInnerIpAddress(v *DescribeRCInstanceAttributeResponseBodyInnerIpAddress) *DescribeRCInstanceAttributeResponseBody {
+	s.InnerIpAddress = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInstanceId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInstanceName(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInstanceNetworkType(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.InstanceNetworkType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInstanceType(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInternetChargeType(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInternetMaxBandwidthIn(v int32) *DescribeRCInstanceAttributeResponseBody {
+	s.InternetMaxBandwidthIn = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetInternetMaxBandwidthOut(v int32) *DescribeRCInstanceAttributeResponseBody {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetIoOptimized(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.IoOptimized = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetMemory(v int32) *DescribeRCInstanceAttributeResponseBody {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetOperationLocks(v *DescribeRCInstanceAttributeResponseBodyOperationLocks) *DescribeRCInstanceAttributeResponseBody {
+	s.OperationLocks = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetPublicIpAddress(v *DescribeRCInstanceAttributeResponseBodyPublicIpAddress) *DescribeRCInstanceAttributeResponseBody {
+	s.PublicIpAddress = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetRegionId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetRequestId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetSecurityGroupIds(v *DescribeRCInstanceAttributeResponseBodySecurityGroupIds) *DescribeRCInstanceAttributeResponseBody {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetSerialNumber(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetStatus(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetStoppedMode(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.StoppedMode = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetVlanId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.VlanId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetVpcAttributes(v *DescribeRCInstanceAttributeResponseBodyVpcAttributes) *DescribeRCInstanceAttributeResponseBody {
+	s.VpcAttributes = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetZoneId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyDataDisks struct {
+	DataDisk []*DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDataDisks) SetDataDisk(v []*DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) *DescribeRCInstanceAttributeResponseBodyDataDisks {
+	s.DataDisk = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk struct {
+	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Encrypted          *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size               *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) SetCategory(v string) *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) SetDeleteWithInstance(v bool) *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) SetEncrypted(v string) *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) SetPerformanceLevel(v string) *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) SetSize(v int64) *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk {
+	s.Size = &v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute struct {
+	DedicatedHostId   *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute) SetDedicatedHostId(v string) *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute {
+	s.DedicatedHostId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute) SetDedicatedHostName(v string) *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute {
+	s.DedicatedHostName = &v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyEipAddress struct {
+	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyEipAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyEipAddress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyEipAddress) SetAllocationId(v string) *DescribeRCInstanceAttributeResponseBodyEipAddress {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyEipAddress) SetBandwidth(v int32) *DescribeRCInstanceAttributeResponseBodyEipAddress {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyEipAddress) SetInternetChargeType(v string) *DescribeRCInstanceAttributeResponseBodyEipAddress {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyEipAddress) SetIpAddress(v string) *DescribeRCInstanceAttributeResponseBodyEipAddress {
+	s.IpAddress = &v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyInnerIpAddress struct {
+	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyInnerIpAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyInnerIpAddress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyInnerIpAddress) SetIpAddress(v []*string) *DescribeRCInstanceAttributeResponseBodyInnerIpAddress {
+	s.IpAddress = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyOperationLocks struct {
+	LockReason []*DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason `json:"LockReason,omitempty" xml:"LockReason,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyOperationLocks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyOperationLocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyOperationLocks) SetLockReason(v []*DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason) *DescribeRCInstanceAttributeResponseBodyOperationLocks {
+	s.LockReason = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason struct {
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason) SetLockReason(v string) *DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason {
+	s.LockReason = &v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyPublicIpAddress struct {
+	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyPublicIpAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyPublicIpAddress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyPublicIpAddress) SetIpAddress(v []*string) *DescribeRCInstanceAttributeResponseBodyPublicIpAddress {
+	s.IpAddress = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodySecurityGroupIds struct {
+	SecurityGroupId []*string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodySecurityGroupIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodySecurityGroupIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodySecurityGroupIds) SetSecurityGroupId(v []*string) *DescribeRCInstanceAttributeResponseBodySecurityGroupIds {
+	s.SecurityGroupId = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyVpcAttributes struct {
+	NatIpAddress     *string                                                               `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
+	PrivateIpAddress *DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Struct"`
+	VSwitchId        *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId            *string                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyVpcAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyVpcAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyVpcAttributes) SetNatIpAddress(v string) *DescribeRCInstanceAttributeResponseBodyVpcAttributes {
+	s.NatIpAddress = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyVpcAttributes) SetPrivateIpAddress(v *DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress) *DescribeRCInstanceAttributeResponseBodyVpcAttributes {
+	s.PrivateIpAddress = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyVpcAttributes) SetVSwitchId(v string) *DescribeRCInstanceAttributeResponseBodyVpcAttributes {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyVpcAttributes) SetVpcId(v string) *DescribeRCInstanceAttributeResponseBodyVpcAttributes {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress struct {
+	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress) SetIpAddress(v []*string) *DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress {
+	s.IpAddress = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRCInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponse) SetHeaders(v map[string]*string) *DescribeRCInstanceAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponse) SetStatusCode(v int32) *DescribeRCInstanceAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponse) SetBody(v *DescribeRCInstanceAttributeResponseBody) *DescribeRCInstanceAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRCInstancesRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeRCInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstancesRequest) SetInstanceId(v string) *DescribeRCInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesRequest) SetPageNumber(v int32) *DescribeRCInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRCInstancesRequest) SetPageSize(v int32) *DescribeRCInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRCInstancesRequest) SetRegionId(v string) *DescribeRCInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesRequest) SetVpcId(v string) *DescribeRCInstancesRequest {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeRCInstancesResponseBody struct {
+	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RCInstances []*DescribeRCInstancesResponseBodyRCInstances `json:"RCInstances,omitempty" xml:"RCInstances,omitempty" type:"Repeated"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeRCInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstancesResponseBody) SetPageNumber(v int32) *DescribeRCInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBody) SetPageSize(v int32) *DescribeRCInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBody) SetRCInstances(v []*DescribeRCInstancesResponseBodyRCInstances) *DescribeRCInstancesResponseBody {
+	s.RCInstances = v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBody) SetRequestId(v string) *DescribeRCInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBody) SetTotalCount(v int32) *DescribeRCInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeRCInstancesResponseBodyRCInstances struct {
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	HostIp      *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	HostName    *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeRCInstancesResponseBodyRCInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstancesResponseBodyRCInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetClusterName(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetDbType(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.DbType = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetDescription(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetGmtCreated(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetHostIp(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.HostIp = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetHostName(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetInstanceId(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetRegionId(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetStatus(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetVpcId(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeRCInstancesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRCInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRCInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstancesResponse) SetHeaders(v map[string]*string) *DescribeRCInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRCInstancesResponse) SetStatusCode(v int32) *DescribeRCInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponse) SetBody(v *DescribeRCInstancesResponseBody) *DescribeRCInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRCMetricListRequest struct {
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Express    *string `json:"Express,omitempty" xml:"Express,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Length     *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// This parameter is required.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Period     *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeRCMetricListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCMetricListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCMetricListRequest) SetEndTime(v string) *DescribeRCMetricListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetExpress(v string) *DescribeRCMetricListRequest {
+	s.Express = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetInstanceId(v string) *DescribeRCMetricListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetLength(v string) *DescribeRCMetricListRequest {
+	s.Length = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetMetricName(v string) *DescribeRCMetricListRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetNextToken(v string) *DescribeRCMetricListRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetPeriod(v string) *DescribeRCMetricListRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetRegionId(v string) *DescribeRCMetricListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCMetricListRequest) SetStartTime(v string) *DescribeRCMetricListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeRCMetricListResponseBody struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Period     *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeRCMetricListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCMetricListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCMetricListResponseBody) SetCode(v string) *DescribeRCMetricListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeRCMetricListResponseBody) SetDatapoints(v string) *DescribeRCMetricListResponseBody {
+	s.Datapoints = &v
+	return s
+}
+
+func (s *DescribeRCMetricListResponseBody) SetMessage(v string) *DescribeRCMetricListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeRCMetricListResponseBody) SetNextToken(v string) *DescribeRCMetricListResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeRCMetricListResponseBody) SetPeriod(v string) *DescribeRCMetricListResponseBody {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeRCMetricListResponseBody) SetRequestId(v string) *DescribeRCMetricListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRCMetricListResponseBody) SetSuccess(v bool) *DescribeRCMetricListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeRCMetricListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRCMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRCMetricListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCMetricListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCMetricListResponse) SetHeaders(v map[string]*string) *DescribeRCMetricListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRCMetricListResponse) SetStatusCode(v int32) *DescribeRCMetricListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRCMetricListResponse) SetBody(v *DescribeRCMetricListResponseBody) *DescribeRCMetricListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRdsResourceSettingsRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
@@ -51039,6 +53095,303 @@ func (s *DescribeRenewalPriceResponse) SetStatusCode(v int32) *DescribeRenewalPr
 }
 
 func (s *DescribeRenewalPriceResponse) SetBody(v *DescribeRenewalPriceResponseBody) *DescribeRenewalPriceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeReplicationLinkLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 8413252
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// create
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeReplicationLinkLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicationLinkLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicationLinkLogsRequest) SetDBInstanceId(v string) *DescribeReplicationLinkLogsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsRequest) SetPageNumber(v int64) *DescribeReplicationLinkLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsRequest) SetPageSize(v int64) *DescribeReplicationLinkLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsRequest) SetTaskId(v int64) *DescribeReplicationLinkLogsRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsRequest) SetTaskName(v string) *DescribeReplicationLinkLogsRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsRequest) SetTaskType(v string) *DescribeReplicationLinkLogsRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeReplicationLinkLogsResponseBody struct {
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
+	DBInstanceId *string                                         `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Items        []*DescribeReplicationLinkLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16C62438-491B-5C02-9B49-BA924A1372A2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeReplicationLinkLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicationLinkLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicationLinkLogsResponseBody) SetDBInstanceId(v string) *DescribeReplicationLinkLogsResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBody) SetItems(v []*DescribeReplicationLinkLogsResponseBodyItems) *DescribeReplicationLinkLogsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBody) SetRequestId(v string) *DescribeReplicationLinkLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBody) SetTotalSize(v int32) *DescribeReplicationLinkLogsResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeReplicationLinkLogsResponseBodyItems struct {
+	// example:
+	//
+	// [Check rds empty]\\nCheck rds databases: success\\n[Check source connectivity]\\nCheck ip connectable: success\\nCheck port connectable: success\\nCheck database connectable: success\\nCheck account replication privilege: success\\nCheck account createrole privilege: success\\nCheck account monitor privilege: success\\n[Check source version]\\nCheck major version consistent: success\\n[Check source glibc version]\\nCheck source glibc version compatible: warning(warning:source glibc version is not compatible with rds pg)\\n[Check disk size]\\nCheck disk size enough: success\\n[Check wal keep size]\\nCheck wal keep size large enough: success\\n[Check spec params]\\nCheck if spec params too large: success\\n [Check triggers]\\nCheck triggers compatible: success\\n[Check user functions]\\nCheck user functions compatible: success\\n*Migrate check success*
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// 2022-02-25T06:57:41Z
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2022-03-01T06:39:51Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// None
+	ReplicationInfo *string `json:"ReplicationInfo,omitempty" xml:"ReplicationInfo,omitempty"`
+	// example:
+	//
+	// finish
+	ReplicationState *string `json:"ReplicationState,omitempty" xml:"ReplicationState,omitempty"`
+	// example:
+	//
+	// testdbuser
+	ReplicatorAccount *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
+	// example:
+	//
+	// testpassword
+	ReplicatorPassword *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
+	// example:
+	//
+	// pgm-****.pg.rds.aliyuncs.com
+	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
+	// example:
+	//
+	// aliyunRDS
+	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
+	// example:
+	//
+	// 5432
+	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// example:
+	//
+	// pgm-bp1l4dutw453****
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// example:
+	//
+	// 8413252
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// increment
+	TaskStage *string `json:"TaskStage,omitempty" xml:"TaskStage,omitempty"`
+	// example:
+	//
+	// success
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// create
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeReplicationLinkLogsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicationLinkLogsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetDetail(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetGmtCreated(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetGmtModified(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetReplicationInfo(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.ReplicationInfo = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetReplicationState(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.ReplicationState = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetReplicatorAccount(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.ReplicatorAccount = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetReplicatorPassword(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.ReplicatorPassword = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetSourceAddress(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.SourceAddress = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetSourceCategory(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.SourceCategory = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetSourcePort(v int64) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.SourcePort = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetTargetInstanceId(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetTaskId(v int64) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetTaskName(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetTaskStage(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.TaskStage = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetTaskStatus(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponseBodyItems) SetTaskType(v string) *DescribeReplicationLinkLogsResponseBodyItems {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeReplicationLinkLogsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeReplicationLinkLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeReplicationLinkLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicationLinkLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicationLinkLogsResponse) SetHeaders(v map[string]*string) *DescribeReplicationLinkLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponse) SetStatusCode(v int32) *DescribeReplicationLinkLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeReplicationLinkLogsResponse) SetBody(v *DescribeReplicationLinkLogsResponseBody) *DescribeReplicationLinkLogsResponse {
 	s.Body = v
 	return s
 }
@@ -61556,7 +63909,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **True*	- or **1**: enables the log backup feature.
 	//
-	// 	- **False*	- or **0**: enables the log backup feature.
+	// 	- **False*	- or **0**: disables the log backup feature.
 	//
 	// > 	- You must specify this parameter when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
@@ -61582,9 +63935,9 @@ type ModifyBackupPolicyRequest struct {
 	EnableIncrementDataBackup *bool `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
 	// Specifies whether to forcefully delete log backup files from the instance when the storage usage of the instance exceeds 80% or the amount of remaining storage on the instance is less than 5 GB. Valid values: **Enable and Disable**. You can retain the default value.
 	//
-	// > 	- This parameter must be specified when **BackupPolicyMode*	- is set to **LogBackupPolicy**.
+	// > 	- You must specify this parameter when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
-	// > 	- This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**.
+	// > 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
 	// example:
 	//
@@ -61628,7 +63981,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// > 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
-	// > 	- If the instance runs MySQL, you can set this parameter to **-1**. The value **-1*	- specifies that an unlimited number of binary log files can be retained on the instance.
+	// > 	- If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value \\*\\*-1\\*\\	- specifies that an unlimited number of binary log files can be retained on the instance.
 	//
 	// example:
 	//
@@ -61682,7 +64035,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 00:00Z-01:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The policy that is used to retain archived backup files if the instance is released. Default value: None. Valid values:
+	// The policy that is used to retain archived backup files if the instance is released. Valid values:
 	//
 	// 	- **None**: No archived backup files are retained.
 	//
@@ -61690,7 +64043,9 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **All**: All archived backup files are retained.
 	//
-	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **DataBackupPolicy**.
+	// > 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **DataBackupPolicy**.
+	//
+	// > 	- If the instance uses cloud disks and was created on or after February 1, 2024, this parameter is automatically set to **Lastest**. If the instance uses local disks in the same scenario, this parameter is automatically set to **None**. For more information, see [Backup for deleted instances](https://help.aliyun.com/document_detail/2836955.html).
 	//
 	// example:
 	//
@@ -69789,7 +72144,7 @@ type ModifyParameterRequest struct {
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The time at which the modification takes effect. Valid values:
 	//
-	// 	- **Immediately**: immediately modifies the parameter. This is the default value.
+	// 	- **Immediate**: immediately modifies the parameter. This is the default value.
 	//
 	// 	- **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
 	//
@@ -70107,6 +72462,258 @@ func (s *ModifyParameterGroupResponse) SetStatusCode(v int32) *ModifyParameterGr
 }
 
 func (s *ModifyParameterGroupResponse) SetBody(v *ModifyParameterGroupResponseBody) *ModifyParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyRCInstanceRequest struct {
+	AutoPay      *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyRCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceRequest) SetAutoPay(v bool) *ModifyRCInstanceRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ModifyRCInstanceRequest) SetDirection(v string) *ModifyRCInstanceRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *ModifyRCInstanceRequest) SetDryRun(v bool) *ModifyRCInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyRCInstanceRequest) SetInstanceId(v string) *ModifyRCInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyRCInstanceRequest) SetInstanceType(v string) *ModifyRCInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyRCInstanceRequest) SetRegionId(v string) *ModifyRCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyRCInstanceResponseBody struct {
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyRCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceResponseBody) SetOrderId(v int64) *ModifyRCInstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyRCInstanceResponseBody) SetRequestId(v string) *ModifyRCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyRCInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyRCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceResponse) SetHeaders(v map[string]*string) *ModifyRCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyRCInstanceResponse) SetStatusCode(v int32) *ModifyRCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyRCInstanceResponse) SetBody(v *ModifyRCInstanceResponseBody) *ModifyRCInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyRCInstanceChargeTypeRequest struct {
+	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IncludeDataDisks   *bool   `json:"IncludeDataDisks,omitempty" xml:"IncludeDataDisks,omitempty"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// This parameter is required.
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyRCInstanceChargeTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceChargeTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceChargeTypeRequest) SetAutoPay(v bool) *ModifyRCInstanceChargeTypeRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeRequest) SetDryRun(v bool) *ModifyRCInstanceChargeTypeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeRequest) SetIncludeDataDisks(v bool) *ModifyRCInstanceChargeTypeRequest {
+	s.IncludeDataDisks = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeRequest) SetInstanceChargeType(v string) *ModifyRCInstanceChargeTypeRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeRequest) SetInstanceIds(v string) *ModifyRCInstanceChargeTypeRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeRequest) SetRegionId(v string) *ModifyRCInstanceChargeTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyRCInstanceChargeTypeResponseBody struct {
+	FeeOfInstances *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances `json:"FeeOfInstances,omitempty" xml:"FeeOfInstances,omitempty" type:"Struct"`
+	OrderId        *string                                               `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyRCInstanceChargeTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceChargeTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceChargeTypeResponseBody) SetFeeOfInstances(v *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances) *ModifyRCInstanceChargeTypeResponseBody {
+	s.FeeOfInstances = v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeResponseBody) SetOrderId(v string) *ModifyRCInstanceChargeTypeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeResponseBody) SetRequestId(v string) *ModifyRCInstanceChargeTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances struct {
+	FeeOfInstance []*ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance `json:"FeeOfInstance,omitempty" xml:"FeeOfInstance,omitempty" type:"Repeated"`
+}
+
+func (s ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances) SetFeeOfInstance(v []*ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance) *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances {
+	s.FeeOfInstance = v
+	return s
+}
+
+type ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance struct {
+	Currency   *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Fee        *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance) SetCurrency(v string) *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance {
+	s.Currency = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance) SetFee(v string) *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance {
+	s.Fee = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance) SetInstanceId(v string) *ModifyRCInstanceChargeTypeResponseBodyFeeOfInstancesFeeOfInstance {
+	s.InstanceId = &v
+	return s
+}
+
+type ModifyRCInstanceChargeTypeResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRCInstanceChargeTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyRCInstanceChargeTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRCInstanceChargeTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRCInstanceChargeTypeResponse) SetHeaders(v map[string]*string) *ModifyRCInstanceChargeTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeResponse) SetStatusCode(v int32) *ModifyRCInstanceChargeTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyRCInstanceChargeTypeResponse) SetBody(v *ModifyRCInstanceChargeTypeResponseBody) *ModifyRCInstanceChargeTypeResponse {
 	s.Body = v
 	return s
 }
@@ -72656,7 +75263,7 @@ type QueryRecommendByCodeRequest struct {
 	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s QueryRecommendByCodeRequest) String() string {
@@ -72687,7 +75294,7 @@ func (s *QueryRecommendByCodeRequest) SetResourceOwnerAccount(v string) *QueryRe
 	return s
 }
 
-func (s *QueryRecommendByCodeRequest) SetResourceOwnerId(v string) *QueryRecommendByCodeRequest {
+func (s *QueryRecommendByCodeRequest) SetResourceOwnerId(v int64) *QueryRecommendByCodeRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
@@ -72773,6 +75380,88 @@ func (s *QueryRecommendByCodeResponse) SetStatusCode(v int32) *QueryRecommendByC
 }
 
 func (s *QueryRecommendByCodeResponse) SetBody(v *QueryRecommendByCodeResponseBody) *QueryRecommendByCodeResponse {
+	s.Body = v
+	return s
+}
+
+type RebootRCInstanceRequest struct {
+	DryRun    *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RebootRCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootRCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootRCInstanceRequest) SetDryRun(v bool) *RebootRCInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RebootRCInstanceRequest) SetForceStop(v bool) *RebootRCInstanceRequest {
+	s.ForceStop = &v
+	return s
+}
+
+func (s *RebootRCInstanceRequest) SetInstanceId(v string) *RebootRCInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RebootRCInstanceRequest) SetRegionId(v string) *RebootRCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RebootRCInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebootRCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootRCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebootRCInstanceResponseBody) SetRequestId(v string) *RebootRCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebootRCInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebootRCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RebootRCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootRCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebootRCInstanceResponse) SetHeaders(v map[string]*string) *RebootRCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebootRCInstanceResponse) SetStatusCode(v int32) *RebootRCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebootRCInstanceResponse) SetBody(v *RebootRCInstanceResponseBody) *RebootRCInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -72940,6 +75629,114 @@ func (s *RebuildDBInstanceResponse) SetStatusCode(v int32) *RebuildDBInstanceRes
 }
 
 func (s *RebuildDBInstanceResponse) SetBody(v *RebuildDBInstanceResponseBody) *RebuildDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RebuildReplicationLinkRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s RebuildReplicationLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildReplicationLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildReplicationLinkRequest) SetDBInstanceId(v string) *RebuildReplicationLinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type RebuildReplicationLinkResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 65BDA532-28AF-4122-AA39-B382721EEE64
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 3472****
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s RebuildReplicationLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildReplicationLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildReplicationLinkResponseBody) SetDBInstanceId(v string) *RebuildReplicationLinkResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *RebuildReplicationLinkResponseBody) SetRequestId(v string) *RebuildReplicationLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RebuildReplicationLinkResponseBody) SetTaskId(v int64) *RebuildReplicationLinkResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RebuildReplicationLinkResponseBody) SetTaskName(v string) *RebuildReplicationLinkResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+type RebuildReplicationLinkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebuildReplicationLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RebuildReplicationLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildReplicationLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildReplicationLinkResponse) SetHeaders(v map[string]*string) *RebuildReplicationLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebuildReplicationLinkResponse) SetStatusCode(v int32) *RebuildReplicationLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebuildReplicationLinkResponse) SetBody(v *RebuildReplicationLinkResponseBody) *RebuildReplicationLinkResponse {
 	s.Body = v
 	return s
 }
@@ -74349,6 +77146,105 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 	return s
 }
 
+type ResizeRCInstanceDiskRequest struct {
+	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NewSize    *int64  `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ResizeRCInstanceDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeRCInstanceDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeRCInstanceDiskRequest) SetAutoPay(v bool) *ResizeRCInstanceDiskRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskRequest) SetDryRun(v bool) *ResizeRCInstanceDiskRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskRequest) SetInstanceId(v string) *ResizeRCInstanceDiskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskRequest) SetNewSize(v int64) *ResizeRCInstanceDiskRequest {
+	s.NewSize = &v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskRequest) SetRegionId(v string) *ResizeRCInstanceDiskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskRequest) SetType(v string) *ResizeRCInstanceDiskRequest {
+	s.Type = &v
+	return s
+}
+
+type ResizeRCInstanceDiskResponseBody struct {
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResizeRCInstanceDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeRCInstanceDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeRCInstanceDiskResponseBody) SetOrderId(v int64) *ResizeRCInstanceDiskResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskResponseBody) SetRequestId(v string) *ResizeRCInstanceDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResizeRCInstanceDiskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResizeRCInstanceDiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResizeRCInstanceDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeRCInstanceDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeRCInstanceDiskResponse) SetHeaders(v map[string]*string) *ResizeRCInstanceDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskResponse) SetStatusCode(v int32) *ResizeRCInstanceDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResizeRCInstanceDiskResponse) SetBody(v *ResizeRCInstanceDiskResponseBody) *ResizeRCInstanceDiskResponse {
+	s.Body = v
+	return s
+}
+
 type RestartDBInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -75085,6 +77981,463 @@ func (s *RevokeOperatorPermissionResponse) SetBody(v *RevokeOperatorPermissionRe
 	return s
 }
 
+type RunRCInstancesRequest struct {
+	// This parameter is required.
+	Amount             *int32                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoPay            *bool                            `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew          *bool                            `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClientToken        *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DataDisk           []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	DeploymentSetId    *string                          `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	Description        *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId            *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType *string                          `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName       *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IoOptimized             *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	RegionId                    *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityEnhancementStrategy *string                          `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	SecurityGroupId             *string                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SystemDisk                  *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// This parameter is required.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s RunRCInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesRequest) SetAmount(v int32) *RunRCInstancesRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetAutoPay(v bool) *RunRCInstancesRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetAutoRenew(v bool) *RunRCInstancesRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetClientToken(v string) *RunRCInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetDataDisk(v []*RunRCInstancesRequestDataDisk) *RunRCInstancesRequest {
+	s.DataDisk = v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetDeploymentSetId(v string) *RunRCInstancesRequest {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetDescription(v string) *RunRCInstancesRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetImageId(v string) *RunRCInstancesRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetInstanceChargeType(v string) *RunRCInstancesRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetInstanceName(v string) *RunRCInstancesRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetInstanceType(v string) *RunRCInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetInternetChargeType(v string) *RunRCInstancesRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetInternetMaxBandwidthOut(v int32) *RunRCInstancesRequest {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetIoOptimized(v string) *RunRCInstancesRequest {
+	s.IoOptimized = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetKeyPairName(v string) *RunRCInstancesRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetPassword(v string) *RunRCInstancesRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetPeriod(v int32) *RunRCInstancesRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetPeriodUnit(v string) *RunRCInstancesRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetRegionId(v string) *RunRCInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetSecurityEnhancementStrategy(v string) *RunRCInstancesRequest {
+	s.SecurityEnhancementStrategy = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetSecurityGroupId(v string) *RunRCInstancesRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetSystemDisk(v *RunRCInstancesRequestSystemDisk) *RunRCInstancesRequest {
+	s.SystemDisk = v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetVSwitchId(v string) *RunRCInstancesRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetZoneId(v string) *RunRCInstancesRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type RunRCInstancesRequestDataDisk struct {
+	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Encrypted          *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size               *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s RunRCInstancesRequestDataDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesRequestDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesRequestDataDisk) SetCategory(v string) *RunRCInstancesRequestDataDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestDataDisk) SetDeleteWithInstance(v bool) *RunRCInstancesRequestDataDisk {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestDataDisk) SetEncrypted(v string) *RunRCInstancesRequestDataDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestDataDisk) SetPerformanceLevel(v string) *RunRCInstancesRequestDataDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestDataDisk) SetSize(v int32) *RunRCInstancesRequestDataDisk {
+	s.Size = &v
+	return s
+}
+
+type RunRCInstancesRequestSystemDisk struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Size     *string `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s RunRCInstancesRequestSystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesRequestSystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesRequestSystemDisk) SetCategory(v string) *RunRCInstancesRequestSystemDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestSystemDisk) SetSize(v string) *RunRCInstancesRequestSystemDisk {
+	s.Size = &v
+	return s
+}
+
+type RunRCInstancesShrinkRequest struct {
+	// This parameter is required.
+	Amount             *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew          *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DataDiskShrink     *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
+	DeploymentSetId    *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IoOptimized             *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	SecurityGroupId             *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SystemDiskShrink            *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	// This parameter is required.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s RunRCInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesShrinkRequest) SetAmount(v int32) *RunRCInstancesShrinkRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetAutoPay(v bool) *RunRCInstancesShrinkRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetAutoRenew(v bool) *RunRCInstancesShrinkRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetClientToken(v string) *RunRCInstancesShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetDataDiskShrink(v string) *RunRCInstancesShrinkRequest {
+	s.DataDiskShrink = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetDeploymentSetId(v string) *RunRCInstancesShrinkRequest {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetDescription(v string) *RunRCInstancesShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetImageId(v string) *RunRCInstancesShrinkRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetInstanceChargeType(v string) *RunRCInstancesShrinkRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetInstanceName(v string) *RunRCInstancesShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetInstanceType(v string) *RunRCInstancesShrinkRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetInternetChargeType(v string) *RunRCInstancesShrinkRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetInternetMaxBandwidthOut(v int32) *RunRCInstancesShrinkRequest {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetIoOptimized(v string) *RunRCInstancesShrinkRequest {
+	s.IoOptimized = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetKeyPairName(v string) *RunRCInstancesShrinkRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetPassword(v string) *RunRCInstancesShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetPeriod(v int32) *RunRCInstancesShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetPeriodUnit(v string) *RunRCInstancesShrinkRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetRegionId(v string) *RunRCInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetSecurityEnhancementStrategy(v string) *RunRCInstancesShrinkRequest {
+	s.SecurityEnhancementStrategy = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetSecurityGroupId(v string) *RunRCInstancesShrinkRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetSystemDiskShrink(v string) *RunRCInstancesShrinkRequest {
+	s.SystemDiskShrink = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetVSwitchId(v string) *RunRCInstancesShrinkRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetZoneId(v string) *RunRCInstancesShrinkRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type RunRCInstancesResponseBody struct {
+	InstanceIdSets *RunRCInstancesResponseBodyInstanceIdSets `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Struct"`
+	OrderId        *string                                   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunRCInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesResponseBody) SetInstanceIdSets(v *RunRCInstancesResponseBodyInstanceIdSets) *RunRCInstancesResponseBody {
+	s.InstanceIdSets = v
+	return s
+}
+
+func (s *RunRCInstancesResponseBody) SetOrderId(v string) *RunRCInstancesResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RunRCInstancesResponseBody) SetRequestId(v string) *RunRCInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunRCInstancesResponseBodyInstanceIdSets struct {
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" xml:"InstanceIdSet,omitempty" type:"Repeated"`
+}
+
+func (s RunRCInstancesResponseBodyInstanceIdSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesResponseBodyInstanceIdSets) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesResponseBodyInstanceIdSets) SetInstanceIdSet(v []*string) *RunRCInstancesResponseBodyInstanceIdSets {
+	s.InstanceIdSet = v
+	return s
+}
+
+type RunRCInstancesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunRCInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunRCInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesResponse) SetHeaders(v map[string]*string) *RunRCInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunRCInstancesResponse) SetStatusCode(v int32) *RunRCInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunRCInstancesResponse) SetBody(v *RunRCInstancesResponseBody) *RunRCInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type StartDBInstanceRequest struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
@@ -75363,6 +78716,76 @@ func (s *StartDBInstanceResponse) SetBody(v *StartDBInstanceResponseBody) *Start
 	return s
 }
 
+type StartRCInstanceRequest struct {
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartRCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartRCInstanceRequest) SetInstanceId(v string) *StartRCInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartRCInstanceRequest) SetRegionId(v string) *StartRCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartRCInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartRCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartRCInstanceResponseBody) SetRequestId(v string) *StartRCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartRCInstanceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartRCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartRCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartRCInstanceResponse) SetHeaders(v map[string]*string) *StartRCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartRCInstanceResponse) SetStatusCode(v int32) *StartRCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartRCInstanceResponse) SetBody(v *StartRCInstanceResponseBody) *StartRCInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type StopDBInstanceRequest struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
@@ -75465,6 +78888,82 @@ func (s *StopDBInstanceResponse) SetStatusCode(v int32) *StopDBInstanceResponse 
 }
 
 func (s *StopDBInstanceResponse) SetBody(v *StopDBInstanceResponseBody) *StopDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopRCInstanceRequest struct {
+	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopRCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopRCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopRCInstanceRequest) SetForceStop(v bool) *StopRCInstanceRequest {
+	s.ForceStop = &v
+	return s
+}
+
+func (s *StopRCInstanceRequest) SetInstanceId(v string) *StopRCInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StopRCInstanceRequest) SetRegionId(v string) *StopRCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopRCInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopRCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopRCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopRCInstanceResponseBody) SetRequestId(v string) *StopRCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopRCInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopRCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopRCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopRCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopRCInstanceResponse) SetHeaders(v map[string]*string) *StopRCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopRCInstanceResponse) SetStatusCode(v int32) *StopRCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopRCInstanceResponse) SetBody(v *StopRCInstanceResponseBody) *StopRCInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -75908,6 +79407,98 @@ func (s *SwitchDBInstanceVpcResponse) SetStatusCode(v int32) *SwitchDBInstanceVp
 }
 
 func (s *SwitchDBInstanceVpcResponse) SetBody(v *SwitchDBInstanceVpcResponseBody) *SwitchDBInstanceVpcResponse {
+	s.Body = v
+	return s
+}
+
+type SyncRCKeyPairRequest struct {
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SyncRCKeyPairRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRCKeyPairRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRCKeyPairRequest) SetKeyPairName(v string) *SyncRCKeyPairRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *SyncRCKeyPairRequest) SetRegionId(v string) *SyncRCKeyPairRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SyncRCKeyPairResponseBody struct {
+	Data      *SyncRCKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SyncRCKeyPairResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRCKeyPairResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRCKeyPairResponseBody) SetData(v *SyncRCKeyPairResponseBodyData) *SyncRCKeyPairResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SyncRCKeyPairResponseBody) SetRequestId(v string) *SyncRCKeyPairResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncRCKeyPairResponseBodyData struct {
+	IsSyncInfo *bool `json:"IsSyncInfo,omitempty" xml:"IsSyncInfo,omitempty"`
+}
+
+func (s SyncRCKeyPairResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRCKeyPairResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRCKeyPairResponseBodyData) SetIsSyncInfo(v bool) *SyncRCKeyPairResponseBodyData {
+	s.IsSyncInfo = &v
+	return s
+}
+
+type SyncRCKeyPairResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncRCKeyPairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncRCKeyPairResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRCKeyPairResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRCKeyPairResponse) SetHeaders(v map[string]*string) *SyncRCKeyPairResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncRCKeyPairResponse) SetStatusCode(v int32) *SyncRCKeyPairResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncRCKeyPairResponse) SetBody(v *SyncRCKeyPairResponseBody) *SyncRCKeyPairResponse {
 	s.Body = v
 	return s
 }
@@ -83269,6 +86860,90 @@ func (client *Client) CreatePostgresExtensions(request *CreatePostgresExtensions
 
 // Summary:
 //
+// 创建RDS CUSTOM部署集
+//
+// @param request - CreateRCDeploymentSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRCDeploymentSetResponse
+func (client *Client) CreateRCDeploymentSetWithOptions(request *CreateRCDeploymentSetRequest, runtime *util.RuntimeOptions) (_result *CreateRCDeploymentSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentSetName)) {
+		query["DeploymentSetName"] = request.DeploymentSetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupCount)) {
+		query["GroupCount"] = request.GroupCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnUnableToRedeployFailedInstance)) {
+		query["OnUnableToRedeployFailedInstance"] = request.OnUnableToRedeployFailedInstance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		query["Strategy"] = request.Strategy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRCDeploymentSet"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRCDeploymentSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建RDS CUSTOM部署集
+//
+// @param request - CreateRCDeploymentSetRequest
+//
+// @return CreateRCDeploymentSetResponse
+func (client *Client) CreateRCDeploymentSet(request *CreateRCDeploymentSetRequest) (_result *CreateRCDeploymentSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRCDeploymentSetResponse{}
+	_body, _err := client.CreateRCDeploymentSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a read-only instance.
 //
 // Description:
@@ -83500,6 +87175,106 @@ func (client *Client) CreateReadOnlyDBInstance(request *CreateReadOnlyDBInstance
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateReadOnlyDBInstanceResponse{}
 	_body, _err := client.CreateReadOnlyDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建复制链路
+//
+// @param request - CreateReplicationLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReplicationLinkResponse
+func (client *Client) CreateReplicationLinkWithOptions(request *CreateReplicationLinkRequest, runtime *util.RuntimeOptions) (_result *CreateReplicationLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplicatorAccount)) {
+		query["ReplicatorAccount"] = request.ReplicatorAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplicatorPassword)) {
+		query["ReplicatorPassword"] = request.ReplicatorPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceAddress)) {
+		query["SourceAddress"] = request.SourceAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCategory)) {
+		query["SourceCategory"] = request.SourceCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceName)) {
+		query["SourceInstanceName"] = request.SourceInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceRegionId)) {
+		query["SourceInstanceRegionId"] = request.SourceInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcePort)) {
+		query["SourcePort"] = request.SourcePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateReplicationLink"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateReplicationLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建复制链路
+//
+// @param request - CreateReplicationLinkRequest
+//
+// @return CreateReplicationLinkResponse
+func (client *Client) CreateReplicationLink(request *CreateReplicationLinkRequest) (_result *CreateReplicationLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateReplicationLinkResponse{}
+	_body, _err := client.CreateReplicationLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -85540,6 +89315,288 @@ func (client *Client) DeletePostgresExtensions(request *DeletePostgresExtensions
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePostgresExtensionsResponse{}
 	_body, _err := client.DeletePostgresExtensionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RDS CUSTOM部署集
+//
+// @param request - DeleteRCDeploymentSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRCDeploymentSetResponse
+func (client *Client) DeleteRCDeploymentSetWithOptions(request *DeleteRCDeploymentSetRequest, runtime *util.RuntimeOptions) (_result *DeleteRCDeploymentSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentSetId)) {
+		query["DeploymentSetId"] = request.DeploymentSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRCDeploymentSet"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRCDeploymentSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RDS CUSTOM部署集
+//
+// @param request - DeleteRCDeploymentSetRequest
+//
+// @return DeleteRCDeploymentSetResponse
+func (client *Client) DeleteRCDeploymentSet(request *DeleteRCDeploymentSetRequest) (_result *DeleteRCDeploymentSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRCDeploymentSetResponse{}
+	_body, _err := client.DeleteRCDeploymentSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RDS用户专属主机实例
+//
+// @param request - DeleteRCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRCInstanceResponse
+func (client *Client) DeleteRCInstanceWithOptions(request *DeleteRCInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteRCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRCInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RDS用户专属主机实例
+//
+// @param request - DeleteRCInstanceRequest
+//
+// @return DeleteRCInstanceResponse
+func (client *Client) DeleteRCInstance(request *DeleteRCInstanceRequest) (_result *DeleteRCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRCInstanceResponse{}
+	_body, _err := client.DeleteRCInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除RDS用户专属主机实例
+//
+// @param tmpReq - DeleteRCInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRCInstancesResponse
+func (client *Client) DeleteRCInstancesWithOptions(tmpReq *DeleteRCInstancesRequest, runtime *util.RuntimeOptions) (_result *DeleteRCInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteRCInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceId)) {
+		request.InstanceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceId, tea.String("InstanceId"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdShrink)) {
+		query["InstanceId"] = request.InstanceIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminateSubscription)) {
+		query["TerminateSubscription"] = request.TerminateSubscription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRCInstances"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRCInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除RDS用户专属主机实例
+//
+// @param request - DeleteRCInstancesRequest
+//
+// @return DeleteRCInstancesResponse
+func (client *Client) DeleteRCInstances(request *DeleteRCInstancesRequest) (_result *DeleteRCInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRCInstancesResponse{}
+	_body, _err := client.DeleteRCInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除复制链路
+//
+// @param request - DeleteReplicationLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteReplicationLinkResponse
+func (client *Client) DeleteReplicationLinkWithOptions(request *DeleteReplicationLinkRequest, runtime *util.RuntimeOptions) (_result *DeleteReplicationLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromoteToMaster)) {
+		query["PromoteToMaster"] = request.PromoteToMaster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteReplicationLink"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteReplicationLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除复制链路
+//
+// @param request - DeleteReplicationLinkRequest
+//
+// @return DeleteReplicationLinkResponse
+func (client *Client) DeleteReplicationLink(request *DeleteReplicationLinkRequest) (_result *DeleteReplicationLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteReplicationLinkResponse{}
+	_body, _err := client.DeleteReplicationLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -96459,6 +100516,306 @@ func (client *Client) DescribeQuickSaleConfig(request *DescribeQuickSaleConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 描述RDS CUSTOM部署集
+//
+// @param request - DescribeRCDeploymentSetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRCDeploymentSetsResponse
+func (client *Client) DescribeRCDeploymentSetsWithOptions(request *DescribeRCDeploymentSetsRequest, runtime *util.RuntimeOptions) (_result *DescribeRCDeploymentSetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRCDeploymentSets"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRCDeploymentSetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述RDS CUSTOM部署集
+//
+// @param request - DescribeRCDeploymentSetsRequest
+//
+// @return DescribeRCDeploymentSetsResponse
+func (client *Client) DescribeRCDeploymentSets(request *DescribeRCDeploymentSetsRequest) (_result *DescribeRCDeploymentSetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRCDeploymentSetsResponse{}
+	_body, _err := client.DescribeRCDeploymentSetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询镜像资源
+//
+// @param request - DescribeRCImageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRCImageListResponse
+func (client *Client) DescribeRCImageListWithOptions(request *DescribeRCImageListRequest, runtime *util.RuntimeOptions) (_result *DescribeRCImageListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRCImageList"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRCImageListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询镜像资源
+//
+// @param request - DescribeRCImageListRequest
+//
+// @return DescribeRCImageListResponse
+func (client *Client) DescribeRCImageList(request *DescribeRCImageListRequest) (_result *DescribeRCImageListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRCImageListResponse{}
+	_body, _err := client.DescribeRCImageListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询RDS用户专属主机实例
+//
+// @param request - DescribeRCInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRCInstanceAttributeResponse
+func (client *Client) DescribeRCInstanceAttributeWithOptions(request *DescribeRCInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeRCInstanceAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRCInstanceAttribute"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRCInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询RDS用户专属主机实例
+//
+// @param request - DescribeRCInstanceAttributeRequest
+//
+// @return DescribeRCInstanceAttributeResponse
+func (client *Client) DescribeRCInstanceAttribute(request *DescribeRCInstanceAttributeRequest) (_result *DescribeRCInstanceAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRCInstanceAttributeResponse{}
+	_body, _err := client.DescribeRCInstanceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询RC实例列表
+//
+// @param request - DescribeRCInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRCInstancesResponse
+func (client *Client) DescribeRCInstancesWithOptions(request *DescribeRCInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeRCInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRCInstances"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRCInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询RC实例列表
+//
+// @param request - DescribeRCInstancesRequest
+//
+// @return DescribeRCInstancesResponse
+func (client *Client) DescribeRCInstances(request *DescribeRCInstancesRequest) (_result *DescribeRCInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRCInstancesResponse{}
+	_body, _err := client.DescribeRCInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定云产品的指定监控项的监控数据
+//
+// @param request - DescribeRCMetricListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRCMetricListResponse
+func (client *Client) DescribeRCMetricListWithOptions(request *DescribeRCMetricListRequest, runtime *util.RuntimeOptions) (_result *DescribeRCMetricListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRCMetricList"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRCMetricListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定云产品的指定监控项的监控数据
+//
+// @param request - DescribeRCMetricListRequest
+//
+// @return DescribeRCMetricListResponse
+func (client *Client) DescribeRCMetricList(request *DescribeRCMetricListRequest) (_result *DescribeRCMetricListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRCMetricListResponse{}
+	_body, _err := client.DescribeRCMetricListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Deprecated: OpenAPI DescribeRdsResourceSettings is deprecated
 //
 // Summary:
@@ -96962,6 +101319,86 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRenewalPriceResponse{}
 	_body, _err := client.DescribeRenewalPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询复制链路操作日志
+//
+// @param request - DescribeReplicationLinkLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeReplicationLinkLogsResponse
+func (client *Client) DescribeReplicationLinkLogsWithOptions(request *DescribeReplicationLinkLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeReplicationLinkLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeReplicationLinkLogs"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeReplicationLinkLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询复制链路操作日志
+//
+// @param request - DescribeReplicationLinkLogsRequest
+//
+// @return DescribeReplicationLinkLogsResponse
+func (client *Client) DescribeReplicationLinkLogs(request *DescribeReplicationLinkLogsRequest) (_result *DescribeReplicationLinkLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeReplicationLinkLogsResponse{}
+	_body, _err := client.DescribeReplicationLinkLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -106777,6 +111214,166 @@ func (client *Client) ModifyParameterGroup(request *ModifyParameterGroupRequest)
 
 // Summary:
 //
+// ModifyRCInstance
+//
+// @param request - ModifyRCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRCInstanceResponse
+func (client *Client) ModifyRCInstanceWithOptions(request *ModifyRCInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyRCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRCInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyRCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ModifyRCInstance
+//
+// @param request - ModifyRCInstanceRequest
+//
+// @return ModifyRCInstanceResponse
+func (client *Client) ModifyRCInstance(request *ModifyRCInstanceRequest) (_result *ModifyRCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyRCInstanceResponse{}
+	_body, _err := client.ModifyRCInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改RDS用户专属主机实例付费类型
+//
+// @param request - ModifyRCInstanceChargeTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRCInstanceChargeTypeResponse
+func (client *Client) ModifyRCInstanceChargeTypeWithOptions(request *ModifyRCInstanceChargeTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyRCInstanceChargeTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeDataDisks)) {
+		query["IncludeDataDisks"] = request.IncludeDataDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRCInstanceChargeType"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyRCInstanceChargeTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改RDS用户专属主机实例付费类型
+//
+// @param request - ModifyRCInstanceChargeTypeRequest
+//
+// @return ModifyRCInstanceChargeTypeResponse
+func (client *Client) ModifyRCInstanceChargeType(request *ModifyRCInstanceChargeTypeRequest) (_result *ModifyRCInstanceChargeTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyRCInstanceChargeTypeResponse{}
+	_body, _err := client.ModifyRCInstanceChargeTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the latency threshold of the read/write splitting link and the read weights of a primary instance and its read-only instances.
 //
 // Description:
@@ -108263,6 +112860,78 @@ func (client *Client) QueryRecommendByCode(request *QueryRecommendByCodeRequest)
 
 // Summary:
 //
+// 重启RDS用户专属主机实例
+//
+// @param request - RebootRCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebootRCInstanceResponse
+func (client *Client) RebootRCInstanceWithOptions(request *RebootRCInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootRCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+		query["ForceStop"] = request.ForceStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebootRCInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebootRCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启RDS用户专属主机实例
+//
+// @param request - RebootRCInstanceRequest
+//
+// @return RebootRCInstanceResponse
+func (client *Client) RebootRCInstance(request *RebootRCInstanceRequest) (_result *RebootRCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebootRCInstanceResponse{}
+	_body, _err := client.RebootRCInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Rebuilds the secondary instance of a primary instance in a dedicated cluster.
 //
 // Description:
@@ -108350,6 +113019,78 @@ func (client *Client) RebuildDBInstance(request *RebuildDBInstanceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &RebuildDBInstanceResponse{}
 	_body, _err := client.RebuildDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Re-creates a data synchronization link for a disaster recovery ApsaraDB RDS instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
+//
+// @param request - RebuildReplicationLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebuildReplicationLinkResponse
+func (client *Client) RebuildReplicationLinkWithOptions(request *RebuildReplicationLinkRequest, runtime *util.RuntimeOptions) (_result *RebuildReplicationLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebuildReplicationLink"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebuildReplicationLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Re-creates a data synchronization link for a disaster recovery ApsaraDB RDS instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
+//
+// @param request - RebuildReplicationLinkRequest
+//
+// @return RebuildReplicationLinkResponse
+func (client *Client) RebuildReplicationLink(request *RebuildReplicationLinkRequest) (_result *RebuildReplicationLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebuildReplicationLinkResponse{}
+	_body, _err := client.RebuildReplicationLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -109499,6 +114240,86 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
+// ResizeRCInstanceDisk
+//
+// @param request - ResizeRCInstanceDiskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeRCInstanceDiskResponse
+func (client *Client) ResizeRCInstanceDiskWithOptions(request *ResizeRCInstanceDiskRequest, runtime *util.RuntimeOptions) (_result *ResizeRCInstanceDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSize)) {
+		query["NewSize"] = request.NewSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeRCInstanceDisk"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResizeRCInstanceDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ResizeRCInstanceDisk
+//
+// @param request - ResizeRCInstanceDiskRequest
+//
+// @return ResizeRCInstanceDiskResponse
+func (client *Client) ResizeRCInstanceDisk(request *ResizeRCInstanceDiskRequest) (_result *ResizeRCInstanceDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResizeRCInstanceDiskResponse{}
+	_body, _err := client.ResizeRCInstanceDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Restarts an instance.
 //
 // Description:
@@ -110135,6 +114956,168 @@ func (client *Client) RevokeOperatorPermission(request *RevokeOperatorPermission
 
 // Summary:
 //
+// 创建RDS用户专属主机实例
+//
+// @param tmpReq - RunRCInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunRCInstancesResponse
+func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, runtime *util.RuntimeOptions) (_result *RunRCInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunRCInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataDisk)) {
+		request.DataDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataDisk, tea.String("DataDisk"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SystemDisk)) {
+		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, tea.String("SystemDisk"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDiskShrink)) {
+		query["DataDisk"] = request.DataDiskShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentSetId)) {
+		query["DeploymentSetId"] = request.DeploymentSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoOptimized)) {
+		query["IoOptimized"] = request.IoOptimized
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityEnhancementStrategy)) {
+		query["SecurityEnhancementStrategy"] = request.SecurityEnhancementStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskShrink)) {
+		query["SystemDisk"] = request.SystemDiskShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunRCInstances"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunRCInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建RDS用户专属主机实例
+//
+// @param request - RunRCInstancesRequest
+//
+// @return RunRCInstancesResponse
+func (client *Client) RunRCInstances(request *RunRCInstancesRequest) (_result *RunRCInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunRCInstancesResponse{}
+	_body, _err := client.RunRCInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resumes an instance.
 //
 // Description:
@@ -110299,6 +115282,70 @@ func (client *Client) StartDBInstance(request *StartDBInstanceRequest) (_result 
 
 // Summary:
 //
+// 启动RDS用户专属主机实例
+//
+// @param request - StartRCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRCInstanceResponse
+func (client *Client) StartRCInstanceWithOptions(request *StartRCInstanceRequest, runtime *util.RuntimeOptions) (_result *StartRCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartRCInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartRCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动RDS用户专属主机实例
+//
+// @param request - StartRCInstanceRequest
+//
+// @return StartRCInstanceResponse
+func (client *Client) StartRCInstance(request *StartRCInstanceRequest) (_result *StartRCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartRCInstanceResponse{}
+	_body, _err := client.StartRCInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Suspends an ApsaraDB RDS instance.
 //
 // Description:
@@ -110406,6 +115453,74 @@ func (client *Client) StopDBInstance(request *StopDBInstanceRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDBInstanceResponse{}
 	_body, _err := client.StopDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止RDS用户专属主机实例
+//
+// @param request - StopRCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRCInstanceResponse
+func (client *Client) StopRCInstanceWithOptions(request *StopRCInstanceRequest, runtime *util.RuntimeOptions) (_result *StopRCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+		query["ForceStop"] = request.ForceStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopRCInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopRCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止RDS用户专属主机实例
+//
+// @param request - StopRCInstanceRequest
+//
+// @return StopRCInstanceResponse
+func (client *Client) StopRCInstance(request *StopRCInstanceRequest) (_result *StopRCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopRCInstanceResponse{}
+	_body, _err := client.StopRCInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -110794,6 +115909,70 @@ func (client *Client) SwitchDBInstanceVpc(request *SwitchDBInstanceVpcRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchDBInstanceVpcResponse{}
 	_body, _err := client.SwitchDBInstanceVpcWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步密钥对
+//
+// @param request - SyncRCKeyPairRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncRCKeyPairResponse
+func (client *Client) SyncRCKeyPairWithOptions(request *SyncRCKeyPairRequest, runtime *util.RuntimeOptions) (_result *SyncRCKeyPairResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncRCKeyPair"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncRCKeyPairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步密钥对
+//
+// @param request - SyncRCKeyPairRequest
+//
+// @return SyncRCKeyPairResponse
+func (client *Client) SyncRCKeyPair(request *SyncRCKeyPairRequest) (_result *SyncRCKeyPairResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncRCKeyPairResponse{}
+	_body, _err := client.SyncRCKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
