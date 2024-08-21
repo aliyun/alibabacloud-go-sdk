@@ -3214,6 +3214,8 @@ func (s *CreateUploadVideoResponse) SetBody(v *CreateUploadVideoResponseBody) *C
 }
 
 type DecryptKMSDataKeyRequest struct {
+	// The ciphertext to be decrypted.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7217,6 +7219,7 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	//
 	// 2018-06-03T13:03:39Z
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
+	CertId         *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The validity period of the certificate. Unit: months or years.
 	//
 	// example:
@@ -7234,7 +7237,9 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// example:
 	//
 	// Let\\"s Encrypt
-	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	CertOrg       *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	CertRegion    *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
 	// The type of the certificate. Valid values:
 	//
 	// 	- **free**: a free certificate.
@@ -7246,13 +7251,16 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// example:
 	//
 	// free
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CertType          *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CertUpdateTime    *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
+	DomainCnameStatus *string `json:"DomainCnameStatus,omitempty" xml:"DomainCnameStatus,omitempty"`
 	// The accelerated domain name whose ICP filing status you want to update.
 	//
 	// example:
 	//
 	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ServerCertificate *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
 	// The status of the SSL certificate.
 	//
 	// 	- **on**
@@ -7305,6 +7313,11 @@ func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertE
 	return s
 }
 
+func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertId(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertId = &v
+	return s
+}
+
 func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertLife(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
 	s.CertLife = &v
 	return s
@@ -7320,13 +7333,38 @@ func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertO
 	return s
 }
 
+func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertRegion(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertRegion = &v
+	return s
+}
+
+func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertStartTime(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertStartTime = &v
+	return s
+}
+
 func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertType(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
 	s.CertType = &v
 	return s
 }
 
+func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertUpdateTime(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertUpdateTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetDomainCnameStatus(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.DomainCnameStatus = &v
+	return s
+}
+
 func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetDomainName(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
 	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetServerCertificate(v string) *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.ServerCertificate = &v
 	return s
 }
 
@@ -12911,6 +12949,255 @@ func (s *DescribeVodRefreshTasksResponse) SetStatusCode(v int32) *DescribeVodRef
 }
 
 func (s *DescribeVodRefreshTasksResponse) SetBody(v *DescribeVodRefreshTasksResponseBody) *DescribeVodRefreshTasksResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodSSLCertificateListRequest struct {
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// certabc
+	SearchKeyword *string `json:"SearchKeyword,omitempty" xml:"SearchKeyword,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeVodSSLCertificateListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodSSLCertificateListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodSSLCertificateListRequest) SetDomainName(v string) *DescribeVodSSLCertificateListRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListRequest) SetOwnerId(v int64) *DescribeVodSSLCertificateListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListRequest) SetPageNumber(v int64) *DescribeVodSSLCertificateListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListRequest) SetPageSize(v int64) *DescribeVodSSLCertificateListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListRequest) SetSearchKeyword(v string) *DescribeVodSSLCertificateListRequest {
+	s.SearchKeyword = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListRequest) SetSecurityToken(v string) *DescribeVodSSLCertificateListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeVodSSLCertificateListResponseBody struct {
+	CertificateListModel *DescribeVodSSLCertificateListResponseBodyCertificateListModel `json:"CertificateListModel,omitempty" xml:"CertificateListModel,omitempty" type:"Struct"`
+	// example:
+	//
+	// 25818875-5F78-4AF6-D7393642CA58****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodSSLCertificateListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodSSLCertificateListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodSSLCertificateListResponseBody) SetCertificateListModel(v *DescribeVodSSLCertificateListResponseBodyCertificateListModel) *DescribeVodSSLCertificateListResponseBody {
+	s.CertificateListModel = v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBody) SetRequestId(v string) *DescribeVodSSLCertificateListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodSSLCertificateListResponseBodyCertificateListModel struct {
+	CertList *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeVodSSLCertificateListResponseBodyCertificateListModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodSSLCertificateListResponseBodyCertificateListModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModel) SetCertList(v *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList) *DescribeVodSSLCertificateListResponseBodyCertificateListModel {
+	s.CertList = v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModel) SetCount(v int32) *DescribeVodSSLCertificateListResponseBodyCertificateListModel {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModel) SetPageNumber(v int64) *DescribeVodSSLCertificateListResponseBodyCertificateListModel {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModel) SetPageSize(v int64) *DescribeVodSSLCertificateListResponseBodyCertificateListModel {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList struct {
+	Cert []*DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert `json:"Cert,omitempty" xml:"Cert,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList) SetCert(v []*DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList {
+	s.Cert = v
+	return s
+}
+
+type DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert struct {
+	// example:
+	//
+	// 235437
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// example:
+	//
+	// video-ssl
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// example:
+	//
+	// test
+	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// example:
+	//
+	// ****
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// example:
+	//
+	// ****
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// 1512388610
+	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+}
+
+func (s DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) SetCertId(v int64) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert {
+	s.CertId = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) SetCertName(v string) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert {
+	s.CertName = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) SetCertRegion(v string) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert {
+	s.CertRegion = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) SetCommon(v string) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert {
+	s.Common = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) SetFingerprint(v string) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) SetIssuer(v string) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert {
+	s.Issuer = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert) SetLastTime(v int64) *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert {
+	s.LastTime = &v
+	return s
+}
+
+type DescribeVodSSLCertificateListResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodSSLCertificateListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodSSLCertificateListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodSSLCertificateListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodSSLCertificateListResponse) SetHeaders(v map[string]*string) *DescribeVodSSLCertificateListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponse) SetStatusCode(v int32) *DescribeVodSSLCertificateListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodSSLCertificateListResponse) SetBody(v *DescribeVodSSLCertificateListResponseBody) *DescribeVodSSLCertificateListResponse {
 	s.Body = v
 	return s
 }
@@ -35731,6 +36018,163 @@ func (s *SetVodDomainCertificateResponse) SetBody(v *SetVodDomainCertificateResp
 	return s
 }
 
+type SetVodDomainSSLCertificateRequest struct {
+	// example:
+	//
+	// 12342707
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// example:
+	//
+	// cert_name
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// example:
+	//
+	// cas
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// staging
+	Env     *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// ****
+	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// off
+	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
+	// example:
+	//
+	// ****
+	SSLPub        *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SetVodDomainSSLCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetVodDomainSSLCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetCertId(v int64) *SetVodDomainSSLCertificateRequest {
+	s.CertId = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetCertName(v string) *SetVodDomainSSLCertificateRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetCertRegion(v string) *SetVodDomainSSLCertificateRequest {
+	s.CertRegion = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetCertType(v string) *SetVodDomainSSLCertificateRequest {
+	s.CertType = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetDomainName(v string) *SetVodDomainSSLCertificateRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetEnv(v string) *SetVodDomainSSLCertificateRequest {
+	s.Env = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetOwnerId(v int64) *SetVodDomainSSLCertificateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetSSLPri(v string) *SetVodDomainSSLCertificateRequest {
+	s.SSLPri = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetSSLProtocol(v string) *SetVodDomainSSLCertificateRequest {
+	s.SSLProtocol = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetSSLPub(v string) *SetVodDomainSSLCertificateRequest {
+	s.SSLPub = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateRequest) SetSecurityToken(v string) *SetVodDomainSSLCertificateRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SetVodDomainSSLCertificateResponseBody struct {
+	// example:
+	//
+	// F4C6D5BE-BF13-45*****6C-516EA8906DCD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetVodDomainSSLCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetVodDomainSSLCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetVodDomainSSLCertificateResponseBody) SetRequestId(v string) *SetVodDomainSSLCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetVodDomainSSLCertificateResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetVodDomainSSLCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetVodDomainSSLCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetVodDomainSSLCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetVodDomainSSLCertificateResponse) SetHeaders(v map[string]*string) *SetVodDomainSSLCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateResponse) SetStatusCode(v int32) *SetVodDomainSSLCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetVodDomainSSLCertificateResponse) SetBody(v *SetVodDomainSSLCertificateResponseBody) *SetVodDomainSSLCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitAIImageAuditJobRequest struct {
 	// The configuration information about the review job.
 	//
@@ -46314,6 +46758,86 @@ func (client *Client) DescribeVodRefreshTasks(request *DescribeVodRefreshTasksRe
 
 // Summary:
 //
+// 查询证书列表，支持翻页
+//
+// @param request - DescribeVodSSLCertificateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVodSSLCertificateListResponse
+func (client *Client) DescribeVodSSLCertificateListWithOptions(request *DescribeVodSSLCertificateListRequest, runtime *util.RuntimeOptions) (_result *DescribeVodSSLCertificateListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyword)) {
+		query["SearchKeyword"] = request.SearchKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodSSLCertificateList"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodSSLCertificateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询证书列表，支持翻页
+//
+// @param request - DescribeVodSSLCertificateListRequest
+//
+// @return DescribeVodSSLCertificateListResponse
+func (client *Client) DescribeVodSSLCertificateList(request *DescribeVodSSLCertificateListRequest) (_result *DescribeVodSSLCertificateListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodSSLCertificateListResponse{}
+	_body, _err := client.DescribeVodSSLCertificateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the usage of storage-related resources, including the storage volume and outbound traffic.
 //
 // Description:
@@ -52357,6 +52881,106 @@ func (client *Client) SetVodDomainCertificate(request *SetVodDomainCertificateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SetVodDomainCertificateResponse{}
 	_body, _err := client.SetVodDomainCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置证书
+//
+// @param request - SetVodDomainSSLCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetVodDomainSSLCertificateResponse
+func (client *Client) SetVodDomainSSLCertificateWithOptions(request *SetVodDomainSSLCertificateRequest, runtime *util.RuntimeOptions) (_result *SetVodDomainSSLCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertId)) {
+		query["CertId"] = request.CertId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertRegion)) {
+		query["CertRegion"] = request.CertRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Env)) {
+		query["Env"] = request.Env
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPri)) {
+		query["SSLPri"] = request.SSLPri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetVodDomainSSLCertificate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetVodDomainSSLCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置证书
+//
+// @param request - SetVodDomainSSLCertificateRequest
+//
+// @return SetVodDomainSSLCertificateResponse
+func (client *Client) SetVodDomainSSLCertificate(request *SetVodDomainSSLCertificateRequest) (_result *SetVodDomainSSLCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetVodDomainSSLCertificateResponse{}
+	_body, _err := client.SetVodDomainSSLCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
