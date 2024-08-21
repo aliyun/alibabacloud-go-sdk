@@ -1362,6 +1362,157 @@ func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexRe
 	return s
 }
 
+type CreateMemoryRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s CreateMemoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemoryRequest) SetDescription(v string) *CreateMemoryRequest {
+	s.Description = &v
+	return s
+}
+
+type CreateMemoryResponseBody struct {
+	// example:
+	//
+	// 6bff4f317a14442fbc9f73d29dbd5fc3
+	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
+	// example:
+	//
+	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateMemoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemoryResponseBody) SetMemoryId(v string) *CreateMemoryResponseBody {
+	s.MemoryId = &v
+	return s
+}
+
+func (s *CreateMemoryResponseBody) SetRequestId(v string) *CreateMemoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateMemoryResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMemoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMemoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemoryResponse) SetHeaders(v map[string]*string) *CreateMemoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMemoryResponse) SetStatusCode(v int32) *CreateMemoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMemoryResponse) SetBody(v *CreateMemoryResponseBody) *CreateMemoryResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMemoryNodeRequest struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+}
+
+func (s CreateMemoryNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemoryNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemoryNodeRequest) SetContent(v string) *CreateMemoryNodeRequest {
+	s.Content = &v
+	return s
+}
+
+type CreateMemoryNodeResponseBody struct {
+	// example:
+	//
+	// 68de06c95368463a8be4a84efc872cc5
+	MemoryNodeId *string `json:"memoryNodeId,omitempty" xml:"memoryNodeId,omitempty"`
+	// example:
+	//
+	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateMemoryNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemoryNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemoryNodeResponseBody) SetMemoryNodeId(v string) *CreateMemoryNodeResponseBody {
+	s.MemoryNodeId = &v
+	return s
+}
+
+func (s *CreateMemoryNodeResponseBody) SetRequestId(v string) *CreateMemoryNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateMemoryNodeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMemoryNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMemoryNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemoryNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemoryNodeResponse) SetHeaders(v map[string]*string) *CreateMemoryNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMemoryNodeResponse) SetStatusCode(v int32) *CreateMemoryNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMemoryNodeResponse) SetBody(v *CreateMemoryNodeResponseBody) *CreateMemoryNodeResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAgentResponseBody struct {
 	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
 	Data           *string `json:"data,omitempty" xml:"data,omitempty"`
@@ -1942,6 +2093,104 @@ func (s *DeleteIndexDocumentResponse) SetBody(v *DeleteIndexDocumentResponseBody
 	return s
 }
 
+type DeleteMemoryResponseBody struct {
+	// example:
+	//
+	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteMemoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMemoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMemoryResponseBody) SetRequestId(v string) *DeleteMemoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMemoryResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMemoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMemoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMemoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMemoryResponse) SetHeaders(v map[string]*string) *DeleteMemoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMemoryResponse) SetStatusCode(v int32) *DeleteMemoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMemoryResponse) SetBody(v *DeleteMemoryResponseBody) *DeleteMemoryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMemoryNodeResponseBody struct {
+	// example:
+	//
+	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteMemoryNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMemoryNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMemoryNodeResponseBody) SetRequestId(v string) *DeleteMemoryNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMemoryNodeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMemoryNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMemoryNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMemoryNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMemoryNodeResponse) SetHeaders(v map[string]*string) *DeleteMemoryNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMemoryNodeResponse) SetStatusCode(v int32) *DeleteMemoryNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMemoryNodeResponse) SetBody(v *DeleteMemoryNodeResponseBody) *DeleteMemoryNodeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFileResponseBody struct {
 	// example:
 	//
@@ -2324,6 +2573,161 @@ func (s *GetIndexJobStatusResponse) SetStatusCode(v int32) *GetIndexJobStatusRes
 }
 
 func (s *GetIndexJobStatusResponse) SetBody(v *GetIndexJobStatusResponseBody) *GetIndexJobStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetMemoryResponseBody struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 6bff4f317a14442fbc9f73d29dbd5fc3
+	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
+	// example:
+	//
+	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// llm-us9hjmt32nysdm5v
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s GetMemoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMemoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemoryResponseBody) SetDescription(v string) *GetMemoryResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetMemoryResponseBody) SetMemoryId(v string) *GetMemoryResponseBody {
+	s.MemoryId = &v
+	return s
+}
+
+func (s *GetMemoryResponseBody) SetRequestId(v string) *GetMemoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMemoryResponseBody) SetWorkspaceId(v string) *GetMemoryResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetMemoryResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMemoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMemoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMemoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemoryResponse) SetHeaders(v map[string]*string) *GetMemoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMemoryResponse) SetStatusCode(v int32) *GetMemoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMemoryResponse) SetBody(v *GetMemoryResponseBody) *GetMemoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetMemoryNodeResponseBody struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 6bff4f317a14442fbc9f73d29dbd5fc3
+	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
+	// example:
+	//
+	// 68de06c95368463a8be4a84efc872cc5
+	MemoryNodeId *string `json:"memoryNodeId,omitempty" xml:"memoryNodeId,omitempty"`
+	// example:
+	//
+	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// llm-us9hjmt32nysdm5v
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s GetMemoryNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMemoryNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemoryNodeResponseBody) SetContent(v string) *GetMemoryNodeResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *GetMemoryNodeResponseBody) SetMemoryId(v string) *GetMemoryNodeResponseBody {
+	s.MemoryId = &v
+	return s
+}
+
+func (s *GetMemoryNodeResponseBody) SetMemoryNodeId(v string) *GetMemoryNodeResponseBody {
+	s.MemoryNodeId = &v
+	return s
+}
+
+func (s *GetMemoryNodeResponseBody) SetRequestId(v string) *GetMemoryNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMemoryNodeResponseBody) SetWorkspaceId(v string) *GetMemoryNodeResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetMemoryNodeResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMemoryNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMemoryNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMemoryNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemoryNodeResponse) SetHeaders(v map[string]*string) *GetMemoryNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMemoryNodeResponse) SetStatusCode(v int32) *GetMemoryNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMemoryNodeResponse) SetBody(v *GetMemoryNodeResponseBody) *GetMemoryNodeResponse {
 	s.Body = v
 	return s
 }
@@ -3993,6 +4397,289 @@ func (s *ListIndicesResponse) SetBody(v *ListIndicesResponseBody) *ListIndicesRe
 	return s
 }
 
+type ListMemoriesRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// dc270401186b433f975d7e1faaa34e0e
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListMemoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoriesRequest) SetMaxResults(v int32) *ListMemoriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMemoriesRequest) SetNextToken(v string) *ListMemoriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListMemoriesResponseBody struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32                              `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	Memories   []*ListMemoriesResponseBodyMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dc270401186b433f975d7e1faaa34e0e
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 105
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// llm-us9hjmt32nysdm5v
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListMemoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoriesResponseBody) SetMaxResults(v int32) *ListMemoriesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBody) SetMemories(v []*ListMemoriesResponseBodyMemories) *ListMemoriesResponseBody {
+	s.Memories = v
+	return s
+}
+
+func (s *ListMemoriesResponseBody) SetNextToken(v string) *ListMemoriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBody) SetRequestId(v string) *ListMemoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBody) SetTotalCount(v int32) *ListMemoriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBody) SetWorkspaceId(v string) *ListMemoriesResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListMemoriesResponseBodyMemories struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 3fc531f4519444beaafffa4538f60667
+	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
+}
+
+func (s ListMemoriesResponseBodyMemories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoriesResponseBodyMemories) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoriesResponseBodyMemories) SetDescription(v string) *ListMemoriesResponseBodyMemories {
+	s.Description = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBodyMemories) SetMemoryId(v string) *ListMemoriesResponseBodyMemories {
+	s.MemoryId = &v
+	return s
+}
+
+type ListMemoriesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMemoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMemoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoriesResponse) SetHeaders(v map[string]*string) *ListMemoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMemoriesResponse) SetStatusCode(v int32) *ListMemoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMemoriesResponse) SetBody(v *ListMemoriesResponseBody) *ListMemoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListMemoryNodesRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// dc270401186b433f975d7e1faaa34e0e
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListMemoryNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoryNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoryNodesRequest) SetMaxResults(v int32) *ListMemoryNodesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMemoryNodesRequest) SetNextToken(v string) *ListMemoryNodesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListMemoryNodesResponseBody struct {
+	// example:
+	//
+	// 20
+	MaxResults  *int32                                    `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MemoryNodes []*ListMemoryNodesResponseBodyMemoryNodes `json:"memoryNodes,omitempty" xml:"memoryNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dc270401186b433f975d7e1faaa34e0e
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListMemoryNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoryNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoryNodesResponseBody) SetMaxResults(v int32) *ListMemoryNodesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMemoryNodesResponseBody) SetMemoryNodes(v []*ListMemoryNodesResponseBodyMemoryNodes) *ListMemoryNodesResponseBody {
+	s.MemoryNodes = v
+	return s
+}
+
+func (s *ListMemoryNodesResponseBody) SetNextToken(v string) *ListMemoryNodesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMemoryNodesResponseBody) SetRequestId(v string) *ListMemoryNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMemoryNodesResponseBody) SetTotalCount(v int32) *ListMemoryNodesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMemoryNodesResponseBodyMemoryNodes struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 68de06c95368463a8be4a84efc872cc5
+	MemoryNodeId *string `json:"memoryNodeId,omitempty" xml:"memoryNodeId,omitempty"`
+}
+
+func (s ListMemoryNodesResponseBodyMemoryNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoryNodesResponseBodyMemoryNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoryNodesResponseBodyMemoryNodes) SetContent(v string) *ListMemoryNodesResponseBodyMemoryNodes {
+	s.Content = &v
+	return s
+}
+
+func (s *ListMemoryNodesResponseBodyMemoryNodes) SetMemoryNodeId(v string) *ListMemoryNodesResponseBodyMemoryNodes {
+	s.MemoryNodeId = &v
+	return s
+}
+
+type ListMemoryNodesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMemoryNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMemoryNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMemoryNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMemoryNodesResponse) SetHeaders(v map[string]*string) *ListMemoryNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMemoryNodesResponse) SetStatusCode(v int32) *ListMemoryNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMemoryNodesResponse) SetBody(v *ListMemoryNodesResponseBody) *ListMemoryNodesResponse {
+	s.Body = v
+	return s
+}
+
 type ListPublishedAgentRequest struct {
 	PageNo   *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
@@ -5510,6 +6197,139 @@ func (s *UpdateAndPublishAgentResponse) SetBody(v *UpdateAndPublishAgentResponse
 	return s
 }
 
+type UpdateMemoryRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s UpdateMemoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemoryRequest) SetDescription(v string) *UpdateMemoryRequest {
+	s.Description = &v
+	return s
+}
+
+type UpdateMemoryResponseBody struct {
+	// example:
+	//
+	// 6a71f2d9-f1c9-913b-818b-114029103cad
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateMemoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemoryResponseBody) SetRequestId(v string) *UpdateMemoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMemoryResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMemoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMemoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemoryResponse) SetHeaders(v map[string]*string) *UpdateMemoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMemoryResponse) SetStatusCode(v int32) *UpdateMemoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMemoryResponse) SetBody(v *UpdateMemoryResponseBody) *UpdateMemoryResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMemoryNodeRequest struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+}
+
+func (s UpdateMemoryNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemoryNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemoryNodeRequest) SetContent(v string) *UpdateMemoryNodeRequest {
+	s.Content = &v
+	return s
+}
+
+type UpdateMemoryNodeResponseBody struct {
+	// example:
+	//
+	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateMemoryNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemoryNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemoryNodeResponseBody) SetRequestId(v string) *UpdateMemoryNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMemoryNodeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMemoryNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMemoryNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemoryNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemoryNodeResponse) SetHeaders(v map[string]*string) *UpdateMemoryNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMemoryNodeResponse) SetStatusCode(v int32) *UpdateMemoryNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMemoryNodeResponse) SetBody(v *UpdateMemoryNodeResponseBody) *UpdateMemoryNodeResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -5987,6 +6807,134 @@ func (client *Client) CreateIndex(WorkspaceId *string, request *CreateIndexReque
 
 // Summary:
 //
+// 创建Memory
+//
+// @param request - CreateMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemoryResponse
+func (client *Client) CreateMemoryWithOptions(workspaceId *string, request *CreateMemoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMemoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMemory"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Memory
+//
+// @param request - CreateMemoryRequest
+//
+// @return CreateMemoryResponse
+func (client *Client) CreateMemory(workspaceId *string, request *CreateMemoryRequest) (_result *CreateMemoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMemoryResponse{}
+	_body, _err := client.CreateMemoryWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建记忆Node
+//
+// @param request - CreateMemoryNodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemoryNodeResponse
+func (client *Client) CreateMemoryNodeWithOptions(workspaceId *string, memoryId *string, request *CreateMemoryNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMemoryNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["content"] = request.Content
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMemoryNode"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId)) + "/memoryNodes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMemoryNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建记忆Node
+//
+// @param request - CreateMemoryNodeRequest
+//
+// @return CreateMemoryNodeResponse
+func (client *Client) CreateMemoryNode(workspaceId *string, memoryId *string, request *CreateMemoryNodeRequest) (_result *CreateMemoryNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMemoryNodeResponse{}
+	_body, _err := client.CreateMemoryNodeWithOptions(workspaceId, memoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除智能体
 //
 // @param headers - map
@@ -6267,6 +7215,106 @@ func (client *Client) DeleteIndexDocument(WorkspaceId *string, request *DeleteIn
 
 // Summary:
 //
+// 删除memory
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryResponse
+func (client *Client) DeleteMemoryWithOptions(workspaceId *string, memoryId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMemory"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除memory
+//
+// @return DeleteMemoryResponse
+func (client *Client) DeleteMemory(workspaceId *string, memoryId *string) (_result *DeleteMemoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMemoryResponse{}
+	_body, _err := client.DeleteMemoryWithOptions(workspaceId, memoryId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除记忆Node
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryNodeResponse
+func (client *Client) DeleteMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMemoryNodeResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMemoryNode"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId)) + "/memoryNodes/" + tea.StringValue(openapiutil.GetEncodeParam(memoryNodeId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMemoryNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除记忆Node
+//
+// @return DeleteMemoryNodeResponse
+func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string) (_result *DeleteMemoryNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMemoryNodeResponse{}
+	_body, _err := client.DeleteMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取文档基本信息，包括文档名称、类型、状态等。
 //
 // @param headers - map
@@ -6376,6 +7424,106 @@ func (client *Client) GetIndexJobStatus(WorkspaceId *string, request *GetIndexJo
 	headers := make(map[string]*string)
 	_result = &GetIndexJobStatusResponse{}
 	_body, _err := client.GetIndexJobStatusWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取memory
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryResponse
+func (client *Client) GetMemoryWithOptions(workspaceId *string, memoryId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMemory"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取memory
+//
+// @return GetMemoryResponse
+func (client *Client) GetMemory(workspaceId *string, memoryId *string) (_result *GetMemoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoryResponse{}
+	_body, _err := client.GetMemoryWithOptions(workspaceId, memoryId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取记忆Node
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryNodeResponse
+func (client *Client) GetMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMemoryNodeResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMemoryNode"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId)) + "/memoryNodes/" + tea.StringValue(openapiutil.GetEncodeParam(memoryNodeId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMemoryNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取记忆Node
+//
+// @return GetMemoryNodeResponse
+func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string) (_result *GetMemoryNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMemoryNodeResponse{}
+	_body, _err := client.GetMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6815,6 +7963,142 @@ func (client *Client) ListIndices(WorkspaceId *string, request *ListIndicesReque
 
 // Summary:
 //
+// 获取memory
+//
+// @param request - ListMemoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemoriesResponse
+func (client *Client) ListMemoriesWithOptions(workspaceId *string, request *ListMemoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMemoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMemories"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMemoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取memory
+//
+// @param request - ListMemoriesRequest
+//
+// @return ListMemoriesResponse
+func (client *Client) ListMemories(workspaceId *string, request *ListMemoriesRequest) (_result *ListMemoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMemoriesResponse{}
+	_body, _err := client.ListMemoriesWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取记忆Node列表
+//
+// @param request - ListMemoryNodesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMemoryNodesResponse
+func (client *Client) ListMemoryNodesWithOptions(workspaceId *string, memoryId *string, request *ListMemoryNodesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMemoryNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMemoryNodes"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId)) + "/memoryNodes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMemoryNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取记忆Node列表
+//
+// @param request - ListMemoryNodesRequest
+//
+// @return ListMemoryNodesResponse
+func (client *Client) ListMemoryNodes(workspaceId *string, memoryId *string, request *ListMemoryNodesRequest) (_result *ListMemoryNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMemoryNodesResponse{}
+	_body, _err := client.ListMemoryNodesWithOptions(workspaceId, memoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询已发布的智能体应用列表
 //
 // @param request - ListPublishedAgentRequest
@@ -7228,6 +8512,134 @@ func (client *Client) UpdateAndPublishAgent(workspaceId *string, appCode *string
 	headers := make(map[string]*string)
 	_result = &UpdateAndPublishAgentResponse{}
 	_body, _err := client.UpdateAndPublishAgentWithOptions(workspaceId, appCode, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新memory
+//
+// @param request - UpdateMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryResponse
+func (client *Client) UpdateMemoryWithOptions(workspaceId *string, memoryId *string, request *UpdateMemoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMemoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMemory"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMemoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新memory
+//
+// @param request - UpdateMemoryRequest
+//
+// @return UpdateMemoryResponse
+func (client *Client) UpdateMemory(workspaceId *string, memoryId *string, request *UpdateMemoryRequest) (_result *UpdateMemoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMemoryResponse{}
+	_body, _err := client.UpdateMemoryWithOptions(workspaceId, memoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新记忆Node
+//
+// @param request - UpdateMemoryNodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryNodeResponse
+func (client *Client) UpdateMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, request *UpdateMemoryNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMemoryNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["content"] = request.Content
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMemoryNode"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/memories/" + tea.StringValue(openapiutil.GetEncodeParam(memoryId)) + "/memoryNodes/" + tea.StringValue(openapiutil.GetEncodeParam(memoryNodeId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMemoryNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新记忆Node
+//
+// @param request - UpdateMemoryNodeRequest
+//
+// @return UpdateMemoryNodeResponse
+func (client *Client) UpdateMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string, request *UpdateMemoryNodeRequest) (_result *UpdateMemoryNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMemoryNodeResponse{}
+	_body, _err := client.UpdateMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
