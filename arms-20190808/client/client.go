@@ -1931,6 +1931,8 @@ func (s *QueryDataResponse) SetResults(v string) *QueryDataResponse {
 }
 
 type DataBonreeSDKConfigModuleConfigDefaultConfigValue struct {
+	// Indicates whether the configuration is enabled.
+	//
 	// example:
 	//
 	// true
@@ -1951,12 +1953,18 @@ func (s *DataBonreeSDKConfigModuleConfigDefaultConfigValue) SetEnable(v bool) *D
 }
 
 type DataBonreeSDKConfigModuleConfigVersionConfigsValue struct {
+	// Indicates whether the custom configuration is used.
+	//
 	// example:
 	//
 	// true
-	UseCustom    *bool                                                                           `json:"useCustom,omitempty" xml:"useCustom,omitempty"`
+	UseCustom *bool `json:"useCustom,omitempty" xml:"useCustom,omitempty"`
+	// The custom configuration.
 	CustomConfig map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
-	Description  *string                                                                         `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the version configuration.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The time when the version configuration was updated.
+	//
 	// example:
 	//
 	// 1721112372055
@@ -1992,6 +2000,8 @@ func (s *DataBonreeSDKConfigModuleConfigVersionConfigsValue) SetUpdateTime(v int
 }
 
 type DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue struct {
+	// Indicates whether the configuration is enabled.
+	//
 	// example:
 	//
 	// true
@@ -4323,6 +4333,8 @@ type BlockAlarmNotificationRequest struct {
 	//
 	// 2044049
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4368,22 +4380,40 @@ func (s *BlockAlarmNotificationRequest) SetTimeout(v int64) *BlockAlarmNotificat
 }
 
 type BlockAlarmNotificationResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 626037F5-FDEB-45B0-804C-B3C92797****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
@@ -4463,10 +4493,14 @@ type ChangeAlarmSeverityRequest struct {
 	//
 	// 155
 	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// The ID of the handler.
+	//
 	// example:
 	//
 	// 2046076
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4512,22 +4546,40 @@ func (s *ChangeAlarmSeverityRequest) SetSeverity(v string) *ChangeAlarmSeverityR
 }
 
 type ChangeAlarmSeverityResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F7781D4A-2818-41E7-B7BB-79D809E9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the severity level was modified.
+	//
+	// - `true`: The severity level was modified.
+	//
+	// - `false`: The severity level failed to be modified.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
@@ -5155,6 +5207,10 @@ type CloseAlarmRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The alert solution.
+	//
+	// example:
+	//
+	// Restart Repair
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 }
 
@@ -5573,16 +5629,22 @@ func (s *CreateAlertContactResponse) SetBody(v *CreateAlertContactResponseBody) 
 }
 
 type CreateAlertContactGroupRequest struct {
+	// The name of the alert contact group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TestGroup
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
+	// The IDs of contacts in the contact group. Separate multiple contact IDs with spaces. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](https://help.aliyun.com/document_detail/130703.html).
+	//
 	// example:
 	//
 	// 12	- 23	- 34*
 	ContactIds *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
+	// The ID of the region. Default value: `cn-hangzhou`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5615,10 +5677,14 @@ func (s *CreateAlertContactGroupRequest) SetRegionId(v string) *CreateAlertConta
 }
 
 type CreateAlertContactGroupResponseBody struct {
+	// The ID of the alert contact group.
+	//
 	// example:
 	//
 	// 446*
 	ContactGroupId *string `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 70675725-8F11-4817-8106-CFE0AD71****
@@ -5673,127 +5739,7 @@ func (s *CreateAlertContactGroupResponse) SetBody(v *CreateAlertContactGroupResp
 }
 
 type CreateDispatchRuleRequest struct {
-	// ## Additional information about the **DispatchRule*	- parameter
-	//
-	// **JSON string example and description**
-	//
-	// ```
-	//
-	// {
-	//
-	//   "system": false,        // Specifies whether the dispatch rule is editable. Valid values: true: not editable. false: editable.
-	//
-	//   "ruleid": 10282,           // The ID of the dispatch rule.
-	//
-	//   "name": "Prometheus Alert",   // The name of the dispatch policy.
-	//
-	//   "labelMatchExpressionGrid": {
-	//
-	//     "labelMatchExpressionGroups": [     // Sets the dispatch rule.
-	//
-	//       {
-	//
-	//         "labelMatchExpressions": [
-	//
-	//           {
-	//
-	//             "key": "_aliyun_arms_involvedObject_kind", // The key of the tag of the dispatch rule. For more information, see the next section.
-	//
-	//             "value": "app",                              // The value of the tag.
-	//
-	//             "operator": "eq"                             // The operator used in the dispatch rule. Valid values: eq: equals to. re: matches a regular expression.
-	//
-	//           }
-	//
-	//         ]
-	//
-	//       }
-	//
-	//     ]
-	//
-	//   },
-	//
-	//   "dispatchType": "CREATE_ALERT/DISCARD_ALERT",    // The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
-	//
-	//   "isRecover": true,               // Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
-	//
-	//   "groupRules": [                  // Sets the event group.
-	//
-	//     {
-	//
-	//       "groupId": 1,               // The ID of the group.
-	//
-	//       "groupingFields": [         // The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
-	//
-	//         "alertname"
-	//
-	//       ],
-	//
-	//       "groupWait": 10,                 // The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
-	//
-	//       "groupInterval": 15,             // The grouping interval. During the silence period of repeated alerts, if new alerts are generated, they will be sent after the group waiting time.
-	//
-	//       "repeatInterval": 20             // The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared.
-	//
-	//     }
-	//
-	//   ],
-	//
-	//   "notifyRules": [            // Sets the notification rule.
-	//
-	//     {
-	//
-	//       "notifyObjects": [
-	//
-	//         {
-	//
-	//           "notifyType": "ARMS_CONTACT",     // The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-	//
-	//           "name": "JohnDoe",                // The name of the contact or contact group.
-	//
-	//           "notifyObjectId": 1               // The ID of the contact or contact group.
-	//
-	//         },
-	//
-	//         {
-	//
-	//           "notifyType": "ARMS_CONTACT_GROUP",
-	//
-	//           "name": "JohnDoe_group",
-	//
-	//           "notifyObjectId": 2
-	//
-	//         }
-	//
-	//       ],
-	//
-	//       "notifyChannels":["dingTalk","wechat","webhook","email"]     // The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
-	//
-	//     },
-	//
-	//   ],
-	//
-	// }
-	//
-	// ```
-	//
-	// **Enumerated keys of the tag of the dispatch rule**
-	//
-	// 	- `_aliyun_arms_userid`: user ID
-	//
-	// 	- `_aliyun_arms_involvedObject_kind`: type of the associated object
-	//
-	// 	- `_aliyun_arms_involvedObject_id`: ID of the associated object
-	//
-	// 	- `_aliyun_arms_involvedObject_name`: name of the associated object
-	//
-	// 	- `_aliyun_arms_alert_name`: alert name
-	//
-	// 	- `_aliyun_arms_alert_rule_id`: alert rule ID
-	//
-	// 	- `_aliyun_arms_alert_type`: alert type
-	//
-	// 	- `_aliyun_arms_alert_level`: alert severity
+	// The dispatch rule configuration. The value is a JSON string. For more information about this parameter, see the following **additional information about the DispatchRule parameter**.
 	//
 	// This parameter is required.
 	//
@@ -5801,6 +5747,8 @@ type CreateDispatchRuleRequest struct {
 	//
 	// {   "system": false,   "ruleid": 10282,   "name": "Prometheus Alert",   "labelMatchExpressionGrid": {     "labelMatchExpressionGroups": [       {         "labelMatchExpressions": [           {             "key": "_aliyun_arms_involvedObject_kind",             "value": "app",             "operator": "eq"           }         ]       }     ]   },   "dispatchType": "CREATE_ALERT/DISCARD_ALERT",   "isRecover": true,   "groupRules": [     {       "groupId": 1,       "groupingFields": [         "alertname"       ],       "groupWait": 10,       "groupInterval": 15,       "repeatInterval": 20     }   ],   "notifyRules": [     {       "notifyObjects": [         {           "notifyType": "ARMS_CONTACT",           "name": "JohnDoe",           "notifyObjectId": 1         },         {           "notifyType": "ARMS_CONTACT_GROUP",           "name": "JohnDoe_group",           "notifyObjectId": 2         }       ],       "notifyChannels":["dingTalk","wechat","webhook","email"]     },   ], }
 	DispatchRule *string `json:"DispatchRule,omitempty" xml:"DispatchRule,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5828,10 +5776,14 @@ func (s *CreateDispatchRuleRequest) SetRegionId(v string) *CreateDispatchRuleReq
 }
 
 type CreateDispatchRuleResponseBody struct {
+	// The ID of the dispatch policy.
+	//
 	// example:
 	//
 	// 10413
 	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A5EC8221-08F2-4C95-9AF1-49FD998C****
@@ -9947,6 +9899,11 @@ func (s *CreateOrUpdateNotificationPolicyResponseBody) SetRequestId(v string) *C
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
+	// Specifies whether to enable simple mode.
+	//
+	// example:
+	//
+	// true
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation policy.
 	//
@@ -10539,6 +10496,8 @@ func (s *CreateOrUpdateNotificationPolicyResponse) SetBody(v *CreateOrUpdateNoti
 }
 
 type CreateOrUpdateSilencePolicyRequest struct {
+	// The effective duration of the silence policy. Valid values: PERMANENT, CUSTOM_TIME, and CYCLE_EFFECT.
+	//
 	// example:
 	//
 	// PERMANENT
@@ -10601,10 +10560,14 @@ type CreateOrUpdateSilencePolicyRequest struct {
 	//
 	// enable
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The recurring period. This parameter is required when EffectiveTimeType is set to CYCLE_EFFECT. DAY: The silence policy is effective by day. WEEK: The silence policy is effective by week.
+	//
 	// example:
 	//
 	// DAY
 	TimePeriod *string `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty"`
+	// The time period during which the silence policy is effective. If you set EffectiveTimeType to CUSTOM_TIME, specify a custom time period in the following format: [{"startTime":"2024-08-04 22:13","endTime":"2024-08-04 22:21"}] If you set EffectiveTimeType to CYCLE_EFFECT and TimePeriod to DAY, specify a custom time period in the following format: [{"startTime":"22:13","endTime":"22:21"}]. The start time cannot be later than the end time. If you set EffectiveTimeType to CYCLE_EFFECT and TimePeriod to WEEK, specify a custom time period in the following format: [{"startWeek":"1", "endWeek":"2" "startTime":"22:13","endTime":"22:21"}]. Valid values of startWeek and endWeek: 1 to 7. The start time cannot be later than the end time.
+	//
 	// example:
 	//
 	// [{"startTime":"2024-08-04 22:13","endTime":"2024-08-04 22:21"}]
@@ -10666,7 +10629,7 @@ type CreateOrUpdateSilencePolicyResponseBody struct {
 	//
 	// A5EC8221-08F2-4C95-9AF1-49FD998C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The silence policy.
+	// A list of silence policies.
 	SilencePolicy *CreateOrUpdateSilencePolicyResponseBodySilencePolicy `json:"SilencePolicy,omitempty" xml:"SilencePolicy,omitempty" type:"Struct"`
 }
 
@@ -10704,7 +10667,7 @@ type CreateOrUpdateSilencePolicyResponseBodySilencePolicy struct {
 	//
 	// silencepolicy_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the silence policy is enabled. Valid values: enable and disable.
+	// Specifies whether to enable the silence policy. Valid values: enable and disable.
 	//
 	// example:
 	//
@@ -10758,7 +10721,7 @@ func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetTimeSlots(v st
 }
 
 type CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules struct {
-	// The matching conditions.
+	// A list of matching conditions.
 	MatchingConditions []*CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingConditions `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty" type:"Repeated"`
 }
 
@@ -12856,7 +12819,7 @@ type CreateRumUploadFileUrlRequest struct {
 	//
 	// test.js.map
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The application ID.
+	// The process ID (PID) of the application.
 	//
 	// This parameter is required.
 	//
@@ -12959,7 +12922,7 @@ type CreateRumUploadFileUrlResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -13051,50 +13014,130 @@ func (s *CreateRumUploadFileUrlResponse) SetBody(v *CreateRumUploadFileUrlRespon
 }
 
 type CreateSyntheticTaskRequest struct {
-	CommonParam    *CreateSyntheticTaskRequestCommonParam    `json:"CommonParam,omitempty" xml:"CommonParam,omitempty" type:"Struct"`
-	Download       *CreateSyntheticTaskRequestDownload       `json:"Download,omitempty" xml:"Download,omitempty" type:"Struct"`
+	// The common parameters.
+	CommonParam *CreateSyntheticTaskRequestCommonParam `json:"CommonParam,omitempty" xml:"CommonParam,omitempty" type:"Struct"`
+	// The file download task.
+	Download *CreateSyntheticTaskRequestDownload `json:"Download,omitempty" xml:"Download,omitempty" type:"Struct"`
+	// The frequency.
 	ExtendInterval *CreateSyntheticTaskRequestExtendInterval `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty" type:"Struct"`
+	// The interval at which synthetic monitoring is performed. Unit: minutes. Valid values:
+	//
+	// 	- 1
+	//
+	// 	- 5
+	//
+	// 	- 10
+	//
+	// 	- 15
+	//
+	// 	- 20
+	//
+	// 	- 30
+	//
+	// 	- 60
+	//
+	// 	- 120
+	//
+	// 	- 180
+	//
+	// 	- 240
+	//
+	// 	- 360
+	//
+	// 	- 480
+	//
+	// 	- 720
+	//
+	// 	- 1440
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	IntervalTime *string `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	// The interval type.
+	//
+	// 	- 0: daily
+	//
+	// 	- 1: custom frequency
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	IntervalType *string `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	// The IP address type:
+	//
+	// 	- 0: an automatic IP address
+	//
+	// 	- 1: IPv4
+	//
+	// 	- 2: IPv6
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	IpType *int64 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The list of monitoring points.
+	//
 	// This parameter is required.
 	MonitorList []*CreateSyntheticTaskRequestMonitorList `json:"MonitorList,omitempty" xml:"MonitorList,omitempty" type:"Repeated"`
-	Navigation  *CreateSyntheticTaskRequestNavigation    `json:"Navigation,omitempty" xml:"Navigation,omitempty" type:"Struct"`
-	Net         *CreateSyntheticTaskRequestNet           `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
-	Protocol    *CreateSyntheticTaskRequestProtocol      `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Struct"`
+	// The monitoring items that are associated with the browse tasks.
+	Navigation *CreateSyntheticTaskRequestNavigation `json:"Navigation,omitempty" xml:"Navigation,omitempty" type:"Struct"`
+	// The network synthetic monitoring task.
+	Net *CreateSyntheticTaskRequestNet `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
+	// The API performance synthetic monitoring task.
+	Protocol *CreateSyntheticTaskRequestProtocol `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Struct"`
+	// The ID of the region in which the application is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the task. To update a synthetic monitoring task, enter the task name and set the **UpdateTask*	- parameter to **true**.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Network synthetic monitoring task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the monitoring task. Valid values:
+	//
+	// 1.  3: web page performance - IE
+	//
+	// 2.  34: web Page Performance - Chrome
+	//
+	// 3.  0: network quality
+	//
+	// 4.  40: file download
+	//
+	// 5.  7:API performance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	TaskType *int64 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Specifies whether to update existing synthetic monitoring tasks.
+	//
+	// 	- true: updates existing synthetic monitoring tasks.
+	//
+	// 	- false: creates new synthetic monitoring tasks.
+	//
 	// example:
 	//
 	// false
 	UpdateTask *bool `json:"UpdateTask,omitempty" xml:"UpdateTask,omitempty"`
+	// The URL for synthetic monitoring.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13187,23 +13230,42 @@ func (s *CreateSyntheticTaskRequest) SetUrl(v string) *CreateSyntheticTaskReques
 }
 
 type CreateSyntheticTaskRequestCommonParam struct {
+	// Specifies whether to create an alert rule.
+	//
+	// 	- 1: creates an alert.
+	//
+	// 	- 0: does not create an alert.
+	//
 	// example:
 	//
 	// 1
-	AlarmFlag *string                                           `json:"AlarmFlag,omitempty" xml:"AlarmFlag,omitempty"`
+	AlarmFlag *string `json:"AlarmFlag,omitempty" xml:"AlarmFlag,omitempty"`
+	// The alert parameters.
 	AlertList []*CreateSyntheticTaskRequestCommonParamAlertList `json:"AlertList,omitempty" xml:"AlertList,omitempty" type:"Repeated"`
+	// The ID of the alert recipient. Separate multiple recipients with commas (,).
+	//
 	// example:
 	//
 	// 123
 	AlertNotifierId *string `json:"AlertNotifierId,omitempty" xml:"AlertNotifierId,omitempty"`
+	// The ID of the notification policy.
+	//
 	// example:
 	//
 	// 1234
 	AlertPolicyId *string `json:"AlertPolicyId,omitempty" xml:"AlertPolicyId,omitempty"`
+	// Specifies whether to evenly distribute monitoring samples. Valid values:
+	//
+	// 	- 0: no
+	//
+	// 	- 1: yes
+	//
 	// example:
 	//
 	// 0
 	MonitorSamples *int64 `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	// The time when execution starts.
+	//
 	// example:
 	//
 	// 2022-07-20 10
@@ -13249,14 +13311,32 @@ func (s *CreateSyntheticTaskRequestCommonParam) SetStartExecutionTime(v int64) *
 }
 
 type CreateSyntheticTaskRequestCommonParamAlertList struct {
+	// Specifies whether the condition must be met.
+	//
 	// example:
 	//
 	// true
 	IsCritical *int64 `json:"IsCritical,omitempty" xml:"IsCritical,omitempty"`
+	// The name of the alert rule.
+	//
+	// For network synthetic monitoring, use the following names:
+	//
+	// 	- Latency: PING_SET
+	//
+	// 	- Packet loss rate: PING_LOST_RATE
+	//
+	// 	- Hijacking: HIJACKPER
+	//
 	// example:
 	//
 	// PING_SET
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies how the condition is evaluated. Valid values:
+	//
+	// 	- 1: greater than
+	//
+	// 	- 0: less than
+	//
 	// example:
 	//
 	// 1
@@ -13287,36 +13367,100 @@ func (s *CreateSyntheticTaskRequestCommonParamAlertList) SetSymbols(v int64) *Cr
 }
 
 type CreateSyntheticTaskRequestDownload struct {
+	// The connection timeout period.
+	//
 	// example:
 	//
 	// 200
-	ConnectionTimeout           *float64 `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
-	DownloadCustomHeaderContent *string  `json:"DownloadCustomHeaderContent,omitempty" xml:"DownloadCustomHeaderContent,omitempty"`
+	ConnectionTimeout *float64 `json:"ConnectionTimeout,omitempty" xml:"ConnectionTimeout,omitempty"`
+	// The items to be ignored in a certificate error. Pass the values of the check boxes that are separated with vertical bars (|).
+	//
+	// example:
+	//
+	// Host:www.example.com|Referer:www.example.com
+	DownloadCustomHeaderContent *string `json:"DownloadCustomHeaderContent,omitempty" xml:"DownloadCustomHeaderContent,omitempty"`
+	// The custom host mode.
+	//
+	// 	- 1: round robin
+	//
+	// 	- 0: random
+	//
 	// example:
 	//
 	// 1
 	DownloadCustomHost *int64 `json:"DownloadCustomHost,omitempty" xml:"DownloadCustomHost,omitempty"`
+	// The custom host IP address. You can enter multiple IP addresses. Separate the IP addresses with commas (,).
+	//
 	// example:
 	//
 	// ipv4:192.168.2.1,192.168.2.5:img.a.com|192.168.2.1[8080]:img.a.com
-	DownloadCustomHostIp           *string `json:"DownloadCustomHostIp,omitempty" xml:"DownloadCustomHostIp,omitempty"`
+	DownloadCustomHostIp *string `json:"DownloadCustomHostIp,omitempty" xml:"DownloadCustomHostIp,omitempty"`
+	// The items to be ignored in a certificate error. Pass the values of the check boxes that are separated with vertical bars (|).
+	//
+	// example:
+	//
+	// 1|2|4
 	DownloadIgnoreCertificateError *string `json:"DownloadIgnoreCertificateError,omitempty" xml:"DownloadIgnoreCertificateError,omitempty"`
+	// The kernel type.
+	//
+	// 	- 1: curl
+	//
+	// 	- 0: WinInet
+	//
 	// example:
 	//
 	// 1
-	DownloadKernel           *int64 `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
-	DownloadRedirection      *int64 `json:"DownloadRedirection,omitempty" xml:"DownloadRedirection,omitempty"`
+	DownloadKernel *int64 `json:"DownloadKernel,omitempty" xml:"DownloadKernel,omitempty"`
+	// Specifies whether to support redirection.
+	//
+	// example:
+	//
+	// 0
+	DownloadRedirection *int64 `json:"DownloadRedirection,omitempty" xml:"DownloadRedirection,omitempty"`
+	// The size of the download file. Unit: KB.
+	//
+	// example:
+	//
+	// 10240
 	DownloadTransmissionSize *int64 `json:"DownloadTransmissionSize,omitempty" xml:"DownloadTransmissionSize,omitempty"`
-	MonitorTimeout           *int64 `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	// The monitoring duration.
+	//
+	// example:
+	//
+	// 30
+	MonitorTimeout *int64 `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	// The QUIC protocol type.
+	//
+	// 	- 1: http1
+	//
+	// 	- 2: http2
+	//
+	// 	- 3: http3
+	//
 	// example:
 	//
 	// 1
-	QuickProtocol    *string `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	QuickProtocol *string `json:"QuickProtocol,omitempty" xml:"QuickProtocol,omitempty"`
+	// The keyword that is used in verification.
+	//
+	// example:
+	//
+	// keyword
 	ValidateKeywords *string `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	// The verification method.
+	//
+	// 	- 0: no verification
+	//
+	// 	- 1: string verification
+	//
+	// 	- 2: MD5 verification
+	//
 	// example:
 	//
 	// 0
 	VerifyWay *int64 `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	// The whitelist for DNS hijacking.
+	//
 	// example:
 	//
 	// [{\\"src\\":\\"211.154.166.174\\"}]
@@ -13397,27 +13541,40 @@ func (s *CreateSyntheticTaskRequestDownload) SetWhiteList(v string) *CreateSynth
 }
 
 type CreateSyntheticTaskRequestExtendInterval struct {
+	// The day on which synthetic monitoring is performed.
 	Days []*int64 `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
+	// The hour at which synthetic monitoring ends.
+	//
 	// example:
 	//
 	// 23
 	EndHour *int64 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	// The minute at which synthetic monitoring ends.
+	//
 	// example:
 	//
 	// 00
 	EndMinute *int64 `json:"EndMinute,omitempty" xml:"EndMinute,omitempty"`
+	// The time when synthetic monitoring ends. The format is `yyyy-MM-dd HH`.
+	//
 	// example:
 	//
 	// 2022-08-20 10
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The hour at which synthetic monitoring starts.
+	//
 	// example:
 	//
 	// 00
 	StartHour *int64 `json:"StartHour,omitempty" xml:"StartHour,omitempty"`
+	// The minute at which synthetic monitoring starts.
+	//
 	// example:
 	//
 	// 00
 	StartMinute *int64 `json:"StartMinute,omitempty" xml:"StartMinute,omitempty"`
+	// The time when synthetic monitoring starts. The format is `yyyy-MM-dd HH`.
+	//
 	// example:
 	//
 	// 2022-07-20 10
@@ -13468,18 +13625,28 @@ func (s *CreateSyntheticTaskRequestExtendInterval) SetStartTime(v string) *Creat
 }
 
 type CreateSyntheticTaskRequestMonitorList struct {
+	// The ID of the city to which the monitoring point belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1100101
 	CityCode *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The carrier type:
+	//
+	// 	- IDC
+	//
+	// 	- LastMilie
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IDC
 	MonitorType *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// The ID of the carrier.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13512,98 +13679,262 @@ func (s *CreateSyntheticTaskRequestMonitorList) SetNetServiceId(v int64) *Create
 }
 
 type CreateSyntheticTaskRequestNavigation struct {
+	// The whitelist for DNS hijacking.
+	//
+	// example:
+	//
+	// www.aliyun.com:202.0.3.55|203.3.44.67
 	DNSHijackWhiteList *string `json:"DNSHijackWhiteList,omitempty" xml:"DNSHijackWhiteList,omitempty"`
-	ElementBlacklist   *string `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
+	// The element blacklist.
+	//
+	// example:
+	//
+	// *.a.com
+	ElementBlacklist *string `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
+	// Specifies whether to execute ActiveX.
+	//
+	// 	- 3: yes
+	//
+	// 	- 0: no
+	//
+	// >  This parameter is supported only by IE Full Elements.
+	//
 	// example:
 	//
 	// 3
 	ExecuteActiveX *int64 `json:"ExecuteActiveX,omitempty" xml:"ExecuteActiveX,omitempty"`
+	// Specifies whether to run applets.
+	//
+	// 	- 1: yes
+	//
+	// 	- 0: no
+	//
+	// >  This parameter is supported only by IE Full Elements.
+	//
 	// example:
 	//
 	// 1
 	ExecuteApplication *int64 `json:"ExecuteApplication,omitempty" xml:"ExecuteApplication,omitempty"`
+	// Specifies whether to execute scripts.
+	//
+	// 	- 1: yes
+	//
+	// 	- 0: no
+	//
+	// >  This parameter is supported only by IE Full Elements.
+	//
 	// example:
 	//
 	// 1
 	ExecuteScript *int64 `json:"ExecuteScript,omitempty" xml:"ExecuteScript,omitempty"`
+	// Specifies whether to filter invalid IP addresses.
+	//
+	// 	- 1: no
+	//
+	// 	- 0: yes
+	//
 	// example:
 	//
 	// 1
-	FilterInvalidIP     *int64  `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
-	FlowHijackJumpTimes *int64  `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
-	FlowHijackLogo      *string `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
+	FilterInvalidIP *int64 `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	// The element that is used in DNS hijacking.
+	//
+	// example:
+	//
+	// 50
+	FlowHijackJumpTimes *int64 `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	// The tag that is used in DNS hijacking.
+	//
+	// example:
+	//
+	// test
+	FlowHijackLogo *string `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
+	// The timeout period of monitoring. Unit: seconds.
+	//
 	// example:
 	//
 	// 20
 	MonitorTimeout *string `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	// Specifies whether to automatically scroll up and down the screen to load a page.
+	//
+	// 	- 1: yes
+	//
+	// 	- 0: no
+	//
 	// example:
 	//
 	// 1
 	NavAutomaticScrolling *string `json:"NavAutomaticScrolling,omitempty" xml:"NavAutomaticScrolling,omitempty"`
+	// The method that is used to customize the header. Valid values:
+	//
+	// 	- 0: disables the customer header.
+	//
+	// 	- 1: modifies the first package.
+	//
+	// 	- 2: modifies all packages.
+	//
 	// example:
 	//
 	// 0
 	NavCustomHeader *string `json:"NavCustomHeader,omitempty" xml:"NavCustomHeader,omitempty"`
+	// The format of the custom header. You can specify multiple fields. Separate the fields with vertical bars (|).
+	//
 	// example:
 	//
 	// Host:www.example.com|Referer:www.example.com
 	NavCustomHeaderContent *string `json:"NavCustomHeaderContent,omitempty" xml:"NavCustomHeaderContent,omitempty"`
+	// The custom host mode.
+	//
+	// 	- 1: round robin
+	//
+	// 	- 0: random
+	//
 	// example:
 	//
 	// 1
 	NavCustomHost *int64 `json:"NavCustomHost,omitempty" xml:"NavCustomHost,omitempty"`
+	// The custom host IP address. You can enter multiple IP addresses. Separate the IP addresses with commas (,).
+	//
 	// example:
 	//
 	// ipv4:192.168.2.1,192.168.2.5:img.a.com|192.168.2.1[8080]:img.a.com
 	NavCustomHostIp *string `json:"NavCustomHostIp,omitempty" xml:"NavCustomHostIp,omitempty"`
+	// Specifies whether to disable caching.
+	//
+	// 	- 1: disable
+	//
+	// 	- 0: enable
+	//
 	// example:
 	//
 	// 1
 	NavDisableCache *int64 `json:"NavDisableCache,omitempty" xml:"NavDisableCache,omitempty"`
+	// Specifies whether to enable the feature of using the Accept-Encoding field to determine whether to accept compressed files.
+	//
+	// 	- 1: disable
+	//
+	// 	- 0: enable
+	//
 	// example:
 	//
 	// 1
 	NavDisableCompression *string `json:"NavDisableCompression,omitempty" xml:"NavDisableCompression,omitempty"`
+	// Specifies whether to ignore certificate errors during certificate verification in the SSL handshake and continue browsing.
+	//
+	// 	- 1: ignore
+	//
+	// 	- 0: does not ignore
+	//
 	// example:
 	//
 	// 1
 	NavIgnoreCertificateError *int64 `json:"NavIgnoreCertificateError,omitempty" xml:"NavIgnoreCertificateError,omitempty"`
+	// Specifies whether to continue browsing after a redirection occurs.
+	//
+	// 	- 1: yes
+	//
+	// 	- 0: no
+	//
 	// example:
 	//
 	// 1
 	NavRedirection *int64 `json:"NavRedirection,omitempty" xml:"NavRedirection,omitempty"`
+	// Specifies whether to return the elements on the page.
+	//
+	// 	- 1: no. Returns the basic document data.
+	//
+	// 	- 2: yes. Returns all document data.
+	//
 	// example:
 	//
 	// 2
-	NavReturnElement *int64  `json:"NavReturnElement,omitempty" xml:"NavReturnElement,omitempty"`
-	PageTamper       *string `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
+	NavReturnElement *int64 `json:"NavReturnElement,omitempty" xml:"NavReturnElement,omitempty"`
+	// The web page defacement.
+	//
+	// example:
+	//
+	// www.example.com:202.0.3.55|203.3.44.67
+	PageTamper *string `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
+	// The process ID.
+	//
 	// example:
 	//
 	// ssh
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// The domain name of the QUIC request element.
+	//
+	// >  This parameter is supported by all elements of only Chrome
+	//
 	// example:
 	//
 	// www.example.com
 	QUICDomain *string `json:"QUICDomain,omitempty" xml:"QUICDomain,omitempty"`
+	// The Quick UDP Internet Connections (QUIC) protocol version. Default value: 0. Valid values:
+	//
+	// *
+	//
+	// 	- 35
+	//
+	// 	- 39
+	//
+	// 	- 43
+	//
+	// 	- 44
+	//
+	// >  This parameter is supported by all elements of only Chrome
+	//
 	// example:
 	//
 	// 0
 	QUICVersion *int64 `json:"QUICVersion,omitempty" xml:"QUICVersion,omitempty"`
+	// Specifies whether to return the request header.
+	//
+	// 	- 0: does not return the response header.
+	//
+	// 	- 1: returns the basic document header.
+	//
+	// 	- 2: returns all headers.
+	//
 	// example:
 	//
 	// 0
 	RequestHeader *int64 `json:"RequestHeader,omitempty" xml:"RequestHeader,omitempty"`
+	// The method that is used to return the response header. Valid values:
+	//
+	// 	- 0: does not return the response header.
+	//
+	// 	- 1: returns the basic document header.
+	//
+	// 	- 2: returns all headers.
+	//
 	// example:
 	//
 	// 0
 	ResponseHeader *int64 `json:"ResponseHeader,omitempty" xml:"ResponseHeader,omitempty"`
+	// The time threshold that is used to define a slow element. Unit: seconds.
+	//
 	// example:
 	//
 	// 5
-	SlowElementThreshold  *float64 `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
-	VerifyStringBlacklist *string  `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
-	VerifyStringWhiteList *string  `json:"VerifyStringWhiteList,omitempty" xml:"VerifyStringWhiteList,omitempty"`
-	WaitCompletionTime    *float64 `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
+	SlowElementThreshold *float64 `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	// The blacklist for string verification.
+	//
+	// example:
+	//
+	// Regex:*.example|expalme|
+	VerifyStringBlacklist *string `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	// The whitelist for string verification.
+	//
+	// example:
+	//
+	// Regex:*.example|expalme|
+	VerifyStringWhiteList *string `json:"VerifyStringWhiteList,omitempty" xml:"VerifyStringWhiteList,omitempty"`
+	// The timeout period of waiting for the monitoring to complete.
+	//
+	// example:
+	//
+	// 15
+	WaitCompletionTime *float64 `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
 }
 
 func (s CreateSyntheticTaskRequestNavigation) String() string {
@@ -13760,67 +14091,140 @@ func (s *CreateSyntheticTaskRequestNavigation) SetWaitCompletionTime(v float64) 
 }
 
 type CreateSyntheticTaskRequestNet struct {
+	// The DNS server.
+	//
 	// example:
 	//
 	// 114.114.XX.XX
 	NetDNSNs *string `json:"NetDNSNs,omitempty" xml:"NetDNSNs,omitempty"`
+	// The DNS query method. Valid values:
+	//
+	// 	- 1: recursion
+	//
+	// 	- 2: iteration
+	//
 	// example:
 	//
 	// 1
 	NetDNSQueryMethod *int64 `json:"NetDNSQueryMethod,omitempty" xml:"NetDNSQueryMethod,omitempty"`
+	// The IP address type of the DNS server.
+	//
+	// 	- 0: IPv4
+	//
+	// 	- 1: IPv6
+	//
+	// 	- 2: an automatic IP address
+	//
 	// example:
 	//
 	// 0
 	NetDNSServer *int64 `json:"NetDNSServer,omitempty" xml:"NetDNSServer,omitempty"`
+	// Specifies whether to enable domain name system (DNS) monitoring.
+	//
+	// 	- 0: Off.
+	//
+	// 	- 1: On. You must set DNS parameters if you want to enable DNS monitoring.
+	//
 	// example:
 	//
 	// 1
 	NetDNSSwitch *int64 `json:"NetDNSSwitch,omitempty" xml:"NetDNSSwitch,omitempty"`
+	// The timeout period of DNS monitoring. Default value: 5 seconds. Valid values: 0 to 45 seconds.
+	//
 	// example:
 	//
 	// 5
 	NetDNSTimeout *int64 `json:"NetDNSTimeout,omitempty" xml:"NetDNSTimeout,omitempty"`
+	// Specifies whether to display the data in the DIG format. Valid values:
+	//
+	// 	- 0: no
+	//
+	// 	- 1: yes
+	//
 	// example:
 	//
 	// 0
 	NetDigSwitch *int64 `json:"NetDigSwitch,omitempty" xml:"NetDigSwitch,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// 	- 0: ICMP
+	//
+	// 	- 1: TCP
+	//
 	// example:
 	//
 	// 0
 	NetICMPActive *int64 `json:"NetICMPActive,omitempty" xml:"NetICMPActive,omitempty"`
+	// Specifies whether to split packages.
+	//
+	// 	- 0: no
+	//
+	// 	- 1: yes
+	//
 	// example:
 	//
 	// 0
 	NetICMPDataCut *int64 `json:"NetICMPDataCut,omitempty" xml:"NetICMPDataCut,omitempty"`
+	// The interval at which the network synthetic monitoring task is executed. Unit: seconds.
+	//
 	// example:
 	//
 	// 1
 	NetICMPInterval *int64 `json:"NetICMPInterval,omitempty" xml:"NetICMPInterval,omitempty"`
+	// The number of packages.
+	//
 	// example:
 	//
 	// 4
 	NetICMPNum *int64 `json:"NetICMPNum,omitempty" xml:"NetICMPNum,omitempty"`
+	// The package size.
+	//
 	// example:
 	//
 	// 32
 	NetICMPSize *int64 `json:"NetICMPSize,omitempty" xml:"NetICMPSize,omitempty"`
+	// Specifies whether to enable ping monitoring.
+	//
+	// 	- 0: Off.
+	//
+	// 	- 1: On. You must set Internet control message protocol (ICMP) parameters if you want to enable ping monitoring.
+	//
 	// example:
 	//
 	// 1
-	NetICMPSwitch  *int64 `json:"NetICMPSwitch,omitempty" xml:"NetICMPSwitch,omitempty"`
+	NetICMPSwitch *int64 `json:"NetICMPSwitch,omitempty" xml:"NetICMPSwitch,omitempty"`
+	// The timeout period of Ping monitoring.
+	//
+	// example:
+	//
+	// 20
 	NetICMPTimeout *int64 `json:"NetICMPTimeout,omitempty" xml:"NetICMPTimeout,omitempty"`
+	// The maximum number of active monitoring points.
+	//
 	// example:
 	//
 	// 20
 	NetTraceRouteNum *int64 `json:"NetTraceRouteNum,omitempty" xml:"NetTraceRouteNum,omitempty"`
+	// Specifies whether to enable tracert monitoring.
+	//
+	// 	- 0: Off.
+	//
+	// 	- 1: On. You must set the tracert parameters if you want to enable tracert monitoring.
+	//
 	// example:
 	//
 	// 1
 	NetTraceRouteSwitch *int64 `json:"NetTraceRouteSwitch,omitempty" xml:"NetTraceRouteSwitch,omitempty"`
+	// The timeout period of tracert monitoring. Valid values: 0 to 300 seconds.
+	//
 	// example:
 	//
 	// 60
 	NetTraceRouteTimeout *int64 `json:"NetTraceRouteTimeout,omitempty" xml:"NetTraceRouteTimeout,omitempty"`
+	// The whitelist for DNS hijacking. The format is `Domain name: Matching rule`.
+	//
+	// >  Wireless application protocol (WAP) networks do not support DNS hijacking.
+	//
 	// example:
 	//
 	// www.aliyun.com:202.0.3.55|203.3.44.67
@@ -13921,29 +14325,72 @@ func (s *CreateSyntheticTaskRequestNet) SetWhiteList(v string) *CreateSyntheticT
 }
 
 type CreateSyntheticTaskRequestProtocol struct {
+	// The encoding format.
+	//
+	// 	- 0: UTF-8
+	//
+	// 	- 1: GBK
+	//
+	// 	- 2: GB2312
+	//
+	// 	- 3: Unicode
+	//
 	// example:
 	//
 	// 0
 	CharacterEncoding *int64 `json:"CharacterEncoding,omitempty" xml:"CharacterEncoding,omitempty"`
+	// The custom host mode.
+	//
+	// 	- 1: round robin
+	//
+	// 	- 0: random
+	//
 	// example:
 	//
 	// 1
 	CustomHost *int64 `json:"CustomHost,omitempty" xml:"CustomHost,omitempty"`
+	// The custom host IP address. You can enter multiple IP addresses. Separate the IP addresses with commas (,).
+	//
 	// example:
 	//
 	// ipv4:192.168.2.1,192.168.2.5:img.a.com|192.168.2.1[8080]:img.a.com
 	CustomHostIp *string `json:"CustomHostIp,omitempty" xml:"CustomHostIp,omitempty"`
+	// The connection timeout period of the protocol. Unit: seconds.
+	//
 	// example:
 	//
 	// 3
 	ProtocolConnectionTime *int64 `json:"ProtocolConnectionTime,omitempty" xml:"ProtocolConnectionTime,omitempty"`
+	// The timeout period of API performance synthetic monitoring. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
-	ProtocolMonitorTimeout *string                                           `json:"ProtocolMonitorTimeout,omitempty" xml:"ProtocolMonitorTimeout,omitempty"`
-	ReceivedDataSize       *int64                                            `json:"ReceivedDataSize,omitempty" xml:"ReceivedDataSize,omitempty"`
-	RequestContent         *CreateSyntheticTaskRequestProtocolRequestContent `json:"RequestContent,omitempty" xml:"RequestContent,omitempty" type:"Struct"`
-	VerifyContent          *string                                           `json:"VerifyContent,omitempty" xml:"VerifyContent,omitempty"`
+	ProtocolMonitorTimeout *string `json:"ProtocolMonitorTimeout,omitempty" xml:"ProtocolMonitorTimeout,omitempty"`
+	// The size of the received data. This parameter is required when you set the value of the VerifyWay parameter to 2.
+	//
+	// example:
+	//
+	// 500
+	ReceivedDataSize *int64 `json:"ReceivedDataSize,omitempty" xml:"ReceivedDataSize,omitempty"`
+	// The request content, including the request header and request body.
+	RequestContent *CreateSyntheticTaskRequestProtocolRequestContent `json:"RequestContent,omitempty" xml:"RequestContent,omitempty" type:"Struct"`
+	// The verification string.
+	//
+	// example:
+	//
+	// "code":200
+	VerifyContent *string `json:"VerifyContent,omitempty" xml:"VerifyContent,omitempty"`
+	// The method that is used to verify the response content.
+	//
+	// 	- 0: no verification.
+	//
+	// 	- 1: exact match with the verification string.
+	//
+	// 	- 2: partial match with the verification string.
+	//
+	// 	- 3: MD5 verification.
+	//
 	// example:
 	//
 	// 0
@@ -14004,8 +14451,16 @@ func (s *CreateSyntheticTaskRequestProtocol) SetVerifyWay(v int64) *CreateSynthe
 }
 
 type CreateSyntheticTaskRequestProtocolRequestContent struct {
-	Body   *CreateSyntheticTaskRequestProtocolRequestContentBody     `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// The custom body of a request to initiate an API performance synthetic monitoring task.
+	Body *CreateSyntheticTaskRequestProtocolRequestContentBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// The custom header of a request to initiate an API performance synthetic monitoring task.
 	Header []*CreateSyntheticTaskRequestProtocolRequestContentHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Repeated"`
+	// The request method.
+	//
+	// 	- POST
+	//
+	// 	- GET
+	//
 	// example:
 	//
 	// POST
@@ -14036,19 +14491,43 @@ func (s *CreateSyntheticTaskRequestProtocolRequestContent) SetMethod(v string) *
 }
 
 type CreateSyntheticTaskRequestProtocolRequestContentBody struct {
+	// The data that is passed when the **Mode*	- parameter is set to **form-data**.
 	FormData []*CreateSyntheticTaskRequestProtocolRequestContentBodyFormData `json:"FormData,omitempty" xml:"FormData,omitempty" type:"Repeated"`
+	// The language that is selected when the Mode parameter is set to raw.
+	//
+	// 	- json
+	//
+	// 	- xml
+	//
+	// 	- javascript
+	//
+	// 	- html
+	//
+	// 	- text
+	//
 	// example:
 	//
 	// json
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The data type of the content.
+	//
+	// 	- form-data
+	//
+	// 	- x-www-form-urlencoded
+	//
+	// 	- raw
+	//
 	// example:
 	//
 	// form-data
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The data that is passed when the **Mode*	- parameter is set to **raw**.
+	//
 	// example:
 	//
 	// content
-	Raw         *string                                                            `json:"Raw,omitempty" xml:"Raw,omitempty"`
+	Raw *string `json:"Raw,omitempty" xml:"Raw,omitempty"`
+	// The data that is passed when the **Mode*	- parameter is set to **x-www-form-urlencoded**.
 	UrlEncoding []*CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding `json:"UrlEncoding,omitempty" xml:"UrlEncoding,omitempty" type:"Repeated"`
 }
 
@@ -14086,10 +14565,14 @@ func (s *CreateSyntheticTaskRequestProtocolRequestContentBody) SetUrlEncoding(v 
 }
 
 type CreateSyntheticTaskRequestProtocolRequestContentBodyFormData struct {
+	// The key of **form-data**.
+	//
 	// example:
 	//
 	// appId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of **form-data**.
+	//
 	// example:
 	//
 	// 3425
@@ -14115,10 +14598,14 @@ func (s *CreateSyntheticTaskRequestProtocolRequestContentBodyFormData) SetValue(
 }
 
 type CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding struct {
+	// The key of **x-www-form-urlencoded**.
+	//
 	// example:
 	//
 	// appId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of **x-www-form-urlencoded**.
+	//
 	// example:
 	//
 	// 11080
@@ -14144,10 +14631,14 @@ func (s *CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding) SetVal
 }
 
 type CreateSyntheticTaskRequestProtocolRequestContentHeader struct {
+	// The key of the request header.
+	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the request header.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -14173,50 +14664,130 @@ func (s *CreateSyntheticTaskRequestProtocolRequestContentHeader) SetValue(v stri
 }
 
 type CreateSyntheticTaskShrinkRequest struct {
-	CommonParamShrink    *string `json:"CommonParam,omitempty" xml:"CommonParam,omitempty"`
-	DownloadShrink       *string `json:"Download,omitempty" xml:"Download,omitempty"`
+	// The common parameters.
+	CommonParamShrink *string `json:"CommonParam,omitempty" xml:"CommonParam,omitempty"`
+	// The file download task.
+	DownloadShrink *string `json:"Download,omitempty" xml:"Download,omitempty"`
+	// The frequency.
 	ExtendIntervalShrink *string `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty"`
+	// The interval at which synthetic monitoring is performed. Unit: minutes. Valid values:
+	//
+	// 	- 1
+	//
+	// 	- 5
+	//
+	// 	- 10
+	//
+	// 	- 15
+	//
+	// 	- 20
+	//
+	// 	- 30
+	//
+	// 	- 60
+	//
+	// 	- 120
+	//
+	// 	- 180
+	//
+	// 	- 240
+	//
+	// 	- 360
+	//
+	// 	- 480
+	//
+	// 	- 720
+	//
+	// 	- 1440
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	IntervalTime *string `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	// The interval type.
+	//
+	// 	- 0: daily
+	//
+	// 	- 1: custom frequency
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	IntervalType *string `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	// The IP address type:
+	//
+	// 	- 0: an automatic IP address
+	//
+	// 	- 1: IPv4
+	//
+	// 	- 2: IPv6
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	IpType *int64 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The list of monitoring points.
+	//
 	// This parameter is required.
 	MonitorListShrink *string `json:"MonitorList,omitempty" xml:"MonitorList,omitempty"`
-	NavigationShrink  *string `json:"Navigation,omitempty" xml:"Navigation,omitempty"`
-	NetShrink         *string `json:"Net,omitempty" xml:"Net,omitempty"`
-	ProtocolShrink    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The monitoring items that are associated with the browse tasks.
+	NavigationShrink *string `json:"Navigation,omitempty" xml:"Navigation,omitempty"`
+	// The network synthetic monitoring task.
+	NetShrink *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	// The API performance synthetic monitoring task.
+	ProtocolShrink *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the region in which the application is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the task. To update a synthetic monitoring task, enter the task name and set the **UpdateTask*	- parameter to **true**.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Network synthetic monitoring task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the monitoring task. Valid values:
+	//
+	// 1.  3: web page performance - IE
+	//
+	// 2.  34: web Page Performance - Chrome
+	//
+	// 3.  0: network quality
+	//
+	// 4.  40: file download
+	//
+	// 5.  7:API performance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	TaskType *int64 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Specifies whether to update existing synthetic monitoring tasks.
+	//
+	// 	- true: updates existing synthetic monitoring tasks.
+	//
+	// 	- false: creates new synthetic monitoring tasks.
+	//
 	// example:
 	//
 	// false
 	UpdateTask *bool `json:"UpdateTask,omitempty" xml:"UpdateTask,omitempty"`
+	// The URL for synthetic monitoring.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14309,15 +14880,34 @@ func (s *CreateSyntheticTaskShrinkRequest) SetUrl(v string) *CreateSyntheticTask
 }
 
 type CreateSyntheticTaskResponseBody struct {
+	// The status code returned.
+	//
+	// 	- 1001: The request was successful.
+	//
+	// 	- 1002: The request failed.
+	//
+	// 	- 1003: Parameter errors occurred.
+	//
+	// 	- 1004: Authentication failed.
+	//
+	// 	- 1006: The task does not exist.
+	//
+	// 	- 1099: Internal errors occurred.
+	//
 	// example:
 	//
 	// 1001
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the synthetic monitoring task.
 	Data *CreateSyntheticTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned when the task failed to be created.
+	//
 	// example:
 	//
 	// null
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A5EC8221-08F2-4C95-9AF1-49FD998C****
@@ -14353,6 +14943,8 @@ func (s *CreateSyntheticTaskResponseBody) SetRequestId(v string) *CreateSyntheti
 }
 
 type CreateSyntheticTaskResponseBodyData struct {
+	// The ID of the synthetic monitoring task.
+	//
 	// example:
 	//
 	// 1234
@@ -16961,12 +17553,16 @@ func (s *DeleteAlertRuleResponse) SetBody(v *DeleteAlertRuleResponseBody) *Delet
 }
 
 type DeleteAlertRulesRequest struct {
+	// The IDs of the alert rules that you want to delete. The value is a JSON array, for example, `[123, 234]`. You can call the SearchAlertRules operation and view the `Id` parameter in the response to obtain the alert rule ID. For more information, see [SearchAlertRules](https://help.aliyun.com/document_detail/175825.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [123, 234]
 	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	// The region ID. Default value: `cn-hangzhou`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16994,10 +17590,18 @@ func (s *DeleteAlertRulesRequest) SetRegionId(v string) *DeleteAlertRulesRequest
 }
 
 type DeleteAlertRulesResponseBody struct {
+	// Indicates whether the alert rule was deleted.
+	//
+	// 	- `true`: The alert rule was deleted.
+	//
+	// 	- `false`: The alert rule failed to be deleted.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C21AB7CF-B7AF-410F-BD61-82D1567F****
@@ -17271,7 +17875,7 @@ func (s *DeleteCmsExporterResponse) SetBody(v *DeleteCmsExporterResponseBody) *D
 }
 
 type DeleteContactRequest struct {
-	// The operation that you want to perform. Set the value to **DeleteContact**.
+	// The ID of the alert contact.
 	//
 	// This parameter is required.
 	//
@@ -17295,10 +17899,18 @@ func (s *DeleteContactRequest) SetContactId(v int64) *DeleteContactRequest {
 }
 
 type DeleteContactResponseBody struct {
+	// Indicates whether the alert contact is deleted. Valid values:
+	//
+	// 	- `true`: The alert contact is deleted.
+	//
+	// 	- `false`: The alert contact is not deleted.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C21AB7CF-B7AF-410F-BD61-82D1567F****
@@ -17443,12 +18055,16 @@ func (s *DeleteContactGroupResponse) SetBody(v *DeleteContactGroupResponseBody) 
 }
 
 type DeleteDispatchRuleRequest struct {
+	// The ID of the dispatch policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17476,10 +18092,14 @@ func (s *DeleteDispatchRuleRequest) SetRegionId(v string) *DeleteDispatchRuleReq
 }
 
 type DeleteDispatchRuleResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 16AF921B-8187-489F-9913-43C808B4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -18464,12 +19084,16 @@ func (s *DeleteGrafanaResourceResponse) SetBody(v *DeleteGrafanaResourceResponse
 }
 
 type DeleteGrafanaWorkspaceRequest struct {
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// grafana-rnglkcdrntlhk0****
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	// The region ID. Default value: cn-hangzhou.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18497,26 +19121,46 @@ func (s *DeleteGrafanaWorkspaceRequest) SetRegionId(v string) *DeleteGrafanaWork
 }
 
 type DeleteGrafanaWorkspaceResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the workspace was deleted. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 27E653FA-5958-45BE-8AA9-14D884DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
 	// example:
 	//
 	// eac0a8048716731735000007137d000b
@@ -19699,16 +20343,22 @@ func (s *DeleteRetcodeAppResponse) SetBody(v *DeleteRetcodeAppResponseBody) *Del
 }
 
 type DeleteRumAppRequest struct {
+	// The group where the application resides.
+	//
 	// example:
 	//
 	// default
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
+	// The ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b590lhguqs@28f515462******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19741,15 +20391,19 @@ func (s *DeleteRumAppRequest) SetRegionId(v string) *DeleteRumAppRequest {
 }
 
 type DeleteRumAppResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -19761,16 +20415,20 @@ type DeleteRumAppResponseBody struct {
 	//
 	// 4C518054-852F-4023-ABC1-4AF95FF7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2eq4peca****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the application is deleted.
+	// The message that appears when the application is deleted.
 	//
 	// example:
 	//
 	// Success to delete app.
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -23716,7 +24374,7 @@ func (s *DescribeEnvironmentResponse) SetBody(v *DescribeEnvironmentResponseBody
 }
 
 type DescribeEnvironmentFeatureRequest struct {
-	// Language, en | zh.
+	// The language. Valid values: en and zh.
 	//
 	// example:
 	//
@@ -23908,7 +24566,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
 	//
 	// 1.1.17
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// Whether or not it is a managed component.
+	// Indicates whether the component is fully managed.
 	Managed *bool `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	// The name of the feature.
 	//
@@ -24006,7 +24664,7 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetVersion(v string)
 }
 
 type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
-	// Binded resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
@@ -24014,7 +24672,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// The containers of the feature.
 	FeatureContainers []*DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers `json:"FeatureContainers,omitempty" xml:"FeatureContainers,omitempty" type:"Repeated"`
-	// IPs for Pod.
+	// The IP address of the pod.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 	// The Kubernetes resource name of the feature.
 	//
@@ -24028,7 +24686,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	//
 	// arms-prom
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
@@ -24046,7 +24704,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -30510,6 +31168,38 @@ type GetPrometheusMonitoringResponseBodyData struct {
 	// c589a1b8db05c4561aefbb898ca8fb1cf
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The monitoring configuration. The value is a YAML string.
+	//
+	// example:
+	//
+	// apiVersion: monitoring.coreos.com/v1
+	//
+	// kind: ServiceMonitor
+	//
+	// metadata:
+	//
+	//   name: tomcat-demo
+	//
+	//   namespace: default
+	//
+	// spec:
+	//
+	//   endpoints:
+	//
+	//     - interval: 30s
+	//
+	//       path: /metrics
+	//
+	//       port: tomcat-monitor
+	//
+	//   namespaceSelector:
+	//
+	//     any: true
+	//
+	//   selector:
+	//
+	//     matchLabels:
+	//
+	//       app: tomcat
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the monitoring configuration.
 	//
@@ -31151,12 +31841,16 @@ func (s *GetRetcodeDataByQueryResponse) SetBody(v *GetRetcodeDataByQueryResponse
 }
 
 type GetRetcodeLogstoreRequest struct {
+	// The process identifier (PID) of the application. To obtain the PID of the application, perform the following steps: Log on to the Application Real-Time Monitoring Service (ARMS) console. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of the application. The URL in the address bar contains the PID of the application. The PID is in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with the at sign (@) to obtain xxx@74xxx.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -31182,7 +31876,10 @@ func (s *GetRetcodeLogstoreRequest) SetRegionId(v string) *GetRetcodeLogstoreReq
 }
 
 type GetRetcodeLogstoreResponseBody struct {
+	// The returned struct.
 	Data *GetRetcodeLogstoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1A9C645C-C83F-4C9D-8CCB-29BEC9E1****
@@ -31208,11 +31905,16 @@ func (s *GetRetcodeLogstoreResponseBody) SetRequestId(v string) *GetRetcodeLogst
 }
 
 type GetRetcodeLogstoreResponseBodyData struct {
+	// The content of the log.
+	//
 	// example:
 	//
 	// retcode app or task can not be found!
-	Message          *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information about Log Service.
 	RetcodeSLSConfig *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig `json:"RetcodeSLSConfig,omitempty" xml:"RetcodeSLSConfig,omitempty" type:"Struct"`
+	// The status of the request.
+	//
 	// example:
 	//
 	// true
@@ -31243,14 +31945,20 @@ func (s *GetRetcodeLogstoreResponseBodyData) SetStatus(v string) *GetRetcodeLogs
 }
 
 type GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig struct {
+	// The Log Service Logstore.
+	//
 	// example:
 	//
 	// log-test-220431
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	// The Log Service project.
+	//
 	// example:
 	//
 	// test-project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -31523,6 +32231,8 @@ func (s *GetRumAppInfoResponseBody) SetSuccess(v bool) *GetRumAppInfoResponseBod
 }
 
 type GetRumAppInfoResponseBodyData struct {
+	// The group to which the application belongs.
+	//
 	// example:
 	//
 	// default
@@ -31532,7 +32242,8 @@ type GetRumAppInfoResponseBodyData struct {
 	// example:
 	//
 	// web
-	AppType         *string                                       `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The mobile collection configurations.
 	BonreeSDKConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfig `json:"BonreeSDKConfig,omitempty" xml:"BonreeSDKConfig,omitempty" type:"Struct"`
 	// The domain name of the SDK.
 	//
@@ -31735,6 +32446,7 @@ func (s *GetRumAppInfoResponseBodyData) SetType(v string) *GetRumAppInfoResponse
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfig struct {
+	// The module configuration.
 	ModuleConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig `json:"moduleConfig,omitempty" xml:"moduleConfig,omitempty" type:"Struct"`
 }
 
@@ -31752,11 +32464,15 @@ func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) SetModuleConfig(v *GetRum
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig struct {
+	// The default configuration of the application.
 	DefaultConfig map[string]*DataBonreeSDKConfigModuleConfigDefaultConfigValue `json:"defaultConfig,omitempty" xml:"defaultConfig,omitempty"`
+	// Indicates whether the configuration is enabled.
+	//
 	// example:
 	//
 	// true
-	Enable         *bool                                                          `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The version configurations of the application.
 	VersionConfigs map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValue `json:"versionConfigs,omitempty" xml:"versionConfigs,omitempty"`
 }
 
@@ -32105,6 +32821,10 @@ type GetRumAppsResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Internal error, please contact customer service.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -32176,6 +32896,10 @@ type GetRumAppsResponseBodyAppList struct {
 	// 1685686960872
 	CreateTime interface{} `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// TEST
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The endpoint that is used to report application data.
 	//
@@ -32190,6 +32914,10 @@ type GetRumAppsResponseBodyAppList struct {
 	// true
 	IsSubscription *bool `json:"IsSubscription,omitempty" xml:"IsSubscription,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// home page
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The alias of the application.
 	//
@@ -32462,40 +33190,56 @@ func (s *GetRumAppsResponse) SetBody(v *GetRumAppsResponseBody) *GetRumAppsRespo
 }
 
 type GetRumDataForPageRequest struct {
+	// The group to which the application belongs.
+	//
 	// example:
 	//
 	// default
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The beginning of the time range to query. The time is accurate to seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1713774233
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// iixxxjcnuk@582846f37******
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// A query statement that complies with the query syntax of Simple Log Service Logstore. For more information, see the parameters corresponding to this operation on the console page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 	- and app.id: xxxx@586810fbxxxx19f
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. The time is accurate to seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32553,27 +33297,38 @@ func (s *GetRumDataForPageRequest) SetStartTime(v int32) *GetRumDataForPageReque
 }
 
 type GetRumDataForPageResponseBody struct {
+	// The responses code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the operation.
 	Data *GetRumDataForPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// StartTime is mandatory for this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 78901766-3806-4E96-8E47-CFEF59E4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
@@ -32619,21 +33374,40 @@ func (s *GetRumDataForPageResponseBody) SetSuccess(v string) *GetRumDataForPageR
 }
 
 type GetRumDataForPageResponseBodyData struct {
+	// A reserved parameter. Ignore this parameter.
+	//
+	// example:
+	//
+	// null
 	Authentication *string `json:"Authentication,omitempty" xml:"Authentication,omitempty"`
+	// Indicates whether the query ends. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
-	Completion *string                  `json:"Completion,omitempty" xml:"Completion,omitempty"`
-	Items      []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Completion *string `json:"Completion,omitempty" xml:"Completion,omitempty"`
+	// The queried data.
+	Items []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A reserved parameter. Ignore this parameter.
+	//
+	// example:
+	//
+	// null
 	Preference *string `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 7
@@ -32713,10 +33487,14 @@ func (s *GetRumDataForPageResponse) SetBody(v *GetRumDataForPageResponseBody) *G
 }
 
 type GetRumExceptionStackRequest struct {
+	// The binary images, which represent all executable files loaded into the process address space when a crash occurs.
+	//
 	// example:
 	//
 	// iOSDemo:arm64%3B1489F4D3-6DE2-300C-90E9-E1B869675351%3B0x0000000104064000\\nAlibabaCloudRUM:arm64%3BAB7B3A8E-6CEE-325D-BCBB-8DA50E61804F%3B0x0000000106660000\\nlibdispatch.dylib:arm
 	ExceptionBinaryImages *string `json:"ExceptionBinaryImages,omitempty" xml:"ExceptionBinaryImages,omitempty"`
+	// The exception stack information. Set the value to a JSON string. call_stack.info represents the stack information, call_stack.thread.name represents the thread name, and call_stack.thread.id represents the thread ID. This parameter is exactly the same as the exception.stack parameter in the logstore-rum Logstore of Simple Log Service.
+	//
 	// example:
 	//
 	// [
@@ -32733,27 +33511,33 @@ type GetRumExceptionStackRequest struct {
 	//
 	// ]
 	ExceptionStack *string `json:"ExceptionStack,omitempty" xml:"ExceptionStack,omitempty"`
+	// The ID of the exception thread.
+	//
 	// example:
 	//
 	// 16643
 	ExceptionThreadId *string `json:"ExceptionThreadId,omitempty" xml:"ExceptionThreadId,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// atxxxxzkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The file type. Valid values:
 	//
-	// 	- source-map: SourceMap files
+	// - source-map: SourceMap files
 	//
-	// 	- mapping: symbol table files for Android
+	// - mapping: symbol table files for Android
 	//
-	// 	- dsym: dSYM files for iOS
+	// - dsym: dSYM files for iOS
 	//
 	// example:
 	//
@@ -32800,27 +33584,38 @@ func (s *GetRumExceptionStackRequest) SetSourcemapType(v string) *GetRumExceptio
 }
 
 type GetRumExceptionStackResponseBody struct {
+	// The responses code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
 	Data *GetRumExceptionStackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// Internal error. Please try again. Contact the DingTalk service account if the issue                              persists after multiple retries.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Id of the request.
 	//
 	// example:
 	//
 	// B6A00968-82A8-4F14-9D1B-B53827DB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
@@ -32866,7 +33661,10 @@ func (s *GetRumExceptionStackResponseBody) SetSuccess(v string) *GetRumException
 }
 
 type GetRumExceptionStackResponseBodyData struct {
+	// The list of stacks.
 	Lines []*string `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Repeated"`
+	// The thread ID.
+	//
 	// example:
 	//
 	// 16643
@@ -33345,7 +34143,7 @@ type GetRumUploadFilesRequest struct {
 	//
 	// source-map
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The application ID.
+	// The process ID (PID) of the application.
 	//
 	// This parameter is required.
 	//
@@ -33361,7 +34159,7 @@ type GetRumUploadFilesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The version ID. When this field is not provided, the default response includes all versions.
+	// The version number of the files. If you do not specify this parameter, all versions of the files are returned by default.
 	//
 	// example:
 	//
@@ -36084,6 +36882,8 @@ func (s *GetSyntheticTaskListResponse) SetBody(v *GetSyntheticTaskListResponseBo
 }
 
 type GetSyntheticTaskMonitorsRequest struct {
+	// The ID of the region in which the application is located.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36106,15 +36906,34 @@ func (s *GetSyntheticTaskMonitorsRequest) SetRegionId(v string) *GetSyntheticTas
 }
 
 type GetSyntheticTaskMonitorsResponseBody struct {
+	// The status code returned.
+	//
+	// 	- 1001: The request was successful.
+	//
+	// 	- 1002: The request failed.
+	//
+	// 	- 1003: Parameter errors occurred.
+	//
+	// 	- 1004: Authentication failed.
+	//
+	// 	- 1006: The task does not exist.
+	//
+	// 	- 1099: Internal errors occurred.
+	//
 	// example:
 	//
 	// 1001
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the monitoring point.
 	Data []*GetSyntheticTaskMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message that is returned when the request failed.
+	//
 	// example:
 	//
 	// null
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 21E85B16-75A6-429A-9F65-8AAC9A54****
@@ -36150,24 +36969,52 @@ func (s *GetSyntheticTaskMonitorsResponseBody) SetRequestId(v string) *GetSynthe
 }
 
 type GetSyntheticTaskMonitorsResponseBodyData struct {
+	// The task status.
+	//
+	// 	- 0: active
+	//
+	// 	- 1: busy
+	//
 	// example:
 	//
 	// 0
-	Busy *int64  `json:"Busy,omitempty" xml:"Busy,omitempty"`
+	Busy *int64 `json:"Busy,omitempty" xml:"Busy,omitempty"`
+	// The name of the city to which the monitoring point belongs.
+	//
+	// example:
+	//
+	// Beijing
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The ID of the city to which the monitoring point belongs.
+	//
 	// example:
 	//
 	// 1100101
 	CityCode *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The client type:
+	//
+	// 	- 1: IDC
+	//
+	// 	- 2: Last mile
+	//
 	// example:
 	//
 	// 1
-	ClientType *int64  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	District   *string `json:"District,omitempty" xml:"District,omitempty"`
+	ClientType *int64 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The region to which the monitoring point belongs.
+	//
+	// example:
+	//
+	// Beijing
+	District *string `json:"District,omitempty" xml:"District,omitempty"`
+	// The ID of the carrier.
+	//
 	// example:
 	//
 	// 18
 	NetServiceId *int64 `json:"NetServiceId,omitempty" xml:"NetServiceId,omitempty"`
+	// The name of the carrier.
+	//
 	// example:
 	//
 	// XXX
@@ -41511,7 +42358,7 @@ func (s *ListAddonsResponseBodyDataEnvironments) SetPolicies(v *ListAddonsRespon
 }
 
 type ListAddonsResponseBodyDataEnvironmentsDependencies struct {
-	// Dependency cluster types.
+	// The supported cluster types.
 	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
 	// The feature on which the environment depends.
 	Features map[string]*bool `json:"Features,omitempty" xml:"Features,omitempty"`
@@ -45696,7 +46543,13 @@ func (s *ListEnvironmentDashboardsResponse) SetBody(v *ListEnvironmentDashboards
 }
 
 type ListEnvironmentFeaturesRequest struct {
-	// The language. Valid values: zh and en. Default value: zh.
+	// The language. Default value: zh.
+	//
+	// Valid values:
+	//
+	// 	- en: English.
+	//
+	// 	- zh: Chinese.
 	//
 	// example:
 	//
@@ -45850,7 +46703,7 @@ type ListEnvironmentFeaturesResponseBodyData struct {
 	//
 	// 1.1.17
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// Whether hosted scenario.
+	// Indicates whether the component is fully managed.
 	//
 	// example:
 	//
@@ -47225,23 +48078,28 @@ func (s *ListEventBridgeIntegrationsResponse) SetBody(v *ListEventBridgeIntegrat
 }
 
 type ListGrafanaWorkspaceRequest struct {
+	// The language. Valid values: zh and en. Default value: zh.
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The region ID. Default value: cn-hangzhou.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the Prometheus instance belongs.
 	//
 	// example:
 	//
 	// rg-acfmxyexli2****
-	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*ListGrafanaWorkspaceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tags []*ListGrafanaWorkspaceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListGrafanaWorkspaceRequest) String() string {
@@ -47273,10 +48131,14 @@ func (s *ListGrafanaWorkspaceRequest) SetTags(v []*ListGrafanaWorkspaceRequestTa
 }
 
 type ListGrafanaWorkspaceRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// TestValue
@@ -47302,23 +48164,28 @@ func (s *ListGrafanaWorkspaceRequestTags) SetValue(v string) *ListGrafanaWorkspa
 }
 
 type ListGrafanaWorkspaceShrinkRequest struct {
+	// The language. Valid values: zh and en. Default value: zh.
+	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The region ID. Default value: cn-hangzhou.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the Prometheus instance belongs.
 	//
 	// example:
 	//
 	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListGrafanaWorkspaceShrinkRequest) String() string {
@@ -47350,23 +48217,34 @@ func (s *ListGrafanaWorkspaceShrinkRequest) SetTagsShrink(v string) *ListGrafana
 }
 
 type ListGrafanaWorkspaceResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
 	Data []*GrafanaWorkspace `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message returned if the request parameters are invalid.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0080BE65-167F-5CB6-A691-14E2EFD474BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	//
 	// example:
 	//
 	// eac0a8048716731735000007137d000b
@@ -47667,26 +48545,44 @@ func (s *ListInsightsEventsResponse) SetBody(v *ListInsightsEventsResponseBody) 
 }
 
 type ListIntegrationRequest struct {
+	// The name of the alert integration.
+	//
 	// example:
 	//
-	// 云监控集成
+	// CloudMonitor integration
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	// The type of the alert integration. Valid values:
+	//
+	// 	- CLOUD_MONITOR: CloudMonitor
+	//
+	// 	- LOG_SERVICE: Log Service
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CLOUD_MONITOR
 	IntegrationProductType *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	// Specifies whether to display the details of each alert integration:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	IsDetail *bool `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
+	// The number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of alert integrations to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47729,7 +48625,10 @@ func (s *ListIntegrationRequest) SetSize(v int64) *ListIntegrationRequest {
 }
 
 type ListIntegrationResponseBody struct {
+	// The pagination information.
 	PageInfo *ListIntegrationResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34ED024E-9E31-434A-9E4E-D9D15C3****
@@ -47755,15 +48654,22 @@ func (s *ListIntegrationResponseBody) SetRequestId(v string) *ListIntegrationRes
 }
 
 type ListIntegrationResponseBodyPageInfo struct {
+	// The information about each alert integration.
 	Integrations []*ListIntegrationResponseBodyPageInfoIntegrations `json:"Integrations,omitempty" xml:"Integrations,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of alert integrations returned per page.
+	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of alert integrations.
+	//
 	// example:
 	//
 	// 1
@@ -47799,35 +48705,60 @@ func (s *ListIntegrationResponseBodyPageInfo) SetTotal(v int64) *ListIntegration
 }
 
 type ListIntegrationResponseBodyPageInfoIntegrations struct {
+	// The endpoint of the alert integration.
+	//
 	// example:
 	//
 	// https://alerts.aliyuncs.com/api/v1/integrations/custom/ymQBN******
 	ApiEndpoint *string `json:"ApiEndpoint,omitempty" xml:"ApiEndpoint,omitempty"`
+	// The time when the alert integration was created.
+	//
 	// example:
 	//
 	// 2022-06-18
-	CreateTime        *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The information about the alert events.
 	IntegrationDetail *ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail `json:"IntegrationDetail,omitempty" xml:"IntegrationDetail,omitempty" type:"Struct"`
+	// The ID of the alert integration.
+	//
 	// example:
 	//
 	// 1234
 	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
+	// The name of the alert integration.
+	//
 	// example:
 	//
-	// 云监控集成
+	// CloudMonitor integration
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	// The type of the alert integration. Valid values:
+	//
+	// 	- CLOUD_MONITOR: CloudMonitor
+	//
+	// 	- LOG_SERVICE: Log Service
+	//
 	// example:
 	//
 	// CLOUD_MONITOR
 	IntegrationProductType *string `json:"IntegrationProductType,omitempty" xml:"IntegrationProductType,omitempty"`
+	// The activity of the alert integration
+	//
 	// example:
 	//
 	// ready
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The authentication token of the alert integration.
+	//
 	// example:
 	//
 	// ymQBN******
 	ShortToken *string `json:"ShortToken,omitempty" xml:"ShortToken,omitempty"`
+	// Indicates whether the alert integration was enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -47888,33 +48819,56 @@ func (s *ListIntegrationResponseBodyPageInfoIntegrations) SetState(v bool) *List
 }
 
 type ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail struct {
+	// Indicates whether alert events are automatically cleared. Valid values:
+	//
+	// 	- true (default)
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	AutoRecover *bool `json:"AutoRecover,omitempty" xml:"AutoRecover,omitempty"`
+	// The description of the alert integration.
+	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fields whose values are deduplicated.
+	//
 	// example:
 	//
 	// LABEL.alertname::LABEL.severity
-	DuplicateKey               *string                  `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
+	DuplicateKey *string `json:"DuplicateKey,omitempty" xml:"DuplicateKey,omitempty"`
+	// The extended mapped fields of the alert source.
 	ExtendedFieldRedefineRules []map[string]interface{} `json:"ExtendedFieldRedefineRules,omitempty" xml:"ExtendedFieldRedefineRules,omitempty" type:"Repeated"`
-	FieldRedefineRules         []map[string]interface{} `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty" type:"Repeated"`
+	// The predefined mapped fields of the alert source.
+	FieldRedefineRules []map[string]interface{} `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty" type:"Repeated"`
+	// The field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+	//
+	// > Only the Log Service alert integration supports the parameter.
+	//
 	// example:
 	//
 	// $.status
 	InitiativeRecoverField *string `json:"InitiativeRecoverField,omitempty" xml:"InitiativeRecoverField,omitempty"`
+	// The value of the field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+	//
+	// > Only the Log Service alert integration supports the parameter.
+	//
 	// example:
 	//
 	// ok
 	InitiativeRecoverValue *string `json:"InitiativeRecoverValue,omitempty" xml:"InitiativeRecoverValue,omitempty"`
+	// The time when alert events are automatically cleared. Unit: seconds. Default value: 300.
+	//
 	// example:
 	//
 	// 300
-	RecoverTime *int64   `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
-	Stat        []*int64 `json:"Stat,omitempty" xml:"Stat,omitempty" type:"Repeated"`
+	RecoverTime *int64 `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
+	// The total number of alert events and the number of abnormal alert events in the last hour.
+	Stat []*int64 `json:"Stat,omitempty" xml:"Stat,omitempty" type:"Repeated"`
 }
 
 func (s ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail) String() string {
@@ -49315,10 +50269,14 @@ func (s *ListPrometheusAlertRulesResponse) SetBody(v *ListPrometheusAlertRulesRe
 }
 
 type ListPrometheusAlertTemplatesRequest struct {
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// c0bad479465464e1d8c1e641b0afb****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49346,7 +50304,10 @@ func (s *ListPrometheusAlertTemplatesRequest) SetRegionId(v string) *ListPrometh
 }
 
 type ListPrometheusAlertTemplatesResponseBody struct {
+	// The returned struct.
 	PrometheusAlertTemplates []*ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates `json:"PrometheusAlertTemplates,omitempty" xml:"PrometheusAlertTemplates,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 9FEA6D00-317F-45E3-9004-7FB8B0B7****
@@ -49372,19 +50333,42 @@ func (s *ListPrometheusAlertTemplatesResponseBody) SetRequestId(v string) *ListP
 }
 
 type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates struct {
-	AlertName   *string                                                                        `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The name of the alert rule.
+	//
+	// example:
+	//
+	// The available memory on the node is less than 10%
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The annotations of the alert rule.
 	Annotations []*ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
-	Description *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content of the alert notification. Tags can be referenced in the {{$labels.xxx}} format.
+	//
+	// example:
+	//
+	// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
+	//
 	// example:
 	//
 	// 1m
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The expression of the alert rule.
+	//
 	// example:
 	//
 	// node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes 	- 100 < 10
-	Expression *string                                                                   `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Labels     []*ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Type       *string                                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The tags of the alert rule.
+	Labels []*ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The type of the alert rule.
+	//
+	// example:
+	//
+	// Node
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the alert rule.
+	//
 	// example:
 	//
 	// 1.0
@@ -49440,10 +50424,17 @@ func (s *ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates) SetVe
 }
 
 type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesAnnotations struct {
+	// The name of the annotation.
+	//
 	// example:
 	//
 	// message
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the annotation.
+	//
+	// example:
+	//
+	// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -49466,10 +50457,14 @@ func (s *ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesAnnotat
 }
 
 type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesLabels struct {
+	// The name of the tag.
+	//
 	// example:
 	//
 	// severity
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// warning
@@ -50734,6 +51729,38 @@ type ListPrometheusMonitoringResponseBodyData struct {
 	// c589a1b8db05c4561aefbb898ca8fb1cf
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The monitoring configuration. The value is a YAML string.
+	//
+	// example:
+	//
+	// apiVersion: monitoring.coreos.com/v1
+	//
+	// kind: ServiceMonitor
+	//
+	// metadata:
+	//
+	//   name: tomcat-demo
+	//
+	//   namespace: default
+	//
+	// spec:
+	//
+	//   endpoints:
+	//
+	//     - interval: 30s
+	//
+	//       path: /metrics
+	//
+	//       port: tomcat-monitor
+	//
+	//   namespaceSelector:
+	//
+	//     any: true
+	//
+	//   selector:
+	//
+	//     matchLabels:
+	//
+	//       app: tomcat
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the monitoring configuration.
 	//
@@ -51658,6 +52685,8 @@ type ListSyntheticDetailRequest struct {
 	//
 	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: [{"Key":"dataId","OpType":"eq","Value":"dataId"}]. dataId is returned when you query the list of synthetic test results.
 	AdvancedFilters []*ListSyntheticDetailRequestAdvancedFilters `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty" type:"Repeated"`
+	// The type of the results. Set the value to SYNTHETIC.
+	//
 	// example:
 	//
 	// SYNTHETIC
@@ -51682,10 +52711,13 @@ type ListSyntheticDetailRequest struct {
 	//
 	// ICMP_LIST
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The timestamp of the end time of the query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1684480557772
-	EndTime      *int64                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A reserved field.
 	ExactFilters []*ListSyntheticDetailRequestExactFilters `json:"ExactFilters,omitempty" xml:"ExactFilters,omitempty" type:"Repeated"`
 	// The filter condition. This parameter is required.
 	//
@@ -51693,30 +52725,48 @@ type ListSyntheticDetailRequest struct {
 	//
 	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: {"taskId":"${taskId}","dataId":"${dataId}"}.
 	Filters map[string]*string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The order in which results are sorted. Valid values:
+	//
+	// - `ASC`: ascending order
+	//
+	// - `DESC`: descending order
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field based on which results are sorted. Set the value to timestamp.
+	//
 	// example:
 	//
 	// timestamp
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region. Set the value to cn-hangzhou.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp of the start time of the query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1684110343127
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the synthetic test. Valid values: 1 and 2. 1 represents an immediate test, and 2 represents a scheduled test.
+	//
 	// example:
 	//
 	// 1
@@ -51845,9 +52895,24 @@ func (s *ListSyntheticDetailRequestAdvancedFilters) SetValue(v interface{}) *Lis
 }
 
 type ListSyntheticDetailRequestExactFilters struct {
-	Key    *string     `json:"Key,omitempty" xml:"Key,omitempty"`
-	OpType *string     `json:"OpType,omitempty" xml:"OpType,omitempty"`
-	Value  interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// null
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// null
+	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// null
+	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListSyntheticDetailRequestExactFilters) String() string {
@@ -51880,6 +52945,8 @@ type ListSyntheticDetailShrinkRequest struct {
 	//
 	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: [{"Key":"dataId","OpType":"eq","Value":"dataId"}]. dataId is returned when you query the list of synthetic test results.
 	AdvancedFiltersShrink *string `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty"`
+	// The type of the results. Set the value to SYNTHETIC.
+	//
 	// example:
 	//
 	// SYNTHETIC
@@ -51904,10 +52971,13 @@ type ListSyntheticDetailShrinkRequest struct {
 	//
 	// ICMP_LIST
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The timestamp of the end time of the query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1684480557772
-	EndTime            *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A reserved field.
 	ExactFiltersShrink *string `json:"ExactFilters,omitempty" xml:"ExactFilters,omitempty"`
 	// The filter condition. This parameter is required.
 	//
@@ -51915,30 +52985,48 @@ type ListSyntheticDetailShrinkRequest struct {
 	//
 	// 	- To query the result details of a synthetic monitoring task, set this parameter in the following format: {"taskId":"${taskId}","dataId":"${dataId}"}.
 	FiltersShrink *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The order in which results are sorted. Valid values:
+	//
+	// - `ASC`: ascending order
+	//
+	// - `DESC`: descending order
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field based on which results are sorted. Set the value to timestamp.
+	//
 	// example:
 	//
 	// timestamp
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region. Set the value to cn-hangzhou.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp of the start time of the query. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1684110343127
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the synthetic test. Valid values: 1 and 2. 1 represents an immediate test, and 2 represents a scheduled test.
+	//
 	// example:
 	//
 	// 1
@@ -52019,12 +53107,16 @@ func (s *ListSyntheticDetailShrinkRequest) SetSyntheticType(v int32) *ListSynthe
 }
 
 type ListSyntheticDetailResponseBody struct {
+	// The HTTP status code returned. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *ListSyntheticDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned.
+	//
 	// example:
 	//
 	// null
@@ -52068,15 +53160,26 @@ func (s *ListSyntheticDetailResponseBody) SetRequestId(v string) *ListSyntheticD
 type ListSyntheticDetailResponseBodyData struct {
 	// The list of results.
 	Items []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
-	PageSize       *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// null
 	TaskCreateTime *int64 `json:"TaskCreateTime,omitempty" xml:"TaskCreateTime,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 12
@@ -55488,42 +56591,58 @@ func (s *QueryPromInstallStatusResponse) SetBody(v *QueryPromInstallStatusRespon
 }
 
 type QueryReleaseMetricRequest struct {
+	// The ID of the change order.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a341a2f2-ed07-4257-aae9-dfb1be******
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+	// The time when the change order was created.
+	//
 	// example:
 	//
 	// 1634005438000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The type of the metric that you want to query.
+	//
 	// example:
 	//
 	// SystemContrast
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The ID of the Enterprise Distributed Application Service (EDAS) or Kubernetes application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8b46d03f-5947-449d-90fd-3a96c2******
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is not in use.
+	//
 	// example:
 	//
 	// null
 	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+	// The end time of the version release.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1632798718632
 	ReleaseEndTime *int64 `json:"ReleaseEndTime,omitempty" xml:"ReleaseEndTime,omitempty"`
+	// The start time of the version release.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1632798686692
 	ReleaseStartTime *int64 `json:"ReleaseStartTime,omitempty" xml:"ReleaseStartTime,omitempty"`
+	// The service that you want to query.
+	//
 	// example:
 	//
 	// clothservice
@@ -55579,10 +56698,14 @@ func (s *QueryReleaseMetricRequest) SetService(v string) *QueryReleaseMetricRequ
 }
 
 type QueryReleaseMetricResponseBody struct {
+	// The returned metric data.
+	//
 	// example:
 	//
 	// {"data":{"SystemCpuUser":{"all":[{"date":1632798718000,"val":4.3277,"dim":"SystemCpuUser"},{"date":1632798733000,"val":8.1091,"dim":"SystemCpuUser"}]},"SystemMemUtil":{"all":[{"date":1632798718000,"val":73.4227,"dim":"SystemMemUtil"},{"date":1632798733000,"val":93.0977,"dim":"SystemMemUtil"}]}},"success":true}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 46355DD8-FC56-40C5-BFC6-269DE4F9****
@@ -60882,12 +62005,16 @@ func (s *SetRetcodeShareStatusResponse) SetBody(v *SetRetcodeShareStatusResponse
 }
 
 type StartAlertRequest struct {
+	// The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](https://help.aliyun.com/document_detail/175825.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1610***
 	AlertId *string `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The ID of the region. Set the value to `cn-hangzhou`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -60915,10 +62042,18 @@ func (s *StartAlertRequest) SetRegionId(v string) *StartAlertRequest {
 }
 
 type StartAlertResponseBody struct {
+	// Indicates whether the call was successful.
+	//
+	// 	- `true`: The call was successful.
+	//
+	// 	- `false`: The call failed.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 27E653FA-5958-45BE-8AA9-14D884DC****
@@ -62640,129 +63775,7 @@ func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *Updat
 }
 
 type UpdateDispatchRuleRequest struct {
-	// ## Additional information about the **DispatchRule*	- parameter
-	//
-	// **JSON string example and description**
-	//
-	// ```
-	//
-	// {
-	//
-	//   "id": 123,           // The ID of the dispatch policy.
-	//
-	//   "system": false,        // Specifies whether the dispatch rule is editable. Valid values: true: not editable. false: editable.
-	//
-	//   "ruleid": 10282,           // The ID of the dispatch rule.
-	//
-	//   "name": "Prometheus Alert",   // The name of the dispatch policy.
-	//
-	//   "labelMatchExpressionGrid": {
-	//
-	//     "labelMatchExpressionGroups": [     // Sets the dispatch rule.
-	//
-	//       {
-	//
-	//         "labelMatchExpressions": [
-	//
-	//           {
-	//
-	//             "key": "_aliyun_arms_involvedObject_kind",   // The key of the tag of the dispatch rule. For more information, see the next section.
-	//
-	//             "value": "app",                              // The value of the tag.
-	//
-	//             "operator": "eq"                             // The operator used in the dispatch rule. Valid values: eq: equals to. re: matches a regular expression.
-	//
-	//           }
-	//
-	//         ]
-	//
-	//       }
-	//
-	//     ]
-	//
-	//   },
-	//
-	//   "dispatchType": "CREATE_ALERT/DISCARD_ALERT",    // The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
-	//
-	//   "isRecover": true,               // Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
-	//
-	//   "groupRules": [                  // Sets the event group.
-	//
-	//     {
-	//
-	//       "groupId": 1,               // The ID of the group.
-	//
-	//       "groupingFields": [         // The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
-	//
-	//         "alertname"
-	//
-	//       ],
-	//
-	//       "groupWait": 10,                 // The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
-	//
-	//       "groupInterval": 15,             // The grouping interval. During the silence period of repeated alerts, if new alerts are generated, they will be sent after the group waiting time.
-	//
-	//       "repeatInterval": 20             // The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared.
-	//
-	//     }
-	//
-	//   ],
-	//
-	//   "notifyRules": [            // Sets the notification rule.
-	//
-	//     {
-	//
-	//       "notifyObjects": [
-	//
-	//         {
-	//
-	//           "notifyType": "ARMS_CONTACT",     // The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-	//
-	//           "name": "JohnDoe",                // The name of the contact or contact group.
-	//
-	//           "notifyObjectId": 1               // The ID of the contact or contact group.
-	//
-	//         },
-	//
-	//         {
-	//
-	//           "notifyType": "ARMS_CONTACT_GROUP",
-	//
-	//           "name": "JohnDoe_group",
-	//
-	//           "notifyObjectId": 2
-	//
-	//         }
-	//
-	//       ],
-	//
-	//       "notifyChannels":["dingTalk","wechat","webhook","email"]     // The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
-	//
-	//     },
-	//
-	//   ],
-	//
-	// }
-	//
-	// ```
-	//
-	// **Enumerated keys of the tag of the dispatch rule**
-	//
-	// 	- `_aliyun_arms_userid`: user ID
-	//
-	// 	- `_aliyun_arms_involvedObject_kind`: type of the associated object
-	//
-	// 	- `_aliyun_arms_involvedObject_id`: ID of the associated object
-	//
-	// 	- `_aliyun_arms_involvedObject_name`: name of the associated object
-	//
-	// 	- `_aliyun_arms_alert_name`: alert name
-	//
-	// 	- `_aliyun_arms_alert_rule_id`: alert rule ID
-	//
-	// 	- `_aliyun_arms_alert_type`: alert type
-	//
-	// 	- `_aliyun_arms_alert_level`: alert severity
+	// The dispatch rule configuration. The value is a JSON string. For more information about this parameter, see the following **additional information about the DispatchRule parameter**.
 	//
 	// This parameter is required.
 	//
@@ -62770,6 +63783,8 @@ type UpdateDispatchRuleRequest struct {
 	//
 	// {   "id": 123,     "system": false,   "ruleid": 10282,   "name": "Prometheus Alert",   "labelMatchExpressionGrid": {     "labelMatchExpressionGroups": [       {         "labelMatchExpressions": [           {             "key": "_aliyun_arms_involvedObject_kind",             "value": "app",             "operator": "eq"           }         ]       }     ]   },   "dispatchType": "CREATE_ALERT/DISCARD_ALERT",   "isRecover": true,   "groupRules": [     {       "groupId": 1,       "groupingFields": [         "alertname"       ],       "groupWait": 10,       "groupInterval": 15,       "repeatInterval": 20     }   ],   "notifyRules": [     {       "notifyObjects": [         {           "notifyType": "ARMS_CONTACT",           "name": "JohnDoe",           "notifyObjectId": 1         },         {           "notifyType": "ARMS_CONTACT_GROUP",           "name": "JohnDoe_group",           "notifyObjectId": 2         }       ],       "notifyChannels":["dingTalk","wechat","webhook","email"]     },   ], }
 	DispatchRule *string `json:"DispatchRule,omitempty" xml:"DispatchRule,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62797,10 +63812,18 @@ func (s *UpdateDispatchRuleRequest) SetRegionId(v string) *UpdateDispatchRuleReq
 }
 
 type UpdateDispatchRuleResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A5EC8221-08F2-4C95-9AF1-49FD998C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// 	- `true`: The request was successful.
+	//
+	// 	- `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -65642,6 +66665,38 @@ type UpdatePrometheusMonitoringRequest struct {
 	// The monitoring configuration. The value is a YAML string.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// apiVersion: monitoring.coreos.com/v1
+	//
+	// kind: ServiceMonitor
+	//
+	// metadata:
+	//
+	//   name: tomcat-demo
+	//
+	//   namespace: default
+	//
+	// spec:
+	//
+	//   endpoints:
+	//
+	//     - interval: 30s
+	//
+	//       path: /metrics
+	//
+	//       port: tomcat-monitor
+	//
+	//   namespaceSelector:
+	//
+	//     any: true
+	//
+	//   selector:
+	//
+	//     matchLabels:
+	//
+	//       app: tomcat
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the monitoring configuration.
 	//
@@ -65962,7 +67017,12 @@ type UpdateRumAppRequest struct {
 	// example:
 	//
 	// true
-	AutoRestart         *bool   `json:"AutoRestart,omitempty" xml:"AutoRestart,omitempty"`
+	AutoRestart *bool `json:"AutoRestart,omitempty" xml:"AutoRestart,omitempty"`
+	// The collection configurations of the mobile SDK. You can enable or disable collection configurations based on the app version.
+	//
+	// example:
+	//
+	// {\\"moduleConfig\\":{\\"enable\\":true,\\"defaultConfig\\":{\\"network\\":{\\"enable\\":true},\\"h5\\":{\\"enable\\":true},\\"routechange\\":{\\"enable\\":true},\\"crash\\":{\\"enable\\":true},\\"view\\":{\\"enable\\":true},\\"coollaunch\\":{\\"enable\\":true},\\"hotlaunch\\":{\\"enable\\":true},\\"action\\":{\\"enable\\":true},\\"lagstuck\\":{\\"enable\\":true},\\"lagfps\\":{\\"enable\\":true},\\"statechange\\":{\\"enable\\":true},\\"anr\\":{\\"enable\\":true},\\"customlog\\":{\\"enable\\":true},\\"customevent\\":{\\"enable\\":true},\\"custommetric\\":{\\"enable\\":true}},\\"versionConfigs\\":{\\"1.1.0\\":{\\"useCustom\\":true,\\"customConfig\\":{\\"network\\":{\\"enable\\":true},\\"h5\\":{\\"enable\\":true},\\"routechange\\":{\\"enable\\":true},\\"crash\\":{\\"enable\\":true},\\"view\\":{\\"enable\\":true},\\"coollaunch\\":{\\"enable\\":true},\\"hotlaunch\\":{\\"enable\\":true},\\"action\\":{\\"enable\\":true},\\"lagstuck\\":{\\"enable\\":false},\\"lagfps\\":{\\"enable\\":false},\\"statechange\\":{\\"enable\\":true},\\"anr\\":{\\"enable\\":true},\\"customlog\\":{\\"enable\\":true},\\"customevent\\":{\\"enable\\":true},\\"custommetric\\":{\\"enable\\":true}}},\\"1.2.0\\":{\\"useCustom\\":false,\\"customConfig\\":{}}}}}
 	BonreeSDKConfigJson *string `json:"BonreeSDKConfigJson,omitempty" xml:"BonreeSDKConfigJson,omitempty"`
 	// The description of the application.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -70499,6 +71559,14 @@ func (client *Client) CreateAlertContact(request *CreateAlertContactRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert contact group.
+//
+// Description:
+//
+// ***********
+//
 // @param request - CreateAlertContactGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -70545,6 +71613,14 @@ func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert contact group.
+//
+// Description:
+//
+// ***********
+//
 // @param request - CreateAlertContactGroupRequest
 //
 // @return CreateAlertContactGroupResponse
@@ -70561,7 +71637,7 @@ func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRe
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to CreateDispatchRule.
+// Creates a dispatch policy.
 //
 // @param request - CreateDispatchRuleRequest
 //
@@ -70607,7 +71683,7 @@ func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleR
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to CreateDispatchRule.
+// Creates a dispatch policy.
 //
 // @param request - CreateDispatchRuleRequest
 //
@@ -72551,7 +73627,7 @@ func (client *Client) CreateRumUploadFileUrl(request *CreateRumUploadFileUrlRequ
 
 // Summary:
 //
-// 创建或更新云拨测定时监控任务
+// Creates or updates a synthetic monitoring task.
 //
 // @param tmpReq - CreateSyntheticTaskRequest
 //
@@ -72679,7 +73755,7 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 
 // Summary:
 //
-// 创建或更新云拨测定时监控任务
+// Creates or updates a synthetic monitoring task.
 //
 // @param request - CreateSyntheticTaskRequest
 //
@@ -73249,6 +74325,14 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes alert rules.
+//
+// Description:
+//
+// The current operation is no longer maintained. Call the DeleteAlertRule operation of Alert Management (New) to delete alert rules.
+//
 // @param request - DeleteAlertRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -73291,6 +74375,14 @@ func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes alert rules.
+//
+// Description:
+//
+// The current operation is no longer maintained. Call the DeleteAlertRule operation of Alert Management (New) to delete alert rules.
+//
 // @param request - DeleteAlertRulesRequest
 //
 // @return DeleteAlertRulesResponse
@@ -73441,7 +74533,7 @@ func (client *Client) DeleteCmsExporter(request *DeleteCmsExporterRequest) (_res
 
 // Summary:
 //
-// The ID of the request.
+// Deletes alert contacts.
 //
 // @param request - DeleteContactRequest
 //
@@ -73483,7 +74575,7 @@ func (client *Client) DeleteContactWithOptions(request *DeleteContactRequest, ru
 
 // Summary:
 //
-// The ID of the request.
+// Deletes alert contacts.
 //
 // @param request - DeleteContactRequest
 //
@@ -73559,6 +74651,10 @@ func (client *Client) DeleteContactGroup(request *DeleteContactGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the dispatch policy of a specified ID.
+//
 // @param request - DeleteDispatchRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -73601,6 +74697,10 @@ func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the dispatch policy of a specified ID.
+//
 // @param request - DeleteDispatchRuleRequest
 //
 // @return DeleteDispatchRuleResponse
@@ -74095,11 +75195,13 @@ func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceReques
 
 // Summary:
 //
-// 释放工作区
+// Deletes a Managed Service for Prometheus workspace.
 //
 // Description:
 //
-// >  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+//   You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+//
+// 	- You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
 //
 // @param request - DeleteGrafanaWorkspaceRequest
 //
@@ -74145,11 +75247,13 @@ func (client *Client) DeleteGrafanaWorkspaceWithOptions(request *DeleteGrafanaWo
 
 // Summary:
 //
-// 释放工作区
+// Deletes a Managed Service for Prometheus workspace.
 //
 // Description:
 //
-// >  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+//   You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+//
+// 	- You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
 //
 // @param request - DeleteGrafanaWorkspaceRequest
 //
@@ -74761,7 +75865,7 @@ func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_resul
 
 // Summary:
 //
-// 删除前端监控应用
+// Deletes a RUM application.
 //
 // @param request - DeleteRumAppRequest
 //
@@ -74811,7 +75915,7 @@ func (client *Client) DeleteRumAppWithOptions(request *DeleteRumAppRequest, runt
 
 // Summary:
 //
-// 删除前端监控应用
+// Deletes a RUM application.
 //
 // @param request - DeleteRumAppRequest
 //
@@ -77939,7 +79043,7 @@ func (client *Client) GetRetcodeDataByQuery(request *GetRetcodeDataByQueryReques
 
 // Summary:
 //
-// 获取前端监控应用SLS存储的详细信息
+// Queries the Log Service project and Logstore that correspond to an application of browser monitoring.
 //
 // @param request - GetRetcodeLogstoreRequest
 //
@@ -77985,7 +79089,7 @@ func (client *Client) GetRetcodeLogstoreWithOptions(request *GetRetcodeLogstoreR
 
 // Summary:
 //
-// 获取前端监控应用SLS存储的详细信息
+// Queries the Log Service project and Logstore that correspond to an application of browser monitoring.
 //
 // @param request - GetRetcodeLogstoreRequest
 //
@@ -78233,7 +79337,11 @@ func (client *Client) GetRumApps(request *GetRumAppsRequest) (_result *GetRumApp
 
 // Summary:
 //
-// 获取前端监控应用sql查询分页结果
+// Queries Real User Monitoring (RUM) data by page.
+//
+// Description:
+//
+// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
 //
 // @param request - GetRumDataForPageRequest
 //
@@ -78303,7 +79411,11 @@ func (client *Client) GetRumDataForPageWithOptions(request *GetRumDataForPageReq
 
 // Summary:
 //
-// 获取前端监控应用sql查询分页结果
+// Queries Real User Monitoring (RUM) data by page.
+//
+// Description:
+//
+// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
 //
 // @param request - GetRumDataForPageRequest
 //
@@ -78321,7 +79433,11 @@ func (client *Client) GetRumDataForPage(request *GetRumDataForPageRequest) (_res
 
 // Summary:
 //
-// 获取RUM异常堆栈
+// Queries the exception stack information of a Real User Monitoring (RUM) application.
+//
+// Description:
+//
+// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
 //
 // @param request - GetRumExceptionStackRequest
 //
@@ -78383,7 +79499,11 @@ func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionSt
 
 // Summary:
 //
-// 获取RUM异常堆栈
+// Queries the exception stack information of a Real User Monitoring (RUM) application.
+//
+// Description:
+//
+// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
 //
 // @param request - GetRumExceptionStackRequest
 //
@@ -78933,7 +80053,7 @@ func (client *Client) GetSyntheticTaskList(request *GetSyntheticTaskListRequest)
 
 // Summary:
 //
-// 获取拨测任务的监测点信息
+// Obtains the information about synthetic monitoring points.
 //
 // @param request - GetSyntheticTaskMonitorsRequest
 //
@@ -78975,7 +80095,7 @@ func (client *Client) GetSyntheticTaskMonitorsWithOptions(request *GetSyntheticT
 
 // Summary:
 //
-// 获取拨测任务的监测点信息
+// Obtains the information about synthetic monitoring points.
 //
 // @param request - GetSyntheticTaskMonitorsRequest
 //
@@ -81125,7 +82245,11 @@ func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegr
 
 // Summary:
 //
-// 获取指定工作区列表
+// Obtain Specified Workspace List
+//
+// Description:
+//
+// >The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
 //
 // @param tmpReq - ListGrafanaWorkspaceRequest
 //
@@ -81185,7 +82309,11 @@ func (client *Client) ListGrafanaWorkspaceWithOptions(tmpReq *ListGrafanaWorkspa
 
 // Summary:
 //
-// 获取指定工作区列表
+// Obtain Specified Workspace List
+//
+// Description:
+//
+// >The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
 //
 // @param request - ListGrafanaWorkspaceRequest
 //
@@ -81279,7 +82407,7 @@ func (client *Client) ListInsightsEvents(request *ListInsightsEventsRequest) (_r
 
 // Summary:
 //
-// Queries alert integrations.
+// Views a list of alert integrations.
 //
 // @param request - ListIntegrationRequest
 //
@@ -81317,7 +82445,7 @@ func (client *Client) ListIntegrationWithOptions(request *ListIntegrationRequest
 
 // Summary:
 //
-// Queries alert integrations.
+// Views a list of alert integrations.
 //
 // @param request - ListIntegrationRequest
 //
@@ -81559,7 +82687,7 @@ func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRules
 
 // Summary:
 //
-// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
+// Queries the alert templates of Prometheus Service.
 //
 // @param request - ListPrometheusAlertTemplatesRequest
 //
@@ -81605,7 +82733,7 @@ func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListProme
 
 // Summary:
 //
-// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
+// Queries the alert templates of Prometheus Service.
 //
 // @param request - ListPrometheusAlertTemplatesRequest
 //
@@ -82175,7 +83303,7 @@ func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (
 
 // Summary:
 //
-// 查询拨测明细列表
+// Obtains the results of one or more synthetic tests.
 //
 // @param tmpReq - ListSyntheticDetailRequest
 //
@@ -82227,7 +83355,7 @@ func (client *Client) ListSyntheticDetailWithOptions(tmpReq *ListSyntheticDetail
 
 // Summary:
 //
-// 查询拨测明细列表
+// Obtains the results of one or more synthetic tests.
 //
 // @param request - ListSyntheticDetailRequest
 //
@@ -83233,7 +84361,7 @@ func (client *Client) QueryPromInstallStatus(request *QueryPromInstallStatusRequ
 
 // Summary:
 //
-// QueryReleaseMetric
+// Queries the metrics that are provided for different versions of a specified Enterprise Distributed Application Service (EDAS) or Kubernetes application.
 //
 // @param request - QueryReleaseMetricRequest
 //
@@ -83303,7 +84431,7 @@ func (client *Client) QueryReleaseMetricWithOptions(request *QueryReleaseMetricR
 
 // Summary:
 //
-// QueryReleaseMetric
+// Queries the metrics that are provided for different versions of a specified Enterprise Distributed Application Service (EDAS) or Kubernetes application.
 //
 // @param request - QueryReleaseMetricRequest
 //
@@ -85599,7 +86727,7 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 
 // Summary:
 //
-// The ID of the request.
+// Modifies a dispatch policy.
 //
 // @param request - UpdateDispatchRuleRequest
 //
@@ -85645,7 +86773,7 @@ func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleR
 
 // Summary:
 //
-// The ID of the request.
+// Modifies a dispatch policy.
 //
 // @param request - UpdateDispatchRuleRequest
 //
