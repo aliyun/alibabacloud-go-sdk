@@ -20760,12 +20760,14 @@ func (s *DescribeDcdnIpaUserDomainsResponse) SetBody(v *DescribeDcdnIpaUserDomai
 }
 
 type DescribeDcdnKvAccountResponseBody struct {
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The available capacity of all namespaces.
 	//
 	// example:
 	//
 	// 2GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	CapacityUsed   *int64  `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
 	// All namespaces have used capacity.
 	//
 	// example:
@@ -20812,8 +20814,18 @@ func (s DescribeDcdnKvAccountResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDcdnKvAccountResponseBody) SetCapacity(v int64) *DescribeDcdnKvAccountResponseBody {
+	s.Capacity = &v
+	return s
+}
+
 func (s *DescribeDcdnKvAccountResponseBody) SetCapacityString(v string) *DescribeDcdnKvAccountResponseBody {
 	s.CapacityString = &v
+	return s
+}
+
+func (s *DescribeDcdnKvAccountResponseBody) SetCapacityUsed(v int64) *DescribeDcdnKvAccountResponseBody {
+	s.CapacityUsed = &v
 	return s
 }
 
