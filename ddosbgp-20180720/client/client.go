@@ -2693,6 +2693,7 @@ func (s *DescribeDdosOriginInstanceBillRequest) SetType(v string) *DescribeDdosO
 }
 
 type DescribeDdosOriginInstanceBillResponseBody struct {
+	AssetStatus *int32 `json:"AssetStatus,omitempty" xml:"AssetStatus,omitempty"`
 	// The payment status. Valid values:
 	//
 	// 	- **0**: The payment is not overdue.
@@ -2797,6 +2798,11 @@ func (s DescribeDdosOriginInstanceBillResponseBody) String() string {
 
 func (s DescribeDdosOriginInstanceBillResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetAssetStatus(v int32) *DescribeDdosOriginInstanceBillResponseBody {
+	s.AssetStatus = &v
+	return s
 }
 
 func (s *DescribeDdosOriginInstanceBillResponseBody) SetDebtStatus(v int64) *DescribeDdosOriginInstanceBillResponseBody {
