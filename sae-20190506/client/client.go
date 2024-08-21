@@ -10430,13 +10430,15 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// cn-beijing:sae-test
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RequestTimeout *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
-	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Rules            *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -10493,8 +10495,18 @@ func (s *CreateIngressRequest) SetNamespaceId(v string) *CreateIngressRequest {
 	return s
 }
 
+func (s *CreateIngressRequest) SetRequestTimeout(v int32) *CreateIngressRequest {
+	s.RequestTimeout = &v
+	return s
+}
+
 func (s *CreateIngressRequest) SetRules(v string) *CreateIngressRequest {
 	s.Rules = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetSecurityPolicyId(v string) *CreateIngressRequest {
+	s.SecurityPolicyId = &v
 	return s
 }
 
@@ -22707,9 +22719,11 @@ type DescribeIngressResponseBodyData struct {
 	// example:
 	//
 	// cn-beijing:sae-test
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RequestTimeout *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the application specified in the forwarding rule.
-	Rules []*DescribeIngressResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	Rules            []*DescribeIngressResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	SecurityPolicyId *string                                 `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The type of the SLB instance based on the IP address. Valid values:
 	//
 	// 	- **internet**: the Internet-facing SLB instance.
@@ -22786,8 +22800,18 @@ func (s *DescribeIngressResponseBodyData) SetNamespaceId(v string) *DescribeIngr
 	return s
 }
 
+func (s *DescribeIngressResponseBodyData) SetRequestTimeout(v int32) *DescribeIngressResponseBodyData {
+	s.RequestTimeout = &v
+	return s
+}
+
 func (s *DescribeIngressResponseBodyData) SetRules(v []*DescribeIngressResponseBodyDataRules) *DescribeIngressResponseBodyData {
 	s.Rules = v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetSecurityPolicyId(v string) *DescribeIngressResponseBodyData {
+	s.SecurityPolicyId = &v
 	return s
 }
 
@@ -40226,10 +40250,12 @@ type UpdateIngressRequest struct {
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	RequestTimeout  *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// example:
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
-	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Rules            *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
 func (s UpdateIngressRequest) String() string {
@@ -40280,8 +40306,18 @@ func (s *UpdateIngressRequest) SetLoadBalanceType(v string) *UpdateIngressReques
 	return s
 }
 
+func (s *UpdateIngressRequest) SetRequestTimeout(v int32) *UpdateIngressRequest {
+	s.RequestTimeout = &v
+	return s
+}
+
 func (s *UpdateIngressRequest) SetRules(v string) *UpdateIngressRequest {
 	s.Rules = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetSecurityPolicyId(v string) *UpdateIngressRequest {
+	s.SecurityPolicyId = &v
 	return s
 }
 
@@ -43135,6 +43171,14 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
+		query["SecurityPolicyId"] = request.SecurityPolicyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SlbId)) {
@@ -50818,6 +50862,14 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalanceType)) {
 		query["LoadBalanceType"] = request.LoadBalanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
+		query["SecurityPolicyId"] = request.SecurityPolicyId
 	}
 
 	body := map[string]interface{}{}
