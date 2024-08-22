@@ -4089,11 +4089,8 @@ type GetMetricsResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// [{"timestamp":1548777660000,"userId":"120886317861****","instanceId":"i-abc****","Minimum":9.92,"Average":9.92,"Maximum":9.92}]
-	DataPoints *string `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
 	// example:
 	//
 	// Succeed
@@ -4129,8 +4126,8 @@ func (s *GetMetricsResponseBody) SetCode(v string) *GetMetricsResponseBody {
 	return s
 }
 
-func (s *GetMetricsResponseBody) SetDataPoints(v string) *GetMetricsResponseBody {
-	s.DataPoints = &v
+func (s *GetMetricsResponseBody) SetDatapoints(v string) *GetMetricsResponseBody {
+	s.Datapoints = &v
 	return s
 }
 
