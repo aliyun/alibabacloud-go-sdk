@@ -994,7 +994,8 @@ type CustomContainerConfig struct {
 	// example:
 	//
 	// 9000
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	Port           *int32          `json:"port,omitempty" xml:"port,omitempty"`
+	RegistryConfig *RegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
 	// example:
 	//
 	// stand-sh-registry-vpc.cn-shanghai.cr.aliyuncs.com/fc-demo2/springboot-helloworld@sha256:68d1****0d64d6
@@ -1046,6 +1047,11 @@ func (s *CustomContainerConfig) SetImage(v string) *CustomContainerConfig {
 
 func (s *CustomContainerConfig) SetPort(v int32) *CustomContainerConfig {
 	s.Port = &v
+	return s
+}
+
+func (s *CustomContainerConfig) SetRegistryConfig(v *RegistryConfig) *CustomContainerConfig {
+	s.RegistryConfig = v
 	return s
 }
 
@@ -3388,6 +3394,128 @@ func (s *RegexRule) SetReplacement(v string) *RegexRule {
 	return s
 }
 
+type RegistryAuthConfig struct {
+	// example:
+	//
+	// abc***
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// admin
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s RegistryAuthConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryAuthConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryAuthConfig) SetPassword(v string) *RegistryAuthConfig {
+	s.Password = &v
+	return s
+}
+
+func (s *RegistryAuthConfig) SetUserName(v string) *RegistryAuthConfig {
+	s.UserName = &v
+	return s
+}
+
+type RegistryCertConfig struct {
+	Insecure *bool `json:"insecure,omitempty" xml:"insecure,omitempty"`
+	// example:
+	//
+	// cm9vdF9jYV9jZXJ0
+	RootCaCertBase64 *string `json:"rootCaCertBase64,omitempty" xml:"rootCaCertBase64,omitempty"`
+}
+
+func (s RegistryCertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryCertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryCertConfig) SetInsecure(v bool) *RegistryCertConfig {
+	s.Insecure = &v
+	return s
+}
+
+func (s *RegistryCertConfig) SetRootCaCertBase64(v string) *RegistryCertConfig {
+	s.RootCaCertBase64 = &v
+	return s
+}
+
+type RegistryConfig struct {
+	AuthConfig    *RegistryAuthConfig    `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	CertConfig    *RegistryCertConfig    `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	NetworkConfig *RegistryNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
+}
+
+func (s RegistryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryConfig) SetAuthConfig(v *RegistryAuthConfig) *RegistryConfig {
+	s.AuthConfig = v
+	return s
+}
+
+func (s *RegistryConfig) SetCertConfig(v *RegistryCertConfig) *RegistryConfig {
+	s.CertConfig = v
+	return s
+}
+
+func (s *RegistryConfig) SetNetworkConfig(v *RegistryNetworkConfig) *RegistryConfig {
+	s.NetworkConfig = v
+	return s
+}
+
+type RegistryNetworkConfig struct {
+	// example:
+	//
+	// sg-xxxxxxxxxxxxxx
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// example:
+	//
+	// vsw-xxxxxxxxxxxxxx
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-xxxxxxxxxxxxxx
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s RegistryNetworkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryNetworkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryNetworkConfig) SetSecurityGroupId(v string) *RegistryNetworkConfig {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *RegistryNetworkConfig) SetVSwitchId(v string) *RegistryNetworkConfig {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *RegistryNetworkConfig) SetVpcId(v string) *RegistryNetworkConfig {
+	s.VpcId = &v
+	return s
+}
+
 type Resource struct {
 	// example:
 	//
@@ -3612,7 +3740,7 @@ func (s *SLSTriggerLogConfig) SetProject(v string) *SLSTriggerLogConfig {
 type ScheduledAction struct {
 	// example:
 	//
-	// 2024-03-10T10:10:10Z
+	// 2024-03-10T10:10:10
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// This parameter is required.
 	//
@@ -3628,7 +3756,7 @@ type ScheduledAction struct {
 	ScheduleExpression *string `json:"scheduleExpression,omitempty" xml:"scheduleExpression,omitempty"`
 	// example:
 	//
-	// 2023-03-10T10:10:10Z
+	// 2023-03-10T10:10:10
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// This parameter is required.
 	//
@@ -3636,6 +3764,10 @@ type ScheduledAction struct {
 	//
 	// 50
 	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s ScheduledAction) String() string {
@@ -3668,6 +3800,11 @@ func (s *ScheduledAction) SetStartTime(v string) *ScheduledAction {
 
 func (s *ScheduledAction) SetTarget(v int64) *ScheduledAction {
 	s.Target = &v
+	return s
+}
+
+func (s *ScheduledAction) SetTimeZone(v string) *ScheduledAction {
+	s.TimeZone = &v
 	return s
 }
 
@@ -4342,7 +4479,7 @@ func (s *TagResourcesInput) SetTag(v []*Tag) *TagResourcesInput {
 type TargetTrackingPolicy struct {
 	// example:
 	//
-	// 2024-03-10T10:10:10Z
+	// 2024-03-10T10:10:10
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// This parameter is required.
 	//
@@ -4376,8 +4513,12 @@ type TargetTrackingPolicy struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
-	// 2023-03-10T10:10:10Z
+	// 2023-03-10T10:10:10
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s TargetTrackingPolicy) String() string {
@@ -4420,6 +4561,11 @@ func (s *TargetTrackingPolicy) SetName(v string) *TargetTrackingPolicy {
 
 func (s *TargetTrackingPolicy) SetStartTime(v string) *TargetTrackingPolicy {
 	s.StartTime = &v
+	return s
+}
+
+func (s *TargetTrackingPolicy) SetTimeZone(v string) *TargetTrackingPolicy {
+	s.TimeZone = &v
 	return s
 }
 
@@ -5662,7 +5808,7 @@ func (s *GetAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *GetAsyncInvokeCo
 }
 
 type GetAsyncTaskRequest struct {
-	// The function version or alias.
+	// The version or alias of the function.
 	//
 	// example:
 	//
@@ -6012,6 +6158,10 @@ func (s *GetTriggerResponse) SetBody(v *Trigger) *GetTriggerResponse {
 
 type InvokeFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders" xml:"commonHeaders"`
+	// The ID of the asynchronous task. You must enable the asynchronous task feature in advance.
+	//
+	// >  If you use an SDK to invoke a function, we recommend that you specify a business-related ID to facilitate subsequent operations. For example, a video processing function can use video file names as invocation IDs. This way, you can easily check whether a video is successfully processed or terminated before it is processed. The ID can start only with letters or underscores. An ID can contain *letters, digits (0 - 9), underscores*, and hyphens (-). It can be up to 128 characters in length. If you do not specify the ID of the asynchronous invocation, the system automatically generates an ID.
+	//
 	// example:
 	//
 	// test-id
@@ -6297,7 +6447,7 @@ type ListAsyncTasksRequest struct {
 	//
 	// job-
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The function version or alias.
+	// The version or alias of the function.
 	//
 	// example:
 	//
@@ -6313,13 +6463,13 @@ type ListAsyncTasksRequest struct {
 	//
 	// asc
 	SortOrderByTime *string `json:"sortOrderByTime,omitempty" xml:"sortOrderByTime,omitempty"`
-	// The start time of the period in which the asynchronous tasks are launched.
+	// The start time of the period during which the asynchronous tasks are initiated.
 	//
 	// example:
 	//
 	// 1640966400000
 	StartedTimeBegin *int64 `json:"startedTimeBegin,omitempty" xml:"startedTimeBegin,omitempty"`
-	// The end time of the period in which the asynchronous tasks are launched.
+	// The end time of the period during which the asynchronous tasks are initiated.
 	//
 	// example:
 	//
@@ -6653,6 +6803,10 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 }
 
 type ListFunctionsRequest struct {
+	// example:
+	//
+	// v3
+	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
 	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
 	//
 	// example:
@@ -6679,6 +6833,11 @@ func (s ListFunctionsRequest) String() string {
 
 func (s ListFunctionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFunctionsRequest) SetFcVersion(v string) *ListFunctionsRequest {
+	s.FcVersion = &v
+	return s
 }
 
 func (s *ListFunctionsRequest) SetLimit(v int32) *ListFunctionsRequest {
@@ -7359,7 +7518,7 @@ func (s *PublishFunctionVersionResponse) SetBody(v *Version) *PublishFunctionVer
 }
 
 type PutAsyncInvokeConfigRequest struct {
-	// The configurations of asynchronous function invocation.
+	// The asynchronous invocation configurations.
 	//
 	// This parameter is required.
 	Body *PutAsyncInvokeConfigInput `json:"body,omitempty" xml:"body,omitempty"`
@@ -7468,13 +7627,15 @@ func (s *PutConcurrencyConfigResponse) SetBody(v *ConcurrencyConfig) *PutConcurr
 }
 
 type PutLayerACLRequest struct {
+	// Specify the access permission of the layer. A value of 1 indicates public and a value of 0 indicates private. The default value is 0.
+	//
 	// example:
 	//
 	// 1
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether the layer is a public layer. Valid values: true and false.
+	// Specify whether the layer is a public layer. Valid values: true and false.
 	//
 	// example:
 	//
@@ -7584,7 +7745,7 @@ func (s *PutProvisionConfigResponse) SetBody(v *ProvisionConfig) *PutProvisionCo
 }
 
 type StopAsyncTaskRequest struct {
-	// The function version or alias.
+	// The version or alias of the function.
 	//
 	// example:
 	//
@@ -8100,7 +8261,11 @@ func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequ
 
 // Summary:
 //
-// 创建自定义域名。
+// Creates a custom domain name.
+//
+// Description:
+//
+// If you wish to access applications or functions created in Function Compute via a fixed domain name in a production environment, or if you need to address the forced download behavior when accessing HTTP triggers, you can achieve this by binding a custom domain to your application or function.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -8140,7 +8305,11 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 
 // Summary:
 //
-// 创建自定义域名。
+// Creates a custom domain name.
+//
+// Description:
+//
+// If you wish to access applications or functions created in Function Compute via a fixed domain name in a production environment, or if you need to address the forced download behavior when accessing HTTP triggers, you can achieve this by binding a custom domain to your application or function.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -8160,6 +8329,10 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 // Summary:
 //
 // Creates a function.
+//
+// Description:
+//
+// In Function Compute, a function serves as the smallest unit of resource scheduling and execution, typically referring to a piece of code written by users that can execute independently in response to specific events or requests.
 //
 // @param request - CreateFunctionRequest
 //
@@ -8200,6 +8373,10 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 // Summary:
 //
 // Creates a function.
+//
+// Description:
+//
+// In Function Compute, a function serves as the smallest unit of resource scheduling and execution, typically referring to a piece of code written by users that can execute independently in response to specific events or requests.
 //
 // @param request - CreateFunctionRequest
 //
@@ -10130,6 +10307,10 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FcVersion)) {
+		query["fcVersion"] = request.FcVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		query["limit"] = request.Limit
 	}
@@ -11069,6 +11250,10 @@ func (client *Client) StopAsyncTask(functionName *string, taskId *string, reques
 //
 // Adds tags to a resource.
 //
+// Description:
+//
+// Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](https://help.aliyun.com/document_detail/156983.html).
+//
 // @param request - TagResourcesRequest
 //
 // @param headers - map
@@ -11108,6 +11293,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 // Summary:
 //
 // Adds tags to a resource.
+//
+// Description:
+//
+// Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](https://help.aliyun.com/document_detail/156983.html).
 //
 // @param request - TagResourcesRequest
 //
