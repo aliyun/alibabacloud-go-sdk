@@ -1181,8 +1181,7 @@ func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGrou
 }
 
 type CreatePolicyGroupRequestNetRedirectPolicy struct {
-	NetRedirect     *string                                                     `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	NetRedirectRule []*CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
 }
 
 func (s CreatePolicyGroupRequestNetRedirectPolicy) String() string {
@@ -1195,40 +1194,6 @@ func (s CreatePolicyGroupRequestNetRedirectPolicy) GoString() string {
 
 func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetNetRedirect(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
 	s.NetRedirect = &v
-	return s
-}
-
-func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetNetRedirectRule(v []*CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) *CreatePolicyGroupRequestNetRedirectPolicy {
-	s.NetRedirectRule = v
-	return s
-}
-
-type CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule struct {
-	Policy   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-}
-
-func (s CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetPolicy(v string) *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule {
-	s.Policy = &v
-	return s
-}
-
-func (s *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetRuleType(v string) *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule {
-	s.RuleType = &v
-	return s
-}
-
-func (s *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetTarget(v string) *CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule {
-	s.Target = &v
 	return s
 }
 
@@ -4037,6 +4002,7 @@ type DescribeTasksResponseBodyData struct {
 	//
 	// acp-25nt4kk9whhok****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
@@ -4080,6 +4046,11 @@ func (s *DescribeTasksResponseBodyData) SetRegionId(v string) *DescribeTasksResp
 
 func (s *DescribeTasksResponseBodyData) SetResourceId(v string) *DescribeTasksResponseBodyData {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetResult(v string) *DescribeTasksResponseBodyData {
+	s.Result = &v
 	return s
 }
 
@@ -5051,8 +5022,7 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
-	NetRedirect     *string                                                                         `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	NetRedirectRule []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) String() string {
@@ -5065,40 +5035,6 @@ func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) GoString(
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetNetRedirect(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
 	s.NetRedirect = &v
-	return s
-}
-
-func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetNetRedirectRule(v []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
-	s.NetRedirectRule = v
-	return s
-}
-
-type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule struct {
-	Policy   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-}
-
-func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) GoString() string {
-	return s.String()
-}
-
-func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) SetPolicy(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule {
-	s.Policy = &v
-	return s
-}
-
-func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) SetRuleType(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule {
-	s.RuleType = &v
-	return s
-}
-
-func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule) SetTarget(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule {
-	s.Target = &v
 	return s
 }
 
@@ -5555,8 +5491,7 @@ func (s *ModifyPolicyGroupRequest) SetResolutionWidth(v int32) *ModifyPolicyGrou
 }
 
 type ModifyPolicyGroupRequestNetRedirectPolicy struct {
-	NetRedirect     *string                                                     `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	NetRedirectRule []*ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
 }
 
 func (s ModifyPolicyGroupRequestNetRedirectPolicy) String() string {
@@ -5569,40 +5504,6 @@ func (s ModifyPolicyGroupRequestNetRedirectPolicy) GoString() string {
 
 func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetNetRedirect(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
 	s.NetRedirect = &v
-	return s
-}
-
-func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetNetRedirectRule(v []*ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) *ModifyPolicyGroupRequestNetRedirectPolicy {
-	s.NetRedirectRule = v
-	return s
-}
-
-type ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule struct {
-	Policy   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-}
-
-func (s ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetPolicy(v string) *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule {
-	s.Policy = &v
-	return s
-}
-
-func (s *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetRuleType(v string) *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule {
-	s.RuleType = &v
-	return s
-}
-
-func (s *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule) SetTarget(v string) *ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule {
-	s.Target = &v
 	return s
 }
 
