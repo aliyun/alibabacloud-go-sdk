@@ -255,6 +255,18 @@ type AddTaskRequest struct {
 	//
 	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// 当发送闪信配置为1时，闪信模板ID必填
+	//
+	// example:
+	//
+	// 96
+	FlashSmsTemplateId *int64 `json:"FlashSmsTemplateId,omitempty" xml:"FlashSmsTemplateId,omitempty"`
+	// 发送闪信配置
+	//
+	// example:
+	//
+	// 0
+	FlashSmsType *int64 `json:"FlashSmsType,omitempty" xml:"FlashSmsType,omitempty"`
 	// 并发数
 	//
 	// example:
@@ -357,6 +369,16 @@ func (s *AddTaskRequest) SetCallTimeList(v []*AddTaskRequestCallTimeList) *AddTa
 
 func (s *AddTaskRequest) SetCallbackUrl(v string) *AddTaskRequest {
 	s.CallbackUrl = &v
+	return s
+}
+
+func (s *AddTaskRequest) SetFlashSmsTemplateId(v int64) *AddTaskRequest {
+	s.FlashSmsTemplateId = &v
+	return s
+}
+
+func (s *AddTaskRequest) SetFlashSmsType(v int64) *AddTaskRequest {
+	s.FlashSmsType = &v
 	return s
 }
 
@@ -505,6 +527,18 @@ type AddTaskShrinkRequest struct {
 	//
 	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// 当发送闪信配置为1时，闪信模板ID必填
+	//
+	// example:
+	//
+	// 96
+	FlashSmsTemplateId *int64 `json:"FlashSmsTemplateId,omitempty" xml:"FlashSmsTemplateId,omitempty"`
+	// 发送闪信配置
+	//
+	// example:
+	//
+	// 0
+	FlashSmsType *int64 `json:"FlashSmsType,omitempty" xml:"FlashSmsType,omitempty"`
 	// 并发数
 	//
 	// example:
@@ -610,6 +644,16 @@ func (s *AddTaskShrinkRequest) SetCallbackUrl(v string) *AddTaskShrinkRequest {
 	return s
 }
 
+func (s *AddTaskShrinkRequest) SetFlashSmsTemplateId(v int64) *AddTaskShrinkRequest {
+	s.FlashSmsTemplateId = &v
+	return s
+}
+
+func (s *AddTaskShrinkRequest) SetFlashSmsType(v int64) *AddTaskShrinkRequest {
+	s.FlashSmsType = &v
+	return s
+}
+
 func (s *AddTaskShrinkRequest) SetMaxConcurrency(v int64) *AddTaskShrinkRequest {
 	s.MaxConcurrency = &v
 	return s
@@ -701,6 +745,7 @@ func (s *AddTaskShrinkRequest) SetTemplateType(v int64) *AddTaskShrinkRequest {
 }
 
 type AddTaskResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
 	// 0
@@ -730,6 +775,11 @@ func (s AddTaskResponseBody) String() string {
 
 func (s AddTaskResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AddTaskResponseBody) SetAccessDeniedDetail(v string) *AddTaskResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *AddTaskResponseBody) SetCode(v int64) *AddTaskResponseBody {
@@ -1878,6 +1928,18 @@ type EditTaskRequest struct {
 	//
 	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// 当发送闪信配置为1时，闪信模板ID必填
+	//
+	// example:
+	//
+	// 60
+	FlashSmsTemplateId *int64 `json:"FlashSmsTemplateId,omitempty" xml:"FlashSmsTemplateId,omitempty"`
+	// 发送闪信配置,默认为0,0不发送闪信.1发送闪信
+	//
+	// example:
+	//
+	// 0
+	FlashSmsType *int64 `json:"FlashSmsType,omitempty" xml:"FlashSmsType,omitempty"`
 	// 并发数
 	//
 	// example:
@@ -1978,6 +2040,16 @@ func (s *EditTaskRequest) SetCallTimeList(v []*EditTaskRequestCallTimeList) *Edi
 
 func (s *EditTaskRequest) SetCallbackUrl(v string) *EditTaskRequest {
 	s.CallbackUrl = &v
+	return s
+}
+
+func (s *EditTaskRequest) SetFlashSmsTemplateId(v int64) *EditTaskRequest {
+	s.FlashSmsTemplateId = &v
+	return s
+}
+
+func (s *EditTaskRequest) SetFlashSmsType(v int64) *EditTaskRequest {
+	s.FlashSmsType = &v
 	return s
 }
 
@@ -2126,6 +2198,18 @@ type EditTaskShrinkRequest struct {
 	//
 	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// 当发送闪信配置为1时，闪信模板ID必填
+	//
+	// example:
+	//
+	// 60
+	FlashSmsTemplateId *int64 `json:"FlashSmsTemplateId,omitempty" xml:"FlashSmsTemplateId,omitempty"`
+	// 发送闪信配置,默认为0,0不发送闪信.1发送闪信
+	//
+	// example:
+	//
+	// 0
+	FlashSmsType *int64 `json:"FlashSmsType,omitempty" xml:"FlashSmsType,omitempty"`
 	// 并发数
 	//
 	// example:
@@ -2229,6 +2313,16 @@ func (s *EditTaskShrinkRequest) SetCallbackUrl(v string) *EditTaskShrinkRequest 
 	return s
 }
 
+func (s *EditTaskShrinkRequest) SetFlashSmsTemplateId(v int64) *EditTaskShrinkRequest {
+	s.FlashSmsTemplateId = &v
+	return s
+}
+
+func (s *EditTaskShrinkRequest) SetFlashSmsType(v int64) *EditTaskShrinkRequest {
+	s.FlashSmsType = &v
+	return s
+}
+
 func (s *EditTaskShrinkRequest) SetMaxConcurrency(v int64) *EditTaskShrinkRequest {
 	s.MaxConcurrency = &v
 	return s
@@ -2320,6 +2414,7 @@ func (s *EditTaskShrinkRequest) SetTemplateType(v int64) *EditTaskShrinkRequest 
 }
 
 type EditTaskResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
 	// 0
@@ -2349,6 +2444,11 @@ func (s EditTaskResponseBody) String() string {
 
 func (s EditTaskResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *EditTaskResponseBody) SetAccessDeniedDetail(v string) *EditTaskResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *EditTaskResponseBody) SetCode(v int64) *EditTaskResponseBody {
@@ -5248,6 +5348,24 @@ type TaskListResponseBodyModel struct {
 	//
 	// 2023-04-05 12:11:11
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 闪信模板id
+	//
+	// example:
+	//
+	// 99
+	FlashSmsTemplateId *int64 `json:"FlashSmsTemplateId,omitempty" xml:"FlashSmsTemplateId,omitempty"`
+	// 闪信模板名称
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	FlashSmsTemplateName *string `json:"FlashSmsTemplateName,omitempty" xml:"FlashSmsTemplateName,omitempty"`
+	// 发送闪信配置，可选0，1；0表示否，1表示是
+	//
+	// example:
+	//
+	// 1
+	FlashSmsType *int64 `json:"FlashSmsType,omitempty" xml:"FlashSmsType,omitempty"`
 	// 最近导入时间
 	//
 	// example:
@@ -5368,6 +5486,21 @@ func (s *TaskListResponseBodyModel) SetCallType(v int64) *TaskListResponseBodyMo
 
 func (s *TaskListResponseBodyModel) SetCreateTime(v string) *TaskListResponseBodyModel {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *TaskListResponseBodyModel) SetFlashSmsTemplateId(v int64) *TaskListResponseBodyModel {
+	s.FlashSmsTemplateId = &v
+	return s
+}
+
+func (s *TaskListResponseBodyModel) SetFlashSmsTemplateName(v string) *TaskListResponseBodyModel {
+	s.FlashSmsTemplateName = &v
+	return s
+}
+
+func (s *TaskListResponseBodyModel) SetFlashSmsType(v int64) *TaskListResponseBodyModel {
+	s.FlashSmsType = &v
 	return s
 }
 
@@ -6553,6 +6686,14 @@ func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *util.R
 		query["CallbackUrl"] = request.CallbackUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FlashSmsTemplateId)) {
+		query["FlashSmsTemplateId"] = request.FlashSmsTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlashSmsType)) {
+		query["FlashSmsType"] = request.FlashSmsType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
 		query["MaxConcurrency"] = request.MaxConcurrency
 	}
@@ -7007,6 +7148,14 @@ func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *util
 
 	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
 		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlashSmsTemplateId)) {
+		query["FlashSmsTemplateId"] = request.FlashSmsTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlashSmsType)) {
+		query["FlashSmsType"] = request.FlashSmsType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
