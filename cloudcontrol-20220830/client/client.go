@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,9 @@ import (
 )
 
 type CancelTaskResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -30,9 +30,9 @@ func (s *CancelTaskResponseBody) SetRequestId(v string) *CancelTaskResponseBody 
 }
 
 type CancelTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelTaskResponse) String() string {
@@ -59,9 +59,24 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 }
 
 type CreateResourceRequest struct {
-	Body        map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string                `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RegionId    *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//      "AccountName": "cctest",
+	//
+	//      "AccountPassword": "Aa1234****"
+	//
+	// }
+	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// 1e810dfe1468721d0664a49b9d9f74f4
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s CreateResourceRequest) String() string {
@@ -88,10 +103,22 @@ func (s *CreateResourceRequest) SetRegionId(v string) *CreateResourceRequest {
 }
 
 type CreateResourceResponseBody struct {
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ResourceId   *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// cctest
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// Instance/r-8vbf5abe31c9c4d4/Account/cctest
 	ResourcePath *string `json:"resourcePath,omitempty" xml:"resourcePath,omitempty"`
-	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// task-433aead756057fff8189a7ce5****
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s CreateResourceResponseBody) String() string {
@@ -123,9 +150,9 @@ func (s *CreateResourceResponseBody) SetTaskId(v string) *CreateResourceResponse
 }
 
 type CreateResourceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateResourceResponse) String() string {
@@ -152,8 +179,14 @@ func (s *CreateResourceResponse) SetBody(v *CreateResourceResponseBody) *CreateR
 }
 
 type DeleteResourceRequest struct {
+	// example:
+	//
+	// 1e810dfe1468721d0664a49b9d9f74f4
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s DeleteResourceRequest) String() string {
@@ -175,8 +208,14 @@ func (s *DeleteResourceRequest) SetRegionId(v string) *DeleteResourceRequest {
 }
 
 type DeleteResourceResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// task-433aead756057fff8189a7ce5****
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s DeleteResourceResponseBody) String() string {
@@ -198,9 +237,9 @@ func (s *DeleteResourceResponseBody) SetTaskId(v string) *DeleteResourceResponse
 }
 
 type DeleteResourceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteResourceResponse) String() string {
@@ -227,7 +266,27 @@ func (s *DeleteResourceResponse) SetBody(v *DeleteResourceResponseBody) *DeleteR
 }
 
 type GetPriceRequest struct {
-	RegionId           *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "LoadBalancerName": "cc-test",
+	//
+	//         "LoadBalancerSpec": "slb.s3.small",
+	//
+	//         "InternetChargeType": "paybybandwidth",
+	//
+	//         "AddressType": "internet",
+	//
+	//         "PaymentType": "PayAsYouGo",
+	//
+	//         "Bandwidth": 6
+	//
+	//       }
 	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
 }
 
@@ -250,7 +309,27 @@ func (s *GetPriceRequest) SetResourceAttributes(v map[string]interface{}) *GetPr
 }
 
 type GetPriceShrinkRequest struct {
-	RegionId                 *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "LoadBalancerName": "cc-test",
+	//
+	//         "LoadBalancerSpec": "slb.s3.small",
+	//
+	//         "InternetChargeType": "paybybandwidth",
+	//
+	//         "AddressType": "internet",
+	//
+	//         "PaymentType": "PayAsYouGo",
+	//
+	//         "Bandwidth": 6
+	//
+	//       }
 	ResourceAttributesShrink *string `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
 }
 
@@ -273,8 +352,11 @@ func (s *GetPriceShrinkRequest) SetResourceAttributesShrink(v string) *GetPriceS
 }
 
 type GetPriceResponseBody struct {
-	Price     *GetPriceResponseBodyPrice `json:"price,omitempty" xml:"price,omitempty" type:"Struct"`
-	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Price *GetPriceResponseBodyPrice `json:"price,omitempty" xml:"price,omitempty" type:"Struct"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetPriceResponseBody) String() string {
@@ -296,12 +378,24 @@ func (s *GetPriceResponseBody) SetRequestId(v string) *GetPriceResponseBody {
 }
 
 type GetPriceResponseBodyPrice struct {
-	Currency         *string                                      `json:"currency,omitempty" xml:"currency,omitempty"`
-	DiscountPrice    *float32                                     `json:"discountPrice,omitempty" xml:"discountPrice,omitempty"`
-	ModuleDetails    []*GetPriceResponseBodyPriceModuleDetails    `json:"moduleDetails,omitempty" xml:"moduleDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// example:
+	//
+	// 0.0
+	DiscountPrice *float32                                  `json:"discountPrice,omitempty" xml:"discountPrice,omitempty"`
+	ModuleDetails []*GetPriceResponseBodyPriceModuleDetails `json:"moduleDetails,omitempty" xml:"moduleDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 760.0
 	OriginalPrice    *float32                                     `json:"originalPrice,omitempty" xml:"originalPrice,omitempty"`
 	PromotionDetails []*GetPriceResponseBodyPricePromotionDetails `json:"promotionDetails,omitempty" xml:"promotionDetails,omitempty" type:"Repeated"`
-	TradePrice       *float32                                     `json:"tradePrice,omitempty" xml:"tradePrice,omitempty"`
+	// example:
+	//
+	// 0.0
+	TradePrice *float32 `json:"tradePrice,omitempty" xml:"tradePrice,omitempty"`
 }
 
 func (s GetPriceResponseBodyPrice) String() string {
@@ -343,12 +437,30 @@ func (s *GetPriceResponseBodyPrice) SetTradePrice(v float32) *GetPriceResponseBo
 }
 
 type GetPriceResponseBodyPriceModuleDetails struct {
+	// example:
+	//
+	// 0.02
 	CostAfterDiscount *float32 `json:"costAfterDiscount,omitempty" xml:"costAfterDiscount,omitempty"`
-	InvoiceDiscount   *float32 `json:"invoiceDiscount,omitempty" xml:"invoiceDiscount,omitempty"`
-	ModuleCode        *string  `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
-	ModuleName        *string  `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	OriginalCost      *float32 `json:"originalCost,omitempty" xml:"originalCost,omitempty"`
-	PriceType         *float32 `json:"priceType,omitempty" xml:"priceType,omitempty"`
+	// example:
+	//
+	// 0.0
+	InvoiceDiscount *float32 `json:"invoiceDiscount,omitempty" xml:"invoiceDiscount,omitempty"`
+	// example:
+	//
+	// InstanceRent
+	ModuleCode *string `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
+	// example:
+	//
+	// InstanceRent
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// example:
+	//
+	// 1000.0
+	OriginalCost *float32 `json:"originalCost,omitempty" xml:"originalCost,omitempty"`
+	// example:
+	//
+	// 1.0
+	PriceType *string `json:"priceType,omitempty" xml:"priceType,omitempty"`
 }
 
 func (s GetPriceResponseBodyPriceModuleDetails) String() string {
@@ -384,12 +496,15 @@ func (s *GetPriceResponseBodyPriceModuleDetails) SetOriginalCost(v float32) *Get
 	return s
 }
 
-func (s *GetPriceResponseBodyPriceModuleDetails) SetPriceType(v float32) *GetPriceResponseBodyPriceModuleDetails {
+func (s *GetPriceResponseBodyPriceModuleDetails) SetPriceType(v string) *GetPriceResponseBodyPriceModuleDetails {
 	s.PriceType = &v
 	return s
 }
 
 type GetPriceResponseBodyPricePromotionDetails struct {
+	// example:
+	//
+	// 37284
 	PromotionDesc *string `json:"promotionDesc,omitempty" xml:"promotionDesc,omitempty"`
 	PromotionId   *int64  `json:"promotionId,omitempty" xml:"promotionId,omitempty"`
 	PromotionName *string `json:"promotionName,omitempty" xml:"promotionName,omitempty"`
@@ -419,9 +534,9 @@ func (s *GetPriceResponseBodyPricePromotionDetails) SetPromotionName(v string) *
 }
 
 type GetPriceResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPriceResponse) String() string {
@@ -448,8 +563,11 @@ func (s *GetPriceResponse) SetBody(v *GetPriceResponseBody) *GetPriceResponse {
 }
 
 type GetResourceTypeHeaders struct {
-	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XAcsAcceptLanguage *string            `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// zh_CH
+	XAcsAcceptLanguage *string `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
 }
 
 func (s GetResourceTypeHeaders) String() string {
@@ -471,6 +589,9 @@ func (s *GetResourceTypeHeaders) SetXAcsAcceptLanguage(v string) *GetResourceTyp
 }
 
 type GetResourceTypeResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ResourceType *GetResourceTypeResponseBodyResourceType `json:"resourceType,omitempty" xml:"resourceType,omitempty" type:"Struct"`
 }
@@ -494,25 +615,34 @@ func (s *GetResourceTypeResponseBody) SetResourceType(v *GetResourceTypeResponse
 }
 
 type GetResourceTypeResponseBodyResourceType struct {
-	CreateOnlyProperties    []*string                                        `json:"createOnlyProperties,omitempty" xml:"createOnlyProperties,omitempty" type:"Repeated"`
-	DeleteOnlyProperties    []*string                                        `json:"deleteOnlyProperties,omitempty" xml:"deleteOnlyProperties,omitempty" type:"Repeated"`
-	FilterProperties        []*string                                        `json:"filterProperties,omitempty" xml:"filterProperties,omitempty" type:"Repeated"`
-	GetOnlyProperties       []*string                                        `json:"getOnlyProperties,omitempty" xml:"getOnlyProperties,omitempty" type:"Repeated"`
-	GetResponseProperties   []*string                                        `json:"getResponseProperties,omitempty" xml:"getResponseProperties,omitempty" type:"Repeated"`
-	Handlers                *GetResourceTypeResponseBodyResourceTypeHandlers `json:"handlers,omitempty" xml:"handlers,omitempty" type:"Struct"`
-	Info                    *GetResourceTypeResponseBodyResourceTypeInfo     `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
-	ListOnlyProperties      []*string                                        `json:"listOnlyProperties,omitempty" xml:"listOnlyProperties,omitempty" type:"Repeated"`
-	ListResponseProperties  []*string                                        `json:"listResponseProperties,omitempty" xml:"listResponseProperties,omitempty" type:"Repeated"`
-	PrimaryIdentifier       *string                                          `json:"primaryIdentifier,omitempty" xml:"primaryIdentifier,omitempty"`
-	Product                 *string                                          `json:"product,omitempty" xml:"product,omitempty"`
-	Properties              map[string]interface{}                           `json:"properties,omitempty" xml:"properties,omitempty"`
-	PublicProperties        []*string                                        `json:"publicProperties,omitempty" xml:"publicProperties,omitempty" type:"Repeated"`
-	ReadOnlyProperties      []*string                                        `json:"readOnlyProperties,omitempty" xml:"readOnlyProperties,omitempty" type:"Repeated"`
-	Required                []*string                                        `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
-	ResourceType            *string                                          `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	SensitiveInfoProperties []*string                                        `json:"sensitiveInfoProperties,omitempty" xml:"sensitiveInfoProperties,omitempty" type:"Repeated"`
-	UpdateOnlyProperties    []*string                                        `json:"updateOnlyProperties,omitempty" xml:"updateOnlyProperties,omitempty" type:"Repeated"`
-	UpdateTypeProperties    []*string                                        `json:"updateTypeProperties,omitempty" xml:"updateTypeProperties,omitempty" type:"Repeated"`
+	CreateOnlyProperties   []*string                                        `json:"createOnlyProperties,omitempty" xml:"createOnlyProperties,omitempty" type:"Repeated"`
+	DeleteOnlyProperties   []*string                                        `json:"deleteOnlyProperties,omitempty" xml:"deleteOnlyProperties,omitempty" type:"Repeated"`
+	FilterProperties       []*string                                        `json:"filterProperties,omitempty" xml:"filterProperties,omitempty" type:"Repeated"`
+	GetOnlyProperties      []*string                                        `json:"getOnlyProperties,omitempty" xml:"getOnlyProperties,omitempty" type:"Repeated"`
+	GetResponseProperties  []*string                                        `json:"getResponseProperties,omitempty" xml:"getResponseProperties,omitempty" type:"Repeated"`
+	Handlers               *GetResourceTypeResponseBodyResourceTypeHandlers `json:"handlers,omitempty" xml:"handlers,omitempty" type:"Struct"`
+	Info                   *GetResourceTypeResponseBodyResourceTypeInfo     `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
+	ListOnlyProperties     []*string                                        `json:"listOnlyProperties,omitempty" xml:"listOnlyProperties,omitempty" type:"Repeated"`
+	ListResponseProperties []*string                                        `json:"listResponseProperties,omitempty" xml:"listResponseProperties,omitempty" type:"Repeated"`
+	// example:
+	//
+	// /properties/InstanceId
+	PrimaryIdentifier *string `json:"primaryIdentifier,omitempty" xml:"primaryIdentifier,omitempty"`
+	// example:
+	//
+	// ECS
+	Product            *string                `json:"product,omitempty" xml:"product,omitempty"`
+	Properties         map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	PublicProperties   []*string              `json:"publicProperties,omitempty" xml:"publicProperties,omitempty" type:"Repeated"`
+	ReadOnlyProperties []*string              `json:"readOnlyProperties,omitempty" xml:"readOnlyProperties,omitempty" type:"Repeated"`
+	Required           []*string              `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Instance
+	ResourceType            *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	SensitiveInfoProperties []*string `json:"sensitiveInfoProperties,omitempty" xml:"sensitiveInfoProperties,omitempty" type:"Repeated"`
+	UpdateOnlyProperties    []*string `json:"updateOnlyProperties,omitempty" xml:"updateOnlyProperties,omitempty" type:"Repeated"`
+	UpdateTypeProperties    []*string `json:"updateTypeProperties,omitempty" xml:"updateTypeProperties,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceTypeResponseBodyResourceType) String() string {
@@ -745,10 +875,22 @@ func (s *GetResourceTypeResponseBodyResourceTypeHandlersUpdate) SetPermissions(v
 }
 
 type GetResourceTypeResponseBodyResourceTypeInfo struct {
-	ChargeType    *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// example:
+	//
+	// paid
+	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// example:
+	//
+	// region
 	DeliveryScope *string `json:"deliveryScope,omitempty" xml:"deliveryScope,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// An ECS instance is equivalent to a virtual machine, including the most basic computing components such as CPU, memory, operating system, network, and disk. You can easily customize and change the configuration of the instance. You have full control over the virtual machine.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// Instance
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s GetResourceTypeResponseBodyResourceTypeInfo) String() string {
@@ -780,9 +922,9 @@ func (s *GetResourceTypeResponseBodyResourceTypeInfo) SetTitle(v string) *GetRes
 }
 
 type GetResourceTypeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceTypeResponse) String() string {
@@ -809,10 +951,19 @@ func (s *GetResourceTypeResponse) SetBody(v *GetResourceTypeResponseBody) *GetRe
 }
 
 type GetResourcesRequest struct {
-	Filter     map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
-	MaxResults *int32                 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RegionId   *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2****
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s GetResourcesRequest) String() string {
@@ -845,9 +996,18 @@ func (s *GetResourcesRequest) SetRegionId(v string) *GetResourcesRequest {
 
 type GetResourcesShrinkRequest struct {
 	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	MaxResults   *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken    *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RegionId     *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2****
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s GetResourcesShrinkRequest) String() string {
@@ -879,12 +1039,24 @@ func (s *GetResourcesShrinkRequest) SetRegionId(v string) *GetResourcesShrinkReq
 }
 
 type GetResourcesResponseBody struct {
-	MaxResults *int32                               `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                              `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RequestId  *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Resource   *GetResourcesResponseBodyResource    `json:"resource,omitempty" xml:"resource,omitempty" type:"Struct"`
-	Resources  []*GetResourcesResponseBodyResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
-	TotalCount *int32                               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2****
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Resource  *GetResourcesResponseBodyResource    `json:"resource,omitempty" xml:"resource,omitempty" type:"Struct"`
+	Resources []*GetResourcesResponseBodyResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s GetResourcesResponseBody) String() string {
@@ -926,8 +1098,14 @@ func (s *GetResourcesResponseBody) SetTotalCount(v int32) *GetResourcesResponseB
 }
 
 type GetResourcesResponseBodyResource struct {
+	// example:
+	//
+	// {"Status":"Available","Description":"","AccountPrivilege":"RoleReadWrite","InstanceId":"r-8vbf5abe31c9c4d4","RegionId":"cn-zhangjiakou","AccountType":"Normal","TypeInfo":{},"AccountName":"cctest"}
 	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
-	ResourceId         *string                `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// cctest
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 }
 
 func (s GetResourcesResponseBodyResource) String() string {
@@ -949,8 +1127,14 @@ func (s *GetResourcesResponseBodyResource) SetResourceId(v string) *GetResources
 }
 
 type GetResourcesResponseBodyResources struct {
+	// example:
+	//
+	// {"Status":"Available","Description":"","AccountPrivilege":"RoleReadWrite","InstanceId":"r-8vbf5abe31c9c4d4","RegionId":"cn-zhangjiakou","AccountType":"Normal","TypeInfo":{},"AccountName":"cctest"}
 	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
-	ResourceId         *string                `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// cctest
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 }
 
 func (s GetResourcesResponseBodyResources) String() string {
@@ -972,9 +1156,9 @@ func (s *GetResourcesResponseBodyResources) SetResourceId(v string) *GetResource
 }
 
 type GetResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourcesResponse) String() string {
@@ -1001,6 +1185,9 @@ func (s *GetResourcesResponse) SetBody(v *GetResourcesResponseBody) *GetResource
 }
 
 type GetTaskResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Task      *GetTaskResponseBodyTask `json:"task,omitempty" xml:"task,omitempty" type:"Struct"`
 }
@@ -1024,16 +1211,45 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 }
 
 type GetTaskResponseBodyTask struct {
-	CreateTime   *string                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Error        *GetTaskResponseBodyTaskError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
-	Product      *string                       `json:"product,omitempty" xml:"product,omitempty"`
-	RegionId     *string                       `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ResourceId   *string                       `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	ResourcePath *string                       `json:"resourcePath,omitempty" xml:"resourcePath,omitempty"`
-	ResourceType *string                       `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Status       *string                       `json:"status,omitempty" xml:"status,omitempty"`
-	TaskAction   *string                       `json:"taskAction,omitempty" xml:"taskAction,omitempty"`
-	TaskId       *string                       `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 2022-10-09T00:46:03Z
+	CreateTime *string                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Error      *GetTaskResponseBodyTaskError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
+	// example:
+	//
+	// ECS
+	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// i-8vbascjthm7kzhp3****
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// Instance/i-8vbascjthm7kzhp3****
+	//
+	// Instance/r-8vbf5abe31c9c4d4/Account/cctest
+	ResourcePath *string `json:"resourcePath,omitempty" xml:"resourcePath,omitempty"`
+	// example:
+	//
+	// Instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// Create
+	TaskAction *string `json:"taskAction,omitempty" xml:"taskAction,omitempty"`
+	// example:
+	//
+	// task-433aead756057fff8189a7ce5****
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s GetTaskResponseBodyTask) String() string {
@@ -1095,7 +1311,21 @@ func (s *GetTaskResponseBodyTask) SetTaskId(v string) *GetTaskResponseBodyTask {
 }
 
 type GetTaskResponseBodyTaskError struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// OperationFailure.OperationFailed
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//      "requestId": "123****",
+	//
+	//      "errorCode": "InvalidRamUser.NoPermission",
+	//
+	//      "errorMsg": "Ram user is not authorized to perform the operation."
+	//
+	// }
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 
@@ -1118,9 +1348,9 @@ func (s *GetTaskResponseBodyTaskError) SetMessage(v string) *GetTaskResponseBody
 }
 
 type GetTaskResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskResponse) String() string {
@@ -1147,6 +1377,11 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type ListDataSourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RegionId
 	AttributeName *string                `json:"attributeName,omitempty" xml:"attributeName,omitempty"`
 	Filter        map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
 }
@@ -1170,6 +1405,11 @@ func (s *ListDataSourcesRequest) SetFilter(v map[string]interface{}) *ListDataSo
 }
 
 type ListDataSourcesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RegionId
 	AttributeName *string `json:"attributeName,omitempty" xml:"attributeName,omitempty"`
 	FilterShrink  *string `json:"filter,omitempty" xml:"filter,omitempty"`
 }
@@ -1194,7 +1434,10 @@ func (s *ListDataSourcesShrinkRequest) SetFilterShrink(v string) *ListDataSource
 
 type ListDataSourcesResponseBody struct {
 	DataSources []*ListDataSourcesResponseBodyDataSources `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
-	RequestId   *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListDataSourcesResponseBody) String() string {
@@ -1216,6 +1459,9 @@ func (s *ListDataSourcesResponseBody) SetRequestId(v string) *ListDataSourcesRes
 }
 
 type ListDataSourcesResponseBodyDataSources struct {
+	// example:
+	//
+	// cn-beijing
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 }
 
@@ -1233,9 +1479,9 @@ func (s *ListDataSourcesResponseBodyDataSources) SetId(v string) *ListDataSource
 }
 
 type ListDataSourcesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataSourcesResponse) String() string {
@@ -1262,8 +1508,11 @@ func (s *ListDataSourcesResponse) SetBody(v *ListDataSourcesResponseBody) *ListD
 }
 
 type ListProductsHeaders struct {
-	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XAcsAcceptLanguage *string            `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// zh_CH
+	XAcsAcceptLanguage *string `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
 }
 
 func (s ListProductsHeaders) String() string {
@@ -1285,8 +1534,14 @@ func (s *ListProductsHeaders) SetXAcsAcceptLanguage(v string) *ListProductsHeade
 }
 
 type ListProductsRequest struct {
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// ECS
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListProductsRequest) String() string {
@@ -1308,11 +1563,23 @@ func (s *ListProductsRequest) SetNextToken(v string) *ListProductsRequest {
 }
 
 type ListProductsResponseBody struct {
-	MaxResults *int32                              `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Products   []*ListProductsResponseBodyProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
-	RequestId  *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int32                              `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// Redis
+	NextToken *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Products  []*ListProductsResponseBodyProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProductsResponseBody) String() string {
@@ -1349,7 +1616,13 @@ func (s *ListProductsResponseBody) SetTotalCount(v int32) *ListProductsResponseB
 }
 
 type ListProductsResponseBodyProducts struct {
+	// example:
+	//
+	// ECS
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// example:
+	//
+	// Elastic Compute Service
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
 }
 
@@ -1372,9 +1645,9 @@ func (s *ListProductsResponseBodyProducts) SetProductName(v string) *ListProduct
 }
 
 type ListProductsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProductsResponse) String() string {
@@ -1401,8 +1674,11 @@ func (s *ListProductsResponse) SetBody(v *ListProductsResponseBody) *ListProduct
 }
 
 type ListResourceTypesHeaders struct {
-	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XAcsAcceptLanguage *string            `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// zh_CH
+	XAcsAcceptLanguage *string `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
 }
 
 func (s ListResourceTypesHeaders) String() string {
@@ -1424,7 +1700,13 @@ func (s *ListResourceTypesHeaders) SetXAcsAcceptLanguage(v string) *ListResource
 }
 
 type ListResourceTypesRequest struct {
-	MaxResults    *int32    `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// ECS::Disk
 	NextToken     *string   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ResourceTypes []*string `json:"resourceTypes,omitempty" xml:"resourceTypes,omitempty" type:"Repeated"`
 }
@@ -1453,7 +1735,13 @@ func (s *ListResourceTypesRequest) SetResourceTypes(v []*string) *ListResourceTy
 }
 
 type ListResourceTypesShrinkRequest struct {
-	MaxResults          *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// ECS::Disk
 	NextToken           *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ResourceTypesShrink *string `json:"resourceTypes,omitempty" xml:"resourceTypes,omitempty"`
 }
@@ -1482,11 +1770,23 @@ func (s *ListResourceTypesShrinkRequest) SetResourceTypesShrink(v string) *ListR
 }
 
 type ListResourceTypesResponseBody struct {
-	MaxResults    *int32                                        `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken     *string                                       `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// ECS::Disk
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId     *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ResourceTypes []*ListResourceTypesResponseBodyResourceTypes `json:"resourceTypes,omitempty" xml:"resourceTypes,omitempty" type:"Repeated"`
-	TotalCount    *int32                                        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListResourceTypesResponseBody) String() string {
@@ -1523,25 +1823,34 @@ func (s *ListResourceTypesResponseBody) SetTotalCount(v int32) *ListResourceType
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
-	CreateOnlyProperties    []*string                                           `json:"createOnlyProperties,omitempty" xml:"createOnlyProperties,omitempty" type:"Repeated"`
-	DeleteOnlyProperties    []*string                                           `json:"deleteOnlyProperties,omitempty" xml:"deleteOnlyProperties,omitempty" type:"Repeated"`
-	FilterProperties        []*string                                           `json:"filterProperties,omitempty" xml:"filterProperties,omitempty" type:"Repeated"`
-	GetOnlyProperties       []*string                                           `json:"getOnlyProperties,omitempty" xml:"getOnlyProperties,omitempty" type:"Repeated"`
-	GetResponseProperties   []*string                                           `json:"getResponseProperties,omitempty" xml:"getResponseProperties,omitempty" type:"Repeated"`
-	Handlers                *ListResourceTypesResponseBodyResourceTypesHandlers `json:"handlers,omitempty" xml:"handlers,omitempty" type:"Struct"`
-	Info                    *ListResourceTypesResponseBodyResourceTypesInfo     `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
-	ListOnlyProperties      []*string                                           `json:"listOnlyProperties,omitempty" xml:"listOnlyProperties,omitempty" type:"Repeated"`
-	ListResponseProperties  []*string                                           `json:"listResponseProperties,omitempty" xml:"listResponseProperties,omitempty" type:"Repeated"`
-	PrimaryIdentifier       *string                                             `json:"primaryIdentifier,omitempty" xml:"primaryIdentifier,omitempty"`
-	Product                 *string                                             `json:"product,omitempty" xml:"product,omitempty"`
-	Properties              map[string]interface{}                              `json:"properties,omitempty" xml:"properties,omitempty"`
-	PublicProperties        []*string                                           `json:"publicProperties,omitempty" xml:"publicProperties,omitempty" type:"Repeated"`
-	ReadOnlyProperties      []*string                                           `json:"readOnlyProperties,omitempty" xml:"readOnlyProperties,omitempty" type:"Repeated"`
-	Required                []*string                                           `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
-	ResourceType            *string                                             `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	SensitiveInfoProperties []*string                                           `json:"sensitiveInfoProperties,omitempty" xml:"sensitiveInfoProperties,omitempty" type:"Repeated"`
-	UpdateOnlyProperties    []*string                                           `json:"updateOnlyProperties,omitempty" xml:"updateOnlyProperties,omitempty" type:"Repeated"`
-	UpdateTypeProperties    []*string                                           `json:"updateTypeProperties,omitempty" xml:"updateTypeProperties,omitempty" type:"Repeated"`
+	CreateOnlyProperties   []*string                                           `json:"createOnlyProperties,omitempty" xml:"createOnlyProperties,omitempty" type:"Repeated"`
+	DeleteOnlyProperties   []*string                                           `json:"deleteOnlyProperties,omitempty" xml:"deleteOnlyProperties,omitempty" type:"Repeated"`
+	FilterProperties       []*string                                           `json:"filterProperties,omitempty" xml:"filterProperties,omitempty" type:"Repeated"`
+	GetOnlyProperties      []*string                                           `json:"getOnlyProperties,omitempty" xml:"getOnlyProperties,omitempty" type:"Repeated"`
+	GetResponseProperties  []*string                                           `json:"getResponseProperties,omitempty" xml:"getResponseProperties,omitempty" type:"Repeated"`
+	Handlers               *ListResourceTypesResponseBodyResourceTypesHandlers `json:"handlers,omitempty" xml:"handlers,omitempty" type:"Struct"`
+	Info                   *ListResourceTypesResponseBodyResourceTypesInfo     `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
+	ListOnlyProperties     []*string                                           `json:"listOnlyProperties,omitempty" xml:"listOnlyProperties,omitempty" type:"Repeated"`
+	ListResponseProperties []*string                                           `json:"listResponseProperties,omitempty" xml:"listResponseProperties,omitempty" type:"Repeated"`
+	// example:
+	//
+	// /properties/InstanceId
+	PrimaryIdentifier *string `json:"primaryIdentifier,omitempty" xml:"primaryIdentifier,omitempty"`
+	// example:
+	//
+	// ECS
+	Product            *string                `json:"product,omitempty" xml:"product,omitempty"`
+	Properties         map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	PublicProperties   []*string              `json:"publicProperties,omitempty" xml:"publicProperties,omitempty" type:"Repeated"`
+	ReadOnlyProperties []*string              `json:"readOnlyProperties,omitempty" xml:"readOnlyProperties,omitempty" type:"Repeated"`
+	Required           []*string              `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Instance
+	ResourceType            *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	SensitiveInfoProperties []*string `json:"sensitiveInfoProperties,omitempty" xml:"sensitiveInfoProperties,omitempty" type:"Repeated"`
+	UpdateOnlyProperties    []*string `json:"updateOnlyProperties,omitempty" xml:"updateOnlyProperties,omitempty" type:"Repeated"`
+	UpdateTypeProperties    []*string `json:"updateTypeProperties,omitempty" xml:"updateTypeProperties,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceTypesResponseBodyResourceTypes) String() string {
@@ -1774,10 +2083,22 @@ func (s *ListResourceTypesResponseBodyResourceTypesHandlersUpdate) SetPermission
 }
 
 type ListResourceTypesResponseBodyResourceTypesInfo struct {
-	ChargeType    *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// example:
+	//
+	// paid
+	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// example:
+	//
+	// region
 	DeliveryScope *string `json:"deliveryScope,omitempty" xml:"deliveryScope,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// An ECS instance is equivalent to a virtual machine, including the most basic computing components such as CPU, memory, operating system, network, and disk. You can easily customize and change the configuration of the instance. You have full control over the virtual machine.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// Instance
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListResourceTypesResponseBodyResourceTypesInfo) String() string {
@@ -1809,9 +2130,9 @@ func (s *ListResourceTypesResponseBodyResourceTypesInfo) SetTitle(v string) *Lis
 }
 
 type ListResourceTypesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceTypesResponse) String() string {
@@ -1838,9 +2159,24 @@ func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *L
 }
 
 type UpdateResourceRequest struct {
-	Body        map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string                `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RegionId    *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//      "AccountPassword": "4321****",
+	//
+	//      "Description": "cctest"
+	//
+	// }
+	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// 1e810dfe1468721d0664a49b9d9f74f4
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s UpdateResourceRequest) String() string {
@@ -1867,8 +2203,14 @@ func (s *UpdateResourceRequest) SetRegionId(v string) *UpdateResourceRequest {
 }
 
 type UpdateResourceResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// task-433aead756057fff8189a7ce5****
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s UpdateResourceResponseBody) String() string {
@@ -1890,9 +2232,9 @@ func (s *UpdateResourceResponseBody) SetTaskId(v string) *UpdateResourceResponse
 }
 
 type UpdateResourceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateResourceResponse) String() string {
@@ -1965,6 +2307,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTaskWithOptions(taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1989,6 +2340,11 @@ func (client *Client) CancelTaskWithOptions(taskId *string, headers map[string]*
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消任务
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2001,6 +2357,19 @@ func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - CreateResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceResponse
 func (client *Client) CreateResourceWithOptions(requestPath *string, request *CreateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2040,6 +2409,15 @@ func (client *Client) CreateResourceWithOptions(requestPath *string, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - CreateResourceRequest
+//
+// @return CreateResourceResponse
 func (client *Client) CreateResource(requestPath *string, request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2052,6 +2430,19 @@ func (client *Client) CreateResource(requestPath *string, request *CreateResourc
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - DeleteResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceResponse
 func (client *Client) DeleteResourceWithOptions(requestPath *string, request *DeleteResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2090,6 +2481,15 @@ func (client *Client) DeleteResourceWithOptions(requestPath *string, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - DeleteResourceRequest
+//
+// @return DeleteResourceResponse
 func (client *Client) DeleteResource(requestPath *string, request *DeleteResourceRequest) (_result *DeleteResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2102,6 +2502,19 @@ func (client *Client) DeleteResource(requestPath *string, request *DeleteResourc
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询价格
+//
+// @param requestPath - the whole path of resource string
+//
+// @param tmpReq - GetPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPriceResponse
 func (client *Client) GetPriceWithOptions(requestPath *string, tmpReq *GetPriceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPriceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2146,6 +2559,15 @@ func (client *Client) GetPriceWithOptions(requestPath *string, tmpReq *GetPriceR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询价格
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - GetPriceRequest
+//
+// @return GetPriceResponse
 func (client *Client) GetPrice(requestPath *string, request *GetPriceRequest) (_result *GetPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2158,6 +2580,17 @@ func (client *Client) GetPrice(requestPath *string, request *GetPriceRequest) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源元数据
+//
+// @param requestPath - the whole path of resource string
+//
+// @param headers - GetResourceTypeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceTypeResponse
 func (client *Client) GetResourceTypeWithOptions(requestPath *string, headers *GetResourceTypeHeaders, runtime *util.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -2191,6 +2624,13 @@ func (client *Client) GetResourceTypeWithOptions(requestPath *string, headers *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源元数据
+//
+// @param requestPath - the whole path of resource string
+//
+// @return GetResourceTypeResponse
 func (client *Client) GetResourceType(requestPath *string) (_result *GetResourceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetResourceTypeHeaders{}
@@ -2203,6 +2643,19 @@ func (client *Client) GetResourceType(requestPath *string) (_result *GetResource
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param tmpReq - GetResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourcesResponse
 func (client *Client) GetResourcesWithOptions(requestPath *string, tmpReq *GetResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2255,6 +2708,15 @@ func (client *Client) GetResourcesWithOptions(requestPath *string, tmpReq *GetRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - GetResourcesRequest
+//
+// @return GetResourcesResponse
 func (client *Client) GetResources(requestPath *string, request *GetResourcesRequest) (_result *GetResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2267,13 +2729,19 @@ func (client *Client) GetResources(requestPath *string, request *GetResourcesReq
 	return _result, _err
 }
 
-/**
- * GET /api/v1/tasks/{taskId}。
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetTaskResponse
- */
+// Summary:
+//
+// 查询任务
+//
+// Description:
+//
+// GET /api/v1/tasks/{taskId}。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
 func (client *Client) GetTaskWithOptions(taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -2298,11 +2766,15 @@ func (client *Client) GetTaskWithOptions(taskId *string, headers map[string]*str
 	return _result, _err
 }
 
-/**
- * GET /api/v1/tasks/{taskId}。
- *
- * @return GetTaskResponse
- */
+// Summary:
+//
+// 查询任务
+//
+// Description:
+//
+// GET /api/v1/tasks/{taskId}。
+//
+// @return GetTaskResponse
 func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2315,6 +2787,19 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举资源属性可选值
+//
+// @param requestPath - the whole path of resource string
+//
+// @param tmpReq - ListDataSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourcesResponse
 func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2359,6 +2844,15 @@ func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举资源属性可选值
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - ListDataSourcesRequest
+//
+// @return ListDataSourcesResponse
 func (client *Client) ListDataSources(requestPath *string, request *ListDataSourcesRequest) (_result *ListDataSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2371,14 +2865,21 @@ func (client *Client) ListDataSources(requestPath *string, request *ListDataSour
 	return _result, _err
 }
 
-/**
- * GET /api/v1/providers/{provider}/products。
- *
- * @param request ListProductsRequest
- * @param headers ListProductsHeaders
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListProductsResponse
- */
+// Summary:
+//
+// 列举资源类型
+//
+// Description:
+//
+// GET /api/v1/providers/{provider}/products。
+//
+// @param request - ListProductsRequest
+//
+// @param headers - ListProductsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProductsResponse
 func (client *Client) ListProductsWithOptions(provider *string, request *ListProductsRequest, headers *ListProductsHeaders, runtime *util.RuntimeOptions) (_result *ListProductsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2426,12 +2927,17 @@ func (client *Client) ListProductsWithOptions(provider *string, request *ListPro
 	return _result, _err
 }
 
-/**
- * GET /api/v1/providers/{provider}/products。
- *
- * @param request ListProductsRequest
- * @return ListProductsResponse
- */
+// Summary:
+//
+// 列举资源类型
+//
+// Description:
+//
+// GET /api/v1/providers/{provider}/products。
+//
+// @param request - ListProductsRequest
+//
+// @return ListProductsResponse
 func (client *Client) ListProducts(provider *string, request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListProductsHeaders{}
@@ -2444,14 +2950,21 @@ func (client *Client) ListProducts(provider *string, request *ListProductsReques
 	return _result, _err
 }
 
-/**
- * GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
- *
- * @param tmpReq ListResourceTypesRequest
- * @param headers ListResourceTypesHeaders
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListResourceTypesResponse
- */
+// Summary:
+//
+// 列举资源类型
+//
+// Description:
+//
+// GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+//
+// @param tmpReq - ListResourceTypesRequest
+//
+// @param headers - ListResourceTypesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceTypesResponse
 func (client *Client) ListResourceTypesWithOptions(provider *string, product *string, tmpReq *ListResourceTypesRequest, headers *ListResourceTypesHeaders, runtime *util.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2509,12 +3022,17 @@ func (client *Client) ListResourceTypesWithOptions(provider *string, product *st
 	return _result, _err
 }
 
-/**
- * GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
- *
- * @param request ListResourceTypesRequest
- * @return ListResourceTypesResponse
- */
+// Summary:
+//
+// 列举资源类型
+//
+// Description:
+//
+// GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+//
+// @param request - ListResourceTypesRequest
+//
+// @return ListResourceTypesResponse
 func (client *Client) ListResourceTypes(provider *string, product *string, request *ListResourceTypesRequest) (_result *ListResourceTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListResourceTypesHeaders{}
@@ -2527,6 +3045,19 @@ func (client *Client) ListResourceTypes(provider *string, product *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - UpdateResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceResponse
 func (client *Client) UpdateResourceWithOptions(requestPath *string, request *UpdateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2566,6 +3097,15 @@ func (client *Client) UpdateResourceWithOptions(requestPath *string, request *Up
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新资源
+//
+// @param requestPath - the whole path of resource string
+//
+// @param request - UpdateResourceRequest
+//
+// @return UpdateResourceResponse
 func (client *Client) UpdateResource(requestPath *string, request *UpdateResourceRequest) (_result *UpdateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
