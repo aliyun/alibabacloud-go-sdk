@@ -1278,7 +1278,7 @@ type CreateSqlStatementRequest struct {
 	//
 	// 1000
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The SQL Compute ID. You can create an SQL Compute in the workspace created in EMR Serverless Spark.
+	// The SQL compute ID. You can create an SQL compute in the workspace created in EMR Serverless Spark.
 	//
 	// example:
 	//
@@ -1474,8 +1474,9 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The task configurations of Spark.
+	// The job configurations of Spark.
 	ConfigurationOverrides *GetJobRunResponseBodyJobRunConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
+	DisplayReleaseVersion  *string                                            `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	// The end time of the job.
 	//
 	// example:
@@ -1488,6 +1489,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	Fusion                  *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The information about Spark Driver.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The job ID.
@@ -1570,6 +1572,11 @@ func (s *GetJobRunResponseBodyJobRun) SetConfigurationOverrides(v *GetJobRunResp
 	return s
 }
 
+func (s *GetJobRunResponseBodyJobRun) SetDisplayReleaseVersion(v string) *GetJobRunResponseBodyJobRun {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
 func (s *GetJobRunResponseBodyJobRun) SetEndTime(v int64) *GetJobRunResponseBodyJobRun {
 	s.EndTime = &v
 	return s
@@ -1577,6 +1584,11 @@ func (s *GetJobRunResponseBodyJobRun) SetEndTime(v int64) *GetJobRunResponseBody
 
 func (s *GetJobRunResponseBodyJobRun) SetExecutionTimeoutSeconds(v int32) *GetJobRunResponseBodyJobRun {
 	s.ExecutionTimeoutSeconds = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRun) SetFusion(v bool) *GetJobRunResponseBodyJobRun {
+	s.Fusion = &v
 	return s
 }
 
@@ -1748,7 +1760,7 @@ func (s *GetSqlStatementRequest) SetRegionId(v string) *GetSqlStatementRequest {
 }
 
 type GetSqlStatementResponseBody struct {
-	// The returned data.
+	// The data returned.
 	Data *GetSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -3043,7 +3055,7 @@ type ListSessionClustersResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The SQL Computes.
+	// The SQL computes.
 	SessionClusters []*ListSessionClustersResponseBodySessionClusters `json:"sessionClusters,omitempty" xml:"sessionClusters,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
