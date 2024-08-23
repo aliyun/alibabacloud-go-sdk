@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/linkedmallretrieval-20240501
+module github.com/alibabacloud-go/linkedmallretrieval-20240501/v2
 
 go 1.14
 

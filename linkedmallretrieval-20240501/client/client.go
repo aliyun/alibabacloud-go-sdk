@@ -333,7 +333,7 @@ type AISearchV2ResponseBodyHeader struct {
 	// example:
 	//
 	// 1403
-	ResponseTime *string `json:"responseTime,omitempty" xml:"responseTime,omitempty"`
+	ResponseTime *int64 `json:"responseTime,omitempty" xml:"responseTime,omitempty"`
 }
 
 func (s AISearchV2ResponseBodyHeader) String() string {
@@ -354,7 +354,7 @@ func (s *AISearchV2ResponseBodyHeader) SetEventId(v string) *AISearchV2ResponseB
 	return s
 }
 
-func (s *AISearchV2ResponseBodyHeader) SetResponseTime(v string) *AISearchV2ResponseBodyHeader {
+func (s *AISearchV2ResponseBodyHeader) SetResponseTime(v int64) *AISearchV2ResponseBodyHeader {
 	s.ResponseTime = &v
 	return s
 }
