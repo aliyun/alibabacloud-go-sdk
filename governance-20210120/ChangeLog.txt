@@ -1,3 +1,6 @@
+2024-08-23 Version: v0.3.2
+- Generated golang 2021-01-20 for governance.
+
 2024-08-14 Version: v0.3.1
 - Update API ListEvaluationResults: update response param.
 
