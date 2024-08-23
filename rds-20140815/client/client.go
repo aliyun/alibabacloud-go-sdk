@@ -81059,6 +81059,7 @@ type UpgradeDBInstanceMajorVersionRequest struct {
 	//
 	// 13.0
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
+	UpgradeMode        *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
@@ -81182,6 +81183,11 @@ func (s *UpgradeDBInstanceMajorVersionRequest) SetSwitchTimeMode(v string) *Upgr
 
 func (s *UpgradeDBInstanceMajorVersionRequest) SetTargetMajorVersion(v string) *UpgradeDBInstanceMajorVersionRequest {
 	s.TargetMajorVersion = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceMajorVersionRequest) SetUpgradeMode(v string) *UpgradeDBInstanceMajorVersionRequest {
+	s.UpgradeMode = &v
 	return s
 }
 
@@ -117117,6 +117123,10 @@ func (client *Client) UpgradeDBInstanceMajorVersionWithOptions(request *UpgradeD
 
 	if !tea.BoolValue(util.IsUnset(request.TargetMajorVersion)) {
 		query["TargetMajorVersion"] = request.TargetMajorVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeMode)) {
+		query["UpgradeMode"] = request.UpgradeMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
