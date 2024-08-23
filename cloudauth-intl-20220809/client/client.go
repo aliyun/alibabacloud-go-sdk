@@ -4019,6 +4019,8 @@ type InitializeRequest struct {
 	// PAY**
 	SceneCode     *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	ShowAlbumIcon *string `json:"ShowAlbumIcon,omitempty" xml:"ShowAlbumIcon,omitempty"`
+	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
 	StyleConfig   *string `json:"StyleConfig,omitempty" xml:"StyleConfig,omitempty"`
 }
 
@@ -4147,6 +4149,16 @@ func (s *InitializeRequest) SetSceneCode(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetSecurityLevel(v string) *InitializeRequest {
 	s.SecurityLevel = &v
+	return s
+}
+
+func (s *InitializeRequest) SetShowAlbumIcon(v string) *InitializeRequest {
+	s.ShowAlbumIcon = &v
+	return s
+}
+
+func (s *InitializeRequest) SetShowOcrResult(v string) *InitializeRequest {
+	s.ShowOcrResult = &v
 	return s
 }
 
@@ -5920,6 +5932,14 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityLevel)) {
 		query["SecurityLevel"] = request.SecurityLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowAlbumIcon)) {
+		query["ShowAlbumIcon"] = request.ShowAlbumIcon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowOcrResult)) {
+		query["ShowOcrResult"] = request.ShowOcrResult
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StyleConfig)) {
