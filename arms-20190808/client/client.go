@@ -6484,6 +6484,10 @@ type CreateEnvironmentRequest struct {
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// grafana-rnglkcdrntlhk0****
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
 	// Specifies whether to initialize the environment.
 	//
@@ -9623,21 +9627,17 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	// 	- If you specify the groupingFields field, alerts with the same field will be sent to contacts in one notification.
 	//
-	//     Sample statement:
+	// Sample statement:
 	//
-	// ```
+	//     {
 	//
-	// {
+	//     "groupWait":5,    // The waiting time for grouping.
 	//
-	// "groupWait":5,    // The waiting time for grouping.
+	//     "groupInterval":30,     // The time interval of grouping.
 	//
-	// "groupInterval":30,     // The time interval of grouping.
+	//     "groupingFields":["alertname"]       // The field that is used to group alert events.
 	//
-	// "groupingFields":["alertname"]       // The field that is used to group alert events.
-	//
-	// }
-	//
-	// ```
+	//     }
 	//
 	// example:
 	//
@@ -9659,33 +9659,29 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	// 34
 	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
-	// The matching rules. Sample statement:
+	// The matching rules. Format:
 	//
-	// ```
+	//     [
 	//
-	// [
+	//      {
 	//
-	//  {
+	//      "matchingConditions": [
 	//
-	//  "matchingConditions": [
+	//      {
 	//
-	//  {
+	//      "value": "test",    // The value of the matching condition.
 	//
-	//  "value": "test",    // The value of the matching condition.
+	//      "key": "alertname",     // The key of the matching condition.
 	//
-	//  "key": "alertname",     // The key of the matching condition.
+	//      "operator": "eq"   // The logical operator of the matching condition, including eq (equal to), neq (not equal to), in (contains), nin (does not contain), re (regular expression match), and nre (regular expression mismatch).
 	//
-	//  "operator": "eq"   // The logical operator of the matching condition, including eq (equal to), neq (not equal to), in (contains), nin (does not contain), re (regular expression match), and nre (regular expression mismatch).
+	//      }
 	//
-	//  }
+	//      ]
 	//
-	//  ]
+	//      }
 	//
-	//  }
-	//
-	//  ]
-	//
-	// ```
+	//      ]
 	//
 	// example:
 	//
@@ -9711,21 +9707,11 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	//      "notifyObjects":[{       // An array of notification objects.
 	//
-	//      "notifyObjectType":"CONTACT",       // The type of the notification object. Valid values: CONTACT (contact), CONTACT_GROUP (contact group), ARMS_CONTACT (ARMS contact), ARMS_CONTACT_GROUP (ARMS contact group), DING_ROBOT_GROUP (DingTalk, Lark, WeCom, or IM chatbot), and CONTACT_SCHEDULE (user on duty defined by a schedule).
+	//      "notifyObjectType":"CONTACT",       // The type of the notification object. Valid values: CONTACT (contact), CONTACT_GROUP (contact group), ARMS_CONTACT (ARMS contact), ARMS_CONTACT_GROUP (ARMS contact group), DING_ROBOT_GROUP (DingTalk, Lark, WeCom, or IM robot), and CONTACT_SCHEDULE (user on duty defined by a schedule).
 	//
 	//      "notifyObjectId":123,       // The ID of the notification object.
 	//
 	//      "notifyObjectName":"test"       // The name of the notification object.
-	//
-	//      "notifyChannels": [ // The notification methods specified for a contact. Valid values: email, sms, and tts.
-	//
-	//                     "email",
-	//
-	//                     "sms",
-	//
-	//                     "tts"
-	//
-	//                 ],
 	//
 	//      }]
 	//
@@ -9739,17 +9725,7 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	// example:
 	//
-	// {{if .commonLabels.clustername }}
-	//
-	//  &gt;  Cluster Name: {{ .commonLabels.clustername }}
-	//
-	//  {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	//  &gt;  App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }}
-	//
-	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\\"#ff0000\\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
-	//
-	// {{end}}
+	// "robotContent":"{{if .commonLabels.clustername }} > Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} > Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}{{ for .alerts }} > {{.annotations.message}} {{if .generatorURL }} [Link]\\({{.generatorURL}}) {{ end }} {{if eq "true" .labels._aliyun_arms_is_denoise_filtered }} (Suspected noise) {{end}} {{end}}"
 	NotifyTemplate *string `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty"`
 	// The ID of the region.
 	//
@@ -9773,7 +9749,7 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	// 600
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Indicates whether the system sends a notification to the contacts when the status of an alert changes to Resolved. Default value: true. Valid values:
+	// Specifies whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. ARMS notifies contacts when the alert status changes to Resolved.
 	//
 	// 	- `true`: The system sends a notification.
 	//
@@ -9903,7 +9879,7 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation policy.
 	//
@@ -9925,7 +9901,7 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
 	//
 	// 34
 	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
-	// An array of alert event matching rule objects.
+	// The matching rules.
 	MatchingRules []*CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
 	// The name of the notification policy.
 	//
@@ -9935,13 +9911,13 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// An array of notification rule objects.
 	NotifyRule *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty" type:"Struct"`
-	// An array of notification template objects.
+	// The notification template.
 	NotifyTemplate *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplate `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty" type:"Struct"`
 	// Indicates whether a notification is resent for a long-lasting unresolved alert. Default value: true. Valid values:
 	//
-	// - `true`: The system resends a notification for a long-lasting unresolved alert at a specified time interval.
+	// 	- `true`: The system resends a notification for a long-lasting unresolved alert at a specified time interval.
 	//
-	// - `false`: The system sends a notification for a long-lasting unresolved alert based on an escalation policy.
+	// 	- `false`: The system sends a notification for a long-lasting unresolved alert based on an escalation policy.
 	//
 	// example:
 	//
@@ -9953,11 +9929,11 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
 	//
 	// 600
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Indicates whether the system sends a notification to the contacts when the status of an alert changes to Resolved. Default value: true. Valid values:
+	// Indicates whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. ARMS notifies contacts when the alert status changes to Resolved.
 	//
-	// - `true`: The system sends a notification.
+	// 	- `true`: The system sends a notification.
 	//
-	// - `false`: The system does not send a notification.
+	// 	- `false`: The system does not send a notification.
 	//
 	// example:
 	//
@@ -10057,7 +10033,11 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule str
 	//
 	// 5
 	GroupWait *int64 `json:"GroupWait,omitempty" xml:"GroupWait,omitempty"`
-	// The field that is used for grouping.
+	// An array of alert event group objects.
+	//
+	// 	- If you do not specify the groupingFields field, all alerts will be sent to contacts based on `alertname`.
+	//
+	// 	- If you specify the groupingFields field, alerts with the same field will be sent to contacts in one notification.
 	GroupingFields []*string `json:"GroupingFields,omitempty" xml:"GroupingFields,omitempty" type:"Repeated"`
 }
 
@@ -10159,17 +10139,7 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingR
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule struct {
-	// The notification methods. Valid values:
-	//
-	// - `dingTalk`: DingTalk
-	//
-	// - `email`: email
-	//
-	// - `sms`: text message
-	//
-	// - `tts`: phone call
-	//
-	// - `webhook`: webhook
+	// The notification method.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
 	// The end time of the notification window.
 	//
@@ -10177,7 +10147,7 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule st
 	//
 	// 23:59
 	NotifyEndTime *string `json:"NotifyEndTime,omitempty" xml:"NotifyEndTime,omitempty"`
-	// An array of notification contact objects.
+	// An array of notification objects.
 	NotifyObjects []*CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects `json:"NotifyObjects,omitempty" xml:"NotifyObjects,omitempty" type:"Repeated"`
 	// The start time of the notification window.
 	//
@@ -10218,7 +10188,7 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRul
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects struct {
 	// The notification methods specified for a contact.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// The ID of the notification contact.
+	// The ID of the notification object.
 	//
 	// example:
 	//
@@ -10232,15 +10202,15 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNot
 	NotifyObjectName *string `json:"NotifyObjectName,omitempty" xml:"NotifyObjectName,omitempty"`
 	// The type of the notification object. Valid values:
 	//
-	// 	- CONTACT: individual contact
+	// 	- CONTACT: contact
 	//
 	// 	- CONTACT_GROUP: contact group
 	//
-	// 	- ARMS_CONTACT: individual ARMS contact
+	// 	- ARMS_CONTACT: ARMS contact
 	//
 	// 	- ARMS_CONTACT_GROUP: ARMS contact group
 	//
-	// 	- DING_ROBOT_GROUP: DingTalk, Lark, or WeCom IM chatbot
+	// 	- DING_ROBOT_GROUP: DingTalk, Lark, WeCom, or IM robot
 	//
 	// 	- CONTACT_SCHEDULE: user on duty defined by a schedule
 	//
@@ -10283,37 +10253,13 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplat
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Alert Time: {{ .startTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }}  {{if .generatorURL }}  &lt;a href="{{.generatorURL}}" > Details&lt;/a&gt;
-	//
-	//  {{ end }} {{ end }}
+	// Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{if .generatorURL }} \\<a href="{{.generatorURL}}" >Link\\</a> {{end}} {{end}}
 	EmailContent *string `json:"EmailContent,omitempty" xml:"EmailContent,omitempty"`
 	// The content of the alert resolution notification sent through email.
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Recover Time: {{ .endTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }}  {{if .generatorURL }} &lt;a href="{{.generatorURL}}" > Details&lt;/a&gt;
-	//
-	//  {{ end }} {{ end }}
+	// Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{if .generatorURL }} \\<a href="{{.generatorURL}}" >Link\\</a> {{end}} {{end}}
 	EmailRecoverContent *string `json:"EmailRecoverContent,omitempty" xml:"EmailRecoverContent,omitempty"`
 	// The title of the alert resolution notification sent through email.
 	//
@@ -10331,85 +10277,31 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplat
 	//
 	// example:
 	//
-	// {{if .commonLabels.clustername }}
-	//
-	//  &gt;  Cluster Name: {{ .commonLabels.clustername }}
-	//
-	//  {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	//  &gt;  App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }}
-	//
-	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\\"#ff0000\\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
-	//
-	// {{end}}
+	// {{if .commonLabels.clustername }} > Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} > Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}{{ for .alerts }}> {{.annotations.message}} {{if .generatorURL }} [Link]\\({{.generatorURL}}) {{ end }} {{if eq "true" .labels._aliyun_arms_is_denoise_filtered }} (Suspected noise) {{end}} {{end}}
 	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
 	// The content of the alert notification sent through text message.
 	//
 	// example:
 	//
-	// {{ .level }}Alert Occurs
-	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Alert Time: {{ .startTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<SmsContent>Notification on the occurrence of a {{ .level }} alert. Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</SmsContent>
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
 	// The content of the alert resolution notification sent through text message.
 	//
 	// example:
 	//
-	// Alert Recovery Notification
-	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Recover Time: {{ .endTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<SmsRecoverContent>Alert resolution notification. Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</SmsRecoverContent>
 	SmsRecoverContent *string `json:"SmsRecoverContent,omitempty" xml:"SmsRecoverContent,omitempty"`
 	// The content of the alert notification by phone.
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Alert Time: {{ .startTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<TtsContent>Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</TtsContent>
 	TtsContent *string `json:"TtsContent,omitempty" xml:"TtsContent,omitempty"`
 	// The content of the alert resolution notification by phone.
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Recover Time: {{ .endTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<TtsRecoverContent>Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</TtsRecoverContent>
 	TtsRecoverContent *string `json:"TtsRecoverContent,omitempty" xml:"TtsRecoverContent,omitempty"`
 }
 
@@ -20908,13 +20800,11 @@ func (s *DeleteSilencePolicyResponse) SetBody(v *DeleteSilencePolicyResponseBody
 }
 
 type DeleteSourceMapRequest struct {
-	// The ID of the SourceMap file.
+	// The IDs of the SourceMap files.
 	//
 	// This parameter is required.
 	FidList []*string `json:"FidList,omitempty" xml:"FidList,omitempty" type:"Repeated"`
-	// The process ID (PID) of the application.
-	//
-	// Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the **Browser Monitoring*	- page, click the name of an application. The URL in the browser address bar contains the PID of this application in the format of `pid=xxx`. As the browser is encoded, the PID needs to be modified. Assume that the PID contained is `xxx%4074xxx`. You need to **replace*	- \\*\\*%40 with @\\*\\	- and change the PID to `xxx@74xxx`.
+	// The process identifier (PID) of the application.
 	//
 	// This parameter is required.
 	//
@@ -20922,6 +20812,8 @@ type DeleteSourceMapRequest struct {
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20954,13 +20846,11 @@ func (s *DeleteSourceMapRequest) SetRegionId(v string) *DeleteSourceMapRequest {
 }
 
 type DeleteSourceMapShrinkRequest struct {
-	// The ID of the SourceMap file.
+	// The IDs of the SourceMap files.
 	//
 	// This parameter is required.
 	FidListShrink *string `json:"FidList,omitempty" xml:"FidList,omitempty"`
-	// The process ID (PID) of the application.
-	//
-	// Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the **Browser Monitoring*	- page, click the name of an application. The URL in the browser address bar contains the PID of this application in the format of `pid=xxx`. As the browser is encoded, the PID needs to be modified. Assume that the PID contained is `xxx%4074xxx`. You need to **replace*	- \\*\\*%40 with @\\*\\	- and change the PID to `xxx@74xxx`.
+	// The process identifier (PID) of the application.
 	//
 	// This parameter is required.
 	//
@@ -20968,6 +20858,8 @@ type DeleteSourceMapShrinkRequest struct {
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21000,10 +20892,18 @@ func (s *DeleteSourceMapShrinkRequest) SetRegionId(v string) *DeleteSourceMapShr
 }
 
 type DeleteSourceMapResponseBody struct {
+	// Indicates whether the SourceMap files are deleted. Valid values:
+	//
+	// 	- success: The SourceMap files are deleted.
+	//
+	// 	- false: The SourceMap files fail to be deleted.
+	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1A9C645C-C83F-4C9D-8CCB-29BEC9E1****
@@ -25833,8 +25733,212 @@ func (s *DescribeWebhookContactsResponse) SetBody(v *DescribeWebhookContactsResp
 }
 
 type DoInsightsActionRequest struct {
+	// The query parameters. Different module types correspond to different query parameters.
+	//
+	// 	- QueryTopo
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//         "regionId": string,  # The region ID.
+	//
+	//         "startTime": string, # The beginning of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	//         "endTime": string, # The end of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	//         "edgeFilter": { # The edge filter condition.
+	//
+	//             "includeTypes": [EdgeType], # The edge types to be included.
+	//
+	//             "excludeTypes": [EdgeType], # The edge types to be excluded.
+	//
+	//             "fromNodeFilter": { # The source node filter condition.
+	//
+	//                 "includeEntityTypes": [EntityType] # The entity types to be included.
+	//
+	//                 "excludeEntityTypes": [EntityType] # The entity types to be excluded.
+	//
+	//             },
+	//
+	//             "toNodeFilter": {  # The destination node filter condition.
+	//
+	//                 "includeEntityTypes": [EntityType] # The entity types to be included.
+	//
+	//                 "excludeEntityTypes": [EntityType] # The entity types to be excluded.
+	//
+	//             }
+	//
+	//         },
+	//
+	//         "includeIsolatedNodes": bool, # Specifies whether to include isolated nodes.
+	//
+	//         "isolatedNodeFilter": { # The isolated node filter condition.
+	//
+	//             "includeEntityTypes": [EntityType] # The entity types to be included.
+	//
+	//             "excludeEntityTypes": [EntityType] # The entity types to be excluded.
+	//
+	//          },
+	//
+	//         "queryMetrics": boolean, # Specifies whether to query related red metrics during the metric query.
+	//
+	//         "timeoutSecs": int, # The timeout duration for querying metrics.
+	//
+	//     	"redOption": { # A metric query option.
+	//
+	//     		"skipRt": boolean,  # Specifies whether to skip querying the response time.
+	//
+	//     		"skipCount": boolean, # Specifies whether to skip querying the number of requests.
+	//
+	//     		"skipError": boolean # Specifies whether to skip querying the number of errors.
+	//
+	//     	}
+	//
+	//     }
+	//
+	// 	- QueryTopoRed
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//         "regionId": string,  # The region ID.
+	//
+	//         "startTime": string, # The beginning of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	//         "endTime": string,   # The end of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	//         "edgeIds": [string]  # The IDs of the edges to query.
+	//
+	//         "nodeIds": [string]  # The IDs of the nodes to query.
+	//
+	//         "redOption": { # A metric query option.
+	//
+	//             "skipRt": boolean,  # Specifies whether to skip querying the response time.
+	//
+	//             "skipCount": boolean, # Specifies whether to skip querying the number of requests.
+	//
+	//             "skipError": boolean # Specifies whether to skip querying the number of errors.
+	//
+	//         }
+	//
+	//     }
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// - QueryTopo
+	//
+	//
+	// 	{
+	//
+	// 		"regionId": "cn-hangzhou",
+	//
+	// 		"startTime": "2024-07-23 19:16:00",
+	//
+	// 		"endTime": "2024-07-23 20:16:00", # Limit the topology query range to 2024-07-23 19:16:00 to 2024-07-23 20:16:00
+	//
+	// 		"edgeFilter": {
+	//
+	// 			"includeTypes": [
+	//
+	// 				"CALLS" # The resulting topology only contains edges of call relationships.
+	//
+	// 			],
+	//
+	// 			"fromNodeFilter": {
+	//
+	// 				"includeEntityTypes": [ # The source node type of the call edge must be application type
+	//
+	// 					"APPLICATION"
+	//
+	// 				]
+	//
+	// 			},
+	//
+	// 			"toNodeFilter": {
+	//
+	// 				"includeEntityTypes": [ # The target node of the call edge must be an application type or an external service type.
+	//
+	// 					"APPLICATION",
+	//
+	// 					"EXTERNAL_SERVICE"
+	//
+	// 				]
+	//
+	// 			}
+	//
+	// 		},
+	//
+	// 		"includeIsolatedNodes": false, # The resulting topology does not contain isolated nodes
+	//
+	// 		"queryMetrics": true, # Synchronously query the RED indicator
+	//
+	// 		"timeoutSecs": 20, #It takes up to 20 seconds to query indicator data
+	//
+	// 		"redOption": { # The query indicators include time consumption, request volume, and query skip errors.
+	//
+	// 			"skipRt": false,
+	//
+	// 			"skipCount": false,
+	//
+	// 			"skipError": true
+	//
+	// 		}
+	//
+	// 	}
+	//
+	//
+	//
+	// - QueryTopoRed
+	//
+	//
+	// 	{
+	//
+	// 		"regionId": "cn-hangzhou",
+	//
+	// 		"startTime": "2024-07-23 10:00:00",
+	//
+	// 		"endTime": "2024-07-23 14:00:00",
+	//
+	// 		"edgeIds": [
+	//
+	// 			"097843bd50b06fbe2c6c1d8b761a7e8b"
+	//
+	// 		],
+	//
+	// 		"nodeIds": [
+	//
+	// 			"23d973261c6923da1b5b7a571ec1aa8b"
+	//
+	// 		],
+	//
+	// 		"redOption": { # The query indicators include time consumption, request volume, and query skip errors.
+	//
+	// 			"skipCount": false,
+	//
+	// 			"skipError": true,
+	//
+	// 			"skipRt": false
+	//
+	// 		}
+	//
+	// 	}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The module type. Valid values:
+	//
+	// 	- QueryTopo: queries the topology.
+	//
+	// 	- QueryTopoRed: queries the red topology metrics, such as the number of requests, response time, and number of errors.
+	//
+	// Notice: The preceding features are still in canary release and are disabled by default. If you need to enable these features, submit a ticket in the Application Real-Time Monitoring Service (ARMS) console.
+	//
+	// *
+	//
+	// *
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25862,12 +25966,194 @@ func (s *DoInsightsActionRequest) SetModule(v string) *DoInsightsActionRequest {
 }
 
 type DoInsightsActionResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Status code. 200 means success, other status codes are exceptions.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters vary with the value of module.
+	//
+	// 	- QueryTopo
+	//
+	//         {
+	//
+	//          "nodes": [Node] # The collection of nodes. For more information, see the "Node" section of this topic.
+	//
+	//          "edges": [Edge] # The collection of edges. For more information, see the "Edge" section of this topic.
+	//
+	//         }
+	//
+	// 	- QueryTopoRed
+	//
+	//         {
+	//
+	//           "nodeRed": {
+	//
+	//           	"nodeId": {
+	//
+	//           		"count": double, # The total number of requests in the specified time range.
+	//
+	//           		"error": double, # The total number of errors in the specified time range.
+	//
+	//           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
+	//
+	//           	}
+	//
+	//           },
+	//
+	//           "edgeRed": {
+	//
+	//           	"edgeId": {
+	//
+	//           	    "count": double, # The total number of requests in the specified time range.
+	//
+	//           		"error": double, # The total number of errors in the specified time range.
+	//
+	//           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
+	//
+	//           	}
+	//
+	//           }
+	//
+	// }
+	//
+	// ```
+	//
+	// ```
+	//
+	// example:
+	//
+	// - QueryTopo
+	//
+	//
+	// 	{
+	//
+	// 		"nodes": [
+	//
+	// 			{
+	//
+	// 				"nodeId": "3bfe1a747389273388182760406c079d",
+	//
+	// 				"entity": {
+	//
+	// 					"regionId": "cn-hangzhou",
+	//
+	// 					"appType": "TRACE",
+	//
+	// 					"appId": "xxxxxxxxxxxxxxxx",
+	//
+	// 					"name": "prometheus-pop-cn-hangzhou",
+	//
+	// 					"entityId": "3bfe1a747389273388182760406c079d",
+	//
+	// 					"firstSeenTms": 1721733226981,
+	//
+	// 					"lastSeenTms": 1721789171614,
+	//
+	// 					"type": "APPLICATION"
+	//
+	// 				},
+	//
+	// 				"attrs": {
+	//
+	// 					"RED": {
+	//
+	// 						"count": 643848.0,
+	//
+	// 						"error": 0.0,
+	//
+	// 						"rt": 172.31701892372112
+	//
+	// 					}
+	//
+	// 				}
+	//
+	// 			}
+	//
+	// 		],
+	//
+	// 		"edges": [
+	//
+	// 			{
+	//
+	// 				"from": "98b4184b22e588cf86e9a29aa4179606",
+	//
+	// 				"to": "98b4184b22e588cf86e9a29aa4179606",
+	//
+	// 				"type": "CALLS",
+	//
+	// 				"attrs": {
+	//
+	// 					"RED": {
+	//
+	// 						"count": 4.0,
+	//
+	// 						"error": 0.0,
+	//
+	// 						"rt": 37.0
+	//
+	// 					}
+	//
+	// 				},
+	//
+	// 				"edgeId": "5d611597e4b0013d0947615c9eca4de6",
+	//
+	// 				"firstSeenTms": 1721783795125,
+	//
+	// 				"lastSeenTms": 1721787371614
+	//
+	// 			}
+	//
+	// 		]
+	//
+	// 	}
+	//
+	//
+	// - QueryTopoRed
+	//
+	// 	{
+	//
+	// 		"nodeRed": {
+	//
+	// 			"361d9f32e58cef316bf2355f3ff05575": {
+	//
+	// 				"count": 3258110.0,
+	//
+	// 				"error": 74.0,
+	//
+	// 				"rt": 167.39844355494878
+	//
+	// 			}
+	//
+	// 		},
+	//
+	// 		"edgeRed": {}
+	//
+	// 	}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Information returned when the call fails.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// 626037F5-FDEB-45B0-804C-B3C92797A64E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the query is successful:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DoInsightsActionResponseBody) String() string {
@@ -34008,6 +34294,10 @@ type GetRumOcuStatisticDataResponseBody struct {
 	// The returned struct.
 	Data *GetRumOcuStatisticDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -40267,6 +40557,10 @@ type InstallAddonResponseBodyData struct {
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// Indicates whether the component is fully managed.
+	//
+	// example:
+	//
+	// true
 	Managed *bool `json:"Managed,omitempty" xml:"Managed,omitempty"`
 	// The region ID.
 	//
@@ -48955,6 +49249,10 @@ func (s *ListIntegrationResponse) SetBody(v *ListIntegrationResponseBody) *ListI
 
 type ListNotificationPoliciesRequest struct {
 	// Specifies whether to enable simple mode.
+	//
+	// example:
+	//
+	// true
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the notification policy.
 	//
@@ -48986,7 +49284,7 @@ type ListNotificationPoliciesRequest struct {
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The ID of the region.
+	// The ID of the region. Default value: **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -49127,6 +49425,10 @@ func (s *ListNotificationPoliciesResponseBodyPageBean) SetTotal(v int64) *ListNo
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
 	// Indicates whether simple mode is enabled.
+	//
+	// example:
+	//
+	// true
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation policy.
 	//
@@ -49162,15 +49464,15 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
 	NotifyTemplate *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemplate `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty" type:"Struct"`
 	// Indicates whether the system resends notifications for a long-lasting unresolved alert. Valid values:
 	//
-	// 	- `true` (default): The system resends notifications for a long-lasting unresolved alert at a specified time interval.
+	// - `true` (default): The system resends notifications for a long-lasting unresolved alert at a specified time interval.
 	//
-	// 	- `false`: The system resends notifications for a long-lasting unresolved alert based on an escalation policy.
+	// - `false`: The system resends notifications for a long-lasting unresolved alert based on an escalation policy.
 	//
 	// example:
 	//
 	// true
 	Repeat *bool `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
-	// The time interval at which notifications are resent for a long-lasting unresolved alert. Unit: seconds.
+	// The time interval at which a notification is resent for a long-lasting unresolved alert. Unit: seconds.
 	//
 	// example:
 	//
@@ -49178,9 +49480,9 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
 	// Indicates whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. The system sends a notification to the alert contacts when the alert status changes to Resolved.
 	//
-	// 	- `true` (default): The system sends a notification.
+	// - `true` (default): The system sends a notification.
 	//
-	// 	- `false`: The system does not send a notification.
+	// - `false`: The system does not send a notification.
 	//
 	// example:
 	//
@@ -49268,7 +49570,7 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetSt
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule struct {
-	// The time interval for grouping. Unit: seconds. Default value: 30.
+	// The time interval of grouping. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
@@ -49280,11 +49582,11 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule s
 	//
 	// 5
 	GroupWait *int64 `json:"GroupWait,omitempty" xml:"GroupWait,omitempty"`
-	// The fields that are used to group events.
+	// An array of alert event group objects.
 	//
-	// 	- If this parameter is not returned, all alert notifications are sent to the alert contacts that belong to the `alertname` group. By default, this parameter is not returned.
+	// 	- If you do not specify the groupingFields field, all alerts will be sent to contacts based on `alertname`.
 	//
-	// 	- If this parameter is returned, alerts with the same fields are sent to the alert contacts in one notification.
+	// 	- If you specify the groupingFields field, alerts with the same field will be sent to contacts in one notification.
 	GroupingFields []*string `json:"GroupingFields,omitempty" xml:"GroupingFields,omitempty" type:"Repeated"`
 }
 
@@ -49386,7 +49688,7 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchin
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule struct {
-	// The notification methods.
+	// The notification method.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
 	// The end time of the notification window.
 	//
@@ -49449,13 +49751,13 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleN
 	NotifyObjectName *string `json:"NotifyObjectName,omitempty" xml:"NotifyObjectName,omitempty"`
 	// The type of the notification object. Valid values:
 	//
-	// 	- CONTACT: an individual contact
+	// - CONTACT: an individual contact
 	//
-	// 	- CONTACT_GROUP: a contact group
+	// - CONTACT_GROUP: a contact group
 	//
-	// 	- DING_ROBOT: an instant messaging (IM) chatbot
+	// - DING_ROBOT: an instant messaging (IM) chatbot
 	//
-	// 	- CONTACT_SCHEDULE: a person on duty based on an established schedule
+	// - CONTACT_SCHEDULE: a person on duty based on an established schedule
 	//
 	// example:
 	//
@@ -49496,37 +49798,13 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTempl
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Alert Time: {{ .startTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }}  {{if .generatorURL }}  &lt;a href="{{.generatorURL}}" > Details&lt;/a&gt;
-	//
-	//  {{ end }} {{ end }}
+	// Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{if .generatorURL }} \\<a href="{{.generatorURL}}" >Link\\</a> {{end}} {{end}}
 	EmailContent *string `json:"EmailContent,omitempty" xml:"EmailContent,omitempty"`
 	// The content of the alert resolution notification sent by email.
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Recover Time: {{ .endTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }}  {{if .generatorURL }} &lt;a href="{{.generatorURL}}" > Details&lt;/a&gt;
-	//
-	//  {{ end }} {{ end }}
+	// Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{if .generatorURL }} \\<a href="{{.generatorURL}}" >Link\\</a> {{end}} {{end}}
 	EmailRecoverContent *string `json:"EmailRecoverContent,omitempty" xml:"EmailRecoverContent,omitempty"`
 	// The title of the alert resolution notification sent by email.
 	//
@@ -49544,85 +49822,31 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTempl
 	//
 	// example:
 	//
-	// {{if .commonLabels.clustername }}
-	//
-	//  &gt;  Cluster Name: {{ .commonLabels.clustername }}
-	//
-	//  {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	//  &gt;  App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }}
-	//
-	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\\"#ff0000\\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
-	//
-	// {{end}}
+	// {{if .commonLabels.clustername }} > Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} > Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}{{ for .alerts }}> {{.annotations.message}} {{if .generatorURL }} [Link]\\({{.generatorURL}}) {{ end }} {{if eq "true" .labels._aliyun_arms_is_denoise_filtered }} (Suspected noise) {{end}} {{end}}
 	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
 	// The content of the alert notification sent by text message.
 	//
 	// example:
 	//
-	// {{ .level }}Alert Occurs
-	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Alert Time: {{ .startTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<SmsContent>Notification on the occurrence of a {{ .level }} alert. Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</SmsContent>
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
 	// The content of the alert resolution notification sent by text message.
 	//
 	// example:
 	//
-	// Alert Recovery Notification
-	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Recover Time: {{ .endTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<SmsRecoverContent>Alert resolution notification. Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</SmsRecoverContent>
 	SmsRecoverContent *string `json:"SmsRecoverContent,omitempty" xml:"SmsRecoverContent,omitempty"`
 	// The content of the alert notification sent by phone.
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Alert Time: {{ .startTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<TtsContent>Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</TtsContent>
 	TtsContent *string `json:"TtsContent,omitempty" xml:"TtsContent,omitempty"`
 	// The content of the alert resolution notification sent by phone.
 	//
 	// example:
 	//
-	// Alert Name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }}
-	//
-	// Cluster Name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}
-	//
-	// App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}
-	//
-	// Notification Policy: {{ .dispatchRuleName }}
-	//
-	// Recover Time: {{ .endTime }}
-	//
-	// Description: {{ for .alerts }} {{ .annotations.message }} {{ end }}
+	// \\<TtsRecoverContent>Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</TtsRecoverContent>
 	TtsRecoverContent *string `json:"TtsRecoverContent,omitempty" xml:"TtsRecoverContent,omitempty"`
 }
 
@@ -76137,7 +76361,7 @@ func (client *Client) DeleteSilencePolicy(request *DeleteSilencePolicyRequest) (
 
 // Summary:
 //
-// Delete s SourceMap file that was uploaded to Browser Monitoring.
+// Deletes the SourceMap files uploaded in Browser Monitoring.
 //
 // @param tmpReq - DeleteSourceMapRequest
 //
@@ -76193,7 +76417,7 @@ func (client *Client) DeleteSourceMapWithOptions(tmpReq *DeleteSourceMapRequest,
 
 // Summary:
 //
-// Delete s SourceMap file that was uploaded to Browser Monitoring.
+// Deletes the SourceMap files uploaded in Browser Monitoring.
 //
 // @param request - DeleteSourceMapRequest
 //
@@ -77389,7 +77613,7 @@ func (client *Client) DescribeWebhookContacts(request *DescribeWebhookContactsRe
 
 // Summary:
 //
-// 执行Insights相关的操作
+// Performs the corresponding operation based on the specified module type.
 //
 // @param request - DoInsightsActionRequest
 //
@@ -77435,7 +77659,7 @@ func (client *Client) DoInsightsActionWithOptions(request *DoInsightsActionReque
 
 // Summary:
 //
-// 执行Insights相关的操作
+// Performs the corresponding operation based on the specified module type.
 //
 // @param request - DoInsightsActionRequest
 //
@@ -82463,7 +82687,7 @@ func (client *Client) ListIntegration(request *ListIntegrationRequest) (_result 
 
 // Summary:
 //
-// Queries notification policies based on specific conditions.
+// Queries notification policies based on specified conditions.
 //
 // @param request - ListNotificationPoliciesRequest
 //
@@ -82529,7 +82753,7 @@ func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificat
 
 // Summary:
 //
-// Queries notification policies based on specific conditions.
+// Queries notification policies based on specified conditions.
 //
 // @param request - ListNotificationPoliciesRequest
 //
