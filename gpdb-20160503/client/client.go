@@ -1035,9 +1035,8 @@ type CheckHadoopNetConnectionRequest struct {
 	//
 	// CheckHadoopNetConnection
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The E-MapReduce (EMR) Hadoop cluster ID.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -1059,6 +1058,11 @@ func (s CheckHadoopNetConnectionRequest) GoString() string {
 
 func (s *CheckHadoopNetConnectionRequest) SetDBInstanceId(v string) *CheckHadoopNetConnectionRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CheckHadoopNetConnectionRequest) SetDataSourceId(v string) *CheckHadoopNetConnectionRequest {
+	s.DataSourceId = &v
 	return s
 }
 
@@ -1154,14 +1158,15 @@ type CheckJDBCSourceNetConnectionRequest struct {
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The JDBC connection string.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx
 	JdbcConnectionString *string `json:"JdbcConnectionString,omitempty" xml:"JdbcConnectionString,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1178,6 +1183,11 @@ func (s CheckJDBCSourceNetConnectionRequest) GoString() string {
 
 func (s *CheckJDBCSourceNetConnectionRequest) SetDBInstanceId(v string) *CheckJDBCSourceNetConnectionRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CheckJDBCSourceNetConnectionRequest) SetDataSourceId(v string) *CheckJDBCSourceNetConnectionRequest {
+	s.DataSourceId = &v
 	return s
 }
 
@@ -1400,6 +1410,7 @@ type CreateAccountRequest struct {
 	//
 	// Pw123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
@@ -1445,6 +1456,11 @@ func (s *CreateAccountRequest) SetAccountName(v string) *CreateAccountRequest {
 
 func (s *CreateAccountRequest) SetAccountPassword(v string) *CreateAccountRequest {
 	s.AccountPassword = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetAccountType(v string) *CreateAccountRequest {
+	s.AccountType = &v
 	return s
 }
 
@@ -1530,6 +1546,10 @@ type CreateCollectionRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -1640,7 +1660,10 @@ type CreateCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -7392,7 +7415,7 @@ func (s *DeleteJDBCDataSourceResponse) SetBody(v *DeleteJDBCDataSourceResponseBo
 type DeleteNamespaceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// example:
 	//
@@ -7434,7 +7457,10 @@ type DeleteNamespaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -8221,6 +8247,7 @@ type DescribeAccountsRequest struct {
 	//
 	// testuser
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
@@ -8243,6 +8270,11 @@ func (s DescribeAccountsRequest) GoString() string {
 
 func (s *DescribeAccountsRequest) SetAccountName(v string) *DescribeAccountsRequest {
 	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeAccountsRequest) SetAccountType(v string) *DescribeAccountsRequest {
+	s.AccountType = &v
 	return s
 }
 
@@ -8322,6 +8354,7 @@ type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	//
 	// 1
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -8350,6 +8383,11 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetAccountName(v
 
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetAccountStatus(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
 	s.AccountStatus = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetAccountType(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.AccountType = &v
 	return s
 }
 
@@ -9239,7 +9277,7 @@ type DescribeCollectionRequest struct {
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// example:
 	//
@@ -9269,7 +9307,10 @@ type DescribeCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -10916,6 +10957,8 @@ type DescribeDBInstanceDataBloatRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	OrderBy      *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	//
 	// example:
@@ -10948,6 +10991,16 @@ func (s DescribeDBInstanceDataBloatRequest) GoString() string {
 
 func (s *DescribeDBInstanceDataBloatRequest) SetDBInstanceId(v string) *DescribeDBInstanceDataBloatRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatRequest) SetDatabase(v string) *DescribeDBInstanceDataBloatRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatRequest) SetOrderBy(v string) *DescribeDBInstanceDataBloatRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -11205,6 +11258,8 @@ type DescribeDBInstanceDataSkewRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	OrderBy      *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	//
 	// example:
@@ -11237,6 +11292,16 @@ func (s DescribeDBInstanceDataSkewRequest) GoString() string {
 
 func (s *DescribeDBInstanceDataSkewRequest) SetDBInstanceId(v string) *DescribeDBInstanceDataSkewRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewRequest) SetDatabase(v string) *DescribeDBInstanceDataSkewRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewRequest) SetOrderBy(v string) *DescribeDBInstanceDataSkewRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -12435,6 +12500,8 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	OrderBy      *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
 	//
 	// example:
@@ -12470,6 +12537,16 @@ func (s *DescribeDBInstanceIndexUsageRequest) SetDBInstanceId(v string) *Describ
 	return s
 }
 
+func (s *DescribeDBInstanceIndexUsageRequest) SetDatabase(v string) *DescribeDBInstanceIndexUsageRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageRequest) SetOrderBy(v string) *DescribeDBInstanceIndexUsageRequest {
+	s.OrderBy = &v
+	return s
+}
+
 func (s *DescribeDBInstanceIndexUsageRequest) SetPageNumber(v int32) *DescribeDBInstanceIndexUsageRequest {
 	s.PageNumber = &v
 	return s
@@ -12481,7 +12558,7 @@ func (s *DescribeDBInstanceIndexUsageRequest) SetPageSize(v int32) *DescribeDBIn
 }
 
 type DescribeDBInstanceIndexUsageResponseBody struct {
-	// The time when the table was last deleted, inserted, or updated.
+	// The queried index usage.
 	Items []*DescribeDBInstanceIndexUsageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -12555,7 +12632,7 @@ type DescribeDBInstanceIndexUsageResponseBodyItems struct {
 	// example:
 	//
 	// 50000
-	IndexScanTimes *int32 `json:"IndexScanTimes,omitempty" xml:"IndexScanTimes,omitempty"`
+	IndexScanTimes *int64 `json:"IndexScanTimes,omitempty" xml:"IndexScanTimes,omitempty"`
 	// The size of the index. Unit: bytes.
 	//
 	// example:
@@ -12621,7 +12698,7 @@ func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIndexName(v string) *
 	return s
 }
 
-func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIndexScanTimes(v int32) *DescribeDBInstanceIndexUsageResponseBodyItems {
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIndexScanTimes(v int64) *DescribeDBInstanceIndexUsageResponseBodyItems {
 	s.IndexScanTimes = &v
 	return s
 }
@@ -18412,7 +18489,8 @@ type DescribeHadoopDataSourceResponseBody struct {
 	// example:
 	//
 	// c-1234567
-	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	EmrInstanceId         *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	ExternalDataServiceId *string `json:"ExternalDataServiceId,omitempty" xml:"ExternalDataServiceId,omitempty"`
 	// The content of the Hadoop hdfs-site.xml file.
 	//
 	// example:
@@ -18455,6 +18533,7 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// xxxxxx
 	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
+	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -18523,6 +18602,11 @@ func (s *DescribeHadoopDataSourceResponseBody) SetEmrInstanceId(v string) *Descr
 	return s
 }
 
+func (s *DescribeHadoopDataSourceResponseBody) SetExternalDataServiceId(v string) *DescribeHadoopDataSourceResponseBody {
+	s.ExternalDataServiceId = &v
+	return s
+}
+
 func (s *DescribeHadoopDataSourceResponseBody) SetHDFSConf(v string) *DescribeHadoopDataSourceResponseBody {
 	s.HDFSConf = &v
 	return s
@@ -18550,6 +18634,11 @@ func (s *DescribeHadoopDataSourceResponseBody) SetHiveConf(v string) *DescribeHa
 
 func (s *DescribeHadoopDataSourceResponseBody) SetMapReduceConf(v string) *DescribeHadoopDataSourceResponseBody {
 	s.MapReduceConf = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetModifyTime(v string) *DescribeHadoopDataSourceResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -19625,7 +19714,8 @@ type DescribeJDBCDataSourceResponseBody struct {
 	// example:
 	//
 	// MySQL
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataSourceType        *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	ExternalDataServiceId *string `json:"ExternalDataServiceId,omitempty" xml:"ExternalDataServiceId,omitempty"`
 	// The JDBC connection string.
 	//
 	// example:
@@ -19644,6 +19734,7 @@ type DescribeJDBCDataSourceResponseBody struct {
 	//
 	// xxxxxx
 	JDBCUserName *string `json:"JDBCUserName,omitempty" xml:"JDBCUserName,omitempty"`
+	ModifyTime   *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
@@ -19692,6 +19783,11 @@ func (s *DescribeJDBCDataSourceResponseBody) SetDataSourceType(v string) *Descri
 	return s
 }
 
+func (s *DescribeJDBCDataSourceResponseBody) SetExternalDataServiceId(v string) *DescribeJDBCDataSourceResponseBody {
+	s.ExternalDataServiceId = &v
+	return s
+}
+
 func (s *DescribeJDBCDataSourceResponseBody) SetJDBCConnectionString(v string) *DescribeJDBCDataSourceResponseBody {
 	s.JDBCConnectionString = &v
 	return s
@@ -19704,6 +19800,11 @@ func (s *DescribeJDBCDataSourceResponseBody) SetJDBCPassword(v string) *Describe
 
 func (s *DescribeJDBCDataSourceResponseBody) SetJDBCUserName(v string) *DescribeJDBCDataSourceResponseBody {
 	s.JDBCUserName = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetModifyTime(v string) *DescribeJDBCDataSourceResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -20182,7 +20283,7 @@ func (s *DescribeModifyParameterLogResponse) SetBody(v *DescribeModifyParameterL
 type DescribeNamespaceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// example:
 	//
@@ -20224,7 +20325,10 @@ type DescribeNamespaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -25824,7 +25928,7 @@ type ExecuteStatementRequest struct {
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// The SQL statements.
 	Sqls []*string `json:"Sqls,omitempty" xml:"Sqls,omitempty" type:"Repeated"`
-	// The name of the set of SQL statements that you want to execute.
+	// The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
 	//
 	// example:
 	//
@@ -25948,7 +26052,7 @@ type ExecuteStatementShrinkRequest struct {
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// The SQL statements.
 	SqlsShrink *string `json:"Sqls,omitempty" xml:"Sqls,omitempty"`
-	// The name of the set of SQL statements that you want to execute.
+	// The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
 	//
 	// example:
 	//
@@ -27508,7 +27612,7 @@ func (s *HandleActiveSQLRecordResponse) SetBody(v *HandleActiveSQLRecordResponse
 type InitVectorDatabaseRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// example:
 	//
@@ -27542,7 +27646,10 @@ type InitVectorDatabaseRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -27664,7 +27771,7 @@ func (s *InitVectorDatabaseResponse) SetBody(v *InitVectorDatabaseResponseBody) 
 type ListCollectionsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// example:
 	//
@@ -27694,7 +27801,10 @@ type ListCollectionsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -35269,10 +35379,20 @@ type QueryCollectionDataRequest struct {
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	//
+	// >
+	//
+	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	//
 	// example:
 	//
 	// response > 200
@@ -35411,8 +35531,11 @@ type QueryCollectionDataRequest struct {
 	// The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
 	//
 	// >  If you leave this parameter empty, only full-text search results are returned.
-	Vector      []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
-	WorkspaceId *string    `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryCollectionDataRequest) String() string {
@@ -35532,10 +35655,20 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	//
+	// >
+	//
+	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	//
 	// example:
 	//
 	// response > 200
@@ -35675,7 +35808,10 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// >  If you leave this parameter empty, only full-text search results are returned.
 	VectorShrink *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryCollectionDataShrinkRequest) String() string {
@@ -35964,6 +36100,12 @@ type QueryContentRequest struct {
 	//
 	// https://xx/myImage.jpg
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	//
+	// >
+	//
+	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	//
 	// example:
 	//
 	// title = \\"test\\"
@@ -36012,6 +36154,8 @@ type QueryContentRequest struct {
 	//
 	//     }
 	HybridSearchArgs map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	// Specifies whether to return the URL of the document. Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -36205,6 +36349,12 @@ type QueryContentAdvanceRequest struct {
 	//
 	// https://xx/myImage.jpg
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	//
+	// >
+	//
+	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	//
 	// example:
 	//
 	// title = \\"test\\"
@@ -36253,6 +36403,8 @@ type QueryContentAdvanceRequest struct {
 	//
 	//     }
 	HybridSearchArgs map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	// Specifies whether to return the URL of the document. Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -36446,6 +36598,12 @@ type QueryContentShrinkRequest struct {
 	//
 	// https://xx/myImage.jpg
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	//
+	// >
+	//
+	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	//
 	// example:
 	//
 	// title = \\"test\\"
@@ -36494,6 +36652,8 @@ type QueryContentShrinkRequest struct {
 	//
 	//     }
 	HybridSearchArgsShrink *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	// Specifies whether to return the URL of the document. Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -42044,6 +42204,10 @@ func (client *Client) CheckHadoopNetConnectionWithOptions(request *CheckHadoopNe
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EmrInstanceId)) {
 		query["EmrInstanceId"] = request.EmrInstanceId
 	}
@@ -42110,6 +42274,10 @@ func (client *Client) CheckJDBCSourceNetConnectionWithOptions(request *CheckJDBC
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JdbcConnectionString)) {
@@ -42256,6 +42424,10 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.AccountPassword)) {
 		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountType)) {
+		query["AccountType"] = request.AccountType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
@@ -45398,6 +45570,10 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		query["AccountName"] = request.AccountName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AccountType)) {
+		query["AccountType"] = request.AccountType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -46070,6 +46246,14 @@ func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDB
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -46152,6 +46336,14 @@ func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBI
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -46518,6 +46710,14 @@ func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeD
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
