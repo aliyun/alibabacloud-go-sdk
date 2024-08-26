@@ -1014,6 +1014,1278 @@ func (s *DeleteNetworkReachableAnalysisResponse) SetBody(v *DeleteNetworkReachab
 	return s
 }
 
+type DeleteNisInspectionReportRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nir-ffd1af****196d0
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+}
+
+func (s DeleteNisInspectionReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNisInspectionReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNisInspectionReportRequest) SetInspectionReportId(v string) *DeleteNisInspectionReportRequest {
+	s.InspectionReportId = &v
+	return s
+}
+
+type DeleteNisInspectionReportResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// D5E98683-355B-5867-8D3D-A24755F6895B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNisInspectionReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNisInspectionReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNisInspectionReportResponseBody) SetData(v bool) *DeleteNisInspectionReportResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteNisInspectionReportResponseBody) SetRequestId(v string) *DeleteNisInspectionReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNisInspectionReportResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNisInspectionReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNisInspectionReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNisInspectionReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNisInspectionReportResponse) SetHeaders(v map[string]*string) *DeleteNisInspectionReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNisInspectionReportResponse) SetStatusCode(v int32) *DeleteNisInspectionReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNisInspectionReportResponse) SetBody(v *DeleteNisInspectionReportResponseBody) *DeleteNisInspectionReportResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNisInspectionTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ni-209d****wfirfwc2yl
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+}
+
+func (s DeleteNisInspectionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNisInspectionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNisInspectionTaskRequest) SetInspectionTaskId(v string) *DeleteNisInspectionTaskRequest {
+	s.InspectionTaskId = &v
+	return s
+}
+
+type DeleteNisInspectionTaskResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNisInspectionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNisInspectionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNisInspectionTaskResponseBody) SetData(v bool) *DeleteNisInspectionTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteNisInspectionTaskResponseBody) SetRequestId(v string) *DeleteNisInspectionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNisInspectionTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNisInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNisInspectionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNisInspectionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNisInspectionTaskResponse) SetHeaders(v map[string]*string) *DeleteNisInspectionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNisInspectionTaskResponse) SetStatusCode(v int32) *DeleteNisInspectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNisInspectionTaskResponse) SetBody(v *DeleteNisInspectionTaskResponseBody) *DeleteNisInspectionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNisInspectionRecommendationResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nir-ffd1af****196d0
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml16/uO3mvCyHxSjzdhx9VRUC+8umDTIV2Wg9TTOUrR7ve
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nat_snat_cross_az_warn
+	RecommendationCode *string `json:"RecommendationCode,omitempty" xml:"RecommendationCode,omitempty"`
+}
+
+func (s DescribeNisInspectionRecommendationResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionRecommendationResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesRequest) SetInspectionReportId(v string) *DescribeNisInspectionRecommendationResourcesRequest {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesRequest) SetLanguage(v string) *DescribeNisInspectionRecommendationResourcesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesRequest) SetMaxResults(v int32) *DescribeNisInspectionRecommendationResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesRequest) SetNextToken(v string) *DescribeNisInspectionRecommendationResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesRequest) SetRecommendationCode(v string) *DescribeNisInspectionRecommendationResourcesRequest {
+	s.RecommendationCode = &v
+	return s
+}
+
+type DescribeNisInspectionRecommendationResourcesResponseBody struct {
+	// example:
+	//
+	// nir-ffd1af****196d0
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// qt0DqY2lXxwBt9/ROQoS/7J9p90D1vF2vFbwzb/1oSWr3AxcM6/KpObZ7Z1PZdcV
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
+	RequestId    *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceList []*DescribeNisInspectionRecommendationResourcesResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 192
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeNisInspectionRecommendationResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionRecommendationResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBody) SetInspectionReportId(v string) *DescribeNisInspectionRecommendationResourcesResponseBody {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBody) SetMaxResults(v int32) *DescribeNisInspectionRecommendationResourcesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBody) SetNextToken(v string) *DescribeNisInspectionRecommendationResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBody) SetRequestId(v string) *DescribeNisInspectionRecommendationResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBody) SetResourceList(v []*DescribeNisInspectionRecommendationResourcesResponseBodyResourceList) *DescribeNisInspectionRecommendationResourcesResponseBody {
+	s.ResourceList = v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBody) SetTotalCount(v int32) *DescribeNisInspectionRecommendationResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeNisInspectionRecommendationResourcesResponseBodyResourceList struct {
+	// example:
+	//
+	// {ResourceId: "ngw-p0wn04hi4****q2us6q7q"}
+	AnalysisData *string `json:"AnalysisData,omitempty" xml:"AnalysisData,omitempty"`
+	// example:
+	//
+	// ngw-p0wn04hi4****q2us6q7q
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+}
+
+func (s DescribeNisInspectionRecommendationResourcesResponseBodyResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionRecommendationResourcesResponseBodyResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBodyResourceList) SetAnalysisData(v string) *DescribeNisInspectionRecommendationResourcesResponseBodyResourceList {
+	s.AnalysisData = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBodyResourceList) SetResourceId(v string) *DescribeNisInspectionRecommendationResourcesResponseBodyResourceList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponseBodyResourceList) SetResourceName(v string) *DescribeNisInspectionRecommendationResourcesResponseBodyResourceList {
+	s.ResourceName = &v
+	return s
+}
+
+type DescribeNisInspectionRecommendationResourcesResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNisInspectionRecommendationResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNisInspectionRecommendationResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionRecommendationResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponse) SetHeaders(v map[string]*string) *DescribeNisInspectionRecommendationResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponse) SetStatusCode(v int32) *DescribeNisInspectionRecommendationResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionRecommendationResourcesResponse) SetBody(v *DescribeNisInspectionRecommendationResourcesResponseBody) *DescribeNisInspectionRecommendationResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNisInspectionReportCheckItemsRequest struct {
+	// example:
+	//
+	// stability
+	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nir-ffd1af****196d0
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml16/uO3mvCyHxSjzdhx9VRUC+8umDTIV2Wg9TTOUrR7ve
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
+	RiskLevel    []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNisInspectionReportCheckItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportCheckItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportCheckItemsRequest) SetCategoryCode(v string) *DescribeNisInspectionReportCheckItemsRequest {
+	s.CategoryCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsRequest) SetInspectionReportId(v string) *DescribeNisInspectionReportCheckItemsRequest {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsRequest) SetLanguage(v string) *DescribeNisInspectionReportCheckItemsRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsRequest) SetMaxResults(v int32) *DescribeNisInspectionReportCheckItemsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsRequest) SetNextToken(v string) *DescribeNisInspectionReportCheckItemsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsRequest) SetResourceType(v []*string) *DescribeNisInspectionReportCheckItemsRequest {
+	s.ResourceType = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsRequest) SetRiskLevel(v []*string) *DescribeNisInspectionReportCheckItemsRequest {
+	s.RiskLevel = v
+	return s
+}
+
+type DescribeNisInspectionReportCheckItemsShrinkRequest struct {
+	// example:
+	//
+	// stability
+	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nir-ffd1af****196d0
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml16/uO3mvCyHxSjzdhx9VRUC+8umDTIV2Wg9TTOUrR7ve
+	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceTypeShrink *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RiskLevelShrink    *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s DescribeNisInspectionReportCheckItemsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportCheckItemsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportCheckItemsShrinkRequest) SetCategoryCode(v string) *DescribeNisInspectionReportCheckItemsShrinkRequest {
+	s.CategoryCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsShrinkRequest) SetInspectionReportId(v string) *DescribeNisInspectionReportCheckItemsShrinkRequest {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsShrinkRequest) SetLanguage(v string) *DescribeNisInspectionReportCheckItemsShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsShrinkRequest) SetMaxResults(v int32) *DescribeNisInspectionReportCheckItemsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsShrinkRequest) SetNextToken(v string) *DescribeNisInspectionReportCheckItemsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsShrinkRequest) SetResourceTypeShrink(v string) *DescribeNisInspectionReportCheckItemsShrinkRequest {
+	s.ResourceTypeShrink = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsShrinkRequest) SetRiskLevelShrink(v string) *DescribeNisInspectionReportCheckItemsShrinkRequest {
+	s.RiskLevelShrink = &v
+	return s
+}
+
+type DescribeNisInspectionReportCheckItemsResponseBody struct {
+	CheckItemList []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList `json:"CheckItemList,omitempty" xml:"CheckItemList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// nir-ffd1af****196d0
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml194Cz/lMNdmr+DEh0th6dVlNEo/F148UPCh2itDku7Qj
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// D5E98683-355B-5867-8D3D-A24755F6895B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 11
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBody) SetCheckItemList(v []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) *DescribeNisInspectionReportCheckItemsResponseBody {
+	s.CheckItemList = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBody) SetInspectionReportId(v string) *DescribeNisInspectionReportCheckItemsResponseBody {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBody) SetMaxResults(v int32) *DescribeNisInspectionReportCheckItemsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBody) SetNextToken(v string) *DescribeNisInspectionReportCheckItemsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBody) SetRequestId(v string) *DescribeNisInspectionReportCheckItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBody) SetTotalCount(v int32) *DescribeNisInspectionReportCheckItemsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList struct {
+	// example:
+	//
+	// stability
+	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// example:
+	//
+	// item_nat_water_level_check
+	CheckItemCode      *string                                                                             `json:"CheckItemCode,omitempty" xml:"CheckItemCode,omitempty"`
+	CheckItemName      *string                                                                             `json:"CheckItemName,omitempty" xml:"CheckItemName,omitempty"`
+	CheckResultList    []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList    `json:"CheckResultList,omitempty" xml:"CheckResultList,omitempty" type:"Repeated"`
+	Description        *string                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	RecommendationList []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList `json:"RecommendationList,omitempty" xml:"RecommendationList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// NAT
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) SetCategoryCode(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList {
+	s.CategoryCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) SetCheckItemCode(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList {
+	s.CheckItemCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) SetCheckItemName(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList {
+	s.CheckItemName = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) SetCheckResultList(v []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList {
+	s.CheckResultList = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) SetDescription(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) SetRecommendationList(v []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList {
+	s.RecommendationList = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) SetResourceType(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList struct {
+	// example:
+	//
+	// 0
+	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList) SetCount(v int32) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList) SetRiskLevel(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList {
+	s.RiskLevel = &v
+	return s
+}
+
+type DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList struct {
+	Abnormality *string `json:"Abnormality,omitempty" xml:"Abnormality,omitempty"`
+	Metadata    *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// nat_snat_cross_az_warn
+	RecommendationCode *string `json:"RecommendationCode,omitempty" xml:"RecommendationCode,omitempty"`
+	RiskLevel          *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Suggestion         *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetAbnormality(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.Abnormality = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetMetadata(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.Metadata = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetReason(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetRecommendationCode(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.RecommendationCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetRiskLevel(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetSuggestion(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.Suggestion = &v
+	return s
+}
+
+type DescribeNisInspectionReportCheckItemsResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNisInspectionReportCheckItemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportCheckItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponse) SetHeaders(v map[string]*string) *DescribeNisInspectionReportCheckItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponse) SetStatusCode(v int32) *DescribeNisInspectionReportCheckItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponse) SetBody(v *DescribeNisInspectionReportCheckItemsResponseBody) *DescribeNisInspectionReportCheckItemsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNisInspectionReportStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nir-2ca527b8de114ba4afb9
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+}
+
+func (s DescribeNisInspectionReportStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportStatusRequest) SetInspectionReportId(v string) *DescribeNisInspectionReportStatusRequest {
+	s.InspectionReportId = &v
+	return s
+}
+
+type DescribeNisInspectionReportStatusResponseBody struct {
+	// example:
+	//
+	// 2024-07-18 15:13:07
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// basic
+	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// example:
+	//
+	// nir-2ca527b8de114ba4afb9
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// ni-8svmpe0yso****r7fh79
+	InspectionTaskId   *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	InspectionTaskName *string `json:"InspectionTaskName,omitempty" xml:"InspectionTaskName,omitempty"`
+	// example:
+	//
+	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2024-07-18 15:12:28
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Finish
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeNisInspectionReportStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetEndTime(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetInspectionProject(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.InspectionProject = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetInspectionReportId(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetInspectionTaskId(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.InspectionTaskId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetInspectionTaskName(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.InspectionTaskName = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetRequestId(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetStartTime(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponseBody) SetStatus(v string) *DescribeNisInspectionReportStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeNisInspectionReportStatusResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNisInspectionReportStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNisInspectionReportStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportStatusResponse) SetHeaders(v map[string]*string) *DescribeNisInspectionReportStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponse) SetStatusCode(v int32) *DescribeNisInspectionReportStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportStatusResponse) SetBody(v *DescribeNisInspectionReportStatusResponseBody) *DescribeNisInspectionReportStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNisInspectionReportSummaryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nir-38abb318b27b49cc9a01
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+}
+
+func (s DescribeNisInspectionReportSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportSummaryRequest) SetInspectionReportId(v string) *DescribeNisInspectionReportSummaryRequest {
+	s.InspectionReportId = &v
+	return s
+}
+
+type DescribeNisInspectionReportSummaryResponseBody struct {
+	// example:
+	//
+	// 2024-06-03 09:36:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// nir-38abb318b27b49cc9a01
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// ni-8svmpe0yso2bhzr7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// example:
+	//
+	// 4838F3F2-30E1-5D82-B25A-B9FE33BC3E25
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2024-06-03 09:35:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Active
+	Status  *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Summary *DescribeNisInspectionReportSummaryResponseBodySummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBody) SetEndTime(v string) *DescribeNisInspectionReportSummaryResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBody) SetInspectionReportId(v string) *DescribeNisInspectionReportSummaryResponseBody {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBody) SetInspectionTaskId(v string) *DescribeNisInspectionReportSummaryResponseBody {
+	s.InspectionTaskId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBody) SetRequestId(v string) *DescribeNisInspectionReportSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBody) SetStartTime(v string) *DescribeNisInspectionReportSummaryResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBody) SetStatus(v string) *DescribeNisInspectionReportSummaryResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBody) SetSummary(v *DescribeNisInspectionReportSummaryResponseBodySummary) *DescribeNisInspectionReportSummaryResponseBody {
+	s.Summary = v
+	return s
+}
+
+type DescribeNisInspectionReportSummaryResponseBodySummary struct {
+	// example:
+	//
+	// 11
+	CheckItemCount *int32 `json:"CheckItemCount,omitempty" xml:"CheckItemCount,omitempty"`
+	// example:
+	//
+	// 123
+	CheckResourceCount *int32                                                                  `json:"CheckResourceCount,omitempty" xml:"CheckResourceCount,omitempty"`
+	PassRateSummary    []*DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary `json:"PassRateSummary,omitempty" xml:"PassRateSummary,omitempty" type:"Repeated"`
+	RiskSummary        []*DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary     `json:"RiskSummary,omitempty" xml:"RiskSummary,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBodySummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBodySummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummary) SetCheckItemCount(v int32) *DescribeNisInspectionReportSummaryResponseBodySummary {
+	s.CheckItemCount = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummary) SetCheckResourceCount(v int32) *DescribeNisInspectionReportSummaryResponseBodySummary {
+	s.CheckResourceCount = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummary) SetPassRateSummary(v []*DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary) *DescribeNisInspectionReportSummaryResponseBodySummary {
+	s.PassRateSummary = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummary) SetRiskSummary(v []*DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary) *DescribeNisInspectionReportSummaryResponseBodySummary {
+	s.RiskSummary = v
+	return s
+}
+
+type DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary struct {
+	// example:
+	//
+	// 0.98
+	PassRate *float64 `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
+	// example:
+	//
+	// Stability
+	PassRateScope *string `json:"PassRateScope,omitempty" xml:"PassRateScope,omitempty"`
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary) SetPassRate(v float64) *DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary {
+	s.PassRate = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary) SetPassRateScope(v string) *DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary {
+	s.PassRateScope = &v
+	return s
+}
+
+type DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary struct {
+	// example:
+	//
+	// 0
+	ResourceCount *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// example:
+	//
+	// 3
+	RiskCount *int32 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// example:
+	//
+	// HighRisk
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// example:
+	//
+	// StabilityRisk
+	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary) SetResourceCount(v int32) *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary {
+	s.ResourceCount = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary) SetRiskCount(v int32) *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary {
+	s.RiskCount = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary) SetRiskLevel(v string) *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary) SetRiskType(v string) *DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary {
+	s.RiskType = &v
+	return s
+}
+
+type DescribeNisInspectionReportSummaryResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNisInspectionReportSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNisInspectionReportSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionReportSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionReportSummaryResponse) SetHeaders(v map[string]*string) *DescribeNisInspectionReportSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponse) SetStatusCode(v int32) *DescribeNisInspectionReportSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportSummaryResponse) SetBody(v *DescribeNisInspectionReportSummaryResponseBody) *DescribeNisInspectionReportSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNisInspectionTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ni-8svmpe0yso2bhzr7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+}
+
+func (s DescribeNisInspectionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionTaskRequest) SetInspectionTaskId(v string) *DescribeNisInspectionTaskRequest {
+	s.InspectionTaskId = &v
+	return s
+}
+
+type DescribeNisInspectionTaskResponseBody struct {
+	CheckResourceList []*DescribeNisInspectionTaskResponseBodyCheckResourceList `json:"CheckResourceList,omitempty" xml:"CheckResourceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-07-01 10:00:57
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1
+	InspectionInterval *string `json:"InspectionInterval,omitempty" xml:"InspectionInterval,omitempty"`
+	// example:
+	//
+	// Default
+	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
+	// example:
+	//
+	// basic
+	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// example:
+	//
+	// ni-8svmpe0yso2bhzr7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// example:
+	//
+	// 2024-07-01 15:15:57
+	InspectionTriggerTime *string `json:"InspectionTriggerTime,omitempty" xml:"InspectionTriggerTime,omitempty"`
+	// example:
+	//
+	// nir-7c3dd178738a429abe6d
+	LastUpdateReportId *string `json:"LastUpdateReportId,omitempty" xml:"LastUpdateReportId,omitempty"`
+	// example:
+	//
+	// 2024-07-01 10:00:59
+	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	// example:
+	//
+	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeNisInspectionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetCheckResourceList(v []*DescribeNisInspectionTaskResponseBodyCheckResourceList) *DescribeNisInspectionTaskResponseBody {
+	s.CheckResourceList = v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetCreateTime(v string) *DescribeNisInspectionTaskResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetInspectionInterval(v string) *DescribeNisInspectionTaskResponseBody {
+	s.InspectionInterval = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetInspectionName(v string) *DescribeNisInspectionTaskResponseBody {
+	s.InspectionName = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetInspectionProject(v string) *DescribeNisInspectionTaskResponseBody {
+	s.InspectionProject = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetInspectionTaskId(v string) *DescribeNisInspectionTaskResponseBody {
+	s.InspectionTaskId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetInspectionTriggerTime(v string) *DescribeNisInspectionTaskResponseBody {
+	s.InspectionTriggerTime = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetLastUpdateReportId(v string) *DescribeNisInspectionTaskResponseBody {
+	s.LastUpdateReportId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetLastUpdateTime(v string) *DescribeNisInspectionTaskResponseBody {
+	s.LastUpdateTime = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetRequestId(v string) *DescribeNisInspectionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBody) SetStatus(v string) *DescribeNisInspectionTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeNisInspectionTaskResponseBodyCheckResourceList struct {
+	// example:
+	//
+	// CheckAll
+	CheckScope *string `json:"CheckScope,omitempty" xml:"CheckScope,omitempty"`
+	// example:
+	//
+	// EIP
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeNisInspectionTaskResponseBodyCheckResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionTaskResponseBodyCheckResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionTaskResponseBodyCheckResourceList) SetCheckScope(v string) *DescribeNisInspectionTaskResponseBodyCheckResourceList {
+	s.CheckScope = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponseBodyCheckResourceList) SetResourceType(v string) *DescribeNisInspectionTaskResponseBodyCheckResourceList {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeNisInspectionTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNisInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNisInspectionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNisInspectionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNisInspectionTaskResponse) SetHeaders(v map[string]*string) *DescribeNisInspectionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponse) SetStatusCode(v int32) *DescribeNisInspectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNisInspectionTaskResponse) SetBody(v *DescribeNisInspectionTaskResponseBody) *DescribeNisInspectionTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetInternetTupleRequest struct {
 	// The IDs of member accounts.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
@@ -5364,6 +6636,598 @@ func (s *GetVbrFlowTopNResponse) SetBody(v *GetVbrFlowTopNResponseBody) *GetVbrF
 	return s
 }
 
+type ListNisInspectionResourceTypeResponseBody struct {
+	// example:
+	//
+	// D5E98683-355B-5867-8D3D-A24755F6895B
+	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceTypeList []*ListNisInspectionResourceTypeResponseBodyResourceTypeList `json:"ResourceTypeList,omitempty" xml:"ResourceTypeList,omitempty" type:"Repeated"`
+}
+
+func (s ListNisInspectionResourceTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionResourceTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionResourceTypeResponseBody) SetRequestId(v string) *ListNisInspectionResourceTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNisInspectionResourceTypeResponseBody) SetResourceTypeList(v []*ListNisInspectionResourceTypeResponseBodyResourceTypeList) *ListNisInspectionResourceTypeResponseBody {
+	s.ResourceTypeList = v
+	return s
+}
+
+type ListNisInspectionResourceTypeResponseBodyResourceTypeList struct {
+	// example:
+	//
+	// EIP
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListNisInspectionResourceTypeResponseBodyResourceTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionResourceTypeResponseBodyResourceTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionResourceTypeResponseBodyResourceTypeList) SetResourceType(v string) *ListNisInspectionResourceTypeResponseBodyResourceTypeList {
+	s.ResourceType = &v
+	return s
+}
+
+type ListNisInspectionResourceTypeResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNisInspectionResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNisInspectionResourceTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionResourceTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionResourceTypeResponse) SetHeaders(v map[string]*string) *ListNisInspectionResourceTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNisInspectionResourceTypeResponse) SetStatusCode(v int32) *ListNisInspectionResourceTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNisInspectionResourceTypeResponse) SetBody(v *ListNisInspectionResourceTypeResponseBody) *ListNisInspectionResourceTypeResponse {
+	s.Body = v
+	return s
+}
+
+type ListNisInspectionTaskReportsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ni-8svmpe0yso2bhzr7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml194Cz/lMNdmr+DEh0th6dVlNEo/F148UPCh2itDku7Qj
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListNisInspectionTaskReportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTaskReportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTaskReportsRequest) SetInspectionTaskId(v string) *ListNisInspectionTaskReportsRequest {
+	s.InspectionTaskId = &v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsRequest) SetMaxResults(v int32) *ListNisInspectionTaskReportsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsRequest) SetNextToken(v string) *ListNisInspectionTaskReportsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListNisInspectionTaskReportsResponseBody struct {
+	InspectionReportList []*ListNisInspectionTaskReportsResponseBodyInspectionReportList `json:"InspectionReportList,omitempty" xml:"InspectionReportList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml194Cz/lMNdmr+DEh0th6dVlNEo/F148UPCh2itDku7Qj
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 0D213AF9-7B8A-51A8-B411-2D797A1A447B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 34
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListNisInspectionTaskReportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTaskReportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTaskReportsResponseBody) SetInspectionReportList(v []*ListNisInspectionTaskReportsResponseBodyInspectionReportList) *ListNisInspectionTaskReportsResponseBody {
+	s.InspectionReportList = v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsResponseBody) SetMaxResults(v int32) *ListNisInspectionTaskReportsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsResponseBody) SetNextToken(v string) *ListNisInspectionTaskReportsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsResponseBody) SetRequestId(v string) *ListNisInspectionTaskReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsResponseBody) SetTotalCount(v int32) *ListNisInspectionTaskReportsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListNisInspectionTaskReportsResponseBodyInspectionReportList struct {
+	// example:
+	//
+	// nir-7c3dd178738a429abe6d
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+}
+
+func (s ListNisInspectionTaskReportsResponseBodyInspectionReportList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTaskReportsResponseBodyInspectionReportList) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTaskReportsResponseBodyInspectionReportList) SetInspectionReportId(v string) *ListNisInspectionTaskReportsResponseBodyInspectionReportList {
+	s.InspectionReportId = &v
+	return s
+}
+
+type ListNisInspectionTaskReportsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNisInspectionTaskReportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNisInspectionTaskReportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTaskReportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTaskReportsResponse) SetHeaders(v map[string]*string) *ListNisInspectionTaskReportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsResponse) SetStatusCode(v int32) *ListNisInspectionTaskReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNisInspectionTaskReportsResponse) SetBody(v *ListNisInspectionTaskReportsResponseBody) *ListNisInspectionTaskReportsResponse {
+	s.Body = v
+	return s
+}
+
+type ListNisInspectionTasksRequest struct {
+	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
+	// example:
+	//
+	// basic
+	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// example:
+	//
+	// ni-8svm******hzr7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml1/R9jhHkiH8eW3CfaOYU0CEL7yiT0zae6J8v1zYNg+d1
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListNisInspectionTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTasksRequest) SetInspectionName(v string) *ListNisInspectionTasksRequest {
+	s.InspectionName = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksRequest) SetInspectionProject(v string) *ListNisInspectionTasksRequest {
+	s.InspectionProject = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksRequest) SetInspectionTaskId(v string) *ListNisInspectionTasksRequest {
+	s.InspectionTaskId = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksRequest) SetMaxResults(v int32) *ListNisInspectionTasksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksRequest) SetNextToken(v string) *ListNisInspectionTasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksRequest) SetStatus(v string) *ListNisInspectionTasksRequest {
+	s.Status = &v
+	return s
+}
+
+type ListNisInspectionTasksResponseBody struct {
+	InspectionTaskList []*ListNisInspectionTasksResponseBodyInspectionTaskList `json:"InspectionTaskList,omitempty" xml:"InspectionTaskList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// hKrS+MVXkuOgztXnvdml194Cz/lMNdmr+DEh0th6dVlNEo/F148UPCh2itDku7Qj
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListNisInspectionTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTasksResponseBody) SetInspectionTaskList(v []*ListNisInspectionTasksResponseBodyInspectionTaskList) *ListNisInspectionTasksResponseBody {
+	s.InspectionTaskList = v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBody) SetMaxResults(v int32) *ListNisInspectionTasksResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBody) SetNextToken(v string) *ListNisInspectionTasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBody) SetRequestId(v string) *ListNisInspectionTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBody) SetTotalCount(v int32) *ListNisInspectionTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListNisInspectionTasksResponseBodyInspectionTaskList struct {
+	// example:
+	//
+	// 2024-06-18 00:14:46
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
+	// example:
+	//
+	// basic
+	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// example:
+	//
+	// ni-8svm******hzr7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// example:
+	//
+	// nir-b4c4c9******8a25e
+	LastUpdateReportId *string `json:"LastUpdateReportId,omitempty" xml:"LastUpdateReportId,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListNisInspectionTasksResponseBodyInspectionTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTasksResponseBodyInspectionTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTasksResponseBodyInspectionTaskList) SetCreateTime(v string) *ListNisInspectionTasksResponseBodyInspectionTaskList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBodyInspectionTaskList) SetInspectionName(v string) *ListNisInspectionTasksResponseBodyInspectionTaskList {
+	s.InspectionName = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBodyInspectionTaskList) SetInspectionProject(v string) *ListNisInspectionTasksResponseBodyInspectionTaskList {
+	s.InspectionProject = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBodyInspectionTaskList) SetInspectionTaskId(v string) *ListNisInspectionTasksResponseBodyInspectionTaskList {
+	s.InspectionTaskId = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBodyInspectionTaskList) SetLastUpdateReportId(v string) *ListNisInspectionTasksResponseBodyInspectionTaskList {
+	s.LastUpdateReportId = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponseBodyInspectionTaskList) SetStatus(v string) *ListNisInspectionTasksResponseBodyInspectionTaskList {
+	s.Status = &v
+	return s
+}
+
+type ListNisInspectionTasksResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNisInspectionTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNisInspectionTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNisInspectionTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNisInspectionTasksResponse) SetHeaders(v map[string]*string) *ListNisInspectionTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponse) SetStatusCode(v int32) *ListNisInspectionTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNisInspectionTasksResponse) SetBody(v *ListNisInspectionTasksResponseBody) *ListNisInspectionTasksResponse {
+	s.Body = v
+	return s
+}
+
+type StartNisInspectionTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ni-8svmpe0yso****r7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+}
+
+func (s StartNisInspectionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartNisInspectionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartNisInspectionTaskRequest) SetInspectionTaskId(v string) *StartNisInspectionTaskRequest {
+	s.InspectionTaskId = &v
+	return s
+}
+
+type StartNisInspectionTaskResponseBody struct {
+	// example:
+	//
+	// nir-9923e262c106461d86ad
+	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// example:
+	//
+	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartNisInspectionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartNisInspectionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartNisInspectionTaskResponseBody) SetInspectionReportId(v string) *StartNisInspectionTaskResponseBody {
+	s.InspectionReportId = &v
+	return s
+}
+
+func (s *StartNisInspectionTaskResponseBody) SetRequestId(v string) *StartNisInspectionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartNisInspectionTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartNisInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartNisInspectionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartNisInspectionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartNisInspectionTaskResponse) SetHeaders(v map[string]*string) *StartNisInspectionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartNisInspectionTaskResponse) SetStatusCode(v int32) *StartNisInspectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartNisInspectionTaskResponse) SetBody(v *StartNisInspectionTaskResponseBody) *StartNisInspectionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateNisInspectionTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ni-8svmpe0yso2bhzr7fh79
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateNisInspectionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNisInspectionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNisInspectionTaskRequest) SetInspectionTaskId(v string) *UpdateNisInspectionTaskRequest {
+	s.InspectionTaskId = &v
+	return s
+}
+
+func (s *UpdateNisInspectionTaskRequest) SetStatus(v string) *UpdateNisInspectionTaskRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateNisInspectionTaskResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateNisInspectionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNisInspectionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNisInspectionTaskResponseBody) SetData(v bool) *UpdateNisInspectionTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateNisInspectionTaskResponseBody) SetRequestId(v string) *UpdateNisInspectionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateNisInspectionTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNisInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateNisInspectionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNisInspectionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNisInspectionTaskResponse) SetHeaders(v map[string]*string) *UpdateNisInspectionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNisInspectionTaskResponse) SetStatusCode(v int32) *UpdateNisInspectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateNisInspectionTaskResponse) SetBody(v *UpdateNisInspectionTaskResponseBody) *UpdateNisInspectionTaskResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -5825,6 +7689,478 @@ func (client *Client) DeleteNetworkReachableAnalysis(request *DeleteNetworkReach
 
 // Summary:
 //
+// 删除报告
+//
+// @param request - DeleteNisInspectionReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNisInspectionReportResponse
+func (client *Client) DeleteNisInspectionReportWithOptions(request *DeleteNisInspectionReportRequest, runtime *util.RuntimeOptions) (_result *DeleteNisInspectionReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionReportId)) {
+		query["InspectionReportId"] = request.InspectionReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNisInspectionReport"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNisInspectionReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除报告
+//
+// @param request - DeleteNisInspectionReportRequest
+//
+// @return DeleteNisInspectionReportResponse
+func (client *Client) DeleteNisInspectionReport(request *DeleteNisInspectionReportRequest) (_result *DeleteNisInspectionReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNisInspectionReportResponse{}
+	_body, _err := client.DeleteNisInspectionReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除巡检任务
+//
+// @param request - DeleteNisInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNisInspectionTaskResponse
+func (client *Client) DeleteNisInspectionTaskWithOptions(request *DeleteNisInspectionTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteNisInspectionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionTaskId)) {
+		query["InspectionTaskId"] = request.InspectionTaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNisInspectionTask"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNisInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除巡检任务
+//
+// @param request - DeleteNisInspectionTaskRequest
+//
+// @return DeleteNisInspectionTaskResponse
+func (client *Client) DeleteNisInspectionTask(request *DeleteNisInspectionTaskRequest) (_result *DeleteNisInspectionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNisInspectionTaskResponse{}
+	_body, _err := client.DeleteNisInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 受影响资源列表
+//
+// @param request - DescribeNisInspectionRecommendationResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNisInspectionRecommendationResourcesResponse
+func (client *Client) DescribeNisInspectionRecommendationResourcesWithOptions(request *DescribeNisInspectionRecommendationResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeNisInspectionRecommendationResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionReportId)) {
+		query["InspectionReportId"] = request.InspectionReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecommendationCode)) {
+		query["RecommendationCode"] = request.RecommendationCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNisInspectionRecommendationResources"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNisInspectionRecommendationResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 受影响资源列表
+//
+// @param request - DescribeNisInspectionRecommendationResourcesRequest
+//
+// @return DescribeNisInspectionRecommendationResourcesResponse
+func (client *Client) DescribeNisInspectionRecommendationResources(request *DescribeNisInspectionRecommendationResourcesRequest) (_result *DescribeNisInspectionRecommendationResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNisInspectionRecommendationResourcesResponse{}
+	_body, _err := client.DescribeNisInspectionRecommendationResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 报告巡检项列表
+//
+// @param tmpReq - DescribeNisInspectionReportCheckItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNisInspectionReportCheckItemsResponse
+func (client *Client) DescribeNisInspectionReportCheckItemsWithOptions(tmpReq *DescribeNisInspectionReportCheckItemsRequest, runtime *util.RuntimeOptions) (_result *DescribeNisInspectionReportCheckItemsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeNisInspectionReportCheckItemsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceType)) {
+		request.ResourceTypeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceType, tea.String("ResourceType"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RiskLevel)) {
+		request.RiskLevelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RiskLevel, tea.String("RiskLevel"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryCode)) {
+		query["CategoryCode"] = request.CategoryCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InspectionReportId)) {
+		query["InspectionReportId"] = request.InspectionReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypeShrink)) {
+		query["ResourceType"] = request.ResourceTypeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevelShrink)) {
+		query["RiskLevel"] = request.RiskLevelShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNisInspectionReportCheckItems"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNisInspectionReportCheckItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 报告巡检项列表
+//
+// @param request - DescribeNisInspectionReportCheckItemsRequest
+//
+// @return DescribeNisInspectionReportCheckItemsResponse
+func (client *Client) DescribeNisInspectionReportCheckItems(request *DescribeNisInspectionReportCheckItemsRequest) (_result *DescribeNisInspectionReportCheckItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNisInspectionReportCheckItemsResponse{}
+	_body, _err := client.DescribeNisInspectionReportCheckItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询报告状态
+//
+// @param request - DescribeNisInspectionReportStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNisInspectionReportStatusResponse
+func (client *Client) DescribeNisInspectionReportStatusWithOptions(request *DescribeNisInspectionReportStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeNisInspectionReportStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionReportId)) {
+		query["InspectionReportId"] = request.InspectionReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNisInspectionReportStatus"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNisInspectionReportStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询报告状态
+//
+// @param request - DescribeNisInspectionReportStatusRequest
+//
+// @return DescribeNisInspectionReportStatusResponse
+func (client *Client) DescribeNisInspectionReportStatus(request *DescribeNisInspectionReportStatusRequest) (_result *DescribeNisInspectionReportStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNisInspectionReportStatusResponse{}
+	_body, _err := client.DescribeNisInspectionReportStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 报告总结信息
+//
+// @param request - DescribeNisInspectionReportSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNisInspectionReportSummaryResponse
+func (client *Client) DescribeNisInspectionReportSummaryWithOptions(request *DescribeNisInspectionReportSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeNisInspectionReportSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionReportId)) {
+		query["InspectionReportId"] = request.InspectionReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNisInspectionReportSummary"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNisInspectionReportSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 报告总结信息
+//
+// @param request - DescribeNisInspectionReportSummaryRequest
+//
+// @return DescribeNisInspectionReportSummaryResponse
+func (client *Client) DescribeNisInspectionReportSummary(request *DescribeNisInspectionReportSummaryRequest) (_result *DescribeNisInspectionReportSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNisInspectionReportSummaryResponse{}
+	_body, _err := client.DescribeNisInspectionReportSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询巡检任务
+//
+// @param request - DescribeNisInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNisInspectionTaskResponse
+func (client *Client) DescribeNisInspectionTaskWithOptions(request *DescribeNisInspectionTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeNisInspectionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionTaskId)) {
+		query["InspectionTaskId"] = request.InspectionTaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNisInspectionTask"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNisInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询巡检任务
+//
+// @param request - DescribeNisInspectionTaskRequest
+//
+// @return DescribeNisInspectionTaskResponse
+func (client *Client) DescribeNisInspectionTask(request *DescribeNisInspectionTaskRequest) (_result *DescribeNisInspectionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNisInspectionTaskResponse{}
+	_body, _err := client.DescribeNisInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Deprecated: OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
+// Summary:
+//
 // Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
 //
 // @param tmpReq - GetInternetTupleRequest
@@ -5832,6 +8168,7 @@ func (client *Client) DeleteNetworkReachableAnalysis(request *DeleteNetworkReach
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInternetTupleResponse
+// Deprecated
 func (client *Client) GetInternetTupleWithOptions(tmpReq *GetInternetTupleRequest, runtime *util.RuntimeOptions) (_result *GetInternetTupleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5959,6 +8296,8 @@ func (client *Client) GetInternetTupleWithOptions(tmpReq *GetInternetTupleReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
 // Summary:
 //
 // Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
@@ -5966,6 +8305,7 @@ func (client *Client) GetInternetTupleWithOptions(tmpReq *GetInternetTupleReques
 // @param request - GetInternetTupleRequest
 //
 // @return GetInternetTupleResponse
+// Deprecated
 func (client *Client) GetInternetTuple(request *GetInternetTupleRequest) (_result *GetInternetTupleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInternetTupleResponse{}
@@ -5977,6 +8317,8 @@ func (client *Client) GetInternetTuple(request *GetInternetTupleRequest) (_resul
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetNatTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
 // Summary:
 //
 // Queries the real-time SNAT performance ranking of a NAT gateway.
@@ -5986,6 +8328,7 @@ func (client *Client) GetInternetTuple(request *GetInternetTupleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNatTopNResponse
+// Deprecated
 func (client *Client) GetNatTopNWithOptions(request *GetNatTopNRequest, runtime *util.RuntimeOptions) (_result *GetNatTopNResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6043,6 +8386,8 @@ func (client *Client) GetNatTopNWithOptions(request *GetNatTopNRequest, runtime 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetNatTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
 // Summary:
 //
 // Queries the real-time SNAT performance ranking of a NAT gateway.
@@ -6050,6 +8395,7 @@ func (client *Client) GetNatTopNWithOptions(request *GetNatTopNRequest, runtime 
 // @param request - GetNatTopNRequest
 //
 // @return GetNatTopNResponse
+// Deprecated
 func (client *Client) GetNatTopN(request *GetNatTopNRequest) (_result *GetNatTopNResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNatTopNResponse{}
@@ -6349,6 +8695,8 @@ func (client *Client) GetNisNetworkRanking(request *GetNisNetworkRankingRequest)
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetTransitRouterFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
 // Summary:
 //
 // Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
@@ -6358,6 +8706,7 @@ func (client *Client) GetNisNetworkRanking(request *GetNisNetworkRankingRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTransitRouterFlowTopNResponse
+// Deprecated
 func (client *Client) GetTransitRouterFlowTopNWithOptions(tmpReq *GetTransitRouterFlowTopNRequest, runtime *util.RuntimeOptions) (_result *GetTransitRouterFlowTopNResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6465,6 +8814,8 @@ func (client *Client) GetTransitRouterFlowTopNWithOptions(tmpReq *GetTransitRout
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetTransitRouterFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
 // Summary:
 //
 // Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
@@ -6472,6 +8823,7 @@ func (client *Client) GetTransitRouterFlowTopNWithOptions(tmpReq *GetTransitRout
 // @param request - GetTransitRouterFlowTopNRequest
 //
 // @return GetTransitRouterFlowTopNResponse
+// Deprecated
 func (client *Client) GetTransitRouterFlowTopN(request *GetTransitRouterFlowTopNRequest) (_result *GetTransitRouterFlowTopNResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTransitRouterFlowTopNResponse{}
@@ -6483,6 +8835,8 @@ func (client *Client) GetTransitRouterFlowTopN(request *GetTransitRouterFlowTopN
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetVbrFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
 // Summary:
 //
 // Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
@@ -6492,6 +8846,7 @@ func (client *Client) GetTransitRouterFlowTopN(request *GetTransitRouterFlowTopN
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVbrFlowTopNResponse
+// Deprecated
 func (client *Client) GetVbrFlowTopNWithOptions(tmpReq *GetVbrFlowTopNRequest, runtime *util.RuntimeOptions) (_result *GetVbrFlowTopNResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6599,6 +8954,8 @@ func (client *Client) GetVbrFlowTopNWithOptions(tmpReq *GetVbrFlowTopNRequest, r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetVbrFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+//
 // Summary:
 //
 // Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
@@ -6606,10 +8963,330 @@ func (client *Client) GetVbrFlowTopNWithOptions(tmpReq *GetVbrFlowTopNRequest, r
 // @param request - GetVbrFlowTopNRequest
 //
 // @return GetVbrFlowTopNResponse
+// Deprecated
 func (client *Client) GetVbrFlowTopN(request *GetVbrFlowTopNRequest) (_result *GetVbrFlowTopNResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVbrFlowTopNResponse{}
 	_body, _err := client.GetVbrFlowTopNWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 巡检资源类型列表
+//
+// @param request - ListNisInspectionResourceTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNisInspectionResourceTypeResponse
+func (client *Client) ListNisInspectionResourceTypeWithOptions(runtime *util.RuntimeOptions) (_result *ListNisInspectionResourceTypeResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListNisInspectionResourceType"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNisInspectionResourceTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 巡检资源类型列表
+//
+// @return ListNisInspectionResourceTypeResponse
+func (client *Client) ListNisInspectionResourceType() (_result *ListNisInspectionResourceTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNisInspectionResourceTypeResponse{}
+	_body, _err := client.ListNisInspectionResourceTypeWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询巡检报告列表
+//
+// @param request - ListNisInspectionTaskReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNisInspectionTaskReportsResponse
+func (client *Client) ListNisInspectionTaskReportsWithOptions(request *ListNisInspectionTaskReportsRequest, runtime *util.RuntimeOptions) (_result *ListNisInspectionTaskReportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionTaskId)) {
+		query["InspectionTaskId"] = request.InspectionTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNisInspectionTaskReports"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNisInspectionTaskReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询巡检报告列表
+//
+// @param request - ListNisInspectionTaskReportsRequest
+//
+// @return ListNisInspectionTaskReportsResponse
+func (client *Client) ListNisInspectionTaskReports(request *ListNisInspectionTaskReportsRequest) (_result *ListNisInspectionTaskReportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNisInspectionTaskReportsResponse{}
+	_body, _err := client.ListNisInspectionTaskReportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 巡检任务列表
+//
+// @param request - ListNisInspectionTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNisInspectionTasksResponse
+func (client *Client) ListNisInspectionTasksWithOptions(request *ListNisInspectionTasksRequest, runtime *util.RuntimeOptions) (_result *ListNisInspectionTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionName)) {
+		query["InspectionName"] = request.InspectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InspectionProject)) {
+		query["InspectionProject"] = request.InspectionProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InspectionTaskId)) {
+		query["InspectionTaskId"] = request.InspectionTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNisInspectionTasks"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNisInspectionTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 巡检任务列表
+//
+// @param request - ListNisInspectionTasksRequest
+//
+// @return ListNisInspectionTasksResponse
+func (client *Client) ListNisInspectionTasks(request *ListNisInspectionTasksRequest) (_result *ListNisInspectionTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNisInspectionTasksResponse{}
+	_body, _err := client.ListNisInspectionTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 请补充描述开启任务
+//
+// @param request - StartNisInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartNisInspectionTaskResponse
+func (client *Client) StartNisInspectionTaskWithOptions(request *StartNisInspectionTaskRequest, runtime *util.RuntimeOptions) (_result *StartNisInspectionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionTaskId)) {
+		query["InspectionTaskId"] = request.InspectionTaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartNisInspectionTask"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartNisInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 请补充描述开启任务
+//
+// @param request - StartNisInspectionTaskRequest
+//
+// @return StartNisInspectionTaskResponse
+func (client *Client) StartNisInspectionTask(request *StartNisInspectionTaskRequest) (_result *StartNisInspectionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartNisInspectionTaskResponse{}
+	_body, _err := client.StartNisInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改巡检项
+//
+// @param request - UpdateNisInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNisInspectionTaskResponse
+func (client *Client) UpdateNisInspectionTaskWithOptions(request *UpdateNisInspectionTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateNisInspectionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InspectionTaskId)) {
+		query["InspectionTaskId"] = request.InspectionTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNisInspectionTask"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateNisInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改巡检项
+//
+// @param request - UpdateNisInspectionTaskRequest
+//
+// @return UpdateNisInspectionTaskResponse
+func (client *Client) UpdateNisInspectionTask(request *UpdateNisInspectionTaskRequest) (_result *UpdateNisInspectionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNisInspectionTaskResponse{}
+	_body, _err := client.UpdateNisInspectionTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
