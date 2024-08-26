@@ -9,6 +9,77 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AIAssistantSession struct {
+	ClientId     *string   `json:"client_id,omitempty" xml:"client_id,omitempty"`
+	CreatedAt    *int64    `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	CustomLabels []*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty" type:"Repeated"`
+	DomainId     *string   `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	ExpiredAt    *int64    `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
+	Name         *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SessionId    *string   `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	Status       *string   `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt    *int64    `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UserId       *string   `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s AIAssistantSession) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAssistantSession) GoString() string {
+	return s.String()
+}
+
+func (s *AIAssistantSession) SetClientId(v string) *AIAssistantSession {
+	s.ClientId = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetCreatedAt(v int64) *AIAssistantSession {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetCustomLabels(v []*string) *AIAssistantSession {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *AIAssistantSession) SetDomainId(v string) *AIAssistantSession {
+	s.DomainId = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetExpiredAt(v int64) *AIAssistantSession {
+	s.ExpiredAt = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetName(v string) *AIAssistantSession {
+	s.Name = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetSessionId(v string) *AIAssistantSession {
+	s.SessionId = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetStatus(v string) *AIAssistantSession {
+	s.Status = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetUpdatedAt(v int64) *AIAssistantSession {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *AIAssistantSession) SetUserId(v string) *AIAssistantSession {
+	s.UserId = &v
+	return s
+}
+
 type AccountAccessTokenResponse struct {
 	AccessToken        *string            `json:"access_token,omitempty" xml:"access_token,omitempty"`
 	Avatar             *string            `json:"avatar,omitempty" xml:"avatar,omitempty"`
@@ -4456,21 +4527,24 @@ func (s *JWTPayload) SetSubType(v string) *JWTPayload {
 }
 
 type KnowledgeFile struct {
-	CreatorId           *string `json:"creator_id,omitempty" xml:"creator_id,omitempty"`
-	DriveId             *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileCategory        *string `json:"file_category,omitempty" xml:"file_category,omitempty"`
-	FileCreatedAt       *int64  `json:"file_created_at,omitempty" xml:"file_created_at,omitempty"`
-	FileCreatorId       *string `json:"file_creator_id,omitempty" xml:"file_creator_id,omitempty"`
-	FileId              *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	FileImageTime       *int64  `json:"file_image_time,omitempty" xml:"file_image_time,omitempty"`
-	FileName            *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
-	FileNamePath        *string `json:"file_name_path,omitempty" xml:"file_name_path,omitempty"`
-	FileSize            *int64  `json:"file_size,omitempty" xml:"file_size,omitempty"`
-	FileUpdatedAt       *int64  `json:"file_updated_at,omitempty" xml:"file_updated_at,omitempty"`
-	JoinedAt            *int64  `json:"joined_at,omitempty" xml:"joined_at,omitempty"`
-	KnowledgeBaseId     *string `json:"knowledge_base_id,omitempty" xml:"knowledge_base_id,omitempty"`
-	KnowledgeCategoryId *string `json:"knowledge_category_id,omitempty" xml:"knowledge_category_id,omitempty"`
-	RevisionId          *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	CreatorId            *string `json:"creator_id,omitempty" xml:"creator_id,omitempty"`
+	DriveId              *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	DriveName            *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
+	FileCategory         *string `json:"file_category,omitempty" xml:"file_category,omitempty"`
+	FileCreatedAt        *int64  `json:"file_created_at,omitempty" xml:"file_created_at,omitempty"`
+	FileCreatorId        *string `json:"file_creator_id,omitempty" xml:"file_creator_id,omitempty"`
+	FileId               *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	FileImageTime        *int64  `json:"file_image_time,omitempty" xml:"file_image_time,omitempty"`
+	FileLastModifierId   *string `json:"file_last_modifier_id,omitempty" xml:"file_last_modifier_id,omitempty"`
+	FileLastModifierType *string `json:"file_last_modifier_type,omitempty" xml:"file_last_modifier_type,omitempty"`
+	FileName             *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	FileNamePath         *string `json:"file_name_path,omitempty" xml:"file_name_path,omitempty"`
+	FileSize             *int64  `json:"file_size,omitempty" xml:"file_size,omitempty"`
+	FileUpdatedAt        *int64  `json:"file_updated_at,omitempty" xml:"file_updated_at,omitempty"`
+	JoinedAt             *int64  `json:"joined_at,omitempty" xml:"joined_at,omitempty"`
+	KnowledgeBaseId      *string `json:"knowledge_base_id,omitempty" xml:"knowledge_base_id,omitempty"`
+	KnowledgeCategoryId  *string `json:"knowledge_category_id,omitempty" xml:"knowledge_category_id,omitempty"`
+	RevisionId           *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
 func (s KnowledgeFile) String() string {
@@ -4488,6 +4562,11 @@ func (s *KnowledgeFile) SetCreatorId(v string) *KnowledgeFile {
 
 func (s *KnowledgeFile) SetDriveId(v string) *KnowledgeFile {
 	s.DriveId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetDriveName(v string) *KnowledgeFile {
+	s.DriveName = &v
 	return s
 }
 
@@ -4513,6 +4592,16 @@ func (s *KnowledgeFile) SetFileId(v string) *KnowledgeFile {
 
 func (s *KnowledgeFile) SetFileImageTime(v int64) *KnowledgeFile {
 	s.FileImageTime = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileLastModifierId(v string) *KnowledgeFile {
+	s.FileLastModifierId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileLastModifierType(v string) *KnowledgeFile {
+	s.FileLastModifierType = &v
 	return s
 }
 
@@ -6801,6 +6890,7 @@ type VideoPreviewPlayInfo struct {
 	// live_transcoding
 	Category                    *string                                            `json:"category,omitempty" xml:"category,omitempty"`
 	LiveTranscodingTaskList     []*VideoPreviewPlayInfoLiveTranscodingTaskList     `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
+	MasterUrl                   *string                                            `json:"master_url,omitempty" xml:"master_url,omitempty"`
 	Meta                        *VideoPreviewPlayInfoMeta                          `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
 	OfflineVideoTranscodingList []*VideoPreviewPlayInfoOfflineVideoTranscodingList `json:"offline_video_transcoding_list,omitempty" xml:"offline_video_transcoding_list,omitempty" type:"Repeated"`
 }
@@ -6820,6 +6910,11 @@ func (s *VideoPreviewPlayInfo) SetCategory(v string) *VideoPreviewPlayInfo {
 
 func (s *VideoPreviewPlayInfo) SetLiveTranscodingTaskList(v []*VideoPreviewPlayInfoLiveTranscodingTaskList) *VideoPreviewPlayInfo {
 	s.LiveTranscodingTaskList = v
+	return s
+}
+
+func (s *VideoPreviewPlayInfo) SetMasterUrl(v string) *VideoPreviewPlayInfo {
+	s.MasterUrl = &v
 	return s
 }
 
@@ -14332,6 +14427,7 @@ type GetVideoPreviewPlayInfoRequest struct {
 	//
 	// true
 	GetWithoutUrl *bool `json:"get_without_url,omitempty" xml:"get_without_url,omitempty"`
+	ReTranscode   *bool `json:"re_transcode,omitempty" xml:"re_transcode,omitempty"`
 	// The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
 	//
 	// example:
@@ -14385,6 +14481,11 @@ func (s *GetVideoPreviewPlayInfoRequest) SetGetWithoutUrl(v bool) *GetVideoPrevi
 	return s
 }
 
+func (s *GetVideoPreviewPlayInfoRequest) SetReTranscode(v bool) *GetVideoPreviewPlayInfoRequest {
+	s.ReTranscode = &v
+	return s
+}
+
 func (s *GetVideoPreviewPlayInfoRequest) SetShareId(v string) *GetVideoPreviewPlayInfoRequest {
 	s.ShareId = &v
 	return s
@@ -14401,10 +14502,6 @@ func (s *GetVideoPreviewPlayInfoRequest) SetUrlExpireSec(v int64) *GetVideoPrevi
 }
 
 type GetVideoPreviewPlayInfoResponseBody struct {
-	// example:
-	//
-	// VideoPreviewWaitAndRetry
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The domain ID.
 	//
 	// example:
@@ -14422,12 +14519,7 @@ type GetVideoPreviewPlayInfoResponseBody struct {
 	// example:
 	//
 	// fileid1
-	FileId    *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	MasterUrl *string `json:"master_url,omitempty" xml:"master_url,omitempty"`
-	// example:
-	//
-	// media is transcoding, please wait and retry.
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The share ID.
 	//
 	// example:
@@ -14446,11 +14538,6 @@ func (s GetVideoPreviewPlayInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetVideoPreviewPlayInfoResponseBody) SetCode(v string) *GetVideoPreviewPlayInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetVideoPreviewPlayInfoResponseBody) SetDomainId(v string) *GetVideoPreviewPlayInfoResponseBody {
 	s.DomainId = &v
 	return s
@@ -14463,16 +14550,6 @@ func (s *GetVideoPreviewPlayInfoResponseBody) SetDriveId(v string) *GetVideoPrev
 
 func (s *GetVideoPreviewPlayInfoResponseBody) SetFileId(v string) *GetVideoPreviewPlayInfoResponseBody {
 	s.FileId = &v
-	return s
-}
-
-func (s *GetVideoPreviewPlayInfoResponseBody) SetMasterUrl(v string) *GetVideoPreviewPlayInfoResponseBody {
-	s.MasterUrl = &v
-	return s
-}
-
-func (s *GetVideoPreviewPlayInfoResponseBody) SetMessage(v string) *GetVideoPreviewPlayInfoResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -14873,9 +14950,6 @@ func (s *ImportUserResponse) SetBody(v *User) *ImportUserResponse {
 type InvestigateFileRequest struct {
 	// This parameter is required.
 	DriveFileIds []*InvestigateFileRequestDriveFileIds `json:"drive_file_ids,omitempty" xml:"drive_file_ids,omitempty" type:"Repeated"`
-	Policy       *InvestigateFileRequestPolicy         `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
-	Recursive    *bool                                 `json:"recursive,omitempty" xml:"recursive,omitempty"`
-	UserData     *string                               `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
 
 func (s InvestigateFileRequest) String() string {
@@ -14888,21 +14962,6 @@ func (s InvestigateFileRequest) GoString() string {
 
 func (s *InvestigateFileRequest) SetDriveFileIds(v []*InvestigateFileRequestDriveFileIds) *InvestigateFileRequest {
 	s.DriveFileIds = v
-	return s
-}
-
-func (s *InvestigateFileRequest) SetPolicy(v *InvestigateFileRequestPolicy) *InvestigateFileRequest {
-	s.Policy = v
-	return s
-}
-
-func (s *InvestigateFileRequest) SetRecursive(v bool) *InvestigateFileRequest {
-	s.Recursive = &v
-	return s
-}
-
-func (s *InvestigateFileRequest) SetUserData(v string) *InvestigateFileRequest {
-	s.UserData = &v
 	return s
 }
 
@@ -14936,35 +14995,6 @@ func (s *InvestigateFileRequestDriveFileIds) SetDriveId(v string) *InvestigateFi
 
 func (s *InvestigateFileRequestDriveFileIds) SetFileId(v string) *InvestigateFileRequestDriveFileIds {
 	s.FileId = &v
-	return s
-}
-
-type InvestigateFileRequestPolicy struct {
-	FirstProductName *string `json:"first_product_name,omitempty" xml:"first_product_name,omitempty"`
-	MteeCode         *string `json:"mtee_code,omitempty" xml:"mtee_code,omitempty"`
-	Provider         *string `json:"provider,omitempty" xml:"provider,omitempty"`
-}
-
-func (s InvestigateFileRequestPolicy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvestigateFileRequestPolicy) GoString() string {
-	return s.String()
-}
-
-func (s *InvestigateFileRequestPolicy) SetFirstProductName(v string) *InvestigateFileRequestPolicy {
-	s.FirstProductName = &v
-	return s
-}
-
-func (s *InvestigateFileRequestPolicy) SetMteeCode(v string) *InvestigateFileRequestPolicy {
-	s.MteeCode = &v
-	return s
-}
-
-func (s *InvestigateFileRequestPolicy) SetProvider(v string) *InvestigateFileRequestPolicy {
-	s.Provider = &v
 	return s
 }
 
@@ -25939,6 +25969,10 @@ func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPrevie
 		body["get_without_url"] = request.GetWithoutUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReTranscode)) {
+		body["re_transcode"] = request.ReTranscode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
 		body["share_id"] = request.ShareId
 	}
@@ -26261,18 +26295,6 @@ func (client *Client) InvestigateFileWithOptions(request *InvestigateFileRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DriveFileIds)) {
 		body["drive_file_ids"] = request.DriveFileIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Policy)) {
-		body["policy"] = request.Policy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Recursive)) {
-		body["recursive"] = request.Recursive
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		body["user_data"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
