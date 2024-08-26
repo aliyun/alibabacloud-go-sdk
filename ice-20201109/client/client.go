@@ -45330,6 +45330,115 @@ func (s *SubmitSnapshotJobResponse) SetBody(v *SubmitSnapshotJobResponseBody) *S
 	return s
 }
 
+type SubmitSportsHighlightsJobRequest struct {
+	// example:
+	//
+	// ****12e8864746a0a398****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "MediaURL": "http://xxx.oss-cn-shanghai.aliyuncs.com/xxx_{index}.mp4",
+	//
+	//   "Count": 1,
+	//
+	//   "Width": 1080,
+	//
+	//   "Height": 1920
+	//
+	// }
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitSportsHighlightsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSportsHighlightsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSportsHighlightsJobRequest) SetClientToken(v string) *SubmitSportsHighlightsJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitSportsHighlightsJobRequest) SetInputConfig(v string) *SubmitSportsHighlightsJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitSportsHighlightsJobRequest) SetOutputConfig(v string) *SubmitSportsHighlightsJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitSportsHighlightsJobRequest) SetUserData(v string) *SubmitSportsHighlightsJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitSportsHighlightsJobResponseBody struct {
+	// example:
+	//
+	// ****d80e4e4044975745c14b****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ****36-3C1E-4417-BDB2-1E034F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitSportsHighlightsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSportsHighlightsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSportsHighlightsJobResponseBody) SetJobId(v string) *SubmitSportsHighlightsJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitSportsHighlightsJobResponseBody) SetRequestId(v string) *SubmitSportsHighlightsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitSportsHighlightsJobResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSportsHighlightsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitSportsHighlightsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSportsHighlightsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSportsHighlightsJobResponse) SetHeaders(v map[string]*string) *SubmitSportsHighlightsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSportsHighlightsJobResponse) SetStatusCode(v int32) *SubmitSportsHighlightsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitSportsHighlightsJobResponse) SetBody(v *SubmitSportsHighlightsJobResponseBody) *SubmitSportsHighlightsJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitStandardCustomizedVoiceJobRequest struct {
 	// example:
 	//
@@ -66237,6 +66346,80 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSnapshotJobResponse{}
 	_body, _err := client.SubmitSnapshotJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发起体育集锦任务
+//
+// @param request - SubmitSportsHighlightsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSportsHighlightsJobResponse
+func (client *Client) SubmitSportsHighlightsJobWithOptions(request *SubmitSportsHighlightsJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSportsHighlightsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		body["InputConfig"] = request.InputConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSportsHighlightsJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitSportsHighlightsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发起体育集锦任务
+//
+// @param request - SubmitSportsHighlightsJobRequest
+//
+// @return SubmitSportsHighlightsJobResponse
+func (client *Client) SubmitSportsHighlightsJob(request *SubmitSportsHighlightsJobRequest) (_result *SubmitSportsHighlightsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSportsHighlightsJobResponse{}
+	_body, _err := client.SubmitSportsHighlightsJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
