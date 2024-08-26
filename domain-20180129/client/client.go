@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,20 @@ import (
 )
 
 type AcknowledgeTaskResultRequest struct {
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2659c29493e94416b297a7691340ccc4
 	TaskDetailNo []*string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty" type:"Repeated"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s AcknowledgeTaskResultRequest) String() string {
@@ -42,8 +50,14 @@ func (s *AcknowledgeTaskResultRequest) SetUserClientIp(v string) *AcknowledgeTas
 }
 
 type AcknowledgeTaskResultResponseBody struct {
+	// example:
+	//
+	// D6CB3623-4726-4947-AC2B-2C6E673B447C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 1
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s AcknowledgeTaskResultResponseBody) String() string {
@@ -94,8 +108,19 @@ func (s *AcknowledgeTaskResultResponse) SetBody(v *AcknowledgeTaskResultResponse
 }
 
 type BatchFuzzyMatchDomainSensitiveWordRequest struct {
-	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com,aliyundoc.com
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -123,6 +148,9 @@ func (s *BatchFuzzyMatchDomainSensitiveWordRequest) SetUserClientIp(v string) *B
 }
 
 type BatchFuzzyMatchDomainSensitiveWordResponseBody struct {
+	// example:
+	//
+	// C560A803-B975-481D-A66B-A4395EA863A1
 	RequestId                    *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SensitiveWordMatchResultList *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultList `json:"SensitiveWordMatchResultList,omitempty" xml:"SensitiveWordMatchResultList,omitempty" type:"Struct"`
 }
@@ -163,7 +191,13 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultL
 }
 
 type BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultListSensitiveWordMatchResult struct {
-	Exist               *bool                                                                                                                  `json:"Exist,omitempty" xml:"Exist,omitempty"`
+	// example:
+	//
+	// true
+	Exist *bool `json:"Exist,omitempty" xml:"Exist,omitempty"`
+	// example:
+	//
+	// example.com,aliyundoc.com
 	Keyword             *string                                                                                                                `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	MatchedSentiveWords *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultListSensitiveWordMatchResultMatchedSentiveWords `json:"MatchedSentiveWords,omitempty" xml:"MatchedSentiveWords,omitempty" type:"Struct"`
 }
@@ -209,6 +243,9 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultL
 }
 
 type BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultListSensitiveWordMatchResultMatchedSentiveWordsMatchedSensitiveWord struct {
+	// example:
+	//
+	// xxx
 	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
@@ -257,19 +294,41 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponse) SetBody(v *BatchFuzzyMatchD
 type CancelDomainVerificationRequest struct {
 	// The action type. Valid values:
 	//
-	// *   **DOMAINAUDIT**: review a domain name review.
-	// *   **AUDITCONTACT**: review a contact.
+	// 	- **DOMAINAUDIT**: review a domain name review.
+	//
+	// 	- **AUDITCONTACT**: review a contact.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AUDITCONTACT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// Thee instance ID of the domain name. You can call the [QueryDomainList](~~67712~~) operation to query the instance ID.
+	// Thee instance ID of the domain name. You can call the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) operation to query the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S2019270W570xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   **zh**: Chinese.
-	// *   **en**: English.
+	// 	- **zh**: Chinese.
+	//
+	// 	- **en**: English.
 	//
 	// Default value: **en**.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The IP address of the client. Set the value to **127.0.0.1**.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -303,6 +362,10 @@ func (s *CancelDomainVerificationRequest) SetUserClientIp(v string) *CancelDomai
 
 type CancelDomainVerificationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0AC0AF67-D303-4EB9-B20E-B4D4B2C3F97B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -349,8 +412,16 @@ func (s *CancelDomainVerificationResponse) SetBody(v *CancelDomainVerificationRe
 }
 
 type CancelOperationAuditRequest struct {
-	AuditRecordId *int64  `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AuditRecordId *int64 `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s CancelOperationAuditRequest) String() string {
@@ -372,6 +443,9 @@ func (s *CancelOperationAuditRequest) SetLang(v string) *CancelOperationAuditReq
 }
 
 type CancelOperationAuditResponseBody struct {
+	// example:
+	//
+	// 9KFCF6F8-243C-40EC-8035-4B12KKFD7D90
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -418,10 +492,26 @@ func (s *CancelOperationAuditResponse) SetBody(v *CancelOperationAuditResponseBo
 }
 
 type CancelQualificationVerificationRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20181*****85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// knet
 	QualificationType *string `json:"QualificationType,omitempty" xml:"QualificationType,omitempty"`
-	UserClientIp      *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s CancelQualificationVerificationRequest) String() string {
@@ -453,6 +543,9 @@ func (s *CancelQualificationVerificationRequest) SetUserClientIp(v string) *Canc
 }
 
 type CancelQualificationVerificationResponseBody struct {
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -499,8 +592,19 @@ func (s *CancelQualificationVerificationResponse) SetBody(v *CancelQualification
 }
 
 type CancelTaskRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TaskNo       *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7f217ae0-61f5-42e2-a1c3-42bad0124****
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -528,6 +632,9 @@ func (s *CancelTaskRequest) SetUserClientIp(v string) *CancelTaskRequest {
 }
 
 type CancelTaskResponseBody struct {
+	// example:
+	//
+	// 010E55C9-C64C-4C85-9BB2-7C225ADA6C86
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -574,11 +681,30 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 }
 
 type ChangeResourceGroupRequest struct {
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aek2tcx7os7bkmq
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	UserClientIp       *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20227H17A561968
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Domain
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -615,8 +741,14 @@ func (s *ChangeResourceGroupRequest) SetUserClientIp(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// example:
+	//
+	// 4EA05A10-D4BC-47EA-AD9E-370A46BB4FB9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ChangeResourceGroupResponseBody) String() string {
@@ -667,11 +799,28 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CheckDomainRequest struct {
-	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FeeCommand  *string `json:"FeeCommand,omitempty" xml:"FeeCommand,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test**.xin
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// create
+	FeeCommand *string `json:"FeeCommand,omitempty" xml:"FeeCommand,omitempty"`
+	// example:
+	//
+	// USD
 	FeeCurrency *string `json:"FeeCurrency,omitempty" xml:"FeeCurrency,omitempty"`
-	FeePeriod   *int32  `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	FeePeriod *int32 `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s CheckDomainRequest) String() string {
@@ -708,13 +857,35 @@ func (s *CheckDomainRequest) SetLang(v string) *CheckDomainRequest {
 }
 
 type CheckDomainResponseBody struct {
-	Avail        *string `json:"Avail,omitempty" xml:"Avail,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DynamicCheck *bool   `json:"DynamicCheck,omitempty" xml:"DynamicCheck,omitempty"`
-	Premium      *string `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	Price        *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Avail *string `json:"Avail,omitempty" xml:"Avail,omitempty"`
+	// example:
+	//
+	// test**.xin
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// true
+	DynamicCheck *bool `json:"DynamicCheck,omitempty" xml:"DynamicCheck,omitempty"`
+	// example:
+	//
+	// true
+	Premium *string `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// 1286
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// In use
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// BA7A4FD4-EB9A-4A20-BB0C-9AEB15634DC1
+	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StaticPriceInfo *CheckDomainResponseBodyStaticPriceInfo `json:"StaticPriceInfo,omitempty" xml:"StaticPriceInfo,omitempty" type:"Struct"`
 }
 
 func (s CheckDomainResponseBody) String() string {
@@ -760,6 +931,57 @@ func (s *CheckDomainResponseBody) SetRequestId(v string) *CheckDomainResponseBod
 	return s
 }
 
+func (s *CheckDomainResponseBody) SetStaticPriceInfo(v *CheckDomainResponseBodyStaticPriceInfo) *CheckDomainResponseBody {
+	s.StaticPriceInfo = v
+	return s
+}
+
+type CheckDomainResponseBodyStaticPriceInfo struct {
+	PriceInfo []*CheckDomainResponseBodyStaticPriceInfoPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Repeated"`
+}
+
+func (s CheckDomainResponseBodyStaticPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDomainResponseBodyStaticPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDomainResponseBodyStaticPriceInfo) SetPriceInfo(v []*CheckDomainResponseBodyStaticPriceInfoPriceInfo) *CheckDomainResponseBodyStaticPriceInfo {
+	s.PriceInfo = v
+	return s
+}
+
+type CheckDomainResponseBodyStaticPriceInfoPriceInfo struct {
+	Action *string  `json:"action,omitempty" xml:"action,omitempty"`
+	Money  *float64 `json:"money,omitempty" xml:"money,omitempty"`
+	Period *int64   `json:"period,omitempty" xml:"period,omitempty"`
+}
+
+func (s CheckDomainResponseBodyStaticPriceInfoPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDomainResponseBodyStaticPriceInfoPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDomainResponseBodyStaticPriceInfoPriceInfo) SetAction(v string) *CheckDomainResponseBodyStaticPriceInfoPriceInfo {
+	s.Action = &v
+	return s
+}
+
+func (s *CheckDomainResponseBodyStaticPriceInfoPriceInfo) SetMoney(v float64) *CheckDomainResponseBodyStaticPriceInfoPriceInfo {
+	s.Money = &v
+	return s
+}
+
+func (s *CheckDomainResponseBodyStaticPriceInfoPriceInfo) SetPeriod(v int64) *CheckDomainResponseBodyStaticPriceInfoPriceInfo {
+	s.Period = &v
+	return s
+}
+
 type CheckDomainResponse struct {
 	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -790,8 +1012,19 @@ func (s *CheckDomainResponse) SetBody(v *CheckDomainResponseBody) *CheckDomainRe
 }
 
 type CheckDomainSunriseClaimRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -819,9 +1052,18 @@ func (s *CheckDomainSunriseClaimRequest) SetUserClientIp(v string) *CheckDomainS
 }
 
 type CheckDomainSunriseClaimResponseBody struct {
-	ClaimKey  *string `json:"ClaimKey,omitempty" xml:"ClaimKey,omitempty"`
+	// example:
+	//
+	// 2017092100/8/2/1/kDfu9htHGEx_y-LJ3XSlKMZ70000020001
+	ClaimKey *string `json:"ClaimKey,omitempty" xml:"ClaimKey,omitempty"`
+	// example:
+	//
+	// BA7A4FD4-EB9A-4A20-BB0C-9AEB15634DC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 1
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CheckDomainSunriseClaimResponseBody) String() string {
@@ -877,9 +1119,25 @@ func (s *CheckDomainSunriseClaimResponse) SetBody(v *CheckDomainSunriseClaimResp
 }
 
 type CheckMaxYearOfServerLockRequest struct {
-	CheckAction  *string `json:"CheckAction,omitempty" xml:"CheckAction,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// activate
+	CheckAction *string `json:"CheckAction,omitempty" xml:"CheckAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -912,7 +1170,13 @@ func (s *CheckMaxYearOfServerLockRequest) SetUserClientIp(v string) *CheckMaxYea
 }
 
 type CheckMaxYearOfServerLockResponseBody struct {
-	MaxYear   *int32  `json:"MaxYear,omitempty" xml:"MaxYear,omitempty"`
+	// example:
+	//
+	// 10
+	MaxYear *int32 `json:"MaxYear,omitempty" xml:"MaxYear,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -964,9 +1228,23 @@ func (s *CheckMaxYearOfServerLockResponse) SetBody(v *CheckMaxYearOfServerLockRe
 }
 
 type CheckProcessingServerLockApplyRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FeePeriod    *int32  `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 1
+	FeePeriod *int32 `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -999,7 +1277,13 @@ func (s *CheckProcessingServerLockApplyRequest) SetUserClientIp(v string) *Check
 }
 
 type CheckProcessingServerLockApplyResponseBody struct {
-	Exists    *bool   `json:"Exists,omitempty" xml:"Exists,omitempty"`
+	// example:
+	//
+	// true
+	Exists *bool `json:"Exists,omitempty" xml:"Exists,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1051,10 +1335,24 @@ func (s *CheckProcessingServerLockApplyResponse) SetBody(v *CheckProcessingServe
 }
 
 type CheckTransferInFeasibilityRequest struct {
-	DomainName                *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// test
 	TransferAuthorizationCode *string `json:"TransferAuthorizationCode,omitempty" xml:"TransferAuthorizationCode,omitempty"`
-	UserClientIp              *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s CheckTransferInFeasibilityRequest) String() string {
@@ -1086,11 +1384,26 @@ func (s *CheckTransferInFeasibilityRequest) SetUserClientIp(v string) *CheckTran
 }
 
 type CheckTransferInFeasibilityResponseBody struct {
-	CanTransfer *bool   `json:"CanTransfer,omitempty" xml:"CanTransfer,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	CanTransfer *bool `json:"CanTransfer,omitempty" xml:"CanTransfer,omitempty"`
+	// example:
+	//
+	// CheckTransferResult.DomainTransferProhibited
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// This domain name is in transfer prohibited status, so it cannot be transferred. You can contact your original registrar to change its status.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2a
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// FC0D6B89-2353-4D64-BD80-6606A7DBD7C1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckTransferInFeasibilityResponseBody) String() string {
@@ -1156,10 +1469,26 @@ func (s *CheckTransferInFeasibilityResponse) SetBody(v *CheckTransferInFeasibili
 }
 
 type ConfirmTransferInEmailRequest struct {
-	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Email        *string   `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test@test.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s ConfirmTransferInEmailRequest) String() string {
@@ -1191,7 +1520,10 @@ func (s *ConfirmTransferInEmailRequest) SetUserClientIp(v string) *ConfirmTransf
 }
 
 type ConfirmTransferInEmailResponseBody struct {
-	FailList    *ConfirmTransferInEmailResponseBodyFailList    `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Struct"`
+	FailList *ConfirmTransferInEmailResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuccessList *ConfirmTransferInEmailResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Struct"`
 }
@@ -1283,8 +1615,12 @@ func (s *ConfirmTransferInEmailResponse) SetBody(v *ConfirmTransferInEmailRespon
 }
 
 type DeleteContactTemplatesRequest struct {
+	// This parameter is required.
 	RegistrantProfileIds *string `json:"RegistrantProfileIds,omitempty" xml:"RegistrantProfileIds,omitempty"`
-	UserClientIp         *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s DeleteContactTemplatesRequest) String() string {
@@ -1306,6 +1642,9 @@ func (s *DeleteContactTemplatesRequest) SetUserClientIp(v string) *DeleteContact
 }
 
 type DeleteContactTemplatesResponseBody struct {
+	// example:
+	//
+	// 4D73432C-7600-4779-ACBB-C3B5CA145D32
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1352,9 +1691,20 @@ func (s *DeleteContactTemplatesResponse) SetBody(v *DeleteContactTemplatesRespon
 }
 
 type DeleteDomainGroupRequest struct {
-	DomainGroupId *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp  *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s DeleteDomainGroupRequest) String() string {
@@ -1381,6 +1731,9 @@ func (s *DeleteDomainGroupRequest) SetUserClientIp(v string) *DeleteDomainGroupR
 }
 
 type DeleteDomainGroupResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1427,8 +1780,19 @@ func (s *DeleteDomainGroupResponse) SetBody(v *DeleteDomainGroupResponseBody) *D
 }
 
 type DeleteEmailVerificationRequest struct {
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test1@aliyun.com,test2@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -1456,7 +1820,10 @@ func (s *DeleteEmailVerificationRequest) SetUserClientIp(v string) *DeleteEmailV
 }
 
 type DeleteEmailVerificationResponseBody struct {
-	FailList    []*DeleteEmailVerificationResponseBodyFailList    `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	FailList []*DeleteEmailVerificationResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7A3D0E4A-0D4B-4BD0-90D7-A61DF8DD26AE
 	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuccessList []*DeleteEmailVerificationResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Repeated"`
 }
@@ -1485,8 +1852,17 @@ func (s *DeleteEmailVerificationResponseBody) SetSuccessList(v []*DeleteEmailVer
 }
 
 type DeleteEmailVerificationResponseBodyFailList struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// ParameterIllegall
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// test1@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// Parameter error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -1514,8 +1890,17 @@ func (s *DeleteEmailVerificationResponseBodyFailList) SetMessage(v string) *Dele
 }
 
 type DeleteEmailVerificationResponseBodySuccessList struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// test2@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -1572,9 +1957,20 @@ func (s *DeleteEmailVerificationResponse) SetBody(v *DeleteEmailVerificationResp
 }
 
 type DeleteRegistrantProfileRequest struct {
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3600000
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s DeleteRegistrantProfileRequest) String() string {
@@ -1601,6 +1997,9 @@ func (s *DeleteRegistrantProfileRequest) SetUserClientIp(v string) *DeleteRegist
 }
 
 type DeleteRegistrantProfileResponseBody struct {
+	// example:
+	//
+	// C50E41A0-09F1-4491-8DB8-AF55BD2D0CC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1648,8 +2047,18 @@ func (s *DeleteRegistrantProfileResponse) SetBody(v *DeleteRegistrantProfileResp
 
 type DomainSpecialBizCancelRequest struct {
 	// The business ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3666
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -1673,28 +2082,68 @@ func (s *DomainSpecialBizCancelRequest) SetUserClientIp(v string) *DomainSpecial
 
 type DomainSpecialBizCancelResponseBody struct {
 	// Indicates whether retries are allowed.
+	//
+	// example:
+	//
+	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
 	// The name of the application for which the error code is returned.
+	//
+	// example:
+	//
+	// test-com
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The dynamic error code.
+	//
+	// example:
+	//
+	// -
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message.
+	//
+	// example:
+	//
+	// -
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The array of error parameters that are returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// 110001
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The HTTP status code that is directly returned.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned data.
+	//
+	// example:
+	//
+	// -
 	Module interface{} `json:"Module,omitempty" xml:"Module,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 096DCF79-A89A-5CED-B7DE-1B04761023B9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values: true and false.
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates whether to perform synchronous processing.
+	//
+	// example:
+	//
+	// True
 	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -1796,8 +2245,19 @@ func (s *DomainSpecialBizCancelResponse) SetBody(v *DomainSpecialBizCancelRespon
 }
 
 type EmailVerifiedRequest struct {
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -1825,6 +2285,9 @@ func (s *EmailVerifiedRequest) SetUserClientIp(v string) *EmailVerifiedRequest {
 }
 
 type EmailVerifiedResponseBody struct {
+	// example:
+	//
+	// BF014B60-C708-4253-B5F2-3F9B493F398B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1871,8 +2334,19 @@ func (s *EmailVerifiedResponse) SetBody(v *EmailVerifiedResponseBody) *EmailVeri
 }
 
 type FuzzyMatchDomainSensitiveWordRequest struct {
-	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx**.cn
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -1900,10 +2374,19 @@ func (s *FuzzyMatchDomainSensitiveWordRequest) SetUserClientIp(v string) *FuzzyM
 }
 
 type FuzzyMatchDomainSensitiveWordResponseBody struct {
-	Exist               *bool                                                         `json:"Exist,omitempty" xml:"Exist,omitempty"`
+	// example:
+	//
+	// true
+	Exist *bool `json:"Exist,omitempty" xml:"Exist,omitempty"`
+	// example:
+	//
+	// xxx**.cn
 	Keyword             *string                                                       `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	MatchedSentiveWords *FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWords `json:"MatchedSentiveWords,omitempty" xml:"MatchedSentiveWords,omitempty" type:"Struct"`
-	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// D15F91FD-0B34-4E48-8CBF-EFA5D2A31586
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s FuzzyMatchDomainSensitiveWordResponseBody) String() string {
@@ -1952,6 +2435,9 @@ func (s *FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWords) SetMatche
 }
 
 type FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWordsMatchedSensitiveWord struct {
+	// example:
+	//
+	// xxx
 	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
@@ -1998,8 +2484,16 @@ func (s *FuzzyMatchDomainSensitiveWordResponse) SetBody(v *FuzzyMatchDomainSensi
 }
 
 type GetOperationOssUploadPolicyRequest struct {
-	AuditType *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s GetOperationOssUploadPolicyRequest) String() string {
@@ -2021,13 +2515,35 @@ func (s *GetOperationOssUploadPolicyRequest) SetLang(v string) *GetOperationOssU
 }
 
 type GetOperationOssUploadPolicyResponseBody struct {
-	Accessid      *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
+	// example:
+	//
+	// hObpgEXoca42****
+	Accessid *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAaMC0wNy0wMlQxKToyMDoxMS44ODRaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsNTI0Mjg4MDBdLFsic3RhcnRzLXdpdGgiLCIka2V5IiwiMTIxOTU0MTE2MTIxMzA1Ny9PRkZMSU5FX1RSQU5TRkVSLzE1OTM2ODg1MTE4ODMi****
 	EncodedPolicy *string `json:"EncodedPolicy,omitempty" xml:"EncodedPolicy,omitempty"`
-	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FileDir       *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
+	// example:
+	//
+	// 1593688811881
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1219541161213157/OFFLINE_TRANSFER/159368851****
+	FileDir *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
 	// OSS Endpoint。
-	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	//
+	// example:
+	//
+	// //***-basic-cert.oss-cn-***.aliyuncs.com/
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-40EC-8035-4B12FEFD7D011
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// pNVECGkyL0tl4bKXekV5ErZ****
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
@@ -2104,7 +2620,13 @@ func (s *GetOperationOssUploadPolicyResponse) SetBody(v *GetOperationOssUploadPo
 }
 
 type GetQualificationUploadPolicyRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -2127,13 +2649,37 @@ func (s *GetQualificationUploadPolicyRequest) SetUserClientIp(v string) *GetQual
 }
 
 type GetQualificationUploadPolicyResponseBody struct {
-	Accessid  *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
-	Dir       *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Prefix    *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// example:
+	//
+	// hObpgEXoca42****
+	Accessid *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
+	// example:
+	//
+	// 20211220/131953297274****_4de3db85-4f98-488d-845b-d75bf035b13d
+	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	// example:
+	//
+	// 1593688811881
+	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// example:
+	//
+	// https://********-review.oss-cn-********.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAaMC0wNy0wMlQxKToyMDoxMS44ODRaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsNTI0Mjg4MDBdLFsic3RhcnRzLXdpdGgiLCIka2V5IiwiMTIxOTU0MTE2MTIxMzA1Ny9PRkZMSU5FX1RSQU5TRkVSLzE1OTM2ODg1MTE4ODMi****
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 20211220/131953297274****_4de3db85-4f98-488d-845b-d75bf035b13d_${filename}
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// pNVECGkyL0tl4bKXekV5ErZ****
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
@@ -2215,14 +2761,38 @@ func (s *GetQualificationUploadPolicyResponse) SetBody(v *GetQualificationUpload
 }
 
 type ListEmailVerificationRequest struct {
-	BeginCreateTime    *int64  `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
-	Email              *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EndCreateTime      *int64  `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum            *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserClientIp       *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	VerificationStatus *int32  `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	BeginCreateTime *int64 `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 500
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 1
+	VerificationStatus *int32 `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
 }
 
 func (s ListEmailVerificationRequest) String() string {
@@ -2274,14 +2844,35 @@ func (s *ListEmailVerificationRequest) SetVerificationStatus(v int32) *ListEmail
 }
 
 type ListEmailVerificationResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                                   `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*ListEmailVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	NextPage       *bool                                    `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                                    `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                                   `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                   `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// false
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 500
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// 78C60CC3-FF0A-44E2-989A-DDE0597791C3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListEmailVerificationResponseBody) String() string {
@@ -2333,16 +2924,46 @@ func (s *ListEmailVerificationResponseBody) SetTotalPageNum(v int32) *ListEmailV
 }
 
 type ListEmailVerificationResponseBodyData struct {
-	ConfirmIp           *string `json:"ConfirmIp,omitempty" xml:"ConfirmIp,omitempty"`
-	Email               *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	ConfirmIp *string `json:"ConfirmIp,omitempty" xml:"ConfirmIp,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 00000a21fd374da99d9c95b48500000
 	EmailVerificationNo *string `json:"EmailVerificationNo,omitempty" xml:"EmailVerificationNo,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	SendIp              *string `json:"SendIp,omitempty" xml:"SendIp,omitempty"`
-	TokenSendTime       *string `json:"TokenSendTime,omitempty" xml:"TokenSendTime,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VerificationStatus  *int32  `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
-	VerificationTime    *string `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
+	// example:
+	//
+	// 2017-12-25 03:38:46
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2017-12-25 03:41:11
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	SendIp *string `json:"SendIp,omitempty" xml:"SendIp,omitempty"`
+	// example:
+	//
+	// 2017-12-25 03:38:46
+	TokenSendTime *string `json:"TokenSendTime,omitempty" xml:"TokenSendTime,omitempty"`
+	// example:
+	//
+	// 0000
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1
+	VerificationStatus *int32 `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+	// example:
+	//
+	// 2017-12-25 03:41:11
+	VerificationTime *string `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
 }
 
 func (s ListEmailVerificationResponseBodyData) String() string {
@@ -2434,43 +3055,98 @@ func (s *ListEmailVerificationResponse) SetBody(v *ListEmailVerificationResponse
 
 type ListServerLockRequest struct {
 	// The start of the time range to query.
+	//
+	// example:
+	//
+	// 2021-07-10 17:37:36
 	BeginStartDate *int64 `json:"BeginStartDate,omitempty" xml:"BeginStartDate,omitempty"`
 	// The domain name for which you want to query the enabled registry lock.
+	//
+	// example:
+	//
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end of the expiration time.
+	//
+	// example:
+	//
+	// 2021-07-10 17:37:36
 	EndExpireDate *int64 `json:"EndExpireDate,omitempty" xml:"EndExpireDate,omitempty"`
 	// The end of the time range to query.
+	//
+	// example:
+	//
+	// 2020-07-10 17:37:36
 	EndStartDate *int64 `json:"EndStartDate,omitempty" xml:"EndStartDate,omitempty"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   zh: Chinese
-	// *   en: English
+	// 	- zh: Chinese
+	//
+	// 	- en: English
 	//
 	// Default value: en.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the product to which the domain name with the registry lock enabled belongs.
+	//
+	// example:
+	//
+	// 1807**
 	LockProductId *string `json:"LockProductId,omitempty" xml:"LockProductId,omitempty"`
 	// The field that you use to sort the query results.
 	//
 	// Valid values:
 	//
-	// *   EXPIRE_DATE
+	// 	- EXPIRE_DATE
+	//
+	// example:
+	//
+	// EXPIRE_DATE
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The order of the information based on which you want to sort the domain names, such as the registration date and expiration date. Valid values: ASC and DESC. The value ASC specifies the ascending order. The value DESC specifies the descending order. If this parameter is not configured, the default value DESC is used.
+	//
+	// example:
+	//
+	// DESC
 	OrderByType *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the registry lock. Valid values:
 	//
-	// *   1: The registry lock is not enabled.
-	// *   2: The registry lock is enabled.
-	// *   3: The registry lock is disabled.
+	// 	- 1: The registry lock is not enabled.
+	//
+	// 	- 2: The registry lock is enabled.
+	//
+	// 	- 3: The registry lock is disabled.
+	//
+	// example:
+	//
+	// 1
 	ServerLockStatus *int32 `json:"ServerLockStatus,omitempty" xml:"ServerLockStatus,omitempty"`
 	// The start of the expiration time.
+	//
+	// example:
+	//
+	// 2020-07-10 17:37:36
 	StartExpireDate *int64 `json:"StartExpireDate,omitempty" xml:"StartExpireDate,omitempty"`
 	// The IP address of the client. For example, you can set the value to **127.0.0.1**.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -2549,20 +3225,48 @@ func (s *ListServerLockRequest) SetUserClientIp(v string) *ListServerLockRequest
 
 type ListServerLockResponseBody struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 0
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	// The response parameters.
 	Data []*ListServerLockResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether the current page is followed by a page.
+	//
+	// example:
+	//
+	// false
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates whether the current page is preceded by a page.
+	//
+	// example:
+	//
+	// false
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
 	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
 	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
@@ -2616,24 +3320,64 @@ func (s *ListServerLockResponseBody) SetTotalPageNum(v int32) *ListServerLockRes
 
 type ListServerLockResponseBodyData struct {
 	// The instance ID of the domain name.
+	//
+	// example:
+	//
+	// S20190N1DAI4****
 	DomainInstanceId *string `json:"DomainInstanceId,omitempty" xml:"DomainInstanceId,omitempty"`
 	// The domain name that has valid registry lock information.
+	//
+	// example:
+	//
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The expiration time.
+	//
+	// example:
+	//
+	// 2030-07-10 17:37:36
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2020-02-19 16:38:07
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the domain name was last modified.
+	//
+	// example:
+	//
+	// 2022-02-19 16:40:38
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The instance ID of the domain name for which the registry lock is enabled.
+	//
+	// example:
+	//
+	// S2021591IQ28****
 	LockInstanceId *string `json:"LockInstanceId,omitempty" xml:"LockInstanceId,omitempty"`
 	// The ID of the product to which the domain name with the registry lock enabled belongs.
+	//
+	// example:
+	//
+	// 1807**
 	LockProductId *string `json:"LockProductId,omitempty" xml:"LockProductId,omitempty"`
 	// The status of the registry lock.
+	//
+	// example:
+	//
+	// 2
 	ServerLockStatus *string `json:"ServerLockStatus,omitempty" xml:"ServerLockStatus,omitempty"`
 	// The start time.
+	//
+	// example:
+	//
+	// 2021-07-10 17:37:36
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 121000000****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2725,8 +3469,19 @@ func (s *ListServerLockResponse) SetBody(v *ListServerLockResponseBody) *ListSer
 }
 
 type LookupTmchNoticeRequest struct {
-	ClaimKey     *string `json:"ClaimKey,omitempty" xml:"ClaimKey,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2017092100/8/2/1/kDfu9htHGEx_y-LJ3XSlKMZ70000020001
+	ClaimKey *string `json:"ClaimKey,omitempty" xml:"ClaimKey,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -2754,12 +3509,27 @@ func (s *LookupTmchNoticeRequest) SetUserClientIp(v string) *LookupTmchNoticeReq
 }
 
 type LookupTmchNoticeResponseBody struct {
-	Claims    *LookupTmchNoticeResponseBodyClaims `json:"Claims,omitempty" xml:"Claims,omitempty" type:"Struct"`
-	Id        *int64                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Label     *string                             `json:"Label,omitempty" xml:"Label,omitempty"`
-	NotAfter  *string                             `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	NotBefore *string                             `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Claims *LookupTmchNoticeResponseBodyClaims `json:"Claims,omitempty" xml:"Claims,omitempty" type:"Struct"`
+	// example:
+	//
+	// 586608000000
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// noted
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// 2018-10-15T00:00:00.0Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2018-10-13T00:00:00.0Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// 01C10C8E-0468-468C-BCD9-E709BDD0AE8F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBody) String() string {
@@ -2818,12 +3588,18 @@ func (s *LookupTmchNoticeResponseBodyClaims) SetClaim(v []*LookupTmchNoticeRespo
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaim struct {
-	ClassDescs       *LookupTmchNoticeResponseBodyClaimsClaimClassDescs `json:"ClassDescs,omitempty" xml:"ClassDescs,omitempty" type:"Struct"`
-	Contacts         *LookupTmchNoticeResponseBodyClaimsClaimContacts   `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	GoodsAndServices *string                                            `json:"GoodsAndServices,omitempty" xml:"GoodsAndServices,omitempty"`
-	Holders          *LookupTmchNoticeResponseBodyClaimsClaimHolders    `json:"Holders,omitempty" xml:"Holders,omitempty" type:"Struct"`
-	JurDesc          *LookupTmchNoticeResponseBodyClaimsClaimJurDesc    `json:"JurDesc,omitempty" xml:"JurDesc,omitempty" type:"Struct"`
-	MarkName         *string                                            `json:"MarkName,omitempty" xml:"MarkName,omitempty"`
+	ClassDescs *LookupTmchNoticeResponseBodyClaimsClaimClassDescs `json:"ClassDescs,omitempty" xml:"ClassDescs,omitempty" type:"Struct"`
+	Contacts   *LookupTmchNoticeResponseBodyClaimsClaimContacts   `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
+	// example:
+	//
+	// Class 9: Calculators; bags, coverings,containers, carriers and holders for mobile phones, personal handheld computers and notebooks; headphones; speakers; blank storage media;batteries. Class 16: Paper
+	GoodsAndServices *string                                         `json:"GoodsAndServices,omitempty" xml:"GoodsAndServices,omitempty"`
+	Holders          *LookupTmchNoticeResponseBodyClaimsClaimHolders `json:"Holders,omitempty" xml:"Holders,omitempty" type:"Struct"`
+	JurDesc          *LookupTmchNoticeResponseBodyClaimsClaimJurDesc `json:"JurDesc,omitempty" xml:"JurDesc,omitempty" type:"Struct"`
+	// example:
+	//
+	// POTED
+	MarkName *string `json:"MarkName,omitempty" xml:"MarkName,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaim) String() string {
@@ -2882,8 +3658,14 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimClassDescs) SetClassDesc(v []*Lo
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimClassDescsClassDesc struct {
-	ClassNum *int32  `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
-	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// example:
+	//
+	// 18
+	ClassNum *int32 `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
+	// example:
+	//
+	// New Zealand
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaimClassDescsClassDesc) String() string {
@@ -2922,13 +3704,31 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimContacts) SetContact(v []*Lookup
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimContactsContact struct {
-	Addr  *LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
-	Email *string                                                     `json:"Email,omitempty" xml:"Email,omitempty"`
-	Fax   *string                                                     `json:"Fax,omitempty" xml:"Fax,omitempty"`
-	Name  *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	Org   *string                                                     `json:"Org,omitempty" xml:"Org,omitempty"`
-	Type  *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
-	Voice *string                                                     `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Addr *LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 4472335**8
+	Fax *string `json:"Fax,omitempty" xml:"Fax,omitempty"`
+	// example:
+	//
+	// Tom
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Tom
+	Org *string `json:"Org,omitempty" xml:"Org,omitempty"`
+	// example:
+	//
+	// agent
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1390000****
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaimContactsContact) String() string {
@@ -2975,9 +3775,21 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimContactsContact) SetVoice(v stri
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddr struct {
-	Cc     *string                                                           `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	City   *string                                                           `json:"City,omitempty" xml:"City,omitempty"`
-	Pc     *string                                                           `json:"Pc,omitempty" xml:"Pc,omitempty"`
+	// example:
+	//
+	// NZ
+	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
+	// example:
+	//
+	// Auckland
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// 1010
+	Pc *string `json:"Pc,omitempty" xml:"Pc,omitempty"`
+	// example:
+	//
+	// Auckland
 	Sp     *string                                                           `json:"Sp,omitempty" xml:"Sp,omitempty"`
 	Street *LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddrStreet `json:"Street,omitempty" xml:"Street,omitempty" type:"Struct"`
 }
@@ -3050,9 +3862,15 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimHolders) SetHolder(v []*LookupTm
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimHoldersHolder struct {
-	Addr        *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
-	Entitlement *string                                                   `json:"Entitlement,omitempty" xml:"Entitlement,omitempty"`
-	Org         *string                                                   `json:"Org,omitempty" xml:"Org,omitempty"`
+	Addr *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
+	// example:
+	//
+	// owner
+	Entitlement *string `json:"Entitlement,omitempty" xml:"Entitlement,omitempty"`
+	// example:
+	//
+	// Whitcoulls 2011 Limited
+	Org *string `json:"Org,omitempty" xml:"Org,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaimHoldersHolder) String() string {
@@ -3079,9 +3897,21 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolder) SetOrg(v string) 
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddr struct {
-	Cc     *string                                                         `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	City   *string                                                         `json:"City,omitempty" xml:"City,omitempty"`
-	Pc     *string                                                         `json:"Pc,omitempty" xml:"Pc,omitempty"`
+	// example:
+	//
+	// NZ
+	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
+	// example:
+	//
+	// Wellington
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// 6011
+	Pc *string `json:"Pc,omitempty" xml:"Pc,omitempty"`
+	// example:
+	//
+	// Wellington
 	Sp     *string                                                         `json:"Sp,omitempty" xml:"Sp,omitempty"`
 	Street *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddrStreet `json:"Street,omitempty" xml:"Street,omitempty" type:"Struct"`
 }
@@ -3137,7 +3967,13 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddrStreet) SetStre
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimJurDesc struct {
-	Desc  *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// example:
+	//
+	// New Zealand
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// example:
+	//
+	// NZ
 	JurCC *string `json:"JurCC,omitempty" xml:"JurCC,omitempty"`
 }
 
@@ -3189,14 +4025,42 @@ func (s *LookupTmchNoticeResponse) SetBody(v *LookupTmchNoticeResponseBody) *Loo
 }
 
 type PollTaskResultRequest struct {
-	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskNo           *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskResultStatus *int32  `json:"TaskResultStatus,omitempty" xml:"TaskResultStatus,omitempty"`
-	UserClientIp     *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// S20181T0WLI85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 2
+	TaskResultStatus *int32 `json:"TaskResultStatus,omitempty" xml:"TaskResultStatus,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s PollTaskResultRequest) String() string {
@@ -3248,14 +4112,35 @@ func (s *PollTaskResultRequest) SetUserClientIp(v string) *PollTaskResultRequest
 }
 
 type PollTaskResultResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                          `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *PollTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                           `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                           `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                          `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                          `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// false
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// E879DC07-38EE-4408-9F33-73B30CD965CD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s PollTaskResultResponseBody) String() string {
@@ -3324,19 +4209,55 @@ func (s *PollTaskResultResponseBodyData) SetTaskDetail(v []*PollTaskResultRespon
 }
 
 type PollTaskResultResponseBodyDataTaskDetail struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskResult          *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 2018-03-26 15:08:20
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// The operation is successful.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// S201817141000000
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 15fee9d10d514bada66bd08c5723c583
+	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// example:
+	//
+	// b95bc334-f7d8-4f39-8a62-4c4302a243d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// test
+	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	// example:
+	//
+	// EXECUTE_SUCCESS
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 2
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
-	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 0
+	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// example:
+	//
+	// 2018-03-26 15:22:18
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s PollTaskResultResponseBodyDataTaskDetail) String() string {
@@ -3442,34 +4363,120 @@ func (s *PollTaskResultResponse) SetBody(v *PollTaskResultResponseBody) *PollTas
 }
 
 type QueryAdvancedDomainListRequest struct {
-	DomainGroupId         *int64                               `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainNameSort        *bool                                `json:"DomainNameSort,omitempty" xml:"DomainNameSort,omitempty"`
-	DomainStatus          *int32                               `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	EndExpirationDate     *int64                               `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
-	EndLength             *int32                               `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
-	EndRegistrationDate   *int64                               `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
-	Excluded              *string                              `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
-	ExcludedPrefix        *bool                                `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
-	ExcludedSuffix        *bool                                `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
-	ExpirationDateSort    *bool                                `json:"ExpirationDateSort,omitempty" xml:"ExpirationDateSort,omitempty"`
-	Form                  *int32                               `json:"Form,omitempty" xml:"Form,omitempty"`
-	KeyWord               *string                              `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	KeyWordPrefix         *bool                                `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
-	KeyWordSuffix         *bool                                `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
-	Lang                  *string                              `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum               *int32                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize              *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductDomainType     *string                              `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
-	ProductDomainTypeSort *bool                                `json:"ProductDomainTypeSort,omitempty" xml:"ProductDomainTypeSort,omitempty"`
-	RegistrationDateSort  *bool                                `json:"RegistrationDateSort,omitempty" xml:"RegistrationDateSort,omitempty"`
-	ResourceGroupId       *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartExpirationDate   *int64                               `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
-	StartLength           *int32                               `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
-	StartRegistrationDate *int64                               `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
-	Suffixs               *string                              `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
-	Tag                   []*QueryAdvancedDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TradeType             *int32                               `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
-	UserClientIp          *string                              `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// -1
+	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// example:
+	//
+	// false
+	DomainNameSort *bool `json:"DomainNameSort,omitempty" xml:"DomainNameSort,omitempty"`
+	// example:
+	//
+	// 1
+	DomainStatus *int32 `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
+	// example:
+	//
+	// 5
+	EndLength *int32 `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
+	// example:
+	//
+	// test
+	Excluded *string `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
+	// example:
+	//
+	// false
+	ExcludedPrefix *bool `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
+	// example:
+	//
+	// false
+	ExcludedSuffix *bool `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
+	// example:
+	//
+	// false
+	ExpirationDateSort *bool `json:"ExpirationDateSort,omitempty" xml:"ExpirationDateSort,omitempty"`
+	// example:
+	//
+	// 1
+	Form            *int32 `json:"Form,omitempty" xml:"Form,omitempty"`
+	IsPremiumDomain *bool  `json:"IsPremiumDomain,omitempty" xml:"IsPremiumDomain,omitempty"`
+	// example:
+	//
+	// test
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// example:
+	//
+	// false
+	KeyWordPrefix *bool `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
+	// example:
+	//
+	// true
+	KeyWordSuffix *bool `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// gTLD
+	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	// example:
+	//
+	// false
+	ProductDomainTypeSort *bool `json:"ProductDomainTypeSort,omitempty" xml:"ProductDomainTypeSort,omitempty"`
+	// example:
+	//
+	// false
+	RegistrationDateSort *bool `json:"RegistrationDateSort,omitempty" xml:"RegistrationDateSort,omitempty"`
+	// example:
+	//
+	// rg-acfmw6bpc6n7zai
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
+	// example:
+	//
+	// 5
+	StartLength *int32 `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
+	// example:
+	//
+	// com.cn
+	Suffixs *string                              `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
+	Tag     []*QueryAdvancedDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// -1
+	TradeType *int32 `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryAdvancedDomainListRequest) String() string {
@@ -3532,6 +4539,11 @@ func (s *QueryAdvancedDomainListRequest) SetExpirationDateSort(v bool) *QueryAdv
 
 func (s *QueryAdvancedDomainListRequest) SetForm(v int32) *QueryAdvancedDomainListRequest {
 	s.Form = &v
+	return s
+}
+
+func (s *QueryAdvancedDomainListRequest) SetIsPremiumDomain(v bool) *QueryAdvancedDomainListRequest {
+	s.IsPremiumDomain = &v
 	return s
 }
 
@@ -3644,14 +4656,35 @@ func (s *QueryAdvancedDomainListRequestTag) SetValue(v string) *QueryAdvancedDom
 }
 
 type QueryAdvancedDomainListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                                   `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryAdvancedDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                                    `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                                    `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                                   `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                   `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// true
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// D200000-C0B9-4CD3-B92A-9B44A000000
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 549
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 275
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryAdvancedDomainListResponseBody) String() string {
@@ -3720,29 +4753,86 @@ func (s *QueryAdvancedDomainListResponseBodyData) SetDomain(v []*QueryAdvancedDo
 }
 
 type QueryAdvancedDomainListResponseBodyDataDomain struct {
-	DnsList                  *QueryAdvancedDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	DomainAuditStatus        *string                                               `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	DomainGroupId            *string                                               `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName          *string                                               `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	DomainName               *string                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainStatus             *string                                               `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType               *string                                               `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	Email                    *string                                               `json:"Email,omitempty" xml:"Email,omitempty"`
-	ExpirationCurrDateDiff   *int32                                                `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate           *string                                               `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong       *int64                                                `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus     *string                                               `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId               *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                  *bool                                                 `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	ProductId                *string                                               `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegistrantOrganization   *string                                               `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType           *string                                               `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrationDate         *string                                               `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong     *int64                                                `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark                   *string                                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceGroupId          *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                      *QueryAdvancedDomainListResponseBodyDataDomainTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	ZhRegistrantOrganization *string                                               `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	DnsList *QueryAdvancedDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCEED
+	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	// example:
+	//
+	// -1
+	DomainGroupId   *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 5
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// example:
+	//
+	// gTLD
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 356
+	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	// example:
+	//
+	// 2019-04-09 17:07:03
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// example:
+	//
+	// 1554800823000
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// example:
+	//
+	// 1
+	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	// example:
+	//
+	// S20182000000000
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// 2a
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// Tom
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// 2018-04-09 17:07:03
+	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	// example:
+	//
+	// 1523264823000
+	RegistrationDateLong *int64  `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// rg-aek2yyciz557g3q
+	ResourceGroupId *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             *QueryAdvancedDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	// example:
+	//
+	// Tom
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s QueryAdvancedDomainListResponseBodyDataDomain) String() string {
@@ -3955,8 +5045,19 @@ func (s *QueryAdvancedDomainListResponse) SetBody(v *QueryAdvancedDomainListResp
 }
 
 type QueryArtExtensionRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.art
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -3984,17 +5085,50 @@ func (s *QueryArtExtensionRequest) SetUserClientIp(v string) *QueryArtExtensionR
 }
 
 type QueryArtExtensionResponseBody struct {
-	DateOrPeriod            *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
-	Dimensions              *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	Features                *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	// example:
+	//
+	// 2019-10-01
+	DateOrPeriod *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
+	// example:
+	//
+	// 20 cm
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// example:
+	//
+	// iconicity
+	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	// example:
+	//
+	// realism
 	InscriptionsAndMarkings *string `json:"InscriptionsAndMarkings,omitempty" xml:"InscriptionsAndMarkings,omitempty"`
-	Maker                   *string `json:"Maker,omitempty" xml:"Maker,omitempty"`
-	MaterialsAndTechniques  *string `json:"MaterialsAndTechniques,omitempty" xml:"MaterialsAndTechniques,omitempty"`
-	ObjectType              *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	Reference               *string `json:"Reference,omitempty" xml:"Reference,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Subject                 *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Title                   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// zhang san
+	Maker *string `json:"Maker,omitempty" xml:"Maker,omitempty"`
+	// example:
+	//
+	// silk
+	MaterialsAndTechniques *string `json:"MaterialsAndTechniques,omitempty" xml:"MaterialsAndTechniques,omitempty"`
+	// example:
+	//
+	// The embroidery
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// example:
+	//
+	// drawings
+	Reference *string `json:"Reference,omitempty" xml:"Reference,omitempty"`
+	// example:
+	//
+	// 814B2AF0-ED6F-4C13-B41C-8AC0B1023583
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// peace
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// Peace and friendship
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryArtExtensionResponseBody) String() string {
@@ -4090,12 +5224,37 @@ func (s *QueryArtExtensionResponse) SetBody(v *QueryArtExtensionResponseBody) *Q
 }
 
 type QueryChangeLogListRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndDate      *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate    *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4143,15 +5302,39 @@ func (s *QueryChangeLogListRequest) SetUserClientIp(v string) *QueryChangeLogLis
 }
 
 type QueryChangeLogListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                              `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryChangeLogListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                               `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                               `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultLimit    *bool                               `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	TotalItemNum   *int32                              `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                              `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// true
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// 2DEDFF32-7827-46B1-BE90-3DB8ABD91A58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryChangeLogListResponseBody) String() string {
@@ -4225,12 +5408,30 @@ func (s *QueryChangeLogListResponseBodyData) SetChangeLog(v []*QueryChangeLogLis
 }
 
 type QueryChangeLogListResponseBodyDataChangeLog struct {
-	Details            *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Operation          *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// dns1;dns2 -> dns3;dns4
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// DNS modification
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	OperationIPAddress *string `json:"OperationIPAddress,omitempty" xml:"OperationIPAddress,omitempty"`
-	Result             *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Time               *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// Failed
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 2017-12-26 12:00:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryChangeLogListResponseBodyDataChangeLog) String() string {
@@ -4301,9 +5502,25 @@ func (s *QueryChangeLogListResponse) SetBody(v *QueryChangeLogListResponseBody) 
 }
 
 type QueryContactInfoRequest struct {
-	ContactType  *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// admin
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4336,18 +5553,57 @@ func (s *QueryContactInfoRequest) SetUserClientIp(v string) *QueryContactInfoReq
 }
 
 type QueryContactInfoResponseBody struct {
-	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	PostalCode               *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName           *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TelArea                  *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// xi hu qu **	- jiedao **	- xiaoqu **	- zhuang 101
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// hang zhou shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// 2019-03-20 11:37:29
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 310024
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// zhe jiang
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// zhang san
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// zhang san
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// C39ECA8A-BB5E-4F92-B013-6A032FA06B04
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 1234
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 1820000****
 	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
 	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
@@ -4484,8 +5740,19 @@ func (s *QueryContactInfoResponse) SetBody(v *QueryContactInfoResponseBody) *Que
 }
 
 type QueryDSRecordRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4514,7 +5781,10 @@ func (s *QueryDSRecordRequest) SetUserClientIp(v string) *QueryDSRecordRequest {
 
 type QueryDSRecordResponseBody struct {
 	DSRecordList []*QueryDSRecordResponseBodyDSRecordList `json:"DSRecordList,omitempty" xml:"DSRecordList,omitempty" type:"Repeated"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 814B2AF0-ED6F-4C13-B41C-8AC0B1023583
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDSRecordResponseBody) String() string {
@@ -4536,10 +5806,22 @@ func (s *QueryDSRecordResponseBody) SetRequestId(v string) *QueryDSRecordRespons
 }
 
 type QueryDSRecordResponseBodyDSRecordList struct {
-	Algorithm  *int32  `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	DigestType *int32  `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
-	KeyTag     *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// example:
+	//
+	// 1
+	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// f58fa917424383934c7b0cf1a90f61d692745680fa06f5ecdbe0924e86de9598
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// example:
+	//
+	// 2
+	DigestType *int32 `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
+	// example:
+	//
+	// 1
+	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
 }
 
 func (s QueryDSRecordResponseBodyDSRecordList) String() string {
@@ -4600,8 +5882,19 @@ func (s *QueryDSRecordResponse) SetBody(v *QueryDSRecordResponseBody) *QueryDSRe
 }
 
 type QueryDnsHostRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ST2017120814571100001303
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4630,7 +5923,10 @@ func (s *QueryDnsHostRequest) SetUserClientIp(v string) *QueryDnsHostRequest {
 
 type QueryDnsHostResponseBody struct {
 	DnsHostList []*QueryDnsHostResponseBodyDnsHostList `json:"DnsHostList,omitempty" xml:"DnsHostList,omitempty" type:"Repeated"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 18A313DD-3AF3-40AA-84F9-56BA45DC511F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDnsHostResponseBody) String() string {
@@ -4652,6 +5948,9 @@ func (s *QueryDnsHostResponseBody) SetRequestId(v string) *QueryDnsHostResponseB
 }
 
 type QueryDnsHostResponseBodyDnsHostList struct {
+	// example:
+	//
+	// ns3
 	DnsName *string   `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
 	IpList  []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 }
@@ -4704,7 +6003,13 @@ func (s *QueryDnsHostResponse) SetBody(v *QueryDnsHostResponseBody) *QueryDnsHos
 }
 
 type QueryDomainAdminDivisionRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4728,7 +6033,10 @@ func (s *QueryDomainAdminDivisionRequest) SetUserClientIp(v string) *QueryDomain
 
 type QueryDomainAdminDivisionResponseBody struct {
 	AdminDivisions *QueryDomainAdminDivisionResponseBodyAdminDivisions `json:"AdminDivisions,omitempty" xml:"AdminDivisions,omitempty" type:"Struct"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4EA05A10-D4BC-47EA-AD9E-370A46BB4FB9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDomainAdminDivisionResponseBody) String() string {
@@ -4854,15 +6162,30 @@ func (s *QueryDomainAdminDivisionResponse) SetBody(v *QueryDomainAdminDivisionRe
 
 type QueryDomainByDomainNameRequest struct {
 	// The domain name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   **zh**: Chinese.
-	// *   **en**: English.
+	// 	- **zh**: Chinese.
+	//
+	// 	- **en**: English.
 	//
 	// Default value: **en**.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4892,108 +6215,239 @@ func (s *QueryDomainByDomainNameRequest) SetUserClientIp(v string) *QueryDomainB
 type QueryDomainByDomainNameResponseBody struct {
 	// The Domain Name System (DNS) servers of the domain name.
 	DnsList *QueryDomainByDomainNameResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	// The ID of the domain name group. You can call the [QueryDomainGroupList](~~69362~~) operation to query the ID of the domain name group.
+	// The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
+	//
+	// example:
+	//
+	// 123456
 	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
 	// The name of the domain name group.
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// Indicates whether privacy protection is enabled for the domain name.
+	//
+	// example:
+	//
+	// false
 	DomainNameProxyService *bool `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
 	// The status of name auditing for the domain name. Valid values:
 	//
-	// *   **NONAUDIT**: The name auditing for the domain name is not performed.
-	// *   **SUCCEED**: The name auditing for the domain name is successful.
-	// *   **FAILED**: The name auditing for the domain name fails.
-	// *   **AUDITING**: The name auditing for the domain name is in progress.
+	// 	- **NONAUDIT**: The name auditing for the domain name is not performed.
+	//
+	// 	- **SUCCEED**: The name auditing for the domain name is successful.
+	//
+	// 	- **FAILED**: The name auditing for the domain name fails.
+	//
+	// 	- **AUDITING**: The name auditing for the domain name is in progress.
+	//
+	// example:
+	//
+	// SUCCEED
 	DomainNameVerificationStatus *string `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// *   1: The domain name needs to be renewed.
-	// *   2: The domain name needs to be redeemed.
-	// *   3: The domain name is normal.
+	// 	- 1: The domain name needs to be renewed.
+	//
+	// 	- 2: The domain name needs to be redeemed.
+	//
+	// 	- 3: The domain name is normal.
+	//
+	// example:
+	//
+	// 3
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// *   New gTLD
-	// *   gTLD
-	// *   ccTLD
+	// 	- New gTLD
+	//
+	// 	- gTLD
+	//
+	// 	- ccTLD
+	//
+	// example:
+	//
+	// gTLD
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// The email address of the domain name registrant.
+	//
+	// example:
+	//
+	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Indicates whether the domain name is in the ClientHold state.
+	//
+	// example:
+	//
+	// false
 	EmailVerificationClientHold *bool `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
 	// Indicates whether the email address passes verification. Valid values:
 	//
-	// *   **0**: The email address fails the verification.
-	// *   **1**: The email address passes the verification.
+	// 	- **0**: The email address fails the verification.
+	//
+	// 	- **1**: The email address passes the verification.
+	//
+	// example:
+	//
+	// 1
 	EmailVerificationStatus *int32 `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
 	// The number of days from the expiration date of the domain name to the current date.
+	//
+	// example:
+	//
+	// 356
 	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
 	// The expiration date.
+	//
+	// example:
+	//
+	// 2019-12-07 17:02:13
 	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
 	// The timestamp generated when the domain name expired.
+	//
+	// example:
+	//
+	// 1625111915000
 	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
 	// Indicates whether the domain name expires. Valid values:
 	//
-	// *   **1**: The domain name does not expire.
-	// *   **2**: The domain name expires.
+	// 	- **1**: The domain name does not expire.
+	//
+	// 	- **2**: The domain name expires.
+	//
+	// example:
+	//
+	// 1
 	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
 	// The instance ID of the domain name.
+	//
+	// example:
+	//
+	// S20179H1BBI9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the domain name is a premium domain name.
+	//
+	// example:
+	//
+	// false
 	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
 	// The status of real-name verification for the domain name. Valid values:
 	//
-	// *   **NONAUDIT**: The real-name verification is not performed.
-	// *   **SUCCEED**: The real-name verification is successful.
-	// *   **FAILED**: The real-name verification fails.
-	// *   **AUDITING**: The real-name verification is in progress.
+	// 	- **NONAUDIT**: The real-name verification is not performed.
+	//
+	// 	- **SUCCEED**: The real-name verification is successful.
+	//
+	// 	- **FAILED**: The real-name verification fails.
+	//
+	// 	- **AUDITING**: The real-name verification is in progress.
+	//
+	// example:
+	//
+	// NONAUDIT
 	RealNameStatus *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
 	// The name of the contact.
+	//
+	// example:
+	//
+	// Test litm
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
 	// The registrant of the domain name.
+	//
+	// example:
+	//
+	// Test litm
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
 	// The type of contact who registers the domain name. Valid values:
 	//
-	// *   **1**: individual.
-	// *   **2**: enterprise.
+	// 	- **1**: individual.
+	//
+	// 	- **2**: enterprise.
+	//
+	// example:
+	//
+	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
 	// The status of the information about the domain name registrant. Valid values:
 	//
-	// *   **PENDING**: The information about the domain name registrant is being modified.
-	// *   **NORMAL**: normal.
+	// 	- **PENDING**: The information about the domain name registrant is being modified.
+	//
+	// 	- **NORMAL**: normal.
+	//
+	// example:
+	//
+	// NORMAL
 	RegistrantUpdatingStatus *string `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
 	// The time when the domain name was registered.
+	//
+	// example:
+	//
+	// 2017-12-07 17:02:13
 	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
 	// The timestamp generated when the domain name was registered.
+	//
+	// example:
+	//
+	// 1584675448000
 	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
 	// The remarks on the domain name.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 44101664-3E70-4F0E-89E5-CCB74BF*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmw6bpc6n7zai
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag *QueryDomainByDomainNameResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	// The transfer status of the domain name. Valid values:
 	//
-	// *   **NORMAL**: The domain name is normal.
-	// *   **PENDING**: The domain name is being transferred out from Alibaba Cloud.
+	// 	- **NORMAL**: The domain name is normal.
+	//
+	// 	- **PENDING**: The domain name is being transferred out from Alibaba Cloud.
+	//
+	// example:
+	//
+	// NORMAL
 	TransferOutStatus *string `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
 	// The status of the transfer lock for the domain name. Valid values:
 	//
-	// *   **NONE_SETTING**: No transfer lock is configured.
-	// *   **OPEN**: The transfer lock is enabled.
-	// *   **CLOSE**: The transfer lock is disabled.
+	// 	- **NONE_SETTING**: No transfer lock is configured.
+	//
+	// 	- **OPEN**: The transfer lock is enabled.
+	//
+	// 	- **CLOSE**: The transfer lock is disabled.
+	//
+	// example:
+	//
+	// CLOSE
 	TransferProhibitionLock *string `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
 	// The status of the security lock for the domain name. Valid values:
 	//
-	// *   **NONE_SETTING**: No security lock is configured.
-	// *   **OPEN**: The security lock is enabled.
-	// *   **CLOSE**: The security lock is disabled.
+	// 	- **NONE_SETTING**: No security lock is configured.
+	//
+	// 	- **OPEN**: The security lock is enabled.
+	//
+	// 	- **CLOSE**: The security lock is disabled.
+	//
+	// example:
+	//
+	// CLOSE
 	UpdateProhibitionLock *string `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 121000000****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The Chinese name of the domain name contact.
 	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
@@ -5268,8 +6722,19 @@ func (s *QueryDomainByDomainNameResponse) SetBody(v *QueryDomainByDomainNameResp
 }
 
 type QueryDomainByInstanceIdRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20131205001****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -5297,40 +6762,124 @@ func (s *QueryDomainByInstanceIdRequest) SetUserClientIp(v string) *QueryDomainB
 }
 
 type QueryDomainByInstanceIdResponseBody struct {
-	DnsList                      *QueryDomainByInstanceIdResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	DomainGroupId                *int64                                      `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName              *string                                     `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	DomainName                   *string                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainNameProxyService       *bool                                       `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
-	DomainNameVerificationStatus *string                                     `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
-	DomainStatus                 *string                                     `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType                   *string                                     `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	Email                        *string                                     `json:"Email,omitempty" xml:"Email,omitempty"`
-	EmailVerificationClientHold  *bool                                       `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
-	EmailVerificationStatus      *int32                                      `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
-	ExpirationCurrDateDiff       *int32                                      `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate               *string                                     `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong           *int64                                      `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus         *string                                     `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId                   *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                      *bool                                       `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	RealNameStatus               *string                                     `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
-	RegistrantName               *string                                     `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization       *string                                     `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType               *string                                     `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrantUpdatingStatus     *string                                     `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
-	RegistrationDate             *string                                     `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong         *int64                                      `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark                       *string                                     `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId                    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId              *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                          *QueryDomainByInstanceIdResponseBodyTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	TransferOutStatus            *string                                     `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
-	TransferProhibitionLock      *string                                     `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
-	UpdateProhibitionLock        *string                                     `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
-	UserId                       *string                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	ZhRegistrantName             *string                                     `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	ZhRegistrantOrganization     *string                                     `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	DnsList *QueryDomainByInstanceIdResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1234
+	DomainGroupId   *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// false
+	DomainNameProxyService *bool `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
+	// example:
+	//
+	// NONAUDIT
+	DomainNameVerificationStatus *string `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
+	// example:
+	//
+	// 1
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// example:
+	//
+	// gTLD
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// false
+	EmailVerificationClientHold *bool `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
+	// example:
+	//
+	// 1
+	EmailVerificationStatus *int32 `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
+	// example:
+	//
+	// 356
+	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	// example:
+	//
+	// 2019-12-07 17:02:13
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// example:
+	//
+	// 1625111915000
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// example:
+	//
+	// 1
+	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	// example:
+	//
+	// S20179H1BBI9test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// NONAUDIT
+	RealNameStatus *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
+	// example:
+	//
+	// Test litm
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// Test litm
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// NORMAL
+	RegistrantUpdatingStatus *string `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
+	// example:
+	//
+	// 2017-12-07 17:02:13
+	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	// example:
+	//
+	// 1625111915000
+	RegistrationDateLong *int64  `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 23C9B3C4-9E2C-4405-A88D-BD33E459D140
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-acfmw6bpc6n7zai
+	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             *QueryDomainByInstanceIdResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	// example:
+	//
+	// NORMAL
+	TransferOutStatus *string `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
+	// example:
+	//
+	// CLOSE
+	TransferProhibitionLock *string `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
+	// example:
+	//
+	// CLOSE
+	UpdateProhibitionLock *string `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
+	// example:
+	//
+	// 121000000****
+	UserId                   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s QueryDomainByInstanceIdResponseBody) String() string {
@@ -5598,10 +7147,19 @@ func (s *QueryDomainByInstanceIdResponse) SetBody(v *QueryDomainByInstanceIdResp
 }
 
 type QueryDomainGroupListRequest struct {
-	DomainGroupName   *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ShowDeletingGroup *bool   `json:"ShowDeletingGroup,omitempty" xml:"ShowDeletingGroup,omitempty"`
-	UserClientIp      *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// false
+	ShowDeletingGroup *bool `json:"ShowDeletingGroup,omitempty" xml:"ShowDeletingGroup,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryDomainGroupListRequest) String() string {
@@ -5633,8 +7191,11 @@ func (s *QueryDomainGroupListRequest) SetUserClientIp(v string) *QueryDomainGrou
 }
 
 type QueryDomainGroupListResponseBody struct {
-	Data      *QueryDomainGroupListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *QueryDomainGroupListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 80011ABC-F573-4795-B0E8-377BFBBA3422
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDomainGroupListResponseBody) String() string {
@@ -5673,13 +7234,31 @@ func (s *QueryDomainGroupListResponseBodyData) SetDomainGroup(v []*QueryDomainGr
 }
 
 type QueryDomainGroupListResponseBodyDataDomainGroup struct {
-	BeingDeleted      *bool   `json:"BeingDeleted,omitempty" xml:"BeingDeleted,omitempty"`
-	CreationDate      *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-	DomainGroupId     *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName   *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// example:
+	//
+	// false
+	BeingDeleted *bool `json:"BeingDeleted,omitempty" xml:"BeingDeleted,omitempty"`
+	// example:
+	//
+	// 2018-04-02 15:59:06
+	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	// example:
+	//
+	// -1
+	DomainGroupId   *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// example:
+	//
+	// COMPLETE
 	DomainGroupStatus *string `json:"DomainGroupStatus,omitempty" xml:"DomainGroupStatus,omitempty"`
-	ModificationDate  *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
-	TotalNumber       *int32  `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	// example:
+	//
+	// 2018-04-02 15:59:06
+	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// example:
+	//
+	// 20
+	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s QueryDomainGroupListResponseBodyDataDomainGroup) String() string {
@@ -5756,60 +7335,134 @@ func (s *QueryDomainGroupListResponse) SetBody(v *QueryDomainGroupListResponseBo
 
 type QueryDomainListRequest struct {
 	// The name of the domain name registrant.
+	//
+	// example:
+	//
+	// Guangzhou Jinye Renewable Resources Recycling Co., Ltd
 	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
 	// The ID of the domain name group.
+	//
+	// example:
+	//
+	// 123456
 	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
 	// The domain name that you want to search for.
+	//
+	// example:
+	//
+	// test.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	//
+	// example:
+	//
+	// 1522080000000
 	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
 	// The end of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	//
+	// example:
+	//
+	// 1522080000000
 	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   **zh**: Chinese
-	// *   **en**: English
+	// 	- **zh**: Chinese
+	//
+	// 	- **en**: English
 	//
 	// Default value: **en**.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The order of the information based on which the domain names are sorted, such as the registration date and expiration date. Valid values:
 	//
-	// *   **ASC**: ascending order
-	// *   **DESC**: descending order
+	// 	- **ASC**: ascending order
 	//
-	// >  If this parameter is not specified, the default value **DESC** is used.
+	// 	- **DESC**: descending order
+	//
+	// >  If this parameter is not specified, the default value **DESC*	- is used.
+	//
+	// example:
+	//
+	// ASC
 	OrderByType *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
 	// The field that you use to sort the domain names. Valid values:
 	//
-	// *   **RegistrationDate**: registration date
-	// *   **ExpirationDate**: expiration date
+	// 	- **RegistrationDate**: registration date
+	//
+	// 	- **ExpirationDate**: expiration date
 	//
 	// >  If this parameter is not specified, the domain names are sorted by the time when they were added to the database.
+	//
+	// example:
+	//
+	// RegistrationDate
 	OrderKeyType *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
 	// The page number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries per page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// *   **New gTLD**: new generic top-level domain names
-	// *   **gTLD**: generic top-level domain names
-	// *   **ccTLD**: country code top-level domain names
+	// 	- **New gTLD**: new generic top-level domain names
+	//
+	// 	- **gTLD**: generic top-level domain names
+	//
+	// 	- **ccTLD**: country code top-level domain names
+	//
+	// example:
+	//
+	// New gTLD
 	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
 	// The category of the domain names that you want to query. Valid values:
 	//
-	// *   **1**: the domain names that need to be renewed
-	// *   **2**: the domain names that need to be redeemed
+	// 	- **1**: the domain names that need to be renewed
+	//
+	// 	- **2**: the domain names that need to be redeemed
+	//
+	// example:
+	//
+	// 1
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek2indvyxgpfti
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	//
+	// example:
+	//
+	// 1522080000000
 	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
 	// The beginning of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	//
+	// example:
+	//
+	// 1522080000000
 	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
 	// The tags to add to the resource.
 	Tag []*QueryDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The IP address of the client. Set the value to **127.0.0.1**.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -5908,8 +7561,16 @@ func (s *QueryDomainListRequest) SetUserClientIp(v string) *QueryDomainListReque
 
 type QueryDomainListRequestTag struct {
 	// The key of the tag to add to the resource.
+	//
+	// example:
+	//
+	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to add to the resource.
+	//
+	// example:
+	//
+	// testValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5933,20 +7594,48 @@ func (s *QueryDomainListRequestTag) SetValue(v string) *QueryDomainListRequestTa
 
 type QueryDomainListResponseBody struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 0
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	// The domain names.
 	Data *QueryDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates whether the current page is followed by a page.
+	//
+	// example:
+	//
+	// false
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates whether the current page is preceded by a page.
+	//
+	// example:
+	//
+	// false
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B7AB5469-5E38-4AA9-A920-C65B7A9C8E6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of domain names returned.
+	//
+	// example:
+	//
+	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
 	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
 	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
@@ -6017,61 +7706,147 @@ func (s *QueryDomainListResponseBodyData) SetDomain(v []*QueryDomainListResponse
 
 type QueryDomainListResponseBodyDataDomain struct {
 	// The name of the domain name registrant.
-	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
+	//
+	// example:
+	//
+	// Guangzhou Forest Advertising Decoration Co., LTD
+	Ccompany        *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
+	ChgholderStatus *string `json:"ChgholderStatus,omitempty" xml:"ChgholderStatus,omitempty"`
 	// The state of real-name verification for the domain name. Valid values:
 	//
-	// *   **FAILED**: Real-name verification for the domain name fails.
-	// *   **SUCCEED**: Real-name verification for the domain name is successful.
-	// *   **NONAUDIT**: Real-name verification for the domain name is not performed.
-	// *   **AUDITING**: Real-name verification for the domain name is in progress.
+	// 	- **FAILED**: Real-name verification for the domain name fails.
+	//
+	// 	- **SUCCEED**: Real-name verification for the domain name is successful.
+	//
+	// 	- **NONAUDIT**: Real-name verification for the domain name is not performed.
+	//
+	// 	- **AUDITING**: Real-name verification for the domain name is in progress.
+	//
+	// example:
+	//
+	// FAILED
 	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
 	// The ID of the domain name group.
+	//
+	// example:
+	//
+	// 123456
 	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
 	// The name of the domain name group.
+	//
+	// example:
+	//
+	// 测试分组
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// test.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The state of the domain name. Valid values:
 	//
-	// *   **1**: The domain name needs to be renewed.
-	// *   **2**: The domain name needs to be redeemed.
-	// *   **3**: The domain name is normal.
+	// 	- **1**: The domain name needs to be renewed.
+	//
+	// 	- **2**: The domain name needs to be redeemed.
+	//
+	// 	- **3**: The domain name is normal.
+	//
+	// example:
+	//
+	// 3
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// *   **New gTLD**
-	// *   **gTLD**
-	// *   **ccTLD**
+	// 	- **New gTLD**
+	//
+	// 	- **gTLD**
+	//
+	// 	- **ccTLD**
+	//
+	// example:
+	//
+	// gTLD
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// The number of days from the expiration date of the domain name to the current date.
+	//
+	// example:
+	//
+	// -30
 	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
 	// The time when the domain name expires.
+	//
+	// example:
+	//
+	// 2017-11-02 04:00:45
 	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
 	// The validity period of the domain name. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1522080000000
 	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
 	// Indicates whether the domain name expires. Valid values:
 	//
-	// *   **1**: The domain name does not expire.
-	// *   **2**: The domain name expires.
+	// 	- **1**: The domain name does not expire.
+	//
+	// 	- **2**: The domain name expires.
+	//
+	// example:
+	//
+	// 1
 	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// ST20151102120031118
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the domain name is a premium domain name.
+	//
+	// example:
+	//
+	// true
 	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
 	// The service ID.
+	//
+	// example:
+	//
+	// 2a
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The registration type of the domain name. Valid values:
 	//
-	// *   **1**: individual
-	// *   **2**: enterprise
+	// 	- **1**: individual
+	//
+	// 	- **2**: enterprise
+	//
+	// example:
+	//
+	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
 	// The time when the domain name was registered.
+	//
+	// example:
+	//
+	// 2017-11-02 04:00:45
 	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
 	// Indicates how long the domain name has been registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1522080000000
 	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
 	// The remarks of the domain name.
+	//
+	// example:
+	//
+	// 备注
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the resource group to which the domain name belongs.
+	//
+	// example:
+	//
+	// rg-aek2yyciz557g3q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags added to the resource.
 	Tag *QueryDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
@@ -6087,6 +7862,11 @@ func (s QueryDomainListResponseBodyDataDomain) GoString() string {
 
 func (s *QueryDomainListResponseBodyDataDomain) SetCcompany(v string) *QueryDomainListResponseBodyDataDomain {
 	s.Ccompany = &v
+	return s
+}
+
+func (s *QueryDomainListResponseBodyDataDomain) SetChgholderStatus(v string) *QueryDomainListResponseBodyDataDomain {
+	s.ChgholderStatus = &v
 	return s
 }
 
@@ -6204,8 +7984,16 @@ func (s *QueryDomainListResponseBodyDataDomainTag) SetTag(v []*QueryDomainListRe
 
 type QueryDomainListResponseBodyDataDomainTagTag struct {
 	// The key of the tag added to the resource.
+	//
+	// example:
+	//
+	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag added to the resource.
+	//
+	// example:
+	//
+	// testValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6257,9 +8045,23 @@ func (s *QueryDomainListResponse) SetBody(v *QueryDomainListResponseBody) *Query
 }
 
 type QueryDomainRealNameVerificationInfoRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FetchImage   *bool   `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyundoc.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// false
+	FetchImage *bool `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -6292,14 +8094,38 @@ func (s *QueryDomainRealNameVerificationInfoRequest) SetUserClientIp(v string) *
 }
 
 type QueryDomainRealNameVerificationInfoResponseBody struct {
-	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	IdentityCredential     *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo   *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// example:
+	//
+	// aliyundoc.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// dGVzdA==
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// example:
+	//
+	// 5****************9
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// example:
+	//
+	// SFZ
 	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	IdentityCredentialUrl  *string `json:"IdentityCredentialUrl,omitempty" xml:"IdentityCredentialUrl,omitempty"`
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubmissionDate         *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
+	// example:
+	//
+	// http://dbu-nap-p.oss-cn-hangzhou.aliyuncs.com/20190219/140692647406xxxx_5d6baea3e7314fd986afdd86e33exxxx.jpg
+	IdentityCredentialUrl *string `json:"IdentityCredentialUrl,omitempty" xml:"IdentityCredentialUrl,omitempty"`
+	// example:
+	//
+	// S2019270W570****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 4DF9D693-0D5B-4EB7-8922-7ECA6BD59314
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	SubmissionDate *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
 }
 
 func (s QueryDomainRealNameVerificationInfoResponseBody) String() string {
@@ -6381,8 +8207,16 @@ func (s *QueryDomainRealNameVerificationInfoResponse) SetBody(v *QueryDomainReal
 
 type QueryDomainSpecialBizDetailRequest struct {
 	// The business ID.
+	//
+	// example:
+	//
+	// 123
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -6406,31 +8240,68 @@ func (s *QueryDomainSpecialBizDetailRequest) SetUserClientIp(v string) *QueryDom
 
 type QueryDomainSpecialBizDetailResponseBody struct {
 	// Indicates whether retries are allowed.
+	//
+	// example:
+	//
+	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
 	// The name of the application for which the error code is returned.
+	//
+	// example:
+	//
+	// test-com
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The dynamic error code.
+	//
+	// example:
+	//
+	// -
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message.
+	//
+	// example:
+	//
+	// -
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The array of error parameters that are returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// 110001
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The HTTP status code that is directly returned.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned data.
 	Module *QueryDomainSpecialBizDetailResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A83E1D74-E46B-505C-947A-8C6B7E41C011
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates whether to perform synchronous processing.
+	//
+	// example:
+	//
+	// true
 	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -6508,14 +8379,34 @@ type QueryDomainSpecialBizDetailResponseBodyModule struct {
 	// The business name.
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
 	// The business ID.
+	//
+	// example:
+	//
+	// A83E1D74-E46B-505C-947A-8C6B7E41C012
 	BizNo *string `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
 	// The business status.
+	//
+	// example:
+	//
+	// REGISTRANT_VSP_AUDIT_SUCCESS
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
 	// The business type.
+	//
+	// example:
+	//
+	// govRegister
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The time when the business was created.
+	//
+	// example:
+	//
+	// 2023-01-17 11:31:10
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// test003.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The contact information.
 	DomainSpecialBizContact *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
@@ -6524,24 +8415,60 @@ type QueryDomainSpecialBizDetailResponseBodyModule struct {
 	// The information about the order.
 	DomainSpecialOrderResult *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult `json:"DomainSpecialOrderResult,omitempty" xml:"DomainSpecialOrderResult,omitempty" type:"Struct"`
 	// The time when the business was created.
+	//
+	// example:
+	//
+	// 2023-03-21 15:10:04.0
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the business was modified.
+	//
+	// example:
+	//
+	// 2023-03-21 15:10:04.0
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The primary key.
+	//
+	// example:
+	//
+	// 34083
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 123
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The service ID.
+	//
+	// example:
+	//
+	// 1
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// S20172315BJ37809
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 	// The business status.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The description of business status.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// The time when the business was updated.
+	//
+	// example:
+	//
+	// 2020-11-17 18:11:15
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 121000000****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6655,12 +8582,20 @@ func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetUserId(v string) *Que
 
 type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact struct {
 	// The business ID.
+	//
+	// example:
+	//
+	// 258
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The city.
 	CCity *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
 	// The organization name.
 	CCompany *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
 	// The country code.
+	//
+	// example:
+	//
+	// CN
 	CCountry *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
 	// The contact name.
 	CName *string `json:"CName,omitempty" xml:"CName,omitempty"`
@@ -6669,40 +8604,112 @@ type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact struct
 	// The address.
 	CVenu *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
 	// The city in English.
+	//
+	// example:
+	//
+	// an shan Shi
 	ECity *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
 	// The organization name in English.
+	//
+	// example:
+	//
+	// hebeihuiheguandaozhizaoyouxiangongsi
 	ECompany *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
 	// The contact name in English.
+	//
+	// example:
+	//
+	// tong da wei
 	EName *string `json:"EName,omitempty" xml:"EName,omitempty"`
 	// The province in English.
+	//
+	// example:
+	//
+	// liao ning
 	EProvince *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
 	// The address in English.
+	//
+	// example:
+	//
+	// tie xi qu xin kai jie 59-4 hao
 	EVenu *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
 	// The email address.
+	//
+	// example:
+	//
+	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The extended information.
+	//
+	// example:
+	//
+	// -
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The fax country code.
+	//
+	// example:
+	//
+	// 86
 	FaxArea *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
 	// The fax extension number.
+	//
+	// example:
+	//
+	// 61284565
 	FaxExt *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
 	// The fax number with an area code or mobile number.
+	//
+	// example:
+	//
+	// 16604121234
 	FaxMain *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
 	// The mobile number.
+	//
+	// example:
+	//
+	// 156********
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The zip code.
+	//
+	// example:
+	//
+	// 100000
 	Postalcode *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
 	// The contact type. Valid values: 1: individual. 2: enterprise.
+	//
+	// example:
+	//
+	// 1
 	RegType *int32 `json:"RegType,omitempty" xml:"RegType,omitempty"`
 	// The registrant ID.
+	//
+	// example:
+	//
+	// 121000002****
 	RegistrantId *string `json:"RegistrantId,omitempty" xml:"RegistrantId,omitempty"`
 	// The calling code of the country or region where the domain name contact is located.
+	//
+	// example:
+	//
+	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
 	// The telephone extension number.
+	//
+	// example:
+	//
+	// 61284565
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
 	// The landline number with an area code or mobile number.
+	//
+	// example:
+	//
+	// 16604121234
 	TelMain *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
 	// The VSP contact ID.
+	//
+	// example:
+	//
+	// 121000001****
 	VspContactId *string `json:"VspContactId,omitempty" xml:"VspContactId,omitempty"`
 }
 
@@ -6841,18 +8848,46 @@ func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) S
 
 type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials struct {
 	// The ID of the associated workflow.
+	//
+	// example:
+	//
+	// T20220831150014000001
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The certificate number.
+	//
+	// example:
+	//
+	// 4111111111111110**
 	CredentialNo *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
 	// The certificate type.
+	//
+	// example:
+	//
+	// SFZ
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	// The certificate URL.
+	//
+	// example:
+	//
+	// http://test.oss-cn-hangzhou.aliyuncs.com/20170522/1219541161213057_070445190.jpg
 	CredentialUrl *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// test003.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// Indicates whether the certificate belongs to the registrant.
+	//
+	// example:
+	//
+	// 1
 	HolderCert *int32 `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// S20172315BJ37809
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 }
 
@@ -6901,22 +8936,58 @@ func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredential
 
 type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult struct {
 	// The cost type.
+	//
+	// example:
+	//
+	// activate
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The amount of the order.
+	//
+	// example:
+	//
+	// 0.0
 	OrderAmount *float64 `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
 	// The currency.
+	//
+	// example:
+	//
+	// CNY
 	OrderCurrency *string `json:"OrderCurrency,omitempty" xml:"OrderCurrency,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// S201601060123456
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The order status.
+	//
+	// example:
+	//
+	// ORDER_WAIT_PAY
 	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
 	// The time when the order was placed.
+	//
+	// example:
+	//
+	// 2023-09-19T14:28Z
 	OrderTime *string `json:"OrderTime,omitempty" xml:"OrderTime,omitempty"`
 	// The validity period.
+	//
+	// example:
+	//
+	// 1
 	OrderYear *int32 `json:"OrderYear,omitempty" xml:"OrderYear,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// S201601063418719
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 	// The suborder ID.
+	//
+	// example:
+	//
+	// S201601061234567
 	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
 }
 
@@ -7004,10 +9075,26 @@ func (s *QueryDomainSpecialBizDetailResponse) SetBody(v *QueryDomainSpecialBizDe
 
 type QueryDomainSpecialBizInfoByDomainRequest struct {
 	// The business type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// govRegister
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The domain name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test003.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -7036,28 +9123,64 @@ func (s *QueryDomainSpecialBizInfoByDomainRequest) SetUserClientIp(v string) *Qu
 
 type QueryDomainSpecialBizInfoByDomainResponseBody struct {
 	// Indicates whether retries are allowed.
+	//
+	// example:
+	//
+	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
 	// The name of the application for which the error code is returned.
+	//
+	// example:
+	//
+	// test-com
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The dynamic error code.
+	//
+	// example:
+	//
+	// -
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message.
+	//
+	// example:
+	//
+	// -
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The array of error parameters that are returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// 110001
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The HTTP status code that is directly returned.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned data.
 	Module *QueryDomainSpecialBizInfoByDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 97663DFF-D24D-55AE-A577-6CC5AF20B732
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values: true and false
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates whether to perform synchronous processing.
+	//
+	// example:
+	//
+	// true
 	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -7135,38 +9258,94 @@ type QueryDomainSpecialBizInfoByDomainResponseBodyModule struct {
 	// The business name.
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
 	// The business ID.
+	//
+	// example:
+	//
+	// A83E1D74-E46B-505C-947A-8C6B7E41C012
 	BizNo *string `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
 	// The business status.
+	//
+	// example:
+	//
+	// REGISTRANT_VSP_AUDIT_SUCCESS
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
 	// The business type.
+	//
+	// example:
+	//
+	// govRegister
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The time when the business was created.
+	//
+	// example:
+	//
+	// 2023-01-17 11:31:10
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// test003.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The contact information.
 	DomainSpecialBizContact *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
 	// The certificate information.
 	DomainSpecialBizCredentials []*QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials `json:"DomainSpecialBizCredentials,omitempty" xml:"DomainSpecialBizCredentials,omitempty" type:"Repeated"`
 	// The time when the business was created.
+	//
+	// example:
+	//
+	// 2023-03-21 15:10:04.0
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the business was modified.
+	//
+	// example:
+	//
+	// 2023-03-21 15:10:04.0
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The primary key.
+	//
+	// example:
+	//
+	// 34083
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 123
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The service ID.
+	//
+	// example:
+	//
+	// 1
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// S20172315BJ37809
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 	// The business status.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The description of business status.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// The time when the business was updated.
+	//
+	// example:
+	//
+	// 2020-11-17 18:11:15
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 121000000****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7275,12 +9454,20 @@ func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetUserId(v string
 
 type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact struct {
 	// The business ID.
+	//
+	// example:
+	//
+	// 258
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The city.
 	CCity *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
 	// The organization name.
 	CCompany *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
 	// The country code.
+	//
+	// example:
+	//
+	// CN
 	CCountry *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
 	// The contact name.
 	CName *string `json:"CName,omitempty" xml:"CName,omitempty"`
@@ -7289,40 +9476,112 @@ type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact 
 	// The address.
 	CVenu *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
 	// The city in English.
+	//
+	// example:
+	//
+	// an shan Shi
 	ECity *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
 	// The organization name in English.
+	//
+	// example:
+	//
+	// hebeihuiheguandaozhizaoyouxiangongsi
 	ECompany *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
 	// The contact name in English.
+	//
+	// example:
+	//
+	// tong da wei
 	EName *string `json:"EName,omitempty" xml:"EName,omitempty"`
 	// The province in English.
+	//
+	// example:
+	//
+	// liao ning
 	EProvince *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
 	// The address in English.
+	//
+	// example:
+	//
+	// tie xi qu xin kai jie 59-4 hao
 	EVenu *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
 	// The email address.
+	//
+	// example:
+	//
+	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The extended information.
+	//
+	// example:
+	//
+	// -
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The fax country code.
+	//
+	// example:
+	//
+	// 86
 	FaxArea *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
 	// The fax extension number.
+	//
+	// example:
+	//
+	// 61284565
 	FaxExt *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
 	// The fax number with an area code or mobile number.
+	//
+	// example:
+	//
+	// 16604121234
 	FaxMain *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
 	// The mobile number.
+	//
+	// example:
+	//
+	// 156********
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The zip code.
+	//
+	// example:
+	//
+	// 100000
 	Postalcode *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
 	// The contact type. Valid values: 1: individual. 2: enterprise.
+	//
+	// example:
+	//
+	// 1
 	RegType *int32 `json:"RegType,omitempty" xml:"RegType,omitempty"`
 	// The registrant ID.
+	//
+	// example:
+	//
+	// 121000002****
 	RegistrantId *string `json:"RegistrantId,omitempty" xml:"RegistrantId,omitempty"`
 	// The calling code of the country or region where the domain name contact is located.
+	//
+	// example:
+	//
+	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
 	// The telephone extension number.
+	//
+	// example:
+	//
+	// 2756
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
 	// The landline number with an area code or mobile number.
+	//
+	// example:
+	//
+	// 16604121234
 	TelMain *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
 	// The VSP contact ID.
+	//
+	// example:
+	//
+	// 121000001****
 	VspContactId *string `json:"VspContactId,omitempty" xml:"VspContactId,omitempty"`
 }
 
@@ -7461,18 +9720,46 @@ func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCont
 
 type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials struct {
 	// The ID of the associated workflow.
+	//
+	// example:
+	//
+	// T20220831150014000001
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The certificate number.
+	//
+	// example:
+	//
+	// 4111111111111110**
 	CredentialNo *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
 	// The certificate type.
+	//
+	// example:
+	//
+	// SFZ
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	// The certificate URL.
+	//
+	// example:
+	//
+	// http://test.oss-cn-hangzhou.aliyuncs.com/20170522/1219541161213057_070445190.jpg
 	CredentialUrl *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// test003.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// Indicates whether the certificate belongs to the registrant.
+	//
+	// example:
+	//
+	// 1
 	HolderCert *int32 `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// S20172315BJ37809
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 }
 
@@ -7549,7 +9836,13 @@ func (s *QueryDomainSpecialBizInfoByDomainResponse) SetBody(v *QueryDomainSpecia
 }
 
 type QueryDomainSuffixRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -7572,6 +9865,9 @@ func (s *QueryDomainSuffixRequest) SetUserClientIp(v string) *QueryDomainSuffixR
 }
 
 type QueryDomainSuffixResponseBody struct {
+	// example:
+	//
+	// D1C9DE44-1D7F-4F66-9653-00000
 	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuffixList *QueryDomainSuffixResponseBodySuffixList `json:"SuffixList,omitempty" xml:"SuffixList,omitempty" type:"Struct"`
 }
@@ -7641,8 +9937,19 @@ func (s *QueryDomainSuffixResponse) SetBody(v *QueryDomainSuffixResponseBody) *Q
 }
 
 type QueryEmailVerificationRequest struct {
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -7670,17 +9977,50 @@ func (s *QueryEmailVerificationRequest) SetUserClientIp(v string) *QueryEmailVer
 }
 
 type QueryEmailVerificationResponseBody struct {
-	ConfirmIp           *string `json:"ConfirmIp,omitempty" xml:"ConfirmIp,omitempty"`
-	Email               *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 42.*.*.31
+	ConfirmIp *string `json:"ConfirmIp,omitempty" xml:"ConfirmIp,omitempty"`
+	// example:
+	//
+	// abc@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 72b36ba0572e423bbb3f19640896****
 	EmailVerificationNo *string `json:"EmailVerificationNo,omitempty" xml:"EmailVerificationNo,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SendIp              *string `json:"SendIp,omitempty" xml:"SendIp,omitempty"`
-	TokenSendTime       *string `json:"TokenSendTime,omitempty" xml:"TokenSendTime,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VerificationStatus  *int32  `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
-	VerificationTime    *string `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
+	// example:
+	//
+	// 2019-02-19 16:38:07
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2019-02-19 16:40:38
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// FC4F7D02-8A83-4E37-B935-2D48A1B8423E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 42.*.*.115
+	SendIp *string `json:"SendIp,omitempty" xml:"SendIp,omitempty"`
+	// example:
+	//
+	// 2019-02-19 16:38:07
+	TokenSendTime *string `json:"TokenSendTime,omitempty" xml:"TokenSendTime,omitempty"`
+	// example:
+	//
+	// 140692647406****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1
+	VerificationStatus *int32 `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+	// example:
+	//
+	// 2019-02-19 16:40:38
+	VerificationTime *string `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
 }
 
 func (s QueryEmailVerificationResponseBody) String() string {
@@ -7776,8 +10116,19 @@ func (s *QueryEmailVerificationResponse) SetBody(v *QueryEmailVerificationRespon
 }
 
 type QueryEnsAssociationRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -7805,7 +10156,13 @@ func (s *QueryEnsAssociationRequest) SetUserClientIp(v string) *QueryEnsAssociat
 }
 
 type QueryEnsAssociationResponseBody struct {
-	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// 0x123456789012345678901234567890123456****
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// 3ECD5439-39A2-477D-9A19-64FCA1F77EEB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7857,10 +10214,26 @@ func (s *QueryEnsAssociationResponse) SetBody(v *QueryEnsAssociationResponseBody
 }
 
 type QueryFailReasonForDomainRealNameVerificationRequest struct {
-	DomainName                 *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACTIVATE
 	RealNameVerificationAction *string `json:"RealNameVerificationAction,omitempty" xml:"RealNameVerificationAction,omitempty"`
-	UserClientIp               *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryFailReasonForDomainRealNameVerificationRequest) String() string {
@@ -7892,8 +10265,11 @@ func (s *QueryFailReasonForDomainRealNameVerificationRequest) SetUserClientIp(v 
 }
 
 type QueryFailReasonForDomainRealNameVerificationResponseBody struct {
-	Data      []*QueryFailReasonForDomainRealNameVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*QueryFailReasonForDomainRealNameVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1F1BA893-AD33-4248-8CB8-1657E3733052
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryFailReasonForDomainRealNameVerificationResponseBody) String() string {
@@ -7915,7 +10291,13 @@ func (s *QueryFailReasonForDomainRealNameVerificationResponseBody) SetRequestId(
 }
 
 type QueryFailReasonForDomainRealNameVerificationResponseBodyData struct {
-	Date                         *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// 2017-03-17 11:08:02
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// SUCCEED
 	DomainNameVerificationStatus *string `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
 	FailReason                   *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 }
@@ -7973,9 +10355,20 @@ func (s *QueryFailReasonForDomainRealNameVerificationResponse) SetBody(v *QueryF
 }
 
 type QueryFailReasonForRegistrantProfileRealNameVerificationRequest struct {
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileID *int64  `json:"RegistrantProfileID,omitempty" xml:"RegistrantProfileID,omitempty"`
-	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567
+	RegistrantProfileID *int64 `json:"RegistrantProfileID,omitempty" xml:"RegistrantProfileID,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryFailReasonForRegistrantProfileRealNameVerificationRequest) String() string {
@@ -8002,8 +10395,11 @@ func (s *QueryFailReasonForRegistrantProfileRealNameVerificationRequest) SetUser
 }
 
 type QueryFailReasonForRegistrantProfileRealNameVerificationResponseBody struct {
-	Data      []*QueryFailReasonForRegistrantProfileRealNameVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*QueryFailReasonForRegistrantProfileRealNameVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 548C407F-AEA2-4B5D-90DF-EC11EBB1D76F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryFailReasonForRegistrantProfileRealNameVerificationResponseBody) String() string {
@@ -8025,6 +10421,9 @@ func (s *QueryFailReasonForRegistrantProfileRealNameVerificationResponseBody) Se
 }
 
 type QueryFailReasonForRegistrantProfileRealNameVerificationResponseBodyData struct {
+	// example:
+	//
+	// 2017-03-17 11:08:02
 	Date       *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 }
@@ -8077,11 +10476,32 @@ func (s *QueryFailReasonForRegistrantProfileRealNameVerificationResponse) SetBod
 }
 
 type QueryFailingReasonListForQualificationRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Limit             *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20181*****85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// knet
 	QualificationType *string `json:"QualificationType,omitempty" xml:"QualificationType,omitempty"`
-	UserClientIp      *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryFailingReasonListForQualificationRequest) String() string {
@@ -8118,8 +10538,11 @@ func (s *QueryFailingReasonListForQualificationRequest) SetUserClientIp(v string
 }
 
 type QueryFailingReasonListForQualificationResponseBody struct {
-	Data      []*QueryFailingReasonListForQualificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*QueryFailingReasonListForQualificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryFailingReasonListForQualificationResponseBody) String() string {
@@ -8141,6 +10564,9 @@ func (s *QueryFailingReasonListForQualificationResponseBody) SetRequestId(v stri
 }
 
 type QueryFailingReasonListForQualificationResponseBodyData struct {
+	// example:
+	//
+	// 2017-03-17 11:08:02
 	Date       *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 }
@@ -8193,8 +10619,19 @@ func (s *QueryFailingReasonListForQualificationResponse) SetBody(v *QueryFailing
 }
 
 type QueryLocalEnsAssociationRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -8222,7 +10659,13 @@ func (s *QueryLocalEnsAssociationRequest) SetUserClientIp(v string) *QueryLocalE
 }
 
 type QueryLocalEnsAssociationResponseBody struct {
-	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// 3ECD5439-39A2-477D-9A19-64FCA1F77EEB
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// 0x1234567890123456789012345678901234567890
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8274,8 +10717,16 @@ func (s *QueryLocalEnsAssociationResponse) SetBody(v *QueryLocalEnsAssociationRe
 }
 
 type QueryOperationAuditInfoDetailRequest struct {
-	AuditRecordId *int64  `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AuditRecordId *int64 `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s QueryOperationAuditInfoDetailRequest) String() string {
@@ -8297,16 +10748,37 @@ func (s *QueryOperationAuditInfoDetailRequest) SetLang(v string) *QueryOperation
 }
 
 type QueryOperationAuditInfoDetailResponseBody struct {
-	AuditInfo    *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
-	AuditStatus  *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AuditInfo *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
+	// example:
+	//
+	// 1
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// example:
+	//
+	// 1
 	AuditType    *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpdateTime   *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1581919010100
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com,aliyundoc.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 1
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-40EC-8035-4B12FEFD7D1L
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1581919010101
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryOperationAuditInfoDetailResponseBody) String() string {
@@ -8397,12 +10869,30 @@ func (s *QueryOperationAuditInfoDetailResponse) SetBody(v *QueryOperationAuditIn
 }
 
 type QueryOperationAuditInfoListRequest struct {
-	AuditStatus *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AuditType   *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
-	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// example:
+	//
+	// 1
+	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryOperationAuditInfoListRequest) String() string {
@@ -8444,14 +10934,35 @@ func (s *QueryOperationAuditInfoListRequest) SetPageSize(v int32) *QueryOperatio
 }
 
 type QueryOperationAuditInfoListResponseBody struct {
+	// example:
+	//
+	// 2
 	CurrentPageNum *int32                                         `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*QueryOperationAuditInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	NextPage       *bool                                          `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                                          `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                                         `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                         `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// true
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// true
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-40EC-8035-4B12FEFD7D48
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 199
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryOperationAuditInfoListResponseBody) String() string {
@@ -8503,15 +11014,33 @@ func (s *QueryOperationAuditInfoListResponseBody) SetTotalPageNum(v int32) *Quer
 }
 
 type QueryOperationAuditInfoListResponseBodyData struct {
-	AuditInfo    *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
-	AuditStatus  *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AuditInfo *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
+	// example:
+	//
+	// 1
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// example:
+	//
+	// 1
 	AuditType    *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	UpdateTime   *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1581919010101
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com,aliyundoc.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 1
+	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 1581919010101
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryOperationAuditInfoListResponseBodyData) String() string {
@@ -8597,10 +11126,26 @@ func (s *QueryOperationAuditInfoListResponse) SetBody(v *QueryOperationAuditInfo
 }
 
 type QueryQualificationDetailRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20181*****85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// knet
 	QualificationType *string `json:"QualificationType,omitempty" xml:"QualificationType,omitempty"`
-	UserClientIp      *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryQualificationDetailRequest) String() string {
@@ -8632,10 +11177,19 @@ func (s *QueryQualificationDetailRequest) SetUserClientIp(v string) *QueryQualif
 }
 
 type QueryQualificationDetailResponseBody struct {
+	// example:
+	//
+	// 1
 	AuditStatus *int32                                           `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	Credentials *QueryQualificationDetailResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
-	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TrackId     *string                                          `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 943a1662898a****0acbdbeca91
+	TrackId *string `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
 }
 
 func (s QueryQualificationDetailResponseBody) String() string {
@@ -8684,7 +11238,13 @@ func (s *QueryQualificationDetailResponseBodyCredentials) SetQualificationCreden
 }
 
 type QueryQualificationDetailResponseBodyCredentialsQualificationCredential struct {
-	CredentialNo   *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	// example:
+	//
+	// 92610725MA7G2E****
+	CredentialNo *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	// example:
+	//
+	// SHSQB
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	CredentialUrl  *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
 }
@@ -8742,10 +11302,24 @@ func (s *QueryQualificationDetailResponse) SetBody(v *QueryQualificationDetailRe
 }
 
 type QueryRegistrantProfileRealNameVerificationInfoRequest struct {
-	FetchImage          *bool   `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// false
+	FetchImage *bool `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryRegistrantProfileRealNameVerificationInfoRequest) String() string {
@@ -8777,14 +11351,38 @@ func (s *QueryRegistrantProfileRealNameVerificationInfoRequest) SetUserClientIp(
 }
 
 type QueryRegistrantProfileRealNameVerificationInfoResponseBody struct {
-	IdentityCredential     *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo   *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// example:
+	//
+	// dGVzdA==
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// example:
+	//
+	// 4111111111111110**
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// example:
+	//
+	// SFZ
 	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	IdentityCredentialUrl  *string `json:"IdentityCredentialUrl,omitempty" xml:"IdentityCredentialUrl,omitempty"`
-	ModificationDate       *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
-	RegistrantProfileId    *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubmissionDate         *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
+	// example:
+	//
+	// http://test.oss-cn-hangzhou.aliyuncs.com/20170522/1219541161213057_070445190.jpg
+	IdentityCredentialUrl *string `json:"IdentityCredentialUrl,omitempty" xml:"IdentityCredentialUrl,omitempty"`
+	// example:
+	//
+	// 2017-05-22 19:04:49
+	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// example:
+	//
+	// 1234567
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 4D73432C-7600-4779-ACBB-C3B5CA145D32
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2017-05-22 19:04:49
+	SubmissionDate *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
 }
 
 func (s QueryRegistrantProfileRealNameVerificationInfoResponseBody) String() string {
@@ -8865,16 +11463,50 @@ func (s *QueryRegistrantProfileRealNameVerificationInfoResponse) SetBody(v *Quer
 }
 
 type QueryRegistrantProfilesRequest struct {
-	DefaultRegistrantProfile *bool   `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
-	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang                     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum                  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize                 *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RealNameStatus           *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
-	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantProfileId      *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RegistrantProfileType    *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
-	RegistrantType           *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// false
+	DefaultRegistrantProfile *bool `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 500
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// SUCCEED
+	RealNameStatus *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
+	// example:
+	//
+	// li si
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 1234567
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// common
+	RegistrantProfileType *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
@@ -8937,6 +11569,11 @@ func (s *QueryRegistrantProfilesRequest) SetRegistrantType(v string) *QueryRegis
 	return s
 }
 
+func (s *QueryRegistrantProfilesRequest) SetRemark(v string) *QueryRegistrantProfilesRequest {
+	s.Remark = &v
+	return s
+}
+
 func (s *QueryRegistrantProfilesRequest) SetUserClientIp(v string) *QueryRegistrantProfilesRequest {
 	s.UserClientIp = &v
 	return s
@@ -8948,14 +11585,35 @@ func (s *QueryRegistrantProfilesRequest) SetZhRegistrantOrganization(v string) *
 }
 
 type QueryRegistrantProfilesResponseBody struct {
-	CurrentPageNum     *int32                                                 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	NextPage           *bool                                                  `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize           *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// example:
+	//
+	// true
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
 	PrePage            *bool                                                  `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
 	RegistrantProfiles *QueryRegistrantProfilesResponseBodyRegistrantProfiles `json:"RegistrantProfiles,omitempty" xml:"RegistrantProfiles,omitempty" type:"Struct"`
-	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum       *int32                                                 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum       *int32                                                 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 94053D79-7455-4F71-BF06-20EB2DEDE6BD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryRegistrantProfilesResponseBody) String() string {
@@ -9024,26 +11682,84 @@ func (s *QueryRegistrantProfilesResponseBodyRegistrantProfiles) SetRegistrantPro
 }
 
 type QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile struct {
-	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialNo             *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
-	CredentialType           *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	DefaultRegistrantProfile *bool   `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
-	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EmailVerificationStatus  *int32  `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
-	PostalCode               *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RealNameStatus           *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
-	RegistrantName           *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantProfileId      *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RegistrantProfileType    *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
-	RegistrantType           *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                  *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// zhe jiang sheng hang zhou shi shi li qu shi li zhen shi li da sha 1001 hao
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// hang zhou shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// 2019-02-18 10:46:47
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CredentialNo   *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	// example:
+	//
+	// false
+	DefaultRegistrantProfile *bool `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
+	// example:
+	//
+	// 82106****@qq.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 1
+	EmailVerificationStatus *int32 `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
+	// example:
+	//
+	// 310024
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// zhe jiang
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// SUCCEED
+	RealNameStatus *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
+	// example:
+	//
+	// li si
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// li si
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 1000001
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// common
+	RegistrantProfileType *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 1234
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 1829756****
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// 2019-03-15 15:32:45
 	UpdateTime               *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
 	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
@@ -9145,6 +11861,11 @@ func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile)
 	return s
 }
 
+func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile) SetRemark(v string) *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile {
+	s.Remark = &v
+	return s
+}
+
 func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile) SetTelArea(v string) *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile {
 	s.TelArea = &v
 	return s
@@ -9220,8 +11941,17 @@ func (s *QueryRegistrantProfilesResponse) SetBody(v *QueryRegistrantProfilesResp
 }
 
 type QueryServerLockRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// S20181*****85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -9249,17 +11979,50 @@ func (s *QueryServerLockRequest) SetUserClientIp(v string) *QueryServerLockReque
 }
 
 type QueryServerLockResponseBody struct {
+	// example:
+	//
+	// S20190N1DAI4****
 	DomainInstanceId *string `json:"DomainInstanceId,omitempty" xml:"DomainInstanceId,omitempty"`
-	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ExpireDate       *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LockInstanceId   *string `json:"LockInstanceId,omitempty" xml:"LockInstanceId,omitempty"`
-	LockProductId    *string `json:"LockProductId,omitempty" xml:"LockProductId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServerLockStatus *int32  `json:"ServerLockStatus,omitempty" xml:"ServerLockStatus,omitempty"`
-	StartDate        *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 2030-07-10 17:37:36
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// 2021-07-10 17:37:36
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2021-07-10 17:37:36
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// S2021591IQ28****
+	LockInstanceId *string `json:"LockInstanceId,omitempty" xml:"LockInstanceId,omitempty"`
+	// example:
+	//
+	// 1807**
+	LockProductId *string `json:"LockProductId,omitempty" xml:"LockProductId,omitempty"`
+	// example:
+	//
+	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	ServerLockStatus *int32 `json:"ServerLockStatus,omitempty" xml:"ServerLockStatus,omitempty"`
+	// example:
+	//
+	// 2021-07-10 17:37:36
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 121000000****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryServerLockResponseBody) String() string {
@@ -9355,14 +12118,42 @@ func (s *QueryServerLockResponse) SetBody(v *QueryServerLockResponseBody) *Query
 }
 
 type QueryTaskDetailHistoryRequest struct {
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainNameCursor   *string `json:"DomainNameCursor,omitempty" xml:"DomainNameCursor,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainNameCursor *string `json:"DomainNameCursor,omitempty" xml:"DomainNameCursor,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec
 	TaskDetailNoCursor *string `json:"TaskDetailNoCursor,omitempty" xml:"TaskDetailNoCursor,omitempty"`
-	TaskNo             *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskStatus         *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	UserClientIp       *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 0
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryRequest) String() string {
@@ -9417,9 +12208,15 @@ type QueryTaskDetailHistoryResponseBody struct {
 	CurrentPageCursor *QueryTaskDetailHistoryResponseBodyCurrentPageCursor `json:"CurrentPageCursor,omitempty" xml:"CurrentPageCursor,omitempty" type:"Struct"`
 	NextPageCursor    *QueryTaskDetailHistoryResponseBodyNextPageCursor    `json:"NextPageCursor,omitempty" xml:"NextPageCursor,omitempty" type:"Struct"`
 	Objects           []*QueryTaskDetailHistoryResponseBodyObjects         `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
-	PageSize          *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePageCursor     *QueryTaskDetailHistoryResponseBodyPrePageCursor     `json:"PrePageCursor,omitempty" xml:"PrePageCursor,omitempty" type:"Struct"`
-	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize      *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrePageCursor *QueryTaskDetailHistoryResponseBodyPrePageCursor `json:"PrePageCursor,omitempty" xml:"PrePageCursor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 548CAE74-88F8-402F-8C12-97E747389C51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryResponseBody) String() string {
@@ -9461,18 +12258,48 @@ func (s *QueryTaskDetailHistoryResponseBody) SetRequestId(v string) *QueryTaskDe
 }
 
 type QueryTaskDetailHistoryResponseBodyCurrentPageCursor struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// S1234456789
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-2342
+	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// EXECUTE_SUCCESS
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 2
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
-	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 0
+	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryResponseBodyCurrentPageCursor) String() string {
@@ -9544,18 +12371,48 @@ func (s *QueryTaskDetailHistoryResponseBodyCurrentPageCursor) SetUpdateTime(v st
 }
 
 type QueryTaskDetailHistoryResponseBodyNextPageCursor struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// S1234567890
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-2424
+	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// EXECUTE_FAILURE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
-	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 5
+	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryResponseBodyNextPageCursor) String() string {
@@ -9627,18 +12484,48 @@ func (s *QueryTaskDetailHistoryResponseBodyNextPageCursor) SetUpdateTime(v strin
 }
 
 type QueryTaskDetailHistoryResponseBodyObjects struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// S123456789
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-4234
+	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// EXECUTE_FAILURE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
-	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 5
+	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryResponseBodyObjects) String() string {
@@ -9710,18 +12597,48 @@ func (s *QueryTaskDetailHistoryResponseBodyObjects) SetUpdateTime(v string) *Que
 }
 
 type QueryTaskDetailHistoryResponseBodyPrePageCursor struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// S123456789
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-123
+	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// EXECUTE_FAILURE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
-	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 5
+	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// example:
+	//
+	// 2019-07-30 00:00:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryResponseBodyPrePageCursor) String() string {
@@ -9822,13 +12739,43 @@ func (s *QueryTaskDetailHistoryResponse) SetBody(v *QueryTaskDetailHistoryRespon
 }
 
 type QueryTaskDetailListRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskNo       *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskStatus   *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// S20179H1BBI9test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 2
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 127.0.0.0
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -9881,14 +12828,35 @@ func (s *QueryTaskDetailListRequest) SetUserClientIp(v string) *QueryTaskDetailL
 }
 
 type QueryTaskDetailListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryTaskDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                                `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                                `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                               `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                               `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// true
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// 6A2320E4-D870-49C9-A6DC-test
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryTaskDetailListResponseBody) String() string {
@@ -9957,19 +12925,56 @@ func (s *QueryTaskDetailListResponseBodyData) SetTaskDetail(v []*QueryTaskDetail
 }
 
 type QueryTaskDetailListResponseBodyDataTaskDetail struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskResult          *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 2018-01-25 20:46:57
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// The operation is successful.
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// example:
+	//
+	// S20179H1BBI9test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 75addb07-28a3-450e-b5ec-test
+	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// example:
+	//
+	// 60d6e201-8ee5-47ab-8fdc-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 12345
+	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	// example:
+	//
+	// EXECUTE_SUCCESS
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 2
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// ORDER_RENEW
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
-	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 0
+	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// example:
+	//
+	// 2018-01-25 20:47:01
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryTaskDetailListResponseBodyDataTaskDetail) String() string {
@@ -9992,6 +12997,11 @@ func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetDomainName(v string) 
 
 func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetErrorMsg(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
 	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetFailReason(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.FailReason = &v
 	return s
 }
 
@@ -10075,13 +13085,36 @@ func (s *QueryTaskDetailListResponse) SetBody(v *QueryTaskDetailListResponseBody
 }
 
 type QueryTaskInfoHistoryRequest struct {
-	BeginCreateTime  *int64  `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
-	CreateTimeCursor *int64  `json:"CreateTimeCursor,omitempty" xml:"CreateTimeCursor,omitempty"`
-	EndCreateTime    *int64  `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskNoCursor     *string `json:"TaskNoCursor,omitempty" xml:"TaskNoCursor,omitempty"`
-	UserClientIp     *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	BeginCreateTime *int64 `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	CreateTimeCursor *int64 `json:"CreateTimeCursor,omitempty" xml:"CreateTimeCursor,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// aa634d3f-927e-4d17-9d2c-test
+	TaskNoCursor *string `json:"TaskNoCursor,omitempty" xml:"TaskNoCursor,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryTaskInfoHistoryRequest) String() string {
@@ -10131,9 +13164,15 @@ type QueryTaskInfoHistoryResponseBody struct {
 	CurrentPageCursor *QueryTaskInfoHistoryResponseBodyCurrentPageCursor `json:"CurrentPageCursor,omitempty" xml:"CurrentPageCursor,omitempty" type:"Struct"`
 	NextPageCursor    *QueryTaskInfoHistoryResponseBodyNextPageCursor    `json:"NextPageCursor,omitempty" xml:"NextPageCursor,omitempty" type:"Struct"`
 	Objects           []*QueryTaskInfoHistoryResponseBodyObjects         `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
-	PageSize          *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePageCursor     *QueryTaskInfoHistoryResponseBodyPrePageCursor     `json:"PrePageCursor,omitempty" xml:"PrePageCursor,omitempty" type:"Struct"`
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrePageCursor *QueryTaskInfoHistoryResponseBodyPrePageCursor `json:"PrePageCursor,omitempty" xml:"PrePageCursor,omitempty" type:"Struct"`
+	// example:
+	//
+	// EB3FCCBA-CA1F-4D31-9F34-test
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryTaskInfoHistoryResponseBody) String() string {
@@ -10175,13 +13214,37 @@ func (s *QueryTaskInfoHistoryResponseBody) SetRequestId(v string) *QueryTaskInfo
 }
 
 type QueryTaskInfoHistoryResponseBodyCurrentPageCursor struct {
-	Clientip            *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeLong      *int64  `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskNum             *int32  `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// example:
+	//
+	// 2017-11-01 17:22:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1509528171000
+	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// example:
+	//
+	// aa634d3f-927e-4d17-9d2c-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 1
+	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
@@ -10240,13 +13303,37 @@ func (s *QueryTaskInfoHistoryResponseBodyCurrentPageCursor) SetTaskTypeDescripti
 }
 
 type QueryTaskInfoHistoryResponseBodyNextPageCursor struct {
-	Clientip            *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeLong      *int64  `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskNum             *int32  `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// example:
+	//
+	// 2017-10-27 13:07:07
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1509080827000
+	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// example:
+	//
+	// 8f112aa1-98be-48c3-82f8-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 15
+	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
@@ -10305,13 +13392,37 @@ func (s *QueryTaskInfoHistoryResponseBodyNextPageCursor) SetTaskTypeDescription(
 }
 
 type QueryTaskInfoHistoryResponseBodyObjects struct {
-	Clientip            *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeLong      *int64  `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskNum             *int32  `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// example:
+	//
+	// 2017-11-01 17:22:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1509528171000
+	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// example:
+	//
+	// aa634d3f-927e-4d17-9d2c-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 1
+	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
@@ -10370,13 +13481,37 @@ func (s *QueryTaskInfoHistoryResponseBodyObjects) SetTaskTypeDescription(v strin
 }
 
 type QueryTaskInfoHistoryResponseBodyPrePageCursor struct {
-	Clientip            *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeLong      *int64  `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
-	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskNum             *int32  `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// example:
+	//
+	// 2017-11-01 17:19:47
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1509527987000
+	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// example:
+	//
+	// f9baa3d5-33b9-4c81-8847-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 15
+	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CHG_DNS
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
@@ -10464,12 +13599,34 @@ func (s *QueryTaskInfoHistoryResponse) SetBody(v *QueryTaskInfoHistoryResponseBo
 }
 
 type QueryTaskListRequest struct {
-	BeginCreateTime *int64  `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
-	EndCreateTime   *int64  `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserClientIp    *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	BeginCreateTime *int64 `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryTaskListRequest) String() string {
@@ -10511,14 +13668,35 @@ func (s *QueryTaskListRequest) SetUserClientIp(v string) *QueryTaskListRequest {
 }
 
 type QueryTaskListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                         `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryTaskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                          `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                          `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                         `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                         `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// true
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// 8D7D294A-8E99-481F-B64C-017EFC793059
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 43
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 22
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryTaskListResponseBody) String() string {
@@ -10587,16 +13765,43 @@ func (s *QueryTaskListResponseBodyData) SetTaskInfo(v []*QueryTaskListResponseBo
 }
 
 type QueryTaskListResponseBodyDataTaskInfo struct {
-	Clientip             *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TaskCancelStatus     *string `json:"TaskCancelStatus,omitempty" xml:"TaskCancelStatus,omitempty"`
-	TaskCancelStatusCode *int32  `json:"TaskCancelStatusCode,omitempty" xml:"TaskCancelStatusCode,omitempty"`
-	TaskNo               *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskNum              *int32  `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
-	TaskStatus           *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode       *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
-	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskTypeDescription  *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// example:
+	//
+	// Dec 26,2017 11:00:54
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// INIT
+	TaskCancelStatus *string `json:"TaskCancelStatus,omitempty" xml:"TaskCancelStatus,omitempty"`
+	// example:
+	//
+	// 0
+	TaskCancelStatusCode *int32 `json:"TaskCancelStatusCode,omitempty" xml:"TaskCancelStatusCode,omitempty"`
+	// example:
+	//
+	// 8b1cd755-4928-4b02-adee-e5d41d7b1939
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 1
+	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 1
+	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// example:
+	//
+	// CREATE_DNSHOST
+	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
 
 func (s QueryTaskListResponseBodyDataTaskInfo) String() string {
@@ -10687,8 +13892,19 @@ func (s *QueryTaskListResponse) SetBody(v *QueryTaskListResponseBody) *QueryTask
 }
 
 type QueryTransferInByInstanceIdRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20181T0WLI85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -10716,28 +13932,91 @@ func (s *QueryTransferInByInstanceIdRequest) SetUserClientIp(v string) *QueryTra
 }
 
 type QueryTransferInByInstanceIdResponseBody struct {
-	DomainName                                  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Email                                       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	ExpirationDate                              *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong                          *int64  `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	InstanceId                                  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModificationDate                            *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
-	ModificationDateLong                        *int64  `json:"ModificationDateLong,omitempty" xml:"ModificationDateLong,omitempty"`
-	NeedMailCheck                               *bool   `json:"NeedMailCheck,omitempty" xml:"NeedMailCheck,omitempty"`
-	ProgressBarType                             *int32  `json:"ProgressBarType,omitempty" xml:"ProgressBarType,omitempty"`
-	RequestId                                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode                                  *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultDate                                  *string `json:"ResultDate,omitempty" xml:"ResultDate,omitempty"`
-	ResultDateLong                              *int64  `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
-	ResultMsg                                   *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	SimpleTransferInStatus                      *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
-	Status                                      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubmissionDate                              *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
-	SubmissionDateLong                          *int64  `json:"SubmissionDateLong,omitempty" xml:"SubmissionDateLong,omitempty"`
-	TransferAuthorizationCodeSubmissionDate     *string `json:"TransferAuthorizationCodeSubmissionDate,omitempty" xml:"TransferAuthorizationCodeSubmissionDate,omitempty"`
-	TransferAuthorizationCodeSubmissionDateLong *int64  `json:"TransferAuthorizationCodeSubmissionDateLong,omitempty" xml:"TransferAuthorizationCodeSubmissionDateLong,omitempty"`
-	UserId                                      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WhoisMailStatus                             *bool   `json:"WhoisMailStatus,omitempty" xml:"WhoisMailStatus,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// example:
+	//
+	// S20181T0WLI85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	ModificationDateLong *int64 `json:"ModificationDateLong,omitempty" xml:"ModificationDateLong,omitempty"`
+	// example:
+	//
+	// true
+	NeedMailCheck *bool `json:"NeedMailCheck,omitempty" xml:"NeedMailCheck,omitempty"`
+	// example:
+	//
+	// 0
+	ProgressBarType *int32 `json:"ProgressBarType,omitempty" xml:"ProgressBarType,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// clientCancelled
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	ResultDate *string `json:"ResultDate,omitempty" xml:"ResultDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	ResultDateLong *int64  `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
+	ResultMsg      *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	SimpleTransferInStatus *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
+	// example:
+	//
+	// 11
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	SubmissionDate *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	SubmissionDateLong *int64 `json:"SubmissionDateLong,omitempty" xml:"SubmissionDateLong,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	TransferAuthorizationCodeSubmissionDate *string `json:"TransferAuthorizationCodeSubmissionDate,omitempty" xml:"TransferAuthorizationCodeSubmissionDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	TransferAuthorizationCodeSubmissionDateLong *int64 `json:"TransferAuthorizationCodeSubmissionDateLong,omitempty" xml:"TransferAuthorizationCodeSubmissionDateLong,omitempty"`
+	// example:
+	//
+	// 123456
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// true
+	WhoisMailStatus *bool `json:"WhoisMailStatus,omitempty" xml:"WhoisMailStatus,omitempty"`
 }
 
 func (s QueryTransferInByInstanceIdResponseBody) String() string {
@@ -10888,14 +14167,42 @@ func (s *QueryTransferInByInstanceIdResponse) SetBody(v *QueryTransferInByInstan
 }
 
 type QueryTransferInListRequest struct {
-	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum                *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// INIT
 	SimpleTransferInStatus *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
-	SubmissionEndDate      *int64  `json:"SubmissionEndDate,omitempty" xml:"SubmissionEndDate,omitempty"`
-	SubmissionStartDate    *int64  `json:"SubmissionStartDate,omitempty" xml:"SubmissionStartDate,omitempty"`
-	UserClientIp           *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	SubmissionEndDate *int64 `json:"SubmissionEndDate,omitempty" xml:"SubmissionEndDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	SubmissionStartDate *int64 `json:"SubmissionStartDate,omitempty" xml:"SubmissionStartDate,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryTransferInListRequest) String() string {
@@ -10947,14 +14254,35 @@ func (s *QueryTransferInListRequest) SetUserClientIp(v string) *QueryTransferInL
 }
 
 type QueryTransferInListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryTransferInListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                                `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                                `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                               `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                               `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// true
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 40
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryTransferInListResponseBody) String() string {
@@ -11023,27 +14351,87 @@ func (s *QueryTransferInListResponseBodyData) SetTransferInInfo(v []*QueryTransf
 }
 
 type QueryTransferInListResponseBodyDataTransferInInfo struct {
-	DomainName                                  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Email                                       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	ExpirationDate                              *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong                          *int64  `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	InstanceId                                  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModificationDate                            *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
-	ModificationDateLong                        *int64  `json:"ModificationDateLong,omitempty" xml:"ModificationDateLong,omitempty"`
-	NeedMailCheck                               *bool   `json:"NeedMailCheck,omitempty" xml:"NeedMailCheck,omitempty"`
-	ProgressBarType                             *int32  `json:"ProgressBarType,omitempty" xml:"ProgressBarType,omitempty"`
-	ResultCode                                  *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultDate                                  *string `json:"ResultDate,omitempty" xml:"ResultDate,omitempty"`
-	ResultDateLong                              *int64  `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
-	ResultMsg                                   *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	SimpleTransferInStatus                      *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
-	Status                                      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubmissionDate                              *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
-	SubmissionDateLong                          *int64  `json:"SubmissionDateLong,omitempty" xml:"SubmissionDateLong,omitempty"`
-	TransferAuthorizationCodeSubmissionDate     *string `json:"TransferAuthorizationCodeSubmissionDate,omitempty" xml:"TransferAuthorizationCodeSubmissionDate,omitempty"`
-	TransferAuthorizationCodeSubmissionDateLong *int64  `json:"TransferAuthorizationCodeSubmissionDateLong,omitempty" xml:"TransferAuthorizationCodeSubmissionDateLong,omitempty"`
-	UserId                                      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WhoisMailStatus                             *bool   `json:"WhoisMailStatus,omitempty" xml:"WhoisMailStatus,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// example:
+	//
+	// S20181T0WLI85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	ModificationDateLong *int64 `json:"ModificationDateLong,omitempty" xml:"ModificationDateLong,omitempty"`
+	// example:
+	//
+	// true
+	NeedMailCheck *bool `json:"NeedMailCheck,omitempty" xml:"NeedMailCheck,omitempty"`
+	// example:
+	//
+	// 0
+	ProgressBarType *int32 `json:"ProgressBarType,omitempty" xml:"ProgressBarType,omitempty"`
+	// example:
+	//
+	// clientCancelled
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	ResultDate *string `json:"ResultDate,omitempty" xml:"ResultDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	ResultDateLong *int64  `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
+	ResultMsg      *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	// example:
+	//
+	// FAIL
+	SimpleTransferInStatus *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
+	// example:
+	//
+	// 11
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	SubmissionDate *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	SubmissionDateLong *int64 `json:"SubmissionDateLong,omitempty" xml:"SubmissionDateLong,omitempty"`
+	// example:
+	//
+	// 2018-03-28 00:41:42
+	TransferAuthorizationCodeSubmissionDate *string `json:"TransferAuthorizationCodeSubmissionDate,omitempty" xml:"TransferAuthorizationCodeSubmissionDate,omitempty"`
+	// example:
+	//
+	// 1514428524669
+	TransferAuthorizationCodeSubmissionDateLong *int64 `json:"TransferAuthorizationCodeSubmissionDateLong,omitempty" xml:"TransferAuthorizationCodeSubmissionDateLong,omitempty"`
+	// example:
+	//
+	// 123456
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// true
+	WhoisMailStatus *bool `json:"WhoisMailStatus,omitempty" xml:"WhoisMailStatus,omitempty"`
 }
 
 func (s QueryTransferInListResponseBodyDataTransferInInfo) String() string {
@@ -11189,8 +14577,19 @@ func (s *QueryTransferInListResponse) SetBody(v *QueryTransferInListResponseBody
 }
 
 type QueryTransferOutInfoRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -11218,13 +14617,37 @@ func (s *QueryTransferOutInfoRequest) SetUserClientIp(v string) *QueryTransferOu
 }
 
 type QueryTransferOutInfoResponseBody struct {
-	Email                             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	ExpirationDate                    *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	PendingRequestDate                *string `json:"PendingRequestDate,omitempty" xml:"PendingRequestDate,omitempty"`
-	RequestId                         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode                        *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMsg                         *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	Status                            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 2018-04-13 19:57:56
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// example:
+	//
+	// 2018-04-13 19:57:56
+	PendingRequestDate *string `json:"PendingRequestDate,omitempty" xml:"PendingRequestDate,omitempty"`
+	// example:
+	//
+	// BBEC5A50-DFDF-482E-8343-B4EB0105E055
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// clientRejected
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// Transfer out rejected
+	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	// example:
+	//
+	// 8
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2018-04-13 19:57:56
 	TransferAuthorizationCodeSendDate *string `json:"TransferAuthorizationCodeSendDate,omitempty" xml:"TransferAuthorizationCodeSendDate,omitempty"`
 }
 
@@ -11306,12 +14729,38 @@ func (s *QueryTransferOutInfoResponse) SetBody(v *QueryTransferOutInfoResponseBo
 }
 
 type RegistrantProfileRealNameVerificationRequest struct {
-	IdentityCredential     *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo   *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dGVzdA==
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 43012512345678****
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SFZ
 	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileID    *int64  `json:"RegistrantProfileID,omitempty" xml:"RegistrantProfileID,omitempty"`
-	UserClientIp           *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567
+	RegistrantProfileID *int64 `json:"RegistrantProfileID,omitempty" xml:"RegistrantProfileID,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s RegistrantProfileRealNameVerificationRequest) String() string {
@@ -11353,6 +14802,9 @@ func (s *RegistrantProfileRealNameVerificationRequest) SetUserClientIp(v string)
 }
 
 type RegistrantProfileRealNameVerificationResponseBody struct {
+	// example:
+	//
+	// 51D584A2-0CCD-4336-AD7D-1AD4C67B5545
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11399,8 +14851,19 @@ func (s *RegistrantProfileRealNameVerificationResponse) SetBody(v *RegistrantPro
 }
 
 type ResendEmailVerificationRequest struct {
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test1@aliyun.com,test2@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -11428,7 +14891,10 @@ func (s *ResendEmailVerificationRequest) SetUserClientIp(v string) *ResendEmailV
 }
 
 type ResendEmailVerificationResponseBody struct {
-	FailList    []*ResendEmailVerificationResponseBodyFailList    `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	FailList []*ResendEmailVerificationResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0EA54E99-DB48-4CE3-A099-6ED8E451B8AC
 	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuccessList []*ResendEmailVerificationResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Repeated"`
 }
@@ -11457,8 +14923,17 @@ func (s *ResendEmailVerificationResponseBody) SetSuccessList(v []*ResendEmailVer
 }
 
 type ResendEmailVerificationResponseBodyFailList struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// SendTokenQuotaExceeded
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// test1@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// The maximum number of attempts allowed to send the email verification link is exceeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -11486,8 +14961,17 @@ func (s *ResendEmailVerificationResponseBodyFailList) SetMessage(v string) *Rese
 }
 
 type ResendEmailVerificationResponseBodySuccessList struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// test2@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -11544,8 +15028,19 @@ func (s *ResendEmailVerificationResponse) SetBody(v *ResendEmailVerificationResp
 }
 
 type ResetQualificationVerificationRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20181*****85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -11573,6 +15068,9 @@ func (s *ResetQualificationVerificationRequest) SetUserClientIp(v string) *Reset
 }
 
 type ResetQualificationVerificationResponseBody struct {
+	// example:
+	//
+	// D6CB3623-4726-4947-AC2B-2C6E673B447C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11619,9 +15117,23 @@ func (s *ResetQualificationVerificationResponse) SetBody(v *ResetQualificationVe
 }
 
 type SaveBatchDomainRemarkRequest struct {
-	InstanceIds  *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S12344567
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// MyRemarkInfo
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -11654,6 +15166,9 @@ func (s *SaveBatchDomainRemarkRequest) SetUserClientIp(v string) *SaveBatchDomai
 }
 
 type SaveBatchDomainRemarkResponseBody struct {
+	// example:
+	//
+	// 4189E320-961E-4786-8E15-0000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11700,9 +15215,15 @@ func (s *SaveBatchDomainRemarkResponse) SetBody(v *SaveBatchDomainRemarkResponse
 }
 
 type SaveBatchTaskForApplyQuickTransferOutOpenlyRequest struct {
-	DomainNames  []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) String() string {
@@ -11729,8 +15250,14 @@ func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) SetUserClientIp(v s
 }
 
 type SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody struct {
+	// example:
+	//
+	// D6CB3623-4726-4947-AC2B-2C6E673B447C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody) String() string {
@@ -11781,13 +15308,32 @@ func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse) SetBody(v *SaveBat
 }
 
 type SaveBatchTaskForCreatingOrderActivateRequest struct {
-	CouponNo           *string                                                           `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang               *string                                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 123456
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderActivateParam []*SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam `json:"OrderActivateParam,omitempty" xml:"OrderActivateParam,omitempty" type:"Repeated"`
-	PromotionNo        *string                                                           `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	UseCoupon          *bool                                                             `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion       *bool                                                             `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp       *string                                                           `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 123124
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderActivateRequest) String() string {
@@ -11834,27 +15380,95 @@ func (s *SaveBatchTaskForCreatingOrderActivateRequest) SetUserClientIp(v string)
 }
 
 type SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam struct {
-	Address                   *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AliyunDns                 *bool   `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
-	City                      *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                   *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Dns1                      *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
-	Dns2                      *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
-	DomainName                *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Email                     *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EnableDomainProxy         *bool   `json:"EnableDomainProxy,omitempty" xml:"EnableDomainProxy,omitempty"`
-	PermitPremiumActivation   *bool   `json:"PermitPremiumActivation,omitempty" xml:"PermitPremiumActivation,omitempty"`
-	PostalCode                *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                  *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName            *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization    *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantProfileId       *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RegistrantType            *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SubscriptionDuration      *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
-	TelArea                   *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                    *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                 *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// chao yan qu **	- dasha **	- hao
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// true
+	AliyunDns *bool `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// example:
+	//
+	// bei jing shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// ns2.aliyun.com
+	Dns1 *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	// example:
+	//
+	// ns1.aliyun.com
+	Dns2 *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// true
+	EnableDomainProxy *bool `json:"EnableDomainProxy,omitempty" xml:"EnableDomainProxy,omitempty"`
+	// example:
+	//
+	// true
+	PermitPremiumActivation *bool `json:"PermitPremiumActivation,omitempty" xml:"PermitPremiumActivation,omitempty"`
+	// example:
+	//
+	// 102629
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// bei jing
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// zhang san
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// zhang san
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 000000
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// rg-XX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	SubscriptionDuration *int32 `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 1234
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 1820000****
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// false
 	TrademarkDomainActivation *bool   `json:"TrademarkDomainActivation,omitempty" xml:"TrademarkDomainActivation,omitempty"`
 	ZhAddress                 *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
 	ZhCity                    *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
@@ -12007,8 +15621,14 @@ func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) SetZhRe
 }
 
 type SaveBatchTaskForCreatingOrderActivateResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderActivateResponseBody) String() string {
@@ -12059,13 +15679,32 @@ func (s *SaveBatchTaskForCreatingOrderActivateResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForCreatingOrderRedeemRequest struct {
-	CouponNo         *string                                                       `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang             *string                                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 123123
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderRedeemParam []*SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam `json:"OrderRedeemParam,omitempty" xml:"OrderRedeemParam,omitempty" type:"Repeated"`
-	PromotionNo      *string                                                       `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	UseCoupon        *bool                                                         `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion     *bool                                                         `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp     *string                                                       `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 123213123
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRedeemRequest) String() string {
@@ -12112,8 +15751,14 @@ func (s *SaveBatchTaskForCreatingOrderRedeemRequest) SetUserClientIp(v string) *
 }
 
 type SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam struct {
-	CurrentExpirationDate *int64  `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 000000
+	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// example:
+	//
+	// Aliyun.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam) String() string {
@@ -12135,8 +15780,14 @@ func (s *SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam) SetDomainNa
 }
 
 type SaveBatchTaskForCreatingOrderRedeemResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRedeemResponseBody) String() string {
@@ -12187,13 +15838,32 @@ func (s *SaveBatchTaskForCreatingOrderRedeemResponse) SetBody(v *SaveBatchTaskFo
 }
 
 type SaveBatchTaskForCreatingOrderRenewRequest struct {
-	CouponNo        *string                                                     `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang            *string                                                     `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 12312412
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderRenewParam []*SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam `json:"OrderRenewParam,omitempty" xml:"OrderRenewParam,omitempty" type:"Repeated"`
-	PromotionNo     *string                                                     `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	UseCoupon       *bool                                                       `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion    *bool                                                       `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp    *string                                                     `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 123123123
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRenewRequest) String() string {
@@ -12240,9 +15910,18 @@ func (s *SaveBatchTaskForCreatingOrderRenewRequest) SetUserClientIp(v string) *S
 }
 
 type SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam struct {
-	CurrentExpirationDate *int64  `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	SubscriptionDuration  *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// example:
+	//
+	// Aliyun.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 1
+	SubscriptionDuration *int32 `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) String() string {
@@ -12269,8 +15948,14 @@ func (s *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) SetSubscripti
 }
 
 type SaveBatchTaskForCreatingOrderRenewResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRenewResponseBody) String() string {
@@ -12321,13 +16006,32 @@ func (s *SaveBatchTaskForCreatingOrderRenewResponse) SetBody(v *SaveBatchTaskFor
 }
 
 type SaveBatchTaskForCreatingOrderTransferRequest struct {
-	CouponNo           *string                                                           `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang               *string                                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 123123
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderTransferParam []*SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam `json:"OrderTransferParam,omitempty" xml:"OrderTransferParam,omitempty" type:"Repeated"`
-	PromotionNo        *string                                                           `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	UseCoupon          *bool                                                             `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion       *bool                                                             `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp       *string                                                           `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 123123
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderTransferRequest) String() string {
@@ -12374,10 +16078,22 @@ func (s *SaveBatchTaskForCreatingOrderTransferRequest) SetUserClientIp(v string)
 }
 
 type SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam struct {
-	AuthorizationCode     *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	PermitPremiumTransfer *bool   `json:"PermitPremiumTransfer,omitempty" xml:"PermitPremiumTransfer,omitempty"`
-	RegistrantProfileId   *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// testCode
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// false
+	PermitPremiumTransfer *bool `json:"PermitPremiumTransfer,omitempty" xml:"PermitPremiumTransfer,omitempty"`
+	// example:
+	//
+	// 123456
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam) String() string {
@@ -12409,8 +16125,14 @@ func (s *SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam) SetRegi
 }
 
 type SaveBatchTaskForCreatingOrderTransferResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderTransferResponseBody) String() string {
@@ -12461,10 +16183,26 @@ func (s *SaveBatchTaskForCreatingOrderTransferResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForDomainNameProxyServiceRequest struct {
-	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool     `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test1.com,test2.com,test3.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForDomainNameProxyServiceRequest) String() string {
@@ -12496,8 +16234,14 @@ func (s *SaveBatchTaskForDomainNameProxyServiceRequest) SetUserClientIp(v string
 }
 
 type SaveBatchTaskForDomainNameProxyServiceResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f54923
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForDomainNameProxyServiceResponseBody) String() string {
@@ -12549,15 +16293,26 @@ func (s *SaveBatchTaskForDomainNameProxyServiceResponse) SetBody(v *SaveBatchTas
 
 type SaveBatchTaskForGenerateDomainCertificateRequest struct {
 	// The domain names.
+	//
+	// This parameter is required.
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   **zh**: Chinese.
-	// *   **en**: English.
+	// 	- **zh**: Chinese.
+	//
+	// 	- **en**: English.
 	//
 	// Default value: **en**.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -12586,15 +16341,26 @@ func (s *SaveBatchTaskForGenerateDomainCertificateRequest) SetUserClientIp(v str
 
 type SaveBatchTaskForGenerateDomainCertificateShrinkRequest struct {
 	// The domain names.
+	//
+	// This parameter is required.
 	DomainNamesShrink *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   **zh**: Chinese.
-	// *   **en**: English.
+	// 	- **zh**: Chinese.
+	//
+	// 	- **en**: English.
 	//
 	// Default value: **en**.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -12623,8 +16389,16 @@ func (s *SaveBatchTaskForGenerateDomainCertificateShrinkRequest) SetUserClientIp
 
 type SaveBatchTaskForGenerateDomainCertificateResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 8b1cd755-4928-4b02-adee-e5d41d7b1939
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
@@ -12676,11 +16450,30 @@ func (s *SaveBatchTaskForGenerateDomainCertificateResponse) SetBody(v *SaveBatch
 }
 
 type SaveBatchTaskForModifyingDomainDnsRequest struct {
-	AliyunDns        *bool     `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
-	DomainName       []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	AliyunDns *bool `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ns1.test.com
 	DomainNameServer []*string `json:"DomainNameServer,omitempty" xml:"DomainNameServer,omitempty" type:"Repeated"`
-	Lang             *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp     *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForModifyingDomainDnsRequest) String() string {
@@ -12717,8 +16510,14 @@ func (s *SaveBatchTaskForModifyingDomainDnsRequest) SetUserClientIp(v string) *S
 }
 
 type SaveBatchTaskForModifyingDomainDnsResponseBody struct {
+	// example:
+	//
+	// 6A862A8A-E7AB-4C4E-8946-A74122D9CC4B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 35fb2fb7-d4d6-4478-9408-22cb63696b86
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForModifyingDomainDnsResponseBody) String() string {
@@ -12769,8 +16568,14 @@ func (s *SaveBatchTaskForModifyingDomainDnsResponse) SetBody(v *SaveBatchTaskFor
 }
 
 type SaveBatchTaskForReserveDropListDomainRequest struct {
-	ContactTemplateId *string                                                `json:"ContactTemplateId,omitempty" xml:"ContactTemplateId,omitempty"`
-	Domains           []*SaveBatchTaskForReserveDropListDomainRequestDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123123
+	ContactTemplateId *string `json:"ContactTemplateId,omitempty" xml:"ContactTemplateId,omitempty"`
+	// This parameter is required.
+	Domains []*SaveBatchTaskForReserveDropListDomainRequestDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 }
 
 func (s SaveBatchTaskForReserveDropListDomainRequest) String() string {
@@ -12792,8 +16597,13 @@ func (s *SaveBatchTaskForReserveDropListDomainRequest) SetDomains(v []*SaveBatch
 }
 
 type SaveBatchTaskForReserveDropListDomainRequestDomains struct {
-	Dns1       *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
-	Dns2       *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	Dns1 *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	Dns2 *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -12821,8 +16631,14 @@ func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDomainName(v st
 }
 
 type SaveBatchTaskForReserveDropListDomainResponseBody struct {
+	// example:
+	//
+	// B7AB5469-5E38-4AA9-A920-C65B7A9C8E6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForReserveDropListDomainResponseBody) String() string {
@@ -12873,10 +16689,26 @@ func (s *SaveBatchTaskForReserveDropListDomainResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForTransferProhibitionLockRequest struct {
-	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool     `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test1.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForTransferProhibitionLockRequest) String() string {
@@ -12908,8 +16740,14 @@ func (s *SaveBatchTaskForTransferProhibitionLockRequest) SetUserClientIp(v strin
 }
 
 type SaveBatchTaskForTransferProhibitionLockResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForTransferProhibitionLockResponseBody) String() string {
@@ -12960,10 +16798,26 @@ func (s *SaveBatchTaskForTransferProhibitionLockResponse) SetBody(v *SaveBatchTa
 }
 
 type SaveBatchTaskForUpdateProhibitionLockRequest struct {
-	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool     `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyundoc.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdateProhibitionLockRequest) String() string {
@@ -12995,8 +16849,14 @@ func (s *SaveBatchTaskForUpdateProhibitionLockRequest) SetUserClientIp(v string)
 }
 
 type SaveBatchTaskForUpdateProhibitionLockResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdateProhibitionLockResponseBody) String() string {
@@ -13047,28 +16907,85 @@ func (s *SaveBatchTaskForUpdateProhibitionLockResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForUpdatingContactInfoByNewContactRequest struct {
-	Address                  *string   `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string   `json:"City,omitempty" xml:"City,omitempty"`
-	ContactType              *string   `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	Country                  *string   `json:"Country,omitempty" xml:"Country,omitempty"`
-	DomainName               []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Email                    *string   `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang                     *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PostalCode               *string   `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string   `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName           *string   `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string   `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType           *string   `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                  *string   `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string   `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                *string   `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	TransferOutProhibited    *bool     `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
-	UserClientIp             *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZhAddress                *string   `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                   *string   `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince               *string   `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName         *string   `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	ZhRegistrantOrganization *string   `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	// example:
+	//
+	// chao yang qu
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// bei jing shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registrant
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alibabacloud.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 123456
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// bei jing
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 1235
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 1234567890
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// false
+	TransferOutProhibited *bool `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdatingContactInfoByNewContactRequest) String() string {
@@ -13190,8 +17107,14 @@ func (s *SaveBatchTaskForUpdatingContactInfoByNewContactRequest) SetZhRegistrant
 }
 
 type SaveBatchTaskForUpdatingContactInfoByNewContactResponseBody struct {
+	// example:
+	//
+	// 464AF466-CA8E-43A8-B61D-test
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 65de2165-ca09-491f-9fe0-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdatingContactInfoByNewContactResponseBody) String() string {
@@ -13242,12 +17165,36 @@ func (s *SaveBatchTaskForUpdatingContactInfoByNewContactResponse) SetBody(v *Sav
 }
 
 type SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest struct {
-	ContactType           *string   `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	DomainName            []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang                  *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileId   *int64    `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	TransferOutProhibited *bool     `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
-	UserClientIp          *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registrant
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// true
+	TransferOutProhibited *bool `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest) String() string {
@@ -13289,8 +17236,14 @@ func (s *SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest) SetUse
 }
 
 type SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponseBody struct {
+	// example:
+	//
+	// EDC28FEC-6BE0-4583-95BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 880f1579-be51-4dd3-a69d
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponseBody) String() string {
@@ -13341,10 +17294,20 @@ func (s *SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponse) SetBo
 }
 
 type SaveDomainGroupRequest struct {
-	DomainGroupId   *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// example:
+	//
+	// 123456
+	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// This parameter is required.
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp    *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveDomainGroupRequest) String() string {
@@ -13376,14 +17339,35 @@ func (s *SaveDomainGroupRequest) SetUserClientIp(v string) *SaveDomainGroupReque
 }
 
 type SaveDomainGroupResponseBody struct {
-	BeingDeleted      *bool   `json:"BeingDeleted,omitempty" xml:"BeingDeleted,omitempty"`
-	CreationDate      *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-	DomainGroupId     *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName   *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// example:
+	//
+	// false
+	BeingDeleted *bool `json:"BeingDeleted,omitempty" xml:"BeingDeleted,omitempty"`
+	// example:
+	//
+	// 2018-04-02 15:59:06
+	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	// example:
+	//
+	// 123456
+	DomainGroupId   *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// example:
+	//
+	// COMPLETE
 	DomainGroupStatus *string `json:"DomainGroupStatus,omitempty" xml:"DomainGroupStatus,omitempty"`
-	ModificationDate  *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNumber       *int32  `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	// example:
+	//
+	// 2018-04-02 15:59:06
+	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// example:
+	//
+	// 80011ABC-F573-4795-B0E8-377BFBBA3422
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s SaveDomainGroupResponseBody) String() string {
@@ -13464,22 +17448,73 @@ func (s *SaveDomainGroupResponse) SetBody(v *SaveDomainGroupResponseBody) *SaveD
 }
 
 type SaveRegistrantProfileRequest struct {
-	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	DefaultRegistrantProfile *bool   `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
-	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang                     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PostalCode               *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName           *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantProfileId      *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RegistrantProfileType    *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
-	RegistrantType           *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                  *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// zhe jiang sheng hang zhou shi shi li qu shi li zhen shi li da sha 1001 hao
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// hang zhou shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// false
+	DefaultRegistrantProfile *bool `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 310024
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// zhe jiang
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// li si
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// li si
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 3600000
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// common
+	RegistrantProfileType *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 1234
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 1829756****
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
 	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
@@ -13607,8 +17642,14 @@ func (s *SaveRegistrantProfileRequest) SetZhRegistrantOrganization(v string) *Sa
 }
 
 type SaveRegistrantProfileResponseBody struct {
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3600000
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// D09B153B-294D-42F1-BB61-F1C72136DFD3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SaveRegistrantProfileResponseBody) String() string {
@@ -13659,24 +17700,81 @@ func (s *SaveRegistrantProfileResponse) SetBody(v *SaveRegistrantProfileResponse
 }
 
 type SaveRegistrantProfileRealNameVerificationRequest struct {
-	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdentityCredential       *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo     *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
-	IdentityCredentialType   *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	Lang                     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PostalCode               *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName           *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantProfileId      *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RegistrantProfileType    *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
-	RegistrantType           *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                  *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// chao yang qu
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// bei jing shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// dGVzdA==
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// example:
+	//
+	// 4111111111111110**
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// example:
+	//
+	// SFZ
+	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1234567
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// bei jing
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 1234567
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// common
+	RegistrantProfileType *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 1234
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 12345678
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
 	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
@@ -13814,8 +17912,14 @@ func (s *SaveRegistrantProfileRealNameVerificationRequest) SetZhRegistrantOrgani
 }
 
 type SaveRegistrantProfileRealNameVerificationResponseBody struct {
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 4D73432C-7600-****-ACBB-C3B5CA145D32
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SaveRegistrantProfileRealNameVerificationResponseBody) String() string {
@@ -13866,12 +17970,43 @@ func (s *SaveRegistrantProfileRealNameVerificationResponse) SetBody(v *SaveRegis
 }
 
 type SaveSingleTaskForAddingDSRecordRequest struct {
-	Algorithm    *int32  `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Digest       *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	DigestType   *int32  `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	KeyTag       *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f58fa917424383934c7b0cf1a90f61d692745680fa06f5ecdbe0924e86de9598
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	DigestType *int32 `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -13919,8 +18054,14 @@ func (s *SaveSingleTaskForAddingDSRecordRequest) SetUserClientIp(v string) *Save
 }
 
 type SaveSingleTaskForAddingDSRecordResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e893148f-6343-4ae1-9eba-6e2a4116e142
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForAddingDSRecordResponseBody) String() string {
@@ -13971,8 +18112,19 @@ func (s *SaveSingleTaskForAddingDSRecordResponse) SetBody(v *SaveSingleTaskForAd
 }
 
 type SaveSingleTaskForApplyQuickTransferOutOpenlyRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -14000,8 +18152,14 @@ func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) SetUserClientIp(v 
 }
 
 type SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody struct {
+	// example:
+	//
+	// D200000-C0B9-4CD3-B92A-9B44A000000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody) String() string {
@@ -14052,8 +18210,15 @@ func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse) SetBody(v *SaveSi
 }
 
 type SaveSingleTaskForApprovingTransferOutRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -14081,8 +18246,14 @@ func (s *SaveSingleTaskForApprovingTransferOutRequest) SetUserClientIp(v string)
 }
 
 type SaveSingleTaskForApprovingTransferOutResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForApprovingTransferOutResponseBody) String() string {
@@ -14133,9 +18304,25 @@ func (s *SaveSingleTaskForApprovingTransferOutResponse) SetBody(v *SaveSingleTas
 }
 
 type SaveSingleTaskForAssociatingEnsRequest struct {
-	Address      *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0x1234567890123456789012345678901234567890
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -14168,8 +18355,14 @@ func (s *SaveSingleTaskForAssociatingEnsRequest) SetUserClientIp(v string) *Save
 }
 
 type SaveSingleTaskForAssociatingEnsResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e893148f-6343-4ae1-9eba-6e2a4116e142
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForAssociatingEnsResponseBody) String() string {
@@ -14220,8 +18413,19 @@ func (s *SaveSingleTaskForAssociatingEnsResponse) SetBody(v *SaveSingleTaskForAs
 }
 
 type SaveSingleTaskForCancelingTransferInRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -14249,8 +18453,14 @@ func (s *SaveSingleTaskForCancelingTransferInRequest) SetUserClientIp(v string) 
 }
 
 type SaveSingleTaskForCancelingTransferInResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForCancelingTransferInResponseBody) String() string {
@@ -14301,8 +18511,19 @@ func (s *SaveSingleTaskForCancelingTransferInResponse) SetBody(v *SaveSingleTask
 }
 
 type SaveSingleTaskForCancelingTransferOutRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -14330,8 +18551,14 @@ func (s *SaveSingleTaskForCancelingTransferOutRequest) SetUserClientIp(v string)
 }
 
 type SaveSingleTaskForCancelingTransferOutResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForCancelingTransferOutResponseBody) String() string {
@@ -14382,11 +18609,32 @@ func (s *SaveSingleTaskForCancelingTransferOutResponse) SetBody(v *SaveSingleTas
 }
 
 type SaveSingleTaskForCreatingDnsHostRequest struct {
-	DnsName      *string   `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip           []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dns1
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S1234567890
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 218.xx.xx.236
+	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingDnsHostRequest) String() string {
@@ -14423,8 +18671,14 @@ func (s *SaveSingleTaskForCreatingDnsHostRequest) SetUserClientIp(v string) *Sav
 }
 
 type SaveSingleTaskForCreatingDnsHostResponseBody struct {
+	// example:
+	//
+	// 0F1B3547-BE50-4206-8F78-9540FFB85BC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e9b8e8b4-7334-4548-9cec-c30b6891f292
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingDnsHostResponseBody) String() string {
@@ -14475,39 +18729,125 @@ func (s *SaveSingleTaskForCreatingDnsHostResponse) SetBody(v *SaveSingleTaskForC
 }
 
 type SaveSingleTaskForCreatingOrderActivateRequest struct {
-	Address                   *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AliyunDns                 *bool   `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
-	City                      *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                   *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	CouponNo                  *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Dns1                      *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
-	Dns2                      *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
-	DomainName                *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Email                     *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EnableDomainProxy         *bool   `json:"EnableDomainProxy,omitempty" xml:"EnableDomainProxy,omitempty"`
-	Lang                      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PermitPremiumActivation   *bool   `json:"PermitPremiumActivation,omitempty" xml:"PermitPremiumActivation,omitempty"`
-	PostalCode                *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	PromotionNo               *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	Province                  *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName            *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization    *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantProfileId       *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RegistrantType            *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SubscriptionDuration      *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
-	TelArea                   *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                    *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                 *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	TrademarkDomainActivation *bool   `json:"TrademarkDomainActivation,omitempty" xml:"TrademarkDomainActivation,omitempty"`
-	UseCoupon                 *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion              *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp              *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZhAddress                 *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                    *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince                *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName          *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	ZhRegistrantOrganization  *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	// example:
+	//
+	// chao yang qu
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// true
+	AliyunDns *bool `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// example:
+	//
+	// bei jing shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// 123456
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// ns1.aliyun.com
+	Dns1 *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	// example:
+	//
+	// ns2.aliyun.com
+	Dns2 *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// false
+	EnableDomainProxy *bool `json:"EnableDomainProxy,omitempty" xml:"EnableDomainProxy,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// false
+	PermitPremiumActivation *bool `json:"PermitPremiumActivation,omitempty" xml:"PermitPremiumActivation,omitempty"`
+	// example:
+	//
+	// 1234567
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// 123123
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// example:
+	//
+	// bei jing
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 123
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// rg-XX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	SubscriptionDuration *int32 `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 1234
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 12345678
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// false
+	TrademarkDomainActivation *bool `json:"TrademarkDomainActivation,omitempty" xml:"TrademarkDomainActivation,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderActivateRequest) String() string {
@@ -14684,8 +19024,14 @@ func (s *SaveSingleTaskForCreatingOrderActivateRequest) SetZhRegistrantOrganizat
 }
 
 type SaveSingleTaskForCreatingOrderActivateResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderActivateResponseBody) String() string {
@@ -14736,14 +19082,42 @@ func (s *SaveSingleTaskForCreatingOrderActivateResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForCreatingOrderRedeemRequest struct {
-	CouponNo              *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	CurrentExpirationDate *int64  `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PromotionNo           *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	UseCoupon             *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion          *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 123123
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0000
+	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 123123
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRedeemRequest) String() string {
@@ -14795,8 +19169,14 @@ func (s *SaveSingleTaskForCreatingOrderRedeemRequest) SetUserClientIp(v string) 
 }
 
 type SaveSingleTaskForCreatingOrderRedeemResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRedeemResponseBody) String() string {
@@ -14847,15 +19227,48 @@ func (s *SaveSingleTaskForCreatingOrderRedeemResponse) SetBody(v *SaveSingleTask
 }
 
 type SaveSingleTaskForCreatingOrderRenewRequest struct {
-	CouponNo              *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	CurrentExpirationDate *int64  `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PromotionNo           *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	SubscriptionDuration  *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
-	UseCoupon             *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion          *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 123123
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0000
+	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 123132
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SubscriptionDuration *int32 `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRenewRequest) String() string {
@@ -14912,8 +19325,14 @@ func (s *SaveSingleTaskForCreatingOrderRenewRequest) SetUserClientIp(v string) *
 }
 
 type SaveSingleTaskForCreatingOrderRenewResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRenewResponseBody) String() string {
@@ -14964,16 +19383,52 @@ func (s *SaveSingleTaskForCreatingOrderRenewResponse) SetBody(v *SaveSingleTaskF
 }
 
 type SaveSingleTaskForCreatingOrderTransferRequest struct {
-	AuthorizationCode     *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	CouponNo              *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PermitPremiumTransfer *bool   `json:"PermitPremiumTransfer,omitempty" xml:"PermitPremiumTransfer,omitempty"`
-	PromotionNo           *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	RegistrantProfileId   *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UseCoupon             *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion          *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testCode
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// example:
+	//
+	// 123456
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// false
+	PermitPremiumTransfer *bool `json:"PermitPremiumTransfer,omitempty" xml:"PermitPremiumTransfer,omitempty"`
+	// example:
+	//
+	// 123456
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// false
+	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// example:
+	//
+	// false
+	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderTransferRequest) String() string {
@@ -15035,8 +19490,14 @@ func (s *SaveSingleTaskForCreatingOrderTransferRequest) SetUserClientIp(v string
 }
 
 type SaveSingleTaskForCreatingOrderTransferResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderTransferResponseBody) String() string {
@@ -15087,9 +19548,25 @@ func (s *SaveSingleTaskForCreatingOrderTransferResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForDeletingDSRecordRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	KeyTag       *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15122,8 +19599,14 @@ func (s *SaveSingleTaskForDeletingDSRecordRequest) SetUserClientIp(v string) *Sa
 }
 
 type SaveSingleTaskForDeletingDSRecordResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e893148f-6343-4ae1-9eba-6e2a4116e142
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForDeletingDSRecordResponseBody) String() string {
@@ -15174,9 +19657,25 @@ func (s *SaveSingleTaskForDeletingDSRecordResponse) SetBody(v *SaveSingleTaskFor
 }
 
 type SaveSingleTaskForDeletingDnsHostRequest struct {
-	DnsName      *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dns1
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S2019270W570xxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15209,8 +19708,14 @@ func (s *SaveSingleTaskForDeletingDnsHostRequest) SetUserClientIp(v string) *Sav
 }
 
 type SaveSingleTaskForDeletingDnsHostResponseBody struct {
+	// example:
+	//
+	// 8fc97e44-837a-447d-ac61-ea28d2fe8a38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 8fc97e44-837a-447d-ac61-ea28d2fexxxx
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForDeletingDnsHostResponseBody) String() string {
@@ -15261,8 +19766,19 @@ func (s *SaveSingleTaskForDeletingDnsHostResponse) SetBody(v *SaveSingleTaskForD
 }
 
 type SaveSingleTaskForDisassociatingEnsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15290,8 +19806,14 @@ func (s *SaveSingleTaskForDisassociatingEnsRequest) SetUserClientIp(v string) *S
 }
 
 type SaveSingleTaskForDisassociatingEnsResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e893148f-6343-4ae1-9eba-6e2a4116e142
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForDisassociatingEnsResponseBody) String() string {
@@ -15342,9 +19864,25 @@ func (s *SaveSingleTaskForDisassociatingEnsResponse) SetBody(v *SaveSingleTaskFo
 }
 
 type SaveSingleTaskForDomainNameProxyServiceRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15377,8 +19915,14 @@ func (s *SaveSingleTaskForDomainNameProxyServiceRequest) SetUserClientIp(v strin
 }
 
 type SaveSingleTaskForDomainNameProxyServiceResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForDomainNameProxyServiceResponseBody) String() string {
@@ -15430,15 +19974,30 @@ func (s *SaveSingleTaskForDomainNameProxyServiceResponse) SetBody(v *SaveSingleT
 
 type SaveSingleTaskForGenerateDomainCertificateRequest struct {
 	// The domain name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   **zh**: Chinese.
-	// *   **en**: English.
+	// 	- **zh**: Chinese.
+	//
+	// 	- **en**: English.
 	//
 	// Default value: **en**.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15467,8 +20026,16 @@ func (s *SaveSingleTaskForGenerateDomainCertificateRequest) SetUserClientIp(v st
 
 type SaveSingleTaskForGenerateDomainCertificateResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 3E68AB12-3D1F-5B9A-A358-F6B7852AD0B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 2741a831-d9ea-4dfb-af94-61948c0478c3
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
@@ -15520,12 +20087,43 @@ func (s *SaveSingleTaskForGenerateDomainCertificateResponse) SetBody(v *SaveSing
 }
 
 type SaveSingleTaskForModifyingDSRecordRequest struct {
-	Algorithm    *int32  `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Digest       *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	DigestType   *int32  `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	KeyTag       *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f58fa917424383934c7b0cf1a90f61d692745680fa06f5ecdbe0924e86de9598
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	DigestType *int32 `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15573,8 +20171,14 @@ func (s *SaveSingleTaskForModifyingDSRecordRequest) SetUserClientIp(v string) *S
 }
 
 type SaveSingleTaskForModifyingDSRecordResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e893148f-6343-4ae1-9eba-6e2a4116e142
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForModifyingDSRecordResponseBody) String() string {
@@ -15625,11 +20229,32 @@ func (s *SaveSingleTaskForModifyingDSRecordResponse) SetBody(v *SaveSingleTaskFo
 }
 
 type SaveSingleTaskForModifyingDnsHostRequest struct {
-	DnsName      *string   `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip           []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dns1
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S123456789
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 218.xx.xx.236
+	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForModifyingDnsHostRequest) String() string {
@@ -15666,8 +20291,14 @@ func (s *SaveSingleTaskForModifyingDnsHostRequest) SetUserClientIp(v string) *Sa
 }
 
 type SaveSingleTaskForModifyingDnsHostResponseBody struct {
+	// example:
+	//
+	// 0F1B3547-BE50-4206-8F78-9540FFB85BC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e9b8e8b4-7334-4548-9cec-c30b6891f292
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForModifyingDnsHostResponseBody) String() string {
@@ -15718,8 +20349,19 @@ func (s *SaveSingleTaskForModifyingDnsHostResponse) SetBody(v *SaveSingleTaskFor
 }
 
 type SaveSingleTaskForQueryingTransferAuthorizationCodeRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15747,8 +20389,14 @@ func (s *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest) SetUserClien
 }
 
 type SaveSingleTaskForQueryingTransferAuthorizationCodeResponseBody struct {
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForQueryingTransferAuthorizationCodeResponseBody) String() string {
@@ -15798,19 +20446,146 @@ func (s *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse) SetBody(v *
 	return s
 }
 
+type SaveSingleTaskForReserveDropListDomainRequest struct {
+	// This parameter is required.
+	ContactTemplateId *string `json:"ContactTemplateId,omitempty" xml:"ContactTemplateId,omitempty"`
+	Dns1              *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	Dns2              *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s SaveSingleTaskForReserveDropListDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForReserveDropListDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainRequest) SetContactTemplateId(v string) *SaveSingleTaskForReserveDropListDomainRequest {
+	s.ContactTemplateId = &v
+	return s
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainRequest) SetDns1(v string) *SaveSingleTaskForReserveDropListDomainRequest {
+	s.Dns1 = &v
+	return s
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainRequest) SetDns2(v string) *SaveSingleTaskForReserveDropListDomainRequest {
+	s.Dns2 = &v
+	return s
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainRequest) SetDomainName(v string) *SaveSingleTaskForReserveDropListDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+type SaveSingleTaskForReserveDropListDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveSingleTaskForReserveDropListDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForReserveDropListDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainResponseBody) SetRequestId(v string) *SaveSingleTaskForReserveDropListDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainResponseBody) SetTaskNo(v string) *SaveSingleTaskForReserveDropListDomainResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveSingleTaskForReserveDropListDomainResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForReserveDropListDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SaveSingleTaskForReserveDropListDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForReserveDropListDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainResponse) SetHeaders(v map[string]*string) *SaveSingleTaskForReserveDropListDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainResponse) SetStatusCode(v int32) *SaveSingleTaskForReserveDropListDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveSingleTaskForReserveDropListDomainResponse) SetBody(v *SaveSingleTaskForReserveDropListDomainResponseBody) *SaveSingleTaskForReserveDropListDomainResponse {
+	s.Body = v
+	return s
+}
+
 type SaveSingleTaskForSaveArtExtensionRequest struct {
-	DateOrPeriod            *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
-	Dimensions              *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	DomainName              *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Features                *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	// example:
+	//
+	// 2019-10-01
+	DateOrPeriod *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
+	// example:
+	//
+	// 20 cm
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.art
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// iconicity
+	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	// example:
+	//
+	// realism
 	InscriptionsAndMarkings *string `json:"InscriptionsAndMarkings,omitempty" xml:"InscriptionsAndMarkings,omitempty"`
-	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Maker                   *string `json:"Maker,omitempty" xml:"Maker,omitempty"`
-	MaterialsAndTechniques  *string `json:"MaterialsAndTechniques,omitempty" xml:"MaterialsAndTechniques,omitempty"`
-	ObjectType              *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	Reference               *string `json:"Reference,omitempty" xml:"Reference,omitempty"`
-	Subject                 *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Title                   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// zhang san
+	Maker *string `json:"Maker,omitempty" xml:"Maker,omitempty"`
+	// example:
+	//
+	// silk
+	MaterialsAndTechniques *string `json:"MaterialsAndTechniques,omitempty" xml:"MaterialsAndTechniques,omitempty"`
+	// example:
+	//
+	// The embroidery
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// example:
+	//
+	// drawings
+	Reference *string `json:"Reference,omitempty" xml:"Reference,omitempty"`
+	// example:
+	//
+	// peace
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// Peace and friendship
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SaveSingleTaskForSaveArtExtensionRequest) String() string {
@@ -15882,8 +20657,14 @@ func (s *SaveSingleTaskForSaveArtExtensionRequest) SetTitle(v string) *SaveSingl
 }
 
 type SaveSingleTaskForSaveArtExtensionResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e893148f-6343-4ae1-9eba-6e2a4116e141
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForSaveArtExtensionResponseBody) String() string {
@@ -15934,8 +20715,19 @@ func (s *SaveSingleTaskForSaveArtExtensionResponse) SetBody(v *SaveSingleTaskFor
 }
 
 type SaveSingleTaskForSynchronizingDSRecordRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15963,8 +20755,14 @@ func (s *SaveSingleTaskForSynchronizingDSRecordRequest) SetUserClientIp(v string
 }
 
 type SaveSingleTaskForSynchronizingDSRecordResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e893148f-6343-4ae1-9eba-6e2a4116e142
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForSynchronizingDSRecordResponseBody) String() string {
@@ -16015,8 +20813,19 @@ func (s *SaveSingleTaskForSynchronizingDSRecordResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForSynchronizingDnsHostRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ST2017120814571100001303
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -16044,8 +20853,14 @@ func (s *SaveSingleTaskForSynchronizingDnsHostRequest) SetUserClientIp(v string)
 }
 
 type SaveSingleTaskForSynchronizingDnsHostResponseBody struct {
+	// example:
+	//
+	// 0F1B3547-BE50-4206-8F78-9540FFB85BC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// e9b8e8b4-7334-4548-9cec-c30b6891f292
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForSynchronizingDnsHostResponseBody) String() string {
@@ -16096,9 +20911,25 @@ func (s *SaveSingleTaskForSynchronizingDnsHostResponse) SetBody(v *SaveSingleTas
 }
 
 type SaveSingleTaskForTransferProhibitionLockRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -16131,8 +20962,14 @@ func (s *SaveSingleTaskForTransferProhibitionLockRequest) SetUserClientIp(v stri
 }
 
 type SaveSingleTaskForTransferProhibitionLockResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForTransferProhibitionLockResponseBody) String() string {
@@ -16183,9 +21020,25 @@ func (s *SaveSingleTaskForTransferProhibitionLockResponse) SetBody(v *SaveSingle
 }
 
 type SaveSingleTaskForUpdateProhibitionLockRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -16218,8 +21071,14 @@ func (s *SaveSingleTaskForUpdateProhibitionLockRequest) SetUserClientIp(v string
 }
 
 type SaveSingleTaskForUpdateProhibitionLockResponseBody struct {
+	// example:
+	//
+	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// d3babb0a-c939-4c25-8c65-c47b65f5492a
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForUpdateProhibitionLockResponseBody) String() string {
@@ -16270,13 +21129,40 @@ func (s *SaveSingleTaskForUpdateProhibitionLockResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForUpdatingContactInfoRequest struct {
-	AddTransferLock     *bool   `json:"AddTransferLock,omitempty" xml:"AddTransferLock,omitempty"`
-	ContactType         *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// false
+	AddTransferLock *bool `json:"AddTransferLock,omitempty" xml:"AddTransferLock,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registrant
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// S123456789
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForUpdatingContactInfoRequest) String() string {
@@ -16323,8 +21209,14 @@ func (s *SaveSingleTaskForUpdatingContactInfoRequest) SetUserClientIp(v string) 
 }
 
 type SaveSingleTaskForUpdatingContactInfoResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForUpdatingContactInfoResponseBody) String() string {
@@ -16375,8 +21267,19 @@ func (s *SaveSingleTaskForUpdatingContactInfoResponse) SetBody(v *SaveSingleTask
 }
 
 type SaveTaskForSubmittingDomainDeleteRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20181*****85212
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -16404,8 +21307,14 @@ func (s *SaveTaskForSubmittingDomainDeleteRequest) SetUserClientIp(v string) *Sa
 }
 
 type SaveTaskForSubmittingDomainDeleteResponseBody struct {
+	// example:
+	//
+	// 23C9B3C4-9E2C-4405-A88D-BD33E459D140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainDeleteResponseBody) String() string {
@@ -16456,12 +21365,16 @@ func (s *SaveTaskForSubmittingDomainDeleteResponse) SetBody(v *SaveTaskForSubmit
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest struct {
-	DomainName             []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	IdentityCredential     *string   `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo   *string   `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
-	IdentityCredentialType *string   `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	Lang                   *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp           *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// This parameter is required.
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// This parameter is required.
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
+	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp           *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest) String() string {
@@ -16555,9 +21468,12 @@ func (s *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResp
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest struct {
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -16648,30 +21564,103 @@ func (s *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRes
 }
 
 type SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest struct {
-	Address                  *string   `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string   `json:"City,omitempty" xml:"City,omitempty"`
-	Country                  *string   `json:"Country,omitempty" xml:"Country,omitempty"`
-	DomainName               []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Email                    *string   `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdentityCredential       *string   `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo     *string   `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
-	IdentityCredentialType   *string   `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	Lang                     *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PostalCode               *string   `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string   `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName           *string   `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string   `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType           *string   `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                  *string   `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string   `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                *string   `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	TransferOutProhibited    *bool     `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
-	UserClientIp             *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZhAddress                *string   `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                   *string   `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince               *string   `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName         *string   `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	ZhRegistrantOrganization *string   `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	// example:
+	//
+	// chao yang qu
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// bei jing shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alibabacloud.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// h6UPhXz/ADP/2Q==
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5****************9
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SFZ
+	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 123456
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// bei jing
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// ce shi
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 12345
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345678
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	TransferOutProhibited *bool `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest) String() string {
@@ -16803,8 +21792,14 @@ func (s *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest) SetZhRegi
 }
 
 type SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponseBody struct {
+	// example:
+	//
+	// EDC28FEC-6BE0-4583-95BC-test
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 880f1579-be51-4dd3-a69d-test
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponseBody) String() string {
@@ -16855,11 +21850,32 @@ func (s *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse) SetBody(
 }
 
 type SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest struct {
-	DomainName            []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang                  *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileId   *int64    `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	TransferOutProhibited *bool     `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
-	UserClientIp          *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	TransferOutProhibited *bool `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest) String() string {
@@ -16896,8 +21912,14 @@ func (s *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest) SetUserC
 }
 
 type SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponseBody) String() string {
@@ -16949,76 +21971,184 @@ func (s *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse) SetBody
 
 type ScrollDomainListRequest struct {
 	// The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to obtain the ID of the domain name group.
+	//
+	// example:
+	//
+	// 123456
 	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// *   **0**: All.
-	// *   **1**: The domain name needs to be renewed.
-	// *   **2**: The domain name needs to be redeemed.
-	// *   **3**: The domain name is normal.
-	// *   **4**: The domain name is being transferred from Alibaba Cloud.
-	// *   **5**: The information about the domain name registrant is being modified.
-	// *   **6**: Real-name verification is not performed on the domain name.
-	// *   **7**: Real-name verification for the domain name fails. Real-name reverification is required.
-	// *   **8**: The domain name is being reviewed.
+	// 	- **0**: All.
+	//
+	// 	- **1**: The domain name needs to be renewed.
+	//
+	// 	- **2**: The domain name needs to be redeemed.
+	//
+	// 	- **3**: The domain name is normal.
+	//
+	// 	- **4**: The domain name is being transferred from Alibaba Cloud.
+	//
+	// 	- **5**: The information about the domain name registrant is being modified.
+	//
+	// 	- **6**: Real-name verification is not performed on the domain name.
+	//
+	// 	- **7**: Real-name verification for the domain name fails. Real-name reverification is required.
+	//
+	// 	- **8**: The domain name is being reviewed.
+	//
+	// example:
+	//
+	// 0
 	DomainStatus *int32 `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The end of the time range to query domain names based on expiration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1541520000000
 	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
 	// The end of domain name length to query.
+	//
+	// example:
+	//
+	// 3
 	EndLength *int32 `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
 	// The end of the time range to query domain names based on registration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1541520000000
 	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
 	// The keyword that is used to exclude domain names.
+	//
+	// example:
+	//
+	// test
 	Excluded *string `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
 	// Specifies whether to exclude the prefix keyword.
+	//
+	// example:
+	//
+	// false
 	ExcludedPrefix *bool `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
 	// Specifies whether to exclude the suffix keyword.
+	//
+	// example:
+	//
+	// true
 	ExcludedSuffix *bool `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
 	// The composition of the domain name.
+	//
+	// example:
+	//
+	// 1
 	Form *int32 `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The keyword.
+	//
+	// example:
+	//
+	// test
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// Specifies whether the keyword is the prefix.
+	//
+	// example:
+	//
+	// true
 	KeyWordPrefix *bool `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
 	// Specifies whether the keyword is the suffix.
+	//
+	// example:
+	//
+	// false
 	KeyWordSuffix *bool `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
 	// The language of the error message to return if the request fails. Valid values:
 	//
-	// *   **zh**: Chinese.
-	// *   **en**: English.
+	// 	- **zh**: Chinese.
+	//
+	// 	- **en**: English.
 	//
 	// Default value: **en**.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// *   **New gTLD**
-	// *   **gTLD**
-	// *   **ccTLD**
-	// *   **other**
+	// 	- **New gTLD**
+	//
+	// 	- **gTLD**
+	//
+	// 	- **ccTLD**
+	//
+	// 	- **other**
+	//
+	// example:
+	//
+	// gTLD
 	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmw6bpc6n7zai
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The scroll ID. This parameter is a technical parameter.
+	//
+	// example:
+	//
+	// test
 	ScrollId *string `json:"ScrollId,omitempty" xml:"ScrollId,omitempty"`
 	// The beginning of the time range to query domain names based on expiration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1541520000000
 	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
 	// The start of the domain name length to query.
+	//
+	// example:
+	//
+	// 0
 	StartLength *int32 `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
 	// The beginning of the time range to query domain names based on registration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1541520000000
 	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
 	// The suffixes of domain names to be queried. Separate multiple suffixes with commas (,).
+	//
+	// example:
+	//
+	// com
 	Suffixs *string `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
 	// The publishing status of the domain name. Valid values:
 	//
-	// *   **2**: The domain name is published at a fixed price.
-	// *   **3**: The domain name is published with the price negotiable.
-	// *   **4**: The domain name is published for bidding.
-	// *   **6**: The domain name is published with price push.
-	// *   **-1**: The domain name is not published.
+	// 	- **2**: The domain name is published at a fixed price.
+	//
+	// 	- **3**: The domain name is published with the price negotiable.
+	//
+	// 	- **4**: The domain name is published for bidding.
+	//
+	// 	- **6**: The domain name is published with price push.
+	//
+	// 	- **-1**: The domain name is not published.
+	//
+	// example:
+	//
+	// -1
 	TradeType *int32 `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
 	// The IP address of the client. Set the value to **127.0.0.1**.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -17149,12 +22279,28 @@ type ScrollDomainListResponseBody struct {
 	// The domain names.
 	Data *ScrollDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 722AB7F5-61F0-408C-A012-4784AFD34083
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The scroll ID.
+	//
+	// example:
+	//
+	// test
 	ScrollId *string `json:"ScrollId,omitempty" xml:"ScrollId,omitempty"`
 	// The number of remaining domain names to be queried.
+	//
+	// example:
+	//
+	// 200
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
 }
 
@@ -17213,71 +22359,169 @@ type ScrollDomainListResponseBodyDataDomain struct {
 	DnsList *ScrollDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
 	// The status of real-name verification for the domain name. Valid values:
 	//
-	// *   **FAILED**: Real-name verification for the domain name fails.
-	// *   **SUCCEED**: Real-name verification for the domain name is successful.
-	// *   **NONAUDIT**: Real-name verification for the domain name is not performed.
-	// *   **AUDITING**: Real-name verification for the domain name is in progress.
+	// 	- **FAILED**: Real-name verification for the domain name fails.
+	//
+	// 	- **SUCCEED**: Real-name verification for the domain name is successful.
+	//
+	// 	- **NONAUDIT**: Real-name verification for the domain name is not performed.
+	//
+	// 	- **AUDITING**: Real-name verification for the domain name is in progress.
+	//
+	// example:
+	//
+	// NONAUDIT
 	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
 	// The ID of the domain name group.
+	//
+	// example:
+	//
+	// 1234
 	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
 	// The name of the domain name group.
+	//
+	// example:
+	//
+	// test group
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// *   **1**: The domain name needs to be renewed.
-	// *   **2**: The domain name needs to be redeemed.
-	// *   **3**: The domain name is normal.
-	// *   **4**: The domain name is being transferred out.
-	// *   **5**: The information about the domain name registrant is being modified.
-	// *   **6**: Real-name verification is not performed on the domain name.
-	// *   **7**: Real-name verification for the domain name fails.
-	// *   **8**: The real-name verification is being reviewed.
+	// 	- **1**: The domain name needs to be renewed.
+	//
+	// 	- **2**: The domain name needs to be redeemed.
+	//
+	// 	- **3**: The domain name is normal.
+	//
+	// 	- **4**: The domain name is being transferred out.
+	//
+	// 	- **5**: The information about the domain name registrant is being modified.
+	//
+	// 	- **6**: Real-name verification is not performed on the domain name.
+	//
+	// 	- **7**: Real-name verification for the domain name fails.
+	//
+	// 	- **8**: The real-name verification is being reviewed.
+	//
+	// example:
+	//
+	// 3
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// *   **New gTLD**
-	// *   **gTLD**
-	// *   **ccTLD**
+	// 	- **New gTLD**
+	//
+	// 	- **gTLD**
+	//
+	// 	- **ccTLD**
+	//
+	// example:
+	//
+	// gTLD
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// The email address.
+	//
+	// example:
+	//
+	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The number of days from the expiration date of the domain name to the current date.
+	//
+	// example:
+	//
+	// 10
 	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
 	// The time when the domain name expires.
+	//
+	// example:
+	//
+	// 2019-02-15 17:30:35
 	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
 	// The time when the domain name expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1550223035000
 	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
 	// Indicates whether the domain name expires. Valid values:
 	//
-	// *   **1**: The domain name does not expire.
-	// *   **2**: The domain name expires.
+	// 	- **1**: The domain name does not expire.
+	//
+	// 	- **2**: The domain name expires.
+	//
+	// example:
+	//
+	// 1
 	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
 	// The instance ID of the domain name.
+	//
+	// example:
+	//
+	// S1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the domain name is a premium domain name.
+	//
+	// example:
+	//
+	// false
 	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
 	// The service ID.
+	//
+	// example:
+	//
+	// 2a
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The registrant of the domain name.
+	//
+	// example:
+	//
+	// alibaba cloud
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
 	// The registration type of the domain name. Valid values:
 	//
-	// *   **1**: individual.
-	// *   **2**: enterprise.
+	// 	- **1**: individual.
+	//
+	// 	- **2**: enterprise.
+	//
+	// example:
+	//
+	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
 	// The time when the domain name was registered.
+	//
+	// example:
+	//
+	// 2017-02-15 00:00:00
 	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
 	// The time when the domain name was registered. This value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1487088000000
 	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
 	// The remarks on the domain name.
+	//
+	// example:
+	//
+	// test domain
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek2yyciz557g3q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource tag.
 	Tag *ScrollDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	// The Chinese name of the domain name registrant.
+	//
+	// example:
+	//
+	// 阿里云
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
@@ -17440,8 +22684,16 @@ func (s *ScrollDomainListResponseBodyDataDomainTag) SetTag(v []*ScrollDomainList
 
 type ScrollDomainListResponseBodyDataDomainTagTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// testValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -17493,8 +22745,16 @@ func (s *ScrollDomainListResponse) SetBody(v *ScrollDomainListResponseBody) *Scr
 }
 
 type SetDefaultRegistrantProfileRequest struct {
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SetDefaultRegistrantProfileRequest) String() string {
@@ -17516,6 +22776,9 @@ func (s *SetDefaultRegistrantProfileRequest) SetUserClientIp(v string) *SetDefau
 }
 
 type SetDefaultRegistrantProfileResponseBody struct {
+	// example:
+	//
+	// 4D73432C-7600-4779-ACBB-C3B5CA145D32
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17562,8 +22825,18 @@ func (s *SetDefaultRegistrantProfileResponse) SetBody(v *SetDefaultRegistrantPro
 }
 
 type SetupDomainAutoRenewRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S2019270W570xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Operation  *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SET
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 }
 
 func (s SetupDomainAutoRenewRequest) String() string {
@@ -17585,8 +22858,14 @@ func (s *SetupDomainAutoRenewRequest) SetOperation(v string) *SetupDomainAutoRen
 }
 
 type SetupDomainAutoRenewResponseBody struct {
+	// example:
+	//
+	// 8fc97e44-837a-447d-ac61-ea28d2fe8a38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s SetupDomainAutoRenewResponseBody) String() string {
@@ -17638,12 +22917,24 @@ func (s *SetupDomainAutoRenewResponse) SetBody(v *SetupDomainAutoRenewResponseBo
 
 type SubmitDomainSpecialBizCredentialsRequest struct {
 	// The business ID.
+	//
+	// example:
+	//
+	// 219
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The certificate information.
 	Credentials *string `json:"Credentials,omitempty" xml:"Credentials,omitempty"`
 	// The extended information.
+	//
+	// example:
+	//
+	// {\\"addTransferLock\\":true}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -17677,31 +22968,72 @@ func (s *SubmitDomainSpecialBizCredentialsRequest) SetUserClientIp(v string) *Su
 
 type SubmitDomainSpecialBizCredentialsResponseBody struct {
 	// Indicates whether retries are allowed.
+	//
+	// example:
+	//
+	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
 	// The name of the application for which the error code is returned.
+	//
+	// example:
+	//
+	// test-com
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The dynamic error code.
+	//
+	// example:
+	//
+	// -
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message.
+	//
+	// example:
+	//
+	// -
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The array of error parameters that are returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// 110001
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The HTTP status code that is directly returned.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned data.
+	//
+	// example:
+	//
+	// -
 	Module interface{} `json:"Module,omitempty" xml:"Module,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A83E1D74-E46B-505C-947A-8C6B7E41C011
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates whether to perform synchronous processing.
+	//
+	// example:
+	//
+	// True
 	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -17803,9 +23135,23 @@ func (s *SubmitDomainSpecialBizCredentialsResponse) SetBody(v *SubmitDomainSpeci
 }
 
 type SubmitEmailVerificationRequest struct {
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SendIfExist  *bool   `json:"SendIfExist,omitempty" xml:"SendIfExist,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// false
+	SendIfExist *bool `json:"SendIfExist,omitempty" xml:"SendIfExist,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -17838,8 +23184,11 @@ func (s *SubmitEmailVerificationRequest) SetUserClientIp(v string) *SubmitEmailV
 }
 
 type SubmitEmailVerificationResponseBody struct {
-	ExistList   []*SubmitEmailVerificationResponseBodyExistList   `json:"ExistList,omitempty" xml:"ExistList,omitempty" type:"Repeated"`
-	FailList    []*SubmitEmailVerificationResponseBodyFailList    `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	ExistList []*SubmitEmailVerificationResponseBodyExistList `json:"ExistList,omitempty" xml:"ExistList,omitempty" type:"Repeated"`
+	FailList  []*SubmitEmailVerificationResponseBodyFailList  `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// E2A8A5EF-DF8A-4C48-8FD4-9F6BD71AB26D
 	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuccessList []*SubmitEmailVerificationResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Repeated"`
 }
@@ -17873,8 +23222,17 @@ func (s *SubmitEmailVerificationResponseBody) SetSuccessList(v []*SubmitEmailVer
 }
 
 type SubmitEmailVerificationResponseBodyExistList struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// SendTokenQuotaExceeded
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// The maximum number of attempts allowed to send the email verification link is exceeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -17902,8 +23260,17 @@ func (s *SubmitEmailVerificationResponseBodyExistList) SetMessage(v string) *Sub
 }
 
 type SubmitEmailVerificationResponseBodyFailList struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// SendTokenQuotaExceeded
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// The maximum number of attempts allowed to send the email verification link is exceeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -17931,8 +23298,17 @@ func (s *SubmitEmailVerificationResponseBodyFailList) SetMessage(v string) *Subm
 }
 
 type SubmitEmailVerificationResponseBodySuccessList struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -17989,11 +23365,27 @@ func (s *SubmitEmailVerificationResponse) SetBody(v *SubmitEmailVerificationResp
 }
 
 type SubmitOperationAuditInfoRequest struct {
-	AuditInfo  *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
-	AuditType  *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	AuditInfo *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com,example.org
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s SubmitOperationAuditInfoRequest) String() string {
@@ -18030,7 +23422,13 @@ func (s *SubmitOperationAuditInfoRequest) SetLang(v string) *SubmitOperationAudi
 }
 
 type SubmitOperationAuditInfoResponseBody struct {
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 9DKCF6F8-243C-40EC-8035-4B12FEFD7C22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18082,11 +23480,23 @@ func (s *SubmitOperationAuditInfoResponse) SetBody(v *SubmitOperationAuditInfoRe
 }
 
 type SubmitOperationCredentialsRequest struct {
-	AuditRecordId *int64  `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
-	AuditType     *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
-	Credentials   *string `json:"Credentials,omitempty" xml:"Credentials,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegType       *int32  `json:"RegType,omitempty" xml:"RegType,omitempty"`
+	// example:
+	//
+	// 1
+	AuditRecordId *int64 `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
+	// example:
+	//
+	// 1
+	AuditType   *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	Credentials *string `json:"Credentials,omitempty" xml:"Credentials,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	RegType *int32 `json:"RegType,omitempty" xml:"RegType,omitempty"`
 }
 
 func (s SubmitOperationCredentialsRequest) String() string {
@@ -18123,6 +23533,9 @@ func (s *SubmitOperationCredentialsRequest) SetRegType(v int32) *SubmitOperation
 }
 
 type SubmitOperationCredentialsResponseBody struct {
+	// example:
+	//
+	// 9DFCF6F8-243C-40EC-8035-4B12FEFX7D98
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18169,8 +23582,19 @@ func (s *SubmitOperationCredentialsResponse) SetBody(v *SubmitOperationCredentia
 }
 
 type TransferInCheckMailTokenRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3bdbaa0e-faa2-4ad2-98f4-bcfeb0237054
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -18198,7 +23622,10 @@ func (s *TransferInCheckMailTokenRequest) SetUserClientIp(v string) *TransferInC
 }
 
 type TransferInCheckMailTokenResponseBody struct {
-	FailList    *TransferInCheckMailTokenResponseBodyFailList    `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Struct"`
+	FailList *TransferInCheckMailTokenResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Struct"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuccessList *TransferInCheckMailTokenResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Struct"`
 }
@@ -18290,10 +23717,26 @@ func (s *TransferInCheckMailTokenResponse) SetBody(v *TransferInCheckMailTokenRe
 }
 
 type TransferInReenterTransferAuthorizationCodeRequest struct {
-	DomainName                *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testCode
 	TransferAuthorizationCode *string `json:"TransferAuthorizationCode,omitempty" xml:"TransferAuthorizationCode,omitempty"`
-	UserClientIp              *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s TransferInReenterTransferAuthorizationCodeRequest) String() string {
@@ -18325,6 +23768,9 @@ func (s *TransferInReenterTransferAuthorizationCodeRequest) SetUserClientIp(v st
 }
 
 type TransferInReenterTransferAuthorizationCodeResponseBody struct {
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18371,8 +23817,19 @@ func (s *TransferInReenterTransferAuthorizationCodeResponse) SetBody(v *Transfer
 }
 
 type TransferInRefetchWhoisEmailRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -18400,6 +23857,9 @@ func (s *TransferInRefetchWhoisEmailRequest) SetUserClientIp(v string) *Transfer
 }
 
 type TransferInRefetchWhoisEmailResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18446,8 +23906,19 @@ func (s *TransferInRefetchWhoisEmailResponse) SetBody(v *TransferInRefetchWhoisE
 }
 
 type TransferInResendMailTokenRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -18475,6 +23946,9 @@ func (s *TransferInResendMailTokenRequest) SetUserClientIp(v string) *TransferIn
 }
 
 type TransferInResendMailTokenResponseBody struct {
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18521,13 +23995,40 @@ func (s *TransferInResendMailTokenResponse) SetBody(v *TransferInResendMailToken
 }
 
 type UpdateDomainToDomainGroupRequest struct {
-	DataSource    *int32    `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	DomainGroupId *int64    `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainName    []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	FileToUpload  *string   `json:"FileToUpload,omitempty" xml:"FileToUpload,omitempty"`
-	Lang          *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Replace       *bool     `json:"Replace,omitempty" xml:"Replace,omitempty"`
-	UserClientIp  *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSource *int32 `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dGVzdA==
+	FileToUpload *string `json:"FileToUpload,omitempty" xml:"FileToUpload,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Replace *bool `json:"Replace,omitempty" xml:"Replace,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s UpdateDomainToDomainGroupRequest) String() string {
@@ -18574,6 +24075,9 @@ func (s *UpdateDomainToDomainGroupRequest) SetUserClientIp(v string) *UpdateDoma
 }
 
 type UpdateDomainToDomainGroupResponseBody struct {
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18620,20 +24124,62 @@ func (s *UpdateDomainToDomainGroupResponse) SetBody(v *UpdateDomainToDomainGroup
 }
 
 type VerifyContactFieldRequest struct {
-	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	DomainName               *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang                     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PostalCode               *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName           *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType           *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                  *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// Rd. xitucheng
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// Bei jing
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// Bei jing
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// wang xian sheng
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// wang xian sheng
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 01
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 1390000****
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
 	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
@@ -18751,6 +24297,9 @@ func (s *VerifyContactFieldRequest) SetZhRegistrantOrganization(v string) *Verif
 }
 
 type VerifyContactFieldResponseBody struct {
+	// example:
+	//
+	// ABAC3BAC-FCFA-4DAE-B47C-FA4105CB07C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18797,8 +24346,19 @@ func (s *VerifyContactFieldResponse) SetBody(v *VerifyContactFieldResponseBody) 
 }
 
 type VerifyEmailRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0b32247496409441e9e179ea7c2e0****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -18826,6 +24386,9 @@ func (s *VerifyEmailRequest) SetUserClientIp(v string) *VerifyEmailRequest {
 }
 
 type VerifyEmailResponseBody struct {
+	// example:
+	//
+	// FD3AD289-83EE-4E32-803A-CF1B3A8EEE64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18918,6 +24481,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 确认任务结果
+//
+// @param request - AcknowledgeTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AcknowledgeTaskResultResponse
 func (client *Client) AcknowledgeTaskResultWithOptions(request *AcknowledgeTaskResultRequest, runtime *util.RuntimeOptions) (_result *AcknowledgeTaskResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18959,6 +24531,13 @@ func (client *Client) AcknowledgeTaskResultWithOptions(request *AcknowledgeTaskR
 	return _result, _err
 }
 
+// Summary:
+//
+// 确认任务结果
+//
+// @param request - AcknowledgeTaskResultRequest
+//
+// @return AcknowledgeTaskResultResponse
 func (client *Client) AcknowledgeTaskResult(request *AcknowledgeTaskResultRequest) (_result *AcknowledgeTaskResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AcknowledgeTaskResultResponse{}
@@ -18970,6 +24549,15 @@ func (client *Client) AcknowledgeTaskResult(request *AcknowledgeTaskResultReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过关键字进行批量模糊匹配
+//
+// @param request - BatchFuzzyMatchDomainSensitiveWordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchFuzzyMatchDomainSensitiveWordResponse
 func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithOptions(request *BatchFuzzyMatchDomainSensitiveWordRequest, runtime *util.RuntimeOptions) (_result *BatchFuzzyMatchDomainSensitiveWordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19011,6 +24599,13 @@ func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithOptions(request *Bat
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过关键字进行批量模糊匹配
+//
+// @param request - BatchFuzzyMatchDomainSensitiveWordRequest
+//
+// @return BatchFuzzyMatchDomainSensitiveWordResponse
 func (client *Client) BatchFuzzyMatchDomainSensitiveWord(request *BatchFuzzyMatchDomainSensitiveWordRequest) (_result *BatchFuzzyMatchDomainSensitiveWordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchFuzzyMatchDomainSensitiveWordResponse{}
@@ -19022,6 +24617,15 @@ func (client *Client) BatchFuzzyMatchDomainSensitiveWord(request *BatchFuzzyMatc
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels real-name verification for a domain name.
+//
+// @param request - CancelDomainVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelDomainVerificationResponse
 func (client *Client) CancelDomainVerificationWithOptions(request *CancelDomainVerificationRequest, runtime *util.RuntimeOptions) (_result *CancelDomainVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19067,6 +24671,13 @@ func (client *Client) CancelDomainVerificationWithOptions(request *CancelDomainV
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels real-name verification for a domain name.
+//
+// @param request - CancelDomainVerificationRequest
+//
+// @return CancelDomainVerificationResponse
 func (client *Client) CancelDomainVerification(request *CancelDomainVerificationRequest) (_result *CancelDomainVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelDomainVerificationResponse{}
@@ -19078,6 +24689,15 @@ func (client *Client) CancelDomainVerification(request *CancelDomainVerification
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消审核
+//
+// @param request - CancelOperationAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelOperationAuditResponse
 func (client *Client) CancelOperationAuditWithOptions(request *CancelOperationAuditRequest, runtime *util.RuntimeOptions) (_result *CancelOperationAuditResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19115,6 +24735,13 @@ func (client *Client) CancelOperationAuditWithOptions(request *CancelOperationAu
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消审核
+//
+// @param request - CancelOperationAuditRequest
+//
+// @return CancelOperationAuditResponse
 func (client *Client) CancelOperationAudit(request *CancelOperationAuditRequest) (_result *CancelOperationAuditResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelOperationAuditResponse{}
@@ -19126,6 +24753,11 @@ func (client *Client) CancelOperationAudit(request *CancelOperationAuditRequest)
 	return _result, _err
 }
 
+// @param request - CancelQualificationVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelQualificationVerificationResponse
 func (client *Client) CancelQualificationVerificationWithOptions(request *CancelQualificationVerificationRequest, runtime *util.RuntimeOptions) (_result *CancelQualificationVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19171,6 +24803,9 @@ func (client *Client) CancelQualificationVerificationWithOptions(request *Cancel
 	return _result, _err
 }
 
+// @param request - CancelQualificationVerificationRequest
+//
+// @return CancelQualificationVerificationResponse
 func (client *Client) CancelQualificationVerification(request *CancelQualificationVerificationRequest) (_result *CancelQualificationVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelQualificationVerificationResponse{}
@@ -19182,6 +24817,11 @@ func (client *Client) CancelQualificationVerification(request *CancelQualificati
 	return _result, _err
 }
 
+// @param request - CancelTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19223,6 +24863,9 @@ func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime 
 	return _result, _err
 }
 
+// @param request - CancelTaskRequest
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelTaskResponse{}
@@ -19234,6 +24877,15 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例所在资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19283,6 +24935,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例所在资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -19294,6 +24953,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// @param request - CheckDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDomainResponse
 func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtime *util.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19343,6 +25007,9 @@ func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtim
 	return _result, _err
 }
 
+// @param request - CheckDomainRequest
+//
+// @return CheckDomainResponse
 func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDomainResponse{}
@@ -19354,6 +25021,11 @@ func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDo
 	return _result, _err
 }
 
+// @param request - CheckDomainSunriseClaimRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDomainSunriseClaimResponse
 func (client *Client) CheckDomainSunriseClaimWithOptions(request *CheckDomainSunriseClaimRequest, runtime *util.RuntimeOptions) (_result *CheckDomainSunriseClaimResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19395,6 +25067,9 @@ func (client *Client) CheckDomainSunriseClaimWithOptions(request *CheckDomainSun
 	return _result, _err
 }
 
+// @param request - CheckDomainSunriseClaimRequest
+//
+// @return CheckDomainSunriseClaimResponse
 func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRequest) (_result *CheckDomainSunriseClaimResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDomainSunriseClaimResponse{}
@@ -19406,6 +25081,11 @@ func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRe
 	return _result, _err
 }
 
+// @param request - CheckMaxYearOfServerLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckMaxYearOfServerLockResponse
 func (client *Client) CheckMaxYearOfServerLockWithOptions(request *CheckMaxYearOfServerLockRequest, runtime *util.RuntimeOptions) (_result *CheckMaxYearOfServerLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19451,6 +25131,9 @@ func (client *Client) CheckMaxYearOfServerLockWithOptions(request *CheckMaxYearO
 	return _result, _err
 }
 
+// @param request - CheckMaxYearOfServerLockRequest
+//
+// @return CheckMaxYearOfServerLockResponse
 func (client *Client) CheckMaxYearOfServerLock(request *CheckMaxYearOfServerLockRequest) (_result *CheckMaxYearOfServerLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckMaxYearOfServerLockResponse{}
@@ -19462,6 +25145,11 @@ func (client *Client) CheckMaxYearOfServerLock(request *CheckMaxYearOfServerLock
 	return _result, _err
 }
 
+// @param request - CheckProcessingServerLockApplyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckProcessingServerLockApplyResponse
 func (client *Client) CheckProcessingServerLockApplyWithOptions(request *CheckProcessingServerLockApplyRequest, runtime *util.RuntimeOptions) (_result *CheckProcessingServerLockApplyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19507,6 +25195,9 @@ func (client *Client) CheckProcessingServerLockApplyWithOptions(request *CheckPr
 	return _result, _err
 }
 
+// @param request - CheckProcessingServerLockApplyRequest
+//
+// @return CheckProcessingServerLockApplyResponse
 func (client *Client) CheckProcessingServerLockApply(request *CheckProcessingServerLockApplyRequest) (_result *CheckProcessingServerLockApplyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckProcessingServerLockApplyResponse{}
@@ -19518,6 +25209,11 @@ func (client *Client) CheckProcessingServerLockApply(request *CheckProcessingSer
 	return _result, _err
 }
 
+// @param request - CheckTransferInFeasibilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckTransferInFeasibilityResponse
 func (client *Client) CheckTransferInFeasibilityWithOptions(request *CheckTransferInFeasibilityRequest, runtime *util.RuntimeOptions) (_result *CheckTransferInFeasibilityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19563,6 +25259,9 @@ func (client *Client) CheckTransferInFeasibilityWithOptions(request *CheckTransf
 	return _result, _err
 }
 
+// @param request - CheckTransferInFeasibilityRequest
+//
+// @return CheckTransferInFeasibilityResponse
 func (client *Client) CheckTransferInFeasibility(request *CheckTransferInFeasibilityRequest) (_result *CheckTransferInFeasibilityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckTransferInFeasibilityResponse{}
@@ -19574,6 +25273,11 @@ func (client *Client) CheckTransferInFeasibility(request *CheckTransferInFeasibi
 	return _result, _err
 }
 
+// @param request - ConfirmTransferInEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmTransferInEmailResponse
 func (client *Client) ConfirmTransferInEmailWithOptions(request *ConfirmTransferInEmailRequest, runtime *util.RuntimeOptions) (_result *ConfirmTransferInEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19619,6 +25323,9 @@ func (client *Client) ConfirmTransferInEmailWithOptions(request *ConfirmTransfer
 	return _result, _err
 }
 
+// @param request - ConfirmTransferInEmailRequest
+//
+// @return ConfirmTransferInEmailResponse
 func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequest) (_result *ConfirmTransferInEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfirmTransferInEmailResponse{}
@@ -19630,6 +25337,15 @@ func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除联系人模板
+//
+// @param request - DeleteContactTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactTemplatesResponse
 func (client *Client) DeleteContactTemplatesWithOptions(request *DeleteContactTemplatesRequest, runtime *util.RuntimeOptions) (_result *DeleteContactTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19667,6 +25383,13 @@ func (client *Client) DeleteContactTemplatesWithOptions(request *DeleteContactTe
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除联系人模板
+//
+// @param request - DeleteContactTemplatesRequest
+//
+// @return DeleteContactTemplatesResponse
 func (client *Client) DeleteContactTemplates(request *DeleteContactTemplatesRequest) (_result *DeleteContactTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteContactTemplatesResponse{}
@@ -19678,6 +25401,15 @@ func (client *Client) DeleteContactTemplates(request *DeleteContactTemplatesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除域名分组
+//
+// @param request - DeleteDomainGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainGroupResponse
 func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19719,6 +25451,13 @@ func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除域名分组
+//
+// @param request - DeleteDomainGroupRequest
+//
+// @return DeleteDomainGroupResponse
 func (client *Client) DeleteDomainGroup(request *DeleteDomainGroupRequest) (_result *DeleteDomainGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainGroupResponse{}
@@ -19730,6 +25469,15 @@ func (client *Client) DeleteDomainGroup(request *DeleteDomainGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除邮箱验证
+//
+// @param request - DeleteEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEmailVerificationResponse
 func (client *Client) DeleteEmailVerificationWithOptions(request *DeleteEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *DeleteEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19771,6 +25519,13 @@ func (client *Client) DeleteEmailVerificationWithOptions(request *DeleteEmailVer
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除邮箱验证
+//
+// @param request - DeleteEmailVerificationRequest
+//
+// @return DeleteEmailVerificationResponse
 func (client *Client) DeleteEmailVerification(request *DeleteEmailVerificationRequest) (_result *DeleteEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEmailVerificationResponse{}
@@ -19782,6 +25537,15 @@ func (client *Client) DeleteEmailVerification(request *DeleteEmailVerificationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除联系人模板
+//
+// @param request - DeleteRegistrantProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRegistrantProfileResponse
 func (client *Client) DeleteRegistrantProfileWithOptions(request *DeleteRegistrantProfileRequest, runtime *util.RuntimeOptions) (_result *DeleteRegistrantProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19823,6 +25587,13 @@ func (client *Client) DeleteRegistrantProfileWithOptions(request *DeleteRegistra
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除联系人模板
+//
+// @param request - DeleteRegistrantProfileRequest
+//
+// @return DeleteRegistrantProfileResponse
 func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRequest) (_result *DeleteRegistrantProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRegistrantProfileResponse{}
@@ -19834,6 +25605,15 @@ func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消域名特殊业务流程
+//
+// @param request - DomainSpecialBizCancelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DomainSpecialBizCancelResponse
 func (client *Client) DomainSpecialBizCancelWithOptions(request *DomainSpecialBizCancelRequest, runtime *util.RuntimeOptions) (_result *DomainSpecialBizCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19873,6 +25653,13 @@ func (client *Client) DomainSpecialBizCancelWithOptions(request *DomainSpecialBi
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消域名特殊业务流程
+//
+// @param request - DomainSpecialBizCancelRequest
+//
+// @return DomainSpecialBizCancelResponse
 func (client *Client) DomainSpecialBizCancel(request *DomainSpecialBizCancelRequest) (_result *DomainSpecialBizCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DomainSpecialBizCancelResponse{}
@@ -19884,6 +25671,15 @@ func (client *Client) DomainSpecialBizCancel(request *DomainSpecialBizCancelRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 邮箱验证通过
+//
+// @param request - EmailVerifiedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EmailVerifiedResponse
 func (client *Client) EmailVerifiedWithOptions(request *EmailVerifiedRequest, runtime *util.RuntimeOptions) (_result *EmailVerifiedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19925,6 +25721,13 @@ func (client *Client) EmailVerifiedWithOptions(request *EmailVerifiedRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 邮箱验证通过
+//
+// @param request - EmailVerifiedRequest
+//
+// @return EmailVerifiedResponse
 func (client *Client) EmailVerified(request *EmailVerifiedRequest) (_result *EmailVerifiedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EmailVerifiedResponse{}
@@ -19936,6 +25739,15 @@ func (client *Client) EmailVerified(request *EmailVerifiedRequest) (_result *Ema
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过关键字进行模糊匹配
+//
+// @param request - FuzzyMatchDomainSensitiveWordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FuzzyMatchDomainSensitiveWordResponse
 func (client *Client) FuzzyMatchDomainSensitiveWordWithOptions(request *FuzzyMatchDomainSensitiveWordRequest, runtime *util.RuntimeOptions) (_result *FuzzyMatchDomainSensitiveWordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19977,6 +25789,13 @@ func (client *Client) FuzzyMatchDomainSensitiveWordWithOptions(request *FuzzyMat
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过关键字进行模糊匹配
+//
+// @param request - FuzzyMatchDomainSensitiveWordRequest
+//
+// @return FuzzyMatchDomainSensitiveWordResponse
 func (client *Client) FuzzyMatchDomainSensitiveWord(request *FuzzyMatchDomainSensitiveWordRequest) (_result *FuzzyMatchDomainSensitiveWordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FuzzyMatchDomainSensitiveWordResponse{}
@@ -19988,6 +25807,11 @@ func (client *Client) FuzzyMatchDomainSensitiveWord(request *FuzzyMatchDomainSen
 	return _result, _err
 }
 
+// @param request - GetOperationOssUploadPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOperationOssUploadPolicyResponse
 func (client *Client) GetOperationOssUploadPolicyWithOptions(request *GetOperationOssUploadPolicyRequest, runtime *util.RuntimeOptions) (_result *GetOperationOssUploadPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20025,6 +25849,9 @@ func (client *Client) GetOperationOssUploadPolicyWithOptions(request *GetOperati
 	return _result, _err
 }
 
+// @param request - GetOperationOssUploadPolicyRequest
+//
+// @return GetOperationOssUploadPolicyResponse
 func (client *Client) GetOperationOssUploadPolicy(request *GetOperationOssUploadPolicyRequest) (_result *GetOperationOssUploadPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOperationOssUploadPolicyResponse{}
@@ -20036,6 +25863,11 @@ func (client *Client) GetOperationOssUploadPolicy(request *GetOperationOssUpload
 	return _result, _err
 }
 
+// @param request - GetQualificationUploadPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualificationUploadPolicyResponse
 func (client *Client) GetQualificationUploadPolicyWithOptions(request *GetQualificationUploadPolicyRequest, runtime *util.RuntimeOptions) (_result *GetQualificationUploadPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20073,6 +25905,9 @@ func (client *Client) GetQualificationUploadPolicyWithOptions(request *GetQualif
 	return _result, _err
 }
 
+// @param request - GetQualificationUploadPolicyRequest
+//
+// @return GetQualificationUploadPolicyResponse
 func (client *Client) GetQualificationUploadPolicy(request *GetQualificationUploadPolicyRequest) (_result *GetQualificationUploadPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualificationUploadPolicyResponse{}
@@ -20084,6 +25919,11 @@ func (client *Client) GetQualificationUploadPolicy(request *GetQualificationUplo
 	return _result, _err
 }
 
+// @param request - ListEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEmailVerificationResponse
 func (client *Client) ListEmailVerificationWithOptions(request *ListEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *ListEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20145,6 +25985,9 @@ func (client *Client) ListEmailVerificationWithOptions(request *ListEmailVerific
 	return _result, _err
 }
 
+// @param request - ListEmailVerificationRequest
+//
+// @return ListEmailVerificationResponse
 func (client *Client) ListEmailVerification(request *ListEmailVerificationRequest) (_result *ListEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEmailVerificationResponse{}
@@ -20156,6 +25999,15 @@ func (client *Client) ListEmailVerification(request *ListEmailVerificationReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about domain names for which registry locks are enabled.
+//
+// @param request - ListServerLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServerLockResponse
 func (client *Client) ListServerLockWithOptions(request *ListServerLockRequest, runtime *util.RuntimeOptions) (_result *ListServerLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20237,6 +26089,13 @@ func (client *Client) ListServerLockWithOptions(request *ListServerLockRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about domain names for which registry locks are enabled.
+//
+// @param request - ListServerLockRequest
+//
+// @return ListServerLockResponse
 func (client *Client) ListServerLock(request *ListServerLockRequest) (_result *ListServerLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListServerLockResponse{}
@@ -20248,6 +26107,11 @@ func (client *Client) ListServerLock(request *ListServerLockRequest) (_result *L
 	return _result, _err
 }
 
+// @param request - LookupTmchNoticeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LookupTmchNoticeResponse
 func (client *Client) LookupTmchNoticeWithOptions(request *LookupTmchNoticeRequest, runtime *util.RuntimeOptions) (_result *LookupTmchNoticeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20289,6 +26153,9 @@ func (client *Client) LookupTmchNoticeWithOptions(request *LookupTmchNoticeReque
 	return _result, _err
 }
 
+// @param request - LookupTmchNoticeRequest
+//
+// @return LookupTmchNoticeResponse
 func (client *Client) LookupTmchNotice(request *LookupTmchNoticeRequest) (_result *LookupTmchNoticeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LookupTmchNoticeResponse{}
@@ -20300,6 +26167,11 @@ func (client *Client) LookupTmchNotice(request *LookupTmchNoticeRequest) (_resul
 	return _result, _err
 }
 
+// @param request - PollTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PollTaskResultResponse
 func (client *Client) PollTaskResultWithOptions(request *PollTaskResultRequest, runtime *util.RuntimeOptions) (_result *PollTaskResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20361,6 +26233,9 @@ func (client *Client) PollTaskResultWithOptions(request *PollTaskResultRequest, 
 	return _result, _err
 }
 
+// @param request - PollTaskResultRequest
+//
+// @return PollTaskResultResponse
 func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *PollTaskResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PollTaskResultResponse{}
@@ -20372,6 +26247,15 @@ func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *P
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索域名列表
+//
+// @param request - QueryAdvancedDomainListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAdvancedDomainListResponse
 func (client *Client) QueryAdvancedDomainListWithOptions(request *QueryAdvancedDomainListRequest, runtime *util.RuntimeOptions) (_result *QueryAdvancedDomainListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20420,6 +26304,10 @@ func (client *Client) QueryAdvancedDomainListWithOptions(request *QueryAdvancedD
 
 	if !tea.BoolValue(util.IsUnset(request.Form)) {
 		query["Form"] = request.Form
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsPremiumDomain)) {
+		query["IsPremiumDomain"] = request.IsPremiumDomain
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyWord)) {
@@ -20513,6 +26401,13 @@ func (client *Client) QueryAdvancedDomainListWithOptions(request *QueryAdvancedD
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索域名列表
+//
+// @param request - QueryAdvancedDomainListRequest
+//
+// @return QueryAdvancedDomainListResponse
 func (client *Client) QueryAdvancedDomainList(request *QueryAdvancedDomainListRequest) (_result *QueryAdvancedDomainListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAdvancedDomainListResponse{}
@@ -20524,6 +26419,11 @@ func (client *Client) QueryAdvancedDomainList(request *QueryAdvancedDomainListRe
 	return _result, _err
 }
 
+// @param request - QueryArtExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryArtExtensionResponse
 func (client *Client) QueryArtExtensionWithOptions(request *QueryArtExtensionRequest, runtime *util.RuntimeOptions) (_result *QueryArtExtensionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20565,6 +26465,9 @@ func (client *Client) QueryArtExtensionWithOptions(request *QueryArtExtensionReq
 	return _result, _err
 }
 
+// @param request - QueryArtExtensionRequest
+//
+// @return QueryArtExtensionResponse
 func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_result *QueryArtExtensionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryArtExtensionResponse{}
@@ -20576,6 +26479,11 @@ func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_res
 	return _result, _err
 }
 
+// @param request - QueryChangeLogListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryChangeLogListResponse
 func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListRequest, runtime *util.RuntimeOptions) (_result *QueryChangeLogListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20633,6 +26541,9 @@ func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListR
 	return _result, _err
 }
 
+// @param request - QueryChangeLogListRequest
+//
+// @return QueryChangeLogListResponse
 func (client *Client) QueryChangeLogList(request *QueryChangeLogListRequest) (_result *QueryChangeLogListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryChangeLogListResponse{}
@@ -20644,6 +26555,11 @@ func (client *Client) QueryChangeLogList(request *QueryChangeLogListRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryContactInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryContactInfoResponse
 func (client *Client) QueryContactInfoWithOptions(request *QueryContactInfoRequest, runtime *util.RuntimeOptions) (_result *QueryContactInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20689,6 +26605,9 @@ func (client *Client) QueryContactInfoWithOptions(request *QueryContactInfoReque
 	return _result, _err
 }
 
+// @param request - QueryContactInfoRequest
+//
+// @return QueryContactInfoResponse
 func (client *Client) QueryContactInfo(request *QueryContactInfoRequest) (_result *QueryContactInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryContactInfoResponse{}
@@ -20700,6 +26619,11 @@ func (client *Client) QueryContactInfo(request *QueryContactInfoRequest) (_resul
 	return _result, _err
 }
 
+// @param request - QueryDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDSRecordResponse
 func (client *Client) QueryDSRecordWithOptions(request *QueryDSRecordRequest, runtime *util.RuntimeOptions) (_result *QueryDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20741,6 +26665,9 @@ func (client *Client) QueryDSRecordWithOptions(request *QueryDSRecordRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryDSRecordRequest
+//
+// @return QueryDSRecordResponse
 func (client *Client) QueryDSRecord(request *QueryDSRecordRequest) (_result *QueryDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDSRecordResponse{}
@@ -20752,6 +26679,11 @@ func (client *Client) QueryDSRecord(request *QueryDSRecordRequest) (_result *Que
 	return _result, _err
 }
 
+// @param request - QueryDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDnsHostResponse
 func (client *Client) QueryDnsHostWithOptions(request *QueryDnsHostRequest, runtime *util.RuntimeOptions) (_result *QueryDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20793,6 +26725,9 @@ func (client *Client) QueryDnsHostWithOptions(request *QueryDnsHostRequest, runt
 	return _result, _err
 }
 
+// @param request - QueryDnsHostRequest
+//
+// @return QueryDnsHostResponse
 func (client *Client) QueryDnsHost(request *QueryDnsHostRequest) (_result *QueryDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDnsHostResponse{}
@@ -20804,6 +26739,11 @@ func (client *Client) QueryDnsHost(request *QueryDnsHostRequest) (_result *Query
 	return _result, _err
 }
 
+// @param request - QueryDomainAdminDivisionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainAdminDivisionResponse
 func (client *Client) QueryDomainAdminDivisionWithOptions(request *QueryDomainAdminDivisionRequest, runtime *util.RuntimeOptions) (_result *QueryDomainAdminDivisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20841,6 +26781,9 @@ func (client *Client) QueryDomainAdminDivisionWithOptions(request *QueryDomainAd
 	return _result, _err
 }
 
+// @param request - QueryDomainAdminDivisionRequest
+//
+// @return QueryDomainAdminDivisionResponse
 func (client *Client) QueryDomainAdminDivision(request *QueryDomainAdminDivisionRequest) (_result *QueryDomainAdminDivisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainAdminDivisionResponse{}
@@ -20852,6 +26795,15 @@ func (client *Client) QueryDomainAdminDivision(request *QueryDomainAdminDivision
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a domain name.
+//
+// @param request - QueryDomainByDomainNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainByDomainNameResponse
 func (client *Client) QueryDomainByDomainNameWithOptions(request *QueryDomainByDomainNameRequest, runtime *util.RuntimeOptions) (_result *QueryDomainByDomainNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20893,6 +26845,13 @@ func (client *Client) QueryDomainByDomainNameWithOptions(request *QueryDomainByD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a domain name.
+//
+// @param request - QueryDomainByDomainNameRequest
+//
+// @return QueryDomainByDomainNameResponse
 func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRequest) (_result *QueryDomainByDomainNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainByDomainNameResponse{}
@@ -20904,6 +26863,15 @@ func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据实例id查询域名信息
+//
+// @param request - QueryDomainByInstanceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainByInstanceIdResponse
 func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *QueryDomainByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20945,6 +26913,13 @@ func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByI
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据实例id查询域名信息
+//
+// @param request - QueryDomainByInstanceIdRequest
+//
+// @return QueryDomainByInstanceIdResponse
 func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRequest) (_result *QueryDomainByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainByInstanceIdResponse{}
@@ -20956,6 +26931,11 @@ func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRe
 	return _result, _err
 }
 
+// @param request - QueryDomainGroupListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainGroupListResponse
 func (client *Client) QueryDomainGroupListWithOptions(request *QueryDomainGroupListRequest, runtime *util.RuntimeOptions) (_result *QueryDomainGroupListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21001,6 +26981,9 @@ func (client *Client) QueryDomainGroupListWithOptions(request *QueryDomainGroupL
 	return _result, _err
 }
 
+// @param request - QueryDomainGroupListRequest
+//
+// @return QueryDomainGroupListResponse
 func (client *Client) QueryDomainGroupList(request *QueryDomainGroupListRequest) (_result *QueryDomainGroupListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainGroupListResponse{}
@@ -21012,6 +26995,15 @@ func (client *Client) QueryDomainGroupList(request *QueryDomainGroupListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of domain names within your Alibaba Cloud account by page.
+//
+// @param request - QueryDomainListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainListResponse
 func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest, runtime *util.RuntimeOptions) (_result *QueryDomainListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21109,6 +27101,13 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of domain names within your Alibaba Cloud account by page.
+//
+// @param request - QueryDomainListRequest
+//
+// @return QueryDomainListResponse
 func (client *Client) QueryDomainList(request *QueryDomainListRequest) (_result *QueryDomainListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainListResponse{}
@@ -21120,6 +27119,11 @@ func (client *Client) QueryDomainList(request *QueryDomainListRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryDomainRealNameVerificationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainRealNameVerificationInfoResponse
 func (client *Client) QueryDomainRealNameVerificationInfoWithOptions(request *QueryDomainRealNameVerificationInfoRequest, runtime *util.RuntimeOptions) (_result *QueryDomainRealNameVerificationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21165,6 +27169,9 @@ func (client *Client) QueryDomainRealNameVerificationInfoWithOptions(request *Qu
 	return _result, _err
 }
 
+// @param request - QueryDomainRealNameVerificationInfoRequest
+//
+// @return QueryDomainRealNameVerificationInfoResponse
 func (client *Client) QueryDomainRealNameVerificationInfo(request *QueryDomainRealNameVerificationInfoRequest) (_result *QueryDomainRealNameVerificationInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainRealNameVerificationInfoResponse{}
@@ -21176,6 +27183,15 @@ func (client *Client) QueryDomainRealNameVerificationInfo(request *QueryDomainRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名特殊业务详情
+//
+// @param request - QueryDomainSpecialBizDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainSpecialBizDetailResponse
 func (client *Client) QueryDomainSpecialBizDetailWithOptions(request *QueryDomainSpecialBizDetailRequest, runtime *util.RuntimeOptions) (_result *QueryDomainSpecialBizDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21215,6 +27231,13 @@ func (client *Client) QueryDomainSpecialBizDetailWithOptions(request *QueryDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名特殊业务详情
+//
+// @param request - QueryDomainSpecialBizDetailRequest
+//
+// @return QueryDomainSpecialBizDetailResponse
 func (client *Client) QueryDomainSpecialBizDetail(request *QueryDomainSpecialBizDetailRequest) (_result *QueryDomainSpecialBizDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainSpecialBizDetailResponse{}
@@ -21226,6 +27249,15 @@ func (client *Client) QueryDomainSpecialBizDetail(request *QueryDomainSpecialBiz
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过域名查询域名特殊业务详情
+//
+// @param request - QueryDomainSpecialBizInfoByDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainSpecialBizInfoByDomainResponse
 func (client *Client) QueryDomainSpecialBizInfoByDomainWithOptions(request *QueryDomainSpecialBizInfoByDomainRequest, runtime *util.RuntimeOptions) (_result *QueryDomainSpecialBizInfoByDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21269,6 +27301,13 @@ func (client *Client) QueryDomainSpecialBizInfoByDomainWithOptions(request *Quer
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过域名查询域名特殊业务详情
+//
+// @param request - QueryDomainSpecialBizInfoByDomainRequest
+//
+// @return QueryDomainSpecialBizInfoByDomainResponse
 func (client *Client) QueryDomainSpecialBizInfoByDomain(request *QueryDomainSpecialBizInfoByDomainRequest) (_result *QueryDomainSpecialBizInfoByDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainSpecialBizInfoByDomainResponse{}
@@ -21280,6 +27319,11 @@ func (client *Client) QueryDomainSpecialBizInfoByDomain(request *QueryDomainSpec
 	return _result, _err
 }
 
+// @param request - QueryDomainSuffixRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainSuffixResponse
 func (client *Client) QueryDomainSuffixWithOptions(request *QueryDomainSuffixRequest, runtime *util.RuntimeOptions) (_result *QueryDomainSuffixResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21317,6 +27361,9 @@ func (client *Client) QueryDomainSuffixWithOptions(request *QueryDomainSuffixReq
 	return _result, _err
 }
 
+// @param request - QueryDomainSuffixRequest
+//
+// @return QueryDomainSuffixResponse
 func (client *Client) QueryDomainSuffix(request *QueryDomainSuffixRequest) (_result *QueryDomainSuffixResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainSuffixResponse{}
@@ -21328,6 +27375,15 @@ func (client *Client) QueryDomainSuffix(request *QueryDomainSuffixRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询邮箱验证状态
+//
+// @param request - QueryEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEmailVerificationResponse
 func (client *Client) QueryEmailVerificationWithOptions(request *QueryEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *QueryEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21369,6 +27425,13 @@ func (client *Client) QueryEmailVerificationWithOptions(request *QueryEmailVerif
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询邮箱验证状态
+//
+// @param request - QueryEmailVerificationRequest
+//
+// @return QueryEmailVerificationResponse
 func (client *Client) QueryEmailVerification(request *QueryEmailVerificationRequest) (_result *QueryEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEmailVerificationResponse{}
@@ -21380,6 +27443,11 @@ func (client *Client) QueryEmailVerification(request *QueryEmailVerificationRequ
 	return _result, _err
 }
 
+// @param request - QueryEnsAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEnsAssociationResponse
 func (client *Client) QueryEnsAssociationWithOptions(request *QueryEnsAssociationRequest, runtime *util.RuntimeOptions) (_result *QueryEnsAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21421,6 +27489,9 @@ func (client *Client) QueryEnsAssociationWithOptions(request *QueryEnsAssociatio
 	return _result, _err
 }
 
+// @param request - QueryEnsAssociationRequest
+//
+// @return QueryEnsAssociationResponse
 func (client *Client) QueryEnsAssociation(request *QueryEnsAssociationRequest) (_result *QueryEnsAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEnsAssociationResponse{}
@@ -21432,6 +27503,11 @@ func (client *Client) QueryEnsAssociation(request *QueryEnsAssociationRequest) (
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForDomainRealNameVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFailReasonForDomainRealNameVerificationResponse
 func (client *Client) QueryFailReasonForDomainRealNameVerificationWithOptions(request *QueryFailReasonForDomainRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *QueryFailReasonForDomainRealNameVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21477,6 +27553,9 @@ func (client *Client) QueryFailReasonForDomainRealNameVerificationWithOptions(re
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForDomainRealNameVerificationRequest
+//
+// @return QueryFailReasonForDomainRealNameVerificationResponse
 func (client *Client) QueryFailReasonForDomainRealNameVerification(request *QueryFailReasonForDomainRealNameVerificationRequest) (_result *QueryFailReasonForDomainRealNameVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFailReasonForDomainRealNameVerificationResponse{}
@@ -21488,6 +27567,11 @@ func (client *Client) QueryFailReasonForDomainRealNameVerification(request *Quer
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForRegistrantProfileRealNameVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFailReasonForRegistrantProfileRealNameVerificationResponse
 func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWithOptions(request *QueryFailReasonForRegistrantProfileRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *QueryFailReasonForRegistrantProfileRealNameVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21529,6 +27613,9 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWit
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForRegistrantProfileRealNameVerificationRequest
+//
+// @return QueryFailReasonForRegistrantProfileRealNameVerificationResponse
 func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerification(request *QueryFailReasonForRegistrantProfileRealNameVerificationRequest) (_result *QueryFailReasonForRegistrantProfileRealNameVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFailReasonForRegistrantProfileRealNameVerificationResponse{}
@@ -21540,6 +27627,11 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerification(re
 	return _result, _err
 }
 
+// @param request - QueryFailingReasonListForQualificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFailingReasonListForQualificationResponse
 func (client *Client) QueryFailingReasonListForQualificationWithOptions(request *QueryFailingReasonListForQualificationRequest, runtime *util.RuntimeOptions) (_result *QueryFailingReasonListForQualificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21589,6 +27681,9 @@ func (client *Client) QueryFailingReasonListForQualificationWithOptions(request 
 	return _result, _err
 }
 
+// @param request - QueryFailingReasonListForQualificationRequest
+//
+// @return QueryFailingReasonListForQualificationResponse
 func (client *Client) QueryFailingReasonListForQualification(request *QueryFailingReasonListForQualificationRequest) (_result *QueryFailingReasonListForQualificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFailingReasonListForQualificationResponse{}
@@ -21600,6 +27695,11 @@ func (client *Client) QueryFailingReasonListForQualification(request *QueryFaili
 	return _result, _err
 }
 
+// @param request - QueryLocalEnsAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLocalEnsAssociationResponse
 func (client *Client) QueryLocalEnsAssociationWithOptions(request *QueryLocalEnsAssociationRequest, runtime *util.RuntimeOptions) (_result *QueryLocalEnsAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21641,6 +27741,9 @@ func (client *Client) QueryLocalEnsAssociationWithOptions(request *QueryLocalEns
 	return _result, _err
 }
 
+// @param request - QueryLocalEnsAssociationRequest
+//
+// @return QueryLocalEnsAssociationResponse
 func (client *Client) QueryLocalEnsAssociation(request *QueryLocalEnsAssociationRequest) (_result *QueryLocalEnsAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryLocalEnsAssociationResponse{}
@@ -21652,6 +27755,11 @@ func (client *Client) QueryLocalEnsAssociation(request *QueryLocalEnsAssociation
 	return _result, _err
 }
 
+// @param request - QueryOperationAuditInfoDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOperationAuditInfoDetailResponse
 func (client *Client) QueryOperationAuditInfoDetailWithOptions(request *QueryOperationAuditInfoDetailRequest, runtime *util.RuntimeOptions) (_result *QueryOperationAuditInfoDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21689,6 +27797,9 @@ func (client *Client) QueryOperationAuditInfoDetailWithOptions(request *QueryOpe
 	return _result, _err
 }
 
+// @param request - QueryOperationAuditInfoDetailRequest
+//
+// @return QueryOperationAuditInfoDetailResponse
 func (client *Client) QueryOperationAuditInfoDetail(request *QueryOperationAuditInfoDetailRequest) (_result *QueryOperationAuditInfoDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryOperationAuditInfoDetailResponse{}
@@ -21700,6 +27811,11 @@ func (client *Client) QueryOperationAuditInfoDetail(request *QueryOperationAudit
 	return _result, _err
 }
 
+// @param request - QueryOperationAuditInfoListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOperationAuditInfoListResponse
 func (client *Client) QueryOperationAuditInfoListWithOptions(request *QueryOperationAuditInfoListRequest, runtime *util.RuntimeOptions) (_result *QueryOperationAuditInfoListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21753,6 +27869,9 @@ func (client *Client) QueryOperationAuditInfoListWithOptions(request *QueryOpera
 	return _result, _err
 }
 
+// @param request - QueryOperationAuditInfoListRequest
+//
+// @return QueryOperationAuditInfoListResponse
 func (client *Client) QueryOperationAuditInfoList(request *QueryOperationAuditInfoListRequest) (_result *QueryOperationAuditInfoListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryOperationAuditInfoListResponse{}
@@ -21764,6 +27883,11 @@ func (client *Client) QueryOperationAuditInfoList(request *QueryOperationAuditIn
 	return _result, _err
 }
 
+// @param request - QueryQualificationDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryQualificationDetailResponse
 func (client *Client) QueryQualificationDetailWithOptions(request *QueryQualificationDetailRequest, runtime *util.RuntimeOptions) (_result *QueryQualificationDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21809,6 +27933,9 @@ func (client *Client) QueryQualificationDetailWithOptions(request *QueryQualific
 	return _result, _err
 }
 
+// @param request - QueryQualificationDetailRequest
+//
+// @return QueryQualificationDetailResponse
 func (client *Client) QueryQualificationDetail(request *QueryQualificationDetailRequest) (_result *QueryQualificationDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryQualificationDetailResponse{}
@@ -21820,6 +27947,11 @@ func (client *Client) QueryQualificationDetail(request *QueryQualificationDetail
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfileRealNameVerificationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRegistrantProfileRealNameVerificationInfoResponse
 func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithOptions(request *QueryRegistrantProfileRealNameVerificationInfoRequest, runtime *util.RuntimeOptions) (_result *QueryRegistrantProfileRealNameVerificationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21865,6 +27997,9 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithOptions(
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfileRealNameVerificationInfoRequest
+//
+// @return QueryRegistrantProfileRealNameVerificationInfoResponse
 func (client *Client) QueryRegistrantProfileRealNameVerificationInfo(request *QueryRegistrantProfileRealNameVerificationInfoRequest) (_result *QueryRegistrantProfileRealNameVerificationInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRegistrantProfileRealNameVerificationInfoResponse{}
@@ -21876,6 +28011,11 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfo(request *Qu
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRegistrantProfilesResponse
 func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistrantProfilesRequest, runtime *util.RuntimeOptions) (_result *QueryRegistrantProfilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21922,6 +28062,10 @@ func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistran
 		query["RegistrantType"] = request.RegistrantType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
 		query["UserClientIp"] = request.UserClientIp
 	}
@@ -21953,6 +28097,9 @@ func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistran
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfilesRequest
+//
+// @return QueryRegistrantProfilesResponse
 func (client *Client) QueryRegistrantProfiles(request *QueryRegistrantProfilesRequest) (_result *QueryRegistrantProfilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRegistrantProfilesResponse{}
@@ -21964,6 +28111,11 @@ func (client *Client) QueryRegistrantProfiles(request *QueryRegistrantProfilesRe
 	return _result, _err
 }
 
+// @param request - QueryServerLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryServerLockResponse
 func (client *Client) QueryServerLockWithOptions(request *QueryServerLockRequest, runtime *util.RuntimeOptions) (_result *QueryServerLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22005,6 +28157,9 @@ func (client *Client) QueryServerLockWithOptions(request *QueryServerLockRequest
 	return _result, _err
 }
 
+// @param request - QueryServerLockRequest
+//
+// @return QueryServerLockResponse
 func (client *Client) QueryServerLock(request *QueryServerLockRequest) (_result *QueryServerLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryServerLockResponse{}
@@ -22016,6 +28171,11 @@ func (client *Client) QueryServerLock(request *QueryServerLockRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskDetailHistoryResponse
 func (client *Client) QueryTaskDetailHistoryWithOptions(request *QueryTaskDetailHistoryRequest, runtime *util.RuntimeOptions) (_result *QueryTaskDetailHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22077,6 +28237,9 @@ func (client *Client) QueryTaskDetailHistoryWithOptions(request *QueryTaskDetail
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailHistoryRequest
+//
+// @return QueryTaskDetailHistoryResponse
 func (client *Client) QueryTaskDetailHistory(request *QueryTaskDetailHistoryRequest) (_result *QueryTaskDetailHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskDetailHistoryResponse{}
@@ -22088,6 +28251,11 @@ func (client *Client) QueryTaskDetailHistory(request *QueryTaskDetailHistoryRequ
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskDetailListResponse
 func (client *Client) QueryTaskDetailListWithOptions(request *QueryTaskDetailListRequest, runtime *util.RuntimeOptions) (_result *QueryTaskDetailListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22149,6 +28317,9 @@ func (client *Client) QueryTaskDetailListWithOptions(request *QueryTaskDetailLis
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailListRequest
+//
+// @return QueryTaskDetailListResponse
 func (client *Client) QueryTaskDetailList(request *QueryTaskDetailListRequest) (_result *QueryTaskDetailListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskDetailListResponse{}
@@ -22160,6 +28331,11 @@ func (client *Client) QueryTaskDetailList(request *QueryTaskDetailListRequest) (
 	return _result, _err
 }
 
+// @param request - QueryTaskInfoHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskInfoHistoryResponse
 func (client *Client) QueryTaskInfoHistoryWithOptions(request *QueryTaskInfoHistoryRequest, runtime *util.RuntimeOptions) (_result *QueryTaskInfoHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22217,6 +28393,9 @@ func (client *Client) QueryTaskInfoHistoryWithOptions(request *QueryTaskInfoHist
 	return _result, _err
 }
 
+// @param request - QueryTaskInfoHistoryRequest
+//
+// @return QueryTaskInfoHistoryResponse
 func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest) (_result *QueryTaskInfoHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskInfoHistoryResponse{}
@@ -22228,6 +28407,11 @@ func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest)
 	return _result, _err
 }
 
+// @param request - QueryTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskListResponse
 func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, runtime *util.RuntimeOptions) (_result *QueryTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22281,6 +28465,9 @@ func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryTaskListRequest
+//
+// @return QueryTaskListResponse
 func (client *Client) QueryTaskList(request *QueryTaskListRequest) (_result *QueryTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskListResponse{}
@@ -22292,6 +28479,11 @@ func (client *Client) QueryTaskList(request *QueryTaskListRequest) (_result *Que
 	return _result, _err
 }
 
+// @param request - QueryTransferInByInstanceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTransferInByInstanceIdResponse
 func (client *Client) QueryTransferInByInstanceIdWithOptions(request *QueryTransferInByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *QueryTransferInByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22333,6 +28525,9 @@ func (client *Client) QueryTransferInByInstanceIdWithOptions(request *QueryTrans
 	return _result, _err
 }
 
+// @param request - QueryTransferInByInstanceIdRequest
+//
+// @return QueryTransferInByInstanceIdResponse
 func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInstanceIdRequest) (_result *QueryTransferInByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTransferInByInstanceIdResponse{}
@@ -22344,6 +28539,11 @@ func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInst
 	return _result, _err
 }
 
+// @param request - QueryTransferInListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTransferInListResponse
 func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInListRequest, runtime *util.RuntimeOptions) (_result *QueryTransferInListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22405,6 +28605,9 @@ func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInLis
 	return _result, _err
 }
 
+// @param request - QueryTransferInListRequest
+//
+// @return QueryTransferInListResponse
 func (client *Client) QueryTransferInList(request *QueryTransferInListRequest) (_result *QueryTransferInListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTransferInListResponse{}
@@ -22416,6 +28619,11 @@ func (client *Client) QueryTransferInList(request *QueryTransferInListRequest) (
 	return _result, _err
 }
 
+// @param request - QueryTransferOutInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTransferOutInfoResponse
 func (client *Client) QueryTransferOutInfoWithOptions(request *QueryTransferOutInfoRequest, runtime *util.RuntimeOptions) (_result *QueryTransferOutInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22457,6 +28665,9 @@ func (client *Client) QueryTransferOutInfoWithOptions(request *QueryTransferOutI
 	return _result, _err
 }
 
+// @param request - QueryTransferOutInfoRequest
+//
+// @return QueryTransferOutInfoResponse
 func (client *Client) QueryTransferOutInfo(request *QueryTransferOutInfoRequest) (_result *QueryTransferOutInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTransferOutInfoResponse{}
@@ -22468,6 +28679,15 @@ func (client *Client) QueryTransferOutInfo(request *QueryTransferOutInfoRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存联系人模板实名资料
+//
+// @param request - RegistrantProfileRealNameVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegistrantProfileRealNameVerificationResponse
 func (client *Client) RegistrantProfileRealNameVerificationWithOptions(request *RegistrantProfileRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *RegistrantProfileRealNameVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22523,6 +28743,13 @@ func (client *Client) RegistrantProfileRealNameVerificationWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存联系人模板实名资料
+//
+// @param request - RegistrantProfileRealNameVerificationRequest
+//
+// @return RegistrantProfileRealNameVerificationResponse
 func (client *Client) RegistrantProfileRealNameVerification(request *RegistrantProfileRealNameVerificationRequest) (_result *RegistrantProfileRealNameVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegistrantProfileRealNameVerificationResponse{}
@@ -22534,6 +28761,15 @@ func (client *Client) RegistrantProfileRealNameVerification(request *RegistrantP
 	return _result, _err
 }
 
+// Summary:
+//
+// 重新发送验证邮件
+//
+// @param request - ResendEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResendEmailVerificationResponse
 func (client *Client) ResendEmailVerificationWithOptions(request *ResendEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *ResendEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22575,6 +28811,13 @@ func (client *Client) ResendEmailVerificationWithOptions(request *ResendEmailVer
 	return _result, _err
 }
 
+// Summary:
+//
+// 重新发送验证邮件
+//
+// @param request - ResendEmailVerificationRequest
+//
+// @return ResendEmailVerificationResponse
 func (client *Client) ResendEmailVerification(request *ResendEmailVerificationRequest) (_result *ResendEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResendEmailVerificationResponse{}
@@ -22586,6 +28829,15 @@ func (client *Client) ResendEmailVerification(request *ResendEmailVerificationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置资质审核状态
+//
+// @param request - ResetQualificationVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetQualificationVerificationResponse
 func (client *Client) ResetQualificationVerificationWithOptions(request *ResetQualificationVerificationRequest, runtime *util.RuntimeOptions) (_result *ResetQualificationVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22627,6 +28879,13 @@ func (client *Client) ResetQualificationVerificationWithOptions(request *ResetQu
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置资质审核状态
+//
+// @param request - ResetQualificationVerificationRequest
+//
+// @return ResetQualificationVerificationResponse
 func (client *Client) ResetQualificationVerification(request *ResetQualificationVerificationRequest) (_result *ResetQualificationVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetQualificationVerificationResponse{}
@@ -22638,6 +28897,15 @@ func (client *Client) ResetQualificationVerification(request *ResetQualification
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量保存域名备注信息
+//
+// @param request - SaveBatchDomainRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchDomainRemarkResponse
 func (client *Client) SaveBatchDomainRemarkWithOptions(request *SaveBatchDomainRemarkRequest, runtime *util.RuntimeOptions) (_result *SaveBatchDomainRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22683,6 +28951,13 @@ func (client *Client) SaveBatchDomainRemarkWithOptions(request *SaveBatchDomainR
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量保存域名备注信息
+//
+// @param request - SaveBatchDomainRemarkRequest
+//
+// @return SaveBatchDomainRemarkResponse
 func (client *Client) SaveBatchDomainRemark(request *SaveBatchDomainRemarkRequest) (_result *SaveBatchDomainRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchDomainRemarkResponse{}
@@ -22694,6 +28969,15 @@ func (client *Client) SaveBatchDomainRemark(request *SaveBatchDomainRemarkReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量申请域名快速转出
+//
+// @param request - SaveBatchTaskForApplyQuickTransferOutOpenlyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForApplyQuickTransferOutOpenlyResponse
 func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenlyWithOptions(request *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22735,6 +29019,13 @@ func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenlyWithOptions(req
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量申请域名快速转出
+//
+// @param request - SaveBatchTaskForApplyQuickTransferOutOpenlyRequest
+//
+// @return SaveBatchTaskForApplyQuickTransferOutOpenlyResponse
 func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenly(request *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) (_result *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForApplyQuickTransferOutOpenlyResponse{}
@@ -22746,6 +29037,15 @@ func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenly(request *SaveB
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-注册订单
+//
+// @param request - SaveBatchTaskForCreatingOrderActivateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderActivateResponse
 func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *SaveBatchTaskForCreatingOrderActivateRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22803,6 +29103,13 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-注册订单
+//
+// @param request - SaveBatchTaskForCreatingOrderActivateRequest
+//
+// @return SaveBatchTaskForCreatingOrderActivateResponse
 func (client *Client) SaveBatchTaskForCreatingOrderActivate(request *SaveBatchTaskForCreatingOrderActivateRequest) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderActivateResponse{}
@@ -22814,6 +29121,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivate(request *SaveBatchTa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderRedeemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithOptions(request *SaveBatchTaskForCreatingOrderRedeemRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRedeemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22871,6 +29183,9 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithOptions(request *Sa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderRedeemRequest
+//
+// @return SaveBatchTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRedeem(request *SaveBatchTaskForCreatingOrderRedeemRequest) (_result *SaveBatchTaskForCreatingOrderRedeemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderRedeemResponse{}
@@ -22882,6 +29197,15 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeem(request *SaveBatchTask
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-续费订单
+//
+// @param request - SaveBatchTaskForCreatingOrderRenewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderRenewResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRenewWithOptions(request *SaveBatchTaskForCreatingOrderRenewRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRenewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22939,6 +29263,13 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenewWithOptions(request *Sav
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-续费订单
+//
+// @param request - SaveBatchTaskForCreatingOrderRenewRequest
+//
+// @return SaveBatchTaskForCreatingOrderRenewResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRenew(request *SaveBatchTaskForCreatingOrderRenewRequest) (_result *SaveBatchTaskForCreatingOrderRenewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderRenewResponse{}
@@ -22950,6 +29281,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenew(request *SaveBatchTaskF
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderTransferRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderTransferResponse
 func (client *Client) SaveBatchTaskForCreatingOrderTransferWithOptions(request *SaveBatchTaskForCreatingOrderTransferRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderTransferResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23007,6 +29343,9 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransferWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderTransferRequest
+//
+// @return SaveBatchTaskForCreatingOrderTransferResponse
 func (client *Client) SaveBatchTaskForCreatingOrderTransfer(request *SaveBatchTaskForCreatingOrderTransferRequest) (_result *SaveBatchTaskForCreatingOrderTransferResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderTransferResponse{}
@@ -23018,6 +29357,15 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransfer(request *SaveBatchTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-开启/关闭whois隐私保护锁
+//
+// @param request - SaveBatchTaskForDomainNameProxyServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request *SaveBatchTaskForDomainNameProxyServiceRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForDomainNameProxyServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23063,6 +29411,13 @@ func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-开启/关闭whois隐私保护锁
+//
+// @param request - SaveBatchTaskForDomainNameProxyServiceRequest
+//
+// @return SaveBatchTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveBatchTaskForDomainNameProxyService(request *SaveBatchTaskForDomainNameProxyServiceRequest) (_result *SaveBatchTaskForDomainNameProxyServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForDomainNameProxyServiceResponse{}
@@ -23074,6 +29429,15 @@ func (client *Client) SaveBatchTaskForDomainNameProxyService(request *SaveBatchT
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交批量生成证书的任务
+//
+// @param tmpReq - SaveBatchTaskForGenerateDomainCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForGenerateDomainCertificateResponse
 func (client *Client) SaveBatchTaskForGenerateDomainCertificateWithOptions(tmpReq *SaveBatchTaskForGenerateDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForGenerateDomainCertificateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23121,6 +29485,13 @@ func (client *Client) SaveBatchTaskForGenerateDomainCertificateWithOptions(tmpRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交批量生成证书的任务
+//
+// @param request - SaveBatchTaskForGenerateDomainCertificateRequest
+//
+// @return SaveBatchTaskForGenerateDomainCertificateResponse
 func (client *Client) SaveBatchTaskForGenerateDomainCertificate(request *SaveBatchTaskForGenerateDomainCertificateRequest) (_result *SaveBatchTaskForGenerateDomainCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForGenerateDomainCertificateResponse{}
@@ -23132,6 +29503,15 @@ func (client *Client) SaveBatchTaskForGenerateDomainCertificate(request *SaveBat
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量修改dns
+//
+// @param request - SaveBatchTaskForModifyingDomainDnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForModifyingDomainDnsResponse
 func (client *Client) SaveBatchTaskForModifyingDomainDnsWithOptions(request *SaveBatchTaskForModifyingDomainDnsRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForModifyingDomainDnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23181,6 +29561,13 @@ func (client *Client) SaveBatchTaskForModifyingDomainDnsWithOptions(request *Sav
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量修改dns
+//
+// @param request - SaveBatchTaskForModifyingDomainDnsRequest
+//
+// @return SaveBatchTaskForModifyingDomainDnsResponse
 func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskForModifyingDomainDnsRequest) (_result *SaveBatchTaskForModifyingDomainDnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForModifyingDomainDnsResponse{}
@@ -23192,6 +29579,11 @@ func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskF
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForReserveDropListDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForReserveDropListDomainResponse
 func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *SaveBatchTaskForReserveDropListDomainRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23229,6 +29621,9 @@ func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForReserveDropListDomainRequest
+//
+// @return SaveBatchTaskForReserveDropListDomainResponse
 func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTaskForReserveDropListDomainRequest) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForReserveDropListDomainResponse{}
@@ -23240,6 +29635,15 @@ func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-开启/关闭禁止转移锁
+//
+// @param request - SaveBatchTaskForTransferProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForTransferProhibitionLockResponse
 func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request *SaveBatchTaskForTransferProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23285,6 +29689,13 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存批量任务-开启/关闭禁止转移锁
+//
+// @param request - SaveBatchTaskForTransferProhibitionLockRequest
+//
+// @return SaveBatchTaskForTransferProhibitionLockResponse
 func (client *Client) SaveBatchTaskForTransferProhibitionLock(request *SaveBatchTaskForTransferProhibitionLockRequest) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForTransferProhibitionLockResponse{}
@@ -23296,6 +29707,11 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLock(request *SaveBatch
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdateProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithOptions(request *SaveBatchTaskForUpdateProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForUpdateProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23341,6 +29757,9 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdateProhibitionLockRequest
+//
+// @return SaveBatchTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveBatchTaskForUpdateProhibitionLock(request *SaveBatchTaskForUpdateProhibitionLockRequest) (_result *SaveBatchTaskForUpdateProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForUpdateProhibitionLockResponse{}
@@ -23352,6 +29771,15 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLock(request *SaveBatchTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用联系人信息修改联系人的批量任务
+//
+// @param request - SaveBatchTaskForUpdatingContactInfoByNewContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForUpdatingContactInfoByNewContactResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions(request *SaveBatchTaskForUpdatingContactInfoByNewContactRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoByNewContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23469,6 +29897,13 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用联系人信息修改联系人的批量任务
+//
+// @param request - SaveBatchTaskForUpdatingContactInfoByNewContactRequest
+//
+// @return SaveBatchTaskForUpdatingContactInfoByNewContactResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContact(request *SaveBatchTaskForUpdatingContactInfoByNewContactRequest) (_result *SaveBatchTaskForUpdatingContactInfoByNewContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForUpdatingContactInfoByNewContactResponse{}
@@ -23480,6 +29915,15 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContact(request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用模板修改联系人的批量任务
+//
+// @param request - SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdWithOptions(request *SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23533,6 +29977,13 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdWi
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用模板修改联系人的批量任务
+//
+// @param request - SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest
+//
+// @return SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfoByRegistrantProfileId(request *SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest) (_result *SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponse{}
@@ -23544,6 +29995,15 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByRegistrantProfileId(r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建/更新域名分组
+//
+// @param request - SaveDomainGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveDomainGroupResponse
 func (client *Client) SaveDomainGroupWithOptions(request *SaveDomainGroupRequest, runtime *util.RuntimeOptions) (_result *SaveDomainGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23589,6 +30049,13 @@ func (client *Client) SaveDomainGroupWithOptions(request *SaveDomainGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建/更新域名分组
+//
+// @param request - SaveDomainGroupRequest
+//
+// @return SaveDomainGroupResponse
 func (client *Client) SaveDomainGroup(request *SaveDomainGroupRequest) (_result *SaveDomainGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveDomainGroupResponse{}
@@ -23600,6 +30067,15 @@ func (client *Client) SaveDomainGroup(request *SaveDomainGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存联系人模板
+//
+// @param request - SaveRegistrantProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveRegistrantProfileResponse
 func (client *Client) SaveRegistrantProfileWithOptions(request *SaveRegistrantProfileRequest, runtime *util.RuntimeOptions) (_result *SaveRegistrantProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23717,6 +30193,13 @@ func (client *Client) SaveRegistrantProfileWithOptions(request *SaveRegistrantPr
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存联系人模板
+//
+// @param request - SaveRegistrantProfileRequest
+//
+// @return SaveRegistrantProfileResponse
 func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileRequest) (_result *SaveRegistrantProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveRegistrantProfileResponse{}
@@ -23728,6 +30211,15 @@ func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存联系人模板和凭据
+//
+// @param request - SaveRegistrantProfileRealNameVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveRegistrantProfileRealNameVerificationResponse
 func (client *Client) SaveRegistrantProfileRealNameVerificationWithOptions(request *SaveRegistrantProfileRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *SaveRegistrantProfileRealNameVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23853,6 +30345,13 @@ func (client *Client) SaveRegistrantProfileRealNameVerificationWithOptions(reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存联系人模板和凭据
+//
+// @param request - SaveRegistrantProfileRealNameVerificationRequest
+//
+// @return SaveRegistrantProfileRealNameVerificationResponse
 func (client *Client) SaveRegistrantProfileRealNameVerification(request *SaveRegistrantProfileRealNameVerificationRequest) (_result *SaveRegistrantProfileRealNameVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveRegistrantProfileRealNameVerificationResponse{}
@@ -23864,6 +30363,15 @@ func (client *Client) SaveRegistrantProfileRealNameVerification(request *SaveReg
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加dnsSec记录
+//
+// @param request - SaveSingleTaskForAddingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForAddingDSRecordResponse
 func (client *Client) SaveSingleTaskForAddingDSRecordWithOptions(request *SaveSingleTaskForAddingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForAddingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23921,6 +30429,13 @@ func (client *Client) SaveSingleTaskForAddingDSRecordWithOptions(request *SaveSi
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加dnsSec记录
+//
+// @param request - SaveSingleTaskForAddingDSRecordRequest
+//
+// @return SaveSingleTaskForAddingDSRecordResponse
 func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskForAddingDSRecordRequest) (_result *SaveSingleTaskForAddingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForAddingDSRecordResponse{}
@@ -23932,6 +30447,15 @@ func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskFor
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请域名快速转出
+//
+// @param request - SaveSingleTaskForApplyQuickTransferOutOpenlyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForApplyQuickTransferOutOpenlyResponse
 func (client *Client) SaveSingleTaskForApplyQuickTransferOutOpenlyWithOptions(request *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23973,6 +30497,13 @@ func (client *Client) SaveSingleTaskForApplyQuickTransferOutOpenlyWithOptions(re
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请域名快速转出
+//
+// @param request - SaveSingleTaskForApplyQuickTransferOutOpenlyRequest
+//
+// @return SaveSingleTaskForApplyQuickTransferOutOpenlyResponse
 func (client *Client) SaveSingleTaskForApplyQuickTransferOutOpenly(request *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) (_result *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForApplyQuickTransferOutOpenlyResponse{}
@@ -23984,6 +30515,15 @@ func (client *Client) SaveSingleTaskForApplyQuickTransferOutOpenly(request *Save
 	return _result, _err
 }
 
+// Summary:
+//
+// 确认转出
+//
+// @param request - SaveSingleTaskForApprovingTransferOutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForApprovingTransferOutResponse
 func (client *Client) SaveSingleTaskForApprovingTransferOutWithOptions(request *SaveSingleTaskForApprovingTransferOutRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24025,6 +30565,13 @@ func (client *Client) SaveSingleTaskForApprovingTransferOutWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 确认转出
+//
+// @param request - SaveSingleTaskForApprovingTransferOutRequest
+//
+// @return SaveSingleTaskForApprovingTransferOutResponse
 func (client *Client) SaveSingleTaskForApprovingTransferOut(request *SaveSingleTaskForApprovingTransferOutRequest) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForApprovingTransferOutResponse{}
@@ -24036,6 +30583,11 @@ func (client *Client) SaveSingleTaskForApprovingTransferOut(request *SaveSingleT
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForAssociatingEnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForAssociatingEnsResponse
 func (client *Client) SaveSingleTaskForAssociatingEnsWithOptions(request *SaveSingleTaskForAssociatingEnsRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForAssociatingEnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24081,6 +30633,9 @@ func (client *Client) SaveSingleTaskForAssociatingEnsWithOptions(request *SaveSi
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForAssociatingEnsRequest
+//
+// @return SaveSingleTaskForAssociatingEnsResponse
 func (client *Client) SaveSingleTaskForAssociatingEns(request *SaveSingleTaskForAssociatingEnsRequest) (_result *SaveSingleTaskForAssociatingEnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForAssociatingEnsResponse{}
@@ -24092,6 +30647,11 @@ func (client *Client) SaveSingleTaskForAssociatingEns(request *SaveSingleTaskFor
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCancelingTransferInRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCancelingTransferInResponse
 func (client *Client) SaveSingleTaskForCancelingTransferInWithOptions(request *SaveSingleTaskForCancelingTransferInRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferInResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24133,6 +30693,9 @@ func (client *Client) SaveSingleTaskForCancelingTransferInWithOptions(request *S
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCancelingTransferInRequest
+//
+// @return SaveSingleTaskForCancelingTransferInResponse
 func (client *Client) SaveSingleTaskForCancelingTransferIn(request *SaveSingleTaskForCancelingTransferInRequest) (_result *SaveSingleTaskForCancelingTransferInResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCancelingTransferInResponse{}
@@ -24144,6 +30707,15 @@ func (client *Client) SaveSingleTaskForCancelingTransferIn(request *SaveSingleTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消转出
+//
+// @param request - SaveSingleTaskForCancelingTransferOutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCancelingTransferOutResponse
 func (client *Client) SaveSingleTaskForCancelingTransferOutWithOptions(request *SaveSingleTaskForCancelingTransferOutRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferOutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24185,6 +30757,13 @@ func (client *Client) SaveSingleTaskForCancelingTransferOutWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消转出
+//
+// @param request - SaveSingleTaskForCancelingTransferOutRequest
+//
+// @return SaveSingleTaskForCancelingTransferOutResponse
 func (client *Client) SaveSingleTaskForCancelingTransferOut(request *SaveSingleTaskForCancelingTransferOutRequest) (_result *SaveSingleTaskForCancelingTransferOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCancelingTransferOutResponse{}
@@ -24196,6 +30775,15 @@ func (client *Client) SaveSingleTaskForCancelingTransferOut(request *SaveSingleT
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存创建dns服务器的任务请求
+//
+// @param request - SaveSingleTaskForCreatingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingDnsHostResponse
 func (client *Client) SaveSingleTaskForCreatingDnsHostWithOptions(request *SaveSingleTaskForCreatingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24245,6 +30833,13 @@ func (client *Client) SaveSingleTaskForCreatingDnsHostWithOptions(request *SaveS
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存创建dns服务器的任务请求
+//
+// @param request - SaveSingleTaskForCreatingDnsHostRequest
+//
+// @return SaveSingleTaskForCreatingDnsHostResponse
 func (client *Client) SaveSingleTaskForCreatingDnsHost(request *SaveSingleTaskForCreatingDnsHostRequest) (_result *SaveSingleTaskForCreatingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingDnsHostResponse{}
@@ -24256,6 +30851,15 @@ func (client *Client) SaveSingleTaskForCreatingDnsHost(request *SaveSingleTaskFo
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-注册订单
+//
+// @param request - SaveSingleTaskForCreatingOrderActivateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderActivateResponse
 func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request *SaveSingleTaskForCreatingOrderActivateRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderActivateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24417,6 +31021,13 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-注册订单
+//
+// @param request - SaveSingleTaskForCreatingOrderActivateRequest
+//
+// @return SaveSingleTaskForCreatingOrderActivateResponse
 func (client *Client) SaveSingleTaskForCreatingOrderActivate(request *SaveSingleTaskForCreatingOrderActivateRequest) (_result *SaveSingleTaskForCreatingOrderActivateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderActivateResponse{}
@@ -24428,6 +31039,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivate(request *SaveSingle
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderRedeemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithOptions(request *SaveSingleTaskForCreatingOrderRedeemRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRedeemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24489,6 +31105,9 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithOptions(request *S
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderRedeemRequest
+//
+// @return SaveSingleTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRedeem(request *SaveSingleTaskForCreatingOrderRedeemRequest) (_result *SaveSingleTaskForCreatingOrderRedeemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderRedeemResponse{}
@@ -24500,6 +31119,15 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeem(request *SaveSingleTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-续费订单
+//
+// @param request - SaveSingleTaskForCreatingOrderRenewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderRenewResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *SaveSingleTaskForCreatingOrderRenewRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRenewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24565,6 +31193,13 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *Sa
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-续费订单
+//
+// @param request - SaveSingleTaskForCreatingOrderRenewRequest
+//
+// @return SaveSingleTaskForCreatingOrderRenewResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRenew(request *SaveSingleTaskForCreatingOrderRenewRequest) (_result *SaveSingleTaskForCreatingOrderRenewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderRenewResponse{}
@@ -24576,6 +31211,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenew(request *SaveSingleTas
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderTransferRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderTransferResponse
 func (client *Client) SaveSingleTaskForCreatingOrderTransferWithOptions(request *SaveSingleTaskForCreatingOrderTransferRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderTransferResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24645,6 +31285,9 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransferWithOptions(request 
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderTransferRequest
+//
+// @return SaveSingleTaskForCreatingOrderTransferResponse
 func (client *Client) SaveSingleTaskForCreatingOrderTransfer(request *SaveSingleTaskForCreatingOrderTransferRequest) (_result *SaveSingleTaskForCreatingOrderTransferResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderTransferResponse{}
@@ -24656,6 +31299,15 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransfer(request *SaveSingle
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除dnsSec记录
+//
+// @param request - SaveSingleTaskForDeletingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDeletingDSRecordResponse
 func (client *Client) SaveSingleTaskForDeletingDSRecordWithOptions(request *SaveSingleTaskForDeletingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDeletingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24701,6 +31353,13 @@ func (client *Client) SaveSingleTaskForDeletingDSRecordWithOptions(request *Save
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除dnsSec记录
+//
+// @param request - SaveSingleTaskForDeletingDSRecordRequest
+//
+// @return SaveSingleTaskForDeletingDSRecordResponse
 func (client *Client) SaveSingleTaskForDeletingDSRecord(request *SaveSingleTaskForDeletingDSRecordRequest) (_result *SaveSingleTaskForDeletingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDeletingDSRecordResponse{}
@@ -24712,6 +31371,15 @@ func (client *Client) SaveSingleTaskForDeletingDSRecord(request *SaveSingleTaskF
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除DNS HOST任务
+//
+// @param request - SaveSingleTaskForDeletingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDeletingDnsHostResponse
 func (client *Client) SaveSingleTaskForDeletingDnsHostWithOptions(request *SaveSingleTaskForDeletingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDeletingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24757,6 +31425,13 @@ func (client *Client) SaveSingleTaskForDeletingDnsHostWithOptions(request *SaveS
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除DNS HOST任务
+//
+// @param request - SaveSingleTaskForDeletingDnsHostRequest
+//
+// @return SaveSingleTaskForDeletingDnsHostResponse
 func (client *Client) SaveSingleTaskForDeletingDnsHost(request *SaveSingleTaskForDeletingDnsHostRequest) (_result *SaveSingleTaskForDeletingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDeletingDnsHostResponse{}
@@ -24768,6 +31443,11 @@ func (client *Client) SaveSingleTaskForDeletingDnsHost(request *SaveSingleTaskFo
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDisassociatingEnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDisassociatingEnsResponse
 func (client *Client) SaveSingleTaskForDisassociatingEnsWithOptions(request *SaveSingleTaskForDisassociatingEnsRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDisassociatingEnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24809,6 +31489,9 @@ func (client *Client) SaveSingleTaskForDisassociatingEnsWithOptions(request *Sav
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDisassociatingEnsRequest
+//
+// @return SaveSingleTaskForDisassociatingEnsResponse
 func (client *Client) SaveSingleTaskForDisassociatingEns(request *SaveSingleTaskForDisassociatingEnsRequest) (_result *SaveSingleTaskForDisassociatingEnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDisassociatingEnsResponse{}
@@ -24820,6 +31503,15 @@ func (client *Client) SaveSingleTaskForDisassociatingEns(request *SaveSingleTask
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-开启/关闭whois隐私保护锁
+//
+// @param request - SaveSingleTaskForDomainNameProxyServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithOptions(request *SaveSingleTaskForDomainNameProxyServiceRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDomainNameProxyServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24865,6 +31557,13 @@ func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-开启/关闭whois隐私保护锁
+//
+// @param request - SaveSingleTaskForDomainNameProxyServiceRequest
+//
+// @return SaveSingleTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveSingleTaskForDomainNameProxyService(request *SaveSingleTaskForDomainNameProxyServiceRequest) (_result *SaveSingleTaskForDomainNameProxyServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDomainNameProxyServiceResponse{}
@@ -24876,6 +31575,15 @@ func (client *Client) SaveSingleTaskForDomainNameProxyService(request *SaveSingl
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交生成域名证书任务
+//
+// @param request - SaveSingleTaskForGenerateDomainCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForGenerateDomainCertificateResponse
 func (client *Client) SaveSingleTaskForGenerateDomainCertificateWithOptions(request *SaveSingleTaskForGenerateDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForGenerateDomainCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24917,6 +31625,13 @@ func (client *Client) SaveSingleTaskForGenerateDomainCertificateWithOptions(requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交生成域名证书任务
+//
+// @param request - SaveSingleTaskForGenerateDomainCertificateRequest
+//
+// @return SaveSingleTaskForGenerateDomainCertificateResponse
 func (client *Client) SaveSingleTaskForGenerateDomainCertificate(request *SaveSingleTaskForGenerateDomainCertificateRequest) (_result *SaveSingleTaskForGenerateDomainCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForGenerateDomainCertificateResponse{}
@@ -24928,6 +31643,15 @@ func (client *Client) SaveSingleTaskForGenerateDomainCertificate(request *SaveSi
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改DnsSec记录
+//
+// @param request - SaveSingleTaskForModifyingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForModifyingDSRecordResponse
 func (client *Client) SaveSingleTaskForModifyingDSRecordWithOptions(request *SaveSingleTaskForModifyingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForModifyingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24985,6 +31709,13 @@ func (client *Client) SaveSingleTaskForModifyingDSRecordWithOptions(request *Sav
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改DnsSec记录
+//
+// @param request - SaveSingleTaskForModifyingDSRecordRequest
+//
+// @return SaveSingleTaskForModifyingDSRecordResponse
 func (client *Client) SaveSingleTaskForModifyingDSRecord(request *SaveSingleTaskForModifyingDSRecordRequest) (_result *SaveSingleTaskForModifyingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForModifyingDSRecordResponse{}
@@ -24996,6 +31727,15 @@ func (client *Client) SaveSingleTaskForModifyingDSRecord(request *SaveSingleTask
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存修改dns服务器的任务请求
+//
+// @param request - SaveSingleTaskForModifyingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForModifyingDnsHostResponse
 func (client *Client) SaveSingleTaskForModifyingDnsHostWithOptions(request *SaveSingleTaskForModifyingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForModifyingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25045,6 +31785,13 @@ func (client *Client) SaveSingleTaskForModifyingDnsHostWithOptions(request *Save
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存修改dns服务器的任务请求
+//
+// @param request - SaveSingleTaskForModifyingDnsHostRequest
+//
+// @return SaveSingleTaskForModifyingDnsHostResponse
 func (client *Client) SaveSingleTaskForModifyingDnsHost(request *SaveSingleTaskForModifyingDnsHostRequest) (_result *SaveSingleTaskForModifyingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForModifyingDnsHostResponse{}
@@ -25056,6 +31803,15 @@ func (client *Client) SaveSingleTaskForModifyingDnsHost(request *SaveSingleTaskF
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送转移码
+//
+// @param request - SaveSingleTaskForQueryingTransferAuthorizationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForQueryingTransferAuthorizationCodeResponse
 func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithOptions(request *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25097,6 +31853,13 @@ func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithOpti
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送转移码
+//
+// @param request - SaveSingleTaskForQueryingTransferAuthorizationCodeRequest
+//
+// @return SaveSingleTaskForQueryingTransferAuthorizationCodeResponse
 func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCode(request *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest) (_result *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForQueryingTransferAuthorizationCodeResponse{}
@@ -25108,6 +31871,87 @@ func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCode(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 单笔抢注批量接口
+//
+// @param request - SaveSingleTaskForReserveDropListDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForReserveDropListDomainResponse
+func (client *Client) SaveSingleTaskForReserveDropListDomainWithOptions(request *SaveSingleTaskForReserveDropListDomainRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForReserveDropListDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactTemplateId)) {
+		query["ContactTemplateId"] = request.ContactTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dns1)) {
+		query["Dns1"] = request.Dns1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dns2)) {
+		query["Dns2"] = request.Dns2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveSingleTaskForReserveDropListDomain"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveSingleTaskForReserveDropListDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 单笔抢注批量接口
+//
+// @param request - SaveSingleTaskForReserveDropListDomainRequest
+//
+// @return SaveSingleTaskForReserveDropListDomainResponse
+func (client *Client) SaveSingleTaskForReserveDropListDomain(request *SaveSingleTaskForReserveDropListDomainRequest) (_result *SaveSingleTaskForReserveDropListDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveSingleTaskForReserveDropListDomainResponse{}
+	_body, _err := client.SaveSingleTaskForReserveDropListDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存art扩展信息任务
+//
+// @param request - SaveSingleTaskForSaveArtExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForSaveArtExtensionResponse
 func (client *Client) SaveSingleTaskForSaveArtExtensionWithOptions(request *SaveSingleTaskForSaveArtExtensionRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForSaveArtExtensionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25185,6 +32029,13 @@ func (client *Client) SaveSingleTaskForSaveArtExtensionWithOptions(request *Save
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存art扩展信息任务
+//
+// @param request - SaveSingleTaskForSaveArtExtensionRequest
+//
+// @return SaveSingleTaskForSaveArtExtensionResponse
 func (client *Client) SaveSingleTaskForSaveArtExtension(request *SaveSingleTaskForSaveArtExtensionRequest) (_result *SaveSingleTaskForSaveArtExtensionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForSaveArtExtensionResponse{}
@@ -25196,6 +32047,15 @@ func (client *Client) SaveSingleTaskForSaveArtExtension(request *SaveSingleTaskF
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步DnsSec记录
+//
+// @param request - SaveSingleTaskForSynchronizingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForSynchronizingDSRecordResponse
 func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithOptions(request *SaveSingleTaskForSynchronizingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25237,6 +32097,13 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步DnsSec记录
+//
+// @param request - SaveSingleTaskForSynchronizingDSRecordRequest
+//
+// @return SaveSingleTaskForSynchronizingDSRecordResponse
 func (client *Client) SaveSingleTaskForSynchronizingDSRecord(request *SaveSingleTaskForSynchronizingDSRecordRequest) (_result *SaveSingleTaskForSynchronizingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForSynchronizingDSRecordResponse{}
@@ -25248,6 +32115,15 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecord(request *SaveSingle
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存同步dns服务器的任务请求
+//
+// @param request - SaveSingleTaskForSynchronizingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForSynchronizingDnsHostResponse
 func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithOptions(request *SaveSingleTaskForSynchronizingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25289,6 +32165,13 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存同步dns服务器的任务请求
+//
+// @param request - SaveSingleTaskForSynchronizingDnsHostRequest
+//
+// @return SaveSingleTaskForSynchronizingDnsHostResponse
 func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleTaskForSynchronizingDnsHostRequest) (_result *SaveSingleTaskForSynchronizingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForSynchronizingDnsHostResponse{}
@@ -25300,6 +32183,15 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleT
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-开启/关闭禁止转移锁
+//
+// @param request - SaveSingleTaskForTransferProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForTransferProhibitionLockResponse
 func (client *Client) SaveSingleTaskForTransferProhibitionLockWithOptions(request *SaveSingleTaskForTransferProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForTransferProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25345,6 +32237,13 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLockWithOptions(reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-开启/关闭禁止转移锁
+//
+// @param request - SaveSingleTaskForTransferProhibitionLockRequest
+//
+// @return SaveSingleTaskForTransferProhibitionLockResponse
 func (client *Client) SaveSingleTaskForTransferProhibitionLock(request *SaveSingleTaskForTransferProhibitionLockRequest) (_result *SaveSingleTaskForTransferProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForTransferProhibitionLockResponse{}
@@ -25356,6 +32255,15 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLock(request *SaveSing
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-开启/关闭信息安全锁
+//
+// @param request - SaveSingleTaskForUpdateProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithOptions(request *SaveSingleTaskForUpdateProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForUpdateProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25401,6 +32309,13 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存单个任务-开启/关闭信息安全锁
+//
+// @param request - SaveSingleTaskForUpdateProhibitionLockRequest
+//
+// @return SaveSingleTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveSingleTaskForUpdateProhibitionLock(request *SaveSingleTaskForUpdateProhibitionLockRequest) (_result *SaveSingleTaskForUpdateProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForUpdateProhibitionLockResponse{}
@@ -25412,6 +32327,15 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLock(request *SaveSingle
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存修改联系人的任务
+//
+// @param request - SaveSingleTaskForUpdatingContactInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForUpdatingContactInfoResponse
 func (client *Client) SaveSingleTaskForUpdatingContactInfoWithOptions(request *SaveSingleTaskForUpdatingContactInfoRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForUpdatingContactInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25469,6 +32393,13 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfoWithOptions(request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存修改联系人的任务
+//
+// @param request - SaveSingleTaskForUpdatingContactInfoRequest
+//
+// @return SaveSingleTaskForUpdatingContactInfoResponse
 func (client *Client) SaveSingleTaskForUpdatingContactInfo(request *SaveSingleTaskForUpdatingContactInfoRequest) (_result *SaveSingleTaskForUpdatingContactInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForUpdatingContactInfoResponse{}
@@ -25480,6 +32411,15 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfo(request *SaveSingleTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存删除域名的任务
+//
+// @param request - SaveTaskForSubmittingDomainDeleteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForSubmittingDomainDeleteResponse
 func (client *Client) SaveTaskForSubmittingDomainDeleteWithOptions(request *SaveTaskForSubmittingDomainDeleteRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForSubmittingDomainDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25521,6 +32461,13 @@ func (client *Client) SaveTaskForSubmittingDomainDeleteWithOptions(request *Save
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存删除域名的任务
+//
+// @param request - SaveTaskForSubmittingDomainDeleteRequest
+//
+// @return SaveTaskForSubmittingDomainDeleteResponse
 func (client *Client) SaveTaskForSubmittingDomainDelete(request *SaveTaskForSubmittingDomainDeleteRequest) (_result *SaveTaskForSubmittingDomainDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForSubmittingDomainDeleteResponse{}
@@ -25532,6 +32479,15 @@ func (client *Client) SaveTaskForSubmittingDomainDelete(request *SaveTaskForSubm
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量提交域名资料
+//
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialWithOptions(request *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25587,6 +32543,13 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量提交域名资料
+//
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredential(request *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest) (_result *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse{}
@@ -25598,6 +32561,15 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据模板保存域名的实名认证信息
+//
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDWithOptions(request *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25647,6 +32619,13 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据模板保存域名的实名认证信息
+//
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileID(request *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest) (_result *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse{}
@@ -25658,6 +32637,15 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据联系人信息批量修改注册联系人信息
+//
+// @param request - SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithOptions(request *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25785,6 +32773,13 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithO
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据联系人信息批量修改注册联系人信息
+//
+// @param request - SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest
+//
+// @return SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredential(request *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest) (_result *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse{}
@@ -25796,6 +32791,15 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredential(requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据模板批量修改注册联系人
+//
+// @param request - SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWithOptions(request *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25845,6 +32849,13 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWith
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据模板批量修改注册联系人
+//
+// @param request - SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest
+//
+// @return SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID(request *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest) (_result *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse{}
@@ -25856,13 +32867,19 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID(req
 	return _result, _err
 }
 
-/**
- * If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
- *
- * @param request ScrollDomainListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ScrollDomainListResponse
- */
+// Summary:
+//
+// Traverses domain names.
+//
+// Description:
+//
+// If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+//
+// @param request - ScrollDomainListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScrollDomainListResponse
 func (client *Client) ScrollDomainListWithOptions(request *ScrollDomainListRequest, runtime *util.RuntimeOptions) (_result *ScrollDomainListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25984,12 +33001,17 @@ func (client *Client) ScrollDomainListWithOptions(request *ScrollDomainListReque
 	return _result, _err
 }
 
-/**
- * If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
- *
- * @param request ScrollDomainListRequest
- * @return ScrollDomainListResponse
- */
+// Summary:
+//
+// Traverses domain names.
+//
+// Description:
+//
+// If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+//
+// @param request - ScrollDomainListRequest
+//
+// @return ScrollDomainListResponse
 func (client *Client) ScrollDomainList(request *ScrollDomainListRequest) (_result *ScrollDomainListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ScrollDomainListResponse{}
@@ -26001,6 +33023,15 @@ func (client *Client) ScrollDomainList(request *ScrollDomainListRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置默认模板
+//
+// @param request - SetDefaultRegistrantProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDefaultRegistrantProfileResponse
 func (client *Client) SetDefaultRegistrantProfileWithOptions(request *SetDefaultRegistrantProfileRequest, runtime *util.RuntimeOptions) (_result *SetDefaultRegistrantProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26038,6 +33069,13 @@ func (client *Client) SetDefaultRegistrantProfileWithOptions(request *SetDefault
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置默认模板
+//
+// @param request - SetDefaultRegistrantProfileRequest
+//
+// @return SetDefaultRegistrantProfileResponse
 func (client *Client) SetDefaultRegistrantProfile(request *SetDefaultRegistrantProfileRequest) (_result *SetDefaultRegistrantProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDefaultRegistrantProfileResponse{}
@@ -26049,6 +33087,15 @@ func (client *Client) SetDefaultRegistrantProfile(request *SetDefaultRegistrantP
 	return _result, _err
 }
 
+// Summary:
+//
+// 域名设置自动续费
+//
+// @param request - SetupDomainAutoRenewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetupDomainAutoRenewResponse
 func (client *Client) SetupDomainAutoRenewWithOptions(request *SetupDomainAutoRenewRequest, runtime *util.RuntimeOptions) (_result *SetupDomainAutoRenewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26086,6 +33133,13 @@ func (client *Client) SetupDomainAutoRenewWithOptions(request *SetupDomainAutoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 域名设置自动续费
+//
+// @param request - SetupDomainAutoRenewRequest
+//
+// @return SetupDomainAutoRenewResponse
 func (client *Client) SetupDomainAutoRenew(request *SetupDomainAutoRenewRequest) (_result *SetupDomainAutoRenewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetupDomainAutoRenewResponse{}
@@ -26097,6 +33151,15 @@ func (client *Client) SetupDomainAutoRenew(request *SetupDomainAutoRenewRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 域名特殊业务提交资料
+//
+// @param request - SubmitDomainSpecialBizCredentialsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDomainSpecialBizCredentialsResponse
 func (client *Client) SubmitDomainSpecialBizCredentialsWithOptions(request *SubmitDomainSpecialBizCredentialsRequest, runtime *util.RuntimeOptions) (_result *SubmitDomainSpecialBizCredentialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26144,6 +33207,13 @@ func (client *Client) SubmitDomainSpecialBizCredentialsWithOptions(request *Subm
 	return _result, _err
 }
 
+// Summary:
+//
+// 域名特殊业务提交资料
+//
+// @param request - SubmitDomainSpecialBizCredentialsRequest
+//
+// @return SubmitDomainSpecialBizCredentialsResponse
 func (client *Client) SubmitDomainSpecialBizCredentials(request *SubmitDomainSpecialBizCredentialsRequest) (_result *SubmitDomainSpecialBizCredentialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitDomainSpecialBizCredentialsResponse{}
@@ -26155,6 +33225,15 @@ func (client *Client) SubmitDomainSpecialBizCredentials(request *SubmitDomainSpe
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交邮箱验证
+//
+// @param request - SubmitEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitEmailVerificationResponse
 func (client *Client) SubmitEmailVerificationWithOptions(request *SubmitEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *SubmitEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26200,6 +33279,13 @@ func (client *Client) SubmitEmailVerificationWithOptions(request *SubmitEmailVer
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交邮箱验证
+//
+// @param request - SubmitEmailVerificationRequest
+//
+// @return SubmitEmailVerificationResponse
 func (client *Client) SubmitEmailVerification(request *SubmitEmailVerificationRequest) (_result *SubmitEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitEmailVerificationResponse{}
@@ -26211,6 +33297,15 @@ func (client *Client) SubmitEmailVerification(request *SubmitEmailVerificationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交申请信息
+//
+// @param request - SubmitOperationAuditInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitOperationAuditInfoResponse
 func (client *Client) SubmitOperationAuditInfoWithOptions(request *SubmitOperationAuditInfoRequest, runtime *util.RuntimeOptions) (_result *SubmitOperationAuditInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26260,6 +33355,13 @@ func (client *Client) SubmitOperationAuditInfoWithOptions(request *SubmitOperati
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交申请信息
+//
+// @param request - SubmitOperationAuditInfoRequest
+//
+// @return SubmitOperationAuditInfoResponse
 func (client *Client) SubmitOperationAuditInfo(request *SubmitOperationAuditInfoRequest) (_result *SubmitOperationAuditInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitOperationAuditInfoResponse{}
@@ -26271,6 +33373,15 @@ func (client *Client) SubmitOperationAuditInfo(request *SubmitOperationAuditInfo
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交证件资料
+//
+// @param request - SubmitOperationCredentialsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitOperationCredentialsResponse
 func (client *Client) SubmitOperationCredentialsWithOptions(request *SubmitOperationCredentialsRequest, runtime *util.RuntimeOptions) (_result *SubmitOperationCredentialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26320,6 +33431,13 @@ func (client *Client) SubmitOperationCredentialsWithOptions(request *SubmitOpera
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交证件资料
+//
+// @param request - SubmitOperationCredentialsRequest
+//
+// @return SubmitOperationCredentialsResponse
 func (client *Client) SubmitOperationCredentials(request *SubmitOperationCredentialsRequest) (_result *SubmitOperationCredentialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitOperationCredentialsResponse{}
@@ -26331,6 +33449,11 @@ func (client *Client) SubmitOperationCredentials(request *SubmitOperationCredent
 	return _result, _err
 }
 
+// @param request - TransferInCheckMailTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInCheckMailTokenResponse
 func (client *Client) TransferInCheckMailTokenWithOptions(request *TransferInCheckMailTokenRequest, runtime *util.RuntimeOptions) (_result *TransferInCheckMailTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26372,6 +33495,9 @@ func (client *Client) TransferInCheckMailTokenWithOptions(request *TransferInChe
 	return _result, _err
 }
 
+// @param request - TransferInCheckMailTokenRequest
+//
+// @return TransferInCheckMailTokenResponse
 func (client *Client) TransferInCheckMailToken(request *TransferInCheckMailTokenRequest) (_result *TransferInCheckMailTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInCheckMailTokenResponse{}
@@ -26383,6 +33509,11 @@ func (client *Client) TransferInCheckMailToken(request *TransferInCheckMailToken
 	return _result, _err
 }
 
+// @param request - TransferInReenterTransferAuthorizationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInReenterTransferAuthorizationCodeResponse
 func (client *Client) TransferInReenterTransferAuthorizationCodeWithOptions(request *TransferInReenterTransferAuthorizationCodeRequest, runtime *util.RuntimeOptions) (_result *TransferInReenterTransferAuthorizationCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26428,6 +33559,9 @@ func (client *Client) TransferInReenterTransferAuthorizationCodeWithOptions(requ
 	return _result, _err
 }
 
+// @param request - TransferInReenterTransferAuthorizationCodeRequest
+//
+// @return TransferInReenterTransferAuthorizationCodeResponse
 func (client *Client) TransferInReenterTransferAuthorizationCode(request *TransferInReenterTransferAuthorizationCodeRequest) (_result *TransferInReenterTransferAuthorizationCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInReenterTransferAuthorizationCodeResponse{}
@@ -26439,6 +33573,11 @@ func (client *Client) TransferInReenterTransferAuthorizationCode(request *Transf
 	return _result, _err
 }
 
+// @param request - TransferInRefetchWhoisEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInRefetchWhoisEmailResponse
 func (client *Client) TransferInRefetchWhoisEmailWithOptions(request *TransferInRefetchWhoisEmailRequest, runtime *util.RuntimeOptions) (_result *TransferInRefetchWhoisEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26480,6 +33619,9 @@ func (client *Client) TransferInRefetchWhoisEmailWithOptions(request *TransferIn
 	return _result, _err
 }
 
+// @param request - TransferInRefetchWhoisEmailRequest
+//
+// @return TransferInRefetchWhoisEmailResponse
 func (client *Client) TransferInRefetchWhoisEmail(request *TransferInRefetchWhoisEmailRequest) (_result *TransferInRefetchWhoisEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInRefetchWhoisEmailResponse{}
@@ -26491,6 +33633,11 @@ func (client *Client) TransferInRefetchWhoisEmail(request *TransferInRefetchWhoi
 	return _result, _err
 }
 
+// @param request - TransferInResendMailTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInResendMailTokenResponse
 func (client *Client) TransferInResendMailTokenWithOptions(request *TransferInResendMailTokenRequest, runtime *util.RuntimeOptions) (_result *TransferInResendMailTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26532,6 +33679,9 @@ func (client *Client) TransferInResendMailTokenWithOptions(request *TransferInRe
 	return _result, _err
 }
 
+// @param request - TransferInResendMailTokenRequest
+//
+// @return TransferInResendMailTokenResponse
 func (client *Client) TransferInResendMailToken(request *TransferInResendMailTokenRequest) (_result *TransferInResendMailTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInResendMailTokenResponse{}
@@ -26543,6 +33693,15 @@ func (client *Client) TransferInResendMailToken(request *TransferInResendMailTok
 	return _result, _err
 }
 
+// Summary:
+//
+// 向分组设置域名
+//
+// @param request - UpdateDomainToDomainGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDomainToDomainGroupResponse
 func (client *Client) UpdateDomainToDomainGroupWithOptions(request *UpdateDomainToDomainGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateDomainToDomainGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26602,6 +33761,13 @@ func (client *Client) UpdateDomainToDomainGroupWithOptions(request *UpdateDomain
 	return _result, _err
 }
 
+// Summary:
+//
+// 向分组设置域名
+//
+// @param request - UpdateDomainToDomainGroupRequest
+//
+// @return UpdateDomainToDomainGroupResponse
 func (client *Client) UpdateDomainToDomainGroup(request *UpdateDomainToDomainGroupRequest) (_result *UpdateDomainToDomainGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDomainToDomainGroupResponse{}
@@ -26613,6 +33779,15 @@ func (client *Client) UpdateDomainToDomainGroup(request *UpdateDomainToDomainGro
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验联系人信息
+//
+// @param request - VerifyContactFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyContactFieldResponse
 func (client *Client) VerifyContactFieldWithOptions(request *VerifyContactFieldRequest, runtime *util.RuntimeOptions) (_result *VerifyContactFieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26722,6 +33897,13 @@ func (client *Client) VerifyContactFieldWithOptions(request *VerifyContactFieldR
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验联系人信息
+//
+// @param request - VerifyContactFieldRequest
+//
+// @return VerifyContactFieldResponse
 func (client *Client) VerifyContactField(request *VerifyContactFieldRequest) (_result *VerifyContactFieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyContactFieldResponse{}
@@ -26733,6 +33915,15 @@ func (client *Client) VerifyContactField(request *VerifyContactFieldRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 验证邮箱Token
+//
+// @param request - VerifyEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyEmailResponse
 func (client *Client) VerifyEmailWithOptions(request *VerifyEmailRequest, runtime *util.RuntimeOptions) (_result *VerifyEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26774,6 +33965,13 @@ func (client *Client) VerifyEmailWithOptions(request *VerifyEmailRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 验证邮箱Token
+//
+// @param request - VerifyEmailRequest
+//
+// @return VerifyEmailResponse
 func (client *Client) VerifyEmail(request *VerifyEmailRequest) (_result *VerifyEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyEmailResponse{}
