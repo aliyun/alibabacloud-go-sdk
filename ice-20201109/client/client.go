@@ -29612,6 +29612,137 @@ func (s *ListPublicMediaBasicInfosResponse) SetBody(v *ListPublicMediaBasicInfos
 	return s
 }
 
+type ListSearchLibRequest struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListSearchLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchLibRequest) SetPageNo(v int32) *ListSearchLibRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSearchLibRequest) SetPageSize(v int32) *ListSearchLibRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListSearchLibResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId         *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SearchLibInfoList []*ListSearchLibResponseBodySearchLibInfoList `json:"SearchLibInfoList,omitempty" xml:"SearchLibInfoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListSearchLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchLibResponseBody) SetCode(v string) *ListSearchLibResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSearchLibResponseBody) SetRequestId(v string) *ListSearchLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSearchLibResponseBody) SetSearchLibInfoList(v []*ListSearchLibResponseBodySearchLibInfoList) *ListSearchLibResponseBody {
+	s.SearchLibInfoList = v
+	return s
+}
+
+func (s *ListSearchLibResponseBody) SetSuccess(v string) *ListSearchLibResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSearchLibResponseBodySearchLibInfoList struct {
+	// example:
+	//
+	// faceSearchLib
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// example:
+	//
+	// normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListSearchLibResponseBodySearchLibInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchLibResponseBodySearchLibInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchLibResponseBodySearchLibInfoList) SetSearchLibName(v string) *ListSearchLibResponseBodySearchLibInfoList {
+	s.SearchLibName = &v
+	return s
+}
+
+func (s *ListSearchLibResponseBodySearchLibInfoList) SetStatus(v string) *ListSearchLibResponseBodySearchLibInfoList {
+	s.Status = &v
+	return s
+}
+
+type ListSearchLibResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSearchLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSearchLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchLibResponse) SetHeaders(v map[string]*string) *ListSearchLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSearchLibResponse) SetStatusCode(v int32) *ListSearchLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSearchLibResponse) SetBody(v *ListSearchLibResponseBody) *ListSearchLibResponse {
+	s.Body = v
+	return s
+}
+
 type ListSmartJobsRequest struct {
 	// example:
 	//
@@ -35941,6 +36072,136 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 	return s
 }
 
+type SearchIndexJobRerunRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ******b48fb04483915d4f2cd8******,******c48fb37407365d4f2cd8******
+	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	// example:
+	//
+	// test-1
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// example:
+	//
+	// AiLabel,Face,Mm
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+}
+
+func (s SearchIndexJobRerunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchIndexJobRerunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchIndexJobRerunRequest) SetMediaIds(v string) *SearchIndexJobRerunRequest {
+	s.MediaIds = &v
+	return s
+}
+
+func (s *SearchIndexJobRerunRequest) SetSearchLibName(v string) *SearchIndexJobRerunRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+func (s *SearchIndexJobRerunRequest) SetTask(v string) *SearchIndexJobRerunRequest {
+	s.Task = &v
+	return s
+}
+
+type SearchIndexJobRerunResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SearchIndexJobRerunResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SearchIndexJobRerunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchIndexJobRerunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchIndexJobRerunResponseBody) SetCode(v string) *SearchIndexJobRerunResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchIndexJobRerunResponseBody) SetData(v *SearchIndexJobRerunResponseBodyData) *SearchIndexJobRerunResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchIndexJobRerunResponseBody) SetRequestId(v string) *SearchIndexJobRerunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchIndexJobRerunResponseBody) SetSuccess(v string) *SearchIndexJobRerunResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SearchIndexJobRerunResponseBodyData struct {
+	MediaIdsNoExist []*string `json:"MediaIdsNoExist,omitempty" xml:"MediaIdsNoExist,omitempty" type:"Repeated"`
+}
+
+func (s SearchIndexJobRerunResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchIndexJobRerunResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchIndexJobRerunResponseBodyData) SetMediaIdsNoExist(v []*string) *SearchIndexJobRerunResponseBodyData {
+	s.MediaIdsNoExist = v
+	return s
+}
+
+type SearchIndexJobRerunResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchIndexJobRerunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchIndexJobRerunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchIndexJobRerunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchIndexJobRerunResponse) SetHeaders(v map[string]*string) *SearchIndexJobRerunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchIndexJobRerunResponse) SetStatusCode(v int32) *SearchIndexJobRerunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchIndexJobRerunResponse) SetBody(v *SearchIndexJobRerunResponseBody) *SearchIndexJobRerunResponse {
+	s.Body = v
+	return s
+}
+
 type SearchMediaRequest struct {
 	// The ID of the entity.
 	//
@@ -36104,7 +36365,8 @@ type SearchMediaResponseBodyMediaInfoList struct {
 	// The description of the AI job.
 	AiRoughData *SearchMediaResponseBodyMediaInfoListAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
 	// The information about the files.
-	FileInfoList []*SearchMediaResponseBodyMediaInfoListFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	FileInfoList    []*SearchMediaResponseBodyMediaInfoListFileInfoList    `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	IndexStatusList []*SearchMediaResponseBodyMediaInfoListIndexStatusList `json:"IndexStatusList,omitempty" xml:"IndexStatusList,omitempty" type:"Repeated"`
 	// The basic information about the media asset.
 	MediaBasicInfo *SearchMediaResponseBodyMediaInfoListMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	// The ID of the media asset.
@@ -36135,6 +36397,11 @@ func (s *SearchMediaResponseBodyMediaInfoList) SetAiRoughData(v *SearchMediaResp
 
 func (s *SearchMediaResponseBodyMediaInfoList) SetFileInfoList(v []*SearchMediaResponseBodyMediaInfoListFileInfoList) *SearchMediaResponseBodyMediaInfoList {
 	s.FileInfoList = v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoList) SetIndexStatusList(v []*SearchMediaResponseBodyMediaInfoListIndexStatusList) *SearchMediaResponseBodyMediaInfoList {
+	s.IndexStatusList = v
 	return s
 }
 
@@ -36764,6 +37031,29 @@ func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) SetRegio
 
 func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) SetWidth(v string) *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo {
 	s.Width = &v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListIndexStatusList struct {
+	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	IndexType   *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListIndexStatusList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListIndexStatusList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListIndexStatusList) SetIndexStatus(v string) *SearchMediaResponseBodyMediaInfoListIndexStatusList {
+	s.IndexStatus = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListIndexStatusList) SetIndexType(v string) *SearchMediaResponseBodyMediaInfoListIndexStatusList {
+	s.IndexType = &v
 	return s
 }
 
@@ -61920,6 +62210,70 @@ func (client *Client) ListPublicMediaBasicInfos(request *ListPublicMediaBasicInf
 
 // Summary:
 //
+// 获取搜索库列表
+//
+// @param request - ListSearchLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSearchLibResponse
+func (client *Client) ListSearchLibWithOptions(request *ListSearchLibRequest, runtime *util.RuntimeOptions) (_result *ListSearchLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取搜索库列表
+//
+// @param request - ListSearchLibRequest
+//
+// @return ListSearchLibResponse
+func (client *Client) ListSearchLib(request *ListSearchLibRequest) (_result *ListSearchLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSearchLibResponse{}
+	_body, _err := client.ListSearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // ListSmartJobs
 //
 // @param request - ListSmartJobsRequest
@@ -63298,6 +63652,74 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchEditingProjectResponse{}
 	_body, _err := client.SearchEditingProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索索引任务重新分析
+//
+// @param request - SearchIndexJobRerunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchIndexJobRerunResponse
+func (client *Client) SearchIndexJobRerunWithOptions(request *SearchIndexJobRerunRequest, runtime *util.RuntimeOptions) (_result *SearchIndexJobRerunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		query["Task"] = request.Task
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchIndexJobRerun"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchIndexJobRerunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索索引任务重新分析
+//
+// @param request - SearchIndexJobRerunRequest
+//
+// @return SearchIndexJobRerunResponse
+func (client *Client) SearchIndexJobRerun(request *SearchIndexJobRerunRequest) (_result *SearchIndexJobRerunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchIndexJobRerunResponse{}
+	_body, _err := client.SearchIndexJobRerunWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
