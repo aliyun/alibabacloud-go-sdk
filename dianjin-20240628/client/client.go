@@ -2396,6 +2396,320 @@ func (s *GetFilterDocumentListResponse) SetBody(v *GetFilterDocumentListResponse
 	return s
 }
 
+type GetHistoryListByBizTypeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GysYBsxx
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LibraryChat
+	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s GetHistoryListByBizTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHistoryListByBizTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHistoryListByBizTypeRequest) SetBizId(v string) *GetHistoryListByBizTypeRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeRequest) SetBizType(v string) *GetHistoryListByBizTypeRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeRequest) SetPage(v int32) *GetHistoryListByBizTypeRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeRequest) SetPageSize(v int32) *GetHistoryListByBizTypeRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetHistoryListByBizTypeResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                                   `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *GetHistoryListByBizTypeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 9DF9B3F3-9FFE-52CB-A8DC-F7BD5F842F0E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GetHistoryListByBizTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHistoryListByBizTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetCost(v int64) *GetHistoryListByBizTypeResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetData(v *GetHistoryListByBizTypeResponseBodyData) *GetHistoryListByBizTypeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetDataType(v string) *GetHistoryListByBizTypeResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetErrCode(v string) *GetHistoryListByBizTypeResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetMessage(v string) *GetHistoryListByBizTypeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetRequestId(v string) *GetHistoryListByBizTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetSuccess(v bool) *GetHistoryListByBizTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBody) SetTime(v string) *GetHistoryListByBizTypeResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GetHistoryListByBizTypeResponseBodyData struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64                                            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Records  []*GetHistoryListByBizTypeResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalPages *int64 `json:"totalPages,omitempty" xml:"totalPages,omitempty"`
+	// example:
+	//
+	// 100
+	TotalRecords *int64 `json:"totalRecords,omitempty" xml:"totalRecords,omitempty"`
+}
+
+func (s GetHistoryListByBizTypeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHistoryListByBizTypeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyData) SetCurrentPage(v int64) *GetHistoryListByBizTypeResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyData) SetPageSize(v int64) *GetHistoryListByBizTypeResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyData) SetRecords(v []*GetHistoryListByBizTypeResponseBodyDataRecords) *GetHistoryListByBizTypeResponseBodyData {
+	s.Records = v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyData) SetTotalPages(v int64) *GetHistoryListByBizTypeResponseBodyData {
+	s.TotalPages = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyData) SetTotalRecords(v int64) *GetHistoryListByBizTypeResponseBodyData {
+	s.TotalRecords = &v
+	return s
+}
+
+type GetHistoryListByBizTypeResponseBodyDataRecords struct {
+	// example:
+	//
+	// GysYBsxx
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// example:
+	//
+	// LibraryChat
+	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// example:
+	//
+	// null
+	ExtraMessage interface{} `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 210
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	LlmAnswer *string `json:"llmAnswer,omitempty" xml:"llmAnswer,omitempty"`
+	LlmPrompt *string `json:"llmPrompt,omitempty" xml:"llmPrompt,omitempty"`
+	// example:
+	//
+	// qwen-max
+	LlmType *string `json:"llmType,omitempty" xml:"llmType,omitempty"`
+	// example:
+	//
+	// null
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	UserQuery *string `json:"userQuery,omitempty" xml:"userQuery,omitempty"`
+}
+
+func (s GetHistoryListByBizTypeResponseBodyDataRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHistoryListByBizTypeResponseBodyDataRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetBizId(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.BizId = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetBizType(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetExtraMessage(v interface{}) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.ExtraMessage = v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetGmtCreate(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetGmtModified(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetId(v int64) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetLlmAnswer(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.LlmAnswer = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetLlmPrompt(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.LlmPrompt = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetLlmType(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.LlmType = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetSessionId(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponseBodyDataRecords) SetUserQuery(v string) *GetHistoryListByBizTypeResponseBodyDataRecords {
+	s.UserQuery = &v
+	return s
+}
+
+type GetHistoryListByBizTypeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHistoryListByBizTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHistoryListByBizTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHistoryListByBizTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHistoryListByBizTypeResponse) SetHeaders(v map[string]*string) *GetHistoryListByBizTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponse) SetStatusCode(v int32) *GetHistoryListByBizTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHistoryListByBizTypeResponse) SetBody(v *GetHistoryListByBizTypeResponseBody) *GetHistoryListByBizTypeResponse {
+	s.Body = v
+	return s
+}
+
 type GetLibraryRequest struct {
 	// This parameter is required.
 	//
@@ -5834,6 +6148,437 @@ func (s *RunChatResultGenerationResponse) SetBody(v *RunChatResultGenerationResp
 	return s
 }
 
+type RunLibraryChatGenerationRequest struct {
+	DocIdList []*string `json:"docIdList,omitempty" xml:"docIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	EnableFollowUp *bool `json:"enableFollowUp,omitempty" xml:"enableFollowUp,omitempty"`
+	// example:
+	//
+	// false
+	EnableMultiQuery *bool `json:"enableMultiQuery,omitempty" xml:"enableMultiQuery,omitempty"`
+	// example:
+	//
+	// false
+	EnableOpenQa *bool `json:"enableOpenQa,omitempty" xml:"enableOpenQa,omitempty"`
+	// example:
+	//
+	// qwen-max
+	FollowUpLlm *string `json:"followUpLlm,omitempty" xml:"followUpLlm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3akzl28vap
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-max
+	LlmType *string `json:"llmType,omitempty" xml:"llmType,omitempty"`
+	// example:
+	//
+	// qwen-max
+	MultiQueryLlm *string `json:"multiQueryLlm,omitempty" xml:"multiQueryLlm,omitempty"`
+	// This parameter is required.
+	Query         *string                                       `json:"query,omitempty" xml:"query,omitempty"`
+	QueryCriteria *RunLibraryChatGenerationRequestQueryCriteria `json:"queryCriteria,omitempty" xml:"queryCriteria,omitempty" type:"Struct"`
+	// example:
+	//
+	// linear
+	RerankType *string `json:"rerankType,omitempty" xml:"rerankType,omitempty"`
+	// sessionId
+	//
+	// example:
+	//
+	// null
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// false
+	Stream              *bool                                               `json:"stream,omitempty" xml:"stream,omitempty"`
+	SubQueryList        []*string                                           `json:"subQueryList,omitempty" xml:"subQueryList,omitempty" type:"Repeated"`
+	TextSearchParameter *RunLibraryChatGenerationRequestTextSearchParameter `json:"textSearchParameter,omitempty" xml:"textSearchParameter,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	TopK                  *int32                                                `json:"topK,omitempty" xml:"topK,omitempty"`
+	VectorSearchParameter *RunLibraryChatGenerationRequestVectorSearchParameter `json:"vectorSearchParameter,omitempty" xml:"vectorSearchParameter,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	WithDocumentReference *bool `json:"withDocumentReference,omitempty" xml:"withDocumentReference,omitempty"`
+}
+
+func (s RunLibraryChatGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationRequest) SetDocIdList(v []*string) *RunLibraryChatGenerationRequest {
+	s.DocIdList = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetEnableFollowUp(v bool) *RunLibraryChatGenerationRequest {
+	s.EnableFollowUp = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetEnableMultiQuery(v bool) *RunLibraryChatGenerationRequest {
+	s.EnableMultiQuery = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetEnableOpenQa(v bool) *RunLibraryChatGenerationRequest {
+	s.EnableOpenQa = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetFollowUpLlm(v string) *RunLibraryChatGenerationRequest {
+	s.FollowUpLlm = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetLibraryId(v string) *RunLibraryChatGenerationRequest {
+	s.LibraryId = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetLlmType(v string) *RunLibraryChatGenerationRequest {
+	s.LlmType = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetMultiQueryLlm(v string) *RunLibraryChatGenerationRequest {
+	s.MultiQueryLlm = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetQuery(v string) *RunLibraryChatGenerationRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetQueryCriteria(v *RunLibraryChatGenerationRequestQueryCriteria) *RunLibraryChatGenerationRequest {
+	s.QueryCriteria = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetRerankType(v string) *RunLibraryChatGenerationRequest {
+	s.RerankType = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetSessionId(v string) *RunLibraryChatGenerationRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetStream(v bool) *RunLibraryChatGenerationRequest {
+	s.Stream = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetSubQueryList(v []*string) *RunLibraryChatGenerationRequest {
+	s.SubQueryList = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetTextSearchParameter(v *RunLibraryChatGenerationRequestTextSearchParameter) *RunLibraryChatGenerationRequest {
+	s.TextSearchParameter = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetTopK(v int32) *RunLibraryChatGenerationRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetVectorSearchParameter(v *RunLibraryChatGenerationRequestVectorSearchParameter) *RunLibraryChatGenerationRequest {
+	s.VectorSearchParameter = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequest) SetWithDocumentReference(v bool) *RunLibraryChatGenerationRequest {
+	s.WithDocumentReference = &v
+	return s
+}
+
+type RunLibraryChatGenerationRequestQueryCriteria struct {
+	And []*RunLibraryChatGenerationRequestQueryCriteriaAnd `json:"and,omitempty" xml:"and,omitempty" type:"Repeated"`
+	Or  []*RunLibraryChatGenerationRequestQueryCriteriaOr  `json:"or,omitempty" xml:"or,omitempty" type:"Repeated"`
+}
+
+func (s RunLibraryChatGenerationRequestQueryCriteria) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationRequestQueryCriteria) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteria) SetAnd(v []*RunLibraryChatGenerationRequestQueryCriteriaAnd) *RunLibraryChatGenerationRequestQueryCriteria {
+	s.And = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteria) SetOr(v []*RunLibraryChatGenerationRequestQueryCriteriaOr) *RunLibraryChatGenerationRequestQueryCriteria {
+	s.Or = v
+	return s
+}
+
+type RunLibraryChatGenerationRequestQueryCriteriaAnd struct {
+	// example:
+	//
+	// 0.5
+	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// example:
+	//
+	// city
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// eq
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s RunLibraryChatGenerationRequestQueryCriteriaAnd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationRequestQueryCriteriaAnd) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaAnd) SetBoost(v float32) *RunLibraryChatGenerationRequestQueryCriteriaAnd {
+	s.Boost = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaAnd) SetKey(v string) *RunLibraryChatGenerationRequestQueryCriteriaAnd {
+	s.Key = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaAnd) SetOperator(v string) *RunLibraryChatGenerationRequestQueryCriteriaAnd {
+	s.Operator = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaAnd) SetValue(v string) *RunLibraryChatGenerationRequestQueryCriteriaAnd {
+	s.Value = &v
+	return s
+}
+
+type RunLibraryChatGenerationRequestQueryCriteriaOr struct {
+	// example:
+	//
+	// 0.5
+	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// example:
+	//
+	// city
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// eq
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s RunLibraryChatGenerationRequestQueryCriteriaOr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationRequestQueryCriteriaOr) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaOr) SetBoost(v float32) *RunLibraryChatGenerationRequestQueryCriteriaOr {
+	s.Boost = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaOr) SetKey(v string) *RunLibraryChatGenerationRequestQueryCriteriaOr {
+	s.Key = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaOr) SetOperator(v string) *RunLibraryChatGenerationRequestQueryCriteriaOr {
+	s.Operator = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestQueryCriteriaOr) SetValue(v string) *RunLibraryChatGenerationRequestQueryCriteriaOr {
+	s.Value = &v
+	return s
+}
+
+type RunLibraryChatGenerationRequestTextSearchParameter struct {
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// example:
+	//
+	// IkMaxWord
+	SearchAnalyzerType *string `json:"searchAnalyzerType,omitempty" xml:"searchAnalyzerType,omitempty"`
+}
+
+func (s RunLibraryChatGenerationRequestTextSearchParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationRequestTextSearchParameter) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationRequestTextSearchParameter) SetLimit(v int32) *RunLibraryChatGenerationRequestTextSearchParameter {
+	s.Limit = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationRequestTextSearchParameter) SetSearchAnalyzerType(v string) *RunLibraryChatGenerationRequestTextSearchParameter {
+	s.SearchAnalyzerType = &v
+	return s
+}
+
+type RunLibraryChatGenerationRequestVectorSearchParameter struct {
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+}
+
+func (s RunLibraryChatGenerationRequestVectorSearchParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationRequestVectorSearchParameter) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationRequestVectorSearchParameter) SetLimit(v int32) *RunLibraryChatGenerationRequestVectorSearchParameter {
+	s.Limit = &v
+	return s
+}
+
+type RunLibraryChatGenerationResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64      `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s RunLibraryChatGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetCost(v int64) *RunLibraryChatGenerationResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetData(v interface{}) *RunLibraryChatGenerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetDataType(v string) *RunLibraryChatGenerationResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetErrCode(v string) *RunLibraryChatGenerationResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetMessage(v string) *RunLibraryChatGenerationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetRequestId(v string) *RunLibraryChatGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetSuccess(v bool) *RunLibraryChatGenerationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponseBody) SetTime(v string) *RunLibraryChatGenerationResponseBody {
+	s.Time = &v
+	return s
+}
+
+type RunLibraryChatGenerationResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunLibraryChatGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunLibraryChatGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLibraryChatGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunLibraryChatGenerationResponse) SetHeaders(v map[string]*string) *RunLibraryChatGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponse) SetStatusCode(v int32) *RunLibraryChatGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunLibraryChatGenerationResponse) SetBody(v *RunLibraryChatGenerationResponseBody) *RunLibraryChatGenerationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDocumentRequest struct {
 	// This parameter is required.
 	//
@@ -7464,6 +8209,82 @@ func (client *Client) GetFilterDocumentList(workspaceId *string, request *GetFil
 
 // Summary:
 //
+// 分页查询文档库列表
+//
+// @param request - GetHistoryListByBizTypeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHistoryListByBizTypeResponse
+func (client *Client) GetHistoryListByBizTypeWithOptions(workspaceId *string, request *GetHistoryListByBizTypeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHistoryListByBizTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["bizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["bizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHistoryListByBizType"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/history/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHistoryListByBizTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询文档库列表
+//
+// @param request - GetHistoryListByBizTypeRequest
+//
+// @return GetHistoryListByBizTypeResponse
+func (client *Client) GetHistoryListByBizType(workspaceId *string, request *GetHistoryListByBizTypeRequest) (_result *GetHistoryListByBizTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetHistoryListByBizTypeResponse{}
+	_body, _err := client.GetHistoryListByBizTypeWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取文档库配置详情
 //
 // @param request - GetLibraryRequest
@@ -8015,6 +8836,138 @@ func (client *Client) RunChatResultGeneration(workspaceId *string, request *RunC
 	headers := make(map[string]*string)
 	_result = &RunChatResultGenerationResponse{}
 	_body, _err := client.RunChatResultGenerationWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取生成式对话结果
+//
+// @param request - RunLibraryChatGenerationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunLibraryChatGenerationResponse
+func (client *Client) RunLibraryChatGenerationWithOptions(workspaceId *string, request *RunLibraryChatGenerationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunLibraryChatGenerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocIdList)) {
+		body["docIdList"] = request.DocIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableFollowUp)) {
+		body["enableFollowUp"] = request.EnableFollowUp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableMultiQuery)) {
+		body["enableMultiQuery"] = request.EnableMultiQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableOpenQa)) {
+		body["enableOpenQa"] = request.EnableOpenQa
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FollowUpLlm)) {
+		body["followUpLlm"] = request.FollowUpLlm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryId)) {
+		body["libraryId"] = request.LibraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LlmType)) {
+		body["llmType"] = request.LlmType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiQueryLlm)) {
+		body["multiQueryLlm"] = request.MultiQueryLlm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryCriteria)) {
+		body["queryCriteria"] = request.QueryCriteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerankType)) {
+		body["rerankType"] = request.RerankType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubQueryList)) {
+		body["subQueryList"] = request.SubQueryList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextSearchParameter)) {
+		body["textSearchParameter"] = request.TextSearchParameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopK)) {
+		body["topK"] = request.TopK
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VectorSearchParameter)) {
+		body["vectorSearchParameter"] = request.VectorSearchParameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithDocumentReference)) {
+		body["withDocumentReference"] = request.WithDocumentReference
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunLibraryChatGeneration"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/run/library/chat/generation"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunLibraryChatGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取生成式对话结果
+//
+// @param request - RunLibraryChatGenerationRequest
+//
+// @return RunLibraryChatGenerationResponse
+func (client *Client) RunLibraryChatGeneration(workspaceId *string, request *RunLibraryChatGenerationRequest) (_result *RunLibraryChatGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunLibraryChatGenerationResponse{}
+	_body, _err := client.RunLibraryChatGenerationWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
