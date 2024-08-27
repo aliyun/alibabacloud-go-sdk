@@ -4394,11 +4394,11 @@ type CreateDBInstanceRequest struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 是否自动创建代理。取值范围：
+	// Specifies whether to automatically create a proxy. Valid values:
 	//
-	// - **true**：开启自动创建，默认为通用代理。
+	// 	- **true**: automatically creates a proxy. By default, general-purpose proxies are enabled.
 	//
-	// - **false**：不开启自动创建。
+	// 	- **false**: does not automatically create a proxy.
 	//
 	// example:
 	//
@@ -4456,7 +4456,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// false
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// An invalid parameter. You do not need to specify this parameter.
+	// Specifies whether to enable the I/O burst feature of general ESSDs. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// >  For more information about the I/O burst feature of general ESSDs, see [What are general ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
 	//
 	// example:
 	//
@@ -4504,7 +4510,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// A reserved parameter.
+	// Specifies whether to enable the data archiving feature of general ESSDs. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// >  For more information about the data archiving feature of general ESSDs, see [Use the data archiving feature of general ESSDs](https://help.aliyun.com/document_detail/2701832.html).
 	//
 	// example:
 	//
@@ -4588,13 +4600,15 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **local_ssd**: local SSD. This is the recommended storage type.
 	//
+	// 	- **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
+	//
+	// 	- **cloud_essd**: PL1 ESSD
+	//
+	// 	- **cloud_essd2**: PL2 ESSD
+	//
+	// 	- **cloud_essd3**: PL3 ESSD
+	//
 	// 	- **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-	//
-	// 	- **cloud_essd2**: ESSD of PL2.
-	//
-	// 	- **cloud_essd3**: ESSD of PL3.
 	//
 	// The default value of this parameter is determined by the instance type specified by the **DBInstanceClass*	- parameter.
 	//
@@ -4602,7 +4616,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
 	//
-	// >  Serverless instances use only ESSDs of PL1. If you create a serverless instance, you must set this parameter to **cloud_essd**.
+	// >  Serverless instances support only PL1 ESSDs and general ESSDs.
 	//
 	// example:
 	//
@@ -4753,19 +4767,23 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// >
+	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-	//
-	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
 	// Classic
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// A reserved parameter.
+	// Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
+	//
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
 	//
 	// example:
 	//
@@ -5488,11 +5506,11 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 是否自动创建代理。取值范围：
+	// Specifies whether to automatically create a proxy. Valid values:
 	//
-	// - **true**：开启自动创建，默认为通用代理。
+	// 	- **true**: automatically creates a proxy. By default, general-purpose proxies are enabled.
 	//
-	// - **false**：不开启自动创建。
+	// 	- **false**: does not automatically create a proxy.
 	//
 	// example:
 	//
@@ -5550,7 +5568,13 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// false
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// An invalid parameter. You do not need to specify this parameter.
+	// Specifies whether to enable the I/O burst feature of general ESSDs. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// >  For more information about the I/O burst feature of general ESSDs, see [What are general ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
 	//
 	// example:
 	//
@@ -5598,7 +5622,13 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// A reserved parameter.
+	// Specifies whether to enable the data archiving feature of general ESSDs. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// >  For more information about the data archiving feature of general ESSDs, see [Use the data archiving feature of general ESSDs](https://help.aliyun.com/document_detail/2701832.html).
 	//
 	// example:
 	//
@@ -5682,13 +5712,15 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **local_ssd**: local SSD. This is the recommended storage type.
 	//
+	// 	- **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
+	//
+	// 	- **cloud_essd**: PL1 ESSD
+	//
+	// 	- **cloud_essd2**: PL2 ESSD
+	//
+	// 	- **cloud_essd3**: PL3 ESSD
+	//
 	// 	- **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-	//
-	// 	- **cloud_essd2**: ESSD of PL2.
-	//
-	// 	- **cloud_essd3**: ESSD of PL3.
 	//
 	// The default value of this parameter is determined by the instance type specified by the **DBInstanceClass*	- parameter.
 	//
@@ -5696,7 +5728,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
 	//
-	// >  Serverless instances use only ESSDs of PL1. If you create a serverless instance, you must set this parameter to **cloud_essd**.
+	// >  Serverless instances support only PL1 ESSDs and general ESSDs.
 	//
 	// example:
 	//
@@ -5847,19 +5879,23 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// >
+	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-	//
-	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
 	// Classic
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// A reserved parameter.
+	// Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
+	//
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
 	//
 	// example:
 	//
@@ -8594,6 +8630,7 @@ type CreateDdrInstanceRequest struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	EncryptionKey         *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The database engine of the destination instance. Valid values:
 	//
 	// 	- **MySQL**
@@ -8704,6 +8741,7 @@ type CreateDdrInstanceRequest struct {
 	//
 	// BackupSet
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	RoleARN     *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). The entries in the IP address whitelist must be in one of the following formats:
 	//
 	// 	- IP address. Example: 10.23.12.24.
@@ -8832,6 +8870,11 @@ func (s *CreateDdrInstanceRequest) SetDBInstanceStorageType(v string) *CreateDdr
 	return s
 }
 
+func (s *CreateDdrInstanceRequest) SetEncryptionKey(v string) *CreateDdrInstanceRequest {
+	s.EncryptionKey = &v
+	return s
+}
+
 func (s *CreateDdrInstanceRequest) SetEngine(v string) *CreateDdrInstanceRequest {
 	s.Engine = &v
 	return s
@@ -8899,6 +8942,11 @@ func (s *CreateDdrInstanceRequest) SetRestoreTime(v string) *CreateDdrInstanceRe
 
 func (s *CreateDdrInstanceRequest) SetRestoreType(v string) *CreateDdrInstanceRequest {
 	s.RestoreType = &v
+	return s
+}
+
+func (s *CreateDdrInstanceRequest) SetRoleARN(v string) *CreateDdrInstanceRequest {
+	s.RoleARN = &v
 	return s
 }
 
@@ -11735,11 +11783,11 @@ func (s *CreateRCDeploymentSetResponse) SetBody(v *CreateRCDeploymentSetResponse
 }
 
 type CreateReadOnlyDBInstanceRequest struct {
-	// 是否自动创建代理。取值范围：
+	// Specifies whether to automatically create database proxies. Valid values:
 	//
-	// - **true**：开启自动创建，默认为通用代理。
+	// 	- **true**: enables the feature. By default, general-purpose database proxies are created.
 	//
-	// - **false**：不开启自动创建。
+	// 	- **false**: disables the feature. No database proxies are created.
 	//
 	// example:
 	//
@@ -54260,13 +54308,13 @@ type DescribeSQLLogFilesRequest struct {
 	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: **1 to 100000**. Default value: **1**.
+	// The page number. Valid values: **1 to 100000**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid value: **30 to 200**. Default value: **30**.
+	// The number of entries per page. Valid values: **30 to 200**. Default value: **30**.
 	//
 	// example:
 	//
@@ -68589,13 +68637,11 @@ type ModifyDBInstanceTDERequest struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// Specifies whether to replace the key. Valid values:
 	//
-	// 	- **true**: replaces the key.
+	// 	- **true**
 	//
-	// 	- **false**: does not replace the key.
+	// 	- **false*	- (default)
 	//
-	// Default value: **false**
-	//
-	// > This parameter is available only when the instance runs PostgreSQL.
+	// >  This parameter is available for only ApsaraDB RDS for PostgreSQL instances.
 	//
 	// example:
 	//
@@ -76709,7 +76755,7 @@ type RenewInstanceRequest struct {
 	//
 	// 	- **False*	- (default): disables automatic payment. You have to manually pay the order in the console.
 	//
-	// >  For more information about how to manually pay the order in the console, see the following topics:
+	// >  For more information about how to renew the instance in the console, see the following topics:
 	//
 	// 	- [Manually renew an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96050.html)
 	//
@@ -85625,6 +85671,10 @@ func (client *Client) CreateDdrInstanceWithOptions(request *CreateDdrInstanceReq
 		query["DBInstanceStorageType"] = request.DBInstanceStorageType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EncryptionKey)) {
+		query["EncryptionKey"] = request.EncryptionKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Engine)) {
 		query["Engine"] = request.Engine
 	}
@@ -85679,6 +85729,10 @@ func (client *Client) CreateDdrInstanceWithOptions(request *CreateDdrInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.RestoreType)) {
 		query["RestoreType"] = request.RestoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleARN)) {
+		query["RoleARN"] = request.RoleARN
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
@@ -97466,7 +97520,7 @@ func (client *Client) DescribeHistoryEvents(request *DescribeHistoryEventsReques
 
 // Summary:
 //
-// 事件中心事件统计
+// Queries event statistics in the event center.
 //
 // @param request - DescribeHistoryEventsStatRequest
 //
@@ -97524,7 +97578,7 @@ func (client *Client) DescribeHistoryEventsStatWithOptions(request *DescribeHist
 
 // Summary:
 //
-// 事件中心事件统计
+// Queries event statistics in the event center.
 //
 // @param request - DescribeHistoryEventsStatRequest
 //
