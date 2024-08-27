@@ -1053,11 +1053,11 @@ type CreateAccessControlListRequest struct {
 	//
 	// testAcl
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The IP version of the Classic Load Balancer (CLB) instance with which the ACL is associated. Valid values:
+	// The IP protocol version of the ACL. Valid values:
 	//
-	// 	- **ipv4**
+	// 	- **IPv4**
 	//
-	// 	- **ipv6**
+	// 	- **IPv6**
 	//
 	// example:
 	//
@@ -1090,7 +1090,7 @@ func (s *CreateAccessControlListRequest) SetSecurityToken(v string) *CreateAcces
 }
 
 type CreateAccessControlListResponseBody struct {
-	// The ID of the access control policy.
+	// The ACL ID.
 	//
 	// example:
 	//
@@ -1789,7 +1789,7 @@ type CreateApiStageVariableRequest struct {
 	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	// Deprecated
 	//
-	// Environmental routing model.
+	// The routing model of the environment.
 	//
 	// example:
 	//
@@ -2142,10 +2142,14 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateAppCodeRequest struct {
+	// The application AppCode.
+	//
 	// example:
 	//
 	// 3aaf905a0a1f4f0eabc6d891dfa08afc
 	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2173,6 +2177,8 @@ func (s *CreateAppCodeRequest) SetAppId(v string) *CreateAppCodeRequest {
 }
 
 type CreateAppCodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 418DAAE7-A0C2-5E9C-ADFF-4CD14A474F88
@@ -2222,16 +2228,22 @@ func (s *CreateAppCodeResponse) SetBody(v *CreateAppCodeResponseBody) *CreateApp
 }
 
 type CreateAppKeyRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 111053351
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application AppKey.
+	//
 	// example:
 	//
 	// 204203237
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application AppSecret.
+	//
 	// example:
 	//
 	// 6f0a4ad7918a4b41a57fc087d5b066d0
@@ -2262,6 +2274,8 @@ func (s *CreateAppKeyRequest) SetAppSecret(v string) *CreateAppKeyRequest {
 }
 
 type CreateAppKeyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5D524309-6BED-5BB4-A735-F7D9F98B7B88
@@ -2896,11 +2910,11 @@ type CreateInstanceRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The subscription duration of the instance.
 	//
-	// 	- Valid values if PricingCycle is set to **Month**: **1*	- to **9**
+	// 	- If PricingCycle is set to **Month**, set this parameter to an integer ranges from **1*	- to **9**.
 	//
-	// 	- Valid values if PricingCycle is set to **Year**: **1*	- to **3**
+	// 	- If PricingCycle is set to **Year**, set this parameter to an integer ranges from **1*	- to **3**.
 	//
-	// >  This parameter is available and required only if the ChargeType parameter is set to **PrePaid**.
+	// >  This parameter is valid and required only if the ChargeType parameter is set to **PrePaid**.
 	//
 	// example:
 	//
@@ -2962,7 +2976,7 @@ type CreateInstanceRequest struct {
 	//
 	// 	- **month**
 	//
-	// >  This parameter is available and required only if the ChargeType parameter is set to PrePaid.
+	// >  This parameter is required if the ChargeType parameter is set to Prepaid.
 	//
 	// example:
 	//
@@ -4954,7 +4968,7 @@ type DeleteApiStageVariableRequest struct {
 	// 523e8dc7bbe04613b5b1d726c2a7889d
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the runtime environment.
+	// The ID of the environment.
 	//
 	// This parameter is required.
 	//
@@ -5179,12 +5193,16 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 }
 
 type DeleteAppCodeRequest struct {
+	// The application AppCode.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0d13f021c5cd4997831a9717e75b0663
 	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5212,6 +5230,8 @@ func (s *DeleteAppCodeRequest) SetAppId(v string) *DeleteAppCodeRequest {
 }
 
 type DeleteAppCodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E8515BA6-81CD-4191-A7CF-C4FCDD3C0D99
@@ -5261,12 +5281,16 @@ func (s *DeleteAppCodeResponse) SetBody(v *DeleteAppCodeResponseBody) *DeleteApp
 }
 
 type DeleteAppKeyRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 110840611
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The AppKey of the application. The AppKey is used for calling an API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5294,6 +5318,8 @@ func (s *DeleteAppKeyRequest) SetAppKey(v string) *DeleteAppKeyRequest {
 }
 
 type DeleteAppKeyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 79EF055D-AC00-5161-8F35-6A36AAED7422
@@ -5437,15 +5463,13 @@ type DeleteBackendModelRequest struct {
 	// 4be6b110b7aa40b0bf0c83cc00b3bd86
 	BackendModelId *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The environment to which the API is published. Valid values:
+	// The name of the runtime environment. Valid values:
 	//
 	// 	- **RELEASE**
 	//
 	// 	- **PRE**
 	//
 	// 	- **TEST**
-	//
-	// If you do not specify this parameter, APIs in the draft state are returned.
 	//
 	// example:
 	//
@@ -5758,7 +5782,7 @@ func (s *DeleteDomainRequest) SetSecurityToken(v string) *DeleteDomainRequest {
 }
 
 type DeleteDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6236,7 +6260,7 @@ func (s *DeleteModelRequest) SetModelName(v string) *DeleteModelRequest {
 }
 
 type DeleteModelResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7165,7 +7189,7 @@ type DescribeAccessControlListAttributeResponseBody struct {
 	//
 	// testAcl
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The IP version. Valid values: **ipv4*	- and **ipv6**.
+	// The IP protocol version. Valid values: **ipv4*	- and **ipv6**.
 	//
 	// example:
 	//
@@ -7230,13 +7254,13 @@ func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntry(v 
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {
-	// The description of an entry.
+	// The entry description.
 	//
 	// example:
 	//
 	// default
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	// The entries of the access control policy.
+	// The ACL entry.
 	//
 	// example:
 	//
@@ -8515,25 +8539,25 @@ type DescribeApiResponseBodyRequestParametersRequestParameter struct {
 	//
 	// HEAD
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The maximum parameter length when ParameterType is set to String.
+	// The maximum parameter length when **ParameterType*	- is set to String.
 	//
 	// example:
 	//
 	// 123456
 	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The maximum parameter value when **ParameterType*	- is set to Int, Long, Float, or Double.
 	//
 	// example:
 	//
 	// 123456
 	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum parameter length when ParameterType is set to String.
+	// The minimum parameter length when **ParameterType*	- is set to String.
 	//
 	// example:
 	//
 	// 123456
 	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The minimum parameter value when **ParameterType*	- is set to Int, Long, Float, or Double.
 	//
 	// example:
 	//
@@ -8545,7 +8569,7 @@ type DescribeApiResponseBodyRequestParametersRequestParameter struct {
 	//
 	// String
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression that is used for parameter validation when ParameterType is set to String.
+	// The regular expression that is used for parameter validation when **ParameterType*	- is set to String.
 	//
 	// example:
 	//
@@ -9520,13 +9544,13 @@ type DescribeApiDocRequest struct {
 	// 123
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The environment to which the API is published. Valid values:
+	// The environment name. Valid values:
 	//
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
 	//
-	// If this parameter is not specified, the default value is used, which is RELEASE.
+	// If this parameter is not specified, the default value RELEASE is used.
 	//
 	// example:
 	//
@@ -9635,7 +9659,7 @@ type DescribeApiDocResponseBody struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The returned API frontend definition information. It is an array consisting of RequestConfig data.
+	// The returned API frontend definition. It is an array consisting of RequestConfig data.
 	RequestConfig *DescribeApiDocResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -9802,7 +9826,7 @@ type DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample struct {
 	//
 	// Error
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the error code.
+	// The error description.
 	//
 	// example:
 	//
@@ -9972,7 +9996,7 @@ type DescribeApiDocResponseBodyRequestParametersRequestParameter struct {
 	//
 	// 20
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description.
+	// The parameter description.
 	//
 	// example:
 	//
@@ -9990,7 +10014,7 @@ type DescribeApiDocResponseBodyRequestParametersRequestParameter struct {
 	//
 	// PUBLIC
 	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// The hash values that can be specified if the **ParameterType*	- parameter is set to Int, Long, Float, Double, or String. Separate multiple hash values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
+	// The hash values that are supported when **ParameterType*	- is set to Int, Long, Float, Double, or String. Separate values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
 	//
 	// example:
 	//
@@ -10038,7 +10062,7 @@ type DescribeApiDocResponseBodyRequestParametersRequestParameter struct {
 	//
 	// String
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression that is used to validate the parameter if the **ParameterType*	- parameter is set to String.
+	// The regular expression that is used for parameter validation when **ParameterType*	- is set to String.
 	//
 	// example:
 	//
@@ -10664,7 +10688,7 @@ func (s *DescribeApiGroupResponseBodyCustomDomains) SetDomainItem(v []*DescribeA
 }
 
 type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
-	// Bind runtime environment alias
+	// The alias of the associated environment.
 	//
 	// example:
 	//
@@ -12029,7 +12053,7 @@ type DescribeApiHistoryResponseBody struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Configuration items of API requests sent by the consumer to API Gateway.
+	// The configuration items of API requests sent by the consumer to API Gateway.
 	//
 	// For more information, see [RequestConfig](https://help.aliyun.com/document_detail/43985.html).
 	RequestConfig *DescribeApiHistoryResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
@@ -12364,13 +12388,13 @@ func (s *DescribeApiHistoryResponseBodyConstantParameters) SetConstantParameter(
 }
 
 type DescribeApiHistoryResponseBodyConstantParametersConstantParameter struct {
-	// The constant value.
+	// The value of the constant parameter.
 	//
 	// example:
 	//
 	// constance
 	ConstantValue *string `json:"ConstantValue,omitempty" xml:"ConstantValue,omitempty"`
-	// The description.
+	// The parameter description.
 	//
 	// example:
 	//
@@ -12382,7 +12406,7 @@ type DescribeApiHistoryResponseBodyConstantParametersConstantParameter struct {
 	//
 	// HEAD
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the backend service parameter.
+	// The mapped parameter name in the backend service.
 	//
 	// example:
 	//
@@ -12436,13 +12460,13 @@ func (s *DescribeApiHistoryResponseBodyCustomSystemParameters) SetCustomSystemPa
 }
 
 type DescribeApiHistoryResponseBodyCustomSystemParametersCustomSystemParameter struct {
-	// Example
+	// The sample value.
 	//
 	// example:
 	//
 	// 192.168.1.1
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description of the custom system parameter.
+	// The parameter description.
 	//
 	// example:
 	//
@@ -12454,13 +12478,13 @@ type DescribeApiHistoryResponseBodyCustomSystemParametersCustomSystemParameter s
 	//
 	// HEAD
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the custom system parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// CaClientIp
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The name of the corresponding backend parameter.
+	// The mapped parameter name in the backend service.
 	//
 	// example:
 	//
@@ -12519,19 +12543,19 @@ func (s *DescribeApiHistoryResponseBodyErrorCodeSamples) SetErrorCodeSample(v []
 }
 
 type DescribeApiHistoryResponseBodyErrorCodeSamplesErrorCodeSample struct {
-	// The error code.
+	// The returned error code.
 	//
 	// example:
 	//
 	// 400
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description.
+	// The error description.
 	//
 	// example:
 	//
 	// Missing the parameter UserId
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The error message.
+	// The returned error message.
 	//
 	// example:
 	//
@@ -12739,7 +12763,7 @@ func (s *DescribeApiHistoryResponseBodyRequestParameters) SetRequestParameter(v 
 }
 
 type DescribeApiHistoryResponseBodyRequestParametersRequestParameter struct {
-	// The name of the API parameter.
+	// The name of the parameter in the API request.
 	//
 	// example:
 	//
@@ -12751,37 +12775,37 @@ type DescribeApiHistoryResponseBodyRequestParametersRequestParameter struct {
 	//
 	// String
 	ArrayItemsType *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
-	// Default value
+	// The default value.
 	//
 	// example:
 	//
 	// 20
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Examples
+	// The sample value.
 	//
 	// example:
 	//
 	// 20
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description.
+	// The parameter description.
 	//
 	// example:
 	//
 	// modidyTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The order in the document.
+	// The order in which the parameter is sorted in the document.
 	//
 	// example:
 	//
 	// 0
 	DocOrder *int32 `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
-	// Specifies whether the document is public. Valid values: PUBLIC and PRIVATE.
+	// Indicates whether the document is public. Valid values: **PUBLIC*	- and **PRIVATE**.
 	//
 	// example:
 	//
 	// PUBLIC
 	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// The hash values that can be entered when ParameterType is set to Int, Long, Float, Double, or String. Separate different values with commas (,), such as 1,2,3,4,9 or A,B,C,E,F.
+	// The hash values that are supported when **ParameterType*	- is set to Int, Long, Float, Double, or String. Separate values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
 	//
 	// example:
 	//
@@ -12799,43 +12823,43 @@ type DescribeApiHistoryResponseBodyRequestParametersRequestParameter struct {
 	//
 	// HEAD
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The maximum parameter length when ParameterType is set to String.
+	// The maximum parameter length when **ParameterType*	- is set to String.
 	//
 	// example:
 	//
 	// 123456
 	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The maximum parameter value when **ParameterType*	- is set to Int, Long, Float, or Double.
 	//
 	// example:
 	//
 	// 123456
 	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum parameter length when ParameterType is set to String.
+	// The minimum parameter length when **ParameterType*	- is set to String.
 	//
 	// example:
 	//
 	// 123456
 	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The minimum parameter value when **ParameterType*	- is set to Int, Long, Float, or Double.
 	//
 	// example:
 	//
 	// 123456
 	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The type of a request parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
+	// The data type of the parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
 	//
 	// example:
 	//
 	// String
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression used for parameter validation when ParameterType is set to String.
+	// The regular expression that is used for parameter validation when **ParameterType*	- is set to String.
 	//
 	// example:
 	//
 	// xxx
 	RegularExpression *string `json:"RegularExpression,omitempty" xml:"RegularExpression,omitempty"`
-	// Indicates whether the parameter is required. Valid values: REQUIRED and OPTIONAL.
+	// Indicates whether the parameter is required. Valid values: **REQUIRED*	- and **OPTIONAL**.
 	//
 	// example:
 	//
@@ -12954,19 +12978,19 @@ func (s *DescribeApiHistoryResponseBodyResultDescriptions) SetResultDescription(
 }
 
 type DescribeApiHistoryResponseBodyResultDescriptionsResultDescription struct {
-	// The description.
+	// The subnode description.
 	//
 	// example:
 	//
 	// for_test1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether a subnode exists.
+	// Indicates whether a subnode exists.
 	//
 	// example:
 	//
 	// true
 	HasChild *bool `json:"HasChild,omitempty" xml:"HasChild,omitempty"`
-	// The ID of the result.
+	// The result ID.
 	//
 	// example:
 	//
@@ -12978,13 +13002,13 @@ type DescribeApiHistoryResponseBodyResultDescriptionsResultDescription struct {
 	//
 	// groupName
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies whether the parameter is required.
+	// Indicates whether the parameter is required.
 	//
 	// example:
 	//
 	// true
 	Mandatory *bool `json:"Mandatory,omitempty" xml:"Mandatory,omitempty"`
-	// The name of the result.
+	// The result name.
 	//
 	// example:
 	//
@@ -12996,7 +13020,7 @@ type DescribeApiHistoryResponseBodyResultDescriptionsResultDescription struct {
 	//
 	// pid
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The type of the result.
+	// The result type.
 	//
 	// example:
 	//
@@ -13468,13 +13492,13 @@ func (s *DescribeApiHistoryResponseBodyServiceConfigMockHeaders) SetMockHeader(v
 }
 
 type DescribeApiHistoryResponseBodyServiceConfigMockHeadersMockHeader struct {
-	// The name of the HTTP header parameter.
+	// The HTTP headers.
 	//
 	// example:
 	//
 	// Content-Type
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// The value of the HTTP header parameter.
+	// The values of the HTTP headers.
 	//
 	// example:
 	//
@@ -13659,13 +13683,13 @@ type DescribeApiHistoryResponseBodyServiceParametersServiceParameter struct {
 	//
 	// HEAD
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The data type of the back-end service parameter.
+	// The data type of the parameter. Valid values: STRING, NUMBER, and BOOLEAN.
 	//
 	// example:
 	//
 	// String
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The name of the backend service parameter.
+	// The mapped parameter name in the backend service.
 	//
 	// example:
 	//
@@ -13714,13 +13738,13 @@ func (s *DescribeApiHistoryResponseBodyServiceParametersMap) SetServiceParameter
 }
 
 type DescribeApiHistoryResponseBodyServiceParametersMapServiceParameterMap struct {
-	// The corresponding frontend parameter. It must be included in RequestParametersObject and matches ApiParameterName in RequestParameter data.
+	// The corresponding frontend parameter name. The value must be contained in RequestParametersObject and match RequestParam.ApiParameterName.
 	//
 	// example:
 	//
 	// sex
 	RequestParameterName *string `json:"RequestParameterName,omitempty" xml:"RequestParameterName,omitempty"`
-	// The name of the backend service parameter.
+	// The mapped parameter name in the backend service.
 	//
 	// example:
 	//
@@ -13764,7 +13788,7 @@ func (s *DescribeApiHistoryResponseBodySystemParameters) SetSystemParameter(v []
 }
 
 type DescribeApiHistoryResponseBodySystemParametersSystemParameter struct {
-	// The sample value of the parameter.
+	// The sample value.
 	//
 	// example:
 	//
@@ -13782,13 +13806,13 @@ type DescribeApiHistoryResponseBodySystemParametersSystemParameter struct {
 	//
 	// HEAD
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
+	// The system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
 	//
 	// example:
 	//
 	// CaClientIp
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The name of the corresponding backend parameter.
+	// The mapped parameter name in the backend service.
 	//
 	// example:
 	//
@@ -16684,7 +16708,7 @@ type DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo struct {
 	//
 	// wb2022012101605749
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The HTTP request method of the API.
+	// The HTTP method of the API.
 	//
 	// example:
 	//
@@ -16712,13 +16736,13 @@ type DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Environmental alias.
+	// The environment alias.
 	//
 	// example:
 	//
 	// Online
 	StageAlias *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
-	// The environment.
+	// The environment name.
 	//
 	// example:
 	//
@@ -17940,15 +17964,21 @@ func (s *DescribeApisByTrafficControlResponse) SetBody(v *DescribeApisByTrafficC
 }
 
 type DescribeApisByVpcAccessRequest struct {
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The name of the VPC access authorization.
+	//
 	// example:
 	//
 	// lynkco-iov-uat
@@ -17984,19 +18014,28 @@ func (s *DescribeApisByVpcAccessRequest) SetVpcName(v string) *DescribeApisByVpc
 }
 
 type DescribeApisByVpcAccessResponseBody struct {
+	// The returned API information. It is an array consisting of ApiInfo data.
 	ApiVpcAccessInfos *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos `json:"ApiVpcAccessInfos,omitempty" xml:"ApiVpcAccessInfos,omitempty" type:"Struct"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E707B25-5119-5ACF-9D26-7D2A2762F05C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 12
@@ -18054,50 +18093,80 @@ func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) SetApiVpcAccessIn
 }
 
 type DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo struct {
+	// The API ID.
+	//
 	// example:
 	//
 	// 09839002de484e76b5a213b040a6a3ca
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The API name.
+	//
 	// example:
 	//
 	// iwc
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The description, which can be up to 200 characters in length.
+	//
 	// example:
 	//
 	// 123
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the API group to which the API belongs.
+	//
 	// example:
 	//
 	// 41c33748cbfb41f6b00870156203b72a
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the API group to which the API belongs.
+	//
 	// example:
 	//
 	// RT_PLU_IP_CTRL_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The instance ID or IP address in the VPC access authorization.
+	//
 	// example:
 	//
 	// Ib-04e41XXXXXd95e9c1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The HTTP request method of the API.
+	//
 	// example:
 	//
 	// POST
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The request path of the API.
+	//
 	// example:
 	//
 	// /api/v1/friends/rc/status
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// 57e17906a69b4424914fb1e05f67c78a
 	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	// The environment to which the API is published. Valid values:
+	//
+	// 	- **RELEASE**: the production environment
+	//
+	// 	- **PRE**: the staging environment
+	//
+	// 	- **TEST**: the test environment
+	//
 	// example:
 	//
 	// RELEASE
@@ -18108,6 +18177,8 @@ type DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo struct
 	//
 	// vpc-2ze7bj64wstznvftrskbk
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC access authorization.
+	//
 	// example:
 	//
 	// aliYun_service_prod
@@ -18632,7 +18703,7 @@ type DescribeAppResponseBody struct {
 	//
 	// Estimated on October 15, 2021 at 10:20:27
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extended information.
+	// 扩展信息
 	//
 	// example:
 	//
@@ -18755,7 +18826,7 @@ type DescribeAppAttributesRequest struct {
 	//
 	// true
 	EnableTagAuth *bool `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
-	// The extended information.
+	// 扩展信息
 	//
 	// example:
 	//
@@ -18856,9 +18927,9 @@ func (s *DescribeAppAttributesRequest) SetTag(v []*DescribeAppAttributesRequestT
 }
 
 type DescribeAppAttributesRequestTag struct {
-	// The value of tag N.
+	// The key of the tag.
 	//
-	// Valid values of n: `[1, 20]`.
+	// N can be an integer from 1 to 20.``
 	//
 	// This parameter is required.
 	//
@@ -18866,9 +18937,9 @@ type DescribeAppAttributesRequestTag struct {
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key of tag N.
+	// The key of the tag.
 	//
-	// Valid values of n: `[1, 20]`.
+	// N can be an integer from 1 to 20.``
 	//
 	// example:
 	//
@@ -18895,7 +18966,7 @@ func (s *DescribeAppAttributesRequestTag) SetValue(v string) *DescribeAppAttribu
 }
 
 type DescribeAppAttributesResponseBody struct {
-	// The returned application information. It is an array that consists of AppAttribute data.
+	// The returned app information. It is an array that consists of AppAttribute data.
 	Apps *DescribeAppAttributesResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -18974,37 +19045,37 @@ func (s *DescribeAppAttributesResponseBodyApps) SetAppAttribute(v []*DescribeApp
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttribute struct {
-	// The application ID.
+	// The ID of the app.
 	//
 	// example:
 	//
 	// 20112314518278
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
 	// CreateApptest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The creation time (UTC) of the application.
+	// The creation time (UTC) of the app.
 	//
 	// example:
 	//
 	// 2016-07-31T04:10:19Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The application description.
+	// The description of the app.
 	//
 	// example:
 	//
 	// App test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extended information.
+	// 扩展信息
 	//
 	// example:
 	//
 	// 110461946884
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The modification time (UTC) of the application.
+	// The modification time (UTC) of the app.
 	//
 	// example:
 	//
@@ -19075,13 +19146,13 @@ func (s *DescribeAppAttributesResponseBodyAppsAppAttributeTags) SetTagInfo(v []*
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttributeTagsTagInfo struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// appid
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -19137,6 +19208,8 @@ func (s *DescribeAppAttributesResponse) SetBody(v *DescribeAppAttributesResponse
 }
 
 type DescribeAppSecuritiesRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19165,7 +19238,10 @@ func (s *DescribeAppSecuritiesRequest) SetSecurityToken(v string) *DescribeAppSe
 }
 
 type DescribeAppSecuritiesResponseBody struct {
+	// The associated security policy information.
 	AppSecuritys *DescribeAppSecuritiesResponseBodyAppSecuritys `json:"AppSecuritys,omitempty" xml:"AppSecuritys,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
@@ -19208,22 +19284,32 @@ func (s *DescribeAppSecuritiesResponseBodyAppSecuritys) SetAppSecurity(v []*Desc
 }
 
 type DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity struct {
+	// The application AppCode.
+	//
 	// example:
 	//
 	// d2350ecd62c44cbfbe35a7f182e35105
 	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// The application AppKey.
+	//
 	// example:
 	//
 	// 34379343
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application AppSecret.
+	//
 	// example:
 	//
 	// ea5291a7aff343769eb3139a2f6de8c9
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// The time when the AppKey was created.
+	//
 	// example:
 	//
 	// 2021-09-14T18:50:59
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The time when the AppSecret was last modified. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-08-14T18:03:00+08:00
@@ -20349,7 +20435,7 @@ func (s *DescribeAuthorizedAppsRequest) SetStageName(v string) *DescribeAuthoriz
 }
 
 type DescribeAuthorizedAppsResponseBody struct {
-	// The returned group set.
+	// The authorized applications.
 	AuthorizedApps *DescribeAuthorizedAppsResponseBodyAuthorizedApps `json:"AuthorizedApps,omitempty" xml:"AuthorizedApps,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -20428,19 +20514,19 @@ func (s *DescribeAuthorizedAppsResponseBodyAuthorizedApps) SetAuthorizedApp(v []
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp struct {
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// Production application
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// The ID, which is generated by the system and globally unique.
+	// The application ID, which is generated by the system and globally unique.
 	//
 	// example:
 	//
 	// 2386789
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name
+	// The application name.
 	//
 	// example:
 	//
@@ -20468,7 +20554,7 @@ type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp struct {
 	//
 	// 2016-07-21T06:17:20Z
 	AuthorizedTime *string `json:"AuthorizedTime,omitempty" xml:"AuthorizedTime,omitempty"`
-	// The description of the authorization.
+	// The authorization description.
 	//
 	// example:
 	//
@@ -20886,7 +20972,10 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct
 	//
 	// 10.0.0.1
 	ServiceAddress *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
-	ServiceTimeout *int32  `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
+	// example:
+	//
+	// 10000
+	ServiceTimeout *int32 `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
 	// The type of the backend service.
 	//
 	// example:
@@ -21117,9 +21206,18 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDis
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigZookeeperConfig struct {
+	// example:
+	//
+	// http://192.168.1.xxx:2181
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// provider
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// service
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscoveryConfigZookeeperConfig) String() string {
@@ -21146,13 +21244,34 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDis
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEdasConfig struct {
-	EdasAppId                 *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
-	MicroserviceNamespace     *string `json:"MicroserviceNamespace,omitempty" xml:"MicroserviceNamespace,omitempty"`
-	MicroserviceNamespaceId   *string `json:"MicroserviceNamespaceId,omitempty" xml:"MicroserviceNamespaceId,omitempty"`
+	// example:
+	//
+	// 6cd0c599-dxxx-496d-b3d5-6a71c657xxxxx
+	EdasAppId *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou:edasNacos
+	MicroserviceNamespace *string `json:"MicroserviceNamespace,omitempty" xml:"MicroserviceNamespace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou:edasNacos
+	MicroserviceNamespaceId *string `json:"MicroserviceNamespaceId,omitempty" xml:"MicroserviceNamespaceId,omitempty"`
+	// example:
+	//
+	// Edas-Nacos
 	MicroserviceNamespaceName *string `json:"MicroserviceNamespaceName,omitempty" xml:"MicroserviceNamespaceName,omitempty"`
-	MseInstanceId             *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
-	RegistryType              *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	ServiceName               *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// mse-cn-jia3n1rxxxx
+	MseInstanceId *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
+	// example:
+	//
+	// EDAS
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// example:
+	//
+	// service
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEdasConfig) String() string {
@@ -21356,8 +21475,16 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockCon
 	// The header returned for service mocking.
 	MockHeaders []*DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Repeated"`
 	// The result returned for service mocking.
+	//
+	// example:
+	//
+	// test
 	MockResult *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
 	// The status code that is returned for service mocking.
+	//
+	// example:
+	//
+	// 200
 	MockStatusCode *string `json:"MockStatusCode,omitempty" xml:"MockStatusCode,omitempty"`
 }
 
@@ -21386,8 +21513,16 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMoc
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfigMockHeaders struct {
 	// The name of the header parameter.
+	//
+	// example:
+	//
+	// test
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
 	// The value of the header parameter.
+	//
+	// example:
+	//
+	// 123
 	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
 }
 
@@ -21480,6 +21615,10 @@ type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConf
 	// http
 	VpcScheme *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
 	// The host of the backend service.
+	//
+	// example:
+	//
+	// openapi.alipan.com
 	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
@@ -22483,7 +22622,7 @@ type DescribeDatasetListRequest struct {
 	// 10
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
+	// 指定规则所适用的对象标签，可设置多个
 	Tag []*DescribeDatasetListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -22521,13 +22660,13 @@ func (s *DescribeDatasetListRequest) SetTag(v []*DescribeDatasetListRequestTag) 
 }
 
 type DescribeDatasetListRequestTag struct {
-	// The tag key.
+	// 标签键
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// 标签值
 	//
 	// example:
 	//
@@ -22652,7 +22791,7 @@ type DescribeDatasetListResponseBodyDatasetInfoList struct {
 	//
 	// 2022-09-21T12:58:43Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The tags of the dataset.
+	// 标签
 	Tags []*DescribeDatasetListResponseBodyDatasetInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -22695,13 +22834,13 @@ func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetTags(v []*DescribeDa
 }
 
 type DescribeDatasetListResponseBodyDatasetInfoListTags struct {
-	// The tag key.
+	// 标签的键
 	//
 	// example:
 	//
 	// ENV
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// 标签值
 	//
 	// example:
 	//
@@ -24649,8 +24788,6 @@ type DescribeDeployedApisRequest struct {
 	//
 	// c076144d7878437b8f82fb85890ce6a0
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The HTTP method of the API request.
-	//
 	// example:
 	//
 	// POST
@@ -24661,8 +24798,6 @@ type DescribeDeployedApisRequest struct {
 	//
 	// weather
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The request path of the API.
-	//
 	// example:
 	//
 	// /st4
@@ -24702,7 +24837,7 @@ type DescribeDeployedApisRequest struct {
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*DescribeDeployedApisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -24882,61 +25017,57 @@ func (s *DescribeDeployedApisResponseBodyDeployedApis) SetDeployedApiItem(v []*D
 }
 
 type DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem struct {
-	// The API ID.
+	// The ID of the API.
 	//
 	// example:
 	//
 	// c076144d7878437b8f82fb85890ce6a0
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The HTTP method of the API request.
-	//
 	// example:
 	//
 	// POST
 	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// The API name.
+	// The name of the API.
 	//
 	// example:
 	//
 	// DescribeObjects
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The request path of the API.
-	//
 	// example:
 	//
 	// /trademark/search
 	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The time when the API was published. The time is displayed in UTC.
+	// The publising time (UTC) of the API.
 	//
 	// example:
 	//
 	// 2016-07-23T08:28:48Z
 	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// The API description.
+	// The description of the API.
 	//
 	// example:
 	//
-	// Queries objects by page
+	// Queries objects by pages
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The API group ID.
+	// The ID of the API group.
 	//
 	// example:
 	//
 	// 63be9002440b4778a61122f14c2b2bbb
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group to which the API belongs.
+	// The name of the group to which the API belongs.
 	//
 	// example:
 	//
 	// myGroup3
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The region ID of the API.
+	// The region where the API is located.
 	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The environment name. Valid values:
+	// The name of the runtime environment. Valid values:
 	//
 	// 	- **RELEASE**
 	//
@@ -25059,7 +25190,7 @@ type DescribeDomainRequest struct {
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the API group. An API group ID is generated by the system and is globally unique.
+	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
 	// This parameter is required.
 	//
@@ -25094,7 +25225,7 @@ func (s *DescribeDomainRequest) SetSecurityToken(v string) *DescribeDomainReques
 }
 
 type DescribeDomainResponseBody struct {
-	// The certificate content.
+	// The content of the certificate.
 	//
 	// example:
 	//
@@ -25106,7 +25237,7 @@ type DescribeDomainResponseBody struct {
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The SSL certificate name.
+	// The name of the SSL certificate.
 	//
 	// example:
 	//
@@ -25118,13 +25249,13 @@ type DescribeDomainResponseBody struct {
 	//
 	// xxx
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
-	// The time when the certificate expires. The value is a timestamp. Unit: milliseconds.
+	// 证书失效时间戳（毫秒）
 	//
 	// example:
 	//
 	// 1704038400000
 	CertificateValidEnd *int64 `json:"CertificateValidEnd,omitempty" xml:"CertificateValidEnd,omitempty"`
-	// The time when the certificate takes effect. The value is a timestamp. Unit: milliseconds.
+	// 证书生效时间戳（毫秒）
 	//
 	// example:
 	//
@@ -25132,9 +25263,9 @@ type DescribeDomainResponseBody struct {
 	CertificateValidStart *int64 `json:"CertificateValidStart,omitempty" xml:"CertificateValidStart,omitempty"`
 	// The binding status of the custom domain name. Valid values:
 	//
-	// 	- BINDING: The domain name is bound to the API group.
+	// 	- BINDING: The domain name has been bound.
 	//
-	// 	- BOUND: The domain name is not bound to the API group.
+	// 	- BOUND: The domain name has not been bound.
 	//
 	// example:
 	//
@@ -25154,7 +25285,7 @@ type DescribeDomainResponseBody struct {
 	//
 	// 	- NORMAL
 	//
-	// 	- ABNORMAL: This status affects API calls and must be rectified as soon as possible.
+	// 	- ABNORMAL: This status affects API calls and must be resolved as soon as possible.
 	//
 	// example:
 	//
@@ -25170,7 +25301,7 @@ type DescribeDomainResponseBody struct {
 	//
 	// example:
 	//
-	// The status of the domain name that uses WebSocket.
+	// The domain name does not have an ICP filing.
 	DomainRemark *string `json:"DomainRemark,omitempty" xml:"DomainRemark,omitempty"`
 	// The status of the domain name that uses WebSocket.
 	//
@@ -25184,7 +25315,7 @@ type DescribeDomainResponseBody struct {
 	//
 	// 927d50c0f2e54b359919923d908bb015
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -25979,7 +26110,7 @@ func (s *DescribeHistoryApisRequest) SetStageName(v string) *DescribeHistoryApis
 }
 
 type DescribeHistoryApisResponseBody struct {
-	// The returned API information. It is an array consisting of ApiHisItem data.
+	// The returned API information. It is an array consisting of ApiHisItems.
 	ApiHisItems *DescribeHistoryApisResponseBodyApiHisItems `json:"ApiHisItems,omitempty" xml:"ApiHisItems,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -26058,37 +26189,37 @@ func (s *DescribeHistoryApisResponseBodyApiHisItems) SetApiHisItem(v []*Describe
 }
 
 type DescribeHistoryApisResponseBodyApiHisItemsApiHisItem struct {
-	// The ID of the API.
+	// The API ID.
 	//
 	// example:
 	//
 	// 5af418828f0344a3b588c0cc1331a3bc
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
+	// The API name.
 	//
 	// example:
 	//
 	// v2_role_assign
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The publising time (UTC) of the API.
+	// The time when the API was published. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2016-07-20T08:28:48Z
 	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// The description of the API.
+	// The API description.
 	//
 	// example:
 	//
 	// Creates an object
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
+	// The API group ID.
 	//
 	// example:
 	//
 	// 1084f9034c744137901057206b39d2b6
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group to which the API belongs.
+	// The name of the API group to which the API belongs.
 	//
 	// example:
 	//
@@ -26100,23 +26231,23 @@ type DescribeHistoryApisResponseBodyApiHisItemsApiHisItem struct {
 	//
 	// 20210915101416294
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Environmental alias
+	// The environment alias.
 	//
 	// example:
 	//
 	// Online
 	StageAlias *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
-	// The name of the runtime environment. Valid values:
+	// The environment name. Valid values:
 	//
 	// 	- **RELEASE**
 	//
-	// 	- **TEST.
+	// 	- **TEST**
 	//
 	// example:
 	//
@@ -26572,6 +26703,8 @@ func (s *DescribeImportOASTaskResponse) SetBody(v *DescribeImportOASTaskResponse
 }
 
 type DescribeInstanceClusterInfoRequest struct {
+	// The name of the dedicated instance cluster.
+	//
 	// example:
 	//
 	// testvpc
@@ -26598,44 +26731,66 @@ func (s *DescribeInstanceClusterInfoRequest) SetSecurityToken(v string) *Describ
 }
 
 type DescribeInstanceClusterInfoResponseBody struct {
+	// The time when the cluster was created.
+	//
 	// example:
 	//
 	// 2022-10-10T18:29:27
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The cluster description, which can be up to 200 characters in length.
+	//
 	// example:
 	//
 	// v0.0.4
-	Description              *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The cluster details.
 	InstanceClusterAttribute *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute `json:"InstanceClusterAttribute,omitempty" xml:"InstanceClusterAttribute,omitempty" type:"Struct"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// apigateway-ht-04e41d95e9c1
 	InstanceClusterId *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// test
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// The cluster status.
+	//
 	// example:
 	//
 	// RUNNING
 	InstanceClusterStatus *string `json:"InstanceClusterStatus,omitempty" xml:"InstanceClusterStatus,omitempty"`
+	// The cluster type.
+	//
 	// example:
 	//
 	// normal
 	InstanceClusterType *string `json:"InstanceClusterType,omitempty" xml:"InstanceClusterType,omitempty"`
+	// The cluster version.
+	//
 	// example:
 	//
 	// 3.5.3.856
-	InstanceClusterVersion *string                                              `json:"InstanceClusterVersion,omitempty" xml:"InstanceClusterVersion,omitempty"`
-	InstanceList           *DescribeInstanceClusterInfoResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
+	InstanceClusterVersion *string `json:"InstanceClusterVersion,omitempty" xml:"InstanceClusterVersion,omitempty"`
+	// The dedicated instances contained in the cluster.
+	InstanceList *DescribeInstanceClusterInfoResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
+	// The time when the cluster was last modified.
+	//
 	// example:
 	//
 	// 2023-06-19 10:40:29 +0800
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The region ID of the cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ015
@@ -26711,87 +26866,146 @@ func (s *DescribeInstanceClusterInfoResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute struct {
+	// The internal CIDR block of the user VPC that can be accessed by the cluster if the cluster consists of VPC integration instances.
+	//
 	// example:
 	//
 	// ["192.168.1.0/24","192.168.0.0/24"]
 	ConnectCidrBlocks *string `json:"ConnectCidrBlocks,omitempty" xml:"ConnectCidrBlocks,omitempty"`
+	// The ID of the user VPC that is connected to the cluster if the cluster consists of VPC integration instances.
+	//
 	// example:
 	//
 	// vpc-p0w3kxxxxxxxxxxxxxxxx
 	ConnectVpcId *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
+	// Indicates whether outbound IPv6 traffic is supported.
+	//
 	// example:
 	//
 	// true
 	EgressIpv6Enable *bool `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	// The HTTPS security policy.
+	//
 	// example:
 	//
 	// HTTPS2_TLS1_0
 	HttpsPolicies *string `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	// The ID of the IPv4 access control list (ACL).
+	//
 	// example:
 	//
 	// acl-t4n8i4rvvp70kcyuoXXXX
 	IPV4AclId *string `json:"IPV4AclId,omitempty" xml:"IPV4AclId,omitempty"`
+	// The name of the IPv4 ACL.
+	//
 	// example:
 	//
 	// test-black
 	IPV4AclName *string `json:"IPV4AclName,omitempty" xml:"IPV4AclName,omitempty"`
+	// Indicates whether IPv4 access control is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	IPV4AclStatus *string `json:"IPV4AclStatus,omitempty" xml:"IPV4AclStatus,omitempty"`
+	// The type of the IPv4 ACL.
+	//
+	// 	- black: blacklist
+	//
+	// 	- white: whitelist
+	//
 	// example:
 	//
 	// black
 	IPV4AclType *string `json:"IPV4AclType,omitempty" xml:"IPV4AclType,omitempty"`
+	// The ID of the IPv6 ACL.
+	//
 	// example:
 	//
 	// acl-t4nevzhwbpe7cup18XXXX
 	IPV6AclId *string `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
+	// The name of the IPv6 ACL.
+	//
 	// example:
 	//
 	// test
 	IPV6AclName *string `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
+	// Indicates whether IPv6 access control is enabled. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// on
 	IPV6AclStatus *string `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
+	// The type of the IPv6 ACL. Valid values:
+	//
+	// 	- black: blacklist
+	//
+	// 	- white: whitelist
+	//
 	// example:
 	//
 	// white
 	IPV6AclType *string `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
+	// The outbound public IP address.
+	//
 	// example:
 	//
 	// 39.106.XX.XX
 	InternetEgressAddress *string `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	// The outbound private IP address.
+	//
 	// example:
 	//
 	// 100.104.XX.XX/26
 	IntranetEgressAddress *string `json:"IntranetEgressAddress,omitempty" xml:"IntranetEgressAddress,omitempty"`
+	// The custom CIDR block. The configured CIDR block is considered as a private block.
+	//
 	// example:
 	//
 	// 123.0.0.1
 	IntranetSegments *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	// Indicates whether IPv6 traffic is supported.
+	//
 	// example:
 	//
 	// true
 	SupportIpv6 *bool `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	// The ID of the client VPC.
+	//
 	// example:
 	//
 	// vpc-2zew2v4vcg78mXXXX
 	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	// The vSwitch of the client VPC.
+	//
 	// example:
 	//
 	// vsw-2zecr5r7ao44tslsXXXX
 	UserVswitchId *string `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
+	// The VIPs of the cluster.
+	//
 	// example:
 	//
 	// VPC_INTERNET_IPV6
-	VipTypeList       *string `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
-	VpcIntranetEnable *bool   `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	VipTypeList *string `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
+	// Indicates whether a virtual private cloud (VPC) domain name is enabled.
+	VpcIntranetEnable *bool `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	// The ID of the account to which the VPC belongs.
+	//
 	// example:
 	//
 	// 165438596694XXXX
 	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	// Indicates whether self-calling is enabled.
+	//
 	// example:
 	//
 	// false
@@ -26934,18 +27148,26 @@ func (s *DescribeInstanceClusterInfoResponseBodyInstanceList) SetInstance(v []*D
 }
 
 type DescribeInstanceClusterInfoResponseBodyInstanceListInstance struct {
+	// The error message returned if the call fails.
+	//
 	// example:
 	//
 	// Instance not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// apigateway-ht-04e41d95e9c1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// tf-testacceu-central-1apigatewayinstance8752
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -27010,12 +27232,26 @@ func (s *DescribeInstanceClusterInfoResponse) SetBody(v *DescribeInstanceCluster
 }
 
 type DescribeInstanceClusterListRequest struct {
-	InstanceClusterId   *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// apigateway-cluster-hz-xxxxxxxxxxxx
+	InstanceClusterId *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	// The cluster name.
+	//
+	// example:
+	//
+	// test-cluster
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// The page number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
@@ -27058,18 +27294,26 @@ func (s *DescribeInstanceClusterListRequest) SetSecurityToken(v string) *Describ
 
 type DescribeInstanceClusterListResponseBody struct {
 	InstanceClusters *DescribeInstanceClusterListResponseBodyInstanceClusters `json:"InstanceClusters,omitempty" xml:"InstanceClusters,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ015
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -27127,22 +27371,50 @@ func (s *DescribeInstanceClusterListResponseBodyInstanceClusters) SetInstanceClu
 }
 
 type DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster struct {
+	// The time when the cluster was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-08-14T17:46:59+08:00
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The cluster description.
+	//
 	// example:
 	//
 	// Test TrafficControl
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceClusterId     *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
-	InstanceClusterName   *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// apigateway-cluster-hz-xxxxxxxxxxxx
+	InstanceClusterId *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	// The cluster name.
+	//
+	// example:
+	//
+	// test-cluster
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// The cluster status.
+	//
+	// example:
+	//
+	// RUNNING
 	InstanceClusterStatus *string `json:"InstanceClusterStatus,omitempty" xml:"InstanceClusterStatus,omitempty"`
-	InstanceClusterType   *string `json:"InstanceClusterType,omitempty" xml:"InstanceClusterType,omitempty"`
+	// The cluster type.
+	//
+	// example:
+	//
+	// normal
+	InstanceClusterType *string `json:"InstanceClusterType,omitempty" xml:"InstanceClusterType,omitempty"`
+	// The time when the cluster was last modified. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-01-12T10:11:08+08:00
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The region ID of the cluster.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -30599,8 +30871,9 @@ type DescribeModelsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tag      []*DescribeModelsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tag of objects that match the rule. You can specify multiple tags.
+	Tag []*DescribeModelsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeModelsRequest) String() string {
@@ -30642,7 +30915,17 @@ func (s *DescribeModelsRequest) SetTag(v []*DescribeModelsRequestTag) *DescribeM
 }
 
 type DescribeModelsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -30667,19 +30950,19 @@ func (s *DescribeModelsRequestTag) SetValue(v string) *DescribeModelsRequestTag 
 type DescribeModelsResponseBody struct {
 	// The returned information about models. It is an array consisting of ModelDetail data.
 	ModelDetails *DescribeModelsResponseBodyModelDetails `json:"ModelDetails,omitempty" xml:"ModelDetails,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30750,7 +31033,7 @@ type DescribeModelsResponseBodyModelDetailsModelDetail struct {
 	//
 	// 2019-01-29T11:07:48Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The definition of the model description.
+	// The description of the model definition.
 	//
 	// example:
 	//
@@ -30780,7 +31063,7 @@ type DescribeModelsResponseBodyModelDetailsModelDetail struct {
 	//
 	// https://apigateway.aliyun.com/models/30e792398d6c4569b04c0e53a3494381/766c0b9538a04bdf974953b5576783ba
 	ModelRef *string `json:"ModelRef,omitempty" xml:"ModelRef,omitempty"`
-	// The last modification time of the model.
+	// The time when the model was last modified.
 	//
 	// example:
 	//
@@ -30791,8 +31074,9 @@ type DescribeModelsResponseBodyModelDetailsModelDetail struct {
 	// example:
 	//
 	// {\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}
-	Schema *string                                                `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	Tags   *DescribeModelsResponseBodyModelDetailsModelDetailTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The tags of the model.
+	Tags *DescribeModelsResponseBodyModelDetailsModelDetailTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeModelsResponseBodyModelDetailsModelDetail) String() string {
@@ -30866,7 +31150,17 @@ func (s *DescribeModelsResponseBodyModelDetailsModelDetailTags) SetTagInfo(v []*
 }
 
 type DescribeModelsResponseBodyModelDetailsModelDetailTagsTagInfo struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// ENV
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// ST4
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -39131,7 +39425,8 @@ type ModifyApiGroupRequest struct {
 	// example:
 	//
 	// New weather informations.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FilterAppCodeForBackend *string `json:"FilterAppCodeForBackend,omitempty" xml:"FilterAppCodeForBackend,omitempty"`
 	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
 	// This parameter is required.
@@ -39207,6 +39502,11 @@ func (s *ModifyApiGroupRequest) SetDefaultDomain(v string) *ModifyApiGroupReques
 
 func (s *ModifyApiGroupRequest) SetDescription(v string) *ModifyApiGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyApiGroupRequest) SetFilterAppCodeForBackend(v string) *ModifyApiGroupRequest {
+	s.FilterAppCodeForBackend = &v
 	return s
 }
 
@@ -40422,7 +40722,8 @@ type ModifyInstanceAttributeRequest struct {
 	// example:
 	//
 	// 18:00Z
-	MaintainStartTime   *string                                            `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The information about the CIDR block that API Gateway can use to access the virtual private cloud (VPC) of the backend service.
 	ToConnectVpcIpBlock *ModifyInstanceAttributeRequestToConnectVpcIpBlock `json:"ToConnectVpcIpBlock,omitempty" xml:"ToConnectVpcIpBlock,omitempty" type:"Struct"`
 	// example:
 	//
@@ -40503,18 +40804,26 @@ func (s *ModifyInstanceAttributeRequest) SetVpcSlbIntranetEnable(v string) *Modi
 }
 
 type ModifyInstanceAttributeRequestToConnectVpcIpBlock struct {
+	// The CIDR block of the VSwitch.
+	//
 	// example:
 	//
 	// 172.16.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// Specifies whether the CIDR block is a custom CIDR block.
+	//
 	// example:
 	//
 	// false
 	Customized *bool `json:"Customized,omitempty" xml:"Customized,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-wz94cqvaoe1ipxxxxxx
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -40587,7 +40896,8 @@ type ModifyInstanceAttributeShrinkRequest struct {
 	// example:
 	//
 	// 18:00Z
-	MaintainStartTime         *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The information about the CIDR block that API Gateway can use to access the virtual private cloud (VPC) of the backend service.
 	ToConnectVpcIpBlockShrink *string `json:"ToConnectVpcIpBlock,omitempty" xml:"ToConnectVpcIpBlock,omitempty"`
 	// example:
 	//
@@ -42698,7 +43008,7 @@ type ReactivateDomainRequest struct {
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
+	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
 	// This parameter is required.
 	//
@@ -42999,7 +43309,7 @@ func (s *RemoveApiProductsAuthoritiesResponse) SetBody(v *RemoveApiProductsAutho
 }
 
 type RemoveApisAuthoritiesRequest struct {
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// The IDs of the APIs. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	//
 	// This parameter is required.
 	//
@@ -43007,7 +43317,7 @@ type RemoveApisAuthoritiesRequest struct {
 	//
 	// baacc592e63a4cb6a41920d9d3f91f38,jkscc489e63a4cb6a41920d9d3f92d78
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the app. The ID is generated by the system and globally unique.
+	// The ID of the appplication. The ID is generated by the system and globally unique.
 	//
 	// This parameter is required.
 	//
@@ -44751,13 +45061,13 @@ func (s *SetApiProductsAuthoritiesResponse) SetBody(v *SetApiProductsAuthorities
 }
 
 type SetApisAuthoritiesRequest struct {
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// The IDs of the APIs. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	//
 	// example:
 	//
 	// baacc592e63a4cb6a41920d9d3f91f38,jkscc489e63a4cb6a41920d9d3f92d78
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the app. This ID is generated by the system and globally unique.
+	// The ID of the application. This ID is generated by the system and globally unique.
 	//
 	// This parameter is required.
 	//
@@ -45000,7 +45310,7 @@ type SetAppsAuthoritiesRequest struct {
 	//
 	// baacc592e63a4cb6a41920d9d3f91f38
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// The IDs of applications. Separate multiple application IDs with commas (,). A maximum of 100 applications IDs can be entered.
 	//
 	// This parameter is required.
 	//
@@ -45373,7 +45683,7 @@ type SetDomainCertificateRequest struct {
 	//
 	// Content of the CA certificate
 	CaCertificateBody *string `json:"CaCertificateBody,omitempty" xml:"CaCertificateBody,omitempty"`
-	// The certificate content.
+	// The content of the certificate.
 	//
 	// example:
 	//
@@ -45401,7 +45711,7 @@ type SetDomainCertificateRequest struct {
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
+	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
 	// This parameter is required.
 	//
@@ -45834,7 +46144,7 @@ func (s *SetIpControlApisResponse) SetBody(v *SetIpControlApisResponseBody) *Set
 }
 
 type SetSignatureApisRequest struct {
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// The API IDs.
 	//
 	// This parameter is required.
 	//
@@ -45842,7 +46152,7 @@ type SetSignatureApisRequest struct {
 	//
 	// 3b81fd160f5645e097cc8855d75a1cf6,46fbb52840d146f186e38e8e70fc8c12
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the API group to which the API that you want to manage belongs.
+	// The API group ID.
 	//
 	// This parameter is required.
 	//
@@ -45851,7 +46161,7 @@ type SetSignatureApisRequest struct {
 	// 0009db9c828549768a200320714b8930
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the signature key.
+	// The signature ID.
 	//
 	// This parameter is required.
 	//
@@ -45859,13 +46169,13 @@ type SetSignatureApisRequest struct {
 	//
 	// dd05f1c54d6749eda95f9fa6d491449a
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The name of the runtime environment. Valid values:
+	// The environment. Valid values:
 	//
-	// 	- **RELEASE**
+	// 	- **RELEASE**: the production environment
 	//
-	// 	- **PRE**
+	// 	- **PRE**: the staging environment
 	//
-	// 	- **TEST**
+	// 	- **TEST**: the testing environment
 	//
 	// This parameter is required.
 	//
@@ -45909,7 +46219,7 @@ func (s *SetSignatureApisRequest) SetStageName(v string) *SetSignatureApisReques
 }
 
 type SetSignatureApisResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -46387,7 +46697,7 @@ func (s *SetWildcardDomainPatternsResponse) SetBody(v *SetWildcardDomainPatterns
 }
 
 type SwitchApiRequest struct {
-	// The ID of the API.
+	// The API ID.
 	//
 	// This parameter is required.
 	//
@@ -46395,7 +46705,7 @@ type SwitchApiRequest struct {
 	//
 	// d6f679aeb3be4b91b3688e887ca1fe16
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The description of the switch operation.
+	// The description. The description can be up to 200 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -46403,13 +46713,13 @@ type SwitchApiRequest struct {
 	//
 	// for_demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
+	// The API group ID.
 	//
 	// example:
 	//
 	// 123
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The historical version that you want to switch to.
+	// The historical version number of the API.
 	//
 	// This parameter is required.
 	//
@@ -46418,11 +46728,13 @@ type SwitchApiRequest struct {
 	// 20160705104552292
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
+	// The environment. Valid values:
 	//
-	// 	- **RELEASE**
+	// 	- **RELEASE**: the production environment
 	//
-	// 	- **TEST**
+	// 	- **PRE**: the staging environment
+	//
+	// 	- **TEST**: the test environment
 	//
 	// This parameter is required.
 	//
@@ -46471,7 +46783,7 @@ func (s *SwitchApiRequest) SetStageName(v string) *SwitchApiRequest {
 }
 
 type SwitchApiResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -48223,7 +48535,7 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
-// 创建新的AppCode
+// Adds an AppCode to an application.
 //
 // @param request - CreateAppCodeRequest
 //
@@ -48269,7 +48581,7 @@ func (client *Client) CreateAppCodeWithOptions(request *CreateAppCodeRequest, ru
 
 // Summary:
 //
-// 创建新的AppCode
+// Adds an AppCode to an application.
 //
 // @param request - CreateAppCodeRequest
 //
@@ -48287,7 +48599,7 @@ func (client *Client) CreateAppCode(request *CreateAppCodeRequest) (_result *Cre
 
 // Summary:
 //
-// 创建新的AK、SK
+// Adds an AppKey and AppSecret pair to an application.
 //
 // @param request - CreateAppKeyRequest
 //
@@ -48337,7 +48649,7 @@ func (client *Client) CreateAppKeyWithOptions(request *CreateAppKeyRequest, runt
 
 // Summary:
 //
-// 创建新的AK、SK
+// Adds an AppKey and AppSecret pair to an application.
 //
 // @param request - CreateAppKeyRequest
 //
@@ -49583,7 +49895,7 @@ func (client *Client) DeleteAllTrafficSpecialControl(request *DeleteAllTrafficSp
 
 // Summary:
 //
-// Deletes an API.
+// Deletes the definition of a specified API.
 //
 // Description:
 //
@@ -49641,7 +49953,7 @@ func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *u
 
 // Summary:
 //
-// Deletes an API.
+// Deletes the definition of a specified API.
 //
 // Description:
 //
@@ -49987,7 +50299,7 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 
 // Summary:
 //
-// 删除新的AppCode
+// Deletes the AppCode of an application.
 //
 // @param request - DeleteAppCodeRequest
 //
@@ -50033,7 +50345,7 @@ func (client *Client) DeleteAppCodeWithOptions(request *DeleteAppCodeRequest, ru
 
 // Summary:
 //
-// 删除新的AppCode
+// Deletes the AppCode of an application.
 //
 // @param request - DeleteAppCodeRequest
 //
@@ -50051,7 +50363,7 @@ func (client *Client) DeleteAppCode(request *DeleteAppCodeRequest) (_result *Del
 
 // Summary:
 //
-// 删除新的AppKey
+// Deletes the AppKey and AppSecret of an application.
 //
 // @param request - DeleteAppKeyRequest
 //
@@ -50097,7 +50409,7 @@ func (client *Client) DeleteAppKeyWithOptions(request *DeleteAppKeyRequest, runt
 
 // Summary:
 //
-// 删除新的AppKey
+// Deletes the AppKey and AppSecret of an application.
 //
 // @param request - DeleteAppKeyRequest
 //
@@ -50383,7 +50695,7 @@ func (client *Client) DeleteDatasetItem(request *DeleteDatasetItemRequest) (_res
 
 // Summary:
 //
-// Unbinds a custom domain name from a specified API group.
+// Unbinds a custom domain name from an API group.
 //
 // Description:
 //
@@ -50441,7 +50753,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 
 // Summary:
 //
-// Unbinds a custom domain name from a specified API group.
+// Unbinds a custom domain name from an API group.
 //
 // Description:
 //
@@ -50747,7 +51059,7 @@ func (client *Client) DeleteLogConfig(request *DeleteLogConfigRequest) (_result 
 
 // Summary:
 //
-// Deletes a model from Model Management for an API group.
+// Deletes a model.
 //
 // @param request - DeleteModelRequest
 //
@@ -50793,7 +51105,7 @@ func (client *Client) DeleteModelWithOptions(request *DeleteModelRequest, runtim
 
 // Summary:
 //
-// Deletes a model from Model Management for an API group.
+// Deletes a model.
 //
 // @param request - DeleteModelRequest
 //
@@ -53409,6 +53721,10 @@ func (client *Client) DescribeApisByTrafficControl(request *DescribeApisByTraffi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs that are associated with a virtual private cloud (VPC) access authorization in a region.
+//
 // @param request - DescribeApisByVpcAccessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -53459,6 +53775,10 @@ func (client *Client) DescribeApisByVpcAccessWithOptions(request *DescribeApisBy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs that are associated with a virtual private cloud (VPC) access authorization in a region.
+//
 // @param request - DescribeApisByVpcAccessRequest
 //
 // @return DescribeApisByVpcAccessResponse
@@ -53743,7 +54063,7 @@ func (client *Client) DescribeAppAttributes(request *DescribeAppAttributesReques
 
 // Summary:
 //
-// 查询APP的密钥信息
+// Queries the key-related information of an application.
 //
 // @param request - DescribeAppSecuritiesRequest
 //
@@ -53789,7 +54109,7 @@ func (client *Client) DescribeAppSecuritiesWithOptions(request *DescribeAppSecur
 
 // Summary:
 //
-// 查询APP的密钥信息
+// Queries the key-related information of an application.
 //
 // @param request - DescribeAppSecuritiesRequest
 //
@@ -53883,13 +54203,13 @@ func (client *Client) DescribeAppSecurity(request *DescribeAppSecurityRequest) (
 
 // Summary:
 //
-// Queries the apps. App information is returned only to the app owner.
+// Queries the apps of a user. App information is returned only to the app owner.
 //
 // Description:
 //
 //   This API is intended for API providers.
 //
-// 	- API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+// 	- API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
 //
 // 	- Each provider can call this operation for a maximum of 200 times every day in a region.
 //
@@ -53949,13 +54269,13 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 
 // Summary:
 //
-// Queries the apps. App information is returned only to the app owner.
+// Queries the apps of a user. App information is returned only to the app owner.
 //
 // Description:
 //
 //   This API is intended for API providers.
 //
-// 	- API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+// 	- API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
 //
 // 	- Each provider can call this operation for a maximum of 200 times every day in a region.
 //
@@ -54807,11 +55127,11 @@ func (client *Client) DescribeDeployedApi(request *DescribeDeployedApiRequest) (
 
 // Summary:
 //
-// Queries the APIs that are published to and running in an environment.
+// Queries the APIs that have been published to a specified environment.
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//   This API is intended for API providers.
 //
 // @param request - DescribeDeployedApisRequest
 //
@@ -54893,11 +55213,11 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 
 // Summary:
 //
-// Queries the APIs that are published to and running in an environment.
+// Queries the APIs that have been published to a specified environment.
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//   This API is intended for API providers.
 //
 // @param request - DescribeDeployedApisRequest
 //
@@ -54915,7 +55235,7 @@ func (client *Client) DescribeDeployedApis(request *DescribeDeployedApisRequest)
 
 // Summary:
 //
-// Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+// Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
 //
 // @param request - DescribeDomainRequest
 //
@@ -54965,7 +55285,7 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 
 // Summary:
 //
-// Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+// Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
 //
 // @param request - DescribeDomainRequest
 //
@@ -55359,7 +55679,7 @@ func (client *Client) DescribeImportOASTask(request *DescribeImportOASTaskReques
 
 // Summary:
 //
-// 查询专享实例集群的详情
+// Queries the information about a dedicated instance cluster.
 //
 // @param request - DescribeInstanceClusterInfoRequest
 //
@@ -55405,7 +55725,7 @@ func (client *Client) DescribeInstanceClusterInfoWithOptions(request *DescribeIn
 
 // Summary:
 //
-// 查询专享实例集群的详情
+// Queries the information about a dedicated instance cluster.
 //
 // @param request - DescribeInstanceClusterInfoRequest
 //
@@ -55423,7 +55743,7 @@ func (client *Client) DescribeInstanceClusterInfo(request *DescribeInstanceClust
 
 // Summary:
 //
-// 查询专享实例集群列表
+// Queries dedicated instance clusters.
 //
 // @param request - DescribeInstanceClusterListRequest
 //
@@ -55481,7 +55801,7 @@ func (client *Client) DescribeInstanceClusterListWithOptions(request *DescribeIn
 
 // Summary:
 //
-// 查询专享实例集群列表
+// Queries dedicated instance clusters.
 //
 // @param request - DescribeInstanceClusterListRequest
 //
@@ -56567,7 +56887,7 @@ func (client *Client) DescribeMarketRemainsQuota(request *DescribeMarketRemainsQ
 
 // Summary:
 //
-// Obtains the created models of an API group.
+// Queries the created models of an API group.
 //
 // Description:
 //
@@ -56633,7 +56953,7 @@ func (client *Client) DescribeModelsWithOptions(request *DescribeModelsRequest, 
 
 // Summary:
 //
-// Obtains the created models of an API group.
+// Queries the created models of an API group.
 //
 // Description:
 //
@@ -57127,7 +57447,7 @@ func (client *Client) DescribePurchasedApiGroup(request *DescribePurchasedApiGro
 
 // Summary:
 //
-// Queries API groups that are purchased from Alibaba Cloud Marketplace.
+// Queries the API groups purchased from Alibaba Cloud Marketplace.
 //
 // @param request - DescribePurchasedApiGroupsRequest
 //
@@ -57177,7 +57497,7 @@ func (client *Client) DescribePurchasedApiGroupsWithOptions(request *DescribePur
 
 // Summary:
 //
-// Queries API groups that are purchased from Alibaba Cloud Marketplace.
+// Queries the API groups purchased from Alibaba Cloud Marketplace.
 //
 // @param request - DescribePurchasedApiGroupsRequest
 //
@@ -59348,6 +59668,10 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FilterAppCodeForBackend)) {
+		query["FilterAppCodeForBackend"] = request.FilterAppCodeForBackend
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
 	}
@@ -61122,7 +61446,7 @@ func (client *Client) QueryRequestLogs(request *QueryRequestLogsRequest) (_resul
 //
 // 	- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
 //
-// 	- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+// 	- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
 //
 // 	- You can call this operation to reactivate the domain name to resume normal access.
 //
@@ -61182,7 +61506,7 @@ func (client *Client) ReactivateDomainWithOptions(request *ReactivateDomainReque
 //
 // 	- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
 //
-// 	- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+// 	- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
 //
 // 	- You can call this operation to reactivate the domain name to resume normal access.
 //
@@ -62024,7 +62348,7 @@ func (client *Client) RemoveVpcAccessAndAbolishApis(request *RemoveVpcAccessAndA
 
 // Summary:
 //
-// Resets the AppCode of an app.
+// Resets the AppCode of an application. You can call this operation only once per minute.
 //
 // @param request - ResetAppCodeRequest
 //
@@ -62074,7 +62398,7 @@ func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runt
 
 // Summary:
 //
-// Resets the AppCode of an app.
+// Resets the AppCode of an application. You can call this operation only once per minute.
 //
 // @param request - ResetAppCodeRequest
 //
@@ -62524,9 +62848,9 @@ func (client *Client) SetApiProductsAuthorities(request *SetApiProductsAuthoriti
 //
 //   This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize any apps to call their APIs.
+// 	- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own apps to call the APIs that they have purchased.
+// 	- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetApisAuthoritiesRequest
 //
@@ -62598,9 +62922,9 @@ func (client *Client) SetApisAuthoritiesWithOptions(request *SetApisAuthoritiesR
 //
 //   This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize any apps to call their APIs.
+// 	- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own apps to call the APIs that they have purchased.
+// 	- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetApisAuthoritiesRequest
 //
@@ -62700,9 +63024,9 @@ func (client *Client) SetAppsAuthToApiProduct(request *SetAppsAuthToApiProductRe
 //
 //   This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize any apps to call their APIs.
+// 	- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own apps to call the APIs that they have purchased.
+// 	- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetAppsAuthoritiesRequest
 //
@@ -62774,9 +63098,9 @@ func (client *Client) SetAppsAuthoritiesWithOptions(request *SetAppsAuthoritiesR
 //
 //   This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize any apps to call their APIs.
+// 	- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own apps to call the APIs that they have purchased.
+// 	- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetAppsAuthoritiesRequest
 //
@@ -62874,7 +63198,7 @@ func (client *Client) SetDomain(request *SetDomainRequest) (_result *SetDomainRe
 
 // Summary:
 //
-// Uploads an SSL certificate for a custom domain name.
+// Uploads an SSL certificate for a specified custom domain name.
 //
 // Description:
 //
@@ -62952,7 +63276,7 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 
 // Summary:
 //
-// Uploads an SSL certificate for a custom domain name.
+// Uploads an SSL certificate for a specified custom domain name.
 //
 // Description:
 //
@@ -63540,18 +63864,6 @@ func (client *Client) SetWildcardDomainPatterns(request *SetWildcardDomainPatter
 //
 // Switches the definition of an API in a specified runtime environment to a historical version.
 //
-// Description:
-//
-//   This API is intended for API providers.
-//
-// 	- The historical version can be obtained by calling the **DescribeHistoryApis*	- operation.
-//
-// 	- Only APIs that have been published more than once have historical versions.
-//
-// 	- This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-//
-// 	- The switch operation is essentially a publish operation. A reason for this operation must be provided.
-//
 // @param request - SwitchApiRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -63613,18 +63925,6 @@ func (client *Client) SwitchApiWithOptions(request *SwitchApiRequest, runtime *u
 // Summary:
 //
 // Switches the definition of an API in a specified runtime environment to a historical version.
-//
-// Description:
-//
-//   This API is intended for API providers.
-//
-// 	- The historical version can be obtained by calling the **DescribeHistoryApis*	- operation.
-//
-// 	- Only APIs that have been published more than once have historical versions.
-//
-// 	- This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-//
-// 	- The switch operation is essentially a publish operation. A reason for this operation must be provided.
 //
 // @param request - SwitchApiRequest
 //
