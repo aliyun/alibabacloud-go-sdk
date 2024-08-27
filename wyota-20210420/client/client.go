@@ -7096,6 +7096,7 @@ type ListTerminalsResponseBodyData struct {
 	// 192.168.XX.XX
 	Ipv4         *string `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
 	LocationInfo *string `json:"LocationInfo,omitempty" xml:"LocationInfo,omitempty"`
+	ManageTime   *string `json:"ManageTime,omitempty" xml:"ManageTime,omitempty"`
 	// example:
 	//
 	// US01
@@ -7111,7 +7112,8 @@ type ListTerminalsResponseBodyData struct {
 	// example:
 	//
 	// ODN49YQCPQYC****
-	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	SerialNumber                 *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	SetPasswordFreeLoginUserTime *string `json:"SetPasswordFreeLoginUserTime,omitempty" xml:"SetPasswordFreeLoginUserTime,omitempty"`
 	// example:
 	//
 	// tg-default
@@ -7165,6 +7167,11 @@ func (s *ListTerminalsResponseBodyData) SetLocationInfo(v string) *ListTerminals
 	return s
 }
 
+func (s *ListTerminalsResponseBodyData) SetManageTime(v string) *ListTerminalsResponseBodyData {
+	s.ManageTime = &v
+	return s
+}
+
 func (s *ListTerminalsResponseBodyData) SetModel(v string) *ListTerminalsResponseBodyData {
 	s.Model = &v
 	return s
@@ -7182,6 +7189,11 @@ func (s *ListTerminalsResponseBodyData) SetPasswordFreeLoginUser(v string) *List
 
 func (s *ListTerminalsResponseBodyData) SetSerialNumber(v string) *ListTerminalsResponseBodyData {
 	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListTerminalsResponseBodyData) SetSetPasswordFreeLoginUserTime(v string) *ListTerminalsResponseBodyData {
+	s.SetPasswordFreeLoginUserTime = &v
 	return s
 }
 
