@@ -15310,7 +15310,9 @@ type ListDataReportForServiceGroupRequest struct {
 	// example:
 	//
 	// 2021-09-30
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndTime    *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	PageNumber *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// example:
 	//
 	// A服务组
@@ -15331,6 +15333,16 @@ func (s ListDataReportForServiceGroupRequest) GoString() string {
 
 func (s *ListDataReportForServiceGroupRequest) SetEndTime(v string) *ListDataReportForServiceGroupRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListDataReportForServiceGroupRequest) SetPageNumber(v int64) *ListDataReportForServiceGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataReportForServiceGroupRequest) SetPageSize(v int64) *ListDataReportForServiceGroupRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -33064,6 +33076,14 @@ func (client *Client) ListDataReportForServiceGroupWithOptions(request *ListData
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceGroupName)) {
