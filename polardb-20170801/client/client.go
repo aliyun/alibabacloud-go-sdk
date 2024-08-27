@@ -16261,6 +16261,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// pe-****************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	DBNodeId     *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
@@ -16314,6 +16315,11 @@ func (s *DescribeDBProxyPerformanceRequest) SetDBClusterId(v string) *DescribeDB
 
 func (s *DescribeDBProxyPerformanceRequest) SetDBEndpointId(v string) *DescribeDBProxyPerformanceRequest {
 	s.DBEndpointId = &v
+	return s
+}
+
+func (s *DescribeDBProxyPerformanceRequest) SetDBNodeId(v string) *DescribeDBProxyPerformanceRequest {
+	s.DBNodeId = &v
 	return s
 }
 
@@ -39423,6 +39429,10 @@ func (client *Client) DescribeDBProxyPerformanceWithOptions(request *DescribeDBP
 
 	if !tea.BoolValue(util.IsUnset(request.DBEndpointId)) {
 		query["DBEndpointId"] = request.DBEndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNodeId)) {
+		query["DBNodeId"] = request.DBNodeId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
