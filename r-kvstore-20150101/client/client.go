@@ -17163,9 +17163,9 @@ func (s *DescribeParameterGroupResponse) SetBody(v *DescribeParameterGroupRespon
 type DescribeParameterGroupSupportParamRequest struct {
 	// The service category. Valid values:
 	//
-	// 	- **standard**: Community Edition
+	// 	- **standard**: ApsaraDB for Redis Community Edition
 	//
-	// 	- **enterprise**: Enhanced Edition (Tair)
+	// 	- **enterprise**: ApsaraDB for Redis Enhanced Edition (Tair)
 	//
 	// example:
 	//
@@ -17173,17 +17173,25 @@ type DescribeParameterGroupSupportParamRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The engine type. Valid values:
 	//
-	// 	- **redis**: Redis or Tair DRAM-based instances
+	// 	- **redis**: ApsaraDB for Redis Community Edition instance or Tair DRAM-based instance
 	//
-	// 	- **tair_pena**: Tair persistent memory-optimized instances
+	// 	- **tair_pena**: Tair persistent memory-optimized instance
 	//
-	// 	- **tair_pdb**: Tair ESSD-based instances
+	// 	- **tair_pdb**: Tair ESSD/SSD-based instance
 	//
 	// example:
 	//
 	// redis
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The engine version.
+	// The compatible engine version. Valid values:
+	//
+	// 	- For ApsaraDB for Redis Community Edition instances, set the parameter to **5.0**, **6.0**, or **7.0**.
+	//
+	// 	- For Tair DRAM-based instances that are compatible with Redis 5.0 or Redis 6.0, set the parameter to **5.0*	- or **6.0**.
+	//
+	// 	- For Tair persistent memory-optimized instances that are compatible with Redis 6.0, set the parameter to **1.0**.
+	//
+	// 	- For Tair ESSD-based instances that are compatible with Redis 6.0, set the parameter to **1.0**. For Tair SSD-based instances that are compatible with Redis 6.0, set the parameter to **2.0**.
 	//
 	// This parameter is required.
 	//
@@ -18901,6 +18909,7 @@ type DescribePriceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	// The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
 	//
 	// example:
@@ -19009,6 +19018,11 @@ func (s *DescribePriceRequest) SetResourceOwnerId(v int64) *DescribePriceRequest
 
 func (s *DescribePriceRequest) SetSecurityToken(v string) *DescribePriceRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetShardCount(v int32) *DescribePriceRequest {
+	s.ShardCount = &v
 	return s
 }
 
@@ -26642,7 +26656,9 @@ type ModifyInstanceParameterRequest struct {
 	// example:
 	//
 	// {"hz": "50"}
-	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -26678,6 +26694,11 @@ func (s *ModifyInstanceParameterRequest) SetParameterGroupId(v string) *ModifyIn
 
 func (s *ModifyInstanceParameterRequest) SetParameters(v string) *ModifyInstanceParameterRequest {
 	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetRegionId(v string) *ModifyInstanceParameterRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -27707,6 +27728,8 @@ type ModifyParameterGroupRequest struct {
 	// 	- The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
 	//
 	// 	- The name can be 8 to 64 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -30913,7 +30936,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-shenzhen":                 tea.String("r-kvstore.aliyuncs.com"),
 		"cn-heyuan":                   tea.String("r-kvstore.aliyuncs.com"),
 		"cn-guangzhou":                tea.String("r-kvstore.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("r-kvstore.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("r-kvstore.aliyuncs.com"),
 		"cn-shanghai-finance-1":       tea.String("r-kvstore.aliyuncs.com"),
 		"cn-shenzhen-finance-1":       tea.String("r-kvstore.aliyuncs.com"),
@@ -36627,7 +36649,7 @@ func (client *Client) DescribeParameterGroup(request *DescribeParameterGroupRequ
 
 // Summary:
 //
-// Queries a list of parameters that can be configured for different versions of parameter templates.
+// Queries the parameters that can be configured in parameter templates across different database versions.
 //
 // @param request - DescribeParameterGroupSupportParamRequest
 //
@@ -36697,7 +36719,7 @@ func (client *Client) DescribeParameterGroupSupportParamWithOptions(request *Des
 
 // Summary:
 //
-// Queries a list of parameters that can be configured for different versions of parameter templates.
+// Queries the parameters that can be configured in parameter templates across different database versions.
 //
 // @param request - DescribeParameterGroupSupportParamRequest
 //
@@ -37242,6 +37264,10 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
+		query["ShardCount"] = request.ShardCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
@@ -40722,6 +40748,10 @@ func (client *Client) ModifyInstanceParameterWithOptions(request *ModifyInstance
 
 	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
 		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
