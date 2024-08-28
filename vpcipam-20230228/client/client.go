@@ -143,6 +143,8 @@ type ChangeResourceGroupRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ipam
@@ -262,7 +264,8 @@ type CreateIpamRequest struct {
 	// example:
 	//
 	// abc
-	IpamName            *string   `json:"IpamName,omitempty" xml:"IpamName,omitempty"`
+	IpamName *string `json:"IpamName,omitempty" xml:"IpamName,omitempty"`
+	// This parameter is required.
 	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
 	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -344,6 +347,8 @@ func (s *CreateIpamRequest) SetResourceOwnerId(v int64) *CreateIpamRequest {
 }
 
 type CreateIpamResponseBody struct {
+	DefaultResourceDiscoveryAssociationId *string `json:"DefaultResourceDiscoveryAssociationId,omitempty" xml:"DefaultResourceDiscoveryAssociationId,omitempty"`
+	DefaultResourceDiscoveryId            *string `json:"DefaultResourceDiscoveryId,omitempty" xml:"DefaultResourceDiscoveryId,omitempty"`
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
@@ -359,7 +364,8 @@ type CreateIpamResponseBody struct {
 	// example:
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED39DCAC0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceDiscoveryAssociationCount *int32  `json:"ResourceDiscoveryAssociationCount,omitempty" xml:"ResourceDiscoveryAssociationCount,omitempty"`
 }
 
 func (s CreateIpamResponseBody) String() string {
@@ -368,6 +374,16 @@ func (s CreateIpamResponseBody) String() string {
 
 func (s CreateIpamResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateIpamResponseBody) SetDefaultResourceDiscoveryAssociationId(v string) *CreateIpamResponseBody {
+	s.DefaultResourceDiscoveryAssociationId = &v
+	return s
+}
+
+func (s *CreateIpamResponseBody) SetDefaultResourceDiscoveryId(v string) *CreateIpamResponseBody {
+	s.DefaultResourceDiscoveryId = &v
+	return s
 }
 
 func (s *CreateIpamResponseBody) SetIpamId(v string) *CreateIpamResponseBody {
@@ -387,6 +403,11 @@ func (s *CreateIpamResponseBody) SetPublicDefaultScopeId(v string) *CreateIpamRe
 
 func (s *CreateIpamResponseBody) SetRequestId(v string) *CreateIpamResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIpamResponseBody) SetResourceDiscoveryAssociationCount(v int32) *CreateIpamResponseBody {
+	s.ResourceDiscoveryAssociationCount = &v
 	return s
 }
 
@@ -3395,7 +3416,9 @@ type ListIpamsResponseBodyIpams struct {
 	// example:
 	//
 	// 2022-07-01T02:05:23Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime                            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultResourceDiscoveryAssociationId *string `json:"DefaultResourceDiscoveryAssociationId,omitempty" xml:"DefaultResourceDiscoveryAssociationId,omitempty"`
+	DefaultResourceDiscoveryId            *string `json:"DefaultResourceDiscoveryId,omitempty" xml:"DefaultResourceDiscoveryId,omitempty"`
 	// example:
 	//
 	// test description
@@ -3428,7 +3451,8 @@ type ListIpamsResponseBodyIpams struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDiscoveryAssociationCount *int32  `json:"ResourceDiscoveryAssociationCount,omitempty" xml:"ResourceDiscoveryAssociationCount,omitempty"`
 	// example:
 	//
 	// rg-aek2dbprgpt****
@@ -3450,6 +3474,16 @@ func (s ListIpamsResponseBodyIpams) GoString() string {
 
 func (s *ListIpamsResponseBodyIpams) SetCreateTime(v string) *ListIpamsResponseBodyIpams {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIpamsResponseBodyIpams) SetDefaultResourceDiscoveryAssociationId(v string) *ListIpamsResponseBodyIpams {
+	s.DefaultResourceDiscoveryAssociationId = &v
+	return s
+}
+
+func (s *ListIpamsResponseBodyIpams) SetDefaultResourceDiscoveryId(v string) *ListIpamsResponseBodyIpams {
+	s.DefaultResourceDiscoveryId = &v
 	return s
 }
 
@@ -3495,6 +3529,11 @@ func (s *ListIpamsResponseBodyIpams) SetPublicDefaultScopeId(v string) *ListIpam
 
 func (s *ListIpamsResponseBodyIpams) SetRegionId(v string) *ListIpamsResponseBodyIpams {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpamsResponseBodyIpams) SetResourceDiscoveryAssociationCount(v int32) *ListIpamsResponseBodyIpams {
+	s.ResourceDiscoveryAssociationCount = &v
 	return s
 }
 
