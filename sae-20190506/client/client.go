@@ -2382,6 +2382,7 @@ type CreateWebCustomDomainInput struct {
 	//
 	// HTTP
 	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RouteConfig   *RouteConfig   `json:"RouteConfig,omitempty" xml:"RouteConfig,omitempty"`
 	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
 	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
 	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
@@ -2407,6 +2408,11 @@ func (s *CreateWebCustomDomainInput) SetDomainName(v string) *CreateWebCustomDom
 
 func (s *CreateWebCustomDomainInput) SetProtocol(v string) *CreateWebCustomDomainInput {
 	s.Protocol = &v
+	return s
+}
+
+func (s *CreateWebCustomDomainInput) SetRouteConfig(v *RouteConfig) *CreateWebCustomDomainInput {
+	s.RouteConfig = v
 	return s
 }
 
@@ -6419,6 +6425,7 @@ type UpdateWebCustomDomainInput struct {
 	//
 	// HTTP
 	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RouteConfig   *RouteConfig   `json:"RouteConfig,omitempty" xml:"RouteConfig,omitempty"`
 	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
 	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
 	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
@@ -6439,6 +6446,11 @@ func (s *UpdateWebCustomDomainInput) SetDefaultForwardingAppName(v string) *Upda
 
 func (s *UpdateWebCustomDomainInput) SetProtocol(v string) *UpdateWebCustomDomainInput {
 	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateWebCustomDomainInput) SetRouteConfig(v *RouteConfig) *UpdateWebCustomDomainInput {
+	s.RouteConfig = v
 	return s
 }
 
@@ -7066,10 +7078,6 @@ func (s *WebCertConfig) SetPrivateKey(v string) *WebCertConfig {
 type WebCustomDomain struct {
 	// example:
 	//
-	// 123xxxxxx
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// example:
-	//
 	// 2023-03-30T08:02:19Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// example:
@@ -7089,9 +7097,14 @@ type WebCustomDomain struct {
 	//
 	// HTTP
 	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RouteConfig   *RouteConfig   `json:"RouteConfig,omitempty" xml:"RouteConfig,omitempty"`
 	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
 	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
 	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
+	// example:
+	//
+	// 123xxxxxx
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 
 func (s WebCustomDomain) String() string {
@@ -7100,11 +7113,6 @@ func (s WebCustomDomain) String() string {
 
 func (s WebCustomDomain) GoString() string {
 	return s.String()
-}
-
-func (s *WebCustomDomain) SetAccountId(v string) *WebCustomDomain {
-	s.AccountId = &v
-	return s
 }
 
 func (s *WebCustomDomain) SetCreatedTime(v string) *WebCustomDomain {
@@ -7137,6 +7145,11 @@ func (s *WebCustomDomain) SetProtocol(v string) *WebCustomDomain {
 	return s
 }
 
+func (s *WebCustomDomain) SetRouteConfig(v *RouteConfig) *WebCustomDomain {
+	s.RouteConfig = v
+	return s
+}
+
 func (s *WebCustomDomain) SetWebCertConfig(v *WebCertConfig) *WebCustomDomain {
 	s.WebCertConfig = v
 	return s
@@ -7149,6 +7162,11 @@ func (s *WebCustomDomain) SetWebTLSConfig(v *WebTLSConfig) *WebCustomDomain {
 
 func (s *WebCustomDomain) SetWebWAFConfig(v *WebWAFConfig) *WebCustomDomain {
 	s.WebWAFConfig = v
+	return s
+}
+
+func (s *WebCustomDomain) SetAccountId(v string) *WebCustomDomain {
+	s.AccountId = &v
 	return s
 }
 
@@ -8807,6 +8825,7 @@ type CreateApplicationRequest struct {
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
 	EnableEbpf           *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
+	EnableNewArms        *bool   `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
 	// [{"name":"envtmp","value":"0"}]
 	//
 	// example:
@@ -9135,6 +9154,11 @@ func (s *CreateApplicationRequest) SetEdasContainerVersion(v string) *CreateAppl
 
 func (s *CreateApplicationRequest) SetEnableEbpf(v string) *CreateApplicationRequest {
 	s.EnableEbpf = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetEnableNewArms(v bool) *CreateApplicationRequest {
+	s.EnableNewArms = &v
 	return s
 }
 
@@ -9967,17 +9991,25 @@ func (s *CreateApplicationScalingRuleResponse) SetBody(v *CreateApplicationScali
 }
 
 type CreateConfigMapRequest struct {
+	// The key-value pairs of the ConfigMap in the JSON format. Format:
+	//
+	// {"Data":"{"k1":"v1", "k2":"v2"}"}
+	//
+	// k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"env.shell": "/bin/sh"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The description. The description must be 1 to 255 characters in length, and cannot contain spaces.
+	//
 	// example:
 	//
 	// test-desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// cn-hangzhou
+	// The name of the ConfigMap. The name can contain digits, letters, and underscores (_). The name must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -9985,7 +10017,7 @@ type CreateConfigMapRequest struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The ID of the namespace to which the ConfigMap instance belongs.
 	//
 	// This parameter is required.
 	//
@@ -10024,45 +10056,55 @@ func (s *CreateConfigMapRequest) SetNamespaceId(v string) *CreateConfigMapReques
 }
 
 type CreateConfigMapResponseBody struct {
-	// Indicates whether the ConfigMap instance was created. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: The instance was created.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: The call failed to be created.
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the ConfigMap instance that was created.
+	// The returned result.
 	Data *CreateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the call was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the call was redirected.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	//
-	// 	- **4xx**: indicates that the call failed.
+	// example:
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// Empty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned information.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the ConfigMap was created. Valid values:
+	//
+	// 	- **true**: The ConfigMap was created.
+	//
+	// 	- **false**: The ConfigMap failed to be created.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned result.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -10114,11 +10156,7 @@ func (s *CreateConfigMapResponseBody) SetTraceId(v string) *CreateConfigMapRespo
 }
 
 type CreateConfigMapResponseBodyData struct {
-	// The returned error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The ID of the ConfigMap that was created.
 	//
 	// example:
 	//
@@ -13958,6 +13996,7 @@ type DeployApplicationRequest struct {
 	//
 	// false
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	EnableNewArms      *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
 	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
 	//
 	// 	- Customize
@@ -14445,6 +14484,11 @@ func (s *DeployApplicationRequest) SetEnableAhas(v string) *DeployApplicationReq
 
 func (s *DeployApplicationRequest) SetEnableGreyTagRoute(v bool) *DeployApplicationRequest {
 	s.EnableGreyTagRoute = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetEnableNewArms(v bool) *DeployApplicationRequest {
+	s.EnableNewArms = &v
 	return s
 }
 
@@ -15604,6 +15648,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// false
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
 	EnableIdle         *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	EnableNewArms      *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
 	// The environment variables. Variable description:
 	//
 	// 	- **name**: the name of the environment variable.
@@ -16152,6 +16197,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEnableGreyTagRoute(v bool
 
 func (s *DescribeApplicationConfigResponseBodyData) SetEnableIdle(v bool) *DescribeApplicationConfigResponseBodyData {
 	s.EnableIdle = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetEnableNewArms(v bool) *DescribeApplicationConfigResponseBodyData {
+	s.EnableNewArms = &v
 	return s
 }
 
@@ -27713,9 +27763,9 @@ func (s *DescribeWebCustomDomainRequest) SetNamespaceId(v string) *DescribeWebCu
 }
 
 type DescribeWebCustomDomainResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *WebCustomDomainBody `json:"body,omitempty" xml:"body,omitempty"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebCustomDomain   `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeWebCustomDomainResponse) String() string {
@@ -27736,7 +27786,7 @@ func (s *DescribeWebCustomDomainResponse) SetStatusCode(v int32) *DescribeWebCus
 	return s
 }
 
-func (s *DescribeWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *DescribeWebCustomDomainResponse {
+func (s *DescribeWebCustomDomainResponse) SetBody(v *WebCustomDomain) *DescribeWebCustomDomainResponse {
 	s.Body = v
 	return s
 }
@@ -35755,8 +35805,6 @@ type ListWebCustomDomainsRequest struct {
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn-hangzhou
@@ -42601,6 +42649,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["EnableEbpf"] = request.EnableEbpf
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableNewArms)) {
+		query["EnableNewArms"] = request.EnableNewArms
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
 		query["Envs"] = request.Envs
 	}
@@ -42956,7 +43008,7 @@ func (client *Client) CreateApplicationScalingRule(request *CreateApplicationSca
 
 // Summary:
 //
-// name
+// Create a ConfigMap in a namespace.
 //
 // @param request - CreateConfigMapRequest
 //
@@ -43015,7 +43067,7 @@ func (client *Client) CreateConfigMapWithOptions(request *CreateConfigMapRequest
 
 // Summary:
 //
-// name
+// Create a ConfigMap in a namespace.
 //
 // @param request - CreateConfigMapRequest
 //
@@ -44623,6 +44675,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.EnableGreyTagRoute)) {
 		query["EnableGreyTagRoute"] = request.EnableGreyTagRoute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableNewArms)) {
+		query["EnableNewArms"] = request.EnableNewArms
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
