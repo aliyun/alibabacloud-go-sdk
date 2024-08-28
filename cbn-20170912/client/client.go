@@ -2309,6 +2309,7 @@ func (s *CreateCenChildInstanceRouteEntryToCenResponse) SetBody(v *CreateCenChil
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequest struct {
+	BandwidthGuaranteeMode *string `json:"BandwidthGuaranteeMode,omitempty" xml:"BandwidthGuaranteeMode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -2377,6 +2378,11 @@ func (s CreateCenInterRegionTrafficQosPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetBandwidthGuaranteeMode(v string) *CreateCenInterRegionTrafficQosPolicyRequest {
+	s.BandwidthGuaranteeMode = &v
+	return s
+}
+
 func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetClientToken(v string) *CreateCenInterRegionTrafficQosPolicyRequest {
 	s.ClientToken = &v
 	return s
@@ -2433,6 +2439,7 @@ func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetTransitRouterId(v strin
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {
+	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The Differentiated Services Code Point (DSCP) value that matches the current queue.
 	//
 	// Each QoS policy supports at most three queues. You can specify at most 60 DSCP values for each queue. Separate multiple DCSP values with commas (,).
@@ -2477,6 +2484,11 @@ func (s CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues) String() st
 
 func (s CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues) SetBandwidth(v string) *CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues {
+	s.Bandwidth = &v
+	return s
 }
 
 func (s *CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues) SetDscps(v []*int32) *CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues {
@@ -2562,6 +2574,7 @@ func (s *CreateCenInterRegionTrafficQosPolicyResponse) SetBody(v *CreateCenInter
 }
 
 type CreateCenInterRegionTrafficQosQueueRequest struct {
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426****
@@ -2602,6 +2615,11 @@ func (s CreateCenInterRegionTrafficQosQueueRequest) String() string {
 
 func (s CreateCenInterRegionTrafficQosQueueRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetBandwidth(v int64) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.Bandwidth = &v
+	return s
 }
 
 func (s *CreateCenInterRegionTrafficQosQueueRequest) SetClientToken(v string) *CreateCenInterRegionTrafficQosQueueRequest {
@@ -21111,6 +21129,7 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBody) SetTrafficQosPolicies
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
+	BandwidthGuaranteeMode *string `json:"BandwidthGuaranteeMode,omitempty" xml:"BandwidthGuaranteeMode,omitempty"`
 	// The description of the QoS policy.
 	//
 	// example:
@@ -21167,6 +21186,11 @@ func (s ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) GoSt
 	return s.String()
 }
 
+func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) SetBandwidthGuaranteeMode(v string) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies {
+	s.BandwidthGuaranteeMode = &v
+	return s
+}
+
 func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) SetTrafficQosPolicyDescription(v string) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies {
 	s.TrafficQosPolicyDescription = &v
 	return s
@@ -21203,8 +21227,10 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) Set
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues struct {
+	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The differentiated services code point (DSCP) value that is used to match packets.
-	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	Dscps              []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	EffectiveBandwidth *string  `json:"EffectiveBandwidth,omitempty" xml:"EffectiveBandwidth,omitempty"`
 	// The description of the queue.
 	//
 	// example:
@@ -21239,8 +21265,18 @@ func (s ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTraffi
 	return s.String()
 }
 
+func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues) SetBandwidth(v string) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues {
+	s.Bandwidth = &v
+	return s
+}
+
 func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues) SetDscps(v []*int32) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues {
 	s.Dscps = v
+	return s
+}
+
+func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues) SetEffectiveBandwidth(v string) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues {
+	s.EffectiveBandwidth = &v
 	return s
 }
 
@@ -21294,6 +21330,7 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponse) SetBody(v *ListCenInterRe
 }
 
 type ListCenInterRegionTrafficQosQueuesRequest struct {
+	EffectiveBandwidthFilter *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter `json:"EffectiveBandwidthFilter,omitempty" xml:"EffectiveBandwidthFilter,omitempty" type:"Struct"`
 	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
@@ -21364,6 +21401,11 @@ func (s ListCenInterRegionTrafficQosQueuesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListCenInterRegionTrafficQosQueuesRequest) SetEffectiveBandwidthFilter(v *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter) *ListCenInterRegionTrafficQosQueuesRequest {
+	s.EffectiveBandwidthFilter = v
+	return s
+}
+
 func (s *ListCenInterRegionTrafficQosQueuesRequest) SetMaxResults(v int32) *ListCenInterRegionTrafficQosQueuesRequest {
 	s.MaxResults = &v
 	return s
@@ -21424,6 +21466,29 @@ func (s *ListCenInterRegionTrafficQosQueuesRequest) SetTransitRouterId(v string)
 	return s
 }
 
+type ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter struct {
+	Gte *int64 `json:"Gte,omitempty" xml:"Gte,omitempty"`
+	Lte *int64 `json:"Lte,omitempty" xml:"Lte,omitempty"`
+}
+
+func (s ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter) SetGte(v int64) *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter {
+	s.Gte = &v
+	return s
+}
+
+func (s *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter) SetLte(v int64) *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter {
+	s.Lte = &v
+	return s
+}
+
 type ListCenInterRegionTrafficQosQueuesResponseBody struct {
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
@@ -21469,8 +21534,10 @@ func (s *ListCenInterRegionTrafficQosQueuesResponseBody) SetTrafficQosQueues(v [
 }
 
 type ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues struct {
+	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The Differentiated Services Code Point (DSCP) value that matches the current QoS queue.
-	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	Dscps              []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	EffectiveBandwidth *string  `json:"EffectiveBandwidth,omitempty" xml:"EffectiveBandwidth,omitempty"`
 	// The percentage of the inter-region bandwidth that can be consumed by the QoS queue.
 	//
 	// A value of **1*	- indicates that the QoS queue can consume at most 1% of the inter-region bandwidth.
@@ -21537,8 +21604,18 @@ func (s ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues) GoString
 	return s.String()
 }
 
+func (s *ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues) SetBandwidth(v string) *ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues {
+	s.Bandwidth = &v
+	return s
+}
+
 func (s *ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues) SetDscps(v []*int32) *ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues {
 	s.Dscps = v
+	return s
+}
+
+func (s *ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues) SetEffectiveBandwidth(v string) *ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues {
+	s.EffectiveBandwidth = &v
 	return s
 }
 
@@ -34618,6 +34695,7 @@ func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponse) SetBody(v *Updat
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -34682,6 +34760,11 @@ func (s UpdateCenInterRegionTrafficQosQueueAttributeRequest) String() string {
 
 func (s UpdateCenInterRegionTrafficQosQueueAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCenInterRegionTrafficQosQueueAttributeRequest) SetBandwidth(v int64) *UpdateCenInterRegionTrafficQosQueueAttributeRequest {
+	s.Bandwidth = &v
+	return s
 }
 
 func (s *UpdateCenInterRegionTrafficQosQueueAttributeRequest) SetClientToken(v string) *UpdateCenInterRegionTrafficQosQueueAttributeRequest {
@@ -38406,6 +38489,10 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicyWithOptions(request *C
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BandwidthGuaranteeMode)) {
+		query["BandwidthGuaranteeMode"] = request.BandwidthGuaranteeMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -38532,6 +38619,10 @@ func (client *Client) CreateCenInterRegionTrafficQosQueueWithOptions(request *Cr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -46884,6 +46975,10 @@ func (client *Client) ListCenInterRegionTrafficQosQueuesWithOptions(request *Lis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveBandwidthFilter)) {
+		query["EffectiveBandwidthFilter"] = request.EffectiveBandwidthFilter
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -52440,6 +52535,10 @@ func (client *Client) UpdateCenInterRegionTrafficQosQueueAttributeWithOptions(re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
