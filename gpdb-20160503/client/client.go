@@ -1374,13 +1374,13 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 }
 
 type CreateAccountRequest struct {
-	// The description of the privileged account.
+	// The description of the initial account.
 	//
 	// example:
 	//
 	// testacc02
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the privileged account.
+	// The name of the initial account.
 	//
 	// 	- The name can contain lowercase letters, digits, and underscores (_).
 	//
@@ -1396,7 +1396,7 @@ type CreateAccountRequest struct {
 	//
 	// testacc02
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the privileged account.
+	// The password of the initial account.
 	//
 	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
@@ -1410,7 +1410,12 @@ type CreateAccountRequest struct {
 	//
 	// Pw123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The type of the initial account. Default value: Super, which specifies a privileged account. To create a standard account, set the value to Normal.
+	//
+	// example:
+	//
+	// Super
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
@@ -15907,7 +15912,7 @@ func (s *DescribeDataReDistributeInfoResponse) SetBody(v *DescribeDataReDistribu
 
 type DescribeDataShareInstancesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
@@ -29518,7 +29523,7 @@ func (s *ListInstanceExtensionsResponse) SetBody(v *ListInstanceExtensionsRespon
 type ListNamespacesRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// example:
 	//
@@ -29550,7 +29555,10 @@ type ListNamespacesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -31338,11 +31346,7 @@ type ListTagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The storage mode of the instance. Valid values:
-	//
-	// 	- `instance`: reserved storage mode
-	//
-	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	// The resource type. Set the value to instance.
 	//
 	// This parameter is required.
 	//
@@ -31733,7 +31737,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// true
 	EnableRecoveryPoint *bool `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
-	// The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
+	// The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid values:
 	//
 	// 	- Monday
 	//
@@ -35521,7 +35525,8 @@ type QueryCollectionDataRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId              *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelationalTableFilter *QueryCollectionDataRequestRelationalTableFilter `json:"RelationalTableFilter,omitempty" xml:"RelationalTableFilter,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -35621,6 +35626,11 @@ func (s *QueryCollectionDataRequest) SetRegionId(v string) *QueryCollectionDataR
 	return s
 }
 
+func (s *QueryCollectionDataRequest) SetRelationalTableFilter(v *QueryCollectionDataRequestRelationalTableFilter) *QueryCollectionDataRequest {
+	s.RelationalTableFilter = v
+	return s
+}
+
 func (s *QueryCollectionDataRequest) SetTopK(v int64) *QueryCollectionDataRequest {
 	s.TopK = &v
 	return s
@@ -35633,6 +35643,41 @@ func (s *QueryCollectionDataRequest) SetVector(v []*float64) *QueryCollectionDat
 
 func (s *QueryCollectionDataRequest) SetWorkspaceId(v string) *QueryCollectionDataRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+type QueryCollectionDataRequestRelationalTableFilter struct {
+	CollectionMetadataField *string `json:"CollectionMetadataField,omitempty" xml:"CollectionMetadataField,omitempty"`
+	Condition               *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	TableField              *string `json:"TableField,omitempty" xml:"TableField,omitempty"`
+	TableName               *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s QueryCollectionDataRequestRelationalTableFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataRequestRelationalTableFilter) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataRequestRelationalTableFilter) SetCollectionMetadataField(v string) *QueryCollectionDataRequestRelationalTableFilter {
+	s.CollectionMetadataField = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequestRelationalTableFilter) SetCondition(v string) *QueryCollectionDataRequestRelationalTableFilter {
+	s.Condition = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequestRelationalTableFilter) SetTableField(v string) *QueryCollectionDataRequestRelationalTableFilter {
+	s.TableField = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequestRelationalTableFilter) SetTableName(v string) *QueryCollectionDataRequestRelationalTableFilter {
+	s.TableName = &v
 	return s
 }
 
@@ -35797,7 +35842,8 @@ type QueryCollectionDataShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelationalTableFilterShrink *string `json:"RelationalTableFilter,omitempty" xml:"RelationalTableFilter,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -35894,6 +35940,11 @@ func (s *QueryCollectionDataShrinkRequest) SetOwnerId(v int64) *QueryCollectionD
 
 func (s *QueryCollectionDataShrinkRequest) SetRegionId(v string) *QueryCollectionDataShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetRelationalTableFilterShrink(v string) *QueryCollectionDataShrinkRequest {
+	s.RelationalTableFilterShrink = &v
 	return s
 }
 
@@ -42391,13 +42442,13 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 
 // Summary:
 //
-// Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+// Creates an initial account for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-//   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+//   Before you can use an AnalyticDB for PostgreSQL instance, you must create an initial account for the instance.
 //
-// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
+// 	- You can call this operation to create only initial accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
 //
 // ## Limits
 //
@@ -42471,13 +42522,13 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 // Summary:
 //
-// Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+// Creates an initial account for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-//   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+//   Before you can use an AnalyticDB for PostgreSQL instance, you must create an initial account for the instance.
 //
-// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
+// 	- You can call this operation to create only initial accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
 //
 // ## Limits
 //
@@ -54765,6 +54816,10 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 		request.HybridSearchArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HybridSearchArgs, tea.String("HybridSearchArgs"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelationalTableFilter)) {
+		request.RelationalTableFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelationalTableFilter, tea.String("RelationalTableFilter"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Vector)) {
 		request.VectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Vector, tea.String("Vector"), tea.String("json"))
 	}
@@ -54828,6 +54883,10 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationalTableFilterShrink)) {
+		query["RelationalTableFilter"] = request.RelationalTableFilterShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopK)) {
