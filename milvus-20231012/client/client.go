@@ -404,7 +404,8 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// running
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceStatus *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	MeasureConfig  *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -425,6 +426,10 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-123xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// example:
 	//
 	// 1743679
@@ -512,6 +517,11 @@ func (s *GetInstanceDetailResponseBodyData) SetInstanceStatus(v string) *GetInst
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyData) SetMeasureConfig(v *GetInstanceDetailResponseBodyDataMeasureConfig) *GetInstanceDetailResponseBodyData {
+	s.MeasureConfig = v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyData) SetOpenPublicNet(v bool) *GetInstanceDetailResponseBodyData {
 	s.OpenPublicNet = &v
 	return s
@@ -534,6 +544,11 @@ func (s *GetInstanceDetailResponseBodyData) SetProductCode(v string) *GetInstanc
 
 func (s *GetInstanceDetailResponseBodyData) SetRegionId(v string) *GetInstanceDetailResponseBodyData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyData) SetResourceGroupId(v string) *GetInstanceDetailResponseBodyData {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -722,6 +737,77 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Set
 	return s
 }
 
+type GetInstanceDetailResponseBodyDataMeasureConfig struct {
+	DataNodeCuNum            *int32 `json:"DataNodeCuNum,omitempty" xml:"DataNodeCuNum,omitempty"`
+	DataNodeReplica          *int32 `json:"DataNodeReplica,omitempty" xml:"DataNodeReplica,omitempty"`
+	IndexNodeCuNum           *int32 `json:"IndexNodeCuNum,omitempty" xml:"IndexNodeCuNum,omitempty"`
+	IndexNodeReplica         *int32 `json:"IndexNodeReplica,omitempty" xml:"IndexNodeReplica,omitempty"`
+	MixCoodinatorNodeCuNum   *int32 `json:"MixCoodinatorNodeCuNum,omitempty" xml:"MixCoodinatorNodeCuNum,omitempty"`
+	MixCoodinatorNodeReplica *int32 `json:"MixCoodinatorNodeReplica,omitempty" xml:"MixCoodinatorNodeReplica,omitempty"`
+	ProxyNodeCuNum           *int32 `json:"ProxyNodeCuNum,omitempty" xml:"ProxyNodeCuNum,omitempty"`
+	ProxyNodeReplica         *int32 `json:"ProxyNodeReplica,omitempty" xml:"ProxyNodeReplica,omitempty"`
+	QueryNodeCuNum           *int32 `json:"QueryNodeCuNum,omitempty" xml:"QueryNodeCuNum,omitempty"`
+	QueryNodeReplica         *int32 `json:"QueryNodeReplica,omitempty" xml:"QueryNodeReplica,omitempty"`
+}
+
+func (s GetInstanceDetailResponseBodyDataMeasureConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceDetailResponseBodyDataMeasureConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetDataNodeCuNum(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.DataNodeCuNum = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetDataNodeReplica(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.DataNodeReplica = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetIndexNodeCuNum(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.IndexNodeCuNum = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetIndexNodeReplica(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.IndexNodeReplica = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetMixCoodinatorNodeCuNum(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.MixCoodinatorNodeCuNum = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetMixCoodinatorNodeReplica(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.MixCoodinatorNodeReplica = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetProxyNodeCuNum(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.ProxyNodeCuNum = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetProxyNodeReplica(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.ProxyNodeReplica = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetQueryNodeCuNum(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.QueryNodeCuNum = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetQueryNodeReplica(v int32) *GetInstanceDetailResponseBodyDataMeasureConfig {
+	s.QueryNodeReplica = &v
+	return s
+}
+
 type GetInstanceDetailResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -772,6 +858,10 @@ type ListInstancesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-123xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -804,6 +894,11 @@ func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -931,6 +1026,10 @@ type ListInstancesResponseBodyData struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
+	// rg-123xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
 	// 536611
 	RunningTime *int32 `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
 	// example:
@@ -1011,6 +1110,11 @@ func (s *ListInstancesResponseBodyData) SetProductCode(v string) *ListInstancesR
 
 func (s *ListInstancesResponseBodyData) SetRegionId(v string) *ListInstancesResponseBodyData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyData) SetResourceGroupId(v string) *ListInstancesResponseBodyData {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2044,6 +2148,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
