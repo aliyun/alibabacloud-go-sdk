@@ -9736,7 +9736,12 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// foo
-	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the private gateway.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
 	// The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
@@ -10106,7 +10111,12 @@ type ListServicesShrinkRequest struct {
 	// example:
 	//
 	// foo
-	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the private gateway.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
 	// The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
@@ -10557,6 +10567,145 @@ func (s *ListServicesResponse) SetStatusCode(v int32) *ListServicesResponse {
 }
 
 func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListServicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTenantAddonsResponseBody struct {
+	Addons []*ListTenantAddonsResponseBodyAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTenantAddonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTenantAddonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTenantAddonsResponseBody) SetAddons(v []*ListTenantAddonsResponseBodyAddons) *ListTenantAddonsResponseBody {
+	s.Addons = v
+	return s
+}
+
+func (s *ListTenantAddonsResponseBody) SetRequestId(v string) *ListTenantAddonsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTenantAddonsResponseBodyAddons struct {
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// prometheus_discovery
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListTenantAddonsResponseBodyAddons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTenantAddonsResponseBodyAddons) GoString() string {
+	return s.String()
+}
+
+func (s *ListTenantAddonsResponseBodyAddons) SetAttributes(v map[string]*string) *ListTenantAddonsResponseBodyAddons {
+	s.Attributes = v
+	return s
+}
+
+func (s *ListTenantAddonsResponseBodyAddons) SetName(v string) *ListTenantAddonsResponseBodyAddons {
+	s.Name = &v
+	return s
+}
+
+type ListTenantAddonsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTenantAddonsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTenantAddonsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTenantAddonsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTenantAddonsResponse) SetHeaders(v map[string]*string) *ListTenantAddonsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTenantAddonsResponse) SetStatusCode(v int32) *ListTenantAddonsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTenantAddonsResponse) SetBody(v *ListTenantAddonsResponseBody) *ListTenantAddonsResponse {
+	s.Body = v
+	return s
+}
+
+type ReinstallTenantAddonResponseBody struct {
+	// example:
+	//
+	// Addon prometheus_discovery is successfully reinstalled
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReinstallTenantAddonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinstallTenantAddonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReinstallTenantAddonResponseBody) SetMessage(v string) *ReinstallTenantAddonResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReinstallTenantAddonResponseBody) SetRequestId(v string) *ReinstallTenantAddonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReinstallTenantAddonResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReinstallTenantAddonResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReinstallTenantAddonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinstallTenantAddonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReinstallTenantAddonResponse) SetHeaders(v map[string]*string) *ReinstallTenantAddonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReinstallTenantAddonResponse) SetStatusCode(v int32) *ReinstallTenantAddonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReinstallTenantAddonResponse) SetBody(v *ReinstallTenantAddonResponseBody) *ReinstallTenantAddonResponse {
 	s.Body = v
 	return s
 }
@@ -16683,6 +16832,106 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	headers := make(map[string]*string)
 	_result = &ListServicesResponse{}
 	_body, _err := client.ListServicesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取租户配置列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTenantAddonsResponse
+func (client *Client) ListTenantAddonsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTenantAddonsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTenantAddons"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/tenantaddons"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTenantAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取租户配置列表
+//
+// @return ListTenantAddonsResponse
+func (client *Client) ListTenantAddons() (_result *ListTenantAddonsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTenantAddonsResponse{}
+	_body, _err := client.ListTenantAddonsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置租户配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReinstallTenantAddonResponse
+func (client *Client) ReinstallTenantAddonWithOptions(ClusterId *string, TenantAddonName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReinstallTenantAddonResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReinstallTenantAddon"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/tenantaddons/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(TenantAddonName)) + "/reinstall"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReinstallTenantAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置租户配置
+//
+// @return ReinstallTenantAddonResponse
+func (client *Client) ReinstallTenantAddon(ClusterId *string, TenantAddonName *string) (_result *ReinstallTenantAddonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReinstallTenantAddonResponse{}
+	_body, _err := client.ReinstallTenantAddonWithOptions(ClusterId, TenantAddonName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
