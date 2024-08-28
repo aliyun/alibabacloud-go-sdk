@@ -966,6 +966,7 @@ func (s *ServiceLabels) SetLabelValue(v string) *ServiceLabels {
 }
 
 type CloneServiceRequest struct {
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
 	//
 	// example:
@@ -982,7 +983,40 @@ func (s CloneServiceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CloneServiceRequest) SetLabels(v map[string]*string) *CloneServiceRequest {
+	s.Labels = v
+	return s
+}
+
 func (s *CloneServiceRequest) SetBody(v string) *CloneServiceRequest {
+	s.Body = &v
+	return s
+}
+
+type CloneServiceShrinkRequest struct {
+	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
+	//
+	// example:
+	//
+	// {   "name": "foo",   "model_path": "http://path/to/model.tar.gz",   "processor": "tensorflow_cpu",   "metadata": {     "instance": 2,     "memory": 7000,     "cpu": 4   } }
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneServiceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneServiceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneServiceShrinkRequest) SetLabelsShrink(v string) *CloneServiceShrinkRequest {
+	s.LabelsShrink = &v
+	return s
+}
+
+func (s *CloneServiceShrinkRequest) SetBody(v string) *CloneServiceShrinkRequest {
 	s.Body = &v
 	return s
 }
@@ -1151,6 +1185,154 @@ func (s *CommitServiceResponse) SetStatusCode(v int32) *CommitServiceResponse {
 }
 
 func (s *CommitServiceResponse) SetBody(v *CommitServiceResponseBody) *CommitServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAclPolicyRequest struct {
+	AclPolicyList []*CreateAclPolicyRequestAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateAclPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclPolicyRequest) SetAclPolicyList(v []*CreateAclPolicyRequestAclPolicyList) *CreateAclPolicyRequest {
+	s.AclPolicyList = v
+	return s
+}
+
+func (s *CreateAclPolicyRequest) SetVpcId(v string) *CreateAclPolicyRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateAclPolicyRequestAclPolicyList struct {
+	// example:
+	//
+	// default
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 10.23.XX.XX/32
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+}
+
+func (s CreateAclPolicyRequestAclPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclPolicyRequestAclPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclPolicyRequestAclPolicyList) SetComment(v string) *CreateAclPolicyRequestAclPolicyList {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateAclPolicyRequestAclPolicyList) SetEntry(v string) *CreateAclPolicyRequestAclPolicyList {
+	s.Entry = &v
+	return s
+}
+
+type CreateAclPolicyShrinkRequest struct {
+	AclPolicyListShrink *string `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateAclPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclPolicyShrinkRequest) SetAclPolicyListShrink(v string) *CreateAclPolicyShrinkRequest {
+	s.AclPolicyListShrink = &v
+	return s
+}
+
+func (s *CreateAclPolicyShrinkRequest) SetVpcId(v string) *CreateAclPolicyShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateAclPolicyResponseBody struct {
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// Successfully add acl policy for gateway
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAclPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclPolicyResponseBody) SetGatewayId(v string) *CreateAclPolicyResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateAclPolicyResponseBody) SetMessage(v string) *CreateAclPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAclPolicyResponseBody) SetRequestId(v string) *CreateAclPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAclPolicyResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAclPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAclPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAclPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAclPolicyResponse) SetHeaders(v map[string]*string) *CreateAclPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAclPolicyResponse) SetStatusCode(v int32) *CreateAclPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAclPolicyResponse) SetBody(v *CreateAclPolicyResponseBody) *CreateAclPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -1591,7 +1773,8 @@ type CreateGatewayRequest struct {
 	// example:
 	//
 	// mygateway1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Replicas *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 }
 
 func (s CreateGatewayRequest) String() string {
@@ -1624,6 +1807,11 @@ func (s *CreateGatewayRequest) SetInstanceType(v string) *CreateGatewayRequest {
 
 func (s *CreateGatewayRequest) SetName(v string) *CreateGatewayRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetReplicas(v int32) *CreateGatewayRequest {
+	s.Replicas = &v
 	return s
 }
 
@@ -3467,6 +3655,154 @@ func (s *CreateServiceMirrorResponse) SetBody(v *CreateServiceMirrorResponseBody
 	return s
 }
 
+type DeleteAclPolicyRequest struct {
+	AclPolicyList []*DeleteAclPolicyRequestAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DeleteAclPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclPolicyRequest) SetAclPolicyList(v []*DeleteAclPolicyRequestAclPolicyList) *DeleteAclPolicyRequest {
+	s.AclPolicyList = v
+	return s
+}
+
+func (s *DeleteAclPolicyRequest) SetVpcId(v string) *DeleteAclPolicyRequest {
+	s.VpcId = &v
+	return s
+}
+
+type DeleteAclPolicyRequestAclPolicyList struct {
+	// example:
+	//
+	// default
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 10.23.XX.XX/32
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+}
+
+func (s DeleteAclPolicyRequestAclPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclPolicyRequestAclPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclPolicyRequestAclPolicyList) SetComment(v string) *DeleteAclPolicyRequestAclPolicyList {
+	s.Comment = &v
+	return s
+}
+
+func (s *DeleteAclPolicyRequestAclPolicyList) SetEntry(v string) *DeleteAclPolicyRequestAclPolicyList {
+	s.Entry = &v
+	return s
+}
+
+type DeleteAclPolicyShrinkRequest struct {
+	AclPolicyListShrink *string `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DeleteAclPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclPolicyShrinkRequest) SetAclPolicyListShrink(v string) *DeleteAclPolicyShrinkRequest {
+	s.AclPolicyListShrink = &v
+	return s
+}
+
+func (s *DeleteAclPolicyShrinkRequest) SetVpcId(v string) *DeleteAclPolicyShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+type DeleteAclPolicyResponseBody struct {
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// Successfully delete acl policy for gateway
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAclPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclPolicyResponseBody) SetGatewayId(v string) *DeleteAclPolicyResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DeleteAclPolicyResponseBody) SetMessage(v string) *DeleteAclPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAclPolicyResponseBody) SetRequestId(v string) *DeleteAclPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAclPolicyResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAclPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAclPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAclPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAclPolicyResponse) SetHeaders(v map[string]*string) *DeleteAclPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAclPolicyResponse) SetStatusCode(v int32) *DeleteAclPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAclPolicyResponse) SetBody(v *DeleteAclPolicyResponseBody) *DeleteAclPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBenchmarkTaskResponseBody struct {
 	// The returned message.
 	//
@@ -4894,12 +5230,6 @@ func (s *DescribeBenchmarkTaskReportResponse) SetBody(v *DescribeBenchmarkTaskRe
 }
 
 type DescribeGatewayResponseBody struct {
-	// The UID of the account that is used to create the private gateway.
-	//
-	// example:
-	//
-	// 20123*******
-	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	// The time when the private gateway was created. The time is displayed in UTC.
 	//
 	// example:
@@ -4930,8 +5260,6 @@ type DescribeGatewayResponseBody struct {
 	//
 	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The Internet access control policies.
-	InternetAclPolicyList []*DescribeGatewayResponseBodyInternetAclPolicyList `json:"InternetAclPolicyList,omitempty" xml:"InternetAclPolicyList,omitempty" type:"Repeated"`
 	// The public endpoint.
 	//
 	// example:
@@ -4943,35 +5271,16 @@ type DescribeGatewayResponseBody struct {
 	// example:
 	//
 	// true
-	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	InternetEnabled *bool   `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	InternetStatus  *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
 	// The internal endpoint.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-hangzhou.pai-eas.aliyuncs.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	// Indicates whether internal network access is enabled.
-	//
-	// example:
-	//
-	// true
-	IntranetEnabled *bool `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
-	// The internal endpoints.
-	IntranetLinkedVpcList []*DescribeGatewayResponseBodyIntranetLinkedVpcList `json:"IntranetLinkedVpcList,omitempty" xml:"IntranetLinkedVpcList,omitempty" type:"Repeated"`
-	// The user ID (UID) of the Alibaba Cloud account that is used to create the private gateway.
-	//
-	// example:
-	//
-	// 11234*******
-	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// The region ID of the private gateway.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	IsDefault      *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Replicas       *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -5000,11 +5309,6 @@ func (s DescribeGatewayResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeGatewayResponseBody) SetCallerUid(v string) *DescribeGatewayResponseBody {
-	s.CallerUid = &v
-	return s
-}
-
 func (s *DescribeGatewayResponseBody) SetCreateTime(v string) *DescribeGatewayResponseBody {
 	s.CreateTime = &v
 	return s
@@ -5030,11 +5334,6 @@ func (s *DescribeGatewayResponseBody) SetInstanceType(v string) *DescribeGateway
 	return s
 }
 
-func (s *DescribeGatewayResponseBody) SetInternetAclPolicyList(v []*DescribeGatewayResponseBodyInternetAclPolicyList) *DescribeGatewayResponseBody {
-	s.InternetAclPolicyList = v
-	return s
-}
-
 func (s *DescribeGatewayResponseBody) SetInternetDomain(v string) *DescribeGatewayResponseBody {
 	s.InternetDomain = &v
 	return s
@@ -5045,28 +5344,23 @@ func (s *DescribeGatewayResponseBody) SetInternetEnabled(v bool) *DescribeGatewa
 	return s
 }
 
+func (s *DescribeGatewayResponseBody) SetInternetStatus(v string) *DescribeGatewayResponseBody {
+	s.InternetStatus = &v
+	return s
+}
+
 func (s *DescribeGatewayResponseBody) SetIntranetDomain(v string) *DescribeGatewayResponseBody {
 	s.IntranetDomain = &v
 	return s
 }
 
-func (s *DescribeGatewayResponseBody) SetIntranetEnabled(v bool) *DescribeGatewayResponseBody {
-	s.IntranetEnabled = &v
+func (s *DescribeGatewayResponseBody) SetIsDefault(v bool) *DescribeGatewayResponseBody {
+	s.IsDefault = &v
 	return s
 }
 
-func (s *DescribeGatewayResponseBody) SetIntranetLinkedVpcList(v []*DescribeGatewayResponseBodyIntranetLinkedVpcList) *DescribeGatewayResponseBody {
-	s.IntranetLinkedVpcList = v
-	return s
-}
-
-func (s *DescribeGatewayResponseBody) SetParentUid(v string) *DescribeGatewayResponseBody {
-	s.ParentUid = &v
-	return s
-}
-
-func (s *DescribeGatewayResponseBody) SetRegion(v string) *DescribeGatewayResponseBody {
-	s.Region = &v
+func (s *DescribeGatewayResponseBody) SetReplicas(v int32) *DescribeGatewayResponseBody {
+	s.Replicas = &v
 	return s
 }
 
@@ -5082,138 +5376,6 @@ func (s *DescribeGatewayResponseBody) SetStatus(v string) *DescribeGatewayRespon
 
 func (s *DescribeGatewayResponseBody) SetUpdateTime(v string) *DescribeGatewayResponseBody {
 	s.UpdateTime = &v
-	return s
-}
-
-type DescribeGatewayResponseBodyInternetAclPolicyList struct {
-	// The description.
-	//
-	// example:
-	//
-	// test
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The Classless Inter-Domain Routing (CIDR) block that is allowed to access the private gateway.
-	//
-	// example:
-	//
-	// 192.168.1.1/32
-	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	// The state of the private gateway.
-	//
-	// Valid values:
-	//
-	// 	- Creating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeGatewayResponseBodyInternetAclPolicyList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGatewayResponseBodyInternetAclPolicyList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGatewayResponseBodyInternetAclPolicyList) SetComment(v string) *DescribeGatewayResponseBodyInternetAclPolicyList {
-	s.Comment = &v
-	return s
-}
-
-func (s *DescribeGatewayResponseBodyInternetAclPolicyList) SetEntry(v string) *DescribeGatewayResponseBodyInternetAclPolicyList {
-	s.Entry = &v
-	return s
-}
-
-func (s *DescribeGatewayResponseBodyInternetAclPolicyList) SetStatus(v string) *DescribeGatewayResponseBodyInternetAclPolicyList {
-	s.Status = &v
-	return s
-}
-
-type DescribeGatewayResponseBodyIntranetLinkedVpcList struct {
-	// The IP address.
-	//
-	// example:
-	//
-	// 192.168.10.11
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The security group ID.
-	//
-	// example:
-	//
-	// sg-2ze4pgstgszvgq******
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The state of the private gateway. Valid values:
-	//
-	// 	- Creating
-	//
-	// 	- Running
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-bp1txzxsdck43pp******
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-bp1g11zvka6zr3i******
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s DescribeGatewayResponseBodyIntranetLinkedVpcList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGatewayResponseBodyIntranetLinkedVpcList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetIp(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
-	s.Ip = &v
-	return s
-}
-
-func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetSecurityGroupId(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetStatus(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetVSwitchId(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetVpcId(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
-	s.VpcId = &v
 	return s
 }
 
@@ -6829,7 +6991,7 @@ func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponse
 }
 
 type DescribeSpotDiscountHistoryRequest struct {
-	// The type of the Elastic Compute Service (ECS) instance.
+	// The type of the Elastic Algorithm Service (EAS) instance.
 	//
 	// This parameter is required.
 	//
@@ -7060,6 +7222,180 @@ func (s *DevelopServiceResponse) SetStatusCode(v int32) *DevelopServiceResponse 
 }
 
 func (s *DevelopServiceResponse) SetBody(v *DevelopServiceResponseBody) *DevelopServiceResponse {
+	s.Body = v
+	return s
+}
+
+type ListAclPolicyRequest struct {
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListAclPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclPolicyRequest) SetVpcId(v string) *ListAclPolicyRequest {
+	s.VpcId = &v
+	return s
+}
+
+type ListAclPolicyResponseBody struct {
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId                *string                                              `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	InternetAclPolicyList    []*ListAclPolicyResponseBodyInternetAclPolicyList    `json:"InternetAclPolicyList,omitempty" xml:"InternetAclPolicyList,omitempty" type:"Repeated"`
+	IntranetVpcAclPolicyList []*ListAclPolicyResponseBodyIntranetVpcAclPolicyList `json:"IntranetVpcAclPolicyList,omitempty" xml:"IntranetVpcAclPolicyList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAclPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclPolicyResponseBody) SetGatewayId(v string) *ListAclPolicyResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListAclPolicyResponseBody) SetInternetAclPolicyList(v []*ListAclPolicyResponseBodyInternetAclPolicyList) *ListAclPolicyResponseBody {
+	s.InternetAclPolicyList = v
+	return s
+}
+
+func (s *ListAclPolicyResponseBody) SetIntranetVpcAclPolicyList(v []*ListAclPolicyResponseBodyIntranetVpcAclPolicyList) *ListAclPolicyResponseBody {
+	s.IntranetVpcAclPolicyList = v
+	return s
+}
+
+func (s *ListAclPolicyResponseBody) SetRequestId(v string) *ListAclPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAclPolicyResponseBodyInternetAclPolicyList struct {
+	// example:
+	//
+	// default
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 10.23.XX.XX/32
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+}
+
+func (s ListAclPolicyResponseBodyInternetAclPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclPolicyResponseBodyInternetAclPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclPolicyResponseBodyInternetAclPolicyList) SetComment(v string) *ListAclPolicyResponseBodyInternetAclPolicyList {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListAclPolicyResponseBodyInternetAclPolicyList) SetEntry(v string) *ListAclPolicyResponseBodyInternetAclPolicyList {
+	s.Entry = &v
+	return s
+}
+
+type ListAclPolicyResponseBodyIntranetVpcAclPolicyList struct {
+	IntranetAclPolicyList []*ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList `json:"IntranetAclPolicyList,omitempty" xml:"IntranetAclPolicyList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) SetIntranetAclPolicyList(v []*ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) *ListAclPolicyResponseBodyIntranetVpcAclPolicyList {
+	s.IntranetAclPolicyList = v
+	return s
+}
+
+func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) SetVpcId(v string) *ListAclPolicyResponseBodyIntranetVpcAclPolicyList {
+	s.VpcId = &v
+	return s
+}
+
+type ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList struct {
+	// example:
+	//
+	// Test Entry
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 192.168.XX.XX/24
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+}
+
+func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) SetComment(v string) *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) SetEntry(v string) *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList {
+	s.Entry = &v
+	return s
+}
+
+type ListAclPolicyResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAclPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAclPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclPolicyResponse) SetHeaders(v map[string]*string) *ListAclPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAclPolicyResponse) SetStatusCode(v int32) *ListAclPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAclPolicyResponse) SetBody(v *ListAclPolicyResponseBody) *ListAclPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -7390,6 +7726,245 @@ func (s *ListBenchmarkTaskResponse) SetStatusCode(v int32) *ListBenchmarkTaskRes
 }
 
 func (s *ListBenchmarkTaskResponse) SetBody(v *ListBenchmarkTaskResponseBody) *ListBenchmarkTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewayRequest struct {
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// mygateway1
+	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRequest) SetGatewayId(v string) *ListGatewayRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetGatewayName(v string) *ListGatewayRequest {
+	s.GatewayName = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetPageNumber(v int32) *ListGatewayRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetPageSize(v int32) *ListGatewayRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListGatewayResponseBody struct {
+	Gateways []*ListGatewayResponseBodyGateways `json:"Gateways,omitempty" xml:"Gateways,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponseBody) SetGateways(v []*ListGatewayResponseBodyGateways) *ListGatewayResponseBody {
+	s.Gateways = v
+	return s
+}
+
+func (s *ListGatewayResponseBody) SetPageNumber(v int32) *ListGatewayResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayResponseBody) SetPageSize(v int32) *ListGatewayResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayResponseBody) SetRequestId(v string) *ListGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewayResponseBody) SetTotalCount(v int64) *ListGatewayResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGatewayResponseBodyGateways struct {
+	// example:
+	//
+	// 2020-05-19T14:19:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// mygateway1
+	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// example:
+	//
+	// 2c4g
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// gw-1uhcqmsc7x22******-1801786532******.cn-wulanchabu.pai-eas.aliyuncs.com
+	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
+	// example:
+	//
+	// true
+	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	// example:
+	//
+	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-wulanchabu.pai-eas.aliyuncs.com
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// 2
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2021-02-24T11:52:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListGatewayResponseBodyGateways) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayResponseBodyGateways) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponseBodyGateways) SetCreateTime(v string) *ListGatewayResponseBodyGateways {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetGatewayId(v string) *ListGatewayResponseBodyGateways {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetGatewayName(v string) *ListGatewayResponseBodyGateways {
+	s.GatewayName = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetInstanceType(v string) *ListGatewayResponseBodyGateways {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetInternetDomain(v string) *ListGatewayResponseBodyGateways {
+	s.InternetDomain = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetInternetEnabled(v bool) *ListGatewayResponseBodyGateways {
+	s.InternetEnabled = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetIntranetDomain(v string) *ListGatewayResponseBodyGateways {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetIsDefault(v bool) *ListGatewayResponseBodyGateways {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetReplicas(v int32) *ListGatewayResponseBodyGateways {
+	s.Replicas = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetStatus(v string) *ListGatewayResponseBodyGateways {
+	s.Status = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetUpdateTime(v string) *ListGatewayResponseBodyGateways {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListGatewayResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponse) SetHeaders(v map[string]*string) *ListGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayResponse) SetStatusCode(v int32) *ListGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayResponse) SetBody(v *ListGatewayResponseBody) *ListGatewayResponse {
 	s.Body = v
 	return s
 }
@@ -9161,7 +9736,8 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// foo
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
 	// The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
 	// example:
@@ -9449,6 +10025,11 @@ func (s *ListServicesRequest) SetFilter(v string) *ListServicesRequest {
 	return s
 }
 
+func (s *ListServicesRequest) SetGateway(v string) *ListServicesRequest {
+	s.Gateway = &v
+	return s
+}
+
 func (s *ListServicesRequest) SetGroupName(v string) *ListServicesRequest {
 	s.GroupName = &v
 	return s
@@ -9525,7 +10106,8 @@ type ListServicesShrinkRequest struct {
 	// example:
 	//
 	// foo
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
 	// The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
 	// example:
@@ -9810,6 +10392,11 @@ func (s ListServicesShrinkRequest) GoString() string {
 
 func (s *ListServicesShrinkRequest) SetFilter(v string) *ListServicesShrinkRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetGateway(v string) *ListServicesShrinkRequest {
+	s.Gateway = &v
 	return s
 }
 
@@ -10688,12 +11275,14 @@ type UpdateGatewayRequest struct {
 	//
 	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The private gateway alias.
 	//
 	// example:
 	//
 	// mygateway1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Replicas *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 }
 
 func (s UpdateGatewayRequest) String() string {
@@ -10719,8 +11308,18 @@ func (s *UpdateGatewayRequest) SetInstanceType(v string) *UpdateGatewayRequest {
 	return s
 }
 
+func (s *UpdateGatewayRequest) SetIsDefault(v bool) *UpdateGatewayRequest {
+	s.IsDefault = &v
+	return s
+}
+
 func (s *UpdateGatewayRequest) SetName(v string) *UpdateGatewayRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetReplicas(v int32) *UpdateGatewayRequest {
+	s.Replicas = &v
 	return s
 }
 
@@ -12236,20 +12835,32 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Clones a service.
 //
-// @param request - CloneServiceRequest
+// @param tmpReq - CloneServiceRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloneServiceResponse
-func (client *Client) CloneServiceWithOptions(ClusterId *string, ServiceName *string, request *CloneServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CloneServiceWithOptions(ClusterId *string, ServiceName *string, tmpReq *CloneServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneServiceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CloneServiceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Labels)) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, tea.String("Labels"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelsShrink)) {
+		query["Labels"] = request.LabelsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    request.Body,
 	}
 	params := &openapi.Params{
@@ -12334,6 +12945,80 @@ func (client *Client) CommitService(ClusterId *string, ServiceName *string) (_re
 	headers := make(map[string]*string)
 	_result = &CommitServiceResponse{}
 	_body, _err := client.CommitServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关访问权限ACL Policy
+//
+// @param tmpReq - CreateAclPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAclPolicyResponse
+func (client *Client) CreateAclPolicyWithOptions(ClusterId *string, GatewayId *string, tmpReq *CreateAclPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAclPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAclPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AclPolicyList)) {
+		request.AclPolicyListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AclPolicyList, tea.String("AclPolicyList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclPolicyListShrink)) {
+		query["AclPolicyList"] = request.AclPolicyListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAclPolicy"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/acl_policy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAclPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关访问权限ACL Policy
+//
+// @param request - CreateAclPolicyRequest
+//
+// @return CreateAclPolicyResponse
+func (client *Client) CreateAclPolicy(ClusterId *string, GatewayId *string, request *CreateAclPolicyRequest) (_result *CreateAclPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAclPolicyResponse{}
+	_body, _err := client.CreateAclPolicyWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12530,6 +13215,10 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		body["Replicas"] = request.Replicas
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -13192,6 +13881,80 @@ func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string
 	headers := make(map[string]*string)
 	_result = &CreateServiceMirrorResponse{}
 	_body, _err := client.CreateServiceMirrorWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除网关acl policy entry
+//
+// @param tmpReq - DeleteAclPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAclPolicyResponse
+func (client *Client) DeleteAclPolicyWithOptions(ClusterId *string, GatewayId *string, tmpReq *DeleteAclPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAclPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAclPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AclPolicyList)) {
+		request.AclPolicyListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AclPolicyList, tea.String("AclPolicyList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclPolicyListShrink)) {
+		query["AclPolicyList"] = request.AclPolicyListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAclPolicy"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/acl_policy"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAclPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除网关acl policy entry
+//
+// @param request - DeleteAclPolicyRequest
+//
+// @return DeleteAclPolicyResponse
+func (client *Client) DeleteAclPolicy(ClusterId *string, GatewayId *string, request *DeleteAclPolicyRequest) (_result *DeleteAclPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAclPolicyResponse{}
+	_body, _err := client.DeleteAclPolicyWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14905,6 +15668,70 @@ func (client *Client) DevelopService(ClusterId *string, ServiceName *string, req
 
 // Summary:
 //
+// 查询网关所有ACL Policy
+//
+// @param request - ListAclPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAclPolicyResponse
+func (client *Client) ListAclPolicyWithOptions(ClusterId *string, GatewayId *string, request *ListAclPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAclPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAclPolicy"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/acl_policy"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAclPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关所有ACL Policy
+//
+// @param request - ListAclPolicyRequest
+//
+// @return ListAclPolicyResponse
+func (client *Client) ListAclPolicy(ClusterId *string, GatewayId *string, request *ListAclPolicyRequest) (_result *ListAclPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAclPolicyResponse{}
+	_body, _err := client.ListAclPolicyWithOptions(ClusterId, GatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of stress testing tasks that are created by the current user.
 //
 // @param request - ListBenchmarkTaskRequest
@@ -14972,6 +15799,82 @@ func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_res
 	headers := make(map[string]*string)
 	_result = &ListBenchmarkTaskResponse{}
 	_body, _err := client.ListBenchmarkTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举gateway
+//
+// @param request - ListGatewayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayResponse
+func (client *Client) ListGatewayWithOptions(request *ListGatewayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayName)) {
+		query["GatewayName"] = request.GatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGateway"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举gateway
+//
+// @param request - ListGatewayRequest
+//
+// @return ListGatewayResponse
+func (client *Client) ListGateway(request *ListGatewayRequest) (_result *ListGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGatewayResponse{}
+	_body, _err := client.ListGatewayWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15273,6 +16176,8 @@ func (client *Client) ListResourceInstances(ClusterId *string, ResourceId *strin
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListResourceServices is deprecated
+//
 // Summary:
 //
 // Queries a list of services that are deployed in the dedicated resource group.
@@ -15284,6 +16189,7 @@ func (client *Client) ListResourceInstances(ClusterId *string, ResourceId *strin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceServicesResponse
+// Deprecated
 func (client *Client) ListResourceServicesWithOptions(ClusterId *string, ResourceId *string, request *ListResourceServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceServicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15322,6 +16228,8 @@ func (client *Client) ListResourceServicesWithOptions(ClusterId *string, Resourc
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListResourceServices is deprecated
+//
 // Summary:
 //
 // Queries a list of services that are deployed in the dedicated resource group.
@@ -15329,6 +16237,7 @@ func (client *Client) ListResourceServicesWithOptions(ClusterId *string, Resourc
 // @param request - ListResourceServicesRequest
 //
 // @return ListResourceServicesResponse
+// Deprecated
 func (client *Client) ListResourceServices(ClusterId *string, ResourceId *string, request *ListResourceServicesRequest) (_result *ListResourceServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15676,6 +16585,10 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gateway)) {
+		query["Gateway"] = request.Gateway
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
@@ -16273,8 +17186,16 @@ func (client *Client) UpdateGatewayWithOptions(GatewayId *string, ClusterId *str
 		body["InstanceType"] = request.InstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsDefault)) {
+		body["IsDefault"] = request.IsDefault
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		body["Replicas"] = request.Replicas
 	}
 
 	req := &openapi.OpenApiRequest{
