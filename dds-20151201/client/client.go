@@ -9360,6 +9360,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLis
 	//
 	// dds-bp18b0934e7053e4-cs****.mongodb.rds.aliyuncs.com
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
+	LockMode      *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The maximum number of connections to the Configserver node.
 	//
 	// example:
@@ -9420,6 +9421,11 @@ func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserver
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverListConfigserverAttribute) SetConnectString(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverListConfigserverAttribute {
 	s.ConnectString = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverListConfigserverAttribute) SetLockMode(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverListConfigserverAttribute {
+	s.LockMode = &v
 	return s
 }
 
@@ -9487,6 +9493,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongo
 	//
 	// s-bp1d8c262a15****.mongodb.rds.aliyuncs.com
 	ConnectSting *string `json:"ConnectSting,omitempty" xml:"ConnectSting,omitempty"`
+	LockMode     *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The maximum number of connections to the mongos node.
 	//
 	// example:
@@ -9563,6 +9570,11 @@ func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMo
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute) SetConnectSting(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute {
 	s.ConnectSting = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute) SetLockMode(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute {
+	s.LockMode = &v
 	return s
 }
 
@@ -9759,6 +9771,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardA
 	//
 	// d-bp1af0680a9c6d3****.mongodb.rds.aliyuncs.com:****
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
+	LockMode      *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The maximum number of connections to the shard node.
 	//
 	// example:
@@ -9831,6 +9844,11 @@ func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListSha
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetConnectString(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
 	s.ConnectString = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) SetLockMode(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute {
+	s.LockMode = &v
 	return s
 }
 
@@ -29261,7 +29279,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-heyuan":                   tea.String("mongodb.aliyuncs.com"),
 		"cn-guangzhou":                tea.String("mongodb.aliyuncs.com"),
 		"cn-chengdu":                  tea.String("mongodb.cn-chengdu.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("mongodb.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("mongodb.cn-hongkong.aliyuncs.com"),
 		"ap-northeast-1":              tea.String("mongodb.ap-northeast-1.aliyuncs.com"),
 		"ap-southeast-1":              tea.String("mongodb.ap-southeast-1.aliyuncs.com"),
 		"ap-southeast-2":              tea.String("mongodb.ap-southeast-2.aliyuncs.com"),
