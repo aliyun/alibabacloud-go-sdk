@@ -196,6 +196,254 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 	return s
 }
 
+type SearchHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// token
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eyJhbGciOiJSUzI1NiIsImtpZCI6ImRpc3RyaWJ1dGlvbl9rZXlpZCJ9.eyJqdGkiOiI2cDQwZDctSDQ0dUJicEJkYTZadzdBIiwiaWF0IjoxNzI0MzE2MzM1LCJleHAiOjE3MjQzMjM1MzUsIm5iZiI6MTcyNDMxNjI3NSwiYXBwS2V5IjoiNjE3NzgxZDQxM2FmNGRlZGFiNzkifQ.XtjSM7qVbESvt7n31RtD5Pp6854IVyGMEco4aEruMDMkrXHkcdZejyecKFx3RdsCldZPgvowc5EOl44c3JJfm6DENH4M6BRBSc90eqXYcD_xVJ9FhDWzK9O6OnkvR7HX1t-qqMdikLviM1w1G0DGMLaasvZ8MPMewL8k6NnvOSGePwUhb-m5IZ14VYv7BPO2dp8Jh00qNSJQrmNiWWzJUtK_xllNr3LKQ7cIVtPgFUckvRDw9Hal5oACXSRdkZFOAGlFSjpB_BbTpe5vc-AJ8K89nRD53sIy9YyVQClV_HH7PrXxFFJgReGvNsnP1h9gf55q86IzOQBkj9vGm2zXdw
+	XAcsAirticketAccessToken *string `json:"xAcsAirticketAccessToken,omitempty" xml:"xAcsAirticketAccessToken,omitempty"`
+	// example:
+	//
+	// en_US
+	XAcsAirticketLanguage *string `json:"xAcsAirticketLanguage,omitempty" xml:"xAcsAirticketLanguage,omitempty"`
+}
+
+func (s SearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchHeaders) SetCommonHeaders(v map[string]*string) *SearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchHeaders) SetXAcsAirticketAccessToken(v string) *SearchHeaders {
+	s.XAcsAirticketAccessToken = &v
+	return s
+}
+
+func (s *SearchHeaders) SetXAcsAirticketLanguage(v string) *SearchHeaders {
+	s.XAcsAirticketLanguage = &v
+	return s
+}
+
+type SearchRequest struct {
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "cabinClass": "ALL_CABIN",
+	//
+	//   "passengerTypeQuantity": {
+	//
+	//     "ADT": 1,
+	//
+	//     "INFANT": 0,
+	//
+	//     "CHD": 0
+	//
+	//   },
+	//
+	//   "searchMode": 0,
+	//
+	//   "searchOdInfoList": [
+	//
+	//     {
+	//
+	//       "arrCityCode": "BJS",
+	//
+	//       "depCityCode": "JNG",
+	//
+	//       "depDate": "2024-08-14 00:00:00"
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "searchSource": "gd",
+	//
+	//   "tripType": 1
+	//
+	// }
+	SearchParam *string `json:"searchParam,omitempty" xml:"searchParam,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// “1”
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// “1”
+	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// “121343”
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s SearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchRequest) SetScene(v string) *SearchRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *SearchRequest) SetSearchParam(v string) *SearchRequest {
+	s.SearchParam = &v
+	return s
+}
+
+func (s *SearchRequest) SetSource(v string) *SearchRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *SearchRequest) SetTerminal(v string) *SearchRequest {
+	s.Terminal = &v
+	return s
+}
+
+func (s *SearchRequest) SetUserId(v string) *SearchRequest {
+	s.UserId = &v
+	return s
+}
+
+type SearchResponseBody struct {
+	// This parameter is required.
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// success
+	ErrorCode *string                      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorData *SearchResponseBodyErrorData `json:"errorData,omitempty" xml:"errorData,omitempty" type:"Struct"`
+	ErrorMsg  *string                      `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 71ad3e90-53f8-445b-be9d-df91039cba47
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchResponseBody) SetData(v string) *SearchResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SearchResponseBody) SetErrorCode(v string) *SearchResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SearchResponseBody) SetErrorData(v *SearchResponseBodyErrorData) *SearchResponseBody {
+	s.ErrorData = v
+	return s
+}
+
+func (s *SearchResponseBody) SetErrorMsg(v string) *SearchResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SearchResponseBody) SetRequestId(v string) *SearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchResponseBody) SetSuccess(v bool) *SearchResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SearchResponseBodyErrorData struct {
+	// example:
+	//
+	// 1001
+	RawErrorCode *string `json:"rawErrorCode,omitempty" xml:"rawErrorCode,omitempty"`
+	RawErrorMsg  *string `json:"rawErrorMsg,omitempty" xml:"rawErrorMsg,omitempty"`
+}
+
+func (s SearchResponseBodyErrorData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchResponseBodyErrorData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchResponseBodyErrorData) SetRawErrorCode(v string) *SearchResponseBodyErrorData {
+	s.RawErrorCode = &v
+	return s
+}
+
+func (s *SearchResponseBodyErrorData) SetRawErrorMsg(v string) *SearchResponseBodyErrorData {
+	s.RawErrorMsg = &v
+	return s
+}
+
+type SearchResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchResponse) SetHeaders(v map[string]*string) *SearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchResponse) SetStatusCode(v int32) *SearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchResponse) SetBody(v *SearchResponseBody) *SearchResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -304,6 +552,99 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	headers := make(map[string]*string)
 	_result = &GetTokenResponse{}
 	_body, _err := client.GetTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分销报价接口
+//
+// @param request - SearchRequest
+//
+// @param headers - SearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchResponse
+func (client *Client) SearchWithOptions(request *SearchRequest, headers *SearchHeaders, runtime *util.RuntimeOptions) (_result *SearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchParam)) {
+		body["searchParam"] = request.SearchParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		body["source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Terminal)) {
+		body["terminal"] = request.Terminal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAirticketAccessToken)) {
+		realHeaders["xAcsAirticketAccessToken"] = util.ToJSONString(headers.XAcsAirticketAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAirticketLanguage)) {
+		realHeaders["xAcsAirticketLanguage"] = util.ToJSONString(headers.XAcsAirticketLanguage)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Search"),
+		Version:     tea.String("2024-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/distribution/trade/search"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分销报价接口
+//
+// @param request - SearchRequest
+//
+// @return SearchResponse
+func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SearchHeaders{}
+	_result = &SearchResponse{}
+	_body, _err := client.SearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
