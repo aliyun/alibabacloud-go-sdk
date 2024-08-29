@@ -3633,10 +3633,12 @@ func (s *FaceLivenessResponseBodyResult) SetTransactionId(v string) *FaceLivenes
 }
 
 type FaceLivenessResponseBodyResultExtFaceInfo struct {
+	FaceAge *int32 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
 	// example:
 	//
 	// Y
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
 	// example:
 	//
 	// 87.19
@@ -3655,8 +3657,18 @@ func (s FaceLivenessResponseBodyResultExtFaceInfo) GoString() string {
 	return s.String()
 }
 
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceAge(v int32) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.FaceAge = &v
+	return s
+}
+
 func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceAttack(v string) *FaceLivenessResponseBodyResultExtFaceInfo {
 	s.FaceAttack = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceGender(v string) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.FaceGender = &v
 	return s
 }
 
