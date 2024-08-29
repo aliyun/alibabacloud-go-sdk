@@ -4,6 +4,12 @@
 - Update API ListDomains: update response param.
 
 
+2024-08-29 Version: v3.0.1
+- Update API ListDomains: add param Search.
+- Update API ListDomains: update param PageSize.
+- Update API ListDomains: update response param.
+
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2016-02-01 for Httpdns.
 
