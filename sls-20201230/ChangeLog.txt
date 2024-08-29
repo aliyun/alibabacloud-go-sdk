@@ -1,3 +1,11 @@
+2024-08-29 Version: v6.4.0
+- Support API CreateMetricStore.
+- Support API DeleteMetricStore.
+- Support API GetMetricStore.
+- Support API ListMetricStores.
+- Support API UpdateMetricStore.
+
+
 2024-08-12 Version: v6.3.1
 - Update API CreateLogStore: update param body.
 - Update API UpdateLogStore: update param body.

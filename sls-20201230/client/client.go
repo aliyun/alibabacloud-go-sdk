@@ -4830,13 +4830,34 @@ func (s *ConsumerGroupUpdateCheckPointResponse) SetStatusCode(v int32) *Consumer
 }
 
 type CreateAlertRequest struct {
+	// The detailed configurations of the alert rule.
+	//
 	// This parameter is required.
 	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string             `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the alert rule.
+	//
+	// example:
+	//
+	// An alert rule
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the alert rule.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-alert
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The name of the alert rule. Make sure that the name is unique in a project.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alert-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling configurations of the alert rule.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
@@ -5685,7 +5706,7 @@ func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
 }
 
 type CreateLogStoreRequest struct {
-	// Specifies whether to record public IP addresses. Default value: false. Valid values:
+	// Specifies whether to record public IP addresses. Default value: false.
 	//
 	// 	- true
 	//
@@ -5695,7 +5716,7 @@ type CreateLogStoreRequest struct {
 	//
 	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Specifies whether to enable automatic sharding. Valid values:
+	// Specifies whether to enable automatic sharding.
 	//
 	// 	- true
 	//
@@ -5705,7 +5726,7 @@ type CreateLogStoreRequest struct {
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+	// Specifies whether to enable the web tracking feature. Default value: false.
 	//
 	// 	- true
 	//
@@ -5715,16 +5736,21 @@ type CreateLogStoreRequest struct {
 	//
 	// false
 	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	// The data structure of the encryption configuration.
+	// The data structure of the encryption configuration. The following parameters are included: `enable`, `encrypt_type`, and `user_cmk_info`. For more information, see [EncryptConf](https://help.aliyun.com/document_detail/409461.html).
 	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// The retention period of data in the hot storage tier of the Logstore. Unit: days. You can specify a value that ranges from 30 to the value of ttl.
+	// The retention period of data in the hot storage tier of the Logstore. Valid values: 7 to 3000. Unit: days.
 	//
-	// Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
+	// After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
 	//
 	// example:
 	//
 	// 60
-	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The retention period of data in the IA storage tier of the Logstore. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
+	//
+	// example:
+	//
+	// 30
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The name of the Logstore. The name must meet the following requirements:
 	//
@@ -5742,19 +5768,19 @@ type CreateLogStoreRequest struct {
 	//
 	// my-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 256.
 	//
-	// > If you set autoSplit to true, you must configure this parameter.
+	// >  If you set autoSplit to true, you must specify maxSplitShard.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The type of the Logstore. Log Service provides the following types of Logstores: Standard Logstores and Query Logstores. Valid values:
+	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
 	//
 	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
 	//
 	// example:
 	//
@@ -5763,7 +5789,7 @@ type CreateLogStoreRequest struct {
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	// The number of shards.
 	//
-	// > You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+	// >  You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
 	//
 	// This parameter is required.
 	//
@@ -5773,15 +5799,15 @@ type CreateLogStoreRequest struct {
 	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 	// The type of the observable data. Valid values:
 	//
-	// 	- None: logs
+	// 	- **None*	- (default): log data
 	//
-	// 	- Metrics: metrics
+	// 	- **Metrics**: metric data
 	//
 	// example:
 	//
 	// None
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, data is permanently stored.
+	// The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, logs are permanently stored.
 	//
 	// This parameter is required.
 	//
@@ -6229,16 +6255,117 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 	return s
 }
 
+type CreateMetricStoreRequest struct {
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// example:
+	//
+	// 64
+	MaxSplitShard *int32  `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	MetricType    *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	Mode          *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_metric_store
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s CreateMetricStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetricStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetricStoreRequest) SetAutoSplit(v bool) *CreateMetricStoreRequest {
+	s.AutoSplit = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetMaxSplitShard(v int32) *CreateMetricStoreRequest {
+	s.MaxSplitShard = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetMetricType(v string) *CreateMetricStoreRequest {
+	s.MetricType = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetMode(v string) *CreateMetricStoreRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetName(v string) *CreateMetricStoreRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetShardCount(v int32) *CreateMetricStoreRequest {
+	s.ShardCount = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetTtl(v int32) *CreateMetricStoreRequest {
+	s.Ttl = &v
+	return s
+}
+
+type CreateMetricStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateMetricStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetricStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetricStoreResponse) SetHeaders(v map[string]*string) *CreateMetricStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMetricStoreResponse) SetStatusCode(v int32) *CreateMetricStoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateOSSExportRequest struct {
+	// The configuration details of the job.
+	//
 	// This parameter is required.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ali-test-oss-job
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The unique identifier of the OSS data shipping job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6299,15 +6426,22 @@ func (s *CreateOSSExportResponse) SetStatusCode(v int32) *CreateOSSExportRespons
 }
 
 type CreateOSSHDFSExportRequest struct {
+	// The configuration details of the job.
+	//
 	// This parameter is required.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ali-test-oss-hdfs-job
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The unique identifier of the OSS data shipping job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6447,7 +6581,7 @@ type CreateOssExternalStoreRequest struct {
 	//
 	// test_oss_store
 	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// The parameters that are configured for the external store.
+	// The parameters of the external store.
 	//
 	// This parameter is required.
 	Parameter *CreateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
@@ -6485,7 +6619,7 @@ func (s *CreateOssExternalStoreRequest) SetStoreType(v string) *CreateOssExterna
 }
 
 type CreateOssExternalStoreRequestParameter struct {
-	// The AccessKey ID of your account.
+	// The AccessKey ID.
 	//
 	// This parameter is required.
 	//
@@ -6493,7 +6627,7 @@ type CreateOssExternalStoreRequestParameter struct {
 	//
 	// LTAI5tFsHGGeYry*****1Sz
 	Accessid *string `json:"accessid,omitempty" xml:"accessid,omitempty"`
-	// The AccessKey secret of your account.
+	// The AccessKey secret.
 	//
 	// This parameter is required.
 	//
@@ -6509,11 +6643,11 @@ type CreateOssExternalStoreRequestParameter struct {
 	//
 	// my-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The fields that are associated to the external store.
+	// The associated fields.
 	//
 	// This parameter is required.
 	Columns []*CreateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// The Object Storage Service (OSS) endpoint.
+	// The OSS endpoint. For more information, see [Regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
 	//
 	// This parameter is required.
 	//
@@ -6521,7 +6655,7 @@ type CreateOssExternalStoreRequestParameter struct {
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The names of the OSS objects that are associated to the external store.
+	// The associated OSS objects. Valid values of n: 1 to 100.
 	//
 	// This parameter is required.
 	Objects []*string `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
@@ -6574,7 +6708,7 @@ type CreateOssExternalStoreRequestParameterColumns struct {
 	//
 	// auto-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the field.
+	// The data type of the field.
 	//
 	// This parameter is required.
 	//
@@ -7080,12 +7214,16 @@ func (s *CreateScheduledSQLResponse) SetStatusCode(v int32) *CreateScheduledSQLR
 }
 
 type CreateSqlInstanceRequest struct {
+	// The number of compute units (CUs). When you use the Dedicated SQL feature, CUs are used in parallel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// Specifies whether to enable the Dedicated SQL feature for the project. If you set this parameter to true, the Dedicated SQL feature is enabled for the specified project and takes effect for all query statements that you execute in the project, including the query statements for alerts and dashboards.
+	//
 	// This parameter is required.
 	UseAsDefault *bool `json:"useAsDefault,omitempty" xml:"useAsDefault,omitempty"`
 }
@@ -7132,18 +7270,30 @@ func (s *CreateSqlInstanceResponse) SetStatusCode(v int32) *CreateSqlInstanceRes
 }
 
 type CreateStoreViewRequest struct {
+	// The name of the dataset.
+	//
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a lowercase letter.
+	//
+	// 	- The name must be 3 to 62 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my_storeview
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the dataset. Valid values: metricstore and logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// logstore
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The Logstores or Metricstores.
+	//
 	// This parameter is required.
 	Stores []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
 }
@@ -7682,6 +7832,29 @@ func (s *DeleteMachineGroupResponse) SetHeaders(v map[string]*string) *DeleteMac
 }
 
 func (s *DeleteMachineGroupResponse) SetStatusCode(v int32) *DeleteMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteMetricStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteMetricStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetricStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetricStoreResponse) SetHeaders(v map[string]*string) *DeleteMetricStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetricStoreResponse) SetStatusCode(v int32) *DeleteMetricStoreResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -8636,7 +8809,7 @@ func (s *GetConfigResponse) SetBody(v *LogtailConfig) *GetConfigResponse {
 }
 
 type GetContextLogsRequest struct {
-	// The number of logs that you want to obtain and are generated before the generation time of the start log. Valid values: (0,100].
+	// The number of logs that you want to obtain and are generated before the generation time of the start log. Valid values: `(0,100]`.
 	//
 	// This parameter is required.
 	//
@@ -8644,7 +8817,7 @@ type GetContextLogsRequest struct {
 	//
 	// 10
 	BackLines *int64 `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
-	// The number of logs that you want to obtain and are generated after the generation time of the start log. Valid values: (0,100].
+	// The number of logs that you want to obtain and are generated after the generation time of the start log. Valid values: `(0,100]`.
 	//
 	// This parameter is required.
 	//
@@ -9770,6 +9943,8 @@ func (s *GetLogStoreResponse) SetBody(v *Logstore) *GetLogStoreResponse {
 }
 
 type GetLogStoreMeteringModeResponseBody struct {
+	// The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
+	//
 	// example:
 	//
 	// ChargeByFunction
@@ -10052,7 +10227,7 @@ func (s *GetLogsV2Headers) SetAcceptEncoding(v string) *GetLogsV2Headers {
 }
 
 type GetLogsV2Request struct {
-	// Specifies whether to page forward or backward for the scan-based query or the phrase search.
+	// Specifies whether to page forward or backward for the scan-based query or phrase search.
 	//
 	// example:
 	//
@@ -10060,16 +10235,21 @@ type GetLogsV2Request struct {
 	Forward *bool `json:"forward,omitempty" xml:"forward,omitempty"`
 	// The beginning of the time range to query. The value is the log time that is specified when log data is written.
 	//
-	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1627268185
-	From      *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	Highlight *bool  `json:"highlight,omitempty" xml:"highlight,omitempty"`
-	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100.
+	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// Specifies whether to highlight the returned result.
+	//
+	// example:
+	//
+	// false
+	Highlight *bool `json:"highlight,omitempty" xml:"highlight,omitempty"`
+	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
 	//
 	// example:
 	//
@@ -10087,17 +10267,17 @@ type GetLogsV2Request struct {
 	//
 	// false
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// The search statement or the query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
+	// The search statement or query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
 	//
-	// If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to \\	- | set session parallel_sql=true; select count(\\*) as pv.
+	// If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. Example: \\	- | set session parallel_sql=true; select count(\\*) as pv.
 	//
-	// Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
+	// Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to specify the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
 	//
 	// example:
 	//
 	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to the minute. Valid values:
+	// Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to minutes. Valid values:
 	//
 	// true: Logs are returned in reverse chronological order of log timestamps. false (default): Logs are returned in chronological order of log timestamps. Note: The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs. If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
 	//
@@ -10113,7 +10293,7 @@ type GetLogsV2Request struct {
 	Session *string `json:"session,omitempty" xml:"session,omitempty"`
 	// The end of the time range to query. The value is the log time that is specified when log data is written.
 	//
-	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -10195,7 +10375,7 @@ func (s *GetLogsV2Request) SetTopic(v string) *GetLogsV2Request {
 type GetLogsV2ResponseBody struct {
 	// The returned result.
 	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The metadata that is returned.
+	// The metadata of the returned data.
 	Meta *GetLogsV2ResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
 }
 
@@ -10230,9 +10410,15 @@ type GetLogsV2ResponseBodyMeta struct {
 	// example:
 	//
 	// 1
-	Count    *int32   `json:"count,omitempty" xml:"count,omitempty"`
-	CpuCores *int32   `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	CpuSec   *float64 `json:"cpuSec,omitempty" xml:"cpuSec,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// example:
+	//
+	// 3
+	CpuCores *int32 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// example:
+	//
+	// 0.002
+	CpuSec *float64 `json:"cpuSec,omitempty" xml:"cpuSec,omitempty"`
 	// The amount of time that is consumed by the request. Unit: milliseconds.
 	//
 	// example:
@@ -10246,15 +10432,21 @@ type GetLogsV2ResponseBodyMeta struct {
 	// false
 	HasSQL     *bool           `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
 	Highlights [][]*LogContent `json:"highlights,omitempty" xml:"highlights,omitempty" type:"Repeated"`
-	// Indicates whether the returned result is accurate.
+	// Indicates whether the returned result is accurate to seconds.
 	//
 	// example:
 	//
 	// true
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// All keys in the query result.
-	Keys            []*string                                 `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	Limited         *int32                                    `json:"limited,omitempty" xml:"limited,omitempty"`
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	Limited *int32 `json:"limited,omitempty" xml:"limited,omitempty"`
+	// example:
+	//
+	// 0
 	Mode            *int32                                    `json:"mode,omitempty" xml:"mode,omitempty"`
 	PhraseQueryInfo *GetLogsV2ResponseBodyMetaPhraseQueryInfo `json:"phraseQueryInfo,omitempty" xml:"phraseQueryInfo,omitempty" type:"Struct"`
 	// The number of logs that are processed in the request.
@@ -10278,8 +10470,11 @@ type GetLogsV2ResponseBodyMeta struct {
 	// example:
 	//
 	// Complete
-	Progress  *string `json:"progress,omitempty" xml:"progress,omitempty"`
-	ScanBytes *int64  `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
+	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// example:
+	//
+	// 1024
+	ScanBytes *int64 `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
 	// The type of observable data.
 	//
 	// example:
@@ -10405,10 +10600,22 @@ func (s *GetLogsV2ResponseBodyMeta) SetWhereQuery(v string) *GetLogsV2ResponseBo
 }
 
 type GetLogsV2ResponseBodyMetaPhraseQueryInfo struct {
+	// example:
+	//
+	// 0
 	BeginOffset *int64 `json:"beginOffset,omitempty" xml:"beginOffset,omitempty"`
-	EndOffset   *int64 `json:"endOffset,omitempty" xml:"endOffset,omitempty"`
-	EndTime     *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	ScanAll     *bool  `json:"scanAll,omitempty" xml:"scanAll,omitempty"`
+	// example:
+	//
+	// 0
+	EndOffset *int64 `json:"endOffset,omitempty" xml:"endOffset,omitempty"`
+	// example:
+	//
+	// 1
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// true
+	ScanAll *bool `json:"scanAll,omitempty" xml:"scanAll,omitempty"`
 }
 
 func (s GetLogsV2ResponseBodyMetaPhraseQueryInfo) String() string {
@@ -10610,7 +10817,127 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 	return s
 }
 
+type GetMetricStoreResponseBody struct {
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// example:
+	//
+	// 1698933894
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 1712023974
+	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// example:
+	//
+	// 64
+	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	// example:
+	//
+	// prometheus
+	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// example:
+	//
+	// standard
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// my_metric_store
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// example:
+	//
+	// 7
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s GetMetricStoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetricStoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetricStoreResponseBody) SetAutoSplit(v bool) *GetMetricStoreResponseBody {
+	s.AutoSplit = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetCreateTime(v int64) *GetMetricStoreResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetLastModifyTime(v int64) *GetMetricStoreResponseBody {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetMaxSplitShard(v int32) *GetMetricStoreResponseBody {
+	s.MaxSplitShard = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetMetricType(v string) *GetMetricStoreResponseBody {
+	s.MetricType = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetMode(v string) *GetMetricStoreResponseBody {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetName(v string) *GetMetricStoreResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetShardCount(v int32) *GetMetricStoreResponseBody {
+	s.ShardCount = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetTtl(v int32) *GetMetricStoreResponseBody {
+	s.Ttl = &v
+	return s
+}
+
+type GetMetricStoreResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMetricStoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMetricStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetricStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetricStoreResponse) SetHeaders(v map[string]*string) *GetMetricStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMetricStoreResponse) SetStatusCode(v int32) *GetMetricStoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMetricStoreResponse) SetBody(v *GetMetricStoreResponseBody) *GetMetricStoreResponse {
+	s.Body = v
+	return s
+}
+
 type GetMetricStoreMeteringModeResponseBody struct {
+	// The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
+	//
 	// example:
 	//
 	// ChargeByFunction
@@ -11047,11 +11374,32 @@ func (s *GetSqlInstanceResponseBody) SetUseAsDefault(v bool) *GetSqlInstanceResp
 }
 
 type GetStoreViewResponseBody struct {
+	// The type of the dataset.
+	//
+	// Valid values:
+	//
+	// 	- metricstore
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- logstore
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// example:
 	//
 	// logstore
-	StoreType *string           `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	Stores    []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
+	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The Logstores or Metricstores.
+	Stores []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
 }
 
 func (s GetStoreViewResponseBody) String() string {
@@ -11102,6 +11450,7 @@ func (s *GetStoreViewResponse) SetBody(v *GetStoreViewResponseBody) *GetStoreVie
 }
 
 type GetStoreViewIndexResponseBody struct {
+	// The index configurations.
 	Indexes []*GetStoreViewIndexResponseBodyIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 }
 
@@ -11119,11 +11468,16 @@ func (s *GetStoreViewIndexResponseBody) SetIndexes(v []*GetStoreViewIndexRespons
 }
 
 type GetStoreViewIndexResponseBodyIndexes struct {
+	// The index configurations of the Logstore.
 	Index *Index `json:"index,omitempty" xml:"index,omitempty"`
+	// The name of the Logstore.
+	//
 	// example:
 	//
 	// my-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the project to which the Logstore belongs.
+	//
 	// example:
 	//
 	// example-project
@@ -11221,9 +11575,20 @@ func (s *ListAlertsRequest) SetSize(v int32) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
-	Count   *int32   `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of alert rules that are returned.
+	//
+	// example:
+	//
+	// 10
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The alert rules.
 	Results []*Alert `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Total   *int32   `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of alert rules in the project.
+	//
+	// example:
+	//
+	// 80
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAlertsResponseBody) String() string {
@@ -11552,6 +11917,9 @@ func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBo
 }
 
 type ListCollectionPoliciesRequest struct {
+	// example:
+	//
+	// your-central-project1
 	CentralProject *string `json:"centralProject,omitempty" xml:"centralProject,omitempty"`
 	// example:
 	//
@@ -11561,7 +11929,10 @@ type ListCollectionPoliciesRequest struct {
 	//
 	// your-test-bucket1
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Offset     *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
 	// example:
 	//
 	// your_log_policy
@@ -11570,7 +11941,10 @@ type ListCollectionPoliciesRequest struct {
 	//
 	// oss
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
-	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// 50
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListCollectionPoliciesRequest) String() string {
@@ -11671,14 +12045,20 @@ type ListCollectionPoliciesResponseBodyData struct {
 	// example:
 	//
 	// true
-	Enabled        *bool                                               `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// false
 	InternalPolicy *bool                                               `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
 	PolicyConfig   *ListCollectionPoliciesResponseBodyDataPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	// example:
+	//
+	// 148***********50
+	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 	// example:
 	//
 	// oss
@@ -11797,8 +12177,14 @@ func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestTTL(v in
 }
 
 type ListCollectionPoliciesResponseBodyDataDataConfig struct {
+	// example:
+	//
+	// ""
 	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
-	DataRegion  *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
 }
 
 func (s ListCollectionPoliciesResponseBodyDataDataConfig) String() string {
@@ -11825,7 +12211,10 @@ type ListCollectionPoliciesResponseBodyDataPolicyConfig struct {
 	// example:
 	//
 	// all
-	ResourceMode *string                `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	ResourceMode *string `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	// example:
+	//
+	// {"tag1":"value1","tag2":"value2"}
 	ResourceTags map[string]interface{} `json:"resourceTags,omitempty" xml:"resourceTags,omitempty"`
 }
 
@@ -11858,6 +12247,9 @@ func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceTags(v m
 }
 
 type ListCollectionPoliciesResponseBodyDataResourceDirectory struct {
+	// example:
+	//
+	// all,custom
 	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
 	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
@@ -11882,7 +12274,10 @@ func (s *ListCollectionPoliciesResponseBodyDataResourceDirectory) SetMembers(v [
 
 type ListCollectionPoliciesResponseBodyStatistics struct {
 	PolicySourceList []*ListCollectionPoliciesResponseBodyStatisticsPolicySourceList `json:"policySourceList,omitempty" xml:"policySourceList,omitempty" type:"Repeated"`
-	ProductCode      *string                                                         `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// example:
+	//
+	// oss
+	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
 }
 
 func (s ListCollectionPoliciesResponseBodyStatistics) String() string {
@@ -11904,8 +12299,14 @@ func (s *ListCollectionPoliciesResponseBodyStatistics) SetProductCode(v string) 
 }
 
 type ListCollectionPoliciesResponseBodyStatisticsPolicySourceList struct {
+	// example:
+	//
+	// policy_name1_from148
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	// example:
+	//
+	// 148***********50
+	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 }
 
 func (s ListCollectionPoliciesResponseBodyStatisticsPolicySourceList) String() string {
@@ -11956,7 +12357,7 @@ func (s *ListCollectionPoliciesResponse) SetBody(v *ListCollectionPoliciesRespon
 }
 
 type ListConfigRequest struct {
-	// The name of the Logtail configuration.
+	// The name of the Logtail configuration, which is used for fuzzy match.
 	//
 	// example:
 	//
@@ -13349,6 +13750,108 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 	return s
 }
 
+type ListMetricStoresRequest struct {
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// metric_store
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// 500
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListMetricStoresRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricStoresRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricStoresRequest) SetMode(v string) *ListMetricStoresRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *ListMetricStoresRequest) SetName(v string) *ListMetricStoresRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMetricStoresRequest) SetOffset(v int32) *ListMetricStoresRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListMetricStoresRequest) SetSize(v int32) *ListMetricStoresRequest {
+	s.Size = &v
+	return s
+}
+
+type ListMetricStoresResponseBody struct {
+	Count        *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	Metricstores []*string `json:"metricstores,omitempty" xml:"metricstores,omitempty" type:"Repeated"`
+	Total        *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListMetricStoresResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricStoresResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricStoresResponseBody) SetCount(v int32) *ListMetricStoresResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListMetricStoresResponseBody) SetMetricstores(v []*string) *ListMetricStoresResponseBody {
+	s.Metricstores = v
+	return s
+}
+
+func (s *ListMetricStoresResponseBody) SetTotal(v int32) *ListMetricStoresResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMetricStoresResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMetricStoresResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMetricStoresResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricStoresResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricStoresResponse) SetHeaders(v map[string]*string) *ListMetricStoresResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMetricStoresResponse) SetStatusCode(v int32) *ListMetricStoresResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMetricStoresResponse) SetBody(v *ListMetricStoresResponseBody) *ListMetricStoresResponse {
+	s.Body = v
+	return s
+}
+
 type ListOSSExportsRequest struct {
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// example:
@@ -13583,9 +14086,20 @@ func (s *ListOSSIngestionsRequest) SetSize(v int32) *ListOSSIngestionsRequest {
 }
 
 type ListOSSIngestionsResponseBody struct {
-	Count   *int32          `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of OSS data import jobs that are returned.
+	//
+	// example:
+	//
+	// 10
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The OSS data import jobs.
 	Results []*OSSIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Total   *int32          `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of OSS data import jobs in the project.
+	//
+	// example:
+	//
+	// 80
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListOSSIngestionsResponseBody) String() string {
@@ -13872,6 +14386,11 @@ func (s *ListSavedSearchResponse) SetBody(v *ListSavedSearchResponseBody) *ListS
 }
 
 type ListScheduledSQLsRequest struct {
+	// The name of the Logstore.
+	//
+	// example:
+	//
+	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// example:
 	//
@@ -14000,18 +14519,44 @@ func (s *ListShardsResponse) SetBody(v []*Shard) *ListShardsResponse {
 }
 
 type ListStoreViewsRequest struct {
+	// The dataset name that is used for fuzzy match.
+	//
 	// example:
 	//
 	// my_storeview
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The offset of the datasets to return. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of datasets to return. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The type of the datasets to return. By default, datasets are not filtered by type.
+	//
+	// Valid values:
+	//
+	// 	- metricstore
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- logstore
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// example:
 	//
 	// logstore
@@ -14047,11 +14592,16 @@ func (s *ListStoreViewsRequest) SetStoreType(v string) *ListStoreViewsRequest {
 }
 
 type ListStoreViewsResponseBody struct {
+	// The number of returned datasets.
+	//
 	// example:
 	//
 	// 100
-	Count      *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The dataset names.
 	Storeviews []*string `json:"storeviews,omitempty" xml:"storeviews,omitempty" type:"Repeated"`
+	// The total number of datasets in the project.
+	//
 	// example:
 	//
 	// 100
@@ -15269,11 +15819,26 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 type UpdateAlertRequest struct {
+	// The detailed configurations of the alert rule.
+	//
 	// This parameter is required.
 	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string             `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the alert rule.
+	//
+	// example:
+	//
+	// this is description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the alert rule.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// this is alert
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The scheduling settings of the alert rule.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
@@ -15858,12 +16423,17 @@ type UpdateLogStoreRequest struct {
 	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
 	// The data structure of the encryption configuration.
 	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: day. You can specify a value that ranges from 30 to the value of ttl. Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
+	// The retention period of data in the hot storage tier of the Logstore. Valid values: 7 to 3000. Unit: days. After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
 	//
 	// example:
 	//
 	// 60
-	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The retention period of data in the IA storage tier of the Logstore. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
+	//
+	// example:
+	//
+	// 30
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The name of the Logstore.
 	//
@@ -15873,19 +16443,19 @@ type UpdateLogStoreRequest struct {
 	//
 	// test-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 256.
 	//
-	// > If you set autoSplit to true, you must specify maxSplitShard.
+	// >  If you set autoSplit to true, you must specify maxSplitShard.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores.
+	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
 	//
 	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
 	//
 	// example:
 	//
@@ -15896,7 +16466,7 @@ type UpdateLogStoreRequest struct {
 	//
 	// The number of shards.
 	//
-	// > You cannot call the UpdateLogstore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+	// >  You cannot call the UpdateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
 	//
 	// example:
 	//
@@ -15904,17 +16474,17 @@ type UpdateLogStoreRequest struct {
 	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 	// Deprecated
 	//
-	// The type of the log that you want to query. Valid values:
+	// The type of the observable data. Valid values:
 	//
-	// 	- None: all types of logs.
+	// 	- None (default): log data.
 	//
-	// 	- Metrics: metrics.
+	// 	- Metrics: metric data.
 	//
 	// example:
 	//
 	// None
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The retention period of data. Unit: day. Valid values: 1 to 3650. If you set ttl to 3650, data is permanently stored.
+	// The retention period of data. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, logs are permanently stored.
 	//
 	// This parameter is required.
 	//
@@ -16459,6 +17029,70 @@ func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachin
 	return s
 }
 
+type UpdateMetricStoreRequest struct {
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// example:
+	//
+	// 64
+	MaxSplitShard *int32  `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	Mode          *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// 7
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s UpdateMetricStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetricStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetricStoreRequest) SetAutoSplit(v bool) *UpdateMetricStoreRequest {
+	s.AutoSplit = &v
+	return s
+}
+
+func (s *UpdateMetricStoreRequest) SetMaxSplitShard(v int32) *UpdateMetricStoreRequest {
+	s.MaxSplitShard = &v
+	return s
+}
+
+func (s *UpdateMetricStoreRequest) SetMode(v string) *UpdateMetricStoreRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *UpdateMetricStoreRequest) SetTtl(v int32) *UpdateMetricStoreRequest {
+	s.Ttl = &v
+	return s
+}
+
+type UpdateMetricStoreResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateMetricStoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetricStoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetricStoreResponse) SetHeaders(v map[string]*string) *UpdateMetricStoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMetricStoreResponse) SetStatusCode(v int32) *UpdateMetricStoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateMetricStoreMeteringModeRequest struct {
 	// This parameter is required.
 	//
@@ -16505,8 +17139,12 @@ func (s *UpdateMetricStoreMeteringModeResponse) SetStatusCode(v int32) *UpdateMe
 }
 
 type UpdateOSSExportRequest struct {
+	// The configuration details of the job.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the job.
+	//
 	// example:
 	//
 	// ali-test-oss-job
@@ -16560,8 +17198,12 @@ func (s *UpdateOSSExportResponse) SetStatusCode(v int32) *UpdateOSSExportRespons
 }
 
 type UpdateOSSHDFSExportRequest struct {
+	// The configuration details of the job.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the job.
+	//
 	// example:
 	//
 	// ali-test-oss-hdfs-job
@@ -16615,12 +17257,18 @@ func (s *UpdateOSSHDFSExportResponse) SetStatusCode(v int32) *UpdateOSSHDFSExpor
 }
 
 type UpdateOSSIngestionRequest struct {
+	// The configurations of the OSS data import job.
+	//
 	// This parameter is required.
 	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the OSS data import job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the OSS data import job.
+	//
 	// This parameter is required.
-	DisplayName *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Schedule    *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The scheduling type. By default, you do not need to specify this parameter. If you want to import data at regular intervals, such as importing data every Monday at 08: 00., you can specify a cron expression.
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
 func (s UpdateOSSIngestionRequest) String() string {
@@ -17316,12 +17964,34 @@ func (s *UpdateSqlInstanceResponse) SetStatusCode(v int32) *UpdateSqlInstanceRes
 }
 
 type UpdateStoreViewRequest struct {
+	// The type of the dataset.
+	//
+	// Valid values:
+	//
+	// 	- metricstore
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- logstore
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// logstore
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The Logstores or Metricstores.
+	//
 	// This parameter is required.
 	Stores []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
 }
@@ -17704,7 +18374,7 @@ func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *s
 
 // Summary:
 //
-// Modifies the resource group of a resource.
+// Changes the resource group to which a resource belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -17760,7 +18430,7 @@ func (client *Client) ChangeResourceGroupWithOptions(project *string, request *C
 
 // Summary:
 //
-// Modifies the resource group of a resource.
+// Changes the resource group to which a resource belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -17785,9 +18455,27 @@ func (client *Client) ChangeResourceGroup(project *string, request *ChangeResour
 //
 // ### Usage notes
 //
-// 	- Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
-//
 // 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- Connections between consumers and Simple Log Service are established by sending heartbeat messages at regular intervals. If Simple Log Service does not receive heartbeat messages from a consumer on schedule, Simple Log Service deletes the consumer.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:ConsumerGroupHeartBeat`|`acs:log:${regionId}:${accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/{#ConsumerGroupName}`|
 //
 // @param request - ConsumerGroupHeartBeatRequest
 //
@@ -17842,9 +18530,27 @@ func (client *Client) ConsumerGroupHeartBeatWithOptions(project *string, logstor
 //
 // ### Usage notes
 //
-// 	- Connections between consumers and servers are established by sending heartbeats at regular intervals. If a server does not receive heartbeats from a consumer on schedule, the server deletes the consumer.
-//
 // 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- Connections between consumers and Simple Log Service are established by sending heartbeat messages at regular intervals. If Simple Log Service does not receive heartbeat messages from a consumer on schedule, Simple Log Service deletes the consumer.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:ConsumerGroupHeartBeat`|`acs:log:${regionId}:${accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/{#ConsumerGroupName}`|
 //
 // @param request - ConsumerGroupHeartBeatRequest
 //
@@ -18782,13 +19488,33 @@ func (client *Client) CreateIndex(project *string, logstore *string, request *Cr
 
 // Summary:
 //
-// Create a Logstore
+// Creates a Logstore.
 //
 // Description:
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// 	- You can create up to 200 Logstores in each project.
+//
+// 	- If the retention period of a log reaches the data retention period that you specified for the Logstore, the log is deleted.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:CreateLogStore`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
 //
 // @param request - CreateLogStoreRequest
 //
@@ -18884,13 +19610,33 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 
 // Summary:
 //
-// Create a Logstore
+// Creates a Logstore.
 //
 // Description:
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// 	- You can create up to 200 Logstores in each project.
+//
+// 	- If the retention period of a log reaches the data retention period that you specified for the Logstore, the log is deleted.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:CreateLogStore`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
 //
 // @param request - CreateLogStoreRequest
 //
@@ -19182,7 +19928,98 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 
 // Summary:
 //
-// 创建OSS投递任务
+// 创建时序库
+//
+// @param request - CreateMetricStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMetricStoreResponse
+func (client *Client) CreateMetricStoreWithOptions(project *string, request *CreateMetricStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMetricStoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoSplit)) {
+		body["autoSplit"] = request.AutoSplit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSplitShard)) {
+		body["maxSplitShard"] = request.MaxSplitShard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		body["metricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
+		body["shardCount"] = request.ShardCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		body["ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMetricStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/metricstores"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateMetricStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建时序库
+//
+// @param request - CreateMetricStoreRequest
+//
+// @return CreateMetricStoreResponse
+func (client *Client) CreateMetricStore(project *string, request *CreateMetricStoreRequest) (_result *CreateMetricStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMetricStoreResponse{}
+	_body, _err := client.CreateMetricStoreWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Ships logs from a Simple Log Service Logstore to an Object Storage Service (OSS) bucket.
 //
 // @param request - CreateOSSExportRequest
 //
@@ -19242,7 +20079,7 @@ func (client *Client) CreateOSSExportWithOptions(project *string, request *Creat
 
 // Summary:
 //
-// 创建OSS投递任务
+// Ships logs from a Simple Log Service Logstore to an Object Storage Service (OSS) bucket.
 //
 // @param request - CreateOSSExportRequest
 //
@@ -19340,7 +20177,7 @@ func (client *Client) CreateOSSHDFSExport(project *string, request *CreateOSSHDF
 
 // Summary:
 //
-// 创建OSS导入任务
+// Creates an Object Storage Service (OSS) data import job in a project.
 //
 // @param request - CreateOSSIngestionRequest
 //
@@ -19404,7 +20241,7 @@ func (client *Client) CreateOSSIngestionWithOptions(project *string, request *Cr
 
 // Summary:
 //
-// 创建OSS导入任务
+// Creates an Object Storage Service (OSS) data import job in a project.
 //
 // @param request - CreateOSSIngestionRequest
 //
@@ -19764,7 +20601,7 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 
 // Summary:
 //
-// 创建定时SQL任务
+// Creates a Scheduled SQL job in a project.
 //
 // @param request - CreateScheduledSQLRequest
 //
@@ -19828,7 +20665,7 @@ func (client *Client) CreateScheduledSQLWithOptions(project *string, request *Cr
 
 // Summary:
 //
-// 创建定时SQL任务
+// Creates a Scheduled SQL job in a project.
 //
 // @param request - CreateScheduledSQLRequest
 //
@@ -19847,7 +20684,11 @@ func (client *Client) CreateScheduledSQL(project *string, request *CreateSchedul
 
 // Summary:
 //
-// 创建独享sql实例
+// If you use the Standard SQL feature to analyze a large amount of data, the logs within the specified time range cannot be fully scanned in a single query request. In this case, the returned results may not contain all matched data. You can increase the number of shards to improve data read and write capabilities. However, this method takes effect only for incremental data. You can enable the Dedicated SQL feature to increase computing resources and the amount of data that can be analyzed in a single query request.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you fully understand the [billing](https://help.aliyun.com/document_detail/223777.html) of Dedicated SQL.
 //
 // @param request - CreateSqlInstanceRequest
 //
@@ -19899,7 +20740,11 @@ func (client *Client) CreateSqlInstanceWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// 创建独享sql实例
+// If you use the Standard SQL feature to analyze a large amount of data, the logs within the specified time range cannot be fully scanned in a single query request. In this case, the returned results may not contain all matched data. You can increase the number of shards to improve data read and write capabilities. However, this method takes effect only for incremental data. You can enable the Dedicated SQL feature to increase computing resources and the amount of data that can be analyzed in a single query request.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you fully understand the [billing](https://help.aliyun.com/document_detail/223777.html) of Dedicated SQL.
 //
 // @param request - CreateSqlInstanceRequest
 //
@@ -20061,7 +20906,7 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// 删除告警
+// Deletes an alert rule.
 //
 // @param headers - map
 //
@@ -20097,7 +20942,7 @@ func (client *Client) DeleteAlertWithOptions(project *string, alertName *string,
 
 // Summary:
 //
-// 删除告警
+// Deletes an alert rule.
 //
 // @return DeleteAlertResponse
 func (client *Client) DeleteAlert(project *string, alertName *string) (_result *DeleteAlertResponse, _err error) {
@@ -20445,7 +21290,27 @@ func (client *Client) DeleteConfig(project *string, configName *string) (_result
 //
 // Description:
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// ### Usage notes
+//
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:DeleteConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
 //
 // @param headers - map
 //
@@ -20485,7 +21350,27 @@ func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *
 //
 // Description:
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// ### Usage notes
+//
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:DeleteConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
 //
 // @return DeleteConsumerGroupResponse
 func (client *Client) DeleteConsumerGroup(project *string, logstore *string, consumerGroup *string) (_result *DeleteConsumerGroupResponse, _err error) {
@@ -21116,6 +22001,59 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 
 // Summary:
 //
+// 删除时序库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMetricStoreResponse
+func (client *Client) DeleteMetricStoreWithOptions(project *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMetricStoreResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMetricStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/metricstores/" + tea.StringValue(name)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("none"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteMetricStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除时序库
+//
+// @return DeleteMetricStoreResponse
+func (client *Client) DeleteMetricStore(project *string, name *string) (_result *DeleteMetricStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMetricStoreResponse{}
+	_body, _err := client.DeleteMetricStoreWithOptions(project, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an Object Storage Service (OSS) data shipping job.
 //
 // @param headers - map
@@ -21222,7 +22160,7 @@ func (client *Client) DeleteOSSHDFSExport(project *string, ossExportName *string
 
 // Summary:
 //
-// 删除OSS导入任务
+// Deletes an Object Storage Service (OSS) data import job.
 //
 // @param headers - map
 //
@@ -21258,7 +22196,7 @@ func (client *Client) DeleteOSSIngestionWithOptions(project *string, ossIngestio
 
 // Summary:
 //
-// 删除OSS导入任务
+// Deletes an Object Storage Service (OSS) data import job.
 //
 // @return DeleteOSSIngestionResponse
 func (client *Client) DeleteOSSIngestion(project *string, ossIngestionName *string) (_result *DeleteOSSIngestionResponse, _err error) {
@@ -21502,7 +22440,7 @@ func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string
 
 // Summary:
 //
-// 删除定时SQL任务
+// Deletes a Scheduled SQL job.
 //
 // @param headers - map
 //
@@ -21538,7 +22476,7 @@ func (client *Client) DeleteScheduledSQLWithOptions(project *string, scheduledSQ
 
 // Summary:
 //
-// 删除定时SQL任务
+// Deletes a Scheduled SQL job.
 //
 // @return DeleteScheduledSQLResponse
 func (client *Client) DeleteScheduledSQL(project *string, scheduledSQLName *string) (_result *DeleteScheduledSQLResponse, _err error) {
@@ -21555,7 +22493,7 @@ func (client *Client) DeleteScheduledSQL(project *string, scheduledSQLName *stri
 
 // Summary:
 //
-// 删除StoreView
+// Deletes a dataset by using the name of the dataset.
 //
 // @param headers - map
 //
@@ -21591,7 +22529,7 @@ func (client *Client) DeleteStoreViewWithOptions(project *string, name *string, 
 
 // Summary:
 //
-// 删除StoreView
+// Deletes a dataset by using the name of the dataset.
 //
 // @return DeleteStoreViewResponse
 func (client *Client) DeleteStoreView(project *string, name *string) (_result *DeleteStoreViewResponse, _err error) {
@@ -21608,7 +22546,7 @@ func (client *Client) DeleteStoreView(project *string, name *string) (_result *D
 
 // Summary:
 //
-// 禁用告警
+// Disables an alert rule.
 //
 // @param headers - map
 //
@@ -21644,7 +22582,7 @@ func (client *Client) DisableAlertWithOptions(project *string, alertName *string
 
 // Summary:
 //
-// 禁用告警
+// Disables an alert rule.
 //
 // @return DisableAlertResponse
 func (client *Client) DisableAlert(project *string, alertName *string) (_result *DisableAlertResponse, _err error) {
@@ -21714,7 +22652,7 @@ func (client *Client) DisableScheduledSQL(project *string, scheduledSQLName *str
 
 // Summary:
 //
-// 启用告警
+// Enables an alert rule.
 //
 // @param headers - map
 //
@@ -21750,7 +22688,7 @@ func (client *Client) EnableAlertWithOptions(project *string, alertName *string,
 
 // Summary:
 //
-// 启用告警
+// Enables an alert rule.
 //
 // @return EnableAlertResponse
 func (client *Client) EnableAlert(project *string, alertName *string) (_result *EnableAlertResponse, _err error) {
@@ -21820,7 +22758,7 @@ func (client *Client) EnableScheduledSQL(project *string, scheduledSQLName *stri
 
 // Summary:
 //
-// GetAlert
+// Queries the information about an alert rule.
 //
 // @param headers - map
 //
@@ -21856,7 +22794,7 @@ func (client *Client) GetAlertWithOptions(project *string, alertName *string, he
 
 // Summary:
 //
-// GetAlert
+// Queries the information about an alert rule.
 //
 // @return GetAlertResponse
 func (client *Client) GetAlert(project *string, alertName *string) (_result *GetAlertResponse, _err error) {
@@ -21873,7 +22811,7 @@ func (client *Client) GetAlert(project *string, alertName *string) (_result *Get
 
 // Summary:
 //
-// Queries data in a dataset based on the unique identifier of the data.
+// Queries data in datasets based on the unique identifier of the data.
 //
 // @param headers - map
 //
@@ -21906,7 +22844,7 @@ func (client *Client) GetAnnotationDataWithOptions(datasetId *string, annotation
 
 // Summary:
 //
-// Queries data in a dataset based on the unique identifier of the data.
+// Queries data in datasets based on the unique identifier of the data.
 //
 // @return GetAnnotationDataResponse
 func (client *Client) GetAnnotationData(datasetId *string, annotationdataId *string) (_result *GetAnnotationDataResponse, _err error) {
@@ -22373,9 +23311,31 @@ func (client *Client) GetConfig(project *string, configName *string) (_result *G
 //
 // Description:
 //
-//   You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+// ### Usage notes
+//
+// 	- You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
 //
 // 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+//
+// 	- The values of the pack_id and pack_meta fields are obtained before you query logs. The fields are internal fields, and you can obtain the values by using the debugging feature of your browser in the Simple Log Service console.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:GetLogStoreContextLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
 //
 // @param request - GetContextLogsRequest
 //
@@ -22443,9 +23403,31 @@ func (client *Client) GetContextLogsWithOptions(project *string, logstore *strin
 //
 // Description:
 //
-//   You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+// ### Usage notes
+//
+// 	- You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
 //
 // 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// 	- Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+//
+// 	- The values of the pack_id and pack_meta fields are obtained before you query logs. The fields are internal fields, and you can obtain the values by using the debugging feature of your browser in the Simple Log Service console.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:GetLogStoreContextLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
 //
 // @param request - GetContextLogsRequest
 //
@@ -23127,7 +24109,7 @@ func (client *Client) GetLogStore(project *string, logstore *string) (_result *G
 
 // Summary:
 //
-// 获取LogStore计量模式
+// Queries the billing mode of a Logstore.
 //
 // @param headers - map
 //
@@ -23163,7 +24145,7 @@ func (client *Client) GetLogStoreMeteringModeWithOptions(project *string, logsto
 
 // Summary:
 //
-// 获取LogStore计量模式
+// Queries the billing mode of a Logstore.
 //
 // @return GetLogStoreMeteringModeResponse
 func (client *Client) GetLogStoreMeteringMode(project *string, logstore *string) (_result *GetLogStoreMeteringModeResponse, _err error) {
@@ -23380,19 +24362,15 @@ func (client *Client) GetLogs(project *string, logstore *string, request *GetLog
 
 // Summary:
 //
-// Queries the raw log data in a Logstore of a project. The returned result shows the raw log data in a specific time range. The returned results are compressed and transmitted.
+// Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
 //
 // Description:
 //
-//   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//   You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
 //
-// 	- If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+// 	- You can call this operation by using Simple Log Service SDK for Go or Java.
 //
-// 	- After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
-//
-// 1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
-//
-// 2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval [-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+// 	- For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
 //
 // @param request - GetLogsV2Request
 //
@@ -23489,19 +24467,15 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 
 // Summary:
 //
-// Queries the raw log data in a Logstore of a project. The returned result shows the raw log data in a specific time range. The returned results are compressed and transmitted.
+// Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
 //
 // Description:
 //
-//   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//   You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
 //
-// 	- If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+// 	- You can call this operation by using Simple Log Service SDK for Go or Java.
 //
-// 	- After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
-//
-// 1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
-//
-// 2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval [-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+// 	- For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
 //
 // @param request - GetLogsV2Request
 //
@@ -23711,7 +24685,60 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 
 // Summary:
 //
-// 获取 MetricStore 计量模式
+// 查询时序库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetricStoreResponse
+func (client *Client) GetMetricStoreWithOptions(project *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMetricStoreResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMetricStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/metricstores/" + tea.StringValue(name)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("none"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMetricStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询时序库
+//
+// @return GetMetricStoreResponse
+func (client *Client) GetMetricStore(project *string, name *string) (_result *GetMetricStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMetricStoreResponse{}
+	_body, _err := client.GetMetricStoreWithOptions(project, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the billing mode of a Metricstore.
 //
 // @param headers - map
 //
@@ -23747,7 +24774,7 @@ func (client *Client) GetMetricStoreMeteringModeWithOptions(project *string, met
 
 // Summary:
 //
-// 获取 MetricStore 计量模式
+// Queries the billing mode of a Metricstore.
 //
 // @return GetMetricStoreMeteringModeResponse
 func (client *Client) GetMetricStoreMeteringMode(project *string, metricStore *string) (_result *GetMetricStoreMeteringModeResponse, _err error) {
@@ -23870,7 +24897,7 @@ func (client *Client) GetOSSHDFSExport(project *string, ossExportName *string) (
 
 // Summary:
 //
-// 获取oss导入任务信息
+// Queries the information about an Object Storage Service (OSS) data import job.
 //
 // @param headers - map
 //
@@ -23906,7 +24933,7 @@ func (client *Client) GetOSSIngestionWithOptions(project *string, ossIngestionNa
 
 // Summary:
 //
-// 获取oss导入任务信息
+// Queries the information about an Object Storage Service (OSS) data import job.
 //
 // @return GetOSSIngestionResponse
 func (client *Client) GetOSSIngestion(project *string, ossIngestionName *string) (_result *GetOSSIngestionResponse, _err error) {
@@ -24265,7 +25292,7 @@ func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (
 
 // Summary:
 //
-// 查看定时SQL任务
+// Queries the information about a Scheduled SQL job.
 //
 // @param headers - map
 //
@@ -24301,7 +25328,7 @@ func (client *Client) GetScheduledSQLWithOptions(project *string, scheduledSQLNa
 
 // Summary:
 //
-// 查看定时SQL任务
+// Queries the information about a Scheduled SQL job.
 //
 // @return GetScheduledSQLResponse
 func (client *Client) GetScheduledSQL(project *string, scheduledSQLName *string) (_result *GetScheduledSQLResponse, _err error) {
@@ -24318,7 +25345,7 @@ func (client *Client) GetScheduledSQL(project *string, scheduledSQLName *string)
 
 // Summary:
 //
-// getSlsService
+// Queries the activation status of Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
 //
 // @param headers - map
 //
@@ -24351,7 +25378,7 @@ func (client *Client) GetSlsServiceWithOptions(headers map[string]*string, runti
 
 // Summary:
 //
-// getSlsService
+// Queries the activation status of Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
 //
 // @return GetSlsServiceResponse
 func (client *Client) GetSlsService() (_result *GetSlsServiceResponse, _err error) {
@@ -24368,7 +25395,7 @@ func (client *Client) GetSlsService() (_result *GetSlsServiceResponse, _err erro
 
 // Summary:
 //
-// 查询独享sql实例
+// Queries the configurations of the Dedicated SQL feature.
 //
 // @param headers - map
 //
@@ -24404,7 +25431,7 @@ func (client *Client) GetSqlInstanceWithOptions(project *string, headers map[str
 
 // Summary:
 //
-// 查询独享sql实例
+// Queries the configurations of the Dedicated SQL feature.
 //
 // @return GetSqlInstanceResponse
 func (client *Client) GetSqlInstance(project *string) (_result *GetSqlInstanceResponse, _err error) {
@@ -24421,7 +25448,7 @@ func (client *Client) GetSqlInstance(project *string) (_result *GetSqlInstanceRe
 
 // Summary:
 //
-// 查询StoreView
+// Queries the configurations of a dataset by using the name of the dataset.
 //
 // @param headers - map
 //
@@ -24457,7 +25484,7 @@ func (client *Client) GetStoreViewWithOptions(project *string, name *string, hea
 
 // Summary:
 //
-// 查询StoreView
+// Queries the configurations of a dataset by using the name of the dataset.
 //
 // @return GetStoreViewResponse
 func (client *Client) GetStoreView(project *string, name *string) (_result *GetStoreViewResponse, _err error) {
@@ -24474,7 +25501,7 @@ func (client *Client) GetStoreView(project *string, name *string) (_result *GetS
 
 // Summary:
 //
-// 查询StoreView索引
+// Queries the indexes of a dataset by using the name of the dataset. Only datasets of the logstore type are supported.
 //
 // @param headers - map
 //
@@ -24510,7 +25537,7 @@ func (client *Client) GetStoreViewIndexWithOptions(project *string, name *string
 
 // Summary:
 //
-// 查询StoreView索引
+// Queries the indexes of a dataset by using the name of the dataset. Only datasets of the logstore type are supported.
 //
 // @return GetStoreViewIndexResponse
 func (client *Client) GetStoreViewIndex(project *string, name *string) (_result *GetStoreViewIndexResponse, _err error) {
@@ -24527,7 +25554,7 @@ func (client *Client) GetStoreViewIndex(project *string, name *string) (_result 
 
 // Summary:
 //
-// 查询告警列表
+// Queries a list of alert rules in a project.
 //
 // @param request - ListAlertsRequest
 //
@@ -24583,7 +25610,7 @@ func (client *Client) ListAlertsWithOptions(project *string, request *ListAlerts
 
 // Summary:
 //
-// 查询告警列表
+// Queries a list of alert rules in a project.
 //
 // @param request - ListAlertsRequest
 //
@@ -24808,6 +25835,10 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 //
 // 通过调用ListCollectionPolicies接口查看配置的日志采集规则
 //
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+//
 // @param request - ListCollectionPoliciesRequest
 //
 // @param headers - map
@@ -24876,6 +25907,10 @@ func (client *Client) ListCollectionPoliciesWithOptions(request *ListCollectionP
 // Summary:
 //
 // 通过调用ListCollectionPolicies接口查看配置的日志采集规则
+//
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
 //
 // @param request - ListCollectionPoliciesRequest
 //
@@ -25770,6 +26805,85 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 
 // Summary:
 //
+// 查询时序库
+//
+// @param request - ListMetricStoresRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetricStoresResponse
+func (client *Client) ListMetricStoresWithOptions(project *string, request *ListMetricStoresRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMetricStoresResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMetricStores"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/metricstores"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("none"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMetricStoresResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询时序库
+//
+// @param request - ListMetricStoresRequest
+//
+// @return ListMetricStoresResponse
+func (client *Client) ListMetricStores(project *string, request *ListMetricStoresRequest) (_result *ListMetricStoresResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMetricStoresResponse{}
+	_body, _err := client.ListMetricStoresWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出OSS投递任务
 //
 // @param request - ListOSSExportsRequest
@@ -25920,7 +27034,7 @@ func (client *Client) ListOSSHDFSExports(project *string, request *ListOSSHDFSEx
 
 // Summary:
 //
-// 列出oss导入任务
+// Queries a list of Object Storage Service (OSS) data import jobs in a project.
 //
 // @param request - ListOSSIngestionsRequest
 //
@@ -25976,7 +27090,7 @@ func (client *Client) ListOSSIngestionsWithOptions(project *string, request *Lis
 
 // Summary:
 //
-// 列出oss导入任务
+// Queries a list of Object Storage Service (OSS) data import jobs in a project.
 //
 // @param request - ListOSSIngestionsRequest
 //
@@ -26170,7 +27284,7 @@ func (client *Client) ListSavedSearch(project *string, request *ListSavedSearchR
 
 // Summary:
 //
-// 列举定时SQL任务
+// Queries a list of Scheduled SQL jobs in a project.
 //
 // @param request - ListScheduledSQLsRequest
 //
@@ -26226,7 +27340,7 @@ func (client *Client) ListScheduledSQLsWithOptions(project *string, request *Lis
 
 // Summary:
 //
-// 列举定时SQL任务
+// Queries a list of Scheduled SQL jobs in a project.
 //
 // @param request - ListScheduledSQLsRequest
 //
@@ -26298,7 +27412,7 @@ func (client *Client) ListShards(project *string, logstore *string) (_result *Li
 
 // Summary:
 //
-// 查询StoreView列表
+// Queries datasets in a project.
 //
 // @param request - ListStoreViewsRequest
 //
@@ -26358,7 +27472,7 @@ func (client *Client) ListStoreViewsWithOptions(project *string, request *ListSt
 
 // Summary:
 //
-// 查询StoreView列表
+// Queries datasets in a project.
 //
 // @param request - ListStoreViewsRequest
 //
@@ -26560,7 +27674,7 @@ func (client *Client) MergeShard(project *string, logstore *string, shard *strin
 
 // Summary:
 //
-// openSlsService
+// Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
 //
 // @param headers - map
 //
@@ -26593,7 +27707,7 @@ func (client *Client) OpenSlsServiceWithOptions(headers map[string]*string, runt
 
 // Summary:
 //
-// openSlsService
+// Activates Simple Log Service. You must activate Simple Log Service before you can use it to collect and manage logs.
 //
 // @return OpenSlsServiceResponse
 func (client *Client) OpenSlsService() (_result *OpenSlsServiceResponse, _err error) {
@@ -27402,7 +28516,7 @@ func (client *Client) StartOSSHDFSExport(project *string, ossExportName *string)
 
 // Summary:
 //
-// 启动OSS导入任务
+// Starts an Object Storage Service (OSS) data import job.
 //
 // @param headers - map
 //
@@ -27438,7 +28552,7 @@ func (client *Client) StartOSSIngestionWithOptions(project *string, ossIngestion
 
 // Summary:
 //
-// 启动OSS导入任务
+// Starts an Object Storage Service (OSS) data import job.
 //
 // @return StartOSSIngestionResponse
 func (client *Client) StartOSSIngestion(project *string, ossIngestionName *string) (_result *StartOSSIngestionResponse, _err error) {
@@ -27614,7 +28728,7 @@ func (client *Client) StopOSSHDFSExport(project *string, ossExportName *string) 
 
 // Summary:
 //
-// 停止OSS导入任务
+// Stops an Object Storage Service (OSS) data import job.
 //
 // @param headers - map
 //
@@ -27650,7 +28764,7 @@ func (client *Client) StopOSSIngestionWithOptions(project *string, ossIngestionN
 
 // Summary:
 //
-// 停止OSS导入任务
+// Stops an Object Storage Service (OSS) data import job.
 //
 // @return StopOSSIngestionResponse
 func (client *Client) StopOSSIngestion(project *string, ossIngestionName *string) (_result *StopOSSIngestionResponse, _err error) {
@@ -27907,7 +29021,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新告警
+// Updates an alert rule.
 //
 // @param request - UpdateAlertRequest
 //
@@ -27967,7 +29081,7 @@ func (client *Client) UpdateAlertWithOptions(project *string, alertName *string,
 
 // Summary:
 //
-// 更新告警
+// Updates an alert rule.
 //
 // @param request - UpdateAlertRequest
 //
@@ -29105,6 +30219,85 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 
 // Summary:
 //
+// 更新时序库
+//
+// @param request - UpdateMetricStoreRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMetricStoreResponse
+func (client *Client) UpdateMetricStoreWithOptions(project *string, name *string, request *UpdateMetricStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMetricStoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoSplit)) {
+		body["autoSplit"] = request.AutoSplit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSplitShard)) {
+		body["maxSplitShard"] = request.MaxSplitShard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		body["ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMetricStore"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/metricstores/" + tea.StringValue(name)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateMetricStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新时序库
+//
+// @param request - UpdateMetricStoreRequest
+//
+// @return UpdateMetricStoreResponse
+func (client *Client) UpdateMetricStore(project *string, name *string, request *UpdateMetricStoreRequest) (_result *UpdateMetricStoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMetricStoreResponse{}
+	_body, _err := client.UpdateMetricStoreWithOptions(project, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新 MetricStore 计量模式
 //
 // @param request - UpdateMetricStoreMeteringModeRequest
@@ -29494,7 +30687,21 @@ func (client *Client) UpdateOssExternalStore(project *string, externalStoreName 
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:UpdateProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @param request - UpdateProjectRequest
 //
@@ -29548,7 +30755,21 @@ func (client *Client) UpdateProjectWithOptions(project *string, request *UpdateP
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:UpdateProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @param request - UpdateProjectRequest
 //
@@ -29733,7 +30954,7 @@ func (client *Client) UpdateSavedSearch(project *string, savedsearchName *string
 
 // Summary:
 //
-// 更新定时SQL任务
+// Updates a Scheduled SQL job.
 //
 // @param request - UpdateScheduledSQLRequest
 //
@@ -29793,7 +31014,7 @@ func (client *Client) UpdateScheduledSQLWithOptions(project *string, scheduledSQ
 
 // Summary:
 //
-// 更新定时SQL任务
+// Updates a Scheduled SQL job.
 //
 // @param request - UpdateScheduledSQLRequest
 //
@@ -29812,7 +31033,7 @@ func (client *Client) UpdateScheduledSQL(project *string, scheduledSQLName *stri
 
 // Summary:
 //
-// 更新独享sql实例
+// Updates the configurations of the Dedicated SQL feature.
 //
 // @param request - UpdateSqlInstanceRequest
 //
@@ -29864,7 +31085,7 @@ func (client *Client) UpdateSqlInstanceWithOptions(project *string, request *Upd
 
 // Summary:
 //
-// 更新独享sql实例
+// Updates the configurations of the Dedicated SQL feature.
 //
 // @param request - UpdateSqlInstanceRequest
 //
@@ -29883,7 +31104,7 @@ func (client *Client) UpdateSqlInstance(project *string, request *UpdateSqlInsta
 
 // Summary:
 //
-// 更新StoreView
+// Updates the configurations of a dataset.
 //
 // @param request - UpdateStoreViewRequest
 //
@@ -29935,7 +31156,7 @@ func (client *Client) UpdateStoreViewWithOptions(project *string, name *string, 
 
 // Summary:
 //
-// 更新StoreView
+// Updates the configurations of a dataset.
 //
 // @param request - UpdateStoreViewRequest
 //
