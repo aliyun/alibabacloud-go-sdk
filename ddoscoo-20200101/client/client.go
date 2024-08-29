@@ -208,11 +208,23 @@ func (s *AddAutoCcWhitelistResponse) SetBody(v *AddAutoCcWhitelistResponseBody) 
 }
 
 type AssociateWebCertRequest struct {
-	Cert           *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	CertId         *int32  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	Cert   *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	CertId *int32  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+	//
+	// >  You can specify only one of this parameter and the CertId parameter.
+	//
+	// example:
+	//
+	// 9430680-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertRegion     *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// The region of the certificate. Valid values: **cn-hangzhou*	- and **ap-southeast-1**. Default value: **cn-hangzhou**.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
 	// This parameter is required.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -273,7 +285,7 @@ func (s *AssociateWebCertRequest) SetResourceGroupId(v string) *AssociateWebCert
 }
 
 type AssociateWebCertResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2231,7 +2243,7 @@ func (s *CreateNetworkRulesRequest) SetNetworkRules(v string) *CreateNetworkRule
 }
 
 type CreateNetworkRulesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2317,7 +2329,8 @@ type CreatePortRequest struct {
 	// example:
 	//
 	// ddoscoo-cn-st21zbyq****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
 	// An array that consists of the IP addresses of origin servers.
 	//
 	// This parameter is required.
@@ -2349,6 +2362,11 @@ func (s *CreatePortRequest) SetFrontendProtocol(v string) *CreatePortRequest {
 
 func (s *CreatePortRequest) SetInstanceId(v string) *CreatePortRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreatePortRequest) SetProxyEnable(v int64) *CreatePortRequest {
+	s.ProxyEnable = &v
 	return s
 }
 
@@ -4176,7 +4194,7 @@ func (s *DeleteWebCCRuleRequest) SetResourceGroupId(v string) *DeleteWebCCRuleRe
 }
 
 type DeleteWebCCRuleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -5470,7 +5488,7 @@ func (s *DescribeAutoCcWhitelistResponse) SetBody(v *DescribeAutoCcWhitelistResp
 }
 
 type DescribeBackSourceCidrRequest struct {
-	// The IP version of the back-to-origin CIDR block.
+	// The IP version of the back-to-origin CIDR blocks.
 	//
 	// 	- **Ipv4**
 	//
@@ -12117,9 +12135,9 @@ func (s *DescribeInstanceDetailsRequest) SetInstanceIds(v []*string) *DescribeIn
 }
 
 type DescribeInstanceDetailsResponseBody struct {
-	// The IP address and ISP line information about the instance.
+	// The IP address and ISP line information about the Anti-DDoS Proxy instance.
 	InstanceDetails []*DescribeInstanceDetailsResponseBodyInstanceDetails `json:"InstanceDetails,omitempty" xml:"InstanceDetails,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -12146,7 +12164,7 @@ func (s *DescribeInstanceDetailsResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 type DescribeInstanceDetailsResponseBodyInstanceDetails struct {
-	// The information about the IP address of the instance.
+	// The IP address information about the Anti-DDoS Proxy instance.
 	EipInfos []*DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos `json:"EipInfos,omitempty" xml:"EipInfos,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
@@ -12186,13 +12204,23 @@ func (s *DescribeInstanceDetailsResponseBodyInstanceDetails) SetLine(v string) *
 }
 
 type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos struct {
+	// Indicates whether a custom certificate is configured.
+	//
+	// example:
+	//
+	// true
 	CertConfigured *bool `json:"CertConfigured,omitempty" xml:"CertConfigured,omitempty"`
 	// The IP address of the instance.
 	//
 	// example:
 	//
 	// 203.117.XX.XX
-	Eip             *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// The type of the instance.
+	//
+	// example:
+	//
+	// default
 	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
 	// The IP address-based forwarding mode of the instance. Valid values:
 	//
@@ -12213,8 +12241,13 @@ type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos struct {
 	// example:
 	//
 	// Ipv4
-	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Ssl13Enabled *bool   `json:"Ssl13Enabled,omitempty" xml:"Ssl13Enabled,omitempty"`
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// Indicates whether the TLS 1.3 version is supported.
+	//
+	// example:
+	//
+	// false
+	Ssl13Enabled *bool `json:"Ssl13Enabled,omitempty" xml:"Ssl13Enabled,omitempty"`
 	// The status of the instance. Valid values:
 	//
 	// 	- **normal**: indicates that the instance is normal.
@@ -12230,7 +12263,12 @@ type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos struct {
 	// example:
 	//
 	// normal
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Transport Layer Security (TLS) version that is configured.
+	//
+	// example:
+	//
+	// tls1.2
 	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
@@ -15322,7 +15360,8 @@ type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	// example:
 	//
 	// true
-	IsAutoCreate *bool `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
+	IsAutoCreate      *bool  `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
+	PayloadRuleEnable *int64 `json:"PayloadRuleEnable,omitempty" xml:"PayloadRuleEnable,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
 	// 	- **tcp**
@@ -15332,7 +15371,9 @@ type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	// example:
 	//
 	// tcp
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
 	// The IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The remarks of the port forwarding rule.
@@ -15371,8 +15412,23 @@ func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetIsAutoCreate(v bool) *
 	return s
 }
 
+func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetPayloadRuleEnable(v int64) *DescribeNetworkRulesResponseBodyNetworkRules {
+	s.PayloadRuleEnable = &v
+	return s
+}
+
 func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetProtocol(v string) *DescribeNetworkRulesResponseBodyNetworkRules {
 	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetProxyEnable(v int64) *DescribeNetworkRulesResponseBodyNetworkRules {
+	s.ProxyEnable = &v
+	return s
+}
+
+func (s *DescribeNetworkRulesResponseBodyNetworkRules) SetProxyStatus(v string) *DescribeNetworkRulesResponseBodyNetworkRules {
+	s.ProxyStatus = &v
 	return s
 }
 
@@ -21098,19 +21154,19 @@ func (s *DescribeWebCCRulesRequest) SetResourceGroupId(v string) *DescribeWebCCR
 }
 
 type DescribeWebCCRulesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EAED912D-909E-45F0-AF74-AC0CCDCAE314
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned custom frequency control rules.
+	// The total number of custom frequency control rules.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// An array that consists of the details of the custom frequency control rule.
+	// The custom frequency control rule.
 	WebCCRules []*DescribeWebCCRulesResponseBodyWebCCRules `json:"WebCCRules,omitempty" xml:"WebCCRules,omitempty" type:"Repeated"`
 }
 
@@ -21138,23 +21194,23 @@ func (s *DescribeWebCCRulesResponseBody) SetWebCCRules(v []*DescribeWebCCRulesRe
 }
 
 type DescribeWebCCRulesResponseBodyWebCCRules struct {
-	// The blocking type. Valid values:
+	// The action triggered if the rule is matched. Valid values:
 	//
-	// 	- **close**: blocks requests.
+	// 	- **close**: The requests that match the rule are blocked.
 	//
-	// 	- **captcha**: enables Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification.
+	// 	- **captcha**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
 	//
 	// example:
 	//
 	// close
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	// The number of requests that are allowed from an individual IP address. Valid values: **2*	- to **2000**.
+	// The number of requests that are allowed from a single IP address. Valid values: **2*	- to **2000**.
 	//
 	// example:
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The check intervals. Valid values: **5*	- to **10800**. Unit: seconds.
+	// The check interval. Valid values: **5*	- to **10800**. Unit: seconds.
 	//
 	// example:
 	//
@@ -21162,9 +21218,9 @@ type DescribeWebCCRulesResponseBodyWebCCRules struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The match mode. Valid values:
 	//
-	// 	- **prefix**: prefix match
+	// 	- **prefix**: prefix match.
 	//
-	// 	- **match**: exact match
+	// 	- **match**: exact match.
 	//
 	// example:
 	//
@@ -21176,7 +21232,7 @@ type DescribeWebCCRulesResponseBodyWebCCRules struct {
 	//
 	// wq
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The blocking duration. Valid values: **1*	- to **1440**. Unit: minutes.
+	// The validity period. Valid values: **1*	- to **1440**. Unit: minutes.
 	//
 	// example:
 	//
@@ -23881,7 +23937,7 @@ func (s *DisableWebCCRequest) SetResourceGroupId(v string) *DisableWebCCRequest 
 }
 
 type DisableWebCCResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -23969,7 +24025,7 @@ func (s *DisableWebCCRuleRequest) SetResourceGroupId(v string) *DisableWebCCRule
 }
 
 type DisableWebCCRuleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -24552,7 +24608,7 @@ func (s *EnableWebCCRuleRequest) SetResourceGroupId(v string) *EnableWebCCRuleRe
 }
 
 type EnableWebCCRuleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -26301,7 +26357,8 @@ type ModifyPortRequest struct {
 	// example:
 	//
 	// ddoscoo-cn-st21zbyq****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
 	// An array that consists of the IP addresses of origin servers.
 	//
 	// This parameter is required.
@@ -26333,6 +26390,11 @@ func (s *ModifyPortRequest) SetFrontendProtocol(v string) *ModifyPortRequest {
 
 func (s *ModifyPortRequest) SetInstanceId(v string) *ModifyPortRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyPortRequest) SetProxyEnable(v int64) *ModifyPortRequest {
+	s.ProxyEnable = &v
 	return s
 }
 
@@ -27126,7 +27188,7 @@ func (s *ModifyWebAIProtectModeRequest) SetResourceGroupId(v string) *ModifyWebA
 }
 
 type ModifyWebAIProtectModeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -28483,7 +28545,7 @@ func (s *ModifyWebPreciseAccessSwitchRequest) SetResourceGroupId(v string) *Modi
 }
 
 type ModifyWebPreciseAccessSwitchResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30332,6 +30394,10 @@ func (client *Client) CreatePortWithOptions(request *CreatePortRequest, runtime 
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProxyEnable)) {
+		query["ProxyEnable"] = request.ProxyEnable
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RealServers)) {
 		query["RealServers"] = request.RealServers
 	}
@@ -31435,7 +31501,7 @@ func (client *Client) DeleteTagResources(request *DeleteTagResourcesRequest) (_r
 //
 // Summary:
 //
-// Deletes custom frequency control rules of a website.
+// Deletes a custom frequency control rule of a website.
 //
 // @param request - DeleteWebCCRuleRequest
 //
@@ -31488,7 +31554,7 @@ func (client *Client) DeleteWebCCRuleWithOptions(request *DeleteWebCCRuleRequest
 //
 // Summary:
 //
-// Deletes custom frequency control rules of a website.
+// Deletes a custom frequency control rule of a website.
 //
 // @param request - DeleteWebCCRuleRequest
 //
@@ -32147,7 +32213,7 @@ func (client *Client) DescribeAutoCcWhitelist(request *DescribeAutoCcWhitelistRe
 
 // Summary:
 //
-// Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+// Queries the back-to-origin CIDR blocks of Anti-DDoS Proxy.
 //
 // @param request - DescribeBackSourceCidrRequest
 //
@@ -32197,7 +32263,7 @@ func (client *Client) DescribeBackSourceCidrWithOptions(request *DescribeBackSou
 
 // Summary:
 //
-// Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+// Queries the back-to-origin CIDR blocks of Anti-DDoS Proxy.
 //
 // @param request - DescribeBackSourceCidrRequest
 //
@@ -38845,7 +38911,7 @@ func (client *Client) DisableWebAccessLogConfig(request *DisableWebAccessLogConf
 
 // Summary:
 //
-// Disables the Frequency Control policy for a website.
+// Disables frequency control for a website.
 //
 // @param request - DisableWebCCRequest
 //
@@ -38891,7 +38957,7 @@ func (client *Client) DisableWebCCWithOptions(request *DisableWebCCRequest, runt
 
 // Summary:
 //
-// Disables the Frequency Control policy for a website.
+// Disables frequency control for a website.
 //
 // @param request - DisableWebCCRequest
 //
@@ -38909,7 +38975,7 @@ func (client *Client) DisableWebCC(request *DisableWebCCRequest) (_result *Disab
 
 // Summary:
 //
-// Turns off the Custom Rule switch of the Frequency Control policy for a website.
+// Disables custom frequency control rules for a website.
 //
 // @param request - DisableWebCCRuleRequest
 //
@@ -38955,7 +39021,7 @@ func (client *Client) DisableWebCCRuleWithOptions(request *DisableWebCCRuleReque
 
 // Summary:
 //
-// Turns off the Custom Rule switch of the Frequency Control policy for a website.
+// Disables custom frequency control rules for a website.
 //
 // @param request - DisableWebCCRuleRequest
 //
@@ -39341,7 +39407,7 @@ func (client *Client) EnableWebCC(request *EnableWebCCRequest) (_result *EnableW
 
 // Summary:
 //
-// Turns on the Custom Rule switch of the Frequency Control policy for a website.
+// Enables custom frequency control rules for a website.
 //
 // @param request - EnableWebCCRuleRequest
 //
@@ -39387,7 +39453,7 @@ func (client *Client) EnableWebCCRuleWithOptions(request *EnableWebCCRuleRequest
 
 // Summary:
 //
-// Turns on the Custom Rule switch of the Frequency Control policy for a website.
+// Enables custom frequency control rules for a website.
 //
 // @param request - EnableWebCCRuleRequest
 //
@@ -40526,6 +40592,10 @@ func (client *Client) ModifyPortWithOptions(request *ModifyPortRequest, runtime 
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProxyEnable)) {
+		query["ProxyEnable"] = request.ProxyEnable
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RealServers)) {
 		query["RealServers"] = request.RealServers
 	}
@@ -40929,7 +40999,7 @@ func (client *Client) ModifyTlsConfig(request *ModifyTlsConfigRequest) (_result 
 
 // Summary:
 //
-// Changes the mode of the Intelligent Protection policy for a website.
+// Changes the mode of the intelligent protection feature for a website.
 //
 // @param request - ModifyWebAIProtectModeRequest
 //
@@ -40979,7 +41049,7 @@ func (client *Client) ModifyWebAIProtectModeWithOptions(request *ModifyWebAIProt
 
 // Summary:
 //
-// Changes the mode of the Intelligent Protection policy for a website.
+// Changes the mode of the intelligent protection feature for a website.
 //
 // @param request - ModifyWebAIProtectModeRequest
 //
@@ -41803,7 +41873,7 @@ func (client *Client) ModifyWebPreciseAccessRule(request *ModifyWebPreciseAccess
 
 // Summary:
 //
-// Enables or disables the Accurate Access Control policy for a website.
+// Enables or disables accurate access control for a website.
 //
 // @param request - ModifyWebPreciseAccessSwitchRequest
 //
@@ -41853,7 +41923,7 @@ func (client *Client) ModifyWebPreciseAccessSwitchWithOptions(request *ModifyWeb
 
 // Summary:
 //
-// Enables or disables the Accurate Access Control policy for a website.
+// Enables or disables accurate access control for a website.
 //
 // @param request - ModifyWebPreciseAccessSwitchRequest
 //
