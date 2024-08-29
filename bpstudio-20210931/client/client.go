@@ -10,6 +10,8 @@ import (
 )
 
 type AppFailBackRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// 61ZW1DY5Y3FSAOO2
@@ -30,18 +32,26 @@ func (s *AppFailBackRequest) SetApplicationId(v string) *AppFailBackRequest {
 }
 
 type AppFailBackResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The disaster recovery switchback task ID.
+	//
 	// example:
 	//
 	// 3309
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OKITHEVRQCN6ULQG
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7036DDBE-0ABA-52D7-A39D-75E511970F07
@@ -106,10 +116,14 @@ func (s *AppFailBackResponse) SetBody(v *AppFailBackResponseBody) *AppFailBackRe
 }
 
 type AppFailOverRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// BE68D71ZY5YYIU9R
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The destination zone to which you want to switch the disaster recovery application.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
@@ -135,15 +149,22 @@ func (s *AppFailOverRequest) SetFailZone(v string) *AppFailOverRequest {
 }
 
 type AppFailOverResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The disaster recovery switchover task ID.
+	//
 	// example:
 	//
 	// 7441
-	Data    *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9656C816-1E9A-58D2-86D5-710678D61AF1
@@ -393,7 +414,7 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// {"variable1":"1"}
-	Variables map[string]*string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	Variables map[string]interface{} `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -439,7 +460,7 @@ func (s *CreateApplicationRequest) SetTemplateId(v string) *CreateApplicationReq
 	return s
 }
 
-func (s *CreateApplicationRequest) SetVariables(v map[string]*string) *CreateApplicationRequest {
+func (s *CreateApplicationRequest) SetVariables(v map[string]interface{}) *CreateApplicationRequest {
 	s.Variables = v
 	return s
 }
@@ -2041,6 +2062,166 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 	return s
 }
 
+type GetApplicationVariables4FailRequest struct {
+	// example:
+	//
+	// Q2P4O9YSOKCT35L9
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetApplicationVariables4FailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationVariables4FailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationVariables4FailRequest) SetAppId(v string) *GetApplicationVariables4FailRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetApplicationVariables4FailResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetApplicationVariables4FailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// BFB7F5C8-FE7A-06CA-9F87-ABBF6B848F0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetApplicationVariables4FailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationVariables4FailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationVariables4FailResponseBody) SetCode(v int32) *GetApplicationVariables4FailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBody) SetData(v []*GetApplicationVariables4FailResponseBodyData) *GetApplicationVariables4FailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBody) SetMessage(v string) *GetApplicationVariables4FailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBody) SetRequestId(v string) *GetApplicationVariables4FailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetApplicationVariables4FailResponseBodyData struct {
+	// example:
+	//
+	// instance_name
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// example:
+	//
+	// cadt-app-01
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// ${name}
+	PlaceHolder *string `json:"PlaceHolder,omitempty" xml:"PlaceHolder,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cadt-app-01
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// ${name}
+	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+}
+
+func (s GetApplicationVariables4FailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationVariables4FailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationVariables4FailResponseBodyData) SetAttribute(v string) *GetApplicationVariables4FailResponseBodyData {
+	s.Attribute = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBodyData) SetDefaultValue(v string) *GetApplicationVariables4FailResponseBodyData {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBodyData) SetPlaceHolder(v string) *GetApplicationVariables4FailResponseBodyData {
+	s.PlaceHolder = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBodyData) SetRegion(v string) *GetApplicationVariables4FailResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBodyData) SetValue(v string) *GetApplicationVariables4FailResponseBodyData {
+	s.Value = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponseBodyData) SetVariable(v string) *GetApplicationVariables4FailResponseBodyData {
+	s.Variable = &v
+	return s
+}
+
+type GetApplicationVariables4FailResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApplicationVariables4FailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApplicationVariables4FailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationVariables4FailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationVariables4FailResponse) SetHeaders(v map[string]*string) *GetApplicationVariables4FailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponse) SetStatusCode(v int32) *GetApplicationVariables4FailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApplicationVariables4FailResponse) SetBody(v *GetApplicationVariables4FailResponseBody) *GetApplicationVariables4FailResponse {
+	s.Body = v
+	return s
+}
+
 type GetExecuteOperationResultRequest struct {
 	// The ID of the operation.
 	//
@@ -2212,6 +2393,8 @@ func (s *GetExecuteOperationResultResponse) SetBody(v *GetExecuteOperationResult
 }
 
 type GetFoTaskStatusRequest struct {
+	// The disaster recovery switchover task ID.
+	//
 	// example:
 	//
 	// 2615
@@ -2232,18 +2415,26 @@ func (s *GetFoTaskStatusRequest) SetTaskId(v int32) *GetFoTaskStatusRequest {
 }
 
 type GetFoTaskStatusResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status of the switchover task.
+	//
 	// example:
 	//
 	// Running
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OKITHEVRQCN6ULQG
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 923692F0-A15B-58B4-BAF4-2AFA4AF46240
@@ -2308,10 +2499,14 @@ func (s *GetFoTaskStatusResponse) SetBody(v *GetFoTaskStatusResponseBody) *GetFo
 }
 
 type GetPotentialFailZonesRequest struct {
+	// Specifies whether the value of this parameter is the ID of a disaster recovery set.
+	//
 	// example:
 	//
 	// true
 	IsPlanId *bool `json:"IsPlanId,omitempty" xml:"IsPlanId,omitempty"`
+	// If you set IsPlanId to false, specify the ID of a disaster recovery application. If you set IsPlanId to true, specify the ID of a disaster recovery set.
+	//
 	// example:
 	//
 	// FS3ATPTOSC4SE1GG
@@ -2337,15 +2532,22 @@ func (s *GetPotentialFailZonesRequest) SetObjectId(v string) *GetPotentialFailZo
 }
 
 type GetPotentialFailZonesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The zones where the current disaster recovery service can be switched.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// The specified ResourceIds are not found in our records.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BFB7F5C8-FE7A-06CA-9F87-ABBF6B848F0C
@@ -2854,6 +3056,8 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type InitAppFailOverRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// 002XWH7MXB8MJRU0
@@ -2874,18 +3078,26 @@ func (s *InitAppFailOverRequest) SetApplicationId(v string) *InitAppFailOverRequ
 }
 
 type InitAppFailOverResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The switchover task ID.
+	//
 	// example:
 	//
 	// 7250
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Unsupported Operation PrepareEvent->FailOverPrepareSuccess FoApp_DDLJK2WM8ETU9JAC
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A07FFDF2-78FA-1B48-9E38-88E833A93187
@@ -3238,16 +3450,21 @@ func (s *ListApplicationResponse) SetBody(v *ListApplicationResponseBody) *ListA
 }
 
 type ListFoCreatedAppsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about disaster recovery plans.
 	Data []*ListFoCreatedAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Cannot find region according to your domain.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -3284,18 +3501,28 @@ func (s *ListFoCreatedAppsResponseBody) SetRequestId(v string) *ListFoCreatedApp
 }
 
 type ListFoCreatedAppsResponseBodyData struct {
+	// 应用ID
+	//
+	// example:
+	//
+	// JIX9NEZUALGS46UI
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The URL of an error report.
+	//
 	// example:
 	//
 	// https://api.aliyun.com/troubleshoot?q=ServiceUnavailable&product=BPStudio&requestId=4CDA03A3-C652-1408-8ABD-7E652A7CBFB6
 	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// The status of the disaster recovery plan.
+	//
 	// example:
 	//
 	// Deployed_Success
 	//
 	// Destroyed_Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListFoCreatedAppsResponseBodyData) String() string {
@@ -3899,6 +4126,104 @@ func (s *ListTemplateResponse) SetStatusCode(v int32) *ListTemplateResponse {
 }
 
 func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ReConfigApplicationRequest struct {
+	// example:
+	//
+	// Q2P4O9YSOKCT35L9
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// {"${instance_type}":"ecs.c6.3xlarge"}
+	Variables *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+}
+
+func (s ReConfigApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReConfigApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReConfigApplicationRequest) SetAppId(v string) *ReConfigApplicationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ReConfigApplicationRequest) SetVariables(v string) *ReConfigApplicationRequest {
+	s.Variables = &v
+	return s
+}
+
+type ReConfigApplicationResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9656C816-1E9A-58D2-86D5-710678D61AF1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReConfigApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReConfigApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReConfigApplicationResponseBody) SetCode(v int32) *ReConfigApplicationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReConfigApplicationResponseBody) SetMessage(v string) *ReConfigApplicationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReConfigApplicationResponseBody) SetRequestId(v string) *ReConfigApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReConfigApplicationResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReConfigApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReConfigApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReConfigApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReConfigApplicationResponse) SetHeaders(v map[string]*string) *ReConfigApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReConfigApplicationResponse) SetStatusCode(v int32) *ReConfigApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReConfigApplicationResponse) SetBody(v *ReConfigApplicationResponseBody) *ReConfigApplicationResponse {
 	s.Body = v
 	return s
 }
@@ -4841,7 +5166,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 容灾应用切回
+// Switches a disaster recovery application back to the primary zone.
+//
+// Description:
+//
+// You can call this operation to switch a disaster recovery application back to the primary zone.
 //
 // @param request - AppFailBackRequest
 //
@@ -4883,7 +5212,11 @@ func (client *Client) AppFailBackWithOptions(request *AppFailBackRequest, runtim
 
 // Summary:
 //
-// 容灾应用切回
+// Switches a disaster recovery application back to the primary zone.
+//
+// Description:
+//
+// You can call this operation to switch a disaster recovery application back to the primary zone.
 //
 // @param request - AppFailBackRequest
 //
@@ -4901,7 +5234,11 @@ func (client *Client) AppFailBack(request *AppFailBackRequest) (_result *AppFail
 
 // Summary:
 //
-// 容灾应用切换
+// Switches a disaster recovery application to another supported zone.
+//
+// Description:
+//
+// You can call this operation to switch a disaster recovery application to another supported zone.
 //
 // @param request - AppFailOverRequest
 //
@@ -4947,7 +5284,11 @@ func (client *Client) AppFailOverWithOptions(request *AppFailOverRequest, runtim
 
 // Summary:
 //
-// 容灾应用切换
+// Switches a disaster recovery application to another supported zone.
+//
+// Description:
+//
+// You can call this operation to switch a disaster recovery application to another supported zone.
 //
 // @param request - AppFailOverRequest
 //
@@ -5513,6 +5854,66 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
+// 获取需要重新配置的变量列表
+//
+// @param request - GetApplicationVariables4FailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationVariables4FailResponse
+func (client *Client) GetApplicationVariables4FailWithOptions(request *GetApplicationVariables4FailRequest, runtime *util.RuntimeOptions) (_result *GetApplicationVariables4FailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplicationVariables4Fail"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationVariables4FailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取需要重新配置的变量列表
+//
+// @param request - GetApplicationVariables4FailRequest
+//
+// @return GetApplicationVariables4FailResponse
+func (client *Client) GetApplicationVariables4Fail(request *GetApplicationVariables4FailRequest) (_result *GetApplicationVariables4FailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApplicationVariables4FailResponse{}
+	_body, _err := client.GetApplicationVariables4FailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Asynchronously queries the result of an operation that is performed on a service instance.
 //
 // @param request - GetExecuteOperationResultRequest
@@ -5577,7 +5978,11 @@ func (client *Client) GetExecuteOperationResult(request *GetExecuteOperationResu
 
 // Summary:
 //
-// 获取容灾切换任务状态
+// Queries the status of a disaster recovery switchover task by task ID.
+//
+// Description:
+//
+// You can call this operation to query the status of a disaster recovery switchover task by task ID.
 //
 // @param request - GetFoTaskStatusRequest
 //
@@ -5619,7 +6024,11 @@ func (client *Client) GetFoTaskStatusWithOptions(request *GetFoTaskStatusRequest
 
 // Summary:
 //
-// 获取容灾切换任务状态
+// Queries the status of a disaster recovery switchover task by task ID.
+//
+// Description:
+//
+// You can call this operation to query the status of a disaster recovery switchover task by task ID.
 //
 // @param request - GetFoTaskStatusRequest
 //
@@ -5637,7 +6046,11 @@ func (client *Client) GetFoTaskStatus(request *GetFoTaskStatusRequest) (_result 
 
 // Summary:
 //
-// 获取容灾服务可切换的可用区列表
+// Queries the zones where the specified disaster recovery service can be switched.
+//
+// Description:
+//
+// You can call this operation to query the zones where the specified disaster recovery service can be switched.
 //
 // @param request - GetPotentialFailZonesRequest
 //
@@ -5683,7 +6096,11 @@ func (client *Client) GetPotentialFailZonesWithOptions(request *GetPotentialFail
 
 // Summary:
 //
-// 获取容灾服务可切换的可用区列表
+// Queries the zones where the specified disaster recovery service can be switched.
+//
+// Description:
+//
+// You can call this operation to query the zones where the specified disaster recovery service can be switched.
 //
 // @param request - GetPotentialFailZonesRequest
 //
@@ -5843,7 +6260,11 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 
 // Summary:
 //
-// 准备应用切换
+// Prepares for application switchover and initiates a switchover task.
+//
+// Description:
+//
+// You can call this operation to prepare for application switchover and initiate a switchover task.
 //
 // @param request - InitAppFailOverRequest
 //
@@ -5885,7 +6306,11 @@ func (client *Client) InitAppFailOverWithOptions(request *InitAppFailOverRequest
 
 // Summary:
 //
-// 准备应用切换
+// Prepares for application switchover and initiates a switchover task.
+//
+// Description:
+//
+// You can call this operation to prepare for application switchover and initiate a switchover task.
 //
 // @param request - InitAppFailOverRequest
 //
@@ -5991,7 +6416,11 @@ func (client *Client) ListApplication(request *ListApplicationRequest) (_result 
 
 // Summary:
 //
-// 获取已经创建的APP
+// Queries disaster recovery plans.
+//
+// Description:
+//
+// You can call this operation to query all disaster recovery plans.
 //
 // @param request - ListFoCreatedAppsRequest
 //
@@ -6022,7 +6451,11 @@ func (client *Client) ListFoCreatedAppsWithOptions(runtime *util.RuntimeOptions)
 
 // Summary:
 //
-// 获取已经创建的APP
+// Queries disaster recovery plans.
+//
+// Description:
+//
+// You can call this operation to query all disaster recovery plans.
 //
 // @return ListFoCreatedAppsResponse
 func (client *Client) ListFoCreatedApps() (_result *ListFoCreatedAppsResponse, _err error) {
@@ -6196,6 +6629,70 @@ func (client *Client) ListTemplate(request *ListTemplateRequest) (_result *ListT
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTemplateResponse{}
 	_body, _err := client.ListTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新配置应用
+//
+// @param request - ReConfigApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReConfigApplicationResponse
+func (client *Client) ReConfigApplicationWithOptions(request *ReConfigApplicationRequest, runtime *util.RuntimeOptions) (_result *ReConfigApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Variables)) {
+		body["Variables"] = request.Variables
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReConfigApplication"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReConfigApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新配置应用
+//
+// @param request - ReConfigApplicationRequest
+//
+// @return ReConfigApplicationResponse
+func (client *Client) ReConfigApplication(request *ReConfigApplicationRequest) (_result *ReConfigApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReConfigApplicationResponse{}
+	_body, _err := client.ReConfigApplicationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
