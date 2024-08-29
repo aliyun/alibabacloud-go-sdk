@@ -15368,8 +15368,6 @@ type DescribeDataBackupsRequest struct {
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 2011-06-01T16:00Z
@@ -15395,8 +15393,6 @@ type DescribeDataBackupsRequest struct {
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -33305,6 +33301,8 @@ type ModifyMasterSpecRequest struct {
 	// 	- 32 CU
 	//
 	// >  You are charged for coordinator node resources of more than 8 compute units (CUs).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
