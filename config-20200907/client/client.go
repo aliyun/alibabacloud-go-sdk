@@ -22084,7 +22084,9 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	// example:
 	//
 	// ca-c560626622af0005****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	AggregatorId         *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	EndUpdateTimestamp   *int64  `json:"EndUpdateTimestamp,omitempty" xml:"EndUpdateTimestamp,omitempty"`
+	ExcludeResourceTypes *string `json:"ExcludeResourceTypes,omitempty" xml:"ExcludeResourceTypes,omitempty"`
 	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
 	//
 	// This parameter is required.
@@ -22137,7 +22139,8 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	// example:
 	//
 	// ACS::ECS::NetworkInterface
-	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	ResourceTypes        *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	StartUpdateTimestamp *int64  `json:"StartUpdateTimestamp,omitempty" xml:"StartUpdateTimestamp,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesRequest) String() string {
@@ -22150,6 +22153,16 @@ func (s ListAggregateDiscoveredResourcesRequest) GoString() string {
 
 func (s *ListAggregateDiscoveredResourcesRequest) SetAggregatorId(v string) *ListAggregateDiscoveredResourcesRequest {
 	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetEndUpdateTimestamp(v int64) *ListAggregateDiscoveredResourcesRequest {
+	s.EndUpdateTimestamp = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetExcludeResourceTypes(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.ExcludeResourceTypes = &v
 	return s
 }
 
@@ -22190,6 +22203,11 @@ func (s *ListAggregateDiscoveredResourcesRequest) SetResourceOwnerId(v int64) *L
 
 func (s *ListAggregateDiscoveredResourcesRequest) SetResourceTypes(v string) *ListAggregateDiscoveredResourcesRequest {
 	s.ResourceTypes = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetStartUpdateTimestamp(v int64) *ListAggregateDiscoveredResourcesRequest {
+	s.StartUpdateTimestamp = &v
 	return s
 }
 
@@ -22347,7 +22365,8 @@ type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisco
 	// example:
 	//
 	// {\\"key1\\":[\\"value2\\"]}
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The build version of the resource.
 	//
 	// example:
@@ -22416,6 +22435,11 @@ func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesD
 
 func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.Tags = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetUpdateTime(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -26260,9 +26284,14 @@ func (s *ListConfigRulesResponse) SetBody(v *ListConfigRulesResponseBody) *ListC
 }
 
 type ListDiscoveredResourcesRequest struct {
+	EndUpdateTimestamp   *int64  `json:"EndUpdateTimestamp,omitempty" xml:"EndUpdateTimestamp,omitempty"`
+	ExcludeResourceTypes *string `json:"ExcludeResourceTypes,omitempty" xml:"ExcludeResourceTypes,omitempty"`
 	// The maximum number of entries returned for a single request. Valid values: 1 to 100.
 	//
 	// This parameter is required.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -26301,7 +26330,8 @@ type ListDiscoveredResourcesRequest struct {
 	// example:
 	//
 	// ACS::ECS::NetworkInterface
-	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	ResourceTypes        *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	StartUpdateTimestamp *int64  `json:"StartUpdateTimestamp,omitempty" xml:"StartUpdateTimestamp,omitempty"`
 }
 
 func (s ListDiscoveredResourcesRequest) String() string {
@@ -26310,6 +26340,16 @@ func (s ListDiscoveredResourcesRequest) String() string {
 
 func (s ListDiscoveredResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDiscoveredResourcesRequest) SetEndUpdateTimestamp(v int64) *ListDiscoveredResourcesRequest {
+	s.EndUpdateTimestamp = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetExcludeResourceTypes(v string) *ListDiscoveredResourcesRequest {
+	s.ExcludeResourceTypes = &v
+	return s
 }
 
 func (s *ListDiscoveredResourcesRequest) SetMaxResults(v int32) *ListDiscoveredResourcesRequest {
@@ -26339,6 +26379,11 @@ func (s *ListDiscoveredResourcesRequest) SetResourceId(v string) *ListDiscovered
 
 func (s *ListDiscoveredResourcesRequest) SetResourceTypes(v string) *ListDiscoveredResourcesRequest {
 	s.ResourceTypes = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetStartUpdateTimestamp(v int64) *ListDiscoveredResourcesRequest {
+	s.StartUpdateTimestamp = &v
 	return s
 }
 
@@ -26490,7 +26535,8 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	// example:
 	//
 	// {\\"key1\\":[\\"value2\\"]}
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The version of the resource change.
 	//
 	// example:
@@ -26554,6 +26600,11 @@ func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscovered
 
 func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.Tags = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetUpdateTime(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -42568,6 +42619,14 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 		query["AggregatorId"] = request.AggregatorId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndUpdateTimestamp)) {
+		query["EndUpdateTimestamp"] = request.EndUpdateTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceTypes)) {
+		query["ExcludeResourceTypes"] = request.ExcludeResourceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -42598,6 +42657,10 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
 		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartUpdateTimestamp)) {
+		query["StartUpdateTimestamp"] = request.StartUpdateTimestamp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -43007,7 +43070,7 @@ func (client *Client) ListAggregateResourceRelations(request *ListAggregateResou
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
 //
 // >
 //
@@ -43065,7 +43128,7 @@ func (client *Client) ListAggregateResourcesByAdvancedSearchWithOptions(request 
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
 //
 // >
 //
@@ -43603,6 +43666,14 @@ func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscovered
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUpdateTimestamp)) {
+		query["EndUpdateTimestamp"] = request.EndUpdateTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceTypes)) {
+		query["ExcludeResourceTypes"] = request.ExcludeResourceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -43625,6 +43696,10 @@ func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscovered
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
 		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartUpdateTimestamp)) {
+		query["StartUpdateTimestamp"] = request.StartUpdateTimestamp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -44335,7 +44410,7 @@ func (client *Client) ListResourceRelations(request *ListResourceRelationsReques
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
 //
 // >
 //
@@ -44389,7 +44464,7 @@ func (client *Client) ListResourcesByAdvancedSearchWithOptions(request *ListReso
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
 //
 // >
 //
