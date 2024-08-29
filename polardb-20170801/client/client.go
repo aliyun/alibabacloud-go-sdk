@@ -3555,7 +3555,8 @@ type CreateGlobalDatabaseNetworkRequest struct {
 	// example:
 	//
 	// pc-bp1q76364ird*****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId            *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	EnableGlobalDomainName *bool   `json:"EnableGlobalDomainName,omitempty" xml:"EnableGlobalDomainName,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
 	// 	- It cannot start with [http:// or https://.](http://https://。)
@@ -3593,6 +3594,11 @@ func (s CreateGlobalDatabaseNetworkRequest) GoString() string {
 
 func (s *CreateGlobalDatabaseNetworkRequest) SetDBClusterId(v string) *CreateGlobalDatabaseNetworkRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetEnableGlobalDomainName(v bool) *CreateGlobalDatabaseNetworkRequest {
+	s.EnableGlobalDomainName = &v
 	return s
 }
 
@@ -17657,7 +17663,8 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	// example:
 	//
 	// active
-	GDNStatus *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	GDNStatus        *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	GlobalDomainName *string `json:"GlobalDomainName,omitempty" xml:"GlobalDomainName,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -17725,6 +17732,11 @@ func (s *DescribeGlobalDatabaseNetworkResponseBody) SetGDNStatus(v string) *Desc
 	return s
 }
 
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetGlobalDomainName(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.GlobalDomainName = &v
+	return s
+}
+
 func (s *DescribeGlobalDatabaseNetworkResponseBody) SetRequestId(v string) *DescribeGlobalDatabaseNetworkResponseBody {
 	s.RequestId = &v
 	return s
@@ -17780,6 +17792,7 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyConnections) SetPort(v string)
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of the cluster.
 	//
 	// example:
@@ -17894,6 +17907,11 @@ func (s DescribeGlobalDatabaseNetworkResponseBodyDBClusters) String() string {
 
 func (s DescribeGlobalDatabaseNetworkResponseBodyDBClusters) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetCategory(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.Category = &v
+	return s
 }
 
 func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetDBClusterDescription(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
@@ -21691,7 +21709,8 @@ type DescribeScheduleTasksResponseBodyDataTimerInfos struct {
 	// example:
 	//
 	// 2021-01-28T12:30Z
-	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedEndTime         *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedFlashingOffTime *string `json:"PlannedFlashingOffTime,omitempty" xml:"PlannedFlashingOffTime,omitempty"`
 	// The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
 	//
 	// example:
@@ -21769,6 +21788,11 @@ func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetOrderId(v string) *
 
 func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetPlannedEndTime(v string) *DescribeScheduleTasksResponseBodyDataTimerInfos {
 	s.PlannedEndTime = &v
+	return s
+}
+
+func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetPlannedFlashingOffTime(v string) *DescribeScheduleTasksResponseBodyDataTimerInfos {
+	s.PlannedFlashingOffTime = &v
 	return s
 }
 
@@ -29123,7 +29147,8 @@ type ModifyDBNodeClassRequest struct {
 	// example:
 	//
 	// 2021-01-14T09:30:00Z
-	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedEndTime         *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedFlashingOffTime *string `json:"PlannedFlashingOffTime,omitempty" xml:"PlannedFlashingOffTime,omitempty"`
 	// The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >	- This parameter takes effect only when `ModifyType` is set to `Upgrade`.
@@ -29195,6 +29220,11 @@ func (s *ModifyDBNodeClassRequest) SetOwnerId(v int64) *ModifyDBNodeClassRequest
 
 func (s *ModifyDBNodeClassRequest) SetPlannedEndTime(v string) *ModifyDBNodeClassRequest {
 	s.PlannedEndTime = &v
+	return s
+}
+
+func (s *ModifyDBNodeClassRequest) SetPlannedFlashingOffTime(v string) *ModifyDBNodeClassRequest {
+	s.PlannedFlashingOffTime = &v
 	return s
 }
 
@@ -29488,7 +29518,8 @@ type ModifyDBNodesClassRequest struct {
 	// example:
 	//
 	// 2021-01-14T09:30:00Z
-	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedEndTime         *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedFlashingOffTime *string `json:"PlannedFlashingOffTime,omitempty" xml:"PlannedFlashingOffTime,omitempty"`
 	// The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// > 	- This parameter takes effect only when `ModifyType` is set to `Upgrade`.
@@ -29555,6 +29586,11 @@ func (s *ModifyDBNodesClassRequest) SetOwnerId(v int64) *ModifyDBNodesClassReque
 
 func (s *ModifyDBNodesClassRequest) SetPlannedEndTime(v string) *ModifyDBNodesClassRequest {
 	s.PlannedEndTime = &v
+	return s
+}
+
+func (s *ModifyDBNodesClassRequest) SetPlannedFlashingOffTime(v string) *ModifyDBNodesClassRequest {
+	s.PlannedFlashingOffTime = &v
 	return s
 }
 
@@ -29856,6 +29892,7 @@ func (s *ModifyDBNodesParametersResponse) SetBody(v *ModifyDBNodesParametersResp
 }
 
 type ModifyGlobalDatabaseNetworkRequest struct {
+	EnableGlobalDomainName *bool `json:"EnableGlobalDomainName,omitempty" xml:"EnableGlobalDomainName,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
 	// 	- It cannot start with `http://` or `https://`.
@@ -29865,8 +29902,6 @@ type ModifyGlobalDatabaseNetworkRequest struct {
 	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// 	- It must be 2 to 126 characters in length.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -29899,6 +29934,11 @@ func (s ModifyGlobalDatabaseNetworkRequest) String() string {
 
 func (s ModifyGlobalDatabaseNetworkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetEnableGlobalDomainName(v bool) *ModifyGlobalDatabaseNetworkRequest {
+	s.EnableGlobalDomainName = &v
+	return s
 }
 
 func (s *ModifyGlobalDatabaseNetworkRequest) SetGDNDescription(v string) *ModifyGlobalDatabaseNetworkRequest {
@@ -35325,6 +35365,10 @@ func (client *Client) CreateGlobalDatabaseNetworkWithOptions(request *CreateGlob
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableGlobalDomainName)) {
+		query["EnableGlobalDomainName"] = request.EnableGlobalDomainName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GDNDescription)) {
@@ -44719,6 +44763,10 @@ func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassReq
 		query["PlannedEndTime"] = request.PlannedEndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PlannedFlashingOffTime)) {
+		query["PlannedFlashingOffTime"] = request.PlannedFlashingOffTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PlannedStartTime)) {
 		query["PlannedStartTime"] = request.PlannedStartTime
 	}
@@ -44903,6 +44951,10 @@ func (client *Client) ModifyDBNodesClassWithOptions(request *ModifyDBNodesClassR
 		query["PlannedEndTime"] = request.PlannedEndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PlannedFlashingOffTime)) {
+		query["PlannedFlashingOffTime"] = request.PlannedFlashingOffTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PlannedStartTime)) {
 		query["PlannedStartTime"] = request.PlannedStartTime
 	}
@@ -45075,6 +45127,10 @@ func (client *Client) ModifyGlobalDatabaseNetworkWithOptions(request *ModifyGlob
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableGlobalDomainName)) {
+		query["EnableGlobalDomainName"] = request.EnableGlobalDomainName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GDNDescription)) {
 		query["GDNDescription"] = request.GDNDescription
 	}
