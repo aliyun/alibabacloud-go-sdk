@@ -12537,6 +12537,10 @@ func (client *Client) GetUploadInfo(request *GetUploadInfoRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户购买状态
+//
 // @param request - GetUserBuyStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12575,6 +12579,10 @@ func (client *Client) GetUserBuyStatusWithOptions(request *GetUserBuyStatusReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户购买状态
+//
 // @param request - GetUserBuyStatusRequest
 //
 // @return GetUserBuyStatusResponse
