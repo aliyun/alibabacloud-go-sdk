@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,15 @@ import (
 )
 
 type AddDomainRequest struct {
-	AccountId  *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -36,8 +41,14 @@ func (s *AddDomainRequest) SetDomainName(v string) *AddDomainRequest {
 }
 
 type AddDomainResponseBody struct {
+	// example:
+	//
+	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ADA27798-6911-4B06-AF34-53F62F62XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddDomainResponseBody) String() string {
@@ -59,9 +70,9 @@ func (s *AddDomainResponseBody) SetRequestId(v string) *AddDomainResponseBody {
 }
 
 type AddDomainResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddDomainResponse) String() string {
@@ -88,7 +99,15 @@ func (s *AddDomainResponse) SetBody(v *AddDomainResponseBody) *AddDomainResponse
 }
 
 type DeleteDomainRequest struct {
-	AccountId  *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 12****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -111,8 +130,14 @@ func (s *DeleteDomainRequest) SetDomainName(v string) *DeleteDomainRequest {
 }
 
 type DeleteDomainResponseBody struct {
+	// example:
+	//
+	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// FA8C2599-362D-4113-8FB4-E88A40C2****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDomainResponseBody) String() string {
@@ -134,9 +159,9 @@ func (s *DeleteDomainResponseBody) SetRequestId(v string) *DeleteDomainResponseB
 }
 
 type DeleteDomainResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDomainResponse) String() string {
@@ -163,9 +188,18 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DescribeDomainsRequest struct {
-	AccountId  *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDomainsRequest) String() string {
@@ -192,11 +226,23 @@ func (s *DescribeDomainsRequest) SetPageSize(v int64) *DescribeDomainsRequest {
 }
 
 type DescribeDomainsResponseBody struct {
-	Domains    *DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	PageNumber *int64                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Domains *DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// A6B3BB61-69CB-50E0-9DC0-0C1658D44A47
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 12
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainsResponseBody) String() string {
@@ -250,6 +296,9 @@ func (s *DescribeDomainsResponseBodyDomains) SetDomain(v []*DescribeDomainsRespo
 }
 
 type DescribeDomainsResponseBodyDomainsDomain struct {
+	// example:
+	//
+	// www.aliyun.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -267,9 +316,9 @@ func (s *DescribeDomainsResponseBodyDomainsDomain) SetDomainName(v string) *Desc
 }
 
 type DescribeDomainsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainsResponse) String() string {
@@ -297,7 +346,10 @@ func (s *DescribeDomainsResponse) SetBody(v *DescribeDomainsResponseBody) *Descr
 
 type GetAccountInfoResponseBody struct {
 	AccountInfo *GetAccountInfoResponseBodyAccountInfo `json:"AccountInfo,omitempty" xml:"AccountInfo,omitempty" type:"Struct"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 50F9C40E-188D-4208-BE2C-74271337****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountInfoResponseBody) String() string {
@@ -319,14 +371,46 @@ func (s *GetAccountInfoResponseBody) SetRequestId(v string) *GetAccountInfoRespo
 }
 
 type GetAccountInfoResponseBodyAccountInfo struct {
-	AccountId              *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	MonthFreeCount         *int32  `json:"MonthFreeCount,omitempty" xml:"MonthFreeCount,omitempty"`
-	MonthHttpsResolveCount *int32  `json:"MonthHttpsResolveCount,omitempty" xml:"MonthHttpsResolveCount,omitempty"`
-	MonthResolveCount      *int32  `json:"MonthResolveCount,omitempty" xml:"MonthResolveCount,omitempty"`
-	SignSecret             *string `json:"SignSecret,omitempty" xml:"SignSecret,omitempty"`
-	SignedCount            *int64  `json:"SignedCount,omitempty" xml:"SignedCount,omitempty"`
-	UnsignedCount          *int64  `json:"UnsignedCount,omitempty" xml:"UnsignedCount,omitempty"`
-	UnsignedEnabled        *bool   `json:"UnsignedEnabled,omitempty" xml:"UnsignedEnabled,omitempty"`
+	// example:
+	//
+	// 1337****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 1500000
+	MonthFreeCount *int32 `json:"MonthFreeCount,omitempty" xml:"MonthFreeCount,omitempty"`
+	// example:
+	//
+	// 3
+	MonthHttpsResolveCount *int32 `json:"MonthHttpsResolveCount,omitempty" xml:"MonthHttpsResolveCount,omitempty"`
+	// example:
+	//
+	// 9927326
+	MonthResolveCount *int32 `json:"MonthResolveCount,omitempty" xml:"MonthResolveCount,omitempty"`
+	// example:
+	//
+	// 0
+	PackageCount *int32 `json:"PackageCount,omitempty" xml:"PackageCount,omitempty"`
+	// example:
+	//
+	// 50F9C40E****
+	SignSecret *string `json:"SignSecret,omitempty" xml:"SignSecret,omitempty"`
+	// example:
+	//
+	// 611523
+	SignedCount *int64 `json:"SignedCount,omitempty" xml:"SignedCount,omitempty"`
+	// example:
+	//
+	// 1523
+	UnsignedCount *int64 `json:"UnsignedCount,omitempty" xml:"UnsignedCount,omitempty"`
+	// example:
+	//
+	// true
+	UnsignedEnabled *bool `json:"UnsignedEnabled,omitempty" xml:"UnsignedEnabled,omitempty"`
+	// example:
+	//
+	// 1
+	UserStatus *int32 `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
 }
 
 func (s GetAccountInfoResponseBodyAccountInfo) String() string {
@@ -357,6 +441,11 @@ func (s *GetAccountInfoResponseBodyAccountInfo) SetMonthResolveCount(v int32) *G
 	return s
 }
 
+func (s *GetAccountInfoResponseBodyAccountInfo) SetPackageCount(v int32) *GetAccountInfoResponseBodyAccountInfo {
+	s.PackageCount = &v
+	return s
+}
+
 func (s *GetAccountInfoResponseBodyAccountInfo) SetSignSecret(v string) *GetAccountInfoResponseBodyAccountInfo {
 	s.SignSecret = &v
 	return s
@@ -377,10 +466,15 @@ func (s *GetAccountInfoResponseBodyAccountInfo) SetUnsignedEnabled(v bool) *GetA
 	return s
 }
 
+func (s *GetAccountInfoResponseBodyAccountInfo) SetUserStatus(v int32) *GetAccountInfoResponseBodyAccountInfo {
+	s.UserStatus = &v
+	return s
+}
+
 type GetAccountInfoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccountInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccountInfoResponse) String() string {
@@ -407,8 +501,18 @@ func (s *GetAccountInfoResponse) SetBody(v *GetAccountInfoResponseBody) *GetAcco
 }
 
 type GetResolveCountSummaryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// day
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	TimeSpan    *int32  `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7
+	TimeSpan *int32 `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty"`
 }
 
 func (s GetResolveCountSummaryRequest) String() string {
@@ -430,6 +534,9 @@ func (s *GetResolveCountSummaryRequest) SetTimeSpan(v int32) *GetResolveCountSum
 }
 
 type GetResolveCountSummaryResponseBody struct {
+	// example:
+	//
+	// 3106FFF3-3612-542A-B2CD-3CF4CD48****
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResolveSummary *GetResolveCountSummaryResponseBodyResolveSummary `json:"ResolveSummary,omitempty" xml:"ResolveSummary,omitempty" type:"Struct"`
 }
@@ -453,9 +560,21 @@ func (s *GetResolveCountSummaryResponseBody) SetResolveSummary(v *GetResolveCoun
 }
 
 type GetResolveCountSummaryResponseBodyResolveSummary struct {
-	Http   *int64 `json:"Http,omitempty" xml:"Http,omitempty"`
-	Http6  *int64 `json:"Http6,omitempty" xml:"Http6,omitempty"`
-	Https  *int64 `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// 123
+	Http *int64 `json:"Http,omitempty" xml:"Http,omitempty"`
+	// example:
+	//
+	// 123
+	Http6 *int64 `json:"Http6,omitempty" xml:"Http6,omitempty"`
+	// example:
+	//
+	// 123
+	Https *int64 `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// 123
 	Https6 *int64 `json:"Https6,omitempty" xml:"Https6,omitempty"`
 }
 
@@ -488,9 +607,9 @@ func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttps6(v int64) *G
 }
 
 type GetResolveCountSummaryResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResolveCountSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResolveCountSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResolveCountSummaryResponse) String() string {
@@ -517,10 +636,28 @@ func (s *GetResolveCountSummaryResponse) SetBody(v *GetResolveCountSummaryRespon
 }
 
 type GetResolveStatisticsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Granularity  *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// month
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// https
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	TimeSpan     *int32  `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	TimeSpan *int32 `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty"`
 }
 
 func (s GetResolveStatisticsRequest) String() string {
@@ -553,7 +690,10 @@ func (s *GetResolveStatisticsRequest) SetTimeSpan(v int32) *GetResolveStatistics
 
 type GetResolveStatisticsResponseBody struct {
 	DataPoints *GetResolveStatisticsResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Struct"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 50F9C40E-188D-B00B-BE2C-7427E531****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResolveStatisticsResponseBody) String() string {
@@ -592,8 +732,14 @@ func (s *GetResolveStatisticsResponseBodyDataPoints) SetDataPoint(v []*GetResolv
 }
 
 type GetResolveStatisticsResponseBodyDataPointsDataPoint struct {
+	// example:
+	//
+	// 9703
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	Time  *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1488297600
+	Time *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s GetResolveStatisticsResponseBodyDataPointsDataPoint) String() string {
@@ -615,9 +761,9 @@ func (s *GetResolveStatisticsResponseBodyDataPointsDataPoint) SetTime(v int32) *
 }
 
 type GetResolveStatisticsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResolveStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResolveStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResolveStatisticsResponse) String() string {
@@ -644,8 +790,15 @@ func (s *GetResolveStatisticsResponse) SetBody(v *GetResolveStatisticsResponseBo
 }
 
 type ListDomainsRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Search   *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
 func (s ListDomainsRequest) String() string {
@@ -666,12 +819,29 @@ func (s *ListDomainsRequest) SetPageSize(v int32) *ListDomainsRequest {
 	return s
 }
 
+func (s *ListDomainsRequest) SetSearch(v string) *ListDomainsRequest {
+	s.Search = &v
+	return s
+}
+
 type ListDomainsResponseBody struct {
 	DomainInfos *ListDomainsResponseBodyDomainInfos `json:"DomainInfos,omitempty" xml:"DomainInfos,omitempty" type:"Struct"`
-	PageNumber  *int64                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 5
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 50F9C40E-188D-4208-BE2C-7427E531****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 18
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDomainsResponseBody) String() string {
@@ -725,11 +895,27 @@ func (s *ListDomainsResponseBodyDomainInfos) SetDomainInfo(v []*ListDomainsRespo
 }
 
 type ListDomainsResponseBodyDomainInfosDomainInfo struct {
-	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Resolved       *int64  `json:"Resolved,omitempty" xml:"Resolved,omitempty"`
-	Resolved6      *int64  `json:"Resolved6,omitempty" xml:"Resolved6,omitempty"`
-	ResolvedHttps  *int64  `json:"ResolvedHttps,omitempty" xml:"ResolvedHttps,omitempty"`
-	ResolvedHttps6 *int64  `json:"ResolvedHttps6,omitempty" xml:"ResolvedHttps6,omitempty"`
+	// example:
+	//
+	// www.example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 10
+	Resolved *int64 `json:"Resolved,omitempty" xml:"Resolved,omitempty"`
+	// example:
+	//
+	// 20
+	Resolved6 *int64 `json:"Resolved6,omitempty" xml:"Resolved6,omitempty"`
+	// example:
+	//
+	// 10
+	ResolvedHttps *int64 `json:"ResolvedHttps,omitempty" xml:"ResolvedHttps,omitempty"`
+	// example:
+	//
+	// 20
+	ResolvedHttps6 *int64 `json:"ResolvedHttps6,omitempty" xml:"ResolvedHttps6,omitempty"`
+	TimeModified   *int64 `json:"TimeModified,omitempty" xml:"TimeModified,omitempty"`
 }
 
 func (s ListDomainsResponseBodyDomainInfosDomainInfo) String() string {
@@ -765,10 +951,15 @@ func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetResolvedHttps6(v int64
 	return s
 }
 
+func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetTimeModified(v int64) *ListDomainsResponseBodyDomainInfosDomainInfo {
+	s.TimeModified = &v
+	return s
+}
+
 type ListDomainsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDomainsResponse) String() string {
@@ -841,6 +1032,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDomainResponse
 func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *util.RuntimeOptions) (_result *AddDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -878,6 +1074,9 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - AddDomainRequest
+//
+// @return AddDomainResponse
 func (client *Client) AddDomain(request *AddDomainRequest) (_result *AddDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDomainResponse{}
@@ -889,6 +1088,11 @@ func (client *Client) AddDomain(request *AddDomainRequest) (_result *AddDomainRe
 	return _result, _err
 }
 
+// @param request - DeleteDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -926,6 +1130,9 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+// @param request - DeleteDomainRequest
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
@@ -937,6 +1144,11 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+// @param request - DescribeDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -978,6 +1190,9 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 	return _result, _err
 }
 
+// @param request - DescribeDomainsRequest
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result *DescribeDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainsResponse{}
@@ -989,6 +1204,11 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - GetAccountInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountInfoResponse
 func (client *Client) GetAccountInfoWithOptions(runtime *util.RuntimeOptions) (_result *GetAccountInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -1011,6 +1231,7 @@ func (client *Client) GetAccountInfoWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
+// @return GetAccountInfoResponse
 func (client *Client) GetAccountInfo() (_result *GetAccountInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountInfoResponse{}
@@ -1022,6 +1243,11 @@ func (client *Client) GetAccountInfo() (_result *GetAccountInfoResponse, _err er
 	return _result, _err
 }
 
+// @param request - GetResolveCountSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResolveCountSummaryResponse
 func (client *Client) GetResolveCountSummaryWithOptions(request *GetResolveCountSummaryRequest, runtime *util.RuntimeOptions) (_result *GetResolveCountSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1059,6 +1285,9 @@ func (client *Client) GetResolveCountSummaryWithOptions(request *GetResolveCount
 	return _result, _err
 }
 
+// @param request - GetResolveCountSummaryRequest
+//
+// @return GetResolveCountSummaryResponse
 func (client *Client) GetResolveCountSummary(request *GetResolveCountSummaryRequest) (_result *GetResolveCountSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResolveCountSummaryResponse{}
@@ -1070,6 +1299,11 @@ func (client *Client) GetResolveCountSummary(request *GetResolveCountSummaryRequ
 	return _result, _err
 }
 
+// @param request - GetResolveStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResolveStatisticsResponse
 func (client *Client) GetResolveStatisticsWithOptions(request *GetResolveStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetResolveStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1115,6 +1349,9 @@ func (client *Client) GetResolveStatisticsWithOptions(request *GetResolveStatist
 	return _result, _err
 }
 
+// @param request - GetResolveStatisticsRequest
+//
+// @return GetResolveStatisticsResponse
 func (client *Client) GetResolveStatistics(request *GetResolveStatisticsRequest) (_result *GetResolveStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResolveStatisticsResponse{}
@@ -1126,6 +1363,11 @@ func (client *Client) GetResolveStatistics(request *GetResolveStatisticsRequest)
 	return _result, _err
 }
 
+// @param request - ListDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDomainsResponse
 func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtime *util.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1138,6 +1380,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["Search"] = request.Search
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -1163,6 +1409,9 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 	return _result, _err
 }
 
+// @param request - ListDomainsRequest
+//
+// @return ListDomainsResponse
 func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDomainsResponse{}
