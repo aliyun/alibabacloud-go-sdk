@@ -50311,7 +50311,8 @@ type MakeCallRequest struct {
 	// example:
 	//
 	// device
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId          *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	FlashSmsVariables *string `json:"FlashSmsVariables,omitempty" xml:"FlashSmsVariables,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -50357,6 +50358,11 @@ func (s *MakeCallRequest) SetCaller(v string) *MakeCallRequest {
 
 func (s *MakeCallRequest) SetDeviceId(v string) *MakeCallRequest {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *MakeCallRequest) SetFlashSmsVariables(v string) *MakeCallRequest {
+	s.FlashSmsVariables = &v
 	return s
 }
 
@@ -75630,6 +75636,10 @@ func (client *Client) MakeCallWithOptions(request *MakeCallRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
 		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlashSmsVariables)) {
+		query["FlashSmsVariables"] = request.FlashSmsVariables
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
