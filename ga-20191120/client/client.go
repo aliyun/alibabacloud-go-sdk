@@ -5714,7 +5714,14 @@ type CreateEndpointGroupRequest struct {
 	// example:
 	//
 	// default
-	EndpointGroupType       *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	// The version of the protocol that is used by the backend service. Valid values:
+	//
+	// - **HTTP1.1*	- (default)
+	//
+	// - **HTTP2**
+	//
+	// >  This parameter is required only when you set the **EndpointRequestProtocol*	- parameter to **HTTPS**.
 	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
 	// The protocol that is used by the backend service. Default value: HTTP. Valid values:
 	//
@@ -7865,7 +7872,14 @@ type CreateListenerRequestEndpointGroupConfigurations struct {
 	// example:
 	//
 	// default
-	EndpointGroupType       *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	// The backend service protocol version of the endpoint that is associated with the intelligent routing listener. Valid values:
+	//
+	// 	- **HTTP1.1*	- (default)
+	//
+	// 	- **HTTP2**
+	//
+	// >	- You can specify this parameter only for **HTTPS*	- endpoint request protocol.
 	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
 	// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values:
 	//
@@ -8781,7 +8795,7 @@ type DeleteApplicationMonitorRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -12021,7 +12035,7 @@ type DescribeApplicationMonitorRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -15223,15 +15237,15 @@ type DescribeEndpointGroupResponseBody struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// Indicates the status of the binding between the Log Service project and the endpoint group. Valid values:
+	// Indicates the binding status between the Simple Log Service project and the endpoint group. Valid values:
 	//
-	// 	- **on**: The Log Service project is bound to the endpoint group.
+	// 	- **on:*	- The endpoint group is bound to the Simple Log Service project.
 	//
-	// 	- **off**: No Log Service projects are bound to the endpoint group.
+	// 	- **off:*	- The endpoint group is not bound to the Simple Log Service project.
 	//
-	// 	- **binding**: The Log Service project is being bound to the endpoint group.
+	// 	- **binding:*	- The endpoint group is being bound to the Simple Log Service project.
 	//
-	// 	- **unbinding**: The Log Service project is being unbound from the endpoint group.
+	// 	- **unbinding:*	- The endpoint group is being unbound from the Simple Log Service project.
 	//
 	// example:
 	//
@@ -15253,7 +15267,7 @@ type DescribeEndpointGroupResponseBody struct {
 	//
 	// true
 	EnableAccessLog *bool `json:"EnableAccessLog,omitempty" xml:"EnableAccessLog,omitempty"`
-	// The configurations of the endpoints in the endpoint group.
+	// The configurations of endpoints in the endpoint group.
 	EndpointConfigurations []*DescribeEndpointGroupResponseBodyEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of the endpoint group.
 	//
@@ -15281,7 +15295,12 @@ type DescribeEndpointGroupResponseBody struct {
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
 	// The endpoint group IP addresses to be confirmed. After the GA instance is upgraded, the IP addresses that are added to the endpoint group need to be confirmed.
 	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	EndpointProtocolVersion        *string   `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
+	// The version of the protocol that is used by the backend service.
+	//
+	// 	- **HTTP1.1**
+	//
+	// 	- **HTTP2**
+	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
 	// The protocol that is used by the backend service.
 	//
 	// 	- **HTTP**
@@ -15324,11 +15343,11 @@ type DescribeEndpointGroupResponseBody struct {
 	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	// The protocol over which health check requests are sent. Valid values:
 	//
-	// 	- **tcp**: TCP
+	// 	- **tcp*	- or **TCP**
 	//
-	// 	- **http**: HTTP
+	// 	- **http*	- or **HTTP**
 	//
-	// 	- **https**: HTTPS
+	// 	- **https*	- or **HTTPS**
 	//
 	// example:
 	//
@@ -15362,7 +15381,7 @@ type DescribeEndpointGroupResponseBody struct {
 	//
 	// ALB
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Indicates whether the GA instance is managed. Valid values:
+	// Indicates whether the instance is managed.
 	//
 	// 	- **true**
 	//
@@ -15374,9 +15393,9 @@ type DescribeEndpointGroupResponseBody struct {
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The actions that users can perform on the managed instance.
 	//
-	// >  This parameter takes effect only if **ServiceManaged*	- is set to **True**.
+	// >	- This parameter takes effect only if the value of **ServiceManaged*	- is **true**.
 	//
-	// 	- Users can perform only specific actions on a managed instance.
+	// >	- Users can perform only specific actions on a managed instance.
 	ServiceManagedInfos []*DescribeEndpointGroupResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The name of the Logstore.
 	//
@@ -15410,7 +15429,7 @@ type DescribeEndpointGroupResponseBody struct {
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Tags.
+	// The tag of the endpoint group.
 	Tags []*DescribeEndpointGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
 	//
@@ -15418,7 +15437,7 @@ type DescribeEndpointGroupResponseBody struct {
 	//
 	// 3
 	ThresholdCount *int32 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	// The weight of the endpoint group. If the listener is associated with multiple endpoint groups, this parameter indicates the weight of the current endpoint group.
+	// The traffic ratio of the endpoint group when the specified listener is associated with multiple endpoint groups.
 	//
 	// example:
 	//
@@ -15611,7 +15630,7 @@ type DescribeEndpointGroupResponseBodyEndpointConfigurations struct {
 	//
 	// false
 	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
-	// The IP address or domain name of the endpoint.
+	// The IP address, domain name, or ID of the endpoint.
 	//
 	// example:
 	//
@@ -15641,19 +15660,23 @@ type DescribeEndpointGroupResponseBodyEndpointConfigurations struct {
 	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// 	- **Domain**: a custom domain name
+	// 	- **Domain:*	- a custom domain name.
 	//
-	// 	- **Ip**: a custom IP address
+	// 	- **Ip:*	- a custom IP address.
 	//
-	// 	- **PublicIp**: a public IP address provided by Alibaba Cloud
+	// 	- **PublicIp:*	- a public IP address provided by Alibaba Cloud.
 	//
-	// 	- **ECS**: an Elastic Compute Service (ECS) instance
+	// 	- **ECS:*	- an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **SLB**: a Server Load Balancer (SLB) instance
+	// 	- **SLB:**: a Server Load Balancer (SLB) instance.
 	//
-	// 	- **ALB**: an Application Load Balancer (ALB) instance
+	// 	- **ALB:*	- an Application Load Balancer (ALB) instance.
 	//
-	// 	- **OSS**: an Object Storage Service (OSS) bucket
+	// 	- **OSS:*	- an Object Storage Service (OSS) bucket.
+	//
+	// 	- **ENI:*	- an elastic network interface (ENI).
+	//
+	// 	- **NLB:*	- a Network Load Balancer (NLB) instance.
 	//
 	// example:
 	//
@@ -15749,7 +15772,7 @@ func (s *DescribeEndpointGroupResponseBodyPortOverrides) SetListenerPort(v int32
 }
 
 type DescribeEndpointGroupResponseBodyServiceManagedInfos struct {
-	// The name of the action on the managed instance. Valid values:
+	// The name of the action on the managed instance.
 	//
 	// 	- **Create**
 	//
@@ -15767,33 +15790,33 @@ type DescribeEndpointGroupResponseBodyServiceManagedInfos struct {
 	//
 	// Update
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The type of the child resource. Valid values:
+	// The type of the child resource.
 	//
-	// 	- **Listener**: listener
+	// 	- **Listener:*	- listener.
 	//
-	// 	- **IpSet**: acceleration region
+	// 	- **IpSet:*	- acceleration region.
 	//
-	// 	- **EndpointGroup**: endpoint group
+	// 	- **EndpointGroup:*	- endpoint group.
 	//
-	// 	- **ForwardingRule**: forwarding rule
+	// 	- **ForwardingRule:*	- forwarding rule.
 	//
-	// 	- **Endpoint**: endpoint
+	// 	- **Endpoint:*	- endpoint.
 	//
-	// 	- **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener
+	// 	- **EndpointGroupDestination:*	- protocol mapping of an endpoint group associated with a custom routing listener.
 	//
-	// 	- **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener
+	// 	- **EndpointPolicy:*	- traffic policy of an endpoint associated with a custom routing listener.
 	//
-	// >  This parameter takes effect only if **Action*	- is set to **CreateChild**.
+	// >  This parameter takes effect only if the value of **Action*	- is **CreateChild**.
 	//
 	// example:
 	//
 	// Listener
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Indicates whether the specified actions are managed. Valid values:
+	// Indicates whether the specified actions are managed.
 	//
-	// 	- **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
+	// 	- **true:*	- The specified actions are managed. Users cannot perform the specified actions on the managed instance.****
 	//
-	// 	- **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
+	// 	- **false:*	- The specified actions are not managed. Users can perform the specified actions on the managed instance.
 	//
 	// example:
 	//
@@ -15825,13 +15848,13 @@ func (s *DescribeEndpointGroupResponseBodyServiceManagedInfos) SetIsManaged(v bo
 }
 
 type DescribeEndpointGroupResponseBodyTags struct {
-	// The tag key.
+	// The tag key of the endpoint group.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the endpoint group.
 	//
 	// example:
 	//
@@ -17453,7 +17476,7 @@ type DetectApplicationMonitorRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -22007,7 +22030,7 @@ type ListApplicationMonitorRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -25957,9 +25980,9 @@ type ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations struct {
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The actions that you can perform on the managed instance.
 	//
-	// >  This parameter takes effect only if **ServiceManaged*	- is set to **True**.
+	// >  - This parameter takes effect only if **ServiceManaged*	- is set to **True**.
 	//
-	// 	- You can perform only specific actions on a managed instance.
+	// >  - You can perform only specific actions on the managed instance.
 	ServiceManagedInfos []*ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The last port of the backend service port range.
 	//
@@ -26028,19 +26051,19 @@ func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) Set
 }
 
 type ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos struct {
-	// Managed policy action name, Valid values:
+	// The name of the action that you can perform on the managed instance. Valid values:
 	//
-	// Create
+	// 	- **Create**: Create an instance.
 	//
-	// Update
+	// 	- **Update**: Update the current instance.
 	//
-	// Delete
+	// 	- **Delete**: Delete the current instance.
 	//
-	// Associate
+	// 	- **Associate**: Reference the current instance.
 	//
-	// UserUnmanaged
+	// 	- **UserUnmanaged**: Unmanage the instance.
 	//
-	// CreateChild
+	// 	- **CreateChild**: Create a child resource in the current instance.
 	//
 	// example:
 	//
@@ -26585,7 +26608,7 @@ type ListCustomRoutingEndpointTrafficPoliciesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -26999,7 +27022,7 @@ type ListCustomRoutingEndpointsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -28771,7 +28794,12 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
 	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
 	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	EndpointProtocolVersion        *string   `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
+	// The protocol version that is used by the backend server.
+	//
+	// 	- **HTTP1.1**
+	//
+	// 	- **HTTP2**
+	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
 	// The protocol that is used by the backend server.
 	//
 	// 	- **HTTP**
@@ -29362,8 +29390,6 @@ type ListForwardingRulesRequest struct {
 	// lsr-bp1s0vzbi5bxlx5pw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -31664,7 +31690,7 @@ type ListSystemSecurityPoliciesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **100**. Default value: **10**.
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **10**.
 	//
 	// example:
 	//
@@ -34145,7 +34171,7 @@ type UpdateApplicationMonitorRequest struct {
 	//
 	// { "http_method": "get","header": "key:asd","acceptable_response_code": "500","cert_verify": true }
 	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. The value is set to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -36072,7 +36098,7 @@ type UpdateDomainRequest struct {
 	//
 	// example.net
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -36316,7 +36342,14 @@ type UpdateEndpointGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	EndpointGroupRegion     *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// The protocol version that is used by the backend service. Valid values:
+	//
+	// 	- **HTTP1.1**
+	//
+	// 	- **HTTP2**
+	//
+	// > 	- You can set this parameter only when the endpoint request protocol  uses **HTTPS*	- protocol.
 	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
 	// The protocol that is used by the backend service. Valid values:
 	//
@@ -36957,7 +36990,14 @@ type UpdateEndpointGroupsRequestEndpointGroupConfigurations struct {
 	// example:
 	//
 	// group1
-	EndpointGroupName       *string `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	EndpointGroupName *string `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	// The protocol version that is used by the backend service. Valid values:
+	//
+	// 	- **HTTP1.1**
+	//
+	// 	- **HTTP2**
+	//
+	// > 	- You can specify this parameter only if the endpoint request protocol uses **HTTPS**.
 	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
 	// The protocol that is used by the backend service. Valid values:
 	//
@@ -38104,11 +38144,11 @@ type UpdateListenerRequest struct {
 	BackendPorts []*UpdateListenerRequestBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
 	// The SSL certificate.
 	Certificates []*UpdateListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// Specifies whether to enable client affinity for the listener.
+	// Indicates whether client affinity is enabled for the listener. Valid values:
 	//
-	// 	- If this parameter is left empty, client affinity is disabled. After client affinity is disabled, requests from a specific client IP address may be forwarded to different endpoints.
+	// 	- **NONE**: Client affinity is disabled. Requests from the same client may be forwarded to different endpoints.
 	//
-	// 	- To enable client affinity, set this parameter to **SOURCE_IP**. In this case, when a client accesses stateful applications, requests from the same client are always forwarded to the same endpoint regardless of the source port or protocol.
+	// 	- **SOURCE_IP**: Client affinity is enabled. When a client accesses stateful applications, requests from the same client are forwarded to the same endpoint regardless of the source port or protocol.
 	//
 	// example:
 	//
@@ -45225,7 +45265,7 @@ func (client *Client) DescribeCustomRoutingEndpointGroupDestinations(request *De
 
 // Summary:
 //
-// Queries the information about an endpoint group.
+// Queries information about an endpoint group.
 //
 // @param request - DescribeEndpointGroupRequest
 //
@@ -45271,7 +45311,7 @@ func (client *Client) DescribeEndpointGroupWithOptions(request *DescribeEndpoint
 
 // Summary:
 //
-// Queries the information about an endpoint group.
+// Queries information about an endpoint group.
 //
 // @param request - DescribeEndpointGroupRequest
 //
@@ -48121,7 +48161,7 @@ func (client *Client) ListCommonAreas(request *ListCommonAreasRequest) (_result 
 
 // Summary:
 //
-// Queries the endpoint group mapping configurations of a custom routing listener of a Global Accelerator (GA) instance.
+// Queries endpoint group mapping configurations of a custom routing listener of a Global Accelerator (GA) instance.
 //
 // @param request - ListCustomRoutingEndpointGroupDestinationsRequest
 //
@@ -48195,7 +48235,7 @@ func (client *Client) ListCustomRoutingEndpointGroupDestinationsWithOptions(requ
 
 // Summary:
 //
-// Queries the endpoint group mapping configurations of a custom routing listener of a Global Accelerator (GA) instance.
+// Queries endpoint group mapping configurations of a custom routing listener of a Global Accelerator (GA) instance.
 //
 // @param request - ListCustomRoutingEndpointGroupDestinationsRequest
 //
