@@ -2563,7 +2563,8 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	// example:
 	//
 	// acs:quotas:cn-hangzhou:120886317861****:quota/ecs/q_security-groups/
-	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
+	QuotaArn      *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
+	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 	// The description of the quota.
 	//
 	// example:
@@ -2669,6 +2670,11 @@ func (s *GetQuotaApplicationResponseBodyQuotaApplication) SetQuotaActionCode(v s
 
 func (s *GetQuotaApplicationResponseBodyQuotaApplication) SetQuotaArn(v string) *GetQuotaApplicationResponseBodyQuotaApplication {
 	s.QuotaArn = &v
+	return s
+}
+
+func (s *GetQuotaApplicationResponseBodyQuotaApplication) SetQuotaCategory(v string) *GetQuotaApplicationResponseBodyQuotaApplication {
+	s.QuotaCategory = &v
 	return s
 }
 
@@ -6156,7 +6162,8 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	// example:
 	//
 	// acs:quotas:*:120886317861****:quota/csk/q_i5uzm3
-	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
+	QuotaArn      *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
+	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 	// The description of the quota.
 	//
 	// example:
@@ -6272,6 +6279,11 @@ func (s *ListQuotaApplicationsResponseBodyQuotaApplications) SetQuotaActionCode(
 
 func (s *ListQuotaApplicationsResponseBodyQuotaApplications) SetQuotaArn(v string) *ListQuotaApplicationsResponseBodyQuotaApplications {
 	s.QuotaArn = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsResponseBodyQuotaApplications) SetQuotaCategory(v string) *ListQuotaApplicationsResponseBodyQuotaApplications {
+	s.QuotaCategory = &v
 	return s
 }
 
