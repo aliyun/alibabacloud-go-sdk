@@ -3689,7 +3689,7 @@ type CreateAccountRequest struct {
 	//
 	// 	- **Sysadmin**: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
 	//
-	// Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, see [Create a system admin account](https://help.aliyun.com/document_detail/170736.html).
+	// Before you create a system admin account, check whether the instance meets all prerequisites. For more information, see [Create a system admin account](https://help.aliyun.com/document_detail/170736.html).
 	//
 	// example:
 	//
@@ -12361,50 +12361,84 @@ func (s *CreateReadOnlyDBInstanceResponse) SetBody(v *CreateReadOnlyDBInstanceRe
 }
 
 type CreateReplicationLinkRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// 	- **true**: performs a dry run but does not create the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The account of the database that is used for data synchronization.
+	//
 	// example:
 	//
 	// testdbuser
 	ReplicatorAccount *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
+	// The password of the account.
+	//
 	// example:
 	//
 	// testpassword
 	ReplicatorPassword *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
+	// The endpoint of the source instance.
+	//
 	// example:
 	//
 	// pgm-****.pg.rds.aliyuncs.com
 	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
+	// The type of the source instance. Valid values:
+	//
+	// 	- **other**: other instances
+	//
+	// 	- **aliyunRDS**: an ApsaraDB RDS instance
+	//
 	// example:
 	//
 	// aliyunRDS
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
+	// The name of the source instance.
+	//
+	// >  You must specify this parameter if **SourceCategory*	- is set to **aliyunRDS**.
+	//
 	// example:
 	//
 	// testInstance
 	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
+	// The ID of the region where the source instance is located.
+	//
+	// >  You must specify this parameter if **SourceCategory*	- is set to **aliyunRDS**.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
+	// The port number of the source instance.
+	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// The task ID of the successful dry run.
+	//
 	// example:
 	//
 	// 439946016
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task. You can specify a custom task name. If you do not specify this parameter, ApsaraDB RDS automatically generates a task name.
+	//
 	// example:
 	//
 	// test01
@@ -12475,18 +12509,26 @@ func (s *CreateReplicationLinkRequest) SetTaskName(v string) *CreateReplicationL
 }
 
 type CreateReplicationLinkResponseBody struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// pgm-****.pg.rds.aliyuncs.com
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 564532302
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// test01
@@ -15517,12 +15559,20 @@ func (s *DeleteRCInstancesResponse) SetBody(v *DeleteRCInstancesResponseBody) *D
 }
 
 type DeleteReplicationLinkRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to promote the disaster recovery instance to the primary instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15556,18 +15606,26 @@ func (s *DeleteReplicationLinkRequest) SetResourceOwnerId(v int64) *DeleteReplic
 }
 
 type DeleteReplicationLinkResponseBody struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 847BA085-B377-4BFA-8267-F82345ECE1D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 3472****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// test01
@@ -20279,7 +20337,8 @@ type DescribeBackupPolicyResponseBody struct {
 	// example:
 	//
 	// 1
-	SupportVolumeShadowCopy *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
+	SupportVolumeShadowCopy     *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
+	SupportsHighFrequencyBackup *int64 `json:"SupportsHighFrequencyBackup,omitempty" xml:"SupportsHighFrequencyBackup,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -20427,6 +20486,11 @@ func (s *DescribeBackupPolicyResponseBody) SetSupportReleasedKeep(v int32) *Desc
 
 func (s *DescribeBackupPolicyResponseBody) SetSupportVolumeShadowCopy(v int32) *DescribeBackupPolicyResponseBody {
 	s.SupportVolumeShadowCopy = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetSupportsHighFrequencyBackup(v int64) *DescribeBackupPolicyResponseBody {
+	s.SupportsHighFrequencyBackup = &v
 	return s
 }
 
@@ -25777,7 +25841,9 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// true
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DeletionProtection        *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DisasterRecoveryInfo      *string `json:"DisasterRecoveryInfo,omitempty" xml:"DisasterRecoveryInfo,omitempty"`
+	DisasterRecoveryInstances *string `json:"DisasterRecoveryInstances,omitempty" xml:"DisasterRecoveryInstances,omitempty"`
 	// The database engine of the instance. Valid values:
 	//
 	// 	- **MySQL**
@@ -26262,6 +26328,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDel
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDisasterRecoveryInfo(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DisasterRecoveryInfo = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDisasterRecoveryInstances(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DisasterRecoveryInstances = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetEngine(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.Engine = &v
 	return s
@@ -26669,6 +26745,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBCluste
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
+	AccountSecurityPolicy *string `json:"AccountSecurityPolicy,omitempty" xml:"AccountSecurityPolicy,omitempty"`
 	// The instance IDs.
 	DBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
 	// The recovery model. Valid values: Simple and Full.
@@ -26685,6 +26762,11 @@ func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) St
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) SetAccountSecurityPolicy(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra {
+	s.AccountSecurityPolicy = &v
+	return s
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) SetDBInstanceIds(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra {
@@ -41889,23 +41971,23 @@ type DescribeHistoryTasksStatRequest struct {
 	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// 	- Scheduled
+	// 	- **Scheduled**
 	//
-	// 	- Running
+	// 	- **Running**
 	//
-	// 	- Succeed
+	// 	- **Succeed**
 	//
-	// 	- Failed
+	// 	- **Failed**
 	//
-	// 	- Cancelling
+	// 	- **Cancelling**
 	//
-	// 	- Canceled
+	// 	- **Canceled**
 	//
-	// 	- Waiting
+	// 	- **Waiting**
 	//
-	// Separate multiple states with commas (,). This parameter is empty by default, which indicates that tasks in all states are queried.
+	// Separate multiple statuses with commas (,). By default, this parameter is left empty. This indicates that tasks in all statuses are queried.
 	//
 	// example:
 	//
@@ -42018,7 +42100,7 @@ func (s *DescribeHistoryTasksStatRequest) SetToStartTime(v string) *DescribeHist
 }
 
 type DescribeHistoryTasksStatResponseBody struct {
-	// The information about the task.
+	// The queried tasks.
 	Items []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42047,21 +42129,21 @@ func (s *DescribeHistoryTasksStatResponseBody) SetRequestId(v string) *DescribeH
 }
 
 type DescribeHistoryTasksStatResponseBodyItems struct {
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// 	- Scheduled
+	// 	- **Scheduled**
 	//
-	// 	- Running
+	// 	- **Running**
 	//
-	// 	- Succeed
+	// 	- **Succeed**
 	//
-	// 	- Failed
+	// 	- **Failed**
 	//
-	// 	- Cancelling
+	// 	- **Cancelling**
 	//
-	// 	- Canceled
+	// 	- **Canceled**
 	//
-	// 	- Waiting
+	// 	- **Waiting**
 	//
 	// example:
 	//
@@ -53148,28 +53230,50 @@ func (s *DescribeRenewalPriceResponse) SetBody(v *DescribeRenewalPriceResponseBo
 }
 
 type DescribeReplicationLinkLogsRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the task. You can call the **CreateReplicationLink*	- operation to create the task ID of the disaster recovery instance.
+	//
 	// example:
 	//
 	// 8413252
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task. You can call the **CreateReplicationLink*	- operation to create a disaster recovery instance. You can specify a task name in the request parameters of the call.
+	//
 	// example:
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 	- **create**: creates a synchronization link.
+	//
+	// 	- **create-dryrun**: performs a precheck before a synchronization link is created.
+	//
+	// Valid values:
+	//
+	// 	- create: creates a replication link.
+	//
+	// 	- create-dryrun: performs a precheck before a replication link is created.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53217,15 +53321,22 @@ func (s *DescribeReplicationLinkLogsRequest) SetTaskType(v string) *DescribeRepl
 }
 
 type DescribeReplicationLinkLogsResponseBody struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// pgm-bp1trqb4p1xd****
-	DBInstanceId *string                                         `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Items        []*DescribeReplicationLinkLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The items.
+	Items []*DescribeReplicationLinkLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16C62438-491B-5C02-9B49-BA924A1372A2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -53261,66 +53372,126 @@ func (s *DescribeReplicationLinkLogsResponseBody) SetTotalSize(v int32) *Describ
 }
 
 type DescribeReplicationLinkLogsResponseBodyItems struct {
+	// The details of the task.
+	//
 	// example:
 	//
 	// [Check rds empty]\\nCheck rds databases: success\\n[Check source connectivity]\\nCheck ip connectable: success\\nCheck port connectable: success\\nCheck database connectable: success\\nCheck account replication privilege: success\\nCheck account createrole privilege: success\\nCheck account monitor privilege: success\\n[Check source version]\\nCheck major version consistent: success\\n[Check source glibc version]\\nCheck source glibc version compatible: warning(warning:source glibc version is not compatible with rds pg)\\n[Check disk size]\\nCheck disk size enough: success\\n[Check wal keep size]\\nCheck wal keep size large enough: success\\n[Check spec params]\\nCheck if spec params too large: success\\n [Check triggers]\\nCheck triggers compatible: success\\n[Check user functions]\\nCheck user functions compatible: success\\n*Migrate check success*
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The creation time. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-02-25T06:57:41Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-03-01T06:39:51Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The synchronization information. This parameter is a reserved parameter.
+	//
 	// example:
 	//
 	// None
 	ReplicationInfo *string `json:"ReplicationInfo,omitempty" xml:"ReplicationInfo,omitempty"`
+	// The status of the synchronization. Valid values:
+	//
+	// 	- **steaming**: The synchronization is in progress.
+	//
+	// 	- **finish**: The synchronization is complete.
+	//
+	// 	- **disconnect**: The synchronization is disconnected.
+	//
 	// example:
 	//
 	// finish
 	ReplicationState *string `json:"ReplicationState,omitempty" xml:"ReplicationState,omitempty"`
+	// The account of the database that is used for data synchronization.
+	//
 	// example:
 	//
 	// testdbuser
 	ReplicatorAccount *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
+	// The password of the account.
+	//
 	// example:
 	//
 	// testpassword
 	ReplicatorPassword *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
+	// The endpoint of the source instance.
+	//
 	// example:
 	//
 	// pgm-****.pg.rds.aliyuncs.com
 	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
+	// The type of the source instance. Valid values:
+	//
+	// 	- other: other instances
+	//
+	// 	- aliyunRDS: an ApsaraDB RDS instance
+	//
 	// example:
 	//
 	// aliyunRDS
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
+	// The port number of the source instance.
+	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// The destination instance ID.
+	//
 	// example:
 	//
 	// pgm-bp1l4dutw453****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 8413252
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The stage of the task. Valid values:
+	//
+	// 	- **precheck**: the precheck stage.
+	//
+	// 	- **basebackup**: the basic backup stage.
+	//
+	// 	- **startup**: the startup stage.
+	//
+	// 	- **increment**: the incremental synchronization stage.
+	//
 	// example:
 	//
 	// increment
 	TaskStage *string `json:"TaskStage,omitempty" xml:"TaskStage,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **failure**
+	//
+	// 	- **running**
+	//
 	// example:
 	//
 	// success
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 	- **create**: creates a synchronization link.
+	//
+	// 	- **create-dryrun**: performs a precheck before a synchronization link is created.
+	//
 	// example:
 	//
 	// create
@@ -54626,9 +54797,9 @@ type DescribeSQLLogRecordsRequest struct {
 	//
 	// 	- You can specify up to 10 keywords. The keywords are evaluated by using the **AND*	- operator. Separate multiple keywords with spaces.
 	//
-	// 	- If a field name in the specified SQL statement is enclosed in backquotes (\\`) and you want to use the field name as a keyword, you must enter the backquotes (\\`) as part of the field name. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
+	// 	- If a field name in the specified SQL statement is enclosed in grave accents (\\`) and you want to use the field name as a keyword, you must enter the grave accents (\\`) as part of the field name. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
 	//
-	// >  After you enter a keyword, the system matches the keyword based on the **Database**, **User**, and **QueryKeywords*	- parameters. The parameters are evaluated by using the **OR*	- operator.
+	// >  After you enter a keyword, the system matches the keyword based on the **Database**, **User**, and **QueryKeywords*	- parameters. The parameters are evaluated by using the **AND*	- operator.
 	//
 	// example:
 	//
@@ -63959,9 +64130,11 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **False*	- or **0**: disables the log backup feature.
 	//
-	// > 	- You must specify this parameter when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
+	// >
 	//
-	// > 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
+	// 	- You must specify this parameter when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
+	//
+	// 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
 	// example:
 	//
@@ -64027,9 +64200,11 @@ type ModifyBackupPolicyRequest struct {
 	LogBackupFrequency *string `json:"LogBackupFrequency,omitempty" xml:"LogBackupFrequency,omitempty"`
 	// The number of binary log files that you want to retain on the instance. Default value: **60**. Valid values: **6*	- to **100**.
 	//
-	// > 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
+	// >
 	//
-	// > 	- If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value \\*\\*-1\\*\\	- specifies that an unlimited number of binary log files can be retained on the instance.
+	// 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
+	//
+	// 	- If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value \\*\\*-1\\*\\	- specifies that an unlimited number of binary log files can be retained on the instance.
 	//
 	// example:
 	//
@@ -67808,11 +67983,11 @@ type ModifyDBInstanceSpecRequest struct {
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The effective time. Valid values:
 	//
-	// 	- **Immediate*	- (default)
+	// 	- **Immediate*	- (default): The effective time immediately takes effect.
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: The effective time takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -68274,11 +68449,11 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The effective time. Valid values:
 	//
-	// 	- **Immediate*	- (default)
+	// 	- **Immediate*	- (default): The effective time immediately takes effect.
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: The effective time takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -72190,11 +72365,11 @@ type ModifyParameterRequest struct {
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The time at which the modification takes effect. Valid values:
 	//
-	// 	- **Immediate**: immediately modifies the parameter. This is the default value.
+	// - **Immediate**: immediately modifies the parameter. This is the default value.
 	//
-	// 	- **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
+	// - **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
 	//
-	// 	- **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
+	// - **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
 	//
 	// example:
 	//
@@ -87244,7 +87419,13 @@ func (client *Client) CreateReadOnlyDBInstance(request *CreateReadOnlyDBInstance
 
 // Summary:
 //
-// 创建复制链路
+// Creates a disaster recovery instance for an ApsaraDB RDS instance and configures a data synchronization link.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
 //
 // @param request - CreateReplicationLinkRequest
 //
@@ -87326,7 +87507,13 @@ func (client *Client) CreateReplicationLinkWithOptions(request *CreateReplicatio
 
 // Summary:
 //
-// 创建复制链路
+// Creates a disaster recovery instance for an ApsaraDB RDS instance and configures a data synchronization link.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
 //
 // @param request - CreateReplicationLinkRequest
 //
@@ -89598,7 +89785,13 @@ func (client *Client) DeleteRCInstances(request *DeleteRCInstancesRequest) (_res
 
 // Summary:
 //
-// 删除复制链路
+// Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to the primary instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
 //
 // @param request - DeleteReplicationLinkRequest
 //
@@ -89648,7 +89841,13 @@ func (client *Client) DeleteReplicationLinkWithOptions(request *DeleteReplicatio
 
 // Summary:
 //
-// 删除复制链路
+// Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to the primary instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
 //
 // @param request - DeleteReplicationLinkRequest
 //
@@ -101388,7 +101587,13 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 
 // Summary:
 //
-// 查询复制链路操作日志
+// Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
 //
 // @param request - DescribeReplicationLinkLogsRequest
 //
@@ -101450,7 +101655,13 @@ func (client *Client) DescribeReplicationLinkLogsWithOptions(request *DescribeRe
 
 // Summary:
 //
-// 查询复制链路操作日志
+// Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- PostgreSQL
 //
 // @param request - DescribeReplicationLinkLogsRequest
 //
@@ -112306,7 +112517,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// 任务中心修改任务信息
+// Modifies the task information in the task center.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -112376,7 +112587,7 @@ func (client *Client) ModifyTaskInfoWithOptions(request *ModifyTaskInfoRequest, 
 
 // Summary:
 //
-// 任务中心修改任务信息
+// Modifies the task information in the task center.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -113248,7 +113459,7 @@ func (client *Client) ReceiveDBInstance(request *ReceiveDBInstanceRequest) (_res
 
 // Summary:
 //
-// Restores an ApsaraDB RDS for SQL Server instance.
+// Restores backup data of an ApsaraDB RDS for SQL Server instance to an existing instance or a new instance.
 //
 // Description:
 //
@@ -113362,7 +113573,7 @@ func (client *Client) RecoveryDBInstanceWithOptions(request *RecoveryDBInstanceR
 
 // Summary:
 //
-// Restores an ApsaraDB RDS for SQL Server instance.
+// Restores backup data of an ApsaraDB RDS for SQL Server instance to an existing instance or a new instance.
 //
 // Description:
 //
