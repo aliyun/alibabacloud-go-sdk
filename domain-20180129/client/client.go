@@ -1118,6 +1118,155 @@ func (s *CheckDomainSunriseClaimResponse) SetBody(v *CheckDomainSunriseClaimResp
 	return s
 }
 
+type CheckIntlFixPriceDomainStatusRequest struct {
+	// example:
+	//
+	// appp16.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s CheckIntlFixPriceDomainStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckIntlFixPriceDomainStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckIntlFixPriceDomainStatusRequest) SetDomain(v string) *CheckIntlFixPriceDomainStatusRequest {
+	s.Domain = &v
+	return s
+}
+
+type CheckIntlFixPriceDomainStatusResponseBody struct {
+	Module *CheckIntlFixPriceDomainStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckIntlFixPriceDomainStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckIntlFixPriceDomainStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBody) SetModule(v *CheckIntlFixPriceDomainStatusResponseBodyModule) *CheckIntlFixPriceDomainStatusResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBody) SetRequestId(v string) *CheckIntlFixPriceDomainStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckIntlFixPriceDomainStatusResponseBodyModule struct {
+	// example:
+	//
+	// USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1567353497
+	DeadDate *int64 `json:"DeadDate,omitempty" xml:"DeadDate,omitempty"`
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1567353497
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// true
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// 20.00
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 1566353497
+	RegDate *int64 `json:"RegDate,omitempty" xml:"RegDate,omitempty"`
+}
+
+func (s CheckIntlFixPriceDomainStatusResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckIntlFixPriceDomainStatusResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBodyModule) SetCurrency(v string) *CheckIntlFixPriceDomainStatusResponseBodyModule {
+	s.Currency = &v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBodyModule) SetDeadDate(v int64) *CheckIntlFixPriceDomainStatusResponseBodyModule {
+	s.DeadDate = &v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBodyModule) SetDomain(v string) *CheckIntlFixPriceDomainStatusResponseBodyModule {
+	s.Domain = &v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBodyModule) SetEndTime(v int64) *CheckIntlFixPriceDomainStatusResponseBodyModule {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBodyModule) SetPremium(v bool) *CheckIntlFixPriceDomainStatusResponseBodyModule {
+	s.Premium = &v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBodyModule) SetPrice(v int64) *CheckIntlFixPriceDomainStatusResponseBodyModule {
+	s.Price = &v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponseBodyModule) SetRegDate(v int64) *CheckIntlFixPriceDomainStatusResponseBodyModule {
+	s.RegDate = &v
+	return s
+}
+
+type CheckIntlFixPriceDomainStatusResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckIntlFixPriceDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckIntlFixPriceDomainStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckIntlFixPriceDomainStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponse) SetHeaders(v map[string]*string) *CheckIntlFixPriceDomainStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponse) SetStatusCode(v int32) *CheckIntlFixPriceDomainStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckIntlFixPriceDomainStatusResponse) SetBody(v *CheckIntlFixPriceDomainStatusResponseBody) *CheckIntlFixPriceDomainStatusResponse {
+	s.Body = v
+	return s
+}
+
 type CheckMaxYearOfServerLockRequest struct {
 	// This parameter is required.
 	//
@@ -1610,6 +1759,155 @@ func (s *ConfirmTransferInEmailResponse) SetStatusCode(v int32) *ConfirmTransfer
 }
 
 func (s *ConfirmTransferInEmailResponse) SetBody(v *ConfirmTransferInEmailResponseBody) *ConfirmTransferInEmailResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIntlFixedPriceDomainOrderRequest struct {
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// 13350500
+	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// example:
+	//
+	// appp16.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 58.00
+	ExpectedPrice *int64 `json:"ExpectedPrice,omitempty" xml:"ExpectedPrice,omitempty"`
+}
+
+func (s CreateIntlFixedPriceDomainOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntlFixedPriceDomainOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntlFixedPriceDomainOrderRequest) SetAutoPay(v bool) *CreateIntlFixedPriceDomainOrderRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderRequest) SetContactId(v int64) *CreateIntlFixedPriceDomainOrderRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderRequest) SetDomain(v string) *CreateIntlFixedPriceDomainOrderRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderRequest) SetExpectedPrice(v int64) *CreateIntlFixedPriceDomainOrderRequest {
+	s.ExpectedPrice = &v
+	return s
+}
+
+type CreateIntlFixedPriceDomainOrderResponseBody struct {
+	Module *CreateIntlFixedPriceDomainOrderResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// example:
+	//
+	// E879DC07-38EE-4408-9F33-73B30CD965CD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIntlFixedPriceDomainOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntlFixedPriceDomainOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponseBody) SetModule(v *CreateIntlFixedPriceDomainOrderResponseBodyModule) *CreateIntlFixedPriceDomainOrderResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponseBody) SetRequestId(v string) *CreateIntlFixedPriceDomainOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIntlFixedPriceDomainOrderResponseBodyModule struct {
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 31199295f2074ce895645d386cb2****
+	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	// example:
+	//
+	// 100.00
+	PayPrice *int64 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
+	// example:
+	//
+	// https://
+	PayUrl *string `json:"PayUrl,omitempty" xml:"PayUrl,omitempty"`
+}
+
+func (s CreateIntlFixedPriceDomainOrderResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntlFixedPriceDomainOrderResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponseBodyModule) SetDomain(v string) *CreateIntlFixedPriceDomainOrderResponseBodyModule {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponseBodyModule) SetOrderNo(v string) *CreateIntlFixedPriceDomainOrderResponseBodyModule {
+	s.OrderNo = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponseBodyModule) SetPayPrice(v int64) *CreateIntlFixedPriceDomainOrderResponseBodyModule {
+	s.PayPrice = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponseBodyModule) SetPayUrl(v string) *CreateIntlFixedPriceDomainOrderResponseBodyModule {
+	s.PayUrl = &v
+	return s
+}
+
+type CreateIntlFixedPriceDomainOrderResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIntlFixedPriceDomainOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIntlFixedPriceDomainOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIntlFixedPriceDomainOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponse) SetHeaders(v map[string]*string) *CreateIntlFixedPriceDomainOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponse) SetStatusCode(v int32) *CreateIntlFixedPriceDomainOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderResponse) SetBody(v *CreateIntlFixedPriceDomainOrderResponseBody) *CreateIntlFixedPriceDomainOrderResponse {
 	s.Body = v
 	return s
 }
@@ -2479,6 +2777,101 @@ func (s *FuzzyMatchDomainSensitiveWordResponse) SetStatusCode(v int32) *FuzzyMat
 }
 
 func (s *FuzzyMatchDomainSensitiveWordResponse) SetBody(v *FuzzyMatchDomainSensitiveWordResponseBody) *FuzzyMatchDomainSensitiveWordResponse {
+	s.Body = v
+	return s
+}
+
+type GetIntlFixPriceDomainListUrlRequest struct {
+	// example:
+	//
+	// 20240809
+	ListDate *string `json:"ListDate,omitempty" xml:"ListDate,omitempty"`
+}
+
+func (s GetIntlFixPriceDomainListUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntlFixPriceDomainListUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntlFixPriceDomainListUrlRequest) SetListDate(v string) *GetIntlFixPriceDomainListUrlRequest {
+	s.ListDate = &v
+	return s
+}
+
+type GetIntlFixPriceDomainListUrlResponseBody struct {
+	Module *GetIntlFixPriceDomainListUrlResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// example:
+	//
+	// BF014B60-C708-4253-B5F2-3F9B493F398B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIntlFixPriceDomainListUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntlFixPriceDomainListUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntlFixPriceDomainListUrlResponseBody) SetModule(v *GetIntlFixPriceDomainListUrlResponseBodyModule) *GetIntlFixPriceDomainListUrlResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *GetIntlFixPriceDomainListUrlResponseBody) SetRequestId(v string) *GetIntlFixPriceDomainListUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIntlFixPriceDomainListUrlResponseBodyModule struct {
+	// example:
+	//
+	// http://intl-fixed-price.oss-cn-zhangjiakou.aliyuncs.com/aliyun_intl_fixed_price_domain_20240827.gz?Expires=1724830838&OSSAccessKeyId=LTAI5tPMAybR4gfSEjdfAk1F&Signature=tb0SPs6tKb9gLKyQ5ibpQnBUuTY%3D
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+}
+
+func (s GetIntlFixPriceDomainListUrlResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntlFixPriceDomainListUrlResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntlFixPriceDomainListUrlResponseBodyModule) SetDownloadUrl(v string) *GetIntlFixPriceDomainListUrlResponseBodyModule {
+	s.DownloadUrl = &v
+	return s
+}
+
+type GetIntlFixPriceDomainListUrlResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIntlFixPriceDomainListUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIntlFixPriceDomainListUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntlFixPriceDomainListUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntlFixPriceDomainListUrlResponse) SetHeaders(v map[string]*string) *GetIntlFixPriceDomainListUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIntlFixPriceDomainListUrlResponse) SetStatusCode(v int32) *GetIntlFixPriceDomainListUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIntlFixPriceDomainListUrlResponse) SetBody(v *GetIntlFixPriceDomainListUrlResponseBody) *GetIntlFixPriceDomainListUrlResponse {
 	s.Body = v
 	return s
 }
@@ -10614,6 +11007,191 @@ func (s *QueryFailingReasonListForQualificationResponse) SetStatusCode(v int32) 
 }
 
 func (s *QueryFailingReasonListForQualificationResponse) SetBody(v *QueryFailingReasonListForQualificationResponseBody) *QueryFailingReasonListForQualificationResponse {
+	s.Body = v
+	return s
+}
+
+type QueryIntlFixedPriceOrderListRequest struct {
+	// example:
+	//
+	// T2024061115213700****
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 6
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryIntlFixedPriceOrderListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIntlFixedPriceOrderListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIntlFixedPriceOrderListRequest) SetBizId(v string) *QueryIntlFixedPriceOrderListRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListRequest) SetCurrentPage(v int64) *QueryIntlFixedPriceOrderListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListRequest) SetPageSize(v int64) *QueryIntlFixedPriceOrderListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListRequest) SetStatus(v int64) *QueryIntlFixedPriceOrderListRequest {
+	s.Status = &v
+	return s
+}
+
+type QueryIntlFixedPriceOrderListResponseBody struct {
+	Module *QueryIntlFixedPriceOrderListResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// example:
+	//
+	// D6CB3623-4726-4947-AC2B-2C6E673B447C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryIntlFixedPriceOrderListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIntlFixedPriceOrderListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBody) SetModule(v *QueryIntlFixedPriceOrderListResponseBodyModule) *QueryIntlFixedPriceOrderListResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBody) SetRequestId(v string) *QueryIntlFixedPriceOrderListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryIntlFixedPriceOrderListResponseBodyModule struct {
+	// example:
+	//
+	// T2023110718483800****
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 1557037855000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 11
+	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 20.00
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 6
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1557037855000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 155703785****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryIntlFixedPriceOrderListResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIntlFixedPriceOrderListResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetBizId(v string) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetCreateTime(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetDomain(v string) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.Domain = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetOrderType(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.OrderType = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetPrice(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.Price = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetStatus(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetUpdateTime(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetUserId(v string) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.UserId = &v
+	return s
+}
+
+type QueryIntlFixedPriceOrderListResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryIntlFixedPriceOrderListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryIntlFixedPriceOrderListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIntlFixedPriceOrderListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIntlFixedPriceOrderListResponse) SetHeaders(v map[string]*string) *QueryIntlFixedPriceOrderListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponse) SetStatusCode(v int32) *QueryIntlFixedPriceOrderListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponse) SetBody(v *QueryIntlFixedPriceOrderListResponseBody) *QueryIntlFixedPriceOrderListResponse {
 	s.Body = v
 	return s
 }
@@ -25081,6 +25659,66 @@ func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验在售国际一口价域名状态和询价
+//
+// @param request - CheckIntlFixPriceDomainStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckIntlFixPriceDomainStatusResponse
+func (client *Client) CheckIntlFixPriceDomainStatusWithOptions(request *CheckIntlFixPriceDomainStatusRequest, runtime *util.RuntimeOptions) (_result *CheckIntlFixPriceDomainStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckIntlFixPriceDomainStatus"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckIntlFixPriceDomainStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验在售国际一口价域名状态和询价
+//
+// @param request - CheckIntlFixPriceDomainStatusRequest
+//
+// @return CheckIntlFixPriceDomainStatusResponse
+func (client *Client) CheckIntlFixPriceDomainStatus(request *CheckIntlFixPriceDomainStatusRequest) (_result *CheckIntlFixPriceDomainStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckIntlFixPriceDomainStatusResponse{}
+	_body, _err := client.CheckIntlFixPriceDomainStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CheckMaxYearOfServerLockRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25330,6 +25968,78 @@ func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfirmTransferInEmailResponse{}
 	_body, _err := client.ConfirmTransferInEmailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建国际一口价订单
+//
+// @param request - CreateIntlFixedPriceDomainOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIntlFixedPriceDomainOrderResponse
+func (client *Client) CreateIntlFixedPriceDomainOrderWithOptions(request *CreateIntlFixedPriceDomainOrderRequest, runtime *util.RuntimeOptions) (_result *CreateIntlFixedPriceDomainOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectedPrice)) {
+		query["ExpectedPrice"] = request.ExpectedPrice
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIntlFixedPriceDomainOrder"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIntlFixedPriceDomainOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建国际一口价订单
+//
+// @param request - CreateIntlFixedPriceDomainOrderRequest
+//
+// @return CreateIntlFixedPriceDomainOrderResponse
+func (client *Client) CreateIntlFixedPriceDomainOrder(request *CreateIntlFixedPriceDomainOrderRequest) (_result *CreateIntlFixedPriceDomainOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIntlFixedPriceDomainOrderResponse{}
+	_body, _err := client.CreateIntlFixedPriceDomainOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25800,6 +26510,66 @@ func (client *Client) FuzzyMatchDomainSensitiveWord(request *FuzzyMatchDomainSen
 	runtime := &util.RuntimeOptions{}
 	_result = &FuzzyMatchDomainSensitiveWordResponse{}
 	_body, _err := client.FuzzyMatchDomainSensitiveWordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询国际一口价在售域名列表
+//
+// @param request - GetIntlFixPriceDomainListUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIntlFixPriceDomainListUrlResponse
+func (client *Client) GetIntlFixPriceDomainListUrlWithOptions(request *GetIntlFixPriceDomainListUrlRequest, runtime *util.RuntimeOptions) (_result *GetIntlFixPriceDomainListUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ListDate)) {
+		query["ListDate"] = request.ListDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIntlFixPriceDomainListUrl"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIntlFixPriceDomainListUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询国际一口价在售域名列表
+//
+// @param request - GetIntlFixPriceDomainListUrlRequest
+//
+// @return GetIntlFixPriceDomainListUrlResponse
+func (client *Client) GetIntlFixPriceDomainListUrl(request *GetIntlFixPriceDomainListUrlRequest) (_result *GetIntlFixPriceDomainListUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIntlFixPriceDomainListUrlResponse{}
+	_body, _err := client.GetIntlFixPriceDomainListUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27688,6 +28458,78 @@ func (client *Client) QueryFailingReasonListForQualification(request *QueryFaili
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFailingReasonListForQualificationResponse{}
 	_body, _err := client.QueryFailingReasonListForQualificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询国际一口价订单列表
+//
+// @param request - QueryIntlFixedPriceOrderListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryIntlFixedPriceOrderListResponse
+func (client *Client) QueryIntlFixedPriceOrderListWithOptions(request *QueryIntlFixedPriceOrderListRequest, runtime *util.RuntimeOptions) (_result *QueryIntlFixedPriceOrderListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryIntlFixedPriceOrderList"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryIntlFixedPriceOrderListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询国际一口价订单列表
+//
+// @param request - QueryIntlFixedPriceOrderListRequest
+//
+// @return QueryIntlFixedPriceOrderListResponse
+func (client *Client) QueryIntlFixedPriceOrderList(request *QueryIntlFixedPriceOrderListRequest) (_result *QueryIntlFixedPriceOrderListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryIntlFixedPriceOrderListResponse{}
+	_body, _err := client.QueryIntlFixedPriceOrderListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
