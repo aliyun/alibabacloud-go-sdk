@@ -9551,7 +9551,8 @@ type CreateApplicationScalingRuleRequest struct {
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EnableIdle *bool   `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// example:
 	//
 	// -1
@@ -9596,6 +9597,11 @@ func (s CreateApplicationScalingRuleRequest) GoString() string {
 
 func (s *CreateApplicationScalingRuleRequest) SetAppId(v string) *CreateApplicationScalingRuleRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleRequest) SetEnableIdle(v bool) *CreateApplicationScalingRuleRequest {
+	s.EnableIdle = &v
 	return s
 }
 
@@ -9711,6 +9717,7 @@ type CreateApplicationScalingRuleResponseBodyData struct {
 	//
 	// 1616642248938
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableIdle *bool  `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// example:
 	//
 	// 1641882854484
@@ -9750,6 +9757,11 @@ func (s *CreateApplicationScalingRuleResponseBodyData) SetAppId(v string) *Creat
 
 func (s *CreateApplicationScalingRuleResponseBodyData) SetCreateTime(v int64) *CreateApplicationScalingRuleResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyData) SetEnableIdle(v bool) *CreateApplicationScalingRuleResponseBodyData {
+	s.EnableIdle = &v
 	return s
 }
 
@@ -9991,11 +10003,7 @@ func (s *CreateApplicationScalingRuleResponse) SetBody(v *CreateApplicationScali
 }
 
 type CreateConfigMapRequest struct {
-	// The key-value pairs of the ConfigMap in the JSON format. Format:
-	//
-	// {"Data":"{"k1":"v1", "k2":"v2"}"}
-	//
-	// k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
+	// The ConfigMap data.
 	//
 	// This parameter is required.
 	//
@@ -10003,7 +10011,11 @@ type CreateConfigMapRequest struct {
 	//
 	// {"env.shell": "/bin/sh"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The description. The description must be 1 to 255 characters in length, and cannot contain spaces.
+	// The key-value pairs of the ConfigMap in the JSON format. Format:
+	//
+	// {"Data":"{"k1":"v1", "k2":"v2"}"}
+	//
+	// k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
 	//
 	// example:
 	//
@@ -10056,6 +10068,36 @@ func (s *CreateConfigMapRequest) SetNamespaceId(v string) *CreateConfigMapReques
 }
 
 type CreateConfigMapResponseBody struct {
+	// Empty
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The trace ID that is used to query the details of the request.
+	Data *CreateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the ConfigMap that was created.
+	//
+	// example:
+	//
+	// The error code. Valid values:
+	//
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	//
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The HTTP status code. Valid values:
 	//
 	// 	- **2xx**: The call was successful.
@@ -10068,43 +10110,9 @@ type CreateConfigMapResponseBody struct {
 	//
 	// example:
 	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
-	Data *CreateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
-	//
-	// example:
-	//
-	// Empty
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ConfigMap was created. Valid values:
-	//
-	// 	- **true**: The ConfigMap was created.
-	//
-	// 	- **false**: The ConfigMap failed to be created.
-	//
-	// example:
-	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The returned message.
 	//
 	// example:
 	//
@@ -10156,7 +10164,7 @@ func (s *CreateConfigMapResponseBody) SetTraceId(v string) *CreateConfigMapRespo
 }
 
 type CreateConfigMapResponseBodyData struct {
-	// The ID of the ConfigMap that was created.
+	// The returned result.
 	//
 	// example:
 	//
@@ -17819,6 +17827,7 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	//
 	// 1624329843790
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableIdle *bool  `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The time when the auto scaling policy was last disabled.
 	//
 	// example:
@@ -17882,6 +17891,11 @@ func (s *DescribeApplicationScalingRuleResponseBodyData) SetAppId(v string) *Des
 
 func (s *DescribeApplicationScalingRuleResponseBodyData) SetCreateTime(v int64) *DescribeApplicationScalingRuleResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetEnableIdle(v bool) *DescribeApplicationScalingRuleResponseBodyData {
+	s.EnableIdle = &v
 	return s
 }
 
@@ -18656,6 +18670,7 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules stru
 	//
 	// 1616642248938
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableIdle *bool  `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The time when the auto scaling policy was last disabled.
 	//
 	// example:
@@ -18719,6 +18734,11 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules)
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetCreateTime(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetEnableIdle(v bool) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
+	s.EnableIdle = &v
 	return s
 }
 
@@ -39072,7 +39092,8 @@ type UpdateApplicationScalingRuleRequest struct {
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EnableIdle *bool   `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
 	// 	- If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. This is the default value.
@@ -39226,6 +39247,11 @@ func (s *UpdateApplicationScalingRuleRequest) SetAppId(v string) *UpdateApplicat
 	return s
 }
 
+func (s *UpdateApplicationScalingRuleRequest) SetEnableIdle(v bool) *UpdateApplicationScalingRuleRequest {
+	s.EnableIdle = &v
+	return s
+}
+
 func (s *UpdateApplicationScalingRuleRequest) SetMinReadyInstanceRatio(v int32) *UpdateApplicationScalingRuleRequest {
 	s.MinReadyInstanceRatio = &v
 	return s
@@ -39368,6 +39394,7 @@ type UpdateApplicationScalingRuleResponseBodyData struct {
 	//
 	// 1616642248938
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableIdle *bool  `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The time when the auto scaling policy was last disabled.
 	//
 	// example:
@@ -39429,6 +39456,11 @@ func (s *UpdateApplicationScalingRuleResponseBodyData) SetAppId(v string) *Updat
 
 func (s *UpdateApplicationScalingRuleResponseBodyData) SetCreateTime(v int64) *UpdateApplicationScalingRuleResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyData) SetEnableIdle(v bool) *UpdateApplicationScalingRuleResponseBodyData {
+	s.EnableIdle = &v
 	return s
 }
 
@@ -42921,6 +42953,10 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIdle)) {
+		query["EnableIdle"] = request.EnableIdle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
@@ -50590,6 +50626,10 @@ func (client *Client) UpdateApplicationScalingRuleWithOptions(request *UpdateApp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIdle)) {
+		query["EnableIdle"] = request.EnableIdle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
