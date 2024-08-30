@@ -1,3 +1,9 @@
+2024-08-30 Version: v3.0.0
+- Delete API CreateWHClientCertificate.
+- Delete API RevokeWHClientCertificate.
+- Delete API UploadPCACert.
+
+
 2024-08-21 Version: v2.4.0
 - Support API CreateCsr.
 - Support API CreateDeploymentJob.
