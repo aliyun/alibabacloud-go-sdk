@@ -873,6 +873,47 @@ func (s *LeavePictureList) SetPicture(v string) *LeavePictureList {
 	return s
 }
 
+type LimitRule struct {
+	BeginTime *int64  `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	Condcase  *string `json:"condcase,omitempty" xml:"condcase,omitempty"`
+	EndTime   *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	LimitNum  *int32  `json:"limitNum,omitempty" xml:"limitNum,omitempty"`
+	RuleType  *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
+}
+
+func (s LimitRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LimitRule) GoString() string {
+	return s.String()
+}
+
+func (s *LimitRule) SetBeginTime(v int64) *LimitRule {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *LimitRule) SetCondcase(v string) *LimitRule {
+	s.Condcase = &v
+	return s
+}
+
+func (s *LimitRule) SetEndTime(v int64) *LimitRule {
+	s.EndTime = &v
+	return s
+}
+
+func (s *LimitRule) SetLimitNum(v int32) *LimitRule {
+	s.LimitNum = &v
+	return s
+}
+
+func (s *LimitRule) SetRuleType(v string) *LimitRule {
+	s.RuleType = &v
+	return s
+}
+
 type LogisticsDetail struct {
 	// example:
 	//
@@ -899,6 +940,71 @@ func (s *LogisticsDetail) SetOcurrTimeStr(v string) *LogisticsDetail {
 
 func (s *LogisticsDetail) SetStanderdDesc(v string) *LogisticsDetail {
 	s.StanderdDesc = &v
+	return s
+}
+
+type LogisticsInformationData struct {
+	LogisticsStatus      *string `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
+	ModifiedTime         *string `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	OrderId              *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	OrderLineId          *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	OuterPurchaseOrderId *string `json:"outerPurchaseOrderId,omitempty" xml:"outerPurchaseOrderId,omitempty"`
+	PurchaserId          *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	TrackingCompanyCode  *string `json:"trackingCompanyCode,omitempty" xml:"trackingCompanyCode,omitempty"`
+	TrackingCompanyName  *string `json:"trackingCompanyName,omitempty" xml:"trackingCompanyName,omitempty"`
+	TrackingNumber       *string `json:"trackingNumber,omitempty" xml:"trackingNumber,omitempty"`
+}
+
+func (s LogisticsInformationData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogisticsInformationData) GoString() string {
+	return s.String()
+}
+
+func (s *LogisticsInformationData) SetLogisticsStatus(v string) *LogisticsInformationData {
+	s.LogisticsStatus = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetModifiedTime(v string) *LogisticsInformationData {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetOrderId(v string) *LogisticsInformationData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetOrderLineId(v string) *LogisticsInformationData {
+	s.OrderLineId = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetOuterPurchaseOrderId(v string) *LogisticsInformationData {
+	s.OuterPurchaseOrderId = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetPurchaserId(v string) *LogisticsInformationData {
+	s.PurchaserId = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetTrackingCompanyCode(v string) *LogisticsInformationData {
+	s.TrackingCompanyCode = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetTrackingCompanyName(v string) *LogisticsInformationData {
+	s.TrackingCompanyName = &v
+	return s
+}
+
+func (s *LogisticsInformationData) SetTrackingNumber(v string) *LogisticsInformationData {
+	s.TrackingNumber = &v
 	return s
 }
 
@@ -1649,8 +1755,9 @@ type Product struct {
 	// example:
 	//
 	// 100+
-	FuzzyQuantity *string   `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	Images        []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	FuzzyQuantity *string      `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	Images        []*string    `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	LimitRules    []*LimitRule `json:"limitRules,omitempty" xml:"limitRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 21000017-4580902812
@@ -1754,6 +1861,11 @@ func (s *Product) SetFuzzyQuantity(v string) *Product {
 
 func (s *Product) SetImages(v []*string) *Product {
 	s.Images = v
+	return s
+}
+
+func (s *Product) SetLimitRules(v []*LimitRule) *Product {
+	s.LimitRules = v
 	return s
 }
 
@@ -2073,7 +2185,8 @@ type ProductSaleInfo struct {
 	// example:
 	//
 	// 有货
-	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	FuzzyQuantity *string      `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	LimitRules    []*LimitRule `json:"limitRules,omitempty" xml:"limitRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 21000017-4580902812
@@ -2125,6 +2238,11 @@ func (s *ProductSaleInfo) SetDivisionCode(v string) *ProductSaleInfo {
 
 func (s *ProductSaleInfo) SetFuzzyQuantity(v string) *ProductSaleInfo {
 	s.FuzzyQuantity = &v
+	return s
+}
+
+func (s *ProductSaleInfo) SetLimitRules(v []*LimitRule) *ProductSaleInfo {
+	s.LimitRules = v
 	return s
 }
 
