@@ -14222,7 +14222,8 @@ type DescribeDiagnosisRecordsResponseBodyQuerys struct {
 	// example:
 	//
 	// 2021093000414401000000023503151******
-	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessId       *string                                                      `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	QueryProperties []*DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties `json:"QueryProperties,omitempty" xml:"QueryProperties,omitempty" type:"Repeated"`
 	// The amount of time that is consumed for queuing. Unit: milliseconds.
 	//
 	// example:
@@ -14376,6 +14377,11 @@ func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetProcessId(v string) *Des
 	return s
 }
 
+func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetQueryProperties(v []*DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties) *DescribeDiagnosisRecordsResponseBodyQuerys {
+	s.QueryProperties = v
+	return s
+}
+
 func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetQueueTime(v int64) *DescribeDiagnosisRecordsResponseBodyQuerys {
 	s.QueueTime = &v
 	return s
@@ -14443,6 +14449,29 @@ func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetTotalStages(v int32) *De
 
 func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetUserName(v string) *DescribeDiagnosisRecordsResponseBodyQuerys {
 	s.UserName = &v
+	return s
+}
+
+type DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties) SetName(v string) *DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties) SetValue(v string) *DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties {
+	s.Value = &v
 	return s
 }
 
@@ -15704,7 +15733,7 @@ func (s *DescribeElasticPlanSpecificationsResponse) SetBody(v *DescribeElasticPl
 type DescribeElasticPlansRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -34205,11 +34234,11 @@ func (client *Client) DescribeElasticPlanSpecifications(request *DescribeElastic
 
 // Summary:
 //
-// Queries scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries scaling plans of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeElasticPlansRequest
 //
@@ -34275,11 +34304,11 @@ func (client *Client) DescribeElasticPlansWithOptions(request *DescribeElasticPl
 
 // Summary:
 //
-// Queries scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries scaling plans of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeElasticPlansRequest
 //
