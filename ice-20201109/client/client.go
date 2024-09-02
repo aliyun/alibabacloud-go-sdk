@@ -9,6 +9,198 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AIAgentRuntimeConfig struct {
+	AvatarChat3D *AIAgentRuntimeConfigAvatarChat3D `json:"AvatarChat3D,omitempty" xml:"AvatarChat3D,omitempty" type:"Struct"`
+	VoiceChat    *AIAgentRuntimeConfigVoiceChat    `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
+}
+
+func (s AIAgentRuntimeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentRuntimeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentRuntimeConfig) SetAvatarChat3D(v *AIAgentRuntimeConfigAvatarChat3D) *AIAgentRuntimeConfig {
+	s.AvatarChat3D = v
+	return s
+}
+
+func (s *AIAgentRuntimeConfig) SetVoiceChat(v *AIAgentRuntimeConfigVoiceChat) *AIAgentRuntimeConfig {
+	s.VoiceChat = v
+	return s
+}
+
+type AIAgentRuntimeConfigAvatarChat3D struct {
+	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
+	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s AIAgentRuntimeConfigAvatarChat3D) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentRuntimeConfigAvatarChat3D) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentRuntimeConfigAvatarChat3D) SetAgentUserId(v string) *AIAgentRuntimeConfigAvatarChat3D {
+	s.AgentUserId = &v
+	return s
+}
+
+func (s *AIAgentRuntimeConfigAvatarChat3D) SetAuthToken(v string) *AIAgentRuntimeConfigAvatarChat3D {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *AIAgentRuntimeConfigAvatarChat3D) SetChannelId(v string) *AIAgentRuntimeConfigAvatarChat3D {
+	s.ChannelId = &v
+	return s
+}
+
+type AIAgentRuntimeConfigVoiceChat struct {
+	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
+	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s AIAgentRuntimeConfigVoiceChat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentRuntimeConfigVoiceChat) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentRuntimeConfigVoiceChat) SetAgentUserId(v string) *AIAgentRuntimeConfigVoiceChat {
+	s.AgentUserId = &v
+	return s
+}
+
+func (s *AIAgentRuntimeConfigVoiceChat) SetAuthToken(v string) *AIAgentRuntimeConfigVoiceChat {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *AIAgentRuntimeConfigVoiceChat) SetChannelId(v string) *AIAgentRuntimeConfigVoiceChat {
+	s.ChannelId = &v
+	return s
+}
+
+type AIAgentTemplateConfig struct {
+	AvatarChat3D *AIAgentTemplateConfigAvatarChat3D `json:"AvatarChat3D,omitempty" xml:"AvatarChat3D,omitempty" type:"Struct"`
+	VoiceChat    *AIAgentTemplateConfigVoiceChat    `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
+}
+
+func (s AIAgentTemplateConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentTemplateConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentTemplateConfig) SetAvatarChat3D(v *AIAgentTemplateConfigAvatarChat3D) *AIAgentTemplateConfig {
+	s.AvatarChat3D = v
+	return s
+}
+
+func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) *AIAgentTemplateConfig {
+	s.VoiceChat = v
+	return s
+}
+
+type AIAgentTemplateConfigAvatarChat3D struct {
+	AvatarId             *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	VoiceId              *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	Volume               *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s AIAgentTemplateConfigAvatarChat3D) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentTemplateConfigAvatarChat3D) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetAvatarId(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetEnableVoiceInterrupt(v bool) *AIAgentTemplateConfigAvatarChat3D {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetGracefulShutdown(v bool) *AIAgentTemplateConfigAvatarChat3D {
+	s.GracefulShutdown = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetGreeting(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetVoiceId(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetVolume(v int64) *AIAgentTemplateConfigAvatarChat3D {
+	s.Volume = &v
+	return s
+}
+
+type AIAgentTemplateConfigVoiceChat struct {
+	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	VoiceId              *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	Volume               *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s AIAgentTemplateConfigVoiceChat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentTemplateConfigVoiceChat) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetEnableVoiceInterrupt(v bool) *AIAgentTemplateConfigVoiceChat {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetGracefulShutdown(v bool) *AIAgentTemplateConfigVoiceChat {
+	s.GracefulShutdown = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetGreeting(v string) *AIAgentTemplateConfigVoiceChat {
+	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetVoiceId(v string) *AIAgentTemplateConfigVoiceChat {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetVolume(v int64) *AIAgentTemplateConfigVoiceChat {
+	s.Volume = &v
+	return s
+}
+
 type AddCategoryRequest struct {
 	// This parameter is required.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
@@ -6103,6 +6295,139 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 	return s
 }
 
+type DescribeAIAgentInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeAIAgentInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAIAgentInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIAgentInstanceRequest) SetInstanceId(v string) *DescribeAIAgentInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeAIAgentInstanceResponseBody struct {
+	Instance *DescribeAIAgentInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAIAgentInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAIAgentInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIAgentInstanceResponseBody) SetInstance(v *DescribeAIAgentInstanceResponseBodyInstance) *DescribeAIAgentInstanceResponseBody {
+	s.Instance = v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponseBody) SetRequestId(v string) *DescribeAIAgentInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAIAgentInstanceResponseBodyInstance struct {
+	// example:
+	//
+	// https://example.com/call_logs/12345
+	CallLogUrl *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
+	// example:
+	//
+	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
+	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	// example:
+	//
+	// Finished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {"VoiceChat": {"AppId": "your_voice_chat_app_id"}}
+	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// example:
+	//
+	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s DescribeAIAgentInstanceResponseBodyInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAIAgentInstanceResponseBodyInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetCallLogUrl(v string) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.CallLogUrl = &v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetRuntimeConfig(v *AIAgentRuntimeConfig) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.RuntimeConfig = v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetStatus(v string) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetTemplateConfig(v *AIAgentTemplateConfig) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.TemplateConfig = v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetUserData(v string) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.UserData = &v
+	return s
+}
+
+type DescribeAIAgentInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAIAgentInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAIAgentInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAIAgentInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIAgentInstanceResponse) SetHeaders(v map[string]*string) *DescribeAIAgentInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponse) SetStatusCode(v int32) *DescribeAIAgentInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponse) SetBody(v *DescribeAIAgentInstanceResponseBody) *DescribeAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeMeterImsEditUsageRequest struct {
 	// This parameter is required.
 	//
@@ -6851,6 +7176,113 @@ func (s *DescribeMeterImsSummaryResponse) SetStatusCode(v int32) *DescribeMeterI
 }
 
 func (s *DescribeMeterImsSummaryResponse) SetBody(v *DescribeMeterImsSummaryResponseBody) *DescribeMeterImsSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNotifyConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+}
+
+func (s DescribeNotifyConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNotifyConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNotifyConfigRequest) SetAIAgentId(v string) *DescribeNotifyConfigRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+type DescribeNotifyConfigResponseBody struct {
+	// example:
+	//
+	// http://customer.com/callback
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// example:
+	//
+	// true
+	EnableNotify *bool `json:"EnableNotify,omitempty" xml:"EnableNotify,omitempty"`
+	// example:
+	//
+	// agent_start,agent_stop,error
+	EventTypes *string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty"`
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s DescribeNotifyConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNotifyConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNotifyConfigResponseBody) SetCallbackUrl(v string) *DescribeNotifyConfigResponseBody {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *DescribeNotifyConfigResponseBody) SetEnableNotify(v bool) *DescribeNotifyConfigResponseBody {
+	s.EnableNotify = &v
+	return s
+}
+
+func (s *DescribeNotifyConfigResponseBody) SetEventTypes(v string) *DescribeNotifyConfigResponseBody {
+	s.EventTypes = &v
+	return s
+}
+
+func (s *DescribeNotifyConfigResponseBody) SetRequestId(v string) *DescribeNotifyConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNotifyConfigResponseBody) SetToken(v string) *DescribeNotifyConfigResponseBody {
+	s.Token = &v
+	return s
+}
+
+type DescribeNotifyConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNotifyConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNotifyConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNotifyConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNotifyConfigResponse) SetHeaders(v map[string]*string) *DescribeNotifyConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNotifyConfigResponse) SetStatusCode(v int32) *DescribeNotifyConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNotifyConfigResponse) SetBody(v *DescribeNotifyConfigResponseBody) *DescribeNotifyConfigResponse {
 	s.Body = v
 	return s
 }
@@ -7604,6 +8036,192 @@ func (s *DropSearchLibResponse) SetStatusCode(v int32) *DropSearchLibResponse {
 }
 
 func (s *DropSearchLibResponse) SetBody(v *DropSearchLibResponseBody) *DropSearchLibResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateAIAgentCallRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// 3600
+	Expire         *int64                 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// example:
+	//
+	// 877ae632caae49b1afc81c2e8194ffb4
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GenerateAIAgentCallRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAIAgentCallRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAIAgentCallRequest) SetAIAgentId(v string) *GenerateAIAgentCallRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallRequest) SetExpire(v int64) *GenerateAIAgentCallRequest {
+	s.Expire = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallRequest) SetTemplateConfig(v *AIAgentTemplateConfig) *GenerateAIAgentCallRequest {
+	s.TemplateConfig = v
+	return s
+}
+
+func (s *GenerateAIAgentCallRequest) SetUserId(v string) *GenerateAIAgentCallRequest {
+	s.UserId = &v
+	return s
+}
+
+type GenerateAIAgentCallShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// 3600
+	Expire               *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// example:
+	//
+	// 877ae632caae49b1afc81c2e8194ffb4
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GenerateAIAgentCallShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAIAgentCallShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetAIAgentId(v string) *GenerateAIAgentCallShrinkRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetExpire(v int64) *GenerateAIAgentCallShrinkRequest {
+	s.Expire = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetTemplateConfigShrink(v string) *GenerateAIAgentCallShrinkRequest {
+	s.TemplateConfigShrink = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetUserId(v string) *GenerateAIAgentCallShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type GenerateAIAgentCallResponseBody struct {
+	// example:
+	//
+	// 877ae632caae49b1afc81c2e8194ffb4
+	AIAgentUserId *string `json:"AIAgentUserId,omitempty" xml:"AIAgentUserId,omitempty"`
+	// example:
+	//
+	// 70f22d5784194938a7e387052f2b3208
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// user123
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GenerateAIAgentCallResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAIAgentCallResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAIAgentCallResponseBody) SetAIAgentUserId(v string) *GenerateAIAgentCallResponseBody {
+	s.AIAgentUserId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponseBody) SetChannelId(v string) *GenerateAIAgentCallResponseBody {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponseBody) SetInstanceId(v string) *GenerateAIAgentCallResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponseBody) SetRequestId(v string) *GenerateAIAgentCallResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponseBody) SetToken(v string) *GenerateAIAgentCallResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponseBody) SetUserId(v string) *GenerateAIAgentCallResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GenerateAIAgentCallResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateAIAgentCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateAIAgentCallResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAIAgentCallResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAIAgentCallResponse) SetHeaders(v map[string]*string) *GenerateAIAgentCallResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponse) SetStatusCode(v int32) *GenerateAIAgentCallResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponse) SetBody(v *GenerateAIAgentCallResponseBody) *GenerateAIAgentCallResponse {
 	s.Body = v
 	return s
 }
@@ -22080,6 +22698,175 @@ func (s *InsertMediaToSearchLibResponse) SetStatusCode(v int32) *InsertMediaToSe
 }
 
 func (s *InsertMediaToSearchLibResponse) SetBody(v *InsertMediaToSearchLibResponseBody) *InsertMediaToSearchLibResponse {
+	s.Body = v
+	return s
+}
+
+type ListAIAgentInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4***
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// 2023-01-02T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2023-01-01T00:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListAIAgentInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentInstanceRequest) SetAIAgentId(v string) *ListAIAgentInstanceRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *ListAIAgentInstanceRequest) SetEndTime(v string) *ListAIAgentInstanceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAIAgentInstanceRequest) SetPageNumber(v int64) *ListAIAgentInstanceRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAIAgentInstanceRequest) SetPageSize(v int64) *ListAIAgentInstanceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAIAgentInstanceRequest) SetStartTime(v string) *ListAIAgentInstanceRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListAIAgentInstanceResponseBody struct {
+	Instances []*ListAIAgentInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAIAgentInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentInstanceResponseBody) SetInstances(v []*ListAIAgentInstanceResponseBodyInstances) *ListAIAgentInstanceResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *ListAIAgentInstanceResponseBody) SetRequestId(v string) *ListAIAgentInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAIAgentInstanceResponseBodyInstances struct {
+	// example:
+	//
+	// https://example.com/call_logs/12345.json
+	CallLogUrl *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
+	// example:
+	//
+	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
+	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	// example:
+	//
+	// Finished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {"VoiceChat": {"VoiceId": "zhixiaoxia"}}
+	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// example:
+	//
+	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s ListAIAgentInstanceResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentInstanceResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentInstanceResponseBodyInstances) SetCallLogUrl(v string) *ListAIAgentInstanceResponseBodyInstances {
+	s.CallLogUrl = &v
+	return s
+}
+
+func (s *ListAIAgentInstanceResponseBodyInstances) SetRuntimeConfig(v *AIAgentRuntimeConfig) *ListAIAgentInstanceResponseBodyInstances {
+	s.RuntimeConfig = v
+	return s
+}
+
+func (s *ListAIAgentInstanceResponseBodyInstances) SetStatus(v string) *ListAIAgentInstanceResponseBodyInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAIAgentInstanceResponseBodyInstances) SetTemplateConfig(v *AIAgentTemplateConfig) *ListAIAgentInstanceResponseBodyInstances {
+	s.TemplateConfig = v
+	return s
+}
+
+func (s *ListAIAgentInstanceResponseBodyInstances) SetUserData(v string) *ListAIAgentInstanceResponseBodyInstances {
+	s.UserData = &v
+	return s
+}
+
+type ListAIAgentInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAIAgentInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAIAgentInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentInstanceResponse) SetHeaders(v map[string]*string) *ListAIAgentInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAIAgentInstanceResponse) SetStatusCode(v int32) *ListAIAgentInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAIAgentInstanceResponse) SetBody(v *ListAIAgentInstanceResponseBody) *ListAIAgentInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -39240,6 +40027,93 @@ func (s *SearchPublicMediaInfoResponse) SetBody(v *SearchPublicMediaInfoResponse
 	return s
 }
 
+type SendAIAgentSpeechRequest struct {
+	// example:
+	//
+	// true
+	EnableInterrupt *bool `json:"EnableInterrupt,omitempty" xml:"EnableInterrupt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SendAIAgentSpeechRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentSpeechRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentSpeechRequest) SetEnableInterrupt(v bool) *SendAIAgentSpeechRequest {
+	s.EnableInterrupt = &v
+	return s
+}
+
+func (s *SendAIAgentSpeechRequest) SetInstanceId(v string) *SendAIAgentSpeechRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SendAIAgentSpeechRequest) SetText(v string) *SendAIAgentSpeechRequest {
+	s.Text = &v
+	return s
+}
+
+type SendAIAgentSpeechResponseBody struct {
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendAIAgentSpeechResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentSpeechResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentSpeechResponseBody) SetRequestId(v string) *SendAIAgentSpeechResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendAIAgentSpeechResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendAIAgentSpeechResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SendAIAgentSpeechResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentSpeechResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentSpeechResponse) SetHeaders(v map[string]*string) *SendAIAgentSpeechResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendAIAgentSpeechResponse) SetStatusCode(v int32) *SendAIAgentSpeechResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendAIAgentSpeechResponse) SetBody(v *SendAIAgentSpeechResponseBody) *SendAIAgentSpeechResponse {
+	s.Body = v
+	return s
+}
+
 type SendLiveSnapshotJobCommandRequest struct {
 	// This parameter is required.
 	//
@@ -39799,6 +40673,261 @@ func (s *SetEventCallbackResponse) SetBody(v *SetEventCallbackResponseBody) *Set
 	return s
 }
 
+type SetNotifyConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// http://customer.com/callback
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableNotify *bool `json:"EnableNotify,omitempty" xml:"EnableNotify,omitempty"`
+	// example:
+	//
+	// agent_start,agent_stop,error
+	EventTypes *string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty"`
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s SetNotifyConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetNotifyConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetNotifyConfigRequest) SetAIAgentId(v string) *SetNotifyConfigRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *SetNotifyConfigRequest) SetCallbackUrl(v string) *SetNotifyConfigRequest {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *SetNotifyConfigRequest) SetEnableNotify(v bool) *SetNotifyConfigRequest {
+	s.EnableNotify = &v
+	return s
+}
+
+func (s *SetNotifyConfigRequest) SetEventTypes(v string) *SetNotifyConfigRequest {
+	s.EventTypes = &v
+	return s
+}
+
+func (s *SetNotifyConfigRequest) SetToken(v string) *SetNotifyConfigRequest {
+	s.Token = &v
+	return s
+}
+
+type SetNotifyConfigResponseBody struct {
+	// example:
+	//
+	// 771A1414-27BF-53E6-AB73-EFCB*****ACF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetNotifyConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetNotifyConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetNotifyConfigResponseBody) SetRequestId(v string) *SetNotifyConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetNotifyConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetNotifyConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetNotifyConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetNotifyConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetNotifyConfigResponse) SetHeaders(v map[string]*string) *SetNotifyConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetNotifyConfigResponse) SetStatusCode(v int32) *SetNotifyConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetNotifyConfigResponse) SetBody(v *SetNotifyConfigResponseBody) *SetNotifyConfigResponse {
+	s.Body = v
+	return s
+}
+
+type StartAIAgentInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// This parameter is required.
+	RuntimeConfig  *AIAgentRuntimeConfig  `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// example:
+	//
+	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s StartAIAgentInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentInstanceRequest) SetAIAgentId(v string) *StartAIAgentInstanceRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceRequest) SetRuntimeConfig(v *AIAgentRuntimeConfig) *StartAIAgentInstanceRequest {
+	s.RuntimeConfig = v
+	return s
+}
+
+func (s *StartAIAgentInstanceRequest) SetTemplateConfig(v *AIAgentTemplateConfig) *StartAIAgentInstanceRequest {
+	s.TemplateConfig = v
+	return s
+}
+
+func (s *StartAIAgentInstanceRequest) SetUserData(v string) *StartAIAgentInstanceRequest {
+	s.UserData = &v
+	return s
+}
+
+type StartAIAgentInstanceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// This parameter is required.
+	RuntimeConfigShrink  *string `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// example:
+	//
+	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s StartAIAgentInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentInstanceShrinkRequest) SetAIAgentId(v string) *StartAIAgentInstanceShrinkRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceShrinkRequest) SetRuntimeConfigShrink(v string) *StartAIAgentInstanceShrinkRequest {
+	s.RuntimeConfigShrink = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceShrinkRequest) SetTemplateConfigShrink(v string) *StartAIAgentInstanceShrinkRequest {
+	s.TemplateConfigShrink = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceShrinkRequest) SetUserData(v string) *StartAIAgentInstanceShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type StartAIAgentInstanceResponseBody struct {
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartAIAgentInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentInstanceResponseBody) SetInstanceId(v string) *StartAIAgentInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceResponseBody) SetRequestId(v string) *StartAIAgentInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartAIAgentInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAIAgentInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartAIAgentInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentInstanceResponse) SetHeaders(v map[string]*string) *StartAIAgentInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAIAgentInstanceResponse) SetStatusCode(v int32) *StartAIAgentInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceResponse) SetBody(v *StartAIAgentInstanceResponseBody) *StartAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type StartRtcRobotInstanceRequest struct {
 	// This parameter is required.
 	//
@@ -40129,6 +41258,77 @@ func (s *StartWorkflowResponse) SetStatusCode(v int32) *StartWorkflowResponse {
 }
 
 func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type StopAIAgentInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s StopAIAgentInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAIAgentInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopAIAgentInstanceRequest) SetInstanceId(v string) *StopAIAgentInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type StopAIAgentInstanceResponseBody struct {
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopAIAgentInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAIAgentInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopAIAgentInstanceResponseBody) SetRequestId(v string) *StopAIAgentInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopAIAgentInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAIAgentInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopAIAgentInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAIAgentInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAIAgentInstanceResponse) SetHeaders(v map[string]*string) *StopAIAgentInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopAIAgentInstanceResponse) SetStatusCode(v int32) *StopAIAgentInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopAIAgentInstanceResponse) SetBody(v *StopAIAgentInstanceResponseBody) *StopAIAgentInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -51310,6 +52510,111 @@ func (s *SubmitVideoTranslationJobResponse) SetBody(v *SubmitVideoTranslationJob
 	return s
 }
 
+type UpdateAIAgentInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId     *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+}
+
+func (s UpdateAIAgentInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAIAgentInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAIAgentInstanceRequest) SetInstanceId(v string) *UpdateAIAgentInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateAIAgentInstanceRequest) SetTemplateConfig(v *AIAgentTemplateConfig) *UpdateAIAgentInstanceRequest {
+	s.TemplateConfig = v
+	return s
+}
+
+type UpdateAIAgentInstanceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+}
+
+func (s UpdateAIAgentInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAIAgentInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAIAgentInstanceShrinkRequest) SetInstanceId(v string) *UpdateAIAgentInstanceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateAIAgentInstanceShrinkRequest) SetTemplateConfigShrink(v string) *UpdateAIAgentInstanceShrinkRequest {
+	s.TemplateConfigShrink = &v
+	return s
+}
+
+type UpdateAIAgentInstanceResponseBody struct {
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAIAgentInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAIAgentInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAIAgentInstanceResponseBody) SetRequestId(v string) *UpdateAIAgentInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAIAgentInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAIAgentInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAIAgentInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAIAgentInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAIAgentInstanceResponse) SetHeaders(v map[string]*string) *UpdateAIAgentInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAIAgentInstanceResponse) SetStatusCode(v int32) *UpdateAIAgentInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAIAgentInstanceResponse) SetBody(v *UpdateAIAgentInstanceResponseBody) *UpdateAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAvatarTrainingJobRequest struct {
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
 	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
@@ -56948,6 +58253,66 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例
+//
+// @param request - DescribeAIAgentInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIAgentInstanceResponse
+func (client *Client) DescribeAIAgentInstanceWithOptions(request *DescribeAIAgentInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeAIAgentInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAIAgentInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAIAgentInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例
+//
+// @param request - DescribeAIAgentInstanceRequest
+//
+// @return DescribeAIAgentInstanceResponse
+func (client *Client) DescribeAIAgentInstance(request *DescribeAIAgentInstanceRequest) (_result *DescribeAIAgentInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAIAgentInstanceResponse{}
+	_body, _err := client.DescribeAIAgentInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DescribeMeterImsEditUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57265,6 +58630,66 @@ func (client *Client) DescribeMeterImsSummary(request *DescribeMeterImsSummaryRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMeterImsSummaryResponse{}
 	_body, _err := client.DescribeMeterImsSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述回调配置
+//
+// @param request - DescribeNotifyConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNotifyConfigResponse
+func (client *Client) DescribeNotifyConfigWithOptions(request *DescribeNotifyConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeNotifyConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNotifyConfig"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNotifyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述回调配置
+//
+// @param request - DescribeNotifyConfigRequest
+//
+// @return DescribeNotifyConfigResponse
+func (client *Client) DescribeNotifyConfig(request *DescribeNotifyConfigRequest) (_result *DescribeNotifyConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNotifyConfigResponse{}
+	_body, _err := client.DescribeNotifyConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57601,6 +59026,84 @@ func (client *Client) DropSearchLib(request *DropSearchLibRequest) (_result *Dro
 	runtime := &util.RuntimeOptions{}
 	_result = &DropSearchLibResponse{}
 	_body, _err := client.DropSearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+//
+// @param tmpReq - GenerateAIAgentCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateAIAgentCallResponse
+func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCallRequest, runtime *util.RuntimeOptions) (_result *GenerateAIAgentCallResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GenerateAIAgentCallShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expire)) {
+		query["Expire"] = request.Expire
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfigShrink)) {
+		query["TemplateConfig"] = request.TemplateConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateAIAgentCall"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateAIAgentCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+//
+// @param request - GenerateAIAgentCallRequest
+//
+// @return GenerateAIAgentCallResponse
+func (client *Client) GenerateAIAgentCall(request *GenerateAIAgentCallRequest) (_result *GenerateAIAgentCallResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateAIAgentCallResponse{}
+	_body, _err := client.GenerateAIAgentCallWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -60285,6 +61788,82 @@ func (client *Client) InsertMediaToSearchLib(request *InsertMediaToSearchLibRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &InsertMediaToSearchLibResponse{}
 	_body, _err := client.InsertMediaToSearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出实例
+//
+// @param request - ListAIAgentInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAIAgentInstanceResponse
+func (client *Client) ListAIAgentInstanceWithOptions(request *ListAIAgentInstanceRequest, runtime *util.RuntimeOptions) (_result *ListAIAgentInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAIAgentInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAIAgentInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出实例
+//
+// @param request - ListAIAgentInstanceRequest
+//
+// @return ListAIAgentInstanceResponse
+func (client *Client) ListAIAgentInstance(request *ListAIAgentInstanceRequest) (_result *ListAIAgentInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAIAgentInstanceResponse{}
+	_body, _err := client.ListAIAgentInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -64321,6 +65900,74 @@ func (client *Client) SearchPublicMediaInfo(request *SearchPublicMediaInfoReques
 
 // Summary:
 //
+// 用来立即让某个智能体实例播报指定的文本。
+//
+// @param request - SendAIAgentSpeechRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendAIAgentSpeechResponse
+func (client *Client) SendAIAgentSpeechWithOptions(request *SendAIAgentSpeechRequest, runtime *util.RuntimeOptions) (_result *SendAIAgentSpeechResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableInterrupt)) {
+		query["EnableInterrupt"] = request.EnableInterrupt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendAIAgentSpeech"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendAIAgentSpeechResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用来立即让某个智能体实例播报指定的文本。
+//
+// @param request - SendAIAgentSpeechRequest
+//
+// @return SendAIAgentSpeechResponse
+func (client *Client) SendAIAgentSpeech(request *SendAIAgentSpeechRequest) (_result *SendAIAgentSpeechResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendAIAgentSpeechResponse{}
+	_body, _err := client.SendAIAgentSpeechWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 发送实时截图任务指令
 //
 // @param request - SendLiveSnapshotJobCommandRequest
@@ -64725,6 +66372,164 @@ func (client *Client) SetEventCallback(request *SetEventCallbackRequest) (_resul
 
 // Summary:
 //
+// 更新回调配置
+//
+// @param request - SetNotifyConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetNotifyConfigResponse
+func (client *Client) SetNotifyConfigWithOptions(request *SetNotifyConfigRequest, runtime *util.RuntimeOptions) (_result *SetNotifyConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableNotify)) {
+		query["EnableNotify"] = request.EnableNotify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventTypes)) {
+		query["EventTypes"] = request.EventTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetNotifyConfig"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetNotifyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新回调配置
+//
+// @param request - SetNotifyConfigRequest
+//
+// @return SetNotifyConfigResponse
+func (client *Client) SetNotifyConfig(request *SetNotifyConfigRequest) (_result *SetNotifyConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetNotifyConfigResponse{}
+	_body, _err := client.SetNotifyConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个智能体实例，并加入通话。
+//
+// @param tmpReq - StartAIAgentInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAIAgentInstanceResponse
+func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstanceRequest, runtime *util.RuntimeOptions) (_result *StartAIAgentInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartAIAgentInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RuntimeConfig)) {
+		request.RuntimeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeConfig, tea.String("RuntimeConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeConfigShrink)) {
+		query["RuntimeConfig"] = request.RuntimeConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfigShrink)) {
+		query["TemplateConfig"] = request.TemplateConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAIAgentInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartAIAgentInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个智能体实例，并加入通话。
+//
+// @param request - StartAIAgentInstanceRequest
+//
+// @return StartAIAgentInstanceResponse
+func (client *Client) StartAIAgentInstance(request *StartAIAgentInstanceRequest) (_result *StartAIAgentInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartAIAgentInstanceResponse{}
+	_body, _err := client.StartAIAgentInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 开启一个机器人实例
 //
 // @param tmpReq - StartRtcRobotInstanceRequest
@@ -64870,6 +66675,66 @@ func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *Sta
 	runtime := &util.RuntimeOptions{}
 	_result = &StartWorkflowResponse{}
 	_body, _err := client.StartWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止一个智能体实例。
+//
+// @param request - StopAIAgentInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAIAgentInstanceResponse
+func (client *Client) StopAIAgentInstanceWithOptions(request *StopAIAgentInstanceRequest, runtime *util.RuntimeOptions) (_result *StopAIAgentInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAIAgentInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopAIAgentInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止一个智能体实例。
+//
+// @param request - StopAIAgentInstanceRequest
+//
+// @return StopAIAgentInstanceResponse
+func (client *Client) StopAIAgentInstance(request *StopAIAgentInstanceRequest) (_result *StopAIAgentInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopAIAgentInstanceResponse{}
+	_body, _err := client.StopAIAgentInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -67238,6 +69103,76 @@ func (client *Client) SubmitVideoTranslationJob(request *SubmitVideoTranslationJ
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitVideoTranslationJobResponse{}
 	_body, _err := client.SubmitVideoTranslationJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例的配置
+//
+// @param tmpReq - UpdateAIAgentInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAIAgentInstanceResponse
+func (client *Client) UpdateAIAgentInstanceWithOptions(tmpReq *UpdateAIAgentInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdateAIAgentInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAIAgentInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfigShrink)) {
+		query["TemplateConfig"] = request.TemplateConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAIAgentInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAIAgentInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例的配置
+//
+// @param request - UpdateAIAgentInstanceRequest
+//
+// @return UpdateAIAgentInstanceResponse
+func (client *Client) UpdateAIAgentInstance(request *UpdateAIAgentInstanceRequest) (_result *UpdateAIAgentInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAIAgentInstanceResponse{}
+	_body, _err := client.UpdateAIAgentInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
