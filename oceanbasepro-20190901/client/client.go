@@ -29736,7 +29736,7 @@ type DescribeRestorableTenantsResponseBodyTenants struct {
 	// example:
 	//
 	// Oracle
-	TenantMode *int64 `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
+	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
 	// example:
 	//
 	// sbtest1
@@ -29830,7 +29830,7 @@ func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantId(v string) *De
 	return s
 }
 
-func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantMode(v int64) *DescribeRestorableTenantsResponseBodyTenants {
+func (s *DescribeRestorableTenantsResponseBodyTenants) SetTenantMode(v string) *DescribeRestorableTenantsResponseBodyTenants {
 	s.TenantMode = &v
 	return s
 }
