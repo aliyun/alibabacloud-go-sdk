@@ -797,8 +797,9 @@ type ListDomainsRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Search   *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Search              *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	WithoutMeteringData *bool   `json:"WithoutMeteringData,omitempty" xml:"WithoutMeteringData,omitempty"`
 }
 
 func (s ListDomainsRequest) String() string {
@@ -821,6 +822,11 @@ func (s *ListDomainsRequest) SetPageSize(v int32) *ListDomainsRequest {
 
 func (s *ListDomainsRequest) SetSearch(v string) *ListDomainsRequest {
 	s.Search = &v
+	return s
+}
+
+func (s *ListDomainsRequest) SetWithoutMeteringData(v bool) *ListDomainsRequest {
+	s.WithoutMeteringData = &v
 	return s
 }
 
@@ -1384,6 +1390,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.Search)) {
 		query["Search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithoutMeteringData)) {
+		query["WithoutMeteringData"] = request.WithoutMeteringData
 	}
 
 	req := &openapi.OpenApiRequest{
