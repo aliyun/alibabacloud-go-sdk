@@ -1724,7 +1724,7 @@ func (s *CreateBenchmarkTaskResponse) SetBody(v *CreateBenchmarkTaskResponseBody
 }
 
 type CreateGatewayRequest struct {
-	// The name of the resource group.
+	// The resource group ID. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
 	//
 	// example:
 	//
@@ -1736,31 +1736,33 @@ type CreateGatewayRequest struct {
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
 	// false
 	EnableInternet *bool `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
-	// Specifies whether to enable internal network access. Default value: true.
+	// Specifies whether to enable private access. Default value: true.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// true
 	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
-	// The instance type used for the private gateway.
+	// The instance type used by the private gateway. Valid values:
+	//
+	// 	- 2c4g
+	//
+	// 	- 4c8g
+	//
+	// 	- 8c16g
+	//
+	// 	- 16c32g
 	//
 	// This parameter is required.
 	//
@@ -1768,13 +1770,18 @@ type CreateGatewayRequest struct {
 	//
 	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The private gateway alias.
+	// The alias of the private gateway.
 	//
 	// example:
 	//
 	// mygateway1
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Replicas *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of nodes in the private gateway.
+	//
+	// example:
+	//
+	// 2
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 }
 
 func (s CreateGatewayRequest) String() string {
@@ -5248,13 +5255,23 @@ type DescribeGatewayResponseBody struct {
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The private gateway alias.
+	// The alias of the private gateway.
 	//
 	// example:
 	//
 	// mygateway1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
-	// The instance type used for the private gateway.
+	// The instance type used by the private gateway.
+	//
+	// Valid values:
+	//
+	// 	- 8c16g
+	//
+	// 	- 4c8g
+	//
+	// 	- 2c4g
+	//
+	// 	- 16c32g
 	//
 	// example:
 	//
@@ -5271,23 +5288,66 @@ type DescribeGatewayResponseBody struct {
 	// example:
 	//
 	// true
-	InternetEnabled *bool   `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	InternetStatus  *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
+	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	// Indicates whether Internet access is enabled.
+	//
+	// Valid values:
+	//
+	// 	- Creating: Internet access is being enabled.
+	//
+	// 	- Failed: Internet access failed to be enabled or deleted.
+	//
+	// 	- Running: Internet access is running.
+	//
+	// 	- Deleted: Internet access is deleted.
+	//
+	// 	- Deleting: Internet access is being deleted.
+	//
+	// example:
+	//
+	// Running
+	InternetStatus *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
 	// The internal endpoint.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-hangzhou.pai-eas.aliyuncs.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	IsDefault      *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Replicas       *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// Indicates whether it is the default private gateway.
+	//
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The number of nodes in the private gateway.
+	//
+	// example:
+	//
+	// 2
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the private gateway.
+	// The status of the private gateway.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Stopped
+	//
+	// 	- Failed
+	//
+	// 	- Running
+	//
+	// 	- Deleted
+	//
+	// 	- Deleting
+	//
+	// 	- Waiting
 	//
 	// example:
 	//
@@ -7288,14 +7348,7 @@ func (s *ListAclPolicyResponseBody) SetRequestId(v string) *ListAclPolicyRespons
 }
 
 type ListAclPolicyResponseBodyInternetAclPolicyList struct {
-	// example:
-	//
-	// default
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// example:
-	//
-	// 10.23.XX.XX/32
-	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	AclPolicyList []*ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
 }
 
 func (s ListAclPolicyResponseBodyInternetAclPolicyList) String() string {
@@ -7306,18 +7359,36 @@ func (s ListAclPolicyResponseBodyInternetAclPolicyList) GoString() string {
 	return s.String()
 }
 
-func (s *ListAclPolicyResponseBodyInternetAclPolicyList) SetComment(v string) *ListAclPolicyResponseBodyInternetAclPolicyList {
+func (s *ListAclPolicyResponseBodyInternetAclPolicyList) SetAclPolicyList(v []*ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList) *ListAclPolicyResponseBodyInternetAclPolicyList {
+	s.AclPolicyList = v
+	return s
+}
+
+type ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Entry   *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+}
+
+func (s ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList) SetComment(v string) *ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList {
 	s.Comment = &v
 	return s
 }
 
-func (s *ListAclPolicyResponseBodyInternetAclPolicyList) SetEntry(v string) *ListAclPolicyResponseBodyInternetAclPolicyList {
+func (s *ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList) SetEntry(v string) *ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList {
 	s.Entry = &v
 	return s
 }
 
 type ListAclPolicyResponseBodyIntranetVpcAclPolicyList struct {
-	IntranetAclPolicyList []*ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList `json:"IntranetAclPolicyList,omitempty" xml:"IntranetAclPolicyList,omitempty" type:"Repeated"`
+	AclPolicyList []*ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -7332,8 +7403,8 @@ func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyList) GoString() string {
 	return s.String()
 }
 
-func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) SetIntranetAclPolicyList(v []*ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) *ListAclPolicyResponseBodyIntranetVpcAclPolicyList {
-	s.IntranetAclPolicyList = v
+func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) SetAclPolicyList(v []*ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList) *ListAclPolicyResponseBodyIntranetVpcAclPolicyList {
+	s.AclPolicyList = v
 	return s
 }
 
@@ -7342,31 +7413,25 @@ func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) SetVpcId(v string) *
 	return s
 }
 
-type ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList struct {
-	// example:
-	//
-	// Test Entry
+type ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// example:
-	//
-	// 192.168.XX.XX/24
-	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	Entry   *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
-func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) String() string {
+func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) GoString() string {
+func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList) GoString() string {
 	return s.String()
 }
 
-func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) SetComment(v string) *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList {
+func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList) SetComment(v string) *ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList {
 	s.Comment = &v
 	return s
 }
 
-func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList) SetEntry(v string) *ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList {
+func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList) SetEntry(v string) *ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList {
 	s.Entry = &v
 	return s
 }
@@ -11424,14 +11489,24 @@ type UpdateGatewayRequest struct {
 	//
 	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// Indicates whether it is the default private gateway.
+	//
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The private gateway alias.
 	//
 	// example:
 	//
 	// mygateway1
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Replicas *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of nodes in the private gateway.
+	//
+	// example:
+	//
+	// 2
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 }
 
 func (s UpdateGatewayRequest) String() string {
