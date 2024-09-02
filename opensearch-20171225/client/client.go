@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -77,7 +74,10 @@ func (s *ABTestGroup) SetStatus(v int32) *ABTestGroup {
 }
 
 type ABTestScene struct {
-	Name   *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 0 停止实验 1 开通实验
 	Status *int32    `json:"status,omitempty" xml:"status,omitempty"`
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
@@ -236,13 +236,14 @@ func (s *AppCluster) SetMaxTimeoutMS(v int32) *AppCluster {
 }
 
 type AppGroup struct {
-	ChargeType  *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	ChargingWay *string `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	Quota       *Quota  `json:"quota,omitempty" xml:"quota,omitempty"`
-	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
+	ChargeType      *string        `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	Description     *string        `json:"description,omitempty" xml:"description,omitempty"`
+	Domain          *string        `json:"domain,omitempty" xml:"domain,omitempty"`
+	Name            *string        `json:"name,omitempty" xml:"name,omitempty"`
+	Order           *AppGroupOrder `json:"order,omitempty" xml:"order,omitempty" type:"Struct"`
+	Quota           *Quota         `json:"quota,omitempty" xml:"quota,omitempty"`
+	ResourceGroupId *string        `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Type            *string        `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AppGroup) String() string {
@@ -255,11 +256,6 @@ func (s AppGroup) GoString() string {
 
 func (s *AppGroup) SetChargeType(v string) *AppGroup {
 	s.ChargeType = &v
-	return s
-}
-
-func (s *AppGroup) SetChargingWay(v string) *AppGroup {
-	s.ChargingWay = &v
 	return s
 }
 
@@ -278,13 +274,61 @@ func (s *AppGroup) SetName(v string) *AppGroup {
 	return s
 }
 
+func (s *AppGroup) SetOrder(v *AppGroupOrder) *AppGroup {
+	s.Order = v
+	return s
+}
+
 func (s *AppGroup) SetQuota(v *Quota) *AppGroup {
 	s.Quota = v
 	return s
 }
 
+func (s *AppGroup) SetResourceGroupId(v string) *AppGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *AppGroup) SetType(v string) *AppGroup {
 	s.Type = &v
+	return s
+}
+
+type AppGroupOrder struct {
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
+}
+
+func (s AppGroupOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppGroupOrder) GoString() string {
+	return s.String()
+}
+
+func (s *AppGroupOrder) SetAutoRenew(v bool) *AppGroupOrder {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *AppGroupOrder) SetDuration(v int64) *AppGroupOrder {
+	s.Duration = &v
+	return s
+}
+
+func (s *AppGroupOrder) SetPricingCycle(v string) *AppGroupOrder {
+	s.PricingCycle = &v
 	return s
 }
 
@@ -817,8 +861,11 @@ func (s *SearchStrategyMergeConfig) SetRankName(v string) *SearchStrategyMergeCo
 type SearchStrategySearchConfigs struct {
 	FirstRankName   *string `json:"firstRankName,omitempty" xml:"firstRankName,omitempty"`
 	MergeProportion *int32  `json:"mergeProportion,omitempty" xml:"mergeProportion,omitempty"`
-	QueryType       *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
-	SecondRankName  *string `json:"secondRankName,omitempty" xml:"secondRankName,omitempty"`
+	// example:
+	//
+	// keyword: 关键字查询 vector: 向量查询
+	QueryType      *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	SecondRankName *string `json:"secondRankName,omitempty" xml:"secondRankName,omitempty"`
 }
 
 func (s SearchStrategySearchConfigs) String() string {
@@ -1095,6 +1142,15 @@ func (s *SchemaTablesValueFieldsValue) SetLabel(v string) *SchemaTablesValueFiel
 }
 
 type BindESUserAnalyzerRequest struct {
+	// The request parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "name": "kevintest-analyzer"
+	//
+	// }
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1112,8 +1168,18 @@ func (s *BindESUserAnalyzerRequest) SetBody(v interface{}) *BindESUserAnalyzerRe
 }
 
 type BindESUserAnalyzerResponseBody struct {
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 3AD34CAD-9603-5251-AFF5-3916C848A1D3
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The custom analyzer.
+	//
+	// example:
+	//
+	// []
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s BindESUserAnalyzerResponseBody) String() string {
@@ -1135,9 +1201,9 @@ func (s *BindESUserAnalyzerResponseBody) SetResult(v map[string]interface{}) *Bi
 }
 
 type BindESUserAnalyzerResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindESUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindESUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindESUserAnalyzerResponse) String() string {
@@ -1164,6 +1230,15 @@ func (s *BindESUserAnalyzerResponse) SetBody(v *BindESUserAnalyzerResponseBody) 
 }
 
 type BindEsInstanceRequest struct {
+	// The body of the request.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "esInstanceId": "es-cn-abcde"
+	//
+	// }
 	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1181,8 +1256,18 @@ func (s *BindEsInstanceRequest) SetBody(v map[string]interface{}) *BindEsInstanc
 }
 
 type BindEsInstanceResponseBody struct {
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// F5099063-6B86-F398-D843-905F9EFB683A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result
+	//
+	// example:
+	//
+	// []
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s BindEsInstanceResponseBody) String() string {
@@ -1204,9 +1289,9 @@ func (s *BindEsInstanceResponseBody) SetResult(v map[string]interface{}) *BindEs
 }
 
 type BindEsInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindEsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindEsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindEsInstanceResponse) String() string {
@@ -1234,6 +1319,10 @@ func (s *BindEsInstanceResponse) SetBody(v *BindEsInstanceResponseBody) *BindEsI
 
 type CompileSortScriptResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1251,9 +1340,9 @@ func (s *CompileSortScriptResponseBody) SetRequestId(v string) *CompileSortScrip
 }
 
 type CompileSortScriptResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompileSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompileSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompileSortScriptResponse) String() string {
@@ -1283,6 +1372,10 @@ type CreateABTestExperimentRequest struct {
 	// The request body.
 	Body *ABTestExperiment `json:"body,omitempty" xml:"body,omitempty"`
 	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -1306,6 +1399,10 @@ func (s *CreateABTestExperimentRequest) SetDryRun(v bool) *CreateABTestExperimen
 
 type CreateABTestExperimentResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The experiment details.
 	Result *CreateABTestExperimentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -1331,21 +1428,50 @@ func (s *CreateABTestExperimentResponseBody) SetResult(v *CreateABTestExperiment
 
 type CreateABTestExperimentResponseBodyResult struct {
 	// The time when the experiment was created.
+	//
+	// example:
+	//
+	// 0
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The experiment ID.
+	//
+	// example:
+	//
+	// 12889
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The experiment alias.
+	//
+	// example:
+	//
+	// test3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Indicates whether the experiment is in effect. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
 	// The experiment parameters.
+	//
+	// example:
+	//
+	// {"firstFormulaName": "default"}
 	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
 	// The percentage of traffic that is routed to the experiment.
+	//
+	// example:
+	//
+	// 30
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
 	// The time when the experiment was last modified.
+	//
+	// example:
+	//
+	// 1589017861
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -1393,9 +1519,9 @@ func (s *CreateABTestExperimentResponseBodyResult) SetUpdated(v int32) *CreateAB
 }
 
 type CreateABTestExperimentResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateABTestExperimentResponse) String() string {
@@ -1422,8 +1548,20 @@ func (s *CreateABTestExperimentResponse) SetBody(v *CreateABTestExperimentRespon
 }
 
 type CreateABTestGroupRequest struct {
-	Body   *ABTestGroup `json:"body,omitempty" xml:"body,omitempty"`
-	DryRun *bool        `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body. For more information, see [ABTestGroup](https://help.aliyun.com/document_detail/178935.html).
+	Body *ABTestGroup `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to check the validity of input parameters. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- **true**: checks only the validity of input parameters.
+	//
+	// 	- **false**: checks the validity of input parameters and creates an attribution configuration.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateABTestGroupRequest) String() string {
@@ -1445,9 +1583,13 @@ func (s *CreateABTestGroupRequest) SetDryRun(v bool) *CreateABTestGroupRequest {
 }
 
 type CreateABTestGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// The returned results.
 	Result *CreateABTestGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -1471,17 +1613,38 @@ func (s *CreateABTestGroupResponseBody) SetResult(v *CreateABTestGroupResponseBo
 
 type CreateABTestGroupResponseBodyResult struct {
 	// The time when the test group was created.
+	//
+	// example:
+	//
+	// 1588839490
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test group.
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test group.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the test group. Valid values:
 	//
-	// *   0: not in effect
-	// *   1: in effect
+	// example:
+	//
+	// 13466
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The alias of the test group.
+	//
+	// example:
+	//
+	// Group_2020-5-7_15:23:3
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The status of the test group.
+	//
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the test group was last modified.
+	// The time when the test group was last updated.
+	//
+	// example:
+	//
+	// 1588839490
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -1519,9 +1682,9 @@ func (s *CreateABTestGroupResponseBodyResult) SetUpdated(v int32) *CreateABTestG
 }
 
 type CreateABTestGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateABTestGroupResponse) String() string {
@@ -1548,8 +1711,20 @@ func (s *CreateABTestGroupResponse) SetBody(v *CreateABTestGroupResponseBody) *C
 }
 
 type CreateABTestSceneRequest struct {
-	Body   *ABTestScene `json:"body,omitempty" xml:"body,omitempty"`
-	DryRun *bool        `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body.
+	Body *ABTestScene `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateABTestSceneRequest) String() string {
@@ -1572,6 +1747,10 @@ func (s *CreateABTestSceneRequest) SetDryRun(v bool) *CreateABTestSceneRequest {
 
 type CreateABTestSceneResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The return result.
 	Result *CreateABTestSceneResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -1597,17 +1776,38 @@ func (s *CreateABTestSceneResponseBody) SetResult(v *CreateABTestSceneResponseBo
 
 type CreateABTestSceneResponseBodyResult struct {
 	// The time when the test scenario was created.
+	//
+	// example:
+	//
+	// 0
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test group.
+	//
+	// example:
+	//
+	// 20405
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the test group.
+	//
+	// example:
+	//
+	// kevintest_2020-5-7_15:21:48
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test scenario. Valid values:
 	//
-	// *   0: not in effect
-	// *   1: in effect
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The time when the test scenario was last modified.
+	//
+	// example:
+	//
+	// 1589012351
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 	// The tag of the test scenario.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
@@ -1652,9 +1852,9 @@ func (s *CreateABTestSceneResponseBodyResult) SetValues(v []*string) *CreateABTe
 }
 
 type CreateABTestSceneResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateABTestSceneResponse) String() string {
@@ -1681,9 +1881,24 @@ func (s *CreateABTestSceneResponse) SetBody(v *CreateABTestSceneResponseBody) *C
 }
 
 type CreateAppRequest struct {
-	// The request body.
-	Body *App `json:"body,omitempty" xml:"body,omitempty"`
+	AutoSwitch      *bool                              `json:"autoSwitch,omitempty" xml:"autoSwitch,omitempty"`
+	Cluster         *CreateAppRequestCluster           `json:"cluster,omitempty" xml:"cluster,omitempty" type:"Struct"`
+	DataSources     []*CreateAppRequestDataSources     `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
+	Description     *string                            `json:"description,omitempty" xml:"description,omitempty"`
+	Domain          *CreateAppRequestDomain            `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
+	FetchFields     []*string                          `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
+	FirstRanks      []*CreateAppRequestFirstRanks      `json:"firstRanks,omitempty" xml:"firstRanks,omitempty" type:"Repeated"`
+	NetworkType     *string                            `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	QueryProcessors []*CreateAppRequestQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
+	Schema          *CreateAppRequestSchema            `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
+	Schemas         []*CreateAppRequestSchemas         `json:"schemas,omitempty" xml:"schemas,omitempty" type:"Repeated"`
+	SecondRanks     []*CreateAppRequestSecondRanks     `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
+	Summaries       []*CreateAppRequestSummaries       `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
 	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -1695,8 +1910,68 @@ func (s CreateAppRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAppRequest) SetBody(v *App) *CreateAppRequest {
-	s.Body = v
+func (s *CreateAppRequest) SetAutoSwitch(v bool) *CreateAppRequest {
+	s.AutoSwitch = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetCluster(v *CreateAppRequestCluster) *CreateAppRequest {
+	s.Cluster = v
+	return s
+}
+
+func (s *CreateAppRequest) SetDataSources(v []*CreateAppRequestDataSources) *CreateAppRequest {
+	s.DataSources = v
+	return s
+}
+
+func (s *CreateAppRequest) SetDescription(v string) *CreateAppRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetDomain(v *CreateAppRequestDomain) *CreateAppRequest {
+	s.Domain = v
+	return s
+}
+
+func (s *CreateAppRequest) SetFetchFields(v []*string) *CreateAppRequest {
+	s.FetchFields = v
+	return s
+}
+
+func (s *CreateAppRequest) SetFirstRanks(v []*CreateAppRequestFirstRanks) *CreateAppRequest {
+	s.FirstRanks = v
+	return s
+}
+
+func (s *CreateAppRequest) SetNetworkType(v string) *CreateAppRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetQueryProcessors(v []*CreateAppRequestQueryProcessors) *CreateAppRequest {
+	s.QueryProcessors = v
+	return s
+}
+
+func (s *CreateAppRequest) SetSchema(v *CreateAppRequestSchema) *CreateAppRequest {
+	s.Schema = v
+	return s
+}
+
+func (s *CreateAppRequest) SetSchemas(v []*CreateAppRequestSchemas) *CreateAppRequest {
+	s.Schemas = v
+	return s
+}
+
+func (s *CreateAppRequest) SetSecondRanks(v []*CreateAppRequestSecondRanks) *CreateAppRequest {
+	s.SecondRanks = v
+	return s
+}
+
+func (s *CreateAppRequest) SetSummaries(v []*CreateAppRequestSummaries) *CreateAppRequest {
+	s.Summaries = v
 	return s
 }
 
@@ -1705,11 +1980,567 @@ func (s *CreateAppRequest) SetDryRun(v bool) *CreateAppRequest {
 	return s
 }
 
+type CreateAppRequestCluster struct {
+	MaxQueryClauseLength *int32 `json:"maxQueryClauseLength,omitempty" xml:"maxQueryClauseLength,omitempty"`
+	MaxTimeoutMS         *int32 `json:"maxTimeoutMS,omitempty" xml:"maxTimeoutMS,omitempty"`
+}
+
+func (s CreateAppRequestCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestCluster) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestCluster) SetMaxQueryClauseLength(v int32) *CreateAppRequestCluster {
+	s.MaxQueryClauseLength = &v
+	return s
+}
+
+func (s *CreateAppRequestCluster) SetMaxTimeoutMS(v int32) *CreateAppRequestCluster {
+	s.MaxTimeoutMS = &v
+	return s
+}
+
+type CreateAppRequestDataSources struct {
+	Fields     []map[string]interface{} `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	KeyField   *string                  `json:"keyField,omitempty" xml:"keyField,omitempty"`
+	Parameters map[string]interface{}   `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	Plugins    map[string]interface{}   `json:"plugins,omitempty" xml:"plugins,omitempty"`
+	SchemaName *string                  `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	TableName  *string                  `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	Type       *string                  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAppRequestDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestDataSources) SetFields(v []map[string]interface{}) *CreateAppRequestDataSources {
+	s.Fields = v
+	return s
+}
+
+func (s *CreateAppRequestDataSources) SetKeyField(v string) *CreateAppRequestDataSources {
+	s.KeyField = &v
+	return s
+}
+
+func (s *CreateAppRequestDataSources) SetParameters(v map[string]interface{}) *CreateAppRequestDataSources {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateAppRequestDataSources) SetPlugins(v map[string]interface{}) *CreateAppRequestDataSources {
+	s.Plugins = v
+	return s
+}
+
+func (s *CreateAppRequestDataSources) SetSchemaName(v string) *CreateAppRequestDataSources {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *CreateAppRequestDataSources) SetTableName(v string) *CreateAppRequestDataSources {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateAppRequestDataSources) SetType(v string) *CreateAppRequestDataSources {
+	s.Type = &v
+	return s
+}
+
+type CreateAppRequestDomain struct {
+	Category  *string                `json:"category,omitempty" xml:"category,omitempty"`
+	Functions map[string]interface{} `json:"functions,omitempty" xml:"functions,omitempty"`
+	Name      *string                `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAppRequestDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestDomain) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestDomain) SetCategory(v string) *CreateAppRequestDomain {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateAppRequestDomain) SetFunctions(v map[string]interface{}) *CreateAppRequestDomain {
+	s.Functions = v
+	return s
+}
+
+func (s *CreateAppRequestDomain) SetName(v string) *CreateAppRequestDomain {
+	s.Name = &v
+	return s
+}
+
+type CreateAppRequestFirstRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Type        *string     `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAppRequestFirstRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestFirstRanks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestFirstRanks) SetActive(v bool) *CreateAppRequestFirstRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *CreateAppRequestFirstRanks) SetDescription(v string) *CreateAppRequestFirstRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppRequestFirstRanks) SetMeta(v interface{}) *CreateAppRequestFirstRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *CreateAppRequestFirstRanks) SetName(v string) *CreateAppRequestFirstRanks {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppRequestFirstRanks) SetType(v string) *CreateAppRequestFirstRanks {
+	s.Type = &v
+	return s
+}
+
+type CreateAppRequestQueryProcessors struct {
+	Active     *bool                    `json:"active,omitempty" xml:"active,omitempty"`
+	Category   *string                  `json:"category,omitempty" xml:"category,omitempty"`
+	Domain     *string                  `json:"domain,omitempty" xml:"domain,omitempty"`
+	Indexes    []*string                `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
+	Name       *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppRequestQueryProcessors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestQueryProcessors) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestQueryProcessors) SetActive(v bool) *CreateAppRequestQueryProcessors {
+	s.Active = &v
+	return s
+}
+
+func (s *CreateAppRequestQueryProcessors) SetCategory(v string) *CreateAppRequestQueryProcessors {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateAppRequestQueryProcessors) SetDomain(v string) *CreateAppRequestQueryProcessors {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateAppRequestQueryProcessors) SetIndexes(v []*string) *CreateAppRequestQueryProcessors {
+	s.Indexes = v
+	return s
+}
+
+func (s *CreateAppRequestQueryProcessors) SetName(v string) *CreateAppRequestQueryProcessors {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppRequestQueryProcessors) SetProcessors(v []map[string]interface{}) *CreateAppRequestQueryProcessors {
+	s.Processors = v
+	return s
+}
+
+type CreateAppRequestSchema struct {
+	IndexSortConfig  []*CreateAppRequestSchemaIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *CreateAppRequestSchemaIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                  `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                  `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                  `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                   `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *CreateAppRequestSchemaTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s CreateAppRequestSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchema) SetIndexSortConfig(v []*CreateAppRequestSchemaIndexSortConfig) *CreateAppRequestSchema {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *CreateAppRequestSchema) SetIndexes(v *CreateAppRequestSchemaIndexes) *CreateAppRequestSchema {
+	s.Indexes = v
+	return s
+}
+
+func (s *CreateAppRequestSchema) SetName(v string) *CreateAppRequestSchema {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppRequestSchema) SetRouteField(v string) *CreateAppRequestSchema {
+	s.RouteField = &v
+	return s
+}
+
+func (s *CreateAppRequestSchema) SetRouteFieldValues(v []*string) *CreateAppRequestSchema {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *CreateAppRequestSchema) SetSecondRouteField(v string) *CreateAppRequestSchema {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *CreateAppRequestSchema) SetTables(v map[string]interface{}) *CreateAppRequestSchema {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateAppRequestSchema) SetTtlField(v *CreateAppRequestSchemaTtlField) *CreateAppRequestSchema {
+	s.TtlField = v
+	return s
+}
+
+type CreateAppRequestSchemaIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s CreateAppRequestSchemaIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchemaIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchemaIndexSortConfig) SetDirection(v string) *CreateAppRequestSchemaIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateAppRequestSchemaIndexSortConfig) SetField(v string) *CreateAppRequestSchemaIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type CreateAppRequestSchemaIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s CreateAppRequestSchemaIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchemaIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchemaIndexes) SetFilterFields(v []*string) *CreateAppRequestSchemaIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *CreateAppRequestSchemaIndexes) SetSearchFields(v map[string]interface{}) *CreateAppRequestSchemaIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type CreateAppRequestSchemaTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s CreateAppRequestSchemaTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchemaTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchemaTtlField) SetName(v string) *CreateAppRequestSchemaTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppRequestSchemaTtlField) SetTtl(v int64) *CreateAppRequestSchemaTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type CreateAppRequestSchemas struct {
+	IndexSortConfig  []*CreateAppRequestSchemasIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *CreateAppRequestSchemasIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                   `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                   `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                 `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                   `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                    `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *CreateAppRequestSchemasTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s CreateAppRequestSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchemas) SetIndexSortConfig(v []*CreateAppRequestSchemasIndexSortConfig) *CreateAppRequestSchemas {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *CreateAppRequestSchemas) SetIndexes(v *CreateAppRequestSchemasIndexes) *CreateAppRequestSchemas {
+	s.Indexes = v
+	return s
+}
+
+func (s *CreateAppRequestSchemas) SetName(v string) *CreateAppRequestSchemas {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppRequestSchemas) SetRouteField(v string) *CreateAppRequestSchemas {
+	s.RouteField = &v
+	return s
+}
+
+func (s *CreateAppRequestSchemas) SetRouteFieldValues(v []*string) *CreateAppRequestSchemas {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *CreateAppRequestSchemas) SetSecondRouteField(v string) *CreateAppRequestSchemas {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *CreateAppRequestSchemas) SetTables(v map[string]interface{}) *CreateAppRequestSchemas {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateAppRequestSchemas) SetTtlField(v *CreateAppRequestSchemasTtlField) *CreateAppRequestSchemas {
+	s.TtlField = v
+	return s
+}
+
+type CreateAppRequestSchemasIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s CreateAppRequestSchemasIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchemasIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchemasIndexSortConfig) SetDirection(v string) *CreateAppRequestSchemasIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateAppRequestSchemasIndexSortConfig) SetField(v string) *CreateAppRequestSchemasIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type CreateAppRequestSchemasIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s CreateAppRequestSchemasIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchemasIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchemasIndexes) SetFilterFields(v []*string) *CreateAppRequestSchemasIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *CreateAppRequestSchemasIndexes) SetSearchFields(v map[string]interface{}) *CreateAppRequestSchemasIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type CreateAppRequestSchemasTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s CreateAppRequestSchemasTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSchemasTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSchemasTtlField) SetName(v string) *CreateAppRequestSchemasTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppRequestSchemasTtlField) SetTtl(v int64) *CreateAppRequestSchemasTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type CreateAppRequestSecondRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAppRequestSecondRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSecondRanks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSecondRanks) SetActive(v bool) *CreateAppRequestSecondRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *CreateAppRequestSecondRanks) SetDescription(v string) *CreateAppRequestSecondRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppRequestSecondRanks) SetMeta(v interface{}) *CreateAppRequestSecondRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *CreateAppRequestSecondRanks) SetName(v string) *CreateAppRequestSecondRanks {
+	s.Name = &v
+	return s
+}
+
+type CreateAppRequestSummaries struct {
+	Meta []*CreateAppRequestSummariesMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
+	Name *string                          `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAppRequestSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSummaries) SetMeta(v []*CreateAppRequestSummariesMeta) *CreateAppRequestSummaries {
+	s.Meta = v
+	return s
+}
+
+func (s *CreateAppRequestSummaries) SetName(v string) *CreateAppRequestSummaries {
+	s.Name = &v
+	return s
+}
+
+type CreateAppRequestSummariesMeta struct {
+	Element  *string `json:"element,omitempty" xml:"element,omitempty"`
+	Ellipsis *string `json:"ellipsis,omitempty" xml:"ellipsis,omitempty"`
+	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
+	Len      *int32  `json:"len,omitempty" xml:"len,omitempty"`
+	Snippet  *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+}
+
+func (s CreateAppRequestSummariesMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestSummariesMeta) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestSummariesMeta) SetElement(v string) *CreateAppRequestSummariesMeta {
+	s.Element = &v
+	return s
+}
+
+func (s *CreateAppRequestSummariesMeta) SetEllipsis(v string) *CreateAppRequestSummariesMeta {
+	s.Ellipsis = &v
+	return s
+}
+
+func (s *CreateAppRequestSummariesMeta) SetField(v string) *CreateAppRequestSummariesMeta {
+	s.Field = &v
+	return s
+}
+
+func (s *CreateAppRequestSummariesMeta) SetLen(v int32) *CreateAppRequestSummariesMeta {
+	s.Len = &v
+	return s
+}
+
+func (s *CreateAppRequestSummariesMeta) SetSnippet(v string) *CreateAppRequestSummariesMeta {
+	s.Snippet = &v
+	return s
+}
+
 type CreateAppResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFG
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The returned results.
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	//
+	// example:
+	//
+	// {}
+	Result *CreateAppResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s CreateAppResponseBody) String() string {
@@ -1725,15 +2556,764 @@ func (s *CreateAppResponseBody) SetRequestId(v string) *CreateAppResponseBody {
 	return s
 }
 
-func (s *CreateAppResponseBody) SetResult(v map[string]interface{}) *CreateAppResponseBody {
+func (s *CreateAppResponseBody) SetResult(v *CreateAppResponseBodyResult) *CreateAppResponseBody {
 	s.Result = v
 	return s
 }
 
+type CreateAppResponseBodyResult struct {
+	AutoSwitch      *bool                                         `json:"autoSwitch,omitempty" xml:"autoSwitch,omitempty"`
+	Cluster         *CreateAppResponseBodyResultCluster           `json:"cluster,omitempty" xml:"cluster,omitempty" type:"Struct"`
+	ClusterName     *string                                       `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	DataSources     []*CreateAppResponseBodyResultDataSources     `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
+	Description     *string                                       `json:"description,omitempty" xml:"description,omitempty"`
+	Domain          *CreateAppResponseBodyResultDomain            `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
+	FetchFields     []*string                                     `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
+	FirstRanks      []*CreateAppResponseBodyResultFirstRanks      `json:"firstRanks,omitempty" xml:"firstRanks,omitempty" type:"Repeated"`
+	Id              *string                                       `json:"id,omitempty" xml:"id,omitempty"`
+	Interpretations map[string]interface{}                        `json:"interpretations,omitempty" xml:"interpretations,omitempty"`
+	IsCurrent       *bool                                         `json:"isCurrent,omitempty" xml:"isCurrent,omitempty"`
+	ProgressPercent *int32                                        `json:"progressPercent,omitempty" xml:"progressPercent,omitempty"`
+	Prompts         []map[string]interface{}                      `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
+	QueryProcessors []*CreateAppResponseBodyResultQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
+	Quota           *CreateAppResponseBodyResultQuota             `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	Schema          *CreateAppResponseBodyResultSchema            `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
+	Schemas         []*CreateAppResponseBodyResultSchemas         `json:"schemas,omitempty" xml:"schemas,omitempty" type:"Repeated"`
+	SecondRanks     []*CreateAppResponseBodyResultSecondRanks     `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
+	Status          *string                                       `json:"status,omitempty" xml:"status,omitempty"`
+	Summaries       []*CreateAppResponseBodyResultSummaries       `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
+	Type            *string                                       `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAppResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResult) SetAutoSwitch(v bool) *CreateAppResponseBodyResult {
+	s.AutoSwitch = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetCluster(v *CreateAppResponseBodyResultCluster) *CreateAppResponseBodyResult {
+	s.Cluster = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetClusterName(v string) *CreateAppResponseBodyResult {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetDataSources(v []*CreateAppResponseBodyResultDataSources) *CreateAppResponseBodyResult {
+	s.DataSources = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetDescription(v string) *CreateAppResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetDomain(v *CreateAppResponseBodyResultDomain) *CreateAppResponseBodyResult {
+	s.Domain = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetFetchFields(v []*string) *CreateAppResponseBodyResult {
+	s.FetchFields = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetFirstRanks(v []*CreateAppResponseBodyResultFirstRanks) *CreateAppResponseBodyResult {
+	s.FirstRanks = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetId(v string) *CreateAppResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetInterpretations(v map[string]interface{}) *CreateAppResponseBodyResult {
+	s.Interpretations = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetIsCurrent(v bool) *CreateAppResponseBodyResult {
+	s.IsCurrent = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetProgressPercent(v int32) *CreateAppResponseBodyResult {
+	s.ProgressPercent = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetPrompts(v []map[string]interface{}) *CreateAppResponseBodyResult {
+	s.Prompts = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetQueryProcessors(v []*CreateAppResponseBodyResultQueryProcessors) *CreateAppResponseBodyResult {
+	s.QueryProcessors = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetQuota(v *CreateAppResponseBodyResultQuota) *CreateAppResponseBodyResult {
+	s.Quota = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetSchema(v *CreateAppResponseBodyResultSchema) *CreateAppResponseBodyResult {
+	s.Schema = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetSchemas(v []*CreateAppResponseBodyResultSchemas) *CreateAppResponseBodyResult {
+	s.Schemas = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetSecondRanks(v []*CreateAppResponseBodyResultSecondRanks) *CreateAppResponseBodyResult {
+	s.SecondRanks = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetStatus(v string) *CreateAppResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetSummaries(v []*CreateAppResponseBodyResultSummaries) *CreateAppResponseBodyResult {
+	s.Summaries = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResult) SetType(v string) *CreateAppResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type CreateAppResponseBodyResultCluster struct {
+	MaxQueryClauseLength *int32 `json:"maxQueryClauseLength,omitempty" xml:"maxQueryClauseLength,omitempty"`
+	MaxTimeoutMS         *int32 `json:"maxTimeoutMS,omitempty" xml:"maxTimeoutMS,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultCluster) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultCluster) SetMaxQueryClauseLength(v int32) *CreateAppResponseBodyResultCluster {
+	s.MaxQueryClauseLength = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultCluster) SetMaxTimeoutMS(v int32) *CreateAppResponseBodyResultCluster {
+	s.MaxTimeoutMS = &v
+	return s
+}
+
+type CreateAppResponseBodyResultDataSources struct {
+	Fields     []map[string]interface{} `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	KeyField   *string                  `json:"keyField,omitempty" xml:"keyField,omitempty"`
+	Parameters map[string]interface{}   `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	Plugins    map[string]interface{}   `json:"plugins,omitempty" xml:"plugins,omitempty"`
+	SchemaName *string                  `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	TableName  *string                  `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	Type       *string                  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultDataSources) SetFields(v []map[string]interface{}) *CreateAppResponseBodyResultDataSources {
+	s.Fields = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDataSources) SetKeyField(v string) *CreateAppResponseBodyResultDataSources {
+	s.KeyField = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDataSources) SetParameters(v map[string]interface{}) *CreateAppResponseBodyResultDataSources {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDataSources) SetPlugins(v map[string]interface{}) *CreateAppResponseBodyResultDataSources {
+	s.Plugins = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDataSources) SetSchemaName(v string) *CreateAppResponseBodyResultDataSources {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDataSources) SetTableName(v string) *CreateAppResponseBodyResultDataSources {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDataSources) SetType(v string) *CreateAppResponseBodyResultDataSources {
+	s.Type = &v
+	return s
+}
+
+type CreateAppResponseBodyResultDomain struct {
+	Category  *string                                     `json:"category,omitempty" xml:"category,omitempty"`
+	Functions *CreateAppResponseBodyResultDomainFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Struct"`
+	Name      *string                                     `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultDomain) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultDomain) SetCategory(v string) *CreateAppResponseBodyResultDomain {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDomain) SetFunctions(v *CreateAppResponseBodyResultDomainFunctions) *CreateAppResponseBodyResultDomain {
+	s.Functions = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDomain) SetName(v string) *CreateAppResponseBodyResultDomain {
+	s.Name = &v
+	return s
+}
+
+type CreateAppResponseBodyResultDomainFunctions struct {
+	Algo    []*string `json:"algo,omitempty" xml:"algo,omitempty" type:"Repeated"`
+	Qp      []*string `json:"qp,omitempty" xml:"qp,omitempty" type:"Repeated"`
+	Service []*string `json:"service,omitempty" xml:"service,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppResponseBodyResultDomainFunctions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultDomainFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultDomainFunctions) SetAlgo(v []*string) *CreateAppResponseBodyResultDomainFunctions {
+	s.Algo = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDomainFunctions) SetQp(v []*string) *CreateAppResponseBodyResultDomainFunctions {
+	s.Qp = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultDomainFunctions) SetService(v []*string) *CreateAppResponseBodyResultDomainFunctions {
+	s.Service = v
+	return s
+}
+
+type CreateAppResponseBodyResultFirstRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Type        *string     `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultFirstRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultFirstRanks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultFirstRanks) SetActive(v bool) *CreateAppResponseBodyResultFirstRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultFirstRanks) SetDescription(v string) *CreateAppResponseBodyResultFirstRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultFirstRanks) SetMeta(v interface{}) *CreateAppResponseBodyResultFirstRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultFirstRanks) SetName(v string) *CreateAppResponseBodyResultFirstRanks {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultFirstRanks) SetType(v string) *CreateAppResponseBodyResultFirstRanks {
+	s.Type = &v
+	return s
+}
+
+type CreateAppResponseBodyResultQueryProcessors struct {
+	Active     *bool                    `json:"active,omitempty" xml:"active,omitempty"`
+	Category   *string                  `json:"category,omitempty" xml:"category,omitempty"`
+	Domain     *string                  `json:"domain,omitempty" xml:"domain,omitempty"`
+	Indexes    []*string                `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
+	Name       *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppResponseBodyResultQueryProcessors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultQueryProcessors) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultQueryProcessors) SetActive(v bool) *CreateAppResponseBodyResultQueryProcessors {
+	s.Active = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQueryProcessors) SetCategory(v string) *CreateAppResponseBodyResultQueryProcessors {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQueryProcessors) SetDomain(v string) *CreateAppResponseBodyResultQueryProcessors {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQueryProcessors) SetIndexes(v []*string) *CreateAppResponseBodyResultQueryProcessors {
+	s.Indexes = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQueryProcessors) SetName(v string) *CreateAppResponseBodyResultQueryProcessors {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQueryProcessors) SetProcessors(v []map[string]interface{}) *CreateAppResponseBodyResultQueryProcessors {
+	s.Processors = v
+	return s
+}
+
+type CreateAppResponseBodyResultQuota struct {
+	ComputeResource *int32  `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
+	DocSize         *int32  `json:"docSize,omitempty" xml:"docSize,omitempty"`
+	Qps             *int32  `json:"qps,omitempty" xml:"qps,omitempty"`
+	Spec            *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultQuota) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultQuota) SetComputeResource(v int32) *CreateAppResponseBodyResultQuota {
+	s.ComputeResource = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQuota) SetDocSize(v int32) *CreateAppResponseBodyResultQuota {
+	s.DocSize = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQuota) SetQps(v int32) *CreateAppResponseBodyResultQuota {
+	s.Qps = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultQuota) SetSpec(v string) *CreateAppResponseBodyResultQuota {
+	s.Spec = &v
+	return s
+}
+
+type CreateAppResponseBodyResultSchema struct {
+	IndexSortConfig  []*CreateAppResponseBodyResultSchemaIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *CreateAppResponseBodyResultSchemaIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                             `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                             `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                           `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                             `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                              `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *CreateAppResponseBodyResultSchemaTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s CreateAppResponseBodyResultSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetIndexSortConfig(v []*CreateAppResponseBodyResultSchemaIndexSortConfig) *CreateAppResponseBodyResultSchema {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetIndexes(v *CreateAppResponseBodyResultSchemaIndexes) *CreateAppResponseBodyResultSchema {
+	s.Indexes = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetName(v string) *CreateAppResponseBodyResultSchema {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetRouteField(v string) *CreateAppResponseBodyResultSchema {
+	s.RouteField = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetRouteFieldValues(v []*string) *CreateAppResponseBodyResultSchema {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetSecondRouteField(v string) *CreateAppResponseBodyResultSchema {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetTables(v map[string]interface{}) *CreateAppResponseBodyResultSchema {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchema) SetTtlField(v *CreateAppResponseBodyResultSchemaTtlField) *CreateAppResponseBodyResultSchema {
+	s.TtlField = v
+	return s
+}
+
+type CreateAppResponseBodyResultSchemaIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSchemaIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchemaIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchemaIndexSortConfig) SetDirection(v string) *CreateAppResponseBodyResultSchemaIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemaIndexSortConfig) SetField(v string) *CreateAppResponseBodyResultSchemaIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type CreateAppResponseBodyResultSchemaIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSchemaIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchemaIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchemaIndexes) SetFilterFields(v []*string) *CreateAppResponseBodyResultSchemaIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemaIndexes) SetSearchFields(v map[string]interface{}) *CreateAppResponseBodyResultSchemaIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type CreateAppResponseBodyResultSchemaTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSchemaTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchemaTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchemaTtlField) SetName(v string) *CreateAppResponseBodyResultSchemaTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemaTtlField) SetTtl(v int64) *CreateAppResponseBodyResultSchemaTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type CreateAppResponseBodyResultSchemas struct {
+	IndexSortConfig  []*CreateAppResponseBodyResultSchemasIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *CreateAppResponseBodyResultSchemasIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                              `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                              `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                            `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                              `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                               `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *CreateAppResponseBodyResultSchemasTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s CreateAppResponseBodyResultSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetIndexSortConfig(v []*CreateAppResponseBodyResultSchemasIndexSortConfig) *CreateAppResponseBodyResultSchemas {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetIndexes(v *CreateAppResponseBodyResultSchemasIndexes) *CreateAppResponseBodyResultSchemas {
+	s.Indexes = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetName(v string) *CreateAppResponseBodyResultSchemas {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetRouteField(v string) *CreateAppResponseBodyResultSchemas {
+	s.RouteField = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetRouteFieldValues(v []*string) *CreateAppResponseBodyResultSchemas {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetSecondRouteField(v string) *CreateAppResponseBodyResultSchemas {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetTables(v map[string]interface{}) *CreateAppResponseBodyResultSchemas {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemas) SetTtlField(v *CreateAppResponseBodyResultSchemasTtlField) *CreateAppResponseBodyResultSchemas {
+	s.TtlField = v
+	return s
+}
+
+type CreateAppResponseBodyResultSchemasIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSchemasIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchemasIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchemasIndexSortConfig) SetDirection(v string) *CreateAppResponseBodyResultSchemasIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemasIndexSortConfig) SetField(v string) *CreateAppResponseBodyResultSchemasIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type CreateAppResponseBodyResultSchemasIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSchemasIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchemasIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchemasIndexes) SetFilterFields(v []*string) *CreateAppResponseBodyResultSchemasIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemasIndexes) SetSearchFields(v map[string]interface{}) *CreateAppResponseBodyResultSchemasIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type CreateAppResponseBodyResultSchemasTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSchemasTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSchemasTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSchemasTtlField) SetName(v string) *CreateAppResponseBodyResultSchemasTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSchemasTtlField) SetTtl(v int64) *CreateAppResponseBodyResultSchemasTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type CreateAppResponseBodyResultSecondRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSecondRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSecondRanks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSecondRanks) SetActive(v bool) *CreateAppResponseBodyResultSecondRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSecondRanks) SetDescription(v string) *CreateAppResponseBodyResultSecondRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSecondRanks) SetMeta(v interface{}) *CreateAppResponseBodyResultSecondRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSecondRanks) SetName(v string) *CreateAppResponseBodyResultSecondRanks {
+	s.Name = &v
+	return s
+}
+
+type CreateAppResponseBodyResultSummaries struct {
+	Meta []*CreateAppResponseBodyResultSummariesMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
+	Name *string                                     `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSummaries) SetMeta(v []*CreateAppResponseBodyResultSummariesMeta) *CreateAppResponseBodyResultSummaries {
+	s.Meta = v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSummaries) SetName(v string) *CreateAppResponseBodyResultSummaries {
+	s.Name = &v
+	return s
+}
+
+type CreateAppResponseBodyResultSummariesMeta struct {
+	Element  *string `json:"element,omitempty" xml:"element,omitempty"`
+	Ellipsis *string `json:"ellipsis,omitempty" xml:"ellipsis,omitempty"`
+	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
+	Len      *int32  `json:"len,omitempty" xml:"len,omitempty"`
+	Snippet  *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+}
+
+func (s CreateAppResponseBodyResultSummariesMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBodyResultSummariesMeta) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBodyResultSummariesMeta) SetElement(v string) *CreateAppResponseBodyResultSummariesMeta {
+	s.Element = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSummariesMeta) SetEllipsis(v string) *CreateAppResponseBodyResultSummariesMeta {
+	s.Ellipsis = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSummariesMeta) SetField(v string) *CreateAppResponseBodyResultSummariesMeta {
+	s.Field = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSummariesMeta) SetLen(v int32) *CreateAppResponseBodyResultSummariesMeta {
+	s.Len = &v
+	return s
+}
+
+func (s *CreateAppResponseBodyResultSummariesMeta) SetSnippet(v string) *CreateAppResponseBodyResultSummariesMeta {
+	s.Snippet = &v
+	return s
+}
+
 type CreateAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppResponse) String() string {
@@ -1760,7 +3340,11 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateAppGroupRequest struct {
-	Body *AppGroup `json:"body,omitempty" xml:"body,omitempty"`
+	ChargeType      *string                     `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	Name            *string                     `json:"name,omitempty" xml:"name,omitempty"`
+	Quota           *CreateAppGroupRequestQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	ResourceGroupId *string                     `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Type            *string                     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateAppGroupRequest) String() string {
@@ -1771,13 +3355,66 @@ func (s CreateAppGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAppGroupRequest) SetBody(v *AppGroup) *CreateAppGroupRequest {
-	s.Body = v
+func (s *CreateAppGroupRequest) SetChargeType(v string) *CreateAppGroupRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetName(v string) *CreateAppGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetQuota(v *CreateAppGroupRequestQuota) *CreateAppGroupRequest {
+	s.Quota = v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetResourceGroupId(v string) *CreateAppGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetType(v string) *CreateAppGroupRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateAppGroupRequestQuota struct {
+	ComputeResource *int32  `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
+	DocSize         *int32  `json:"docSize,omitempty" xml:"docSize,omitempty"`
+	Spec            *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s CreateAppGroupRequestQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppGroupRequestQuota) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppGroupRequestQuota) SetComputeResource(v int32) *CreateAppGroupRequestQuota {
+	s.ComputeResource = &v
+	return s
+}
+
+func (s *CreateAppGroupRequestQuota) SetDocSize(v int32) *CreateAppGroupRequestQuota {
+	s.DocSize = &v
+	return s
+}
+
+func (s *CreateAppGroupRequestQuota) SetSpec(v string) *CreateAppGroupRequestQuota {
+	s.Spec = &v
 	return s
 }
 
 type CreateAppGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 766CF6DB-CA02-3E12-7CBA-6AC21FC978FD
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// N/A
 	Result *CreateAppGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -1804,78 +3441,164 @@ func (s *CreateAppGroupResponseBody) SetResult(v *CreateAppGroupResponseBodyResu
 type CreateAppGroupResponseBodyResult struct {
 	// The billing method of the application. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go
-	// *   PREPAY: subscription
+	// 	- POSTPAY: pay-as-you-go
+	//
+	// 	- PREPAY: subscription
+	//
+	// example:
+	//
+	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The billing model. Valid values:
 	//
-	// *   1: computing resources
-	// *   2: queries per second (QPS)
+	// 	- 1: computing resources
+	//
+	// 	- 2: queries per second (QPS)
+	//
+	// example:
+	//
+	// 1
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
 	// The code of the commodity.
+	//
+	// example:
+	//
+	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1590139542
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the current online version.
+	//
+	// example:
+	//
+	// 100302903
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// -
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The type of the industry. Valid values:
+	//
+	// 	- GENERAL: general.
+	//
+	// 	- ECOMMERCE: e-commerce.
+	//
+	// 	- IT_CONTENT: IT content.
+	//
+	// example:
+	//
+	// GENERAL
+	Domain     *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
 	// The expiration time.
+	//
+	// example:
+	//
+	// -
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The ID of the created rough sort expression.
-	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
 	// The approval status of the quotas. Valid values:
 	//
-	// *   0: The quotas are approved.
-	// *   1: The quotas are being approved.
+	// 	- 0: The quotas are approved.
+	//
+	// 	- 1: The quotas are being approved.
+	//
+	// example:
+	//
+	// 0
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
 	// The ID of the application.
+	//
+	// example:
+	//
+	// 100302881
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// -
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
-	// *   Unlock: The instance is not locked.
-	// *   LockByExpiration: The instance is automatically locked after it expires.
-	// *   ManualLock: The instance is manually locked.
+	// 	- Unlock: The instance is not locked.
+	//
+	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	//
+	// 	- ManualLock: The instance is manually locked.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// Indicates whether the instance is automatically locked after it expires.
-	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// lsh_test_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the fine sort expression that is being created.
-	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	// The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
-	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
 	// Indicates whether the order is complete. Valid values:
 	//
-	// *   0: The order is in progress.
-	// *   1: The order is complete.
+	// 	- 0: The order is in progress.
+	//
+	// 	- 1: The order is complete.
+	//
+	// example:
+	//
+	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
 	// The name of the A/B test group.
+	//
+	// example:
+	//
+	// -
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	// The information about the quotas of the application.
 	Quota *CreateAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The ID of the created fine sort expression.
-	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
 	// The status of the application. Valid values:
 	//
-	// *   producing
-	// *   review_pending
-	// *   config_pending
-	// *   normal
-	// *   frozen
+	// 	- producing
+	//
+	// 	- review_pending
+	//
+	// 	- config_pending
+	//
+	// 	- normal
+	//
+	// 	- frozen
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
+	//
+	// example:
+	//
+	// 1590486386
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
 	// The type of the application. Valid values:
 	//
-	// *   standard: a standard application.
-	// *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-	// *   enhanced: an advanced application which is of a new application type.
+	// 	- standard: a standard application.
+	//
+	// 	- advance: an advanced application which is of an old application type. New applications cannot be of this type.
+	//
+	// 	- enhanced: an advanced application which is of a new application type.
+	//
+	// example:
+	//
+	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The timestamp when the application was last updated.
+	//
+	// example:
+	//
+	// 1590978265
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -1922,13 +3645,13 @@ func (s *CreateAppGroupResponseBodyResult) SetDomain(v string) *CreateAppGroupRe
 	return s
 }
 
-func (s *CreateAppGroupResponseBodyResult) SetExpireOn(v string) *CreateAppGroupResponseBodyResult {
-	s.ExpireOn = &v
+func (s *CreateAppGroupResponseBodyResult) SetEngineType(v string) *CreateAppGroupResponseBodyResult {
+	s.EngineType = &v
 	return s
 }
 
-func (s *CreateAppGroupResponseBodyResult) SetFirstRankAlgoDeploymentId(v int32) *CreateAppGroupResponseBodyResult {
-	s.FirstRankAlgoDeploymentId = &v
+func (s *CreateAppGroupResponseBodyResult) SetExpireOn(v string) *CreateAppGroupResponseBodyResult {
+	s.ExpireOn = &v
 	return s
 }
 
@@ -1952,23 +3675,8 @@ func (s *CreateAppGroupResponseBodyResult) SetLockMode(v string) *CreateAppGroup
 	return s
 }
 
-func (s *CreateAppGroupResponseBodyResult) SetLockedByExpiration(v int32) *CreateAppGroupResponseBodyResult {
-	s.LockedByExpiration = &v
-	return s
-}
-
 func (s *CreateAppGroupResponseBodyResult) SetName(v string) *CreateAppGroupResponseBodyResult {
 	s.Name = &v
-	return s
-}
-
-func (s *CreateAppGroupResponseBodyResult) SetPendingSecondRankAlgoDeploymentId(v int32) *CreateAppGroupResponseBodyResult {
-	s.PendingSecondRankAlgoDeploymentId = &v
-	return s
-}
-
-func (s *CreateAppGroupResponseBodyResult) SetProcessingOrderId(v string) *CreateAppGroupResponseBodyResult {
-	s.ProcessingOrderId = &v
 	return s
 }
 
@@ -1984,11 +3692,6 @@ func (s *CreateAppGroupResponseBodyResult) SetProjectId(v string) *CreateAppGrou
 
 func (s *CreateAppGroupResponseBodyResult) SetQuota(v *CreateAppGroupResponseBodyResultQuota) *CreateAppGroupResponseBodyResult {
 	s.Quota = v
-	return s
-}
-
-func (s *CreateAppGroupResponseBodyResult) SetSecondRankAlgoDeploymentId(v int32) *CreateAppGroupResponseBodyResult {
-	s.SecondRankAlgoDeploymentId = &v
 	return s
 }
 
@@ -2014,18 +3717,36 @@ func (s *CreateAppGroupResponseBodyResult) SetUpdated(v int32) *CreateAppGroupRe
 
 type CreateAppGroupResponseBodyResultQuota struct {
 	// The computing resources. Unit: logical computing units (LCUs).
+	//
+	// example:
+	//
+	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
 	// The storage capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications of the application. Valid values:
 	//
-	// *   opensearch.share.junior: basic
-	// *   opensearch.share.common: shared general-purpose
-	// *   opensearch.share.compute: shared computing
-	// *   opensearch.share.storage: shared storage
-	// *   opensearch.private.common: exclusive general-purpose
-	// *   opensearch.private.compute: exclusive computing
-	// *   opensearch.private.storage: exclusive storage
+	// 	- opensearch.share.junior: basic
+	//
+	// 	- opensearch.share.common: shared general-purpose
+	//
+	// 	- opensearch.share.compute: shared computing
+	//
+	// 	- opensearch.share.storage: shared storage
+	//
+	// 	- opensearch.private.common: exclusive general-purpose
+	//
+	// 	- opensearch.private.compute: exclusive computing
+	//
+	// 	- opensearch.private.storage: exclusive storage
+	//
+	// example:
+	//
+	// opensearch.share.common
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -2053,9 +3774,9 @@ func (s *CreateAppGroupResponseBodyResultQuota) SetSpec(v string) *CreateAppGrou
 }
 
 type CreateAppGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppGroupResponse) String() string {
@@ -2081,10 +3802,139 @@ func (s *CreateAppGroupResponse) SetBody(v *CreateAppGroupResponseBody) *CreateA
 	return s
 }
 
+type CreateAppGroupCredentialsRequest struct {
+	// example:
+	//
+	// api-token
+	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
+	DryRun *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+}
+
+func (s CreateAppGroupCredentialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppGroupCredentialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppGroupCredentialsRequest) SetType(v string) *CreateAppGroupCredentialsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateAppGroupCredentialsRequest) SetDryRun(v bool) *CreateAppGroupCredentialsRequest {
+	s.DryRun = &v
+	return s
+}
+
+type CreateAppGroupCredentialsResponseBody struct {
+	// example:
+	//
+	// 1-2-3-4
+	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *CreateAppGroupCredentialsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CreateAppGroupCredentialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppGroupCredentialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppGroupCredentialsResponseBody) SetRequestId(v string) *CreateAppGroupCredentialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAppGroupCredentialsResponseBody) SetResult(v *CreateAppGroupCredentialsResponseBodyResult) *CreateAppGroupCredentialsResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateAppGroupCredentialsResponseBodyResult struct {
+	// example:
+	//
+	// app_group_123
+	AppGroupId *int64 `json:"appGroupId,omitempty" xml:"appGroupId,omitempty"`
+	Enabled    *bool  `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// generated_token_string
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// api-token
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAppGroupCredentialsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppGroupCredentialsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppGroupCredentialsResponseBodyResult) SetAppGroupId(v int64) *CreateAppGroupCredentialsResponseBodyResult {
+	s.AppGroupId = &v
+	return s
+}
+
+func (s *CreateAppGroupCredentialsResponseBodyResult) SetEnabled(v bool) *CreateAppGroupCredentialsResponseBodyResult {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAppGroupCredentialsResponseBodyResult) SetToken(v string) *CreateAppGroupCredentialsResponseBodyResult {
+	s.Token = &v
+	return s
+}
+
+func (s *CreateAppGroupCredentialsResponseBodyResult) SetType(v string) *CreateAppGroupCredentialsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type CreateAppGroupCredentialsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppGroupCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppGroupCredentialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppGroupCredentialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppGroupCredentialsResponse) SetHeaders(v map[string]*string) *CreateAppGroupCredentialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppGroupCredentialsResponse) SetStatusCode(v int32) *CreateAppGroupCredentialsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppGroupCredentialsResponse) SetBody(v *CreateAppGroupCredentialsResponseBody) *CreateAppGroupCredentialsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFirstRankRequest struct {
 	// The request body that contains the parameters of the rough sort expression.
 	Body *FirstRank `json:"body,omitempty" xml:"body,omitempty"`
 	// Specifies whether to perform a dry run.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -2108,6 +3958,10 @@ func (s *CreateFirstRankRequest) SetDryRun(v bool) *CreateFirstRankRequest {
 
 type CreateFirstRankResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the rough sort expression.
 	Result *CreateFirstRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -2133,10 +3987,18 @@ func (s *CreateFirstRankResponseBody) SetResult(v *CreateFirstRankResponseBodyRe
 
 type CreateFirstRankResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The content of the expression.
 	Meta []*CreateFirstRankResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
 	// The name of the expression.
+	//
+	// example:
+	//
+	// default
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -2165,10 +4027,22 @@ func (s *CreateFirstRankResponseBodyResult) SetName(v string) *CreateFirstRankRe
 
 type CreateFirstRankResponseBodyResultMeta struct {
 	// The parameters that are used by a function in the expression.
+	//
+	// example:
+	//
+	// 1
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
 	// The attribute, feature functions, or field to be searched for.
+	//
+	// example:
+	//
+	// static_bm25()
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// The weight. Valid values: \[-100000,100000]. The value cannot be 0.
+	// The weight. Valid values: [-100000,100000]. The value cannot be 0.
+	//
+	// example:
+	//
+	// 10
 	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
@@ -2196,9 +4070,9 @@ func (s *CreateFirstRankResponseBodyResultMeta) SetWeight(v float32) *CreateFirs
 }
 
 type CreateFirstRankResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFirstRankResponse) String() string {
@@ -2225,30 +4099,71 @@ func (s *CreateFirstRankResponse) SetBody(v *CreateFirstRankResponseBody) *Creat
 }
 
 type CreateFunctionInstanceRequest struct {
-	// The parameters that are used to create the instance.
+	// The parameters used to create the instance.
+	//
+	// example:
+	//
+	// [   { "name": "param1", "value": "val1"   } ]
 	CreateParameters []*CreateFunctionInstanceRequestCreateParameters `json:"createParameters,omitempty" xml:"createParameters,omitempty" type:"Repeated"`
-	// The cron expression used to schedule periodic training, in the format of (Minutes Hours DayofMonth Month DayofWeek). The default value is empty, which indicates that no periodic training is performed. DayofWeek 0 indicates Sunday.
+	// The CRON expression used to schedule periodic training, in the format of Minutes Hours DayofMonth Month DayofWeek. The default value is empty, which specifies that no periodic training is performed. A value of 0 for DayofWeek specifies Sunday.
+	//
+	// example:
+	//
+	// 0 0 ? 	- 0,1,2,3,4,5,6
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// test instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the feature. Valid values:
+	// The feature type.
 	//
-	// *   PAAS: This is the default value. Training is required before you can use the feature.
+	// 	- Default value: PAAS. Training is required before you can use the feature.
+	//
+	// example:
+	//
+	// PAAS
 	FunctionType *string `json:"functionType,omitempty" xml:"functionType,omitempty"`
-	// The name of the instance. The name must be 1 to 30 characters in length and can contain letters, digits, and underscores (\_). The name is case-sensitive and must start with a letter.
-	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// The type of the model. The following features correspond to different model types:
+	// The instance name. The name must be 1 to 30 characters in length and can contain letters, digits, and underscores (_). The name is case-sensitive and must start with a letter.
 	//
-	// *   click-through rate (CTR) model: tf_checkpoint
-	// *   Popularity model: pop
-	// *   Category model: offline_inference
-	// *   Hotword model: offline_inference
-	// *   Shading model: offline_inference
-	// *   Drop-down suggestion model: offline_inference
-	// *   Word segmentation model: text
-	// *   Term weight model: tf_checkpoint
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ctr_test
+	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// The model type. The value varies based on the model.
+	//
+	// 	- Click-through rate (CTR) model: tf_checkpoint
+	//
+	// 	- Popularity model: pop
+	//
+	// 	- Category model: offline_inference
+	//
+	// 	- Hotword model: offline_inference
+	//
+	// 	- Hint model: offline_inference
+	//
+	// 	- Hotword model for real-time top searches: near_realtime
+	//
+	// 	- Personalized hint model: near_realtime
+	//
+	// 	- Drop-down suggestion model: offline_inference
+	//
+	// 	- Tokenization model: text
+	//
+	// 	- Term weight model: tf_checkpoint
+	//
+	// 	- Synonym model: offline_inference
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tf_checkpoint
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// The parameters that are used to use the instance.
+	// The parameters used to use the instance.
 	UsageParameters []*CreateFunctionInstanceRequestUsageParameters `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
 }
 
@@ -2296,9 +4211,17 @@ func (s *CreateFunctionInstanceRequest) SetUsageParameters(v []*CreateFunctionIn
 }
 
 type CreateFunctionInstanceRequestCreateParameters struct {
-	// The name of the parameter.
+	// The parameter name.
+	//
+	// example:
+	//
+	// title_field
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
+	//
+	// example:
+	//
+	// title
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -2321,9 +4244,17 @@ func (s *CreateFunctionInstanceRequestCreateParameters) SetValue(v string) *Crea
 }
 
 type CreateFunctionInstanceRequestUsageParameters struct {
-	// The name of the parameter.
+	// The parameter name.
+	//
+	// example:
+	//
+	// allow_dict_id
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
+	//
+	// example:
+	//
+	// 123
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -2347,16 +4278,40 @@ func (s *CreateFunctionInstanceRequestUsageParameters) SetValue(v string) *Creat
 
 type CreateFunctionInstanceResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// Version.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message. If no error occurs, this parameter is left empty.
+	//
+	// example:
+	//
+	// version not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 98724351-D6B2-5D8A-B089-7FFD1821A7E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2399,9 +4354,9 @@ func (s *CreateFunctionInstanceResponseBody) SetStatus(v string) *CreateFunction
 }
 
 type CreateFunctionInstanceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFunctionInstanceResponse) String() string {
@@ -2428,10 +4383,44 @@ func (s *CreateFunctionInstanceResponse) SetBody(v *CreateFunctionInstanceRespon
 }
 
 type CreateFunctionResourceRequest struct {
-	Data         *CreateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Description  *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ResourceName *string                            `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType *string                            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource data. The data structure varies with the resource type.
+	Data *CreateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the resource.
+	//
+	// example:
+	//
+	// ""
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the resource.
+	//
+	// example:
+	//
+	// fg_jsoon
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	//
+	// Valid values:
+	//
+	// 	- feature_generator
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- raw_file
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// feature_generator
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s CreateFunctionResourceRequest) String() string {
@@ -2463,7 +4452,13 @@ func (s *CreateFunctionResourceRequest) SetResourceType(v string) *CreateFunctio
 }
 
 type CreateFunctionResourceRequestData struct {
-	Content    *string                                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the file that corresponds to a resource of the raw_file type.
+	//
+	// example:
+	//
+	// "abc"
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The feature generators that correspond to resources of the feature_generator type.
 	Generators []*CreateFunctionResourceRequestDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
 }
 
@@ -2486,9 +4481,70 @@ func (s *CreateFunctionResourceRequestData) SetGenerators(v []*CreateFunctionRes
 }
 
 type CreateFunctionResourceRequestDataGenerators struct {
-	Generator *string                                           `json:"Generator,omitempty" xml:"Generator,omitempty"`
-	Input     *CreateFunctionResourceRequestDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	Output    *string                                           `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The type of the feature generator.
+	//
+	// Valid values:
+	//
+	// 	- lookup
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- sequence
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- overlap
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- raw
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- combo
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- id
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// id
+	Generator *string `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	// The input.
+	Input *CreateFunctionResourceRequestDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The name of the output feature.
+	//
+	// example:
+	//
+	// item_id_feature
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 
 func (s CreateFunctionResourceRequestDataGenerators) String() string {
@@ -2515,6 +4571,7 @@ func (s *CreateFunctionResourceRequestDataGenerators) SetOutput(v string) *Creat
 }
 
 type CreateFunctionResourceRequestDataGeneratorsInput struct {
+	// The input features.
 	Features []*CreateFunctionResourceRequestDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 }
 
@@ -2532,7 +4589,35 @@ func (s *CreateFunctionResourceRequestDataGeneratorsInput) SetFeatures(v []*Crea
 }
 
 type CreateFunctionResourceRequestDataGeneratorsInputFeatures struct {
+	// The name of the feature.
+	//
+	// example:
+	//
+	// system_item_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the feature.
+	//
+	// Valid values:
+	//
+	// 	- item
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- user
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// item
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2555,12 +4640,46 @@ func (s *CreateFunctionResourceRequestDataGeneratorsInputFeatures) SetType(v str
 }
 
 type CreateFunctionResourceResponseBody struct {
-	Code      *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpCode  *int64   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Latency   *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	Message   *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The error code. If no error occurs, this parameter is left empty.
+	//
+	// example:
+	//
+	// ""
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The time consumed for the request. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 123
+	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// ""
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code. Valid values:
+	//
+	// 	- OK
+	//
+	// 	- FAIL
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateFunctionResourceResponseBody) String() string {
@@ -2602,9 +4721,9 @@ func (s *CreateFunctionResourceResponseBody) SetStatus(v string) *CreateFunction
 }
 
 type CreateFunctionResourceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFunctionResourceResponse) String() string {
@@ -2632,16 +4751,40 @@ func (s *CreateFunctionResourceResponse) SetBody(v *CreateFunctionResourceRespon
 
 type CreateFunctionTaskResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// Task.IsRunning
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1638157990724
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2684,9 +4827,9 @@ func (s *CreateFunctionTaskResponseBody) SetStatus(v string) *CreateFunctionTask
 }
 
 type CreateFunctionTaskResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFunctionTaskResponse) String() string {
@@ -2715,33 +4858,63 @@ func (s *CreateFunctionTaskResponse) SetBody(v *CreateFunctionTaskResponseBody) 
 type CreateInterventionDictionaryRequest struct {
 	// The type of the analyzer. Valid values:
 	//
-	// *   MODEL: model-based custom analyzer.
-	// *   SYSTEM: system analyzer.
-	// *   USER: custom analyzer.
+	// 	- MODEL: model-based custom analyzer.
+	//
+	// 	- SYSTEM: system analyzer.
+	//
+	// 	- USER: custom analyzer.
+	//
+	// example:
+	//
+	// SYSTEM
 	AnalyzerType *string `json:"analyzerType,omitempty" xml:"analyzerType,omitempty"`
 	// The name of the intervention dictionary.
+	//
+	// example:
+	//
+	// ner_dict_ec
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the intervention dictionary. Valid values:
 	//
-	// *   stopword: an intervention dictionary for stop word filtering.
-	// *   synonym: an intervention dictionary for synonym configuration.
-	// *   correction: an intervention dictionary for spelling correction.
-	// *   category_prediction: an intervention dictionary for category prediction.
-	// *   ner: an intervention dictionary for named entity recognition (NER).
-	// *   term_weighting: an intervention dictionary for term weight analysis.
-	// *   suggest_allowlist: a drop-down suggestion whitelist.
-	// *   suggest_denylist: a drop-down suggestion blacklist.
-	// *   hot_allowlist: a top search whitelist.
-	// *   hot_denylist: a top search blacklist.
-	// *   hint_allowlist: a hint whitelist.
-	// *   hint_denylist: a hint blacklist.
+	// 	- stopword: an intervention dictionary for stop word filtering.
+	//
+	// 	- synonym: an intervention dictionary for synonym configuration.
+	//
+	// 	- correction: an intervention dictionary for spelling correction.
+	//
+	// 	- category_prediction: an intervention dictionary for category prediction.
+	//
+	// 	- ner: an intervention dictionary for named entity recognition (NER).
+	//
+	// 	- term_weighting: an intervention dictionary for term weight analysis.
+	//
+	// 	- suggest_allowlist: a drop-down suggestion whitelist.
+	//
+	// 	- suggest_denylist: a drop-down suggestion blacklist.
+	//
+	// 	- hot_allowlist: a top search whitelist.
+	//
+	// 	- hot_denylist: a top search blacklist.
+	//
+	// 	- hint_allowlist: a hint whitelist.
+	//
+	// 	- hint_denylist: a hint blacklist.
+	//
+	// example:
+	//
+	// ner
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
 	//
 	// Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -2774,22 +4947,13 @@ func (s *CreateInterventionDictionaryRequest) SetDryRun(v bool) *CreateIntervent
 }
 
 type CreateInterventionDictionaryResponseBody struct {
-	// The type of the intervention dictionary. Valid values:
-	//
-	// *   stopword: an intervention dictionary for stop word filtering
-	// *   synonym: an intervention dictionary for synonym configuration
-	// *   correction: an intervention dictionary for spelling correction
-	// *   category_prediction: an intervention dictionary for category prediction
-	// *   ner: an intervention dictionary for named entity recognition (NER)
-	// *   term_weighting: an intervention dictionary for term weight analysis
-	// *   suggest_allowlist: a drop-down suggestion whitelist
-	// *   suggest_denylist: a drop-down suggestion blacklist
-	// *   hot_allowlist: a top search whitelist
-	// *   hot_denylist: a top search blacklist
-	// *   hint_allowlist: a shading whitelist
-	// *   hint_denylist: a shading blacklist
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 80326EFE-485F-46E7-B291-5A1DD08D2198
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned results.
 	Result *CreateInterventionDictionaryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -2812,13 +4976,47 @@ func (s *CreateInterventionDictionaryResponseBody) SetResult(v *CreateInterventi
 }
 
 type CreateInterventionDictionaryResponseBodyResult struct {
-	// Creates an intervention dictionary.
+	// The custom analyzer.
+	//
+	// example:
+	//
+	// dianshang
 	Analyzer *string `json:"analyzer,omitempty" xml:"analyzer,omitempty"`
-	// The name of the intervention dictionary.
+	// The time when the test scenario was created.
+	//
+	// example:
+	//
+	// 1591086323
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
-	// CreateInterventionDictionary
+	// The name of the test group.
+	//
+	// example:
+	//
+	// testb
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the intervention dictionary. Valid values:
+	//
+	// 	- stopword: an intervention dictionary for stop word filtering
+	//
+	// 	- synonym: an intervention dictionary for synonym configuration
+	//
+	// 	- correction: an intervention dictionary for spelling correction
+	//
+	// 	- category_prediction: an intervention dictionary for category prediction
+	//
+	// 	- ner: an intervention dictionary for named entity recognition (NER)
+	//
+	// 	- term_weighting: an intervention dictionary for term weight analysis
+	//
+	// example:
+	//
+	// ner
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time when the intervention dictionary was last updated.
+	//
+	// example:
+	//
+	// 1591086323
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -2856,9 +5054,9 @@ func (s *CreateInterventionDictionaryResponseBodyResult) SetUpdated(v string) *C
 }
 
 type CreateInterventionDictionaryResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInterventionDictionaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInterventionDictionaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInterventionDictionaryResponse) String() string {
@@ -2886,8 +5084,16 @@ func (s *CreateInterventionDictionaryResponse) SetBody(v *CreateInterventionDict
 
 type CreateQueryProcessorRequest struct {
 	// The request body.
+	//
+	// example:
+	//
+	// {}
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
 	// Specifies whether to perform a dry run.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -2911,6 +5117,10 @@ func (s *CreateQueryProcessorRequest) SetDryRun(v bool) *CreateQueryProcessorReq
 
 type CreateQueryProcessorResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the query analysis rule.
 	Result *CreateQueryProcessorResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -2936,24 +5146,46 @@ func (s *CreateQueryProcessorResponseBody) SetResult(v *CreateQueryProcessorResp
 
 type CreateQueryProcessorResponseBodyResult struct {
 	// Indicates whether the query analysis rule is the default one.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The time when the query analysis rule was created.
+	//
+	// example:
+	//
+	// 1587398402
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The type of the industry to which the query analysis rule was applied. Valid values:
 	//
-	// *   GENERAL: general.
-	// *   ECOMMERCE: e-commerce.
-	// *   IT_CONTENT: IT content.
+	// 	- GENERAL: general.
+	//
+	// 	- ECOMMERCE: e-commerce.
+	//
+	// 	- IT_CONTENT: IT content.
+	//
+	// example:
+	//
+	// GENERAL
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The indexes to which the query analysis rule was applied.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 	// The name of the query analysis rule.
+	//
+	// example:
+	//
+	// query_filter
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The features that are used in the query analysis rule.
 	//
-	// For more information, see [QueryProcessor](~~170014~~).
+	// For more information, see [QueryProcessor](https://help.aliyun.com/document_detail/170014.html).
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 	// The time when the query analysis rule was last modified.
+	//
+	// example:
+	//
+	// 1587398402
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -3001,9 +5233,9 @@ func (s *CreateQueryProcessorResponseBodyResult) SetUpdated(v int32) *CreateQuer
 }
 
 type CreateQueryProcessorResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateQueryProcessorResponse) String() string {
@@ -3049,8 +5281,16 @@ func (s *CreateScheduledTaskRequest) SetBody(v *ScheduledTask) *CreateScheduledT
 
 type CreateScheduledTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the scheduled task.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -3073,9 +5313,9 @@ func (s *CreateScheduledTaskResponseBody) SetResult(v map[string]interface{}) *C
 }
 
 type CreateScheduledTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateScheduledTaskResponse) String() string {
@@ -3102,6 +5342,7 @@ func (s *CreateScheduledTaskResponse) SetBody(v *CreateScheduledTaskResponseBody
 }
 
 type CreateSearchStrategyRequest struct {
+	// The query policy.
 	Body *SearchStrategy `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3119,6 +5360,11 @@ func (s *CreateSearchStrategyRequest) SetBody(v *SearchStrategy) *CreateSearchSt
 }
 
 type CreateSearchStrategyResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// "abc123"
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3136,9 +5382,9 @@ func (s *CreateSearchStrategyResponseBody) SetRequestId(v string) *CreateSearchS
 }
 
 type CreateSearchStrategyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSearchStrategyResponse) String() string {
@@ -3165,7 +5411,12 @@ func (s *CreateSearchStrategyResponse) SetBody(v *CreateSearchStrategyResponseBo
 }
 
 type CreateSecondRankRequest struct {
+	// The request body. For more information, see [SecondRank](https://help.aliyun.com/document_detail/170008.html).
 	Body *SecondRank `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to perform a dry run.
+	//
+	// example:
+	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
@@ -3189,9 +5440,17 @@ func (s *CreateSecondRankRequest) SetDryRun(v bool) *CreateSecondRankRequest {
 }
 
 type CreateSecondRankResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the fine sort expression.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -3214,9 +5473,9 @@ func (s *CreateSecondRankResponseBody) SetResult(v map[string]interface{}) *Crea
 }
 
 type CreateSecondRankResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSecondRankResponse) String() string {
@@ -3243,11 +5502,23 @@ func (s *CreateSecondRankResponse) SetBody(v *CreateSecondRankResponseBody) *Cre
 }
 
 type CreateSortScriptRequest struct {
-	// 脚本的作用范围
+	// The sort phase to which the script applies.
+	//
+	// example:
+	//
+	// second_rank
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 脚本名称
+	// The script name.
+	//
+	// example:
+	//
+	// rank_cava_20230606_v7
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// 脚本的类型，目前只支持cava_script
+	// The script type. Set the value to cava_script.
+	//
+	// example:
+	//
+	// cava_script
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -3275,9 +5546,13 @@ func (s *CreateSortScriptRequest) SetType(v string) *CreateSortScriptRequest {
 }
 
 type CreateSortScriptResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 返回结果
+	// The response parameters.
 	Result *CreateSortScriptResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -3300,11 +5575,23 @@ func (s *CreateSortScriptResponseBody) SetResult(v *CreateSortScriptResponseBody
 }
 
 type CreateSortScriptResponseBodyResult struct {
-	// 脚本的作用范围
+	// The sort phase to which the script applies.
+	//
+	// example:
+	//
+	// second_rank
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 脚本名称
+	// The script name.
+	//
+	// example:
+	//
+	// rank_cava_20230606_v7
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// 脚本的类型
+	// The script type.
+	//
+	// example:
+	//
+	// cava_script
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -3332,9 +5619,9 @@ func (s *CreateSortScriptResponseBodyResult) SetType(v string) *CreateSortScript
 }
 
 type CreateSortScriptResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSortScriptResponse) String() string {
@@ -3361,12 +5648,48 @@ func (s *CreateSortScriptResponse) SetBody(v *CreateSortScriptResponseBody) *Cre
 }
 
 type CreateUserAnalyzerRequest struct {
-	Business           *string `json:"business,omitempty" xml:"business,omitempty"`
+	// The basic analyzer.
+	//
+	// example:
+	//
+	// chn_standard
+	Business *string `json:"business,omitempty" xml:"business,omitempty"`
+	// The application ID of the custom analyzer.
+	//
+	// example:
+	//
+	// 110123123
 	BusinessAppGroupId *string `json:"businessAppGroupId,omitempty" xml:"businessAppGroupId,omitempty"`
-	BusinessType       *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
-	DryRun             *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The basic analyzer type. Valid values: AUTO, MODEL, SYSTEM, and USER.
+	//
+	// example:
+	//
+	// AUTO
+	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	// The analyzer name.
+	//
+	// example:
+	//
+	// jmbon_analyzer
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The engine type. Valid values: HA3 and ES.
+	//
+	// example:
+	//
+	// HA3
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateUserAnalyzerRequest) String() string {
@@ -3409,8 +5732,16 @@ func (s *CreateUserAnalyzerRequest) SetDryRun(v bool) *CreateUserAnalyzerRequest
 
 type CreateUserAnalyzerResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 98724351-D6B2-5D8A-B089-7FFD1821A7E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The custom analyzer.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -3433,9 +5764,9 @@ func (s *CreateUserAnalyzerResponseBody) SetResult(v map[string]interface{}) *Cr
 }
 
 type CreateUserAnalyzerResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserAnalyzerResponse) String() string {
@@ -3463,8 +5794,17 @@ func (s *CreateUserAnalyzerResponse) SetBody(v *CreateUserAnalyzerResponseBody) 
 
 type DeleteABTestExperimentResponseBody struct {
 	// The ID of the request.
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	//
+	// example:
+	//
+	// ABCDEFGH
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result that was returned.
+	//
+	// example:
+	//
+	// {}
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s DeleteABTestExperimentResponseBody) String() string {
@@ -3486,9 +5826,9 @@ func (s *DeleteABTestExperimentResponseBody) SetResult(v map[string]interface{})
 }
 
 type DeleteABTestExperimentResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteABTestExperimentResponse) String() string {
@@ -3516,8 +5856,16 @@ func (s *DeleteABTestExperimentResponse) SetBody(v *DeleteABTestExperimentRespon
 
 type DeleteABTestGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The return result.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -3540,9 +5888,9 @@ func (s *DeleteABTestGroupResponseBody) SetResult(v map[string]interface{}) *Del
 }
 
 type DeleteABTestGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteABTestGroupResponse) String() string {
@@ -3570,8 +5918,16 @@ func (s *DeleteABTestGroupResponse) SetBody(v *DeleteABTestGroupResponseBody) *D
 
 type DeleteABTestSceneResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The returned results.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -3594,9 +5950,9 @@ func (s *DeleteABTestSceneResponseBody) SetResult(v map[string]interface{}) *Del
 }
 
 type DeleteABTestSceneResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteABTestSceneResponse) String() string {
@@ -3624,19 +5980,44 @@ func (s *DeleteABTestSceneResponse) SetBody(v *DeleteABTestSceneResponseBody) *D
 
 type DeleteFunctionInstanceResponseBody struct {
 	// The error code. If no error occurs, this parameter is left empty.
+	//
+	// example:
+	//
+	// "Instance.NotExist"
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 10
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message. If no error occurs, this parameter is left empty.
+	//
+	// example:
+	//
+	// "instance not exist."
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// "1081EB05-473C-5BF4-95BE-6D7CAD5E2213"
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the request. Valid values:
 	//
-	// *   OK: The request is successful.
-	// *   FAIL: The request fails.
+	// 	- OK: The request is successful.
+	//
+	// 	- FAIL: The request fails.
+	//
+	// example:
+	//
+	// "OK"
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3679,9 +6060,9 @@ func (s *DeleteFunctionInstanceResponseBody) SetStatus(v string) *DeleteFunction
 }
 
 type DeleteFunctionInstanceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFunctionInstanceResponse) String() string {
@@ -3708,12 +6089,46 @@ func (s *DeleteFunctionInstanceResponse) SetBody(v *DeleteFunctionInstanceRespon
 }
 
 type DeleteFunctionResourceResponseBody struct {
-	Code      *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpCode  *int64   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Latency   *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	Message   *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The error code returned. If no error occurs, this value is empty.
+	//
+	// example:
+	//
+	// ""
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The time consumed for the request. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 123
+	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// ""
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code. Valid values:
+	//
+	// 	- OK
+	//
+	// 	- FAIL
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteFunctionResourceResponseBody) String() string {
@@ -3755,9 +6170,9 @@ func (s *DeleteFunctionResourceResponseBody) SetStatus(v string) *DeleteFunction
 }
 
 type DeleteFunctionResourceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFunctionResourceResponse) String() string {
@@ -3785,16 +6200,40 @@ func (s *DeleteFunctionResourceResponse) SetBody(v *DeleteFunctionResourceRespon
 
 type DeleteFunctionTaskResponseBody struct {
 	// The error code. If no error occurs, this parameter is left empty.
+	//
+	// example:
+	//
+	// Task.UnableDelete
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// "1081EB05-473C-5BF4-95BE-6D7CAD5E2213"
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3837,9 +6276,9 @@ func (s *DeleteFunctionTaskResponseBody) SetStatus(v string) *DeleteFunctionTask
 }
 
 type DeleteFunctionTaskResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFunctionTaskResponse) String() string {
@@ -3867,6 +6306,10 @@ func (s *DeleteFunctionTaskResponse) SetBody(v *DeleteFunctionTaskResponseBody) 
 
 type DeleteSortScriptResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3884,9 +6327,9 @@ func (s *DeleteSortScriptResponseBody) SetRequestId(v string) *DeleteSortScriptR
 }
 
 type DeleteSortScriptResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSortScriptResponse) String() string {
@@ -3914,6 +6357,10 @@ func (s *DeleteSortScriptResponse) SetBody(v *DeleteSortScriptResponseBody) *Del
 
 type DeleteSortScriptFileResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3931,9 +6378,9 @@ func (s *DeleteSortScriptFileResponseBody) SetRequestId(v string) *DeleteSortScr
 }
 
 type DeleteSortScriptFileResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSortScriptFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSortScriptFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSortScriptFileResponse) String() string {
@@ -3961,6 +6408,10 @@ func (s *DeleteSortScriptFileResponse) SetBody(v *DeleteSortScriptFileResponseBo
 
 type DescribeABTestExperimentResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the test.
 	Result *DescribeABTestExperimentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -3986,21 +6437,46 @@ func (s *DescribeABTestExperimentResponseBody) SetResult(v *DescribeABTestExperi
 
 type DescribeABTestExperimentResponseBodyResult struct {
 	// The time when the test was created.
+	//
+	// example:
+	//
+	// 1588842080
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test.
+	//
+	// example:
+	//
+	// 12888
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the test.
+	//
+	// example:
+	//
+	// test1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test. Valid values:
 	//
-	// *   true: in effect
-	// *   false: not in effect
+	// 	- true: in effect
+	//
+	// 	- false: not in effect
+	//
+	// example:
+	//
+	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
 	// The parameters of the test.
 	Params *DescribeABTestExperimentResponseBodyResultParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
 	// The percentage of traffic that is routed to the test.
+	//
+	// example:
+	//
+	// 30
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
 	// The time when the test was last modified.
+	//
+	// example:
+	//
+	// 1588842080
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -4049,6 +6525,10 @@ func (s *DescribeABTestExperimentResponseBodyResult) SetUpdated(v int32) *Descri
 
 type DescribeABTestExperimentResponseBodyResultParams struct {
 	// The name of the rough sort policy.
+	//
+	// example:
+	//
+	// default
 	FirstFormulaName *string `json:"first_formula_name,omitempty" xml:"first_formula_name,omitempty"`
 }
 
@@ -4066,9 +6546,9 @@ func (s *DescribeABTestExperimentResponseBodyResultParams) SetFirstFormulaName(v
 }
 
 type DescribeABTestExperimentResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeABTestExperimentResponse) String() string {
@@ -4096,6 +6576,10 @@ func (s *DescribeABTestExperimentResponse) SetBody(v *DescribeABTestExperimentRe
 
 type DescribeABTestGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the test group.
 	Result *DescribeABTestGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -4121,17 +6605,38 @@ func (s *DescribeABTestGroupResponseBody) SetResult(v *DescribeABTestGroupRespon
 
 type DescribeABTestGroupResponseBodyResult struct {
 	// The time when the test group was created.
+	//
+	// example:
+	//
+	// 1588839490
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test group.
+	//
+	// example:
+	//
+	// 13466
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the test group.
+	//
+	// example:
+	//
+	// Group_2020-5-7_15:23:3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test group. Valid values:
 	//
-	// *   0: not in effect
-	// *   1: in effect
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The time when the test group was last modified.
+	//
+	// example:
+	//
+	// 1588839490
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -4169,9 +6674,9 @@ func (s *DescribeABTestGroupResponseBodyResult) SetUpdated(v int32) *DescribeABT
 }
 
 type DescribeABTestGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeABTestGroupResponse) String() string {
@@ -4199,6 +6704,10 @@ func (s *DescribeABTestGroupResponse) SetBody(v *DescribeABTestGroupResponseBody
 
 type DescribeABTestSceneResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the test scenario.
 	Result *DescribeABTestSceneResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -4224,17 +6733,38 @@ func (s *DescribeABTestSceneResponseBody) SetResult(v *DescribeABTestSceneRespon
 
 type DescribeABTestSceneResponseBodyResult struct {
 	// The time when the test scenario was created.
+	//
+	// example:
+	//
+	// 1596527691
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test scenario.
+	//
+	// example:
+	//
+	// 20614
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the test scenario.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test scenario. Valid values:
 	//
-	// *   0: The test is stopped.
-	// *   1: The test is started.
+	// 	- 0: The test is stopped.
+	//
+	// 	- 1: The test is started.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The time when the test was last modified.
+	//
+	// example:
+	//
+	// 1596527691
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 	// The indicators of the test scenarios.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
@@ -4279,9 +6809,9 @@ func (s *DescribeABTestSceneResponseBodyResult) SetValues(v []*string) *Describe
 }
 
 type DescribeABTestSceneResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeABTestSceneResponse) String() string {
@@ -4309,8 +6839,16 @@ func (s *DescribeABTestSceneResponse) SetBody(v *DescribeABTestSceneResponseBody
 
 type DescribeAppResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 33477D76-C380-1D84-A4AD-043F52876CB1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the version.
+	//
+	// example:
+	//
+	// {}
 	Result *DescribeAppResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -4333,41 +6871,107 @@ func (s *DescribeAppResponseBody) SetResult(v *DescribeAppResponseBodyResult) *D
 }
 
 type DescribeAppResponseBodyResult struct {
-	// The ID of the created rough sort expression.
-	AlgoDeploymentId *int32 `json:"algoDeploymentId,omitempty" xml:"algoDeploymentId,omitempty"`
 	// Indicates whether the version is automatically published to the online environment.
-	AutoSwitch  *bool   `json:"autoSwitch,omitempty" xml:"autoSwitch,omitempty"`
-	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// The timestamp when the version was created.
-	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
+	//
+	// example:
+	//
+	// true
+	AutoSwitch *bool                                 `json:"autoSwitch,omitempty" xml:"autoSwitch,omitempty"`
+	Cluster    *DescribeAppResponseBodyResultCluster `json:"cluster,omitempty" xml:"cluster,omitempty" type:"Struct"`
+	// The name of the cluster.
+	//
+	// example:
+	//
+	// -
+	ClusterName *string                                     `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	DataSources []*DescribeAppResponseBodyResultDataSources `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
 	// The description of the version.
-	Description *string                              `json:"description,omitempty" xml:"description,omitempty"`
-	Domain      *DescribeAppResponseBodyResultDomain `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
+	//
+	// example:
+	//
+	// -
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The type of the industry. Valid values:
+	//
+	// 	- GENERAL
+	//
+	// 	- ECOMMERCE
+	//
+	// 	- IT_CONTENT
+	//
+	// example:
+	//
+	// GENERAL
+	Domain *DescribeAppResponseBodyResultDomain `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
 	// The default display fields.
-	FetchFields []*string `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// []
+	FetchFields []*string                                  `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
+	FirstRanks  []*DescribeAppResponseBodyResultFirstRanks `json:"firstRanks,omitempty" xml:"firstRanks,omitempty" type:"Repeated"`
 	// The ID of the version.
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	//
+	// example:
+	//
+	// 100303063
+	Id              *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Interpretations map[string]interface{} `json:"interpretations,omitempty" xml:"interpretations,omitempty"`
+	IsCurrent       *bool                  `json:"isCurrent,omitempty" xml:"isCurrent,omitempty"`
 	// The progress of data import, in percentage. For example, a value of 83 indicates 83%.
-	ProgressPercent *int32 `json:"progressPercent,omitempty" xml:"progressPercent,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	ProgressPercent *int32                                          `json:"progressPercent,omitempty" xml:"progressPercent,omitempty"`
+	Prompts         []map[string]interface{}                        `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
+	QueryProcessors []*DescribeAppResponseBodyResultQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
 	// The quota information about the version.
+	//
+	// example:
+	//
+	// {}
 	Quota *DescribeAppResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 	// The application schema.
-	Schema map[string]interface{} `json:"schema,omitempty" xml:"schema,omitempty"`
+	//
+	// example:
+	//
+	// {}
+	Schema      *DescribeAppResponseBodyResultSchema        `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
+	Schemas     []*DescribeAppResponseBodyResultSchemas     `json:"schemas,omitempty" xml:"schemas,omitempty" type:"Repeated"`
+	SecondRanks []*DescribeAppResponseBodyResultSecondRanks `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
 	// The status of the version. Valid values:
 	//
-	// *   ok
-	// *   stopped
-	// *   frozen
-	// *   initializing
-	// *   unavailable
-	// *   data_waiting
-	// *   data_preparing
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 	- ok
+	//
+	// 	- stopped
+	//
+	// 	- frozen
+	//
+	// 	- initializing
+	//
+	// 	- unavailable
+	//
+	// 	- data_waiting
+	//
+	// 	- data_preparing
+	//
+	// example:
+	//
+	// ok
+	Status    *string                                   `json:"status,omitempty" xml:"status,omitempty"`
+	Summaries []*DescribeAppResponseBodyResultSummaries `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
 	// The type of the application. Valid values:
 	//
-	// *   standard: a standard application.
-	// *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-	// *   enhanced: an advanced application which is of a new application type.
+	// 	- standard: a standard application.
+	//
+	// 	- advance: an advanced application which is of an old application type. New applications cannot be of this type.
+	//
+	// 	- enhanced: an advanced application which is of a new application type.
+	//
+	// example:
+	//
+	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -4379,13 +6983,13 @@ func (s DescribeAppResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAppResponseBodyResult) SetAlgoDeploymentId(v int32) *DescribeAppResponseBodyResult {
-	s.AlgoDeploymentId = &v
+func (s *DescribeAppResponseBodyResult) SetAutoSwitch(v bool) *DescribeAppResponseBodyResult {
+	s.AutoSwitch = &v
 	return s
 }
 
-func (s *DescribeAppResponseBodyResult) SetAutoSwitch(v bool) *DescribeAppResponseBodyResult {
-	s.AutoSwitch = &v
+func (s *DescribeAppResponseBodyResult) SetCluster(v *DescribeAppResponseBodyResultCluster) *DescribeAppResponseBodyResult {
+	s.Cluster = v
 	return s
 }
 
@@ -4394,8 +6998,8 @@ func (s *DescribeAppResponseBodyResult) SetClusterName(v string) *DescribeAppRes
 	return s
 }
 
-func (s *DescribeAppResponseBodyResult) SetCreated(v int32) *DescribeAppResponseBodyResult {
-	s.Created = &v
+func (s *DescribeAppResponseBodyResult) SetDataSources(v []*DescribeAppResponseBodyResultDataSources) *DescribeAppResponseBodyResult {
+	s.DataSources = v
 	return s
 }
 
@@ -4414,8 +7018,23 @@ func (s *DescribeAppResponseBodyResult) SetFetchFields(v []*string) *DescribeApp
 	return s
 }
 
+func (s *DescribeAppResponseBodyResult) SetFirstRanks(v []*DescribeAppResponseBodyResultFirstRanks) *DescribeAppResponseBodyResult {
+	s.FirstRanks = v
+	return s
+}
+
 func (s *DescribeAppResponseBodyResult) SetId(v string) *DescribeAppResponseBodyResult {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResult) SetInterpretations(v map[string]interface{}) *DescribeAppResponseBodyResult {
+	s.Interpretations = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResult) SetIsCurrent(v bool) *DescribeAppResponseBodyResult {
+	s.IsCurrent = &v
 	return s
 }
 
@@ -4424,13 +7043,33 @@ func (s *DescribeAppResponseBodyResult) SetProgressPercent(v int32) *DescribeApp
 	return s
 }
 
+func (s *DescribeAppResponseBodyResult) SetPrompts(v []map[string]interface{}) *DescribeAppResponseBodyResult {
+	s.Prompts = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResult) SetQueryProcessors(v []*DescribeAppResponseBodyResultQueryProcessors) *DescribeAppResponseBodyResult {
+	s.QueryProcessors = v
+	return s
+}
+
 func (s *DescribeAppResponseBodyResult) SetQuota(v *DescribeAppResponseBodyResultQuota) *DescribeAppResponseBodyResult {
 	s.Quota = v
 	return s
 }
 
-func (s *DescribeAppResponseBodyResult) SetSchema(v map[string]interface{}) *DescribeAppResponseBodyResult {
+func (s *DescribeAppResponseBodyResult) SetSchema(v *DescribeAppResponseBodyResultSchema) *DescribeAppResponseBodyResult {
 	s.Schema = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResult) SetSchemas(v []*DescribeAppResponseBodyResultSchemas) *DescribeAppResponseBodyResult {
+	s.Schemas = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResult) SetSecondRanks(v []*DescribeAppResponseBodyResultSecondRanks) *DescribeAppResponseBodyResult {
+	s.SecondRanks = v
 	return s
 }
 
@@ -4439,15 +7078,111 @@ func (s *DescribeAppResponseBodyResult) SetStatus(v string) *DescribeAppResponse
 	return s
 }
 
+func (s *DescribeAppResponseBodyResult) SetSummaries(v []*DescribeAppResponseBodyResultSummaries) *DescribeAppResponseBodyResult {
+	s.Summaries = v
+	return s
+}
+
 func (s *DescribeAppResponseBodyResult) SetType(v string) *DescribeAppResponseBodyResult {
 	s.Type = &v
 	return s
 }
 
+type DescribeAppResponseBodyResultCluster struct {
+	MaxQueryClauseLength *int32 `json:"maxQueryClauseLength,omitempty" xml:"maxQueryClauseLength,omitempty"`
+	MaxTimeoutMS         *int32 `json:"maxTimeoutMS,omitempty" xml:"maxTimeoutMS,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultCluster) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultCluster) SetMaxQueryClauseLength(v int32) *DescribeAppResponseBodyResultCluster {
+	s.MaxQueryClauseLength = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultCluster) SetMaxTimeoutMS(v int32) *DescribeAppResponseBodyResultCluster {
+	s.MaxTimeoutMS = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultDataSources struct {
+	Fields     []map[string]interface{} `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	KeyField   *string                  `json:"keyField,omitempty" xml:"keyField,omitempty"`
+	Parameters map[string]interface{}   `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	Plugins    map[string]interface{}   `json:"plugins,omitempty" xml:"plugins,omitempty"`
+	SchemaName *string                  `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	TableName  *string                  `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	Type       *string                  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultDataSources) SetFields(v []map[string]interface{}) *DescribeAppResponseBodyResultDataSources {
+	s.Fields = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultDataSources) SetKeyField(v string) *DescribeAppResponseBodyResultDataSources {
+	s.KeyField = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultDataSources) SetParameters(v map[string]interface{}) *DescribeAppResponseBodyResultDataSources {
+	s.Parameters = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultDataSources) SetPlugins(v map[string]interface{}) *DescribeAppResponseBodyResultDataSources {
+	s.Plugins = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultDataSources) SetSchemaName(v string) *DescribeAppResponseBodyResultDataSources {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultDataSources) SetTableName(v string) *DescribeAppResponseBodyResultDataSources {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultDataSources) SetType(v string) *DescribeAppResponseBodyResultDataSources {
+	s.Type = &v
+	return s
+}
+
 type DescribeAppResponseBodyResultDomain struct {
-	Category  *string                                       `json:"category,omitempty" xml:"category,omitempty"`
+	// The category. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// -
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// search functions
+	//
+	// example:
+	//
+	// {}
 	Functions *DescribeAppResponseBodyResultDomainFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Struct"`
-	Name      *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+	// The name
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s DescribeAppResponseBodyResultDomain) String() string {
@@ -4474,8 +7209,23 @@ func (s *DescribeAppResponseBodyResultDomain) SetName(v string) *DescribeAppResp
 }
 
 type DescribeAppResponseBodyResultDomainFunctions struct {
-	Algo    []*string `json:"algo,omitempty" xml:"algo,omitempty" type:"Repeated"`
-	Qp      []*string `json:"qp,omitempty" xml:"qp,omitempty" type:"Repeated"`
+	// Algorithm structure
+	//
+	// example:
+	//
+	// []
+	Algo []*string `json:"algo,omitempty" xml:"algo,omitempty" type:"Repeated"`
+	// Queryprocessor description
+	//
+	// example:
+	//
+	// []
+	Qp []*string `json:"qp,omitempty" xml:"qp,omitempty" type:"Repeated"`
+	// Function description
+	//
+	// example:
+	//
+	// []
 	Service []*string `json:"service,omitempty" xml:"service,omitempty" type:"Repeated"`
 }
 
@@ -4502,22 +7252,132 @@ func (s *DescribeAppResponseBodyResultDomainFunctions) SetService(v []*string) *
 	return s
 }
 
+type DescribeAppResponseBodyResultFirstRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Type        *string     `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultFirstRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultFirstRanks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultFirstRanks) SetActive(v bool) *DescribeAppResponseBodyResultFirstRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultFirstRanks) SetDescription(v string) *DescribeAppResponseBodyResultFirstRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultFirstRanks) SetMeta(v interface{}) *DescribeAppResponseBodyResultFirstRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultFirstRanks) SetName(v string) *DescribeAppResponseBodyResultFirstRanks {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultFirstRanks) SetType(v string) *DescribeAppResponseBodyResultFirstRanks {
+	s.Type = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultQueryProcessors struct {
+	Active     *bool                    `json:"active,omitempty" xml:"active,omitempty"`
+	Category   *string                  `json:"category,omitempty" xml:"category,omitempty"`
+	Domain     *string                  `json:"domain,omitempty" xml:"domain,omitempty"`
+	Indexes    []*string                `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
+	Name       *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppResponseBodyResultQueryProcessors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultQueryProcessors) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultQueryProcessors) SetActive(v bool) *DescribeAppResponseBodyResultQueryProcessors {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultQueryProcessors) SetCategory(v string) *DescribeAppResponseBodyResultQueryProcessors {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultQueryProcessors) SetDomain(v string) *DescribeAppResponseBodyResultQueryProcessors {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultQueryProcessors) SetIndexes(v []*string) *DescribeAppResponseBodyResultQueryProcessors {
+	s.Indexes = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultQueryProcessors) SetName(v string) *DescribeAppResponseBodyResultQueryProcessors {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultQueryProcessors) SetProcessors(v []map[string]interface{}) *DescribeAppResponseBodyResultQueryProcessors {
+	s.Processors = v
+	return s
+}
+
 type DescribeAppResponseBodyResultQuota struct {
 	// The computing resources. Unit: logical computing units (LCUs).
+	//
+	// example:
+	//
+	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
 	// The storage capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The number of search requests per second. You are charged based on the number of search requests per second in the earlier billing model.
+	//
+	// example:
+	//
+	// 5
 	Qps *int32 `json:"qps,omitempty" xml:"qps,omitempty"`
 	// The specifications of the application. Valid values:
 	//
-	// *   opensearch.share.junior: basic
-	// *   opensearch.share.common: shared general-purpose
-	// *   opensearch.share.compute: shared computing
-	// *   opensearch.share.storage: shared storage
-	// *   opensearch.private.common: exclusive general-purpose
-	// *   opensearch.private.compute: exclusive computing
-	// *   opensearch.private.storage: exclusive storage
+	// 	- opensearch.share.junior: basic
+	//
+	// 	- opensearch.share.common: shared general-purpose
+	//
+	// 	- opensearch.share.compute: shared computing
+	//
+	// 	- opensearch.share.storage: shared storage
+	//
+	// 	- opensearch.private.common: exclusive general-purpose
+	//
+	// 	- opensearch.private.compute: exclusive computing
+	//
+	// 	- opensearch.private.storage: exclusive storage
+	//
+	// example:
+	//
+	// opensearch.share.common
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -4549,10 +7409,365 @@ func (s *DescribeAppResponseBodyResultQuota) SetSpec(v string) *DescribeAppRespo
 	return s
 }
 
+type DescribeAppResponseBodyResultSchema struct {
+	IndexSortConfig  []*DescribeAppResponseBodyResultSchemaIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *DescribeAppResponseBodyResultSchemaIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                               `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                               `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                             `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                               `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                                `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *DescribeAppResponseBodyResultSchemaTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s DescribeAppResponseBodyResultSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetIndexSortConfig(v []*DescribeAppResponseBodyResultSchemaIndexSortConfig) *DescribeAppResponseBodyResultSchema {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetIndexes(v *DescribeAppResponseBodyResultSchemaIndexes) *DescribeAppResponseBodyResultSchema {
+	s.Indexes = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetName(v string) *DescribeAppResponseBodyResultSchema {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetRouteField(v string) *DescribeAppResponseBodyResultSchema {
+	s.RouteField = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetRouteFieldValues(v []*string) *DescribeAppResponseBodyResultSchema {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetSecondRouteField(v string) *DescribeAppResponseBodyResultSchema {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetTables(v map[string]interface{}) *DescribeAppResponseBodyResultSchema {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchema) SetTtlField(v *DescribeAppResponseBodyResultSchemaTtlField) *DescribeAppResponseBodyResultSchema {
+	s.TtlField = v
+	return s
+}
+
+type DescribeAppResponseBodyResultSchemaIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSchemaIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchemaIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchemaIndexSortConfig) SetDirection(v string) *DescribeAppResponseBodyResultSchemaIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemaIndexSortConfig) SetField(v string) *DescribeAppResponseBodyResultSchemaIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultSchemaIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSchemaIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchemaIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchemaIndexes) SetFilterFields(v []*string) *DescribeAppResponseBodyResultSchemaIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemaIndexes) SetSearchFields(v map[string]interface{}) *DescribeAppResponseBodyResultSchemaIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type DescribeAppResponseBodyResultSchemaTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSchemaTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchemaTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchemaTtlField) SetName(v string) *DescribeAppResponseBodyResultSchemaTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemaTtlField) SetTtl(v int64) *DescribeAppResponseBodyResultSchemaTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultSchemas struct {
+	IndexSortConfig  []*DescribeAppResponseBodyResultSchemasIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *DescribeAppResponseBodyResultSchemasIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                                `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                                `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                              `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                                `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                                 `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *DescribeAppResponseBodyResultSchemasTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s DescribeAppResponseBodyResultSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetIndexSortConfig(v []*DescribeAppResponseBodyResultSchemasIndexSortConfig) *DescribeAppResponseBodyResultSchemas {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetIndexes(v *DescribeAppResponseBodyResultSchemasIndexes) *DescribeAppResponseBodyResultSchemas {
+	s.Indexes = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetName(v string) *DescribeAppResponseBodyResultSchemas {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetRouteField(v string) *DescribeAppResponseBodyResultSchemas {
+	s.RouteField = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetRouteFieldValues(v []*string) *DescribeAppResponseBodyResultSchemas {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetSecondRouteField(v string) *DescribeAppResponseBodyResultSchemas {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetTables(v map[string]interface{}) *DescribeAppResponseBodyResultSchemas {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemas) SetTtlField(v *DescribeAppResponseBodyResultSchemasTtlField) *DescribeAppResponseBodyResultSchemas {
+	s.TtlField = v
+	return s
+}
+
+type DescribeAppResponseBodyResultSchemasIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSchemasIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchemasIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchemasIndexSortConfig) SetDirection(v string) *DescribeAppResponseBodyResultSchemasIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemasIndexSortConfig) SetField(v string) *DescribeAppResponseBodyResultSchemasIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultSchemasIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSchemasIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchemasIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchemasIndexes) SetFilterFields(v []*string) *DescribeAppResponseBodyResultSchemasIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemasIndexes) SetSearchFields(v map[string]interface{}) *DescribeAppResponseBodyResultSchemasIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type DescribeAppResponseBodyResultSchemasTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSchemasTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSchemasTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSchemasTtlField) SetName(v string) *DescribeAppResponseBodyResultSchemasTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSchemasTtlField) SetTtl(v int64) *DescribeAppResponseBodyResultSchemasTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultSecondRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSecondRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSecondRanks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSecondRanks) SetActive(v bool) *DescribeAppResponseBodyResultSecondRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSecondRanks) SetDescription(v string) *DescribeAppResponseBodyResultSecondRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSecondRanks) SetMeta(v interface{}) *DescribeAppResponseBodyResultSecondRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSecondRanks) SetName(v string) *DescribeAppResponseBodyResultSecondRanks {
+	s.Name = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultSummaries struct {
+	Meta []*DescribeAppResponseBodyResultSummariesMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
+	Name *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSummaries) SetMeta(v []*DescribeAppResponseBodyResultSummariesMeta) *DescribeAppResponseBodyResultSummaries {
+	s.Meta = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSummaries) SetName(v string) *DescribeAppResponseBodyResultSummaries {
+	s.Name = &v
+	return s
+}
+
+type DescribeAppResponseBodyResultSummariesMeta struct {
+	Element  *string `json:"element,omitempty" xml:"element,omitempty"`
+	Ellipsis *string `json:"ellipsis,omitempty" xml:"ellipsis,omitempty"`
+	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
+	Len      *int32  `json:"len,omitempty" xml:"len,omitempty"`
+	Snippet  *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+}
+
+func (s DescribeAppResponseBodyResultSummariesMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppResponseBodyResultSummariesMeta) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppResponseBodyResultSummariesMeta) SetElement(v string) *DescribeAppResponseBodyResultSummariesMeta {
+	s.Element = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSummariesMeta) SetEllipsis(v string) *DescribeAppResponseBodyResultSummariesMeta {
+	s.Ellipsis = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSummariesMeta) SetField(v string) *DescribeAppResponseBodyResultSummariesMeta {
+	s.Field = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSummariesMeta) SetLen(v int32) *DescribeAppResponseBodyResultSummariesMeta {
+	s.Len = &v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResultSummariesMeta) SetSnippet(v string) *DescribeAppResponseBodyResultSummariesMeta {
+	s.Snippet = &v
+	return s
+}
+
 type DescribeAppResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAppResponse) String() string {
@@ -4579,7 +7794,11 @@ func (s *DescribeAppResponse) SetBody(v *DescribeAppResponseBody) *DescribeAppRe
 }
 
 type DescribeAppGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the application.
 	Result *DescribeAppGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -4604,82 +7823,198 @@ func (s *DescribeAppGroupResponseBody) SetResult(v *DescribeAppGroupResponseBody
 }
 
 type DescribeAppGroupResponseBodyResult struct {
-	// The billing method of the application. Valid values:
+	// The billing method. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go
-	// *   PREPAY: subscription
+	// 	- POSTPAY: pay-as-you-go.
+	//
+	// 	- PREPAY: subscription.
+	//
+	// example:
+	//
+	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The billing model. Valid values:
+	// The billable item. Valid values:
 	//
-	// *   1: computing resources
-	// *   2: queries per second (QPS)
+	// 	- 1: computing resources.
+	//
+	// 	- 2: queries per second (QPS).
+	//
+	// example:
+	//
+	// 1
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
-	// The code of the commodity.
+	// The commodity code.
+	//
+	// example:
+	//
+	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1575442875
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the current online version.
+	//
+	// example:
+	//
+	// 110116134
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// -
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The industry of the application.
+	//
+	// example:
+	//
+	// ecommerce
+	Domain     *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
 	// The expiration time.
+	//
+	// example:
+	//
+	// -
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
 	// The ID of the created rough sort expression.
+	//
+	// example:
+	//
+	// 0
 	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
-	// The approval status of the quotas. Valid values:
+	// The approval state of the quotas. Valid values:
 	//
-	// *   0: The quotas are approved.
-	// *   1: The quotas are being approved.
+	// 	- 0: The application is in service.
+	//
+	// 	- 1: The quotas are being reviewed.
+	//
+	// example:
+	//
+	// 0
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
-	// The ID of the application.
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The ID of the instance.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock mode of the instance. Valid values:
+	// The application ID.
 	//
-	// *   Unlock: The instance is not locked.
-	// *   LockByExpiration: The instance is automatically locked after it expires.
-	// *   ManualLock: The instance is manually locked.
+	// example:
+	//
+	// 110116134
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// -
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The lock state. Valid values:
+	//
+	// 	- Unlock: The instance is unlocked.
+	//
+	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	//
+	// 	- ManualLock: The instance is manually locked.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
 	// Indicates whether the instance is automatically locked after it expires.
+	//
+	// example:
+	//
+	// 0
 	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
-	// The name of the application.
+	// The application name.
+	//
+	// example:
+	//
+	// os_function_test_v1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the fine sort expression that is being created.
-	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	// The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
-	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
-	// Indicates whether the order is complete. Valid values:
 	//
-	// *   0: The order is in progress.
-	// *   1: The order is complete.
+	// example:
+	//
+	// 0
+	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
+	// The ID of the order that is not complete.
+	//
+	// example:
+	//
+	// -
+	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
+	// Indicates whether the application is created. Valid values:
+	//
+	// 	- 0: The application is being created.
+	//
+	// 	- 1: The application is created.
+	//
+	// example:
+	//
+	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
 	// The name of the A/B test group.
+	//
+	// example:
+	//
+	// -
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	// The information about the quotas of the application.
-	Quota           *DescribeAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	ResourceGroupId *string                                  `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The ID of the created fine sort expression.
-	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
-	// The status of the application. Valid values:
+	Quota *DescribeAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	// The ID of the resource group.
 	//
-	// *   producing
-	// *   review_pending
-	// *   config_pending
-	// *   normal
-	// *   frozen
+	// example:
+	//
+	// rg-acfmoiyerh6nzly
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The ID of the created fine sort expression.
+	//
+	// example:
+	//
+	// 0
+	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
+	// The state of the application. Valid values:
+	//
+	// 	- producing: The application is being created.
+	//
+	// 	- review_pending: The application is being reviewed.
+	//
+	// 	- config_pending: The application is to be configured.
+	//
+	// 	- normal: The application is in service.
+	//
+	// 	- frozen: The application is frozen.
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
-	SwitchedTime *int32                                    `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	Tags         []*DescribeAppGroupResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 0
+	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
+	// The application tags.
+	Tags []*DescribeAppGroupResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The type of the application. Valid values:
 	//
-	// *   standard: a standard application.
-	// *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-	// *   enhanced: an advanced application which is of a new application type.
+	// 	- standard: a High-performance Search Edition application.
+	//
+	// *
+	//
+	// 	- enhanced: an Industry Algorithm Edition application.
+	//
+	// example:
+	//
+	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The timestamp when the application was last updated.
+	//
+	// example:
+	//
+	// 1578916076
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -4723,6 +8058,11 @@ func (s *DescribeAppGroupResponseBodyResult) SetDescription(v string) *DescribeA
 
 func (s *DescribeAppGroupResponseBodyResult) SetDomain(v string) *DescribeAppGroupResponseBodyResult {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribeAppGroupResponseBodyResult) SetEngineType(v string) *DescribeAppGroupResponseBodyResult {
+	s.EngineType = &v
 	return s
 }
 
@@ -4827,19 +8167,37 @@ func (s *DescribeAppGroupResponseBodyResult) SetUpdated(v int32) *DescribeAppGro
 }
 
 type DescribeAppGroupResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing units (LCUs).
+	// The computing resources. Unit: logical computing unit (LCU).
+	//
+	// example:
+	//
+	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
 	// The storage capacity. Unit: GB.
-	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The specifications of the application. Valid values:
 	//
-	// *   opensearch.share.junior: basic
-	// *   opensearch.share.common: shared general-purpose
-	// *   opensearch.share.compute: shared computing
-	// *   opensearch.share.storage: shared storage
-	// *   opensearch.private.common: exclusive general-purpose
-	// *   opensearch.private.compute: exclusive computing
-	// *   opensearch.private.storage: exclusive storage
+	// example:
+	//
+	// 1
+	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
+	// The specifications. Valid values:
+	//
+	// 	- opensearch.share.junior: basic.
+	//
+	// 	- opensearch.share.common: shared general-purpose.
+	//
+	// 	- opensearch.share.compute: shared computing.
+	//
+	// 	- opensearch.share.storage: shared storage.
+	//
+	// 	- opensearch.private.common: exclusive general-purpose.
+	//
+	// 	- opensearch.private.compute: exclusive computing.
+	//
+	// 	- opensearch.private.storage: exclusive storage.
+	//
+	// example:
+	//
+	// opensearch.share.common
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -4867,7 +8225,17 @@ func (s *DescribeAppGroupResponseBodyResultQuota) SetSpec(v string) *DescribeApp
 }
 
 type DescribeAppGroupResponseBodyResultTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// foo
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value
+	//
+	// example:
+	//
+	// bar
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -4890,9 +8258,9 @@ func (s *DescribeAppGroupResponseBodyResultTags) SetValue(v string) *DescribeApp
 }
 
 type DescribeAppGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAppGroupResponse) String() string {
@@ -4920,8 +8288,16 @@ func (s *DescribeAppGroupResponse) SetBody(v *DescribeAppGroupResponseBody) *Des
 
 type DescribeAppStatisticsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 76FC45F1-4167-D3CD-6737-4F97BA503FA0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The statistics.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -4944,9 +8320,9 @@ func (s *DescribeAppStatisticsResponseBody) SetResult(v map[string]interface{}) 
 }
 
 type DescribeAppStatisticsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAppStatisticsResponse) String() string {
@@ -4973,8 +8349,14 @@ func (s *DescribeAppStatisticsResponse) SetBody(v *DescribeAppStatisticsResponse
 }
 
 type DescribeAppsResponseBody struct {
-	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 77CAA411-0010-4DB9-82E2-1C384E590AFF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about each version.
+	Result []*DescribeAppsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAppsResponseBody) String() string {
@@ -4990,15 +8372,764 @@ func (s *DescribeAppsResponseBody) SetRequestId(v string) *DescribeAppsResponseB
 	return s
 }
 
-func (s *DescribeAppsResponseBody) SetResult(v []map[string]interface{}) *DescribeAppsResponseBody {
+func (s *DescribeAppsResponseBody) SetResult(v []*DescribeAppsResponseBodyResult) *DescribeAppsResponseBody {
 	s.Result = v
 	return s
 }
 
+type DescribeAppsResponseBodyResult struct {
+	AutoSwitch      *bool                                            `json:"autoSwitch,omitempty" xml:"autoSwitch,omitempty"`
+	Cluster         *DescribeAppsResponseBodyResultCluster           `json:"cluster,omitempty" xml:"cluster,omitempty" type:"Struct"`
+	ClusterName     *string                                          `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	DataSources     []*DescribeAppsResponseBodyResultDataSources     `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
+	Description     *string                                          `json:"description,omitempty" xml:"description,omitempty"`
+	Domain          *DescribeAppsResponseBodyResultDomain            `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
+	FetchFields     []*string                                        `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
+	FirstRanks      []*DescribeAppsResponseBodyResultFirstRanks      `json:"firstRanks,omitempty" xml:"firstRanks,omitempty" type:"Repeated"`
+	Id              *string                                          `json:"id,omitempty" xml:"id,omitempty"`
+	Interpretations map[string]interface{}                           `json:"interpretations,omitempty" xml:"interpretations,omitempty"`
+	IsCurrent       *bool                                            `json:"isCurrent,omitempty" xml:"isCurrent,omitempty"`
+	ProgressPercent *int32                                           `json:"progressPercent,omitempty" xml:"progressPercent,omitempty"`
+	Prompts         []map[string]interface{}                         `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
+	QueryProcessors []*DescribeAppsResponseBodyResultQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
+	Quota           *DescribeAppsResponseBodyResultQuota             `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	Schema          *DescribeAppsResponseBodyResultSchema            `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
+	Schemas         []*DescribeAppsResponseBodyResultSchemas         `json:"schemas,omitempty" xml:"schemas,omitempty" type:"Repeated"`
+	SecondRanks     []*DescribeAppsResponseBodyResultSecondRanks     `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
+	Status          *string                                          `json:"status,omitempty" xml:"status,omitempty"`
+	Summaries       []*DescribeAppsResponseBodyResultSummaries       `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
+	Type            *string                                          `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResult) SetAutoSwitch(v bool) *DescribeAppsResponseBodyResult {
+	s.AutoSwitch = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetCluster(v *DescribeAppsResponseBodyResultCluster) *DescribeAppsResponseBodyResult {
+	s.Cluster = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetClusterName(v string) *DescribeAppsResponseBodyResult {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetDataSources(v []*DescribeAppsResponseBodyResultDataSources) *DescribeAppsResponseBodyResult {
+	s.DataSources = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetDescription(v string) *DescribeAppsResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetDomain(v *DescribeAppsResponseBodyResultDomain) *DescribeAppsResponseBodyResult {
+	s.Domain = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetFetchFields(v []*string) *DescribeAppsResponseBodyResult {
+	s.FetchFields = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetFirstRanks(v []*DescribeAppsResponseBodyResultFirstRanks) *DescribeAppsResponseBodyResult {
+	s.FirstRanks = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetId(v string) *DescribeAppsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetInterpretations(v map[string]interface{}) *DescribeAppsResponseBodyResult {
+	s.Interpretations = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetIsCurrent(v bool) *DescribeAppsResponseBodyResult {
+	s.IsCurrent = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetProgressPercent(v int32) *DescribeAppsResponseBodyResult {
+	s.ProgressPercent = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetPrompts(v []map[string]interface{}) *DescribeAppsResponseBodyResult {
+	s.Prompts = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetQueryProcessors(v []*DescribeAppsResponseBodyResultQueryProcessors) *DescribeAppsResponseBodyResult {
+	s.QueryProcessors = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetQuota(v *DescribeAppsResponseBodyResultQuota) *DescribeAppsResponseBodyResult {
+	s.Quota = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetSchema(v *DescribeAppsResponseBodyResultSchema) *DescribeAppsResponseBodyResult {
+	s.Schema = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetSchemas(v []*DescribeAppsResponseBodyResultSchemas) *DescribeAppsResponseBodyResult {
+	s.Schemas = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetSecondRanks(v []*DescribeAppsResponseBodyResultSecondRanks) *DescribeAppsResponseBodyResult {
+	s.SecondRanks = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetStatus(v string) *DescribeAppsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetSummaries(v []*DescribeAppsResponseBodyResultSummaries) *DescribeAppsResponseBodyResult {
+	s.Summaries = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetType(v string) *DescribeAppsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultCluster struct {
+	MaxQueryClauseLength *int32 `json:"maxQueryClauseLength,omitempty" xml:"maxQueryClauseLength,omitempty"`
+	MaxTimeoutMS         *int32 `json:"maxTimeoutMS,omitempty" xml:"maxTimeoutMS,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultCluster) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultCluster) SetMaxQueryClauseLength(v int32) *DescribeAppsResponseBodyResultCluster {
+	s.MaxQueryClauseLength = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultCluster) SetMaxTimeoutMS(v int32) *DescribeAppsResponseBodyResultCluster {
+	s.MaxTimeoutMS = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultDataSources struct {
+	Fields     []map[string]interface{} `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	KeyField   *string                  `json:"keyField,omitempty" xml:"keyField,omitempty"`
+	Parameters map[string]interface{}   `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	Plugins    map[string]interface{}   `json:"plugins,omitempty" xml:"plugins,omitempty"`
+	SchemaName *string                  `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	TableName  *string                  `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	Type       *string                  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultDataSources) SetFields(v []map[string]interface{}) *DescribeAppsResponseBodyResultDataSources {
+	s.Fields = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDataSources) SetKeyField(v string) *DescribeAppsResponseBodyResultDataSources {
+	s.KeyField = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDataSources) SetParameters(v map[string]interface{}) *DescribeAppsResponseBodyResultDataSources {
+	s.Parameters = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDataSources) SetPlugins(v map[string]interface{}) *DescribeAppsResponseBodyResultDataSources {
+	s.Plugins = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDataSources) SetSchemaName(v string) *DescribeAppsResponseBodyResultDataSources {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDataSources) SetTableName(v string) *DescribeAppsResponseBodyResultDataSources {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDataSources) SetType(v string) *DescribeAppsResponseBodyResultDataSources {
+	s.Type = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultDomain struct {
+	Category  *string                                        `json:"category,omitempty" xml:"category,omitempty"`
+	Functions *DescribeAppsResponseBodyResultDomainFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Struct"`
+	Name      *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultDomain) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultDomain) SetCategory(v string) *DescribeAppsResponseBodyResultDomain {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDomain) SetFunctions(v *DescribeAppsResponseBodyResultDomainFunctions) *DescribeAppsResponseBodyResultDomain {
+	s.Functions = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDomain) SetName(v string) *DescribeAppsResponseBodyResultDomain {
+	s.Name = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultDomainFunctions struct {
+	Algo    []*string `json:"algo,omitempty" xml:"algo,omitempty" type:"Repeated"`
+	Qp      []*string `json:"qp,omitempty" xml:"qp,omitempty" type:"Repeated"`
+	Service []*string `json:"service,omitempty" xml:"service,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppsResponseBodyResultDomainFunctions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultDomainFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultDomainFunctions) SetAlgo(v []*string) *DescribeAppsResponseBodyResultDomainFunctions {
+	s.Algo = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDomainFunctions) SetQp(v []*string) *DescribeAppsResponseBodyResultDomainFunctions {
+	s.Qp = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultDomainFunctions) SetService(v []*string) *DescribeAppsResponseBodyResultDomainFunctions {
+	s.Service = v
+	return s
+}
+
+type DescribeAppsResponseBodyResultFirstRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Type        *string     `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultFirstRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultFirstRanks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultFirstRanks) SetActive(v bool) *DescribeAppsResponseBodyResultFirstRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultFirstRanks) SetDescription(v string) *DescribeAppsResponseBodyResultFirstRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultFirstRanks) SetMeta(v interface{}) *DescribeAppsResponseBodyResultFirstRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultFirstRanks) SetName(v string) *DescribeAppsResponseBodyResultFirstRanks {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultFirstRanks) SetType(v string) *DescribeAppsResponseBodyResultFirstRanks {
+	s.Type = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultQueryProcessors struct {
+	Active     *bool                    `json:"active,omitempty" xml:"active,omitempty"`
+	Category   *string                  `json:"category,omitempty" xml:"category,omitempty"`
+	Domain     *string                  `json:"domain,omitempty" xml:"domain,omitempty"`
+	Indexes    []*string                `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
+	Name       *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppsResponseBodyResultQueryProcessors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultQueryProcessors) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultQueryProcessors) SetActive(v bool) *DescribeAppsResponseBodyResultQueryProcessors {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQueryProcessors) SetCategory(v string) *DescribeAppsResponseBodyResultQueryProcessors {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQueryProcessors) SetDomain(v string) *DescribeAppsResponseBodyResultQueryProcessors {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQueryProcessors) SetIndexes(v []*string) *DescribeAppsResponseBodyResultQueryProcessors {
+	s.Indexes = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQueryProcessors) SetName(v string) *DescribeAppsResponseBodyResultQueryProcessors {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQueryProcessors) SetProcessors(v []map[string]interface{}) *DescribeAppsResponseBodyResultQueryProcessors {
+	s.Processors = v
+	return s
+}
+
+type DescribeAppsResponseBodyResultQuota struct {
+	ComputeResource *int32  `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
+	DocSize         *int32  `json:"docSize,omitempty" xml:"docSize,omitempty"`
+	Qps             *int32  `json:"qps,omitempty" xml:"qps,omitempty"`
+	Spec            *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultQuota) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultQuota) SetComputeResource(v int32) *DescribeAppsResponseBodyResultQuota {
+	s.ComputeResource = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQuota) SetDocSize(v int32) *DescribeAppsResponseBodyResultQuota {
+	s.DocSize = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQuota) SetQps(v int32) *DescribeAppsResponseBodyResultQuota {
+	s.Qps = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultQuota) SetSpec(v string) *DescribeAppsResponseBodyResultQuota {
+	s.Spec = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchema struct {
+	IndexSortConfig  []*DescribeAppsResponseBodyResultSchemaIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *DescribeAppsResponseBodyResultSchemaIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                                `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                                `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                              `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                                `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                                 `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *DescribeAppsResponseBodyResultSchemaTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s DescribeAppsResponseBodyResultSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetIndexSortConfig(v []*DescribeAppsResponseBodyResultSchemaIndexSortConfig) *DescribeAppsResponseBodyResultSchema {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetIndexes(v *DescribeAppsResponseBodyResultSchemaIndexes) *DescribeAppsResponseBodyResultSchema {
+	s.Indexes = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetName(v string) *DescribeAppsResponseBodyResultSchema {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetRouteField(v string) *DescribeAppsResponseBodyResultSchema {
+	s.RouteField = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetRouteFieldValues(v []*string) *DescribeAppsResponseBodyResultSchema {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetSecondRouteField(v string) *DescribeAppsResponseBodyResultSchema {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetTables(v map[string]interface{}) *DescribeAppsResponseBodyResultSchema {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchema) SetTtlField(v *DescribeAppsResponseBodyResultSchemaTtlField) *DescribeAppsResponseBodyResultSchema {
+	s.TtlField = v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchemaIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSchemaIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchemaIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchemaIndexSortConfig) SetDirection(v string) *DescribeAppsResponseBodyResultSchemaIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemaIndexSortConfig) SetField(v string) *DescribeAppsResponseBodyResultSchemaIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchemaIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSchemaIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchemaIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchemaIndexes) SetFilterFields(v []*string) *DescribeAppsResponseBodyResultSchemaIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemaIndexes) SetSearchFields(v map[string]interface{}) *DescribeAppsResponseBodyResultSchemaIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchemaTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSchemaTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchemaTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchemaTtlField) SetName(v string) *DescribeAppsResponseBodyResultSchemaTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemaTtlField) SetTtl(v int64) *DescribeAppsResponseBodyResultSchemaTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchemas struct {
+	IndexSortConfig  []*DescribeAppsResponseBodyResultSchemasIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
+	Indexes          *DescribeAppsResponseBodyResultSchemasIndexes           `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
+	Name             *string                                                 `json:"name,omitempty" xml:"name,omitempty"`
+	RouteField       *string                                                 `json:"routeField,omitempty" xml:"routeField,omitempty"`
+	RouteFieldValues []*string                                               `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
+	SecondRouteField *string                                                 `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
+	Tables           map[string]interface{}                                  `json:"tables,omitempty" xml:"tables,omitempty"`
+	TtlField         *DescribeAppsResponseBodyResultSchemasTtlField          `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
+}
+
+func (s DescribeAppsResponseBodyResultSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetIndexSortConfig(v []*DescribeAppsResponseBodyResultSchemasIndexSortConfig) *DescribeAppsResponseBodyResultSchemas {
+	s.IndexSortConfig = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetIndexes(v *DescribeAppsResponseBodyResultSchemasIndexes) *DescribeAppsResponseBodyResultSchemas {
+	s.Indexes = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetName(v string) *DescribeAppsResponseBodyResultSchemas {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetRouteField(v string) *DescribeAppsResponseBodyResultSchemas {
+	s.RouteField = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetRouteFieldValues(v []*string) *DescribeAppsResponseBodyResultSchemas {
+	s.RouteFieldValues = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetSecondRouteField(v string) *DescribeAppsResponseBodyResultSchemas {
+	s.SecondRouteField = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetTables(v map[string]interface{}) *DescribeAppsResponseBodyResultSchemas {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemas) SetTtlField(v *DescribeAppsResponseBodyResultSchemasTtlField) *DescribeAppsResponseBodyResultSchemas {
+	s.TtlField = v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchemasIndexSortConfig struct {
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSchemasIndexSortConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchemasIndexSortConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchemasIndexSortConfig) SetDirection(v string) *DescribeAppsResponseBodyResultSchemasIndexSortConfig {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemasIndexSortConfig) SetField(v string) *DescribeAppsResponseBodyResultSchemasIndexSortConfig {
+	s.Field = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchemasIndexes struct {
+	FilterFields []*string              `json:"filterFields,omitempty" xml:"filterFields,omitempty" type:"Repeated"`
+	SearchFields map[string]interface{} `json:"searchFields,omitempty" xml:"searchFields,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSchemasIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchemasIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchemasIndexes) SetFilterFields(v []*string) *DescribeAppsResponseBodyResultSchemasIndexes {
+	s.FilterFields = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemasIndexes) SetSearchFields(v map[string]interface{}) *DescribeAppsResponseBodyResultSchemasIndexes {
+	s.SearchFields = v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSchemasTtlField struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Ttl  *int64  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSchemasTtlField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSchemasTtlField) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSchemasTtlField) SetName(v string) *DescribeAppsResponseBodyResultSchemasTtlField {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSchemasTtlField) SetTtl(v int64) *DescribeAppsResponseBodyResultSchemasTtlField {
+	s.Ttl = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSecondRanks struct {
+	Active      *bool       `json:"active,omitempty" xml:"active,omitempty"`
+	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
+	Meta        interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSecondRanks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSecondRanks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSecondRanks) SetActive(v bool) *DescribeAppsResponseBodyResultSecondRanks {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSecondRanks) SetDescription(v string) *DescribeAppsResponseBodyResultSecondRanks {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSecondRanks) SetMeta(v interface{}) *DescribeAppsResponseBodyResultSecondRanks {
+	s.Meta = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSecondRanks) SetName(v string) *DescribeAppsResponseBodyResultSecondRanks {
+	s.Name = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSummaries struct {
+	Meta []*DescribeAppsResponseBodyResultSummariesMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
+	Name *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSummaries) SetMeta(v []*DescribeAppsResponseBodyResultSummariesMeta) *DescribeAppsResponseBodyResultSummaries {
+	s.Meta = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSummaries) SetName(v string) *DescribeAppsResponseBodyResultSummaries {
+	s.Name = &v
+	return s
+}
+
+type DescribeAppsResponseBodyResultSummariesMeta struct {
+	Element  *string `json:"element,omitempty" xml:"element,omitempty"`
+	Ellipsis *string `json:"ellipsis,omitempty" xml:"ellipsis,omitempty"`
+	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
+	Len      *int32  `json:"len,omitempty" xml:"len,omitempty"`
+	Snippet  *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyResultSummariesMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyResultSummariesMeta) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyResultSummariesMeta) SetElement(v string) *DescribeAppsResponseBodyResultSummariesMeta {
+	s.Element = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSummariesMeta) SetEllipsis(v string) *DescribeAppsResponseBodyResultSummariesMeta {
+	s.Ellipsis = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSummariesMeta) SetField(v string) *DescribeAppsResponseBodyResultSummariesMeta {
+	s.Field = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSummariesMeta) SetLen(v int32) *DescribeAppsResponseBodyResultSummariesMeta {
+	s.Len = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResultSummariesMeta) SetSnippet(v string) *DescribeAppsResponseBodyResultSummariesMeta {
+	s.Snippet = &v
+	return s
+}
+
 type DescribeAppsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAppsResponse) String() string {
@@ -5025,7 +9156,11 @@ func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeApp
 }
 
 type DescribeDataCollctionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 72FAD77B-83F9-F393-BA8E-5834E2427BF8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the data collection task.
 	Result *DescribeDataCollctionResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -5050,43 +9185,83 @@ func (s *DescribeDataCollctionResponseBody) SetResult(v *DescribeDataCollctionRe
 }
 
 type DescribeDataCollctionResponseBodyResult struct {
-	// The time when the data collection task was created.
-	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of the data that is collected by the task. Valid values:
+	// The time when the task was created.
 	//
-	// *   behavior: behavioral data
-	// *   item_info: project data
-	// *   industry_specific: industry-specific data
+	// example:
+	//
+	// 1581065837
+	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
+	// The type of data collected. Valid values:
+	//
+	// 	- behavior: behavioral data.
+	//
+	// 	- item_info: project information.
+	//
+	// 	- industry_specific: industry-specific data.
+	//
+	// example:
+	//
+	// BEHAVIOR
 	DataCollectionType *string `json:"dataCollectionType,omitempty" xml:"dataCollectionType,omitempty"`
 	// The ID of the data collection task.
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The industry to which the data collection task applies. Valid values:
 	//
-	// *   general
-	// *   ecommerce
+	// example:
+	//
+	// 286
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The industry name. Valid values:
+	//
+	// 	- general
+	//
+	// 	- ecommerce
+	//
+	// example:
+	//
+	// GENERAL
 	IndustryName *string `json:"industryName,omitempty" xml:"industryName,omitempty"`
 	// The name of the data collection task.
+	//
+	// example:
+	//
+	// os_function_test_v1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the data collection task. Valid values:
+	// The status of the data collection feature. Valid values:
 	//
-	// *   0: disabled
-	// *   1: being enabled
-	// *   2: enabled
-	// *   3: failed to be enabled
+	// 	- 0: The feature is disabled.
+	//
+	// 	- 1: The feature is being enabled.
+	//
+	// 	- 2: The feature is enabled.
+	//
+	// 	- 3: The feature failed to be enabled.
+	//
+	// example:
+	//
+	// 2
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the sundial.
+	// The sundial ID.
+	//
+	// example:
+	//
+	// 1755
 	SundialId *string `json:"sundialId,omitempty" xml:"sundialId,omitempty"`
-	// The type of the data source. Valid values:
+	// The type of the source from which data was collected. Valid values:
 	//
-	// *   server
+	// 	- server
 	//
-	// *   web
+	// 	- web
 	//
-	// *   app
+	// 	- app Note: Only server is supported.
 	//
-	//     Note: Only server is supported.
+	// example:
+	//
+	// server
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The time when the data collection task was updated.
+	//
+	// example:
+	//
+	// 1581065904
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -5144,9 +9319,9 @@ func (s *DescribeDataCollctionResponseBodyResult) SetUpdated(v int32) *DescribeD
 }
 
 type DescribeDataCollctionResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDataCollctionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDataCollctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDataCollctionResponse) String() string {
@@ -5174,6 +9349,10 @@ func (s *DescribeDataCollctionResponse) SetBody(v *DescribeDataCollctionResponse
 
 type DescribeFirstRankResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the rough sort expression.
 	Result *DescribeFirstRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -5199,12 +9378,24 @@ func (s *DescribeFirstRankResponseBody) SetResult(v *DescribeFirstRankResponseBo
 
 type DescribeFirstRankResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
+	//
+	// example:
+	//
+	// false
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The description of the expression.
+	//
+	// example:
+	//
+	// -
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The content of the expression.
 	Meta []*DescribeFirstRankResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
 	// The name of the expression.
+	//
+	// example:
+	//
+	// ar_wear_edit_time
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -5238,12 +9429,24 @@ func (s *DescribeFirstRankResponseBodyResult) SetName(v string) *DescribeFirstRa
 
 type DescribeFirstRankResponseBodyResultMeta struct {
 	// The parameters that are used by a function in the expression.
+	//
+	// example:
+	//
+	// ar_edit_time
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
 	// The attribute, feature function, or field to be searched for.
+	//
+	// example:
+	//
+	// timeliness_ms()
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	// The weight.
 	//
-	// Valid values: \[-100000,100000] (excluding 0).
+	// Valid values: [-100000,100000] (excluding 0).
+	//
+	// example:
+	//
+	// 1
 	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
@@ -5271,9 +9474,9 @@ func (s *DescribeFirstRankResponseBodyResultMeta) SetWeight(v float32) *Describe
 }
 
 type DescribeFirstRankResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFirstRankResponse) String() string {
@@ -5301,6 +9504,10 @@ func (s *DescribeFirstRankResponse) SetBody(v *DescribeFirstRankResponseBody) *D
 
 type DescribeInterventionDictionaryResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7CCF454-472A-030E-F254-604520B028AA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information the intervention dictionary.
 	Result *DescribeInterventionDictionaryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -5326,21 +9533,46 @@ func (s *DescribeInterventionDictionaryResponseBody) SetResult(v *DescribeInterv
 
 type DescribeInterventionDictionaryResponseBodyResult struct {
 	// The custom analyzer.
+	//
+	// example:
+	//
+	// -
 	Analyzer *string `json:"analyzer,omitempty" xml:"analyzer,omitempty"`
 	// The time when the intervention dictionary was created.
+	//
+	// example:
+	//
+	// 1536233287
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// The name of the intervention dictionary.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the intervention dictionary. Valid values:
 	//
-	// *   stopword: an intervention dictionary for stop word filtering
-	// *   synonym: an intervention dictionary for synonym configuration
-	// *   correction: an intervention dictionary for spelling correction
-	// *   category_prediction: an intervention dictionary for category prediction
-	// *   ner: an intervention dictionary for named entity recognition (NER)
-	// *   term_weighting: an intervention dictionary for term weight analysis
+	// 	- stopword: an intervention dictionary for stop word filtering
+	//
+	// 	- synonym: an intervention dictionary for synonym configuration
+	//
+	// 	- correction: an intervention dictionary for spelling correction
+	//
+	// 	- category_prediction: an intervention dictionary for category prediction
+	//
+	// 	- ner: an intervention dictionary for named entity recognition (NER)
+	//
+	// 	- term_weighting: an intervention dictionary for term weight analysis
+	//
+	// example:
+	//
+	// category_prediction
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The time when the intervention dictionary was last updated.
+	//
+	// example:
+	//
+	// 1536233287
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -5378,9 +9610,9 @@ func (s *DescribeInterventionDictionaryResponseBodyResult) SetUpdated(v string) 
 }
 
 type DescribeInterventionDictionaryResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInterventionDictionaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInterventionDictionaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInterventionDictionaryResponse) String() string {
@@ -5408,6 +9640,10 @@ func (s *DescribeInterventionDictionaryResponse) SetBody(v *DescribeIntervention
 
 type DescribeQueryProcessorResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the query analysis rule.
 	Result *DescribeQueryProcessorResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -5433,22 +9669,44 @@ func (s *DescribeQueryProcessorResponseBody) SetResult(v *DescribeQueryProcessor
 
 type DescribeQueryProcessorResponseBodyResult struct {
 	// Indicates whether the query analysis rule is the default one.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The time when the query analysis rule was created.
+	//
+	// example:
+	//
+	// 1587398402
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The type of the industry. Valid values:
 	//
-	// *   GENERAL
-	// *   ECOMMERCE
-	// *   IT_CONTENT
+	// 	- GENERAL
+	//
+	// 	- ECOMMERCE
+	//
+	// 	- IT_CONTENT
+	//
+	// example:
+	//
+	// GENERAL
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The indexes to which the query analysis rule applies.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 	// The name of the query analysis rule.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The features that are used in the query analysis rule.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 	// The time when the query analysis rule was last updated.
+	//
+	// example:
+	//
+	// 1587398402
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -5496,9 +9754,9 @@ func (s *DescribeQueryProcessorResponseBodyResult) SetUpdated(v int32) *Describe
 }
 
 type DescribeQueryProcessorResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeQueryProcessorResponse) String() string {
@@ -5525,9 +9783,13 @@ func (s *DescribeQueryProcessorResponse) SetBody(v *DescribeQueryProcessorRespon
 }
 
 type DescribeRegionsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 3B7E42BD-1D63-2F6B-C8E0-41BACEA76EEB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result that was returned.
+	// The results returned.
 	Result []*DescribeRegionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -5550,13 +9812,29 @@ func (s *DescribeRegionsResponseBody) SetResult(v []*DescribeRegionsResponseBody
 }
 
 type DescribeRegionsResponseBodyResult struct {
-	// The URL of the OpenSearch console.
+	// The console URL.
+	//
+	// example:
+	//
+	// https://opensearch-cn-hangzhou.console.aliyun.com
 	ConsoleUrl *string `json:"consoleUrl,omitempty" xml:"consoleUrl,omitempty"`
-	// The endpoint of the region.
+	// The endpoint.
+	//
+	// example:
+	//
+	// opensearch.cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the region.
+	// The region name.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
-	// The ID of the region.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
@@ -5589,9 +9867,9 @@ func (s *DescribeRegionsResponseBodyResult) SetRegionId(v string) *DescribeRegio
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -5619,8 +9897,16 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 
 type DescribeScheduledTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 922DC0D9-31B5-45F9-47B7-37DC678D61A8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the scheduled task.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -5643,9 +9929,9 @@ func (s *DescribeScheduledTaskResponseBody) SetResult(v map[string]interface{}) 
 }
 
 type DescribeScheduledTaskResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScheduledTaskResponse) String() string {
@@ -5673,6 +9959,10 @@ func (s *DescribeScheduledTaskResponse) SetBody(v *DescribeScheduledTaskResponse
 
 type DescribeSecondRankResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the fine sort expression.
 	Result *DescribeSecondRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -5698,30 +9988,68 @@ func (s *DescribeSecondRankResponseBody) SetResult(v *DescribeSecondRankResponse
 
 type DescribeSecondRankResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The time when the expression was created.
+	//
+	// example:
+	//
+	// 1587052801
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The description of the expression.
+	//
+	// example:
+	//
+	// -
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The ID of the expression. This parameter appears only in the response.
+	//
+	// example:
+	//
+	// 89047
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	IsDefault *string `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
 	// Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	IsSys *string `json:"isSys,omitempty" xml:"isSys,omitempty"`
 	// The content of the fine sort expression.
 	//
 	// You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+	//
+	// example:
+	//
+	// random()+now()
 	Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
 	// The name of the expression.
+	//
+	// example:
+	//
+	// tests
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The time when the expression was last updated.
+	//
+	// example:
+	//
+	// 1587052801
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -5779,9 +10107,9 @@ func (s *DescribeSecondRankResponseBodyResult) SetUpdated(v int32) *DescribeSeco
 }
 
 type DescribeSecondRankResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSecondRankResponse) String() string {
@@ -5809,6 +10137,10 @@ func (s *DescribeSecondRankResponse) SetBody(v *DescribeSecondRankResponseBody) 
 
 type DescribeSlowQueryStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5C1C1C45-C64A-AD30-565F-140871D57E5E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The return result.
 	Result *DescribeSlowQueryStatusResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -5834,17 +10166,32 @@ func (s *DescribeSlowQueryStatusResponseBody) SetResult(v *DescribeSlowQueryStat
 
 type DescribeSlowQueryStatusResponseBodyResult struct {
 	// The ID of the application.
+	//
+	// example:
+	//
+	// 100298370
 	AppGroupId *string `json:"appGroupId,omitempty" xml:"appGroupId,omitempty"`
 	// The network type of the slow query optimization service. Valid values:
 	//
-	// *   outer: the Internet
-	// *   internal: the internal network
+	// 	- outer: the Internet
+	//
+	// 	- internal: the internal network
+	//
+	// example:
+	//
+	// internal
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The status of the slow query optimization service. Valid values:
 	//
-	// *   enabled
-	// *   disabled
-	// *   n/a
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// 	- n/a
+	//
+	// example:
+	//
+	// disabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -5872,9 +10219,9 @@ func (s *DescribeSlowQueryStatusResponseBodyResult) SetStatus(v string) *Describ
 }
 
 type DescribeSlowQueryStatusResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlowQueryStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSlowQueryStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSlowQueryStatusResponse) String() string {
@@ -5901,6 +10248,12 @@ func (s *DescribeSlowQueryStatusResponse) SetBody(v *DescribeSlowQueryStatusResp
 }
 
 type DescribeUserAnalyzerRequest struct {
+	// The Associated information,output properties based on hierarchy.
+	//
+	// 	- **all**: Outputs associated app information
+	//
+	// example:
+	//
 	// all
 	With *string `json:"with,omitempty" xml:"with,omitempty"`
 }
@@ -5920,8 +10273,16 @@ func (s *DescribeUserAnalyzerRequest) SetWith(v string) *DescribeUserAnalyzerReq
 
 type DescribeUserAnalyzerResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FFAEF396-10EF-53C7-1F51-518853880729
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the custom analyzer.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -5944,9 +10305,9 @@ func (s *DescribeUserAnalyzerResponseBody) SetResult(v map[string]interface{}) *
 }
 
 type DescribeUserAnalyzerResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUserAnalyzerResponse) String() string {
@@ -5974,8 +10335,16 @@ func (s *DescribeUserAnalyzerResponse) SetBody(v *DescribeUserAnalyzerResponseBo
 
 type DisableSlowQueryResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 728E89C6-8673-D39B-39A1-5BA2B56D448F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The return result.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -5998,9 +10367,9 @@ func (s *DisableSlowQueryResponseBody) SetResult(v map[string]interface{}) *Disa
 }
 
 type DisableSlowQueryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableSlowQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableSlowQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableSlowQueryResponse) String() string {
@@ -6028,8 +10397,16 @@ func (s *DisableSlowQueryResponse) SetBody(v *DisableSlowQueryResponseBody) *Dis
 
 type EnableSlowQueryResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 728E89C6-8673-D39B-39A1-5BA2B56D448F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The return result.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -6052,9 +10429,9 @@ func (s *EnableSlowQueryResponseBody) SetResult(v map[string]interface{}) *Enabl
 }
 
 type EnableSlowQueryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableSlowQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableSlowQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableSlowQueryResponse) String() string {
@@ -6081,8 +10458,17 @@ func (s *EnableSlowQueryResponse) SetBody(v *EnableSlowQueryResponseBody) *Enabl
 }
 
 type GenerateMergedTableRequest struct {
+	// The request body parameters.
 	Body *Schema `json:"body,omitempty" xml:"body,omitempty"`
-	// \-
+	// The specifications of the OpenSearch instance. This parameter is used to check whether the OpenSearch instance meets the special limits on an exclusive instance.
+	//
+	// Default value: opensearch.share.common.
+	//
+	// For more information, see the description of the spec field in the Quota topic.
+	//
+	// example:
+	//
+	// "opensearch.share.common"
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -6105,8 +10491,14 @@ func (s *GenerateMergedTableRequest) SetSpec(v string) *GenerateMergedTableReque
 }
 
 type GenerateMergedTableResponseBody struct {
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GenerateMergedTableResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The response parameters.
+	Result *GenerateMergedTableResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GenerateMergedTableResponseBody) String() string {
@@ -6128,9 +10520,24 @@ func (s *GenerateMergedTableResponseBody) SetResult(v *GenerateMergedTableRespon
 }
 
 type GenerateMergedTableResponseBodyResult struct {
-	FromTable  map[string]interface{} `json:"fromTable,omitempty" xml:"fromTable,omitempty"`
+	// The tables on which the JOIN operation is performed.
+	//
+	// example:
+	//
+	// -
+	FromTable map[string]interface{} `json:"fromTable,omitempty" xml:"fromTable,omitempty"`
+	// The wide table that is generated after the JOIN operation is performed on multiple tables.
+	//
+	// example:
+	//
+	// -
 	MergeTable map[string]interface{} `json:"mergeTable,omitempty" xml:"mergeTable,omitempty"`
-	PrimaryKey *string                `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
+	// The primary key.
+	//
+	// example:
+	//
+	// -
+	PrimaryKey *string `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
 }
 
 func (s GenerateMergedTableResponseBodyResult) String() string {
@@ -6157,9 +10564,9 @@ func (s *GenerateMergedTableResponseBodyResult) SetPrimaryKey(v string) *Generat
 }
 
 type GenerateMergedTableResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateMergedTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateMergedTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateMergedTableResponse) String() string {
@@ -6186,6 +10593,12 @@ func (s *GenerateMergedTableResponse) SetBody(v *GenerateMergedTableResponseBody
 }
 
 type GetDomainRequest struct {
+	// The name or ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
 	// my_app_group_name
 	AppGroupIdentity *string `json:"appGroupIdentity,omitempty" xml:"appGroupIdentity,omitempty"`
 }
@@ -6204,9 +10617,17 @@ func (s *GetDomainRequest) SetAppGroupIdentity(v string) *GetDomainRequest {
 }
 
 type GetDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return results.
+	// The returned result.
+	//
+	// example:
+	//
+	// -
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -6229,9 +10650,9 @@ func (s *GetDomainResponseBody) SetResult(v map[string]interface{}) *GetDomainRe
 }
 
 type GetDomainResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDomainResponse) String() string {
@@ -6259,24 +10680,50 @@ func (s *GetDomainResponse) SetBody(v *GetDomainResponseBody) *GetDomainResponse
 
 type GetFunctionCurrentVersionRequest struct {
 	// The category. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// general
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The industry. By default, this parameter is left empty, which indicates General-purpose Edition.
+	//
+	// example:
+	//
+	// ecommerce
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The type of the feature. Valid values:
 	//
-	// *   PAAS. This is the default value.
-	// *   SAAS.
+	// 	- PAAS. This is the default value.
+	//
+	// 	- SAAS.
+	//
+	// example:
+	//
+	// PAAS
 	FunctionType *string `json:"functionType,omitempty" xml:"functionType,omitempty"`
 	// The type of the model. The following features correspond to different model types:
 	//
-	// *   CTR model: tf_checkpoint
-	// *   Popularity model: pop
-	// *   Category model: offline_inference
-	// *   Hotword model: offline_inference
-	// *   Shading model: offline_inference
-	// *   Drop-down suggestion model: offline_inference
-	// *   Word segmentation model: text
-	// *   Word weight model: tf_checkpoint
+	// 	- CTR model: tf_checkpoint
+	//
+	// 	- Popularity model: pop
+	//
+	// 	- Category model: offline_inference
+	//
+	// 	- Hotword model: offline_inference
+	//
+	// 	- Shading model: offline_inference
+	//
+	// 	- Drop-down suggestion model: offline_inference
+	//
+	// 	- Word segmentation model: text
+	//
+	// 	- Word weight model: tf_checkpoint
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tf_checkpoint
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
 }
 
@@ -6310,18 +10757,42 @@ func (s *GetFunctionCurrentVersionRequest) SetModelType(v string) *GetFunctionCu
 
 type GetFunctionCurrentVersionResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// Version.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// version not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1638157479281
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
 	Result *GetFunctionCurrentVersionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6370,19 +10841,40 @@ func (s *GetFunctionCurrentVersionResponseBody) SetStatus(v string) *GetFunction
 
 type GetFunctionCurrentVersionResponseBodyResult struct {
 	// The name of the feature.
+	//
+	// example:
+	//
+	// ctr
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The type of the feature. Valid values:
 	//
-	// *   PAAS
-	// *   SAAS
+	// 	- PAAS
+	//
+	// 	- SAAS
+	//
+	// example:
+	//
+	// PAAS
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
 	// The type of the model.
+	//
+	// example:
+	//
+	// tf_checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// The configuration information about the instance.
 	VersionConfig *GetFunctionCurrentVersionResponseBodyResultVersionConfig `json:"VersionConfig,omitempty" xml:"VersionConfig,omitempty" type:"Struct"`
 	// The ID of the version.
+	//
+	// example:
+	//
+	// 101
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	// The name of the version.
+	//
+	// example:
+	//
+	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -6426,10 +10918,18 @@ func (s *GetFunctionCurrentVersionResponseBodyResult) SetVersionName(v string) *
 
 type GetFunctionCurrentVersionResponseBodyResultVersionConfig struct {
 	// The parameters that are used to create the instance.
+	//
+	// example:
+	//
+	// [                 {                     "name": "params1",                     "required": "true",                     "formItemProps": "{\\"required\\": true, \\"pattern?\\": \\"/^[a-zA-Z][a-zA-Z0-9_]{0,29}$/\\"}",                     "componentProps": "{\\"component\\": \\"Input\\", \\"attributes\\": {\\"defaultValue\\": \\"value1\\"}}"                 }             ]
 	CreateParameters []*GetFunctionCurrentVersionResponseBodyResultVersionConfigCreateParameters `json:"CreateParameters,omitempty" xml:"CreateParameters,omitempty" type:"Repeated"`
 	// The dependencies of the instance.
 	Depends []*GetFunctionCurrentVersionResponseBodyResultVersionConfigDepends `json:"Depends,omitempty" xml:"Depends,omitempty" type:"Repeated"`
 	// The parameters that are used to use the instance online.
+	//
+	// example:
+	//
+	// []
 	UsageParameters []*GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters `json:"UsageParameters,omitempty" xml:"UsageParameters,omitempty" type:"Repeated"`
 }
 
@@ -6458,8 +10958,16 @@ func (s *GetFunctionCurrentVersionResponseBodyResultVersionConfig) SetUsageParam
 
 type GetFunctionCurrentVersionResponseBodyResultVersionConfigCreateParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// params1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the parameter is required.
+	//
+	// example:
+	//
+	// true
 	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -6483,10 +10991,22 @@ func (s *GetFunctionCurrentVersionResponseBodyResultVersionConfigCreateParameter
 
 type GetFunctionCurrentVersionResponseBodyResultVersionConfigDepends struct {
 	// The condition.
+	//
+	// example:
+	//
+	// ""
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The dependency.
+	//
+	// example:
+	//
+	// ""
 	Dependency *string `json:"Dependency,omitempty" xml:"Dependency,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// ""
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -6515,8 +11035,16 @@ func (s *GetFunctionCurrentVersionResponseBodyResultVersionConfigDepends) SetDes
 
 type GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// ""
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the parameter is required.
+	//
+	// example:
+	//
+	// ""
 	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -6539,9 +11067,9 @@ func (s *GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters
 }
 
 type GetFunctionCurrentVersionResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFunctionCurrentVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFunctionCurrentVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionCurrentVersionResponse) String() string {
@@ -6569,22 +11097,58 @@ func (s *GetFunctionCurrentVersionResponse) SetBody(v *GetFunctionCurrentVersion
 
 type GetFunctionDefaultInstanceResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// DefaultInstance.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The name of the feature.
+	//
+	// example:
+	//
+	// cdn_waf
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// sh-bp1oi31w1jn4ctdyv
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The default running time.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// default instance not set.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 062BA91F-A568-5779-8A5B-9E62C9BB3DC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// {\\"Pagination\\": {\\"TotalCount\\": 0, \\"PageNumber\\": 1, \\"PageSize\\": 10}, \\"AntConsortiums\\": []}
 	Result *GetFunctionDefaultInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6643,6 +11207,10 @@ func (s *GetFunctionDefaultInstanceResponseBody) SetStatus(v string) *GetFunctio
 
 type GetFunctionDefaultInstanceResponseBodyResult struct {
 	// The default instance name.
+	//
+	// example:
+	//
+	// model1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -6660,9 +11228,9 @@ func (s *GetFunctionDefaultInstanceResponseBodyResult) SetInstanceName(v string)
 }
 
 type GetFunctionDefaultInstanceResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFunctionDefaultInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFunctionDefaultInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionDefaultInstanceResponse) String() string {
@@ -6691,9 +11259,15 @@ func (s *GetFunctionDefaultInstanceResponse) SetBody(v *GetFunctionDefaultInstan
 type GetFunctionInstanceRequest struct {
 	// Specifies the richness of returned information. Valid values:
 	//
-	// *   simple: displays only the basic information.
-	// *   normal: displays information such as createParameters and cron. This is the default value.
-	// *   detail: returns the details of the training task.
+	// 	- simple: displays only the basic information.
+	//
+	// 	- normal: displays information such as createParameters and cron. This is the default value.
+	//
+	// 	- detail: returns the details of the training task.
+	//
+	// example:
+	//
+	// detail
 	Output *string `json:"output,omitempty" xml:"output,omitempty"`
 }
 
@@ -6712,18 +11286,46 @@ func (s *GetFunctionInstanceRequest) SetOutput(v string) *GetFunctionInstanceReq
 
 type GetFunctionInstanceResponseBody struct {
 	// The error code. If no error occurs, this parameter is left empty.
+	//
+	// example:
+	//
+	// Instance.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// instance not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 68ED4E1B-92B8-5821-A886-9C90686139EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the instance.
+	//
+	// example:
+	//
+	// {}
 	Result *GetFunctionInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6776,36 +11378,82 @@ type GetFunctionInstanceResponseBodyResult struct {
 	// The parameters that are used to create the instance.
 	CreateParameters []*GetFunctionInstanceResponseBodyResultCreateParameters `json:"CreateParameters,omitempty" xml:"CreateParameters,omitempty" type:"Repeated"`
 	// The time when the task was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1234
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The cron expression used to schedule training, in the format of (Minutes Hours DayofMonth Month DayofWeek). If the value is empty, it indicates that no periodic training is performed.
+	//
+	// example:
+	//
+	// 0 3 ? \\	- 0,1,3,5 (at 3 a.m. on Sunday, Monday, Wednesday, and Friday)
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// instance descriptions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extended information, which is a JSON string.
+	//
+	// example:
+	//
+	// {\\"dataReport\\":{},\\"errors\\":{}}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The name of the feature.
+	//
+	// example:
+	//
+	// ctr
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The type of the feature.
+	//
+	// example:
+	//
+	// PAAS
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// ctr_test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the model.
+	//
+	// example:
+	//
+	// tf_checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// How the instance is created. Valid values:
 	//
-	// *   user: The instance is created by user.
-	// *   builtin: The instance is created by the system.
+	// 	- user: The instance is created by user.
+	//
+	// 	- builtin: The instance is created by the system.
+	//
+	// example:
+	//
+	// user
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the instance. Valid values:
 	//
 	// 1.  unavailable: No model is available. Models must be trained before you can use them.
+	//
 	// 2.  available: Models can be used.
+	//
+	// example:
+	//
+	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The information about the training task. This parameter is not displayed if no task is available.
 	Task *GetFunctionInstanceResponseBodyResultTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 	// The parameters that are used.
 	UsageParameters []*GetFunctionInstanceResponseBodyResultUsageParameters `json:"UsageParameters,omitempty" xml:"UsageParameters,omitempty" type:"Repeated"`
 	// The ID of the version.
+	//
+	// example:
+	//
+	// 101
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -6894,10 +11542,22 @@ func (s *GetFunctionInstanceResponseBodyResult) SetVersionId(v int64) *GetFuncti
 
 type GetFunctionInstanceResponseBodyResultBelongs struct {
 	// The category.
+	//
+	// example:
+	//
+	// general
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The industry.
+	//
+	// example:
+	//
+	// ecommerce
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The abbreviation of the language that applies.
+	//
+	// example:
+	//
+	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
@@ -6926,8 +11586,16 @@ func (s *GetFunctionInstanceResponseBodyResultBelongs) SetLanguage(v string) *Ge
 
 type GetFunctionInstanceResponseBodyResultCreateParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// param1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6952,13 +11620,25 @@ func (s *GetFunctionInstanceResponseBodyResultCreateParameters) SetValue(v strin
 type GetFunctionInstanceResponseBodyResultTask struct {
 	// The status of the task. Valid values:
 	//
-	// *   success: succeeded
-	// *   failed: failed
-	// *   untrained: to be trained
-	// *   pending: being scheduled
-	// *   running: being trained
+	// 	- success: succeeded
+	//
+	// 	- failed: failed
+	//
+	// 	- untrained: to be trained
+	//
+	// 	- pending: being scheduled
+	//
+	// 	- running: being trained
+	//
+	// example:
+	//
+	// success
 	DagStatus *string `json:"DagStatus,omitempty" xml:"DagStatus,omitempty"`
 	// The time consumed for the most recent run, in milliseconds.
+	//
+	// example:
+	//
+	// 1234
 	LastRunTime *int64 `json:"LastRunTime,omitempty" xml:"LastRunTime,omitempty"`
 }
 
@@ -6982,8 +11662,16 @@ func (s *GetFunctionInstanceResponseBodyResultTask) SetLastRunTime(v int64) *Get
 
 type GetFunctionInstanceResponseBodyResultUsageParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// use_param1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7006,9 +11694,9 @@ func (s *GetFunctionInstanceResponseBodyResultUsageParameters) SetValue(v string
 }
 
 type GetFunctionInstanceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionInstanceResponse) String() string {
@@ -7035,6 +11723,19 @@ func (s *GetFunctionInstanceResponse) SetBody(v *GetFunctionInstanceResponseBody
 }
 
 type GetFunctionResourceRequest struct {
+	// The output level.
+	//
+	// Valid values:
+	//
+	// 	- simple
+	//
+	// 	- normal
+	//
+	// 	- detail
+	//
+	// example:
+	//
+	// detail
 	Output *string `json:"output,omitempty" xml:"output,omitempty"`
 }
 
@@ -7052,13 +11753,48 @@ func (s *GetFunctionResourceRequest) SetOutput(v string) *GetFunctionResourceReq
 }
 
 type GetFunctionResourceResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpCode  *int64                                 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Latency   *float64                               `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetFunctionResourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Status    *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The error code returned. If no error occurs, this value is empty.
+	//
+	// example:
+	//
+	// Resource.NotExist
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The time consumed for the API request. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 123
+	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Resource not exist.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E215C843-0795-5293-AC9A-14FE0723E890
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned results.
+	Result *GetFunctionResourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- OK
+	//
+	// 	- FAIL
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetFunctionResourceResponseBody) String() string {
@@ -7105,14 +11841,46 @@ func (s *GetFunctionResourceResponseBody) SetStatus(v string) *GetFunctionResour
 }
 
 type GetFunctionResourceResponseBodyResult struct {
-	CreateTime          *int64                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Data                *GetFunctionResourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Description         *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	FunctionName        *string                                    `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	ModifyTime          *int64                                     `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ReferencedInstances []*string                                  `json:"ReferencedInstances,omitempty" xml:"ReferencedInstances,omitempty" type:"Repeated"`
-	ResourceName        *string                                    `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType        *string                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The time when the resource was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1234
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The resource data. The data structure varies with the resource type.
+	Data *GetFunctionResourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the resource.
+	//
+	// example:
+	//
+	// ""
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the feature.
+	//
+	// example:
+	//
+	// rank
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The time when the resource was modified. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1234
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The algorithm instances that are referenced.
+	ReferencedInstances []*string `json:"ReferencedInstances,omitempty" xml:"ReferencedInstances,omitempty" type:"Repeated"`
+	// The name of the resource.
+	//
+	// example:
+	//
+	// fg_json
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	//
+	// example:
+	//
+	// raw_file
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetFunctionResourceResponseBodyResult) String() string {
@@ -7164,7 +11932,13 @@ func (s *GetFunctionResourceResponseBodyResult) SetResourceType(v string) *GetFu
 }
 
 type GetFunctionResourceResponseBodyResultData struct {
-	Content    *string                                                `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the file that corresponds to a resource of the raw_file type.
+	//
+	// example:
+	//
+	// abc
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The feature generators that correspond to resources of the feature_generator type.
 	Generators []*GetFunctionResourceResponseBodyResultDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
 }
 
@@ -7187,9 +11961,20 @@ func (s *GetFunctionResourceResponseBodyResultData) SetGenerators(v []*GetFuncti
 }
 
 type GetFunctionResourceResponseBodyResultDataGenerators struct {
-	Generator *string                                                   `json:"Generator,omitempty" xml:"Generator,omitempty"`
-	Input     *GetFunctionResourceResponseBodyResultDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	Output    *string                                                   `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The type of the feature generator.
+	//
+	// example:
+	//
+	// id
+	Generator *string `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	// The input.
+	Input *GetFunctionResourceResponseBodyResultDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The name of the output feature.
+	//
+	// example:
+	//
+	// output_feature_name
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 
 func (s GetFunctionResourceResponseBodyResultDataGenerators) String() string {
@@ -7216,6 +12001,7 @@ func (s *GetFunctionResourceResponseBodyResultDataGenerators) SetOutput(v string
 }
 
 type GetFunctionResourceResponseBodyResultDataGeneratorsInput struct {
+	// The input features.
 	Features []*GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 }
 
@@ -7233,7 +12019,17 @@ func (s *GetFunctionResourceResponseBodyResultDataGeneratorsInput) SetFeatures(v
 }
 
 type GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures struct {
+	// The name of the feature.
+	//
+	// example:
+	//
+	// system_item_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the feature.
+	//
+	// example:
+	//
+	// item
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -7256,9 +12052,9 @@ func (s *GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures) SetTy
 }
 
 type GetFunctionResourceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionResourceResponse) String() string {
@@ -7286,18 +12082,42 @@ func (s *GetFunctionResourceResponse) SetBody(v *GetFunctionResourceResponseBody
 
 type GetFunctionTaskResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// Task.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
 	Result *GetFunctionTaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7346,24 +12166,58 @@ func (s *GetFunctionTaskResponseBody) SetStatus(v string) *GetFunctionTaskRespon
 
 type GetFunctionTaskResponseBodyResult struct {
 	// The timestamp that indicates the end time of the task. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1647213406267
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The extended information, which is a JSON string.
+	//
+	// example:
+	//
+	// {\\"recall\\":91,\\"errors\\":[]}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The name of the feature.
+	//
+	// example:
+	//
+	// ctr
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The number of iterations.
+	//
+	// example:
+	//
+	// 1
 	Generation *string `json:"Generation,omitempty" xml:"Generation,omitempty"`
 	// The progress. 90 indicates 90%.
+	//
+	// example:
+	//
+	// 90
 	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// trigger__2021-03-05T12:18:41
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	// The timestamp that indicates the start time of the task. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1647212220000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   success
-	// *   failed
-	// *   running
+	// 	- success
+	//
+	// 	- failed
+	//
+	// 	- running
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7416,9 +12270,9 @@ func (s *GetFunctionTaskResponseBodyResult) SetStatus(v string) *GetFunctionTask
 }
 
 type GetFunctionTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionTaskResponse) String() string {
@@ -7446,18 +12300,46 @@ func (s *GetFunctionTaskResponse) SetBody(v *GetFunctionTaskResponseBody) *GetFu
 
 type GetFunctionVersionResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// Version.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The maximum duration for which a task can be executed.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// version not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1638157479281
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result body.
+	//
+	// example:
+	//
+	// []
 	Result *GetFunctionVersionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7506,19 +12388,40 @@ func (s *GetFunctionVersionResponseBody) SetStatus(v string) *GetFunctionVersion
 
 type GetFunctionVersionResponseBodyResult struct {
 	// The name of the feature.
+	//
+	// example:
+	//
+	// ctr
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The type of the feature. Valid values:
 	//
-	// *   PAAS
-	// *   SAAS
+	// 	- PAAS
+	//
+	// 	- SAAS
+	//
+	// example:
+	//
+	// PAAS
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
 	// The type of the model.
+	//
+	// example:
+	//
+	// tf_checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// The configuration information.
 	VersionConfig *GetFunctionVersionResponseBodyResultVersionConfig `json:"VersionConfig,omitempty" xml:"VersionConfig,omitempty" type:"Struct"`
 	// The ID of the version.
+	//
+	// example:
+	//
+	// 101
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	// The name of the version.
+	//
+	// example:
+	//
+	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -7562,10 +12465,18 @@ func (s *GetFunctionVersionResponseBodyResult) SetVersionName(v string) *GetFunc
 
 type GetFunctionVersionResponseBodyResultVersionConfig struct {
 	// The parameters that are used to create the instance.
+	//
+	// example:
+	//
+	// [                 {                     "name": "params1",                     "required": "true",                     "formItemProps": "{\\"required\\": true, \\"pattern?\\": \\"/^[a-zA-Z][a-zA-Z0-9_]{0,29}$/\\"}",                     "componentProps": "{\\"component\\": \\"Input\\", \\"attributes\\": {\\"defaultValue\\": \\"value1\\"}}"                 }             ]
 	CreateParameters []*GetFunctionVersionResponseBodyResultVersionConfigCreateParameters `json:"CreateParameters,omitempty" xml:"CreateParameters,omitempty" type:"Repeated"`
 	// The dependencies of the instance.
 	Depends []*GetFunctionVersionResponseBodyResultVersionConfigDepends `json:"Depends,omitempty" xml:"Depends,omitempty" type:"Repeated"`
 	// The parameters that are used during online use of the instance.
+	//
+	// example:
+	//
+	// []
 	UsageParameters []*GetFunctionVersionResponseBodyResultVersionConfigUsageParameters `json:"UsageParameters,omitempty" xml:"UsageParameters,omitempty" type:"Repeated"`
 }
 
@@ -7594,8 +12505,16 @@ func (s *GetFunctionVersionResponseBodyResultVersionConfig) SetUsageParameters(v
 
 type GetFunctionVersionResponseBodyResultVersionConfigCreateParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// params1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the parameter is required.
+	//
+	// example:
+	//
+	// true
 	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -7619,10 +12538,22 @@ func (s *GetFunctionVersionResponseBodyResultVersionConfigCreateParameters) SetR
 
 type GetFunctionVersionResponseBodyResultVersionConfigDepends struct {
 	// The condition.
+	//
+	// example:
+	//
+	// ""
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The dependency.
+	//
+	// example:
+	//
+	// ""
 	Dependency *string `json:"Dependency,omitempty" xml:"Dependency,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// ""
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -7651,8 +12582,16 @@ func (s *GetFunctionVersionResponseBodyResultVersionConfigDepends) SetDescriptio
 
 type GetFunctionVersionResponseBodyResultVersionConfigUsageParameters struct {
 	// The name of the instance.
+	//
+	// example:
+	//
+	// ""
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the parameter is required.
+	//
+	// example:
+	//
+	// ""
 	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -7675,9 +12614,9 @@ func (s *GetFunctionVersionResponseBodyResultVersionConfigUsageParameters) SetRe
 }
 
 type GetFunctionVersionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFunctionVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFunctionVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionVersionResponse) String() string {
@@ -7705,6 +12644,10 @@ func (s *GetFunctionVersionResponse) SetBody(v *GetFunctionVersionResponseBody) 
 
 type GetScriptFileNamesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The files of the script.
 	Result []*GetScriptFileNamesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -7730,12 +12673,29 @@ func (s *GetScriptFileNamesResponseBody) SetResult(v []*GetScriptFileNamesRespon
 
 type GetScriptFileNamesResponseBodyResult struct {
 	// The time when the script file was created.
+	//
+	// example:
+	//
+	// 2020-04-02 20:21:14
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The name of the script file.
+	//
+	// example:
+	//
+	// my_cava_script.cava
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// The time when the script file was last modified.
+	//
+	// example:
+	//
+	// 2020-04-02 21:21:14
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	PathName   *string `json:"pathName,omitempty" xml:"pathName,omitempty"`
+	// The path name of the script file.
+	//
+	// example:
+	//
+	// src
+	PathName *string `json:"pathName,omitempty" xml:"pathName,omitempty"`
 }
 
 func (s GetScriptFileNamesResponseBodyResult) String() string {
@@ -7767,9 +12727,9 @@ func (s *GetScriptFileNamesResponseBodyResult) SetPathName(v string) *GetScriptF
 }
 
 type GetScriptFileNamesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetScriptFileNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetScriptFileNamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetScriptFileNamesResponse) String() string {
@@ -7797,6 +12757,10 @@ func (s *GetScriptFileNamesResponse) SetBody(v *GetScriptFileNamesResponseBody) 
 
 type GetSearchStrategyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5C1C1C45-C64A-AD30-565F-140871D57E5E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -7814,9 +12778,9 @@ func (s *GetSearchStrategyResponseBody) SetRequestId(v string) *GetSearchStrateg
 }
 
 type GetSearchStrategyResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSearchStrategyResponse) String() string {
@@ -7843,9 +12807,13 @@ func (s *GetSearchStrategyResponse) SetBody(v *GetSearchStrategyResponseBody) *G
 }
 
 type GetSortScriptResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the script
+	// The details of the script.
 	Result *GetSortScriptResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -7869,15 +12837,40 @@ func (s *GetSortScriptResponseBody) SetResult(v *GetSortScriptResponseBodyResult
 
 type GetSortScriptResponseBodyResult struct {
 	// The time when the script was created.
+	//
+	// example:
+	//
+	// 2020-04-02 20:21:14
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The time when the script was last modified.
+	//
+	// example:
+	//
+	// 2020-04-02 21:21:14
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
 	// The sort phase to which the script applies.
-	Scope      *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	//
+	// example:
+	//
+	// second_rank
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// The name of the script.
+	//
+	// example:
+	//
+	// rank_cava_20230606_v7
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// The status of the script. For more information, see the Script status table.
+	// The status of the script. For more information, see the description of the status response parameter in the ListSortScripts topic.
+	//
+	// example:
+	//
+	// released
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The type of the script.
+	//
+	// example:
+	//
+	// cava_script
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -7920,9 +12913,9 @@ func (s *GetSortScriptResponseBodyResult) SetType(v string) *GetSortScriptRespon
 }
 
 type GetSortScriptResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSortScriptResponse) String() string {
@@ -7949,7 +12942,11 @@ func (s *GetSortScriptResponse) SetBody(v *GetSortScriptResponseBody) *GetSortSc
 }
 
 type GetSortScriptFileResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The content of the sort script.
 	Result *GetSortScriptFileResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -7975,12 +12972,28 @@ func (s *GetSortScriptFileResponseBody) SetResult(v *GetSortScriptFileResponseBo
 
 type GetSortScriptFileResponseBodyResult struct {
 	// The script content that is encoded in the Base64 format.
+	//
+	// example:
+	//
+	// YWJjZGVmZw==
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The time when the script was created.
+	//
+	// example:
+	//
+	// 2020-04-02 20:21:14
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The last time when the script was last modified.
+	// The time when the script was last modified.
+	//
+	// example:
+	//
+	// 2020-04-02 21:21:14
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// The version of the script.
+	// The version of the script content.
+	//
+	// example:
+	//
+	// 123456
 	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -8013,9 +13026,9 @@ func (s *GetSortScriptFileResponseBodyResult) SetVersion(v int64) *GetSortScript
 }
 
 type GetSortScriptFileResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSortScriptFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSortScriptFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSortScriptFileResponse) String() string {
@@ -8042,11 +13055,15 @@ func (s *GetSortScriptFileResponse) SetBody(v *GetSortScriptFileResponseBody) *G
 }
 
 type ListABTestExperimentsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the tests.
+	// The request ID.
 	//
-	// For more information, see [ABTestExperiment](~~173617~~).
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The experiment details.\\
+	//
+	// For more information, see [ABTestExperiment](https://help.aliyun.com/document_detail/173617.html).
 	Result []*ListABTestExperimentsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -8069,24 +13086,53 @@ func (s *ListABTestExperimentsResponseBody) SetResult(v []*ListABTestExperiments
 }
 
 type ListABTestExperimentsResponseBodyResult struct {
-	// The time when the test was created.
+	// The time when the experiment was created.
+	//
+	// example:
+	//
+	// 1588842080
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the test group.
+	// The experiment ID.
+	//
+	// example:
+	//
+	// 12888
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test group.
+	// The group alias.
+	//
+	// example:
+	//
+	// test1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the test. Valid values:
+	// Indicates whether the experiment is in effect. Valid values:
 	//
-	// *   true: in effect
-	// *   false: not in effect
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
-	// The parameters of the test.
-	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// The percentage of traffic that is routed to the test.
+	// The experiment parameters.
 	//
-	// Valid values: \[0,100].
+	// example:
+	//
+	// 1
+	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// The percentage of traffic that is routed to the experiment.
+	//
+	// Valid values: [0,100]
+	//
+	// example:
+	//
+	// 30
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
-	// The time when the test was last modified.
+	// The time when the experiment was last modified.
+	//
+	// example:
+	//
+	// 1588842080
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -8134,9 +13180,9 @@ func (s *ListABTestExperimentsResponseBodyResult) SetUpdated(v int32) *ListABTes
 }
 
 type ListABTestExperimentsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListABTestExperimentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListABTestExperimentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListABTestExperimentsResponse) String() string {
@@ -8164,6 +13210,10 @@ func (s *ListABTestExperimentsResponse) SetBody(v *ListABTestExperimentsResponse
 
 type ListABTestFixedFlowDividersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The queried whitelists.
 	Result []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -8188,9 +13238,9 @@ func (s *ListABTestFixedFlowDividersResponseBody) SetResult(v []*string) *ListAB
 }
 
 type ListABTestFixedFlowDividersResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListABTestFixedFlowDividersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListABTestFixedFlowDividersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListABTestFixedFlowDividersResponse) String() string {
@@ -8218,10 +13268,14 @@ func (s *ListABTestFixedFlowDividersResponse) SetBody(v *ListABTestFixedFlowDivi
 
 type ListABTestGroupsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The test groups.
 	//
-	// For more information, see [ABTestGroup](~~178935~~).
+	// For more information, see [ABTestGroup](https://help.aliyun.com/document_detail/178935.html).
 	Result []*ListABTestGroupsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -8245,17 +13299,38 @@ func (s *ListABTestGroupsResponseBody) SetResult(v []*ListABTestGroupsResponseBo
 
 type ListABTestGroupsResponseBodyResult struct {
 	// The time when the test group was created.
+	//
+	// example:
+	//
+	// 1588839490
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test group.
+	//
+	// example:
+	//
+	// 13466
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the test group.
+	//
+	// example:
+	//
+	// Group_2020-5-7_15:23:3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test group. Valid values:
 	//
-	// *   0: not in effect
-	// *   1: in effect
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The time when the test group was last modified.
+	//
+	// example:
+	//
+	// 1588839490
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -8293,9 +13368,9 @@ func (s *ListABTestGroupsResponseBodyResult) SetUpdated(v int32) *ListABTestGrou
 }
 
 type ListABTestGroupsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListABTestGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListABTestGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListABTestGroupsResponse) String() string {
@@ -8323,10 +13398,14 @@ func (s *ListABTestGroupsResponse) SetBody(v *ListABTestGroupsResponseBody) *Lis
 
 type ListABTestScenesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the test scenarios.
 	//
-	// For more information, see [ABTestScene](~~173618~~).
+	// For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
 	Result []*ListABTestScenesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -8350,17 +13429,38 @@ func (s *ListABTestScenesResponseBody) SetResult(v []*ListABTestScenesResponseBo
 
 type ListABTestScenesResponseBodyResult struct {
 	// The time when the test scenario was created.
+	//
+	// example:
+	//
+	// 1588836130
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test group.
+	//
+	// example:
+	//
+	// 20404
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the test group.
+	//
+	// example:
+	//
+	// kevintest_2020-5-7_15:21:482
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test scenario. Valid values:
 	//
-	// *   0: not in effect
-	// *   1: in effect
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The time when the test scenario was last modified.
+	//
+	// example:
+	//
+	// 1588836129
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 	// The name of the test scenario.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
@@ -8405,9 +13505,9 @@ func (s *ListABTestScenesResponseBodyResult) SetValues(v []*string) *ListABTestS
 }
 
 type ListABTestScenesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListABTestScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListABTestScenesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListABTestScenesResponse) String() string {
@@ -8434,19 +13534,58 @@ func (s *ListABTestScenesResponse) SetBody(v *ListABTestScenesResponseBody) *Lis
 }
 
 type ListAppGroupsRequest struct {
+	// The ID of the instance. Exact match is used.
+	//
+	// example:
+	//
 	// ops-cn-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
 	// my_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// ""
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// "110123123"
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The method based on which applications are sorted. Valid values:
+	//
+	// 	- 0: sorts applications in descending order by creation time.
+	//
+	// 	- 1: sorts applications in descending order by modification time.
+	//
+	// Default value: 0.
+	//
+	// example:
+	//
 	// 0
-	SortBy *int32                      `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	Tags   []*ListAppGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	SortBy *int32 `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
+	// The tags.
+	Tags []*ListAppGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The type of the application. Valid values:
+	//
+	// 	- standard: a High-performance Search Edition application.
+	//
+	// 	- enhanced: an Industry Algorithm Edition application.
+	//
+	// example:
+	//
 	// standard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -8500,7 +13639,17 @@ func (s *ListAppGroupsRequest) SetType(v string) *ListAppGroupsRequest {
 }
 
 type ListAppGroupsRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// foo
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// bar
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -8523,19 +13672,58 @@ func (s *ListAppGroupsRequestTags) SetValue(v string) *ListAppGroupsRequestTags 
 }
 
 type ListAppGroupsShrinkRequest struct {
+	// The ID of the instance. Exact match is used.
+	//
+	// example:
+	//
 	// ops-cn-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
 	// my_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// ""
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// "110123123"
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The method based on which applications are sorted. Valid values:
+	//
+	// 	- 0: sorts applications in descending order by creation time.
+	//
+	// 	- 1: sorts applications in descending order by modification time.
+	//
+	// Default value: 0.
+	//
+	// example:
+	//
 	// 0
-	SortBy     *int32  `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
+	SortBy *int32 `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
+	// The tags.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The type of the application. Valid values:
+	//
+	// 	- standard: a High-performance Search Edition application.
+	//
+	// 	- enhanced: an Industry Algorithm Edition application.
+	//
+	// example:
+	//
 	// standard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -8589,13 +13777,25 @@ func (s *ListAppGroupsShrinkRequest) SetType(v string) *ListAppGroupsShrinkReque
 }
 
 type ListAppGroupsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about each application.
+	// The request ID.
 	//
-	// For more information, see [AppGroup](~~170000~~).
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about the application.
+	//
+	// For more information, see [AppGroup](https://help.aliyun.com/document_detail/170000.html).
+	//
+	// example:
+	//
+	// []
 	Result []*ListAppGroupsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -8623,84 +13823,172 @@ func (s *ListAppGroupsResponseBody) SetTotalCount(v int32) *ListAppGroupsRespons
 }
 
 type ListAppGroupsResponseBodyResult struct {
-	// The billing method of the application. Valid values:
+	// The billing method. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go
-	// *   PREPAY: subscription
+	// 	- POSTPAY: pay-as-you-go.
+	//
+	// 	- PREPAY: subscription.
+	//
+	// example:
+	//
+	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The billing model. Valid values:
+	// The billable item. Valid values:
 	//
-	// *   1: computing resources
-	// *   2: queries per second (QPS)
+	// 	- 1: computing resources.
+	//
+	// 	- 2: queries per second (QPS).
+	//
+	// example:
+	//
+	// 1
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
-	// The code of the commodity.
+	// The commodity code.
+	//
+	// example:
+	//
+	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1575442875
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the current online version.
+	//
+	// example:
+	//
+	// 110116134
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// "xxx"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// domain
-	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The expiration time.
+	// The industry of the application.
+	//
+	// example:
+	//
+	// ""
+	Domain     *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	// The time when the application expired.
+	//
+	// example:
+	//
+	// "xxx"
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The ID of the created rough sort expression.
-	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
-	// The approval status of the quotas. Valid values:
+	// The approval state of the quotas. Valid values:
 	//
-	// *   0: The quotas are approved.
-	// *   1: The quotas are being approved.
+	// 	- 0: The application is in service.
+	//
+	// 	- 1: The quotas are being reviewed.
+	//
+	// example:
+	//
+	// 0
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
-	// The ID of the application.
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The ID of the instance.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock mode of the instance. Valid values:
+	// The application ID.
 	//
-	// *   Unlock: The instance is not locked.
-	// *   LockByExpiration: The instance is automatically locked after it expires.
-	// *   ManualLock: The instance is manually locked.
+	// example:
+	//
+	// 110116134
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// "xxx"
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The lock state. Valid values:
+	//
+	// 	- Unlock: The instance is unlocked.
+	//
+	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	//
+	// 	- ManualLock: The instance is manually locked.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
 	// Indicates whether the instance is automatically locked after it expires.
-	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
-	// The name of the application.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the fine sort expression that is being created.
-	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	// The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
-	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
-	// Indicates whether the order is complete. Valid values:
 	//
-	// *   0: The order is in progress.
-	// *   1: The order is complete.
+	// example:
+	//
+	// 0
+	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// os_function_test_v1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the application is created. Valid values:
+	//
+	// 	- 0: The application is being created.
+	//
+	// 	- 1: The application is created.
+	//
+	// example:
+	//
+	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
 	// The name of the A/B test group.
+	//
+	// example:
+	//
+	// "xxx"
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The information about the quotas of the application.
+	// The information about the quotas of the application. For more information, see [Quota](https://help.aliyun.com/document_detail/170001.html).
 	//
-	// For more information, see [Quota](https://www.alibabacloud.com/help/doc-detail/170001.htm).
+	// example:
+	//
+	// {}
 	Quota *ListAppGroupsResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The ID of the created fine sort expression.
-	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
-	// The status of the application. Valid values:
+	// The state of the application. Valid values:
 	//
-	// *   producing
-	// *   review_pending
-	// *   config_pending
-	// *   normal
-	// *   frozen
+	// 	- producing: The application is being created.
+	//
+	// 	- review_pending: The application is being reviewed.
+	//
+	// 	- config_pending: The application is to be configured.
+	//
+	// 	- normal: The application is in service.
+	//
+	// 	- frozen: The application is frozen.
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
-	SwitchedTime *int32                                 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	Tags         []*ListAppGroupsResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 0
+	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
+	// The application tags.
+	Tags []*ListAppGroupsResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The type of the application. Valid values:
 	//
-	// *   standard: a standard application.
-	// *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-	// *   enhanced: an advanced application which is of a new application type.
+	// 	- standard: a High-performance Search Edition application.
+	//
+	// *
+	//
+	// 	- enhanced: an Industry Algorithm Edition application.
+	//
+	// example:
+	//
+	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The timestamp when the application was last updated.
+	//
+	// example:
+	//
+	// 1578916076
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -8747,13 +14035,13 @@ func (s *ListAppGroupsResponseBodyResult) SetDomain(v string) *ListAppGroupsResp
 	return s
 }
 
-func (s *ListAppGroupsResponseBodyResult) SetExpireOn(v string) *ListAppGroupsResponseBodyResult {
-	s.ExpireOn = &v
+func (s *ListAppGroupsResponseBodyResult) SetEngineType(v string) *ListAppGroupsResponseBodyResult {
+	s.EngineType = &v
 	return s
 }
 
-func (s *ListAppGroupsResponseBodyResult) SetFirstRankAlgoDeploymentId(v int32) *ListAppGroupsResponseBodyResult {
-	s.FirstRankAlgoDeploymentId = &v
+func (s *ListAppGroupsResponseBodyResult) SetExpireOn(v string) *ListAppGroupsResponseBodyResult {
+	s.ExpireOn = &v
 	return s
 }
 
@@ -8787,16 +14075,6 @@ func (s *ListAppGroupsResponseBodyResult) SetName(v string) *ListAppGroupsRespon
 	return s
 }
 
-func (s *ListAppGroupsResponseBodyResult) SetPendingSecondRankAlgoDeploymentId(v int32) *ListAppGroupsResponseBodyResult {
-	s.PendingSecondRankAlgoDeploymentId = &v
-	return s
-}
-
-func (s *ListAppGroupsResponseBodyResult) SetProcessingOrderId(v string) *ListAppGroupsResponseBodyResult {
-	s.ProcessingOrderId = &v
-	return s
-}
-
 func (s *ListAppGroupsResponseBodyResult) SetProduced(v int32) *ListAppGroupsResponseBodyResult {
 	s.Produced = &v
 	return s
@@ -8809,11 +14087,6 @@ func (s *ListAppGroupsResponseBodyResult) SetProjectId(v string) *ListAppGroupsR
 
 func (s *ListAppGroupsResponseBodyResult) SetQuota(v *ListAppGroupsResponseBodyResultQuota) *ListAppGroupsResponseBodyResult {
 	s.Quota = v
-	return s
-}
-
-func (s *ListAppGroupsResponseBodyResult) SetSecondRankAlgoDeploymentId(v int32) *ListAppGroupsResponseBodyResult {
-	s.SecondRankAlgoDeploymentId = &v
 	return s
 }
 
@@ -8843,19 +14116,37 @@ func (s *ListAppGroupsResponseBodyResult) SetUpdated(v int32) *ListAppGroupsResp
 }
 
 type ListAppGroupsResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing units (LCUs).
+	// The computing resources. Unit: logical computing unit (LCU).
+	//
+	// example:
+	//
+	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
 	// The storage capacity. Unit: GB.
-	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The specifications of the application. Valid values:
 	//
-	// *   opensearch.share.junior: basic
-	// *   opensearch.share.common: shared general-purpose
-	// *   opensearch.share.compute: shared computing
-	// *   opensearch.share.storage: shared storage
-	// *   opensearch.private.common: exclusive general-purpose
-	// *   opensearch.private.compute: exclusive computing
-	// *   opensearch.private.storage: exclusive storage
+	// example:
+	//
+	// 1
+	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
+	// The specifications. Valid values:
+	//
+	// 	- opensearch.share.junior: basic.
+	//
+	// 	- opensearch.share.common: shared general-purpose.
+	//
+	// 	- opensearch.share.compute: shared computing.
+	//
+	// 	- opensearch.share.storage: shared storage.
+	//
+	// 	- opensearch.private.common: exclusive general-purpose.
+	//
+	// 	- opensearch.private.compute: exclusive computing.
+	//
+	// 	- opensearch.private.storage: exclusive storage.
+	//
+	// example:
+	//
+	// opensearch.share.common
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -8883,7 +14174,17 @@ func (s *ListAppGroupsResponseBodyResultQuota) SetSpec(v string) *ListAppGroupsR
 }
 
 type ListAppGroupsResponseBodyResultTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// foo
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// bar
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -8906,9 +14207,9 @@ func (s *ListAppGroupsResponseBodyResultTags) SetValue(v string) *ListAppGroupsR
 }
 
 type ListAppGroupsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppGroupsResponse) String() string {
@@ -8936,7 +14237,15 @@ func (s *ListAppGroupsResponse) SetBody(v *ListAppGroupsResponseBody) *ListAppGr
 
 type ListDataCollectionsRequest struct {
 	// 1
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// 10
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
@@ -8961,12 +14270,20 @@ func (s *ListDataCollectionsRequest) SetPageSize(v int32) *ListDataCollectionsRe
 
 type ListDataCollectionsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 959D8782-B130-95EB-86CC-1F6ED447981F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the data collection tasks.
 	//
-	// For more information, see [DataCollection](~~173605~~).
+	// For more information, see [DataCollection](https://help.aliyun.com/document_detail/173605.html).
 	Result []*ListDataCollectionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of the returned data collection tasks.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -8995,40 +14312,84 @@ func (s *ListDataCollectionsResponseBody) SetTotalCount(v int32) *ListDataCollec
 
 type ListDataCollectionsResponseBodyResult struct {
 	// The time when the data collection task was created.
+	//
+	// example:
+	//
+	// 1581065837
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The type of the data that is collected by the task. Valid values:
 	//
-	// *   behavior: behavioral data
-	// *   item_info: project data
-	// *   industry_specific: industry-specific data
+	// 	- behavior: behavioral data
+	//
+	// 	- item_info: project data
+	//
+	// 	- industry_specific: industry-specific data
+	//
+	// example:
+	//
+	// BEHAVIOR
 	DataCollectionType *string `json:"dataCollectionType,omitempty" xml:"dataCollectionType,omitempty"`
 	// The ID of the data collection task.
+	//
+	// example:
+	//
+	// 286
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The industry to which the data collection task applies. Valid values:
 	//
-	// *   general
-	// *   ecommerce
+	// 	- general
+	//
+	// 	- ecommerce
+	//
+	// example:
+	//
+	// GENERAL
 	IndustryName *string `json:"industryName,omitempty" xml:"industryName,omitempty"`
 	// The name of the data collection task.
+	//
+	// example:
+	//
+	// os_function_test_v1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the data collection task. Valid values:
 	//
-	// *   0: disabled
-	// *   1: being enabled
-	// *   2: enabled
-	// *   3: failed to be enabled
+	// 	- 0: disabled
+	//
+	// 	- 1: being enabled
+	//
+	// 	- 2: enabled
+	//
+	// 	- 3: failed to be enabled
+	//
+	// example:
+	//
+	// 2
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The ID of the sundial.
+	//
+	// example:
+	//
+	// 1755
 	SundialId *string `json:"sundialId,omitempty" xml:"sundialId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   server
-	// *   web
-	// *   app
+	// 	- server
+	//
+	// 	- web
+	//
+	// 	- app
 	//
 	// Note: Only server is supported.
+	//
+	// example:
+	//
+	// server
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The time when the data collection task was updated.
+	//
+	// example:
+	//
+	// 1581065904
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -9086,9 +14447,9 @@ func (s *ListDataCollectionsResponseBodyResult) SetUpdated(v int32) *ListDataCol
 }
 
 type ListDataCollectionsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataCollectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataCollectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataCollectionsResponse) String() string {
@@ -9119,13 +14480,27 @@ type ListDataSourceTableFieldsRequest struct {
 	//
 	// Different types of data sources use different parameters. For more information, see the following sections of the "DataSource" topic:
 	//
-	// *   [rds](~~170005~~)
-	// *   [polardb](~~170005~~)
-	// *   [odps](~~170005~~)
-	// *   [mysql](~~173627~~)
-	// *   [drds](~~173627~~)
+	// 	- [rds](https://help.aliyun.com/document_detail/170005.html)
+	//
+	// 	- [polardb](https://help.aliyun.com/document_detail/170005.html)
+	//
+	// 	- [odps](https://help.aliyun.com/document_detail/170005.html)
+	//
+	// 	- [mysql](https://help.aliyun.com/document_detail/173627.html)
+	//
+	// 	- [drds](https://help.aliyun.com/document_detail/173627.html)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
-	// Whether to return the original field type of the data source
+	// Specifies whether to return the original field types of the data source.
+	//
+	// example:
+	//
+	// false
 	RawType *bool `json:"rawType,omitempty" xml:"rawType,omitempty"`
 }
 
@@ -9149,8 +14524,16 @@ func (s *ListDataSourceTableFieldsRequest) SetRawType(v bool) *ListDataSourceTab
 
 type ListDataSourceTableFieldsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The returned result.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -9173,9 +14556,9 @@ func (s *ListDataSourceTableFieldsResponseBody) SetResult(v map[string]interface
 }
 
 type ListDataSourceTableFieldsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataSourceTableFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourceTableFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataSourceTableFieldsResponse) String() string {
@@ -9203,6 +14586,12 @@ func (s *ListDataSourceTableFieldsResponse) SetBody(v *ListDataSourceTableFields
 
 type ListDataSourceTablesRequest struct {
 	// N/A
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
 }
 
@@ -9221,6 +14610,10 @@ func (s *ListDataSourceTablesRequest) SetParams(v string) *ListDataSourceTablesR
 
 type ListDataSourceTablesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The data tables.
 	Result []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -9245,9 +14638,9 @@ func (s *ListDataSourceTablesResponseBody) SetResult(v []*string) *ListDataSourc
 }
 
 type ListDataSourceTablesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataSourceTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourceTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataSourceTablesResponse) String() string {
@@ -9275,10 +14668,18 @@ func (s *ListDataSourceTablesResponse) SetBody(v *ListDataSourceTablesResponseBo
 
 type ListFirstRanksResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about each rough sort expression.
 	//
-	// For more information, see [FirstRank](~~170007~~).
+	// For more information, see [FirstRank](https://help.aliyun.com/document_detail/170007.html).
+	//
+	// example:
+	//
+	// []
 	Result []*ListFirstRanksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -9302,15 +14703,41 @@ func (s *ListFirstRanksResponseBody) SetResult(v []*ListFirstRanksResponseBodyRe
 
 type ListFirstRanksResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
-	Active  *bool  `json:"active,omitempty" xml:"active,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
+	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 0
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The description of the expression.
+	//
+	// example:
+	//
+	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The content of the expression.
+	//
+	// example:
+	//
+	// []
 	Meta []*ListFirstRanksResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
 	// The name of the expression.
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	Updated *int32  `json:"updated,omitempty" xml:"updated,omitempty"`
+	//
+	// example:
+	//
+	// default
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The time when the cluster was updated.
+	//
+	// example:
+	//
+	// 0
+	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
 func (s ListFirstRanksResponseBodyResult) String() string {
@@ -9354,15 +14781,27 @@ func (s *ListFirstRanksResponseBodyResult) SetUpdated(v int32) *ListFirstRanksRe
 type ListFirstRanksResponseBodyResultMeta struct {
 	// The parameters that are used by a function in the expression.
 	//
-	// For more information, see [Rough sort functions](~~180765~~).
+	// For more information, see [Rough sort functions](https://help.aliyun.com/document_detail/180765.html).
+	//
+	// example:
+	//
+	// ""
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
 	// The attribute, feature function, or field to be searched for.
 	//
-	// For more information about supported feature functions, see [Rough sort functions](~~180765~~).
+	// For more information about supported feature functions, see [Rough sort functions](https://help.aliyun.com/document_detail/180765.html).
+	//
+	// example:
+	//
+	// static_bm25()
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	// The weight.
 	//
-	// Valid values: \[-100000,100000] (excluding 0).
+	// Valid values: [-100000,100000] (excluding 0).
+	//
+	// example:
+	//
+	// 1
 	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
@@ -9390,9 +14829,9 @@ func (s *ListFirstRanksResponseBodyResultMeta) SetWeight(v int32) *ListFirstRank
 }
 
 type ListFirstRanksResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFirstRanksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFirstRanksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFirstRanksResponse) String() string {
@@ -9420,24 +14859,52 @@ func (s *ListFirstRanksResponse) SetBody(v *ListFirstRanksResponseBody) *ListFir
 
 type ListFunctionInstancesRequest struct {
 	// The type of the feature.
+	//
+	// example:
+	//
+	// "PAAS"
 	FunctionType *string `json:"functionType,omitempty" xml:"functionType,omitempty"`
 	// The type of the model.
+	//
+	// example:
+	//
+	// tf_checkpoint
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
 	// The richness of the returned information. Valid values:
 	//
-	// *   normal: displays information such as createParameters and cron. This is the default value.
-	// *   simple: displays only the basic information.
-	// *   detail: returns the details of the training task.
+	// 	- normal: displays information such as createParameters and cron. This is the default value.
+	//
+	// 	- simple: displays only the basic information.
+	//
+	// 	- detail: returns the details of the training task.
+	//
+	// example:
+	//
+	// normal
 	Output *string `json:"output,omitempty" xml:"output,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// How the instance is created. Valid values:
 	//
-	// *   builtin: The instance is created by system.
-	// *   user: The instance is created by user. This is the default value.
-	// *   all: all instances
+	// 	- builtin: The instance is created by system.
+	//
+	// 	- user: The instance is created by user. This is the default value.
+	//
+	// 	- all: all instances
+	//
+	// example:
+	//
+	// user
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
@@ -9481,20 +14948,52 @@ func (s *ListFunctionInstancesRequest) SetSource(v string) *ListFunctionInstance
 
 type ListFunctionInstancesResponseBody struct {
 	// The error code. If no error occurs, the parameter is left empty.
+	//
+	// example:
+	//
+	// Instance.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message. If no error occurs, the parameter is left empty.
+	//
+	// example:
+	//
+	// instance not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the instances.
+	//
+	// example:
+	//
+	// []
 	Result []*ListFunctionInstancesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// "OK"
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9548,38 +15047,92 @@ func (s *ListFunctionInstancesResponseBody) SetTotalCount(v int64) *ListFunction
 
 type ListFunctionInstancesResponseBodyResult struct {
 	// The information about the instance.
+	//
+	// example:
+	//
+	// {}
 	Belongs *ListFunctionInstancesResponseBodyResultBelongs `json:"Belongs,omitempty" xml:"Belongs,omitempty" type:"Struct"`
 	// The parameters of the instance.
+	//
+	// example:
+	//
+	// []
 	CreateParameters []*ListFunctionInstancesResponseBodyResultCreateParameters `json:"CreateParameters,omitempty" xml:"CreateParameters,omitempty" type:"Repeated"`
 	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 1234
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The cron expression used to schedule training, in the format of (Minutes Hours DayofMonth Month DayofWeek). If the value is empty, it indicates that no periodic training is performed.
+	//
+	// example:
+	//
+	// 0 3 ? \\	- 0,1,3,5 (at 3 a.m. on Sunday, Monday, Wednesday, and Friday)
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// " "
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extended information, which is a JSON string. It includes model evaluation information and error information.
+	//
+	// example:
+	//
+	// "{\\"dataReport\\":{},\\"errors\\":{}}"
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The name of the feature.
+	//
+	// example:
+	//
+	// "ctr"
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The type of the feature.
+	//
+	// example:
+	//
+	// "PAAS"
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// "ctr_test"
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the model.
+	//
+	// example:
+	//
+	// "tf_checkpoint"
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// How the instance is created. Valid values:
 	//
-	// *   user: The instance is created by user.
-	// *   builtin: The instance is created by system.
+	// 	- user: The instance is created by user.
+	//
+	// 	- builtin: The instance is created by system.
+	//
+	// example:
+	//
+	// "user"
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The state of the instance. Valid values:
 	//
 	// 1.  unavailable: No model is available. Models must be trained before you can use them.
+	//
 	// 2.  available: Models can be used.
+	//
+	// example:
+	//
+	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The parameters that are used.
 	UsageParameters []*ListFunctionInstancesResponseBodyResultUsageParameters `json:"UsageParameters,omitempty" xml:"UsageParameters,omitempty" type:"Repeated"`
 	// The ID of the version.
+	//
+	// example:
+	//
+	// 123
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -9663,10 +15216,22 @@ func (s *ListFunctionInstancesResponseBodyResult) SetVersionId(v int64) *ListFun
 
 type ListFunctionInstancesResponseBodyResultBelongs struct {
 	// The category.
+	//
+	// example:
+	//
+	// "general"
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The industry.
+	//
+	// example:
+	//
+	// "ecommerce"
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The abbreviation of the language that applies.
+	//
+	// example:
+	//
+	// "zh"
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
@@ -9695,8 +15260,16 @@ func (s *ListFunctionInstancesResponseBodyResultBelongs) SetLanguage(v string) *
 
 type ListFunctionInstancesResponseBodyResultCreateParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// "param1"
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// "value1"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9720,8 +15293,16 @@ func (s *ListFunctionInstancesResponseBodyResultCreateParameters) SetValue(v str
 
 type ListFunctionInstancesResponseBodyResultUsageParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// use_param1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9744,9 +15325,9 @@ func (s *ListFunctionInstancesResponseBodyResultUsageParameters) SetValue(v stri
 }
 
 type ListFunctionInstancesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFunctionInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFunctionInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFunctionInstancesResponse) String() string {
@@ -9773,9 +15354,55 @@ func (s *ListFunctionInstancesResponse) SetBody(v *ListFunctionInstancesResponse
 }
 
 type ListFunctionResourcesRequest struct {
-	Output       *string `json:"output,omitempty" xml:"output,omitempty"`
-	PageNumber   *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The output level.
+	//
+	// Valid values:
+	//
+	// 	- simple
+	//
+	// 	- normal
+	//
+	// 	- detail
+	//
+	// example:
+	//
+	// detail
+	Output *string `json:"output,omitempty" xml:"output,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The type of the resource.
+	//
+	// Valid values:
+	//
+	// 	- feature_generator
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- raw_file
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// feature_generator
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -9808,14 +15435,50 @@ func (s *ListFunctionResourcesRequest) SetResourceType(v string) *ListFunctionRe
 }
 
 type ListFunctionResourcesResponseBody struct {
-	Code       *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpCode   *int64                                     `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Latency    *float64                                   `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListFunctionResourcesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Status     *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The error code returned. If no error occurs, this value is empty.
+	//
+	// example:
+	//
+	// Resource.InvalidResourceName
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The amount of time consumed for the request. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 123
+	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Invalid resource name.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// "3A809095-C554-5CF5-8FCE-BE19D4673790"
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The results returned.
+	Result []*ListFunctionResourcesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The status of the request. Valid values: OK and FAIL.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of records that meet the requirements.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFunctionResourcesResponseBody) String() string {
@@ -9867,14 +15530,46 @@ func (s *ListFunctionResourcesResponseBody) SetTotalCount(v int64) *ListFunction
 }
 
 type ListFunctionResourcesResponseBodyResult struct {
-	CreateTime          *int64                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Data                *ListFunctionResourcesResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Description         *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	FunctionName        *string                                      `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	ModifyTime          *int64                                       `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ReferencedInstances []*string                                    `json:"ReferencedInstances,omitempty" xml:"ReferencedInstances,omitempty" type:"Repeated"`
-	ResourceName        *string                                      `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType        *string                                      `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The time when the resource was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1234
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The resource data. The data structure varies with the resource type.
+	Data *ListFunctionResourcesResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the resource.
+	//
+	// example:
+	//
+	// resource description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the feature.
+	//
+	// example:
+	//
+	// rank
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The time when the resource was modified. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1234
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The algorithm instances that are referenced.
+	ReferencedInstances []*string `json:"ReferencedInstances,omitempty" xml:"ReferencedInstances,omitempty" type:"Repeated"`
+	// The name of the resource.
+	//
+	// example:
+	//
+	// fg_json
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	//
+	// example:
+	//
+	// feature_generator
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListFunctionResourcesResponseBodyResult) String() string {
@@ -9926,7 +15621,13 @@ func (s *ListFunctionResourcesResponseBodyResult) SetResourceType(v string) *Lis
 }
 
 type ListFunctionResourcesResponseBodyResultData struct {
-	Content    *string                                                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the file that corresponds to a resource of the raw_file type.
+	//
+	// example:
+	//
+	// "abc"
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The feature generators that correspond to resources of the feature_generator type.
 	Generators []*ListFunctionResourcesResponseBodyResultDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
 }
 
@@ -9949,9 +15650,20 @@ func (s *ListFunctionResourcesResponseBodyResultData) SetGenerators(v []*ListFun
 }
 
 type ListFunctionResourcesResponseBodyResultDataGenerators struct {
-	Generator *string                                                     `json:"Generator,omitempty" xml:"Generator,omitempty"`
-	Input     *ListFunctionResourcesResponseBodyResultDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	Output    *string                                                     `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The type of the feature generator.
+	//
+	// example:
+	//
+	// combo
+	Generator *string `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	// The input.
+	Input *ListFunctionResourcesResponseBodyResultDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The name of the output feature.
+	//
+	// example:
+	//
+	// feature1
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 
 func (s ListFunctionResourcesResponseBodyResultDataGenerators) String() string {
@@ -9978,6 +15690,7 @@ func (s *ListFunctionResourcesResponseBodyResultDataGenerators) SetOutput(v stri
 }
 
 type ListFunctionResourcesResponseBodyResultDataGeneratorsInput struct {
+	// The input features.
 	Features []*ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 }
 
@@ -9995,7 +15708,35 @@ func (s *ListFunctionResourcesResponseBodyResultDataGeneratorsInput) SetFeatures
 }
 
 type ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures struct {
+	// The name of the feature.
+	//
+	// example:
+	//
+	// system_item_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the feature.
+	//
+	// Valid values:
+	//
+	// 	- item
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- user
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// item
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10018,9 +15759,9 @@ func (s *ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures) Set
 }
 
 type ListFunctionResourcesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFunctionResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFunctionResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFunctionResourcesResponse) String() string {
@@ -10048,18 +15789,40 @@ func (s *ListFunctionResourcesResponse) SetBody(v *ListFunctionResourcesResponse
 
 type ListFunctionTasksRequest struct {
 	// The end time is less than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1582646399
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 1.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The start time is greater than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1582214400
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   success
-	// *   failed
-	// *   running
+	// 	- success
+	//
+	// 	- failed
+	//
+	// 	- running
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -10098,20 +15861,52 @@ func (s *ListFunctionTasksRequest) SetStatus(v string) *ListFunctionTasksRequest
 
 type ListFunctionTasksResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// fail
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1638157479281
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result.
+	//
+	// example:
+	//
+	// [         {             "functionName": "ctr",             "progress": 100,             "status": "success",             "startTime": 100010,             "endTime": 200020,             "extendInfo": "{\\"recall\\":91,\\"errors\\":[]}",             "runId": "trigger__2021-03-05T12:18:41"         }     ]
 	Result []*ListFunctionTasksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total number of records that meet the requirements.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10165,24 +15960,58 @@ func (s *ListFunctionTasksResponseBody) SetTotalCount(v int64) *ListFunctionTask
 
 type ListFunctionTasksResponseBodyResult struct {
 	// The timestamp that indicates the end time. Unit: milliseconds. 0 indicates that the task has not ended.
+	//
+	// example:
+	//
+	// 100010
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The value is a JSON string. It includes model evaluation information and training error information.
+	//
+	// example:
+	//
+	// {\\"recall\\":91,\\"errors\\":[]}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The name of the feature.
+	//
+	// example:
+	//
+	// ctr
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The number of iterations.
+	//
+	// example:
+	//
+	// 2
 	Generation *string `json:"Generation,omitempty" xml:"Generation,omitempty"`
 	// The progress. 90 indicates 90%.
+	//
+	// example:
+	//
+	// 90
 	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// trigger__2021-03-05T12:18:41
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	// The timestamp that indicates the start time. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 100010
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   success
-	// *   failed
-	// *   running
+	// 	- success
+	//
+	// 	- failed
+	//
+	// 	- running
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10235,9 +16064,9 @@ func (s *ListFunctionTasksResponseBodyResult) SetStatus(v string) *ListFunctionT
 }
 
 type ListFunctionTasksResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFunctionTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFunctionTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFunctionTasksResponse) String() string {
@@ -10264,11 +16093,35 @@ func (s *ListFunctionTasksResponse) SetBody(v *ListFunctionTasksResponseBody) *L
 }
 
 type ListInterventionDictionariesRequest struct {
+	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// \-
+	// The type of the intervention dictionary. Valid values:
+	//
+	// 	- stopword: an intervention dictionary for stop word filtering
+	//
+	// 	- synonym: an intervention dictionary for synonym configuration
+	//
+	// 	- correction: an intervention dictionary for spelling correction
+	//
+	// 	- category_prediction: an intervention dictionary for category prediction
+	//
+	// 	- ner: an intervention dictionary for named entity recognition (NER)
+	//
+	// 	- term_weighting: an intervention dictionary for term weight analysis
+	//
+	// example:
+	//
+	// ["synonym"]
 	Types *string `json:"types,omitempty" xml:"types,omitempty"`
 }
 
@@ -10297,12 +16150,20 @@ func (s *ListInterventionDictionariesRequest) SetTypes(v string) *ListInterventi
 
 type ListInterventionDictionariesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about each intervention dictionary.
 	//
-	// For more information, see [InterventionDictionary](~~173608~~).
+	// For more information, see [InterventionDictionary](https://help.aliyun.com/document_detail/173608.html).
 	Result []*ListInterventionDictionariesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -10331,23 +16192,52 @@ func (s *ListInterventionDictionariesResponseBody) SetTotalCount(v int32) *ListI
 
 type ListInterventionDictionariesResponseBodyResult struct {
 	// The custom analyzer.
+	//
+	// example:
+	//
+	// ""
 	Analyzer *string `json:"analyzer,omitempty" xml:"analyzer,omitempty"`
 	// The time when the intervention dictionary was created.
+	//
+	// example:
+	//
+	// 1539158325
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the intervention dictionary.
+	//
+	// example:
+	//
+	// 1
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the intervention dictionary.
+	//
+	// example:
+	//
+	// tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the intervention dictionary. Valid values:
 	//
-	// *   stopword: an intervention dictionary for stop word filtering
-	// *   synonym: an intervention dictionary for synonym configuration
-	// *   correction: an intervention dictionary for spelling correction
-	// *   category_prediction: an intervention dictionary for category prediction
-	// *   ner: an intervention dictionary for named entity recognition (NER)
-	// *   term_weighting: an intervention dictionary for term weight analysis
+	// 	- stopword: an intervention dictionary for stop word filtering
+	//
+	// 	- synonym: an intervention dictionary for synonym configuration
+	//
+	// 	- correction: an intervention dictionary for spelling correction
+	//
+	// 	- category_prediction: an intervention dictionary for category prediction
+	//
+	// 	- ner: an intervention dictionary for named entity recognition (NER)
+	//
+	// 	- term_weighting: an intervention dictionary for term weight analysis
+	//
+	// example:
+	//
+	// synonym
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The time when the intervention dictionary was last updated.
+	//
+	// example:
+	//
+	// 1539158313
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -10390,9 +16280,9 @@ func (s *ListInterventionDictionariesResponseBodyResult) SetUpdated(v int32) *Li
 }
 
 type ListInterventionDictionariesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInterventionDictionariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInterventionDictionariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInterventionDictionariesResponse) String() string {
@@ -10419,11 +16309,23 @@ func (s *ListInterventionDictionariesResponse) SetBody(v *ListInterventionDictio
 }
 
 type ListInterventionDictionaryEntriesRequest struct {
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned per page. Default value: 10.
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Test
+	// The intervention entry.
+	//
+	// example:
+	//
+	// test
 	Word *string `json:"word,omitempty" xml:"word,omitempty"`
 }
 
@@ -10451,13 +16353,21 @@ func (s *ListInterventionDictionaryEntriesRequest) SetWord(v string) *ListInterv
 }
 
 type ListInterventionDictionaryEntriesResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about each intervention entry.
+	// The request ID.
 	//
-	// For more information, see [InterventionDictionaryEntry](~~173606~~).
+	// example:
+	//
+	// 516A02B7-2167-8D92-12D0-B639A2A0F3C5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about intervention entries.
+	//
+	// For more information, see [InterventionDictionaryEntry](https://help.aliyun.com/document_detail/173606.html).
 	Result []*ListInterventionDictionaryEntriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 8
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -10485,28 +16395,49 @@ func (s *ListInterventionDictionaryEntriesResponseBody) SetTotalCount(v int32) *
 }
 
 type ListInterventionDictionaryEntriesResponseBodyResult struct {
-	// The action. Valid values:
+	// The command. Valid values:
 	//
-	// *   add
-	// *   delete
+	// 	- add
+	//
+	// 	- delete
+	//
+	// example:
+	//
+	// add
 	Cmd *string `json:"cmd,omitempty" xml:"cmd,omitempty"`
 	// The timestamp when the intervention entry was created.
+	//
+	// example:
+	//
+	// 1536690285
 	Created *int64 `json:"created,omitempty" xml:"created,omitempty"`
-	// The content of an intervention entry for category prediction.
+	// The content of an intervention entry for category prediction. The field value consists of key-value pairs. The key in a key-value pair indicates the ID of the category. The value in a key-value pair indicates the relevance to the category. A value of 0 indicates irrelevant. A value of 1 indicates slightly relevant. A value of 2 indicates relevant. Example: {"2":1, "100":0}
 	//
-	// The parameter returns key-value pairs. The key in a key-value pair indicates the ID of the category. The value in a key-value pair indicates the relevance value of the category. A value of 0 indicates irrelevant. A value of 1 indicates slightly relevant. A value of 2 indicates relevant.
+	// example:
 	//
-	// Example: {"2":1, "100":0}
+	// {                 "100": "0",                 "200": "2"             }
 	Relevance map[string]interface{} `json:"relevance,omitempty" xml:"relevance,omitempty"`
 	// The status of the intervention entry. Valid value:
 	//
-	// *   ACTIVE: The intervention entry takes effect.
+	// 	- ACTIVE: The intervention entry takes effect.
+	//
+	// example:
+	//
+	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The content of an intervention entry for term weight analysis.
+	// The content of the intervention entry for term weight analysis.
 	Tokens []*ListInterventionDictionaryEntriesResponseBodyResultTokens `json:"tokens,omitempty" xml:"tokens,omitempty" type:"Repeated"`
 	// The timestamp when the intervention entry was last updated.
+	//
+	// example:
+	//
+	// 1537348987
 	Updated *int64 `json:"updated,omitempty" xml:"updated,omitempty"`
-	// The intervention query in the intervention entry.
+	// The intervention entry.
+	//
+	// example:
+	//
+	// \\u8fc7\\u513f
 	Word *string `json:"word,omitempty" xml:"word,omitempty"`
 }
 
@@ -10555,49 +16486,100 @@ func (s *ListInterventionDictionaryEntriesResponseBodyResult) SetWord(v string) 
 
 type ListInterventionDictionaryEntriesResponseBodyResultTokens struct {
 	// The sequence number.
+	//
+	// example:
+	//
+	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
 	// The internal name of the identified entity type. Valid values:
 	//
-	// *   brand
-	// *   category
-	// *   material
-	// *   element
-	// *   style
-	// *   color
-	// *   function
-	// *   scenario
-	// *   people
-	// *   season
-	// *   model
-	// *   region
-	// *   name
-	// *   adjective
-	// *   category-modifier
-	// *   size
-	// *   quality
-	// *   suit
-	// *   new-release
-	// *   series
-	// *   marketing
-	// *   entertainment
-	// *   organization
-	// *   movie
-	// *   game
-	// *   number
-	// *   unit
-	// *   common
-	// *   new-word
-	// *   proper-noun
-	// *   symbol
-	// *   prefix
-	// *   suffix
-	// *   gift
-	// *   negative
-	// *   agent
+	// 	- brand
+	//
+	// 	- category
+	//
+	// 	- material
+	//
+	// 	- element
+	//
+	// 	- style
+	//
+	// 	- color
+	//
+	// 	- function
+	//
+	// 	- scenario
+	//
+	// 	- people
+	//
+	// 	- season
+	//
+	// 	- model
+	//
+	// 	- region
+	//
+	// 	- name
+	//
+	// 	- adjective
+	//
+	// 	- category-modifier
+	//
+	// 	- size
+	//
+	// 	- quality
+	//
+	// 	- suit
+	//
+	// 	- new-release
+	//
+	// 	- series
+	//
+	// 	- marketing
+	//
+	// 	- entertainment
+	//
+	// 	- organization
+	//
+	// 	- movie
+	//
+	// 	- game
+	//
+	// 	- number
+	//
+	// 	- unit
+	//
+	// 	- common
+	//
+	// 	- new-word
+	//
+	// 	- proper-noun
+	//
+	// 	- symbol
+	//
+	// 	- prefix
+	//
+	// 	- suffix
+	//
+	// 	- gift
+	//
+	// 	- negative
+	//
+	// 	- agent
+	//
+	// example:
+	//
+	// category
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The description of the internal name of the identified entity type.
+	//
+	// example:
+	//
+	// category
 	TagLabel *string `json:"tagLabel,omitempty" xml:"tagLabel,omitempty"`
 	// The entity.
+	//
+	// example:
+	//
+	// category
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
@@ -10630,9 +16612,9 @@ func (s *ListInterventionDictionaryEntriesResponseBodyResultTokens) SetToken(v s
 }
 
 type ListInterventionDictionaryEntriesResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInterventionDictionaryEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInterventionDictionaryEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInterventionDictionaryEntriesResponse) String() string {
@@ -10659,7 +16641,13 @@ func (s *ListInterventionDictionaryEntriesResponse) SetBody(v *ListInterventionD
 }
 
 type ListInterventionDictionaryNerResultsRequest struct {
-	// Soymilk
+	// Query keywords.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// "hello world"
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
@@ -10678,10 +16666,14 @@ func (s *ListInterventionDictionaryNerResultsRequest) SetQuery(v string) *ListIn
 
 type ListInterventionDictionaryNerResultsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8F780CA8-D4D4-2FFE-B8AC-42040822C554
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The NER result.
 	//
-	// For more information, see [InterventionDictionaryEntry](~~173606~~).
+	// For more information, see [InterventionDictionaryEntry](https://help.aliyun.com/document_detail/173606.html).
 	Result []*ListInterventionDictionaryNerResultsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -10705,49 +16697,100 @@ func (s *ListInterventionDictionaryNerResultsResponseBody) SetResult(v []*ListIn
 
 type ListInterventionDictionaryNerResultsResponseBodyResult struct {
 	// The sequence number.
+	//
+	// example:
+	//
+	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
 	// The internal name of the identified entity type. Valid values:
 	//
-	// *   brand
-	// *   category
-	// *   material
-	// *   element
-	// *   style
-	// *   color
-	// *   function
-	// *   scenario
-	// *   people
-	// *   season
-	// *   model
-	// *   region
-	// *   name
-	// *   adjective
-	// *   category-modifier
-	// *   size
-	// *   quality
-	// *   suit
-	// *   new-release
-	// *   series
-	// *   marketing
-	// *   entertainment
-	// *   organization
-	// *   movie
-	// *   game
-	// *   number
-	// *   unit
-	// *   common
-	// *   new-word
-	// *   proper-noun
-	// *   symbol
-	// *   prefix
-	// *   suffix
-	// *   gift
-	// *   negative
-	// *   agent
+	// 	- brand
+	//
+	// 	- category
+	//
+	// 	- material
+	//
+	// 	- element
+	//
+	// 	- style
+	//
+	// 	- color
+	//
+	// 	- function
+	//
+	// 	- scenario
+	//
+	// 	- people
+	//
+	// 	- season
+	//
+	// 	- model
+	//
+	// 	- region
+	//
+	// 	- name
+	//
+	// 	- adjective
+	//
+	// 	- category-modifier
+	//
+	// 	- size
+	//
+	// 	- quality
+	//
+	// 	- suit
+	//
+	// 	- new-release
+	//
+	// 	- series
+	//
+	// 	- marketing
+	//
+	// 	- entertainment
+	//
+	// 	- organization
+	//
+	// 	- movie
+	//
+	// 	- game
+	//
+	// 	- number
+	//
+	// 	- unit
+	//
+	// 	- common
+	//
+	// 	- new-word
+	//
+	// 	- proper-noun
+	//
+	// 	- symbol
+	//
+	// 	- prefix
+	//
+	// 	- suffix
+	//
+	// 	- gift
+	//
+	// 	- negative
+	//
+	// 	- agent
+	//
+	// example:
+	//
+	// category
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The description of the internal name of the identified entity type.
+	//
+	// example:
+	//
+	// category
 	TagLabel *string `json:"tagLabel,omitempty" xml:"tagLabel,omitempty"`
 	// The entity.
+	//
+	// example:
+	//
+	// eaa73f35-007a-4be7-88c7-37dca4a04ab7
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
@@ -10780,9 +16823,9 @@ func (s *ListInterventionDictionaryNerResultsResponseBodyResult) SetToken(v stri
 }
 
 type ListInterventionDictionaryNerResultsResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInterventionDictionaryNerResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInterventionDictionaryNerResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInterventionDictionaryNerResultsResponse) String() string {
@@ -10810,6 +16853,10 @@ func (s *ListInterventionDictionaryNerResultsResponse) SetBody(v *ListInterventi
 
 type ListInterventionDictionaryRelatedEntitiesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about each application and each query analysis rule. If no query analysis rule references the intervention dictionary, the value of the result parameter is an empty list.
 	Result []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -10834,9 +16881,9 @@ func (s *ListInterventionDictionaryRelatedEntitiesResponseBody) SetResult(v []ma
 }
 
 type ListInterventionDictionaryRelatedEntitiesResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInterventionDictionaryRelatedEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInterventionDictionaryRelatedEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInterventionDictionaryRelatedEntitiesResponse) String() string {
@@ -10864,6 +16911,10 @@ func (s *ListInterventionDictionaryRelatedEntitiesResponse) SetBody(v *ListInter
 
 type ListProceedingsRequest struct {
 	// Specifies whether the filtering is complete.
+	//
+	// example:
+	//
+	// true
 	FilterFinished *bool `json:"filterFinished,omitempty" xml:"filterFinished,omitempty"`
 }
 
@@ -10882,6 +16933,10 @@ func (s *ListProceedingsRequest) SetFilterFinished(v bool) *ListProceedingsReque
 
 type ListProceedingsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5099063-6B86-F398-D843-905F9EFB683A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -10899,9 +16954,9 @@ func (s *ListProceedingsResponseBody) SetRequestId(v string) *ListProceedingsRes
 }
 
 type ListProceedingsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProceedingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProceedingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProceedingsResponse) String() string {
@@ -10929,6 +16984,12 @@ func (s *ListProceedingsResponse) SetBody(v *ListProceedingsResponseBody) *ListP
 
 type ListQueryProcessorAnalyzerResultsRequest struct {
 	// The text to be tested.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// "abcde"
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
 }
 
@@ -10947,8 +17008,16 @@ func (s *ListQueryProcessorAnalyzerResultsRequest) SetText(v string) *ListQueryP
 
 type ListQueryProcessorAnalyzerResultsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 98724351-D6B2-5D8A-B089-7FFD1821A7E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -10971,9 +17040,9 @@ func (s *ListQueryProcessorAnalyzerResultsResponseBody) SetResult(v map[string]i
 }
 
 type ListQueryProcessorAnalyzerResultsResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListQueryProcessorAnalyzerResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQueryProcessorAnalyzerResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListQueryProcessorAnalyzerResultsResponse) String() string {
@@ -11000,6 +17069,12 @@ func (s *ListQueryProcessorAnalyzerResultsResponse) SetBody(v *ListQueryProcesso
 }
 
 type ListQueryProcessorNersRequest struct {
+	// The type of the industry.
+	//
+	// 	- ECOMMERCE
+	//
+	// example:
+	//
 	// ECOMMERCE
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 }
@@ -11018,11 +17093,15 @@ func (s *ListQueryProcessorNersRequest) SetDomain(v string) *ListQueryProcessorN
 }
 
 type ListQueryProcessorNersResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The priority settings of entity types.
 	//
-	// For more information, see [Priority settings of entity types](~~173616~~).
+	// For more information, see [Priority settings of entity types](https://help.aliyun.com/document_detail/173616.html).
 	Result []*ListQueryProcessorNersResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -11046,18 +17125,34 @@ func (s *ListQueryProcessorNersResponseBody) SetResult(v []*ListQueryProcessorNe
 
 type ListQueryProcessorNersResponseBodyResult struct {
 	// The name of the entity type.
+	//
+	// example:
+	//
+	// brand
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The priority of an entity type among entity types that have the same priority level.
+	// The priority of an entity type among entity types that have the same priority level. A smaller value indicates a higher priority. Default value: 0.
 	//
-	// A smaller value indicates a higher priority. Default value: 0.
+	// example:
+	//
+	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-	// The priority level of the entity type.
+	// The priority level of the entity type. Valid values:
 	//
-	// *   HIGH
-	// *   MIDDLE
-	// *   LOW
+	// 	- HIGH
+	//
+	// 	- MIDDLE
+	//
+	// 	- LOW
+	//
+	// example:
+	//
+	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
 	// The internal name of the entity type.
+	//
+	// example:
+	//
+	// brand
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
@@ -11090,9 +17185,9 @@ func (s *ListQueryProcessorNersResponseBodyResult) SetTag(v string) *ListQueryPr
 }
 
 type ListQueryProcessorNersResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListQueryProcessorNersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQueryProcessorNersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListQueryProcessorNersResponse) String() string {
@@ -11119,6 +17214,16 @@ func (s *ListQueryProcessorNersResponse) SetBody(v *ListQueryProcessorNersRespon
 }
 
 type ListQueryProcessorsRequest struct {
+	// The scope of query analysis rules to be queried. Default value: 0. Valid values:
+	//
+	// 	- 0: queries all query analysis rules.
+	//
+	// 	- 1: queries the default query analysis rules.
+	//
+	// 	- 2: queries the query analysis rules that are not the default rules.
+	//
+	// example:
+	//
 	// 0
 	IsActive *int32 `json:"isActive,omitempty" xml:"isActive,omitempty"`
 }
@@ -11137,11 +17242,15 @@ func (s *ListQueryProcessorsRequest) SetIsActive(v int32) *ListQueryProcessorsRe
 }
 
 type ListQueryProcessorsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about each query analysis rule.
+	// The request ID.
 	//
-	// For more information, see [QueryProcessor](~~170014~~).
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about the query analysis rule.
+	//
+	// For more information, see [QueryProcessor](https://help.aliyun.com/document_detail/170014.html).
 	Result []*ListQueryProcessorsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -11164,25 +17273,45 @@ func (s *ListQueryProcessorsResponseBody) SetResult(v []*ListQueryProcessorsResp
 }
 
 type ListQueryProcessorsResponseBodyResult struct {
-	// Indicates whether the query analysis rule is the default one.
+	// Indicates whether the query analysis rule is a default rule.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The time when the query analysis rule was created.
-	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of the industry. Valid values:
 	//
-	// *   GENERAL
-	// *   ECOMMERCE
-	// *   IT_CONTENT
+	// example:
+	//
+	// 1587398402
+	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
+	// The type of the industry to which the query analysis rule is applied. Valid values:
+	//
+	// 	- GENERAL
+	//
+	// 	- ECOMMERCE
+	//
+	// 	- IT_CONTENT
+	//
+	// example:
+	//
+	// GENERAL
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The indexes to which the query analysis rule applies.
+	// The indexes to which the query analysis rule is applied.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 	// The name of the query analysis rule.
+	//
+	// example:
+	//
+	// ner
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The features that are used in the query analysis rule.
-	//
-	// For more information, see the ["Processor"](~~170014~~) section of the QueryProcessor topic.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The time when the query analysis rule was last updated.
+	// The time when the query analysis rule was last modified.
+	//
+	// example:
+	//
+	// 1587398402
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -11230,9 +17359,9 @@ func (s *ListQueryProcessorsResponseBodyResult) SetUpdated(v int32) *ListQueryPr
 }
 
 type ListQueryProcessorsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListQueryProcessorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQueryProcessorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListQueryProcessorsResponse) String() string {
@@ -11259,8 +17388,16 @@ func (s *ListQueryProcessorsResponse) SetBody(v *ListQueryProcessorsResponseBody
 }
 
 type ListQuotaReviewTasksRequest struct {
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
@@ -11284,13 +17421,23 @@ func (s *ListQuotaReviewTasksRequest) SetPageSize(v int32) *ListQuotaReviewTasks
 }
 
 type ListQuotaReviewTasksResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the ticket for application quota approval.
+	// The request ID.
 	//
-	// For more information, see [QuotaReviewTask](~~173609~~).
+	// example:
+	//
+	// "3351A21F-705B-508C-9450-DA65A681547F"
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about the tickets. For more information, see [QuotaReviewTask](https://help.aliyun.com/document_detail/173609.html).
+	//
+	// example:
+	//
+	// []
 	Result []*ListQuotaReviewTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// The total number of the returned tickets.
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 500
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -11318,37 +17465,101 @@ func (s *ListQuotaReviewTasksResponseBody) SetTotalCount(v int32) *ListQuotaRevi
 }
 
 type ListQuotaReviewTasksResponseBodyResult struct {
-	// The ID of the application.
+	// The application ID.
+	//
+	// example:
+	//
+	// 120123456
 	AppGroupId *int32 `json:"appGroupId,omitempty" xml:"appGroupId,omitempty"`
-	// The name of the application.
+	// The application name.
+	//
+	// example:
+	//
+	// "td_test_os"
 	AppGroupName *string `json:"appGroupName,omitempty" xml:"appGroupName,omitempty"`
-	// The type of the application.
+	// The application type.
+	//
+	// example:
+	//
+	// "standard"
 	AppGroupType *string `json:"appGroupType,omitempty" xml:"appGroupType,omitempty"`
 	// Indicates whether the ticket is approved.
+	//
+	// example:
+	//
+	// true
 	Approved *bool `json:"approved,omitempty" xml:"approved,omitempty"`
-	// Indicates whether the model is available.
+	// Indicates whether the application is available.
+	//
+	// example:
+	//
+	// true
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
 	// The time when the ticket was created.
+	//
+	// example:
+	//
+	// "2020-04-08T08:29:45+0000"
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The time when the ticket was last updated.
+	//
+	// example:
+	//
+	// "2020-04-08T08:36:36+0000"
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The ID of the ticket.
+	// The ticket ID.
+	//
+	// example:
+	//
+	// 142
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
-	// The remarks of the ticket.
+	// The remarks.
+	//
+	// example:
+	//
+	// null
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
 	// The computing resource quota that is applied for.
+	//
+	// example:
+	//
+	// 6000
 	NewComputeResource *int32 `json:"newComputeResource,omitempty" xml:"newComputeResource,omitempty"`
 	// The storage capacity quota that is applied for.
+	//
+	// example:
+	//
+	// 1100
 	NewSocSize *int32 `json:"newSocSize,omitempty" xml:"newSocSize,omitempty"`
 	// The application specifications that are applied for.
+	//
+	// example:
+	//
+	// "opensearch.private.common"
 	NewSpec *string `json:"newSpec,omitempty" xml:"newSpec,omitempty"`
 	// The original quota of computing resources.
+	//
+	// example:
+	//
+	// 500
 	OldComputeResource *int32 `json:"oldComputeResource,omitempty" xml:"oldComputeResource,omitempty"`
 	// The original quota of storage capacity.
+	//
+	// example:
+	//
+	// 900
 	OldDocSize *int32 `json:"oldDocSize,omitempty" xml:"oldDocSize,omitempty"`
-	// The original application specifications.
+	// The original specifications of the application.
+	//
+	// example:
+	//
+	// "opensearch.private.common"
 	OldSpec *string `json:"oldSpec,omitempty" xml:"oldSpec,omitempty"`
 	// Indicates whether the ticket is pending.
+	//
+	// example:
+	//
+	// false
 	Pending *bool `json:"pending,omitempty" xml:"pending,omitempty"`
 }
 
@@ -11441,9 +17652,9 @@ func (s *ListQuotaReviewTasksResponseBodyResult) SetPending(v bool) *ListQuotaRe
 }
 
 type ListQuotaReviewTasksResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListQuotaReviewTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQuotaReviewTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListQuotaReviewTasksResponse) String() string {
@@ -11470,10 +17681,30 @@ func (s *ListQuotaReviewTasksResponse) SetBody(v *ListQuotaReviewTasksResponseBo
 }
 
 type ListScheduledTasksRequest struct {
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The scheduled task type. Valid values:
+	//
+	// 	- wipe: data cleaning.
+	//
+	// 	- fork: reindexing.
+	//
+	// 	- check-status: application status check.
+	//
+	// 	- index: reindexing.
+	//
+	// example:
+	//
 	// wipe
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -11502,13 +17733,18 @@ func (s *ListScheduledTasksRequest) SetType(v string) *ListScheduledTasksRequest
 }
 
 type ListScheduledTasksResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the scheduled tasks.
+	// The request ID.
 	//
-	// For more information, see [ScheduledTask](~~173610~~).
-	Result []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// The total number of the returned scheduled tasks.
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -11536,9 +17772,9 @@ func (s *ListScheduledTasksResponseBody) SetTotalCount(v int64) *ListScheduledTa
 }
 
 type ListScheduledTasksResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListScheduledTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListScheduledTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListScheduledTasksResponse) String() string {
@@ -11566,6 +17802,10 @@ func (s *ListScheduledTasksResponse) SetBody(v *ListScheduledTasksResponseBody) 
 
 type ListSearchStrategiesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9C6351F5-2E2E-5249-888B-88A74E1B8A65
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -11583,9 +17823,9 @@ func (s *ListSearchStrategiesResponseBody) SetRequestId(v string) *ListSearchStr
 }
 
 type ListSearchStrategiesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSearchStrategiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSearchStrategiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSearchStrategiesResponse) String() string {
@@ -11613,12 +17853,20 @@ func (s *ListSearchStrategiesResponse) SetBody(v *ListSearchStrategiesResponseBo
 
 type ListSecondRanksResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about each fine sort expression.
 	//
-	// For more information, see [SecondRank](~~170008~~).
+	// For more information, see [SecondRank](https://help.aliyun.com/document_detail/170008.html).
 	Result []*ListSecondRanksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -11647,30 +17895,68 @@ func (s *ListSecondRanksResponseBody) SetTotalCount(v int32) *ListSecondRanksRes
 
 type ListSecondRanksResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
+	//
+	// example:
+	//
+	// false
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The time when the expression was created.
+	//
+	// example:
+	//
+	// 0
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The description of the expression.
+	//
+	// example:
+	//
+	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The ID of the expression. This parameter appears only in the response.
+	//
+	// example:
+	//
+	// 890473
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	IsDefault *string `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
 	// Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	IsSys *string `json:"isSys,omitempty" xml:"isSys,omitempty"`
 	// The content of the fine sort expression.
 	//
 	// You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+	//
+	// example:
+	//
+	// random()+now()
 	Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
 	// The name of the expression.
+	//
+	// example:
+	//
+	// tests
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The time when the expression was last updated.
+	//
+	// example:
+	//
+	// 1587052801
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -11728,9 +18014,9 @@ func (s *ListSecondRanksResponseBodyResult) SetUpdated(v int32) *ListSecondRanks
 }
 
 type ListSecondRanksResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSecondRanksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSecondRanksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSecondRanksResponse) String() string {
@@ -11758,6 +18044,10 @@ func (s *ListSecondRanksResponse) SetBody(v *ListSecondRanksResponseBody) *ListS
 
 type ListSlowQueryCategoriesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4406F40B-A0A2-9D5D-531F-3B6936567584
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The data returned.
 	Result *ListSlowQueryCategoriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -11784,15 +18074,31 @@ func (s *ListSlowQueryCategoriesResponseBody) SetResult(v *ListSlowQueryCategori
 type ListSlowQueryCategoriesResponseBodyResult struct {
 	// The status of the analysis. Valid values:
 	//
-	// *   PENDING: preparing
-	// *   SUCCESS: succeeded
-	// *   RUNNING: running
-	// *   FAILED: failed
-	// *   N/A: unknown
+	// 	- PENDING: preparing
+	//
+	// 	- SUCCESS: succeeded
+	//
+	// 	- RUNNING: running
+	//
+	// 	- FAILED: failed
+	//
+	// 	- N/A: unknown
+	//
+	// example:
+	//
+	// "PENDING"
 	AnalyzeStatus *string `json:"analyzeStatus,omitempty" xml:"analyzeStatus,omitempty"`
 	// The timestamp that indicates the end of the time range to query.
+	//
+	// example:
+	//
+	// 1589990340
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
 	// The timestamp that indicates the beginning of the time range to query.
+	//
+	// example:
+	//
+	// 1589986800
 	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`
 }
 
@@ -11820,9 +18126,9 @@ func (s *ListSlowQueryCategoriesResponseBodyResult) SetStart(v int32) *ListSlowQ
 }
 
 type ListSlowQueryCategoriesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSlowQueryCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSlowQueryCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSlowQueryCategoriesResponse) String() string {
@@ -11850,6 +18156,10 @@ func (s *ListSlowQueryCategoriesResponse) SetBody(v *ListSlowQueryCategoriesResp
 
 type ListSlowQueryQueriesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EB250CA0-ACFD-C5DE-17CD-01445BFE8AE5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The return result.
 	Result *ListSlowQueryQueriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -11875,12 +18185,28 @@ func (s *ListSlowQueryQueriesResponseBody) SetResult(v *ListSlowQueryQueriesResp
 
 type ListSlowQueryQueriesResponseBodyResult struct {
 	// The content of the optimization suggestion for the query.
+	//
+	// example:
+	//
+	// no data
 	AppQuery *string `json:"appQuery,omitempty" xml:"appQuery,omitempty"`
 	// The end of the time range that was queried.
+	//
+	// example:
+	//
+	// 1589990340
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
 	// The ID of the optimization suggestion.
+	//
+	// example:
+	//
+	// 0
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
 	// The beginning of the time range that was queried.
+	//
+	// example:
+	//
+	// 1589986800
 	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`
 }
 
@@ -11913,9 +18239,9 @@ func (s *ListSlowQueryQueriesResponseBodyResult) SetStart(v int32) *ListSlowQuer
 }
 
 type ListSlowQueryQueriesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSlowQueryQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSlowQueryQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSlowQueryQueriesResponse) String() string {
@@ -11942,11 +18268,15 @@ func (s *ListSlowQueryQueriesResponse) SetBody(v *ListSlowQueryQueriesResponseBo
 }
 
 type ListSortExpressionsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the rough sort or fine sort expressions that were returned.
+	// The request ID.
 	//
-	// For more information, see [FirstRank](~~170007~~) and [SecondRank](~~170008~~).
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about the rough sort or fine sort expressions that are returned.
+	//
+	// For more information, see [FirstRank](https://help.aliyun.com/document_detail/170007.html) and [SecondRank](https://help.aliyun.com/document_detail/170008.html).
 	Result []*ListSortExpressionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -11970,14 +18300,34 @@ func (s *ListSortExpressionsResponseBody) SetResult(v []*ListSortExpressionsResp
 
 type ListSortExpressionsResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// The time when the expression was created.
+	// The timestamp when the sort expression was created.
+	//
+	// example:
+	//
+	// 1655793690
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The description of the expression.
+	// The description of the sort expression.
+	//
+	// example:
+	//
+	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the expression.
+	// The name of the sort expression.
+	//
+	// example:
+	//
+	// default
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The time when the expression was last updated.
+	// The timestamp when the sort expression was updated.
+	//
+	// example:
+	//
+	// 1655793690
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -12015,9 +18365,9 @@ func (s *ListSortExpressionsResponseBodyResult) SetUpdated(v int32) *ListSortExp
 }
 
 type ListSortExpressionsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSortExpressionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSortExpressionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSortExpressionsResponse) String() string {
@@ -12044,9 +18394,13 @@ func (s *ListSortExpressionsResponse) SetBody(v *ListSortExpressionsResponseBody
 }
 
 type ListSortScriptsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The scripts of the application version.
+	// The scripts.
 	Result []*ListSortScriptsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -12070,22 +18424,50 @@ func (s *ListSortScriptsResponseBody) SetResult(v []*ListSortScriptsResponseBody
 
 type ListSortScriptsResponseBodyResult struct {
 	// The time when the script was created.
+	//
+	// example:
+	//
+	// 2020-04-02 20:21:14
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The time when the script was last modified.
+	//
+	// example:
+	//
+	// 2020-04-02 21:21:14
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
 	// The sort phase to which the script applies.
+	//
+	// example:
+	//
+	// second_rank
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	// The name of the script.
+	//
+	// example:
+	//
+	// test
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
 	// The status of the script. Valid values:
 	//
-	// *   configurable: The script is created, but no script files are uploaded.
-	// *   not compiled: The script is not compiled.
-	// *   compile failed: The compilation of the script failed.
-	// *   compile successful: The script is compiled.
-	// *   released: The script is published.
+	// 	- configurable: The script is created, but no script files are uploaded.
+	//
+	// 	- not compiled: The script is not compiled.
+	//
+	// 	- compile failed: The compilation of the script failed.
+	//
+	// 	- compile successful: The script is compiled.
+	//
+	// 	- released: The script is published.
+	//
+	// example:
+	//
+	// released
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The type of the script.
+	//
+	// example:
+	//
+	// cava_script
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -12128,9 +18510,9 @@ func (s *ListSortScriptsResponseBodyResult) SetType(v string) *ListSortScriptsRe
 }
 
 type ListSortScriptsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSortScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSortScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSortScriptsResponse) String() string {
@@ -12157,23 +18539,55 @@ func (s *ListSortScriptsResponse) SetBody(v *ListSortScriptsResponseBody) *ListS
 }
 
 type ListStatisticLogsRequest struct {
-	// The fields to query. Example: columns=wordsTopPv.
+	// The fields to query. Format: columns=wordsTopPv.
 	//
-	// For more information, see [Metrics in statistical reports](https://www.alibabacloud.com/help/en/opensearch/latest/statistical-report).
+	// For more information, see [Metrics in statistical reports](https://help.aliyun.com/document_detail/187665.html).
+	//
+	// example:
+	//
+	// wordsTopPv
 	Columns *string `json:"columns,omitempty" xml:"columns,omitempty"`
-	// The content of the query clause.
+	// Specifies whether to use the distinct clause.
+	//
+	// example:
+	//
+	// true
 	Distinct *bool `json:"distinct,omitempty" xml:"distinct,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The content of the query clause.
+	//
+	// example:
+	//
+	// "default:\\"OpenSearch\\""
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The content of the sort clause.
+	//
+	// example:
+	//
+	// "-id"
 	SortBy *string `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
 	// The beginning of the time range to query. The default value is the timestamp of 00:00:00 on the current day.
+	//
+	// example:
+	//
+	// 1582214400
 	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The end of the time range to query. The default value is the timestamp of 24:00:00 on the current day.
+	//
+	// example:
+	//
+	// 1682222400
 	StopTime *int32 `json:"stopTime,omitempty" xml:"stopTime,omitempty"`
 }
 
@@ -12226,13 +18640,25 @@ func (s *ListStatisticLogsRequest) SetStopTime(v int32) *ListStatisticLogsReques
 }
 
 type ListStatisticLogsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result. For more information, see:
+	// The request ID.
 	//
-	// *   [Parameters of hotwords rankings](~~421248~~)
+	// example:
+	//
+	// F76ACE3D-E510-EE2C-B7B1-39B3136A61EE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned result. For more information, see
+	//
+	// 	- [Parameters of hotwords rankings](https://help.aliyun.com/document_detail/421248.html).
+	//
+	// example:
+	//
+	// []
 	Result []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// The total number of the queried logs.
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -12260,9 +18686,9 @@ func (s *ListStatisticLogsResponseBody) SetTotalCount(v int64) *ListStatisticLog
 }
 
 type ListStatisticLogsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListStatisticLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListStatisticLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListStatisticLogsResponse) String() string {
@@ -12290,15 +18716,39 @@ func (s *ListStatisticLogsResponse) SetBody(v *ListStatisticLogsResponseBody) *L
 
 type ListStatisticReportRequest struct {
 	// pv,uv
+	//
+	// example:
+	//
+	// pv,uv
 	Columns *string `json:"columns,omitempty" xml:"columns,omitempty"`
+	// 1582646399
+	//
+	// example:
+	//
 	// 1582646399
 	EndTime *int32 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// 1
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// 10
+	//
+	// example:
+	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// bizType:test,sceneTag:myTag
+	//
+	// example:
+	//
+	// bizType:test,sceneTag:myTag
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// 1582214400
+	//
+	// example:
+	//
 	// 1582214400
 	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
@@ -12343,16 +18793,28 @@ func (s *ListStatisticReportRequest) SetStartTime(v int32) *ListStatisticReportR
 
 type ListStatisticReportResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65C8BB2-C14F-5983-888B-41C4E082D3BC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The queried reports. Valid values:
 	//
-	// For more information about the metrics in data quality reports, see the Upload behavioral data section of [Data collection 2.0](~~131547~~).
+	// For more information about the metrics in data quality reports, see the Upload behavioral data section of [Data collection 2.0](https://help.aliyun.com/document_detail/131547.html).
 	//
-	// For more information about the metrics in application and A/B test reports, see the Core metrics section of [Metrics of statistical reports](~~187654~~).
+	// For more information about the metrics in application and A/B test reports, see the Core metrics section of [Metrics of statistical reports](https://help.aliyun.com/document_detail/187654.html).
 	//
-	// For more information about the metrics in query analysis reports, see the Query analysis metrics section of [Metrics of statistical reports](~~187654~~).
+	// For more information about the metrics in query analysis reports, see the Query analysis metrics section of [Metrics of statistical reports](https://help.aliyun.com/document_detail/187654.html).
+	//
+	// example:
+	//
+	// []
 	Result []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of the queried reports.
+	//
+	// example:
+	//
+	// 43
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -12380,9 +18842,9 @@ func (s *ListStatisticReportResponseBody) SetTotalCount(v int64) *ListStatisticR
 }
 
 type ListStatisticReportResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListStatisticReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListStatisticReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListStatisticReportResponse) String() string {
@@ -12410,10 +18872,20 @@ func (s *ListStatisticReportResponse) SetBody(v *ListStatisticReportResponseBody
 
 type ListTagResourcesRequest struct {
 	// The token that is used to retrieve the next page.
+	//
+	// example:
+	//
+	// 60
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The resource IDs. You can specify a maximum number of 50 resource IDs.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BIGDATA
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The tags. You can specify a maximum number of 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
@@ -12449,8 +18921,16 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 
 type ListTagResourcesRequestTag struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// bm
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// Uefi
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -12474,10 +18954,20 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesShrinkRequest struct {
 	// The token that is used to retrieve the next page.
+	//
+	// example:
+	//
+	// 60
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The resource IDs. You can specify a maximum number of 50 resource IDs.
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BIGDATA
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The tags. You can specify a maximum number of 20 tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
@@ -12513,8 +19003,16 @@ func (s *ListTagResourcesShrinkRequest) SetTagShrink(v string) *ListTagResources
 
 type ListTagResourcesResponseBody struct {
 	// The token that is used to retrieve the next page.
+	//
+	// example:
+	//
+	// 20
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The resources.
 	Result []*ListTagResourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -12545,12 +19043,28 @@ func (s *ListTagResourcesResponseBody) SetResult(v []*ListTagResourcesResponseBo
 
 type ListTagResourcesResponseBodyResult struct {
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// 54041
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// hostGroup
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The key of the tag.
+	//
+	// example:
+	//
+	// GENIE_FUNCTION
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// ALLOW
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -12583,9 +19097,9 @@ func (s *ListTagResourcesResponseBodyResult) SetTagValue(v string) *ListTagResou
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -12613,10 +19127,22 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ListUserAnalyzerEntriesRequest struct {
 	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The key to be used to query entries.
+	//
+	// example:
+	//
+	// kevintest
 	Word *string `json:"word,omitempty" xml:"word,omitempty"`
 }
 
@@ -12645,8 +19171,16 @@ func (s *ListUserAnalyzerEntriesRequest) SetWord(v string) *ListUserAnalyzerEntr
 
 type ListUserAnalyzerEntriesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 516A02B7-2167-8D92-12D0-B639A2A0F3C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The entries of the custom analyzer. For more information, see UserAnalyzerEntry.
+	// The entries of the custom analyzer. For more information, see [UserAnalyzerEntry](https://www.alibabacloud.com/help/en/open-search/industry-algorithm-edition/useranalyzerentry).
+	//
+	// example:
+	//
+	// []
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -12669,9 +19203,9 @@ func (s *ListUserAnalyzerEntriesResponseBody) SetResult(v map[string]interface{}
 }
 
 type ListUserAnalyzerEntriesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserAnalyzerEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserAnalyzerEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserAnalyzerEntriesResponse) String() string {
@@ -12699,8 +19233,16 @@ func (s *ListUserAnalyzerEntriesResponse) SetBody(v *ListUserAnalyzerEntriesResp
 
 type ListUserAnalyzersRequest struct {
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
@@ -12724,12 +19266,20 @@ func (s *ListUserAnalyzersRequest) SetPageSize(v int32) *ListUserAnalyzersReques
 
 type ListUserAnalyzersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The custom analyzer.
 	//
-	// For more information, see [UserAnalyzer](~~178934~~).
+	// For more information, see [UserAnalyzer](https://help.aliyun.com/document_detail/178934.html).
 	Result []*ListUserAnalyzersResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -12758,33 +19308,68 @@ func (s *ListUserAnalyzersResponseBody) SetTotalCount(v int32) *ListUserAnalyzer
 
 type ListUserAnalyzersResponseBodyResult struct {
 	// Indicates whether the application is available.
+	//
+	// example:
+	//
+	// false
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
 	// The basic analyzer. Valid values:
 	//
-	// *   chn_standard: [a common analyzer in Chinese](~~179424~~)
-	// *   chn_scene_name: an analyzer for person names in Chinese
-	// *   chn_ecommerce: [an analyzer for E-commerce in Chinese](~~179424~~)
-	// *   chn_it_content: [an analyzer for IT content in Chinese](~~179424~~)
-	// *   en_min: a small-granularity analyzer in English
-	// *   th_standard: a common analyzer in Thai
-	// *   th_ecommerce: an analyzer for E-commerce in Thai
-	// *   vn_standard: a common analyzer in Vietnamese
-	// *   chn_community_it: an analyzer for IT community content in Chinese
-	// *   chn_ecommerce_general: a common analyzer for the E-commerce industry in Chinese
-	// *   chn_esports_general: a common analyzer for the gaming industry in Chinese
-	// *   chn_edu_question: an analyzer for question search of the education industry in Chinese
+	// 	- chn_standard: [a common analyzer in Chinese](https://help.aliyun.com/document_detail/179424.html)
+	//
+	// 	- chn_scene_name: an analyzer for person names in Chinese
+	//
+	// 	- chn_ecommerce: [an analyzer for E-commerce in Chinese](https://help.aliyun.com/document_detail/179424.html)
+	//
+	// 	- chn_it_content: [an analyzer for IT content in Chinese](https://help.aliyun.com/document_detail/179424.html)
+	//
+	// 	- en_min: a small-granularity analyzer in English
+	//
+	// 	- th_standard: a common analyzer in Thai
+	//
+	// 	- th_ecommerce: an analyzer for E-commerce in Thai
+	//
+	// 	- vn_standard: a common analyzer in Vietnamese
+	//
+	// 	- chn_community_it: an analyzer for IT community content in Chinese
+	//
+	// 	- chn_ecommerce_general: a common analyzer for the E-commerce industry in Chinese
+	//
+	// 	- chn_esports_general: a common analyzer for the gaming industry in Chinese
+	//
+	// 	- chn_edu_question: an analyzer for question search of the education industry in Chinese
+	//
+	// example:
+	//
+	// chn_standard
 	Business *string `json:"business,omitempty" xml:"business,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1588054131
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The dictionaries that are used by the custom analyzer.
 	//
-	// For more information, see [UserDict](~~178933~~).
+	// For more information, see [UserDict](https://help.aliyun.com/document_detail/178933.html).
 	Dicts []*ListUserAnalyzersResponseBodyResultDicts `json:"dicts,omitempty" xml:"dicts,omitempty" type:"Repeated"`
 	// The ID of the custom analyzer.
+	//
+	// example:
+	//
+	// 1234
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the custom analyzer.
+	//
+	// example:
+	//
+	// kevin_test2
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The timestamp when the application was last updated.
+	//
+	// example:
+	//
+	// 1588054131
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -12833,20 +19418,48 @@ func (s *ListUserAnalyzersResponseBodyResult) SetUpdated(v int32) *ListUserAnaly
 
 type ListUserAnalyzersResponseBodyResultDicts struct {
 	// Indicates whether the application is available.
+	//
+	// example:
+	//
+	// false
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1588054131
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The number of intervention entries.
+	//
+	// example:
+	//
+	// -1
 	EntriesCount *int32 `json:"entriesCount,omitempty" xml:"entriesCount,omitempty"`
 	// The maximum number of intervention entries that can be created in the dictionary.
+	//
+	// example:
+	//
+	// 4
 	EntriesLimit *int32 `json:"entriesLimit,omitempty" xml:"entriesLimit,omitempty"`
 	// The ID of the dictionary.
+	//
+	// example:
+	//
+	// 123
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The type. Valid value:
 	//
-	// *   segment
+	// 	- segment
+	//
+	// example:
+	//
+	// segment
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The timestamp when the application was last updated.
+	//
+	// example:
+	//
+	// 1588054131
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -12894,9 +19507,9 @@ func (s *ListUserAnalyzersResponseBodyResultDicts) SetUpdated(v int32) *ListUser
 }
 
 type ListUserAnalyzersResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserAnalyzersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserAnalyzersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserAnalyzersResponse) String() string {
@@ -12924,20 +19537,44 @@ func (s *ListUserAnalyzersResponse) SetBody(v *ListUserAnalyzersResponseBody) *L
 
 type ModifyAppGroupRequest struct {
 	// The online version of the application.
+	//
+	// example:
+	//
+	// 1223232
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// "test"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The type of the industry. Valid values:
 	//
-	// *   general: general.
-	// *   ecommerce: e-commerce.
-	// *   education: education.
-	// *   esports: electronic sports.
-	// *   community: content community.
+	// 	- general: general.
+	//
+	// 	- ecommerce: e-commerce.
+	//
+	// 	- education: education.
+	//
+	// 	- esports: electronic sports.
+	//
+	// 	- community: content community.
+	//
+	// example:
+	//
+	// "ecommerce"
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// Specifies whether to verify the application before modification. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -12976,8 +19613,16 @@ func (s *ModifyAppGroupRequest) SetDryRun(v bool) *ModifyAppGroupRequest {
 
 type ModifyAppGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The returned data.
+	//
+	// example:
+	//
+	// {}
 	Result *ModifyAppGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -13002,86 +19647,169 @@ func (s *ModifyAppGroupResponseBody) SetResult(v *ModifyAppGroupResponseBodyResu
 type ModifyAppGroupResponseBodyResult struct {
 	// The billing method. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go.
-	// *   PREPAY: subscription.
+	// 	- POSTPAY: pay-as-you-go.
+	//
+	// 	- PREPAY: subscription.
+	//
+	// example:
+	//
+	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The billable item. Valid values:
 	//
-	// *   1: computing resources.
-	// *   2: QPS.
+	// 	- 1: computing resources.
+	//
+	// 	- 2: QPS.
+	//
+	// example:
+	//
+	// 1
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
 	// The code of the commodity.
+	//
+	// example:
+	//
+	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1590139524
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the current online version.
+	//
+	// example:
+	//
+	// 100302903
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The type of the industry. Valid values:
 	//
-	// *   GENERAL: general.
-	// *   ECOMMERCE: e-commerce.
-	// *   IT_CONTENT: IT content.
-	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// 	- GENERAL: general.
+	//
+	// 	- ECOMMERCE: e-commerce.
+	//
+	// 	- IT_CONTENT: IT content.
+	//
+	// example:
+	//
+	// GENERAL
+	Domain     *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
 	// The time when the application expired.
+	//
+	// example:
+	//
+	// 1
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The ID of the rough sort expression.
-	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
 	// The approval status of the quotas. Valid values:
 	//
-	// *   0: normal.
-	// *   1: being approved.
+	// 	- 0: normal.
+	//
+	// 	- 1: being approved.
+	//
+	// example:
+	//
+	// 0
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
 	// The application ID.
+	//
+	// example:
+	//
+	// 100302881
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// 10030288
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The lock status. Valid values:
 	//
-	// *   Unlock: The instance is unlocked.
-	// *   LockByExpiration: The instance is automatically locked after it expires.
-	// *   ManualLock: The instance is manually locked.
-	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// Indicates whether the instance expires and is automatically locked. Valid values:
+	// 	- Unlock: The instance is unlocked.
 	//
-	// *   0: no.
-	// *   1: yes.
-	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
+	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	//
+	// 	- ManualLock: The instance is manually locked.
+	//
+	// example:
+	//
+	// Unlock
+	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// lsh_test_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the fine sort expression that is being created.
-	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	// The ID of the order that is not complete for the instance.
-	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
 	// Indicates whether the order is complete. Valid values:
 	//
-	// *   0: The order is in progress.
-	// *   1: The order is complete.
+	// 	- 0: The order is in progress.
+	//
+	// 	- 1: The order is complete.
+	//
+	// example:
+	//
+	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
 	// The name of the A/B test group.
+	//
+	// example:
+	//
+	// 1
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	// The information about the quotas of the application.
-	Quota *ModifyAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The ID of the fine sort expression.
-	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
+	//
+	// example:
+	//
+	// {}
+	Quota           *ModifyAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	ResourceGroupId *string                                `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The state of the application. Valid values:
 	//
-	// *   producing: being produced.
-	// *   review_pending: being approved.
-	// *   config_pending: to be configured.
-	// *   normal: normal.
-	// *   frozen: frozen.
+	// 	- producing: being produced.
+	//
+	// 	- review_pending: being approved.
+	//
+	// 	- config_pending: to be configured.
+	//
+	// 	- normal: normal.
+	//
+	// 	- frozen: frozen.
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
+	//
+	// example:
+	//
+	// 1590486386
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
 	// The type of the application. Valid values:
 	//
-	// *   standard: a standard edition application.
-	// *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
-	// *   enhanced: an advanced edition application of a new version.
+	// 	- standard: a standard edition application.
+	//
+	// 	- advance: an advanced edition application of an old version. New versions are not supported for this edition.
+	//
+	// 	- enhanced: an advanced edition application of a new version.
+	//
+	// example:
+	//
+	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The timestamp when the application was last modified.
+	//
+	// example:
+	//
+	// 1590978265
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -13128,13 +19856,13 @@ func (s *ModifyAppGroupResponseBodyResult) SetDomain(v string) *ModifyAppGroupRe
 	return s
 }
 
-func (s *ModifyAppGroupResponseBodyResult) SetExpireOn(v string) *ModifyAppGroupResponseBodyResult {
-	s.ExpireOn = &v
+func (s *ModifyAppGroupResponseBodyResult) SetEngineType(v string) *ModifyAppGroupResponseBodyResult {
+	s.EngineType = &v
 	return s
 }
 
-func (s *ModifyAppGroupResponseBodyResult) SetFirstRankAlgoDeploymentId(v int32) *ModifyAppGroupResponseBodyResult {
-	s.FirstRankAlgoDeploymentId = &v
+func (s *ModifyAppGroupResponseBodyResult) SetExpireOn(v string) *ModifyAppGroupResponseBodyResult {
+	s.ExpireOn = &v
 	return s
 }
 
@@ -13158,23 +19886,8 @@ func (s *ModifyAppGroupResponseBodyResult) SetLockMode(v string) *ModifyAppGroup
 	return s
 }
 
-func (s *ModifyAppGroupResponseBodyResult) SetLockedByExpiration(v int32) *ModifyAppGroupResponseBodyResult {
-	s.LockedByExpiration = &v
-	return s
-}
-
 func (s *ModifyAppGroupResponseBodyResult) SetName(v string) *ModifyAppGroupResponseBodyResult {
 	s.Name = &v
-	return s
-}
-
-func (s *ModifyAppGroupResponseBodyResult) SetPendingSecondRankAlgoDeploymentId(v int32) *ModifyAppGroupResponseBodyResult {
-	s.PendingSecondRankAlgoDeploymentId = &v
-	return s
-}
-
-func (s *ModifyAppGroupResponseBodyResult) SetProcessingOrderId(v string) *ModifyAppGroupResponseBodyResult {
-	s.ProcessingOrderId = &v
 	return s
 }
 
@@ -13193,8 +19906,8 @@ func (s *ModifyAppGroupResponseBodyResult) SetQuota(v *ModifyAppGroupResponseBod
 	return s
 }
 
-func (s *ModifyAppGroupResponseBodyResult) SetSecondRankAlgoDeploymentId(v int32) *ModifyAppGroupResponseBodyResult {
-	s.SecondRankAlgoDeploymentId = &v
+func (s *ModifyAppGroupResponseBodyResult) SetResourceGroupId(v string) *ModifyAppGroupResponseBodyResult {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -13220,18 +19933,36 @@ func (s *ModifyAppGroupResponseBodyResult) SetUpdated(v int32) *ModifyAppGroupRe
 
 type ModifyAppGroupResponseBodyResultQuota struct {
 	// The computing resources. Unit: logical computing unit (LCU).
+	//
+	// example:
+	//
+	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
 	// The storage capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications. Valid values:
 	//
-	// *   opensearch.share.junior: basic.
-	// *   opensearch.share.common: shared general-purpose.
-	// *   opensearch.share.compute: shared computing.
-	// *   opensearch.share.storage: shared storage.
-	// *   opensearch.private.common: exclusive general-purpose.
-	// *   opensearch.private.compute: exclusive computing.
-	// *   opensearch.private.storage: exclusive storage.
+	// 	- opensearch.share.junior: basic.
+	//
+	// 	- opensearch.share.common: shared general-purpose.
+	//
+	// 	- opensearch.share.compute: shared computing.
+	//
+	// 	- opensearch.share.storage: shared storage.
+	//
+	// 	- opensearch.private.common: exclusive general-purpose.
+	//
+	// 	- opensearch.private.compute: exclusive computing.
+	//
+	// 	- opensearch.private.storage: exclusive storage.
+	//
+	// example:
+	//
+	// opensearch.share.common
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -13259,9 +19990,9 @@ func (s *ModifyAppGroupResponseBodyResultQuota) SetSpec(v string) *ModifyAppGrou
 }
 
 type ModifyAppGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAppGroupResponse) String() string {
@@ -13288,8 +20019,14 @@ func (s *ModifyAppGroupResponse) SetBody(v *ModifyAppGroupResponseBody) *ModifyA
 }
 
 type ModifyAppGroupQuotaRequest struct {
-	Body   *Quota `json:"body,omitempty" xml:"body,omitempty"`
-	DryRun *bool  `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body.
+	Body *Quota `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to verify the application before modification. Valid values: true and false.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s ModifyAppGroupQuotaRequest) String() string {
@@ -13312,6 +20049,10 @@ func (s *ModifyAppGroupQuotaRequest) SetDryRun(v bool) *ModifyAppGroupQuotaReque
 
 type ModifyAppGroupQuotaResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the application.
 	Result *ModifyAppGroupQuotaResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -13338,76 +20079,153 @@ func (s *ModifyAppGroupQuotaResponseBody) SetResult(v *ModifyAppGroupQuotaRespon
 type ModifyAppGroupQuotaResponseBodyResult struct {
 	// The billing method of the application. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go
-	// *   PREPAY: subscription
+	// 	- POSTPAY: pay-as-you-go
+	//
+	// 	- PREPAY: subscription
+	//
+	// example:
+	//
+	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The billing model. Valid values:
 	//
-	// *   1: computing resources
-	// *   2: queries per second (QPS)
+	// 	- 1: computing resources
+	//
+	// 	- 2: queries per second (QPS)
+	//
+	// example:
+	//
+	// 1
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
 	// The code of the commodity.
+	//
+	// example:
+	//
+	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1590139542
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the current online version.
+	//
+	// example:
+	//
+	// 100302903
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	EngineType  *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
 	// The expiration time.
+	//
+	// example:
+	//
+	// 1
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The ID of the created rough sort expression.
-	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
 	// The approval status of the quotas. Valid values:
 	//
-	// *   0: The quotas are approved.
-	// *   1: The quotas are being approved.
+	// 	- 0: The quotas are approved.
+	//
+	// 	- 1: The quotas are being approved.
+	//
+	// example:
+	//
+	// 0
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
 	// The ID of the application.
+	//
+	// example:
+	//
+	// 100302881
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// 1
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
-	// *   Unlock: The instance is not locked.
-	// *   LockByExpiration: The instance is automatically locked after it expires.
-	// *   ManualLock: The instance is manually locked.
-	LockMode           *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	LockedByExpiration *int32  `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
+	// 	- Unlock: The instance is not locked.
+	//
+	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	//
+	// 	- ManualLock: The instance is manually locked.
+	//
+	// example:
+	//
+	// Unlock
+	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// lsh_test_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the fine sort expression that is being created.
-	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	// The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
-	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
 	// Indicates whether the order is complete. Valid values:
 	//
-	// *   0: The order is in progress.
-	// *   1: The order is complete.
+	// 	- 0: The order is in progress.
+	//
+	// 	- 1: The order is complete.
+	//
+	// example:
+	//
+	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
 	// The name of the A/B test group.
+	//
+	// example:
+	//
+	// 1000
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	// The information about the quotas of the application.
-	Quota *ModifyAppGroupQuotaResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The ID of the created fine sort expression.
-	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
+	Quota           *ModifyAppGroupQuotaResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	ResourceGroupId *string                                     `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The status of the application. Valid values:
 	//
-	// *   producing
-	// *   review_pending
-	// *   config_pending
-	// *   normal
-	// *   frozen
+	// 	- producing
+	//
+	// 	- review_pending
+	//
+	// 	- config_pending
+	//
+	// 	- normal
+	//
+	// 	- frozen
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
+	//
+	// example:
+	//
+	// 1590486386
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
 	// The type of the application. Valid values:
 	//
-	// *   standard: a standard application.
-	// *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-	// *   enhanced: an advanced application which is of a new application type.
+	// 	- standard: a standard application.
+	//
+	// 	- advance: an advanced application which is of an old application type. New applications cannot be of this type.
+	//
+	// 	- enhanced: an advanced application which is of a new application type.
+	//
+	// example:
+	//
+	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The timestamp when the application was last updated.
+	//
+	// example:
+	//
+	// 1590978265
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -13449,13 +20267,13 @@ func (s *ModifyAppGroupQuotaResponseBodyResult) SetDescription(v string) *Modify
 	return s
 }
 
-func (s *ModifyAppGroupQuotaResponseBodyResult) SetExpireOn(v string) *ModifyAppGroupQuotaResponseBodyResult {
-	s.ExpireOn = &v
+func (s *ModifyAppGroupQuotaResponseBodyResult) SetEngineType(v string) *ModifyAppGroupQuotaResponseBodyResult {
+	s.EngineType = &v
 	return s
 }
 
-func (s *ModifyAppGroupQuotaResponseBodyResult) SetFirstRankAlgoDeploymentId(v int32) *ModifyAppGroupQuotaResponseBodyResult {
-	s.FirstRankAlgoDeploymentId = &v
+func (s *ModifyAppGroupQuotaResponseBodyResult) SetExpireOn(v string) *ModifyAppGroupQuotaResponseBodyResult {
+	s.ExpireOn = &v
 	return s
 }
 
@@ -13479,23 +20297,8 @@ func (s *ModifyAppGroupQuotaResponseBodyResult) SetLockMode(v string) *ModifyApp
 	return s
 }
 
-func (s *ModifyAppGroupQuotaResponseBodyResult) SetLockedByExpiration(v int32) *ModifyAppGroupQuotaResponseBodyResult {
-	s.LockedByExpiration = &v
-	return s
-}
-
 func (s *ModifyAppGroupQuotaResponseBodyResult) SetName(v string) *ModifyAppGroupQuotaResponseBodyResult {
 	s.Name = &v
-	return s
-}
-
-func (s *ModifyAppGroupQuotaResponseBodyResult) SetPendingSecondRankAlgoDeploymentId(v int32) *ModifyAppGroupQuotaResponseBodyResult {
-	s.PendingSecondRankAlgoDeploymentId = &v
-	return s
-}
-
-func (s *ModifyAppGroupQuotaResponseBodyResult) SetProcessingOrderId(v string) *ModifyAppGroupQuotaResponseBodyResult {
-	s.ProcessingOrderId = &v
 	return s
 }
 
@@ -13514,8 +20317,8 @@ func (s *ModifyAppGroupQuotaResponseBodyResult) SetQuota(v *ModifyAppGroupQuotaR
 	return s
 }
 
-func (s *ModifyAppGroupQuotaResponseBodyResult) SetSecondRankAlgoDeploymentId(v int32) *ModifyAppGroupQuotaResponseBodyResult {
-	s.SecondRankAlgoDeploymentId = &v
+func (s *ModifyAppGroupQuotaResponseBodyResult) SetResourceGroupId(v string) *ModifyAppGroupQuotaResponseBodyResult {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -13541,18 +20344,36 @@ func (s *ModifyAppGroupQuotaResponseBodyResult) SetUpdated(v int32) *ModifyAppGr
 
 type ModifyAppGroupQuotaResponseBodyResultQuota struct {
 	// The computing resources. Unit: logical computing units (LCUs).
+	//
+	// example:
+	//
+	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
 	// The storage capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications of the application. Valid values:
 	//
-	// *   opensearch.share.junior: basic
-	// *   opensearch.share.common: shared general-purpose
-	// *   opensearch.share.compute: shared computing
-	// *   opensearch.share.storage: shared storage
-	// *   opensearch.private.common: exclusive general-purpose
-	// *   opensearch.private.compute: exclusive computing
-	// *   opensearch.private.storage: exclusive storage
+	// 	- opensearch.share.junior: basic
+	//
+	// 	- opensearch.share.common: shared general-purpose
+	//
+	// 	- opensearch.share.compute: shared computing
+	//
+	// 	- opensearch.share.storage: shared storage
+	//
+	// 	- opensearch.private.common: exclusive general-purpose
+	//
+	// 	- opensearch.private.compute: exclusive computing
+	//
+	// 	- opensearch.private.storage: exclusive storage
+	//
+	// example:
+	//
+	// opensearch.share.common
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -13580,9 +20401,9 @@ func (s *ModifyAppGroupQuotaResponseBodyResultQuota) SetSpec(v string) *ModifyAp
 }
 
 type ModifyAppGroupQuotaResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAppGroupQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppGroupQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAppGroupQuotaResponse) String() string {
@@ -13609,7 +20430,12 @@ func (s *ModifyAppGroupQuotaResponse) SetBody(v *ModifyAppGroupQuotaResponseBody
 }
 
 type ModifyFirstRankRequest struct {
+	// The request body.
 	Body *FirstRank `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether the request is a dry run.
+	//
+	// example:
+	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
@@ -13633,7 +20459,11 @@ func (s *ModifyFirstRankRequest) SetDryRun(v bool) *ModifyFirstRankRequest {
 }
 
 type ModifyFirstRankResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the rough sort expression.
 	Result *ModifyFirstRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -13659,12 +20489,24 @@ func (s *ModifyFirstRankResponseBody) SetResult(v *ModifyFirstRankResponseBodyRe
 
 type ModifyFirstRankResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// The description of the expression.
+	// The description of the rough sort expression.
+	//
+	// example:
+	//
+	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The content of the expression.
+	// The information about the expression.
 	Meta []*ModifyFirstRankResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
 	// The name of the expression.
+	//
+	// example:
+	//
+	// default
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -13698,14 +20540,22 @@ func (s *ModifyFirstRankResponseBodyResult) SetName(v string) *ModifyFirstRankRe
 
 type ModifyFirstRankResponseBodyResultMeta struct {
 	// The parameters that are used by a function in the expression.
+	//
+	// example:
+	//
+	// “1 ”
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
 	// The attribute, feature function, or field to be searched for.
 	//
-	// For more information about supported feature functions, see Rough sort functions.
-	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// The weight.
+	// example:
 	//
-	// Valid values: \[-100000,100000] (excluding 0).
+	// static_bm25()
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// The weight. Valid values: -100000 to 100000. The value cannot be 0.
+	//
+	// example:
+	//
+	// 10
 	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
@@ -13733,9 +20583,9 @@ func (s *ModifyFirstRankResponseBodyResultMeta) SetWeight(v float32) *ModifyFirs
 }
 
 type ModifyFirstRankResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFirstRankResponse) String() string {
@@ -13762,7 +20612,42 @@ func (s *ModifyFirstRankResponse) SetBody(v *ModifyFirstRankResponseBody) *Modif
 }
 
 type ModifyQueryProcessorRequest struct {
+	// The request parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "domain": "GENERAL",
+	//
+	//     "category": "",
+	//
+	//     "processors": [
+	//
+	//         {
+	//
+	//             "name": "synonym",
+	//
+	//             "useSystemDictionary": true
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "name": "stop_word",
+	//
+	//             "useSystemDictionary": true
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether the request is a dry run.
+	//
+	// example:
+	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
@@ -13786,9 +20671,17 @@ func (s *ModifyQueryProcessorRequest) SetDryRun(v bool) *ModifyQueryProcessorReq
 }
 
 type ModifyQueryProcessorResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the query analysis rule.
+	//
+	// example:
+	//
+	// {}
 	Result *ModifyQueryProcessorResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -13811,23 +20704,53 @@ func (s *ModifyQueryProcessorResponseBody) SetResult(v *ModifyQueryProcessorResp
 }
 
 type ModifyQueryProcessorResponseBodyResult struct {
-	// Indicates whether the query analysis rule is the default one.
+	// Indicates whether the query analysis rule is a default rule.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The time when the rule was created.
-	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of the industry. Valid values:
 	//
-	// *   GENERAL
-	// *   ECOMMERCE
-	// *   IT_CONTENT
+	// example:
+	//
+	// 0
+	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
+	// The type of the industry to which the query analysis rule is applied. Valid values:
+	//
+	// 	- GENERAL
+	//
+	// 	- ECOMMERCE
+	//
+	// 	- IT_CONTENT
+	//
+	// example:
+	//
+	// GENERAL
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The indexes to which the query analysis rule applies.
+	// The indexes to which the query analysis rule is applied.
+	//
+	// example:
+	//
+	// ["default"]
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 	// The name of the query analysis rule.
+	//
+	// example:
+	//
+	// synonym
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The analysis rule.
+	//
+	// example:
+	//
+	// []
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The most recent update time.
+	// The time when the rule was updated.
+	//
+	// example:
+	//
+	// 1
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -13875,9 +20798,9 @@ func (s *ModifyQueryProcessorResponseBodyResult) SetUpdated(v int32) *ModifyQuer
 }
 
 type ModifyQueryProcessorResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyQueryProcessorResponse) String() string {
@@ -13904,7 +20827,11 @@ func (s *ModifyQueryProcessorResponse) SetBody(v *ModifyQueryProcessorResponseBo
 }
 
 type ModifyScheduledTaskRequest struct {
-	// 请求参数。
+	// The request parameters.
+	//
+	// example:
+	//
+	// The request parameters.
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -13922,9 +20849,17 @@ func (s *ModifyScheduledTaskRequest) SetBody(v interface{}) *ModifyScheduledTask
 }
 
 type ModifyScheduledTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the scheduled task.
+	// The information about the scheduled task.
+	//
+	// example:
+	//
+	// Array
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -13947,9 +20882,9 @@ func (s *ModifyScheduledTaskResponseBody) SetResult(v map[string]interface{}) *M
 }
 
 type ModifyScheduledTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyScheduledTaskResponse) String() string {
@@ -13976,7 +20911,12 @@ func (s *ModifyScheduledTaskResponse) SetBody(v *ModifyScheduledTaskResponseBody
 }
 
 type ModifySecondRankRequest struct {
+	// The request parameters.
 	Body *SecondRank `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether the request is a dry run.
+	//
+	// example:
+	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
@@ -14000,9 +20940,17 @@ func (s *ModifySecondRankRequest) SetDryRun(v bool) *ModifySecondRankRequest {
 }
 
 type ModifySecondRankResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// C5E2F73C-8241-81F8-3A62-65478C5A3111
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the fine sort expression.
+	//
+	// example:
+	//
+	// {}
 	Result *ModifySecondRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -14026,29 +20974,67 @@ func (s *ModifySecondRankResponseBody) SetResult(v *ModifySecondRankResponseBody
 
 type ModifySecondRankResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
-	Active  *bool  `json:"active,omitempty" xml:"active,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
+	// The time when the expression was created.
+	//
+	// example:
+	//
+	// 1
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The description of the expression.
+	//
+	// example:
+	//
+	// "11"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the expression. This parameter appears only in the response.
+	// The expression ID. This parameter is displayed only in the response.
+	//
+	// example:
+	//
+	// 890473
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
+	// Indicates whether the expression is the default one. This parameter is displayed only in the response. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true: the expression is the default one.
+	//
+	// 	- false: the expression is not the default one.
+	//
+	// example:
+	//
+	// true
 	IsDefault *string `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
-	// Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
+	// Indicates whether the expression is a system expression. This parameter is displayed only in the response. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true: The expression is a system expression.
+	//
+	// 	- false:The expression is not a system expression
+	//
+	// example:
+	//
+	// false
 	IsSys *string `json:"isSys,omitempty" xml:"isSys,omitempty"`
-	// The content of the fine sort expression.
+	// The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
 	//
-	// You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+	// example:
+	//
+	// cate_id > 0 and cate_id < 1000
 	Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
-	// The name of the expression.
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	Updated *int32  `json:"updated,omitempty" xml:"updated,omitempty"`
+	// The expression name.
+	//
+	// example:
+	//
+	// lsh_second_1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The time when the expression was updated.
+	//
+	// example:
+	//
+	// 1
+	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
 func (s ModifySecondRankResponseBodyResult) String() string {
@@ -14105,9 +21091,9 @@ func (s *ModifySecondRankResponseBodyResult) SetUpdated(v int32) *ModifySecondRa
 }
 
 type ModifySecondRankResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySecondRankResponse) String() string {
@@ -14134,8 +21120,20 @@ func (s *ModifySecondRankResponse) SetBody(v *ModifySecondRankResponseBody) *Mod
 }
 
 type PushInterventionDictionaryEntriesRequest struct {
-	Body   []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	DryRun *bool                    `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body.
+	Body []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// Specifies whether to check the validity of input parameters. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- **true**: checks only the validity of input parameters.
+	//
+	// 	- **false**: checks the validity of input parameters and creates an attribution configuration.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s PushInterventionDictionaryEntriesRequest) String() string {
@@ -14157,8 +21155,14 @@ func (s *PushInterventionDictionaryEntriesRequest) SetDryRun(v bool) *PushInterv
 }
 
 type PushInterventionDictionaryEntriesResponseBody struct {
-	RequestId *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned results.
+	Result []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s PushInterventionDictionaryEntriesResponseBody) String() string {
@@ -14180,9 +21184,9 @@ func (s *PushInterventionDictionaryEntriesResponseBody) SetResult(v []*string) *
 }
 
 type PushInterventionDictionaryEntriesResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushInterventionDictionaryEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushInterventionDictionaryEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushInterventionDictionaryEntriesResponse) String() string {
@@ -14212,6 +21216,10 @@ type PushUserAnalyzerEntriesRequest struct {
 	// The entries of the custom analyzer.
 	Entries []*PushUserAnalyzerEntriesRequestEntries `json:"entries,omitempty" xml:"entries,omitempty" type:"Repeated"`
 	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -14238,16 +21246,33 @@ type PushUserAnalyzerEntriesRequestEntries struct {
 	//
 	// Valid values:
 	//
-	// *   add
-	// *   delete
+	// 	- add
+	//
+	// 	- delete
+	//
+	// example:
+	//
+	// "add"
 	Cmd *string `json:"cmd,omitempty" xml:"cmd,omitempty"`
 	// The key to be used to query entries.
+	//
+	// example:
+	//
+	// "testvalue"
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// Specifies whether to further analyze the terms that are generated after the search query is analyzed.
 	//
 	// Default value: true.
+	//
+	// example:
+	//
+	// true
 	SplitEnabled *bool `json:"splitEnabled,omitempty" xml:"splitEnabled,omitempty"`
 	// The analysis result.
+	//
+	// example:
+	//
+	// "test value"
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -14281,8 +21306,16 @@ func (s *PushUserAnalyzerEntriesRequestEntries) SetValue(v string) *PushUserAnal
 
 type PushUserAnalyzerEntriesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result returned.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -14305,9 +21338,9 @@ func (s *PushUserAnalyzerEntriesResponseBody) SetResult(v map[string]interface{}
 }
 
 type PushUserAnalyzerEntriesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushUserAnalyzerEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushUserAnalyzerEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushUserAnalyzerEntriesResponse) String() string {
@@ -14333,55 +21366,12 @@ func (s *PushUserAnalyzerEntriesResponse) SetBody(v *PushUserAnalyzerEntriesResp
 	return s
 }
 
-type RankPreviewQueryResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s RankPreviewQueryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RankPreviewQueryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RankPreviewQueryResponseBody) SetRequestId(v string) *RankPreviewQueryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RankPreviewQueryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RankPreviewQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RankPreviewQueryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RankPreviewQueryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RankPreviewQueryResponse) SetHeaders(v map[string]*string) *RankPreviewQueryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RankPreviewQueryResponse) SetStatusCode(v int32) *RankPreviewQueryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RankPreviewQueryResponse) SetBody(v *RankPreviewQueryResponseBody) *RankPreviewQueryResponse {
-	s.Body = v
-	return s
-}
-
 type ReleaseSortScriptResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -14399,9 +21389,9 @@ func (s *ReleaseSortScriptResponseBody) SetRequestId(v string) *ReleaseSortScrip
 }
 
 type ReleaseSortScriptResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseSortScriptResponse) String() string {
@@ -14429,8 +21419,12 @@ func (s *ReleaseSortScriptResponse) SetBody(v *ReleaseSortScriptResponseBody) *R
 
 type RemoveAppResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 33477D76-C380-2D84-A4AD-043F52876CB1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// N/A
+	// The return result.
 	Result []*int32 `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -14453,9 +21447,9 @@ func (s *RemoveAppResponseBody) SetResult(v []*int32) *RemoveAppResponseBody {
 }
 
 type RemoveAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveAppResponse) String() string {
@@ -14483,6 +21477,10 @@ func (s *RemoveAppResponse) SetBody(v *RemoveAppResponseBody) *RemoveAppResponse
 
 type RemoveAppGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3AA29D02-54F3-8569-F71A-90E1B7BE4E7E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// N/A
 	Result []*int32 `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -14507,9 +21505,9 @@ func (s *RemoveAppGroupResponseBody) SetResult(v []*int32) *RemoveAppGroupRespon
 }
 
 type RemoveAppGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveAppGroupResponse) String() string {
@@ -14536,9 +21534,17 @@ func (s *RemoveAppGroupResponse) SetBody(v *RemoveAppGroupResponseBody) *RemoveA
 }
 
 type RemoveDataCollectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// N/A
+	// —
+	//
+	// example:
+	//
+	// {}
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -14561,9 +21567,9 @@ func (s *RemoveDataCollectionResponseBody) SetResult(v string) *RemoveDataCollec
 }
 
 type RemoveDataCollectionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveDataCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveDataCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveDataCollectionResponse) String() string {
@@ -14591,6 +21597,10 @@ func (s *RemoveDataCollectionResponse) SetBody(v *RemoveDataCollectionResponseBo
 
 type RemoveFirstRankResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E676FAB6-A0AC-64D9-F9D7-D0D33C930CFF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the rough sort expression.
 	Result *RemoveFirstRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -14616,12 +21626,24 @@ func (s *RemoveFirstRankResponseBody) SetResult(v *RemoveFirstRankResponseBodyRe
 
 type RemoveFirstRankResponseBodyResult struct {
 	// Indicates whether the expression is the default one.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The description of the expression.
+	//
+	// example:
+	//
+	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The content of the expression.
 	Meta []*RemoveFirstRankResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
 	// The name of the expression.
+	//
+	// example:
+	//
+	// default
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -14657,14 +21679,26 @@ type RemoveFirstRankResponseBodyResultMeta struct {
 	// The parameters that are used by a function in the expression.
 	//
 	// For more information, see Rough sort functions.
+	//
+	// example:
+	//
+	// ""
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
 	// The attribute, feature function, or field to be searched for.
 	//
 	// For more information about supported feature functions, see Rough sort functions.
+	//
+	// example:
+	//
+	// static_bm25()
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	// The weight.
 	//
-	// Valid values: \[-100000,100000] (excluding 0).
+	// Valid values: [-100000,100000] (excluding 0).
+	//
+	// example:
+	//
+	// 10
 	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
@@ -14692,9 +21726,9 @@ func (s *RemoveFirstRankResponseBodyResultMeta) SetWeight(v float32) *RemoveFirs
 }
 
 type RemoveFirstRankResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveFirstRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveFirstRankResponse) String() string {
@@ -14722,6 +21756,10 @@ func (s *RemoveFirstRankResponse) SetBody(v *RemoveFirstRankResponseBody) *Remov
 
 type RemoveInterventionDictionaryResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 06BBD41A-5F72-34E4-2DAF-E43B0526051D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the intervention dictionary.
 	Result *RemoveInterventionDictionaryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -14747,21 +21785,46 @@ func (s *RemoveInterventionDictionaryResponseBody) SetResult(v *RemoveInterventi
 
 type RemoveInterventionDictionaryResponseBodyResult struct {
 	// The custom analyzer.
+	//
+	// example:
+	//
+	// ""
 	Analyzer *string `json:"analyzer,omitempty" xml:"analyzer,omitempty"`
 	// The time when the intervention dictionary was created.
+	//
+	// example:
+	//
+	// 1539158313
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// The name of the intervention dictionary.
+	//
+	// example:
+	//
+	// tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the intervention dictionary. Valid values:
 	//
-	// *   stopword: an intervention dictionary for stop word filtering
-	// *   synonym: an intervention dictionary for synonym configuration
-	// *   correction: an intervention dictionary for spelling correction
-	// *   category_prediction: an intervention dictionary for category prediction
-	// *   ner: an intervention dictionary for named entity recognition (NER)
-	// *   term_weighting: an intervention dictionary for term weight analysis
+	// 	- stopword: an intervention dictionary for stop word filtering
+	//
+	// 	- synonym: an intervention dictionary for synonym configuration
+	//
+	// 	- correction: an intervention dictionary for spelling correction
+	//
+	// 	- category_prediction: an intervention dictionary for category prediction
+	//
+	// 	- ner: an intervention dictionary for named entity recognition (NER)
+	//
+	// 	- term_weighting: an intervention dictionary for term weight analysis
+	//
+	// example:
+	//
+	// synonym
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The time when the intervention dictionary was last updated.
+	//
+	// example:
+	//
+	// 1539158313
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -14799,9 +21862,9 @@ func (s *RemoveInterventionDictionaryResponseBodyResult) SetUpdated(v string) *R
 }
 
 type RemoveInterventionDictionaryResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveInterventionDictionaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveInterventionDictionaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveInterventionDictionaryResponse) String() string {
@@ -14829,8 +21892,16 @@ func (s *RemoveInterventionDictionaryResponse) SetBody(v *RemoveInterventionDict
 
 type RemoveQueryProcessorResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// N/A
+	//
+	// example:
+	//
+	// []
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -14853,9 +21924,9 @@ func (s *RemoveQueryProcessorResponseBody) SetResult(v string) *RemoveQueryProce
 }
 
 type RemoveQueryProcessorResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveQueryProcessorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveQueryProcessorResponse) String() string {
@@ -14883,6 +21954,10 @@ func (s *RemoveQueryProcessorResponse) SetBody(v *RemoveQueryProcessorResponseBo
 
 type RemoveScheduledTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// N/A
 	Result []*int32 `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -14907,9 +21982,9 @@ func (s *RemoveScheduledTaskResponseBody) SetResult(v []*int32) *RemoveScheduled
 }
 
 type RemoveScheduledTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveScheduledTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveScheduledTaskResponse) String() string {
@@ -14937,6 +22012,10 @@ func (s *RemoveScheduledTaskResponse) SetBody(v *RemoveScheduledTaskResponseBody
 
 type RemoveSearchStrategyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5099063-6B86-F398-D843-905F9EFB683A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -14954,9 +22033,9 @@ func (s *RemoveSearchStrategyResponseBody) SetRequestId(v string) *RemoveSearchS
 }
 
 type RemoveSearchStrategyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveSearchStrategyResponse) String() string {
@@ -14984,8 +22063,16 @@ func (s *RemoveSearchStrategyResponse) SetBody(v *RemoveSearchStrategyResponseBo
 
 type RemoveSecondRankResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// N/A
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -15008,9 +22095,9 @@ func (s *RemoveSecondRankResponseBody) SetResult(v map[string]interface{}) *Remo
 }
 
 type RemoveSecondRankResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveSecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveSecondRankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveSecondRankResponse) String() string {
@@ -15037,8 +22124,18 @@ func (s *RemoveSecondRankResponse) SetBody(v *RemoveSecondRankResponseBody) *Rem
 }
 
 type RemoveUserAnalyzerResponseBody struct {
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// N/A
+	//
+	// example:
+	//
+	// []
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s RemoveUserAnalyzerResponseBody) String() string {
@@ -15060,9 +22157,9 @@ func (s *RemoveUserAnalyzerResponseBody) SetResult(v map[string]interface{}) *Re
 }
 
 type RemoveUserAnalyzerResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveUserAnalyzerResponse) String() string {
@@ -15092,6 +22189,10 @@ type RenewAppGroupRequest struct {
 	// The renewal request body.
 	Body *PrepayOrderInfo `json:"body,omitempty" xml:"body,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 74db41d8cd3c784209093aa76afbe89e
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -15115,8 +22216,16 @@ func (s *RenewAppGroupRequest) SetClientToken(v string) *RenewAppGroupRequest {
 
 type RenewAppGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the application was renewed.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -15139,9 +22248,9 @@ func (s *RenewAppGroupResponseBody) SetResult(v bool) *RenewAppGroupResponseBody
 }
 
 type RenewAppGroupResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenewAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenewAppGroupResponse) String() string {
@@ -15169,8 +22278,16 @@ func (s *RenewAppGroupResponse) SetBody(v *RenewAppGroupResponseBody) *RenewAppG
 
 type ReplaceAppGroupCommodityCodeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// AC5F78BA-66B9-545B-9CF1-8F542E682E1F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The returned result.
+	//
+	// example:
+	//
+	// {}
 	Result *ReplaceAppGroupCommodityCodeResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -15195,67 +22312,165 @@ func (s *ReplaceAppGroupCommodityCodeResponseBody) SetResult(v *ReplaceAppGroupC
 type ReplaceAppGroupCommodityCodeResponseBodyResult struct {
 	// The billing method. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go.
-	// *   PREPAY: subscription.
+	// 	- POSTPAY: pay-as-you-go.
+	//
+	// 	- PREPAY: subscription.
+	//
+	// example:
+	//
+	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The billing type. Valid values:
 	//
-	// *   1: computing resources.
-	// *   2: queries per second (QPS).
+	// 	- 1: computing resources.
+	//
+	// 	- 2: queries per second (QPS).
+	//
+	// example:
+	//
+	// 1
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
 	// The code of the commodity.
+	//
+	// example:
+	//
+	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The timestamp when the application was created.
+	//
+	// example:
+	//
+	// 1588054131
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the current online version.
+	//
+	// example:
+	//
+	// 100302903
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The expiration time.
+	//
+	// example:
+	//
+	// -
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
 	// The ID of the rough sort expression.
+	//
+	// example:
+	//
+	// 0
 	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
 	// The approval state of the quotas. Valid values:
 	//
-	// *   0: The approval status is normal.
-	// *   1: The quotas are being approved.
+	// 	- 0: The approval status is normal.
+	//
+	// 	- 1: The quotas are being approved.
+	//
+	// example:
+	//
+	// 0
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
 	// The application ID.
+	//
+	// example:
+	//
+	// -
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// -
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The lock state. Valid values:
 	//
-	// *   Unlock: The instance is unlocked.
-	// *   LockByExpiration: The instance is automatically locked after it expires.
-	// *   ManualLock: The instance is manually locked.
+	// 	- Unlock: The instance is unlocked.
+	//
+	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	//
+	// 	- ManualLock: The instance is manually locked.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
 	// Indicates whether the instance is automatically locked after it expires. Valid values:
 	//
-	// *   0: The instance is not automatically locked after it expires.
-	// *   1: The instance is automatically locked after it expires.
+	// 	- 0: The instance is not automatically locked after it expires.
+	//
+	// 	- 1: The instance is automatically locked after it expires.
+	//
+	// example:
+	//
+	// 0
 	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
 	// The name of the order.
+	//
+	// example:
+	//
+	// -
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the fine sort expression that is being created.
+	//
+	// example:
+	//
+	// 0
 	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
 	// The ID of the order that is in progress.
+	//
+	// example:
+	//
+	// -
 	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
 	// Indicates whether the order is produced.
+	//
+	// example:
+	//
+	// 0
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
 	// The name of the A/B test group.
+	//
+	// example:
+	//
+	// -
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	// The configuration information.
 	Quota *ReplaceAppGroupCommodityCodeResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 	// The ID of the fine sort expression.
+	//
+	// example:
+	//
+	// 0
 	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
 	// The status of the application.
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
+	//
+	// example:
+	//
+	// 1590486386
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
 	// The type of the application.
+	//
+	// example:
+	//
+	// -
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The timestamp when the application was updated.
+	//
+	// example:
+	//
+	// 1581065904
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 	// The versions.
 	Versions []*string `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
@@ -15396,10 +22611,22 @@ func (s *ReplaceAppGroupCommodityCodeResponseBodyResult) SetVersions(v []*string
 
 type ReplaceAppGroupCommodityCodeResponseBodyResultQuota struct {
 	// The number of computing resources configured.
+	//
+	// example:
+	//
+	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
 	// The storage capacity.
+	//
+	// example:
+	//
+	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications configured.
+	//
+	// example:
+	//
+	// -
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -15427,9 +22654,9 @@ func (s *ReplaceAppGroupCommodityCodeResponseBodyResultQuota) SetSpec(v string) 
 }
 
 type ReplaceAppGroupCommodityCodeResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReplaceAppGroupCommodityCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReplaceAppGroupCommodityCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReplaceAppGroupCommodityCodeResponse) String() string {
@@ -15456,8 +22683,18 @@ func (s *ReplaceAppGroupCommodityCodeResponse) SetBody(v *ReplaceAppGroupCommodi
 }
 
 type SaveSortScriptFileRequest struct {
+	// The script content that is encoded in the Base64 format.
+	//
+	// example:
+	//
+	// 4769#0: *28194492991 a client request body is buffered to a temporary file /usr/local/webserver/openresty/nginx/client_body_temp/0000624474,
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Version *int32  `json:"version,omitempty" xml:"version,omitempty"`
+	// The version number of the script content.
+	//
+	// example:
+	//
+	// 2022-12-01
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s SaveSortScriptFileRequest) String() string {
@@ -15479,7 +22716,11 @@ func (s *SaveSortScriptFileRequest) SetVersion(v int32) *SaveSortScriptFileReque
 }
 
 type SaveSortScriptFileResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -15497,9 +22738,9 @@ func (s *SaveSortScriptFileResponseBody) SetRequestId(v string) *SaveSortScriptF
 }
 
 type SaveSortScriptFileResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSortScriptFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSortScriptFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSortScriptFileResponse) String() string {
@@ -15527,8 +22768,16 @@ func (s *SaveSortScriptFileResponse) SetBody(v *SaveSortScriptFileResponseBody) 
 
 type StartSlowQueryAnalyzerResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// N/A
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -15551,9 +22800,9 @@ func (s *StartSlowQueryAnalyzerResponseBody) SetResult(v map[string]interface{})
 }
 
 type StartSlowQueryAnalyzerResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartSlowQueryAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartSlowQueryAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartSlowQueryAnalyzerResponse) String() string {
@@ -15581,10 +22830,20 @@ func (s *StartSlowQueryAnalyzerResponse) SetBody(v *StartSlowQueryAnalyzerRespon
 
 type TagResourcesRequest struct {
 	// The resource IDs. You can specify a maximum number of 50 resource IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ProductVersion
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The tags. You can specify a maximum number of 20 tags.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
@@ -15613,8 +22872,16 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 
 type TagResourcesRequestTag struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// cloud_manage
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// 31261301
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -15638,6 +22905,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -15655,9 +22926,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -15684,6 +22955,15 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnbindESUserAnalyzerRequest struct {
+	// The request parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "name": "kevintest-analyzer"
+	//
+	// }
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -15701,8 +22981,18 @@ func (s *UnbindESUserAnalyzerRequest) SetBody(v interface{}) *UnbindESUserAnalyz
 }
 
 type UnbindESUserAnalyzerResponseBody struct {
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The custom analyzer.
+	//
+	// example:
+	//
+	// []
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s UnbindESUserAnalyzerResponseBody) String() string {
@@ -15724,9 +23014,9 @@ func (s *UnbindESUserAnalyzerResponseBody) SetResult(v map[string]interface{}) *
 }
 
 type UnbindESUserAnalyzerResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindESUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindESUserAnalyzerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindESUserAnalyzerResponse) String() string {
@@ -15754,8 +23044,16 @@ func (s *UnbindESUserAnalyzerResponse) SetBody(v *UnbindESUserAnalyzerResponseBo
 
 type UnbindEsInstanceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -15778,9 +23076,9 @@ func (s *UnbindEsInstanceResponseBody) SetResult(v map[string]interface{}) *Unbi
 }
 
 type UnbindEsInstanceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindEsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindEsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindEsInstanceResponse) String() string {
@@ -15808,10 +23106,22 @@ func (s *UnbindEsInstanceResponse) SetBody(v *UnbindEsInstanceResponseBody) *Unb
 
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the specified one or more resources. This parameter takes effect only if the tagKey parameter is not specified. Valid values: true and false. Default value: false.
+	//
+	// example:
+	//
+	// true
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
 	// The resource IDs. You can specify a maximum number of 50 IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ProductVersion
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The keys of tags. You can specify a maximum number of 20 keys.
 	TagKey []*string `json:"tagKey,omitempty" xml:"tagKey,omitempty" type:"Repeated"`
@@ -15847,10 +23157,22 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesShrinkRequest struct {
 	// Specifies whether to remove all tags from the specified one or more resources. This parameter takes effect only if the tagKey parameter is not specified. Valid values: true and false. Default value: false.
+	//
+	// example:
+	//
+	// true
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
 	// The resource IDs. You can specify a maximum number of 50 IDs.
+	//
+	// This parameter is required.
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ProductVersion
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The keys of tags. You can specify a maximum number of 20 keys.
 	TagKeyShrink *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
@@ -15886,6 +23208,10 @@ func (s *UntagResourcesShrinkRequest) SetTagKeyShrink(v string) *UntagResourcesS
 
 type UntagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1-A-0-B
 	TequestId *string `json:"tequestId,omitempty" xml:"tequestId,omitempty"`
 }
 
@@ -15903,9 +23229,9 @@ func (s *UntagResourcesResponseBody) SetTequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -15932,8 +23258,18 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateABTestExperimentRequest struct {
-	Body   *ABTestExperiment `json:"body,omitempty" xml:"body,omitempty"`
-	DryRun *bool             `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body. For more information, see [ABTestExperiment](https://help.aliyun.com/document_detail/173617.html).
+	Body *ABTestExperiment `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- true: performs only a dry run. No endpoint is created. The system checks whether your AccessKey is valid, whether Resource Access Management (RAM) users are authorized, and whether the required parameters are set.
+	//
+	// 	- false (default): creates an endpoint immediately.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s UpdateABTestExperimentRequest) String() string {
@@ -15955,7 +23291,11 @@ func (s *UpdateABTestExperimentRequest) SetDryRun(v bool) *UpdateABTestExperimen
 }
 
 type UpdateABTestExperimentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the test.
 	Result *UpdateABTestExperimentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -15981,23 +23321,50 @@ func (s *UpdateABTestExperimentResponseBody) SetResult(v *UpdateABTestExperiment
 
 type UpdateABTestExperimentResponseBodyResult struct {
 	// The time when the test was created.
+	//
+	// example:
+	//
+	// 1588842080
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the test.
+	// The test ID.
+	//
+	// example:
+	//
+	// 12888
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test.
+	// The alias of the test.
+	//
+	// example:
+	//
+	// test1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the test. Valid values:
+	// Indicates whether the test is in effect. Valid values:
 	//
-	// *   true: in effect
-	// *   false: not in effect
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
-	// The parameters of the test.
-	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// The percentage of traffic that is routed to the test.
+	// The test parameters.
 	//
-	// Value values: 0 to 100.
+	// example:
+	//
+	// {}
+	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// The percentage of traffic that is routed to the test. Valid values: [0,100]
+	//
+	// example:
+	//
+	// 30
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
 	// The time when the test was last modified.
+	//
+	// example:
+	//
+	// 1588842080
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -16045,9 +23412,9 @@ func (s *UpdateABTestExperimentResponseBodyResult) SetUpdated(v int32) *UpdateAB
 }
 
 type UpdateABTestExperimentResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateABTestExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateABTestExperimentResponse) String() string {
@@ -16074,6 +23441,7 @@ func (s *UpdateABTestExperimentResponse) SetBody(v *UpdateABTestExperimentRespon
 }
 
 type UpdateABTestFixedFlowDividersRequest struct {
+	// The request body.
 	Body []*string `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
@@ -16091,9 +23459,13 @@ func (s *UpdateABTestFixedFlowDividersRequest) SetBody(v []*string) *UpdateABTes
 }
 
 type UpdateABTestFixedFlowDividersResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The whitelists after the update.
+	// The returned results.
 	Result []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -16116,9 +23488,9 @@ func (s *UpdateABTestFixedFlowDividersResponseBody) SetResult(v []*string) *Upda
 }
 
 type UpdateABTestFixedFlowDividersResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateABTestFixedFlowDividersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateABTestFixedFlowDividersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateABTestFixedFlowDividersResponse) String() string {
@@ -16145,8 +23517,18 @@ func (s *UpdateABTestFixedFlowDividersResponse) SetBody(v *UpdateABTestFixedFlow
 }
 
 type UpdateABTestGroupRequest struct {
-	Body   *ABTestGroup `json:"body,omitempty" xml:"body,omitempty"`
-	DryRun *bool        `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body. For more information, see [ABTestGroup](https://help.aliyun.com/document_detail/178935.html).
+	Body *ABTestGroup `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- true: performs only a dry run. No endpoint is created. The system checks whether your AccessKey is valid, whether Resource Access Management (RAM) users are authorized, and whether the required parameters are set.
+	//
+	// 	- false (default): creates an endpoint immediately.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s UpdateABTestGroupRequest) String() string {
@@ -16168,7 +23550,11 @@ func (s *UpdateABTestGroupRequest) SetDryRun(v bool) *UpdateABTestGroupRequest {
 }
 
 type UpdateABTestGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// \\"\\"1111\\"\\"
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the test group.
 	Result *UpdateABTestGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -16194,17 +23580,38 @@ func (s *UpdateABTestGroupResponseBody) SetResult(v *UpdateABTestGroupResponseBo
 
 type UpdateABTestGroupResponseBodyResult struct {
 	// The time when the test group was created.
+	//
+	// example:
+	//
+	// 1588839490
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test group.
+	//
+	// example:
+	//
+	// 13466
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test group.
+	// The alias of the test group.
+	//
+	// example:
+	//
+	// Group_2020-5-7_15:23:3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test group. Valid values:
 	//
-	// *   0: not in effect
-	// *   1: in effect
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the test group was last modified.
+	// The time when the test group was last updated.
+	//
+	// example:
+	//
+	// 1588839490
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -16242,9 +23649,9 @@ func (s *UpdateABTestGroupResponseBodyResult) SetUpdated(v int32) *UpdateABTestG
 }
 
 type UpdateABTestGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateABTestGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateABTestGroupResponse) String() string {
@@ -16274,6 +23681,10 @@ type UpdateABTestSceneRequest struct {
 	// The request body.
 	Body *ABTestScene `json:"body,omitempty" xml:"body,omitempty"`
 	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -16297,8 +23708,16 @@ func (s *UpdateABTestSceneRequest) SetDryRun(v bool) *UpdateABTestSceneRequest {
 
 type UpdateABTestSceneResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the test scenario. For more information, see [ABTestScene](~~173618~~).
+	// The details of the test scenario. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
+	//
+	// example:
+	//
+	// {}
 	Result *UpdateABTestSceneResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -16322,21 +23741,50 @@ func (s *UpdateABTestSceneResponseBody) SetResult(v *UpdateABTestSceneResponseBo
 
 type UpdateABTestSceneResponseBodyResult struct {
 	// The time when the test scenario was created.
+	//
+	// example:
+	//
+	// 1596527691
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the test scenario.
+	//
+	// example:
+	//
+	// 20614
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the test scenario.
+	//
+	// example:
+	//
+	// kevintest22
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test. Valid values:
 	//
-	// *   true: The test is started.
-	// *   false: The test is stopped.
+	// 	- true: The test is started.
+	//
+	// 	- false: The test is stopped.
+	//
+	// example:
+	//
+	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
 	// The parameters of the A/B test.
+	//
+	// example:
+	//
+	// {}
 	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
 	// The percentage of traffic that is allocated to the A/B test. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 111
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
 	// The time when the test scenario was last modified.
+	//
+	// example:
+	//
+	// 1596527691
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -16384,9 +23832,9 @@ func (s *UpdateABTestSceneResponseBodyResult) SetUpdated(v int32) *UpdateABTestS
 }
 
 type UpdateABTestSceneResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateABTestSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateABTestSceneResponse) String() string {
@@ -16413,7 +23861,12 @@ func (s *UpdateABTestSceneResponse) SetBody(v *UpdateABTestSceneResponseBody) *U
 }
 
 type UpdateFetchFieldsRequest struct {
+	// The request body.
 	Body []*string `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// true
+	//
+	// example:
+	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
@@ -16438,8 +23891,16 @@ func (s *UpdateFetchFieldsRequest) SetDryRun(v bool) *UpdateFetchFieldsRequest {
 
 type UpdateFetchFieldsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -16462,9 +23923,9 @@ func (s *UpdateFetchFieldsResponseBody) SetResult(v bool) *UpdateFetchFieldsResp
 }
 
 type UpdateFetchFieldsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFetchFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFetchFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFetchFieldsResponse) String() string {
@@ -16492,6 +23953,10 @@ func (s *UpdateFetchFieldsResponse) SetBody(v *UpdateFetchFieldsResponseBody) *U
 
 type UpdateFunctionDefaultInstanceRequest struct {
 	// The name of the instance.
+	//
+	// example:
+	//
+	// "pop_test"
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 }
 
@@ -16510,16 +23975,40 @@ func (s *UpdateFunctionDefaultInstanceRequest) SetInstanceName(v string) *Update
 
 type UpdateFunctionDefaultInstanceResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// DefaultInstance.SetFail
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the request.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -16562,9 +24051,9 @@ func (s *UpdateFunctionDefaultInstanceResponseBody) SetStatus(v string) *UpdateF
 }
 
 type UpdateFunctionDefaultInstanceResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFunctionDefaultInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFunctionDefaultInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFunctionDefaultInstanceResponse) String() string {
@@ -16592,10 +24081,22 @@ func (s *UpdateFunctionDefaultInstanceResponse) SetBody(v *UpdateFunctionDefault
 
 type UpdateFunctionInstanceRequest struct {
 	// The parameters that are used to create the instance.
+	//
+	// example:
+	//
+	// {             "name": "title_field",             "value": "title"         }
 	CreateParameters []*UpdateFunctionInstanceRequestCreateParameters `json:"createParameters,omitempty" xml:"createParameters,omitempty" type:"Repeated"`
 	// The cron expression used to schedule periodic training, in the format of (Minutes Hours DayofMonth Month DayofWeek). The default value is empty, which indicates that no periodic training is performed. DayofWeek 0 indicates Sunday.
+	//
+	// example:
+	//
+	// "0 3 ? 	- 0,1,3,5"
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// test instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The parameters that are used.
 	UsageParameters []*UpdateFunctionInstanceRequestUsageParameters `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
@@ -16631,8 +24132,16 @@ func (s *UpdateFunctionInstanceRequest) SetUsageParameters(v []*UpdateFunctionIn
 
 type UpdateFunctionInstanceRequestCreateParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// title_field
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// title
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -16656,8 +24165,16 @@ func (s *UpdateFunctionInstanceRequestCreateParameters) SetValue(v string) *Upda
 
 type UpdateFunctionInstanceRequestUsageParameters struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// allow_dict_id
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// 123
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -16681,19 +24198,44 @@ func (s *UpdateFunctionInstanceRequestUsageParameters) SetValue(v string) *Updat
 
 type UpdateFunctionInstanceResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// "Instance.NotExist"
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The time consumed for the request, in milliseconds.
+	//
+	// example:
+	//
+	// 10
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// "instance not exist."
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// "3A809095-C554-5CF5-8FCE-BE19D4673790"
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the request. Valid values:
 	//
-	// *       OK: The request was successful.
-	// *       FAIL: The request failed.
+	// 	- OK: The request was successful.
+	//
+	// 	- FAIL: The request failed.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -16736,9 +24278,9 @@ func (s *UpdateFunctionInstanceResponseBody) SetStatus(v string) *UpdateFunction
 }
 
 type UpdateFunctionInstanceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFunctionInstanceResponse) String() string {
@@ -16765,8 +24307,14 @@ func (s *UpdateFunctionInstanceResponse) SetBody(v *UpdateFunctionInstanceRespon
 }
 
 type UpdateFunctionResourceRequest struct {
-	Data        *UpdateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Description *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The resource data. The data structure varies with the resource type.
+	Data *UpdateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the resource.
+	//
+	// example:
+	//
+	// updated description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s UpdateFunctionResourceRequest) String() string {
@@ -16788,7 +24336,13 @@ func (s *UpdateFunctionResourceRequest) SetDescription(v string) *UpdateFunction
 }
 
 type UpdateFunctionResourceRequestData struct {
-	Content    *string                                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the file that corresponds to a resource of the raw_file type.
+	//
+	// example:
+	//
+	// abc
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The feature generators that correspond to resources of the feature_generator type.
 	Generators []*UpdateFunctionResourceRequestDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
 }
 
@@ -16811,9 +24365,20 @@ func (s *UpdateFunctionResourceRequestData) SetGenerators(v []*UpdateFunctionRes
 }
 
 type UpdateFunctionResourceRequestDataGenerators struct {
-	Generator *string                                           `json:"Generator,omitempty" xml:"Generator,omitempty"`
-	Input     *UpdateFunctionResourceRequestDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	Output    *string                                           `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The type of the feature generator.
+	//
+	// example:
+	//
+	// combo
+	Generator *string `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	// The input.
+	Input *UpdateFunctionResourceRequestDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The name of the output feature.
+	//
+	// example:
+	//
+	// feature1
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 
 func (s UpdateFunctionResourceRequestDataGenerators) String() string {
@@ -16840,6 +24405,7 @@ func (s *UpdateFunctionResourceRequestDataGenerators) SetOutput(v string) *Updat
 }
 
 type UpdateFunctionResourceRequestDataGeneratorsInput struct {
+	// The input features.
 	Features []*UpdateFunctionResourceRequestDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 }
 
@@ -16857,7 +24423,17 @@ func (s *UpdateFunctionResourceRequestDataGeneratorsInput) SetFeatures(v []*Upda
 }
 
 type UpdateFunctionResourceRequestDataGeneratorsInputFeatures struct {
+	// The name of the feature.
+	//
+	// example:
+	//
+	// system_item_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the feature.
+	//
+	// example:
+	//
+	// item
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -16880,12 +24456,42 @@ func (s *UpdateFunctionResourceRequestDataGeneratorsInputFeatures) SetType(v str
 }
 
 type UpdateFunctionResourceResponseBody struct {
-	Code      *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpCode  *int64   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Latency   *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	Message   *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The error code. If no error occurs, this parameter is left empty.
+	//
+	// example:
+	//
+	// InvalidRequest
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The time consumed for the request. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 123
+	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// Invalid request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7E375703-5B12-5466-8B48-C4D01AE1291A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the request.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateFunctionResourceResponseBody) String() string {
@@ -16927,9 +24533,9 @@ func (s *UpdateFunctionResourceResponseBody) SetStatus(v string) *UpdateFunction
 }
 
 type UpdateFunctionResourceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFunctionResourceResponse) String() string {
@@ -16956,6 +24562,7 @@ func (s *UpdateFunctionResourceResponse) SetBody(v *UpdateFunctionResourceRespon
 }
 
 type UpdateSearchStrategyRequest struct {
+	// The request body.
 	Body *SearchStrategy `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -16973,6 +24580,11 @@ func (s *UpdateSearchStrategyRequest) SetBody(v *SearchStrategy) *UpdateSearchSt
 }
 
 type UpdateSearchStrategyResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -16990,9 +24602,9 @@ func (s *UpdateSearchStrategyResponseBody) SetRequestId(v string) *UpdateSearchS
 }
 
 type UpdateSearchStrategyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSearchStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSearchStrategyResponse) String() string {
@@ -17020,6 +24632,10 @@ func (s *UpdateSearchStrategyResponse) SetBody(v *UpdateSearchStrategyResponseBo
 
 type UpdateSortScriptResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9F165784-5507-5342-ABF3-545293F9808A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17037,9 +24653,9 @@ func (s *UpdateSortScriptResponseBody) SetRequestId(v string) *UpdateSortScriptR
 }
 
 type UpdateSortScriptResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSortScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSortScriptResponse) String() string {
@@ -17066,7 +24682,12 @@ func (s *UpdateSortScriptResponse) SetBody(v *UpdateSortScriptResponseBody) *Upd
 }
 
 type UpdateSummariesRequest struct {
+	// The request body.
 	Body []*UpdateSummariesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// Specifies whether the request is a dry run.
+	//
+	// example:
+	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
@@ -17090,11 +24711,36 @@ func (s *UpdateSummariesRequest) SetDryRun(v bool) *UpdateSummariesRequest {
 }
 
 type UpdateSummariesRequestBody struct {
-	Element  *string `json:"element,omitempty" xml:"element,omitempty"`
+	// The HTML tag that is used to highlight terms in red.
+	//
+	// example:
+	//
+	// "em"
+	Element *string `json:"element,omitempty" xml:"element,omitempty"`
+	// The connector that is used to connect segments.
+	//
+	// example:
+	//
+	// "..."
 	Ellipsis *string `json:"ellipsis,omitempty" xml:"ellipsis,omitempty"`
-	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
-	Len      *int32  `json:"len,omitempty" xml:"len,omitempty"`
-	Snippet  *int32  `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	// The field.
+	//
+	// example:
+	//
+	// "title"
+	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+	// The length of a segment.
+	//
+	// example:
+	//
+	// 50
+	Len *int32 `json:"len,omitempty" xml:"len,omitempty"`
+	// The number of segments.
+	//
+	// example:
+	//
+	// 1
+	Snippet *int32 `json:"snippet,omitempty" xml:"snippet,omitempty"`
 }
 
 func (s UpdateSummariesRequestBody) String() string {
@@ -17131,9 +24777,17 @@ func (s *UpdateSummariesRequestBody) SetSnippet(v int32) *UpdateSummariesRequest
 }
 
 type UpdateSummariesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 7A389E09-7964-5A2B-FE9D-F6CFA7162852
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -17156,9 +24810,9 @@ func (s *UpdateSummariesResponseBody) SetResult(v bool) *UpdateSummariesResponse
 }
 
 type UpdateSummariesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSummariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSummariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSummariesResponse) String() string {
@@ -17185,6 +24839,7 @@ func (s *UpdateSummariesResponse) SetBody(v *UpdateSummariesResponseBody) *Updat
 }
 
 type ValidateDataSourcesRequest struct {
+	// The request parameter. For more information, see [DataSource](https://help.aliyun.com/document_detail/170005.html).
 	Body *DataSource `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -17202,8 +24857,18 @@ func (s *ValidateDataSourcesRequest) SetBody(v *DataSource) *ValidateDataSources
 }
 
 type ValidateDataSourcesResponseBody struct {
-	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*ValidateDataSourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 8FA2B338-AFDC-46B4-A132-B5487820C2BF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result returned.
+	//
+	// example:
+	//
+	// []
+	Result []*ValidateDataSourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s ValidateDataSourcesResponseBody) String() string {
@@ -17225,9 +24890,24 @@ func (s *ValidateDataSourcesResponseBody) SetResult(v []*ValidateDataSourcesResp
 }
 
 type ValidateDataSourcesResponseBodyResult struct {
-	Code       *string                                          `json:"code,omitempty" xml:"code,omitempty"`
+	// The code returned for the request.
+	//
+	// example:
+	//
+	// SUCCEED
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data source.
+	//
+	// example:
+	//
+	// {}
 	DataSource *ValidateDataSourcesResponseBodyResultDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Struct"`
-	Message    *string                                          `json:"message,omitempty" xml:"message,omitempty"`
+	// The status of the execution.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 
 func (s ValidateDataSourcesResponseBodyResult) String() string {
@@ -17254,9 +24934,24 @@ func (s *ValidateDataSourcesResponseBodyResult) SetMessage(v string) *ValidateDa
 }
 
 type ValidateDataSourcesResponseBodyResultDataSource struct {
+	// The parameters of the data source.
+	//
+	// example:
+	//
+	// {}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	TableName  *string                `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	Type       *string                `json:"type,omitempty" xml:"type,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// user_activity_decision
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// The type of the data source.
+	//
+	// example:
+	//
+	// rds
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ValidateDataSourcesResponseBodyResultDataSource) String() string {
@@ -17283,9 +24978,9 @@ func (s *ValidateDataSourcesResponseBodyResultDataSource) SetType(v string) *Val
 }
 
 type ValidateDataSourcesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ValidateDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValidateDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ValidateDataSourcesResponse) String() string {
@@ -17358,6 +25053,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a custom analyzer to an Elasticsearch instance.
+//
+// @param request - BindESUserAnalyzerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindESUserAnalyzerResponse
 func (client *Client) BindESUserAnalyzerWithOptions(appGroupIdentity *string, esInstanceId *string, request *BindESUserAnalyzerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindESUserAnalyzerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17387,6 +25093,13 @@ func (client *Client) BindESUserAnalyzerWithOptions(appGroupIdentity *string, es
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a custom analyzer to an Elasticsearch instance.
+//
+// @param request - BindESUserAnalyzerRequest
+//
+// @return BindESUserAnalyzerResponse
 func (client *Client) BindESUserAnalyzer(appGroupIdentity *string, esInstanceId *string, request *BindESUserAnalyzerRequest) (_result *BindESUserAnalyzerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17399,6 +25112,17 @@ func (client *Client) BindESUserAnalyzer(appGroupIdentity *string, esInstanceId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds an Elasticsearch instance.
+//
+// @param request - BindEsInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindEsInstanceResponse
 func (client *Client) BindEsInstanceWithOptions(appGroupIdentity *string, request *BindEsInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindEsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17433,6 +25157,13 @@ func (client *Client) BindEsInstanceWithOptions(appGroupIdentity *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds an Elasticsearch instance.
+//
+// @param request - BindEsInstanceRequest
+//
+// @return BindEsInstanceResponse
 func (client *Client) BindEsInstance(appGroupIdentity *string, request *BindEsInstanceRequest) (_result *BindEsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17445,6 +25176,11 @@ func (client *Client) BindEsInstance(appGroupIdentity *string, request *BindEsIn
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompileSortScriptResponse
 func (client *Client) CompileSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CompileSortScriptResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -17469,6 +25205,7 @@ func (client *Client) CompileSortScriptWithOptions(appGroupIdentity *string, scr
 	return _result, _err
 }
 
+// @return CompileSortScriptResponse
 func (client *Client) CompileSortScript(appGroupIdentity *string, scriptName *string, appVersionId *string) (_result *CompileSortScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17481,6 +25218,17 @@ func (client *Client) CompileSortScript(appGroupIdentity *string, scriptName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an experiment.
+//
+// @param request - CreateABTestExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateABTestExperimentResponse
 func (client *Client) CreateABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, request *CreateABTestExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABTestExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17516,6 +25264,13 @@ func (client *Client) CreateABTestExperimentWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an experiment.
+//
+// @param request - CreateABTestExperimentRequest
+//
+// @return CreateABTestExperimentResponse
 func (client *Client) CreateABTestExperiment(appGroupIdentity *string, sceneId *string, groupId *string, request *CreateABTestExperimentRequest) (_result *CreateABTestExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17528,6 +25283,17 @@ func (client *Client) CreateABTestExperiment(appGroupIdentity *string, sceneId *
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a test group.
+//
+// @param request - CreateABTestGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateABTestGroupResponse
 func (client *Client) CreateABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, request *CreateABTestGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABTestGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17563,6 +25329,13 @@ func (client *Client) CreateABTestGroupWithOptions(appGroupIdentity *string, sce
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a test group.
+//
+// @param request - CreateABTestGroupRequest
+//
+// @return CreateABTestGroupResponse
 func (client *Client) CreateABTestGroup(appGroupIdentity *string, sceneId *string, request *CreateABTestGroupRequest) (_result *CreateABTestGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17575,6 +25348,13 @@ func (client *Client) CreateABTestGroup(appGroupIdentity *string, sceneId *strin
 	return _result, _err
 }
 
+// @param request - CreateABTestSceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateABTestSceneResponse
 func (client *Client) CreateABTestSceneWithOptions(appGroupIdentity *string, request *CreateABTestSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABTestSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17610,6 +25390,9 @@ func (client *Client) CreateABTestSceneWithOptions(appGroupIdentity *string, req
 	return _result, _err
 }
 
+// @param request - CreateABTestSceneRequest
+//
+// @return CreateABTestSceneResponse
 func (client *Client) CreateABTestScene(appGroupIdentity *string, request *CreateABTestSceneRequest) (_result *CreateABTestSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17622,17 +25405,27 @@ func (client *Client) CreateABTestScene(appGroupIdentity *string, request *Creat
 	return _result, _err
 }
 
-/**
- * *   When you create a standard application, a new version of the application is created if the specified application name already exists.
- * *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
- * *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
- * *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
- *
- * @param request CreateAppRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAppResponse
- */
+// Summary:
+//
+// Creates a version for an OpenSearch application.
+//
+// Description:
+//
+//   When you create a standard application, a new version of the application is created if the specified application name already exists.
+//
+// 	- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+//
+// 	- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+//
+// 	- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+//
+// @param request - CreateAppRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppResponse
 func (client *Client) CreateAppWithOptions(appGroupIdentity *string, request *CreateAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17643,10 +25436,63 @@ func (client *Client) CreateAppWithOptions(appGroupIdentity *string, request *Cr
 		query["dryRun"] = request.DryRun
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoSwitch)) {
+		body["autoSwitch"] = request.AutoSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cluster)) {
+		body["cluster"] = request.Cluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSources)) {
+		body["dataSources"] = request.DataSources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		body["domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FetchFields)) {
+		body["fetchFields"] = request.FetchFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirstRanks)) {
+		body["firstRanks"] = request.FirstRanks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		body["networkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryProcessors)) {
+		body["queryProcessors"] = request.QueryProcessors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		body["schema"] = request.Schema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schemas)) {
+		body["schemas"] = request.Schemas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondRanks)) {
+		body["secondRanks"] = request.SecondRanks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Summaries)) {
+		body["summaries"] = request.Summaries
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(request.Body),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApp"),
@@ -17668,15 +25514,23 @@ func (client *Client) CreateAppWithOptions(appGroupIdentity *string, request *Cr
 	return _result, _err
 }
 
-/**
- * *   When you create a standard application, a new version of the application is created if the specified application name already exists.
- * *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
- * *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
- * *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
- *
- * @param request CreateAppRequest
- * @return CreateAppResponse
- */
+// Summary:
+//
+// Creates a version for an OpenSearch application.
+//
+// Description:
+//
+//   When you create a standard application, a new version of the application is created if the specified application name already exists.
+//
+// 	- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+//
+// 	- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+//
+// 	- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+//
+// @param request - CreateAppRequest
+//
+// @return CreateAppResponse
 func (client *Client) CreateApp(appGroupIdentity *string, request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17689,14 +25543,46 @@ func (client *Client) CreateApp(appGroupIdentity *string, request *CreateAppRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Create an OpenSearch application.
+//
+// @param request - CreateAppGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppGroupResponse
 func (client *Client) CreateAppGroupWithOptions(request *CreateAppGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		body["chargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quota)) {
+		body["quota"] = request.Quota
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Body),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAppGroup"),
@@ -17718,6 +25604,13 @@ func (client *Client) CreateAppGroupWithOptions(request *CreateAppGroupRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Create an OpenSearch application.
+//
+// @param request - CreateAppGroupRequest
+//
+// @return CreateAppGroupResponse
 func (client *Client) CreateAppGroup(request *CreateAppGroupRequest) (_result *CreateAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17730,6 +25623,79 @@ func (client *Client) CreateAppGroup(request *CreateAppGroupRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - CreateAppGroupCredentialsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppGroupCredentialsResponse
+func (client *Client) CreateAppGroupCredentialsWithOptions(appGroupIdentity *string, request *CreateAppGroupCredentialsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppGroupCredentialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppGroupCredentials"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/credentials"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppGroupCredentialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateAppGroupCredentialsRequest
+//
+// @return CreateAppGroupCredentialsResponse
+func (client *Client) CreateAppGroupCredentials(appGroupIdentity *string, request *CreateAppGroupCredentialsRequest) (_result *CreateAppGroupCredentialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAppGroupCredentialsResponse{}
+	_body, _err := client.CreateAppGroupCredentialsWithOptions(appGroupIdentity, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+//
+// @param request - CreateFirstRankRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFirstRankResponse
 func (client *Client) CreateFirstRankWithOptions(appGroupIdentity *string, appId *string, request *CreateFirstRankRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFirstRankResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17765,6 +25731,13 @@ func (client *Client) CreateFirstRankWithOptions(appGroupIdentity *string, appId
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+//
+// @param request - CreateFirstRankRequest
+//
+// @return CreateFirstRankResponse
 func (client *Client) CreateFirstRank(appGroupIdentity *string, appId *string, request *CreateFirstRankRequest) (_result *CreateFirstRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17777,14 +25750,21 @@ func (client *Client) CreateFirstRank(appGroupIdentity *string, appId *string, r
 	return _result, _err
 }
 
-/**
- * You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
- *
- * @param request CreateFunctionInstanceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateFunctionInstanceResponse
- */
+// Summary:
+//
+// Creates an algorithm instance of a feature.
+//
+// Description:
+//
+// You can call the [GetFunctionCurrentVersion](https://help.aliyun.com/document_detail/421377.html) operation to query the latest version of a feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+//
+// @param request - CreateFunctionInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFunctionInstanceResponse
 func (client *Client) CreateFunctionInstanceWithOptions(appGroupIdentity *string, functionName *string, request *CreateFunctionInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17843,12 +25823,17 @@ func (client *Client) CreateFunctionInstanceWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
-/**
- * You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
- *
- * @param request CreateFunctionInstanceRequest
- * @return CreateFunctionInstanceResponse
- */
+// Summary:
+//
+// Creates an algorithm instance of a feature.
+//
+// Description:
+//
+// You can call the [GetFunctionCurrentVersion](https://help.aliyun.com/document_detail/421377.html) operation to query the latest version of a feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+//
+// @param request - CreateFunctionInstanceRequest
+//
+// @return CreateFunctionInstanceResponse
 func (client *Client) CreateFunctionInstance(appGroupIdentity *string, functionName *string, request *CreateFunctionInstanceRequest) (_result *CreateFunctionInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17861,6 +25846,17 @@ func (client *Client) CreateFunctionInstance(appGroupIdentity *string, functionN
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an algorithm resource for a specific feature.
+//
+// @param request - CreateFunctionResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFunctionResourceResponse
 func (client *Client) CreateFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, request *CreateFunctionResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17907,6 +25903,13 @@ func (client *Client) CreateFunctionResourceWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an algorithm resource for a specific feature.
+//
+// @param request - CreateFunctionResourceRequest
+//
+// @return CreateFunctionResourceResponse
 func (client *Client) CreateFunctionResource(appGroupIdentity *string, functionName *string, request *CreateFunctionResourceRequest) (_result *CreateFunctionResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17919,6 +25922,15 @@ func (client *Client) CreateFunctionResource(appGroupIdentity *string, functionN
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a training task for an algorithm instance.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFunctionTaskResponse
 func (client *Client) CreateFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -17943,6 +25955,11 @@ func (client *Client) CreateFunctionTaskWithOptions(appGroupIdentity *string, fu
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a training task for an algorithm instance.
+//
+// @return CreateFunctionTaskResponse
 func (client *Client) CreateFunctionTask(appGroupIdentity *string, functionName *string, instanceName *string) (_result *CreateFunctionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17955,6 +25972,17 @@ func (client *Client) CreateFunctionTask(appGroupIdentity *string, functionName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Create an intervention dictionary.
+//
+// @param request - CreateInterventionDictionaryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInterventionDictionaryResponse
 func (client *Client) CreateInterventionDictionaryWithOptions(request *CreateInterventionDictionaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInterventionDictionaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18003,6 +26031,13 @@ func (client *Client) CreateInterventionDictionaryWithOptions(request *CreateInt
 	return _result, _err
 }
 
+// Summary:
+//
+// Create an intervention dictionary.
+//
+// @param request - CreateInterventionDictionaryRequest
+//
+// @return CreateInterventionDictionaryResponse
 func (client *Client) CreateInterventionDictionary(request *CreateInterventionDictionaryRequest) (_result *CreateInterventionDictionaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18015,6 +26050,17 @@ func (client *Client) CreateInterventionDictionary(request *CreateInterventionDi
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a query analysis rule. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not set this parameter.
+//
+// @param request - CreateQueryProcessorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQueryProcessorResponse
 func (client *Client) CreateQueryProcessorWithOptions(appGroupIdentity *string, appId *string, request *CreateQueryProcessorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateQueryProcessorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18050,6 +26096,13 @@ func (client *Client) CreateQueryProcessorWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a query analysis rule. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not set this parameter.
+//
+// @param request - CreateQueryProcessorRequest
+//
+// @return CreateQueryProcessorResponse
 func (client *Client) CreateQueryProcessor(appGroupIdentity *string, appId *string, request *CreateQueryProcessorRequest) (_result *CreateQueryProcessorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18062,6 +26115,13 @@ func (client *Client) CreateQueryProcessor(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
+// @param request - CreateScheduledTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScheduledTaskResponse
 func (client *Client) CreateScheduledTaskWithOptions(appGroupIdentity *string, request *CreateScheduledTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateScheduledTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18091,6 +26151,9 @@ func (client *Client) CreateScheduledTaskWithOptions(appGroupIdentity *string, r
 	return _result, _err
 }
 
+// @param request - CreateScheduledTaskRequest
+//
+// @return CreateScheduledTaskResponse
 func (client *Client) CreateScheduledTask(appGroupIdentity *string, request *CreateScheduledTaskRequest) (_result *CreateScheduledTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18103,6 +26166,17 @@ func (client *Client) CreateScheduledTask(appGroupIdentity *string, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a query policy.
+//
+// @param request - CreateSearchStrategyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSearchStrategyResponse
 func (client *Client) CreateSearchStrategyWithOptions(appGroupIdentity *string, appId *string, request *CreateSearchStrategyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSearchStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18132,6 +26206,13 @@ func (client *Client) CreateSearchStrategyWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a query policy.
+//
+// @param request - CreateSearchStrategyRequest
+//
+// @return CreateSearchStrategyResponse
 func (client *Client) CreateSearchStrategy(appGroupIdentity *string, appId *string, request *CreateSearchStrategyRequest) (_result *CreateSearchStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18144,6 +26225,17 @@ func (client *Client) CreateSearchStrategy(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+//
+// @param request - CreateSecondRankRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecondRankResponse
 func (client *Client) CreateSecondRankWithOptions(appGroupIdentity *string, appId *string, request *CreateSecondRankRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSecondRankResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18179,6 +26271,13 @@ func (client *Client) CreateSecondRankWithOptions(appGroupIdentity *string, appI
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+//
+// @param request - CreateSecondRankRequest
+//
+// @return CreateSecondRankResponse
 func (client *Client) CreateSecondRank(appGroupIdentity *string, appId *string, request *CreateSecondRankRequest) (_result *CreateSecondRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18191,6 +26290,17 @@ func (client *Client) CreateSecondRank(appGroupIdentity *string, appId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a sort script.
+//
+// @param request - CreateSortScriptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSortScriptResponse
 func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, request *CreateSortScriptRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSortScriptResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18233,6 +26343,13 @@ func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appV
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a sort script.
+//
+// @param request - CreateSortScriptRequest
+//
+// @return CreateSortScriptResponse
 func (client *Client) CreateSortScript(appGroupIdentity *string, appVersionId *string, request *CreateSortScriptRequest) (_result *CreateSortScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18245,15 +26362,13 @@ func (client *Client) CreateSortScript(appGroupIdentity *string, appVersionId *s
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
- *
- * @param request CreateUserAnalyzerRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateUserAnalyzerResponse
- */
+// @param request - CreateUserAnalyzerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserAnalyzerResponse
 func (client *Client) CreateUserAnalyzerWithOptions(request *CreateUserAnalyzerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateUserAnalyzerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18310,13 +26425,9 @@ func (client *Client) CreateUserAnalyzerWithOptions(request *CreateUserAnalyzerR
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
- *
- * @param request CreateUserAnalyzerRequest
- * @return CreateUserAnalyzerResponse
- */
+// @param request - CreateUserAnalyzerRequest
+//
+// @return CreateUserAnalyzerResponse
 func (client *Client) CreateUserAnalyzer(request *CreateUserAnalyzerRequest) (_result *CreateUserAnalyzerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18329,6 +26440,11 @@ func (client *Client) CreateUserAnalyzer(request *CreateUserAnalyzerRequest) (_r
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteABTestExperimentResponse
 func (client *Client) DeleteABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABTestExperimentResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18353,6 +26469,7 @@ func (client *Client) DeleteABTestExperimentWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// @return DeleteABTestExperimentResponse
 func (client *Client) DeleteABTestExperiment(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string) (_result *DeleteABTestExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18365,6 +26482,11 @@ func (client *Client) DeleteABTestExperiment(appGroupIdentity *string, sceneId *
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteABTestGroupResponse
 func (client *Client) DeleteABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABTestGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18389,6 +26511,7 @@ func (client *Client) DeleteABTestGroupWithOptions(appGroupIdentity *string, sce
 	return _result, _err
 }
 
+// @return DeleteABTestGroupResponse
 func (client *Client) DeleteABTestGroup(appGroupIdentity *string, sceneId *string, groupId *string) (_result *DeleteABTestGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18401,6 +26524,15 @@ func (client *Client) DeleteABTestGroup(appGroupIdentity *string, sceneId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an A/B test scenario.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteABTestSceneResponse
 func (client *Client) DeleteABTestSceneWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABTestSceneResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18425,6 +26557,11 @@ func (client *Client) DeleteABTestSceneWithOptions(appGroupIdentity *string, sce
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an A/B test scenario.
+//
+// @return DeleteABTestSceneResponse
 func (client *Client) DeleteABTestScene(appGroupIdentity *string, sceneId *string) (_result *DeleteABTestSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18437,6 +26574,15 @@ func (client *Client) DeleteABTestScene(appGroupIdentity *string, sceneId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFunctionInstanceResponse
 func (client *Client) DeleteFunctionInstanceWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18461,6 +26607,11 @@ func (client *Client) DeleteFunctionInstanceWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+//
+// @return DeleteFunctionInstanceResponse
 func (client *Client) DeleteFunctionInstance(appGroupIdentity *string, functionName *string, instanceName *string) (_result *DeleteFunctionInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18473,6 +26624,15 @@ func (client *Client) DeleteFunctionInstance(appGroupIdentity *string, functionN
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an algorithm resource.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFunctionResourceResponse
 func (client *Client) DeleteFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, resourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionResourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18497,6 +26657,11 @@ func (client *Client) DeleteFunctionResourceWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an algorithm resource.
+//
+// @return DeleteFunctionResourceResponse
 func (client *Client) DeleteFunctionResource(appGroupIdentity *string, functionName *string, resourceName *string) (_result *DeleteFunctionResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18509,6 +26674,15 @@ func (client *Client) DeleteFunctionResource(appGroupIdentity *string, functionN
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a training task. The training task in progress cannot be deleted.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFunctionTaskResponse
 func (client *Client) DeleteFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, generation *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18533,6 +26707,11 @@ func (client *Client) DeleteFunctionTaskWithOptions(appGroupIdentity *string, fu
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a training task. The training task in progress cannot be deleted.
+//
+// @return DeleteFunctionTaskResponse
 func (client *Client) DeleteFunctionTask(appGroupIdentity *string, functionName *string, instanceName *string, generation *string) (_result *DeleteFunctionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18545,6 +26724,11 @@ func (client *Client) DeleteFunctionTask(appGroupIdentity *string, functionName 
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSortScriptResponse
 func (client *Client) DeleteSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSortScriptResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18569,6 +26753,7 @@ func (client *Client) DeleteSortScriptWithOptions(appGroupIdentity *string, scri
 	return _result, _err
 }
 
+// @return DeleteSortScriptResponse
 func (client *Client) DeleteSortScript(appGroupIdentity *string, scriptName *string, appVersionId *string) (_result *DeleteSortScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18581,6 +26766,11 @@ func (client *Client) DeleteSortScript(appGroupIdentity *string, scriptName *str
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSortScriptFileResponse
 func (client *Client) DeleteSortScriptFileWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, fileName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSortScriptFileResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18605,6 +26795,7 @@ func (client *Client) DeleteSortScriptFileWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// @return DeleteSortScriptFileResponse
 func (client *Client) DeleteSortScriptFile(appGroupIdentity *string, appVersionId *string, scriptName *string, fileName *string) (_result *DeleteSortScriptFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18617,6 +26808,11 @@ func (client *Client) DeleteSortScriptFile(appGroupIdentity *string, appVersionI
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeABTestExperimentResponse
 func (client *Client) DescribeABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeABTestExperimentResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18641,6 +26837,7 @@ func (client *Client) DescribeABTestExperimentWithOptions(appGroupIdentity *stri
 	return _result, _err
 }
 
+// @return DescribeABTestExperimentResponse
 func (client *Client) DescribeABTestExperiment(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string) (_result *DescribeABTestExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18653,6 +26850,11 @@ func (client *Client) DescribeABTestExperiment(appGroupIdentity *string, sceneId
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeABTestGroupResponse
 func (client *Client) DescribeABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeABTestGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18677,6 +26879,7 @@ func (client *Client) DescribeABTestGroupWithOptions(appGroupIdentity *string, s
 	return _result, _err
 }
 
+// @return DescribeABTestGroupResponse
 func (client *Client) DescribeABTestGroup(appGroupIdentity *string, sceneId *string, groupId *string) (_result *DescribeABTestGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18689,6 +26892,15 @@ func (client *Client) DescribeABTestGroup(appGroupIdentity *string, sceneId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an A/B test scenario.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeABTestSceneResponse
 func (client *Client) DescribeABTestSceneWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeABTestSceneResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18713,6 +26925,11 @@ func (client *Client) DescribeABTestSceneWithOptions(appGroupIdentity *string, s
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an A/B test scenario.
+//
+// @return DescribeABTestSceneResponse
 func (client *Client) DescribeABTestScene(appGroupIdentity *string, sceneId *string) (_result *DescribeABTestSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18725,6 +26942,11 @@ func (client *Client) DescribeABTestScene(appGroupIdentity *string, sceneId *str
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppResponse
 func (client *Client) DescribeAppWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18749,6 +26971,7 @@ func (client *Client) DescribeAppWithOptions(appGroupIdentity *string, appId *st
 	return _result, _err
 }
 
+// @return DescribeAppResponse
 func (client *Client) DescribeApp(appGroupIdentity *string, appId *string) (_result *DescribeAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18761,6 +26984,15 @@ func (client *Client) DescribeApp(appGroupIdentity *string, appId *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an OpenSearch application.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppGroupResponse
 func (client *Client) DescribeAppGroupWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18785,6 +27017,11 @@ func (client *Client) DescribeAppGroupWithOptions(appGroupIdentity *string, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an OpenSearch application.
+//
+// @return DescribeAppGroupResponse
 func (client *Client) DescribeAppGroup(appGroupIdentity *string) (_result *DescribeAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18797,6 +27034,11 @@ func (client *Client) DescribeAppGroup(appGroupIdentity *string) (_result *Descr
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppStatisticsResponse
 func (client *Client) DescribeAppStatisticsWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppStatisticsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18821,6 +27063,7 @@ func (client *Client) DescribeAppStatisticsWithOptions(appGroupIdentity *string,
 	return _result, _err
 }
 
+// @return DescribeAppStatisticsResponse
 func (client *Client) DescribeAppStatistics(appGroupIdentity *string, appId *string) (_result *DescribeAppStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18833,6 +27076,11 @@ func (client *Client) DescribeAppStatistics(appGroupIdentity *string, appId *str
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppsResponse
 func (client *Client) DescribeAppsWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18857,6 +27105,7 @@ func (client *Client) DescribeAppsWithOptions(appGroupIdentity *string, headers 
 	return _result, _err
 }
 
+// @return DescribeAppsResponse
 func (client *Client) DescribeApps(appGroupIdentity *string) (_result *DescribeAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18869,6 +27118,15 @@ func (client *Client) DescribeApps(appGroupIdentity *string) (_result *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data collection task of an application.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataCollctionResponse
 func (client *Client) DescribeDataCollctionWithOptions(appGroupIdentity *string, dataCollectionIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeDataCollctionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18893,6 +27151,11 @@ func (client *Client) DescribeDataCollctionWithOptions(appGroupIdentity *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data collection task of an application.
+//
+// @return DescribeDataCollctionResponse
 func (client *Client) DescribeDataCollction(appGroupIdentity *string, dataCollectionIdentity *string) (_result *DescribeDataCollctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18905,6 +27168,11 @@ func (client *Client) DescribeDataCollction(appGroupIdentity *string, dataCollec
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFirstRankResponse
 func (client *Client) DescribeFirstRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeFirstRankResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18929,6 +27197,7 @@ func (client *Client) DescribeFirstRankWithOptions(appGroupIdentity *string, app
 	return _result, _err
 }
 
+// @return DescribeFirstRankResponse
 func (client *Client) DescribeFirstRank(appGroupIdentity *string, appId *string, name *string) (_result *DescribeFirstRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18941,6 +27210,11 @@ func (client *Client) DescribeFirstRank(appGroupIdentity *string, appId *string,
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInterventionDictionaryResponse
 func (client *Client) DescribeInterventionDictionaryWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeInterventionDictionaryResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18965,6 +27239,7 @@ func (client *Client) DescribeInterventionDictionaryWithOptions(name *string, he
 	return _result, _err
 }
 
+// @return DescribeInterventionDictionaryResponse
 func (client *Client) DescribeInterventionDictionary(name *string) (_result *DescribeInterventionDictionaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18977,6 +27252,11 @@ func (client *Client) DescribeInterventionDictionary(name *string) (_result *Des
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQueryProcessorResponse
 func (client *Client) DescribeQueryProcessorWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeQueryProcessorResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19001,6 +27281,7 @@ func (client *Client) DescribeQueryProcessorWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// @return DescribeQueryProcessorResponse
 func (client *Client) DescribeQueryProcessor(appGroupIdentity *string, appId *string, name *string) (_result *DescribeQueryProcessorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19013,6 +27294,15 @@ func (client *Client) DescribeQueryProcessor(appGroupIdentity *string, appId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the endpoints of all regions that support OpenSearch.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19037,6 +27327,11 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the endpoints of all regions that support OpenSearch.
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19049,6 +27344,11 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeScheduledTaskResponse
 func (client *Client) DescribeScheduledTaskWithOptions(appGroupIdentity *string, taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeScheduledTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19073,6 +27373,7 @@ func (client *Client) DescribeScheduledTaskWithOptions(appGroupIdentity *string,
 	return _result, _err
 }
 
+// @return DescribeScheduledTaskResponse
 func (client *Client) DescribeScheduledTask(appGroupIdentity *string, taskId *string) (_result *DescribeScheduledTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19085,6 +27386,11 @@ func (client *Client) DescribeScheduledTask(appGroupIdentity *string, taskId *st
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecondRankResponse
 func (client *Client) DescribeSecondRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSecondRankResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19109,6 +27415,7 @@ func (client *Client) DescribeSecondRankWithOptions(appGroupIdentity *string, ap
 	return _result, _err
 }
 
+// @return DescribeSecondRankResponse
 func (client *Client) DescribeSecondRank(appGroupIdentity *string, appId *string, name *string) (_result *DescribeSecondRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19121,6 +27428,11 @@ func (client *Client) DescribeSecondRank(appGroupIdentity *string, appId *string
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlowQueryStatusResponse
 func (client *Client) DescribeSlowQueryStatusWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSlowQueryStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19145,6 +27457,7 @@ func (client *Client) DescribeSlowQueryStatusWithOptions(appGroupIdentity *strin
 	return _result, _err
 }
 
+// @return DescribeSlowQueryStatusResponse
 func (client *Client) DescribeSlowQueryStatus(appGroupIdentity *string) (_result *DescribeSlowQueryStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19157,6 +27470,13 @@ func (client *Client) DescribeSlowQueryStatus(appGroupIdentity *string) (_result
 	return _result, _err
 }
 
+// @param request - DescribeUserAnalyzerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserAnalyzerResponse
 func (client *Client) DescribeUserAnalyzerWithOptions(name *string, request *DescribeUserAnalyzerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeUserAnalyzerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19191,6 +27511,9 @@ func (client *Client) DescribeUserAnalyzerWithOptions(name *string, request *Des
 	return _result, _err
 }
 
+// @param request - DescribeUserAnalyzerRequest
+//
+// @return DescribeUserAnalyzerResponse
 func (client *Client) DescribeUserAnalyzer(name *string, request *DescribeUserAnalyzerRequest) (_result *DescribeUserAnalyzerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19203,6 +27526,11 @@ func (client *Client) DescribeUserAnalyzer(name *string, request *DescribeUserAn
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSlowQueryResponse
 func (client *Client) DisableSlowQueryWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableSlowQueryResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19227,6 +27555,7 @@ func (client *Client) DisableSlowQueryWithOptions(appGroupIdentity *string, head
 	return _result, _err
 }
 
+// @return DisableSlowQueryResponse
 func (client *Client) DisableSlowQuery(appGroupIdentity *string) (_result *DisableSlowQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19239,6 +27568,11 @@ func (client *Client) DisableSlowQuery(appGroupIdentity *string) (_result *Disab
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSlowQueryResponse
 func (client *Client) EnableSlowQueryWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableSlowQueryResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19263,6 +27597,7 @@ func (client *Client) EnableSlowQueryWithOptions(appGroupIdentity *string, heade
 	return _result, _err
 }
 
+// @return EnableSlowQueryResponse
 func (client *Client) EnableSlowQuery(appGroupIdentity *string) (_result *EnableSlowQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19275,6 +27610,17 @@ func (client *Client) EnableSlowQuery(appGroupIdentity *string) (_result *Enable
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a wide table that is generated after a JOIN operation is performed on multiple tables.
+//
+// @param request - GenerateMergedTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateMergedTableResponse
 func (client *Client) GenerateMergedTableWithOptions(request *GenerateMergedTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateMergedTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19310,6 +27656,13 @@ func (client *Client) GenerateMergedTableWithOptions(request *GenerateMergedTabl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a wide table that is generated after a JOIN operation is performed on multiple tables.
+//
+// @param request - GenerateMergedTableRequest
+//
+// @return GenerateMergedTableResponse
 func (client *Client) GenerateMergedTable(request *GenerateMergedTableRequest) (_result *GenerateMergedTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19322,6 +27675,17 @@ func (client *Client) GenerateMergedTable(request *GenerateMergedTableRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the type of an industry.
+//
+// @param request - GetDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDomainResponse
 func (client *Client) GetDomainWithOptions(domainName *string, request *GetDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19356,6 +27720,13 @@ func (client *Client) GetDomainWithOptions(domainName *string, request *GetDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the type of an industry.
+//
+// @param request - GetDomainRequest
+//
+// @return GetDomainResponse
 func (client *Client) GetDomain(domainName *string, request *GetDomainRequest) (_result *GetDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19368,6 +27739,17 @@ func (client *Client) GetDomain(domainName *string, request *GetDomainRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the version information about the current feature when you create an instance.
+//
+// @param request - GetFunctionCurrentVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionCurrentVersionResponse
 func (client *Client) GetFunctionCurrentVersionWithOptions(functionName *string, request *GetFunctionCurrentVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionCurrentVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19414,6 +27796,13 @@ func (client *Client) GetFunctionCurrentVersionWithOptions(functionName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the version information about the current feature when you create an instance.
+//
+// @param request - GetFunctionCurrentVersionRequest
+//
+// @return GetFunctionCurrentVersionResponse
 func (client *Client) GetFunctionCurrentVersion(functionName *string, request *GetFunctionCurrentVersionRequest) (_result *GetFunctionCurrentVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19426,6 +27815,15 @@ func (client *Client) GetFunctionCurrentVersion(functionName *string, request *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the algorithm instance that an application uses by default.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionDefaultInstanceResponse
 func (client *Client) GetFunctionDefaultInstanceWithOptions(appGroupIdentity *string, functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionDefaultInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19450,6 +27848,11 @@ func (client *Client) GetFunctionDefaultInstanceWithOptions(appGroupIdentity *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the algorithm instance that an application uses by default.
+//
+// @return GetFunctionDefaultInstanceResponse
 func (client *Client) GetFunctionDefaultInstance(appGroupIdentity *string, functionName *string) (_result *GetFunctionDefaultInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19462,6 +27865,17 @@ func (client *Client) GetFunctionDefaultInstance(appGroupIdentity *string, funct
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an algorithm instance by instance name.
+//
+// @param request - GetFunctionInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionInstanceResponse
 func (client *Client) GetFunctionInstanceWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, request *GetFunctionInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19496,6 +27910,13 @@ func (client *Client) GetFunctionInstanceWithOptions(appGroupIdentity *string, f
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an algorithm instance by instance name.
+//
+// @param request - GetFunctionInstanceRequest
+//
+// @return GetFunctionInstanceResponse
 func (client *Client) GetFunctionInstance(appGroupIdentity *string, functionName *string, instanceName *string, request *GetFunctionInstanceRequest) (_result *GetFunctionInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19508,6 +27929,17 @@ func (client *Client) GetFunctionInstance(appGroupIdentity *string, functionName
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an algorithm resource.
+//
+// @param request - GetFunctionResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionResourceResponse
 func (client *Client) GetFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, resourceName *string, request *GetFunctionResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19542,6 +27974,13 @@ func (client *Client) GetFunctionResourceWithOptions(appGroupIdentity *string, f
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an algorithm resource.
+//
+// @param request - GetFunctionResourceRequest
+//
+// @return GetFunctionResourceResponse
 func (client *Client) GetFunctionResource(appGroupIdentity *string, functionName *string, resourceName *string, request *GetFunctionResourceRequest) (_result *GetFunctionResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19554,6 +27993,15 @@ func (client *Client) GetFunctionResource(appGroupIdentity *string, functionName
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a training task.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionTaskResponse
 func (client *Client) GetFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, generation *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19578,6 +28026,11 @@ func (client *Client) GetFunctionTaskWithOptions(appGroupIdentity *string, funct
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a training task.
+//
+// @return GetFunctionTaskResponse
 func (client *Client) GetFunctionTask(appGroupIdentity *string, functionName *string, instanceName *string, generation *string) (_result *GetFunctionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19590,6 +28043,15 @@ func (client *Client) GetFunctionTask(appGroupIdentity *string, functionName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries version information by version ID.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionVersionResponse
 func (client *Client) GetFunctionVersionWithOptions(functionName *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19614,6 +28076,11 @@ func (client *Client) GetFunctionVersionWithOptions(functionName *string, versio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries version information by version ID.
+//
+// @return GetFunctionVersionResponse
 func (client *Client) GetFunctionVersion(functionName *string, versionId *string) (_result *GetFunctionVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19626,6 +28093,11 @@ func (client *Client) GetFunctionVersion(functionName *string, versionId *string
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScriptFileNamesResponse
 func (client *Client) GetScriptFileNamesWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetScriptFileNamesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19650,6 +28122,7 @@ func (client *Client) GetScriptFileNamesWithOptions(appGroupIdentity *string, ap
 	return _result, _err
 }
 
+// @return GetScriptFileNamesResponse
 func (client *Client) GetScriptFileNames(appGroupIdentity *string, appVersionId *string, scriptName *string) (_result *GetScriptFileNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19662,6 +28135,15 @@ func (client *Client) GetScriptFileNames(appGroupIdentity *string, appVersionId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a query policy.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSearchStrategyResponse
 func (client *Client) GetSearchStrategyWithOptions(appGroupIdentity *string, appId *string, strategyName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSearchStrategyResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19686,6 +28168,11 @@ func (client *Client) GetSearchStrategyWithOptions(appGroupIdentity *string, app
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a query policy.
+//
+// @return GetSearchStrategyResponse
 func (client *Client) GetSearchStrategy(appGroupIdentity *string, appId *string, strategyName *string) (_result *GetSearchStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19698,6 +28185,15 @@ func (client *Client) GetSearchStrategy(appGroupIdentity *string, appId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a sort script.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSortScriptResponse
 func (client *Client) GetSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSortScriptResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19722,6 +28218,11 @@ func (client *Client) GetSortScriptWithOptions(appGroupIdentity *string, scriptN
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a sort script.
+//
+// @return GetSortScriptResponse
 func (client *Client) GetSortScript(appGroupIdentity *string, scriptName *string, appVersionId *string) (_result *GetSortScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19734,6 +28235,15 @@ func (client *Client) GetSortScript(appGroupIdentity *string, scriptName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the content of a sort script.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSortScriptFileResponse
 func (client *Client) GetSortScriptFileWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, fileName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSortScriptFileResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19758,6 +28268,11 @@ func (client *Client) GetSortScriptFileWithOptions(appGroupIdentity *string, scr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the content of a sort script.
+//
+// @return GetSortScriptFileResponse
 func (client *Client) GetSortScriptFile(appGroupIdentity *string, scriptName *string, appVersionId *string, fileName *string) (_result *GetSortScriptFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19770,6 +28285,15 @@ func (client *Client) GetSortScriptFile(appGroupIdentity *string, scriptName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of experiments.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListABTestExperimentsResponse
 func (client *Client) ListABTestExperimentsWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestExperimentsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19794,6 +28318,11 @@ func (client *Client) ListABTestExperimentsWithOptions(appGroupIdentity *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of experiments.
+//
+// @return ListABTestExperimentsResponse
 func (client *Client) ListABTestExperiments(appGroupIdentity *string, sceneId *string, groupId *string) (_result *ListABTestExperimentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19806,6 +28335,11 @@ func (client *Client) ListABTestExperiments(appGroupIdentity *string, sceneId *s
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListABTestFixedFlowDividersResponse
 func (client *Client) ListABTestFixedFlowDividersWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestFixedFlowDividersResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19830,6 +28364,7 @@ func (client *Client) ListABTestFixedFlowDividersWithOptions(appGroupIdentity *s
 	return _result, _err
 }
 
+// @return ListABTestFixedFlowDividersResponse
 func (client *Client) ListABTestFixedFlowDividers(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string) (_result *ListABTestFixedFlowDividersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19842,6 +28377,11 @@ func (client *Client) ListABTestFixedFlowDividers(appGroupIdentity *string, scen
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListABTestGroupsResponse
 func (client *Client) ListABTestGroupsWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestGroupsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19866,6 +28406,7 @@ func (client *Client) ListABTestGroupsWithOptions(appGroupIdentity *string, scen
 	return _result, _err
 }
 
+// @return ListABTestGroupsResponse
 func (client *Client) ListABTestGroups(appGroupIdentity *string, sceneId *string) (_result *ListABTestGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19878,6 +28419,11 @@ func (client *Client) ListABTestGroups(appGroupIdentity *string, sceneId *string
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListABTestScenesResponse
 func (client *Client) ListABTestScenesWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestScenesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -19902,6 +28448,7 @@ func (client *Client) ListABTestScenesWithOptions(appGroupIdentity *string, head
 	return _result, _err
 }
 
+// @return ListABTestScenesResponse
 func (client *Client) ListABTestScenes(appGroupIdentity *string) (_result *ListABTestScenesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19914,16 +28461,25 @@ func (client *Client) ListABTestScenes(appGroupIdentity *string) (_result *ListA
 	return _result, _err
 }
 
-/**
- * *   This operation allows you to query applications by application name, instance ID, and application type.
- * *   This operation can sort the applications based on their creation time.
- * *   This operation supports the parameters for paging.
- *
- * @param tmpReq ListAppGroupsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListAppGroupsResponse
- */
+// Summary:
+//
+// Queries a list of OpenSearch applications.
+//
+// Description:
+//
+//   This operation allows you to query applications by application name, instance ID, and application type.
+//
+// 	- This operation allows you to sort the applications based on their creation time.
+//
+// 	- This operation supports the parameters for paging.
+//
+// @param tmpReq - ListAppGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppGroupsResponse
 func (client *Client) ListAppGroupsWithOptions(tmpReq *ListAppGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAppGroupsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19992,14 +28548,21 @@ func (client *Client) ListAppGroupsWithOptions(tmpReq *ListAppGroupsRequest, hea
 	return _result, _err
 }
 
-/**
- * *   This operation allows you to query applications by application name, instance ID, and application type.
- * *   This operation can sort the applications based on their creation time.
- * *   This operation supports the parameters for paging.
- *
- * @param request ListAppGroupsRequest
- * @return ListAppGroupsResponse
- */
+// Summary:
+//
+// Queries a list of OpenSearch applications.
+//
+// Description:
+//
+//   This operation allows you to query applications by application name, instance ID, and application type.
+//
+// 	- This operation allows you to sort the applications based on their creation time.
+//
+// 	- This operation supports the parameters for paging.
+//
+// @param request - ListAppGroupsRequest
+//
+// @return ListAppGroupsResponse
 func (client *Client) ListAppGroups(request *ListAppGroupsRequest) (_result *ListAppGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20012,6 +28575,13 @@ func (client *Client) ListAppGroups(request *ListAppGroupsRequest) (_result *Lis
 	return _result, _err
 }
 
+// @param request - ListDataCollectionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataCollectionsResponse
 func (client *Client) ListDataCollectionsWithOptions(appGroupIdentity *string, request *ListDataCollectionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataCollectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20050,6 +28620,9 @@ func (client *Client) ListDataCollectionsWithOptions(appGroupIdentity *string, r
 	return _result, _err
 }
 
+// @param request - ListDataCollectionsRequest
+//
+// @return ListDataCollectionsResponse
 func (client *Client) ListDataCollections(appGroupIdentity *string, request *ListDataCollectionsRequest) (_result *ListDataCollectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20062,6 +28635,17 @@ func (client *Client) ListDataCollections(appGroupIdentity *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all fields in a table of a data source. This operation is for internal use only.
+//
+// @param request - ListDataSourceTableFieldsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourceTableFieldsResponse
 func (client *Client) ListDataSourceTableFieldsWithOptions(dataSourceType *string, request *ListDataSourceTableFieldsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourceTableFieldsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20100,6 +28684,13 @@ func (client *Client) ListDataSourceTableFieldsWithOptions(dataSourceType *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all fields in a table of a data source. This operation is for internal use only.
+//
+// @param request - ListDataSourceTableFieldsRequest
+//
+// @return ListDataSourceTableFieldsResponse
 func (client *Client) ListDataSourceTableFields(dataSourceType *string, request *ListDataSourceTableFieldsRequest) (_result *ListDataSourceTableFieldsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20112,6 +28703,13 @@ func (client *Client) ListDataSourceTableFields(dataSourceType *string, request 
 	return _result, _err
 }
 
+// @param request - ListDataSourceTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourceTablesResponse
 func (client *Client) ListDataSourceTablesWithOptions(dataSourceType *string, request *ListDataSourceTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourceTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20146,6 +28744,9 @@ func (client *Client) ListDataSourceTablesWithOptions(dataSourceType *string, re
 	return _result, _err
 }
 
+// @param request - ListDataSourceTablesRequest
+//
+// @return ListDataSourceTablesResponse
 func (client *Client) ListDataSourceTables(dataSourceType *string, request *ListDataSourceTablesRequest) (_result *ListDataSourceTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20158,6 +28759,11 @@ func (client *Client) ListDataSourceTables(dataSourceType *string, request *List
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFirstRanksResponse
 func (client *Client) ListFirstRanksWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFirstRanksResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -20182,6 +28788,7 @@ func (client *Client) ListFirstRanksWithOptions(appGroupIdentity *string, appId 
 	return _result, _err
 }
 
+// @return ListFirstRanksResponse
 func (client *Client) ListFirstRanks(appGroupIdentity *string, appId *string) (_result *ListFirstRanksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20194,6 +28801,17 @@ func (client *Client) ListFirstRanks(appGroupIdentity *string, appId *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all algorithm instances of a user, which meet specified conditions.
+//
+// @param request - ListFunctionInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionInstancesResponse
 func (client *Client) ListFunctionInstancesWithOptions(appGroupIdentity *string, functionName *string, request *ListFunctionInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20248,6 +28866,13 @@ func (client *Client) ListFunctionInstancesWithOptions(appGroupIdentity *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all algorithm instances of a user, which meet specified conditions.
+//
+// @param request - ListFunctionInstancesRequest
+//
+// @return ListFunctionInstancesResponse
 func (client *Client) ListFunctionInstances(appGroupIdentity *string, functionName *string, request *ListFunctionInstancesRequest) (_result *ListFunctionInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20260,6 +28885,17 @@ func (client *Client) ListFunctionInstances(appGroupIdentity *string, functionNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries algorithm resources.
+//
+// @param request - ListFunctionResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionResourcesResponse
 func (client *Client) ListFunctionResourcesWithOptions(appGroupIdentity *string, functionName *string, request *ListFunctionResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20306,6 +28942,13 @@ func (client *Client) ListFunctionResourcesWithOptions(appGroupIdentity *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries algorithm resources.
+//
+// @param request - ListFunctionResourcesRequest
+//
+// @return ListFunctionResourcesResponse
 func (client *Client) ListFunctionResources(appGroupIdentity *string, functionName *string, request *ListFunctionResourcesRequest) (_result *ListFunctionResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20318,6 +28961,17 @@ func (client *Client) ListFunctionResources(appGroupIdentity *string, functionNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the training tasks. The returned results are sorted by start time in descending order.
+//
+// @param request - ListFunctionTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionTasksResponse
 func (client *Client) ListFunctionTasksWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, request *ListFunctionTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20368,6 +29022,13 @@ func (client *Client) ListFunctionTasksWithOptions(appGroupIdentity *string, fun
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the training tasks. The returned results are sorted by start time in descending order.
+//
+// @param request - ListFunctionTasksRequest
+//
+// @return ListFunctionTasksResponse
 func (client *Client) ListFunctionTasks(appGroupIdentity *string, functionName *string, instanceName *string, request *ListFunctionTasksRequest) (_result *ListFunctionTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20380,6 +29041,13 @@ func (client *Client) ListFunctionTasks(appGroupIdentity *string, functionName *
 	return _result, _err
 }
 
+// @param request - ListInterventionDictionariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInterventionDictionariesResponse
 func (client *Client) ListInterventionDictionariesWithOptions(request *ListInterventionDictionariesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInterventionDictionariesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20422,6 +29090,9 @@ func (client *Client) ListInterventionDictionariesWithOptions(request *ListInter
 	return _result, _err
 }
 
+// @param request - ListInterventionDictionariesRequest
+//
+// @return ListInterventionDictionariesResponse
 func (client *Client) ListInterventionDictionaries(request *ListInterventionDictionariesRequest) (_result *ListInterventionDictionariesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20434,6 +29105,17 @@ func (client *Client) ListInterventionDictionaries(request *ListInterventionDict
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the intervention entries in an intervention dictionary.
+//
+// @param request - ListInterventionDictionaryEntriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInterventionDictionaryEntriesResponse
 func (client *Client) ListInterventionDictionaryEntriesWithOptions(name *string, request *ListInterventionDictionaryEntriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInterventionDictionaryEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20476,6 +29158,13 @@ func (client *Client) ListInterventionDictionaryEntriesWithOptions(name *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the intervention entries in an intervention dictionary.
+//
+// @param request - ListInterventionDictionaryEntriesRequest
+//
+// @return ListInterventionDictionaryEntriesResponse
 func (client *Client) ListInterventionDictionaryEntries(name *string, request *ListInterventionDictionaryEntriesRequest) (_result *ListInterventionDictionaryEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20488,6 +29177,13 @@ func (client *Client) ListInterventionDictionaryEntries(name *string, request *L
 	return _result, _err
 }
 
+// @param request - ListInterventionDictionaryNerResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInterventionDictionaryNerResultsResponse
 func (client *Client) ListInterventionDictionaryNerResultsWithOptions(name *string, request *ListInterventionDictionaryNerResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInterventionDictionaryNerResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20522,6 +29218,9 @@ func (client *Client) ListInterventionDictionaryNerResultsWithOptions(name *stri
 	return _result, _err
 }
 
+// @param request - ListInterventionDictionaryNerResultsRequest
+//
+// @return ListInterventionDictionaryNerResultsResponse
 func (client *Client) ListInterventionDictionaryNerResults(name *string, request *ListInterventionDictionaryNerResultsRequest) (_result *ListInterventionDictionaryNerResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20534,6 +29233,11 @@ func (client *Client) ListInterventionDictionaryNerResults(name *string, request
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInterventionDictionaryRelatedEntitiesResponse
 func (client *Client) ListInterventionDictionaryRelatedEntitiesWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInterventionDictionaryRelatedEntitiesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -20558,6 +29262,7 @@ func (client *Client) ListInterventionDictionaryRelatedEntitiesWithOptions(name 
 	return _result, _err
 }
 
+// @return ListInterventionDictionaryRelatedEntitiesResponse
 func (client *Client) ListInterventionDictionaryRelatedEntities(name *string) (_result *ListInterventionDictionaryRelatedEntitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20570,6 +29275,17 @@ func (client *Client) ListInterventionDictionaryRelatedEntities(name *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看当前的处理流
+//
+// @param request - ListProceedingsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProceedingsResponse
 func (client *Client) ListProceedingsWithOptions(appGroupIdentity *string, request *ListProceedingsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProceedingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20604,6 +29320,13 @@ func (client *Client) ListProceedingsWithOptions(appGroupIdentity *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看当前的处理流
+//
+// @param request - ListProceedingsRequest
+//
+// @return ListProceedingsResponse
 func (client *Client) ListProceedings(appGroupIdentity *string, request *ListProceedingsRequest) (_result *ListProceedingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20616,6 +29339,17 @@ func (client *Client) ListProceedings(appGroupIdentity *string, request *ListPro
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+//
+// @param request - ListQueryProcessorAnalyzerResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQueryProcessorAnalyzerResultsResponse
 func (client *Client) ListQueryProcessorAnalyzerResultsWithOptions(appGroupIdentity *string, appId *string, name *string, request *ListQueryProcessorAnalyzerResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQueryProcessorAnalyzerResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20650,6 +29384,13 @@ func (client *Client) ListQueryProcessorAnalyzerResultsWithOptions(appGroupIdent
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+//
+// @param request - ListQueryProcessorAnalyzerResultsRequest
+//
+// @return ListQueryProcessorAnalyzerResultsResponse
 func (client *Client) ListQueryProcessorAnalyzerResults(appGroupIdentity *string, appId *string, name *string, request *ListQueryProcessorAnalyzerResultsRequest) (_result *ListQueryProcessorAnalyzerResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20662,6 +29403,17 @@ func (client *Client) ListQueryProcessorAnalyzerResults(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the recommended priority settings of entity types for named entity recognition (NER).
+//
+// @param request - ListQueryProcessorNersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQueryProcessorNersResponse
 func (client *Client) ListQueryProcessorNersWithOptions(request *ListQueryProcessorNersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQueryProcessorNersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20696,6 +29448,13 @@ func (client *Client) ListQueryProcessorNersWithOptions(request *ListQueryProces
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the recommended priority settings of entity types for named entity recognition (NER).
+//
+// @param request - ListQueryProcessorNersRequest
+//
+// @return ListQueryProcessorNersResponse
 func (client *Client) ListQueryProcessorNers(request *ListQueryProcessorNersRequest) (_result *ListQueryProcessorNersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20708,6 +29467,17 @@ func (client *Client) ListQueryProcessorNers(request *ListQueryProcessorNersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+//
+// @param request - ListQueryProcessorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQueryProcessorsResponse
 func (client *Client) ListQueryProcessorsWithOptions(appGroupIdentity *string, appId *string, request *ListQueryProcessorsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQueryProcessorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20742,6 +29512,13 @@ func (client *Client) ListQueryProcessorsWithOptions(appGroupIdentity *string, a
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+//
+// @param request - ListQueryProcessorsRequest
+//
+// @return ListQueryProcessorsResponse
 func (client *Client) ListQueryProcessors(appGroupIdentity *string, appId *string, request *ListQueryProcessorsRequest) (_result *ListQueryProcessorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20754,6 +29531,17 @@ func (client *Client) ListQueryProcessors(appGroupIdentity *string, appId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+//
+// @param request - ListQuotaReviewTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuotaReviewTasksResponse
 func (client *Client) ListQuotaReviewTasksWithOptions(appGroupIdentity *string, request *ListQuotaReviewTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQuotaReviewTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20792,6 +29580,13 @@ func (client *Client) ListQuotaReviewTasksWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+//
+// @param request - ListQuotaReviewTasksRequest
+//
+// @return ListQuotaReviewTasksResponse
 func (client *Client) ListQuotaReviewTasks(appGroupIdentity *string, request *ListQuotaReviewTasksRequest) (_result *ListQuotaReviewTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20804,6 +29599,17 @@ func (client *Client) ListQuotaReviewTasks(appGroupIdentity *string, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of scheduled tasks of an OpenSearch application.
+//
+// @param request - ListScheduledTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScheduledTasksResponse
 func (client *Client) ListScheduledTasksWithOptions(appGroupIdentity *string, request *ListScheduledTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListScheduledTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20846,6 +29652,13 @@ func (client *Client) ListScheduledTasksWithOptions(appGroupIdentity *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of scheduled tasks of an OpenSearch application.
+//
+// @param request - ListScheduledTasksRequest
+//
+// @return ListScheduledTasksResponse
 func (client *Client) ListScheduledTasks(appGroupIdentity *string, request *ListScheduledTasksRequest) (_result *ListScheduledTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20858,6 +29671,15 @@ func (client *Client) ListScheduledTasks(appGroupIdentity *string, request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of query policies.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSearchStrategiesResponse
 func (client *Client) ListSearchStrategiesWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSearchStrategiesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -20882,6 +29704,11 @@ func (client *Client) ListSearchStrategiesWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of query policies.
+//
+// @return ListSearchStrategiesResponse
 func (client *Client) ListSearchStrategies(appGroupIdentity *string, appId *string) (_result *ListSearchStrategiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20894,6 +29721,11 @@ func (client *Client) ListSearchStrategies(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecondRanksResponse
 func (client *Client) ListSecondRanksWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSecondRanksResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -20918,6 +29750,7 @@ func (client *Client) ListSecondRanksWithOptions(appGroupIdentity *string, appId
 	return _result, _err
 }
 
+// @return ListSecondRanksResponse
 func (client *Client) ListSecondRanks(appGroupIdentity *string, appId *string) (_result *ListSecondRanksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20930,6 +29763,15 @@ func (client *Client) ListSecondRanks(appGroupIdentity *string, appId *string) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the suggestions that are provided by Optimization Master for slow queries.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSlowQueryCategoriesResponse
 func (client *Client) ListSlowQueryCategoriesWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSlowQueryCategoriesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -20954,6 +29796,11 @@ func (client *Client) ListSlowQueryCategoriesWithOptions(appGroupIdentity *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the suggestions that are provided by Optimization Master for slow queries.
+//
+// @return ListSlowQueryCategoriesResponse
 func (client *Client) ListSlowQueryCategories(appGroupIdentity *string) (_result *ListSlowQueryCategoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20966,6 +29813,11 @@ func (client *Client) ListSlowQueryCategories(appGroupIdentity *string) (_result
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSlowQueryQueriesResponse
 func (client *Client) ListSlowQueryQueriesWithOptions(appGroupIdentity *string, categoryIndex *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSlowQueryQueriesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -20990,6 +29842,7 @@ func (client *Client) ListSlowQueryQueriesWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// @return ListSlowQueryQueriesResponse
 func (client *Client) ListSlowQueryQueries(appGroupIdentity *string, categoryIndex *string) (_result *ListSlowQueryQueriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21002,6 +29855,15 @@ func (client *Client) ListSlowQueryQueries(appGroupIdentity *string, categoryInd
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSortExpressionsResponse
 func (client *Client) ListSortExpressionsWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSortExpressionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21026,6 +29888,11 @@ func (client *Client) ListSortExpressionsWithOptions(appGroupIdentity *string, a
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+//
+// @return ListSortExpressionsResponse
 func (client *Client) ListSortExpressions(appGroupIdentity *string, appId *string) (_result *ListSortExpressionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21038,6 +29905,15 @@ func (client *Client) ListSortExpressions(appGroupIdentity *string, appId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all sort scripts of an application version.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSortScriptsResponse
 func (client *Client) ListSortScriptsWithOptions(appGroupIdentity *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSortScriptsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21062,6 +29938,11 @@ func (client *Client) ListSortScriptsWithOptions(appGroupIdentity *string, appVe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all sort scripts of an application version.
+//
+// @return ListSortScriptsResponse
 func (client *Client) ListSortScripts(appGroupIdentity *string, appVersionId *string) (_result *ListSortScriptsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21074,6 +29955,17 @@ func (client *Client) ListSortScripts(appGroupIdentity *string, appVersionId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries log statistics, such as application error logs, hotword rankings, and slow query logs.
+//
+// @param request - ListStatisticLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStatisticLogsResponse
 func (client *Client) ListStatisticLogsWithOptions(appGroupIdentity *string, moduleName *string, request *ListStatisticLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListStatisticLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21136,6 +30028,13 @@ func (client *Client) ListStatisticLogsWithOptions(appGroupIdentity *string, mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries log statistics, such as application error logs, hotword rankings, and slow query logs.
+//
+// @param request - ListStatisticLogsRequest
+//
+// @return ListStatisticLogsResponse
 func (client *Client) ListStatisticLogs(appGroupIdentity *string, moduleName *string, request *ListStatisticLogsRequest) (_result *ListStatisticLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21148,6 +30047,13 @@ func (client *Client) ListStatisticLogs(appGroupIdentity *string, moduleName *st
 	return _result, _err
 }
 
+// @param request - ListStatisticReportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStatisticReportResponse
 func (client *Client) ListStatisticReportWithOptions(appGroupIdentity *string, moduleName *string, request *ListStatisticReportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListStatisticReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21202,6 +30108,9 @@ func (client *Client) ListStatisticReportWithOptions(appGroupIdentity *string, m
 	return _result, _err
 }
 
+// @param request - ListStatisticReportRequest
+//
+// @return ListStatisticReportResponse
 func (client *Client) ListStatisticReport(appGroupIdentity *string, moduleName *string, request *ListStatisticReportRequest) (_result *ListStatisticReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21214,6 +30123,17 @@ func (client *Client) ListStatisticReport(appGroupIdentity *string, moduleName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tagged resources.
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21270,6 +30190,13 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tagged resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21282,6 +30209,17 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the entries of a custom analyzer.
+//
+// @param request - ListUserAnalyzerEntriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserAnalyzerEntriesResponse
 func (client *Client) ListUserAnalyzerEntriesWithOptions(name *string, request *ListUserAnalyzerEntriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserAnalyzerEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21324,6 +30262,13 @@ func (client *Client) ListUserAnalyzerEntriesWithOptions(name *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the entries of a custom analyzer.
+//
+// @param request - ListUserAnalyzerEntriesRequest
+//
+// @return ListUserAnalyzerEntriesResponse
 func (client *Client) ListUserAnalyzerEntries(name *string, request *ListUserAnalyzerEntriesRequest) (_result *ListUserAnalyzerEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21336,6 +30281,17 @@ func (client *Client) ListUserAnalyzerEntries(name *string, request *ListUserAna
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom analyzers that belong to the current account.
+//
+// @param request - ListUserAnalyzersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserAnalyzersResponse
 func (client *Client) ListUserAnalyzersWithOptions(request *ListUserAnalyzersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserAnalyzersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21374,6 +30330,13 @@ func (client *Client) ListUserAnalyzersWithOptions(request *ListUserAnalyzersReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom analyzers that belong to the current account.
+//
+// @param request - ListUserAnalyzersRequest
+//
+// @return ListUserAnalyzersResponse
 func (client *Client) ListUserAnalyzers(request *ListUserAnalyzersRequest) (_result *ListUserAnalyzersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21386,6 +30349,17 @@ func (client *Client) ListUserAnalyzers(request *ListUserAnalyzersRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+//
+// @param request - ModifyAppGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppGroupResponse
 func (client *Client) ModifyAppGroupWithOptions(appGroupIdentity *string, request *ModifyAppGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAppGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21438,6 +30412,13 @@ func (client *Client) ModifyAppGroupWithOptions(appGroupIdentity *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+//
+// @param request - ModifyAppGroupRequest
+//
+// @return ModifyAppGroupResponse
 func (client *Client) ModifyAppGroup(appGroupIdentity *string, request *ModifyAppGroupRequest) (_result *ModifyAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21450,6 +30431,13 @@ func (client *Client) ModifyAppGroup(appGroupIdentity *string, request *ModifyAp
 	return _result, _err
 }
 
+// @param request - ModifyAppGroupQuotaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppGroupQuotaResponse
 func (client *Client) ModifyAppGroupQuotaWithOptions(appGroupIdentity *string, request *ModifyAppGroupQuotaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAppGroupQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21485,6 +30473,9 @@ func (client *Client) ModifyAppGroupQuotaWithOptions(appGroupIdentity *string, r
 	return _result, _err
 }
 
+// @param request - ModifyAppGroupQuotaRequest
+//
+// @return ModifyAppGroupQuotaResponse
 func (client *Client) ModifyAppGroupQuota(appGroupIdentity *string, request *ModifyAppGroupQuotaRequest) (_result *ModifyAppGroupQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21497,6 +30488,17 @@ func (client *Client) ModifyAppGroupQuota(appGroupIdentity *string, request *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+//
+// @param request - ModifyFirstRankRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFirstRankResponse
 func (client *Client) ModifyFirstRankWithOptions(appGroupIdentity *string, appId *string, name *string, request *ModifyFirstRankRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyFirstRankResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21532,6 +30534,13 @@ func (client *Client) ModifyFirstRankWithOptions(appGroupIdentity *string, appId
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+//
+// @param request - ModifyFirstRankRequest
+//
+// @return ModifyFirstRankResponse
 func (client *Client) ModifyFirstRank(appGroupIdentity *string, appId *string, name *string, request *ModifyFirstRankRequest) (_result *ModifyFirstRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21544,6 +30553,17 @@ func (client *Client) ModifyFirstRank(appGroupIdentity *string, appId *string, n
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+//
+// @param request - ModifyQueryProcessorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyQueryProcessorResponse
 func (client *Client) ModifyQueryProcessorWithOptions(appGroupIdentity *string, appId *string, name *string, request *ModifyQueryProcessorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyQueryProcessorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21579,6 +30599,13 @@ func (client *Client) ModifyQueryProcessorWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+//
+// @param request - ModifyQueryProcessorRequest
+//
+// @return ModifyQueryProcessorResponse
 func (client *Client) ModifyQueryProcessor(appGroupIdentity *string, appId *string, name *string, request *ModifyQueryProcessorRequest) (_result *ModifyQueryProcessorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21591,6 +30618,17 @@ func (client *Client) ModifyQueryProcessor(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a scheduled task.
+//
+// @param request - ModifyScheduledTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyScheduledTaskResponse
 func (client *Client) ModifyScheduledTaskWithOptions(appGroupIdentity *string, taskId *string, request *ModifyScheduledTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyScheduledTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21620,6 +30658,13 @@ func (client *Client) ModifyScheduledTaskWithOptions(appGroupIdentity *string, t
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a scheduled task.
+//
+// @param request - ModifyScheduledTaskRequest
+//
+// @return ModifyScheduledTaskResponse
 func (client *Client) ModifyScheduledTask(appGroupIdentity *string, taskId *string, request *ModifyScheduledTaskRequest) (_result *ModifyScheduledTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21632,6 +30677,17 @@ func (client *Client) ModifyScheduledTask(appGroupIdentity *string, taskId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+//
+// @param request - ModifySecondRankRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySecondRankResponse
 func (client *Client) ModifySecondRankWithOptions(appGroupIdentity *string, appId *string, name *string, request *ModifySecondRankRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifySecondRankResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21667,6 +30723,13 @@ func (client *Client) ModifySecondRankWithOptions(appGroupIdentity *string, appI
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+//
+// @param request - ModifySecondRankRequest
+//
+// @return ModifySecondRankResponse
 func (client *Client) ModifySecondRank(appGroupIdentity *string, appId *string, name *string, request *ModifySecondRankRequest) (_result *ModifySecondRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21679,6 +30742,17 @@ func (client *Client) ModifySecondRank(appGroupIdentity *string, appId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Accepts the changes in intervention entries.
+//
+// @param request - PushInterventionDictionaryEntriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushInterventionDictionaryEntriesResponse
 func (client *Client) PushInterventionDictionaryEntriesWithOptions(name *string, request *PushInterventionDictionaryEntriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushInterventionDictionaryEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21714,6 +30788,13 @@ func (client *Client) PushInterventionDictionaryEntriesWithOptions(name *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Accepts the changes in intervention entries.
+//
+// @param request - PushInterventionDictionaryEntriesRequest
+//
+// @return PushInterventionDictionaryEntriesResponse
 func (client *Client) PushInterventionDictionaryEntries(name *string, request *PushInterventionDictionaryEntriesRequest) (_result *PushInterventionDictionaryEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21726,6 +30807,17 @@ func (client *Client) PushInterventionDictionaryEntries(name *string, request *P
 	return _result, _err
 }
 
+// Summary:
+//
+// Accepts the changes in the entries of a custom analyzer.
+//
+// @param request - PushUserAnalyzerEntriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushUserAnalyzerEntriesResponse
 func (client *Client) PushUserAnalyzerEntriesWithOptions(name *string, request *PushUserAnalyzerEntriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushUserAnalyzerEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21766,6 +30858,13 @@ func (client *Client) PushUserAnalyzerEntriesWithOptions(name *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Accepts the changes in the entries of a custom analyzer.
+//
+// @param request - PushUserAnalyzerEntriesRequest
+//
+// @return PushUserAnalyzerEntriesResponse
 func (client *Client) PushUserAnalyzerEntries(name *string, request *PushUserAnalyzerEntriesRequest) (_result *PushUserAnalyzerEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21778,42 +30877,11 @@ func (client *Client) PushUserAnalyzerEntries(name *string, request *PushUserAna
 	return _result, _err
 }
 
-func (client *Client) RankPreviewQueryWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RankPreviewQueryResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RankPreviewQuery"),
-		Version:     tea.String("2017-12-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/actions/query-rank"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RankPreviewQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RankPreviewQuery(appGroupIdentity *string, modelName *string) (_result *RankPreviewQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RankPreviewQueryResponse{}
-	_body, _err := client.RankPreviewQueryWithOptions(appGroupIdentity, modelName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseSortScriptResponse
 func (client *Client) ReleaseSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReleaseSortScriptResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21838,6 +30906,7 @@ func (client *Client) ReleaseSortScriptWithOptions(appGroupIdentity *string, scr
 	return _result, _err
 }
 
+// @return ReleaseSortScriptResponse
 func (client *Client) ReleaseSortScript(appGroupIdentity *string, scriptName *string, appVersionId *string) (_result *ReleaseSortScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21850,6 +30919,15 @@ func (client *Client) ReleaseSortScript(appGroupIdentity *string, scriptName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a version of an OpenSearch application.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveAppResponse
 func (client *Client) RemoveAppWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveAppResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21874,6 +30952,11 @@ func (client *Client) RemoveAppWithOptions(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a version of an OpenSearch application.
+//
+// @return RemoveAppResponse
 func (client *Client) RemoveApp(appGroupIdentity *string, appId *string) (_result *RemoveAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21886,6 +30969,11 @@ func (client *Client) RemoveApp(appGroupIdentity *string, appId *string) (_resul
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveAppGroupResponse
 func (client *Client) RemoveAppGroupWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveAppGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21910,6 +30998,7 @@ func (client *Client) RemoveAppGroupWithOptions(appGroupIdentity *string, header
 	return _result, _err
 }
 
+// @return RemoveAppGroupResponse
 func (client *Client) RemoveAppGroup(appGroupIdentity *string) (_result *RemoveAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21922,6 +31011,15 @@ func (client *Client) RemoveAppGroup(appGroupIdentity *string) (_result *RemoveA
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables data collection.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDataCollectionResponse
 func (client *Client) RemoveDataCollectionWithOptions(appGroupIdentity *string, dataCollectionIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveDataCollectionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21946,6 +31044,11 @@ func (client *Client) RemoveDataCollectionWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables data collection.
+//
+// @return RemoveDataCollectionResponse
 func (client *Client) RemoveDataCollection(appGroupIdentity *string, dataCollectionIdentity *string) (_result *RemoveDataCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21958,6 +31061,11 @@ func (client *Client) RemoveDataCollection(appGroupIdentity *string, dataCollect
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveFirstRankResponse
 func (client *Client) RemoveFirstRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveFirstRankResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21982,6 +31090,7 @@ func (client *Client) RemoveFirstRankWithOptions(appGroupIdentity *string, appId
 	return _result, _err
 }
 
+// @return RemoveFirstRankResponse
 func (client *Client) RemoveFirstRank(appGroupIdentity *string, appId *string, name *string) (_result *RemoveFirstRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21994,6 +31103,11 @@ func (client *Client) RemoveFirstRank(appGroupIdentity *string, appId *string, n
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveInterventionDictionaryResponse
 func (client *Client) RemoveInterventionDictionaryWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveInterventionDictionaryResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22018,6 +31132,7 @@ func (client *Client) RemoveInterventionDictionaryWithOptions(name *string, head
 	return _result, _err
 }
 
+// @return RemoveInterventionDictionaryResponse
 func (client *Client) RemoveInterventionDictionary(name *string) (_result *RemoveInterventionDictionaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22030,6 +31145,11 @@ func (client *Client) RemoveInterventionDictionary(name *string) (_result *Remov
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveQueryProcessorResponse
 func (client *Client) RemoveQueryProcessorWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveQueryProcessorResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22054,6 +31174,7 @@ func (client *Client) RemoveQueryProcessorWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// @return RemoveQueryProcessorResponse
 func (client *Client) RemoveQueryProcessor(appGroupIdentity *string, appId *string, name *string) (_result *RemoveQueryProcessorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22066,6 +31187,11 @@ func (client *Client) RemoveQueryProcessor(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveScheduledTaskResponse
 func (client *Client) RemoveScheduledTaskWithOptions(appGroupIdentity *string, taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveScheduledTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22090,6 +31216,7 @@ func (client *Client) RemoveScheduledTaskWithOptions(appGroupIdentity *string, t
 	return _result, _err
 }
 
+// @return RemoveScheduledTaskResponse
 func (client *Client) RemoveScheduledTask(appGroupIdentity *string, taskId *string) (_result *RemoveScheduledTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22102,6 +31229,15 @@ func (client *Client) RemoveScheduledTask(appGroupIdentity *string, taskId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a query policy.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveSearchStrategyResponse
 func (client *Client) RemoveSearchStrategyWithOptions(appGroupIdentity *string, appId *string, strategyName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveSearchStrategyResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22126,6 +31262,11 @@ func (client *Client) RemoveSearchStrategyWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a query policy.
+//
+// @return RemoveSearchStrategyResponse
 func (client *Client) RemoveSearchStrategy(appGroupIdentity *string, appId *string, strategyName *string) (_result *RemoveSearchStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22138,6 +31279,11 @@ func (client *Client) RemoveSearchStrategy(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveSecondRankResponse
 func (client *Client) RemoveSecondRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveSecondRankResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22162,6 +31308,7 @@ func (client *Client) RemoveSecondRankWithOptions(appGroupIdentity *string, appI
 	return _result, _err
 }
 
+// @return RemoveSecondRankResponse
 func (client *Client) RemoveSecondRank(appGroupIdentity *string, appId *string, name *string) (_result *RemoveSecondRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22174,6 +31321,11 @@ func (client *Client) RemoveSecondRank(appGroupIdentity *string, appId *string, 
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserAnalyzerResponse
 func (client *Client) RemoveUserAnalyzerWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveUserAnalyzerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22198,6 +31350,7 @@ func (client *Client) RemoveUserAnalyzerWithOptions(name *string, headers map[st
 	return _result, _err
 }
 
+// @return RemoveUserAnalyzerResponse
 func (client *Client) RemoveUserAnalyzer(name *string) (_result *RemoveUserAnalyzerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22210,6 +31363,17 @@ func (client *Client) RemoveUserAnalyzer(name *string) (_result *RemoveUserAnaly
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+//
+// @param request - RenewAppGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewAppGroupResponse
 func (client *Client) RenewAppGroupWithOptions(appGroupIdentity *string, request *RenewAppGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenewAppGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22245,6 +31409,13 @@ func (client *Client) RenewAppGroupWithOptions(appGroupIdentity *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+//
+// @param request - RenewAppGroupRequest
+//
+// @return RenewAppGroupResponse
 func (client *Client) RenewAppGroup(appGroupIdentity *string, request *RenewAppGroupRequest) (_result *RenewAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22257,6 +31428,15 @@ func (client *Client) RenewAppGroup(appGroupIdentity *string, request *RenewAppG
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts a service-based application to an instance-based application.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplaceAppGroupCommodityCodeResponse
 func (client *Client) ReplaceAppGroupCommodityCodeWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReplaceAppGroupCommodityCodeResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22281,6 +31461,11 @@ func (client *Client) ReplaceAppGroupCommodityCodeWithOptions(appGroupIdentity *
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts a service-based application to an instance-based application.
+//
+// @return ReplaceAppGroupCommodityCodeResponse
 func (client *Client) ReplaceAppGroupCommodityCode(appGroupIdentity *string) (_result *ReplaceAppGroupCommodityCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22293,6 +31478,17 @@ func (client *Client) ReplaceAppGroupCommodityCode(appGroupIdentity *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads a sort script.
+//
+// @param request - SaveSortScriptFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSortScriptFileResponse
 func (client *Client) SaveSortScriptFileWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, fileName *string, request *SaveSortScriptFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveSortScriptFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22331,6 +31527,13 @@ func (client *Client) SaveSortScriptFileWithOptions(appGroupIdentity *string, sc
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads a sort script.
+//
+// @param request - SaveSortScriptFileRequest
+//
+// @return SaveSortScriptFileResponse
 func (client *Client) SaveSortScriptFile(appGroupIdentity *string, scriptName *string, appVersionId *string, fileName *string, request *SaveSortScriptFileRequest) (_result *SaveSortScriptFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22343,6 +31546,11 @@ func (client *Client) SaveSortScriptFile(appGroupIdentity *string, scriptName *s
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartSlowQueryAnalyzerResponse
 func (client *Client) StartSlowQueryAnalyzerWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartSlowQueryAnalyzerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22367,6 +31575,7 @@ func (client *Client) StartSlowQueryAnalyzerWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// @return StartSlowQueryAnalyzerResponse
 func (client *Client) StartSlowQueryAnalyzer(appGroupIdentity *string) (_result *StartSlowQueryAnalyzerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22379,6 +31588,17 @@ func (client *Client) StartSlowQueryAnalyzer(appGroupIdentity *string) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22421,6 +31641,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22433,14 +31660,21 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
-/**
- * The ID of the request.
- *
- * @param request UnbindESUserAnalyzerRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UnbindESUserAnalyzerResponse
- */
+// Summary:
+//
+// Unbinds a custom analyzer from an Elasticsearch instance.
+//
+// Description:
+//
+// You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
+//
+// @param request - UnbindESUserAnalyzerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindESUserAnalyzerResponse
 func (client *Client) UnbindESUserAnalyzerWithOptions(appGroupIdentity *string, esInstanceId *string, request *UnbindESUserAnalyzerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindESUserAnalyzerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22470,12 +31704,17 @@ func (client *Client) UnbindESUserAnalyzerWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
-/**
- * The ID of the request.
- *
- * @param request UnbindESUserAnalyzerRequest
- * @return UnbindESUserAnalyzerResponse
- */
+// Summary:
+//
+// Unbinds a custom analyzer from an Elasticsearch instance.
+//
+// Description:
+//
+// You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
+//
+// @param request - UnbindESUserAnalyzerRequest
+//
+// @return UnbindESUserAnalyzerResponse
 func (client *Client) UnbindESUserAnalyzer(appGroupIdentity *string, esInstanceId *string, request *UnbindESUserAnalyzerRequest) (_result *UnbindESUserAnalyzerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22488,6 +31727,15 @@ func (client *Client) UnbindESUserAnalyzer(appGroupIdentity *string, esInstanceI
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds an Elasticsearch instance from an OpenSearch application.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindEsInstanceResponse
 func (client *Client) UnbindEsInstanceWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindEsInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22512,6 +31760,11 @@ func (client *Client) UnbindEsInstanceWithOptions(appGroupIdentity *string, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds an Elasticsearch instance from an OpenSearch application.
+//
+// @return UnbindEsInstanceResponse
 func (client *Client) UnbindEsInstance(appGroupIdentity *string) (_result *UnbindEsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22524,6 +31777,17 @@ func (client *Client) UnbindEsInstance(appGroupIdentity *string) (_result *Unbin
 	return _result, _err
 }
 
+// Summary:
+//
+// Remove tags from resources.
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22580,6 +31844,13 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// Remove tags from resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22592,6 +31863,17 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the parameters of an A/B test.
+//
+// @param request - UpdateABTestExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateABTestExperimentResponse
 func (client *Client) UpdateABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, request *UpdateABTestExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22627,6 +31909,13 @@ func (client *Client) UpdateABTestExperimentWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the parameters of an A/B test.
+//
+// @param request - UpdateABTestExperimentRequest
+//
+// @return UpdateABTestExperimentResponse
 func (client *Client) UpdateABTestExperiment(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, request *UpdateABTestExperimentRequest) (_result *UpdateABTestExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22639,6 +31928,17 @@ func (client *Client) UpdateABTestExperiment(appGroupIdentity *string, sceneId *
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies whitelists.
+//
+// @param request - UpdateABTestFixedFlowDividersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateABTestFixedFlowDividersResponse
 func (client *Client) UpdateABTestFixedFlowDividersWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, request *UpdateABTestFixedFlowDividersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestFixedFlowDividersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22668,6 +31968,13 @@ func (client *Client) UpdateABTestFixedFlowDividersWithOptions(appGroupIdentity 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies whitelists.
+//
+// @param request - UpdateABTestFixedFlowDividersRequest
+//
+// @return UpdateABTestFixedFlowDividersResponse
 func (client *Client) UpdateABTestFixedFlowDividers(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, request *UpdateABTestFixedFlowDividersRequest) (_result *UpdateABTestFixedFlowDividersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22680,6 +31987,17 @@ func (client *Client) UpdateABTestFixedFlowDividers(appGroupIdentity *string, sc
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a test group.
+//
+// @param request - UpdateABTestGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateABTestGroupResponse
 func (client *Client) UpdateABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, request *UpdateABTestGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22715,6 +32033,13 @@ func (client *Client) UpdateABTestGroupWithOptions(appGroupIdentity *string, sce
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a test group.
+//
+// @param request - UpdateABTestGroupRequest
+//
+// @return UpdateABTestGroupResponse
 func (client *Client) UpdateABTestGroup(appGroupIdentity *string, sceneId *string, groupId *string, request *UpdateABTestGroupRequest) (_result *UpdateABTestGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22727,6 +32052,17 @@ func (client *Client) UpdateABTestGroup(appGroupIdentity *string, sceneId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an A/B test scenario.
+//
+// @param request - UpdateABTestSceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateABTestSceneResponse
 func (client *Client) UpdateABTestSceneWithOptions(appGroupIdentity *string, sceneId *string, request *UpdateABTestSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22762,6 +32098,13 @@ func (client *Client) UpdateABTestSceneWithOptions(appGroupIdentity *string, sce
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an A/B test scenario.
+//
+// @param request - UpdateABTestSceneRequest
+//
+// @return UpdateABTestSceneResponse
 func (client *Client) UpdateABTestScene(appGroupIdentity *string, sceneId *string, request *UpdateABTestSceneRequest) (_result *UpdateABTestSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22774,6 +32117,13 @@ func (client *Client) UpdateABTestScene(appGroupIdentity *string, sceneId *strin
 	return _result, _err
 }
 
+// @param request - UpdateFetchFieldsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFetchFieldsResponse
 func (client *Client) UpdateFetchFieldsWithOptions(appGroupIdentity *string, appId *string, request *UpdateFetchFieldsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFetchFieldsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22809,6 +32159,9 @@ func (client *Client) UpdateFetchFieldsWithOptions(appGroupIdentity *string, app
 	return _result, _err
 }
 
+// @param request - UpdateFetchFieldsRequest
+//
+// @return UpdateFetchFieldsResponse
 func (client *Client) UpdateFetchFields(appGroupIdentity *string, appId *string, request *UpdateFetchFieldsRequest) (_result *UpdateFetchFieldsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22821,6 +32174,17 @@ func (client *Client) UpdateFetchFields(appGroupIdentity *string, appId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+//
+// @param request - UpdateFunctionDefaultInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFunctionDefaultInstanceResponse
 func (client *Client) UpdateFunctionDefaultInstanceWithOptions(appGroupIdentity *string, functionName *string, request *UpdateFunctionDefaultInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFunctionDefaultInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22855,6 +32219,13 @@ func (client *Client) UpdateFunctionDefaultInstanceWithOptions(appGroupIdentity 
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+//
+// @param request - UpdateFunctionDefaultInstanceRequest
+//
+// @return UpdateFunctionDefaultInstanceResponse
 func (client *Client) UpdateFunctionDefaultInstance(appGroupIdentity *string, functionName *string, request *UpdateFunctionDefaultInstanceRequest) (_result *UpdateFunctionDefaultInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22867,6 +32238,17 @@ func (client *Client) UpdateFunctionDefaultInstance(appGroupIdentity *string, fu
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an algorithm instance.
+//
+// @param request - UpdateFunctionInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFunctionInstanceResponse
 func (client *Client) UpdateFunctionInstanceWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, request *UpdateFunctionInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFunctionInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22913,6 +32295,13 @@ func (client *Client) UpdateFunctionInstanceWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an algorithm instance.
+//
+// @param request - UpdateFunctionInstanceRequest
+//
+// @return UpdateFunctionInstanceResponse
 func (client *Client) UpdateFunctionInstance(appGroupIdentity *string, functionName *string, instanceName *string, request *UpdateFunctionInstanceRequest) (_result *UpdateFunctionInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22925,6 +32314,21 @@ func (client *Client) UpdateFunctionInstance(appGroupIdentity *string, functionN
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an algorithm resource.
+//
+// Description:
+//
+// You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+//
+// @param request - UpdateFunctionResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFunctionResourceResponse
 func (client *Client) UpdateFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, resourceName *string, request *UpdateFunctionResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFunctionResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22963,6 +32367,17 @@ func (client *Client) UpdateFunctionResourceWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an algorithm resource.
+//
+// Description:
+//
+// You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+//
+// @param request - UpdateFunctionResourceRequest
+//
+// @return UpdateFunctionResourceResponse
 func (client *Client) UpdateFunctionResource(appGroupIdentity *string, functionName *string, resourceName *string, request *UpdateFunctionResourceRequest) (_result *UpdateFunctionResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22975,6 +32390,17 @@ func (client *Client) UpdateFunctionResource(appGroupIdentity *string, functionN
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a query policy.
+//
+// @param request - UpdateSearchStrategyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSearchStrategyResponse
 func (client *Client) UpdateSearchStrategyWithOptions(appGroupIdentity *string, appId *string, strategyName *string, request *UpdateSearchStrategyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSearchStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23004,6 +32430,13 @@ func (client *Client) UpdateSearchStrategyWithOptions(appGroupIdentity *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a query policy.
+//
+// @param request - UpdateSearchStrategyRequest
+//
+// @return UpdateSearchStrategyResponse
 func (client *Client) UpdateSearchStrategy(appGroupIdentity *string, appId *string, strategyName *string, request *UpdateSearchStrategyRequest) (_result *UpdateSearchStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23016,13 +32449,19 @@ func (client *Client) UpdateSearchStrategy(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
-/**
- * You can call this operation to modify the description of a sort script.
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateSortScriptResponse
- */
+// Summary:
+//
+// Modifies the description of a sort script.
+//
+// Description:
+//
+// You can call this operation to modify the description of a sort script.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSortScriptResponse
 func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSortScriptResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -23047,11 +32486,15 @@ func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appV
 	return _result, _err
 }
 
-/**
- * You can call this operation to modify the description of a sort script.
- *
- * @return UpdateSortScriptResponse
- */
+// Summary:
+//
+// Modifies the description of a sort script.
+//
+// Description:
+//
+// You can call this operation to modify the description of a sort script.
+//
+// @return UpdateSortScriptResponse
 func (client *Client) UpdateSortScript(appGroupIdentity *string, appVersionId *string, scriptName *string) (_result *UpdateSortScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23064,6 +32507,17 @@ func (client *Client) UpdateSortScript(appGroupIdentity *string, appVersionId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates summaries. A dry run is supported.
+//
+// @param request - UpdateSummariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSummariesResponse
 func (client *Client) UpdateSummariesWithOptions(appGroupIdentity *string, appId *string, request *UpdateSummariesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSummariesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23099,6 +32553,13 @@ func (client *Client) UpdateSummariesWithOptions(appGroupIdentity *string, appId
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates summaries. A dry run is supported.
+//
+// @param request - UpdateSummariesRequest
+//
+// @return UpdateSummariesResponse
 func (client *Client) UpdateSummaries(appGroupIdentity *string, appId *string, request *UpdateSummariesRequest) (_result *UpdateSummariesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23111,6 +32572,17 @@ func (client *Client) UpdateSummaries(appGroupIdentity *string, appId *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Verifies data sources.
+//
+// @param request - ValidateDataSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateDataSourcesResponse
 func (client *Client) ValidateDataSourcesWithOptions(request *ValidateDataSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ValidateDataSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23140,6 +32612,13 @@ func (client *Client) ValidateDataSourcesWithOptions(request *ValidateDataSource
 	return _result, _err
 }
 
+// Summary:
+//
+// Verifies data sources.
+//
+// @param request - ValidateDataSourcesRequest
+//
+// @return ValidateDataSourcesResponse
 func (client *Client) ValidateDataSources(request *ValidateDataSourcesRequest) (_result *ValidateDataSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
