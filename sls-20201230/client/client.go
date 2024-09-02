@@ -992,6 +992,155 @@ func (s *Histogram) SetTo(v int32) *Histogram {
 	return s
 }
 
+type IndexJsonKey struct {
+	// example:
+	//
+	// myAlias
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// example:
+	//
+	// true
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// example:
+	//
+	// true
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// example:
+	//
+	// true
+	DocValue *bool     `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	Token    []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s IndexJsonKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexJsonKey) GoString() string {
+	return s.String()
+}
+
+func (s *IndexJsonKey) SetAlias(v string) *IndexJsonKey {
+	s.Alias = &v
+	return s
+}
+
+func (s *IndexJsonKey) SetCaseSensitive(v bool) *IndexJsonKey {
+	s.CaseSensitive = &v
+	return s
+}
+
+func (s *IndexJsonKey) SetChn(v bool) *IndexJsonKey {
+	s.Chn = &v
+	return s
+}
+
+func (s *IndexJsonKey) SetDocValue(v bool) *IndexJsonKey {
+	s.DocValue = &v
+	return s
+}
+
+func (s *IndexJsonKey) SetToken(v []*string) *IndexJsonKey {
+	s.Token = v
+	return s
+}
+
+func (s *IndexJsonKey) SetType(v string) *IndexJsonKey {
+	s.Type = &v
+	return s
+}
+
+type IndexKey struct {
+	// example:
+	//
+	// myAlias
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// example:
+	//
+	// true
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// example:
+	//
+	// true
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// example:
+	//
+	// true
+	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	// example:
+	//
+	// true
+	IndexAll *bool                    `json:"index_all,omitempty" xml:"index_all,omitempty"`
+	JsonKeys map[string]*IndexJsonKey `json:"json_keys,omitempty" xml:"json_keys,omitempty"`
+	MaxDepth *int64                   `json:"max_depth,omitempty" xml:"max_depth,omitempty"`
+	Token    []*string                `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s IndexKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexKey) GoString() string {
+	return s.String()
+}
+
+func (s *IndexKey) SetAlias(v string) *IndexKey {
+	s.Alias = &v
+	return s
+}
+
+func (s *IndexKey) SetCaseSensitive(v bool) *IndexKey {
+	s.CaseSensitive = &v
+	return s
+}
+
+func (s *IndexKey) SetChn(v bool) *IndexKey {
+	s.Chn = &v
+	return s
+}
+
+func (s *IndexKey) SetDocValue(v bool) *IndexKey {
+	s.DocValue = &v
+	return s
+}
+
+func (s *IndexKey) SetIndexAll(v bool) *IndexKey {
+	s.IndexAll = &v
+	return s
+}
+
+func (s *IndexKey) SetJsonKeys(v map[string]*IndexJsonKey) *IndexKey {
+	s.JsonKeys = v
+	return s
+}
+
+func (s *IndexKey) SetMaxDepth(v int64) *IndexKey {
+	s.MaxDepth = &v
+	return s
+}
+
+func (s *IndexKey) SetToken(v []*string) *IndexKey {
+	s.Token = v
+	return s
+}
+
+func (s *IndexKey) SetType(v string) *IndexKey {
+	s.Type = &v
+	return s
+}
+
 type IngestProcessor struct {
 	// This parameter is required.
 	Configuration *IngestProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
@@ -3745,12 +3894,8 @@ func (s *ExternalStore) SetStoreType(v string) *ExternalStore {
 }
 
 type Index struct {
-	Keys map[string]*IndexKeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
-	// example:
-	//
-	// 1622186280
-	LastModifyTime *int64     `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	Line           *IndexLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	Keys map[string]*IndexKey `json:"keys,omitempty" xml:"keys,omitempty"`
+	Line *IndexLine           `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -3761,12 +3906,6 @@ type Index struct {
 	//
 	// 2048
 	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 30
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s Index) String() string {
@@ -3777,13 +3916,8 @@ func (s Index) GoString() string {
 	return s.String()
 }
 
-func (s *Index) SetKeys(v map[string]*IndexKeysValue) *Index {
+func (s *Index) SetKeys(v map[string]*IndexKey) *Index {
 	s.Keys = v
-	return s
-}
-
-func (s *Index) SetLastModifyTime(v int64) *Index {
-	s.LastModifyTime = &v
 	return s
 }
 
@@ -3809,11 +3943,6 @@ func (s *Index) SetLogReduceWhiteList(v []*string) *Index {
 
 func (s *Index) SetMaxTextLen(v int32) *Index {
 	s.MaxTextLen = &v
-	return s
-}
-
-func (s *Index) SetTtl(v int32) *Index {
-	s.Ttl = &v
 	return s
 }
 
@@ -4423,165 +4552,6 @@ func (s *MLDataParamPredictionsValue) SetUpdateTime(v int64) *MLDataParamPredict
 
 func (s *MLDataParamPredictionsValue) SetResults(v []map[string]*string) *MLDataParamPredictionsValue {
 	s.Results = v
-	return s
-}
-
-type IndexKeysValue struct {
-	// example:
-	//
-	// true
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// example:
-	//
-	// true
-	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-	// example:
-	//
-	// myAlias
-	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// text
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// true
-	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
-}
-
-func (s IndexKeysValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s IndexKeysValue) GoString() string {
-	return s.String()
-}
-
-func (s *IndexKeysValue) SetChn(v bool) *IndexKeysValue {
-	s.Chn = &v
-	return s
-}
-
-func (s *IndexKeysValue) SetCaseSensitive(v bool) *IndexKeysValue {
-	s.CaseSensitive = &v
-	return s
-}
-
-func (s *IndexKeysValue) SetToken(v []*string) *IndexKeysValue {
-	s.Token = v
-	return s
-}
-
-func (s *IndexKeysValue) SetAlias(v string) *IndexKeysValue {
-	s.Alias = &v
-	return s
-}
-
-func (s *IndexKeysValue) SetType(v string) *IndexKeysValue {
-	s.Type = &v
-	return s
-}
-
-func (s *IndexKeysValue) SetDocValue(v bool) *IndexKeysValue {
-	s.DocValue = &v
-	return s
-}
-
-type KeysValue struct {
-	// Specifies whether to enable case sensitivity. This parameter is required only when **type*	- is set to **text**. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false (default)
-	//
-	// example:
-	//
-	// false
-	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// Specifies whether to include Chinese characters. This parameter is required only when **type*	- is set to **text**. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false (default)
-	//
-	// example:
-	//
-	// false
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// The data type of the field value. Valid values: text, json, double, and long.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// text
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The alias of the field.
-	//
-	// example:
-	//
-	// myAlias
-	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The delimiters that are used to split text.
-	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-	// Specifies whether to turn on Enable Analytics for the field.
-	//
-	// example:
-	//
-	// false
-	DocValue    *bool   `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
-	VectorIndex *string `json:"vector_index,omitempty" xml:"vector_index,omitempty"`
-	Embedding   *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
-}
-
-func (s KeysValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s KeysValue) GoString() string {
-	return s.String()
-}
-
-func (s *KeysValue) SetCaseSensitive(v bool) *KeysValue {
-	s.CaseSensitive = &v
-	return s
-}
-
-func (s *KeysValue) SetChn(v bool) *KeysValue {
-	s.Chn = &v
-	return s
-}
-
-func (s *KeysValue) SetType(v string) *KeysValue {
-	s.Type = &v
-	return s
-}
-
-func (s *KeysValue) SetAlias(v string) *KeysValue {
-	s.Alias = &v
-	return s
-}
-
-func (s *KeysValue) SetToken(v []*string) *KeysValue {
-	s.Token = v
-	return s
-}
-
-func (s *KeysValue) SetDocValue(v bool) *KeysValue {
-	s.DocValue = &v
-	return s
-}
-
-func (s *KeysValue) SetVectorIndex(v string) *KeysValue {
-	s.VectorIndex = &v
-	return s
-}
-
-func (s *KeysValue) SetEmbedding(v string) *KeysValue {
-	s.Embedding = &v
 	return s
 }
 
@@ -5547,32 +5517,8 @@ func (s *CreateETLResponse) SetStatusCode(v int32) *CreateETLResponse {
 }
 
 type CreateIndexRequest struct {
-	// The configuration of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field. You must specify this parameter, the line parameter, or both parameters. For more information, see Example.
-	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
-	// The configuration of full-text indexes. You must specify this parameter, the keys parameter, or both parameters. For more information, see Example.
-	Line *CreateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	// Specifies whether to turn on LogReduce. After you turn on LogReduce, either the whitelist or blacklist takes effect.
-	//
-	// example:
-	//
-	// false
-	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	// The fields in the blacklist that you want to use to cluster logs.
-	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	// The fields in the whitelist that you want to use to cluster logs.
-	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	// The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of max_text_len. Valid values: 64 to 16384.
-	//
-	// example:
-	//
-	// 2048
-	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	// The retention period of logs. Unit: days. Valid values: 7, 30, and 90.
-	//
-	// example:
-	//
-	// 30
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The request body.
+	Body *Index `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateIndexRequest) String() string {
@@ -5583,102 +5529,8 @@ func (s CreateIndexRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateIndexRequest) SetKeys(v map[string]*KeysValue) *CreateIndexRequest {
-	s.Keys = v
-	return s
-}
-
-func (s *CreateIndexRequest) SetLine(v *CreateIndexRequestLine) *CreateIndexRequest {
-	s.Line = v
-	return s
-}
-
-func (s *CreateIndexRequest) SetLogReduce(v bool) *CreateIndexRequest {
-	s.LogReduce = &v
-	return s
-}
-
-func (s *CreateIndexRequest) SetLogReduceBlackList(v []*string) *CreateIndexRequest {
-	s.LogReduceBlackList = v
-	return s
-}
-
-func (s *CreateIndexRequest) SetLogReduceWhiteList(v []*string) *CreateIndexRequest {
-	s.LogReduceWhiteList = v
-	return s
-}
-
-func (s *CreateIndexRequest) SetMaxTextLen(v int32) *CreateIndexRequest {
-	s.MaxTextLen = &v
-	return s
-}
-
-func (s *CreateIndexRequest) SetTtl(v int32) *CreateIndexRequest {
-	s.Ttl = &v
-	return s
-}
-
-type CreateIndexRequestLine struct {
-	// Specifies whether to enable case sensitivity. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false (default)
-	//
-	// example:
-	//
-	// false
-	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// Specifies whether to include Chinese characters. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false (default)
-	//
-	// example:
-	//
-	// false
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// The excluded fields. You cannot specify both include_keys and exclude_keys.
-	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	// The included fields. You cannot specify both include_keys and exclude_keys.
-	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	// The delimiters. You can specify a delimiter to delimit the content of a field value. For more information about delimiters, see Example.
-	//
-	// This parameter is required.
-	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-}
-
-func (s CreateIndexRequestLine) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateIndexRequestLine) GoString() string {
-	return s.String()
-}
-
-func (s *CreateIndexRequestLine) SetCaseSensitive(v bool) *CreateIndexRequestLine {
-	s.CaseSensitive = &v
-	return s
-}
-
-func (s *CreateIndexRequestLine) SetChn(v bool) *CreateIndexRequestLine {
-	s.Chn = &v
-	return s
-}
-
-func (s *CreateIndexRequestLine) SetExcludeKeys(v []*string) *CreateIndexRequestLine {
-	s.ExcludeKeys = v
-	return s
-}
-
-func (s *CreateIndexRequestLine) SetIncludeKeys(v []*string) *CreateIndexRequestLine {
-	s.IncludeKeys = v
-	return s
-}
-
-func (s *CreateIndexRequestLine) SetToken(v []*string) *CreateIndexRequestLine {
-	s.Token = v
+func (s *CreateIndexRequest) SetBody(v *Index) *CreateIndexRequest {
+	s.Body = v
 	return s
 }
 
@@ -9725,7 +9577,7 @@ type GetIndexResponseBody struct {
 	// v2
 	IndexMode *string `json:"index_mode,omitempty" xml:"index_mode,omitempty"`
 	// The configurations of field indexes. A field index is in the key-value format in which the key specifies the name of the field and the value specifies the index configuration of the field.
-	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
+	Keys map[string]*IndexKey `json:"keys,omitempty" xml:"keys,omitempty"`
 	// The time when the index configurations were last updated. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
@@ -9758,6 +9610,8 @@ type GetIndexResponseBody struct {
 	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
 	// The lifecycle of the index file. Valid values: 7, 30, and 90. Unit: day.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
@@ -9777,7 +9631,7 @@ func (s *GetIndexResponseBody) SetIndexMode(v string) *GetIndexResponseBody {
 	return s
 }
 
-func (s *GetIndexResponseBody) SetKeys(v map[string]*KeysValue) *GetIndexResponseBody {
+func (s *GetIndexResponseBody) SetKeys(v map[string]*IndexKey) *GetIndexResponseBody {
 	s.Keys = v
 	return s
 }
@@ -9848,6 +9702,8 @@ type GetIndexResponseBodyLine struct {
 	// The included fields.
 	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
 	// The delimiters.
+	//
+	// This parameter is required.
 	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
 
@@ -10818,6 +10674,9 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 }
 
 type GetMetricStoreResponseBody struct {
+	// example:
+	//
+	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
 	// example:
 	//
@@ -15184,81 +15043,6 @@ func (s *PutWebtrackingResponse) SetStatusCode(v int32) *PutWebtrackingResponse 
 	return s
 }
 
-type QueryMLServiceResultsRequest struct {
-	AllowBuiltin *bool                   `json:"allowBuiltin,omitempty" xml:"allowBuiltin,omitempty"`
-	Body         *MLServiceAnalysisParam `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s QueryMLServiceResultsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryMLServiceResultsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryMLServiceResultsRequest) SetAllowBuiltin(v bool) *QueryMLServiceResultsRequest {
-	s.AllowBuiltin = &v
-	return s
-}
-
-func (s *QueryMLServiceResultsRequest) SetBody(v *MLServiceAnalysisParam) *QueryMLServiceResultsRequest {
-	s.Body = v
-	return s
-}
-
-type QueryMLServiceResultsResponseBody struct {
-	Data   []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Status map[string]*string   `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s QueryMLServiceResultsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryMLServiceResultsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryMLServiceResultsResponseBody) SetData(v []map[string]*string) *QueryMLServiceResultsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryMLServiceResultsResponseBody) SetStatus(v map[string]*string) *QueryMLServiceResultsResponseBody {
-	s.Status = v
-	return s
-}
-
-type QueryMLServiceResultsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *QueryMLServiceResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s QueryMLServiceResultsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryMLServiceResultsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryMLServiceResultsResponse) SetHeaders(v map[string]*string) *QueryMLServiceResultsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryMLServiceResultsResponse) SetStatusCode(v int32) *QueryMLServiceResultsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryMLServiceResultsResponse) SetBody(v *QueryMLServiceResultsResponseBody) *QueryMLServiceResultsResponse {
-	s.Body = v
-	return s
-}
-
 type RefreshTokenRequest struct {
 	// example:
 	//
@@ -16226,34 +16010,8 @@ func (s *UpdateETLResponse) SetStatusCode(v int32) *UpdateETLResponse {
 }
 
 type UpdateIndexRequest struct {
-	// The configuration of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field.
-	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
-	// The configuration of full-text indexes.
-	Line *UpdateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	// Specifies whether to turn on LogReduce. If you turn on LogReduce, only one of `log_reduce_white_list` and `log_reduce_black_list` takes effect.
-	//
-	// example:
-	//
-	// false
-	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	// The fields in the blacklist that you want to use to cluster logs.
-	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	// The fields in the whitelist that you want to use to cluster logs.
-	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	// The maximum length of a field value that can be retained.
-	//
-	// example:
-	//
-	// 2048
-	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	// The retention period of data. Unit: days. Valid values: 7, 30, and 90.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 30
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The request body.
+	Body *Index `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateIndexRequest) String() string {
@@ -16264,106 +16022,8 @@ func (s UpdateIndexRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateIndexRequest) SetKeys(v map[string]*KeysValue) *UpdateIndexRequest {
-	s.Keys = v
-	return s
-}
-
-func (s *UpdateIndexRequest) SetLine(v *UpdateIndexRequestLine) *UpdateIndexRequest {
-	s.Line = v
-	return s
-}
-
-func (s *UpdateIndexRequest) SetLogReduce(v bool) *UpdateIndexRequest {
-	s.LogReduce = &v
-	return s
-}
-
-func (s *UpdateIndexRequest) SetLogReduceBlackList(v []*string) *UpdateIndexRequest {
-	s.LogReduceBlackList = v
-	return s
-}
-
-func (s *UpdateIndexRequest) SetLogReduceWhiteList(v []*string) *UpdateIndexRequest {
-	s.LogReduceWhiteList = v
-	return s
-}
-
-func (s *UpdateIndexRequest) SetMaxTextLen(v int32) *UpdateIndexRequest {
-	s.MaxTextLen = &v
-	return s
-}
-
-func (s *UpdateIndexRequest) SetTtl(v int32) *UpdateIndexRequest {
-	s.Ttl = &v
-	return s
-}
-
-type UpdateIndexRequestLine struct {
-	// Specifies whether to enable case sensitivity. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// true
-	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// Specifies whether to include Chinese characters. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// false
-	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// The excluded fields. You cannot specify both include_keys and exclude_keys.
-	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	// The included fields. You cannot specify both include_keys and exclude_keys.
-	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	// The delimiters that are used to split text.
-	//
-	// This parameter is required.
-	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-}
-
-func (s UpdateIndexRequestLine) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateIndexRequestLine) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateIndexRequestLine) SetCaseSensitive(v bool) *UpdateIndexRequestLine {
-	s.CaseSensitive = &v
-	return s
-}
-
-func (s *UpdateIndexRequestLine) SetChn(v bool) *UpdateIndexRequestLine {
-	s.Chn = &v
-	return s
-}
-
-func (s *UpdateIndexRequestLine) SetExcludeKeys(v []*string) *UpdateIndexRequestLine {
-	s.ExcludeKeys = v
-	return s
-}
-
-func (s *UpdateIndexRequestLine) SetIncludeKeys(v []*string) *UpdateIndexRequestLine {
-	s.IncludeKeys = v
-	return s
-}
-
-func (s *UpdateIndexRequestLine) SetToken(v []*string) *UpdateIndexRequestLine {
-	s.Token = v
+func (s *UpdateIndexRequest) SetBody(v *Index) *UpdateIndexRequest {
+	s.Body = v
 	return s
 }
 
@@ -19409,39 +19069,10 @@ func (client *Client) CreateIndexWithOptions(project *string, logstore *string, 
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Keys)) {
-		body["keys"] = request.Keys
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Line)) {
-		body["line"] = request.Line
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LogReduce)) {
-		body["log_reduce"] = request.LogReduce
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LogReduceBlackList)) {
-		body["log_reduce_black_list"] = request.LogReduceBlackList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LogReduceWhiteList)) {
-		body["log_reduce_white_list"] = request.LogReduceWhiteList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxTextLen)) {
-		body["max_text_len"] = request.MaxTextLen
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
-		body["ttl"] = request.Ttl
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateIndex"),
@@ -28068,77 +27699,6 @@ func (client *Client) PutWebtracking(project *string, logstoreName *string, requ
 	return _result, _err
 }
 
-// Deprecated: OpenAPI QueryMLServiceResults is deprecated
-//
-// Summary:
-//
-// queryMLServiceResults
-//
-// @param request - QueryMLServiceResultsRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return QueryMLServiceResultsResponse
-// Deprecated
-func (client *Client) QueryMLServiceResultsWithOptions(serviceName *string, request *QueryMLServiceResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryMLServiceResultsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AllowBuiltin)) {
-		query["allowBuiltin"] = request.AllowBuiltin
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(request.Body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryMLServiceResults"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/ml/service/" + tea.StringValue(serviceName) + "/analysis"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryMLServiceResultsResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI QueryMLServiceResults is deprecated
-//
-// Summary:
-//
-// queryMLServiceResults
-//
-// @param request - QueryMLServiceResultsRequest
-//
-// @return QueryMLServiceResultsResponse
-// Deprecated
-func (client *Client) QueryMLServiceResults(serviceName *string, request *QueryMLServiceResultsRequest) (_result *QueryMLServiceResultsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryMLServiceResultsResponse{}
-	_body, _err := client.QueryMLServiceResultsWithOptions(serviceName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // 刷新token
@@ -29595,39 +29155,10 @@ func (client *Client) UpdateIndexWithOptions(project *string, logstore *string, 
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Keys)) {
-		body["keys"] = request.Keys
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Line)) {
-		body["line"] = request.Line
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LogReduce)) {
-		body["log_reduce"] = request.LogReduce
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LogReduceBlackList)) {
-		body["log_reduce_black_list"] = request.LogReduceBlackList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LogReduceWhiteList)) {
-		body["log_reduce_white_list"] = request.LogReduceWhiteList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxTextLen)) {
-		body["max_text_len"] = request.MaxTextLen
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
-		body["ttl"] = request.Ttl
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateIndex"),
