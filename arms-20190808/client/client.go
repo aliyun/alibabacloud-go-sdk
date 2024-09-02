@@ -12419,7 +12419,8 @@ type CreateRumAppRequest struct {
 	// example:
 	//
 	// com.xxxx.xxxxxx
-	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	PackageName  *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	RealRegionId *string `json:"RealRegionId,omitempty" xml:"RealRegionId,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -12482,6 +12483,11 @@ func (s *CreateRumAppRequest) SetNickName(v string) *CreateRumAppRequest {
 
 func (s *CreateRumAppRequest) SetPackageName(v string) *CreateRumAppRequest {
 	s.PackageName = &v
+	return s
+}
+
+func (s *CreateRumAppRequest) SetRealRegionId(v string) *CreateRumAppRequest {
+	s.RealRegionId = &v
 	return s
 }
 
@@ -12575,7 +12581,8 @@ type CreateRumAppShrinkRequest struct {
 	// example:
 	//
 	// com.xxxx.xxxxxx
-	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	PackageName  *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	RealRegionId *string `json:"RealRegionId,omitempty" xml:"RealRegionId,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -12638,6 +12645,11 @@ func (s *CreateRumAppShrinkRequest) SetNickName(v string) *CreateRumAppShrinkReq
 
 func (s *CreateRumAppShrinkRequest) SetPackageName(v string) *CreateRumAppShrinkRequest {
 	s.PackageName = &v
+	return s
+}
+
+func (s *CreateRumAppShrinkRequest) SetRealRegionId(v string) *CreateRumAppShrinkRequest {
+	s.RealRegionId = &v
 	return s
 }
 
@@ -20498,7 +20510,8 @@ type DeleteRumAppRequest struct {
 	// example:
 	//
 	// b590lhguqs@28f515462******
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RealRegionId *string `json:"RealRegionId,omitempty" xml:"RealRegionId,omitempty"`
 	// The ID of the region.
 	//
 	// This parameter is required.
@@ -20524,6 +20537,11 @@ func (s *DeleteRumAppRequest) SetAppGroup(v string) *DeleteRumAppRequest {
 
 func (s *DeleteRumAppRequest) SetAppId(v string) *DeleteRumAppRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DeleteRumAppRequest) SetRealRegionId(v string) *DeleteRumAppRequest {
+	s.RealRegionId = &v
 	return s
 }
 
@@ -31008,6 +31026,18 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// 60
 	ArchiveDuration *int32 `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
+	// Read the whitelist policy for password-free addresses.
+	//
+	// example:
+	//
+	// null
+	AuthFreeReadPolicy *string `json:"AuthFreeReadPolicy,omitempty" xml:"AuthFreeReadPolicy,omitempty"`
+	// Write exempt password address whitelist policy.
+	//
+	// example:
+	//
+	// null
+	AuthFreeWritePolicy *string `json:"AuthFreeWritePolicy,omitempty" xml:"AuthFreeWritePolicy,omitempty"`
 	// The authorization token.
 	//
 	// example:
@@ -31048,6 +31078,18 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// RUNNING
 	DbInstanceStatus *string `json:"DbInstanceStatus,omitempty" xml:"DbInstanceStatus,omitempty"`
+	// Whether to enable password-free reading.
+	//
+	// example:
+	//
+	// false
+	EnableAuthFreeRead *bool `json:"EnableAuthFreeRead,omitempty" xml:"EnableAuthFreeRead,omitempty"`
+	// Whether to enable write access without password.
+	//
+	// example:
+	//
+	// false
+	EnableAuthFreeWrite *bool `json:"EnableAuthFreeWrite,omitempty" xml:"EnableAuthFreeWrite,omitempty"`
 	// Indicates whether access token authentication is enabled.
 	//
 	// example:
@@ -31159,7 +31201,8 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// [{"headers":{},"regionId":"cn-hangzhou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c39a1048921e04fceb039db2fbb73\\*\\*\\*","sourceName":"arms-luyao-test","dataSource":"","userId":"167275301789\\*\\*\\*"},{"headers":{},"regionId":"cn-beijing","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c6b6485496d5b400abde22cb47b5\\*\\*\\*\\*","sourceName":"agent-321-test","dataSource":"","userId":"1672753017899\\*\\*\\*"},{"headers":{},"regionId":"cn-zhangjiakou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c261a4f3200c446659133f1ade789b15e","sourceName":"zaifeng-cardinality-01","dataSource":"","userId":"167275301789\\*\\*\\*"}]
-	SubClustersJson  *string   `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
+	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
+	// Supported authentication types.
 	SupportAuthTypes []*string `json:"SupportAuthTypes,omitempty" xml:"SupportAuthTypes,omitempty" type:"Repeated"`
 	// The tags of the instance.
 	Tags []*GetPrometheusInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -31201,6 +31244,16 @@ func (s *GetPrometheusInstanceResponseBodyData) SetArchiveDuration(v int32) *Get
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyData) SetAuthFreeReadPolicy(v string) *GetPrometheusInstanceResponseBodyData {
+	s.AuthFreeReadPolicy = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetAuthFreeWritePolicy(v string) *GetPrometheusInstanceResponseBodyData {
+	s.AuthFreeWritePolicy = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyData) SetAuthToken(v string) *GetPrometheusInstanceResponseBodyData {
 	s.AuthToken = &v
 	return s
@@ -31223,6 +31276,16 @@ func (s *GetPrometheusInstanceResponseBodyData) SetClusterType(v string) *GetPro
 
 func (s *GetPrometheusInstanceResponseBodyData) SetDbInstanceStatus(v string) *GetPrometheusInstanceResponseBodyData {
 	s.DbInstanceStatus = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetEnableAuthFreeRead(v bool) *GetPrometheusInstanceResponseBodyData {
+	s.EnableAuthFreeRead = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetEnableAuthFreeWrite(v bool) *GetPrometheusInstanceResponseBodyData {
+	s.EnableAuthFreeWrite = &v
 	return s
 }
 
@@ -67614,6 +67677,12 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// 90
 	ArchiveDuration *int32 `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
+	// if can be null:
+	// true
+	AuthFreeReadPolicy *string `json:"AuthFreeReadPolicy,omitempty" xml:"AuthFreeReadPolicy,omitempty"`
+	// if can be null:
+	// true
+	AuthFreeWritePolicy *string `json:"AuthFreeWritePolicy,omitempty" xml:"AuthFreeWritePolicy,omitempty"`
 	// The ID of the Prometheus instance.
 	//
 	// This parameter is required.
@@ -67622,6 +67691,15 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// vpc-xxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// if can be null:
+	// true
+	EnableAuthFreeRead *bool `json:"EnableAuthFreeRead,omitempty" xml:"EnableAuthFreeRead,omitempty"`
+	// if can be null:
+	// true
+	EnableAuthFreeWrite *bool `json:"EnableAuthFreeWrite,omitempty" xml:"EnableAuthFreeWrite,omitempty"`
+	// if can be null:
+	// true
+	EnableAuthToken *bool `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -67657,8 +67735,33 @@ func (s *UpdatePrometheusInstanceRequest) SetArchiveDuration(v int32) *UpdatePro
 	return s
 }
 
+func (s *UpdatePrometheusInstanceRequest) SetAuthFreeReadPolicy(v string) *UpdatePrometheusInstanceRequest {
+	s.AuthFreeReadPolicy = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetAuthFreeWritePolicy(v string) *UpdatePrometheusInstanceRequest {
+	s.AuthFreeWritePolicy = &v
+	return s
+}
+
 func (s *UpdatePrometheusInstanceRequest) SetClusterId(v string) *UpdatePrometheusInstanceRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetEnableAuthFreeRead(v bool) *UpdatePrometheusInstanceRequest {
+	s.EnableAuthFreeRead = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetEnableAuthFreeWrite(v bool) *UpdatePrometheusInstanceRequest {
+	s.EnableAuthFreeWrite = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetEnableAuthToken(v bool) *UpdatePrometheusInstanceRequest {
+	s.EnableAuthToken = &v
 	return s
 }
 
@@ -68352,7 +68455,8 @@ type UpdateRumAppRequest struct {
 	// example:
 	//
 	// b5xxxxs@d8deedfa9bf****
-	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Pid          *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RealRegionId *string `json:"RealRegionId,omitempty" xml:"RealRegionId,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -68416,6 +68520,11 @@ func (s *UpdateRumAppRequest) SetNickname(v string) *UpdateRumAppRequest {
 
 func (s *UpdateRumAppRequest) SetPid(v string) *UpdateRumAppRequest {
 	s.Pid = &v
+	return s
+}
+
+func (s *UpdateRumAppRequest) SetRealRegionId(v string) *UpdateRumAppRequest {
+	s.RealRegionId = &v
 	return s
 }
 
@@ -74799,6 +74908,10 @@ func (client *Client) CreateRumAppWithOptions(tmpReq *CreateRumAppRequest, runti
 		query["PackageName"] = request.PackageName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RealRegionId)) {
+		query["RealRegionId"] = request.RealRegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -77215,6 +77328,10 @@ func (client *Client) DeleteRumAppWithOptions(request *DeleteRumAppRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealRegionId)) {
+		query["RealRegionId"] = request.RealRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -89087,8 +89204,28 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometh
 		query["ArchiveDuration"] = request.ArchiveDuration
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AuthFreeReadPolicy)) {
+		query["AuthFreeReadPolicy"] = request.AuthFreeReadPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthFreeWritePolicy)) {
+		query["AuthFreeWritePolicy"] = request.AuthFreeWritePolicy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAuthFreeRead)) {
+		query["EnableAuthFreeRead"] = request.EnableAuthFreeRead
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAuthFreeWrite)) {
+		query["EnableAuthFreeWrite"] = request.EnableAuthFreeWrite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAuthToken)) {
+		query["EnableAuthToken"] = request.EnableAuthToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -89415,6 +89552,10 @@ func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Pid)) {
 		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealRegionId)) {
+		query["RealRegionId"] = request.RealRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
