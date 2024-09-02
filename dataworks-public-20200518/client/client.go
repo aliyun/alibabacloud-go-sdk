@@ -6424,7 +6424,8 @@ type CreateFileRequest struct {
 	// example:
 	//
 	// {"queue":"default","SPARK_CONF":"--conf spark.driver.memory=2g"}
-	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	AdvancedSettings         *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	ApplyScheduleImmediately *bool   `json:"ApplyScheduleImmediately,omitempty" xml:"ApplyScheduleImmediately,omitempty"`
 	// Specifies whether to enable the automatic parsing feature for the file. Valid values:
 	//
 	// 	- true
@@ -6703,6 +6704,11 @@ func (s CreateFileRequest) GoString() string {
 
 func (s *CreateFileRequest) SetAdvancedSettings(v string) *CreateFileRequest {
 	s.AdvancedSettings = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetApplyScheduleImmediately(v bool) *CreateFileRequest {
+	s.ApplyScheduleImmediately = &v
 	return s
 }
 
@@ -31485,6 +31491,7 @@ func (s *GetFileResponseBodyDataFile) SetUseType(v string) *GetFileResponseBodyD
 }
 
 type GetFileResponseBodyDataNodeConfiguration struct {
+	ApplyScheduleImmediately *string `json:"ApplyScheduleImmediately,omitempty" xml:"ApplyScheduleImmediately,omitempty"`
 	// The interval between automatic reruns after an error occurs. Unit: milliseconds.
 	//
 	// This parameter corresponds to the Rerun Interval parameter that is displayed after the Auto Rerun upon Error check box is selected in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -31637,6 +31644,11 @@ func (s GetFileResponseBodyDataNodeConfiguration) String() string {
 
 func (s GetFileResponseBodyDataNodeConfiguration) GoString() string {
 	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetApplyScheduleImmediately(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.ApplyScheduleImmediately = &v
+	return s
 }
 
 func (s *GetFileResponseBodyDataNodeConfiguration) SetAutoRerunIntervalMillis(v int32) *GetFileResponseBodyDataNodeConfiguration {
@@ -71221,6 +71233,226 @@ func (s *ListTableThemeResponse) SetBody(v *ListTableThemeResponseBody) *ListTab
 	return s
 }
 
+type ListTablesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// odps
+	//
+	// emr
+	//
+	// mysql
+	//
+	// holo
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// 12222
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesRequest) SetDataSourceType(v string) *ListTablesRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetNextToken(v string) *ListTablesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetPageSize(v int32) *ListTablesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListTablesResponseBody struct {
+	Data *ListTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// E25887B7-579C-54A5-9C4F-83A0DE367DD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBody) SetData(v *ListTablesResponseBodyData) *ListTablesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTablesResponseBody) SetRequestId(v string) *ListTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTablesResponseBodyData struct {
+	TableEntityList []*ListTablesResponseBodyDataTableEntityList `json:"TableEntityList,omitempty" xml:"TableEntityList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListTablesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBodyData) SetTableEntityList(v []*ListTablesResponseBodyDataTableEntityList) *ListTablesResponseBodyData {
+	s.TableEntityList = v
+	return s
+}
+
+func (s *ListTablesResponseBodyData) SetTotal(v int64) *ListTablesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListTablesResponseBodyDataTableEntityList struct {
+	EntityContent *ListTablesResponseBodyDataTableEntityListEntityContent `json:"EntityContent,omitempty" xml:"EntityContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// maxcompute-table.project.table
+	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
+}
+
+func (s ListTablesResponseBodyDataTableEntityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBodyDataTableEntityList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBodyDataTableEntityList) SetEntityContent(v *ListTablesResponseBodyDataTableEntityListEntityContent) *ListTablesResponseBodyDataTableEntityList {
+	s.EntityContent = v
+	return s
+}
+
+func (s *ListTablesResponseBodyDataTableEntityList) SetEntityQualifiedName(v string) *ListTablesResponseBodyDataTableEntityList {
+	s.EntityQualifiedName = &v
+	return s
+}
+
+type ListTablesResponseBodyDataTableEntityListEntityContent struct {
+	// example:
+	//
+	// accountId:cn-shanghai:odps:project
+	DataSourceQualifiedName *string `json:"DataSourceQualifiedName,omitempty" xml:"DataSourceQualifiedName,omitempty"`
+	// example:
+	//
+	// e70f92239d491057f6a2563b545bdaf8cc6b537d9dc55ec84c55f7cfefg
+	DataSourceUniqueId *string `json:"DataSourceUniqueId,omitempty" xml:"DataSourceUniqueId,omitempty"`
+	// example:
+	//
+	// database
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// rm-uf6rn0123
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s ListTablesResponseBodyDataTableEntityListEntityContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBodyDataTableEntityListEntityContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBodyDataTableEntityListEntityContent) SetDataSourceQualifiedName(v string) *ListTablesResponseBodyDataTableEntityListEntityContent {
+	s.DataSourceQualifiedName = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyDataTableEntityListEntityContent) SetDataSourceUniqueId(v string) *ListTablesResponseBodyDataTableEntityListEntityContent {
+	s.DataSourceUniqueId = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyDataTableEntityListEntityContent) SetDatabaseName(v string) *ListTablesResponseBodyDataTableEntityListEntityContent {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyDataTableEntityListEntityContent) SetInstanceId(v string) *ListTablesResponseBodyDataTableEntityListEntityContent {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyDataTableEntityListEntityContent) SetProjectName(v string) *ListTablesResponseBodyDataTableEntityListEntityContent {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyDataTableEntityListEntityContent) SetTableName(v string) *ListTablesResponseBodyDataTableEntityListEntityContent {
+	s.TableName = &v
+	return s
+}
+
+type ListTablesResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponse) SetHeaders(v map[string]*string) *ListTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTablesResponse) SetStatusCode(v int32) *ListTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTopicsRequest struct {
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format. The time must be in UTC.
 	//
@@ -82511,7 +82743,8 @@ type UpdateFileRequest struct {
 	// example:
 	//
 	// {"queue":"default","SPARK_CONF":"--conf spark.driver.memory=2g"}
-	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	AdvancedSettings         *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	ApplyScheduleImmediately *bool   `json:"ApplyScheduleImmediately,omitempty" xml:"ApplyScheduleImmediately,omitempty"`
 	// Specifies whether the automatic parsing feature is enabled for the file. Valid values:
 	//
 	// 	- true: The automatic parsing feature is enabled for the file.
@@ -82782,6 +83015,11 @@ func (s UpdateFileRequest) GoString() string {
 
 func (s *UpdateFileRequest) SetAdvancedSettings(v string) *UpdateFileRequest {
 	s.AdvancedSettings = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetApplyScheduleImmediately(v bool) *UpdateFileRequest {
+	s.ApplyScheduleImmediately = &v
 	return s
 }
 
@@ -88781,6 +89019,10 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdvancedSettings)) {
 		body["AdvancedSettings"] = request.AdvancedSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyScheduleImmediately)) {
+		body["ApplyScheduleImmediately"] = request.ApplyScheduleImmediately
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AutoParsing)) {
@@ -104391,6 +104633,74 @@ func (client *Client) ListTableTheme(request *ListTableThemeRequest) (_result *L
 
 // Summary:
 //
+// 分页获取租户下面的数据源类型粒度的表名称
+//
+// @param request - ListTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
+func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTables"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页获取租户下面的数据源类型粒度的表名称
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
+func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTablesResponse{}
+	_body, _err := client.ListTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries events.
 //
 // @param request - ListTopicsRequest
@@ -108615,6 +108925,10 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdvancedSettings)) {
 		body["AdvancedSettings"] = request.AdvancedSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyScheduleImmediately)) {
+		body["ApplyScheduleImmediately"] = request.ApplyScheduleImmediately
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AutoParsing)) {
