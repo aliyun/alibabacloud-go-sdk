@@ -71308,6 +71308,7 @@ func (s *ListTablesResponseBody) SetRequestId(v string) *ListTablesResponseBody 
 }
 
 type ListTablesResponseBodyData struct {
+	NextToken       *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TableEntityList []*ListTablesResponseBodyDataTableEntityList `json:"TableEntityList,omitempty" xml:"TableEntityList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -71321,6 +71322,11 @@ func (s ListTablesResponseBodyData) String() string {
 
 func (s ListTablesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListTablesResponseBodyData) SetNextToken(v string) *ListTablesResponseBodyData {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListTablesResponseBodyData) SetTableEntityList(v []*ListTablesResponseBodyDataTableEntityList) *ListTablesResponseBodyData {
