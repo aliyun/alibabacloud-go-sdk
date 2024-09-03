@@ -3340,11 +3340,12 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateAppGroupRequest struct {
-	ChargeType      *string                     `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	Name            *string                     `json:"name,omitempty" xml:"name,omitempty"`
-	Quota           *CreateAppGroupRequestQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	ResourceGroupId *string                     `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Type            *string                     `json:"type,omitempty" xml:"type,omitempty"`
+	ChargeType      *string                      `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	Name            *string                      `json:"name,omitempty" xml:"name,omitempty"`
+	Quota           *CreateAppGroupRequestQuota  `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	ResourceGroupId *string                      `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Tags            []*CreateAppGroupRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Type            *string                      `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateAppGroupRequest) String() string {
@@ -3372,6 +3373,11 @@ func (s *CreateAppGroupRequest) SetQuota(v *CreateAppGroupRequestQuota) *CreateA
 
 func (s *CreateAppGroupRequest) SetResourceGroupId(v string) *CreateAppGroupRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetTags(v []*CreateAppGroupRequestTags) *CreateAppGroupRequest {
+	s.Tags = v
 	return s
 }
 
@@ -3406,6 +3412,29 @@ func (s *CreateAppGroupRequestQuota) SetDocSize(v int32) *CreateAppGroupRequestQ
 
 func (s *CreateAppGroupRequestQuota) SetSpec(v string) *CreateAppGroupRequestQuota {
 	s.Spec = &v
+	return s
+}
+
+type CreateAppGroupRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateAppGroupRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppGroupRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppGroupRequestTags) SetKey(v string) *CreateAppGroupRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAppGroupRequestTags) SetValue(v string) *CreateAppGroupRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -25574,6 +25603,10 @@ func (client *Client) CreateAppGroupWithOptions(request *CreateAppGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
