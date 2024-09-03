@@ -31179,7 +31179,8 @@ type GetFileResponseBodyData struct {
 	// The basic information about the file.
 	File *GetFileResponseBodyDataFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
 	// The scheduling configurations of the file.
-	NodeConfiguration *GetFileResponseBodyDataNodeConfiguration `json:"NodeConfiguration,omitempty" xml:"NodeConfiguration,omitempty" type:"Struct"`
+	NodeConfiguration    *GetFileResponseBodyDataNodeConfiguration    `json:"NodeConfiguration,omitempty" xml:"NodeConfiguration,omitempty" type:"Struct"`
+	ResourceDownloadLink *GetFileResponseBodyDataResourceDownloadLink `json:"ResourceDownloadLink,omitempty" xml:"ResourceDownloadLink,omitempty" type:"Struct"`
 }
 
 func (s GetFileResponseBodyData) String() string {
@@ -31197,6 +31198,11 @@ func (s *GetFileResponseBodyData) SetFile(v *GetFileResponseBodyDataFile) *GetFi
 
 func (s *GetFileResponseBodyData) SetNodeConfiguration(v *GetFileResponseBodyDataNodeConfiguration) *GetFileResponseBodyData {
 	s.NodeConfiguration = v
+	return s
+}
+
+func (s *GetFileResponseBodyData) SetResourceDownloadLink(v *GetFileResponseBodyDataResourceDownloadLink) *GetFileResponseBodyData {
+	s.ResourceDownloadLink = v
 	return s
 }
 
@@ -31918,6 +31924,23 @@ func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetType(v str
 
 func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetValue(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
 	s.Value = &v
+	return s
+}
+
+type GetFileResponseBodyDataResourceDownloadLink struct {
+	DownloadLink *string `json:"downloadLink,omitempty" xml:"downloadLink,omitempty"`
+}
+
+func (s GetFileResponseBodyDataResourceDownloadLink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataResourceDownloadLink) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataResourceDownloadLink) SetDownloadLink(v string) *GetFileResponseBodyDataResourceDownloadLink {
+	s.DownloadLink = &v
 	return s
 }
 
