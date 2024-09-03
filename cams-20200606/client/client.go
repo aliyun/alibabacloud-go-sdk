@@ -1910,7 +1910,7 @@ func (s *ChatappMigrationVerifiedResponse) SetBody(v *ChatappMigrationVerifiedRe
 }
 
 type ChatappPhoneNumberDeregisterRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -1918,7 +1918,7 @@ type ChatappPhoneNumberDeregisterRequest struct {
 	//
 	// 939283893939
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The phone number.
+	// The phone number that you want to deregister.
 	//
 	// This parameter is required.
 	//
@@ -3994,6 +3994,8 @@ type CreatePhoneMessageQrdlRequest struct {
 	//
 	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	// The phone number. Add the country code before the phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4040,13 +4042,14 @@ type CreatePhoneMessageQrdlResponseBody struct {
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
 	// none
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -4091,6 +4094,8 @@ type CreatePhoneMessageQrdlResponseBodyData struct {
 	//
 	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 8613800
@@ -4371,7 +4376,7 @@ func (s *DeleteChatappTemplateResponse) SetBody(v *DeleteChatappTemplateResponse
 }
 
 type DeleteFlowRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// example:
 	//
@@ -4479,6 +4484,8 @@ type DeletePhoneMessageQrdlRequest struct {
 	//
 	// 883873773
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The phone number. Add the country code before the phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4522,7 +4529,7 @@ type DeletePhoneMessageQrdlResponseBody struct {
 	// OK
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -4583,11 +4590,13 @@ func (s *DeletePhoneMessageQrdlResponse) SetBody(v *DeletePhoneMessageQrdlRespon
 }
 
 type DeprecateFlowRequest struct {
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 38877483
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Flow ID。
+	// The Flow ID.
 	//
 	// This parameter is required.
 	//
@@ -4624,7 +4633,7 @@ type DeprecateFlowResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -4802,7 +4811,7 @@ func (s *EnableWhatsappROIMetricResponse) SetBody(v *EnableWhatsappROIMetricResp
 }
 
 type GetChatappPhoneNumberMetricRequest struct {
-	// The space ID of the user within the ISV account.
+	// The space ID of the RAM user within the ISV account.
 	//
 	// example:
 	//
@@ -4816,13 +4825,19 @@ type GetChatappPhoneNumberMetricRequest struct {
 	//
 	// 1693407714687
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The metric granularity.
+	// The granularity of the metric.
+	//
+	// Valid values:
+	//
+	// 	- DAILY
+	//
+	// 	- HALF_HOUR
 	//
 	// example:
 	//
 	// DAILY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
+	// The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
@@ -4957,9 +4972,9 @@ type GetChatappPhoneNumberMetricResponseBodyData struct {
 	//
 	// 1667196043904
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The metric granularity.
+	// The granularity of the metric.
 	//
-	// >  Valid values:
+	// Valid values:
 	//
 	// 	- DAILY
 	//
@@ -6067,7 +6082,7 @@ func (s *GetChatappTemplateDetailResponse) SetBody(v *GetChatappTemplateDetailRe
 }
 
 type GetChatappTemplateMetricRequest struct {
-	// The space ID of the user within the ISV account.
+	// The space ID of the RAM user within the ISV account.
 	//
 	// example:
 	//
@@ -6081,17 +6096,19 @@ type GetChatappTemplateMetricRequest struct {
 	//
 	// 1693407714687
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The metric granularity.
+	// The granularity of the metric.
 	//
-	// >  Valid values:
+	// Valid values:
 	//
 	// 	- DAILY
+	//
+	// 	- HALF_HOUR
 	//
 	// example:
 	//
 	// DAILY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
+	// The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
@@ -6119,7 +6136,13 @@ type GetChatappTemplateMetricRequest struct {
 	//
 	// 744c4b5c79c9432497a075bdfca36bf5
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The template type. Valid values: WHATSAPP and VIBER. If you do not specify this parameter, WHATSAPP is used by default.
+	// The template type. If you do not specify this parameter, the default value WHATSAPP is used.
+	//
+	// Valid values:
+	//
+	// 	- VIBER
+	//
+	// 	- WHATSAPP
 	//
 	// example:
 	//
@@ -6347,13 +6370,13 @@ type GetChatappTemplateMetricResponseBodyDataCliented struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The button type.
 	//
-	// >  Valid values:
+	// Valid values:
+	//
+	// 	- phone_number_button
 	//
 	// 	- url_button
 	//
 	// 	- quick_relpy_button
-	//
-	// 	- phone_number_button
 	//
 	// example:
 	//
@@ -7177,7 +7200,7 @@ func (s *GetConversationalAutomationResponse) SetBody(v *GetConversationalAutoma
 }
 
 type GetFlowRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// example:
 	//
@@ -7261,7 +7284,7 @@ func (s *GetFlowResponseBody) SetRequestId(v string) *GetFlowResponseBody {
 type GetFlowResponseBodyData struct {
 	// The categories of the Flow.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The API version.
+	// The version number of the API.
 	//
 	// example:
 	//
@@ -7273,7 +7296,7 @@ type GetFlowResponseBodyData struct {
 	//
 	// flow_id_arms
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The name of the Flow.
+	// The Flow name.
 	//
 	// example:
 	//
@@ -7409,11 +7432,13 @@ func (s *GetFlowResponse) SetBody(v *GetFlowResponseBody) *GetFlowResponse {
 }
 
 type GetFlowJSONAssestRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 83883873
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Flow ID。
+	// The Flow ID.
 	//
 	// This parameter is required.
 	//
@@ -7445,10 +7470,11 @@ type GetFlowJSONAssestResponseBody struct {
 	// example:
 	//
 	// OK
-	Code    *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data    *GetFlowJSONAssestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -7485,11 +7511,13 @@ func (s *GetFlowJSONAssestResponseBody) SetRequestId(v string) *GetFlowJSONAsses
 }
 
 type GetFlowJSONAssestResponseBodyData struct {
+	// The file path.
+	//
 	// example:
 	//
 	// https://url.com/json.json
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// flow ID。
+	// The Flow ID.
 	//
 	// example:
 	//
@@ -7545,7 +7573,7 @@ func (s *GetFlowJSONAssestResponse) SetBody(v *GetFlowJSONAssestResponseBody) *G
 }
 
 type GetFlowPreviewUrlRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// example:
 	//
@@ -7873,10 +7901,13 @@ type GetPermissionByCodeRequest struct {
 	//
 	// flow_001
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 393847477
-	CustSpaceId *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The permissions.
 	Permissions []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 }
 
@@ -7910,10 +7941,13 @@ type GetPermissionByCodeShrinkRequest struct {
 	//
 	// flow_001
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 393847477
-	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The permissions.
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 }
 
@@ -7941,6 +7975,12 @@ func (s *GetPermissionByCodeShrinkRequest) SetPermissionsShrink(v string) *GetPe
 }
 
 type GetPermissionByCodeResponseBody struct {
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
@@ -7949,7 +7989,7 @@ type GetPermissionByCodeResponseBody struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -8014,6 +8054,8 @@ type GetPhoneEncryptionPublicKeyRequest struct {
 	//
 	// 393838848
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8044,10 +8086,11 @@ type GetPhoneEncryptionPublicKeyResponseBody struct {
 	// example:
 	//
 	// OK
-	Code    *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data    *GetPhoneEncryptionPublicKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -8084,6 +8127,8 @@ func (s *GetPhoneEncryptionPublicKeyResponseBody) SetRequestId(v string) *GetPho
 }
 
 type GetPhoneEncryptionPublicKeyResponseBodyData struct {
+	// The public key.
+	//
 	// example:
 	//
 	// -----BEGIN PUBLIC KEY-----
@@ -8104,10 +8149,18 @@ type GetPhoneEncryptionPublicKeyResponseBodyData struct {
 	//
 	// -----END PUBLIC KEY-----
 	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" xml:"EncryptionPublicKey,omitempty"`
+	// The validity state of the public key. Valid values:
+	//
+	// 	- MISMATCH: The public key is invalid.
+	//
+	// 	- VALID: The public key is valid.
+	//
 	// example:
 	//
 	// VALID
 	EncryptionPublicKeyStatus *string `json:"EncryptionPublicKeyStatus,omitempty" xml:"EncryptionPublicKeyStatus,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 86138000**
@@ -8369,7 +8422,11 @@ func (s *GetPreValidatePhoneIdRequest) SetVerifyCode(v string) *GetPreValidatePh
 }
 
 type GetPreValidatePhoneIdResponseBody struct {
-	// The response code. The value OK indicates the request was successful.
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
 	//
 	// example:
 	//
@@ -9618,13 +9675,13 @@ func (s *ListChatappTemplateResponse) SetBody(v *ListChatappTemplateResponseBody
 }
 
 type ListFlowRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// example:
 	//
 	// 99948484
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The name of the Flow.
+	// The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
 	//
 	// example:
 	//
@@ -9691,13 +9748,13 @@ func (s *ListFlowRequestPage) SetSize(v int32) *ListFlowRequestPage {
 }
 
 type ListFlowShrinkRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// example:
 	//
 	// 99948484
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The name of the Flow.
+	// The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
 	//
 	// example:
 	//
@@ -9786,7 +9843,7 @@ type ListFlowResponseBodyData struct {
 	//
 	// 3939393***
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The name of the Flow.
+	// The Flow name.
 	//
 	// example:
 	//
@@ -9851,6 +9908,8 @@ type ListPhoneMessageQrdlRequest struct {
 	//
 	// 9383883
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The phone number. Add the country code before the phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9881,10 +9940,11 @@ type ListPhoneMessageQrdlResponseBody struct {
 	// example:
 	//
 	// OK
-	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data    []*ListPhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -9921,26 +9981,38 @@ func (s *ListPhoneMessageQrdlResponseBody) SetRequestId(v string) *ListPhoneMess
 }
 
 type ListPhoneMessageQrdlResponseBodyData struct {
+	// The URL of the deep link.
+	//
 	// example:
 	//
 	// https://wa.msg/
 	DeepLinkUrl *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
+	// The format of the generated image.
+	//
 	// example:
 	//
 	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 8613800
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The message content.
+	//
 	// example:
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	// The URL of the QR code.
+	//
 	// example:
 	//
 	// https://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
+	// The mode of the quick-response (QR) code.
+	//
 	// example:
 	//
 	// IUIED999
@@ -11584,7 +11656,7 @@ func (s *ModifyChatappTemplateResponse) SetBody(v *ModifyChatappTemplateResponse
 }
 
 type ModifyFlowRequest struct {
-	// The categories of the Flow.
+	// The information about the categories of the Flow.
 	//
 	// This parameter is required.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
@@ -11639,7 +11711,7 @@ func (s *ModifyFlowRequest) SetFlowName(v string) *ModifyFlowRequest {
 }
 
 type ModifyFlowShrinkRequest struct {
-	// The categories of the Flow.
+	// The information about the categories of the Flow.
 	//
 	// This parameter is required.
 	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
@@ -11753,7 +11825,7 @@ type ModifyFlowResponseBodyData struct {
 	//
 	// 3939399****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The name of the Flow.
+	// The Flow name.
 	//
 	// example:
 	//
@@ -12405,6 +12477,14 @@ type QueryChatappBindWabaResponseBodyData struct {
 	// APPROVED
 	AccountReviewStatus              *string                `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
 	AuthInternationalRateEligibility map[string]interface{} `json:"AuthInternationalRateEligibility,omitempty" xml:"AuthInternationalRateEligibility,omitempty"`
+	// example:
+	//
+	// 19293988***
+	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// Alibaba
+	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
 	// The currency.
 	//
 	// example:
@@ -12450,6 +12530,16 @@ func (s *QueryChatappBindWabaResponseBodyData) SetAccountReviewStatus(v string) 
 
 func (s *QueryChatappBindWabaResponseBodyData) SetAuthInternationalRateEligibility(v map[string]interface{}) *QueryChatappBindWabaResponseBodyData {
 	s.AuthInternationalRateEligibility = v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetBusinessId(v string) *QueryChatappBindWabaResponseBodyData {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetBusinessName(v string) *QueryChatappBindWabaResponseBodyData {
+	s.BusinessName = &v
 	return s
 }
 
@@ -15691,7 +15781,7 @@ type UpdateFlowJSONAssetRequest struct {
 	//
 	// https://aliyun/json.json
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// Flow ID。
+	// The Flow ID.
 	//
 	// This parameter is required.
 	//
@@ -15728,10 +15818,11 @@ type UpdateFlowJSONAssetResponseBody struct {
 	// example:
 	//
 	// OK
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data    *UpdateFlowJSONAssetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -15768,7 +15859,7 @@ func (s *UpdateFlowJSONAssetResponseBody) SetRequestId(v string) *UpdateFlowJSON
 }
 
 type UpdateFlowJSONAssetResponseBodyData struct {
-	// Flow ID。
+	// The Flow ID.
 	//
 	// example:
 	//
@@ -15845,6 +15936,8 @@ type UpdatePhoneEncryptionPublicKeyRequest struct {
 	//
 	// -----END PUBLIC KEY-----
 	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" xml:"EncryptionPublicKey,omitempty"`
+	// The phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15882,7 +15975,7 @@ type UpdatePhoneEncryptionPublicKeyResponseBody struct {
 	// OK
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
@@ -16013,7 +16106,7 @@ type UpdatePhoneMessageQrdlResponseBody struct {
 	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data    *UpdatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//
