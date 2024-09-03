@@ -1606,6 +1606,11 @@ func (s *JobElasticSpec) SetPSMinParallelism(v int32) *JobElasticSpec {
 }
 
 type JobItem struct {
+	// example:
+	//
+	// PUBLIC
+	Accessibility    *string               `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	ClusterId        *string               `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CodeSource       *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	CredentialConfig *CredentialConfig     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	DataSources      []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
@@ -1616,7 +1621,12 @@ type JobItem struct {
 	// example:
 	//
 	// 3602
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration    *int64          `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	// example:
+	//
+	// false
+	EnablePreemptibleJob *bool `json:"EnablePreemptibleJob,omitempty" xml:"EnablePreemptibleJob,omitempty"`
 	// example:
 	//
 	// false
@@ -1636,6 +1646,10 @@ type JobItem struct {
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
 	// example:
 	//
+	// 2021-01-12T15:36:08Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
 	// 2021-01-12T14:35:01Z
 	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
 	// example:
@@ -1652,13 +1666,27 @@ type JobItem struct {
 	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
 	// example:
 	//
+	// false
+	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// example:
+	//
 	// dlc-20210126170216-mtl37ge7gkvdz
-	JobId    *string    `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 1
+	JobMaxRunningTimeMinutes *int64     `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
+	JobSpecs                 []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// 1
+	NodeCount *string    `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	NodeNames []*string  `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	Pods      []*PodItem `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -1673,6 +1701,18 @@ type JobItem struct {
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	// example:
 	//
+	// 1
+	RequestCPU *int64 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// example:
+	//
+	// 1
+	RequestGPU *string `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// example:
+	//
+	// 1Gi
+	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// example:
+	//
 	// dlc-quota
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// example:
@@ -1685,17 +1725,28 @@ type JobItem struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// example:
 	//
+	// test
+	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
+	// example:
+	//
 	// ECS
-	ResourceType *string      `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 1
+	RestartTimes *string      `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
 	Settings     *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// example:
 	//
 	// Stopped
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusHistory []*StatusTransitionItem `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Restarting
-	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	SubStatus  *string            `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	SystemEnvs map[string]*string `json:"SystemEnvs,omitempty" xml:"SystemEnvs,omitempty"`
+	TenantId   *string            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// example:
 	//
 	// /root/code/
@@ -1715,8 +1766,20 @@ type JobItem struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// example:
 	//
+	// ls
+	UserScript *string `json:"UserScript,omitempty" xml:"UserScript,omitempty"`
+	// example:
+	//
+	// vpc-1
+	UserVpc *string `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	// example:
+	//
 	// pai-dlc-role
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// /mnt/data
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 	// example:
 	//
 	// 268
@@ -1733,6 +1796,16 @@ func (s JobItem) String() string {
 
 func (s JobItem) GoString() string {
 	return s.String()
+}
+
+func (s *JobItem) SetAccessibility(v string) *JobItem {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *JobItem) SetClusterId(v string) *JobItem {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *JobItem) SetCodeSource(v *JobItemCodeSource) *JobItem {
@@ -1757,6 +1830,16 @@ func (s *JobItem) SetDisplayName(v string) *JobItem {
 
 func (s *JobItem) SetDuration(v int64) *JobItem {
 	s.Duration = &v
+	return s
+}
+
+func (s *JobItem) SetElasticSpec(v *JobElasticSpec) *JobItem {
+	s.ElasticSpec = v
+	return s
+}
+
+func (s *JobItem) SetEnablePreemptibleJob(v bool) *JobItem {
+	s.EnablePreemptibleJob = &v
 	return s
 }
 
@@ -1785,6 +1868,11 @@ func (s *JobItem) SetGmtFinishTime(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetGmtModifiedTime(v string) *JobItem {
+	s.GmtModifiedTime = &v
+	return s
+}
+
 func (s *JobItem) SetGmtRunningTime(v string) *JobItem {
 	s.GmtRunningTime = &v
 	return s
@@ -1805,8 +1893,18 @@ func (s *JobItem) SetGmtSuccessedTime(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetIsDeleted(v bool) *JobItem {
+	s.IsDeleted = &v
+	return s
+}
+
 func (s *JobItem) SetJobId(v string) *JobItem {
 	s.JobId = &v
+	return s
+}
+
+func (s *JobItem) SetJobMaxRunningTimeMinutes(v int64) *JobItem {
+	s.JobMaxRunningTimeMinutes = &v
 	return s
 }
 
@@ -1817,6 +1915,21 @@ func (s *JobItem) SetJobSpecs(v []*JobSpec) *JobItem {
 
 func (s *JobItem) SetJobType(v string) *JobItem {
 	s.JobType = &v
+	return s
+}
+
+func (s *JobItem) SetNodeCount(v string) *JobItem {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *JobItem) SetNodeNames(v []*string) *JobItem {
+	s.NodeNames = v
+	return s
+}
+
+func (s *JobItem) SetPods(v []*PodItem) *JobItem {
+	s.Pods = v
 	return s
 }
 
@@ -1835,6 +1948,21 @@ func (s *JobItem) SetReasonMessage(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetRequestCPU(v int64) *JobItem {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *JobItem) SetRequestGPU(v string) *JobItem {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *JobItem) SetRequestMemory(v string) *JobItem {
+	s.RequestMemory = &v
+	return s
+}
+
 func (s *JobItem) SetResourceId(v string) *JobItem {
 	s.ResourceId = &v
 	return s
@@ -1850,8 +1978,18 @@ func (s *JobItem) SetResourceName(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetResourceQuotaName(v string) *JobItem {
+	s.ResourceQuotaName = &v
+	return s
+}
+
 func (s *JobItem) SetResourceType(v string) *JobItem {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *JobItem) SetRestartTimes(v string) *JobItem {
+	s.RestartTimes = &v
 	return s
 }
 
@@ -1865,8 +2003,23 @@ func (s *JobItem) SetStatus(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetStatusHistory(v []*StatusTransitionItem) *JobItem {
+	s.StatusHistory = v
+	return s
+}
+
 func (s *JobItem) SetSubStatus(v string) *JobItem {
 	s.SubStatus = &v
+	return s
+}
+
+func (s *JobItem) SetSystemEnvs(v map[string]*string) *JobItem {
+	s.SystemEnvs = v
+	return s
+}
+
+func (s *JobItem) SetTenantId(v string) *JobItem {
+	s.TenantId = &v
 	return s
 }
 
@@ -1895,8 +2048,23 @@ func (s *JobItem) SetUserId(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetUserScript(v string) *JobItem {
+	s.UserScript = &v
+	return s
+}
+
+func (s *JobItem) SetUserVpc(v string) *JobItem {
+	s.UserVpc = &v
+	return s
+}
+
 func (s *JobItem) SetUsername(v string) *JobItem {
 	s.Username = &v
+	return s
+}
+
+func (s *JobItem) SetWorkingDir(v string) *JobItem {
+	s.WorkingDir = &v
 	return s
 }
 
@@ -7010,6 +7178,7 @@ func (s *StopTensorboardResponse) SetBody(v *StopTensorboardResponseBody) *StopT
 }
 
 type UpdateJobRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// 5
@@ -7022,6 +7191,11 @@ func (s UpdateJobRequest) String() string {
 
 func (s UpdateJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateJobRequest) SetAccessibility(v string) *UpdateJobRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
@@ -7088,6 +7262,7 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 }
 
 type UpdateTensorboardRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// MaxRunningTimeMinutes
@@ -7104,6 +7279,11 @@ func (s UpdateTensorboardRequest) String() string {
 
 func (s UpdateTensorboardRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTensorboardRequest) SetAccessibility(v string) *UpdateTensorboardRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *UpdateTensorboardRequest) SetMaxRunningTimeMinutes(v int64) *UpdateTensorboardRequest {
@@ -9032,6 +9212,10 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
 		body["Priority"] = request.Priority
 	}
@@ -9096,6 +9280,10 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxRunningTimeMinutes)) {
 		query["MaxRunningTimeMinutes"] = request.MaxRunningTimeMinutes
 	}
