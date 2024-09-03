@@ -1,3 +1,8 @@
+2024-09-03 Version: v3.2.8
+- Update API DescribeDBClusters: update response param.
+- Update API ModifyDBCluster: add param DisableWriteWindows.
+
+
 2024-08-12 Version: v3.2.7
 - Update API DescribeDBClusters: update response param.
 - Update API DescribeTransferHistory: update response param.

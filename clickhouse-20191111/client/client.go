@@ -7874,7 +7874,8 @@ type DescribeDBClustersResponseBodyDBClustersDBCluster struct {
 	// example:
 	//
 	// rg-4690g37929****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId             *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ScaleOutDisableWriteWindows *string `json:"ScaleOutDisableWriteWindows,omitempty" xml:"ScaleOutDisableWriteWindows,omitempty"`
 	// The status of a data migration task.
 	ScaleOutStatus *DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus `json:"ScaleOutStatus,omitempty" xml:"ScaleOutStatus,omitempty" type:"Struct"`
 	// The storage type of the cluster. Valid values:
@@ -8049,6 +8050,11 @@ func (s *DescribeDBClustersResponseBodyDBClustersDBCluster) SetRegionId(v string
 
 func (s *DescribeDBClustersResponseBodyDBClustersDBCluster) SetResourceGroupId(v string) *DescribeDBClustersResponseBodyDBClustersDBCluster {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyDBClustersDBCluster) SetScaleOutDisableWriteWindows(v string) *DescribeDBClustersResponseBodyDBClustersDBCluster {
+	s.ScaleOutDisableWriteWindows = &v
 	return s
 }
 
@@ -11180,10 +11186,11 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// 100
-	DBNodeStorage     *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	DbNodeStorageType *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
-	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBNodeStorage       *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	DbNodeStorageType   *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
+	DisableWriteWindows *string `json:"DisableWriteWindows,omitempty" xml:"DisableWriteWindows,omitempty"`
+	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -11226,6 +11233,11 @@ func (s *ModifyDBClusterRequest) SetDBNodeStorage(v string) *ModifyDBClusterRequ
 
 func (s *ModifyDBClusterRequest) SetDbNodeStorageType(v string) *ModifyDBClusterRequest {
 	s.DbNodeStorageType = &v
+	return s
+}
+
+func (s *ModifyDBClusterRequest) SetDisableWriteWindows(v string) *ModifyDBClusterRequest {
+	s.DisableWriteWindows = &v
 	return s
 }
 
@@ -13940,6 +13952,10 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建账号及权限
+//
 // @param request - CreateAccountAndAuthorityRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14034,6 +14050,10 @@ func (client *Client) CreateAccountAndAuthorityWithOptions(request *CreateAccoun
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建账号及权限
+//
 // @param request - CreateAccountAndAuthorityRequest
 //
 // @return CreateAccountAndAuthorityResponse
@@ -17689,6 +17709,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.DbNodeStorageType)) {
 		query["DbNodeStorageType"] = request.DbNodeStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableWriteWindows)) {
+		query["DisableWriteWindows"] = request.DisableWriteWindows
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
