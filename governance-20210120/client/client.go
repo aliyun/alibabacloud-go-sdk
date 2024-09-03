@@ -2844,6 +2844,7 @@ func (s *ListEvaluationResultsResponse) SetBody(v *ListEvaluationResultsResponse
 }
 
 type ListEvaluationScoreHistoryRequest struct {
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// example:
 	//
 	// 2024-07-11
@@ -2864,6 +2865,11 @@ func (s ListEvaluationScoreHistoryRequest) String() string {
 
 func (s ListEvaluationScoreHistoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListEvaluationScoreHistoryRequest) SetAccountId(v int64) *ListEvaluationScoreHistoryRequest {
+	s.AccountId = &v
+	return s
 }
 
 func (s *ListEvaluationScoreHistoryRequest) SetEndDate(v string) *ListEvaluationScoreHistoryRequest {
@@ -4125,6 +4131,10 @@ func (client *Client) ListEvaluationScoreHistoryWithOptions(request *ListEvaluat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
 		query["EndDate"] = request.EndDate
 	}
