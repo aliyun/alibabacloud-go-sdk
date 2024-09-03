@@ -531,6 +531,560 @@ func (s *RunMarketingInformationWritingResponse) SetBody(v *RunMarketingInformat
 	return s
 }
 
+type RunScriptContinueRequest struct {
+	// example:
+	//
+	// 一队全副武装的执法人员和消防员闯入了一间明显已被遗弃多日、门窗紧闭并用胶带封死的公寓，面对着屋内令人作呕的恶臭和门厅里的混乱场面，他们似乎在寻找某种隐藏的真相或危险源，而一封日期为16号的信件成为了揭开谜团的关键线索，随着便衣探员深入探索，一系列封闭的房间暗示着这里曾发生过不为人知的秘密事件。
+	ScriptSummary *string `json:"scriptSummary,omitempty" xml:"scriptSummary,omitempty"`
+	// example:
+	//
+	// 悬疑，都市，惊悚
+	ScriptTypeKeyword *string `json:"scriptTypeKeyword,omitempty" xml:"scriptTypeKeyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 门厅一片狼藉。朝向天井的窗户开着。公寓门突然被撞开了。\n一名便衣探员、两名穿制服的警察和几位消防员———也身着工作服———进来，四下张望。他们都戴着手套以及盖住口鼻的面罩。在他们身后，门房和他妻子也挤进门厅。他们都捂着鼻子。门房的另一只手里拿着一叠信件和促销广告单。他们身后，跟着一位女邻居。\n便衣探员（对门房和邻居）：请在外面等候。\n他向一名警察示意，警察正忙着把好奇的旁观者请出门外。\n警察（对门房，指着那一叠信件）：最近的一封是哪天的？\n门房（查对信件）：最近的一封似乎是16号的......等一下......\n便衣探员想打开左侧的门，却是徒劳。门用胶带封上了。\n便衣探员（对消防员）：你来试一下好吗？\n消防员摆弄门的时候，便衣探员进了卧室隔壁的餐厅。他迅速打开窗，转身，想经过对开门进左侧的房间。这两扇门也锁着，门缝被贴上了胶带。他右转进入起居室，也打开了窗户
+	UserProvidedContent *string `json:"userProvidedContent,omitempty" xml:"userProvidedContent,omitempty"`
+}
+
+func (s RunScriptContinueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptContinueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptContinueRequest) SetScriptSummary(v string) *RunScriptContinueRequest {
+	s.ScriptSummary = &v
+	return s
+}
+
+func (s *RunScriptContinueRequest) SetScriptTypeKeyword(v string) *RunScriptContinueRequest {
+	s.ScriptTypeKeyword = &v
+	return s
+}
+
+func (s *RunScriptContinueRequest) SetUserProvidedContent(v string) *RunScriptContinueRequest {
+	s.UserProvidedContent = &v
+	return s
+}
+
+type RunScriptContinueResponseBody struct {
+	End     *bool                                 `json:"end,omitempty" xml:"end,omitempty"`
+	Header  *RunScriptContinueResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunScriptContinueResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+}
+
+func (s RunScriptContinueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptContinueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptContinueResponseBody) SetEnd(v bool) *RunScriptContinueResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBody) SetHeader(v *RunScriptContinueResponseBodyHeader) *RunScriptContinueResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunScriptContinueResponseBody) SetPayload(v *RunScriptContinueResponseBodyPayload) *RunScriptContinueResponseBody {
+	s.Payload = v
+	return s
+}
+
+type RunScriptContinueResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check.
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
+	EventInfo *string `json:"eventInfo,omitempty" xml:"eventInfo,omitempty"`
+	// example:
+	//
+	// 0EB27AE3-CA53-5FAE-83C6-EE66CA4DF5DF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunScriptContinueResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptContinueResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetErrorCode(v string) *RunScriptContinueResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetErrorMessage(v string) *RunScriptContinueResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetEvent(v string) *RunScriptContinueResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetEventInfo(v string) *RunScriptContinueResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetRequestId(v string) *RunScriptContinueResponseBodyHeader {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetSessionId(v string) *RunScriptContinueResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetTaskId(v string) *RunScriptContinueResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyHeader) SetTraceId(v string) *RunScriptContinueResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunScriptContinueResponseBodyPayload struct {
+	Output *RunScriptContinueResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunScriptContinueResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunScriptContinueResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptContinueResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptContinueResponseBodyPayload) SetOutput(v *RunScriptContinueResponseBodyPayloadOutput) *RunScriptContinueResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyPayload) SetUsage(v *RunScriptContinueResponseBodyPayloadUsage) *RunScriptContinueResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunScriptContinueResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 这是测试输出
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunScriptContinueResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptContinueResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptContinueResponseBodyPayloadOutput) SetText(v string) *RunScriptContinueResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunScriptContinueResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunScriptContinueResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptContinueResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptContinueResponseBodyPayloadUsage) SetInputTokens(v int64) *RunScriptContinueResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunScriptContinueResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunScriptContinueResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunScriptContinueResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunScriptContinueResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunScriptContinueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunScriptContinueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptContinueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptContinueResponse) SetHeaders(v map[string]*string) *RunScriptContinueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunScriptContinueResponse) SetStatusCode(v int32) *RunScriptContinueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptContinueResponse) SetBody(v *RunScriptContinueResponseBody) *RunScriptContinueResponse {
+	s.Body = v
+	return s
+}
+
+type RunScriptPlanningRequest struct {
+	// example:
+	//
+	// 故事尽可能狗血
+	AdditionalNote  *string `json:"additionalNote,omitempty" xml:"additionalNote,omitempty"`
+	DialogueInScene *bool   `json:"dialogueInScene,omitempty" xml:"dialogueInScene,omitempty"`
+	PlotConflict    *bool   `json:"plotConflict,omitempty" xml:"plotConflict,omitempty"`
+	// example:
+	//
+	// 都市战神
+	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	// example:
+	//
+	// 3
+	ScriptShotCount *int32 `json:"scriptShotCount,omitempty" xml:"scriptShotCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 在一个宁静的小镇上，每个家庭都在同一天收到一个神秘的、没有标记的包裹。
+	ScriptSummary *string `json:"scriptSummary,omitempty" xml:"scriptSummary,omitempty"`
+	// example:
+	//
+	// 现代，都市，爱情，玄幻
+	ScriptTypeKeyword *string `json:"scriptTypeKeyword,omitempty" xml:"scriptTypeKeyword,omitempty"`
+}
+
+func (s RunScriptPlanningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptPlanningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptPlanningRequest) SetAdditionalNote(v string) *RunScriptPlanningRequest {
+	s.AdditionalNote = &v
+	return s
+}
+
+func (s *RunScriptPlanningRequest) SetDialogueInScene(v bool) *RunScriptPlanningRequest {
+	s.DialogueInScene = &v
+	return s
+}
+
+func (s *RunScriptPlanningRequest) SetPlotConflict(v bool) *RunScriptPlanningRequest {
+	s.PlotConflict = &v
+	return s
+}
+
+func (s *RunScriptPlanningRequest) SetScriptName(v string) *RunScriptPlanningRequest {
+	s.ScriptName = &v
+	return s
+}
+
+func (s *RunScriptPlanningRequest) SetScriptShotCount(v int32) *RunScriptPlanningRequest {
+	s.ScriptShotCount = &v
+	return s
+}
+
+func (s *RunScriptPlanningRequest) SetScriptSummary(v string) *RunScriptPlanningRequest {
+	s.ScriptSummary = &v
+	return s
+}
+
+func (s *RunScriptPlanningRequest) SetScriptTypeKeyword(v string) *RunScriptPlanningRequest {
+	s.ScriptTypeKeyword = &v
+	return s
+}
+
+type RunScriptPlanningResponseBody struct {
+	End     *bool                                 `json:"end,omitempty" xml:"end,omitempty"`
+	Header  *RunScriptPlanningResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunScriptPlanningResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+}
+
+func (s RunScriptPlanningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptPlanningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptPlanningResponseBody) SetEnd(v bool) *RunScriptPlanningResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBody) SetHeader(v *RunScriptPlanningResponseBodyHeader) *RunScriptPlanningResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBody) SetPayload(v *RunScriptPlanningResponseBodyPayload) *RunScriptPlanningResponseBody {
+	s.Payload = v
+	return s
+}
+
+type RunScriptPlanningResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check.
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
+	EventInfo *string `json:"eventInfo,omitempty" xml:"eventInfo,omitempty"`
+	// example:
+	//
+	// 0EB27AE3-CA53-5FAE-83C6-EE66CA4DF5DF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunScriptPlanningResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptPlanningResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetErrorCode(v string) *RunScriptPlanningResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetErrorMessage(v string) *RunScriptPlanningResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetEvent(v string) *RunScriptPlanningResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetEventInfo(v string) *RunScriptPlanningResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetRequestId(v string) *RunScriptPlanningResponseBodyHeader {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetSessionId(v string) *RunScriptPlanningResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetTaskId(v string) *RunScriptPlanningResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyHeader) SetTraceId(v string) *RunScriptPlanningResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunScriptPlanningResponseBodyPayload struct {
+	Output *RunScriptPlanningResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunScriptPlanningResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunScriptPlanningResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptPlanningResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptPlanningResponseBodyPayload) SetOutput(v *RunScriptPlanningResponseBodyPayloadOutput) *RunScriptPlanningResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyPayload) SetUsage(v *RunScriptPlanningResponseBodyPayloadUsage) *RunScriptPlanningResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunScriptPlanningResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 这是测试输出
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunScriptPlanningResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptPlanningResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptPlanningResponseBodyPayloadOutput) SetText(v string) *RunScriptPlanningResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunScriptPlanningResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunScriptPlanningResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptPlanningResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptPlanningResponseBodyPayloadUsage) SetInputTokens(v int64) *RunScriptPlanningResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunScriptPlanningResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunScriptPlanningResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunScriptPlanningResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunScriptPlanningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunScriptPlanningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunScriptPlanningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunScriptPlanningResponse) SetHeaders(v map[string]*string) *RunScriptPlanningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunScriptPlanningResponse) SetStatusCode(v int32) *RunScriptPlanningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunScriptPlanningResponse) SetBody(v *RunScriptPlanningResponseBody) *RunScriptPlanningResponse {
+	s.Body = v
+	return s
+}
+
 type RunStyleWritingRequest struct {
 	// This parameter is required.
 	LearningSamples []*string `json:"learningSamples,omitempty" xml:"learningSamples,omitempty" type:"Repeated"`
@@ -1866,6 +2420,166 @@ func (client *Client) RunMarketingInformationWriting(workspaceId *string, reques
 	headers := make(map[string]*string)
 	_result = &RunMarketingInformationWritingResponse{}
 	_body, _err := client.RunMarketingInformationWritingWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 剧本续写
+//
+// @param request - RunScriptContinueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunScriptContinueResponse
+func (client *Client) RunScriptContinueWithOptions(workspaceId *string, request *RunScriptContinueRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunScriptContinueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ScriptSummary)) {
+		body["scriptSummary"] = request.ScriptSummary
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptTypeKeyword)) {
+		body["scriptTypeKeyword"] = request.ScriptTypeKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProvidedContent)) {
+		body["userProvidedContent"] = request.UserProvidedContent
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunScriptContinue"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runScriptContinue"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunScriptContinueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 剧本续写
+//
+// @param request - RunScriptContinueRequest
+//
+// @return RunScriptContinueResponse
+func (client *Client) RunScriptContinue(workspaceId *string, request *RunScriptContinueRequest) (_result *RunScriptContinueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunScriptContinueResponse{}
+	_body, _err := client.RunScriptContinueWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 剧本策划
+//
+// @param request - RunScriptPlanningRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunScriptPlanningResponse
+func (client *Client) RunScriptPlanningWithOptions(workspaceId *string, request *RunScriptPlanningRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunScriptPlanningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalNote)) {
+		body["additionalNote"] = request.AdditionalNote
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogueInScene)) {
+		body["dialogueInScene"] = request.DialogueInScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlotConflict)) {
+		body["plotConflict"] = request.PlotConflict
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptName)) {
+		body["scriptName"] = request.ScriptName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptShotCount)) {
+		body["scriptShotCount"] = request.ScriptShotCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptSummary)) {
+		body["scriptSummary"] = request.ScriptSummary
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptTypeKeyword)) {
+		body["scriptTypeKeyword"] = request.ScriptTypeKeyword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunScriptPlanning"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runScriptPlanning"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunScriptPlanningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 剧本策划
+//
+// @param request - RunScriptPlanningRequest
+//
+// @return RunScriptPlanningResponse
+func (client *Client) RunScriptPlanning(workspaceId *string, request *RunScriptPlanningRequest) (_result *RunScriptPlanningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunScriptPlanningResponse{}
+	_body, _err := client.RunScriptPlanningWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
