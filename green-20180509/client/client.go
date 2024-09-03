@@ -1,20 +1,17 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AddFacesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddFacesRequest) String() string {
@@ -25,18 +22,19 @@ func (s AddFacesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddFacesRequest) SetRegionId(v string) *AddFacesRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *AddFacesRequest) SetClientInfo(v string) *AddFacesRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *AddFacesRequest) SetRegionId(v string) *AddFacesRequest {
+	s.RegionId = &v
+	return s
+}
+
 type AddFacesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddFacesResponse) String() string {
@@ -52,9 +50,14 @@ func (s *AddFacesResponse) SetHeaders(v map[string]*string) *AddFacesResponse {
 	return s
 }
 
+func (s *AddFacesResponse) SetStatusCode(v int32) *AddFacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type AddGroupsRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddGroupsRequest) String() string {
@@ -65,18 +68,19 @@ func (s AddGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddGroupsRequest) SetRegionId(v string) *AddGroupsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *AddGroupsRequest) SetClientInfo(v string) *AddGroupsRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *AddGroupsRequest) SetRegionId(v string) *AddGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type AddGroupsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddGroupsResponse) String() string {
@@ -92,9 +96,14 @@ func (s *AddGroupsResponse) SetHeaders(v map[string]*string) *AddGroupsResponse 
 	return s
 }
 
+func (s *AddGroupsResponse) SetStatusCode(v int32) *AddGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type AddPersonRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddPersonRequest) String() string {
@@ -105,18 +114,19 @@ func (s AddPersonRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddPersonRequest) SetRegionId(v string) *AddPersonRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *AddPersonRequest) SetClientInfo(v string) *AddPersonRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *AddPersonRequest) SetRegionId(v string) *AddPersonRequest {
+	s.RegionId = &v
+	return s
+}
+
 type AddPersonResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddPersonResponse) String() string {
@@ -129,6 +139,11 @@ func (s AddPersonResponse) GoString() string {
 
 func (s *AddPersonResponse) SetHeaders(v map[string]*string) *AddPersonResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddPersonResponse) SetStatusCode(v int32) *AddPersonResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -150,7 +165,8 @@ func (s *AddSimilarityImageRequest) SetClientInfo(v string) *AddSimilarityImageR
 }
 
 type AddSimilarityImageResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddSimilarityImageResponse) String() string {
@@ -163,6 +179,11 @@ func (s AddSimilarityImageResponse) GoString() string {
 
 func (s *AddSimilarityImageResponse) SetHeaders(v map[string]*string) *AddSimilarityImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddSimilarityImageResponse) SetStatusCode(v int32) *AddSimilarityImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -184,7 +205,8 @@ func (s *AddSimilarityLibraryRequest) SetClientInfo(v string) *AddSimilarityLibr
 }
 
 type AddSimilarityLibraryResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddSimilarityLibraryResponse) String() string {
@@ -197,6 +219,11 @@ func (s AddSimilarityLibraryResponse) GoString() string {
 
 func (s *AddSimilarityLibraryResponse) SetHeaders(v map[string]*string) *AddSimilarityLibraryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddSimilarityLibraryResponse) SetStatusCode(v int32) *AddSimilarityLibraryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -218,7 +245,8 @@ func (s *AddVideoDnaRequest) SetClientInfo(v string) *AddVideoDnaRequest {
 }
 
 type AddVideoDnaResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddVideoDnaResponse) String() string {
@@ -231,6 +259,11 @@ func (s AddVideoDnaResponse) GoString() string {
 
 func (s *AddVideoDnaResponse) SetHeaders(v map[string]*string) *AddVideoDnaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddVideoDnaResponse) SetStatusCode(v int32) *AddVideoDnaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -252,7 +285,8 @@ func (s *AddVideoDnaGroupRequest) SetClientInfo(v string) *AddVideoDnaGroupReque
 }
 
 type AddVideoDnaGroupResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddVideoDnaGroupResponse) String() string {
@@ -268,9 +302,14 @@ func (s *AddVideoDnaGroupResponse) SetHeaders(v map[string]*string) *AddVideoDna
 	return s
 }
 
+func (s *AddVideoDnaGroupResponse) SetStatusCode(v int32) *AddVideoDnaGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteFacesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteFacesRequest) String() string {
@@ -281,18 +320,19 @@ func (s DeleteFacesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteFacesRequest) SetRegionId(v string) *DeleteFacesRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DeleteFacesRequest) SetClientInfo(v string) *DeleteFacesRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *DeleteFacesRequest) SetRegionId(v string) *DeleteFacesRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DeleteFacesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteFacesResponse) String() string {
@@ -308,9 +348,14 @@ func (s *DeleteFacesResponse) SetHeaders(v map[string]*string) *DeleteFacesRespo
 	return s
 }
 
+func (s *DeleteFacesResponse) SetStatusCode(v int32) *DeleteFacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteGroupsRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteGroupsRequest) String() string {
@@ -321,18 +366,19 @@ func (s DeleteGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteGroupsRequest) SetRegionId(v string) *DeleteGroupsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DeleteGroupsRequest) SetClientInfo(v string) *DeleteGroupsRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *DeleteGroupsRequest) SetRegionId(v string) *DeleteGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DeleteGroupsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteGroupsResponse) String() string {
@@ -348,9 +394,14 @@ func (s *DeleteGroupsResponse) SetHeaders(v map[string]*string) *DeleteGroupsRes
 	return s
 }
 
+func (s *DeleteGroupsResponse) SetStatusCode(v int32) *DeleteGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeletePersonRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeletePersonRequest) String() string {
@@ -361,18 +412,19 @@ func (s DeletePersonRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeletePersonRequest) SetRegionId(v string) *DeletePersonRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DeletePersonRequest) SetClientInfo(v string) *DeletePersonRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *DeletePersonRequest) SetRegionId(v string) *DeletePersonRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DeletePersonResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeletePersonResponse) String() string {
@@ -385,6 +437,11 @@ func (s DeletePersonResponse) GoString() string {
 
 func (s *DeletePersonResponse) SetHeaders(v map[string]*string) *DeletePersonResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeletePersonResponse) SetStatusCode(v int32) *DeletePersonResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -406,7 +463,8 @@ func (s *DeleteSimilarityImageRequest) SetClientInfo(v string) *DeleteSimilarity
 }
 
 type DeleteSimilarityImageResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteSimilarityImageResponse) String() string {
@@ -419,6 +477,11 @@ func (s DeleteSimilarityImageResponse) GoString() string {
 
 func (s *DeleteSimilarityImageResponse) SetHeaders(v map[string]*string) *DeleteSimilarityImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSimilarityImageResponse) SetStatusCode(v int32) *DeleteSimilarityImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -440,7 +503,8 @@ func (s *DeleteSimilarityLibraryRequest) SetClientInfo(v string) *DeleteSimilari
 }
 
 type DeleteSimilarityLibraryResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteSimilarityLibraryResponse) String() string {
@@ -453,6 +517,11 @@ func (s DeleteSimilarityLibraryResponse) GoString() string {
 
 func (s *DeleteSimilarityLibraryResponse) SetHeaders(v map[string]*string) *DeleteSimilarityLibraryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSimilarityLibraryResponse) SetStatusCode(v int32) *DeleteSimilarityLibraryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -474,7 +543,8 @@ func (s *DeleteVideoDnaRequest) SetClientInfo(v string) *DeleteVideoDnaRequest {
 }
 
 type DeleteVideoDnaResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteVideoDnaResponse) String() string {
@@ -487,6 +557,11 @@ func (s DeleteVideoDnaResponse) GoString() string {
 
 func (s *DeleteVideoDnaResponse) SetHeaders(v map[string]*string) *DeleteVideoDnaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVideoDnaResponse) SetStatusCode(v int32) *DeleteVideoDnaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -508,7 +583,8 @@ func (s *DeleteVideoDnaGroupRequest) SetClientInfo(v string) *DeleteVideoDnaGrou
 }
 
 type DeleteVideoDnaGroupResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteVideoDnaGroupResponse) String() string {
@@ -521,6 +597,11 @@ func (s DeleteVideoDnaGroupResponse) GoString() string {
 
 func (s *DeleteVideoDnaGroupResponse) SetHeaders(v map[string]*string) *DeleteVideoDnaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVideoDnaGroupResponse) SetStatusCode(v int32) *DeleteVideoDnaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -542,7 +623,8 @@ func (s *DetectFaceRequest) SetClientInfo(v string) *DetectFaceRequest {
 }
 
 type DetectFaceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DetectFaceResponse) String() string {
@@ -555,6 +637,11 @@ func (s DetectFaceResponse) GoString() string {
 
 func (s *DetectFaceResponse) SetHeaders(v map[string]*string) *DetectFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectFaceResponse) SetStatusCode(v int32) *DetectFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -576,7 +663,8 @@ func (s *FileAsyncScanRequest) SetClientInfo(v string) *FileAsyncScanRequest {
 }
 
 type FileAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s FileAsyncScanResponse) String() string {
@@ -589,6 +677,11 @@ func (s FileAsyncScanResponse) GoString() string {
 
 func (s *FileAsyncScanResponse) SetHeaders(v map[string]*string) *FileAsyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FileAsyncScanResponse) SetStatusCode(v int32) *FileAsyncScanResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -610,7 +703,8 @@ func (s *FileAsyncScanResultsRequest) SetClientInfo(v string) *FileAsyncScanResu
 }
 
 type FileAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s FileAsyncScanResultsResponse) String() string {
@@ -626,43 +720,63 @@ func (s *FileAsyncScanResultsResponse) SetHeaders(v map[string]*string) *FileAsy
 	return s
 }
 
-type GetAddVideoDnaResultsRequest struct {
-	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
-}
-
-func (s GetAddVideoDnaResultsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAddVideoDnaResultsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAddVideoDnaResultsRequest) SetClientInfo(v string) *GetAddVideoDnaResultsRequest {
-	s.ClientInfo = &v
+func (s *FileAsyncScanResultsResponse) SetStatusCode(v int32) *FileAsyncScanResultsResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type GetAddVideoDnaResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+type FileAsyncScanV2ResponseBody struct {
+	// example:
+	//
+	// DA36A1DA-C466-538D-AD52-E64D75597750
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
-func (s GetAddVideoDnaResultsResponse) String() string {
+func (s FileAsyncScanV2ResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAddVideoDnaResultsResponse) GoString() string {
+func (s FileAsyncScanV2ResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAddVideoDnaResultsResponse) SetHeaders(v map[string]*string) *GetAddVideoDnaResultsResponse {
+func (s *FileAsyncScanV2ResponseBody) SetRequestId(v string) *FileAsyncScanV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type FileAsyncScanV2Response struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FileAsyncScanV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FileAsyncScanV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileAsyncScanV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *FileAsyncScanV2Response) SetHeaders(v map[string]*string) *FileAsyncScanV2Response {
 	s.Headers = v
 	return s
 }
 
+func (s *FileAsyncScanV2Response) SetStatusCode(v int32) *FileAsyncScanV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FileAsyncScanV2Response) SetBody(v *FileAsyncScanV2ResponseBody) *FileAsyncScanV2Response {
+	s.Body = v
+	return s
+}
+
 type GetFacesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetFacesRequest) String() string {
@@ -673,13 +787,13 @@ func (s GetFacesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetFacesRequest) SetRegionId(v string) *GetFacesRequest {
-	s.RegionId = &v
+func (s *GetFacesRequest) SetClientInfo(v string) *GetFacesRequest {
+	s.ClientInfo = &v
 	return s
 }
 
-func (s *GetFacesRequest) SetClientInfo(v string) *GetFacesRequest {
-	s.ClientInfo = &v
+func (s *GetFacesRequest) SetRegionId(v string) *GetFacesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -701,8 +815,9 @@ func (s *GetFacesResponseBody) SetRequestId(v string) *GetFacesResponseBody {
 }
 
 type GetFacesResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFacesResponse) String() string {
@@ -718,14 +833,19 @@ func (s *GetFacesResponse) SetHeaders(v map[string]*string) *GetFacesResponse {
 	return s
 }
 
+func (s *GetFacesResponse) SetStatusCode(v int32) *GetFacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetFacesResponse) SetBody(v *GetFacesResponseBody) *GetFacesResponse {
 	s.Body = v
 	return s
 }
 
 type GetGroupsRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetGroupsRequest) String() string {
@@ -736,18 +856,19 @@ func (s GetGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetGroupsRequest) SetRegionId(v string) *GetGroupsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetGroupsRequest) SetClientInfo(v string) *GetGroupsRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *GetGroupsRequest) SetRegionId(v string) *GetGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetGroupsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s GetGroupsResponse) String() string {
@@ -763,9 +884,14 @@ func (s *GetGroupsResponse) SetHeaders(v map[string]*string) *GetGroupsResponse 
 	return s
 }
 
+func (s *GetGroupsResponse) SetStatusCode(v int32) *GetGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type GetPersonRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetPersonRequest) String() string {
@@ -776,18 +902,19 @@ func (s GetPersonRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPersonRequest) SetRegionId(v string) *GetPersonRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetPersonRequest) SetClientInfo(v string) *GetPersonRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *GetPersonRequest) SetRegionId(v string) *GetPersonRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetPersonResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s GetPersonResponse) String() string {
@@ -803,9 +930,14 @@ func (s *GetPersonResponse) SetHeaders(v map[string]*string) *GetPersonResponse 
 	return s
 }
 
+func (s *GetPersonResponse) SetStatusCode(v int32) *GetPersonResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type GetPersonsRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetPersonsRequest) String() string {
@@ -816,18 +948,19 @@ func (s GetPersonsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPersonsRequest) SetRegionId(v string) *GetPersonsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetPersonsRequest) SetClientInfo(v string) *GetPersonsRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *GetPersonsRequest) SetRegionId(v string) *GetPersonsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetPersonsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s GetPersonsResponse) String() string {
@@ -840,6 +973,11 @@ func (s GetPersonsResponse) GoString() string {
 
 func (s *GetPersonsResponse) SetHeaders(v map[string]*string) *GetPersonsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetPersonsResponse) SetStatusCode(v int32) *GetPersonsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -861,7 +999,8 @@ func (s *GetSimilarityImageRequest) SetClientInfo(v string) *GetSimilarityImageR
 }
 
 type GetSimilarityImageResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s GetSimilarityImageResponse) String() string {
@@ -874,6 +1013,11 @@ func (s GetSimilarityImageResponse) GoString() string {
 
 func (s *GetSimilarityImageResponse) SetHeaders(v map[string]*string) *GetSimilarityImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSimilarityImageResponse) SetStatusCode(v int32) *GetSimilarityImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -895,7 +1039,8 @@ func (s *GetSimilarityLibraryRequest) SetClientInfo(v string) *GetSimilarityLibr
 }
 
 type GetSimilarityLibraryResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s GetSimilarityLibraryResponse) String() string {
@@ -908,6 +1053,11 @@ func (s GetSimilarityLibraryResponse) GoString() string {
 
 func (s *GetSimilarityLibraryResponse) SetHeaders(v map[string]*string) *GetSimilarityLibraryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSimilarityLibraryResponse) SetStatusCode(v int32) *GetSimilarityLibraryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -929,7 +1079,8 @@ func (s *ImageAsyncManualScanRequest) SetClientInfo(v string) *ImageAsyncManualS
 }
 
 type ImageAsyncManualScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ImageAsyncManualScanResponse) String() string {
@@ -942,6 +1093,11 @@ func (s ImageAsyncManualScanResponse) GoString() string {
 
 func (s *ImageAsyncManualScanResponse) SetHeaders(v map[string]*string) *ImageAsyncManualScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageAsyncManualScanResponse) SetStatusCode(v int32) *ImageAsyncManualScanResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -963,7 +1119,8 @@ func (s *ImageAsyncManualScanResultsRequest) SetClientInfo(v string) *ImageAsync
 }
 
 type ImageAsyncManualScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ImageAsyncManualScanResultsResponse) String() string {
@@ -976,6 +1133,11 @@ func (s ImageAsyncManualScanResultsResponse) GoString() string {
 
 func (s *ImageAsyncManualScanResultsResponse) SetHeaders(v map[string]*string) *ImageAsyncManualScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageAsyncManualScanResultsResponse) SetStatusCode(v int32) *ImageAsyncManualScanResultsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -997,7 +1159,8 @@ func (s *ImageAsyncScanRequest) SetClientInfo(v string) *ImageAsyncScanRequest {
 }
 
 type ImageAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ImageAsyncScanResponse) String() string {
@@ -1010,6 +1173,11 @@ func (s ImageAsyncScanResponse) GoString() string {
 
 func (s *ImageAsyncScanResponse) SetHeaders(v map[string]*string) *ImageAsyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageAsyncScanResponse) SetStatusCode(v int32) *ImageAsyncScanResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1031,7 +1199,8 @@ func (s *ImageAsyncScanResultsRequest) SetClientInfo(v string) *ImageAsyncScanRe
 }
 
 type ImageAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ImageAsyncScanResultsResponse) String() string {
@@ -1044,6 +1213,11 @@ func (s ImageAsyncScanResultsResponse) GoString() string {
 
 func (s *ImageAsyncScanResultsResponse) SetHeaders(v map[string]*string) *ImageAsyncScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageAsyncScanResultsResponse) SetStatusCode(v int32) *ImageAsyncScanResultsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1065,7 +1239,8 @@ func (s *ImageScanFeedbackRequest) SetClientInfo(v string) *ImageScanFeedbackReq
 }
 
 type ImageScanFeedbackResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ImageScanFeedbackResponse) String() string {
@@ -1078,6 +1253,11 @@ func (s ImageScanFeedbackResponse) GoString() string {
 
 func (s *ImageScanFeedbackResponse) SetHeaders(v map[string]*string) *ImageScanFeedbackResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageScanFeedbackResponse) SetStatusCode(v int32) *ImageScanFeedbackResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1099,7 +1279,8 @@ func (s *ImageSyncScanRequest) SetClientInfo(v string) *ImageSyncScanRequest {
 }
 
 type ImageSyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ImageSyncScanResponse) String() string {
@@ -1112,6 +1293,11 @@ func (s ImageSyncScanResponse) GoString() string {
 
 func (s *ImageSyncScanResponse) SetHeaders(v map[string]*string) *ImageSyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImageSyncScanResponse) SetStatusCode(v int32) *ImageSyncScanResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1132,8 +1318,27 @@ func (s *ListSimilarityImagesRequest) SetClientInfo(v string) *ListSimilarityIma
 	return s
 }
 
+type ListSimilarityImagesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSimilarityImagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSimilarityImagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSimilarityImagesResponseBody) SetRequestId(v string) *ListSimilarityImagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListSimilarityImagesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSimilarityImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSimilarityImagesResponse) String() string {
@@ -1146,6 +1351,16 @@ func (s ListSimilarityImagesResponse) GoString() string {
 
 func (s *ListSimilarityImagesResponse) SetHeaders(v map[string]*string) *ListSimilarityImagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSimilarityImagesResponse) SetStatusCode(v int32) *ListSimilarityImagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSimilarityImagesResponse) SetBody(v *ListSimilarityImagesResponseBody) *ListSimilarityImagesResponse {
+	s.Body = v
 	return s
 }
 
@@ -1166,8 +1381,27 @@ func (s *ListSimilarityLibrariesRequest) SetClientInfo(v string) *ListSimilarity
 	return s
 }
 
+type ListSimilarityLibrariesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSimilarityLibrariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSimilarityLibrariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSimilarityLibrariesResponseBody) SetRequestId(v string) *ListSimilarityLibrariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListSimilarityLibrariesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSimilarityLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSimilarityLibrariesResponse) String() string {
@@ -1180,6 +1414,16 @@ func (s ListSimilarityLibrariesResponse) GoString() string {
 
 func (s *ListSimilarityLibrariesResponse) SetHeaders(v map[string]*string) *ListSimilarityLibrariesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSimilarityLibrariesResponse) SetStatusCode(v int32) *ListSimilarityLibrariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSimilarityLibrariesResponse) SetBody(v *ListSimilarityLibrariesResponseBody) *ListSimilarityLibrariesResponse {
+	s.Body = v
 	return s
 }
 
@@ -1200,8 +1444,27 @@ func (s *LiveStreamAsyncScanRequest) SetClientInfo(v string) *LiveStreamAsyncSca
 	return s
 }
 
+type LiveStreamAsyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LiveStreamAsyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveStreamAsyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LiveStreamAsyncScanResponseBody) SetRequestId(v string) *LiveStreamAsyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type LiveStreamAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LiveStreamAsyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LiveStreamAsyncScanResponse) String() string {
@@ -1214,6 +1477,16 @@ func (s LiveStreamAsyncScanResponse) GoString() string {
 
 func (s *LiveStreamAsyncScanResponse) SetHeaders(v map[string]*string) *LiveStreamAsyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *LiveStreamAsyncScanResponse) SetStatusCode(v int32) *LiveStreamAsyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LiveStreamAsyncScanResponse) SetBody(v *LiveStreamAsyncScanResponseBody) *LiveStreamAsyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1234,8 +1507,27 @@ func (s *LiveStreamAsyncScanResultsRequest) SetClientInfo(v string) *LiveStreamA
 	return s
 }
 
+type LiveStreamAsyncScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LiveStreamAsyncScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveStreamAsyncScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LiveStreamAsyncScanResultsResponseBody) SetRequestId(v string) *LiveStreamAsyncScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type LiveStreamAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LiveStreamAsyncScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LiveStreamAsyncScanResultsResponse) String() string {
@@ -1248,6 +1540,16 @@ func (s LiveStreamAsyncScanResultsResponse) GoString() string {
 
 func (s *LiveStreamAsyncScanResultsResponse) SetHeaders(v map[string]*string) *LiveStreamAsyncScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *LiveStreamAsyncScanResultsResponse) SetStatusCode(v int32) *LiveStreamAsyncScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LiveStreamAsyncScanResultsResponse) SetBody(v *LiveStreamAsyncScanResultsResponseBody) *LiveStreamAsyncScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -1268,8 +1570,27 @@ func (s *LiveStreamCancelScanRequest) SetClientInfo(v string) *LiveStreamCancelS
 	return s
 }
 
+type LiveStreamCancelScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LiveStreamCancelScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveStreamCancelScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LiveStreamCancelScanResponseBody) SetRequestId(v string) *LiveStreamCancelScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type LiveStreamCancelScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LiveStreamCancelScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LiveStreamCancelScanResponse) String() string {
@@ -1285,117 +1606,19 @@ func (s *LiveStreamCancelScanResponse) SetHeaders(v map[string]*string) *LiveStr
 	return s
 }
 
-type PostAsyncScanRequest struct {
-	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
-}
-
-func (s PostAsyncScanRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PostAsyncScanRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PostAsyncScanRequest) SetClientInfo(v string) *PostAsyncScanRequest {
-	s.ClientInfo = &v
+func (s *LiveStreamCancelScanResponse) SetStatusCode(v int32) *LiveStreamCancelScanResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type PostAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s PostAsyncScanResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PostAsyncScanResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PostAsyncScanResponse) SetHeaders(v map[string]*string) *PostAsyncScanResponse {
-	s.Headers = v
-	return s
-}
-
-type PostAsyncScanResultsRequest struct {
-	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
-}
-
-func (s PostAsyncScanResultsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PostAsyncScanResultsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PostAsyncScanResultsRequest) SetClientInfo(v string) *PostAsyncScanResultsRequest {
-	s.ClientInfo = &v
-	return s
-}
-
-type PostAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s PostAsyncScanResultsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PostAsyncScanResultsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PostAsyncScanResultsResponse) SetHeaders(v map[string]*string) *PostAsyncScanResultsResponse {
-	s.Headers = v
-	return s
-}
-
-type SearchPersonRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
-}
-
-func (s SearchPersonRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchPersonRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchPersonRequest) SetRegionId(v string) *SearchPersonRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *SearchPersonRequest) SetClientInfo(v string) *SearchPersonRequest {
-	s.ClientInfo = &v
-	return s
-}
-
-type SearchPersonResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s SearchPersonResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchPersonResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SearchPersonResponse) SetHeaders(v map[string]*string) *SearchPersonResponse {
-	s.Headers = v
+func (s *LiveStreamCancelScanResponse) SetBody(v *LiveStreamCancelScanResponseBody) *LiveStreamCancelScanResponse {
+	s.Body = v
 	return s
 }
 
 type SetPersonRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetPersonRequest) String() string {
@@ -1406,18 +1629,37 @@ func (s SetPersonRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SetPersonRequest) SetRegionId(v string) *SetPersonRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *SetPersonRequest) SetClientInfo(v string) *SetPersonRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *SetPersonRequest) SetRegionId(v string) *SetPersonRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPersonResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPersonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPersonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPersonResponseBody) SetRequestId(v string) *SetPersonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type SetPersonResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPersonResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetPersonResponse) String() string {
@@ -1430,6 +1672,16 @@ func (s SetPersonResponse) GoString() string {
 
 func (s *SetPersonResponse) SetHeaders(v map[string]*string) *SetPersonResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetPersonResponse) SetStatusCode(v int32) *SetPersonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPersonResponse) SetBody(v *SetPersonResponseBody) *SetPersonResponse {
+	s.Body = v
 	return s
 }
 
@@ -1450,8 +1702,27 @@ func (s *TextAsyncManualScanRequest) SetClientInfo(v string) *TextAsyncManualSca
 	return s
 }
 
+type TextAsyncManualScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TextAsyncManualScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextAsyncManualScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TextAsyncManualScanResponseBody) SetRequestId(v string) *TextAsyncManualScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type TextAsyncManualScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextAsyncManualScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TextAsyncManualScanResponse) String() string {
@@ -1464,6 +1735,16 @@ func (s TextAsyncManualScanResponse) GoString() string {
 
 func (s *TextAsyncManualScanResponse) SetHeaders(v map[string]*string) *TextAsyncManualScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TextAsyncManualScanResponse) SetStatusCode(v int32) *TextAsyncManualScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TextAsyncManualScanResponse) SetBody(v *TextAsyncManualScanResponseBody) *TextAsyncManualScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1484,8 +1765,27 @@ func (s *TextAsyncManualScanResultsRequest) SetClientInfo(v string) *TextAsyncMa
 	return s
 }
 
+type TextAsyncManualScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TextAsyncManualScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextAsyncManualScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TextAsyncManualScanResultsResponseBody) SetRequestId(v string) *TextAsyncManualScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type TextAsyncManualScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextAsyncManualScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TextAsyncManualScanResultsResponse) String() string {
@@ -1498,6 +1798,16 @@ func (s TextAsyncManualScanResultsResponse) GoString() string {
 
 func (s *TextAsyncManualScanResultsResponse) SetHeaders(v map[string]*string) *TextAsyncManualScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TextAsyncManualScanResultsResponse) SetStatusCode(v int32) *TextAsyncManualScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TextAsyncManualScanResultsResponse) SetBody(v *TextAsyncManualScanResultsResponseBody) *TextAsyncManualScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -1518,8 +1828,27 @@ func (s *TextFeedbackRequest) SetClientInfo(v string) *TextFeedbackRequest {
 	return s
 }
 
+type TextFeedbackResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TextFeedbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextFeedbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TextFeedbackResponseBody) SetRequestId(v string) *TextFeedbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type TextFeedbackResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextFeedbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TextFeedbackResponse) String() string {
@@ -1532,6 +1861,16 @@ func (s TextFeedbackResponse) GoString() string {
 
 func (s *TextFeedbackResponse) SetHeaders(v map[string]*string) *TextFeedbackResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TextFeedbackResponse) SetStatusCode(v int32) *TextFeedbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TextFeedbackResponse) SetBody(v *TextFeedbackResponseBody) *TextFeedbackResponse {
+	s.Body = v
 	return s
 }
 
@@ -1552,8 +1891,27 @@ func (s *TextScanRequest) SetClientInfo(v string) *TextScanRequest {
 	return s
 }
 
+type TextScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TextScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TextScanResponseBody) SetRequestId(v string) *TextScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type TextScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TextScanResponse) String() string {
@@ -1569,9 +1927,19 @@ func (s *TextScanResponse) SetHeaders(v map[string]*string) *TextScanResponse {
 	return s
 }
 
+func (s *TextScanResponse) SetStatusCode(v int32) *TextScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TextScanResponse) SetBody(v *TextScanResponseBody) *TextScanResponse {
+	s.Body = v
+	return s
+}
+
 type UploadCredentialsRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UploadCredentialsRequest) String() string {
@@ -1582,18 +1950,37 @@ func (s UploadCredentialsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UploadCredentialsRequest) SetRegionId(v string) *UploadCredentialsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *UploadCredentialsRequest) SetClientInfo(v string) *UploadCredentialsRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *UploadCredentialsRequest) SetRegionId(v string) *UploadCredentialsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UploadCredentialsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadCredentialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadCredentialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadCredentialsResponseBody) SetRequestId(v string) *UploadCredentialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type UploadCredentialsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadCredentialsResponse) String() string {
@@ -1606,6 +1993,16 @@ func (s UploadCredentialsResponse) GoString() string {
 
 func (s *UploadCredentialsResponse) SetHeaders(v map[string]*string) *UploadCredentialsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UploadCredentialsResponse) SetStatusCode(v int32) *UploadCredentialsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadCredentialsResponse) SetBody(v *UploadCredentialsResponseBody) *UploadCredentialsResponse {
+	s.Body = v
 	return s
 }
 
@@ -1626,8 +2023,27 @@ func (s *VideoAsyncManualScanRequest) SetClientInfo(v string) *VideoAsyncManualS
 	return s
 }
 
+type VideoAsyncManualScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoAsyncManualScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoAsyncManualScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoAsyncManualScanResponseBody) SetRequestId(v string) *VideoAsyncManualScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VideoAsyncManualScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoAsyncManualScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoAsyncManualScanResponse) String() string {
@@ -1640,6 +2056,16 @@ func (s VideoAsyncManualScanResponse) GoString() string {
 
 func (s *VideoAsyncManualScanResponse) SetHeaders(v map[string]*string) *VideoAsyncManualScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VideoAsyncManualScanResponse) SetStatusCode(v int32) *VideoAsyncManualScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoAsyncManualScanResponse) SetBody(v *VideoAsyncManualScanResponseBody) *VideoAsyncManualScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1660,8 +2086,27 @@ func (s *VideoAsyncManualScanResultsRequest) SetClientInfo(v string) *VideoAsync
 	return s
 }
 
+type VideoAsyncManualScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoAsyncManualScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoAsyncManualScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoAsyncManualScanResultsResponseBody) SetRequestId(v string) *VideoAsyncManualScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VideoAsyncManualScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoAsyncManualScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoAsyncManualScanResultsResponse) String() string {
@@ -1674,6 +2119,16 @@ func (s VideoAsyncManualScanResultsResponse) GoString() string {
 
 func (s *VideoAsyncManualScanResultsResponse) SetHeaders(v map[string]*string) *VideoAsyncManualScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VideoAsyncManualScanResultsResponse) SetStatusCode(v int32) *VideoAsyncManualScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoAsyncManualScanResultsResponse) SetBody(v *VideoAsyncManualScanResultsResponseBody) *VideoAsyncManualScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -1694,8 +2149,27 @@ func (s *VideoAsyncScanRequest) SetClientInfo(v string) *VideoAsyncScanRequest {
 	return s
 }
 
+type VideoAsyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoAsyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoAsyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoAsyncScanResponseBody) SetRequestId(v string) *VideoAsyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VideoAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoAsyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoAsyncScanResponse) String() string {
@@ -1708,6 +2182,16 @@ func (s VideoAsyncScanResponse) GoString() string {
 
 func (s *VideoAsyncScanResponse) SetHeaders(v map[string]*string) *VideoAsyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VideoAsyncScanResponse) SetStatusCode(v int32) *VideoAsyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoAsyncScanResponse) SetBody(v *VideoAsyncScanResponseBody) *VideoAsyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1728,8 +2212,27 @@ func (s *VideoAsyncScanResultsRequest) SetClientInfo(v string) *VideoAsyncScanRe
 	return s
 }
 
+type VideoAsyncScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoAsyncScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoAsyncScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoAsyncScanResultsResponseBody) SetRequestId(v string) *VideoAsyncScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VideoAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoAsyncScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoAsyncScanResultsResponse) String() string {
@@ -1742,6 +2245,16 @@ func (s VideoAsyncScanResultsResponse) GoString() string {
 
 func (s *VideoAsyncScanResultsResponse) SetHeaders(v map[string]*string) *VideoAsyncScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VideoAsyncScanResultsResponse) SetStatusCode(v int32) *VideoAsyncScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoAsyncScanResultsResponse) SetBody(v *VideoAsyncScanResultsResponseBody) *VideoAsyncScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -1762,8 +2275,27 @@ func (s *VideoCancelScanRequest) SetClientInfo(v string) *VideoCancelScanRequest
 	return s
 }
 
+type VideoCancelScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoCancelScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoCancelScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoCancelScanResponseBody) SetRequestId(v string) *VideoCancelScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VideoCancelScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoCancelScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoCancelScanResponse) String() string {
@@ -1776,6 +2308,16 @@ func (s VideoCancelScanResponse) GoString() string {
 
 func (s *VideoCancelScanResponse) SetHeaders(v map[string]*string) *VideoCancelScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VideoCancelScanResponse) SetStatusCode(v int32) *VideoCancelScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoCancelScanResponse) SetBody(v *VideoCancelScanResponseBody) *VideoCancelScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1796,8 +2338,27 @@ func (s *VideoFeedbackRequest) SetClientInfo(v string) *VideoFeedbackRequest {
 	return s
 }
 
+type VideoFeedbackResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoFeedbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoFeedbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoFeedbackResponseBody) SetRequestId(v string) *VideoFeedbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VideoFeedbackResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoFeedbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoFeedbackResponse) String() string {
@@ -1810,6 +2371,16 @@ func (s VideoFeedbackResponse) GoString() string {
 
 func (s *VideoFeedbackResponse) SetHeaders(v map[string]*string) *VideoFeedbackResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VideoFeedbackResponse) SetStatusCode(v int32) *VideoFeedbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoFeedbackResponse) SetBody(v *VideoFeedbackResponseBody) *VideoFeedbackResponse {
+	s.Body = v
 	return s
 }
 
@@ -1830,8 +2401,27 @@ func (s *VideoSyncScanRequest) SetClientInfo(v string) *VideoSyncScanRequest {
 	return s
 }
 
+type VideoSyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoSyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoSyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoSyncScanResponseBody) SetRequestId(v string) *VideoSyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VideoSyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoSyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VideoSyncScanResponse) String() string {
@@ -1844,6 +2434,16 @@ func (s VideoSyncScanResponse) GoString() string {
 
 func (s *VideoSyncScanResponse) SetHeaders(v map[string]*string) *VideoSyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VideoSyncScanResponse) SetStatusCode(v int32) *VideoSyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoSyncScanResponse) SetBody(v *VideoSyncScanResponseBody) *VideoSyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1864,8 +2464,27 @@ func (s *VodAsyncScanRequest) SetClientInfo(v string) *VodAsyncScanRequest {
 	return s
 }
 
+type VodAsyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VodAsyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VodAsyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VodAsyncScanResponseBody) SetRequestId(v string) *VodAsyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VodAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VodAsyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VodAsyncScanResponse) String() string {
@@ -1878,6 +2497,16 @@ func (s VodAsyncScanResponse) GoString() string {
 
 func (s *VodAsyncScanResponse) SetHeaders(v map[string]*string) *VodAsyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VodAsyncScanResponse) SetStatusCode(v int32) *VodAsyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VodAsyncScanResponse) SetBody(v *VodAsyncScanResponseBody) *VodAsyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1898,8 +2527,27 @@ func (s *VodAsyncScanResultsRequest) SetClientInfo(v string) *VodAsyncScanResult
 	return s
 }
 
+type VodAsyncScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VodAsyncScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VodAsyncScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VodAsyncScanResultsResponseBody) SetRequestId(v string) *VodAsyncScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VodAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VodAsyncScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VodAsyncScanResultsResponse) String() string {
@@ -1912,6 +2560,16 @@ func (s VodAsyncScanResultsResponse) GoString() string {
 
 func (s *VodAsyncScanResultsResponse) SetHeaders(v map[string]*string) *VodAsyncScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VodAsyncScanResultsResponse) SetStatusCode(v int32) *VodAsyncScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VodAsyncScanResultsResponse) SetBody(v *VodAsyncScanResultsResponseBody) *VodAsyncScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -1932,8 +2590,27 @@ func (s *VoiceAsyncManualScanRequest) SetClientInfo(v string) *VoiceAsyncManualS
 	return s
 }
 
+type VoiceAsyncManualScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceAsyncManualScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceAsyncManualScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceAsyncManualScanResponseBody) SetRequestId(v string) *VoiceAsyncManualScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceAsyncManualScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceAsyncManualScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceAsyncManualScanResponse) String() string {
@@ -1946,6 +2623,16 @@ func (s VoiceAsyncManualScanResponse) GoString() string {
 
 func (s *VoiceAsyncManualScanResponse) SetHeaders(v map[string]*string) *VoiceAsyncManualScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VoiceAsyncManualScanResponse) SetStatusCode(v int32) *VoiceAsyncManualScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceAsyncManualScanResponse) SetBody(v *VoiceAsyncManualScanResponseBody) *VoiceAsyncManualScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -1966,8 +2653,27 @@ func (s *VoiceAsyncManualScanResultsRequest) SetClientInfo(v string) *VoiceAsync
 	return s
 }
 
+type VoiceAsyncManualScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceAsyncManualScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceAsyncManualScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceAsyncManualScanResultsResponseBody) SetRequestId(v string) *VoiceAsyncManualScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceAsyncManualScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceAsyncManualScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceAsyncManualScanResultsResponse) String() string {
@@ -1980,6 +2686,16 @@ func (s VoiceAsyncManualScanResultsResponse) GoString() string {
 
 func (s *VoiceAsyncManualScanResultsResponse) SetHeaders(v map[string]*string) *VoiceAsyncManualScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VoiceAsyncManualScanResultsResponse) SetStatusCode(v int32) *VoiceAsyncManualScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceAsyncManualScanResultsResponse) SetBody(v *VoiceAsyncManualScanResultsResponseBody) *VoiceAsyncManualScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -2000,8 +2716,27 @@ func (s *VoiceAsyncScanRequest) SetClientInfo(v string) *VoiceAsyncScanRequest {
 	return s
 }
 
+type VoiceAsyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceAsyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceAsyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceAsyncScanResponseBody) SetRequestId(v string) *VoiceAsyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceAsyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceAsyncScanResponse) String() string {
@@ -2014,6 +2749,16 @@ func (s VoiceAsyncScanResponse) GoString() string {
 
 func (s *VoiceAsyncScanResponse) SetHeaders(v map[string]*string) *VoiceAsyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VoiceAsyncScanResponse) SetStatusCode(v int32) *VoiceAsyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceAsyncScanResponse) SetBody(v *VoiceAsyncScanResponseBody) *VoiceAsyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -2034,8 +2779,27 @@ func (s *VoiceAsyncScanResultsRequest) SetClientInfo(v string) *VoiceAsyncScanRe
 	return s
 }
 
+type VoiceAsyncScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceAsyncScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceAsyncScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceAsyncScanResultsResponseBody) SetRequestId(v string) *VoiceAsyncScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceAsyncScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceAsyncScanResultsResponse) String() string {
@@ -2048,6 +2812,16 @@ func (s VoiceAsyncScanResultsResponse) GoString() string {
 
 func (s *VoiceAsyncScanResultsResponse) SetHeaders(v map[string]*string) *VoiceAsyncScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VoiceAsyncScanResultsResponse) SetStatusCode(v int32) *VoiceAsyncScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceAsyncScanResultsResponse) SetBody(v *VoiceAsyncScanResultsResponseBody) *VoiceAsyncScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -2068,8 +2842,27 @@ func (s *VoiceCancelScanRequest) SetClientInfo(v string) *VoiceCancelScanRequest
 	return s
 }
 
+type VoiceCancelScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceCancelScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceCancelScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceCancelScanResponseBody) SetRequestId(v string) *VoiceCancelScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceCancelScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceCancelScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceCancelScanResponse) String() string {
@@ -2085,9 +2878,19 @@ func (s *VoiceCancelScanResponse) SetHeaders(v map[string]*string) *VoiceCancelS
 	return s
 }
 
+func (s *VoiceCancelScanResponse) SetStatusCode(v int32) *VoiceCancelScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceCancelScanResponse) SetBody(v *VoiceCancelScanResponseBody) *VoiceCancelScanResponse {
+	s.Body = v
+	return s
+}
+
 type VoiceIdentityCheckRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VoiceIdentityCheckRequest) String() string {
@@ -2098,18 +2901,37 @@ func (s VoiceIdentityCheckRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VoiceIdentityCheckRequest) SetRegionId(v string) *VoiceIdentityCheckRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *VoiceIdentityCheckRequest) SetClientInfo(v string) *VoiceIdentityCheckRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *VoiceIdentityCheckRequest) SetRegionId(v string) *VoiceIdentityCheckRequest {
+	s.RegionId = &v
+	return s
+}
+
+type VoiceIdentityCheckResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceIdentityCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceIdentityCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceIdentityCheckResponseBody) SetRequestId(v string) *VoiceIdentityCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceIdentityCheckResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceIdentityCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceIdentityCheckResponse) String() string {
@@ -2125,9 +2947,19 @@ func (s *VoiceIdentityCheckResponse) SetHeaders(v map[string]*string) *VoiceIden
 	return s
 }
 
+func (s *VoiceIdentityCheckResponse) SetStatusCode(v int32) *VoiceIdentityCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceIdentityCheckResponse) SetBody(v *VoiceIdentityCheckResponseBody) *VoiceIdentityCheckResponse {
+	s.Body = v
+	return s
+}
+
 type VoiceIdentityRegisterRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VoiceIdentityRegisterRequest) String() string {
@@ -2138,18 +2970,37 @@ func (s VoiceIdentityRegisterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VoiceIdentityRegisterRequest) SetRegionId(v string) *VoiceIdentityRegisterRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *VoiceIdentityRegisterRequest) SetClientInfo(v string) *VoiceIdentityRegisterRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *VoiceIdentityRegisterRequest) SetRegionId(v string) *VoiceIdentityRegisterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type VoiceIdentityRegisterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceIdentityRegisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceIdentityRegisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceIdentityRegisterResponseBody) SetRequestId(v string) *VoiceIdentityRegisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceIdentityRegisterResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceIdentityRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceIdentityRegisterResponse) String() string {
@@ -2165,9 +3016,19 @@ func (s *VoiceIdentityRegisterResponse) SetHeaders(v map[string]*string) *VoiceI
 	return s
 }
 
+func (s *VoiceIdentityRegisterResponse) SetStatusCode(v int32) *VoiceIdentityRegisterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceIdentityRegisterResponse) SetBody(v *VoiceIdentityRegisterResponseBody) *VoiceIdentityRegisterResponse {
+	s.Body = v
+	return s
+}
+
 type VoiceIdentityStartCheckRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VoiceIdentityStartCheckRequest) String() string {
@@ -2178,18 +3039,37 @@ func (s VoiceIdentityStartCheckRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VoiceIdentityStartCheckRequest) SetRegionId(v string) *VoiceIdentityStartCheckRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *VoiceIdentityStartCheckRequest) SetClientInfo(v string) *VoiceIdentityStartCheckRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *VoiceIdentityStartCheckRequest) SetRegionId(v string) *VoiceIdentityStartCheckRequest {
+	s.RegionId = &v
+	return s
+}
+
+type VoiceIdentityStartCheckResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceIdentityStartCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceIdentityStartCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceIdentityStartCheckResponseBody) SetRequestId(v string) *VoiceIdentityStartCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceIdentityStartCheckResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceIdentityStartCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceIdentityStartCheckResponse) String() string {
@@ -2205,9 +3085,19 @@ func (s *VoiceIdentityStartCheckResponse) SetHeaders(v map[string]*string) *Voic
 	return s
 }
 
+func (s *VoiceIdentityStartCheckResponse) SetStatusCode(v int32) *VoiceIdentityStartCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceIdentityStartCheckResponse) SetBody(v *VoiceIdentityStartCheckResponseBody) *VoiceIdentityStartCheckResponse {
+	s.Body = v
+	return s
+}
+
 type VoiceIdentityStartRegisterRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VoiceIdentityStartRegisterRequest) String() string {
@@ -2218,18 +3108,37 @@ func (s VoiceIdentityStartRegisterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VoiceIdentityStartRegisterRequest) SetRegionId(v string) *VoiceIdentityStartRegisterRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *VoiceIdentityStartRegisterRequest) SetClientInfo(v string) *VoiceIdentityStartRegisterRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *VoiceIdentityStartRegisterRequest) SetRegionId(v string) *VoiceIdentityStartRegisterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type VoiceIdentityStartRegisterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceIdentityStartRegisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceIdentityStartRegisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceIdentityStartRegisterResponseBody) SetRequestId(v string) *VoiceIdentityStartRegisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceIdentityStartRegisterResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceIdentityStartRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceIdentityStartRegisterResponse) String() string {
@@ -2245,9 +3154,19 @@ func (s *VoiceIdentityStartRegisterResponse) SetHeaders(v map[string]*string) *V
 	return s
 }
 
+func (s *VoiceIdentityStartRegisterResponse) SetStatusCode(v int32) *VoiceIdentityStartRegisterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceIdentityStartRegisterResponse) SetBody(v *VoiceIdentityStartRegisterResponseBody) *VoiceIdentityStartRegisterResponse {
+	s.Body = v
+	return s
+}
+
 type VoiceIdentityUnregisterRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VoiceIdentityUnregisterRequest) String() string {
@@ -2258,18 +3177,37 @@ func (s VoiceIdentityUnregisterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VoiceIdentityUnregisterRequest) SetRegionId(v string) *VoiceIdentityUnregisterRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *VoiceIdentityUnregisterRequest) SetClientInfo(v string) *VoiceIdentityUnregisterRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *VoiceIdentityUnregisterRequest) SetRegionId(v string) *VoiceIdentityUnregisterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type VoiceIdentityUnregisterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceIdentityUnregisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceIdentityUnregisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceIdentityUnregisterResponseBody) SetRequestId(v string) *VoiceIdentityUnregisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceIdentityUnregisterResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceIdentityUnregisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceIdentityUnregisterResponse) String() string {
@@ -2285,9 +3223,20 @@ func (s *VoiceIdentityUnregisterResponse) SetHeaders(v map[string]*string) *Voic
 	return s
 }
 
+func (s *VoiceIdentityUnregisterResponse) SetStatusCode(v int32) *VoiceIdentityUnregisterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceIdentityUnregisterResponse) SetBody(v *VoiceIdentityUnregisterResponseBody) *VoiceIdentityUnregisterResponse {
+	s.Body = v
+	return s
+}
+
 type VoiceSyncScanRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VoiceSyncScanRequest) String() string {
@@ -2298,18 +3247,37 @@ func (s VoiceSyncScanRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VoiceSyncScanRequest) SetRegionId(v string) *VoiceSyncScanRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *VoiceSyncScanRequest) SetClientInfo(v string) *VoiceSyncScanRequest {
 	s.ClientInfo = &v
 	return s
 }
 
+func (s *VoiceSyncScanRequest) SetRegionId(v string) *VoiceSyncScanRequest {
+	s.RegionId = &v
+	return s
+}
+
+type VoiceSyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VoiceSyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VoiceSyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceSyncScanResponseBody) SetRequestId(v string) *VoiceSyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type VoiceSyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VoiceSyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VoiceSyncScanResponse) String() string {
@@ -2322,6 +3290,16 @@ func (s VoiceSyncScanResponse) GoString() string {
 
 func (s *VoiceSyncScanResponse) SetHeaders(v map[string]*string) *VoiceSyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VoiceSyncScanResponse) SetStatusCode(v int32) *VoiceSyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VoiceSyncScanResponse) SetBody(v *VoiceSyncScanResponseBody) *VoiceSyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -2342,8 +3320,27 @@ func (s *WebpageAsyncScanRequest) SetClientInfo(v string) *WebpageAsyncScanReque
 	return s
 }
 
+type WebpageAsyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s WebpageAsyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebpageAsyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebpageAsyncScanResponseBody) SetRequestId(v string) *WebpageAsyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type WebpageAsyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebpageAsyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s WebpageAsyncScanResponse) String() string {
@@ -2356,6 +3353,16 @@ func (s WebpageAsyncScanResponse) GoString() string {
 
 func (s *WebpageAsyncScanResponse) SetHeaders(v map[string]*string) *WebpageAsyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *WebpageAsyncScanResponse) SetStatusCode(v int32) *WebpageAsyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WebpageAsyncScanResponse) SetBody(v *WebpageAsyncScanResponseBody) *WebpageAsyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -2376,8 +3383,27 @@ func (s *WebpageAsyncScanResultsRequest) SetClientInfo(v string) *WebpageAsyncSc
 	return s
 }
 
+type WebpageAsyncScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s WebpageAsyncScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebpageAsyncScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebpageAsyncScanResultsResponseBody) SetRequestId(v string) *WebpageAsyncScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type WebpageAsyncScanResultsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebpageAsyncScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s WebpageAsyncScanResultsResponse) String() string {
@@ -2390,6 +3416,16 @@ func (s WebpageAsyncScanResultsResponse) GoString() string {
 
 func (s *WebpageAsyncScanResultsResponse) SetHeaders(v map[string]*string) *WebpageAsyncScanResultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *WebpageAsyncScanResultsResponse) SetStatusCode(v int32) *WebpageAsyncScanResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WebpageAsyncScanResultsResponse) SetBody(v *WebpageAsyncScanResultsResponseBody) *WebpageAsyncScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -2410,8 +3446,27 @@ func (s *WebpageSyncScanRequest) SetClientInfo(v string) *WebpageSyncScanRequest
 	return s
 }
 
+type WebpageSyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s WebpageSyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebpageSyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebpageSyncScanResponseBody) SetRequestId(v string) *WebpageSyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type WebpageSyncScanResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebpageSyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s WebpageSyncScanResponse) String() string {
@@ -2424,6 +3479,16 @@ func (s WebpageSyncScanResponse) GoString() string {
 
 func (s *WebpageSyncScanResponse) SetHeaders(v map[string]*string) *WebpageSyncScanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *WebpageSyncScanResponse) SetStatusCode(v int32) *WebpageSyncScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WebpageSyncScanResponse) SetBody(v *WebpageSyncScanResponseBody) *WebpageSyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -2494,6 +3559,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddFacesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddFacesResponse
+func (client *Client) AddFacesWithOptions(request *AddFacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddFacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
+		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddFaces"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/face/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &AddFacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AddFacesRequest
+//
+// @return AddFacesResponse
 func (client *Client) AddFaces(request *AddFacesRequest) (_result *AddFacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2506,26 +3619,44 @@ func (client *Client) AddFaces(request *AddFacesRequest) (_result *AddFacesRespo
 	return _result, _err
 }
 
-func (client *Client) AddFacesWithOptions(request *AddFacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddFacesResponse, _err error) {
+// @param request - AddGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddGroupsResponse
+func (client *Client) AddGroupsWithOptions(request *AddGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &AddFacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddFaces"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/face/add"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("AddGroups"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/person/groups/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &AddGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2533,6 +3664,9 @@ func (client *Client) AddFacesWithOptions(request *AddFacesRequest, headers map[
 	return _result, _err
 }
 
+// @param request - AddGroupsRequest
+//
+// @return AddGroupsResponse
 func (client *Client) AddGroups(request *AddGroupsRequest) (_result *AddGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2545,26 +3679,44 @@ func (client *Client) AddGroups(request *AddGroupsRequest) (_result *AddGroupsRe
 	return _result, _err
 }
 
-func (client *Client) AddGroupsWithOptions(request *AddGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGroupsResponse, _err error) {
+// @param request - AddPersonRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPersonResponse
+func (client *Client) AddPersonWithOptions(request *AddPersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddPersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &AddGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddGroups"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/person/groups/add"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("AddPerson"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/person/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &AddPersonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2572,6 +3724,9 @@ func (client *Client) AddGroupsWithOptions(request *AddGroupsRequest, headers ma
 	return _result, _err
 }
 
+// @param request - AddPersonRequest
+//
+// @return AddPersonResponse
 func (client *Client) AddPerson(request *AddPersonRequest) (_result *AddPersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2584,45 +3739,13 @@ func (client *Client) AddPerson(request *AddPersonRequest) (_result *AddPersonRe
 	return _result, _err
 }
 
-func (client *Client) AddPersonWithOptions(request *AddPersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddPersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &AddPersonResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddPerson"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/person/add"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddSimilarityImage(request *AddSimilarityImageRequest) (_result *AddSimilarityImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddSimilarityImageResponse{}
-	_body, _err := client.AddSimilarityImageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// @param request - AddSimilarityImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSimilarityImageResponse
 func (client *Client) AddSimilarityImageWithOptions(request *AddSimilarityImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddSimilarityImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2637,8 +3760,19 @@ func (client *Client) AddSimilarityImageWithOptions(request *AddSimilarityImageR
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddSimilarityImage"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/image/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &AddSimilarityImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddSimilarityImage"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/image/add"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2646,11 +3780,14 @@ func (client *Client) AddSimilarityImageWithOptions(request *AddSimilarityImageR
 	return _result, _err
 }
 
-func (client *Client) AddSimilarityLibrary(request *AddSimilarityLibraryRequest) (_result *AddSimilarityLibraryResponse, _err error) {
+// @param request - AddSimilarityImageRequest
+//
+// @return AddSimilarityImageResponse
+func (client *Client) AddSimilarityImage(request *AddSimilarityImageRequest) (_result *AddSimilarityImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddSimilarityLibraryResponse{}
-	_body, _err := client.AddSimilarityLibraryWithOptions(request, headers, runtime)
+	_result = &AddSimilarityImageResponse{}
+	_body, _err := client.AddSimilarityImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2658,6 +3795,13 @@ func (client *Client) AddSimilarityLibrary(request *AddSimilarityLibraryRequest)
 	return _result, _err
 }
 
+// @param request - AddSimilarityLibraryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSimilarityLibraryResponse
 func (client *Client) AddSimilarityLibraryWithOptions(request *AddSimilarityLibraryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddSimilarityLibraryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2672,8 +3816,19 @@ func (client *Client) AddSimilarityLibraryWithOptions(request *AddSimilarityLibr
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddSimilarityLibrary"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/library/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &AddSimilarityLibraryResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddSimilarityLibrary"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/library/add"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2681,11 +3836,14 @@ func (client *Client) AddSimilarityLibraryWithOptions(request *AddSimilarityLibr
 	return _result, _err
 }
 
-func (client *Client) AddVideoDna(request *AddVideoDnaRequest) (_result *AddVideoDnaResponse, _err error) {
+// @param request - AddSimilarityLibraryRequest
+//
+// @return AddSimilarityLibraryResponse
+func (client *Client) AddSimilarityLibrary(request *AddSimilarityLibraryRequest) (_result *AddSimilarityLibraryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddVideoDnaResponse{}
-	_body, _err := client.AddVideoDnaWithOptions(request, headers, runtime)
+	_result = &AddSimilarityLibraryResponse{}
+	_body, _err := client.AddSimilarityLibraryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2693,6 +3851,13 @@ func (client *Client) AddVideoDna(request *AddVideoDnaRequest) (_result *AddVide
 	return _result, _err
 }
 
+// @param request - AddVideoDnaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddVideoDnaResponse
 func (client *Client) AddVideoDnaWithOptions(request *AddVideoDnaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddVideoDnaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2707,8 +3872,19 @@ func (client *Client) AddVideoDnaWithOptions(request *AddVideoDnaRequest, header
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVideoDna"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/dna/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &AddVideoDnaResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddVideoDna"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/dna/add"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2716,11 +3892,14 @@ func (client *Client) AddVideoDnaWithOptions(request *AddVideoDnaRequest, header
 	return _result, _err
 }
 
-func (client *Client) AddVideoDnaGroup(request *AddVideoDnaGroupRequest) (_result *AddVideoDnaGroupResponse, _err error) {
+// @param request - AddVideoDnaRequest
+//
+// @return AddVideoDnaResponse
+func (client *Client) AddVideoDna(request *AddVideoDnaRequest) (_result *AddVideoDnaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddVideoDnaGroupResponse{}
-	_body, _err := client.AddVideoDnaGroupWithOptions(request, headers, runtime)
+	_result = &AddVideoDnaResponse{}
+	_body, _err := client.AddVideoDnaWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2728,6 +3907,13 @@ func (client *Client) AddVideoDnaGroup(request *AddVideoDnaGroupRequest) (_resul
 	return _result, _err
 }
 
+// @param request - AddVideoDnaGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddVideoDnaGroupResponse
 func (client *Client) AddVideoDnaGroupWithOptions(request *AddVideoDnaGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddVideoDnaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2742,8 +3928,19 @@ func (client *Client) AddVideoDnaGroupWithOptions(request *AddVideoDnaGroupReque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVideoDnaGroup"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/dna/group/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &AddVideoDnaGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddVideoDnaGroup"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/dna/group/add"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2751,6 +3948,69 @@ func (client *Client) AddVideoDnaGroupWithOptions(request *AddVideoDnaGroupReque
 	return _result, _err
 }
 
+// @param request - AddVideoDnaGroupRequest
+//
+// @return AddVideoDnaGroupResponse
+func (client *Client) AddVideoDnaGroup(request *AddVideoDnaGroupRequest) (_result *AddVideoDnaGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddVideoDnaGroupResponse{}
+	_body, _err := client.AddVideoDnaGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteFacesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFacesResponse
+func (client *Client) DeleteFacesWithOptions(request *DeleteFacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
+		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFaces"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/face/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteFacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteFacesRequest
+//
+// @return DeleteFacesResponse
 func (client *Client) DeleteFaces(request *DeleteFacesRequest) (_result *DeleteFacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2763,26 +4023,44 @@ func (client *Client) DeleteFaces(request *DeleteFacesRequest) (_result *DeleteF
 	return _result, _err
 }
 
-func (client *Client) DeleteFacesWithOptions(request *DeleteFacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFacesResponse, _err error) {
+// @param request - DeleteGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupsResponse
+func (client *Client) DeleteGroupsWithOptions(request *DeleteGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &DeleteFacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteFaces"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/face/delete"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroups"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/person/groups/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2790,6 +4068,9 @@ func (client *Client) DeleteFacesWithOptions(request *DeleteFacesRequest, header
 	return _result, _err
 }
 
+// @param request - DeleteGroupsRequest
+//
+// @return DeleteGroupsResponse
 func (client *Client) DeleteGroups(request *DeleteGroupsRequest) (_result *DeleteGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2802,26 +4083,44 @@ func (client *Client) DeleteGroups(request *DeleteGroupsRequest) (_result *Delet
 	return _result, _err
 }
 
-func (client *Client) DeleteGroupsWithOptions(request *DeleteGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGroupsResponse, _err error) {
+// @param request - DeletePersonRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePersonResponse
+func (client *Client) DeletePersonWithOptions(request *DeletePersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &DeleteGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteGroups"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/person/groups/delete"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("DeletePerson"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/person/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeletePersonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2829,6 +4128,9 @@ func (client *Client) DeleteGroupsWithOptions(request *DeleteGroupsRequest, head
 	return _result, _err
 }
 
+// @param request - DeletePersonRequest
+//
+// @return DeletePersonResponse
 func (client *Client) DeletePerson(request *DeletePersonRequest) (_result *DeletePersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2841,45 +4143,13 @@ func (client *Client) DeletePerson(request *DeletePersonRequest) (_result *Delet
 	return _result, _err
 }
 
-func (client *Client) DeletePersonWithOptions(request *DeletePersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &DeletePersonResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeletePerson"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/person/delete"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteSimilarityImage(request *DeleteSimilarityImageRequest) (_result *DeleteSimilarityImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteSimilarityImageResponse{}
-	_body, _err := client.DeleteSimilarityImageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// @param request - DeleteSimilarityImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSimilarityImageResponse
 func (client *Client) DeleteSimilarityImageWithOptions(request *DeleteSimilarityImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSimilarityImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2894,8 +4164,19 @@ func (client *Client) DeleteSimilarityImageWithOptions(request *DeleteSimilarity
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSimilarityImage"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/image/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteSimilarityImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteSimilarityImage"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/image/delete"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2903,11 +4184,14 @@ func (client *Client) DeleteSimilarityImageWithOptions(request *DeleteSimilarity
 	return _result, _err
 }
 
-func (client *Client) DeleteSimilarityLibrary(request *DeleteSimilarityLibraryRequest) (_result *DeleteSimilarityLibraryResponse, _err error) {
+// @param request - DeleteSimilarityImageRequest
+//
+// @return DeleteSimilarityImageResponse
+func (client *Client) DeleteSimilarityImage(request *DeleteSimilarityImageRequest) (_result *DeleteSimilarityImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteSimilarityLibraryResponse{}
-	_body, _err := client.DeleteSimilarityLibraryWithOptions(request, headers, runtime)
+	_result = &DeleteSimilarityImageResponse{}
+	_body, _err := client.DeleteSimilarityImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2915,6 +4199,13 @@ func (client *Client) DeleteSimilarityLibrary(request *DeleteSimilarityLibraryRe
 	return _result, _err
 }
 
+// @param request - DeleteSimilarityLibraryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSimilarityLibraryResponse
 func (client *Client) DeleteSimilarityLibraryWithOptions(request *DeleteSimilarityLibraryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSimilarityLibraryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2929,8 +4220,19 @@ func (client *Client) DeleteSimilarityLibraryWithOptions(request *DeleteSimilari
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSimilarityLibrary"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/library/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteSimilarityLibraryResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteSimilarityLibrary"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/library/delete"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2938,11 +4240,14 @@ func (client *Client) DeleteSimilarityLibraryWithOptions(request *DeleteSimilari
 	return _result, _err
 }
 
-func (client *Client) DeleteVideoDna(request *DeleteVideoDnaRequest) (_result *DeleteVideoDnaResponse, _err error) {
+// @param request - DeleteSimilarityLibraryRequest
+//
+// @return DeleteSimilarityLibraryResponse
+func (client *Client) DeleteSimilarityLibrary(request *DeleteSimilarityLibraryRequest) (_result *DeleteSimilarityLibraryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteVideoDnaResponse{}
-	_body, _err := client.DeleteVideoDnaWithOptions(request, headers, runtime)
+	_result = &DeleteSimilarityLibraryResponse{}
+	_body, _err := client.DeleteSimilarityLibraryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2950,6 +4255,13 @@ func (client *Client) DeleteVideoDna(request *DeleteVideoDnaRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DeleteVideoDnaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVideoDnaResponse
 func (client *Client) DeleteVideoDnaWithOptions(request *DeleteVideoDnaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVideoDnaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2964,8 +4276,19 @@ func (client *Client) DeleteVideoDnaWithOptions(request *DeleteVideoDnaRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVideoDna"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/dna/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteVideoDnaResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteVideoDna"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/dna/delete"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2973,11 +4296,14 @@ func (client *Client) DeleteVideoDnaWithOptions(request *DeleteVideoDnaRequest, 
 	return _result, _err
 }
 
-func (client *Client) DeleteVideoDnaGroup(request *DeleteVideoDnaGroupRequest) (_result *DeleteVideoDnaGroupResponse, _err error) {
+// @param request - DeleteVideoDnaRequest
+//
+// @return DeleteVideoDnaResponse
+func (client *Client) DeleteVideoDna(request *DeleteVideoDnaRequest) (_result *DeleteVideoDnaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteVideoDnaGroupResponse{}
-	_body, _err := client.DeleteVideoDnaGroupWithOptions(request, headers, runtime)
+	_result = &DeleteVideoDnaResponse{}
+	_body, _err := client.DeleteVideoDnaWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2985,6 +4311,13 @@ func (client *Client) DeleteVideoDnaGroup(request *DeleteVideoDnaGroupRequest) (
 	return _result, _err
 }
 
+// @param request - DeleteVideoDnaGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVideoDnaGroupResponse
 func (client *Client) DeleteVideoDnaGroupWithOptions(request *DeleteVideoDnaGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVideoDnaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2999,8 +4332,19 @@ func (client *Client) DeleteVideoDnaGroupWithOptions(request *DeleteVideoDnaGrou
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVideoDnaGroup"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/dna/group/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteVideoDnaGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteVideoDnaGroup"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/dna/group/delete"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3008,11 +4352,14 @@ func (client *Client) DeleteVideoDnaGroupWithOptions(request *DeleteVideoDnaGrou
 	return _result, _err
 }
 
-func (client *Client) DetectFace(request *DetectFaceRequest) (_result *DetectFaceResponse, _err error) {
+// @param request - DeleteVideoDnaGroupRequest
+//
+// @return DeleteVideoDnaGroupResponse
+func (client *Client) DeleteVideoDnaGroup(request *DeleteVideoDnaGroupRequest) (_result *DeleteVideoDnaGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DetectFaceResponse{}
-	_body, _err := client.DetectFaceWithOptions(request, headers, runtime)
+	_result = &DeleteVideoDnaGroupResponse{}
+	_body, _err := client.DeleteVideoDnaGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3020,6 +4367,13 @@ func (client *Client) DetectFace(request *DetectFaceRequest) (_result *DetectFac
 	return _result, _err
 }
 
+// @param request - DetectFaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectFaceResponse
 func (client *Client) DetectFaceWithOptions(request *DetectFaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DetectFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3034,8 +4388,19 @@ func (client *Client) DetectFaceWithOptions(request *DetectFaceRequest, headers 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectFace"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/face/detect"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DetectFaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DetectFace"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/face/detect"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3043,11 +4408,14 @@ func (client *Client) DetectFaceWithOptions(request *DetectFaceRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) FileAsyncScan(request *FileAsyncScanRequest) (_result *FileAsyncScanResponse, _err error) {
+// @param request - DetectFaceRequest
+//
+// @return DetectFaceResponse
+func (client *Client) DetectFace(request *DetectFaceRequest) (_result *DetectFaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FileAsyncScanResponse{}
-	_body, _err := client.FileAsyncScanWithOptions(request, headers, runtime)
+	_result = &DetectFaceResponse{}
+	_body, _err := client.DetectFaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3055,6 +4423,13 @@ func (client *Client) FileAsyncScan(request *FileAsyncScanRequest) (_result *Fil
 	return _result, _err
 }
 
+// @param request - FileAsyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileAsyncScanResponse
 func (client *Client) FileAsyncScanWithOptions(request *FileAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FileAsyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3069,8 +4444,19 @@ func (client *Client) FileAsyncScanWithOptions(request *FileAsyncScanRequest, he
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("FileAsyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/file/asyncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &FileAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("FileAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/file/asyncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3078,11 +4464,14 @@ func (client *Client) FileAsyncScanWithOptions(request *FileAsyncScanRequest, he
 	return _result, _err
 }
 
-func (client *Client) FileAsyncScanResults(request *FileAsyncScanResultsRequest) (_result *FileAsyncScanResultsResponse, _err error) {
+// @param request - FileAsyncScanRequest
+//
+// @return FileAsyncScanResponse
+func (client *Client) FileAsyncScan(request *FileAsyncScanRequest) (_result *FileAsyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FileAsyncScanResultsResponse{}
-	_body, _err := client.FileAsyncScanResultsWithOptions(request, headers, runtime)
+	_result = &FileAsyncScanResponse{}
+	_body, _err := client.FileAsyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3090,6 +4479,13 @@ func (client *Client) FileAsyncScanResults(request *FileAsyncScanResultsRequest)
 	return _result, _err
 }
 
+// @param request - FileAsyncScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileAsyncScanResultsResponse
 func (client *Client) FileAsyncScanResultsWithOptions(request *FileAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FileAsyncScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3104,8 +4500,19 @@ func (client *Client) FileAsyncScanResultsWithOptions(request *FileAsyncScanResu
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("FileAsyncScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/file/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &FileAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("FileAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/file/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3113,11 +4520,14 @@ func (client *Client) FileAsyncScanResultsWithOptions(request *FileAsyncScanResu
 	return _result, _err
 }
 
-func (client *Client) GetAddVideoDnaResults(request *GetAddVideoDnaResultsRequest) (_result *GetAddVideoDnaResultsResponse, _err error) {
+// @param request - FileAsyncScanResultsRequest
+//
+// @return FileAsyncScanResultsResponse
+func (client *Client) FileAsyncScanResults(request *FileAsyncScanResultsRequest) (_result *FileAsyncScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAddVideoDnaResultsResponse{}
-	_body, _err := client.GetAddVideoDnaResultsWithOptions(request, headers, runtime)
+	_result = &FileAsyncScanResultsResponse{}
+	_body, _err := client.FileAsyncScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3125,7 +4535,64 @@ func (client *Client) GetAddVideoDnaResults(request *GetAddVideoDnaResultsReques
 	return _result, _err
 }
 
-func (client *Client) GetAddVideoDnaResultsWithOptions(request *GetAddVideoDnaResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAddVideoDnaResultsResponse, _err error) {
+// Summary:
+//
+// 文件检测新版本
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileAsyncScanV2Response
+func (client *Client) FileAsyncScanV2WithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *FileAsyncScanV2Response, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FileAsyncScanV2"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/file/asyncscanv2"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FileAsyncScanV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文件检测新版本
+//
+// @return FileAsyncScanV2Response
+func (client *Client) FileAsyncScanV2() (_result *FileAsyncScanV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FileAsyncScanV2Response{}
+	_body, _err := client.FileAsyncScanV2WithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetFacesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFacesResponse
+func (client *Client) GetFacesWithOptions(request *GetFacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFacesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -3135,12 +4602,27 @@ func (client *Client) GetAddVideoDnaResultsWithOptions(request *GetAddVideoDnaRe
 		query["ClientInfo"] = request.ClientInfo
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &GetAddVideoDnaResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetAddVideoDnaResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/dna/add/results"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("GetFaces"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/faces"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3148,6 +4630,9 @@ func (client *Client) GetAddVideoDnaResultsWithOptions(request *GetAddVideoDnaRe
 	return _result, _err
 }
 
+// @param request - GetFacesRequest
+//
+// @return GetFacesResponse
 func (client *Client) GetFaces(request *GetFacesRequest) (_result *GetFacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3160,26 +4645,44 @@ func (client *Client) GetFaces(request *GetFacesRequest) (_result *GetFacesRespo
 	return _result, _err
 }
 
-func (client *Client) GetFacesWithOptions(request *GetFacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFacesResponse, _err error) {
+// @param request - GetGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupsResponse
+func (client *Client) GetGroupsWithOptions(request *GetGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &GetFacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetFaces"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/faces"), tea.String("json"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("GetGroups"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/groups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &GetGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3187,6 +4690,9 @@ func (client *Client) GetFacesWithOptions(request *GetFacesRequest, headers map[
 	return _result, _err
 }
 
+// @param request - GetGroupsRequest
+//
+// @return GetGroupsResponse
 func (client *Client) GetGroups(request *GetGroupsRequest) (_result *GetGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3199,26 +4705,44 @@ func (client *Client) GetGroups(request *GetGroupsRequest) (_result *GetGroupsRe
 	return _result, _err
 }
 
-func (client *Client) GetGroupsWithOptions(request *GetGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupsResponse, _err error) {
+// @param request - GetPersonRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPersonResponse
+func (client *Client) GetPersonWithOptions(request *GetPersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &GetGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetGroups"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/groups"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("GetPerson"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/person"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &GetPersonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3226,6 +4750,9 @@ func (client *Client) GetGroupsWithOptions(request *GetGroupsRequest, headers ma
 	return _result, _err
 }
 
+// @param request - GetPersonRequest
+//
+// @return GetPersonResponse
 func (client *Client) GetPerson(request *GetPersonRequest) (_result *GetPersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3238,26 +4765,44 @@ func (client *Client) GetPerson(request *GetPersonRequest) (_result *GetPersonRe
 	return _result, _err
 }
 
-func (client *Client) GetPersonWithOptions(request *GetPersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPersonResponse, _err error) {
+// @param request - GetPersonsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPersonsResponse
+func (client *Client) GetPersonsWithOptions(request *GetPersonsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPersonsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &GetPersonResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetPerson"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/person"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("GetPersons"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/group/persons"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &GetPersonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3265,6 +4810,9 @@ func (client *Client) GetPersonWithOptions(request *GetPersonRequest, headers ma
 	return _result, _err
 }
 
+// @param request - GetPersonsRequest
+//
+// @return GetPersonsResponse
 func (client *Client) GetPersons(request *GetPersonsRequest) (_result *GetPersonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3277,45 +4825,13 @@ func (client *Client) GetPersons(request *GetPersonsRequest) (_result *GetPerson
 	return _result, _err
 }
 
-func (client *Client) GetPersonsWithOptions(request *GetPersonsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPersonsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &GetPersonsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetPersons"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/group/persons"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSimilarityImage(request *GetSimilarityImageRequest) (_result *GetSimilarityImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSimilarityImageResponse{}
-	_body, _err := client.GetSimilarityImageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// @param request - GetSimilarityImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSimilarityImageResponse
 func (client *Client) GetSimilarityImageWithOptions(request *GetSimilarityImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSimilarityImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3330,8 +4846,19 @@ func (client *Client) GetSimilarityImageWithOptions(request *GetSimilarityImageR
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSimilarityImage"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/image/get"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetSimilarityImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSimilarityImage"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/image/get"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3339,11 +4866,14 @@ func (client *Client) GetSimilarityImageWithOptions(request *GetSimilarityImageR
 	return _result, _err
 }
 
-func (client *Client) GetSimilarityLibrary(request *GetSimilarityLibraryRequest) (_result *GetSimilarityLibraryResponse, _err error) {
+// @param request - GetSimilarityImageRequest
+//
+// @return GetSimilarityImageResponse
+func (client *Client) GetSimilarityImage(request *GetSimilarityImageRequest) (_result *GetSimilarityImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSimilarityLibraryResponse{}
-	_body, _err := client.GetSimilarityLibraryWithOptions(request, headers, runtime)
+	_result = &GetSimilarityImageResponse{}
+	_body, _err := client.GetSimilarityImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3351,6 +4881,13 @@ func (client *Client) GetSimilarityLibrary(request *GetSimilarityLibraryRequest)
 	return _result, _err
 }
 
+// @param request - GetSimilarityLibraryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSimilarityLibraryResponse
 func (client *Client) GetSimilarityLibraryWithOptions(request *GetSimilarityLibraryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSimilarityLibraryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3365,8 +4902,19 @@ func (client *Client) GetSimilarityLibraryWithOptions(request *GetSimilarityLibr
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSimilarityLibrary"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/library/get"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetSimilarityLibraryResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSimilarityLibrary"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/library/get"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3374,11 +4922,14 @@ func (client *Client) GetSimilarityLibraryWithOptions(request *GetSimilarityLibr
 	return _result, _err
 }
 
-func (client *Client) ImageAsyncManualScan(request *ImageAsyncManualScanRequest) (_result *ImageAsyncManualScanResponse, _err error) {
+// @param request - GetSimilarityLibraryRequest
+//
+// @return GetSimilarityLibraryResponse
+func (client *Client) GetSimilarityLibrary(request *GetSimilarityLibraryRequest) (_result *GetSimilarityLibraryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImageAsyncManualScanResponse{}
-	_body, _err := client.ImageAsyncManualScanWithOptions(request, headers, runtime)
+	_result = &GetSimilarityLibraryResponse{}
+	_body, _err := client.GetSimilarityLibraryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3386,6 +4937,13 @@ func (client *Client) ImageAsyncManualScan(request *ImageAsyncManualScanRequest)
 	return _result, _err
 }
 
+// @param request - ImageAsyncManualScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageAsyncManualScanResponse
 func (client *Client) ImageAsyncManualScanWithOptions(request *ImageAsyncManualScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImageAsyncManualScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3400,8 +4958,19 @@ func (client *Client) ImageAsyncManualScanWithOptions(request *ImageAsyncManualS
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageAsyncManualScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/image/manual/asyncScan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ImageAsyncManualScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("ImageAsyncManualScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/image/manual/asyncScan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3409,11 +4978,14 @@ func (client *Client) ImageAsyncManualScanWithOptions(request *ImageAsyncManualS
 	return _result, _err
 }
 
-func (client *Client) ImageAsyncManualScanResults(request *ImageAsyncManualScanResultsRequest) (_result *ImageAsyncManualScanResultsResponse, _err error) {
+// @param request - ImageAsyncManualScanRequest
+//
+// @return ImageAsyncManualScanResponse
+func (client *Client) ImageAsyncManualScan(request *ImageAsyncManualScanRequest) (_result *ImageAsyncManualScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImageAsyncManualScanResultsResponse{}
-	_body, _err := client.ImageAsyncManualScanResultsWithOptions(request, headers, runtime)
+	_result = &ImageAsyncManualScanResponse{}
+	_body, _err := client.ImageAsyncManualScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3421,6 +4993,13 @@ func (client *Client) ImageAsyncManualScanResults(request *ImageAsyncManualScanR
 	return _result, _err
 }
 
+// @param request - ImageAsyncManualScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageAsyncManualScanResultsResponse
 func (client *Client) ImageAsyncManualScanResultsWithOptions(request *ImageAsyncManualScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImageAsyncManualScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3435,8 +5014,19 @@ func (client *Client) ImageAsyncManualScanResultsWithOptions(request *ImageAsync
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageAsyncManualScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/image/manual/scan/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ImageAsyncManualScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ImageAsyncManualScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/image/manual/scan/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3444,11 +5034,14 @@ func (client *Client) ImageAsyncManualScanResultsWithOptions(request *ImageAsync
 	return _result, _err
 }
 
-func (client *Client) ImageAsyncScan(request *ImageAsyncScanRequest) (_result *ImageAsyncScanResponse, _err error) {
+// @param request - ImageAsyncManualScanResultsRequest
+//
+// @return ImageAsyncManualScanResultsResponse
+func (client *Client) ImageAsyncManualScanResults(request *ImageAsyncManualScanResultsRequest) (_result *ImageAsyncManualScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImageAsyncScanResponse{}
-	_body, _err := client.ImageAsyncScanWithOptions(request, headers, runtime)
+	_result = &ImageAsyncManualScanResultsResponse{}
+	_body, _err := client.ImageAsyncManualScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3456,6 +5049,13 @@ func (client *Client) ImageAsyncScan(request *ImageAsyncScanRequest) (_result *I
 	return _result, _err
 }
 
+// @param request - ImageAsyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageAsyncScanResponse
 func (client *Client) ImageAsyncScanWithOptions(request *ImageAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImageAsyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3470,8 +5070,19 @@ func (client *Client) ImageAsyncScanWithOptions(request *ImageAsyncScanRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageAsyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/image/asyncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ImageAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("ImageAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/image/asyncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3479,11 +5090,14 @@ func (client *Client) ImageAsyncScanWithOptions(request *ImageAsyncScanRequest, 
 	return _result, _err
 }
 
-func (client *Client) ImageAsyncScanResults(request *ImageAsyncScanResultsRequest) (_result *ImageAsyncScanResultsResponse, _err error) {
+// @param request - ImageAsyncScanRequest
+//
+// @return ImageAsyncScanResponse
+func (client *Client) ImageAsyncScan(request *ImageAsyncScanRequest) (_result *ImageAsyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImageAsyncScanResultsResponse{}
-	_body, _err := client.ImageAsyncScanResultsWithOptions(request, headers, runtime)
+	_result = &ImageAsyncScanResponse{}
+	_body, _err := client.ImageAsyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3491,6 +5105,13 @@ func (client *Client) ImageAsyncScanResults(request *ImageAsyncScanResultsReques
 	return _result, _err
 }
 
+// @param request - ImageAsyncScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageAsyncScanResultsResponse
 func (client *Client) ImageAsyncScanResultsWithOptions(request *ImageAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImageAsyncScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3505,8 +5126,19 @@ func (client *Client) ImageAsyncScanResultsWithOptions(request *ImageAsyncScanRe
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageAsyncScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/image/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ImageAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ImageAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/image/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3514,11 +5146,14 @@ func (client *Client) ImageAsyncScanResultsWithOptions(request *ImageAsyncScanRe
 	return _result, _err
 }
 
-func (client *Client) ImageScanFeedback(request *ImageScanFeedbackRequest) (_result *ImageScanFeedbackResponse, _err error) {
+// @param request - ImageAsyncScanResultsRequest
+//
+// @return ImageAsyncScanResultsResponse
+func (client *Client) ImageAsyncScanResults(request *ImageAsyncScanResultsRequest) (_result *ImageAsyncScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImageScanFeedbackResponse{}
-	_body, _err := client.ImageScanFeedbackWithOptions(request, headers, runtime)
+	_result = &ImageAsyncScanResultsResponse{}
+	_body, _err := client.ImageAsyncScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3526,6 +5161,13 @@ func (client *Client) ImageScanFeedback(request *ImageScanFeedbackRequest) (_res
 	return _result, _err
 }
 
+// @param request - ImageScanFeedbackRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageScanFeedbackResponse
 func (client *Client) ImageScanFeedbackWithOptions(request *ImageScanFeedbackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImageScanFeedbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3540,8 +5182,19 @@ func (client *Client) ImageScanFeedbackWithOptions(request *ImageScanFeedbackReq
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageScanFeedback"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/image/feedback"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ImageScanFeedbackResponse{}
-	_body, _err := client.DoROARequest(tea.String("ImageScanFeedback"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/image/feedback"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3549,11 +5202,14 @@ func (client *Client) ImageScanFeedbackWithOptions(request *ImageScanFeedbackReq
 	return _result, _err
 }
 
-func (client *Client) ImageSyncScan(request *ImageSyncScanRequest) (_result *ImageSyncScanResponse, _err error) {
+// @param request - ImageScanFeedbackRequest
+//
+// @return ImageScanFeedbackResponse
+func (client *Client) ImageScanFeedback(request *ImageScanFeedbackRequest) (_result *ImageScanFeedbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImageSyncScanResponse{}
-	_body, _err := client.ImageSyncScanWithOptions(request, headers, runtime)
+	_result = &ImageScanFeedbackResponse{}
+	_body, _err := client.ImageScanFeedbackWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3561,6 +5217,13 @@ func (client *Client) ImageSyncScan(request *ImageSyncScanRequest) (_result *Ima
 	return _result, _err
 }
 
+// @param request - ImageSyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageSyncScanResponse
 func (client *Client) ImageSyncScanWithOptions(request *ImageSyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImageSyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3575,8 +5238,19 @@ func (client *Client) ImageSyncScanWithOptions(request *ImageSyncScanRequest, he
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageSyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/image/scan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ImageSyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("ImageSyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/image/scan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3584,11 +5258,14 @@ func (client *Client) ImageSyncScanWithOptions(request *ImageSyncScanRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListSimilarityImages(request *ListSimilarityImagesRequest) (_result *ListSimilarityImagesResponse, _err error) {
+// @param request - ImageSyncScanRequest
+//
+// @return ImageSyncScanResponse
+func (client *Client) ImageSyncScan(request *ImageSyncScanRequest) (_result *ImageSyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSimilarityImagesResponse{}
-	_body, _err := client.ListSimilarityImagesWithOptions(request, headers, runtime)
+	_result = &ImageSyncScanResponse{}
+	_body, _err := client.ImageSyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3596,6 +5273,17 @@ func (client *Client) ListSimilarityImages(request *ListSimilarityImagesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图
+//
+// @param request - ListSimilarityImagesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSimilarityImagesResponse
 func (client *Client) ListSimilarityImagesWithOptions(request *ListSimilarityImagesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSimilarityImagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3610,8 +5298,19 @@ func (client *Client) ListSimilarityImagesWithOptions(request *ListSimilarityIma
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSimilarityImages"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/image/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSimilarityImagesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSimilarityImages"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/image/list"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3619,11 +5318,18 @@ func (client *Client) ListSimilarityImagesWithOptions(request *ListSimilarityIma
 	return _result, _err
 }
 
-func (client *Client) ListSimilarityLibraries(request *ListSimilarityLibrariesRequest) (_result *ListSimilarityLibrariesResponse, _err error) {
+// Summary:
+//
+// 获取相似图
+//
+// @param request - ListSimilarityImagesRequest
+//
+// @return ListSimilarityImagesResponse
+func (client *Client) ListSimilarityImages(request *ListSimilarityImagesRequest) (_result *ListSimilarityImagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSimilarityLibrariesResponse{}
-	_body, _err := client.ListSimilarityLibrariesWithOptions(request, headers, runtime)
+	_result = &ListSimilarityImagesResponse{}
+	_body, _err := client.ListSimilarityImagesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3631,6 +5337,17 @@ func (client *Client) ListSimilarityLibraries(request *ListSimilarityLibrariesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图库
+//
+// @param request - ListSimilarityLibrariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSimilarityLibrariesResponse
 func (client *Client) ListSimilarityLibrariesWithOptions(request *ListSimilarityLibrariesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSimilarityLibrariesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3645,8 +5362,19 @@ func (client *Client) ListSimilarityLibrariesWithOptions(request *ListSimilarity
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSimilarityLibraries"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/similarity/library/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSimilarityLibrariesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSimilarityLibraries"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/similarity/library/list"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3654,11 +5382,18 @@ func (client *Client) ListSimilarityLibrariesWithOptions(request *ListSimilarity
 	return _result, _err
 }
 
-func (client *Client) LiveStreamAsyncScan(request *LiveStreamAsyncScanRequest) (_result *LiveStreamAsyncScanResponse, _err error) {
+// Summary:
+//
+// 获取相似图库
+//
+// @param request - ListSimilarityLibrariesRequest
+//
+// @return ListSimilarityLibrariesResponse
+func (client *Client) ListSimilarityLibraries(request *ListSimilarityLibrariesRequest) (_result *ListSimilarityLibrariesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &LiveStreamAsyncScanResponse{}
-	_body, _err := client.LiveStreamAsyncScanWithOptions(request, headers, runtime)
+	_result = &ListSimilarityLibrariesResponse{}
+	_body, _err := client.ListSimilarityLibrariesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3666,6 +5401,17 @@ func (client *Client) LiveStreamAsyncScan(request *LiveStreamAsyncScanRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 直播流异步检测
+//
+// @param request - LiveStreamAsyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LiveStreamAsyncScanResponse
 func (client *Client) LiveStreamAsyncScanWithOptions(request *LiveStreamAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LiveStreamAsyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3680,8 +5426,19 @@ func (client *Client) LiveStreamAsyncScanWithOptions(request *LiveStreamAsyncSca
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("LiveStreamAsyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/livestream/asyncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &LiveStreamAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("LiveStreamAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/livestream/asyncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3689,11 +5446,18 @@ func (client *Client) LiveStreamAsyncScanWithOptions(request *LiveStreamAsyncSca
 	return _result, _err
 }
 
-func (client *Client) LiveStreamAsyncScanResults(request *LiveStreamAsyncScanResultsRequest) (_result *LiveStreamAsyncScanResultsResponse, _err error) {
+// Summary:
+//
+// 直播流异步检测
+//
+// @param request - LiveStreamAsyncScanRequest
+//
+// @return LiveStreamAsyncScanResponse
+func (client *Client) LiveStreamAsyncScan(request *LiveStreamAsyncScanRequest) (_result *LiveStreamAsyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &LiveStreamAsyncScanResultsResponse{}
-	_body, _err := client.LiveStreamAsyncScanResultsWithOptions(request, headers, runtime)
+	_result = &LiveStreamAsyncScanResponse{}
+	_body, _err := client.LiveStreamAsyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3701,6 +5465,17 @@ func (client *Client) LiveStreamAsyncScanResults(request *LiveStreamAsyncScanRes
 	return _result, _err
 }
 
+// Summary:
+//
+// 直播流异步检测结果
+//
+// @param request - LiveStreamAsyncScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LiveStreamAsyncScanResultsResponse
 func (client *Client) LiveStreamAsyncScanResultsWithOptions(request *LiveStreamAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LiveStreamAsyncScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3715,8 +5490,19 @@ func (client *Client) LiveStreamAsyncScanResultsWithOptions(request *LiveStreamA
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("LiveStreamAsyncScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/livestream/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &LiveStreamAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("LiveStreamAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/livestream/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3724,11 +5510,18 @@ func (client *Client) LiveStreamAsyncScanResultsWithOptions(request *LiveStreamA
 	return _result, _err
 }
 
-func (client *Client) LiveStreamCancelScan(request *LiveStreamCancelScanRequest) (_result *LiveStreamCancelScanResponse, _err error) {
+// Summary:
+//
+// 直播流异步检测结果
+//
+// @param request - LiveStreamAsyncScanResultsRequest
+//
+// @return LiveStreamAsyncScanResultsResponse
+func (client *Client) LiveStreamAsyncScanResults(request *LiveStreamAsyncScanResultsRequest) (_result *LiveStreamAsyncScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &LiveStreamCancelScanResponse{}
-	_body, _err := client.LiveStreamCancelScanWithOptions(request, headers, runtime)
+	_result = &LiveStreamAsyncScanResultsResponse{}
+	_body, _err := client.LiveStreamAsyncScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3736,6 +5529,17 @@ func (client *Client) LiveStreamCancelScan(request *LiveStreamCancelScanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 直播流取消检测
+//
+// @param request - LiveStreamCancelScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LiveStreamCancelScanResponse
 func (client *Client) LiveStreamCancelScanWithOptions(request *LiveStreamCancelScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LiveStreamCancelScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3750,8 +5554,19 @@ func (client *Client) LiveStreamCancelScanWithOptions(request *LiveStreamCancelS
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("LiveStreamCancelScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/livestream/cancelscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &LiveStreamCancelScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("LiveStreamCancelScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/livestream/cancelscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3759,11 +5574,18 @@ func (client *Client) LiveStreamCancelScanWithOptions(request *LiveStreamCancelS
 	return _result, _err
 }
 
-func (client *Client) PostAsyncScan(request *PostAsyncScanRequest) (_result *PostAsyncScanResponse, _err error) {
+// Summary:
+//
+// 直播流取消检测
+//
+// @param request - LiveStreamCancelScanRequest
+//
+// @return LiveStreamCancelScanResponse
+func (client *Client) LiveStreamCancelScan(request *LiveStreamCancelScanRequest) (_result *LiveStreamCancelScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PostAsyncScanResponse{}
-	_body, _err := client.PostAsyncScanWithOptions(request, headers, runtime)
+	_result = &LiveStreamCancelScanResponse{}
+	_body, _err := client.LiveStreamCancelScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3771,7 +5593,18 @@ func (client *Client) PostAsyncScan(request *PostAsyncScanRequest) (_result *Pos
 	return _result, _err
 }
 
-func (client *Client) PostAsyncScanWithOptions(request *PostAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PostAsyncScanResponse, _err error) {
+// Summary:
+//
+// 设置个体
+//
+// @param request - SetPersonRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPersonResponse
+func (client *Client) SetPersonWithOptions(request *SetPersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetPersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -3781,86 +5614,27 @@ func (client *Client) PostAsyncScanWithOptions(request *PostAsyncScanRequest, he
 		query["ClientInfo"] = request.ClientInfo
 	}
 
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &PostAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("PostAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/post/asyncscan"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PostAsyncScanResults(request *PostAsyncScanResultsRequest) (_result *PostAsyncScanResultsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PostAsyncScanResultsResponse{}
-	_body, _err := client.PostAsyncScanResultsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PostAsyncScanResultsWithOptions(request *PostAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PostAsyncScanResultsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &PostAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("PostAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/post/results"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SearchPerson(request *SearchPersonRequest) (_result *SearchPersonResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SearchPersonResponse{}
-	_body, _err := client.SearchPersonWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SearchPersonWithOptions(request *SearchPersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchPersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &SearchPersonResponse{}
-	_body, _err := client.DoROARequest(tea.String("SearchPerson"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/search"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("SetPerson"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/sface/person/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPersonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3868,6 +5642,13 @@ func (client *Client) SearchPersonWithOptions(request *SearchPersonRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置个体
+//
+// @param request - SetPersonRequest
+//
+// @return SetPersonResponse
 func (client *Client) SetPerson(request *SetPersonRequest) (_result *SetPersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3880,45 +5661,17 @@ func (client *Client) SetPerson(request *SetPersonRequest) (_result *SetPersonRe
 	return _result, _err
 }
 
-func (client *Client) SetPersonWithOptions(request *SetPersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetPersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &SetPersonResponse{}
-	_body, _err := client.DoROARequest(tea.String("SetPerson"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/sface/person/update"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TextAsyncManualScan(request *TextAsyncManualScanRequest) (_result *TextAsyncManualScanResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &TextAsyncManualScanResponse{}
-	_body, _err := client.TextAsyncManualScanWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// 文本异步人工审核
+//
+// @param request - TextAsyncManualScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextAsyncManualScanResponse
 func (client *Client) TextAsyncManualScanWithOptions(request *TextAsyncManualScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TextAsyncManualScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3933,8 +5686,19 @@ func (client *Client) TextAsyncManualScanWithOptions(request *TextAsyncManualSca
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TextAsyncManualScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/text/manual/asyncScan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &TextAsyncManualScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("TextAsyncManualScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/text/manual/asyncScan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3942,11 +5706,18 @@ func (client *Client) TextAsyncManualScanWithOptions(request *TextAsyncManualSca
 	return _result, _err
 }
 
-func (client *Client) TextAsyncManualScanResults(request *TextAsyncManualScanResultsRequest) (_result *TextAsyncManualScanResultsResponse, _err error) {
+// Summary:
+//
+// 文本异步人工审核
+//
+// @param request - TextAsyncManualScanRequest
+//
+// @return TextAsyncManualScanResponse
+func (client *Client) TextAsyncManualScan(request *TextAsyncManualScanRequest) (_result *TextAsyncManualScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TextAsyncManualScanResultsResponse{}
-	_body, _err := client.TextAsyncManualScanResultsWithOptions(request, headers, runtime)
+	_result = &TextAsyncManualScanResponse{}
+	_body, _err := client.TextAsyncManualScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3954,6 +5725,17 @@ func (client *Client) TextAsyncManualScanResults(request *TextAsyncManualScanRes
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本异步人工审核结果
+//
+// @param request - TextAsyncManualScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextAsyncManualScanResultsResponse
 func (client *Client) TextAsyncManualScanResultsWithOptions(request *TextAsyncManualScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TextAsyncManualScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3968,8 +5750,19 @@ func (client *Client) TextAsyncManualScanResultsWithOptions(request *TextAsyncMa
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TextAsyncManualScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/text/manual/scan/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &TextAsyncManualScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("TextAsyncManualScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/text/manual/scan/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3977,11 +5770,18 @@ func (client *Client) TextAsyncManualScanResultsWithOptions(request *TextAsyncMa
 	return _result, _err
 }
 
-func (client *Client) TextFeedback(request *TextFeedbackRequest) (_result *TextFeedbackResponse, _err error) {
+// Summary:
+//
+// 文本异步人工审核结果
+//
+// @param request - TextAsyncManualScanResultsRequest
+//
+// @return TextAsyncManualScanResultsResponse
+func (client *Client) TextAsyncManualScanResults(request *TextAsyncManualScanResultsRequest) (_result *TextAsyncManualScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TextFeedbackResponse{}
-	_body, _err := client.TextFeedbackWithOptions(request, headers, runtime)
+	_result = &TextAsyncManualScanResultsResponse{}
+	_body, _err := client.TextAsyncManualScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3989,6 +5789,17 @@ func (client *Client) TextFeedback(request *TextFeedbackRequest) (_result *TextF
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本结果反馈
+//
+// @param request - TextFeedbackRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextFeedbackResponse
 func (client *Client) TextFeedbackWithOptions(request *TextFeedbackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TextFeedbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4003,8 +5814,19 @@ func (client *Client) TextFeedbackWithOptions(request *TextFeedbackRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TextFeedback"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/text/feedback"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &TextFeedbackResponse{}
-	_body, _err := client.DoROARequest(tea.String("TextFeedback"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/text/feedback"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4012,11 +5834,18 @@ func (client *Client) TextFeedbackWithOptions(request *TextFeedbackRequest, head
 	return _result, _err
 }
 
-func (client *Client) TextScan(request *TextScanRequest) (_result *TextScanResponse, _err error) {
+// Summary:
+//
+// 文本结果反馈
+//
+// @param request - TextFeedbackRequest
+//
+// @return TextFeedbackResponse
+func (client *Client) TextFeedback(request *TextFeedbackRequest) (_result *TextFeedbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TextScanResponse{}
-	_body, _err := client.TextScanWithOptions(request, headers, runtime)
+	_result = &TextFeedbackResponse{}
+	_body, _err := client.TextFeedbackWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4024,6 +5853,13 @@ func (client *Client) TextScan(request *TextScanRequest) (_result *TextScanRespo
 	return _result, _err
 }
 
+// @param request - TextScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextScanResponse
 func (client *Client) TextScanWithOptions(request *TextScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TextScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4038,8 +5874,19 @@ func (client *Client) TextScanWithOptions(request *TextScanRequest, headers map[
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TextScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/text/scan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &TextScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("TextScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/text/scan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4047,6 +5894,77 @@ func (client *Client) TextScanWithOptions(request *TextScanRequest, headers map[
 	return _result, _err
 }
 
+// @param request - TextScanRequest
+//
+// @return TextScanResponse
+func (client *Client) TextScan(request *TextScanRequest) (_result *TextScanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TextScanResponse{}
+	_body, _err := client.TextScanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取上传证书
+//
+// @param request - UploadCredentialsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadCredentialsResponse
+func (client *Client) UploadCredentialsWithOptions(request *UploadCredentialsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadCredentialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
+		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadCredentials"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/credentials/uploadcredentials"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadCredentialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取上传证书
+//
+// @param request - UploadCredentialsRequest
+//
+// @return UploadCredentialsResponse
 func (client *Client) UploadCredentials(request *UploadCredentialsRequest) (_result *UploadCredentialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4059,45 +5977,17 @@ func (client *Client) UploadCredentials(request *UploadCredentialsRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) UploadCredentialsWithOptions(request *UploadCredentialsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadCredentialsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &UploadCredentialsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UploadCredentials"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/credentials/uploadcredentials"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) VideoAsyncManualScan(request *VideoAsyncManualScanRequest) (_result *VideoAsyncManualScanResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &VideoAsyncManualScanResponse{}
-	_body, _err := client.VideoAsyncManualScanWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// 视频异步人工审核
+//
+// @param request - VideoAsyncManualScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoAsyncManualScanResponse
 func (client *Client) VideoAsyncManualScanWithOptions(request *VideoAsyncManualScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoAsyncManualScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4112,8 +6002,19 @@ func (client *Client) VideoAsyncManualScanWithOptions(request *VideoAsyncManualS
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoAsyncManualScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/manual/asyncScan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VideoAsyncManualScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VideoAsyncManualScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/manual/asyncScan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4121,11 +6022,18 @@ func (client *Client) VideoAsyncManualScanWithOptions(request *VideoAsyncManualS
 	return _result, _err
 }
 
-func (client *Client) VideoAsyncManualScanResults(request *VideoAsyncManualScanResultsRequest) (_result *VideoAsyncManualScanResultsResponse, _err error) {
+// Summary:
+//
+// 视频异步人工审核
+//
+// @param request - VideoAsyncManualScanRequest
+//
+// @return VideoAsyncManualScanResponse
+func (client *Client) VideoAsyncManualScan(request *VideoAsyncManualScanRequest) (_result *VideoAsyncManualScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VideoAsyncManualScanResultsResponse{}
-	_body, _err := client.VideoAsyncManualScanResultsWithOptions(request, headers, runtime)
+	_result = &VideoAsyncManualScanResponse{}
+	_body, _err := client.VideoAsyncManualScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4133,6 +6041,17 @@ func (client *Client) VideoAsyncManualScanResults(request *VideoAsyncManualScanR
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频异步人工审核结果
+//
+// @param request - VideoAsyncManualScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoAsyncManualScanResultsResponse
 func (client *Client) VideoAsyncManualScanResultsWithOptions(request *VideoAsyncManualScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoAsyncManualScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4147,8 +6066,19 @@ func (client *Client) VideoAsyncManualScanResultsWithOptions(request *VideoAsync
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoAsyncManualScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/manual/scan/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VideoAsyncManualScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("VideoAsyncManualScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/manual/scan/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4156,11 +6086,18 @@ func (client *Client) VideoAsyncManualScanResultsWithOptions(request *VideoAsync
 	return _result, _err
 }
 
-func (client *Client) VideoAsyncScan(request *VideoAsyncScanRequest) (_result *VideoAsyncScanResponse, _err error) {
+// Summary:
+//
+// 视频异步人工审核结果
+//
+// @param request - VideoAsyncManualScanResultsRequest
+//
+// @return VideoAsyncManualScanResultsResponse
+func (client *Client) VideoAsyncManualScanResults(request *VideoAsyncManualScanResultsRequest) (_result *VideoAsyncManualScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VideoAsyncScanResponse{}
-	_body, _err := client.VideoAsyncScanWithOptions(request, headers, runtime)
+	_result = &VideoAsyncManualScanResultsResponse{}
+	_body, _err := client.VideoAsyncManualScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4168,6 +6105,17 @@ func (client *Client) VideoAsyncScan(request *VideoAsyncScanRequest) (_result *V
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频异步检测
+//
+// @param request - VideoAsyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoAsyncScanResponse
 func (client *Client) VideoAsyncScanWithOptions(request *VideoAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoAsyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4182,8 +6130,19 @@ func (client *Client) VideoAsyncScanWithOptions(request *VideoAsyncScanRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoAsyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/asyncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VideoAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VideoAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/asyncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4191,11 +6150,18 @@ func (client *Client) VideoAsyncScanWithOptions(request *VideoAsyncScanRequest, 
 	return _result, _err
 }
 
-func (client *Client) VideoAsyncScanResults(request *VideoAsyncScanResultsRequest) (_result *VideoAsyncScanResultsResponse, _err error) {
+// Summary:
+//
+// 视频异步检测
+//
+// @param request - VideoAsyncScanRequest
+//
+// @return VideoAsyncScanResponse
+func (client *Client) VideoAsyncScan(request *VideoAsyncScanRequest) (_result *VideoAsyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VideoAsyncScanResultsResponse{}
-	_body, _err := client.VideoAsyncScanResultsWithOptions(request, headers, runtime)
+	_result = &VideoAsyncScanResponse{}
+	_body, _err := client.VideoAsyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4203,6 +6169,17 @@ func (client *Client) VideoAsyncScanResults(request *VideoAsyncScanResultsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频异步检测结果
+//
+// @param request - VideoAsyncScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoAsyncScanResultsResponse
 func (client *Client) VideoAsyncScanResultsWithOptions(request *VideoAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoAsyncScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4217,8 +6194,19 @@ func (client *Client) VideoAsyncScanResultsWithOptions(request *VideoAsyncScanRe
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoAsyncScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VideoAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("VideoAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4226,11 +6214,18 @@ func (client *Client) VideoAsyncScanResultsWithOptions(request *VideoAsyncScanRe
 	return _result, _err
 }
 
-func (client *Client) VideoCancelScan(request *VideoCancelScanRequest) (_result *VideoCancelScanResponse, _err error) {
+// Summary:
+//
+// 视频异步检测结果
+//
+// @param request - VideoAsyncScanResultsRequest
+//
+// @return VideoAsyncScanResultsResponse
+func (client *Client) VideoAsyncScanResults(request *VideoAsyncScanResultsRequest) (_result *VideoAsyncScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VideoCancelScanResponse{}
-	_body, _err := client.VideoCancelScanWithOptions(request, headers, runtime)
+	_result = &VideoAsyncScanResultsResponse{}
+	_body, _err := client.VideoAsyncScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4238,6 +6233,17 @@ func (client *Client) VideoCancelScan(request *VideoCancelScanRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频取消检测
+//
+// @param request - VideoCancelScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoCancelScanResponse
 func (client *Client) VideoCancelScanWithOptions(request *VideoCancelScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoCancelScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4252,8 +6258,19 @@ func (client *Client) VideoCancelScanWithOptions(request *VideoCancelScanRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoCancelScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/cancelscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VideoCancelScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VideoCancelScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/cancelscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4261,11 +6278,18 @@ func (client *Client) VideoCancelScanWithOptions(request *VideoCancelScanRequest
 	return _result, _err
 }
 
-func (client *Client) VideoFeedback(request *VideoFeedbackRequest) (_result *VideoFeedbackResponse, _err error) {
+// Summary:
+//
+// 视频取消检测
+//
+// @param request - VideoCancelScanRequest
+//
+// @return VideoCancelScanResponse
+func (client *Client) VideoCancelScan(request *VideoCancelScanRequest) (_result *VideoCancelScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VideoFeedbackResponse{}
-	_body, _err := client.VideoFeedbackWithOptions(request, headers, runtime)
+	_result = &VideoCancelScanResponse{}
+	_body, _err := client.VideoCancelScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4273,6 +6297,17 @@ func (client *Client) VideoFeedback(request *VideoFeedbackRequest) (_result *Vid
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频结果反馈
+//
+// @param request - VideoFeedbackRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoFeedbackResponse
 func (client *Client) VideoFeedbackWithOptions(request *VideoFeedbackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoFeedbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4287,8 +6322,19 @@ func (client *Client) VideoFeedbackWithOptions(request *VideoFeedbackRequest, he
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoFeedback"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/feedback"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VideoFeedbackResponse{}
-	_body, _err := client.DoROARequest(tea.String("VideoFeedback"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/feedback"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4296,11 +6342,18 @@ func (client *Client) VideoFeedbackWithOptions(request *VideoFeedbackRequest, he
 	return _result, _err
 }
 
-func (client *Client) VideoSyncScan(request *VideoSyncScanRequest) (_result *VideoSyncScanResponse, _err error) {
+// Summary:
+//
+// 视频结果反馈
+//
+// @param request - VideoFeedbackRequest
+//
+// @return VideoFeedbackResponse
+func (client *Client) VideoFeedback(request *VideoFeedbackRequest) (_result *VideoFeedbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VideoSyncScanResponse{}
-	_body, _err := client.VideoSyncScanWithOptions(request, headers, runtime)
+	_result = &VideoFeedbackResponse{}
+	_body, _err := client.VideoFeedbackWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4308,6 +6361,17 @@ func (client *Client) VideoSyncScan(request *VideoSyncScanRequest) (_result *Vid
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频同步检测
+//
+// @param request - VideoSyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoSyncScanResponse
 func (client *Client) VideoSyncScanWithOptions(request *VideoSyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoSyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4322,8 +6386,19 @@ func (client *Client) VideoSyncScanWithOptions(request *VideoSyncScanRequest, he
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoSyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/video/syncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VideoSyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VideoSyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/video/syncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4331,11 +6406,18 @@ func (client *Client) VideoSyncScanWithOptions(request *VideoSyncScanRequest, he
 	return _result, _err
 }
 
-func (client *Client) VodAsyncScan(request *VodAsyncScanRequest) (_result *VodAsyncScanResponse, _err error) {
+// Summary:
+//
+// 视频同步检测
+//
+// @param request - VideoSyncScanRequest
+//
+// @return VideoSyncScanResponse
+func (client *Client) VideoSyncScan(request *VideoSyncScanRequest) (_result *VideoSyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VodAsyncScanResponse{}
-	_body, _err := client.VodAsyncScanWithOptions(request, headers, runtime)
+	_result = &VideoSyncScanResponse{}
+	_body, _err := client.VideoSyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4343,6 +6425,17 @@ func (client *Client) VodAsyncScan(request *VodAsyncScanRequest) (_result *VodAs
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频点播异步检测
+//
+// @param request - VodAsyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VodAsyncScanResponse
 func (client *Client) VodAsyncScanWithOptions(request *VodAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VodAsyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4357,8 +6450,19 @@ func (client *Client) VodAsyncScanWithOptions(request *VodAsyncScanRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VodAsyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/vod/asyncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VodAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VodAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/vod/asyncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4366,11 +6470,18 @@ func (client *Client) VodAsyncScanWithOptions(request *VodAsyncScanRequest, head
 	return _result, _err
 }
 
-func (client *Client) VodAsyncScanResults(request *VodAsyncScanResultsRequest) (_result *VodAsyncScanResultsResponse, _err error) {
+// Summary:
+//
+// 视频点播异步检测
+//
+// @param request - VodAsyncScanRequest
+//
+// @return VodAsyncScanResponse
+func (client *Client) VodAsyncScan(request *VodAsyncScanRequest) (_result *VodAsyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VodAsyncScanResultsResponse{}
-	_body, _err := client.VodAsyncScanResultsWithOptions(request, headers, runtime)
+	_result = &VodAsyncScanResponse{}
+	_body, _err := client.VodAsyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4378,6 +6489,17 @@ func (client *Client) VodAsyncScanResults(request *VodAsyncScanResultsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频点播异步检测结果
+//
+// @param request - VodAsyncScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VodAsyncScanResultsResponse
 func (client *Client) VodAsyncScanResultsWithOptions(request *VodAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VodAsyncScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4392,8 +6514,19 @@ func (client *Client) VodAsyncScanResultsWithOptions(request *VodAsyncScanResult
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VodAsyncScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/vod/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VodAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("VodAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/vod/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4401,11 +6534,18 @@ func (client *Client) VodAsyncScanResultsWithOptions(request *VodAsyncScanResult
 	return _result, _err
 }
 
-func (client *Client) VoiceAsyncManualScan(request *VoiceAsyncManualScanRequest) (_result *VoiceAsyncManualScanResponse, _err error) {
+// Summary:
+//
+// 视频点播异步检测结果
+//
+// @param request - VodAsyncScanResultsRequest
+//
+// @return VodAsyncScanResultsResponse
+func (client *Client) VodAsyncScanResults(request *VodAsyncScanResultsRequest) (_result *VodAsyncScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VoiceAsyncManualScanResponse{}
-	_body, _err := client.VoiceAsyncManualScanWithOptions(request, headers, runtime)
+	_result = &VodAsyncScanResultsResponse{}
+	_body, _err := client.VodAsyncScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4413,6 +6553,17 @@ func (client *Client) VoiceAsyncManualScan(request *VoiceAsyncManualScanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音异步人工审核
+//
+// @param request - VoiceAsyncManualScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceAsyncManualScanResponse
 func (client *Client) VoiceAsyncManualScanWithOptions(request *VoiceAsyncManualScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceAsyncManualScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4427,8 +6578,19 @@ func (client *Client) VoiceAsyncManualScanWithOptions(request *VoiceAsyncManualS
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VoiceAsyncManualScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/manual/asyncScan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VoiceAsyncManualScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceAsyncManualScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/manual/asyncScan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4436,11 +6598,18 @@ func (client *Client) VoiceAsyncManualScanWithOptions(request *VoiceAsyncManualS
 	return _result, _err
 }
 
-func (client *Client) VoiceAsyncManualScanResults(request *VoiceAsyncManualScanResultsRequest) (_result *VoiceAsyncManualScanResultsResponse, _err error) {
+// Summary:
+//
+// 语音异步人工审核
+//
+// @param request - VoiceAsyncManualScanRequest
+//
+// @return VoiceAsyncManualScanResponse
+func (client *Client) VoiceAsyncManualScan(request *VoiceAsyncManualScanRequest) (_result *VoiceAsyncManualScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VoiceAsyncManualScanResultsResponse{}
-	_body, _err := client.VoiceAsyncManualScanResultsWithOptions(request, headers, runtime)
+	_result = &VoiceAsyncManualScanResponse{}
+	_body, _err := client.VoiceAsyncManualScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4448,6 +6617,17 @@ func (client *Client) VoiceAsyncManualScanResults(request *VoiceAsyncManualScanR
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音异步人工审核结果
+//
+// @param request - VoiceAsyncManualScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceAsyncManualScanResultsResponse
 func (client *Client) VoiceAsyncManualScanResultsWithOptions(request *VoiceAsyncManualScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceAsyncManualScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4462,8 +6642,19 @@ func (client *Client) VoiceAsyncManualScanResultsWithOptions(request *VoiceAsync
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VoiceAsyncManualScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/manual/scan/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VoiceAsyncManualScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceAsyncManualScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/manual/scan/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4471,11 +6662,18 @@ func (client *Client) VoiceAsyncManualScanResultsWithOptions(request *VoiceAsync
 	return _result, _err
 }
 
-func (client *Client) VoiceAsyncScan(request *VoiceAsyncScanRequest) (_result *VoiceAsyncScanResponse, _err error) {
+// Summary:
+//
+// 语音异步人工审核结果
+//
+// @param request - VoiceAsyncManualScanResultsRequest
+//
+// @return VoiceAsyncManualScanResultsResponse
+func (client *Client) VoiceAsyncManualScanResults(request *VoiceAsyncManualScanResultsRequest) (_result *VoiceAsyncManualScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VoiceAsyncScanResponse{}
-	_body, _err := client.VoiceAsyncScanWithOptions(request, headers, runtime)
+	_result = &VoiceAsyncManualScanResultsResponse{}
+	_body, _err := client.VoiceAsyncManualScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4483,6 +6681,17 @@ func (client *Client) VoiceAsyncScan(request *VoiceAsyncScanRequest) (_result *V
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音异步检测
+//
+// @param request - VoiceAsyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceAsyncScanResponse
 func (client *Client) VoiceAsyncScanWithOptions(request *VoiceAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceAsyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4497,8 +6706,19 @@ func (client *Client) VoiceAsyncScanWithOptions(request *VoiceAsyncScanRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VoiceAsyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/asyncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VoiceAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/asyncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4506,11 +6726,18 @@ func (client *Client) VoiceAsyncScanWithOptions(request *VoiceAsyncScanRequest, 
 	return _result, _err
 }
 
-func (client *Client) VoiceAsyncScanResults(request *VoiceAsyncScanResultsRequest) (_result *VoiceAsyncScanResultsResponse, _err error) {
+// Summary:
+//
+// 语音异步检测
+//
+// @param request - VoiceAsyncScanRequest
+//
+// @return VoiceAsyncScanResponse
+func (client *Client) VoiceAsyncScan(request *VoiceAsyncScanRequest) (_result *VoiceAsyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VoiceAsyncScanResultsResponse{}
-	_body, _err := client.VoiceAsyncScanResultsWithOptions(request, headers, runtime)
+	_result = &VoiceAsyncScanResponse{}
+	_body, _err := client.VoiceAsyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4518,6 +6745,17 @@ func (client *Client) VoiceAsyncScanResults(request *VoiceAsyncScanResultsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音异步检测结果
+//
+// @param request - VoiceAsyncScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceAsyncScanResultsResponse
 func (client *Client) VoiceAsyncScanResultsWithOptions(request *VoiceAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceAsyncScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4532,8 +6770,19 @@ func (client *Client) VoiceAsyncScanResultsWithOptions(request *VoiceAsyncScanRe
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VoiceAsyncScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VoiceAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4541,11 +6790,18 @@ func (client *Client) VoiceAsyncScanResultsWithOptions(request *VoiceAsyncScanRe
 	return _result, _err
 }
 
-func (client *Client) VoiceCancelScan(request *VoiceCancelScanRequest) (_result *VoiceCancelScanResponse, _err error) {
+// Summary:
+//
+// 语音异步检测结果
+//
+// @param request - VoiceAsyncScanResultsRequest
+//
+// @return VoiceAsyncScanResultsResponse
+func (client *Client) VoiceAsyncScanResults(request *VoiceAsyncScanResultsRequest) (_result *VoiceAsyncScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &VoiceCancelScanResponse{}
-	_body, _err := client.VoiceCancelScanWithOptions(request, headers, runtime)
+	_result = &VoiceAsyncScanResultsResponse{}
+	_body, _err := client.VoiceAsyncScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4553,6 +6809,17 @@ func (client *Client) VoiceCancelScan(request *VoiceCancelScanRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音取消检测
+//
+// @param request - VoiceCancelScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceCancelScanResponse
 func (client *Client) VoiceCancelScanWithOptions(request *VoiceCancelScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceCancelScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4567,8 +6834,19 @@ func (client *Client) VoiceCancelScanWithOptions(request *VoiceCancelScanRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VoiceCancelScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/cancelscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VoiceCancelScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceCancelScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/cancelscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4576,6 +6854,81 @@ func (client *Client) VoiceCancelScanWithOptions(request *VoiceCancelScanRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音取消检测
+//
+// @param request - VoiceCancelScanRequest
+//
+// @return VoiceCancelScanResponse
+func (client *Client) VoiceCancelScan(request *VoiceCancelScanRequest) (_result *VoiceCancelScanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VoiceCancelScanResponse{}
+	_body, _err := client.VoiceCancelScanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 声纹比对
+//
+// @param request - VoiceIdentityCheckRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceIdentityCheckResponse
+func (client *Client) VoiceIdentityCheckWithOptions(request *VoiceIdentityCheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
+		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VoiceIdentityCheck"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/auth/check"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VoiceIdentityCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 声纹比对
+//
+// @param request - VoiceIdentityCheckRequest
+//
+// @return VoiceIdentityCheckResponse
 func (client *Client) VoiceIdentityCheck(request *VoiceIdentityCheckRequest) (_result *VoiceIdentityCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4588,26 +6941,48 @@ func (client *Client) VoiceIdentityCheck(request *VoiceIdentityCheckRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) VoiceIdentityCheckWithOptions(request *VoiceIdentityCheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityCheckResponse, _err error) {
+// Summary:
+//
+// 声纹注册
+//
+// @param request - VoiceIdentityRegisterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceIdentityRegisterResponse
+func (client *Client) VoiceIdentityRegisterWithOptions(request *VoiceIdentityRegisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityRegisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &VoiceIdentityCheckResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceIdentityCheck"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/auth/check"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("VoiceIdentityRegister"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/auth/register"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VoiceIdentityRegisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4615,6 +6990,13 @@ func (client *Client) VoiceIdentityCheckWithOptions(request *VoiceIdentityCheckR
 	return _result, _err
 }
 
+// Summary:
+//
+// 声纹注册
+//
+// @param request - VoiceIdentityRegisterRequest
+//
+// @return VoiceIdentityRegisterResponse
 func (client *Client) VoiceIdentityRegister(request *VoiceIdentityRegisterRequest) (_result *VoiceIdentityRegisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4627,26 +7009,48 @@ func (client *Client) VoiceIdentityRegister(request *VoiceIdentityRegisterReques
 	return _result, _err
 }
 
-func (client *Client) VoiceIdentityRegisterWithOptions(request *VoiceIdentityRegisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityRegisterResponse, _err error) {
+// Summary:
+//
+// 声纹开始比对
+//
+// @param request - VoiceIdentityStartCheckRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceIdentityStartCheckResponse
+func (client *Client) VoiceIdentityStartCheckWithOptions(request *VoiceIdentityStartCheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityStartCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &VoiceIdentityRegisterResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceIdentityRegister"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/auth/register"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("VoiceIdentityStartCheck"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/auth/start/check"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VoiceIdentityStartCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4654,6 +7058,13 @@ func (client *Client) VoiceIdentityRegisterWithOptions(request *VoiceIdentityReg
 	return _result, _err
 }
 
+// Summary:
+//
+// 声纹开始比对
+//
+// @param request - VoiceIdentityStartCheckRequest
+//
+// @return VoiceIdentityStartCheckResponse
 func (client *Client) VoiceIdentityStartCheck(request *VoiceIdentityStartCheckRequest) (_result *VoiceIdentityStartCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4666,26 +7077,48 @@ func (client *Client) VoiceIdentityStartCheck(request *VoiceIdentityStartCheckRe
 	return _result, _err
 }
 
-func (client *Client) VoiceIdentityStartCheckWithOptions(request *VoiceIdentityStartCheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityStartCheckResponse, _err error) {
+// Summary:
+//
+// 声纹开始注册
+//
+// @param request - VoiceIdentityStartRegisterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceIdentityStartRegisterResponse
+func (client *Client) VoiceIdentityStartRegisterWithOptions(request *VoiceIdentityStartRegisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityStartRegisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &VoiceIdentityStartCheckResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceIdentityStartCheck"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/auth/start/check"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("VoiceIdentityStartRegister"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/auth/start/register"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VoiceIdentityStartRegisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4693,6 +7126,13 @@ func (client *Client) VoiceIdentityStartCheckWithOptions(request *VoiceIdentityS
 	return _result, _err
 }
 
+// Summary:
+//
+// 声纹开始注册
+//
+// @param request - VoiceIdentityStartRegisterRequest
+//
+// @return VoiceIdentityStartRegisterResponse
 func (client *Client) VoiceIdentityStartRegister(request *VoiceIdentityStartRegisterRequest) (_result *VoiceIdentityStartRegisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4705,26 +7145,48 @@ func (client *Client) VoiceIdentityStartRegister(request *VoiceIdentityStartRegi
 	return _result, _err
 }
 
-func (client *Client) VoiceIdentityStartRegisterWithOptions(request *VoiceIdentityStartRegisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityStartRegisterResponse, _err error) {
+// Summary:
+//
+// 声纹注销
+//
+// @param request - VoiceIdentityUnregisterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceIdentityUnregisterResponse
+func (client *Client) VoiceIdentityUnregisterWithOptions(request *VoiceIdentityUnregisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityUnregisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &VoiceIdentityStartRegisterResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceIdentityStartRegister"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/auth/start/register"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("VoiceIdentityUnregister"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/auth/unregister"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VoiceIdentityUnregisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4732,6 +7194,13 @@ func (client *Client) VoiceIdentityStartRegisterWithOptions(request *VoiceIdenti
 	return _result, _err
 }
 
+// Summary:
+//
+// 声纹注销
+//
+// @param request - VoiceIdentityUnregisterRequest
+//
+// @return VoiceIdentityUnregisterResponse
 func (client *Client) VoiceIdentityUnregister(request *VoiceIdentityUnregisterRequest) (_result *VoiceIdentityUnregisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4744,26 +7213,48 @@ func (client *Client) VoiceIdentityUnregister(request *VoiceIdentityUnregisterRe
 	return _result, _err
 }
 
-func (client *Client) VoiceIdentityUnregisterWithOptions(request *VoiceIdentityUnregisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceIdentityUnregisterResponse, _err error) {
+// Summary:
+//
+// 语音同步检测
+//
+// @param request - VoiceSyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceSyncScanResponse
+func (client *Client) VoiceSyncScanWithOptions(request *VoiceSyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceSyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &VoiceIdentityUnregisterResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceIdentityUnregister"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/auth/unregister"), tea.String("none"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("VoiceSyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/voice/syncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VoiceSyncScanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4771,6 +7262,13 @@ func (client *Client) VoiceIdentityUnregisterWithOptions(request *VoiceIdentityU
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音同步检测
+//
+// @param request - VoiceSyncScanRequest
+//
+// @return VoiceSyncScanResponse
 func (client *Client) VoiceSyncScan(request *VoiceSyncScanRequest) (_result *VoiceSyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4783,45 +7281,17 @@ func (client *Client) VoiceSyncScan(request *VoiceSyncScanRequest) (_result *Voi
 	return _result, _err
 }
 
-func (client *Client) VoiceSyncScanWithOptions(request *VoiceSyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VoiceSyncScanResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
-		query["ClientInfo"] = request.ClientInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &VoiceSyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("VoiceSyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/voice/syncscan"), tea.String("none"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) WebpageAsyncScan(request *WebpageAsyncScanRequest) (_result *WebpageAsyncScanResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &WebpageAsyncScanResponse{}
-	_body, _err := client.WebpageAsyncScanWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// 站点异步检测
+//
+// @param request - WebpageAsyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WebpageAsyncScanResponse
 func (client *Client) WebpageAsyncScanWithOptions(request *WebpageAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WebpageAsyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4836,8 +7306,19 @@ func (client *Client) WebpageAsyncScanWithOptions(request *WebpageAsyncScanReque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("WebpageAsyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/webpage/asyncscan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &WebpageAsyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("WebpageAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/webpage/asyncscan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4845,11 +7326,18 @@ func (client *Client) WebpageAsyncScanWithOptions(request *WebpageAsyncScanReque
 	return _result, _err
 }
 
-func (client *Client) WebpageAsyncScanResults(request *WebpageAsyncScanResultsRequest) (_result *WebpageAsyncScanResultsResponse, _err error) {
+// Summary:
+//
+// 站点异步检测
+//
+// @param request - WebpageAsyncScanRequest
+//
+// @return WebpageAsyncScanResponse
+func (client *Client) WebpageAsyncScan(request *WebpageAsyncScanRequest) (_result *WebpageAsyncScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &WebpageAsyncScanResultsResponse{}
-	_body, _err := client.WebpageAsyncScanResultsWithOptions(request, headers, runtime)
+	_result = &WebpageAsyncScanResponse{}
+	_body, _err := client.WebpageAsyncScanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4857,6 +7345,17 @@ func (client *Client) WebpageAsyncScanResults(request *WebpageAsyncScanResultsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 站点异步检测结果
+//
+// @param request - WebpageAsyncScanResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WebpageAsyncScanResultsResponse
 func (client *Client) WebpageAsyncScanResultsWithOptions(request *WebpageAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WebpageAsyncScanResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4871,8 +7370,19 @@ func (client *Client) WebpageAsyncScanResultsWithOptions(request *WebpageAsyncSc
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("WebpageAsyncScanResults"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/webpage/results"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &WebpageAsyncScanResultsResponse{}
-	_body, _err := client.DoROARequest(tea.String("WebpageAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/webpage/results"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4880,11 +7390,18 @@ func (client *Client) WebpageAsyncScanResultsWithOptions(request *WebpageAsyncSc
 	return _result, _err
 }
 
-func (client *Client) WebpageSyncScan(request *WebpageSyncScanRequest) (_result *WebpageSyncScanResponse, _err error) {
+// Summary:
+//
+// 站点异步检测结果
+//
+// @param request - WebpageAsyncScanResultsRequest
+//
+// @return WebpageAsyncScanResultsResponse
+func (client *Client) WebpageAsyncScanResults(request *WebpageAsyncScanResultsRequest) (_result *WebpageAsyncScanResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &WebpageSyncScanResponse{}
-	_body, _err := client.WebpageSyncScanWithOptions(request, headers, runtime)
+	_result = &WebpageAsyncScanResultsResponse{}
+	_body, _err := client.WebpageAsyncScanResultsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4892,6 +7409,17 @@ func (client *Client) WebpageSyncScan(request *WebpageSyncScanRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 站点同步检测
+//
+// @param request - WebpageSyncScanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WebpageSyncScanResponse
 func (client *Client) WebpageSyncScanWithOptions(request *WebpageSyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WebpageSyncScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4906,11 +7434,41 @@ func (client *Client) WebpageSyncScanWithOptions(request *WebpageSyncScanRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("WebpageSyncScan"),
+		Version:     tea.String("2018-05-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/green/webpage/scan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &WebpageSyncScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("WebpageSyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/webpage/scan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 站点同步检测
+//
+// @param request - WebpageSyncScanRequest
+//
+// @return WebpageSyncScanResponse
+func (client *Client) WebpageSyncScan(request *WebpageSyncScanRequest) (_result *WebpageSyncScanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &WebpageSyncScanResponse{}
+	_body, _err := client.WebpageSyncScanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
