@@ -1046,7 +1046,13 @@ func (s *CreateUserSuppressionRequest) SetResourceOwnerId(v int64) *CreateUserSu
 }
 
 type CreateUserSuppressionResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1A846D66-5EC7-551B-9687-5BF1963DCFC1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 59511
 	SuppressionId *string `json:"SuppressionId,omitempty" xml:"SuppressionId,omitempty"`
 }
 
