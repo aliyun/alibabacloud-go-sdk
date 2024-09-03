@@ -9270,7 +9270,8 @@ type UpdateDomainResponseBody struct {
 	// example:
 	//
 	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Data *UpdateDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
 	// success
@@ -9294,6 +9295,11 @@ func (s *UpdateDomainResponseBody) SetCode(v string) *UpdateDomainResponseBody {
 	return s
 }
 
+func (s *UpdateDomainResponseBody) SetData(v *UpdateDomainResponseBodyData) *UpdateDomainResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *UpdateDomainResponseBody) SetMessage(v string) *UpdateDomainResponseBody {
 	s.Message = &v
 	return s
@@ -9301,6 +9307,23 @@ func (s *UpdateDomainResponseBody) SetMessage(v string) *UpdateDomainResponseBod
 
 func (s *UpdateDomainResponseBody) SetRequestId(v string) *UpdateDomainResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type UpdateDomainResponseBodyData struct {
+	DeployRevisionId *string `json:"deployRevisionId,omitempty" xml:"deployRevisionId,omitempty"`
+}
+
+func (s UpdateDomainResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDomainResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDomainResponseBodyData) SetDeployRevisionId(v string) *UpdateDomainResponseBodyData {
+	s.DeployRevisionId = &v
 	return s
 }
 
