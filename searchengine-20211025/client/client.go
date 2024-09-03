@@ -2488,7 +2488,9 @@ type CreateInstanceRequest struct {
 	// The information about the instance specification.
 	Components []*CreateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
 	// The billing information.
-	Order *CreateInstanceRequestOrder `json:"order,omitempty" xml:"order,omitempty" type:"Struct"`
+	Order           *CreateInstanceRequestOrder  `json:"order,omitempty" xml:"order,omitempty" type:"Struct"`
+	ResourceGroupId *string                      `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Tags            []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -2511,6 +2513,16 @@ func (s *CreateInstanceRequest) SetComponents(v []*CreateInstanceRequestComponen
 
 func (s *CreateInstanceRequest) SetOrder(v *CreateInstanceRequestOrder) *CreateInstanceRequest {
 	s.Order = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest {
+	s.Tags = v
 	return s
 }
 
@@ -2588,6 +2600,29 @@ func (s *CreateInstanceRequestOrder) SetDuration(v int64) *CreateInstanceRequest
 
 func (s *CreateInstanceRequestOrder) SetPricingCycle(v string) *CreateInstanceRequestOrder {
 	s.PricingCycle = &v
+	return s
+}
+
+type CreateInstanceRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateInstanceRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestTags) SetKey(v string) *CreateInstanceRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateInstanceRequestTags) SetValue(v string) *CreateInstanceRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -21209,6 +21244,14 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		body["order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{

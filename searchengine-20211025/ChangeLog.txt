@@ -1,3 +1,7 @@
+2024-09-03 Version: v3.2.4
+- Update API CreateInstance: update param body.
+
+
 2024-07-31 Version: v3.2.3
 - Update API GetFile: update response param.
 - Update API GetIndex: update response param.
