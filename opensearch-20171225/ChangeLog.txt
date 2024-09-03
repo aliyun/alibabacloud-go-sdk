@@ -2,6 +2,10 @@
 - Update API CreateAppGroup: update param body.
 
 
+2024-09-03 Version: v3.0.1
+- Update API CreateAppGroup: update param body.
+
+
 2024-09-02 Version: v3.0.0
 - Support API CreateAppGroupCredentials.
 - Support API CreateFunctionResource.
