@@ -614,8 +614,6 @@ type SearchRequest struct {
 	//
 	// “1”
 	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// “121343”
