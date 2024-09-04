@@ -32,9 +32,27 @@ func (s *AddFacesRequest) SetRegionId(v string) *AddFacesRequest {
 	return s
 }
 
+type AddFacesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddFacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddFacesResponseBody) SetRequestId(v string) *AddFacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AddFacesResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddFacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddFacesResponse) String() string {
@@ -52,6 +70,11 @@ func (s *AddFacesResponse) SetHeaders(v map[string]*string) *AddFacesResponse {
 
 func (s *AddFacesResponse) SetStatusCode(v int32) *AddFacesResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *AddFacesResponse) SetBody(v *AddFacesResponseBody) *AddFacesResponse {
+	s.Body = v
 	return s
 }
 
@@ -78,9 +101,27 @@ func (s *AddGroupsRequest) SetRegionId(v string) *AddGroupsRequest {
 	return s
 }
 
+type AddGroupsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupsResponseBody) SetRequestId(v string) *AddGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AddGroupsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddGroupsResponse) String() string {
@@ -98,6 +139,11 @@ func (s *AddGroupsResponse) SetHeaders(v map[string]*string) *AddGroupsResponse 
 
 func (s *AddGroupsResponse) SetStatusCode(v int32) *AddGroupsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *AddGroupsResponse) SetBody(v *AddGroupsResponseBody) *AddGroupsResponse {
+	s.Body = v
 	return s
 }
 
@@ -124,9 +170,27 @@ func (s *AddPersonRequest) SetRegionId(v string) *AddPersonRequest {
 	return s
 }
 
+type AddPersonResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddPersonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPersonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddPersonResponseBody) SetRequestId(v string) *AddPersonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AddPersonResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddPersonResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddPersonResponse) String() string {
@@ -147,6 +211,11 @@ func (s *AddPersonResponse) SetStatusCode(v int32) *AddPersonResponse {
 	return s
 }
 
+func (s *AddPersonResponse) SetBody(v *AddPersonResponseBody) *AddPersonResponse {
+	s.Body = v
+	return s
+}
+
 type AddSimilarityImageRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -164,9 +233,27 @@ func (s *AddSimilarityImageRequest) SetClientInfo(v string) *AddSimilarityImageR
 	return s
 }
 
+type AddSimilarityImageResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddSimilarityImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSimilarityImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddSimilarityImageResponseBody) SetRequestId(v string) *AddSimilarityImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AddSimilarityImageResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSimilarityImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddSimilarityImageResponse) String() string {
@@ -187,6 +274,11 @@ func (s *AddSimilarityImageResponse) SetStatusCode(v int32) *AddSimilarityImageR
 	return s
 }
 
+func (s *AddSimilarityImageResponse) SetBody(v *AddSimilarityImageResponseBody) *AddSimilarityImageResponse {
+	s.Body = v
+	return s
+}
+
 type AddSimilarityLibraryRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -204,9 +296,27 @@ func (s *AddSimilarityLibraryRequest) SetClientInfo(v string) *AddSimilarityLibr
 	return s
 }
 
+type AddSimilarityLibraryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddSimilarityLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSimilarityLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddSimilarityLibraryResponseBody) SetRequestId(v string) *AddSimilarityLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AddSimilarityLibraryResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSimilarityLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddSimilarityLibraryResponse) String() string {
@@ -227,6 +337,11 @@ func (s *AddSimilarityLibraryResponse) SetStatusCode(v int32) *AddSimilarityLibr
 	return s
 }
 
+func (s *AddSimilarityLibraryResponse) SetBody(v *AddSimilarityLibraryResponseBody) *AddSimilarityLibraryResponse {
+	s.Body = v
+	return s
+}
+
 type AddVideoDnaRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -244,9 +359,27 @@ func (s *AddVideoDnaRequest) SetClientInfo(v string) *AddVideoDnaRequest {
 	return s
 }
 
+type AddVideoDnaResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddVideoDnaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVideoDnaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddVideoDnaResponseBody) SetRequestId(v string) *AddVideoDnaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AddVideoDnaResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddVideoDnaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddVideoDnaResponse) String() string {
@@ -267,6 +400,11 @@ func (s *AddVideoDnaResponse) SetStatusCode(v int32) *AddVideoDnaResponse {
 	return s
 }
 
+func (s *AddVideoDnaResponse) SetBody(v *AddVideoDnaResponseBody) *AddVideoDnaResponse {
+	s.Body = v
+	return s
+}
+
 type AddVideoDnaGroupRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -284,9 +422,27 @@ func (s *AddVideoDnaGroupRequest) SetClientInfo(v string) *AddVideoDnaGroupReque
 	return s
 }
 
+type AddVideoDnaGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddVideoDnaGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVideoDnaGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddVideoDnaGroupResponseBody) SetRequestId(v string) *AddVideoDnaGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AddVideoDnaGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddVideoDnaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddVideoDnaGroupResponse) String() string {
@@ -304,6 +460,11 @@ func (s *AddVideoDnaGroupResponse) SetHeaders(v map[string]*string) *AddVideoDna
 
 func (s *AddVideoDnaGroupResponse) SetStatusCode(v int32) *AddVideoDnaGroupResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *AddVideoDnaGroupResponse) SetBody(v *AddVideoDnaGroupResponseBody) *AddVideoDnaGroupResponse {
+	s.Body = v
 	return s
 }
 
@@ -330,9 +491,27 @@ func (s *DeleteFacesRequest) SetRegionId(v string) *DeleteFacesRequest {
 	return s
 }
 
+type DeleteFacesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteFacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFacesResponseBody) SetRequestId(v string) *DeleteFacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeleteFacesResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFacesResponse) String() string {
@@ -350,6 +529,11 @@ func (s *DeleteFacesResponse) SetHeaders(v map[string]*string) *DeleteFacesRespo
 
 func (s *DeleteFacesResponse) SetStatusCode(v int32) *DeleteFacesResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFacesResponse) SetBody(v *DeleteFacesResponseBody) *DeleteFacesResponse {
+	s.Body = v
 	return s
 }
 
@@ -376,9 +560,27 @@ func (s *DeleteGroupsRequest) SetRegionId(v string) *DeleteGroupsRequest {
 	return s
 }
 
+type DeleteGroupsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupsResponseBody) SetRequestId(v string) *DeleteGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeleteGroupsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteGroupsResponse) String() string {
@@ -396,6 +598,11 @@ func (s *DeleteGroupsResponse) SetHeaders(v map[string]*string) *DeleteGroupsRes
 
 func (s *DeleteGroupsResponse) SetStatusCode(v int32) *DeleteGroupsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGroupsResponse) SetBody(v *DeleteGroupsResponseBody) *DeleteGroupsResponse {
+	s.Body = v
 	return s
 }
 
@@ -422,9 +629,27 @@ func (s *DeletePersonRequest) SetRegionId(v string) *DeletePersonRequest {
 	return s
 }
 
+type DeletePersonResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePersonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePersonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePersonResponseBody) SetRequestId(v string) *DeletePersonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeletePersonResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePersonResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePersonResponse) String() string {
@@ -445,6 +670,11 @@ func (s *DeletePersonResponse) SetStatusCode(v int32) *DeletePersonResponse {
 	return s
 }
 
+func (s *DeletePersonResponse) SetBody(v *DeletePersonResponseBody) *DeletePersonResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSimilarityImageRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -462,9 +692,27 @@ func (s *DeleteSimilarityImageRequest) SetClientInfo(v string) *DeleteSimilarity
 	return s
 }
 
+type DeleteSimilarityImageResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSimilarityImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSimilarityImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSimilarityImageResponseBody) SetRequestId(v string) *DeleteSimilarityImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeleteSimilarityImageResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSimilarityImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSimilarityImageResponse) String() string {
@@ -485,6 +733,11 @@ func (s *DeleteSimilarityImageResponse) SetStatusCode(v int32) *DeleteSimilarity
 	return s
 }
 
+func (s *DeleteSimilarityImageResponse) SetBody(v *DeleteSimilarityImageResponseBody) *DeleteSimilarityImageResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSimilarityLibraryRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -502,9 +755,27 @@ func (s *DeleteSimilarityLibraryRequest) SetClientInfo(v string) *DeleteSimilari
 	return s
 }
 
+type DeleteSimilarityLibraryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSimilarityLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSimilarityLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSimilarityLibraryResponseBody) SetRequestId(v string) *DeleteSimilarityLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeleteSimilarityLibraryResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSimilarityLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSimilarityLibraryResponse) String() string {
@@ -525,6 +796,11 @@ func (s *DeleteSimilarityLibraryResponse) SetStatusCode(v int32) *DeleteSimilari
 	return s
 }
 
+func (s *DeleteSimilarityLibraryResponse) SetBody(v *DeleteSimilarityLibraryResponseBody) *DeleteSimilarityLibraryResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVideoDnaRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -542,9 +818,27 @@ func (s *DeleteVideoDnaRequest) SetClientInfo(v string) *DeleteVideoDnaRequest {
 	return s
 }
 
+type DeleteVideoDnaResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVideoDnaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVideoDnaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVideoDnaResponseBody) SetRequestId(v string) *DeleteVideoDnaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeleteVideoDnaResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVideoDnaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVideoDnaResponse) String() string {
@@ -565,6 +859,11 @@ func (s *DeleteVideoDnaResponse) SetStatusCode(v int32) *DeleteVideoDnaResponse 
 	return s
 }
 
+func (s *DeleteVideoDnaResponse) SetBody(v *DeleteVideoDnaResponseBody) *DeleteVideoDnaResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVideoDnaGroupRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -582,9 +881,27 @@ func (s *DeleteVideoDnaGroupRequest) SetClientInfo(v string) *DeleteVideoDnaGrou
 	return s
 }
 
+type DeleteVideoDnaGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVideoDnaGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVideoDnaGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVideoDnaGroupResponseBody) SetRequestId(v string) *DeleteVideoDnaGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeleteVideoDnaGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVideoDnaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVideoDnaGroupResponse) String() string {
@@ -605,6 +922,11 @@ func (s *DeleteVideoDnaGroupResponse) SetStatusCode(v int32) *DeleteVideoDnaGrou
 	return s
 }
 
+func (s *DeleteVideoDnaGroupResponse) SetBody(v *DeleteVideoDnaGroupResponseBody) *DeleteVideoDnaGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DetectFaceRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -622,9 +944,27 @@ func (s *DetectFaceRequest) SetClientInfo(v string) *DetectFaceRequest {
 	return s
 }
 
+type DetectFaceResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DetectFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceResponseBody) SetRequestId(v string) *DetectFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DetectFaceResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetectFaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetectFaceResponse) String() string {
@@ -645,6 +985,11 @@ func (s *DetectFaceResponse) SetStatusCode(v int32) *DetectFaceResponse {
 	return s
 }
 
+func (s *DetectFaceResponse) SetBody(v *DetectFaceResponseBody) *DetectFaceResponse {
+	s.Body = v
+	return s
+}
+
 type FileAsyncScanRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -662,9 +1007,27 @@ func (s *FileAsyncScanRequest) SetClientInfo(v string) *FileAsyncScanRequest {
 	return s
 }
 
+type FileAsyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s FileAsyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileAsyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FileAsyncScanResponseBody) SetRequestId(v string) *FileAsyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type FileAsyncScanResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FileAsyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FileAsyncScanResponse) String() string {
@@ -685,6 +1048,11 @@ func (s *FileAsyncScanResponse) SetStatusCode(v int32) *FileAsyncScanResponse {
 	return s
 }
 
+func (s *FileAsyncScanResponse) SetBody(v *FileAsyncScanResponseBody) *FileAsyncScanResponse {
+	s.Body = v
+	return s
+}
+
 type FileAsyncScanResultsRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -702,9 +1070,27 @@ func (s *FileAsyncScanResultsRequest) SetClientInfo(v string) *FileAsyncScanResu
 	return s
 }
 
+type FileAsyncScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s FileAsyncScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileAsyncScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FileAsyncScanResultsResponseBody) SetRequestId(v string) *FileAsyncScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type FileAsyncScanResultsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FileAsyncScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FileAsyncScanResultsResponse) String() string {
@@ -722,6 +1108,11 @@ func (s *FileAsyncScanResultsResponse) SetHeaders(v map[string]*string) *FileAsy
 
 func (s *FileAsyncScanResultsResponse) SetStatusCode(v int32) *FileAsyncScanResultsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *FileAsyncScanResultsResponse) SetBody(v *FileAsyncScanResultsResponseBody) *FileAsyncScanResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -866,9 +1257,27 @@ func (s *GetGroupsRequest) SetRegionId(v string) *GetGroupsRequest {
 	return s
 }
 
+type GetGroupsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupsResponseBody) SetRequestId(v string) *GetGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetGroupsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetGroupsResponse) String() string {
@@ -886,6 +1295,11 @@ func (s *GetGroupsResponse) SetHeaders(v map[string]*string) *GetGroupsResponse 
 
 func (s *GetGroupsResponse) SetStatusCode(v int32) *GetGroupsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGroupsResponse) SetBody(v *GetGroupsResponseBody) *GetGroupsResponse {
+	s.Body = v
 	return s
 }
 
@@ -912,9 +1326,27 @@ func (s *GetPersonRequest) SetRegionId(v string) *GetPersonRequest {
 	return s
 }
 
+type GetPersonResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPersonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPersonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPersonResponseBody) SetRequestId(v string) *GetPersonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetPersonResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPersonResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPersonResponse) String() string {
@@ -932,6 +1364,11 @@ func (s *GetPersonResponse) SetHeaders(v map[string]*string) *GetPersonResponse 
 
 func (s *GetPersonResponse) SetStatusCode(v int32) *GetPersonResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPersonResponse) SetBody(v *GetPersonResponseBody) *GetPersonResponse {
+	s.Body = v
 	return s
 }
 
@@ -958,9 +1395,27 @@ func (s *GetPersonsRequest) SetRegionId(v string) *GetPersonsRequest {
 	return s
 }
 
+type GetPersonsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPersonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPersonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPersonsResponseBody) SetRequestId(v string) *GetPersonsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetPersonsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPersonsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPersonsResponse) String() string {
@@ -981,6 +1436,11 @@ func (s *GetPersonsResponse) SetStatusCode(v int32) *GetPersonsResponse {
 	return s
 }
 
+func (s *GetPersonsResponse) SetBody(v *GetPersonsResponseBody) *GetPersonsResponse {
+	s.Body = v
+	return s
+}
+
 type GetSimilarityImageRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -998,9 +1458,27 @@ func (s *GetSimilarityImageRequest) SetClientInfo(v string) *GetSimilarityImageR
 	return s
 }
 
+type GetSimilarityImageResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSimilarityImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSimilarityImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSimilarityImageResponseBody) SetRequestId(v string) *GetSimilarityImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetSimilarityImageResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSimilarityImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSimilarityImageResponse) String() string {
@@ -1021,6 +1499,11 @@ func (s *GetSimilarityImageResponse) SetStatusCode(v int32) *GetSimilarityImageR
 	return s
 }
 
+func (s *GetSimilarityImageResponse) SetBody(v *GetSimilarityImageResponseBody) *GetSimilarityImageResponse {
+	s.Body = v
+	return s
+}
+
 type GetSimilarityLibraryRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -1038,9 +1521,27 @@ func (s *GetSimilarityLibraryRequest) SetClientInfo(v string) *GetSimilarityLibr
 	return s
 }
 
+type GetSimilarityLibraryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSimilarityLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSimilarityLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSimilarityLibraryResponseBody) SetRequestId(v string) *GetSimilarityLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetSimilarityLibraryResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSimilarityLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSimilarityLibraryResponse) String() string {
@@ -1061,6 +1562,11 @@ func (s *GetSimilarityLibraryResponse) SetStatusCode(v int32) *GetSimilarityLibr
 	return s
 }
 
+func (s *GetSimilarityLibraryResponse) SetBody(v *GetSimilarityLibraryResponseBody) *GetSimilarityLibraryResponse {
+	s.Body = v
+	return s
+}
+
 type ImageAsyncManualScanRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -1078,9 +1584,27 @@ func (s *ImageAsyncManualScanRequest) SetClientInfo(v string) *ImageAsyncManualS
 	return s
 }
 
+type ImageAsyncManualScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageAsyncManualScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncManualScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncManualScanResponseBody) SetRequestId(v string) *ImageAsyncManualScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ImageAsyncManualScanResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageAsyncManualScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageAsyncManualScanResponse) String() string {
@@ -1101,6 +1625,11 @@ func (s *ImageAsyncManualScanResponse) SetStatusCode(v int32) *ImageAsyncManualS
 	return s
 }
 
+func (s *ImageAsyncManualScanResponse) SetBody(v *ImageAsyncManualScanResponseBody) *ImageAsyncManualScanResponse {
+	s.Body = v
+	return s
+}
+
 type ImageAsyncManualScanResultsRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -1118,9 +1647,27 @@ func (s *ImageAsyncManualScanResultsRequest) SetClientInfo(v string) *ImageAsync
 	return s
 }
 
+type ImageAsyncManualScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageAsyncManualScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncManualScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncManualScanResultsResponseBody) SetRequestId(v string) *ImageAsyncManualScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ImageAsyncManualScanResultsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageAsyncManualScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageAsyncManualScanResultsResponse) String() string {
@@ -1141,6 +1688,11 @@ func (s *ImageAsyncManualScanResultsResponse) SetStatusCode(v int32) *ImageAsync
 	return s
 }
 
+func (s *ImageAsyncManualScanResultsResponse) SetBody(v *ImageAsyncManualScanResultsResponseBody) *ImageAsyncManualScanResultsResponse {
+	s.Body = v
+	return s
+}
+
 type ImageAsyncScanRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -1158,9 +1710,27 @@ func (s *ImageAsyncScanRequest) SetClientInfo(v string) *ImageAsyncScanRequest {
 	return s
 }
 
+type ImageAsyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageAsyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncScanResponseBody) SetRequestId(v string) *ImageAsyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ImageAsyncScanResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageAsyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageAsyncScanResponse) String() string {
@@ -1181,6 +1751,11 @@ func (s *ImageAsyncScanResponse) SetStatusCode(v int32) *ImageAsyncScanResponse 
 	return s
 }
 
+func (s *ImageAsyncScanResponse) SetBody(v *ImageAsyncScanResponseBody) *ImageAsyncScanResponse {
+	s.Body = v
+	return s
+}
+
 type ImageAsyncScanResultsRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -1198,9 +1773,27 @@ func (s *ImageAsyncScanResultsRequest) SetClientInfo(v string) *ImageAsyncScanRe
 	return s
 }
 
+type ImageAsyncScanResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageAsyncScanResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncScanResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncScanResultsResponseBody) SetRequestId(v string) *ImageAsyncScanResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ImageAsyncScanResultsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageAsyncScanResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageAsyncScanResultsResponse) String() string {
@@ -1221,6 +1814,11 @@ func (s *ImageAsyncScanResultsResponse) SetStatusCode(v int32) *ImageAsyncScanRe
 	return s
 }
 
+func (s *ImageAsyncScanResultsResponse) SetBody(v *ImageAsyncScanResultsResponseBody) *ImageAsyncScanResultsResponse {
+	s.Body = v
+	return s
+}
+
 type ImageScanFeedbackRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -1238,9 +1836,27 @@ func (s *ImageScanFeedbackRequest) SetClientInfo(v string) *ImageScanFeedbackReq
 	return s
 }
 
+type ImageScanFeedbackResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageScanFeedbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageScanFeedbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageScanFeedbackResponseBody) SetRequestId(v string) *ImageScanFeedbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ImageScanFeedbackResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageScanFeedbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageScanFeedbackResponse) String() string {
@@ -1261,6 +1877,11 @@ func (s *ImageScanFeedbackResponse) SetStatusCode(v int32) *ImageScanFeedbackRes
 	return s
 }
 
+func (s *ImageScanFeedbackResponse) SetBody(v *ImageScanFeedbackResponseBody) *ImageScanFeedbackResponse {
+	s.Body = v
+	return s
+}
+
 type ImageSyncScanRequest struct {
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
 }
@@ -1278,9 +1899,27 @@ func (s *ImageSyncScanRequest) SetClientInfo(v string) *ImageSyncScanRequest {
 	return s
 }
 
+type ImageSyncScanResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageSyncScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageSyncScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageSyncScanResponseBody) SetRequestId(v string) *ImageSyncScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ImageSyncScanResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageSyncScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImageSyncScanResponse) String() string {
@@ -1298,6 +1937,11 @@ func (s *ImageSyncScanResponse) SetHeaders(v map[string]*string) *ImageSyncScanR
 
 func (s *ImageSyncScanResponse) SetStatusCode(v int32) *ImageSyncScanResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *ImageSyncScanResponse) SetBody(v *ImageSyncScanResponseBody) *ImageSyncScanResponse {
+	s.Body = v
 	return s
 }
 
@@ -3559,6 +4203,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加人脸
+//
 // @param request - AddFacesRequest
 //
 // @param headers - map
@@ -3593,7 +4241,7 @@ func (client *Client) AddFacesWithOptions(request *AddFacesRequest, headers map[
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddFacesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -3604,6 +4252,10 @@ func (client *Client) AddFacesWithOptions(request *AddFacesRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加人脸
+//
 // @param request - AddFacesRequest
 //
 // @return AddFacesResponse
@@ -3619,6 +4271,10 @@ func (client *Client) AddFaces(request *AddFacesRequest) (_result *AddFacesRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加分组
+//
 // @param request - AddGroupsRequest
 //
 // @param headers - map
@@ -3653,7 +4309,7 @@ func (client *Client) AddGroupsWithOptions(request *AddGroupsRequest, headers ma
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddGroupsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -3664,6 +4320,10 @@ func (client *Client) AddGroupsWithOptions(request *AddGroupsRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加分组
+//
 // @param request - AddGroupsRequest
 //
 // @return AddGroupsResponse
@@ -3679,6 +4339,10 @@ func (client *Client) AddGroups(request *AddGroupsRequest) (_result *AddGroupsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加个体
+//
 // @param request - AddPersonRequest
 //
 // @param headers - map
@@ -3713,7 +4377,7 @@ func (client *Client) AddPersonWithOptions(request *AddPersonRequest, headers ma
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddPersonResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -3724,6 +4388,10 @@ func (client *Client) AddPersonWithOptions(request *AddPersonRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加个体
+//
 // @param request - AddPersonRequest
 //
 // @return AddPersonResponse
@@ -3739,6 +4407,10 @@ func (client *Client) AddPerson(request *AddPersonRequest) (_result *AddPersonRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加相似图
+//
 // @param request - AddSimilarityImageRequest
 //
 // @param headers - map
@@ -3769,7 +4441,7 @@ func (client *Client) AddSimilarityImageWithOptions(request *AddSimilarityImageR
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddSimilarityImageResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -3780,6 +4452,10 @@ func (client *Client) AddSimilarityImageWithOptions(request *AddSimilarityImageR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加相似图
+//
 // @param request - AddSimilarityImageRequest
 //
 // @return AddSimilarityImageResponse
@@ -3795,6 +4471,10 @@ func (client *Client) AddSimilarityImage(request *AddSimilarityImageRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加相似图库
+//
 // @param request - AddSimilarityLibraryRequest
 //
 // @param headers - map
@@ -3825,7 +4505,7 @@ func (client *Client) AddSimilarityLibraryWithOptions(request *AddSimilarityLibr
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddSimilarityLibraryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -3836,6 +4516,10 @@ func (client *Client) AddSimilarityLibraryWithOptions(request *AddSimilarityLibr
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加相似图库
+//
 // @param request - AddSimilarityLibraryRequest
 //
 // @return AddSimilarityLibraryResponse
@@ -3851,6 +4535,10 @@ func (client *Client) AddSimilarityLibrary(request *AddSimilarityLibraryRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加视频Dna
+//
 // @param request - AddVideoDnaRequest
 //
 // @param headers - map
@@ -3881,7 +4569,7 @@ func (client *Client) AddVideoDnaWithOptions(request *AddVideoDnaRequest, header
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddVideoDnaResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -3892,6 +4580,10 @@ func (client *Client) AddVideoDnaWithOptions(request *AddVideoDnaRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加视频Dna
+//
 // @param request - AddVideoDnaRequest
 //
 // @return AddVideoDnaResponse
@@ -3907,6 +4599,10 @@ func (client *Client) AddVideoDna(request *AddVideoDnaRequest) (_result *AddVide
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加视频Dna分组
+//
 // @param request - AddVideoDnaGroupRequest
 //
 // @param headers - map
@@ -3937,7 +4633,7 @@ func (client *Client) AddVideoDnaGroupWithOptions(request *AddVideoDnaGroupReque
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddVideoDnaGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -3948,6 +4644,10 @@ func (client *Client) AddVideoDnaGroupWithOptions(request *AddVideoDnaGroupReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加视频Dna分组
+//
 // @param request - AddVideoDnaGroupRequest
 //
 // @return AddVideoDnaGroupResponse
@@ -3963,6 +4663,10 @@ func (client *Client) AddVideoDnaGroup(request *AddVideoDnaGroupRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除人脸
+//
 // @param request - DeleteFacesRequest
 //
 // @param headers - map
@@ -3997,7 +4701,7 @@ func (client *Client) DeleteFacesWithOptions(request *DeleteFacesRequest, header
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFacesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4008,6 +4712,10 @@ func (client *Client) DeleteFacesWithOptions(request *DeleteFacesRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除人脸
+//
 // @param request - DeleteFacesRequest
 //
 // @return DeleteFacesResponse
@@ -4023,6 +4731,10 @@ func (client *Client) DeleteFaces(request *DeleteFacesRequest) (_result *DeleteF
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除分组
+//
 // @param request - DeleteGroupsRequest
 //
 // @param headers - map
@@ -4057,7 +4769,7 @@ func (client *Client) DeleteGroupsWithOptions(request *DeleteGroupsRequest, head
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGroupsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4068,6 +4780,10 @@ func (client *Client) DeleteGroupsWithOptions(request *DeleteGroupsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除分组
+//
 // @param request - DeleteGroupsRequest
 //
 // @return DeleteGroupsResponse
@@ -4083,6 +4799,10 @@ func (client *Client) DeleteGroups(request *DeleteGroupsRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除个体
+//
 // @param request - DeletePersonRequest
 //
 // @param headers - map
@@ -4117,7 +4837,7 @@ func (client *Client) DeletePersonWithOptions(request *DeletePersonRequest, head
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePersonResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4128,6 +4848,10 @@ func (client *Client) DeletePersonWithOptions(request *DeletePersonRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除个体
+//
 // @param request - DeletePersonRequest
 //
 // @return DeletePersonResponse
@@ -4143,6 +4867,10 @@ func (client *Client) DeletePerson(request *DeletePersonRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除相似图
+//
 // @param request - DeleteSimilarityImageRequest
 //
 // @param headers - map
@@ -4173,7 +4901,7 @@ func (client *Client) DeleteSimilarityImageWithOptions(request *DeleteSimilarity
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSimilarityImageResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4184,6 +4912,10 @@ func (client *Client) DeleteSimilarityImageWithOptions(request *DeleteSimilarity
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除相似图
+//
 // @param request - DeleteSimilarityImageRequest
 //
 // @return DeleteSimilarityImageResponse
@@ -4199,6 +4931,10 @@ func (client *Client) DeleteSimilarityImage(request *DeleteSimilarityImageReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除相似图库
+//
 // @param request - DeleteSimilarityLibraryRequest
 //
 // @param headers - map
@@ -4229,7 +4965,7 @@ func (client *Client) DeleteSimilarityLibraryWithOptions(request *DeleteSimilari
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSimilarityLibraryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4240,6 +4976,10 @@ func (client *Client) DeleteSimilarityLibraryWithOptions(request *DeleteSimilari
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除相似图库
+//
 // @param request - DeleteSimilarityLibraryRequest
 //
 // @return DeleteSimilarityLibraryResponse
@@ -4255,6 +4995,10 @@ func (client *Client) DeleteSimilarityLibrary(request *DeleteSimilarityLibraryRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除视频Dna
+//
 // @param request - DeleteVideoDnaRequest
 //
 // @param headers - map
@@ -4285,7 +5029,7 @@ func (client *Client) DeleteVideoDnaWithOptions(request *DeleteVideoDnaRequest, 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVideoDnaResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4296,6 +5040,10 @@ func (client *Client) DeleteVideoDnaWithOptions(request *DeleteVideoDnaRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除视频Dna
+//
 // @param request - DeleteVideoDnaRequest
 //
 // @return DeleteVideoDnaResponse
@@ -4311,6 +5059,10 @@ func (client *Client) DeleteVideoDna(request *DeleteVideoDnaRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除视频Dna分组
+//
 // @param request - DeleteVideoDnaGroupRequest
 //
 // @param headers - map
@@ -4341,7 +5093,7 @@ func (client *Client) DeleteVideoDnaGroupWithOptions(request *DeleteVideoDnaGrou
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVideoDnaGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4352,6 +5104,10 @@ func (client *Client) DeleteVideoDnaGroupWithOptions(request *DeleteVideoDnaGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除视频Dna分组
+//
 // @param request - DeleteVideoDnaGroupRequest
 //
 // @return DeleteVideoDnaGroupResponse
@@ -4367,6 +5123,10 @@ func (client *Client) DeleteVideoDnaGroup(request *DeleteVideoDnaGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 人脸属性检测
+//
 // @param request - DetectFaceRequest
 //
 // @param headers - map
@@ -4397,7 +5157,7 @@ func (client *Client) DetectFaceWithOptions(request *DetectFaceRequest, headers 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectFaceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4408,6 +5168,10 @@ func (client *Client) DetectFaceWithOptions(request *DetectFaceRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 人脸属性检测
+//
 // @param request - DetectFaceRequest
 //
 // @return DetectFaceResponse
@@ -4423,6 +5187,10 @@ func (client *Client) DetectFace(request *DetectFaceRequest) (_result *DetectFac
 	return _result, _err
 }
 
+// Summary:
+//
+// 文件异步检测
+//
 // @param request - FileAsyncScanRequest
 //
 // @param headers - map
@@ -4453,7 +5221,7 @@ func (client *Client) FileAsyncScanWithOptions(request *FileAsyncScanRequest, he
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FileAsyncScanResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4464,6 +5232,10 @@ func (client *Client) FileAsyncScanWithOptions(request *FileAsyncScanRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 文件异步检测
+//
 // @param request - FileAsyncScanRequest
 //
 // @return FileAsyncScanResponse
@@ -4479,6 +5251,10 @@ func (client *Client) FileAsyncScan(request *FileAsyncScanRequest) (_result *Fil
 	return _result, _err
 }
 
+// Summary:
+//
+// 文件异步检测结果
+//
 // @param request - FileAsyncScanResultsRequest
 //
 // @param headers - map
@@ -4509,7 +5285,7 @@ func (client *Client) FileAsyncScanResultsWithOptions(request *FileAsyncScanResu
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FileAsyncScanResultsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4520,6 +5296,10 @@ func (client *Client) FileAsyncScanResultsWithOptions(request *FileAsyncScanResu
 	return _result, _err
 }
 
+// Summary:
+//
+// 文件异步检测结果
+//
 // @param request - FileAsyncScanResultsRequest
 //
 // @return FileAsyncScanResultsResponse
@@ -4585,6 +5365,10 @@ func (client *Client) FileAsyncScanV2() (_result *FileAsyncScanV2Response, _err 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人脸列表
+//
 // @param request - GetFacesRequest
 //
 // @param headers - map
@@ -4630,6 +5414,10 @@ func (client *Client) GetFacesWithOptions(request *GetFacesRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人脸列表
+//
 // @param request - GetFacesRequest
 //
 // @return GetFacesResponse
@@ -4645,6 +5433,10 @@ func (client *Client) GetFaces(request *GetFacesRequest) (_result *GetFacesRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组列表
+//
 // @param request - GetGroupsRequest
 //
 // @param headers - map
@@ -4679,7 +5471,7 @@ func (client *Client) GetGroupsWithOptions(request *GetGroupsRequest, headers ma
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetGroupsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4690,6 +5482,10 @@ func (client *Client) GetGroupsWithOptions(request *GetGroupsRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组列表
+//
 // @param request - GetGroupsRequest
 //
 // @return GetGroupsResponse
@@ -4705,6 +5501,10 @@ func (client *Client) GetGroups(request *GetGroupsRequest) (_result *GetGroupsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单个个体
+//
 // @param request - GetPersonRequest
 //
 // @param headers - map
@@ -4739,7 +5539,7 @@ func (client *Client) GetPersonWithOptions(request *GetPersonRequest, headers ma
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPersonResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4750,6 +5550,10 @@ func (client *Client) GetPersonWithOptions(request *GetPersonRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单个个体
+//
 // @param request - GetPersonRequest
 //
 // @return GetPersonResponse
@@ -4765,6 +5569,10 @@ func (client *Client) GetPerson(request *GetPersonRequest) (_result *GetPersonRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取个体列表
+//
 // @param request - GetPersonsRequest
 //
 // @param headers - map
@@ -4799,7 +5607,7 @@ func (client *Client) GetPersonsWithOptions(request *GetPersonsRequest, headers 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPersonsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4810,6 +5618,10 @@ func (client *Client) GetPersonsWithOptions(request *GetPersonsRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取个体列表
+//
 // @param request - GetPersonsRequest
 //
 // @return GetPersonsResponse
@@ -4825,6 +5637,10 @@ func (client *Client) GetPersons(request *GetPersonsRequest) (_result *GetPerson
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图
+//
 // @param request - GetSimilarityImageRequest
 //
 // @param headers - map
@@ -4855,7 +5671,7 @@ func (client *Client) GetSimilarityImageWithOptions(request *GetSimilarityImageR
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSimilarityImageResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4866,6 +5682,10 @@ func (client *Client) GetSimilarityImageWithOptions(request *GetSimilarityImageR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图
+//
 // @param request - GetSimilarityImageRequest
 //
 // @return GetSimilarityImageResponse
@@ -4881,6 +5701,10 @@ func (client *Client) GetSimilarityImage(request *GetSimilarityImageRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图库
+//
 // @param request - GetSimilarityLibraryRequest
 //
 // @param headers - map
@@ -4911,7 +5735,7 @@ func (client *Client) GetSimilarityLibraryWithOptions(request *GetSimilarityLibr
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSimilarityLibraryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4922,6 +5746,10 @@ func (client *Client) GetSimilarityLibraryWithOptions(request *GetSimilarityLibr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图库
+//
 // @param request - GetSimilarityLibraryRequest
 //
 // @return GetSimilarityLibraryResponse
@@ -4937,6 +5765,10 @@ func (client *Client) GetSimilarityLibrary(request *GetSimilarityLibraryRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片人工异步审核
+//
 // @param request - ImageAsyncManualScanRequest
 //
 // @param headers - map
@@ -4967,7 +5799,7 @@ func (client *Client) ImageAsyncManualScanWithOptions(request *ImageAsyncManualS
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageAsyncManualScanResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -4978,6 +5810,10 @@ func (client *Client) ImageAsyncManualScanWithOptions(request *ImageAsyncManualS
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片人工异步审核
+//
 // @param request - ImageAsyncManualScanRequest
 //
 // @return ImageAsyncManualScanResponse
@@ -4993,6 +5829,10 @@ func (client *Client) ImageAsyncManualScan(request *ImageAsyncManualScanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片人工异步审核结果
+//
 // @param request - ImageAsyncManualScanResultsRequest
 //
 // @param headers - map
@@ -5023,7 +5863,7 @@ func (client *Client) ImageAsyncManualScanResultsWithOptions(request *ImageAsync
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageAsyncManualScanResultsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -5034,6 +5874,10 @@ func (client *Client) ImageAsyncManualScanResultsWithOptions(request *ImageAsync
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片人工异步审核结果
+//
 // @param request - ImageAsyncManualScanResultsRequest
 //
 // @return ImageAsyncManualScanResultsResponse
@@ -5049,6 +5893,10 @@ func (client *Client) ImageAsyncManualScanResults(request *ImageAsyncManualScanR
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片异步检测
+//
 // @param request - ImageAsyncScanRequest
 //
 // @param headers - map
@@ -5079,7 +5927,7 @@ func (client *Client) ImageAsyncScanWithOptions(request *ImageAsyncScanRequest, 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageAsyncScanResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -5090,6 +5938,10 @@ func (client *Client) ImageAsyncScanWithOptions(request *ImageAsyncScanRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片异步检测
+//
 // @param request - ImageAsyncScanRequest
 //
 // @return ImageAsyncScanResponse
@@ -5105,6 +5957,10 @@ func (client *Client) ImageAsyncScan(request *ImageAsyncScanRequest) (_result *I
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片异步检测结果
+//
 // @param request - ImageAsyncScanResultsRequest
 //
 // @param headers - map
@@ -5135,7 +5991,7 @@ func (client *Client) ImageAsyncScanResultsWithOptions(request *ImageAsyncScanRe
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageAsyncScanResultsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -5146,6 +6002,10 @@ func (client *Client) ImageAsyncScanResultsWithOptions(request *ImageAsyncScanRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片异步检测结果
+//
 // @param request - ImageAsyncScanResultsRequest
 //
 // @return ImageAsyncScanResultsResponse
@@ -5161,6 +6021,10 @@ func (client *Client) ImageAsyncScanResults(request *ImageAsyncScanResultsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片检测反馈
+//
 // @param request - ImageScanFeedbackRequest
 //
 // @param headers - map
@@ -5191,7 +6055,7 @@ func (client *Client) ImageScanFeedbackWithOptions(request *ImageScanFeedbackReq
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageScanFeedbackResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -5202,6 +6066,10 @@ func (client *Client) ImageScanFeedbackWithOptions(request *ImageScanFeedbackReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片检测反馈
+//
 // @param request - ImageScanFeedbackRequest
 //
 // @return ImageScanFeedbackResponse
@@ -5217,6 +6085,10 @@ func (client *Client) ImageScanFeedback(request *ImageScanFeedbackRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片同步检测
+//
 // @param request - ImageSyncScanRequest
 //
 // @param headers - map
@@ -5247,7 +6119,7 @@ func (client *Client) ImageSyncScanWithOptions(request *ImageSyncScanRequest, he
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImageSyncScanResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -5258,6 +6130,10 @@ func (client *Client) ImageSyncScanWithOptions(request *ImageSyncScanRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片同步检测
+//
 // @param request - ImageSyncScanRequest
 //
 // @return ImageSyncScanResponse
