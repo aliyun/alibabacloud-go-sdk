@@ -189,6 +189,32 @@ func (s *AlgorithmDefinition) SetUpdateTime(v string) *AlgorithmDefinition {
 	return s
 }
 
+type Answer struct {
+	// example:
+	//
+	// 你好
+	Content    *string          `json:"Content,omitempty" xml:"Content,omitempty"`
+	References []*ReferenceFile `json:"References,omitempty" xml:"References,omitempty" type:"Repeated"`
+}
+
+func (s Answer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Answer) GoString() string {
+	return s.String()
+}
+
+func (s *Answer) SetContent(v string) *Answer {
+	s.Content = &v
+	return s
+}
+
+func (s *Answer) SetReferences(v []*ReferenceFile) *Answer {
+	s.References = v
+	return s
+}
+
 type App struct {
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -720,6 +746,106 @@ func (s *Codes) SetType(v string) *Codes {
 	return s
 }
 
+type ContextualFile struct {
+	ContentType *string    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	DatasetName *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Elements    []*Element `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	MediaType   *string    `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	OSSURI      *string    `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
+	ObjectId    *string    `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	OwnerId     *string    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	URI         *string    `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s ContextualFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualFile) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualFile) SetContentType(v string) *ContextualFile {
+	s.ContentType = &v
+	return s
+}
+
+func (s *ContextualFile) SetDatasetName(v string) *ContextualFile {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ContextualFile) SetElements(v []*Element) *ContextualFile {
+	s.Elements = v
+	return s
+}
+
+func (s *ContextualFile) SetMediaType(v string) *ContextualFile {
+	s.MediaType = &v
+	return s
+}
+
+func (s *ContextualFile) SetOSSURI(v string) *ContextualFile {
+	s.OSSURI = &v
+	return s
+}
+
+func (s *ContextualFile) SetObjectId(v string) *ContextualFile {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *ContextualFile) SetOwnerId(v string) *ContextualFile {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ContextualFile) SetProjectName(v string) *ContextualFile {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ContextualFile) SetURI(v string) *ContextualFile {
+	s.URI = &v
+	return s
+}
+
+type ContextualMessage struct {
+	// example:
+	//
+	// 你好
+	Content *string           `json:"Content,omitempty" xml:"Content,omitempty"`
+	Files   []*ContextualFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// user
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s ContextualMessage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualMessage) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualMessage) SetContent(v string) *ContextualMessage {
+	s.Content = &v
+	return s
+}
+
+func (s *ContextualMessage) SetFiles(v []*ContextualFile) *ContextualMessage {
+	s.Files = v
+	return s
+}
+
+func (s *ContextualMessage) SetRole(v string) *ContextualMessage {
+	s.Role = &v
+	return s
+}
+
 type CredentialConfig struct {
 	Chain       []*CredentialConfigChain `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
 	Policy      *string                  `json:"Policy,omitempty" xml:"Policy,omitempty"`
@@ -1117,7 +1243,11 @@ func (s *Dataset) SetUpdateTime(v string) *Dataset {
 }
 
 type Element struct {
-	ElementContents []*ElementContent `json:"ElementContents,omitempty" xml:"ElementContents,omitempty" type:"Repeated"`
+	ElementContents    []*ElementContent  `json:"ElementContents,omitempty" xml:"ElementContents,omitempty" type:"Repeated"`
+	ElementRelations   []*ElementRelation `json:"ElementRelations,omitempty" xml:"ElementRelations,omitempty" type:"Repeated"`
+	ElementType        *string            `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
+	ObjectId           *string            `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	SemanticSimilarity *float32           `json:"SemanticSimilarity,omitempty" xml:"SemanticSimilarity,omitempty"`
 }
 
 func (s Element) String() string {
@@ -1130,6 +1260,26 @@ func (s Element) GoString() string {
 
 func (s *Element) SetElementContents(v []*ElementContent) *Element {
 	s.ElementContents = v
+	return s
+}
+
+func (s *Element) SetElementRelations(v []*ElementRelation) *Element {
+	s.ElementRelations = v
+	return s
+}
+
+func (s *Element) SetElementType(v string) *Element {
+	s.ElementType = &v
+	return s
+}
+
+func (s *Element) SetObjectId(v string) *Element {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *Element) SetSemanticSimilarity(v float32) *Element {
+	s.SemanticSimilarity = &v
 	return s
 }
 
@@ -1165,6 +1315,29 @@ func (s *ElementContent) SetType(v string) *ElementContent {
 
 func (s *ElementContent) SetURL(v string) *ElementContent {
 	s.URL = &v
+	return s
+}
+
+type ElementRelation struct {
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ElementRelation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ElementRelation) GoString() string {
+	return s.String()
+}
+
+func (s *ElementRelation) SetObjectId(v string) *ElementRelation {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *ElementRelation) SetType(v string) *ElementRelation {
+	s.Type = &v
 	return s
 }
 
@@ -2067,6 +2240,53 @@ func (s *File) SetVideoStreams(v []*VideoStream) *File {
 
 func (s *File) SetVideoWidth(v int64) *File {
 	s.VideoWidth = &v
+	return s
+}
+
+type FileSmartCluster struct {
+	Similarity     *float32 `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	SmartClusterId *string  `json:"SmartClusterId,omitempty" xml:"SmartClusterId,omitempty"`
+}
+
+func (s FileSmartCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileSmartCluster) GoString() string {
+	return s.String()
+}
+
+func (s *FileSmartCluster) SetSimilarity(v float32) *FileSmartCluster {
+	s.Similarity = &v
+	return s
+}
+
+func (s *FileSmartCluster) SetSmartClusterId(v string) *FileSmartCluster {
+	s.SmartClusterId = &v
+	return s
+}
+
+type FunctionCall struct {
+	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s FunctionCall) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FunctionCall) GoString() string {
+	return s.String()
+}
+
+func (s *FunctionCall) SetArguments(v string) *FunctionCall {
+	s.Arguments = &v
+	return s
+}
+
+func (s *FunctionCall) SetName(v string) *FunctionCall {
+	s.Name = &v
 	return s
 }
 
@@ -3148,6 +3368,53 @@ func (s *Property) SetValue(v string) *Property {
 
 func (s *Property) SetValueType(v string) *Property {
 	s.ValueType = &v
+	return s
+}
+
+type ReferenceFile struct {
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 75d5de2c50754e3dadd5c35dbca5f9949369e37eb342a73821f690c94c36c7f7
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s ReferenceFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReferenceFile) GoString() string {
+	return s.String()
+}
+
+func (s *ReferenceFile) SetDatasetName(v string) *ReferenceFile {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ReferenceFile) SetObjectId(v string) *ReferenceFile {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *ReferenceFile) SetProjectName(v string) *ReferenceFile {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ReferenceFile) SetURI(v string) *ReferenceFile {
+	s.URI = &v
 	return s
 }
 
@@ -4590,6 +4857,29 @@ func (s *TimeRange) SetEnd(v string) *TimeRange {
 
 func (s *TimeRange) SetStart(v string) *TimeRange {
 	s.Start = &v
+	return s
+}
+
+type ToolCall struct {
+	Function *FunctionCall `json:"Function,omitempty" xml:"Function,omitempty"`
+	Type     *string       `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ToolCall) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ToolCall) GoString() string {
+	return s.String()
+}
+
+func (s *ToolCall) SetFunction(v *FunctionCall) *ToolCall {
+	s.Function = v
+	return s
+}
+
+func (s *ToolCall) SetType(v string) *ToolCall {
+	s.Type = &v
 	return s
 }
 
@@ -21538,8 +21828,9 @@ type SemanticQueryRequest struct {
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// This parameter is required.
-	Query      *string   `json:"Query,omitempty" xml:"Query,omitempty"`
-	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	Query           *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	SmartClusterIds []*string `json:"SmartClusterIds,omitempty" xml:"SmartClusterIds,omitempty" type:"Repeated"`
+	WithFields      []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s SemanticQueryRequest) String() string {
@@ -21580,6 +21871,11 @@ func (s *SemanticQueryRequest) SetQuery(v string) *SemanticQueryRequest {
 	return s
 }
 
+func (s *SemanticQueryRequest) SetSmartClusterIds(v []*string) *SemanticQueryRequest {
+	s.SmartClusterIds = v
+	return s
+}
+
 func (s *SemanticQueryRequest) SetWithFields(v []*string) *SemanticQueryRequest {
 	s.WithFields = v
 	return s
@@ -21608,8 +21904,9 @@ type SemanticQueryShrinkRequest struct {
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// This parameter is required.
-	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+	Query                 *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	SmartClusterIdsShrink *string `json:"SmartClusterIds,omitempty" xml:"SmartClusterIds,omitempty"`
+	WithFieldsShrink      *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
 
 func (s SemanticQueryShrinkRequest) String() string {
@@ -21647,6 +21944,11 @@ func (s *SemanticQueryShrinkRequest) SetProjectName(v string) *SemanticQueryShri
 
 func (s *SemanticQueryShrinkRequest) SetQuery(v string) *SemanticQueryShrinkRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetSmartClusterIdsShrink(v string) *SemanticQueryShrinkRequest {
+	s.SmartClusterIdsShrink = &v
 	return s
 }
 
@@ -24581,7 +24883,7 @@ func (client *Client) CreateBatch(request *CreateBatchRequest) (_result *CreateB
 
 // Summary:
 //
-// 创建绑定
+// 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
 //
 // @param request - CreateBindingRequest
 //
@@ -24631,7 +24933,7 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 
 // Summary:
 //
-// 创建绑定
+// 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
 //
 // @param request - CreateBindingRequest
 //
@@ -28859,7 +29161,7 @@ func (client *Client) GetBatch(request *GetBatchRequest) (_result *GetBatchRespo
 
 // Summary:
 //
-// 获取绑定
+// 获取一个绑定任务的运行详情。
 //
 // @param request - GetBindingRequest
 //
@@ -28909,7 +29211,7 @@ func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime 
 
 // Summary:
 //
-// 获取绑定
+// 获取一个绑定任务的运行详情。
 //
 // @param request - GetBindingRequest
 //
@@ -31323,6 +31625,10 @@ func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, run
 		request.MediaTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MediaTypes, tea.String("MediaTypes"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SmartClusterIds)) {
+		request.SmartClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SmartClusterIds, tea.String("SmartClusterIds"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.WithFields)) {
 		request.WithFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WithFields, tea.String("WithFields"), tea.String("json"))
 	}
@@ -31350,6 +31656,10 @@ func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmartClusterIdsShrink)) {
+		query["SmartClusterIds"] = request.SmartClusterIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WithFieldsShrink)) {
