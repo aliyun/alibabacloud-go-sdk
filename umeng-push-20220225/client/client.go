@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -71,7 +68,10 @@ func (s *AndroidPayload) SetExtra(v map[string]interface{}) *AndroidPayload {
 }
 
 type Aps struct {
-	Alert             *Alert  `json:"alert,omitempty" xml:"alert,omitempty"`
+	Alert *Alert `json:"alert,omitempty" xml:"alert,omitempty"`
+	// example:
+	//
+	// +1(自增)，-1(自减)，4(设置数字)
 	Badge             *string `json:"badge,omitempty" xml:"badge,omitempty"`
 	Category          *string `json:"category,omitempty" xml:"category,omitempty"`
 	ContentAvailable  *int32  `json:"contentAvailable,omitempty" xml:"contentAvailable,omitempty"`
@@ -243,8 +243,12 @@ type ChannelProperties struct {
 	HuaweiChannelImportance *string `json:"huaweiChannelImportance,omitempty" xml:"huaweiChannelImportance,omitempty"`
 	MainActivity            *string `json:"mainActivity,omitempty" xml:"mainActivity,omitempty"`
 	OppoChannelId           *string `json:"oppoChannelId,omitempty" xml:"oppoChannelId,omitempty"`
-	VivoCategory            *string `json:"vivoCategory,omitempty" xml:"vivoCategory,omitempty"`
-	XiaomiChannelId         *string `json:"xiaomiChannelId,omitempty" xml:"xiaomiChannelId,omitempty"`
+	// example:
+	//
+	// "true",默认"false"
+	VivoAddBadge    *string `json:"vivoAddBadge,omitempty" xml:"vivoAddBadge,omitempty"`
+	VivoCategory    *string `json:"vivoCategory,omitempty" xml:"vivoCategory,omitempty"`
+	XiaomiChannelId *string `json:"xiaomiChannelId,omitempty" xml:"xiaomiChannelId,omitempty"`
 }
 
 func (s ChannelProperties) String() string {
@@ -285,6 +289,11 @@ func (s *ChannelProperties) SetOppoChannelId(v string) *ChannelProperties {
 	return s
 }
 
+func (s *ChannelProperties) SetVivoAddBadge(v string) *ChannelProperties {
+	s.VivoAddBadge = &v
+	return s
+}
+
 func (s *ChannelProperties) SetVivoCategory(v string) *ChannelProperties {
 	s.VivoCategory = &v
 	return s
@@ -319,10 +328,19 @@ func (s *IosPayload) SetExtra(v map[string]interface{}) *IosPayload {
 }
 
 type Policy struct {
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	OuterBizNo *string `json:"outerBizNo,omitempty" xml:"outerBizNo,omitempty"`
-	Speed      *int32  `json:"speed,omitempty" xml:"speed,omitempty"`
-	StartTime  *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 5000
+	Speed *int32 `json:"speed,omitempty" xml:"speed,omitempty"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s Policy) String() string {
@@ -354,6 +372,9 @@ func (s *Policy) SetStartTime(v string) *Policy {
 }
 
 type CancelByMsgIdRequest struct {
+	// example:
+	//
+	// ucj0242167047014687101
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -371,12 +392,27 @@ func (s *CancelByMsgIdRequest) SetMsgId(v string) *CancelByMsgIdRequest {
 }
 
 type CancelByMsgIdResponseBody struct {
-	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *CancelByMsgIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CancelByMsgIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelByMsgIdResponseBody) String() string {
@@ -418,6 +454,9 @@ func (s *CancelByMsgIdResponseBody) SetSuccess(v bool) *CancelByMsgIdResponseBod
 }
 
 type CancelByMsgIdResponseBodyData struct {
+	// example:
+	//
+	// ucj0242167047014687101
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -464,6 +503,9 @@ func (s *CancelByMsgIdResponse) SetBody(v *CancelByMsgIdResponseBody) *CancelByM
 }
 
 type QueryMsgStatRequest struct {
+	// example:
+	//
+	// ufe29y2167046828041801
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -481,12 +523,27 @@ func (s *QueryMsgStatRequest) SetMsgId(v string) *QueryMsgStatRequest {
 }
 
 type QueryMsgStatResponseBody struct {
-	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *QueryMsgStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QueryMsgStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMsgStatResponseBody) String() string {
@@ -528,14 +585,38 @@ func (s *QueryMsgStatResponseBody) SetSuccess(v bool) *QueryMsgStatResponseBody 
 }
 
 type QueryMsgStatResponseBodyData struct {
-	Accept    *int64  `json:"Accept,omitempty" xml:"Accept,omitempty"`
-	Arrive    *int64  `json:"Arrive,omitempty" xml:"Arrive,omitempty"`
-	ClosePush *int64  `json:"ClosePush,omitempty" xml:"ClosePush,omitempty"`
-	Dismiss   *int64  `json:"Dismiss,omitempty" xml:"Dismiss,omitempty"`
-	MsgId     *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Open      *int64  `json:"Open,omitempty" xml:"Open,omitempty"`
-	Sent      *int64  `json:"Sent,omitempty" xml:"Sent,omitempty"`
-	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	Accept *int64 `json:"Accept,omitempty" xml:"Accept,omitempty"`
+	// example:
+	//
+	// 1
+	Arrive *int64 `json:"Arrive,omitempty" xml:"Arrive,omitempty"`
+	// example:
+	//
+	// 0
+	ClosePush *int64 `json:"ClosePush,omitempty" xml:"ClosePush,omitempty"`
+	// example:
+	//
+	// 0
+	Dismiss *int64 `json:"Dismiss,omitempty" xml:"Dismiss,omitempty"`
+	// example:
+	//
+	// ufe29y2167046828041801
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// example:
+	//
+	// 1
+	Open *int64 `json:"Open,omitempty" xml:"Open,omitempty"`
+	// example:
+	//
+	// 1
+	Sent *int64 `json:"Sent,omitempty" xml:"Sent,omitempty"`
+	// example:
+	//
+	// 2
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryMsgStatResponseBodyData) String() string {
@@ -616,6 +697,11 @@ func (s *QueryMsgStatResponse) SetBody(v *QueryMsgStatResponseBody) *QueryMsgSta
 }
 
 type SendByAliasRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Alias             *string            `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	AliasType         *string            `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
 	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
@@ -623,10 +709,16 @@ type SendByAliasRequest struct {
 	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
 	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasRequest) String() string {
@@ -693,6 +785,11 @@ func (s *SendByAliasRequest) SetThirdPartyId(v string) *SendByAliasRequest {
 }
 
 type SendByAliasShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Alias                   *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
@@ -700,10 +797,16 @@ type SendByAliasShrinkRequest struct {
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasShrinkRequest) String() string {
@@ -770,12 +873,27 @@ func (s *SendByAliasShrinkRequest) SetThirdPartyId(v string) *SendByAliasShrinkR
 }
 
 type SendByAliasResponseBody struct {
-	Code           *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *SendByAliasResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SendByAliasResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByAliasResponseBody) String() string {
@@ -817,6 +935,9 @@ func (s *SendByAliasResponseBody) SetSuccess(v bool) *SendByAliasResponseBody {
 }
 
 type SendByAliasResponseBodyData struct {
+	// example:
+	//
+	// uacxo27167041814609201
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -867,13 +988,24 @@ type SendByAliasFileIdRequest struct {
 	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileId            *string            `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PF835431668603208261
+	FileId     *string     `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayload *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy     *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasFileIdRequest) String() string {
@@ -944,13 +1076,24 @@ type SendByAliasFileIdShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileId                  *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PF835431668603208261
+	FileId           *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasFileIdShrinkRequest) String() string {
@@ -1017,12 +1160,27 @@ func (s *SendByAliasFileIdShrinkRequest) SetThirdPartyId(v string) *SendByAliasF
 }
 
 type SendByAliasFileIdResponseBody struct {
-	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *SendByAliasFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SendByAliasFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByAliasFileIdResponseBody) String() string {
@@ -1064,6 +1222,9 @@ func (s *SendByAliasFileIdResponseBody) SetSuccess(v bool) *SendByAliasFileIdRes
 }
 
 type SendByAliasFileIdResponseBodyData struct {
+	// example:
+	//
+	// ucj0242167047014687101
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -1115,10 +1276,16 @@ type SendByAppRequest struct {
 	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
 	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAppRequest) String() string {
@@ -1180,10 +1347,16 @@ type SendByAppShrinkRequest struct {
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAppShrinkRequest) String() string {
@@ -1240,12 +1413,27 @@ func (s *SendByAppShrinkRequest) SetThirdPartyId(v string) *SendByAppShrinkReque
 }
 
 type SendByAppResponseBody struct {
-	Code           *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *SendByAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SendByAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByAppResponseBody) String() string {
@@ -1287,6 +1475,9 @@ func (s *SendByAppResponseBody) SetSuccess(v bool) *SendByAppResponseBody {
 }
 
 type SendByAppResponseBodyData struct {
+	// example:
+	//
+	// um3zlgb166876370784300
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -1336,13 +1527,24 @@ type SendByDeviceRequest struct {
 	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceTokens      *string            `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
-	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ArdNyIzFCH2K3szXA8arpu0Y7ywOdA67mCSumtpnMnmf
+	DeviceTokens *string     `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
+	IosPayload   *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy       *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceRequest) String() string {
@@ -1407,13 +1609,24 @@ type SendByDeviceShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceTokens            *string `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
-	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ArdNyIzFCH2K3szXA8arpu0Y7ywOdA67mCSumtpnMnmf
+	DeviceTokens     *string `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
+	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceShrinkRequest) String() string {
@@ -1475,12 +1688,27 @@ func (s *SendByDeviceShrinkRequest) SetThirdPartyId(v string) *SendByDeviceShrin
 }
 
 type SendByDeviceResponseBody struct {
-	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *SendByDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SendByDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 内部错误
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 74808AA4-A044-102F-8F5F-AFE4D97A0F26
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByDeviceResponseBody) String() string {
@@ -1522,6 +1750,9 @@ func (s *SendByDeviceResponseBody) SetSuccess(v bool) *SendByDeviceResponseBody 
 }
 
 type SendByDeviceResponseBodyData struct {
+	// example:
+	//
+	// ula4wbu166876119986400
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -1571,13 +1802,24 @@ type SendByDeviceFileIdRequest struct {
 	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileId            *string            `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PF835431668603208261
+	FileId     *string     `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayload *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy     *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceFileIdRequest) String() string {
@@ -1642,13 +1884,24 @@ type SendByDeviceFileIdShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileId                  *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PF835431668603208261
+	FileId           *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceFileIdShrinkRequest) String() string {
@@ -1710,12 +1963,27 @@ func (s *SendByDeviceFileIdShrinkRequest) SetThirdPartyId(v string) *SendByDevic
 }
 
 type SendByDeviceFileIdResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *SendByDeviceFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SendByDeviceFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByDeviceFileIdResponseBody) String() string {
@@ -1757,6 +2025,9 @@ func (s *SendByDeviceFileIdResponseBody) SetSuccess(v bool) *SendByDeviceFileIdR
 }
 
 type SendByDeviceFileIdResponseBodyData struct {
+	// example:
+	//
+	// ufe29y2167046828041801
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -1806,13 +2077,22 @@ type SendByFilterRequest struct {
 	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Filter            *string            `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// example:
+	//
+	// "where":{"and":[{"or":[{"app_version":">=1.0"}]}]}
+	Filter     *string     `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IosPayload *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy     *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByFilterRequest) String() string {
@@ -1877,13 +2157,22 @@ type SendByFilterShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Filter                  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	// example:
+	//
+	// "where":{"and":[{"or":[{"app_version":">=1.0"}]}]}
+	Filter           *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// true
+	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	// example:
+	//
+	// https://msg.umeng.com/upush/receipt
+	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByFilterShrinkRequest) String() string {
@@ -1945,12 +2234,27 @@ func (s *SendByFilterShrinkRequest) SetThirdPartyId(v string) *SendByFilterShrin
 }
 
 type SendByFilterResponseBody struct {
-	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *SendByFilterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SendByFilterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByFilterResponseBody) String() string {
@@ -1992,6 +2296,9 @@ func (s *SendByFilterResponseBody) SetSuccess(v bool) *SendByFilterResponseBody 
 }
 
 type SendByFilterResponseBodyData struct {
+	// example:
+	//
+	// usouag1167056659161101
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
@@ -2038,6 +2345,11 @@ func (s *SendByFilterResponse) SetBody(v *SendByFilterResponseBody) *SendByFilte
 }
 
 type UploadDeviceRequest struct {
+	// example:
+	//
+	// device_token_1\\ndevice_token_2\\ndevice_token_3\\n...
+	//
+	// alias1\\nalias2\\nalias3\\n...
 	DeviceTokens *string `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
 }
 
@@ -2055,12 +2367,27 @@ func (s *UploadDeviceRequest) SetDeviceTokens(v string) *UploadDeviceRequest {
 }
 
 type UploadDeviceResponseBody struct {
-	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *UploadDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UploadDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UploadDeviceResponseBody) String() string {
@@ -2102,6 +2429,9 @@ func (s *UploadDeviceResponseBody) SetSuccess(v bool) *UploadDeviceResponseBody 
 }
 
 type UploadDeviceResponseBodyData struct {
+	// example:
+	//
+	// PF835431668603208261
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 }
 
@@ -2194,6 +2524,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据消息ID取消发送
+//
+// @param request - CancelByMsgIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelByMsgIdResponse
 func (client *Client) CancelByMsgIdWithOptions(request *CancelByMsgIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelByMsgIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2228,6 +2569,13 @@ func (client *Client) CancelByMsgIdWithOptions(request *CancelByMsgIdRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据消息ID取消发送
+//
+// @param request - CancelByMsgIdRequest
+//
+// @return CancelByMsgIdResponse
 func (client *Client) CancelByMsgId(request *CancelByMsgIdRequest) (_result *CancelByMsgIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2240,6 +2588,17 @@ func (client *Client) CancelByMsgId(request *CancelByMsgIdRequest) (_result *Can
 	return _result, _err
 }
 
+// Summary:
+//
+// 消息状态查询
+//
+// @param request - QueryMsgStatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMsgStatResponse
 func (client *Client) QueryMsgStatWithOptions(request *QueryMsgStatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryMsgStatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2274,6 +2633,13 @@ func (client *Client) QueryMsgStatWithOptions(request *QueryMsgStatRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 消息状态查询
+//
+// @param request - QueryMsgStatRequest
+//
+// @return QueryMsgStatResponse
 func (client *Client) QueryMsgStat(request *QueryMsgStatRequest) (_result *QueryMsgStatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2286,6 +2652,17 @@ func (client *Client) QueryMsgStat(request *QueryMsgStatRequest) (_result *Query
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定别名发送
+//
+// @param tmpReq - SendByAliasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendByAliasResponse
 func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByAliasResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2378,6 +2755,13 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定别名发送
+//
+// @param request - SendByAliasRequest
+//
+// @return SendByAliasResponse
 func (client *Client) SendByAlias(request *SendByAliasRequest) (_result *SendByAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2390,6 +2774,17 @@ func (client *Client) SendByAlias(request *SendByAliasRequest) (_result *SendByA
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定别名文件发送
+//
+// @param tmpReq - SendByAliasFileIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendByAliasFileIdResponse
 func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByAliasFileIdResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2482,6 +2877,13 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定别名文件发送
+//
+// @param request - SendByAliasFileIdRequest
+//
+// @return SendByAliasFileIdResponse
 func (client *Client) SendByAliasFileId(request *SendByAliasFileIdRequest) (_result *SendByAliasFileIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2494,6 +2896,17 @@ func (client *Client) SendByAliasFileId(request *SendByAliasFileIdRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 广播
+//
+// @param tmpReq - SendByAppRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendByAppResponse
 func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByAppResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2578,6 +2991,13 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 	return _result, _err
 }
 
+// Summary:
+//
+// 广播
+//
+// @param request - SendByAppRequest
+//
+// @return SendByAppResponse
 func (client *Client) SendByApp(request *SendByAppRequest) (_result *SendByAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2590,6 +3010,17 @@ func (client *Client) SendByApp(request *SendByAppRequest) (_result *SendByAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定设备发送
+//
+// @param tmpReq - SendByDeviceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendByDeviceResponse
 func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByDeviceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2678,6 +3109,13 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定设备发送
+//
+// @param request - SendByDeviceRequest
+//
+// @return SendByDeviceResponse
 func (client *Client) SendByDevice(request *SendByDeviceRequest) (_result *SendByDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2690,6 +3128,17 @@ func (client *Client) SendByDevice(request *SendByDeviceRequest) (_result *SendB
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定设备文件发送
+//
+// @param tmpReq - SendByDeviceFileIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendByDeviceFileIdResponse
 func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByDeviceFileIdResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2778,6 +3227,13 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定设备文件发送
+//
+// @param request - SendByDeviceFileIdRequest
+//
+// @return SendByDeviceFileIdResponse
 func (client *Client) SendByDeviceFileId(request *SendByDeviceFileIdRequest) (_result *SendByDeviceFileIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2790,6 +3246,17 @@ func (client *Client) SendByDeviceFileId(request *SendByDeviceFileIdRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据筛选条件发送
+//
+// @param tmpReq - SendByFilterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendByFilterResponse
 func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByFilterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2878,6 +3345,13 @@ func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据筛选条件发送
+//
+// @param request - SendByFilterRequest
+//
+// @return SendByFilterResponse
 func (client *Client) SendByFilter(request *SendByFilterRequest) (_result *SendByFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2890,6 +3364,17 @@ func (client *Client) SendByFilter(request *SendByFilterRequest) (_result *SendB
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传设备列表创建设备文件
+//
+// @param request - UploadDeviceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadDeviceResponse
 func (client *Client) UploadDeviceWithOptions(request *UploadDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2924,6 +3409,13 @@ func (client *Client) UploadDeviceWithOptions(request *UploadDeviceRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传设备列表创建设备文件
+//
+// @param request - UploadDeviceRequest
+//
+// @return UploadDeviceResponse
 func (client *Client) UploadDevice(request *UploadDeviceRequest) (_result *UploadDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
