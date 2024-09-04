@@ -1,3 +1,6 @@
+2024-09-04 Version: v8.1.5
+- Generated golang 2014-08-15 for Rds.
+
 2024-09-03 Version: v8.1.4
 - Update API DescribePostgresExtensions: update response param.
 
