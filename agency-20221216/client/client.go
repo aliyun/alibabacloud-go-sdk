@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,6 +11,12 @@ import (
 
 type CancelSubscriptionBillRequest struct {
 	// The type of the bill to which you want to cancel the subscription. Valid values: PartnerBillingItemDetailForBillingPeriod, PartnerBillingItemDetailMonthly, PartnerInstanceDetailForBillingPeriod, and PartnerInstanceDetailMonthly.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PartnerBillingItemDetailForBillingPeriod
 	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
@@ -32,14 +35,34 @@ func (s *CancelSubscriptionBillRequest) SetSubscribeType(v string) *CancelSubscr
 
 type CancelSubscriptionBillResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data that is returned.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The message that is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 210e876f16704666020714468dab35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -105,16 +128,519 @@ func (s *CancelSubscriptionBillResponse) SetBody(v *CancelSubscriptionBillRespon
 	return s
 }
 
+type CreateCouponTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// All Products
+	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Partner
+	CostBearer        *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	CouponDescription *string `json:"CouponDescription,omitempty" xml:"CouponDescription,omitempty"`
+	// example:
+	//
+	// 2024-08-26
+	Expireddate *string `json:"Expireddate,omitempty" xml:"Expireddate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Unlimited
+	LimitPerPerson *string   `json:"LimitPerPerson,omitempty" xml:"LimitPerPerson,omitempty"`
+	ProductType    []*string `json:"ProductType,omitempty" xml:"ProductType,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ALL
+	PurchaseType *string `json:"PurchaseType,omitempty" xml:"PurchaseType,omitempty"`
+	// This parameter is required.
+	ReasonForApplication *string `json:"ReasonForApplication,omitempty" xml:"ReasonForApplication,omitempty"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 2024-08-26
+	Vailddate *string `json:"Vailddate,omitempty" xml:"Vailddate,omitempty"`
+	// example:
+	//
+	// 1
+	Vaildperioddays *string `json:"Vaildperioddays,omitempty" xml:"Vaildperioddays,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Validity Duration
+	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCouponTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCouponTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCouponTemplateRequest) SetAcceptLanguage(v string) *CreateCouponTemplateRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetApplicableProducts(v string) *CreateCouponTemplateRequest {
+	s.ApplicableProducts = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetCostBearer(v string) *CreateCouponTemplateRequest {
+	s.CostBearer = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetCouponDescription(v string) *CreateCouponTemplateRequest {
+	s.CouponDescription = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetExpireddate(v string) *CreateCouponTemplateRequest {
+	s.Expireddate = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetLimitPerPerson(v string) *CreateCouponTemplateRequest {
+	s.LimitPerPerson = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetProductType(v []*string) *CreateCouponTemplateRequest {
+	s.ProductType = v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetPurchaseType(v string) *CreateCouponTemplateRequest {
+	s.PurchaseType = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetReasonForApplication(v string) *CreateCouponTemplateRequest {
+	s.ReasonForApplication = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetTemplateName(v string) *CreateCouponTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetVailddate(v string) *CreateCouponTemplateRequest {
+	s.Vailddate = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetVaildperioddays(v string) *CreateCouponTemplateRequest {
+	s.Vaildperioddays = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetValidUntil(v string) *CreateCouponTemplateRequest {
+	s.ValidUntil = &v
+	return s
+}
+
+func (s *CreateCouponTemplateRequest) SetValue(v string) *CreateCouponTemplateRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateCouponTemplateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// All Products
+	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Partner
+	CostBearer        *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	CouponDescription *string `json:"CouponDescription,omitempty" xml:"CouponDescription,omitempty"`
+	// example:
+	//
+	// 2024-08-26
+	Expireddate *string `json:"Expireddate,omitempty" xml:"Expireddate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Unlimited
+	LimitPerPerson    *string `json:"LimitPerPerson,omitempty" xml:"LimitPerPerson,omitempty"`
+	ProductTypeShrink *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// ALL
+	PurchaseType *string `json:"PurchaseType,omitempty" xml:"PurchaseType,omitempty"`
+	// This parameter is required.
+	ReasonForApplication *string `json:"ReasonForApplication,omitempty" xml:"ReasonForApplication,omitempty"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 2024-08-26
+	Vailddate *string `json:"Vailddate,omitempty" xml:"Vailddate,omitempty"`
+	// example:
+	//
+	// 1
+	Vaildperioddays *string `json:"Vaildperioddays,omitempty" xml:"Vaildperioddays,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Validity Duration
+	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCouponTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCouponTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetAcceptLanguage(v string) *CreateCouponTemplateShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetApplicableProducts(v string) *CreateCouponTemplateShrinkRequest {
+	s.ApplicableProducts = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetCostBearer(v string) *CreateCouponTemplateShrinkRequest {
+	s.CostBearer = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetCouponDescription(v string) *CreateCouponTemplateShrinkRequest {
+	s.CouponDescription = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetExpireddate(v string) *CreateCouponTemplateShrinkRequest {
+	s.Expireddate = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetLimitPerPerson(v string) *CreateCouponTemplateShrinkRequest {
+	s.LimitPerPerson = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetProductTypeShrink(v string) *CreateCouponTemplateShrinkRequest {
+	s.ProductTypeShrink = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetPurchaseType(v string) *CreateCouponTemplateShrinkRequest {
+	s.PurchaseType = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetReasonForApplication(v string) *CreateCouponTemplateShrinkRequest {
+	s.ReasonForApplication = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetTemplateName(v string) *CreateCouponTemplateShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetVailddate(v string) *CreateCouponTemplateShrinkRequest {
+	s.Vailddate = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetVaildperioddays(v string) *CreateCouponTemplateShrinkRequest {
+	s.Vaildperioddays = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetValidUntil(v string) *CreateCouponTemplateShrinkRequest {
+	s.ValidUntil = &v
+	return s
+}
+
+func (s *CreateCouponTemplateShrinkRequest) SetValue(v string) *CreateCouponTemplateShrinkRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateCouponTemplateResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateCouponTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2103a30617045934095083027d88c5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateCouponTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCouponTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCouponTemplateResponseBody) SetCode(v string) *CreateCouponTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBody) SetData(v *CreateCouponTemplateResponseBodyData) *CreateCouponTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBody) SetMessage(v string) *CreateCouponTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBody) SetRequestId(v string) *CreateCouponTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBody) SetSuccess(v bool) *CreateCouponTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCouponTemplateResponseBodyData struct {
+	// example:
+	//
+	// Custom
+	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// example:
+	//
+	// Partner
+	CostBearer *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	// example:
+	//
+	// 111111
+	CouponTemplateID *int64 `json:"CouponTemplateID,omitempty" xml:"CouponTemplateID,omitempty"`
+	// example:
+	//
+	// 2024-04-02 16:15:31
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2024-01-01
+	Expireddate *string   `json:"Expireddate,omitempty" xml:"Expireddate,omitempty"`
+	ProductType []*string `json:"ProductType,omitempty" xml:"ProductType,omitempty" type:"Repeated"`
+	// example:
+	//
+	// APPROVED
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 2024-01-01
+	Vailddate *string `json:"Vailddate,omitempty" xml:"Vailddate,omitempty"`
+	// example:
+	//
+	// 1
+	Vaildperioddays *string `json:"Vaildperioddays,omitempty" xml:"Vaildperioddays,omitempty"`
+	// example:
+	//
+	// Validity Duration
+	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	// example:
+	//
+	// 1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCouponTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCouponTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetApplicableProducts(v string) *CreateCouponTemplateResponseBodyData {
+	s.ApplicableProducts = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetCostBearer(v string) *CreateCouponTemplateResponseBodyData {
+	s.CostBearer = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetCouponTemplateID(v int64) *CreateCouponTemplateResponseBodyData {
+	s.CouponTemplateID = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetCreateTime(v string) *CreateCouponTemplateResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetExpireddate(v string) *CreateCouponTemplateResponseBodyData {
+	s.Expireddate = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetProductType(v []*string) *CreateCouponTemplateResponseBodyData {
+	s.ProductType = v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetStatus(v string) *CreateCouponTemplateResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetTemplateName(v string) *CreateCouponTemplateResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetVailddate(v string) *CreateCouponTemplateResponseBodyData {
+	s.Vailddate = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetVaildperioddays(v string) *CreateCouponTemplateResponseBodyData {
+	s.Vaildperioddays = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetValidUntil(v string) *CreateCouponTemplateResponseBodyData {
+	s.ValidUntil = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponseBodyData) SetValue(v string) *CreateCouponTemplateResponseBodyData {
+	s.Value = &v
+	return s
+}
+
+type CreateCouponTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCouponTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCouponTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCouponTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCouponTemplateResponse) SetHeaders(v map[string]*string) *CreateCouponTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCouponTemplateResponse) SetStatusCode(v int32) *CreateCouponTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCouponTemplateResponse) SetBody(v *CreateCouponTemplateResponseBody) *CreateCouponTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCustomerRequest struct {
-	// Customer\"s name.
+	// Customer\\"s name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DoorBell Marketing
 	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
 	// The source/channel that allow client to connected with us. Please enumerate with Customer Source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// website
 	CustomerSource *string `json:"CustomerSource,omitempty" xml:"CustomerSource,omitempty"`
-	// The sub-industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
+	// The sub-industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
+	//
+	// example:
+	//
+	// 0101
 	CustomerSubTrade *string `json:"CustomerSubTrade,omitempty" xml:"CustomerSubTrade,omitempty"`
-	// The industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
+	// The industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01
 	CustomerTrade *string `json:"CustomerTrade,omitempty" xml:"CustomerTrade,omitempty"`
 	// The region that Customer choose to launch the Cloud Service. Please use ListCountries to confirm the valid region list for current UID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AR
 	Nation *string `json:"Nation,omitempty" xml:"Nation,omitempty"`
 }
 
@@ -153,14 +679,34 @@ func (s *CreateCustomerRequest) SetNation(v string) *CreateCustomerRequest {
 
 type CreateCustomerResponseBody struct {
 	// Code indicating whether the call was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data indicating whether a customer was successfully created. If it\"s "true", the Message contains CID.
+	// Data indicating whether a customer was successfully created. If it\\"s "true", the Message contains CID.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Massage indicating whether the call was successful.
+	//
+	// example:
+	//
+	// 12345
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, Alibaba Cloud will track errors with this.
+	//
+	// example:
+	//
+	// A9B725C7-3DBD-576B-AC91-F6F22AB99A77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call it self was successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -228,24 +774,70 @@ func (s *CreateCustomerResponse) SetBody(v *CreateCustomerResponseBody) *CreateC
 
 type CustomerQuotaRecordListRequest struct {
 	// End Date Format: yyyy-MM-dd
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-09-24
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// Customer UID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5113766248601929
 	EndUserPk *int64 `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
 	// Multilingual Parameters, the default language is English.</br>
+	//
 	// en: English</br>
+	//
 	// zh: Chinese</br>
+	//
 	// ja: Japanese </br>
+	//
+	// example:
+	//
+	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// Operation Type Enum</br>
+	//
 	// all All types</br>
+	//
 	// quota_create Create quota</br>
+	//
 	// quota_amount_adjust Adjust the amount of quota</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// all
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// Pagination, current page number, starting from 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// Pagination, record number on each page. Maximum 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Start Date Format: yyyy-MM-dd
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-02
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -294,18 +886,42 @@ func (s *CustomerQuotaRecordListRequest) SetStartDate(v string) *CustomerQuotaRe
 
 type CustomerQuotaRecordListResponseBody struct {
 	// Status code of returning result, 200 means success.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Listed data of returning result
 	Data []*CustomerQuotaRecordListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Description of returning data
+	//
+	// example:
+	//
+	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// Current page number
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// Record number on each page
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// ID of request
+	//
+	// example:
+	//
+	// 2103a0ae16849855284594613d874e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Total volume
+	//
+	// example:
+	//
+	// 10
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -354,23 +970,58 @@ func (s *CustomerQuotaRecordListResponseBody) SetTotal(v int32) *CustomerQuotaRe
 
 type CustomerQuotaRecordListResponseBodyData struct {
 	// The way to submit the quota adjustment operation. API/ACPN
+	//
+	// example:
+	//
+	// ACPN
 	OperationSubmitType *string `json:"OperationSubmitType,omitempty" xml:"OperationSubmitType,omitempty"`
 	// The time of submit the quota adjustment operation.
+	//
+	// example:
+	//
+	// 2023-12-15 10:34:36 UTC+8
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
 	// Operation Type Enum</br>
+	//
 	// all All types</br>
+	//
 	// quota_create Create quota</br>
+	//
 	// quota_amount_adjust Adjust the amount of quota</br>
+	//
+	// example:
+	//
+	// quota_amount_adjust
 	OperationTypeCode *string `json:"OperationTypeCode,omitempty" xml:"OperationTypeCode,omitempty"`
 	// The description of submitted quota adjustment operation.
+	//
+	// example:
+	//
+	// Quota Adjustment
 	OperationTypeDesc *string `json:"OperationTypeDesc,omitempty" xml:"OperationTypeDesc,omitempty"`
-	// The UID of operator(Partner\"s UID).
+	// The UID of operator(Partner\\"s UID).
+	//
+	// example:
+	//
+	// 5113766248601929
 	OperationUid *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 	// Updated quota amount
+	//
+	// example:
+	//
+	// 121.00
 	UpdateAfterAmount *string `json:"UpdateAfterAmount,omitempty" xml:"UpdateAfterAmount,omitempty"`
 	// The difference amount between updated quota and original quota.
+	//
+	// example:
+	//
+	// -100.00
 	UpdateAmount *string `json:"UpdateAmount,omitempty" xml:"UpdateAmount,omitempty"`
 	// Original quota amount
+	//
+	// example:
+	//
+	// 221.00
 	UpdateBeforeAmount *string `json:"UpdateBeforeAmount,omitempty" xml:"UpdateBeforeAmount,omitempty"`
 }
 
@@ -453,8 +1104,20 @@ func (s *CustomerQuotaRecordListResponse) SetBody(v *CustomerQuotaRecordListResp
 
 type DeductOutstandingBalanceRequest struct {
 	// The Deducted Credit to be offset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	DeductAmount *string `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 	// Account UID of Distribution Customer.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1133166938931507
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -478,14 +1141,32 @@ func (s *DeductOutstandingBalanceRequest) SetUid(v int64) *DeductOutstandingBala
 
 type DeductOutstandingBalanceResponseBody struct {
 	// Result Code. Value Range:
+	//
 	// - 200 OK
+	//
 	// - 1109 System Error
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Same as Code Parameter Value.
+	//
+	// example:
+	//
+	// 200
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -552,8 +1233,16 @@ type EditEndUserStatusRequest struct {
 	// - postPayFreeze, the account have been blocked</br>
 	//
 	// - postPayThaw, the account have been unlocked</br>
+	//
+	// example:
+	//
+	// postPayFreeze
 	CreditStatus *string `json:"CreditStatus,omitempty" xml:"CreditStatus,omitempty"`
 	// UID
+	//
+	// example:
+	//
+	// 1792155717328010
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -577,14 +1266,34 @@ func (s *EditEndUserStatusRequest) SetUid(v int64) *EditEndUserStatusRequest {
 
 type EditEndUserStatusResponseBody struct {
 	// Status Code</br>
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Success or not</br>
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Message</br>
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Message</br>
+	//
+	// example:
+	//
+	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// Request ID</br>
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -656,8 +1365,16 @@ type EditNewBuyStatusRequest struct {
 	// - cancelBan: Cancel the restriction for New Purchase request</br>
 	//
 	// - ban: ban the New Purchase request</br>
+	//
+	// example:
+	//
+	// cancelBan
 	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
 	// Customer UID
+	//
+	// example:
+	//
+	// 1133166938931507
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -681,14 +1398,34 @@ func (s *EditNewBuyStatusRequest) SetUid(v int64) *EditNewBuyStatusRequest {
 
 type EditNewBuyStatusResponseBody struct {
 	// Status Code</br>
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Success or not</br>
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Message</br>
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Message</br>
+	//
+	// example:
+	//
+	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// Request ID</br>
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -756,8 +1493,22 @@ func (s *EditNewBuyStatusResponse) SetBody(v *EditNewBuyStatusResponseBody) *Edi
 
 type EditZeroCreditShutdownRequest struct {
 	// UID
+	//
+	// example:
+	//
+	// Shutdown Policy</br>
+	//
+	// - immediatelyStop, The instances of the specified End User\\"s account will be shutdown immediately once EU triggered the Shutdown Policy.</br>
+	//
+	// - delayStop, The instances of the specified End User\\"s account will be shutdown later, even EU have triggered the Shutdown Policy.</br>
+	//
+	// - noStop, The instances of the specified End User\\"s account will not be shutdown, after EU have triggered the Shutdown Policy.</br>
 	ShutdownPolicy *string `json:"ShutdownPolicy,omitempty" xml:"ShutdownPolicy,omitempty"`
 	// No Change History
+	//
+	// example:
+	//
+	// 1263644979775567
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -781,14 +1532,34 @@ func (s *EditZeroCreditShutdownRequest) SetUid(v int64) *EditZeroCreditShutdownR
 
 type EditZeroCreditShutdownResponseBody struct {
 	// Success or not</br>
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Request ID</br>
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Message</br>
+	//
+	// example:
+	//
 	// Message</br>
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// NO_STOP
+	//
+	// example:
+	//
+	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -856,20 +1627,54 @@ func (s *EditZeroCreditShutdownResponse) SetBody(v *EditZeroCreditShutdownRespon
 
 type ExportCustomerQuotaRecordRequest struct {
 	// End Date Format:  yyyy-MM-dd
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-12-24
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// Customer UID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5113766248601929
 	EndUserPk *int64 `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
 	// Multilingual Parameters, the default language is English.</br>
+	//
 	// en: English</br>
+	//
 	// zh: Chinese</br>
+	//
 	// ja: Japanese </br>
+	//
+	// example:
+	//
+	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// Operation Type Enum</br>
+	//
 	// all All types</br>
+	//
 	// quota_create Create quota</br>
+	//
 	// quota_amount_adjust Adjust the amount of quota</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// all
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// Start Date Format:  yyyy-MM-dd
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-11-10
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -908,12 +1713,24 @@ func (s *ExportCustomerQuotaRecordRequest) SetStartDate(v string) *ExportCustome
 
 type ExportCustomerQuotaRecordResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Data
 	Data *ExportCustomerQuotaRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Description
+	//
+	// example:
+	//
+	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// ID of the Request
+	//
+	// example:
+	//
+	// 210bc4b416874189683843905d9f9a
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -947,8 +1764,16 @@ func (s *ExportCustomerQuotaRecordResponseBody) SetRequestId(v string) *ExportCu
 
 type ExportCustomerQuotaRecordResponseBodyData struct {
 	// Estimated duration, in minutes.
+	//
+	// example:
+	//
+	// 1
 	Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
 	// ID of Export task
+	//
+	// example:
+	//
+	// 1231
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1000,16 +1825,43 @@ func (s *ExportCustomerQuotaRecordResponse) SetBody(v *ExportCustomerQuotaRecord
 }
 
 type GetAccountInfoRequest struct {
-	// Pagination, current page.
+	// Message
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Pagination, record number on each page, maximum 20.
+	// Success
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Account UID of Distribution Customer. This parameter and the UserType parameter must have one filled. If this parameter is empty, then check all Distribution Customer accounts of the selected UserType.
+	// 10 (Value <= 20)
+	//
+	// example:
+	//
+	// 1215848086704806
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Distribution Customer\"s Account Type:
-	// - 1 End User
-	// - 2 Enterprise
-	// - 3 T2 Partner
+	// Result Code - Error Code. Value Range:
+	//
+	// - 200 OK
+	//
+	// - 1109 System Error
+	//
+	// - 3029: Invalid UID
+	//
+	// - 3062: UID and UserType are both empty.
+	//
+	// - 3063: UserType value out of range.
+	//
+	// example:
+	//
+	// 1
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -1042,22 +1894,45 @@ func (s *GetAccountInfoRequest) SetUserType(v string) *GetAccountInfoRequest {
 }
 
 type GetAccountInfoResponseBody struct {
-	// List of Account Information
+	// Account Type:
+	//
+	// - 1 Agency\\"s End User
+	//
+	// - 2 Reseller\\"s End User
+	//
+	// - 3 Enterprise
+	//
+	// - 4 T2 Agency Partner
+	//
+	// - 5 T2 Reseller Partner
+	//
+	// - 6 T2 Agency+Reseller Partner
 	AccountInfoList *GetAccountInfoResponseBodyAccountInfoList `json:"AccountInfoList,omitempty" xml:"AccountInfoList,omitempty" type:"Struct"`
-	// Result Code - Error Code. Value Range:
-	// - 200 OK
-	// - 1109 System Error
-	// - 3029: Invalid UID
-	// - 3062: UID and UserType are both empty.
-	// - 3063: UserType value out of range.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Pagination Information
-	PageInfo *GetAccountInfoResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Request ID, the unique request identifier generated by Alibaba Cloud.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// message
+	//
+	// example:
+	//
+	// Pagination Information
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination, page volume in total.
+	PageInfo *GetAccountInfoResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request id, a unique identifier generated by Alibaba cloud for the request.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Pagination, record number on each page.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1117,35 +1992,95 @@ func (s *GetAccountInfoResponseBodyAccountInfoList) SetAccountInfo(v []*GetAccou
 }
 
 type GetAccountInfoResponseBodyAccountInfoListAccountInfo struct {
-	// The name of Sub Account:
-	// 1.	Use the official name of Company, if Sub Account is an enterprise.
-	// 2.	Use the official name of Partner, if Sub Account is a T2 reseller.
-	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	// Alibaba Cloud Login name of Distribution Customer.
-	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	// The time that Distribution Customer successfully associated with Distributor.
-	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
-	// Account CID of Distribution Customer.
-	Cid         *int64  `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	CustomerBd  *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
-	DelayAmount *string `json:"DelayAmount,omitempty" xml:"DelayAmount,omitempty"`
-	DelayStatus *string `json:"DelayStatus,omitempty" xml:"DelayStatus,omitempty"`
 	// The E-mail of Distribution Customer.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Valid mobile number of Distribution Customer.
-	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
+	//
+	// example:
+	//
 	// Description of Distribution Customer.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Account Type:
-	// - 1 Agency\"s End User
-	// - 2 Reseller\"s End User
-	// - 3 Enterprise
-	// - 4 T2 Agency Partner
-	// - 5 T2 Reseller Partner
-	// - 6 T2 Agency+Reseller Partner
-	SubAccountType *int32 `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
+	// Account CID of Distribution Customer.
+	//
+	// example:
+	//
+	// 1234@qq.com
+	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	// XXX Technology LTD.
+	//
+	// example:
+	//
+	// 2021-01-01
+	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
+	// customer\\"s CID
+	//
+	// example:
+	//
+	// 61479572
+	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// customer manager
+	//
+	// example:
+	//
+	// abc
+	CustomerBd *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
+	// The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
+	//
+	// example:
+	//
+	// 600
+	DelayAmount *string `json:"DelayAmount,omitempty" xml:"DelayAmount,omitempty"`
+	// Partner\\"s Shutdown Policy Management for Sub Account.
+	//
+	// 1: delayStop. The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
+	//
+	// 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.
+	//
+	// 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.
+	//
+	// example:
+	//
+	// noStop
+	DelayStatus *string `json:"DelayStatus,omitempty" xml:"DelayStatus,omitempty"`
+	// Sub Account
+	//
+	// example:
+	//
+	// 1234@qq.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Account UID of Distribution Customer.
+	//
+	// example:
+	//
+	// 13641588680
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Purchase Forbidden：Ban the new purchase action
+	//
+	// normal：Normal--End Use can issue Cloud Resource order immediately.
+	//
+	// example:
+	//
+	// Normal
+	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
+	// Valid mobile number of Distribution Customer.
+	//
+	// example:
+	//
+	// Alibaba Cloud Login name of Distribution Customer.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The name of Sub Account:
+	//
+	// 1.	Use the official name of Company, if Sub Account is an enterprise.
+	//
+	// 2.	Use the official name of Partner, if Sub Account is a T2 reseller.
+	//
+	// example:
+	//
+	// 1
+	SubAccountType *int32 `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
+	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 1415740779475837
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -1223,11 +2158,23 @@ func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetUid(v int64) *
 }
 
 type GetAccountInfoResponseBodyPageInfo struct {
-	// Pagination, current page.
+	// Account Information
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Pagination, record number on each page.
+	// Pagination, current page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Pagination, page volume in total.
+	// List of Account Information
+	//
+	// example:
+	//
+	// 12
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -1283,8 +2230,137 @@ func (s *GetAccountInfoResponse) SetBody(v *GetAccountInfoResponseBody) *GetAcco
 	return s
 }
 
+type GetCoupondeductProductCodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s GetCoupondeductProductCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCoupondeductProductCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCoupondeductProductCodeRequest) SetAcceptLanguage(v string) *GetCoupondeductProductCodeRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type GetCoupondeductProductCodeResponseBody struct {
+	// example:
+	//
+	// code
+	Code    *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*GetCoupondeductProductCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 210e876f16704666020714468dab35
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCoupondeductProductCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCoupondeductProductCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCoupondeductProductCodeResponseBody) SetCode(v string) *GetCoupondeductProductCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCoupondeductProductCodeResponseBody) SetData(v []*GetCoupondeductProductCodeResponseBodyData) *GetCoupondeductProductCodeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCoupondeductProductCodeResponseBody) SetMessage(v string) *GetCoupondeductProductCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCoupondeductProductCodeResponseBody) SetRequestId(v string) *GetCoupondeductProductCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCoupondeductProductCodeResponseBody) SetSuccess(v bool) *GetCoupondeductProductCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCoupondeductProductCodeResponseBodyData struct {
+	// example:
+	//
+	// code1
+	ProductType interface{} `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s GetCoupondeductProductCodeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCoupondeductProductCodeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCoupondeductProductCodeResponseBodyData) SetProductType(v interface{}) *GetCoupondeductProductCodeResponseBodyData {
+	s.ProductType = v
+	return s
+}
+
+type GetCoupondeductProductCodeResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCoupondeductProductCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCoupondeductProductCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCoupondeductProductCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCoupondeductProductCodeResponse) SetHeaders(v map[string]*string) *GetCoupondeductProductCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCoupondeductProductCodeResponse) SetStatusCode(v int32) *GetCoupondeductProductCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCoupondeductProductCodeResponse) SetBody(v *GetCoupondeductProductCodeResponseBody) *GetCoupondeductProductCodeResponse {
+	s.Body = v
+	return s
+}
+
 type GetCreditInfoRequest struct {
 	// Sub Account UID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1792155717328010
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -1303,16 +2379,34 @@ func (s *GetCreditInfoRequest) SetUid(v int64) *GetCreditInfoRequest {
 
 type GetCreditInfoResponseBody struct {
 	// Result Code:
+	//
 	// - 200 OK
+	//
 	// - 1109 System Error
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetCreditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Message Information
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, Alibaba Cloud will track errors with this.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1351,29 +2445,68 @@ func (s *GetCreditInfoResponseBody) SetSuccess(v bool) *GetCreditInfoResponseBod
 
 type GetCreditInfoResponseBodyData struct {
 	// The Credit Control status, Value Range:</br>
+	//
 	// 1. normal - Sub Account status is running as usual.
+	//
 	// 2. arrearsNotShutdown - Sub Account status is running as usual, but have outstanding bill(s).
+	//
 	// 3. shutdown -  Sub Account status is down.
+	//
+	// example:
+	//
+	// normal
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// Percentage value, when the available credit limit is lower than this credit limit percentage, a notification E-mail will be sent to the main account.
+	//
+	// example:
+	//
+	// 20
 	AlarmThreshold *string `json:"AlarmThreshold,omitempty" xml:"AlarmThreshold,omitempty"`
 	// The Credit available to consume.
+	//
+	// example:
+	//
+	// 800
 	AvailableCredit *string `json:"AvailableCredit,omitempty" xml:"AvailableCredit,omitempty"`
 	// Obtain total unpaid amount on demo bill before simulated deduction.
+	//
+	// example:
+	//
+	// 0.000000
 	ConsumedUndeductedValue *string `json:"ConsumedUndeductedValue,omitempty" xml:"ConsumedUndeductedValue,omitempty"`
 	// The Credit Line of Sub Account
+	//
+	// example:
+	//
+	// 1000
 	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
-	// The Credit have been consumed by Sub Account, and haven\"t be paid.
+	// The Credit have been consumed by Sub Account, and haven\\"t be paid.
+	//
+	// example:
+	//
+	// 200
 	OutstandingBalance *string `json:"OutstandingBalance,omitempty" xml:"OutstandingBalance,omitempty"`
 	// The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
 	//
 	// - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
-	// - 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+	//
+	// - 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.</br>
+	//
 	// - 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
+	//
+	// example:
+	//
+	// delayStop
 	ZeroCreditShutdownPolicy *string `json:"ZeroCreditShutdownPolicy,omitempty" xml:"ZeroCreditShutdownPolicy,omitempty"`
 	// Manage order operation.
+	//
 	// - ban：Ban the new purchase action.
+	//
 	// - normal：The account could raise new purchase order as usual.
+	//
+	// example:
+	//
+	// ban
 	NewBuyStatus *string `json:"newBuyStatus,omitempty" xml:"newBuyStatus,omitempty"`
 }
 
@@ -1454,19 +2587,431 @@ func (s *GetCreditInfoResponse) SetBody(v *GetCreditInfoResponseBody) *GetCredit
 	return s
 }
 
+type GetCustomerOrdersRequest struct {
+	// example:
+	//
+	// test_123
+	CustomerAccount *string `json:"CustomerAccount,omitempty" xml:"CustomerAccount,omitempty"`
+	// example:
+	//
+	// myBd
+	CustomerManager *string `json:"CustomerManager,omitempty" xml:"CustomerManager,omitempty"`
+	// example:
+	//
+	// 123456
+	CustomerUid *int64 `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-08-23 00:00:00
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 209335720330622
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 0
+	OrderSource *int32 `json:"OrderSource,omitempty" xml:"OrderSource,omitempty"`
+	// example:
+	//
+	// 3
+	OrderStatus *int32 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// example:
+	//
+	// RENEW
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// vm_intl
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-08-13 00:00:00
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+}
+
+func (s GetCustomerOrdersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomerOrdersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomerOrdersRequest) SetCustomerAccount(v string) *GetCustomerOrdersRequest {
+	s.CustomerAccount = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetCustomerManager(v string) *GetCustomerOrdersRequest {
+	s.CustomerManager = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetCustomerUid(v int64) *GetCustomerOrdersRequest {
+	s.CustomerUid = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetEndDate(v string) *GetCustomerOrdersRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetOrderId(v int64) *GetCustomerOrdersRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetOrderSource(v int32) *GetCustomerOrdersRequest {
+	s.OrderSource = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetOrderStatus(v int32) *GetCustomerOrdersRequest {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetOrderType(v string) *GetCustomerOrdersRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetPageNo(v int32) *GetCustomerOrdersRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetPageSize(v int32) *GetCustomerOrdersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetProductType(v string) *GetCustomerOrdersRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetStartDate(v string) *GetCustomerOrdersRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetCustomerOrdersRequest) SetTimeType(v int32) *GetCustomerOrdersRequest {
+	s.TimeType = &v
+	return s
+}
+
+type GetCustomerOrdersResponseBody struct {
+	// example:
+	//
+	// 200
+	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*GetCustomerOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Msg     *string                              `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 23309219-4A34-589D-A3E0-9B2A3BFFD24F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetCustomerOrdersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomerOrdersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomerOrdersResponseBody) SetCode(v string) *GetCustomerOrdersResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetData(v []*GetCustomerOrdersResponseBodyData) *GetCustomerOrdersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetMessage(v string) *GetCustomerOrdersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetMsg(v string) *GetCustomerOrdersResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetPageNo(v int32) *GetCustomerOrdersResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetPageSize(v int32) *GetCustomerOrdersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetRequestId(v string) *GetCustomerOrdersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetSuccess(v bool) *GetCustomerOrdersResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBody) SetTotal(v int32) *GetCustomerOrdersResponseBody {
+	s.Total = &v
+	return s
+}
+
+type GetCustomerOrdersResponseBodyData struct {
+	// example:
+	//
+	// test_123
+	CustomerAccount *string `json:"CustomerAccount,omitempty" xml:"CustomerAccount,omitempty"`
+	// example:
+	//
+	// myBd
+	CustomerManager *string `json:"CustomerManager,omitempty" xml:"CustomerManager,omitempty"`
+	// example:
+	//
+	// 123456
+	CustomerNo *int64 `json:"CustomerNo,omitempty" xml:"CustomerNo,omitempty"`
+	// example:
+	//
+	// 236414227150922
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 0
+	OrderSource *string `json:"OrderSource,omitempty" xml:"OrderSource,omitempty"`
+	// example:
+	//
+	// 3
+	OrderStatus *int32 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// example:
+	//
+	// BUY
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 3.92
+	OriginalCost *float64 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
+	// example:
+	//
+	// 3:32
+	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	// example:
+	//
+	// 2024-08-13 13:02:02
+	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	// example:
+	//
+	// 3.92
+	PretaxCost *float64 `json:"PretaxCost,omitempty" xml:"PretaxCost,omitempty"`
+	// example:
+	//
+	// oss
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// snapshot
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 2024-08-13 13:02:02
+	TimeToOrder *string `json:"TimeToOrder,omitempty" xml:"TimeToOrder,omitempty"`
+}
+
+func (s GetCustomerOrdersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomerOrdersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetCustomerAccount(v string) *GetCustomerOrdersResponseBodyData {
+	s.CustomerAccount = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetCustomerManager(v string) *GetCustomerOrdersResponseBodyData {
+	s.CustomerManager = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetCustomerNo(v int64) *GetCustomerOrdersResponseBodyData {
+	s.CustomerNo = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetOrderId(v int64) *GetCustomerOrdersResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetOrderSource(v string) *GetCustomerOrdersResponseBodyData {
+	s.OrderSource = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetOrderStatus(v int32) *GetCustomerOrdersResponseBodyData {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetOrderType(v string) *GetCustomerOrdersResponseBodyData {
+	s.OrderType = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetOriginalCost(v float64) *GetCustomerOrdersResponseBodyData {
+	s.OriginalCost = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetPaymentMethod(v string) *GetCustomerOrdersResponseBodyData {
+	s.PaymentMethod = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetPaymentTime(v string) *GetCustomerOrdersResponseBodyData {
+	s.PaymentTime = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetPretaxCost(v float64) *GetCustomerOrdersResponseBodyData {
+	s.PretaxCost = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetProductDetail(v string) *GetCustomerOrdersResponseBodyData {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetProductType(v string) *GetCustomerOrdersResponseBodyData {
+	s.ProductType = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponseBodyData) SetTimeToOrder(v string) *GetCustomerOrdersResponseBodyData {
+	s.TimeToOrder = &v
+	return s
+}
+
+type GetCustomerOrdersResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCustomerOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCustomerOrdersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomerOrdersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomerOrdersResponse) SetHeaders(v map[string]*string) *GetCustomerOrdersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCustomerOrdersResponse) SetStatusCode(v int32) *GetCustomerOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCustomerOrdersResponse) SetBody(v *GetCustomerOrdersResponseBody) *GetCustomerOrdersResponse {
+	s.Body = v
+	return s
+}
+
 type GetDailyBillRequest struct {
 	// Bill Owner type. Value Range:</br>
+	//
 	// 1: Master account</br>
+	//
 	// 2: Sub account</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
 	// BillType. Value Range:</br>
 	//
 	// - DailyOrder(Deprecated)
+	//
 	// - DailyBill (Deprecated)
+	//
 	// - DailyInstanceBill (Deprecated)
+	//
 	// - DailyInstanceBillV2
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DailyInstanceBillV2
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	// Billing date. Format YYYY-MM-DD
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-11-24
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 }
 
@@ -1495,19 +3040,40 @@ func (s *GetDailyBillRequest) SetDate(v string) *GetDailyBillRequest {
 
 type GetDailyBillResponseBody struct {
 	// Result Code:
-	// * 200 OK
-	// * 1109 System error
-	// * 3050 Bill Type can only be DailyOrder, DailyBill or DailyInstanceBill.
-	// * 3049 Incorrect format of Spending Time.
-	// * 3048 Bill Owner can only be 1 or 2.
+	//
+	// 	- 200 OK
+	//
+	// 	- 1109 System error
+	//
+	// 	- 3050 Bill Type can only be DailyOrder, DailyBill or DailyInstanceBill.
+	//
+	// 	- 3049 Incorrect format of Spending Time.
+	//
+	// 	- 3048 Bill Owner can only be 1 or 2.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetDailyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Same as Code parameters.
+	//
+	// example:
+	//
+	// 200
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1546,14 +3112,34 @@ func (s *GetDailyBillResponseBody) SetSuccess(v bool) *GetDailyBillResponseBody 
 
 type GetDailyBillResponseBodyData struct {
 	// The link to download CSV file, please use HTTP Protocol.
+	//
+	// example:
+	//
+	// intl-reseller-month-bill.oss-ap-southeast-1.aliyuncs.com/statements/month/dts/1064252248461886/202104/Month%20Billing%20Invoice%20202104.pdf?Expires=1671160973&OSSAccessKeyId=TMP.3KhvoD9pW264cPv8sYe8E2zJ5HLWmrijNHgKiKpXcy8yS472BcrvemgTfNrrXKu5fCCdbLr2XhmYAyYPmbCe8zJyEkmYzL&Signature=hns1PgiiYl1WdI%2FdiOqbEdsgmfI%3D
 	BillLinkCSV *string `json:"BillLinkCSV,omitempty" xml:"BillLinkCSV,omitempty"`
 	// The link to download XLSX file, please use HTTP Protocol.
+	//
+	// example:
+	//
+	// intl-reseller-month-bill.oss-ap-southeast-1.aliyuncs.com/statements/month/dts/1064252248461886/202104/Month%20Billing%20Invoice%20202104.pdf?Expires=1671160973&OSSAccessKeyId=TMP.3KhvoD9pW264cPv8sYe8E2zJ5HLWmrijNHgKiKpXcy8yS472BcrvemgTfNrrXKu5fCCdbLr2XhmYAyYPmbCe8zJyEkmYzL&Signature=hns1PgiiYl1WdI%2FdiOqbEdsgmfI%3D
 	BillLinkXLSX *string `json:"BillLinkXLSX,omitempty" xml:"BillLinkXLSX,omitempty"`
 	// Same as inserted parameter BillOwner.
+	//
+	// example:
+	//
+	// 1
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
 	// Same as inserted parameter BillType.
+	//
+	// example:
+	//
+	// DailyInstanceBillV2
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	// Spending Time, refer to the exact time of costuming.
+	//
+	// example:
+	//
+	// 20221201
 	SpendingTime *string `json:"SpendingTime,omitempty" xml:"SpendingTime,omitempty"`
 }
 
@@ -1621,7 +3207,10 @@ func (s *GetDailyBillResponse) SetBody(v *GetDailyBillResponseBody) *GetDailyBil
 
 type GetInviteStatusRequest struct {
 	// inviteId list</br>
+	//
 	// `Sub-levels <= 5`
+	//
+	// This parameter is required.
 	InviteStatusList []*GetInviteStatusRequestInviteStatusList `json:"InviteStatusList,omitempty" xml:"InviteStatusList,omitempty" type:"Repeated"`
 }
 
@@ -1640,6 +3229,10 @@ func (s *GetInviteStatusRequest) SetInviteStatusList(v []*GetInviteStatusRequest
 
 type GetInviteStatusRequestInviteStatusList struct {
 	// Invitation ID, From interface InviteSubAccount
+	//
+	// example:
+	//
+	// 123
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
 }
 
@@ -1660,14 +3253,30 @@ type GetInviteStatusResponseBody struct {
 	// Status Code. Error Code:
 	//
 	// - 3057 InviteId is empty
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetInviteStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, Alibaba Cloud will track errors with this.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1723,14 +3332,28 @@ func (s *GetInviteStatusResponseBodyData) SetInviteStatus(v []*GetInviteStatusRe
 
 type GetInviteStatusResponseBodyDataInviteStatus struct {
 	// Result Code. Value Range:
-	// *   200 OK
-	// *   1109 system error
+	//
+	// 	- 200 OK
+	//
+	// 	- 1109 system error
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// List of Invitation Status result
 	InviteStatusList *GetInviteStatusResponseBodyDataInviteStatusInviteStatusList `json:"InviteStatusList,omitempty" xml:"InviteStatusList,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1764,26 +3387,62 @@ func (s *GetInviteStatusResponseBodyDataInviteStatus) SetSuccess(v bool) *GetInv
 
 type GetInviteStatusResponseBodyDataInviteStatusInviteStatusList struct {
 	// The time that Distribution Customer successfully associated with Distributor.</br>
+	//
 	// This value will be empty if there is no existing association.
+	//
+	// example:
+	//
+	// 2018-02-13
 	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
-	// Distribution Customer\"s CID
+	// Distribution Customer\\"s CID
+	//
+	// example:
+	//
+	// 1234567890123
 	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
 	// The time of email been sent out.
+	//
+	// example:
+	//
+	// 2018-02-12
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The parent organization ID.
+	//
+	// example:
+	//
+	// 1093238769140523
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// Invitation Status:
-	// * 0 No visit on registration URL
-	// * 1 Successful Registration
-	// * 2 Unsuccessful Registration
-	// * 3 Registration URL have been visited, but no submitted sheet/ticket.
+	//
+	// 	- 0 No visit on registration URL
+	//
+	// 	- 1 Successful Registration
+	//
+	// 	- 2 Unsuccessful Registration
+	//
+	// 	- 3 Registration URL have been visited, but no submitted sheet/ticket.
+	//
+	// example:
+	//
+	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Account Type:
-	// - 1 Agency\"s End User
-	// - 2 Reseller\"s End User
+	//
+	// - 1 Agency\\"s End User
+	//
+	// - 2 Reseller\\"s End User
+	//
 	// - 5 T2 Reseller Partner
+	//
+	// example:
+	//
+	// 1
 	SubAccountType *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
-	// Distribution Customer\"s UID
+	// Distribution Customer\\"s UID
+	//
+	// example:
+	//
+	// 1234567890123
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -1861,22 +3520,50 @@ func (s *GetInviteStatusResponse) SetBody(v *GetInviteStatusResponseBody) *GetIn
 
 type GetMonthlyBillRequest struct {
 	// Bill Owner type. Value Range:</br>
+	//
 	// 1: Master account</br>
+	//
 	// 2: Sub account</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
 	// Value Range:
 	//
 	// - MonthlyInvoice
+	//
 	// - MonthRefundInvoice
+	//
 	// - MonthlySummary
+	//
 	// - MonthlyInstanceAddAdjustBill
+	//
 	// - MonthlyInstanceRefundBill
+	//
 	// - MonthlyAddAdjustInvoce
+	//
 	// - MonthlyRefundAdjustInvoce
+	//
 	// - MonthlyInstanceConsumeV2
+	//
 	// - MarginReportV2
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MonthlyInvoice
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	// Billing Month, Format is YYYY-MM
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-11
 	Month *string `json:"Month,omitempty" xml:"Month,omitempty"`
 }
 
@@ -1905,18 +3592,38 @@ func (s *GetMonthlyBillRequest) SetMonth(v string) *GetMonthlyBillRequest {
 
 type GetMonthlyBillResponseBody struct {
 	// Result Code:
-	// * 200 OK
-	// * 1109 System error
-	// * 3030 Sub Account Nickname exceeds maximum length, maximum length 150 bytes.
-	// * 3031 Remark exceeds maximum length, maximum length 3000 bytes.
+	//
+	// 	- 200 OK
+	//
+	// 	- 1109 System error
+	//
+	// 	- 3030 Sub Account Nickname exceeds maximum length, maximum length 150 bytes.
+	//
+	// 	- 3031 Remark exceeds maximum length, maximum length 3000 bytes.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetMonthlyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Same as Code parameters.
+	//
+	// example:
+	//
+	// 200
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 210e876f16704666020714468dab35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1955,21 +3662,54 @@ func (s *GetMonthlyBillResponseBody) SetSuccess(v bool) *GetMonthlyBillResponseB
 
 type GetMonthlyBillResponseBodyData struct {
 	// The link to download CSV file, please use HTTP Protocol.
+	//
+	// example:
+	//
+	// intl-reseller-month-bill.oss-ap-southeast-1.aliyuncs.com/statements/month/dts/1064252248461886/202104/Month%20Billing%20Invoice%20202104.pdf?Expires=1671160973&OSSAccessKeyId=TMP.3KhvoD9pW264cPv8sYe8E2zJ5HLWmrijNHgKiKpXcy8yS472BcrvemgTfNrrXKu5fCCdbLr2XhmYAyYPmbCe8zJyEkmYzL&Signature=hns1PgiiYl1WdI%2FdiOqbEdsgmfI%3D
 	BillLinkCSV *string `json:"BillLinkCSV,omitempty" xml:"BillLinkCSV,omitempty"`
 	// The link to download XLSX file, please use HTTP Protocol.
+	//
+	// example:
+	//
+	// intl-reseller-month-bill.oss-ap-southeast-1.aliyuncs.com/statements/month/dts/1064252248461886/202104/Month%20Billing%20Invoice%20202104.pdf?Expires=1671160973&OSSAccessKeyId=TMP.3KhvoD9pW264cPv8sYe8E2zJ5HLWmrijNHgKiKpXcy8yS472BcrvemgTfNrrXKu5fCCdbLr2XhmYAyYPmbCe8zJyEkmYzL&Signature=hns1PgiiYl1WdI%2FdiOqbEdsgmfI%3D
 	BillLinkXLSX *string `json:"BillLinkXLSX,omitempty" xml:"BillLinkXLSX,omitempty"`
 	// Same as inserted parameter BillOwner.
+	//
+	// example:
+	//
+	// 1
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
 	// Same as inserted parameter BillType.
+	//
+	// example:
+	//
+	// MonthlyInvoice
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	// The URL to download invoice.
+	//
+	// example:
+	//
+	// intl-reseller-month-bill.oss-ap-southeast-1.aliyuncs.com/statements/month/dts/1064252248461886/202104/Month%20Billing%20Invoice%20202104.pdf?Expires=1671160973&OSSAccessKeyId=TMP.3KhvoD9pW264cPv8sYe8E2zJ5HLWmrijNHgKiKpXcy8yS472BcrvemgTfNrrXKu5fCCdbLr2XhmYAyYPmbCe8zJyEkmYzL&Signature=hns1PgiiYl1WdI%2FdiOqbEdsgmfI%3D
 	InvoiceLink *string `json:"InvoiceLink,omitempty" xml:"InvoiceLink,omitempty"`
 	// It states the existence of refund invoice. </br>
+	//
 	// Candidate Values: True/False
+	//
+	// example:
+	//
+	// True
 	RefundInvoiceFlag *bool `json:"RefundInvoiceFlag,omitempty" xml:"RefundInvoiceFlag,omitempty"`
 	// The URL to download refund invoice.
+	//
+	// example:
+	//
+	// intl-reseller-month-bill.oss-ap-southeast-1.aliyuncs.com/statements/month/dts/1064252248461886/202104/Month%20Billing%20Invoice%20202104.pdf?Expires=1671160973&OSSAccessKeyId=TMP.3KhvoD9pW264cPv8sYe8E2zJ5HLWmrijNHgKiKpXcy8yS472BcrvemgTfNrrXKu5fCCdbLr2XhmYAyYPmbCe8zJyEkmYzL&Signature=hns1PgiiYl1WdI%2FdiOqbEdsgmfI%3D
 	RefundInvoiceLink *string `json:"RefundInvoiceLink,omitempty" xml:"RefundInvoiceLink,omitempty"`
 	// Spending Time, refer to the exact time of costuming.
+	//
+	// example:
+	//
+	// 20221201
 	SpendingTime *string `json:"SpendingTime,omitempty" xml:"SpendingTime,omitempty"`
 }
 
@@ -2052,8 +3792,20 @@ func (s *GetMonthlyBillResponse) SetBody(v *GetMonthlyBillResponseBody) *GetMont
 
 type GetUnassociatedCustomerRequest struct {
 	// Pagination, current page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Pagination, record number on each page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -2077,18 +3829,36 @@ func (s *GetUnassociatedCustomerRequest) SetPageSize(v int32) *GetUnassociatedCu
 
 type GetUnassociatedCustomerResponseBody struct {
 	// Error Code, Candidate Value：
-	// * 200: OK
-	// * 1109: System error
+	//
+	// 	- 200: OK
+	//
+	// 	- 1109: System error
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// List of Invitation Information
 	InviteInfoList *GetUnassociatedCustomerResponseBodyInviteInfoList `json:"InviteInfoList,omitempty" xml:"InviteInfoList,omitempty" type:"Struct"`
 	// Message information
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Pagination Information
 	PageInfo *GetUnassociatedCustomerResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// Request ID, Alibaba Cloud will track errors with this.
+	//
+	// example:
+	//
+	// 23309219-4A34-589D-A3E0-9B2A3BFFD24F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2149,18 +3919,42 @@ func (s *GetUnassociatedCustomerResponseBodyInviteInfoList) SetInviteInfo(v []*G
 
 type GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo struct {
 	// The name of Customer who are to be invited.
+	//
+	// example:
+	//
+	// My Client
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
 	// The Email of Customer who are to be invited.
+	//
+	// example:
+	//
+	// 12345@qq.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The time of email been sent out.
+	//
+	// example:
+	//
+	// 2023-05-10
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// Invitation ID
+	//
+	// example:
+	//
+	// 190
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
 	// Invitation Status:
-	// * 0 No visit on registration URL
-	// * 1 Successful Registration
-	// * 2 Unsuccessful Registration
-	// * 3 Registration URL have been visited, but no submitted sheet/ticket.
+	//
+	// 	- 0 No visit on registration URL
+	//
+	// 	- 1 Successful Registration
+	//
+	// 	- 2 Unsuccessful Registration
+	//
+	// 	- 3 Registration URL have been visited, but no submitted sheet/ticket.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2199,10 +3993,22 @@ func (s *GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo) SetStatus(
 
 type GetUnassociatedCustomerResponseBodyPageInfo struct {
 	// Pagination, current page.
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// Pagination, record number on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Pagination, page volume in total.
+	//
+	// example:
+	//
+	// 12
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2260,7 +4066,10 @@ func (s *GetUnassociatedCustomerResponse) SetBody(v *GetUnassociatedCustomerResp
 
 type InviteSubAccountRequest struct {
 	// List of invited account information,  less than 5 accounts at a time.</br>
+	//
 	// `Sub-levels <= 5`
+	//
+	// This parameter is required.
 	AccountInfoList []*InviteSubAccountRequestAccountInfoList `json:"AccountInfoList,omitempty" xml:"AccountInfoList,omitempty" type:"Repeated"`
 }
 
@@ -2279,32 +4088,87 @@ func (s *InviteSubAccountRequest) SetAccountInfoList(v []*InviteSubAccountReques
 
 type InviteSubAccountRequestAccountInfoList struct {
 	// The name of Sub Account:</br>
+	//
 	// 1. Use the official name of Company, if Sub Account is an enterprise.</br>
+	//
 	// 2. Use the official name of Partner, if Sub Account is a T2 reseller.</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// XXX Technology LTD.
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
 	// The total budget Credit of Sub Account that distributed by Partner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
 	CustomerBd *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
 	// Customer ID, Returning ID from CreateCustomer API.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
 	// The email address of End User,  which will receive the invitation email.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345@163.com
 	EmailAddress *string `json:"EmailAddress,omitempty" xml:"EmailAddress,omitempty"`
 	// Initial Order Status</br>
-	// 1. ban：Ban the new purchase action--After End User finish registration and authorization, they can\"t issue Cloud Resource order immediately. Partner should manually update the "Order Control" settings as "Normal" to enable new order.</br>
+	//
+	// 1. ban：Ban the new purchase action--After End User finish registration and authorization, they can\\"t issue Cloud Resource order immediately. Partner should manually update the "Order Control" settings as "Normal" to enable new order.</br>
+	//
 	// 2. normal：Normal--After End User finished registration and authorization, they can issue Cloud Resource order immediately.</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ban
 	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
 	// Description of Sub Account.
+	//
+	// example:
+	//
+	// The invitation to develop XX as a Sub Account
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of Sub Account</br>
 	//
-	// 1 Agency\"s End User</br>
-	// 2 Reseller\"s End user</br>
-	// 5 Reseller\"s T2 Partner</br>
+	// 1 Agency\\"s End User</br>
+	//
+	// 2 Reseller\\"s End user</br>
+	//
+	// 5 Reseller\\"s T2 Partner</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	SubAccountType *string `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
-	// Partner\"s Shutdown Policy Management for Sub Account.</br>
+	// Partner\\"s Shutdown Policy Management for Sub Account.</br>
+	//
 	// 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
-	// 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+	//
+	// 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.</br>
+	//
 	// 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ZeroCreditShutdownPolicy *string `json:"ZeroCreditShutdownPolicy,omitempty" xml:"ZeroCreditShutdownPolicy,omitempty"`
 }
 
@@ -2363,16 +4227,34 @@ func (s *InviteSubAccountRequestAccountInfoList) SetZeroCreditShutdownPolicy(v s
 
 type InviteSubAccountResponseBody struct {
 	// Error Code: </br>
+	//
 	// • 200 OK</br>
+	//
 	// • 1109 System Error</br>
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message</br>
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, Alibaba Cloud will track errors with this ID.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// List of invitation sending results
 	Results *InviteSubAccountResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 	// Candidate Values: True/False, this value states if the current API calling action is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2428,12 +4310,24 @@ func (s *InviteSubAccountResponseBodyResults) SetResult(v []*InviteSubAccountRes
 
 type InviteSubAccountResponseBodyResultsResult struct {
 	// Error Code, 200 OK
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message, Notes of Code
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Returning Message of Invitation Results
 	Result *InviteSubAccountResponseBodyResultsResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Always true.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2467,10 +4361,22 @@ func (s *InviteSubAccountResponseBodyResultsResult) SetSuccess(v bool) *InviteSu
 
 type InviteSubAccountResponseBodyResultsResultResult struct {
 	// Valid days of registration URL, count on daily basis.
+	//
+	// example:
+	//
+	// 15
 	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
 	// Invitation ID, The invitation status tracking code.
+	//
+	// example:
+	//
+	// 12345
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
 	// URL for Partner Customer Registration.
+	//
+	// example:
+	//
+	// http://agency-intl.console.aliyun.com/customer/register?intl=true&fxinfo=-4uT%2FMWHnnUdvr5GXVd1AYK8luTnGgH3M7Y3lSCd5M1fxRwAkViTWtDJDpckh0HL
 	RegUrl *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
 }
 
@@ -2526,18 +4432,200 @@ func (s *InviteSubAccountResponse) SetBody(v *InviteSubAccountResponseBody) *Inv
 	return s
 }
 
+type IssueCouponForCustomerRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5075915
+	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111,2222
+	Uidlist *string `json:"Uidlist,omitempty" xml:"Uidlist,omitempty"`
+}
+
+func (s IssueCouponForCustomerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IssueCouponForCustomerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IssueCouponForCustomerRequest) SetAcceptLanguage(v string) *IssueCouponForCustomerRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerRequest) SetCouponTemplateId(v int64) *IssueCouponForCustomerRequest {
+	s.CouponTemplateId = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerRequest) SetUidlist(v string) *IssueCouponForCustomerRequest {
+	s.Uidlist = &v
+	return s
+}
+
+type IssueCouponForCustomerResponseBody struct {
+	// example:
+	//
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data    *IssueCouponForCustomerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s IssueCouponForCustomerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IssueCouponForCustomerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IssueCouponForCustomerResponseBody) SetCode(v string) *IssueCouponForCustomerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponseBody) SetMessage(v string) *IssueCouponForCustomerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponseBody) SetRequestId(v string) *IssueCouponForCustomerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponseBody) SetSuccess(v bool) *IssueCouponForCustomerResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponseBody) SetData(v *IssueCouponForCustomerResponseBodyData) *IssueCouponForCustomerResponseBody {
+	s.Data = v
+	return s
+}
+
+type IssueCouponForCustomerResponseBodyData struct {
+	// example:
+	//
+	// 5075915
+	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	// example:
+	//
+	// 2024-03-05 18:24:07
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 111,2222
+	Uidlist *string `json:"Uidlist,omitempty" xml:"Uidlist,omitempty"`
+}
+
+func (s IssueCouponForCustomerResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IssueCouponForCustomerResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *IssueCouponForCustomerResponseBodyData) SetCouponTemplateId(v int64) *IssueCouponForCustomerResponseBodyData {
+	s.CouponTemplateId = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponseBodyData) SetCreateTime(v string) *IssueCouponForCustomerResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponseBodyData) SetUidlist(v string) *IssueCouponForCustomerResponseBodyData {
+	s.Uidlist = &v
+	return s
+}
+
+type IssueCouponForCustomerResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IssueCouponForCustomerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IssueCouponForCustomerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IssueCouponForCustomerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IssueCouponForCustomerResponse) SetHeaders(v map[string]*string) *IssueCouponForCustomerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponse) SetStatusCode(v int32) *IssueCouponForCustomerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IssueCouponForCustomerResponse) SetBody(v *IssueCouponForCustomerResponseBody) *IssueCouponForCustomerResponse {
+	s.Body = v
+	return s
+}
+
 type ListCountriesResponseBody struct {
 	// Error Code
-	// * 200: OK
-	// * 1109: System error
+	//
+	// 	- 200: OK
+	//
+	// 	- 1109: System error
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// List of Region Code
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Message information
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, Alibaba Cloud will track errors with this.
+	//
+	// example:
+	//
+	// A747A00F-E096-5244-88B3-3E474BAE3AE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2604,12 +4692,30 @@ func (s *ListCountriesResponse) SetBody(v *ListCountriesResponseBody) *ListCount
 }
 
 type ListCouponUsageRequest struct {
-	Account          *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	CouponTemplateId *int64  `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
-	Page             *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uid              *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// oqevfbveuadcrduzmf@ttirv.net
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// 5075915
+	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1133166938931507
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s ListCouponUsageRequest) String() string {
@@ -2651,11 +4757,17 @@ func (s *ListCouponUsageRequest) SetUid(v int64) *ListCouponUsageRequest {
 }
 
 type ListCouponUsageResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListCouponUsageResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageInfo  *ListCouponUsageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code     *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data     []*ListCouponUsageResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message  *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo *ListCouponUsageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCouponUsageResponseBody) String() string {
@@ -2692,15 +4804,39 @@ func (s *ListCouponUsageResponseBody) SetRequestId(v string) *ListCouponUsageRes
 }
 
 type ListCouponUsageResponseBodyData struct {
-	Account          *string  `json:"Account,omitempty" xml:"Account,omitempty"`
-	Amount           *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	Balance          *float64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	CouponId         *string  `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
-	CouponTemplateId *int64   `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
-	EffDate          *string  `json:"EffDate,omitempty" xml:"EffDate,omitempty"`
-	PublishDate      *string  `json:"PublishDate,omitempty" xml:"PublishDate,omitempty"`
-	Status           *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uid              *int64   `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// oqevfbveuadcrduzmf@ttirv.net
+	Account *string  `json:"Account,omitempty" xml:"Account,omitempty"`
+	Amount  *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 0.01
+	Balance *float64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	// example:
+	//
+	// 59226280
+	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// example:
+	//
+	// 503802
+	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	// example:
+	//
+	// 2023-04-06 00:00:00 ~ 2023-04-07 00:00:00
+	EffDate *string `json:"EffDate,omitempty" xml:"EffDate,omitempty"`
+	// example:
+	//
+	// 2023-04-06 19:32:10
+	PublishDate *string `json:"PublishDate,omitempty" xml:"PublishDate,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1647668856741998
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s ListCouponUsageResponseBodyData) String() string {
@@ -2757,9 +4893,18 @@ func (s *ListCouponUsageResponseBodyData) SetUid(v int64) *ListCouponUsageRespon
 }
 
 type ListCouponUsageResponseBodyPageInfo struct {
-	Page     *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 300
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListCouponUsageResponseBodyPageInfo) String() string {
@@ -2816,13 +4961,32 @@ func (s *ListCouponUsageResponse) SetBody(v *ListCouponUsageResponseBody) *ListC
 
 type QuotaListExportPagedRequest struct {
 	// Pagination, current page number, starting from 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Multilingual Parameters, the default language is English.</br>
+	//
 	// en: English</br>
+	//
 	// zh: Chinese</br>
+	//
 	// ja: Japanese </br>
+	//
+	// example:
+	//
+	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// Pagination, record number on each page, maximum 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -2851,18 +5015,42 @@ func (s *QuotaListExportPagedRequest) SetPageSize(v int32) *QuotaListExportPaged
 
 type QuotaListExportPagedResponseBody struct {
 	// Status code of returning result, 200 means success.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Listed data of returning result
 	Data []*QuotaListExportPagedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Description of returning result
+	//
+	// example:
+	//
+	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// Current page number
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// Record number on each page
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// ID of the Request
+	//
+	// example:
+	//
+	// 210e876f16704666020714468dab35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Total volume
+	//
+	// example:
+	//
+	// 10
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2911,19 +5099,46 @@ func (s *QuotaListExportPagedResponseBody) SetTotal(v int32) *QuotaListExportPag
 
 type QuotaListExportPagedResponseBodyData struct {
 	// Create Time
+	//
+	// example:
+	//
+	// 2023-12-21 21:31:57 UTC+8
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// File Name
+	//
+	// example:
+	//
+	// 5113766248601929_quota_2023-06-22_2023-12-21_all_2023122121310057
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// Notification Message
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Display of Task Status
+	//
+	// example:
+	//
+	// 3
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Task Status Enum</br>
+	//
 	// 2: Exporting</br>
+	//
 	// 3: Export Success</br>
+	//
 	// -1: Export Fail</br>
+	//
+	// example:
+	//
+	// Export Success
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	// The link to download exported file.
+	//
+	// example:
+	//
+	// //aliyun-eco-market-servic-singapore.oss-ap-southeast-1.aliyuncs.com/5113766248601929_quota_2023-06-22_2023-12-21_all_2023122121310057
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -2996,7 +5211,14 @@ func (s *QuotaListExportPagedResponse) SetBody(v *QuotaListExportPagedResponseBo
 
 type ResendEmailRequest struct {
 	// Invitation ID, from interface InviteSubAccount </br>
+	//
 	// Note: This field type is Long, which may result in precision loss in serialization/deserialization process. Please ensure the value does not exceed 9007199254740991.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 176
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
 }
 
@@ -3015,19 +5237,42 @@ func (s *ResendEmailRequest) SetInviteId(v int64) *ResendEmailRequest {
 
 type ResendEmailResponseBody struct {
 	// Result Code, Error code.</br>
+	//
 	// Candidate Value: </br>
-	// * 200: OK
-	// * 1109: System error
-	// * 3058: Frequent sending, the limit is 10 emails in every 5 minutes.
-	// * 3057: InviteId is empty.
-	// * 3060: Can\"t find sending record of given InviteId.
-	// * 3061: Registration URL is expired, unable to resend.
+	//
+	// 	- 200: OK
+	//
+	// 	- 1109: System error
+	//
+	// 	- 3058: Frequent sending, the limit is 10 emails in every 5 minutes.
+	//
+	// 	- 3057: InviteId is empty.
+	//
+	// 	- 3060: Can\\"t find sending record of given InviteId.
+	//
+	// 	- 3061: Registration URL is expired, unable to resend.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Result message
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3089,14 +5334,39 @@ func (s *ResendEmailResponse) SetBody(v *ResendEmailResponseBody) *ResendEmailRe
 }
 
 type SetAccountInfoRequest struct {
-	// Sub Account Nickname.
-	// * Use the official name of Company, if Sub Account is an enterprise.
-	// * Use the official name of Partner, if Sub Account is a T2 reseller.
+	// Result Code:
+	//
+	// 	- 200 OK
+	//
+	// 	- 1109 System error
+	//
+	// 	- 3030 Sub Account Nickname exceeds maximum length,  maximum length 150 bytes.
+	//
+	// 	- 3031 Remark exceeds maximum length,  maximum length 3000 bytes.
+	//
+	// example:
+	//
+	// Message information
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	CustomerBd      *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
-	// Description of Sub Account.
+	// Customer manager（limited 50 character）
+	//
+	// example:
+	//
+	// abc
+	CustomerBd *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
+	// success
+	//
+	// example:
+	//
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The UID of Sub Account.
+	// Request ID, Alibaba Cloud will track errors with this.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1133166938931507
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -3129,17 +5399,18 @@ func (s *SetAccountInfoRequest) SetUid(v int64) *SetAccountInfoRequest {
 }
 
 type SetAccountInfoResponseBody struct {
-	// Result Code:
-	// *   200 OK
-	// *   1109 System error
-	// *   3030 Sub Account Nickname exceeds maximum length,  maximum length 150 bytes.
-	// *   3031 Remark exceeds maximum length,  maximum length 3000 bytes.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Message information
+	// example:
+	//
+	// 200
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID, Alibaba Cloud will track errors with this.
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3202,8 +5473,20 @@ func (s *SetAccountInfoResponse) SetBody(v *SetAccountInfoResponseBody) *SetAcco
 
 type SetCreditLineRequest struct {
 	// New Credit Line
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
 	// The UID of Sub Account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1263644979775567
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -3227,16 +5510,36 @@ func (s *SetCreditLineRequest) SetUid(v int64) *SetCreditLineRequest {
 
 type SetCreditLineResponseBody struct {
 	// Result Code:
-	// *   200 OK
-	// *   1109 system error
-	// *   3040 Sub Account is in a frozen state and cannot be operated.
-	// *   3041 Credit is not a proper number
+	//
+	// 	- 200 OK
+	//
+	// 	- 1109 system error
+	//
+	// 	- 3040 Sub Account is in a frozen state and cannot be operated.
+	//
+	// 	- 3041 Credit is not a proper number
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Same as Code parameter value
+	//
+	// example:
+	//
+	// 200
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3299,8 +5602,20 @@ func (s *SetCreditLineResponse) SetBody(v *SetCreditLineResponseBody) *SetCredit
 
 type SetWarningThresholdRequest struct {
 	// The UID of the partner‘s customer.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1792155717328010
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 	// Percentage, 1 to 100. When the available credit limit is lower than the credit limit percentage, an email is sent to the main account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
 	WarningValue *string `json:"WarningValue,omitempty" xml:"WarningValue,omitempty"`
 }
 
@@ -3324,17 +5639,38 @@ func (s *SetWarningThresholdRequest) SetWarningValue(v string) *SetWarningThresh
 
 type SetWarningThresholdResponseBody struct {
 	// Result Code:
-	// * 200 OK
-	// * 1109 System Error
-	// * 3040 The Sub Account is frozen, the operation cannot be completed.
-	// * 3044 Alert proportion value is not a number.
-	// * 3045 Alert proportion value should between 1 to 100.
+	//
+	// 	- 200 OK
+	//
+	// 	- 1109 System Error
+	//
+	// 	- 3040 The Sub Account is frozen, the operation cannot be completed.
+	//
+	// 	- 3044 Alert proportion value is not a number.
+	//
+	// 	- 3045 Alert proportion value should between 1 to 100.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Same as Code parameter value
+	//
+	// example:
+	//
+	// 200
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Candidate Value: True or False, which indicates whether the current API call itself is successful. does not represent the success of subsequent business operations.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3399,24 +5735,58 @@ type SubscriptionBillRequest struct {
 	// The start month from which the bills are pushed. Specify the value in the yyyy-MM format.
 	//
 	// After the subscription is generated, the system automatically pushes the bill data that is generated from the month that you specified to the current point in time. Data of up to six months can be pushed. The current month is included. If you subscribe to the bills for more than six months, the subscription is invalid.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-10
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
 	// The file format of the bill. Valid values: csv and parquet.
 	//
 	// If you subscribe to the bills of multiple file formats, we recommend that you store the bills in different OSS buckets to prevent file overwriting.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// csv
 	BillFormat *string `json:"BillFormat,omitempty" xml:"BillFormat,omitempty"`
 	// The ID of the user to which the OSS bucket belongs.
 	//
 	// If you are an eco-partner of Alibaba Cloud and you need to push the bills to the OSS bucket of a subordinate partner account, you must set this parameter to the ID of the subordinate partner account and grant the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission to the subordinate partner account.
 	//
 	// If you are an eco-partner of Alibaba Cloud and you need to push the bills to the OSS bucket of your own account, your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5569414254138836
 	BucketOwnerId *int64 `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
 	// The name of the Object Storage Service (OSS) bucket in which you want to store the bills.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bill-bucket
 	SubscribeBucket *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	// The maximum rows in a single bill file. If the number of bill rows exceed the upper limit, the bill is automatically split into multiple files. The name of each split file is in the `uid_billType_billCycle_SquenceNo_fileNo` format.
 	//
 	// Files whose names are the same except for the fileNo field are of the same type and belong to the same billing cycle.
+	//
+	// example:
+	//
+	// 100000
 	SubscribeSegmentSize *int32 `json:"SubscribeSegmentSize,omitempty" xml:"SubscribeSegmentSize,omitempty"`
 	// The type of the bill to which you want to subscribe. Valid values: PartnerBillingItemDetailForBillingPeriod, PartnerBillingItemDetailMonthly, PartnerInstanceDetailForBillingPeriod, and PartnerInstanceDetailMonthly.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PartnerBillingItemDetailForBillingPeriod
 	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
@@ -3460,14 +5830,34 @@ func (s *SubscriptionBillRequest) SetSubscribeType(v string) *SubscriptionBillRe
 
 type SubscriptionBillResponseBody struct {
 	// The HTTP status code that is returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data that is returned.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The message that is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3638,16 +6028,25 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
- * You can call this operation to cancel the subscription to only one type of bill at a time.
- * After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
- * **This topic is published only on the international site (alibabacloud.com).
- *
- * @param request CancelSubscriptionBillRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CancelSubscriptionBillResponse
- */
+// Summary:
+//
+// Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+//
+// Description:
+//
+// Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+//
+// You can call this operation to cancel the subscription to only one type of bill at a time.
+//
+// After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
+//
+// **This topic is published only on the international site (alibabacloud.com).
+//
+// @param request - CancelSubscriptionBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelSubscriptionBillResponse
 func (client *Client) CancelSubscriptionBillWithOptions(request *CancelSubscriptionBillRequest, runtime *util.RuntimeOptions) (_result *CancelSubscriptionBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3681,15 +6080,23 @@ func (client *Client) CancelSubscriptionBillWithOptions(request *CancelSubscript
 	return _result, _err
 }
 
-/**
- * Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
- * You can call this operation to cancel the subscription to only one type of bill at a time.
- * After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
- * **This topic is published only on the international site (alibabacloud.com).
- *
- * @param request CancelSubscriptionBillRequest
- * @return CancelSubscriptionBillResponse
- */
+// Summary:
+//
+// Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+//
+// Description:
+//
+// Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+//
+// You can call this operation to cancel the subscription to only one type of bill at a time.
+//
+// After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
+//
+// **This topic is published only on the international site (alibabacloud.com).
+//
+// @param request - CancelSubscriptionBillRequest
+//
+// @return CancelSubscriptionBillResponse
 func (client *Client) CancelSubscriptionBill(request *CancelSubscriptionBillRequest) (_result *CancelSubscriptionBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelSubscriptionBillResponse{}
@@ -3701,6 +6108,133 @@ func (client *Client) CancelSubscriptionBill(request *CancelSubscriptionBillRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建优惠券模板
+//
+// @param tmpReq - CreateCouponTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCouponTemplateResponse
+func (client *Client) CreateCouponTemplateWithOptions(tmpReq *CreateCouponTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateCouponTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateCouponTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ProductType)) {
+		request.ProductTypeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProductType, tea.String("ProductType"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicableProducts)) {
+		query["ApplicableProducts"] = request.ApplicableProducts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CostBearer)) {
+		query["CostBearer"] = request.CostBearer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CouponDescription)) {
+		query["CouponDescription"] = request.CouponDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expireddate)) {
+		query["Expireddate"] = request.Expireddate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitPerPerson)) {
+		query["LimitPerPerson"] = request.LimitPerPerson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductTypeShrink)) {
+		query["ProductType"] = request.ProductTypeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaseType)) {
+		query["PurchaseType"] = request.PurchaseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReasonForApplication)) {
+		query["ReasonForApplication"] = request.ReasonForApplication
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vailddate)) {
+		query["Vailddate"] = request.Vailddate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vaildperioddays)) {
+		query["Vaildperioddays"] = request.Vaildperioddays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidUntil)) {
+		query["ValidUntil"] = request.ValidUntil
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCouponTemplate"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCouponTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建优惠券模板
+//
+// @param request - CreateCouponTemplateRequest
+//
+// @return CreateCouponTemplateResponse
+func (client *Client) CreateCouponTemplate(request *CreateCouponTemplateRequest) (_result *CreateCouponTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCouponTemplateResponse{}
+	_body, _err := client.CreateCouponTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// This function is designed for create a customer who is to be invited.
+//
+// @param request - CreateCustomerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomerResponse
 func (client *Client) CreateCustomerWithOptions(request *CreateCustomerRequest, runtime *util.RuntimeOptions) (_result *CreateCustomerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3750,6 +6284,13 @@ func (client *Client) CreateCustomerWithOptions(request *CreateCustomerRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// This function is designed for create a customer who is to be invited.
+//
+// @param request - CreateCustomerRequest
+//
+// @return CreateCustomerResponse
 func (client *Client) CreateCustomer(request *CreateCustomerRequest) (_result *CreateCustomerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCustomerResponse{}
@@ -3761,6 +6302,15 @@ func (client *Client) CreateCustomer(request *CreateCustomerRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Query quota adjustment list of Distribution Customer from International Site. Not available on Domestic Site.
+//
+// @param request - CustomerQuotaRecordListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CustomerQuotaRecordListResponse
 func (client *Client) CustomerQuotaRecordListWithOptions(request *CustomerQuotaRecordListRequest, runtime *util.RuntimeOptions) (_result *CustomerQuotaRecordListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3790,6 +6340,13 @@ func (client *Client) CustomerQuotaRecordListWithOptions(request *CustomerQuotaR
 	return _result, _err
 }
 
+// Summary:
+//
+// Query quota adjustment list of Distribution Customer from International Site. Not available on Domestic Site.
+//
+// @param request - CustomerQuotaRecordListRequest
+//
+// @return CustomerQuotaRecordListResponse
 func (client *Client) CustomerQuotaRecordList(request *CustomerQuotaRecordListRequest) (_result *CustomerQuotaRecordListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CustomerQuotaRecordListResponse{}
@@ -3801,14 +6358,21 @@ func (client *Client) CustomerQuotaRecordList(request *CustomerQuotaRecordListRe
 	return _result, _err
 }
 
-/**
- * Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
- * For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
- *
- * @param request DeductOutstandingBalanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeductOutstandingBalanceResponse
- */
+// Summary:
+//
+// This API is used to offset the Deducted Credit of a Distribution Customer. For example, if the current Deducted Credit is 500 and the Available Credit is 1000, by offsetting 300, the Deducted Credit will then become 200, and the Available Credit becomes 1300.
+//
+// Description:
+//
+// Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+//
+// For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+//
+// @param request - DeductOutstandingBalanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeductOutstandingBalanceResponse
 func (client *Client) DeductOutstandingBalanceWithOptions(request *DeductOutstandingBalanceRequest, runtime *util.RuntimeOptions) (_result *DeductOutstandingBalanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3846,13 +6410,19 @@ func (client *Client) DeductOutstandingBalanceWithOptions(request *DeductOutstan
 	return _result, _err
 }
 
-/**
- * Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
- * For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
- *
- * @param request DeductOutstandingBalanceRequest
- * @return DeductOutstandingBalanceResponse
- */
+// Summary:
+//
+// This API is used to offset the Deducted Credit of a Distribution Customer. For example, if the current Deducted Credit is 500 and the Available Credit is 1000, by offsetting 300, the Deducted Credit will then become 200, and the Available Credit becomes 1300.
+//
+// Description:
+//
+// Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+//
+// For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+//
+// @param request - DeductOutstandingBalanceRequest
+//
+// @return DeductOutstandingBalanceResponse
 func (client *Client) DeductOutstandingBalance(request *DeductOutstandingBalanceRequest) (_result *DeductOutstandingBalanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeductOutstandingBalanceResponse{}
@@ -3864,14 +6434,21 @@ func (client *Client) DeductOutstandingBalance(request *DeductOutstandingBalance
 	return _result, _err
 }
 
-/**
- * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
- * **This content is only published on the international site. **
- *
- * @param request EditEndUserStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EditEndUserStatusResponse
- */
+// Summary:
+//
+// Set the after-shutdown instance status for post-pay End Users as a Reseller.
+//
+// Description:
+//
+// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+//
+// **This content is only published on the international site. **
+//
+// @param request - EditEndUserStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditEndUserStatusResponse
 func (client *Client) EditEndUserStatusWithOptions(request *EditEndUserStatusRequest, runtime *util.RuntimeOptions) (_result *EditEndUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3901,13 +6478,19 @@ func (client *Client) EditEndUserStatusWithOptions(request *EditEndUserStatusReq
 	return _result, _err
 }
 
-/**
- * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
- * **This content is only published on the international site. **
- *
- * @param request EditEndUserStatusRequest
- * @return EditEndUserStatusResponse
- */
+// Summary:
+//
+// Set the after-shutdown instance status for post-pay End Users as a Reseller.
+//
+// Description:
+//
+// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+//
+// **This content is only published on the international site. **
+//
+// @param request - EditEndUserStatusRequest
+//
+// @return EditEndUserStatusResponse
 func (client *Client) EditEndUserStatus(request *EditEndUserStatusRequest) (_result *EditEndUserStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditEndUserStatusResponse{}
@@ -3919,14 +6502,21 @@ func (client *Client) EditEndUserStatus(request *EditEndUserStatusRequest) (_res
 	return _result, _err
 }
 
-/**
- * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
- * **This content is only published on the international site. **
- *
- * @param request EditNewBuyStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EditNewBuyStatusResponse
- */
+// Summary:
+//
+// Set the New Buy status for Sub-Customer as a Partner.
+//
+// Description:
+//
+// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+//
+// **This content is only published on the international site. **
+//
+// @param request - EditNewBuyStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditNewBuyStatusResponse
 func (client *Client) EditNewBuyStatusWithOptions(request *EditNewBuyStatusRequest, runtime *util.RuntimeOptions) (_result *EditNewBuyStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3964,13 +6554,19 @@ func (client *Client) EditNewBuyStatusWithOptions(request *EditNewBuyStatusReque
 	return _result, _err
 }
 
-/**
- * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
- * **This content is only published on the international site. **
- *
- * @param request EditNewBuyStatusRequest
- * @return EditNewBuyStatusResponse
- */
+// Summary:
+//
+// Set the New Buy status for Sub-Customer as a Partner.
+//
+// Description:
+//
+// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+//
+// **This content is only published on the international site. **
+//
+// @param request - EditNewBuyStatusRequest
+//
+// @return EditNewBuyStatusResponse
 func (client *Client) EditNewBuyStatus(request *EditNewBuyStatusRequest) (_result *EditNewBuyStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditNewBuyStatusResponse{}
@@ -3982,14 +6578,21 @@ func (client *Client) EditNewBuyStatus(request *EditNewBuyStatusRequest) (_resul
 	return _result, _err
 }
 
-/**
- * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
- * **This content is only published on the international site. **
- *
- * @param request EditZeroCreditShutdownRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EditZeroCreditShutdownResponse
- */
+// Summary:
+//
+// Modify the End User\\"s Shutdown Policy as a Reseller.
+//
+// Description:
+//
+// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+//
+// **This content is only published on the international site. **
+//
+// @param request - EditZeroCreditShutdownRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditZeroCreditShutdownResponse
 func (client *Client) EditZeroCreditShutdownWithOptions(request *EditZeroCreditShutdownRequest, runtime *util.RuntimeOptions) (_result *EditZeroCreditShutdownResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4027,13 +6630,19 @@ func (client *Client) EditZeroCreditShutdownWithOptions(request *EditZeroCreditS
 	return _result, _err
 }
 
-/**
- * The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
- * **This content is only published on the international site. **
- *
- * @param request EditZeroCreditShutdownRequest
- * @return EditZeroCreditShutdownResponse
- */
+// Summary:
+//
+// Modify the End User\\"s Shutdown Policy as a Reseller.
+//
+// Description:
+//
+// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+//
+// **This content is only published on the international site. **
+//
+// @param request - EditZeroCreditShutdownRequest
+//
+// @return EditZeroCreditShutdownResponse
 func (client *Client) EditZeroCreditShutdown(request *EditZeroCreditShutdownRequest) (_result *EditZeroCreditShutdownResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditZeroCreditShutdownResponse{}
@@ -4045,13 +6654,19 @@ func (client *Client) EditZeroCreditShutdown(request *EditZeroCreditShutdownRequ
 	return _result, _err
 }
 
-/**
- * Caller must be a Partner from International Site, either Distribution or Reseller will do.
- *
- * @param request ExportCustomerQuotaRecordRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ExportCustomerQuotaRecordResponse
- */
+// Summary:
+//
+// Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+//
+// Description:
+//
+// Caller must be a Partner from International Site, either Distribution or Reseller will do.
+//
+// @param request - ExportCustomerQuotaRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportCustomerQuotaRecordResponse
 func (client *Client) ExportCustomerQuotaRecordWithOptions(request *ExportCustomerQuotaRecordRequest, runtime *util.RuntimeOptions) (_result *ExportCustomerQuotaRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4101,12 +6716,17 @@ func (client *Client) ExportCustomerQuotaRecordWithOptions(request *ExportCustom
 	return _result, _err
 }
 
-/**
- * Caller must be a Partner from International Site, either Distribution or Reseller will do.
- *
- * @param request ExportCustomerQuotaRecordRequest
- * @return ExportCustomerQuotaRecordResponse
- */
+// Summary:
+//
+// Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+//
+// Description:
+//
+// Caller must be a Partner from International Site, either Distribution or Reseller will do.
+//
+// @param request - ExportCustomerQuotaRecordRequest
+//
+// @return ExportCustomerQuotaRecordResponse
 func (client *Client) ExportCustomerQuotaRecord(request *ExportCustomerQuotaRecordRequest) (_result *ExportCustomerQuotaRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportCustomerQuotaRecordResponse{}
@@ -4118,6 +6738,15 @@ func (client *Client) ExportCustomerQuotaRecord(request *ExportCustomerQuotaReco
 	return _result, _err
 }
 
+// Summary:
+//
+// Return Distribution Customer\\"s account information.
+//
+// @param request - GetAccountInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountInfoResponse
 func (client *Client) GetAccountInfoWithOptions(request *GetAccountInfoRequest, runtime *util.RuntimeOptions) (_result *GetAccountInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4147,6 +6776,13 @@ func (client *Client) GetAccountInfoWithOptions(request *GetAccountInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Return Distribution Customer\\"s account information.
+//
+// @param request - GetAccountInfoRequest
+//
+// @return GetAccountInfoResponse
 func (client *Client) GetAccountInfo(request *GetAccountInfoRequest) (_result *GetAccountInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountInfoResponse{}
@@ -4158,6 +6794,71 @@ func (client *Client) GetAccountInfo(request *GetAccountInfoRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际渠道分销优惠券可抵扣产品
+//
+// @param request - GetCoupondeductProductCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCoupondeductProductCodeResponse
+func (client *Client) GetCoupondeductProductCodeWithOptions(request *GetCoupondeductProductCodeRequest, runtime *util.RuntimeOptions) (_result *GetCoupondeductProductCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCoupondeductProductCode"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCoupondeductProductCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 国际渠道分销优惠券可抵扣产品
+//
+// @param request - GetCoupondeductProductCodeRequest
+//
+// @return GetCoupondeductProductCodeResponse
+func (client *Client) GetCoupondeductProductCode(request *GetCoupondeductProductCodeRequest) (_result *GetCoupondeductProductCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCoupondeductProductCodeResponse{}
+	_body, _err := client.GetCoupondeductProductCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query Credit Control information of Distribution Customers. The PopCreditInfoJson in the Return Parameter will be empty if the Distribution Customer is an Agency. This function is only available for Resellers and Distributors.
+//
+// @param request - GetCreditInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCreditInfoResponse
 func (client *Client) GetCreditInfoWithOptions(request *GetCreditInfoRequest, runtime *util.RuntimeOptions) (_result *GetCreditInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4187,6 +6888,13 @@ func (client *Client) GetCreditInfoWithOptions(request *GetCreditInfoRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Query Credit Control information of Distribution Customers. The PopCreditInfoJson in the Return Parameter will be empty if the Distribution Customer is an Agency. This function is only available for Resellers and Distributors.
+//
+// @param request - GetCreditInfoRequest
+//
+// @return GetCreditInfoResponse
 func (client *Client) GetCreditInfo(request *GetCreditInfoRequest) (_result *GetCreditInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCreditInfoResponse{}
@@ -4198,6 +6906,71 @@ func (client *Client) GetCreditInfo(request *GetCreditInfoRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 客户订单查询
+//
+// @param request - GetCustomerOrdersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomerOrdersResponse
+func (client *Client) GetCustomerOrdersWithOptions(request *GetCustomerOrdersRequest, runtime *util.RuntimeOptions) (_result *GetCustomerOrdersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomerOrders"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCustomerOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户订单查询
+//
+// @param request - GetCustomerOrdersRequest
+//
+// @return GetCustomerOrdersResponse
+func (client *Client) GetCustomerOrders(request *GetCustomerOrdersRequest) (_result *GetCustomerOrdersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCustomerOrdersResponse{}
+	_body, _err := client.GetCustomerOrdersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Issue Distributor\\"s daily Bill. This function is only available for Resellers and Distributors.
+//
+// @param request - GetDailyBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDailyBillResponse
 func (client *Client) GetDailyBillWithOptions(request *GetDailyBillRequest, runtime *util.RuntimeOptions) (_result *GetDailyBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4239,6 +7012,13 @@ func (client *Client) GetDailyBillWithOptions(request *GetDailyBillRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Issue Distributor\\"s daily Bill. This function is only available for Resellers and Distributors.
+//
+// @param request - GetDailyBillRequest
+//
+// @return GetDailyBillResponse
 func (client *Client) GetDailyBill(request *GetDailyBillRequest) (_result *GetDailyBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDailyBillResponse{}
@@ -4250,6 +7030,15 @@ func (client *Client) GetDailyBill(request *GetDailyBillRequest) (_result *GetDa
 	return _result, _err
 }
 
+// Summary:
+//
+// Query invitation status of customer who have been created and invited.
+//
+// @param request - GetInviteStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInviteStatusResponse
 func (client *Client) GetInviteStatusWithOptions(request *GetInviteStatusRequest, runtime *util.RuntimeOptions) (_result *GetInviteStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4283,6 +7072,13 @@ func (client *Client) GetInviteStatusWithOptions(request *GetInviteStatusRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Query invitation status of customer who have been created and invited.
+//
+// @param request - GetInviteStatusRequest
+//
+// @return GetInviteStatusResponse
 func (client *Client) GetInviteStatus(request *GetInviteStatusRequest) (_result *GetInviteStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInviteStatusResponse{}
@@ -4294,6 +7090,15 @@ func (client *Client) GetInviteStatus(request *GetInviteStatusRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Issue Distributor\\"s Monthly Bill. This function is only available for Resellers and Distributors.
+//
+// @param request - GetMonthlyBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMonthlyBillResponse
 func (client *Client) GetMonthlyBillWithOptions(request *GetMonthlyBillRequest, runtime *util.RuntimeOptions) (_result *GetMonthlyBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4335,6 +7140,13 @@ func (client *Client) GetMonthlyBillWithOptions(request *GetMonthlyBillRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Issue Distributor\\"s Monthly Bill. This function is only available for Resellers and Distributors.
+//
+// @param request - GetMonthlyBillRequest
+//
+// @return GetMonthlyBillResponse
 func (client *Client) GetMonthlyBill(request *GetMonthlyBillRequest) (_result *GetMonthlyBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMonthlyBillResponse{}
@@ -4346,6 +7158,15 @@ func (client *Client) GetMonthlyBill(request *GetMonthlyBillRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Query all the Unassociated Customer.
+//
+// @param request - GetUnassociatedCustomerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUnassociatedCustomerResponse
 func (client *Client) GetUnassociatedCustomerWithOptions(request *GetUnassociatedCustomerRequest, runtime *util.RuntimeOptions) (_result *GetUnassociatedCustomerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4375,6 +7196,13 @@ func (client *Client) GetUnassociatedCustomerWithOptions(request *GetUnassociate
 	return _result, _err
 }
 
+// Summary:
+//
+// Query all the Unassociated Customer.
+//
+// @param request - GetUnassociatedCustomerRequest
+//
+// @return GetUnassociatedCustomerResponse
 func (client *Client) GetUnassociatedCustomer(request *GetUnassociatedCustomerRequest) (_result *GetUnassociatedCustomerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUnassociatedCustomerResponse{}
@@ -4386,13 +7214,19 @@ func (client *Client) GetUnassociatedCustomer(request *GetUnassociatedCustomerRe
 	return _result, _err
 }
 
-/**
- * The current API request rate for the Cloud Product has not been disclosed.
- *
- * @param request InviteSubAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return InviteSubAccountResponse
- */
+// Summary:
+//
+// Initiate the Partner registration invitation.
+//
+// Description:
+//
+// The current API request rate for the Cloud Product has not been disclosed.
+//
+// @param request - InviteSubAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InviteSubAccountResponse
 func (client *Client) InviteSubAccountWithOptions(request *InviteSubAccountRequest, runtime *util.RuntimeOptions) (_result *InviteSubAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4426,12 +7260,17 @@ func (client *Client) InviteSubAccountWithOptions(request *InviteSubAccountReque
 	return _result, _err
 }
 
-/**
- * The current API request rate for the Cloud Product has not been disclosed.
- *
- * @param request InviteSubAccountRequest
- * @return InviteSubAccountResponse
- */
+// Summary:
+//
+// Initiate the Partner registration invitation.
+//
+// Description:
+//
+// The current API request rate for the Cloud Product has not been disclosed.
+//
+// @param request - InviteSubAccountRequest
+//
+// @return InviteSubAccountResponse
 func (client *Client) InviteSubAccount(request *InviteSubAccountRequest) (_result *InviteSubAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InviteSubAccountResponse{}
@@ -4443,13 +7282,87 @@ func (client *Client) InviteSubAccount(request *InviteSubAccountRequest) (_resul
 	return _result, _err
 }
 
-/**
- * The current API request rate for cloud products has not been disclosed.
- *
- * @param request ListCountriesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListCountriesResponse
- */
+// Summary:
+//
+// 发放优惠券
+//
+// @param request - IssueCouponForCustomerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IssueCouponForCustomerResponse
+func (client *Client) IssueCouponForCustomerWithOptions(request *IssueCouponForCustomerRequest, runtime *util.RuntimeOptions) (_result *IssueCouponForCustomerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CouponTemplateId)) {
+		query["CouponTemplateId"] = request.CouponTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uidlist)) {
+		query["Uidlist"] = request.Uidlist
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IssueCouponForCustomer"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IssueCouponForCustomerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发放优惠券
+//
+// @param request - IssueCouponForCustomerRequest
+//
+// @return IssueCouponForCustomerResponse
+func (client *Client) IssueCouponForCustomer(request *IssueCouponForCustomerRequest) (_result *IssueCouponForCustomerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &IssueCouponForCustomerResponse{}
+	_body, _err := client.IssueCouponForCustomerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// This function is available for all Distributors. It displays the corresponding region code information based on the operable countries as agreed in the Distributor\\"s contract.
+//
+// Description:
+//
+// The current API request rate for cloud products has not been disclosed.
+//
+// @param request - ListCountriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCountriesResponse
 func (client *Client) ListCountriesWithOptions(runtime *util.RuntimeOptions) (_result *ListCountriesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4472,11 +7385,15 @@ func (client *Client) ListCountriesWithOptions(runtime *util.RuntimeOptions) (_r
 	return _result, _err
 }
 
-/**
- * The current API request rate for cloud products has not been disclosed.
- *
- * @return ListCountriesResponse
- */
+// Summary:
+//
+// This function is available for all Distributors. It displays the corresponding region code information based on the operable countries as agreed in the Distributor\\"s contract.
+//
+// Description:
+//
+// The current API request rate for cloud products has not been disclosed.
+//
+// @return ListCountriesResponse
 func (client *Client) ListCountries() (_result *ListCountriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCountriesResponse{}
@@ -4488,6 +7405,15 @@ func (client *Client) ListCountries() (_result *ListCountriesResponse, _err erro
 	return _result, _err
 }
 
+// Summary:
+//
+// 优惠券使用量列表查询
+//
+// @param request - ListCouponUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCouponUsageResponse
 func (client *Client) ListCouponUsageWithOptions(request *ListCouponUsageRequest, runtime *util.RuntimeOptions) (_result *ListCouponUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4541,6 +7467,13 @@ func (client *Client) ListCouponUsageWithOptions(request *ListCouponUsageRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 优惠券使用量列表查询
+//
+// @param request - ListCouponUsageRequest
+//
+// @return ListCouponUsageResponse
 func (client *Client) ListCouponUsage(request *ListCouponUsageRequest) (_result *ListCouponUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCouponUsageResponse{}
@@ -4552,13 +7485,19 @@ func (client *Client) ListCouponUsage(request *ListCouponUsageRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Caller must be a Partner from International Site, either Distribution or Reseller will do.
- *
- * @param request QuotaListExportPagedRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QuotaListExportPagedResponse
- */
+// Summary:
+//
+// Check the result of export quota list as a Distribution Customer from International Site. Only available on International Site.
+//
+// Description:
+//
+// Caller must be a Partner from International Site, either Distribution or Reseller will do.
+//
+// @param request - QuotaListExportPagedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuotaListExportPagedResponse
 func (client *Client) QuotaListExportPagedWithOptions(request *QuotaListExportPagedRequest, runtime *util.RuntimeOptions) (_result *QuotaListExportPagedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4588,12 +7527,17 @@ func (client *Client) QuotaListExportPagedWithOptions(request *QuotaListExportPa
 	return _result, _err
 }
 
-/**
- * Caller must be a Partner from International Site, either Distribution or Reseller will do.
- *
- * @param request QuotaListExportPagedRequest
- * @return QuotaListExportPagedResponse
- */
+// Summary:
+//
+// Check the result of export quota list as a Distribution Customer from International Site. Only available on International Site.
+//
+// Description:
+//
+// Caller must be a Partner from International Site, either Distribution or Reseller will do.
+//
+// @param request - QuotaListExportPagedRequest
+//
+// @return QuotaListExportPagedResponse
 func (client *Client) QuotaListExportPaged(request *QuotaListExportPagedRequest) (_result *QuotaListExportPagedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuotaListExportPagedResponse{}
@@ -4605,6 +7549,15 @@ func (client *Client) QuotaListExportPaged(request *QuotaListExportPagedRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Resend invitation email.
+//
+// @param request - ResendEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResendEmailResponse
 func (client *Client) ResendEmailWithOptions(request *ResendEmailRequest, runtime *util.RuntimeOptions) (_result *ResendEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4638,6 +7591,13 @@ func (client *Client) ResendEmailWithOptions(request *ResendEmailRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Resend invitation email.
+//
+// @param request - ResendEmailRequest
+//
+// @return ResendEmailResponse
 func (client *Client) ResendEmail(request *ResendEmailRequest) (_result *ResendEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResendEmailResponse{}
@@ -4649,6 +7609,15 @@ func (client *Client) ResendEmail(request *ResendEmailRequest) (_result *ResendE
 	return _result, _err
 }
 
+// Summary:
+//
+// This function is designed for Sub Account information maintenance, including Nickname and Remark.
+//
+// @param request - SetAccountInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccountInfoResponse
 func (client *Client) SetAccountInfoWithOptions(request *SetAccountInfoRequest, runtime *util.RuntimeOptions) (_result *SetAccountInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4694,6 +7663,13 @@ func (client *Client) SetAccountInfoWithOptions(request *SetAccountInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// This function is designed for Sub Account information maintenance, including Nickname and Remark.
+//
+// @param request - SetAccountInfoRequest
+//
+// @return SetAccountInfoResponse
 func (client *Client) SetAccountInfo(request *SetAccountInfoRequest) (_result *SetAccountInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetAccountInfoResponse{}
@@ -4705,6 +7681,15 @@ func (client *Client) SetAccountInfo(request *SetAccountInfoRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Set Credit Line for Distribution Customers. This function is only available for Resellers and Distributors.
+//
+// @param request - SetCreditLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetCreditLineResponse
 func (client *Client) SetCreditLineWithOptions(request *SetCreditLineRequest, runtime *util.RuntimeOptions) (_result *SetCreditLineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4742,6 +7727,13 @@ func (client *Client) SetCreditLineWithOptions(request *SetCreditLineRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Set Credit Line for Distribution Customers. This function is only available for Resellers and Distributors.
+//
+// @param request - SetCreditLineRequest
+//
+// @return SetCreditLineResponse
 func (client *Client) SetCreditLine(request *SetCreditLineRequest) (_result *SetCreditLineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetCreditLineResponse{}
@@ -4753,6 +7745,15 @@ func (client *Client) SetCreditLine(request *SetCreditLineRequest) (_result *Set
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use this API to set the threshold for the use of credit control. When the customer credit control reaches below the threshold, it will pass through the notification email distributor. This feature is for Reseller and Distributor only.
+//
+// @param request - SetWarningThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWarningThresholdResponse
 func (client *Client) SetWarningThresholdWithOptions(request *SetWarningThresholdRequest, runtime *util.RuntimeOptions) (_result *SetWarningThresholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4790,6 +7791,13 @@ func (client *Client) SetWarningThresholdWithOptions(request *SetWarningThreshol
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use this API to set the threshold for the use of credit control. When the customer credit control reaches below the threshold, it will pass through the notification email distributor. This feature is for Reseller and Distributor only.
+//
+// @param request - SetWarningThresholdRequest
+//
+// @return SetWarningThresholdResponse
 func (client *Client) SetWarningThreshold(request *SetWarningThresholdRequest) (_result *SetWarningThresholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetWarningThresholdResponse{}
@@ -4801,38 +7809,69 @@ func (client *Client) SetWarningThreshold(request *SetWarningThresholdRequest) (
 	return _result, _err
 }
 
-/**
- * *   Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
- * *   You can call this operation to subscribe to only one type of bill at a time.
- * *   After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
- * *   A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
- * *   Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
- * *   The following file name formats are supported for bills:
- * ```
- * BillingItemDetailForBillingPeriod
- *
- * File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
- *
- * File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
- * InstanceDetailForBillingPeriod
- *
- *  File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
- *
- * File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
- * BillingItemDetailMonthly
- *
- * File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
- * InstanceDetailMonthly
- *
- * File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
- * The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
- * ```
- * **This topic is published only on the international site (alibabacloud.com).
- *
- * @param request SubscriptionBillRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SubscriptionBillResponse
- */
+// Summary:
+//
+// Generates the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+//
+// Description:
+//
+//   Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+//
+// 	- You can call this operation to subscribe to only one type of bill at a time.
+//
+// 	- After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
+//
+// 	- A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
+//
+// 	- Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+//
+// 	- The following file name formats are supported for bills:
+//
+// ```
+//
+// BillingItemDetailForBillingPeriod
+//
+//
+//
+// File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
+//
+//
+//
+// File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
+//
+// InstanceDetailForBillingPeriod
+//
+//
+//
+//  File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
+//
+//
+//
+// File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
+//
+// BillingItemDetailMonthly
+//
+//
+//
+// File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+//
+// InstanceDetailMonthly
+//
+//
+//
+// File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+//
+// The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
+//
+// ```
+//
+// **This topic is published only on the international site (alibabacloud.com).
+//
+// @param request - SubscriptionBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubscriptionBillResponse
 func (client *Client) SubscriptionBillWithOptions(request *SubscriptionBillRequest, runtime *util.RuntimeOptions) (_result *SubscriptionBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4886,37 +7925,67 @@ func (client *Client) SubscriptionBillWithOptions(request *SubscriptionBillReque
 	return _result, _err
 }
 
-/**
- * *   Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
- * *   You can call this operation to subscribe to only one type of bill at a time.
- * *   After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
- * *   A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
- * *   Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
- * *   The following file name formats are supported for bills:
- * ```
- * BillingItemDetailForBillingPeriod
- *
- * File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
- *
- * File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
- * InstanceDetailForBillingPeriod
- *
- *  File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
- *
- * File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
- * BillingItemDetailMonthly
- *
- * File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
- * InstanceDetailMonthly
- *
- * File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
- * The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
- * ```
- * **This topic is published only on the international site (alibabacloud.com).
- *
- * @param request SubscriptionBillRequest
- * @return SubscriptionBillResponse
- */
+// Summary:
+//
+// Generates the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+//
+// Description:
+//
+//   Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+//
+// 	- You can call this operation to subscribe to only one type of bill at a time.
+//
+// 	- After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
+//
+// 	- A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
+//
+// 	- Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+//
+// 	- The following file name formats are supported for bills:
+//
+// ```
+//
+// BillingItemDetailForBillingPeriod
+//
+//
+//
+// File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
+//
+//
+//
+// File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
+//
+// InstanceDetailForBillingPeriod
+//
+//
+//
+//  File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
+//
+//
+//
+// File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
+//
+// BillingItemDetailMonthly
+//
+//
+//
+// File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+//
+// InstanceDetailMonthly
+//
+//
+//
+// File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+//
+// The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
+//
+// ```
+//
+// **This topic is published only on the international site (alibabacloud.com).
+//
+// @param request - SubscriptionBillRequest
+//
+// @return SubscriptionBillResponse
 func (client *Client) SubscriptionBill(request *SubscriptionBillRequest) (_result *SubscriptionBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubscriptionBillResponse{}
