@@ -3243,6 +3243,7 @@ type CreateClusterRequest struct {
 	//
 	// 1.16.9-aliyun.1
 	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	LoadBalancerId    *string `json:"load_balancer_id,omitempty" xml:"load_balancer_id,omitempty"`
 	// The specification of the Server Load Balancer (SLB) instance. Valid values:
 	//
 	// 	- slb.s1.small
@@ -3959,6 +3960,11 @@ func (s *CreateClusterRequest) SetKeyPair(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetKubernetesVersion(v string) *CreateClusterRequest {
 	s.KubernetesVersion = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetLoadBalancerId(v string) *CreateClusterRequest {
+	s.LoadBalancerId = &v
 	return s
 }
 
@@ -6768,9 +6774,9 @@ func (s *DeleteAlertContactShrinkRequest) SetContactIdsShrink(v string) *DeleteA
 }
 
 type DeleteAlertContactResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       []*DeleteAlertContactResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAlertContactResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 
 func (s DeleteAlertContactResponse) String() string {
@@ -6791,15 +6797,13 @@ func (s *DeleteAlertContactResponse) SetStatusCode(v int32) *DeleteAlertContactR
 	return s
 }
 
-func (s *DeleteAlertContactResponse) SetBody(v []*DeleteAlertContactResponseBody) *DeleteAlertContactResponse {
+func (s *DeleteAlertContactResponse) SetBody(v *DeleteAlertContactResponseBody) *DeleteAlertContactResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteAlertContactResponseBody struct {
-	Status    *bool   `json:"status,omitempty" xml:"status,omitempty"`
-	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	ContactId *string `json:"contact_id,omitempty" xml:"contact_id,omitempty"`
+	Result []*DeleteAlertContactResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s DeleteAlertContactResponseBody) String() string {
@@ -6810,17 +6814,36 @@ func (s DeleteAlertContactResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAlertContactResponseBody) SetStatus(v bool) *DeleteAlertContactResponseBody {
+func (s *DeleteAlertContactResponseBody) SetResult(v []*DeleteAlertContactResponseBodyResult) *DeleteAlertContactResponseBody {
+	s.Result = v
+	return s
+}
+
+type DeleteAlertContactResponseBodyResult struct {
+	Status    *bool   `json:"status,omitempty" xml:"status,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	ContactId *string `json:"contact_id,omitempty" xml:"contact_id,omitempty"`
+}
+
+func (s DeleteAlertContactResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactResponseBodyResult) SetStatus(v bool) *DeleteAlertContactResponseBodyResult {
 	s.Status = &v
 	return s
 }
 
-func (s *DeleteAlertContactResponseBody) SetMsg(v string) *DeleteAlertContactResponseBody {
+func (s *DeleteAlertContactResponseBodyResult) SetMsg(v string) *DeleteAlertContactResponseBodyResult {
 	s.Msg = &v
 	return s
 }
 
-func (s *DeleteAlertContactResponseBody) SetContactId(v string) *DeleteAlertContactResponseBody {
+func (s *DeleteAlertContactResponseBodyResult) SetContactId(v string) *DeleteAlertContactResponseBodyResult {
 	s.ContactId = &v
 	return s
 }
@@ -29071,6 +29094,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
 		body["kubernetes_version"] = request.KubernetesVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		body["load_balancer_id"] = request.LoadBalancerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerSpec)) {
