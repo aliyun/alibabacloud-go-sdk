@@ -204,7 +204,8 @@ type BankMetaVerifyRequest struct {
 	// example:
 	//
 	// 429001********8211
-	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	IdentifyNum  *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
 	// example:
 	//
 	// 138******11
@@ -239,6 +240,11 @@ func (s *BankMetaVerifyRequest) SetBankCard(v string) *BankMetaVerifyRequest {
 
 func (s *BankMetaVerifyRequest) SetIdentifyNum(v string) *BankMetaVerifyRequest {
 	s.IdentifyNum = &v
+	return s
+}
+
+func (s *BankMetaVerifyRequest) SetIdentityType(v string) *BankMetaVerifyRequest {
+	s.IdentityType = &v
 	return s
 }
 
@@ -6033,6 +6039,10 @@ func (client *Client) BankMetaVerifyWithOptions(request *BankMetaVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
 		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		query["IdentityType"] = request.IdentityType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
