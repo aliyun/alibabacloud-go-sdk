@@ -368,6 +368,7 @@ type CheckResourceStockRequest struct {
 	//
 	// acp.basic.small
 	AcpSpecId *string `json:"AcpSpecId,omitempty" xml:"AcpSpecId,omitempty"`
+	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -391,6 +392,11 @@ func (s CheckResourceStockRequest) GoString() string {
 
 func (s *CheckResourceStockRequest) SetAcpSpecId(v string) *CheckResourceStockRequest {
 	s.AcpSpecId = &v
+	return s
+}
+
+func (s *CheckResourceStockRequest) SetAmount(v int32) *CheckResourceStockRequest {
+	s.Amount = &v
 	return s
 }
 
@@ -7055,6 +7061,10 @@ func (client *Client) CheckResourceStockWithOptions(request *CheckResourceStockR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcpSpecId)) {
 		query["AcpSpecId"] = request.AcpSpecId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {

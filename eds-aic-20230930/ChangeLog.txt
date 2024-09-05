@@ -1,3 +1,7 @@
+2024-09-05 Version: v1.3.6
+- Update API CheckResourceStock: add param Amount.
+
+
 2024-08-22 Version: v1.3.5
 - Update API CreateAndroidInstanceGroup: add param ClientToken.
 - Update API CreateAndroidInstanceGroup: update param Amount.
