@@ -1,3 +1,6 @@
+2024-09-05 Version: v1.1.1
+- Generated golang 2024-08-01 for QuanMiaoLightApp.
+
 2024-09-03 Version: v1.1.0
 - Support API RunScriptContinue.
 - Support API RunScriptPlanning.
