@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,10 +11,22 @@ import (
 
 type EnterpriseDingtalkGroupMember struct {
 	// 代表资源名称的资源属性字段
+	//
+	// example:
+	//
+	// true
 	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
 	// 代表资源组的资源属性字段
+	//
+	// example:
+	//
+	// 130xxxxxxxx
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// 代表创建时间的资源属性字段
+	//
+	// example:
+	//
+	// 张三
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -45,7 +54,15 @@ func (s *EnterpriseDingtalkGroupMember) SetName(v string) *EnterpriseDingtalkGro
 }
 
 type CloseTaskOrderRequest struct {
-	OrderId  *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E211129AE190Y3
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 操作人姓名
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -69,14 +86,34 @@ func (s *CloseTaskOrderRequest) SetUserName(v string) *CloseTaskOrderRequest {
 
 type CloseTaskOrderResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
+	//
+	// example:
+	//
+	// null
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// msg
+	//
+	// example:
+	//
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// AQWFE#$#ASD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -114,9 +151,9 @@ func (s *CloseTaskOrderResponseBody) SetSuccess(v bool) *CloseTaskOrderResponseB
 }
 
 type CloseTaskOrderResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CloseTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloseTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CloseTaskOrderResponse) String() string {
@@ -143,15 +180,49 @@ func (s *CloseTaskOrderResponse) SetBody(v *CloseTaskOrderResponseBody) *CloseTa
 }
 
 type CreateTaskOrderRequest struct {
-	CustomerRealName     *string `json:"CustomerRealName,omitempty" xml:"CustomerRealName,omitempty"`
-	CustomerUserId       *string `json:"CustomerUserId,omitempty" xml:"CustomerUserId,omitempty"`
+	// example:
+	//
+	// 建单人姓名：快手客户
+	CustomerRealName *string `json:"CustomerRealName,omitempty" xml:"CustomerRealName,omitempty"`
+	// example:
+	//
+	// 123
+	CustomerUserId *string `json:"CustomerUserId,omitempty" xml:"CustomerUserId,omitempty"`
+	// example:
+	//
+	// 重要性描述
 	ImportantDescription *string `json:"ImportantDescription,omitempty" xml:"ImportantDescription,omitempty"`
-	IsImportant          *string `json:"IsImportant,omitempty" xml:"IsImportant,omitempty"`
-	OpenGroupId          *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 如:normal或者hurry
+	IsImportant *string `json:"IsImportant,omitempty" xml:"IsImportant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cid+lUpHxTIXt7DYqJDcpVxlA==
+	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 	// productType
-	ProductType     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3270
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// lc-云享咨询
 	ProductTypeName *string `json:"ProductTypeName,omitempty" xml:"ProductTypeName,omitempty"`
 	// taskTitle
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 任务单标题：必填
 	TaskTitle *string `json:"TaskTitle,omitempty" xml:"TaskTitle,omitempty"`
 }
 
@@ -205,13 +276,32 @@ func (s *CreateTaskOrderRequest) SetTaskTitle(v string) *CreateTaskOrderRequest 
 
 type CreateTaskOrderResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// E21111796147LE
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// msg
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -249,9 +339,9 @@ func (s *CreateTaskOrderResponseBody) SetSuccess(v bool) *CreateTaskOrderRespons
 }
 
 type CreateTaskOrderResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTaskOrderResponse) String() string {
@@ -278,16 +368,48 @@ func (s *CreateTaskOrderResponse) SetBody(v *CreateTaskOrderResponseBody) *Creat
 }
 
 type CreateTaskOrderByEventReportRequest struct {
-	Business              *string                                       `json:"Business,omitempty" xml:"Business,omitempty"`
-	CreateRealName        *string                                       `json:"CreateRealName,omitempty" xml:"CreateRealName,omitempty"`
-	CreateUserId          *string                                       `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	EventBody             *CreateTaskOrderByEventReportRequestEventBody `json:"EventBody,omitempty" xml:"EventBody,omitempty" type:"Struct"`
-	Extinfo               []*CreateTaskOrderByEventReportRequestExtinfo `json:"Extinfo,omitempty" xml:"Extinfo,omitempty" type:"Repeated"`
-	ImportantDesc         *string                                       `json:"ImportantDesc,omitempty" xml:"ImportantDesc,omitempty"`
-	JoinChildGroupUserIds *string                                       `json:"JoinChildGroupUserIds,omitempty" xml:"JoinChildGroupUserIds,omitempty"`
-	MonitorCongregation   *string                                       `json:"MonitorCongregation,omitempty" xml:"MonitorCongregation,omitempty"`
-	OpenGroupId           *string                                       `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
-	ProductType           *string                                       `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 123
+	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 小二
+	CreateRealName *string `json:"CreateRealName,omitempty" xml:"CreateRealName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1830426056957812
+	CreateUserId *string                                       `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	EventBody    *CreateTaskOrderByEventReportRequestEventBody `json:"EventBody,omitempty" xml:"EventBody,omitempty" type:"Struct"`
+	Extinfo      []*CreateTaskOrderByEventReportRequestExtinfo `json:"Extinfo,omitempty" xml:"Extinfo,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 紧急性原因描述
+	ImportantDesc *string `json:"ImportantDesc,omitempty" xml:"ImportantDesc,omitempty"`
+	// example:
+	//
+	// 123,456
+	JoinChildGroupUserIds *string `json:"JoinChildGroupUserIds,omitempty" xml:"JoinChildGroupUserIds,omitempty"`
+	// example:
+	//
+	// 监控集如：视频业务的质量监控 123
+	MonitorCongregation *string `json:"MonitorCongregation,omitempty" xml:"MonitorCongregation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cid+lUpHxTIXt7DYqJDcpVxlA==
+	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3270
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s CreateTaskOrderByEventReportRequest) String() string {
@@ -349,11 +471,25 @@ func (s *CreateTaskOrderByEventReportRequest) SetProductType(v string) *CreateTa
 }
 
 type CreateTaskOrderByEventReportRequestEventBody struct {
-	EventDesc     *string                                                    `json:"EventDesc,omitempty" xml:"EventDesc,omitempty"`
-	EventId       *string                                                    `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 告警内容
+	EventDesc *string `json:"EventDesc,omitempty" xml:"EventDesc,omitempty"`
+	// example:
+	//
+	// j9uwe-34328987
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// info,warn,alarm,critical
 	EventLevel    *string                                                    `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	EventLocation *CreateTaskOrderByEventReportRequestEventBodyEventLocation `json:"EventLocation,omitempty" xml:"EventLocation,omitempty" type:"Struct"`
-	EventTime     *string                                                    `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// example:
+	//
+	// 123456
+	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
 }
 
 func (s CreateTaskOrderByEventReportRequestEventBody) String() string {
@@ -390,6 +526,9 @@ func (s *CreateTaskOrderByEventReportRequestEventBody) SetEventTime(v string) *C
 }
 
 type CreateTaskOrderByEventReportRequestEventBodyEventLocation struct {
+	// example:
+	//
+	// flv13.bn.netease.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -407,7 +546,13 @@ func (s *CreateTaskOrderByEventReportRequestEventBodyEventLocation) SetDomain(v 
 }
 
 type CreateTaskOrderByEventReportRequestExtinfo struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 扩展信息名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 扩展信息value值
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -430,16 +575,48 @@ func (s *CreateTaskOrderByEventReportRequestExtinfo) SetValue(v string) *CreateT
 }
 
 type CreateTaskOrderByEventReportShrinkRequest struct {
-	Business              *string `json:"Business,omitempty" xml:"Business,omitempty"`
-	CreateRealName        *string `json:"CreateRealName,omitempty" xml:"CreateRealName,omitempty"`
-	CreateUserId          *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	EventBodyShrink       *string `json:"EventBody,omitempty" xml:"EventBody,omitempty"`
-	ExtinfoShrink         *string `json:"Extinfo,omitempty" xml:"Extinfo,omitempty"`
-	ImportantDesc         *string `json:"ImportantDesc,omitempty" xml:"ImportantDesc,omitempty"`
+	// example:
+	//
+	// 123
+	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 小二
+	CreateRealName *string `json:"CreateRealName,omitempty" xml:"CreateRealName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1830426056957812
+	CreateUserId    *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	EventBodyShrink *string `json:"EventBody,omitempty" xml:"EventBody,omitempty"`
+	ExtinfoShrink   *string `json:"Extinfo,omitempty" xml:"Extinfo,omitempty"`
+	// example:
+	//
+	// 紧急性原因描述
+	ImportantDesc *string `json:"ImportantDesc,omitempty" xml:"ImportantDesc,omitempty"`
+	// example:
+	//
+	// 123,456
 	JoinChildGroupUserIds *string `json:"JoinChildGroupUserIds,omitempty" xml:"JoinChildGroupUserIds,omitempty"`
-	MonitorCongregation   *string `json:"MonitorCongregation,omitempty" xml:"MonitorCongregation,omitempty"`
-	OpenGroupId           *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
-	ProductType           *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 监控集如：视频业务的质量监控 123
+	MonitorCongregation *string `json:"MonitorCongregation,omitempty" xml:"MonitorCongregation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cid+lUpHxTIXt7DYqJDcpVxlA==
+	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3270
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s CreateTaskOrderByEventReportShrinkRequest) String() string {
@@ -502,13 +679,32 @@ func (s *CreateTaskOrderByEventReportShrinkRequest) SetProductType(v string) *Cr
 
 type CreateTaskOrderByEventReportResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {  "eid": "E211129DT18M06",     "status": "dealingNode"   }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// msg
+	//
+	// example:
+	//
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 02A300AC-367E-1716-A37B-F2FB46082610
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -546,9 +742,9 @@ func (s *CreateTaskOrderByEventReportResponseBody) SetSuccess(v bool) *CreateTas
 }
 
 type CreateTaskOrderByEventReportResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTaskOrderByEventReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTaskOrderByEventReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTaskOrderByEventReportResponse) String() string {
@@ -575,8 +771,14 @@ func (s *CreateTaskOrderByEventReportResponse) SetBody(v *CreateTaskOrderByEvent
 }
 
 type DeleteEnterpriseDingtalkGroupCustomerMemberRequest struct {
-	Mobiles     []*string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
-	OpenGroupId *string   `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
+	// This parameter is required.
+	Mobiles []*string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
 func (s DeleteEnterpriseDingtalkGroupCustomerMemberRequest) String() string {
@@ -598,8 +800,14 @@ func (s *DeleteEnterpriseDingtalkGroupCustomerMemberRequest) SetOpenGroupId(v st
 }
 
 type DeleteEnterpriseDingtalkGroupCustomerMemberShrinkRequest struct {
+	// This parameter is required.
 	MobilesShrink *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
-	OpenGroupId   *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
 func (s DeleteEnterpriseDingtalkGroupCustomerMemberShrinkRequest) String() string {
@@ -621,10 +829,22 @@ func (s *DeleteEnterpriseDingtalkGroupCustomerMemberShrinkRequest) SetOpenGroupI
 }
 
 type DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Invalid data
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody) String() string {
@@ -656,9 +876,9 @@ func (s *DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody) SetSuccess(v b
 }
 
 type DeleteEnterpriseDingtalkGroupCustomerMemberResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEnterpriseDingtalkGroupCustomerMemberResponse) String() string {
@@ -685,6 +905,11 @@ func (s *DeleteEnterpriseDingtalkGroupCustomerMemberResponse) SetBody(v *DeleteE
 }
 
 type GetEnterpriseDingtalkGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
@@ -702,11 +927,23 @@ func (s *GetEnterpriseDingtalkGroupRequest) SetOpenGroupId(v string) *GetEnterpr
 }
 
 type GetEnterpriseDingtalkGroupResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetEnterpriseDingtalkGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetEnterpriseDingtalkGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid data
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 123
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetEnterpriseDingtalkGroupResponseBody) String() string {
@@ -743,7 +980,13 @@ func (s *GetEnterpriseDingtalkGroupResponseBody) SetSuccess(v bool) *GetEnterpri
 }
 
 type GetEnterpriseDingtalkGroupResponseBodyData struct {
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// A企业服务群
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 123
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
@@ -766,9 +1009,9 @@ func (s *GetEnterpriseDingtalkGroupResponseBodyData) SetOpenGroupId(v string) *G
 }
 
 type GetEnterpriseDingtalkGroupResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEnterpriseDingtalkGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEnterpriseDingtalkGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEnterpriseDingtalkGroupResponse) String() string {
@@ -795,7 +1038,17 @@ func (s *GetEnterpriseDingtalkGroupResponse) SetBody(v *GetEnterpriseDingtalkGro
 }
 
 type GetEnterpriseDingtalkGroupCustomerMemberRequest struct {
-	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13900001111
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
@@ -818,11 +1071,23 @@ func (s *GetEnterpriseDingtalkGroupCustomerMemberRequest) SetOpenGroupId(v strin
 }
 
 type GetEnterpriseDingtalkGroupCustomerMemberResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *EnterpriseDingtalkGroupMember `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *EnterpriseDingtalkGroupMember `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Invalid data
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 12
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetEnterpriseDingtalkGroupCustomerMemberResponseBody) String() string {
@@ -859,9 +1124,9 @@ func (s *GetEnterpriseDingtalkGroupCustomerMemberResponseBody) SetSuccess(v bool
 }
 
 type GetEnterpriseDingtalkGroupCustomerMemberResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEnterpriseDingtalkGroupCustomerMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEnterpriseDingtalkGroupCustomerMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEnterpriseDingtalkGroupCustomerMemberResponse) String() string {
@@ -889,18 +1154,76 @@ func (s *GetEnterpriseDingtalkGroupCustomerMemberResponse) SetBody(v *GetEnterpr
 
 type ListDdTaskOrderRequest struct {
 	// callerParentId
+	//
+	// example:
+	//
+	// 123
 	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
 	// callerType
+	//
+	// example:
+	//
+	// 123
 	CallerType *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
 	// callerUid
+	//
+	// example:
+	//
+	// 123
 	CallerUid *int64 `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// createRealName
+	//
+	// example:
+	//
+	// Tom
+	CreateRealName *string `json:"CreateRealName,omitempty" xml:"CreateRealName,omitempty"`
+	// endTime
+	//
+	// example:
+	//
+	// 2024-08-20 14:09:16
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// openGroupId
+	//
+	// example:
+	//
+	// DAWNN14N
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 	// orderId
+	//
+	// example:
+	//
+	// E2112019N14PBY
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// pageNo
+	//
+	// example:
+	//
+	// 1
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// pageSize
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 2F8557E4-742B-1CF7-8E83-28CD0C1F7B48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// startTime
+	//
+	// example:
+	//
+	// 2024-08-01 14:09:11
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// taskStatus
+	//
+	// example:
+	//
+	// dealingNode
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -927,6 +1250,16 @@ func (s *ListDdTaskOrderRequest) SetCallerUid(v int64) *ListDdTaskOrderRequest {
 	return s
 }
 
+func (s *ListDdTaskOrderRequest) SetCreateRealName(v string) *ListDdTaskOrderRequest {
+	s.CreateRealName = &v
+	return s
+}
+
+func (s *ListDdTaskOrderRequest) SetEndTime(v string) *ListDdTaskOrderRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ListDdTaskOrderRequest) SetOpenGroupId(v string) *ListDdTaskOrderRequest {
 	s.OpenGroupId = &v
 	return s
@@ -937,8 +1270,23 @@ func (s *ListDdTaskOrderRequest) SetOrderId(v string) *ListDdTaskOrderRequest {
 	return s
 }
 
+func (s *ListDdTaskOrderRequest) SetPageNo(v string) *ListDdTaskOrderRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDdTaskOrderRequest) SetPageSize(v string) *ListDdTaskOrderRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *ListDdTaskOrderRequest) SetRequestId(v string) *ListDdTaskOrderRequest {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListDdTaskOrderRequest) SetStartTime(v string) *ListDdTaskOrderRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -949,14 +1297,34 @@ func (s *ListDdTaskOrderRequest) SetTaskStatus(v string) *ListDdTaskOrderRequest
 
 type ListDdTaskOrderResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
+	//
+	// example:
+	//
+	// {   "msg": "请求成功",   "code": "200",   "data": [     {       "wfNodeId": "dealingNode",//任务单状态       "createEmpId": null,//创建人工号，可以忽略       "createTime": 1637571435000,//任务单创建时间       "orderId": "E2111221H1UKCZ",//任务单号       "isImportant": "normal",//是否紧急       "closeTime": null,//任务单关单时间       "taskTitle": "测试单16点44",//标题       "productType": "3270"//问题分类     },     {       "wfNodeId": "dealingNode",       "createEmpId": null,       "createTime": 1637820497000,       "orderId": "E211125CG111EM",       "isImportant": "normal",       "closeTime": null,       "taskTitle": "测试单14",       "class": "com.aliyun.dingtalklanding.dto.OpenTaskOrderDTO",       "productType": "3270"     }   ],   "success": true,   "requestId": "123",   "class": "com.aliyun.dingtalklanding.pop.dto.PopResultDTO" }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// msg
+	//
+	// example:
+	//
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 2F8557E4-742B-1CF7-8E83-28CD0C1F7B48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -994,9 +1362,9 @@ func (s *ListDdTaskOrderResponseBody) SetSuccess(v bool) *ListDdTaskOrderRespons
 }
 
 type ListDdTaskOrderResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDdTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDdTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDdTaskOrderResponse) String() string {
@@ -1023,6 +1391,11 @@ func (s *ListDdTaskOrderResponse) SetBody(v *ListDdTaskOrderResponseBody) *ListD
 }
 
 type ListEnterpriseDingtalkGroupCustomerMembersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
@@ -1040,11 +1413,23 @@ func (s *ListEnterpriseDingtalkGroupCustomerMembersRequest) SetOpenGroupId(v str
 }
 
 type ListEnterpriseDingtalkGroupCustomerMembersResponseBody struct {
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*EnterpriseDingtalkGroupMember `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*EnterpriseDingtalkGroupMember `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Invalid data
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 123
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListEnterpriseDingtalkGroupCustomerMembersResponseBody) String() string {
@@ -1081,9 +1466,9 @@ func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBody) SetSuccess(v bo
 }
 
 type ListEnterpriseDingtalkGroupCustomerMembersResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEnterpriseDingtalkGroupCustomerMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnterpriseDingtalkGroupCustomerMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEnterpriseDingtalkGroupCustomerMembersResponse) String() string {
@@ -1110,11 +1495,23 @@ func (s *ListEnterpriseDingtalkGroupCustomerMembersResponse) SetBody(v *ListEnte
 }
 
 type ListEnterpriseDingtalkGroupsResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListEnterpriseDingtalkGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListEnterpriseDingtalkGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Data Invalid
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 12xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListEnterpriseDingtalkGroupsResponseBody) String() string {
@@ -1151,7 +1548,13 @@ func (s *ListEnterpriseDingtalkGroupsResponseBody) SetSuccess(v bool) *ListEnter
 }
 
 type ListEnterpriseDingtalkGroupsResponseBodyData struct {
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// A公司服务群
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 123
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
@@ -1174,9 +1577,9 @@ func (s *ListEnterpriseDingtalkGroupsResponseBodyData) SetOpenGroupId(v string) 
 }
 
 type ListEnterpriseDingtalkGroupsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEnterpriseDingtalkGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnterpriseDingtalkGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEnterpriseDingtalkGroupsResponse) String() string {
@@ -1203,6 +1606,11 @@ func (s *ListEnterpriseDingtalkGroupsResponse) SetBody(v *ListEnterpriseDingtalk
 }
 
 type ListProductByGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cidXcezGVQJjiWy2PzXylGwvg==
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
@@ -1221,14 +1629,34 @@ func (s *ListProductByGroupRequest) SetOpenGroupId(v string) *ListProductByGroup
 
 type ListProductByGroupResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
+	//
+	// example:
+	//
+	// [     {       "wfNodeId": "dealingNode",//任务单状态       "createEmpId": null,//创建人工号，可以忽略       "createTime": 1637571435000,//任务单创建时间       "orderId": "E2111221H1UKCZ",//任务单号       "isImportant": "normal",//是否紧急       "closeTime": null,//任务单关单时间       "taskTitle": "测试单16点44",//标题       "productType": "3270"//问题分类     },     {       "wfNodeId": "dealingNode",       "createEmpId": null,       "createTime": 1637820497000,       "orderId": "E211125CG111EM",       "isImportant": "normal",       "closeTime": null,       "taskTitle": "测试单14",       "class": "com.aliyun.dingtalklanding.dto.OpenTaskOrderDTO",       "productType": "3270"     }   ]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// msg
+	//
+	// example:
+	//
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1266,9 +1694,9 @@ func (s *ListProductByGroupResponseBody) SetSuccess(v bool) *ListProductByGroupR
 }
 
 type ListProductByGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProductByGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductByGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProductByGroupResponse) String() string {
@@ -1295,6 +1723,13 @@ func (s *ListProductByGroupResponse) SetBody(v *ListProductByGroupResponseBody) 
 }
 
 type QueryTaskInfoRequest struct {
+	// The ID of the order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E220303AE1BYY3
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -1312,11 +1747,36 @@ func (s *QueryTaskInfoRequest) SetOrderId(v string) *QueryTaskInfoRequest {
 }
 
 type QueryTaskInfoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code or error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	//
+	// example:
+	//
+	// {"taskStatus": "dealingNode","orderId": "E21111796147LE"}
+	Data *QueryTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 43135C31-E47A-5AD7-A693-6DC635201CE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryTaskInfoResponseBody) String() string {
@@ -1332,8 +1792,8 @@ func (s *QueryTaskInfoResponseBody) SetCode(v string) *QueryTaskInfoResponseBody
 	return s
 }
 
-func (s *QueryTaskInfoResponseBody) SetData(v string) *QueryTaskInfoResponseBody {
-	s.Data = &v
+func (s *QueryTaskInfoResponseBody) SetData(v *QueryTaskInfoResponseBodyData) *QueryTaskInfoResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1352,10 +1812,33 @@ func (s *QueryTaskInfoResponseBody) SetSuccess(v bool) *QueryTaskInfoResponseBod
 	return s
 }
 
+type QueryTaskInfoResponseBodyData struct {
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s QueryTaskInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTaskInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTaskInfoResponseBodyData) SetOrderId(v string) *QueryTaskInfoResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryTaskInfoResponseBodyData) SetTaskStatus(v string) *QueryTaskInfoResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
 type QueryTaskInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTaskInfoResponse) String() string {
@@ -1382,12 +1865,36 @@ func (s *QueryTaskInfoResponse) SetBody(v *QueryTaskInfoResponseBody) *QueryTask
 }
 
 type ReplyMessageApiRequest struct {
-	MsgContent  *string `json:"MsgContent,omitempty" xml:"MsgContent,omitempty"`
-	MsgType     *string `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 消息内容
+	MsgContent *string `json:"MsgContent,omitempty" xml:"MsgContent,omitempty"`
+	// example:
+	//
+	// text
+	MsgType *string `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
+	// example:
+	//
+	// cid+lUpHxTIXt7DYqJDcpVxlA==
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
-	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E2012312421
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 123
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 用户名
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ReplyMessageApiRequest) String() string {
@@ -1430,14 +1937,34 @@ func (s *ReplyMessageApiRequest) SetUserName(v string) *ReplyMessageApiRequest {
 
 type ReplyMessageApiResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
+	//
+	// example:
+	//
+	// null
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// msg
+	//
+	// example:
+	//
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1475,9 +2002,9 @@ func (s *ReplyMessageApiResponseBody) SetSuccess(v bool) *ReplyMessageApiRespons
 }
 
 type ReplyMessageApiResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReplyMessageApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReplyMessageApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReplyMessageApiResponse) String() string {
@@ -1504,11 +2031,28 @@ func (s *ReplyMessageApiResponse) SetBody(v *ReplyMessageApiResponseBody) *Reply
 }
 
 type RestOpenTaskOrderRequest struct {
-	OpenGroupId  *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// cidXcezGVQJjiWy2PzXylGwvg==
+	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E21111796147LE
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 重开补充说明
 	ResetContent *string `json:"ResetContent,omitempty" xml:"ResetContent,omitempty"`
-	ResetType    *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// 枚举值：6:解决方案无效；7:当前问题仍有疑问需要咨询；8:问题重复出现
+	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// example:
+	//
+	// 操作人姓名
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s RestOpenTaskOrderRequest) String() string {
@@ -1545,11 +2089,26 @@ func (s *RestOpenTaskOrderRequest) SetUserName(v string) *RestOpenTaskOrderReque
 }
 
 type RestOpenTaskOrderResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 请求成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RestOpenTaskOrderResponseBody) String() string {
@@ -1586,9 +2145,9 @@ func (s *RestOpenTaskOrderResponseBody) SetSuccess(v bool) *RestOpenTaskOrderRes
 }
 
 type RestOpenTaskOrderResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestOpenTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestOpenTaskOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestOpenTaskOrderResponse) String() string {
@@ -1661,6 +2220,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭任务单
+//
+// @param request - CloseTaskOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseTaskOrderResponse
 func (client *Client) CloseTaskOrderWithOptions(request *CloseTaskOrderRequest, runtime *util.RuntimeOptions) (_result *CloseTaskOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1698,6 +2266,13 @@ func (client *Client) CloseTaskOrderWithOptions(request *CloseTaskOrderRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭任务单
+//
+// @param request - CloseTaskOrderRequest
+//
+// @return CloseTaskOrderResponse
 func (client *Client) CloseTaskOrder(request *CloseTaskOrderRequest) (_result *CloseTaskOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseTaskOrderResponse{}
@@ -1709,6 +2284,15 @@ func (client *Client) CloseTaskOrder(request *CloseTaskOrderRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工单
+//
+// @param request - CreateTaskOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskOrderResponse
 func (client *Client) CreateTaskOrderWithOptions(request *CreateTaskOrderRequest, runtime *util.RuntimeOptions) (_result *CreateTaskOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1770,6 +2354,13 @@ func (client *Client) CreateTaskOrderWithOptions(request *CreateTaskOrderRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工单
+//
+// @param request - CreateTaskOrderRequest
+//
+// @return CreateTaskOrderResponse
 func (client *Client) CreateTaskOrder(request *CreateTaskOrderRequest) (_result *CreateTaskOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTaskOrderResponse{}
@@ -1781,6 +2372,15 @@ func (client *Client) CreateTaskOrder(request *CreateTaskOrderRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 告警建单
+//
+// @param tmpReq - CreateTaskOrderByEventReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskOrderByEventReportResponse
 func (client *Client) CreateTaskOrderByEventReportWithOptions(tmpReq *CreateTaskOrderByEventReportRequest, runtime *util.RuntimeOptions) (_result *CreateTaskOrderByEventReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1860,6 +2460,13 @@ func (client *Client) CreateTaskOrderByEventReportWithOptions(tmpReq *CreateTask
 	return _result, _err
 }
 
+// Summary:
+//
+// 告警建单
+//
+// @param request - CreateTaskOrderByEventReportRequest
+//
+// @return CreateTaskOrderByEventReportResponse
 func (client *Client) CreateTaskOrderByEventReport(request *CreateTaskOrderByEventReportRequest) (_result *CreateTaskOrderByEventReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTaskOrderByEventReportResponse{}
@@ -1871,6 +2478,15 @@ func (client *Client) CreateTaskOrderByEventReport(request *CreateTaskOrderByEve
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除企业钉群客户侧成员
+//
+// @param tmpReq - DeleteEnterpriseDingtalkGroupCustomerMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnterpriseDingtalkGroupCustomerMemberResponse
 func (client *Client) DeleteEnterpriseDingtalkGroupCustomerMemberWithOptions(tmpReq *DeleteEnterpriseDingtalkGroupCustomerMemberRequest, runtime *util.RuntimeOptions) (_result *DeleteEnterpriseDingtalkGroupCustomerMemberResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1914,6 +2530,13 @@ func (client *Client) DeleteEnterpriseDingtalkGroupCustomerMemberWithOptions(tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除企业钉群客户侧成员
+//
+// @param request - DeleteEnterpriseDingtalkGroupCustomerMemberRequest
+//
+// @return DeleteEnterpriseDingtalkGroupCustomerMemberResponse
 func (client *Client) DeleteEnterpriseDingtalkGroupCustomerMember(request *DeleteEnterpriseDingtalkGroupCustomerMemberRequest) (_result *DeleteEnterpriseDingtalkGroupCustomerMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEnterpriseDingtalkGroupCustomerMemberResponse{}
@@ -1925,6 +2548,15 @@ func (client *Client) DeleteEnterpriseDingtalkGroupCustomerMember(request *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业钉群
+//
+// @param request - GetEnterpriseDingtalkGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEnterpriseDingtalkGroupResponse
 func (client *Client) GetEnterpriseDingtalkGroupWithOptions(request *GetEnterpriseDingtalkGroupRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDingtalkGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1958,6 +2590,13 @@ func (client *Client) GetEnterpriseDingtalkGroupWithOptions(request *GetEnterpri
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业钉群
+//
+// @param request - GetEnterpriseDingtalkGroupRequest
+//
+// @return GetEnterpriseDingtalkGroupResponse
 func (client *Client) GetEnterpriseDingtalkGroup(request *GetEnterpriseDingtalkGroupRequest) (_result *GetEnterpriseDingtalkGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEnterpriseDingtalkGroupResponse{}
@@ -1969,6 +2608,15 @@ func (client *Client) GetEnterpriseDingtalkGroup(request *GetEnterpriseDingtalkG
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取企业钉群客户侧成员
+//
+// @param request - GetEnterpriseDingtalkGroupCustomerMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEnterpriseDingtalkGroupCustomerMemberResponse
 func (client *Client) GetEnterpriseDingtalkGroupCustomerMemberWithOptions(request *GetEnterpriseDingtalkGroupCustomerMemberRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDingtalkGroupCustomerMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2006,6 +2654,13 @@ func (client *Client) GetEnterpriseDingtalkGroupCustomerMemberWithOptions(reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取企业钉群客户侧成员
+//
+// @param request - GetEnterpriseDingtalkGroupCustomerMemberRequest
+//
+// @return GetEnterpriseDingtalkGroupCustomerMemberResponse
 func (client *Client) GetEnterpriseDingtalkGroupCustomerMember(request *GetEnterpriseDingtalkGroupCustomerMemberRequest) (_result *GetEnterpriseDingtalkGroupCustomerMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEnterpriseDingtalkGroupCustomerMemberResponse{}
@@ -2017,6 +2672,15 @@ func (client *Client) GetEnterpriseDingtalkGroupCustomerMember(request *GetEnter
 	return _result, _err
 }
 
+// Summary:
+//
+// ListDdTaskOrder
+//
+// @param request - ListDdTaskOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDdTaskOrderResponse
 func (client *Client) ListDdTaskOrderWithOptions(request *ListDdTaskOrderRequest, runtime *util.RuntimeOptions) (_result *ListDdTaskOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2035,6 +2699,14 @@ func (client *Client) ListDdTaskOrderWithOptions(request *ListDdTaskOrderRequest
 		query["CallerUid"] = request.CallerUid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreateRealName)) {
+		query["CreateRealName"] = request.CreateRealName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OpenGroupId)) {
 		query["OpenGroupId"] = request.OpenGroupId
 	}
@@ -2043,8 +2715,20 @@ func (client *Client) ListDdTaskOrderWithOptions(request *ListDdTaskOrderRequest
 		query["OrderId"] = request.OrderId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
 		query["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskStatus)) {
@@ -2074,6 +2758,13 @@ func (client *Client) ListDdTaskOrderWithOptions(request *ListDdTaskOrderRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// ListDdTaskOrder
+//
+// @param request - ListDdTaskOrderRequest
+//
+// @return ListDdTaskOrderResponse
 func (client *Client) ListDdTaskOrder(request *ListDdTaskOrderRequest) (_result *ListDdTaskOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDdTaskOrderResponse{}
@@ -2085,6 +2776,15 @@ func (client *Client) ListDdTaskOrder(request *ListDdTaskOrderRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取钉群中所有客户侧人员信息
+//
+// @param request - ListEnterpriseDingtalkGroupCustomerMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnterpriseDingtalkGroupCustomerMembersResponse
 func (client *Client) ListEnterpriseDingtalkGroupCustomerMembersWithOptions(request *ListEnterpriseDingtalkGroupCustomerMembersRequest, runtime *util.RuntimeOptions) (_result *ListEnterpriseDingtalkGroupCustomerMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2118,6 +2818,13 @@ func (client *Client) ListEnterpriseDingtalkGroupCustomerMembersWithOptions(requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取钉群中所有客户侧人员信息
+//
+// @param request - ListEnterpriseDingtalkGroupCustomerMembersRequest
+//
+// @return ListEnterpriseDingtalkGroupCustomerMembersResponse
 func (client *Client) ListEnterpriseDingtalkGroupCustomerMembers(request *ListEnterpriseDingtalkGroupCustomerMembersRequest) (_result *ListEnterpriseDingtalkGroupCustomerMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnterpriseDingtalkGroupCustomerMembersResponse{}
@@ -2129,6 +2836,15 @@ func (client *Client) ListEnterpriseDingtalkGroupCustomerMembers(request *ListEn
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询所有企业钉群成员
+//
+// @param request - ListEnterpriseDingtalkGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnterpriseDingtalkGroupsResponse
 func (client *Client) ListEnterpriseDingtalkGroupsWithOptions(runtime *util.RuntimeOptions) (_result *ListEnterpriseDingtalkGroupsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -2151,6 +2867,11 @@ func (client *Client) ListEnterpriseDingtalkGroupsWithOptions(runtime *util.Runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询所有企业钉群成员
+//
+// @return ListEnterpriseDingtalkGroupsResponse
 func (client *Client) ListEnterpriseDingtalkGroups() (_result *ListEnterpriseDingtalkGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnterpriseDingtalkGroupsResponse{}
@@ -2162,6 +2883,15 @@ func (client *Client) ListEnterpriseDingtalkGroups() (_result *ListEnterpriseDin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取问题分类
+//
+// @param request - ListProductByGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProductByGroupResponse
 func (client *Client) ListProductByGroupWithOptions(request *ListProductByGroupRequest, runtime *util.RuntimeOptions) (_result *ListProductByGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2195,6 +2925,13 @@ func (client *Client) ListProductByGroupWithOptions(request *ListProductByGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取问题分类
+//
+// @param request - ListProductByGroupRequest
+//
+// @return ListProductByGroupResponse
 func (client *Client) ListProductByGroup(request *ListProductByGroupRequest) (_result *ListProductByGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProductByGroupResponse{}
@@ -2206,6 +2943,15 @@ func (client *Client) ListProductByGroup(request *ListProductByGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工单状态
+//
+// @param request - QueryTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskInfoResponse
 func (client *Client) QueryTaskInfoWithOptions(request *QueryTaskInfoRequest, runtime *util.RuntimeOptions) (_result *QueryTaskInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2239,6 +2985,13 @@ func (client *Client) QueryTaskInfoWithOptions(request *QueryTaskInfoRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工单状态
+//
+// @param request - QueryTaskInfoRequest
+//
+// @return QueryTaskInfoResponse
 func (client *Client) QueryTaskInfo(request *QueryTaskInfoRequest) (_result *QueryTaskInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskInfoResponse{}
@@ -2250,6 +3003,15 @@ func (client *Client) QueryTaskInfo(request *QueryTaskInfoRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// 客户回复消息
+//
+// @param request - ReplyMessageApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplyMessageApiResponse
 func (client *Client) ReplyMessageApiWithOptions(request *ReplyMessageApiRequest, runtime *util.RuntimeOptions) (_result *ReplyMessageApiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2303,6 +3065,13 @@ func (client *Client) ReplyMessageApiWithOptions(request *ReplyMessageApiRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 客户回复消息
+//
+// @param request - ReplyMessageApiRequest
+//
+// @return ReplyMessageApiResponse
 func (client *Client) ReplyMessageApi(request *ReplyMessageApiRequest) (_result *ReplyMessageApiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReplyMessageApiResponse{}
@@ -2314,6 +3083,15 @@ func (client *Client) ReplyMessageApi(request *ReplyMessageApiRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 重开任务单(待客户确认状态)
+//
+// @param request - RestOpenTaskOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestOpenTaskOrderResponse
 func (client *Client) RestOpenTaskOrderWithOptions(request *RestOpenTaskOrderRequest, runtime *util.RuntimeOptions) (_result *RestOpenTaskOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2363,6 +3141,13 @@ func (client *Client) RestOpenTaskOrderWithOptions(request *RestOpenTaskOrderReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 重开任务单(待客户确认状态)
+//
+// @param request - RestOpenTaskOrderRequest
+//
+// @return RestOpenTaskOrderResponse
 func (client *Client) RestOpenTaskOrder(request *RestOpenTaskOrderRequest) (_result *RestOpenTaskOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestOpenTaskOrderResponse{}
