@@ -6601,10 +6601,11 @@ func (s *CreateEventShrinkHeaders) SetAccountContextShrink(v string) *CreateEven
 }
 
 type CreateEventRequest struct {
-	Attendees   []*CreateEventRequestAttendees `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
-	Description *string                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	End         *CreateEventRequestEnd         `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
-	Extra       map[string]*string             `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Attendees     []*CreateEventRequestAttendees     `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
+	CardInstances []*CreateEventRequestCardInstances `json:"CardInstances,omitempty" xml:"CardInstances,omitempty" type:"Repeated"`
+	Description   *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	End           *CreateEventRequestEnd             `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
+	Extra         map[string]*string                 `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// example:
 	//
 	// true
@@ -6639,6 +6640,11 @@ func (s CreateEventRequest) GoString() string {
 
 func (s *CreateEventRequest) SetAttendees(v []*CreateEventRequestAttendees) *CreateEventRequest {
 	s.Attendees = v
+	return s
+}
+
+func (s *CreateEventRequest) SetCardInstances(v []*CreateEventRequestCardInstances) *CreateEventRequest {
+	s.CardInstances = v
 	return s
 }
 
@@ -6733,6 +6739,29 @@ func (s *CreateEventRequestAttendees) SetId(v string) *CreateEventRequestAttende
 
 func (s *CreateEventRequestAttendees) SetIsOptional(v bool) *CreateEventRequestAttendees {
 	s.IsOptional = &v
+	return s
+}
+
+type CreateEventRequestCardInstances struct {
+	OutTrackId *string `json:"OutTrackId,omitempty" xml:"OutTrackId,omitempty"`
+	Scenario   *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+}
+
+func (s CreateEventRequestCardInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventRequestCardInstances) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventRequestCardInstances) SetOutTrackId(v string) *CreateEventRequestCardInstances {
+	s.OutTrackId = &v
+	return s
+}
+
+func (s *CreateEventRequestCardInstances) SetScenario(v string) *CreateEventRequestCardInstances {
+	s.Scenario = &v
 	return s
 }
 
@@ -7042,10 +7071,11 @@ func (s *CreateEventRequestStart) SetTimeZone(v string) *CreateEventRequestStart
 }
 
 type CreateEventShrinkRequest struct {
-	AttendeesShrink *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndShrink       *string `json:"End,omitempty" xml:"End,omitempty"`
-	ExtraShrink     *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	AttendeesShrink     *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
+	CardInstancesShrink *string `json:"CardInstances,omitempty" xml:"CardInstances,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndShrink           *string `json:"End,omitempty" xml:"End,omitempty"`
+	ExtraShrink         *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// example:
 	//
 	// true
@@ -7080,6 +7110,11 @@ func (s CreateEventShrinkRequest) GoString() string {
 
 func (s *CreateEventShrinkRequest) SetAttendeesShrink(v string) *CreateEventShrinkRequest {
 	s.AttendeesShrink = &v
+	return s
+}
+
+func (s *CreateEventShrinkRequest) SetCardInstancesShrink(v string) *CreateEventShrinkRequest {
+	s.CardInstancesShrink = &v
 	return s
 }
 
@@ -31326,6 +31361,249 @@ func (s *GetSheetResponse) SetBody(v *GetSheetResponseBody) *GetSheetResponse {
 	return s
 }
 
+type GetSheetContentJobIdHeaders struct {
+	CommonHeaders  map[string]*string                         `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetSheetContentJobIdHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetSheetContentJobIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdHeaders) SetCommonHeaders(v map[string]*string) *GetSheetContentJobIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetSheetContentJobIdHeaders) SetAccountContext(v *GetSheetContentJobIdHeadersAccountContext) *GetSheetContentJobIdHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetSheetContentJobIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetSheetContentJobIdHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdHeadersAccountContext) SetAccountId(v string) *GetSheetContentJobIdHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetSheetContentJobIdShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetSheetContentJobIdShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetSheetContentJobIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetSheetContentJobIdShrinkHeaders) SetAccountContextShrink(v string) *GetSheetContentJobIdShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetSheetContentJobIdRequest struct {
+	// example:
+	//
+	// MNDoBb60VLYDGNPytQe7Gzp4JlemrZQ3
+	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	// example:
+	//
+	// dingTalksheetToxlsx
+	ExportType    *string                                   `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	TenantContext *GetSheetContentJobIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetSheetContentJobIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdRequest) SetDentryUuid(v string) *GetSheetContentJobIdRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdRequest) SetExportType(v string) *GetSheetContentJobIdRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdRequest) SetTenantContext(v *GetSheetContentJobIdRequestTenantContext) *GetSheetContentJobIdRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetSheetContentJobIdRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetSheetContentJobIdRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdRequestTenantContext) SetTenantId(v string) *GetSheetContentJobIdRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetSheetContentJobIdShrinkRequest struct {
+	// example:
+	//
+	// MNDoBb60VLYDGNPytQe7Gzp4JlemrZQ3
+	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	// example:
+	//
+	// dingTalksheetToxlsx
+	ExportType          *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetSheetContentJobIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdShrinkRequest) SetDentryUuid(v string) *GetSheetContentJobIdShrinkRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdShrinkRequest) SetExportType(v string) *GetSheetContentJobIdShrinkRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdShrinkRequest) SetTenantContextShrink(v string) *GetSheetContentJobIdShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetSheetContentJobIdResponseBody struct {
+	// example:
+	//
+	// 14640056080
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// init
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetSheetContentJobIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdResponseBody) SetJobId(v string) *GetSheetContentJobIdResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdResponseBody) SetRequestId(v string) *GetSheetContentJobIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdResponseBody) SetStatus(v string) *GetSheetContentJobIdResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdResponseBody) SetVendorRequestId(v string) *GetSheetContentJobIdResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdResponseBody) SetVendorType(v string) *GetSheetContentJobIdResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetSheetContentJobIdResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSheetContentJobIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSheetContentJobIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSheetContentJobIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSheetContentJobIdResponse) SetHeaders(v map[string]*string) *GetSheetContentJobIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSheetContentJobIdResponse) SetStatusCode(v int32) *GetSheetContentJobIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSheetContentJobIdResponse) SetBody(v *GetSheetContentJobIdResponseBody) *GetSheetContentJobIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetSpaceDirectoriesHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetSpaceDirectoriesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -33842,6 +34120,226 @@ func (s *GetUserResponse) SetStatusCode(v int32) *GetUserResponse {
 }
 
 func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserIdHeaders struct {
+	CommonHeaders  map[string]*string              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetUserIdHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetUserIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdHeaders) SetAccountContext(v *GetUserIdHeadersAccountContext) *GetUserIdHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetUserIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetUserIdHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdHeadersAccountContext) SetAccountId(v string) *GetUserIdHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetUserIdShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetUserIdShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdShrinkHeaders) SetAccountContextShrink(v string) *GetUserIdShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetUserIdRequest struct {
+	TenantContext *GetUserIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// unionId
+	//
+	// example:
+	//
+	// ****iE
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+}
+
+func (s GetUserIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdRequest) SetTenantContext(v *GetUserIdRequestTenantContext) *GetUserIdRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *GetUserIdRequest) SetUnionId(v string) *GetUserIdRequest {
+	s.UnionId = &v
+	return s
+}
+
+type GetUserIdRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetUserIdRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdRequestTenantContext) SetTenantId(v string) *GetUserIdRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetUserIdShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// unionId
+	//
+	// example:
+	//
+	// ****iE
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+}
+
+func (s GetUserIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdShrinkRequest) SetTenantContextShrink(v string) *GetUserIdShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *GetUserIdShrinkRequest) SetUnionId(v string) *GetUserIdShrinkRequest {
+	s.UnionId = &v
+	return s
+}
+
+type GetUserIdResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetUserIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdResponseBody) SetRequestId(v string) *GetUserIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserIdResponseBody) SetUserId(v string) *GetUserIdResponseBody {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetUserIdResponseBody) SetVendorRequestId(v string) *GetUserIdResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetUserIdResponseBody) SetVendorType(v string) *GetUserIdResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetUserIdResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUserIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdResponse) SetHeaders(v map[string]*string) *GetUserIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserIdResponse) SetStatusCode(v int32) *GetUserIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserIdResponse) SetBody(v *GetUserIdResponseBody) *GetUserIdResponse {
 	s.Body = v
 	return s
 }
@@ -42333,9 +42831,10 @@ type PatchEventRequest struct {
 	// example:
 	//
 	// primary
-	CalendarId  *string               `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
-	Description *string               `json:"Description,omitempty" xml:"Description,omitempty"`
-	End         *PatchEventRequestEnd `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
+	CalendarId    *string                           `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	CardInstances []*PatchEventRequestCardInstances `json:"CardInstances,omitempty" xml:"CardInstances,omitempty" type:"Repeated"`
+	Description   *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	End           *PatchEventRequestEnd             `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -42369,6 +42868,11 @@ func (s *PatchEventRequest) SetAttendees(v []*PatchEventRequestAttendees) *Patch
 
 func (s *PatchEventRequest) SetCalendarId(v string) *PatchEventRequest {
 	s.CalendarId = &v
+	return s
+}
+
+func (s *PatchEventRequest) SetCardInstances(v []*PatchEventRequestCardInstances) *PatchEventRequest {
+	s.CardInstances = v
 	return s
 }
 
@@ -42448,6 +42952,29 @@ func (s *PatchEventRequestAttendees) SetId(v string) *PatchEventRequestAttendees
 
 func (s *PatchEventRequestAttendees) SetIsOptional(v bool) *PatchEventRequestAttendees {
 	s.IsOptional = &v
+	return s
+}
+
+type PatchEventRequestCardInstances struct {
+	OutTrackId *string `json:"OutTrackId,omitempty" xml:"OutTrackId,omitempty"`
+	Scenario   *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+}
+
+func (s PatchEventRequestCardInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PatchEventRequestCardInstances) GoString() string {
+	return s.String()
+}
+
+func (s *PatchEventRequestCardInstances) SetOutTrackId(v string) *PatchEventRequestCardInstances {
+	s.OutTrackId = &v
+	return s
+}
+
+func (s *PatchEventRequestCardInstances) SetScenario(v string) *PatchEventRequestCardInstances {
+	s.Scenario = &v
 	return s
 }
 
@@ -42700,9 +43227,10 @@ type PatchEventShrinkRequest struct {
 	// example:
 	//
 	// primary
-	CalendarId  *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndShrink   *string `json:"End,omitempty" xml:"End,omitempty"`
+	CalendarId          *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	CardInstancesShrink *string `json:"CardInstances,omitempty" xml:"CardInstances,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndShrink           *string `json:"End,omitempty" xml:"End,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -42736,6 +43264,11 @@ func (s *PatchEventShrinkRequest) SetAttendeesShrink(v string) *PatchEventShrink
 
 func (s *PatchEventShrinkRequest) SetCalendarId(v string) *PatchEventShrinkRequest {
 	s.CalendarId = &v
+	return s
+}
+
+func (s *PatchEventShrinkRequest) SetCardInstancesShrink(v string) *PatchEventShrinkRequest {
+	s.CardInstancesShrink = &v
 	return s
 }
 
@@ -67416,6 +67949,10 @@ func (client *Client) CreateEventWithOptions(tmpReq *CreateEventRequest, tmpHead
 		request.AttendeesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attendees, tea.String("Attendees"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.CardInstances)) {
+		request.CardInstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CardInstances, tea.String("CardInstances"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.End)) {
 		request.EndShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.End, tea.String("End"), tea.String("json"))
 	}
@@ -67455,6 +67992,10 @@ func (client *Client) CreateEventWithOptions(tmpReq *CreateEventRequest, tmpHead
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AttendeesShrink)) {
 		body["Attendees"] = request.AttendeesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardInstancesShrink)) {
+		body["CardInstances"] = request.CardInstancesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -75096,6 +75637,99 @@ func (client *Client) GetSheet(request *GetSheetRequest) (_result *GetSheetRespo
 
 // Summary:
 //
+// 获取表格文档内容jobId
+//
+// @param tmpReq - GetSheetContentJobIdRequest
+//
+// @param tmpHeader - GetSheetContentJobIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSheetContentJobIdResponse
+func (client *Client) GetSheetContentJobIdWithOptions(tmpReq *GetSheetContentJobIdRequest, tmpHeader *GetSheetContentJobIdHeaders, runtime *util.RuntimeOptions) (_result *GetSheetContentJobIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetSheetContentJobIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetSheetContentJobIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DentryUuid)) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		body["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSheetContentJobId"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v2/documents/getSheetContentJobId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSheetContentJobIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表格文档内容jobId
+//
+// @param request - GetSheetContentJobIdRequest
+//
+// @return GetSheetContentJobIdResponse
+func (client *Client) GetSheetContentJobId(request *GetSheetContentJobIdRequest) (_result *GetSheetContentJobIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetSheetContentJobIdHeaders{}
+	_result = &GetSheetContentJobIdResponse{}
+	_body, _err := client.GetSheetContentJobIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询知识库下的目录结构
 //
 // @param tmpReq - GetSpaceDirectoriesRequest
@@ -75560,6 +76194,95 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	headers := &GetUserHeaders{}
 	_result = &GetUserResponse{}
 	_body, _err := client.GetUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据unionId获取用户userId
+//
+// @param tmpReq - GetUserIdRequest
+//
+// @param tmpHeader - GetUserIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdResponse
+func (client *Client) GetUserIdWithOptions(tmpReq *GetUserIdRequest, tmpHeader *GetUserIdHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetUserIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetUserIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnionId)) {
+		body["UnionId"] = request.UnionId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserId"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/im/getUserId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据unionId获取用户userId
+//
+// @param request - GetUserIdRequest
+//
+// @return GetUserIdResponse
+func (client *Client) GetUserId(request *GetUserIdRequest) (_result *GetUserIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUserIdHeaders{}
+	_result = &GetUserIdResponse{}
+	_body, _err := client.GetUserIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -77718,6 +78441,10 @@ func (client *Client) PatchEventWithOptions(tmpReq *PatchEventRequest, tmpHeader
 		request.AttendeesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attendees, tea.String("Attendees"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.CardInstances)) {
+		request.CardInstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CardInstances, tea.String("CardInstances"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.End)) {
 		request.EndShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.End, tea.String("End"), tea.String("json"))
 	}
@@ -77749,6 +78476,10 @@ func (client *Client) PatchEventWithOptions(tmpReq *PatchEventRequest, tmpHeader
 
 	if !tea.BoolValue(util.IsUnset(request.CalendarId)) {
 		body["CalendarId"] = request.CalendarId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardInstancesShrink)) {
+		body["CardInstances"] = request.CardInstancesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
