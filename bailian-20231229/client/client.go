@@ -2377,7 +2377,9 @@ type GetIndexJobStatusRequest struct {
 	// example:
 	//
 	// 20230718xxxx-146c93bf
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s GetIndexJobStatusRequest) String() string {
@@ -2395,6 +2397,16 @@ func (s *GetIndexJobStatusRequest) SetIndexId(v string) *GetIndexJobStatusReques
 
 func (s *GetIndexJobStatusRequest) SetJobId(v string) *GetIndexJobStatusRequest {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetIndexJobStatusRequest) SetPageNumber(v int32) *GetIndexJobStatusRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetIndexJobStatusRequest) SetPageSize(v int32) *GetIndexJobStatusRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -7386,6 +7398,14 @@ func (client *Client) GetIndexJobStatusWithOptions(WorkspaceId *string, request 
 
 	if !tea.BoolValue(util.IsUnset(request.JobId)) {
 		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
 	}
 
 	req := &openapi.OpenApiRequest{
