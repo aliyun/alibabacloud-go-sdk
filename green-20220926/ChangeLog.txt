@@ -1,3 +1,7 @@
+2024-09-05 Version: v1.0.3
+- Update API GetBackupConfig: update response param.
+
+
 2024-09-02 Version: v1.0.2
 - Generated golang 2022-09-26 for Green.
 

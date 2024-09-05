@@ -3141,7 +3141,9 @@ type GetBackupConfigResponseBody struct {
 	// example:
 	//
 	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable            *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EnableBackup      *bool `json:"EnableBackup,omitempty" xml:"EnableBackup,omitempty"`
+	EnableBackupVoice *bool `json:"EnableBackupVoice,omitempty" xml:"EnableBackupVoice,omitempty"`
 	// example:
 	//
 	// 300
@@ -3153,7 +3155,8 @@ type GetBackupConfigResponseBody struct {
 	// example:
 	//
 	// aliyun/template/
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	PathVoice *string `json:"PathVoice,omitempty" xml:"PathVoice,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -3201,6 +3204,16 @@ func (s *GetBackupConfigResponseBody) SetEnable(v bool) *GetBackupConfigResponse
 	return s
 }
 
+func (s *GetBackupConfigResponseBody) SetEnableBackup(v bool) *GetBackupConfigResponseBody {
+	s.EnableBackup = &v
+	return s
+}
+
+func (s *GetBackupConfigResponseBody) SetEnableBackupVoice(v bool) *GetBackupConfigResponseBody {
+	s.EnableBackupVoice = &v
+	return s
+}
+
 func (s *GetBackupConfigResponseBody) SetExpireSeconds(v int32) *GetBackupConfigResponseBody {
 	s.ExpireSeconds = &v
 	return s
@@ -3213,6 +3226,11 @@ func (s *GetBackupConfigResponseBody) SetGmtModified(v string) *GetBackupConfigR
 
 func (s *GetBackupConfigResponseBody) SetPath(v string) *GetBackupConfigResponseBody {
 	s.Path = &v
+	return s
+}
+
+func (s *GetBackupConfigResponseBody) SetPathVoice(v string) *GetBackupConfigResponseBody {
+	s.PathVoice = &v
 	return s
 }
 
