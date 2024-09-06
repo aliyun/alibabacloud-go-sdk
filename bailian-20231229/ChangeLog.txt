@@ -1,3 +1,6 @@
+2024-09-06 Version: v1.8.3
+- Generated golang 2023-12-29 for bailian.
+
 2024-09-05 Version: v1.8.2
 - Update API GetIndexJobStatus: add param PageNumber.
 - Update API GetIndexJobStatus: add param pageSize.
