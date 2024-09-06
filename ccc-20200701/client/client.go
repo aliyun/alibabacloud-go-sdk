@@ -26534,6 +26534,8 @@ type ListCallDetailRecordsV2Request struct {
 	//
 	// 100
 	PageSize                    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ReleaseInitiatorList        *string `json:"ReleaseInitiatorList,omitempty" xml:"ReleaseInitiatorList,omitempty"`
+	ReleaseReasonList           *string `json:"ReleaseReasonList,omitempty" xml:"ReleaseReasonList,omitempty"`
 	SatisfactionDescriptionList *string `json:"SatisfactionDescriptionList,omitempty" xml:"SatisfactionDescriptionList,omitempty"`
 	// example:
 	//
@@ -26654,6 +26656,16 @@ func (s *ListCallDetailRecordsV2Request) SetPageNumber(v int32) *ListCallDetailR
 
 func (s *ListCallDetailRecordsV2Request) SetPageSize(v int32) *ListCallDetailRecordsV2Request {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetReleaseInitiatorList(v string) *ListCallDetailRecordsV2Request {
+	s.ReleaseInitiatorList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetReleaseReasonList(v string) *ListCallDetailRecordsV2Request {
+	s.ReleaseReasonList = &v
 	return s
 }
 
@@ -26814,6 +26826,7 @@ type ListCallDetailRecordsV2ResponseBodyDataList struct {
 	//
 	// 16
 	CallDuration *string `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	CallIds      *string `json:"CallIds,omitempty" xml:"CallIds,omitempty"`
 	// example:
 	//
 	// 1332315****
@@ -27020,6 +27033,11 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetBroker(v string) *ListC
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetCallDuration(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
 	s.CallDuration = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetCallIds(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.CallIds = &v
 	return s
 }
 
@@ -71762,6 +71780,14 @@ func (client *Client) ListCallDetailRecordsV2WithOptions(request *ListCallDetail
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseInitiatorList)) {
+		query["ReleaseInitiatorList"] = request.ReleaseInitiatorList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseReasonList)) {
+		query["ReleaseReasonList"] = request.ReleaseReasonList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SatisfactionDescriptionList)) {
