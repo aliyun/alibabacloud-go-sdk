@@ -31095,7 +31095,8 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// true
-	EnableAuthToken *string `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
+	EnableAuthToken *string            `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
+	ExtraInfo       map[string]*string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The ID of the Grafana workspace.
 	//
 	// example:
@@ -31291,6 +31292,11 @@ func (s *GetPrometheusInstanceResponseBodyData) SetEnableAuthFreeWrite(v bool) *
 
 func (s *GetPrometheusInstanceResponseBodyData) SetEnableAuthToken(v string) *GetPrometheusInstanceResponseBodyData {
 	s.EnableAuthToken = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetExtraInfo(v map[string]*string) *GetPrometheusInstanceResponseBodyData {
+	s.ExtraInfo = v
 	return s
 }
 
