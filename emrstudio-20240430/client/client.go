@@ -17,7 +17,9 @@ type CreateWorkflowRequest struct {
 	// example:
 	//
 	// NONE
-	AlertStrategy *string `json:"alertStrategy,omitempty" xml:"alertStrategy,omitempty"`
+	AlertStrategy           *string `json:"alertStrategy,omitempty" xml:"alertStrategy,omitempty"`
+	TaskDefinitionJsonValue *string `json:"taskDefinitionJsonValue,omitempty" xml:"taskDefinitionJsonValue,omitempty"`
+	TaskRelationJsonValue   *string `json:"taskRelationJsonValue,omitempty" xml:"taskRelationJsonValue,omitempty"`
 	// example:
 	//
 	// 0 0 	- 	- 	- ? *
@@ -111,6 +113,16 @@ func (s *CreateWorkflowRequest) SetAlertGroupId(v string) *CreateWorkflowRequest
 
 func (s *CreateWorkflowRequest) SetAlertStrategy(v string) *CreateWorkflowRequest {
 	s.AlertStrategy = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetTaskDefinitionJsonValue(v string) *CreateWorkflowRequest {
+	s.TaskDefinitionJsonValue = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetTaskRelationJsonValue(v string) *CreateWorkflowRequest {
+	s.TaskRelationJsonValue = &v
 	return s
 }
 
@@ -4017,7 +4029,9 @@ type UpdateWorkflowRequest struct {
 	// example:
 	//
 	// NONE
-	AlertStrategy *string `json:"alertStrategy,omitempty" xml:"alertStrategy,omitempty"`
+	AlertStrategy           *string `json:"alertStrategy,omitempty" xml:"alertStrategy,omitempty"`
+	TaskDefinitionJsonValue *string `json:"taskDefinitionJsonValue,omitempty" xml:"taskDefinitionJsonValue,omitempty"`
+	TaskRelationJsonValue   *string `json:"taskRelationJsonValue,omitempty" xml:"taskRelationJsonValue,omitempty"`
 	// example:
 	//
 	// 0 0 	- 	- 	- ? *
@@ -4105,6 +4119,16 @@ func (s *UpdateWorkflowRequest) SetAlertGroupId(v string) *UpdateWorkflowRequest
 
 func (s *UpdateWorkflowRequest) SetAlertStrategy(v string) *UpdateWorkflowRequest {
 	s.AlertStrategy = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetTaskDefinitionJsonValue(v string) *UpdateWorkflowRequest {
+	s.TaskDefinitionJsonValue = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetTaskRelationJsonValue(v string) *UpdateWorkflowRequest {
+	s.TaskRelationJsonValue = &v
 	return s
 }
 
@@ -4393,9 +4417,19 @@ func (client *Client) CreateWorkflowWithOptions(projectId *string, request *Crea
 		query["workspaceId"] = request.WorkspaceId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskDefinitionJsonValue)) {
+		body["taskDefinitionJsonValue"] = request.TaskDefinitionJsonValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskRelationJsonValue)) {
+		body["taskRelationJsonValue"] = request.TaskRelationJsonValue
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateWorkflow"),
@@ -5741,9 +5775,19 @@ func (client *Client) UpdateWorkflowWithOptions(projectId *string, workflowId *s
 		query["workspaceId"] = request.WorkspaceId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskDefinitionJsonValue)) {
+		body["taskDefinitionJsonValue"] = request.TaskDefinitionJsonValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskRelationJsonValue)) {
+		body["taskRelationJsonValue"] = request.TaskRelationJsonValue
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateWorkflow"),
