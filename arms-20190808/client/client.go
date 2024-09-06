@@ -74979,7 +74979,7 @@ func (client *Client) CreateRumApp(request *CreateRumAppRequest) (_result *Creat
 //
 // Description:
 //
-// This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/zh/oss/user-guide/upload-a-file-using-a-file-url).
+// This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
 //
 // @param request - CreateRumUploadFileUrlRequest
 //
@@ -75053,7 +75053,7 @@ func (client *Client) CreateRumUploadFileUrlWithOptions(request *CreateRumUpload
 //
 // Description:
 //
-// This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/zh/oss/user-guide/upload-a-file-using-a-file-url).
+// This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
 //
 // @param request - CreateRumUploadFileUrlRequest
 //
