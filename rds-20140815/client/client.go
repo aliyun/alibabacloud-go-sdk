@@ -3699,6 +3699,7 @@ type CreateAccountRequest struct {
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	CheckPolicy *bool   `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
@@ -3738,6 +3739,11 @@ func (s *CreateAccountRequest) SetAccountPassword(v string) *CreateAccountReques
 
 func (s *CreateAccountRequest) SetAccountType(v string) *CreateAccountRequest {
 	s.AccountType = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetCheckPolicy(v bool) *CreateAccountRequest {
+	s.CheckPolicy = &v
 	return s
 }
 
@@ -8634,7 +8640,16 @@ type CreateDdrInstanceRequest struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	EncryptionKey         *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// User-defined key ID for cloud disk encryption. Passing this parameter means turning on cloud disk encryption (it cannot be turned off after turning it on), and RoleARN needs to be passed in. You can view the key ID in the key management service console, or create a new key. For more information, see [Creating a Key](https://help.aliyun.com/document_detail/181610.html).
+	//
+	// > - This parameter is only applicable to RDS SQL Server instances.
+	//
+	// > - You can also not pass this parameter and only need to pass in RoleARN, which means setting the cloud disk encryption type of the instance to the RDS managed service key (Default Service CMK).
+	//
+	// example:
+	//
+	// 749c1df7-****-****-****-****
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The database engine of the destination instance. Valid values:
 	//
 	// 	- **MySQL**
@@ -8745,7 +8760,14 @@ type CreateDdrInstanceRequest struct {
 	//
 	// BackupSet
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	RoleARN     *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
+	// The global resource descriptor (ARN) of the RDS cloud service account authorized by the primary account to access the KMS permission. You can view the ARN information through the [CheckCloudResourceAuthorized](https://next.api.aliyun.com/document/Rds/2014-08-15/CheckCloudResourceAuthorized) API.
+	//
+	// > This parameter is only available for RDS SQL Server instances.
+	//
+	// example:
+	//
+	// acs:ram::1406****:role/aliyunrdsinstanceencryptiondefaultrole
+	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). The entries in the IP address whitelist must be in one of the following formats:
 	//
 	// 	- IP address. Example: 10.23.12.24.
@@ -17082,7 +17104,8 @@ type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	// example:
 	//
 	// f
-	BypassRLS *string `json:"BypassRLS,omitempty" xml:"BypassRLS,omitempty"`
+	BypassRLS   *string `json:"BypassRLS,omitempty" xml:"BypassRLS,omitempty"`
+	CheckPolicy *bool   `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
 	// Indicates whether the account has the permissions to create databases. Valid values:
 	//
 	// 	- **t**: The account has the permissions to create databases.
@@ -17115,6 +17138,7 @@ type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The details about the permissions that are granted to the account.
 	DatabasePrivileges *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
+	PasswordExpireTime *string                                                                  `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
 	// Indicates whether the number of databases that are managed by the account exceeds the upper limit. Valid values:
 	//
 	// 	- **1**: The number of databases that are managed by the account exceeds the upper limit.
@@ -17186,6 +17210,11 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetBypassRLS(v s
 	return s
 }
 
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetCheckPolicy(v bool) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.CheckPolicy = &v
+	return s
+}
+
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetCreateDB(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
 	s.CreateDB = &v
 	return s
@@ -17203,6 +17232,11 @@ func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetDBInstanceId(
 
 func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetDatabasePrivileges(v *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
 	s.DatabasePrivileges = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountsDBInstanceAccount) SetPasswordExpireTime(v string) *DescribeAccountsResponseBodyAccountsDBInstanceAccount {
+	s.PasswordExpireTime = &v
 	return s
 }
 
@@ -20341,7 +20375,16 @@ type DescribeBackupPolicyResponseBody struct {
 	// example:
 	//
 	// 1
-	SupportVolumeShadowCopy     *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
+	SupportVolumeShadowCopy *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
+	// Whether to support 5-minute log backup of SQL Server.
+	//
+	// - 0 : Not Support
+	//
+	// - 1 : Support
+	//
+	// example:
+	//
+	// 0
 	SupportsHighFrequencyBackup *int64 `json:"SupportsHighFrequencyBackup,omitempty" xml:"SupportsHighFrequencyBackup,omitempty"`
 }
 
@@ -25845,8 +25888,18 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// true
-	DeletionProtection        *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	DisasterRecoveryInfo      *string `json:"DisasterRecoveryInfo,omitempty" xml:"DisasterRecoveryInfo,omitempty"`
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// Disaster recovery source instance information.
+	//
+	// example:
+	//
+	// {"replicatorAccount": "******","sourcePort":******,"sourceAddress": "pgm-2ze******","sourceCategory": "aliyunRDS","sourceInstanceRegionId": "cn-******","replicatorPassword": "******","sourceInstanceName": "pgm-2ze******"}
+	DisasterRecoveryInfo *string `json:"DisasterRecoveryInfo,omitempty" xml:"DisasterRecoveryInfo,omitempty"`
+	// All disaster recovery instances of the current instance.
+	//
+	// example:
+	//
+	// [{"regionId":"cn-******","insName":"pgm-2ze******"},{"regionId":"cn-******","insName":"pgm-2ze******"}]
 	DisasterRecoveryInstances *string `json:"DisasterRecoveryInstances,omitempty" xml:"DisasterRecoveryInstances,omitempty"`
 	// The database engine of the instance. Valid values:
 	//
@@ -26749,6 +26802,15 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBCluste
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
+	// Instance account group policy.
+	//
+	// - MaximumPasswordAge: Maximum usage time
+	//
+	// - MinimumPasswordAge: Minimum usage time
+	//
+	// example:
+	//
+	// {"MaximumPasswordAge": 42,"MinimumPasswordAge": 30}
 	AccountSecurityPolicy *string `json:"AccountSecurityPolicy,omitempty" xml:"AccountSecurityPolicy,omitempty"`
 	// The instance IDs.
 	DBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
@@ -41943,7 +42005,7 @@ type DescribeHistoryTasksStatRequest struct {
 	//
 	// 0
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*t*HH:mm:ss*z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -42015,7 +42077,7 @@ type DescribeHistoryTasksStatRequest struct {
 	//
 	// 0
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	// The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -48924,7 +48986,14 @@ type DescribePostgresExtensionsResponseBodyInstalledExtensions struct {
 	//
 	// {dblink,plpgsql}
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Alibaba Cloud account ID.
+	//
+	// > Only exclusive plug-ins (plug-ins written by users) will return this parameter. Each Alibaba Cloud account only displays its own exclusive plug-ins.
+	//
+	// example:
+	//
+	// 181578148294****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribePostgresExtensionsResponseBodyInstalledExtensions) String() string {
@@ -49029,7 +49098,14 @@ type DescribePostgresExtensionsResponseBodyUninstalledExtensions struct {
 	//
 	// {dblink,plpgsql}
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Alibaba Cloud account ID.
+	//
+	// > Only exclusive plug-ins (plug-ins written by users) will return this parameter. Each Alibaba Cloud account only displays its own exclusive plug-ins.
+	//
+	// example:
+	//
+	// 181578148294****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribePostgresExtensionsResponseBodyUninstalledExtensions) String() string {
@@ -51033,6 +51109,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	InternetMaxBandwidthIn  *int32                                                         `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	InternetMaxBandwidthOut *int32                                                         `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	IoOptimized             *string                                                        `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	KeyPairName             *string                                                        `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	Memory                  *int32                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	OperationLocks          *DescribeRCInstanceAttributeResponseBodyOperationLocks         `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
 	PublicIpAddress         *DescribeRCInstanceAttributeResponseBodyPublicIpAddress        `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
@@ -51179,6 +51256,11 @@ func (s *DescribeRCInstanceAttributeResponseBody) SetInternetMaxBandwidthOut(v i
 
 func (s *DescribeRCInstanceAttributeResponseBody) SetIoOptimized(v string) *DescribeRCInstanceAttributeResponseBody {
 	s.IoOptimized = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetKeyPairName(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.KeyPairName = &v
 	return s
 }
 
@@ -59181,7 +59263,7 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the vSwitch.
+	// Details of the vSwitches.
 	VSwitchs []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 }
 
@@ -59237,7 +59319,7 @@ type DescribeVSwitchesResponseBodyVSwitchs struct {
 	//
 	// example:
 	//
-	// VSwitchDescription
+	// vSwitchDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the vSwitch is the default vSwitch. Valid values:
 	//
@@ -67877,6 +67959,7 @@ func (s *ModifyDBInstanceSecurityGroupRuleResponse) SetBody(v *ModifyDBInstanceS
 }
 
 type ModifyDBInstanceSpecRequest struct {
+	AllowMajorVersionUpgrade *bool `json:"AllowMajorVersionUpgrade,omitempty" xml:"AllowMajorVersionUpgrade,omitempty"`
 	// Specifies whether to use vouchers to offset fees. Valid values:
 	//
 	// 	- **true**
@@ -68094,7 +68177,8 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// 3
-	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	UsedTime  *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
 	// 	- **Basic**: RDS Basic Edition.
@@ -68110,7 +68194,8 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneIdSlave1 *string `json:"ZoneIdSlave1,omitempty" xml:"ZoneIdSlave1,omitempty"`
 }
 
 func (s ModifyDBInstanceSpecRequest) String() string {
@@ -68119,6 +68204,11 @@ func (s ModifyDBInstanceSpecRequest) String() string {
 
 func (s ModifyDBInstanceSpecRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetAllowMajorVersionUpgrade(v bool) *ModifyDBInstanceSpecRequest {
+	s.AllowMajorVersionUpgrade = &v
+	return s
 }
 
 func (s *ModifyDBInstanceSpecRequest) SetAutoUseCoupon(v bool) *ModifyDBInstanceSpecRequest {
@@ -68241,8 +68331,18 @@ func (s *ModifyDBInstanceSpecRequest) SetUsedTime(v int64) *ModifyDBInstanceSpec
 	return s
 }
 
+func (s *ModifyDBInstanceSpecRequest) SetVSwitchId(v string) *ModifyDBInstanceSpecRequest {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *ModifyDBInstanceSpecRequest) SetZoneId(v string) *ModifyDBInstanceSpecRequest {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetZoneIdSlave1(v string) *ModifyDBInstanceSpecRequest {
+	s.ZoneIdSlave1 = &v
 	return s
 }
 
@@ -68343,6 +68443,7 @@ func (s *ModifyDBInstanceSpecRequestServerlessConfiguration) SetSwitchForce(v bo
 }
 
 type ModifyDBInstanceSpecShrinkRequest struct {
+	AllowMajorVersionUpgrade *bool `json:"AllowMajorVersionUpgrade,omitempty" xml:"AllowMajorVersionUpgrade,omitempty"`
 	// Specifies whether to use vouchers to offset fees. Valid values:
 	//
 	// 	- **true**
@@ -68560,7 +68661,8 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// 3
-	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	UsedTime  *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
 	// 	- **Basic**: RDS Basic Edition.
@@ -68576,7 +68678,8 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneIdSlave1 *string `json:"ZoneIdSlave1,omitempty" xml:"ZoneIdSlave1,omitempty"`
 }
 
 func (s ModifyDBInstanceSpecShrinkRequest) String() string {
@@ -68585,6 +68688,11 @@ func (s ModifyDBInstanceSpecShrinkRequest) String() string {
 
 func (s ModifyDBInstanceSpecShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceSpecShrinkRequest) SetAllowMajorVersionUpgrade(v bool) *ModifyDBInstanceSpecShrinkRequest {
+	s.AllowMajorVersionUpgrade = &v
+	return s
 }
 
 func (s *ModifyDBInstanceSpecShrinkRequest) SetAutoUseCoupon(v bool) *ModifyDBInstanceSpecShrinkRequest {
@@ -68707,8 +68815,18 @@ func (s *ModifyDBInstanceSpecShrinkRequest) SetUsedTime(v int64) *ModifyDBInstan
 	return s
 }
 
+func (s *ModifyDBInstanceSpecShrinkRequest) SetVSwitchId(v string) *ModifyDBInstanceSpecShrinkRequest {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *ModifyDBInstanceSpecShrinkRequest) SetZoneId(v string) *ModifyDBInstanceSpecShrinkRequest {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecShrinkRequest) SetZoneIdSlave1(v string) *ModifyDBInstanceSpecShrinkRequest {
+	s.ZoneIdSlave1 = &v
 	return s
 }
 
@@ -78227,6 +78345,7 @@ type RunRCInstancesRequest struct {
 	DataDisk           []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	DeploymentSetId    *string                          `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	Description        *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun             *bool                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	ImageId            *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceChargeType *string                          `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InstanceName       *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -78289,6 +78408,11 @@ func (s *RunRCInstancesRequest) SetDeploymentSetId(v string) *RunRCInstancesRequ
 
 func (s *RunRCInstancesRequest) SetDescription(v string) *RunRCInstancesRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetDryRun(v bool) *RunRCInstancesRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -78450,6 +78574,7 @@ type RunRCInstancesShrinkRequest struct {
 	DataDiskShrink     *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
 	DeploymentSetId    *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -78512,6 +78637,11 @@ func (s *RunRCInstancesShrinkRequest) SetDeploymentSetId(v string) *RunRCInstanc
 
 func (s *RunRCInstancesShrinkRequest) SetDescription(v string) *RunRCInstancesShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetDryRun(v bool) *RunRCInstancesShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -84063,6 +84193,10 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.AccountType)) {
 		query["AccountType"] = request.AccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckPolicy)) {
+		query["CheckPolicy"] = request.CheckPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
@@ -97994,7 +98128,7 @@ func (client *Client) DescribeHistoryTasks(request *DescribeHistoryTasksRequest)
 
 // Summary:
 //
-// 任务中心任务统计
+// Collects tasks in the task center.
 //
 // @param request - DescribeHistoryTasksStatRequest
 //
@@ -98088,7 +98222,7 @@ func (client *Client) DescribeHistoryTasksStatWithOptions(request *DescribeHisto
 
 // Summary:
 //
-// 任务中心任务统计
+// Collects tasks in the task center.
 //
 // @param request - DescribeHistoryTasksStatRequest
 //
@@ -103670,7 +103804,7 @@ func (client *Client) DescribeUpgradeMajorVersionTasks(request *DescribeUpgradeM
 
 // Summary:
 //
-// Queries the details of VSwitch that are available in a virtual private cloud (VPC).
+// Queries the details of vSwitch that are available in a virtual private cloud (VPC).
 //
 // Description:
 //
@@ -103768,7 +103902,7 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 
 // Summary:
 //
-// Queries the details of VSwitch that are available in a virtual private cloud (VPC).
+// Queries the details of vSwitch that are available in a virtual private cloud (VPC).
 //
 // Description:
 //
@@ -108961,6 +109095,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowMajorVersionUpgrade)) {
+		query["AllowMajorVersionUpgrade"] = request.AllowMajorVersionUpgrade
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoUseCoupon)) {
 		query["AutoUseCoupon"] = request.AutoUseCoupon
 	}
@@ -109057,8 +109195,16 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 		query["UsedTime"] = request.UsedTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
 		query["ZoneId"] = request.ZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneIdSlave1)) {
+		query["ZoneIdSlave1"] = request.ZoneIdSlave1
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -115311,6 +115457,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
