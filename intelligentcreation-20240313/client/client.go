@@ -726,6 +726,10 @@ type TextTaskCreateCmd struct {
 	//
 	// 1
 	RelatedRagIds []*int64 `json:"relatedRagIds,omitempty" xml:"relatedRagIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	StreamApi *bool `json:"streamApi,omitempty" xml:"streamApi,omitempty"`
 	// This parameter is required.
 	Style  *string `json:"style,omitempty" xml:"style,omitempty"`
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
@@ -788,6 +792,11 @@ func (s *TextTaskCreateCmd) SetReferenceTag(v *ReferenceTag) *TextTaskCreateCmd 
 
 func (s *TextTaskCreateCmd) SetRelatedRagIds(v []*int64) *TextTaskCreateCmd {
 	s.RelatedRagIds = v
+	return s
+}
+
+func (s *TextTaskCreateCmd) SetStreamApi(v bool) *TextTaskCreateCmd {
+	s.StreamApi = &v
 	return s
 }
 
@@ -960,6 +969,7 @@ func (s *UploadInfo) SetUrl(v string) *UploadInfo {
 
 type VoiceModelResponse struct {
 	ResourceTypeDesc *string `json:"resourceTypeDesc,omitempty" xml:"resourceTypeDesc,omitempty"`
+	TtsVersion       *int32  `json:"ttsVersion,omitempty" xml:"ttsVersion,omitempty"`
 	UseScene         *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
 	VoiceDesc        *string `json:"voiceDesc,omitempty" xml:"voiceDesc,omitempty"`
 	VoiceGender      *string `json:"voiceGender,omitempty" xml:"voiceGender,omitempty"`
@@ -981,6 +991,11 @@ func (s VoiceModelResponse) GoString() string {
 
 func (s *VoiceModelResponse) SetResourceTypeDesc(v string) *VoiceModelResponse {
 	s.ResourceTypeDesc = &v
+	return s
+}
+
+func (s *VoiceModelResponse) SetTtsVersion(v int32) *VoiceModelResponse {
+	s.TtsVersion = &v
 	return s
 }
 
@@ -1537,6 +1552,194 @@ func (s *CreateIllustrationTaskResponse) SetStatusCode(v int32) *CreateIllustrat
 }
 
 func (s *CreateIllustrationTaskResponse) SetBody(v *IllustrationTaskResult) *CreateIllustrationTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRealisticPortraitRequest struct {
+	Ages []*int32 `json:"ages,omitempty" xml:"ages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Cloth *int32 `json:"cloth,omitempty" xml:"cloth,omitempty"`
+	// example:
+	//
+	// 1
+	Color *int32 `json:"color,omitempty" xml:"color,omitempty"`
+	// example:
+	//
+	// 11
+	Custom *string  `json:"custom,omitempty" xml:"custom,omitempty"`
+	Face   []*int32 `json:"face,omitempty" xml:"face,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Figure *int32 `json:"figure,omitempty" xml:"figure,omitempty"`
+	// example:
+	//
+	// 1
+	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// 1
+	HairColor *int32 `json:"hairColor,omitempty" xml:"hairColor,omitempty"`
+	// example:
+	//
+	// 1
+	Hairstyle *int32 `json:"hairstyle,omitempty" xml:"hairstyle,omitempty"`
+	// example:
+	//
+	// 500
+	Height   *int32  `json:"height,omitempty" xml:"height,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	// example:
+	//
+	// 4
+	Numbers *int32 `json:"numbers,omitempty" xml:"numbers,omitempty"`
+	// example:
+	//
+	// 1:1
+	Ratio *string `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// example:
+	//
+	// 500
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s CreateRealisticPortraitRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRealisticPortraitRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRealisticPortraitRequest) SetAges(v []*int32) *CreateRealisticPortraitRequest {
+	s.Ages = v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetCloth(v int32) *CreateRealisticPortraitRequest {
+	s.Cloth = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetColor(v int32) *CreateRealisticPortraitRequest {
+	s.Color = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetCustom(v string) *CreateRealisticPortraitRequest {
+	s.Custom = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetFace(v []*int32) *CreateRealisticPortraitRequest {
+	s.Face = v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetFigure(v int32) *CreateRealisticPortraitRequest {
+	s.Figure = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetGender(v int32) *CreateRealisticPortraitRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetHairColor(v int32) *CreateRealisticPortraitRequest {
+	s.HairColor = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetHairstyle(v int32) *CreateRealisticPortraitRequest {
+	s.Hairstyle = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetHeight(v int32) *CreateRealisticPortraitRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetImageUrl(v string) *CreateRealisticPortraitRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetNumbers(v int32) *CreateRealisticPortraitRequest {
+	s.Numbers = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetRatio(v string) *CreateRealisticPortraitRequest {
+	s.Ratio = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitRequest) SetWidth(v int32) *CreateRealisticPortraitRequest {
+	s.Width = &v
+	return s
+}
+
+type CreateRealisticPortraitResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// D5798660-1531-5D12-9C20-16FEE9D22351
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 313123123
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CreateRealisticPortraitResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRealisticPortraitResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRealisticPortraitResponseBody) SetRequestId(v string) *CreateRealisticPortraitResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitResponseBody) SetTaskId(v string) *CreateRealisticPortraitResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateRealisticPortraitResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRealisticPortraitResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRealisticPortraitResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRealisticPortraitResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRealisticPortraitResponse) SetHeaders(v map[string]*string) *CreateRealisticPortraitResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRealisticPortraitResponse) SetStatusCode(v int32) *CreateRealisticPortraitResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRealisticPortraitResponse) SetBody(v *CreateRealisticPortraitResponseBody) *CreateRealisticPortraitResponse {
 	s.Body = v
 	return s
 }
@@ -2750,6 +2953,269 @@ func (s *QueryAvatarResourceResponse) SetBody(v *QueryAvatarResourceResponseBody
 	return s
 }
 
+type QueryTextStreamResponseBody struct {
+	// example:
+	//
+	// false
+	End *bool `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s QueryTextStreamResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTextStreamResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTextStreamResponseBody) SetEnd(v bool) *QueryTextStreamResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *QueryTextStreamResponseBody) SetIndex(v int32) *QueryTextStreamResponseBody {
+	s.Index = &v
+	return s
+}
+
+func (s *QueryTextStreamResponseBody) SetMessage(v string) *QueryTextStreamResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTextStreamResponseBody) SetType(v int32) *QueryTextStreamResponseBody {
+	s.Type = &v
+	return s
+}
+
+type QueryTextStreamResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTextStreamResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryTextStreamResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTextStreamResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTextStreamResponse) SetHeaders(v map[string]*string) *QueryTextStreamResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTextStreamResponse) SetStatusCode(v int32) *QueryTextStreamResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTextStreamResponse) SetBody(v *QueryTextStreamResponseBody) *QueryTextStreamResponse {
+	s.Body = v
+	return s
+}
+
+type SelectImageTaskResponseBody struct {
+	// example:
+	//
+	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 1
+	Failed *string `json:"failed,omitempty" xml:"failed,omitempty"`
+	// example:
+	//
+	// PLATFORM
+	GenerationSource *string `json:"generationSource,omitempty" xml:"generationSource,omitempty"`
+	// example:
+	//
+	// 1
+	GmtCreate  *string                                  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	ImageInfos []*SelectImageTaskResponseBodyImageInfos `json:"imageInfos,omitempty" xml:"imageInfos,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// example:
+	//
+	// Successed
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1
+	SubtaskProcessing *string `json:"subtaskProcessing,omitempty" xml:"subtaskProcessing,omitempty"`
+	// example:
+	//
+	// 1
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 10
+	Total *string `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s SelectImageTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectImageTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SelectImageTaskResponseBody) SetErrorMessage(v string) *SelectImageTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetFailed(v string) *SelectImageTaskResponseBody {
+	s.Failed = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetGenerationSource(v string) *SelectImageTaskResponseBody {
+	s.GenerationSource = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetGmtCreate(v string) *SelectImageTaskResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetImageInfos(v []*SelectImageTaskResponseBodyImageInfos) *SelectImageTaskResponseBody {
+	s.ImageInfos = v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetRequestId(v string) *SelectImageTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetScene(v string) *SelectImageTaskResponseBody {
+	s.Scene = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetStatus(v string) *SelectImageTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetSubtaskProcessing(v string) *SelectImageTaskResponseBody {
+	s.SubtaskProcessing = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetSuccess(v string) *SelectImageTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBody) SetTotal(v string) *SelectImageTaskResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SelectImageTaskResponseBodyImageInfos struct {
+	// example:
+	//
+	// www.ali.com
+	CustomImageUrl *string `json:"customImageUrl,omitempty" xml:"customImageUrl,omitempty"`
+	// example:
+	//
+	// 1
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 500
+	ImageH *string `json:"imageH,omitempty" xml:"imageH,omitempty"`
+	// example:
+	//
+	// 500
+	ImageW *string `json:"imageW,omitempty" xml:"imageW,omitempty"`
+}
+
+func (s SelectImageTaskResponseBodyImageInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectImageTaskResponseBodyImageInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SelectImageTaskResponseBodyImageInfos) SetCustomImageUrl(v string) *SelectImageTaskResponseBodyImageInfos {
+	s.CustomImageUrl = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBodyImageInfos) SetGmtCreate(v string) *SelectImageTaskResponseBodyImageInfos {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBodyImageInfos) SetImageH(v string) *SelectImageTaskResponseBodyImageInfos {
+	s.ImageH = &v
+	return s
+}
+
+func (s *SelectImageTaskResponseBodyImageInfos) SetImageW(v string) *SelectImageTaskResponseBodyImageInfos {
+	s.ImageW = &v
+	return s
+}
+
+type SelectImageTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SelectImageTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SelectImageTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectImageTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SelectImageTaskResponse) SetHeaders(v map[string]*string) *SelectImageTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SelectImageTaskResponse) SetStatusCode(v int32) *SelectImageTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SelectImageTaskResponse) SetBody(v *SelectImageTaskResponseBody) *SelectImageTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SelectResourceRequest struct {
 	// example:
 	//
@@ -3030,7 +3496,9 @@ type StartAvatarSessionResponseBody struct {
 	// example:
 	//
 	// 121dlsga4o7golrl1hoja
-	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	SessionId    *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	Token        *string `json:"token,omitempty" xml:"token,omitempty"`
+	WebSocketUrl *string `json:"webSocketUrl,omitempty" xml:"webSocketUrl,omitempty"`
 }
 
 func (s StartAvatarSessionResponseBody) String() string {
@@ -3053,6 +3521,16 @@ func (s *StartAvatarSessionResponseBody) SetRequestId(v string) *StartAvatarSess
 
 func (s *StartAvatarSessionResponseBody) SetSessionId(v string) *StartAvatarSessionResponseBody {
 	s.SessionId = &v
+	return s
+}
+
+func (s *StartAvatarSessionResponseBody) SetToken(v string) *StartAvatarSessionResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *StartAvatarSessionResponseBody) SetWebSocketUrl(v string) *StartAvatarSessionResponseBody {
+	s.WebSocketUrl = &v
 	return s
 }
 
@@ -3413,7 +3891,8 @@ type SubmitProjectTaskRequestFramesLayersMaterial struct {
 	// example:
 	//
 	// https://meeting.dingtalk.com/j/1COFppy0POR
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url    *string `json:"url,omitempty" xml:"url,omitempty"`
+	Volume *int32  `json:"volume,omitempty" xml:"volume,omitempty"`
 }
 
 func (s SubmitProjectTaskRequestFramesLayersMaterial) String() string {
@@ -3436,6 +3915,11 @@ func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetId(v string) *SubmitPr
 
 func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetUrl(v string) *SubmitProjectTaskRequestFramesLayersMaterial {
 	s.Url = &v
+	return s
+}
+
+func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetVolume(v int32) *SubmitProjectTaskRequestFramesLayersMaterial {
+	s.Volume = &v
 	return s
 }
 
@@ -3656,6 +4140,131 @@ func (s *SubmitProjectTaskResponse) SetStatusCode(v int32) *SubmitProjectTaskRes
 }
 
 func (s *SubmitProjectTaskResponse) SetBody(v *SubmitProjectTaskResponseBody) *SubmitProjectTaskResponse {
+	s.Body = v
+	return s
+}
+
+type TransferPortraitStyleRequest struct {
+	// example:
+	//
+	// 500
+	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// example:
+	//
+	// WWW
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	// example:
+	//
+	// 4
+	Numbers *int32 `json:"numbers,omitempty" xml:"numbers,omitempty"`
+	// example:
+	//
+	// 1
+	RedrawAmplitude *int32 `json:"redrawAmplitude,omitempty" xml:"redrawAmplitude,omitempty"`
+	// example:
+	//
+	// 1
+	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
+	// example:
+	//
+	// 500
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s TransferPortraitStyleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferPortraitStyleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferPortraitStyleRequest) SetHeight(v int32) *TransferPortraitStyleRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *TransferPortraitStyleRequest) SetImageUrl(v string) *TransferPortraitStyleRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *TransferPortraitStyleRequest) SetNumbers(v int32) *TransferPortraitStyleRequest {
+	s.Numbers = &v
+	return s
+}
+
+func (s *TransferPortraitStyleRequest) SetRedrawAmplitude(v int32) *TransferPortraitStyleRequest {
+	s.RedrawAmplitude = &v
+	return s
+}
+
+func (s *TransferPortraitStyleRequest) SetStyle(v int32) *TransferPortraitStyleRequest {
+	s.Style = &v
+	return s
+}
+
+func (s *TransferPortraitStyleRequest) SetWidth(v int32) *TransferPortraitStyleRequest {
+	s.Width = &v
+	return s
+}
+
+type TransferPortraitStyleResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 725E87CD-F2DE-5FC4-8A09-2EBDFBF26DAA
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 313123123
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s TransferPortraitStyleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferPortraitStyleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferPortraitStyleResponseBody) SetRequestId(v string) *TransferPortraitStyleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TransferPortraitStyleResponseBody) SetTaskId(v string) *TransferPortraitStyleResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type TransferPortraitStyleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferPortraitStyleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TransferPortraitStyleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferPortraitStyleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferPortraitStyleResponse) SetHeaders(v map[string]*string) *TransferPortraitStyleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferPortraitStyleResponse) SetStatusCode(v int32) *TransferPortraitStyleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TransferPortraitStyleResponse) SetBody(v *TransferPortraitStyleResponseBody) *TransferPortraitStyleResponse {
 	s.Body = v
 	return s
 }
@@ -4045,6 +4654,122 @@ func (client *Client) CreateIllustrationTask(textId *string, request *CreateIllu
 	headers := make(map[string]*string)
 	_result = &CreateIllustrationTaskResponse{}
 	_body, _err := client.CreateIllustrationTaskWithOptions(textId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 写实人像创作
+//
+// @param request - CreateRealisticPortraitRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRealisticPortraitResponse
+func (client *Client) CreateRealisticPortraitWithOptions(request *CreateRealisticPortraitRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRealisticPortraitResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ages)) {
+		body["ages"] = request.Ages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cloth)) {
+		body["cloth"] = request.Cloth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Color)) {
+		body["color"] = request.Color
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Custom)) {
+		body["custom"] = request.Custom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Face)) {
+		body["face"] = request.Face
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Figure)) {
+		body["figure"] = request.Figure
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		body["gender"] = request.Gender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HairColor)) {
+		body["hairColor"] = request.HairColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hairstyle)) {
+		body["hairstyle"] = request.Hairstyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Height)) {
+		body["height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["imageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Numbers)) {
+		body["numbers"] = request.Numbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ratio)) {
+		body["ratio"] = request.Ratio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Width)) {
+		body["width"] = request.Width
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRealisticPortrait"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/images/portrait/realistic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRealisticPortraitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 写实人像创作
+//
+// @param request - CreateRealisticPortraitRequest
+//
+// @return CreateRealisticPortraitResponse
+func (client *Client) CreateRealisticPortrait(request *CreateRealisticPortraitRequest) (_result *CreateRealisticPortraitResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRealisticPortraitResponse{}
+	_body, _err := client.CreateRealisticPortraitWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4957,6 +5682,106 @@ func (client *Client) QueryAvatarResource(request *QueryAvatarResourceRequest) (
 
 // Summary:
 //
+// 流式输出文案
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTextStreamResponse
+func (client *Client) QueryTextStreamWithOptions(textId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTextStreamResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTextStream"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/stream/queryTextStream/" + tea.StringValue(openapiutil.GetEncodeParam(textId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTextStreamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 流式输出文案
+//
+// @return QueryTextStreamResponse
+func (client *Client) QueryTextStream(textId *string) (_result *QueryTextStreamResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryTextStreamResponse{}
+	_body, _err := client.QueryTextStreamWithOptions(textId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询图片任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SelectImageTaskResponse
+func (client *Client) SelectImageTaskWithOptions(taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SelectImageTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SelectImageTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/images/portrait/select/" + tea.StringValue(openapiutil.GetEncodeParam(taskId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SelectImageTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询图片任务
+//
+// @return SelectImageTaskResponse
+func (client *Client) SelectImageTask(taskId *string) (_result *SelectImageTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SelectImageTaskResponse{}
+	_body, _err := client.SelectImageTaskWithOptions(taskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询离线数字人剩余资源
 //
 // @param request - SelectResourceRequest
@@ -5368,6 +6193,90 @@ func (client *Client) SubmitProjectTask(request *SubmitProjectTaskRequest) (_res
 	headers := make(map[string]*string)
 	_result = &SubmitProjectTaskResponse{}
 	_body, _err := client.SubmitProjectTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 人像风格变化
+//
+// @param request - TransferPortraitStyleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferPortraitStyleResponse
+func (client *Client) TransferPortraitStyleWithOptions(request *TransferPortraitStyleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TransferPortraitStyleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Height)) {
+		body["height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["imageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Numbers)) {
+		body["numbers"] = request.Numbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedrawAmplitude)) {
+		body["redrawAmplitude"] = request.RedrawAmplitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Style)) {
+		body["style"] = request.Style
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Width)) {
+		body["width"] = request.Width
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferPortraitStyle"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/images/portrait/transferPortraitStyle"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransferPortraitStyleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 人像风格变化
+//
+// @param request - TransferPortraitStyleRequest
+//
+// @return TransferPortraitStyleResponse
+func (client *Client) TransferPortraitStyle(request *TransferPortraitStyleRequest) (_result *TransferPortraitStyleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TransferPortraitStyleResponse{}
+	_body, _err := client.TransferPortraitStyleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
