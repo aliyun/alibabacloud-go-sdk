@@ -73,77 +73,6 @@ func (s *FeatureViewConfigValuePartitionsValue) SetEndValue(v string) *FeatureVi
 	return s
 }
 
-type ChangeProjectFeatureEntityHotIdVersionRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 20221213
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s ChangeProjectFeatureEntityHotIdVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeProjectFeatureEntityHotIdVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeProjectFeatureEntityHotIdVersionRequest) SetVersion(v string) *ChangeProjectFeatureEntityHotIdVersionRequest {
-	s.Version = &v
-	return s
-}
-
-type ChangeProjectFeatureEntityHotIdVersionResponseBody struct {
-	// example:
-	//
-	// CD377C31-372F-5CCD-ADB9-A31D6E118CA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ChangeProjectFeatureEntityHotIdVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeProjectFeatureEntityHotIdVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeProjectFeatureEntityHotIdVersionResponseBody) SetRequestId(v string) *ChangeProjectFeatureEntityHotIdVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ChangeProjectFeatureEntityHotIdVersionResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ChangeProjectFeatureEntityHotIdVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ChangeProjectFeatureEntityHotIdVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeProjectFeatureEntityHotIdVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeProjectFeatureEntityHotIdVersionResponse) SetHeaders(v map[string]*string) *ChangeProjectFeatureEntityHotIdVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ChangeProjectFeatureEntityHotIdVersionResponse) SetStatusCode(v int32) *ChangeProjectFeatureEntityHotIdVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ChangeProjectFeatureEntityHotIdVersionResponse) SetBody(v *ChangeProjectFeatureEntityHotIdVersionResponseBody) *ChangeProjectFeatureEntityHotIdVersionResponse {
-	s.Body = v
-	return s
-}
-
 type CheckInstanceDatasourceRequest struct {
 	// example:
 	//
@@ -929,6 +858,10 @@ func (s *CreateLabelTableResponse) SetBody(v *CreateLabelTableResponseBody) *Cre
 type CreateModelFeatureRequest struct {
 	// This parameter is required.
 	Features []*CreateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	LabelPriorityLevel *int64 `json:"LabelPriorityLevel,omitempty" xml:"LabelPriorityLevel,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -960,6 +893,11 @@ func (s CreateModelFeatureRequest) GoString() string {
 
 func (s *CreateModelFeatureRequest) SetFeatures(v []*CreateModelFeatureRequestFeatures) *CreateModelFeatureRequest {
 	s.Features = v
+	return s
+}
+
+func (s *CreateModelFeatureRequest) SetLabelPriorityLevel(v int64) *CreateModelFeatureRequest {
+	s.LabelPriorityLevel = &v
 	return s
 }
 
@@ -1779,10 +1717,11 @@ func (s *ExportModelFeatureTrainingSetFGTableResponse) SetBody(v *ExportModelFea
 }
 
 type ExportModelFeatureTrainingSetTableRequest struct {
-	FeatureViewConfig       map[string]*FeatureViewConfigValue                          `json:"FeatureViewConfig,omitempty" xml:"FeatureViewConfig,omitempty"`
-	LabelInputConfig        *ExportModelFeatureTrainingSetTableRequestLabelInputConfig  `json:"LabelInputConfig,omitempty" xml:"LabelInputConfig,omitempty" type:"Struct"`
-	RealTimeIterateInterval *int64                                                      `json:"RealTimeIterateInterval,omitempty" xml:"RealTimeIterateInterval,omitempty"`
-	TrainingSetConfig       *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig `json:"TrainingSetConfig,omitempty" xml:"TrainingSetConfig,omitempty" type:"Struct"`
+	FeatureViewConfig           map[string]*FeatureViewConfigValue                          `json:"FeatureViewConfig,omitempty" xml:"FeatureViewConfig,omitempty"`
+	LabelInputConfig            *ExportModelFeatureTrainingSetTableRequestLabelInputConfig  `json:"LabelInputConfig,omitempty" xml:"LabelInputConfig,omitempty" type:"Struct"`
+	RealTimeIterateInterval     *int64                                                      `json:"RealTimeIterateInterval,omitempty" xml:"RealTimeIterateInterval,omitempty"`
+	RealTimePartitionCountValue *int64                                                      `json:"RealTimePartitionCountValue,omitempty" xml:"RealTimePartitionCountValue,omitempty"`
+	TrainingSetConfig           *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig `json:"TrainingSetConfig,omitempty" xml:"TrainingSetConfig,omitempty" type:"Struct"`
 }
 
 func (s ExportModelFeatureTrainingSetTableRequest) String() string {
@@ -1805,6 +1744,11 @@ func (s *ExportModelFeatureTrainingSetTableRequest) SetLabelInputConfig(v *Expor
 
 func (s *ExportModelFeatureTrainingSetTableRequest) SetRealTimeIterateInterval(v int64) *ExportModelFeatureTrainingSetTableRequest {
 	s.RealTimeIterateInterval = &v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetTableRequest) SetRealTimePartitionCountValue(v int64) *ExportModelFeatureTrainingSetTableRequest {
+	s.RealTimePartitionCountValue = &v
 	return s
 }
 
@@ -2832,6 +2776,10 @@ type GetModelFeatureResponseBody struct {
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// example:
 	//
+	// 0
+	LabelPriorityLevel *int64 `json:"LabelPriorityLevel,omitempty" xml:"LabelPriorityLevel,omitempty"`
+	// example:
+	//
 	// 3
 	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
 	// example:
@@ -2894,6 +2842,11 @@ func (s *GetModelFeatureResponseBody) SetGmtCreateTime(v string) *GetModelFeatur
 
 func (s *GetModelFeatureResponseBody) SetGmtModifiedTime(v string) *GetModelFeatureResponseBody {
 	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetModelFeatureResponseBody) SetLabelPriorityLevel(v int64) *GetModelFeatureResponseBody {
+	s.LabelPriorityLevel = &v
 	return s
 }
 
@@ -3795,559 +3748,6 @@ func (s *GetProjectFeatureEntityResponse) SetStatusCode(v int32) *GetProjectFeat
 }
 
 func (s *GetProjectFeatureEntityResponse) SetBody(v *GetProjectFeatureEntityResponseBody) *GetProjectFeatureEntityResponse {
-	s.Body = v
-	return s
-}
-
-type GetProjectFeatureEntityHotIdsResponseBody struct {
-	// example:
-	//
-	// 3
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// example:
-	//
-	// 1,2,3
-	HotIds *string `json:"HotIds,omitempty" xml:"HotIds,omitempty"`
-	// example:
-	//
-	// 5
-	NextSeqNumber *string `json:"NextSeqNumber,omitempty" xml:"NextSeqNumber,omitempty"`
-	// example:
-	//
-	// FFD39C0F-DD8D-51B2-864E-2842206DB0E8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetProjectFeatureEntityHotIdsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectFeatureEntityHotIdsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectFeatureEntityHotIdsResponseBody) SetCount(v int32) *GetProjectFeatureEntityHotIdsResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *GetProjectFeatureEntityHotIdsResponseBody) SetHotIds(v string) *GetProjectFeatureEntityHotIdsResponseBody {
-	s.HotIds = &v
-	return s
-}
-
-func (s *GetProjectFeatureEntityHotIdsResponseBody) SetNextSeqNumber(v string) *GetProjectFeatureEntityHotIdsResponseBody {
-	s.NextSeqNumber = &v
-	return s
-}
-
-func (s *GetProjectFeatureEntityHotIdsResponseBody) SetRequestId(v string) *GetProjectFeatureEntityHotIdsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetProjectFeatureEntityHotIdsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetProjectFeatureEntityHotIdsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetProjectFeatureEntityHotIdsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectFeatureEntityHotIdsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectFeatureEntityHotIdsResponse) SetHeaders(v map[string]*string) *GetProjectFeatureEntityHotIdsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProjectFeatureEntityHotIdsResponse) SetStatusCode(v int32) *GetProjectFeatureEntityHotIdsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetProjectFeatureEntityHotIdsResponse) SetBody(v *GetProjectFeatureEntityHotIdsResponseBody) *GetProjectFeatureEntityHotIdsResponse {
-	s.Body = v
-	return s
-}
-
-type GetProjectFeatureViewResponseBody struct {
-	// example:
-	//
-	// {}
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// example:
-	//
-	// 4
-	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	// example:
-	//
-	// entity1
-	FeatureEntityName *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
-	// example:
-	//
-	// 3
-	FeatureViewId *string                                    `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	Fields        []*GetProjectFeatureViewResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2021-12-15T23:24:33.132+08:00
-	GmtSyncTime *string `json:"GmtSyncTime,omitempty" xml:"GmtSyncTime,omitempty"`
-	// example:
-	//
-	// user_id
-	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
-	// example:
-	//
-	// {}
-	LastSyncConfig *string `json:"LastSyncConfig,omitempty" xml:"LastSyncConfig,omitempty"`
-	// example:
-	//
-	// feature_view1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 1231421342****
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// example:
-	//
-	// 3
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// example:
-	//
-	// project1
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// 4
-	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
-	// example:
-	//
-	// table1
-	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
-	// example:
-	//
-	// BFD68AD5-398C-5AC4-A357-C7EA8DF33C26
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	SyncOnlineTable *bool `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
-	// example:
-	//
-	// 90
-	TTL  *int32    `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// example:
-	//
-	// Batch
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// Custom
-	WriteMethod *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
-}
-
-func (s GetProjectFeatureViewResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectFeatureViewResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetConfig(v string) *GetProjectFeatureViewResponseBody {
-	s.Config = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetFeatureEntityId(v string) *GetProjectFeatureViewResponseBody {
-	s.FeatureEntityId = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetFeatureEntityName(v string) *GetProjectFeatureViewResponseBody {
-	s.FeatureEntityName = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetFeatureViewId(v string) *GetProjectFeatureViewResponseBody {
-	s.FeatureViewId = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetFields(v []*GetProjectFeatureViewResponseBodyFields) *GetProjectFeatureViewResponseBody {
-	s.Fields = v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetGmtSyncTime(v string) *GetProjectFeatureViewResponseBody {
-	s.GmtSyncTime = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetJoinId(v string) *GetProjectFeatureViewResponseBody {
-	s.JoinId = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetLastSyncConfig(v string) *GetProjectFeatureViewResponseBody {
-	s.LastSyncConfig = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetName(v string) *GetProjectFeatureViewResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetOwner(v string) *GetProjectFeatureViewResponseBody {
-	s.Owner = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetProjectId(v string) *GetProjectFeatureViewResponseBody {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetProjectName(v string) *GetProjectFeatureViewResponseBody {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetRegisterDatasourceId(v string) *GetProjectFeatureViewResponseBody {
-	s.RegisterDatasourceId = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetRegisterTable(v string) *GetProjectFeatureViewResponseBody {
-	s.RegisterTable = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetRequestId(v string) *GetProjectFeatureViewResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetSyncOnlineTable(v bool) *GetProjectFeatureViewResponseBody {
-	s.SyncOnlineTable = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetTTL(v int32) *GetProjectFeatureViewResponseBody {
-	s.TTL = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetTags(v []*string) *GetProjectFeatureViewResponseBody {
-	s.Tags = v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetType(v string) *GetProjectFeatureViewResponseBody {
-	s.Type = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBody) SetWriteMethod(v string) *GetProjectFeatureViewResponseBody {
-	s.WriteMethod = &v
-	return s
-}
-
-type GetProjectFeatureViewResponseBodyFields struct {
-	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// field1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// INT32
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetProjectFeatureViewResponseBodyFields) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectFeatureViewResponseBodyFields) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectFeatureViewResponseBodyFields) SetAttributes(v []*string) *GetProjectFeatureViewResponseBodyFields {
-	s.Attributes = v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBodyFields) SetName(v string) *GetProjectFeatureViewResponseBodyFields {
-	s.Name = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponseBodyFields) SetType(v string) *GetProjectFeatureViewResponseBodyFields {
-	s.Type = &v
-	return s
-}
-
-type GetProjectFeatureViewResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetProjectFeatureViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetProjectFeatureViewResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectFeatureViewResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectFeatureViewResponse) SetHeaders(v map[string]*string) *GetProjectFeatureViewResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponse) SetStatusCode(v int32) *GetProjectFeatureViewResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetProjectFeatureViewResponse) SetBody(v *GetProjectFeatureViewResponseBody) *GetProjectFeatureViewResponse {
-	s.Body = v
-	return s
-}
-
-type GetProjectModelFeatureResponseBody struct {
-	Features []*GetProjectModelFeatureResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2023-07-04T14:46:22.227+08:00
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// example:
-	//
-	// 2023-07-04T14:46:22.227+08:00
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// example:
-	//
-	// 3
-	LabelDatasourceId *string `json:"LabelDatasourceId,omitempty" xml:"LabelDatasourceId,omitempty"`
-	// example:
-	//
-	// table1
-	LabelDatasourceTable *string `json:"LabelDatasourceTable,omitempty" xml:"LabelDatasourceTable,omitempty"`
-	// example:
-	//
-	// dt
-	LabelEventTime *string `json:"LabelEventTime,omitempty" xml:"LabelEventTime,omitempty"`
-	// example:
-	//
-	// 3
-	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	// example:
-	//
-	// 3
-	ModelFeatureId *string `json:"ModelFeatureId,omitempty" xml:"ModelFeatureId,omitempty"`
-	// example:
-	//
-	// model_feature_1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 12324325324****
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// example:
-	//
-	// 3
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// example:
-	//
-	// project1
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// 6B662A64-E4BF-56F8-BF5F-4C63F34EC0A8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// table2
-	TrainingSetFGTable *string `json:"TrainingSetFGTable,omitempty" xml:"TrainingSetFGTable,omitempty"`
-	// example:
-	//
-	// model_feature_xxx_training_set
-	TrainingSetTable *string `json:"TrainingSetTable,omitempty" xml:"TrainingSetTable,omitempty"`
-}
-
-func (s GetProjectModelFeatureResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectModelFeatureResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetFeatures(v []*GetProjectModelFeatureResponseBodyFeatures) *GetProjectModelFeatureResponseBody {
-	s.Features = v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetGmtCreateTime(v string) *GetProjectModelFeatureResponseBody {
-	s.GmtCreateTime = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetGmtModifiedTime(v string) *GetProjectModelFeatureResponseBody {
-	s.GmtModifiedTime = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetLabelDatasourceId(v string) *GetProjectModelFeatureResponseBody {
-	s.LabelDatasourceId = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetLabelDatasourceTable(v string) *GetProjectModelFeatureResponseBody {
-	s.LabelDatasourceTable = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetLabelEventTime(v string) *GetProjectModelFeatureResponseBody {
-	s.LabelEventTime = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetLabelTableId(v string) *GetProjectModelFeatureResponseBody {
-	s.LabelTableId = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetModelFeatureId(v string) *GetProjectModelFeatureResponseBody {
-	s.ModelFeatureId = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetName(v string) *GetProjectModelFeatureResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetOwner(v string) *GetProjectModelFeatureResponseBody {
-	s.Owner = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetProjectId(v string) *GetProjectModelFeatureResponseBody {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetProjectName(v string) *GetProjectModelFeatureResponseBody {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetRequestId(v string) *GetProjectModelFeatureResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetTrainingSetFGTable(v string) *GetProjectModelFeatureResponseBody {
-	s.TrainingSetFGTable = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBody) SetTrainingSetTable(v string) *GetProjectModelFeatureResponseBody {
-	s.TrainingSetTable = &v
-	return s
-}
-
-type GetProjectModelFeatureResponseBodyFeatures struct {
-	// example:
-	//
-	// feature2
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// example:
-	//
-	// 3
-	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	// example:
-	//
-	// feature_view1
-	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
-	// example:
-	//
-	// feature1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// INT32
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetProjectModelFeatureResponseBodyFeatures) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectModelFeatureResponseBodyFeatures) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectModelFeatureResponseBodyFeatures) SetAliasName(v string) *GetProjectModelFeatureResponseBodyFeatures {
-	s.AliasName = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBodyFeatures) SetFeatureViewId(v string) *GetProjectModelFeatureResponseBodyFeatures {
-	s.FeatureViewId = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBodyFeatures) SetFeatureViewName(v string) *GetProjectModelFeatureResponseBodyFeatures {
-	s.FeatureViewName = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBodyFeatures) SetName(v string) *GetProjectModelFeatureResponseBodyFeatures {
-	s.Name = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponseBodyFeatures) SetType(v string) *GetProjectModelFeatureResponseBodyFeatures {
-	s.Type = &v
-	return s
-}
-
-type GetProjectModelFeatureResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetProjectModelFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetProjectModelFeatureResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectModelFeatureResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectModelFeatureResponse) SetHeaders(v map[string]*string) *GetProjectModelFeatureResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponse) SetStatusCode(v int32) *GetProjectModelFeatureResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetProjectModelFeatureResponse) SetBody(v *GetProjectModelFeatureResponseBody) *GetProjectModelFeatureResponse {
 	s.Body = v
 	return s
 }
@@ -6906,116 +6306,6 @@ func (s *ListModelFeaturesResponse) SetBody(v *ListModelFeaturesResponseBody) *L
 	return s
 }
 
-type ListProjectFeatureViewOwnersResponseBody struct {
-	Owners []*string `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0FBBE454-9BD1-5D8F-9129-D14DB7FAFE0B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListProjectFeatureViewOwnersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectFeatureViewOwnersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectFeatureViewOwnersResponseBody) SetOwners(v []*string) *ListProjectFeatureViewOwnersResponseBody {
-	s.Owners = v
-	return s
-}
-
-func (s *ListProjectFeatureViewOwnersResponseBody) SetRequestId(v string) *ListProjectFeatureViewOwnersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListProjectFeatureViewOwnersResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListProjectFeatureViewOwnersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListProjectFeatureViewOwnersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectFeatureViewOwnersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectFeatureViewOwnersResponse) SetHeaders(v map[string]*string) *ListProjectFeatureViewOwnersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProjectFeatureViewOwnersResponse) SetStatusCode(v int32) *ListProjectFeatureViewOwnersResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListProjectFeatureViewOwnersResponse) SetBody(v *ListProjectFeatureViewOwnersResponseBody) *ListProjectFeatureViewOwnersResponse {
-	s.Body = v
-	return s
-}
-
-type ListProjectFeatureViewTagsResponseBody struct {
-	// example:
-	//
-	// D3DB6C44-2EFD-5575-A58D-BED4BD07BE46
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-}
-
-func (s ListProjectFeatureViewTagsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectFeatureViewTagsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectFeatureViewTagsResponseBody) SetRequestId(v string) *ListProjectFeatureViewTagsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListProjectFeatureViewTagsResponseBody) SetTags(v []*string) *ListProjectFeatureViewTagsResponseBody {
-	s.Tags = v
-	return s
-}
-
-type ListProjectFeatureViewTagsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListProjectFeatureViewTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListProjectFeatureViewTagsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectFeatureViewTagsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectFeatureViewTagsResponse) SetHeaders(v map[string]*string) *ListProjectFeatureViewTagsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProjectFeatureViewTagsResponse) SetStatusCode(v int32) *ListProjectFeatureViewTagsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListProjectFeatureViewTagsResponse) SetBody(v *ListProjectFeatureViewTagsResponseBody) *ListProjectFeatureViewTagsResponse {
-	s.Body = v
-	return s
-}
-
 type ListProjectFeatureViewsResponseBody struct {
 	FeatureViews []*ListProjectFeatureViewsResponseBodyFeatureViews `json:"FeatureViews,omitempty" xml:"FeatureViews,omitempty" type:"Repeated"`
 	// example:
@@ -9083,88 +8373,6 @@ func (s *WriteFeatureViewTableResponse) SetBody(v *WriteFeatureViewTableResponse
 	return s
 }
 
-type WriteProjectFeatureEntityHotIdsRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1,2,3
-	HotIds *string `json:"HotIds,omitempty" xml:"HotIds,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 20221213
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s WriteProjectFeatureEntityHotIdsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WriteProjectFeatureEntityHotIdsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *WriteProjectFeatureEntityHotIdsRequest) SetHotIds(v string) *WriteProjectFeatureEntityHotIdsRequest {
-	s.HotIds = &v
-	return s
-}
-
-func (s *WriteProjectFeatureEntityHotIdsRequest) SetVersion(v string) *WriteProjectFeatureEntityHotIdsRequest {
-	s.Version = &v
-	return s
-}
-
-type WriteProjectFeatureEntityHotIdsResponseBody struct {
-	// example:
-	//
-	// 6B662A64-E4BF-56F8-BF5F-4C63F34EC0A8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s WriteProjectFeatureEntityHotIdsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WriteProjectFeatureEntityHotIdsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *WriteProjectFeatureEntityHotIdsResponseBody) SetRequestId(v string) *WriteProjectFeatureEntityHotIdsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type WriteProjectFeatureEntityHotIdsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *WriteProjectFeatureEntityHotIdsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s WriteProjectFeatureEntityHotIdsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WriteProjectFeatureEntityHotIdsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *WriteProjectFeatureEntityHotIdsResponse) SetHeaders(v map[string]*string) *WriteProjectFeatureEntityHotIdsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *WriteProjectFeatureEntityHotIdsResponse) SetStatusCode(v int32) *WriteProjectFeatureEntityHotIdsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *WriteProjectFeatureEntityHotIdsResponse) SetBody(v *WriteProjectFeatureEntityHotIdsResponseBody) *WriteProjectFeatureEntityHotIdsResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -9205,70 +8413,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 切换生效的热点数据的版本。
-//
-// @param request - ChangeProjectFeatureEntityHotIdVersionRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ChangeProjectFeatureEntityHotIdVersionResponse
-func (client *Client) ChangeProjectFeatureEntityHotIdVersionWithOptions(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *ChangeProjectFeatureEntityHotIdVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeProjectFeatureEntityHotIdVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		body["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ChangeProjectFeatureEntityHotIdVersion"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/featureentities/" + tea.StringValue(openapiutil.GetEncodeParam(FeatureEntityName)) + "/action/changehotidversion"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ChangeProjectFeatureEntityHotIdVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 切换生效的热点数据的版本。
-//
-// @param request - ChangeProjectFeatureEntityHotIdVersionRequest
-//
-// @return ChangeProjectFeatureEntityHotIdVersionResponse
-func (client *Client) ChangeProjectFeatureEntityHotIdVersion(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *ChangeProjectFeatureEntityHotIdVersionRequest) (_result *ChangeProjectFeatureEntityHotIdVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ChangeProjectFeatureEntityHotIdVersionResponse{}
-	_body, _err := client.ChangeProjectFeatureEntityHotIdVersionWithOptions(InstanceId, ProjectId, FeatureEntityName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9771,6 +8915,10 @@ func (client *Client) CreateModelFeatureWithOptions(InstanceId *string, request 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Features)) {
 		body["Features"] = request.Features
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelPriorityLevel)) {
+		body["LabelPriorityLevel"] = request.LabelPriorityLevel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LabelTableId)) {
@@ -10423,6 +9571,10 @@ func (client *Client) ExportModelFeatureTrainingSetTableWithOptions(InstanceId *
 		body["RealTimeIterateInterval"] = request.RealTimeIterateInterval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RealTimePartitionCountValue)) {
+		body["RealTimePartitionCountValue"] = request.RealTimePartitionCountValue
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TrainingSetConfig)) {
 		body["TrainingSetConfig"] = request.TrainingSetConfig
 	}
@@ -11013,156 +10165,6 @@ func (client *Client) GetProjectFeatureEntity(InstanceId *string, ProjectId *str
 	headers := make(map[string]*string)
 	_result = &GetProjectFeatureEntityResponse{}
 	_body, _err := client.GetProjectFeatureEntityWithOptions(InstanceId, ProjectId, FeatureEntityName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下，指定特征实体指定的热点数据。
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetProjectFeatureEntityHotIdsResponse
-func (client *Client) GetProjectFeatureEntityHotIdsWithOptions(InstanceId *string, ProjectId *string, NextSeqNumber *string, FeatureEntityName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectFeatureEntityHotIdsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProjectFeatureEntityHotIds"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/featureentities/" + tea.StringValue(openapiutil.GetEncodeParam(FeatureEntityName)) + "/hotids/" + tea.StringValue(openapiutil.GetEncodeParam(NextSeqNumber))),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetProjectFeatureEntityHotIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下，指定特征实体指定的热点数据。
-//
-// @return GetProjectFeatureEntityHotIdsResponse
-func (client *Client) GetProjectFeatureEntityHotIds(InstanceId *string, ProjectId *string, NextSeqNumber *string, FeatureEntityName *string) (_result *GetProjectFeatureEntityHotIdsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProjectFeatureEntityHotIdsResponse{}
-	_body, _err := client.GetProjectFeatureEntityHotIdsWithOptions(InstanceId, ProjectId, NextSeqNumber, FeatureEntityName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下特征视图详细信息。
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetProjectFeatureViewResponse
-func (client *Client) GetProjectFeatureViewWithOptions(InstanceId *string, ProjectId *string, FeatureViewName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectFeatureViewResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProjectFeatureView"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/featureviews/" + tea.StringValue(openapiutil.GetEncodeParam(FeatureViewName))),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetProjectFeatureViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下特征视图详细信息。
-//
-// @return GetProjectFeatureViewResponse
-func (client *Client) GetProjectFeatureView(InstanceId *string, ProjectId *string, FeatureViewName *string) (_result *GetProjectFeatureViewResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProjectFeatureViewResponse{}
-	_body, _err := client.GetProjectFeatureViewWithOptions(InstanceId, ProjectId, FeatureViewName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下指定模型特征的详细信息。
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetProjectModelFeatureResponse
-func (client *Client) GetProjectModelFeatureWithOptions(InstanceId *string, ProjectId *string, ModelFeatureName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectModelFeatureResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProjectModelFeature"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureName))),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetProjectModelFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下指定模型特征的详细信息。
-//
-// @return GetProjectModelFeatureResponse
-func (client *Client) GetProjectModelFeature(InstanceId *string, ProjectId *string, ModelFeatureName *string) (_result *GetProjectModelFeatureResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProjectModelFeatureResponse{}
-	_body, _err := client.GetProjectModelFeatureWithOptions(InstanceId, ProjectId, ModelFeatureName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12142,106 +11144,6 @@ func (client *Client) ListModelFeatures(InstanceId *string, request *ListModelFe
 
 // Summary:
 //
-// 获取项目下特征视图的所有创建人。
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListProjectFeatureViewOwnersResponse
-func (client *Client) ListProjectFeatureViewOwnersWithOptions(InstanceId *string, ProjectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectFeatureViewOwnersResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProjectFeatureViewOwners"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/featureviewowners"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListProjectFeatureViewOwnersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下特征视图的所有创建人。
-//
-// @return ListProjectFeatureViewOwnersResponse
-func (client *Client) ListProjectFeatureViewOwners(InstanceId *string, ProjectId *string) (_result *ListProjectFeatureViewOwnersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProjectFeatureViewOwnersResponse{}
-	_body, _err := client.ListProjectFeatureViewOwnersWithOptions(InstanceId, ProjectId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下特征视图的所有标签。
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListProjectFeatureViewTagsResponse
-func (client *Client) ListProjectFeatureViewTagsWithOptions(InstanceId *string, ProjectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectFeatureViewTagsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProjectFeatureViewTags"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/featureviewtags"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListProjectFeatureViewTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取项目下特征视图的所有标签。
-//
-// @return ListProjectFeatureViewTagsResponse
-func (client *Client) ListProjectFeatureViewTags(InstanceId *string, ProjectId *string) (_result *ListProjectFeatureViewTagsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProjectFeatureViewTagsResponse{}
-	_body, _err := client.ListProjectFeatureViewTagsWithOptions(InstanceId, ProjectId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 获取项目下的所有特征视图、特征信息。
 //
 // @param headers - map
@@ -13123,74 +12025,6 @@ func (client *Client) WriteFeatureViewTable(InstanceId *string, FeatureViewId *s
 	headers := make(map[string]*string)
 	_result = &WriteFeatureViewTableResponse{}
 	_body, _err := client.WriteFeatureViewTableWithOptions(InstanceId, FeatureViewId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 向指定项目下的特征实体写入热点数据。
-//
-// @param request - WriteProjectFeatureEntityHotIdsRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return WriteProjectFeatureEntityHotIdsResponse
-func (client *Client) WriteProjectFeatureEntityHotIdsWithOptions(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *WriteProjectFeatureEntityHotIdsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WriteProjectFeatureEntityHotIdsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.HotIds)) {
-		body["HotIds"] = request.HotIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		body["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("WriteProjectFeatureEntityHotIds"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/featureentities/" + tea.StringValue(openapiutil.GetEncodeParam(FeatureEntityName)) + "/action/writehotids"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &WriteProjectFeatureEntityHotIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 向指定项目下的特征实体写入热点数据。
-//
-// @param request - WriteProjectFeatureEntityHotIdsRequest
-//
-// @return WriteProjectFeatureEntityHotIdsResponse
-func (client *Client) WriteProjectFeatureEntityHotIds(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *WriteProjectFeatureEntityHotIdsRequest) (_result *WriteProjectFeatureEntityHotIdsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &WriteProjectFeatureEntityHotIdsResponse{}
-	_body, _err := client.WriteProjectFeatureEntityHotIdsWithOptions(InstanceId, ProjectId, FeatureEntityName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
