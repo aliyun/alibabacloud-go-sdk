@@ -9,6 +9,44 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataTopicLagMapValue struct {
+	// example:
+	//
+	// 1
+	ReadyCount *int64 `json:"readyCount,omitempty" xml:"readyCount,omitempty"`
+	// example:
+	//
+	// 1
+	InflightCount *int64 `json:"inflightCount,omitempty" xml:"inflightCount,omitempty"`
+	// example:
+	//
+	// 12
+	DeliveryDuration *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
+}
+
+func (s DataTopicLagMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataTopicLagMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataTopicLagMapValue) SetReadyCount(v int64) *DataTopicLagMapValue {
+	s.ReadyCount = &v
+	return s
+}
+
+func (s *DataTopicLagMapValue) SetInflightCount(v int64) *DataTopicLagMapValue {
+	s.InflightCount = &v
+	return s
+}
+
+func (s *DataTopicLagMapValue) SetDeliveryDuration(v int64) *DataTopicLagMapValue {
+	s.DeliveryDuration = &v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	// The ID of the region in which the instance resides.
 	//
@@ -794,7 +832,8 @@ type CreateInstanceRequestNetworkInfoVpcInfo struct {
 	// example:
 	//
 	// vsw-uf6gwtbn6etadpv*******
-	VSwitchId *string                                             `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The vSwitches.
 	VSwitches []*CreateInstanceRequestNetworkInfoVpcInfoVSwitches `json:"vSwitches,omitempty" xml:"vSwitches,omitempty" type:"Repeated"`
 	// The ID of the VPC in which you want to deploy the instance.
 	//
@@ -837,6 +876,11 @@ func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVpcId(v string) *CreateInst
 }
 
 type CreateInstanceRequestNetworkInfoVpcInfoVSwitches struct {
+	// The ID of the vSwitch with which the instance is associated.
+	//
+	// example:
+	//
+	// vsw-uf6gwtbn6etadpv*******
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 }
 
@@ -1080,6 +1124,478 @@ func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse 
 }
 
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceAccountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateInstanceAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceAccountRequest) SetPassword(v string) *CreateInstanceAccountRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateInstanceAccountRequest) SetUsername(v string) *CreateInstanceAccountRequest {
+	s.Username = &v
+	return s
+}
+
+type CreateInstanceAccountResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 3AE0999C-8DBA-5CEE-8D9A-BE8D4A90DF8D
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateInstanceAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceAccountResponseBody) SetAccessDeniedDetail(v string) *CreateInstanceAccountResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetCode(v string) *CreateInstanceAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetData(v bool) *CreateInstanceAccountResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetDynamicCode(v string) *CreateInstanceAccountResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetDynamicMessage(v string) *CreateInstanceAccountResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetHttpStatusCode(v int32) *CreateInstanceAccountResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetMessage(v string) *CreateInstanceAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetRequestId(v string) *CreateInstanceAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponseBody) SetSuccess(v bool) *CreateInstanceAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateInstanceAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateInstanceAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceAccountResponse) SetHeaders(v map[string]*string) *CreateInstanceAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceAccountResponse) SetStatusCode(v int32) *CreateInstanceAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceAccountResponse) SetBody(v *CreateInstanceAccountResponseBody) *CreateInstanceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceAclRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pub
+	Actions *string `json:"actions,omitempty" xml:"actions,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Allow
+	Decision     *string   `json:"decision,omitempty" xml:"decision,omitempty"`
+	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Topic
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s CreateInstanceAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceAclRequest) SetActions(v string) *CreateInstanceAclRequest {
+	s.Actions = &v
+	return s
+}
+
+func (s *CreateInstanceAclRequest) SetDecision(v string) *CreateInstanceAclRequest {
+	s.Decision = &v
+	return s
+}
+
+func (s *CreateInstanceAclRequest) SetIpWhitelists(v []*string) *CreateInstanceAclRequest {
+	s.IpWhitelists = v
+	return s
+}
+
+func (s *CreateInstanceAclRequest) SetResourceName(v string) *CreateInstanceAclRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *CreateInstanceAclRequest) SetResourceType(v string) *CreateInstanceAclRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type CreateInstanceAclResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C7E8AE3A-219B-52EE-BE32-4036F5F88833
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateInstanceAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceAclResponseBody) SetAccessDeniedDetail(v string) *CreateInstanceAclResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetCode(v string) *CreateInstanceAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetData(v bool) *CreateInstanceAclResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetDynamicCode(v string) *CreateInstanceAclResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetDynamicMessage(v string) *CreateInstanceAclResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetHttpStatusCode(v int32) *CreateInstanceAclResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetMessage(v string) *CreateInstanceAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetRequestId(v string) *CreateInstanceAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponseBody) SetSuccess(v bool) *CreateInstanceAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateInstanceAclResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateInstanceAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceAclResponse) SetHeaders(v map[string]*string) *CreateInstanceAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceAclResponse) SetStatusCode(v int32) *CreateInstanceAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceAclResponse) SetBody(v *CreateInstanceAclResponseBody) *CreateInstanceAclResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceIpWhitelistRequest struct {
+	// This parameter is required.
+	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
+}
+
+func (s CreateInstanceIpWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceIpWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceIpWhitelistRequest) SetIpWhitelists(v []*string) *CreateInstanceIpWhitelistRequest {
+	s.IpWhitelists = v
+	return s
+}
+
+type CreateInstanceIpWhitelistResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// A07B41BD-6DD3-5349-9E76-00303DF04BBE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateInstanceIpWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceIpWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetAccessDeniedDetail(v string) *CreateInstanceIpWhitelistResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetCode(v string) *CreateInstanceIpWhitelistResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetData(v bool) *CreateInstanceIpWhitelistResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetDynamicCode(v string) *CreateInstanceIpWhitelistResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetDynamicMessage(v string) *CreateInstanceIpWhitelistResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetHttpStatusCode(v int32) *CreateInstanceIpWhitelistResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetMessage(v string) *CreateInstanceIpWhitelistResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetRequestId(v string) *CreateInstanceIpWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponseBody) SetSuccess(v bool) *CreateInstanceIpWhitelistResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateInstanceIpWhitelistResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceIpWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateInstanceIpWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceIpWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceIpWhitelistResponse) SetHeaders(v map[string]*string) *CreateInstanceIpWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponse) SetStatusCode(v int32) *CreateInstanceIpWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceIpWhitelistResponse) SetBody(v *CreateInstanceIpWhitelistResponseBody) *CreateInstanceIpWhitelistResponse {
 	s.Body = v
 	return s
 }
@@ -1385,6 +1901,160 @@ func (s *DeleteConsumerGroupResponse) SetBody(v *DeleteConsumerGroupResponseBody
 	return s
 }
 
+type DeleteConsumerGroupSubscriptionRequest struct {
+	// This parameter is required.
+	FilterExpression *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
+	// This parameter is required.
+	FilterType *string `json:"filterType,omitempty" xml:"filterType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// topic_test
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s DeleteConsumerGroupSubscriptionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConsumerGroupSubscriptionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConsumerGroupSubscriptionRequest) SetFilterExpression(v string) *DeleteConsumerGroupSubscriptionRequest {
+	s.FilterExpression = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionRequest) SetFilterType(v string) *DeleteConsumerGroupSubscriptionRequest {
+	s.FilterType = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionRequest) SetTopicName(v string) *DeleteConsumerGroupSubscriptionRequest {
+	s.TopicName = &v
+	return s
+}
+
+type DeleteConsumerGroupSubscriptionResponseBody struct {
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 723CDA5C-E25C-5EAF-9601-08C286DF8A4D
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteConsumerGroupSubscriptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConsumerGroupSubscriptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetAccessDeniedDetail(v string) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetCode(v string) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetData(v bool) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetDynamicCode(v string) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetDynamicMessage(v string) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetHttpStatusCode(v int32) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetMessage(v string) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetRequestId(v string) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponseBody) SetSuccess(v bool) *DeleteConsumerGroupSubscriptionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteConsumerGroupSubscriptionResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConsumerGroupSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteConsumerGroupSubscriptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConsumerGroupSubscriptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponse) SetHeaders(v map[string]*string) *DeleteConsumerGroupSubscriptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponse) SetStatusCode(v int32) *DeleteConsumerGroupSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupSubscriptionResponse) SetBody(v *DeleteConsumerGroupSubscriptionResponseBody) *DeleteConsumerGroupSubscriptionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteInstanceResponseBody struct {
 	// The error code returned if the call failed.
 	//
@@ -1509,6 +2179,424 @@ func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse 
 }
 
 func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceAccountResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// Instance.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 157DF7D4-53FB-58C6-BEBC-A9400E7EF68A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteInstanceAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetAccessDeniedDetail(v string) *DeleteInstanceAccountResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetCode(v string) *DeleteInstanceAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetData(v bool) *DeleteInstanceAccountResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetDynamicCode(v string) *DeleteInstanceAccountResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetDynamicMessage(v string) *DeleteInstanceAccountResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetHttpStatusCode(v int32) *DeleteInstanceAccountResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetMessage(v string) *DeleteInstanceAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetRequestId(v string) *DeleteInstanceAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponseBody) SetSuccess(v bool) *DeleteInstanceAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteInstanceAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInstanceAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceAccountResponse) SetHeaders(v map[string]*string) *DeleteInstanceAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponse) SetStatusCode(v int32) *DeleteInstanceAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceAccountResponse) SetBody(v *DeleteInstanceAccountResponseBody) *DeleteInstanceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceAclRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Topic
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s DeleteInstanceAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceAclRequest) SetResourceName(v string) *DeleteInstanceAclRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DeleteInstanceAclRequest) SetResourceType(v string) *DeleteInstanceAclRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DeleteInstanceAclResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 7358418D-83BD-507A-8079-611C63E05674
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteInstanceAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceAclResponseBody) SetAccessDeniedDetail(v string) *DeleteInstanceAclResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetCode(v string) *DeleteInstanceAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetData(v bool) *DeleteInstanceAclResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetDynamicCode(v string) *DeleteInstanceAclResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetDynamicMessage(v string) *DeleteInstanceAclResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetHttpStatusCode(v int32) *DeleteInstanceAclResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetMessage(v string) *DeleteInstanceAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetRequestId(v string) *DeleteInstanceAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponseBody) SetSuccess(v bool) *DeleteInstanceAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteInstanceAclResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInstanceAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceAclResponse) SetHeaders(v map[string]*string) *DeleteInstanceAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceAclResponse) SetStatusCode(v int32) *DeleteInstanceAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceAclResponse) SetBody(v *DeleteInstanceAclResponseBody) *DeleteInstanceAclResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceIpWhitelistRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.0.0.0/0
+	IpWhitelist *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+}
+
+func (s DeleteInstanceIpWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceIpWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceIpWhitelistRequest) SetIpWhitelist(v string) *DeleteInstanceIpWhitelistRequest {
+	s.IpWhitelist = &v
+	return s
+}
+
+type DeleteInstanceIpWhitelistResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 16425867-C948-5A0C-9A24-5259727BE727
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteInstanceIpWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceIpWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetAccessDeniedDetail(v string) *DeleteInstanceIpWhitelistResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetCode(v string) *DeleteInstanceIpWhitelistResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetData(v bool) *DeleteInstanceIpWhitelistResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetDynamicCode(v string) *DeleteInstanceIpWhitelistResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetDynamicMessage(v string) *DeleteInstanceIpWhitelistResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetHttpStatusCode(v int32) *DeleteInstanceIpWhitelistResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetMessage(v string) *DeleteInstanceIpWhitelistResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetRequestId(v string) *DeleteInstanceIpWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponseBody) SetSuccess(v bool) *DeleteInstanceIpWhitelistResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteInstanceIpWhitelistResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceIpWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInstanceIpWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceIpWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceIpWhitelistResponse) SetHeaders(v map[string]*string) *DeleteInstanceIpWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponse) SetStatusCode(v int32) *DeleteInstanceIpWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceIpWhitelistResponse) SetBody(v *DeleteInstanceIpWhitelistResponseBody) *DeleteInstanceIpWhitelistResponse {
 	s.Body = v
 	return s
 }
@@ -1999,6 +3087,684 @@ func (s *GetConsumerGroupResponse) SetStatusCode(v int32) *GetConsumerGroupRespo
 }
 
 func (s *GetConsumerGroupResponse) SetBody(v *GetConsumerGroupResponseBody) *GetConsumerGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetConsumerGroupLagResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetConsumerGroupLagResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// F5764C40-FB8C-53AE-B95D-96AB3D0E9375
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetConsumerGroupLagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupLagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetCode(v string) *GetConsumerGroupLagResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetData(v *GetConsumerGroupLagResponseBodyData) *GetConsumerGroupLagResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetDynamicCode(v string) *GetConsumerGroupLagResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetDynamicMessage(v string) *GetConsumerGroupLagResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetHttpStatusCode(v int32) *GetConsumerGroupLagResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetMessage(v string) *GetConsumerGroupLagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetRequestId(v string) *GetConsumerGroupLagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBody) SetSuccess(v bool) *GetConsumerGroupLagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetConsumerGroupLagResponseBodyData struct {
+	// example:
+	//
+	// CID-TEST
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// example:
+	//
+	// 2022-08-01 20:05:50
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId    *string                                      `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	TopicLagMap map[string]*DataTopicLagMapValue             `json:"topicLagMap,omitempty" xml:"topicLagMap,omitempty"`
+	TotalLag    *GetConsumerGroupLagResponseBodyDataTotalLag `json:"totalLag,omitempty" xml:"totalLag,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2022-08-01 20:05:50
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetConsumerGroupLagResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupLagResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) SetConsumerGroupId(v string) *GetConsumerGroupLagResponseBodyData {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) SetCreateTime(v string) *GetConsumerGroupLagResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) SetInstanceId(v string) *GetConsumerGroupLagResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) SetRegionId(v string) *GetConsumerGroupLagResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) SetTopicLagMap(v map[string]*DataTopicLagMapValue) *GetConsumerGroupLagResponseBodyData {
+	s.TopicLagMap = v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) SetTotalLag(v *GetConsumerGroupLagResponseBodyDataTotalLag) *GetConsumerGroupLagResponseBodyData {
+	s.TotalLag = v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyData) SetUpdateTime(v string) *GetConsumerGroupLagResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetConsumerGroupLagResponseBodyDataTotalLag struct {
+	// example:
+	//
+	// 12
+	DeliveryDuration *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
+	// example:
+	//
+	// 1
+	InflightCount *int64 `json:"inflightCount,omitempty" xml:"inflightCount,omitempty"`
+	// example:
+	//
+	// 1
+	ReadyCount *int64 `json:"readyCount,omitempty" xml:"readyCount,omitempty"`
+}
+
+func (s GetConsumerGroupLagResponseBodyDataTotalLag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupLagResponseBodyDataTotalLag) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupLagResponseBodyDataTotalLag) SetDeliveryDuration(v int64) *GetConsumerGroupLagResponseBodyDataTotalLag {
+	s.DeliveryDuration = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyDataTotalLag) SetInflightCount(v int64) *GetConsumerGroupLagResponseBodyDataTotalLag {
+	s.InflightCount = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponseBodyDataTotalLag) SetReadyCount(v int64) *GetConsumerGroupLagResponseBodyDataTotalLag {
+	s.ReadyCount = &v
+	return s
+}
+
+type GetConsumerGroupLagResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConsumerGroupLagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConsumerGroupLagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupLagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupLagResponse) SetHeaders(v map[string]*string) *GetConsumerGroupLagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponse) SetStatusCode(v int32) *GetConsumerGroupLagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConsumerGroupLagResponse) SetBody(v *GetConsumerGroupLagResponseBody) *GetConsumerGroupLagResponse {
+	s.Body = v
+	return s
+}
+
+type GetConsumerGroupSubscriptionResponseBody struct {
+	// example:
+	//
+	// Instance.NotFound
+	Code *string                                         `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetConsumerGroupSubscriptionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 157DF7D4-53FB-58C6-BEBC-A9400E7EF68A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetConsumerGroupSubscriptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupSubscriptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetCode(v string) *GetConsumerGroupSubscriptionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetData(v []*GetConsumerGroupSubscriptionResponseBodyData) *GetConsumerGroupSubscriptionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetDynamicCode(v string) *GetConsumerGroupSubscriptionResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetDynamicMessage(v string) *GetConsumerGroupSubscriptionResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetHttpStatusCode(v int32) *GetConsumerGroupSubscriptionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetMessage(v string) *GetConsumerGroupSubscriptionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetRequestId(v string) *GetConsumerGroupSubscriptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBody) SetSuccess(v bool) *GetConsumerGroupSubscriptionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetConsumerGroupSubscriptionResponseBodyData struct {
+	ConnectionDTO   *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO   `json:"connectionDTO,omitempty" xml:"connectionDTO,omitempty" type:"Struct"`
+	SubscriptionDTO *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO `json:"subscriptionDTO,omitempty" xml:"subscriptionDTO,omitempty" type:"Struct"`
+}
+
+func (s GetConsumerGroupSubscriptionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupSubscriptionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyData) SetConnectionDTO(v *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) *GetConsumerGroupSubscriptionResponseBodyData {
+	s.ConnectionDTO = v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyData) SetSubscriptionDTO(v *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) *GetConsumerGroupSubscriptionResponseBodyData {
+	s.SubscriptionDTO = v
+	return s
+}
+
+type GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO struct {
+	// example:
+	//
+	// 192.168.50.191@19908#-2093249153#1534215565#40385215750900
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// example:
+	//
+	// xx.xx.xx.xx
+	EgressIp *string `json:"egressIp,omitempty" xml:"egressIp,omitempty"`
+	// example:
+	//
+	// nginx
+	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// example:
+	//
+	// BROADCASTING
+	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) SetClientId(v string) *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) SetEgressIp(v string) *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO {
+	s.EgressIp = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) SetHostname(v string) *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO {
+	s.Hostname = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) SetLanguage(v string) *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO {
+	s.Language = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) SetMessageModel(v string) *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO {
+	s.MessageModel = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO) SetVersion(v string) *GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO {
+	s.Version = &v
+	return s
+}
+
+type GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO struct {
+	// example:
+	//
+	// GID_inspector_group
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// example:
+	//
+	// *
+	FilterExpression *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
+	// example:
+	//
+	// UNSPECIFIED
+	FilterExpressionType *string `json:"filterExpressionType,omitempty" xml:"filterExpressionType,omitempty"`
+	// example:
+	//
+	// BROADCASTING
+	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
+	// example:
+	//
+	// ONLINE
+	SubscriptionStatus *string `json:"subscriptionStatus,omitempty" xml:"subscriptionStatus,omitempty"`
+	// example:
+	//
+	// Topic_normal_inspector
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) SetConsumerGroupId(v string) *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) SetFilterExpression(v string) *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO {
+	s.FilterExpression = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) SetFilterExpressionType(v string) *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO {
+	s.FilterExpressionType = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) SetMessageModel(v string) *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO {
+	s.MessageModel = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) SetSubscriptionStatus(v string) *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO {
+	s.SubscriptionStatus = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO) SetTopicName(v string) *GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO {
+	s.TopicName = &v
+	return s
+}
+
+type GetConsumerGroupSubscriptionResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConsumerGroupSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConsumerGroupSubscriptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerGroupSubscriptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerGroupSubscriptionResponse) SetHeaders(v map[string]*string) *GetConsumerGroupSubscriptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponse) SetStatusCode(v int32) *GetConsumerGroupSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConsumerGroupSubscriptionResponse) SetBody(v *GetConsumerGroupSubscriptionResponseBody) *GetConsumerGroupSubscriptionResponse {
+	s.Body = v
+	return s
+}
+
+type GetConsumerStackRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 172.26.76.48@Lqd7dImlp9KJ5V84
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+}
+
+func (s GetConsumerStackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerStackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerStackRequest) SetClientId(v string) *GetConsumerStackRequest {
+	s.ClientId = &v
+	return s
+}
+
+type GetConsumerStackResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetConsumerStackResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 30F2CBC7-F69D-5D78-9661-0254C9E1FBFA
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetConsumerStackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerStackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerStackResponseBody) SetCode(v string) *GetConsumerStackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBody) SetData(v *GetConsumerStackResponseBodyData) *GetConsumerStackResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetConsumerStackResponseBody) SetDynamicCode(v string) *GetConsumerStackResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBody) SetDynamicMessage(v string) *GetConsumerStackResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBody) SetHttpStatusCode(v int32) *GetConsumerStackResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBody) SetMessage(v string) *GetConsumerStackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBody) SetRequestId(v string) *GetConsumerStackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBody) SetSuccess(v bool) *GetConsumerStackResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetConsumerStackResponseBodyData struct {
+	// example:
+	//
+	// CID-TEST
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string                                   `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Stacks   []*GetConsumerStackResponseBodyDataStacks `json:"stacks,omitempty" xml:"stacks,omitempty" type:"Repeated"`
+}
+
+func (s GetConsumerStackResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerStackResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerStackResponseBodyData) SetConsumerGroupId(v string) *GetConsumerStackResponseBodyData {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBodyData) SetInstanceId(v string) *GetConsumerStackResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBodyData) SetRegionId(v string) *GetConsumerStackResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBodyData) SetStacks(v []*GetConsumerStackResponseBodyDataStacks) *GetConsumerStackResponseBodyData {
+	s.Stacks = v
+	return s
+}
+
+type GetConsumerStackResponseBodyDataStacks struct {
+	// example:
+	//
+	// 123
+	Thread *string   `json:"thread,omitempty" xml:"thread,omitempty"`
+	Tracks []*string `json:"tracks,omitempty" xml:"tracks,omitempty" type:"Repeated"`
+}
+
+func (s GetConsumerStackResponseBodyDataStacks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerStackResponseBodyDataStacks) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerStackResponseBodyDataStacks) SetThread(v string) *GetConsumerStackResponseBodyDataStacks {
+	s.Thread = &v
+	return s
+}
+
+func (s *GetConsumerStackResponseBodyDataStacks) SetTracks(v []*string) *GetConsumerStackResponseBodyDataStacks {
+	s.Tracks = v
+	return s
+}
+
+type GetConsumerStackResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConsumerStackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConsumerStackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerStackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerStackResponse) SetHeaders(v map[string]*string) *GetConsumerStackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConsumerStackResponse) SetStatusCode(v int32) *GetConsumerStackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConsumerStackResponse) SetBody(v *GetConsumerStackResponseBody) *GetConsumerStackResponse {
 	s.Body = v
 	return s
 }
@@ -2889,7 +4655,8 @@ type GetInstanceResponseBodyDataNetworkInfoVpcInfo struct {
 	// example:
 	//
 	// vsw-uf6gwtbn6etadpvz7****
-	VSwitchId *string                                                   `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The vSwitches.
 	VSwitches []*GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches `json:"vSwitches,omitempty" xml:"vSwitches,omitempty" type:"Repeated"`
 	// The ID of the VPC with which the instance is associated.
 	//
@@ -2928,8 +4695,18 @@ func (s *GetInstanceResponseBodyDataNetworkInfoVpcInfo) SetVpcId(v string) *GetI
 }
 
 type GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches struct {
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-uf6gwtbn6etadpvz7****
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	ZoneId    *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches) String() string {
@@ -3163,6 +4940,416 @@ func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
 }
 
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceAccountRequest struct {
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s GetInstanceAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceAccountRequest) SetUsername(v string) *GetInstanceAccountRequest {
+	s.Username = &v
+	return s
+}
+
+type GetInstanceAccountResponseBody struct {
+	// example:
+	//
+	// MissingInstanceId
+	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetInstanceAccountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ConsumerGroupId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// B5C59E80-FCFC-5796-ABE4-D39EAAE578E4
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetInstanceAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceAccountResponseBody) SetCode(v string) *GetInstanceAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBody) SetData(v *GetInstanceAccountResponseBodyData) *GetInstanceAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBody) SetDynamicCode(v string) *GetInstanceAccountResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBody) SetDynamicMessage(v string) *GetInstanceAccountResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBody) SetHttpStatusCode(v int32) *GetInstanceAccountResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBody) SetMessage(v string) *GetInstanceAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBody) SetRequestId(v string) *GetInstanceAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBody) SetSuccess(v bool) *GetInstanceAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInstanceAccountResponseBodyData struct {
+	// example:
+	//
+	// *************
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// xxx
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s GetInstanceAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceAccountResponseBodyData) SetPassword(v string) *GetInstanceAccountResponseBodyData {
+	s.Password = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBodyData) SetUsername(v string) *GetInstanceAccountResponseBodyData {
+	s.Username = &v
+	return s
+}
+
+type GetInstanceAccountResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInstanceAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceAccountResponse) SetHeaders(v map[string]*string) *GetInstanceAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceAccountResponse) SetStatusCode(v int32) *GetInstanceAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponse) SetBody(v *GetInstanceAccountResponseBody) *GetInstanceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type GetMessageDetailResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetMessageDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// FAEBD71F-E839-52F9-BD7B-8F1290525841
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetMessageDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMessageDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessageDetailResponseBody) SetCode(v string) *GetMessageDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBody) SetData(v *GetMessageDetailResponseBodyData) *GetMessageDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMessageDetailResponseBody) SetDynamicCode(v string) *GetMessageDetailResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBody) SetDynamicMessage(v string) *GetMessageDetailResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBody) SetHttpStatusCode(v int32) *GetMessageDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBody) SetMessage(v string) *GetMessageDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBody) SetRequestId(v string) *GetMessageDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBody) SetSuccess(v bool) *GetMessageDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMessageDetailResponseBodyData struct {
+	// example:
+	//
+	// {}
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// 123
+	BodySize *int32 `json:"bodySize,omitempty" xml:"bodySize,omitempty"`
+	// example:
+	//
+	// xxx.xx.xxx.xx
+	BornHost *string `json:"bornHost,omitempty" xml:"bornHost,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	BornTime *string `json:"bornTime,omitempty" xml:"bornTime,omitempty"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// xx
+	MessageGroup *string `json:"messageGroup,omitempty" xml:"messageGroup,omitempty"`
+	// example:
+	//
+	// 01BE87E485F0C7808C04543CAF00000001
+	MessageId   *string   `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	MessageKeys []*string `json:"messageKeys,omitempty" xml:"messageKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	MessageTag *string `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
+	// example:
+	//
+	// NORMAL
+	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// xxx.xx.xxx.xx
+	StoreHost *string `json:"storeHost,omitempty" xml:"storeHost,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	StoreTime        *string            `json:"storeTime,omitempty" xml:"storeTime,omitempty"`
+	SystemProperties map[string]*string `json:"systemProperties,omitempty" xml:"systemProperties,omitempty"`
+	// example:
+	//
+	// topic_test
+	TopicName      *string            `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	UserProperties map[string]*string `json:"userProperties,omitempty" xml:"userProperties,omitempty"`
+}
+
+func (s GetMessageDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMessageDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessageDetailResponseBodyData) SetBody(v string) *GetMessageDetailResponseBodyData {
+	s.Body = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetBodySize(v int32) *GetMessageDetailResponseBodyData {
+	s.BodySize = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetBornHost(v string) *GetMessageDetailResponseBodyData {
+	s.BornHost = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetBornTime(v string) *GetMessageDetailResponseBodyData {
+	s.BornTime = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetInstanceId(v string) *GetMessageDetailResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetMessageGroup(v string) *GetMessageDetailResponseBodyData {
+	s.MessageGroup = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetMessageId(v string) *GetMessageDetailResponseBodyData {
+	s.MessageId = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetMessageKeys(v []*string) *GetMessageDetailResponseBodyData {
+	s.MessageKeys = v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetMessageTag(v string) *GetMessageDetailResponseBodyData {
+	s.MessageTag = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetMessageType(v string) *GetMessageDetailResponseBodyData {
+	s.MessageType = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetRegionId(v string) *GetMessageDetailResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetStoreHost(v string) *GetMessageDetailResponseBodyData {
+	s.StoreHost = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetStoreTime(v string) *GetMessageDetailResponseBodyData {
+	s.StoreTime = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetSystemProperties(v map[string]*string) *GetMessageDetailResponseBodyData {
+	s.SystemProperties = v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetTopicName(v string) *GetMessageDetailResponseBodyData {
+	s.TopicName = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetUserProperties(v map[string]*string) *GetMessageDetailResponseBodyData {
+	s.UserProperties = v
+	return s
+}
+
+type GetMessageDetailResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMessageDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMessageDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMessageDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessageDetailResponse) SetHeaders(v map[string]*string) *GetMessageDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMessageDetailResponse) SetStatusCode(v int32) *GetMessageDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMessageDetailResponse) SetBody(v *GetMessageDetailResponseBody) *GetMessageDetailResponse {
 	s.Body = v
 	return s
 }
@@ -3406,19 +5593,19 @@ func (s *GetTopicResponse) SetBody(v *GetTopicResponseBody) *GetTopicResponse {
 	return s
 }
 
-type ListAvailableZonesResponseBody struct {
+type GetTraceResponseBody struct {
 	// example:
 	//
-	// Topic.NotFound
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Data []*ListAvailableZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// InvalidConsumerGroupId
+	Code *string                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetTraceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
 	// example:
 	//
-	// InstanceId
+	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
 	// example:
 	//
@@ -3426,12 +5613,719 @@ type ListAvailableZonesResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// example:
 	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 7779A8FC-1BCD-5A1D-A603-C4A9BD8ADC49
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetTraceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBody) SetCode(v string) *GetTraceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetData(v *GetTraceResponseBodyData) *GetTraceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetDynamicCode(v string) *GetTraceResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetDynamicMessage(v string) *GetTraceResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetHttpStatusCode(v int32) *GetTraceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetMessage(v string) *GetTraceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetRequestId(v string) *GetTraceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTraceResponseBody) SetSuccess(v bool) *GetTraceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTraceResponseBodyData struct {
+	BrokerInfo    *GetTraceResponseBodyDataBrokerInfo      `json:"brokerInfo,omitempty" xml:"brokerInfo,omitempty" type:"Struct"`
+	ConsumerInfos []*GetTraceResponseBodyDataConsumerInfos `json:"consumerInfos,omitempty" xml:"consumerInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId   *string                               `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	MessageInfo  *GetTraceResponseBodyDataMessageInfo  `json:"messageInfo,omitempty" xml:"messageInfo,omitempty" type:"Struct"`
+	ProducerInfo *GetTraceResponseBodyDataProducerInfo `json:"producerInfo,omitempty" xml:"producerInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// topic_test
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s GetTraceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyData) SetBrokerInfo(v *GetTraceResponseBodyDataBrokerInfo) *GetTraceResponseBodyData {
+	s.BrokerInfo = v
+	return s
+}
+
+func (s *GetTraceResponseBodyData) SetConsumerInfos(v []*GetTraceResponseBodyDataConsumerInfos) *GetTraceResponseBodyData {
+	s.ConsumerInfos = v
+	return s
+}
+
+func (s *GetTraceResponseBodyData) SetInstanceId(v string) *GetTraceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyData) SetMessageInfo(v *GetTraceResponseBodyDataMessageInfo) *GetTraceResponseBodyData {
+	s.MessageInfo = v
+	return s
+}
+
+func (s *GetTraceResponseBodyData) SetProducerInfo(v *GetTraceResponseBodyDataProducerInfo) *GetTraceResponseBodyData {
+	s.ProducerInfo = v
+	return s
+}
+
+func (s *GetTraceResponseBodyData) SetRegionId(v string) *GetTraceResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyData) SetTopicName(v string) *GetTraceResponseBodyData {
+	s.TopicName = &v
+	return s
+}
+
+type GetTraceResponseBodyDataBrokerInfo struct {
+	// example:
+	//
+	// SUCCESS
+	DelayStatus *string                                         `json:"delayStatus,omitempty" xml:"delayStatus,omitempty"`
+	Operations  []*GetTraceResponseBodyDataBrokerInfoOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	PresetDelayTime *string `json:"presetDelayTime,omitempty" xml:"presetDelayTime,omitempty"`
+}
+
+func (s GetTraceResponseBodyDataBrokerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataBrokerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataBrokerInfo) SetDelayStatus(v string) *GetTraceResponseBodyDataBrokerInfo {
+	s.DelayStatus = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataBrokerInfo) SetOperations(v []*GetTraceResponseBodyDataBrokerInfoOperations) *GetTraceResponseBodyDataBrokerInfo {
+	s.Operations = v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataBrokerInfo) SetPresetDelayTime(v string) *GetTraceResponseBodyDataBrokerInfo {
+	s.PresetDelayTime = &v
+	return s
+}
+
+type GetTraceResponseBodyDataBrokerInfoOperations struct {
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	OperateTime *string `json:"operateTime,omitempty" xml:"operateTime,omitempty"`
+	// example:
+	//
+	// ADD
+	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
+}
+
+func (s GetTraceResponseBodyDataBrokerInfoOperations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataBrokerInfoOperations) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataBrokerInfoOperations) SetOperateTime(v string) *GetTraceResponseBodyDataBrokerInfoOperations {
+	s.OperateTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataBrokerInfoOperations) SetOperateType(v string) *GetTraceResponseBodyDataBrokerInfoOperations {
+	s.OperateType = &v
+	return s
+}
+
+type GetTraceResponseBodyDataConsumerInfos struct {
+	// example:
+	//
+	// SUCCESS
+	ConsumeStatus *string `json:"consumeStatus,omitempty" xml:"consumeStatus,omitempty"`
+	// example:
+	//
+	// GID_inspector_group
+	ConsumerGroupId *string                                              `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	DeadLetterInfo  *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo `json:"deadLetterInfo,omitempty" xml:"deadLetterInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	DeadMessage *bool                                           `json:"deadMessage,omitempty" xml:"deadMessage,omitempty"`
+	Records     []*GetTraceResponseBodyDataConsumerInfosRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+}
+
+func (s GetTraceResponseBodyDataConsumerInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataConsumerInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfos) SetConsumeStatus(v string) *GetTraceResponseBodyDataConsumerInfos {
+	s.ConsumeStatus = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfos) SetConsumerGroupId(v string) *GetTraceResponseBodyDataConsumerInfos {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfos) SetDeadLetterInfo(v *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo) *GetTraceResponseBodyDataConsumerInfos {
+	s.DeadLetterInfo = v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfos) SetDeadMessage(v bool) *GetTraceResponseBodyDataConsumerInfos {
+	s.DeadMessage = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfos) SetRecords(v []*GetTraceResponseBodyDataConsumerInfosRecords) *GetTraceResponseBodyDataConsumerInfos {
+	s.Records = v
+	return s
+}
+
+type GetTraceResponseBodyDataConsumerInfosDeadLetterInfo struct {
+	// example:
+	//
+	// 7F000001001F7A4F0F29463F0376047D
+	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	ToDlqTime *string `json:"toDlqTime,omitempty" xml:"toDlqTime,omitempty"`
+	// example:
+	//
+	// Register_Sync
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s GetTraceResponseBodyDataConsumerInfosDeadLetterInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataConsumerInfosDeadLetterInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo) SetMessageId(v string) *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo {
+	s.MessageId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo) SetToDlqTime(v string) *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo {
+	s.ToDlqTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo) SetTopicName(v string) *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo {
+	s.TopicName = &v
+	return s
+}
+
+type GetTraceResponseBodyDataConsumerInfosRecords struct {
+	// example:
+	//
+	// xx.xx.xx.xx
+	ClientHost *string `json:"clientHost,omitempty" xml:"clientHost,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	ConsumeStatus *string `json:"consumeStatus,omitempty" xml:"consumeStatus,omitempty"`
+	// example:
+	//
+	// true
+	FifoEnable *bool                                                     `json:"fifoEnable,omitempty" xml:"fifoEnable,omitempty"`
+	Operations []*GetTraceResponseBodyDataConsumerInfosRecordsOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
+	// POP_CK
+	//
+	// example:
+	//
+	// 123
+	PopCk *string `json:"popCk,omitempty" xml:"popCk,omitempty"`
+	// example:
+	//
+	// test
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s GetTraceResponseBodyDataConsumerInfosRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataConsumerInfosRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecords) SetClientHost(v string) *GetTraceResponseBodyDataConsumerInfosRecords {
+	s.ClientHost = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecords) SetConsumeStatus(v string) *GetTraceResponseBodyDataConsumerInfosRecords {
+	s.ConsumeStatus = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecords) SetFifoEnable(v bool) *GetTraceResponseBodyDataConsumerInfosRecords {
+	s.FifoEnable = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecords) SetOperations(v []*GetTraceResponseBodyDataConsumerInfosRecordsOperations) *GetTraceResponseBodyDataConsumerInfosRecords {
+	s.Operations = v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecords) SetPopCk(v string) *GetTraceResponseBodyDataConsumerInfosRecords {
+	s.PopCk = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecords) SetUserName(v string) *GetTraceResponseBodyDataConsumerInfosRecords {
+	s.UserName = &v
+	return s
+}
+
+type GetTraceResponseBodyDataConsumerInfosRecordsOperations struct {
+	// example:
+	//
+	// true
+	DeadMessage *bool `json:"deadMessage,omitempty" xml:"deadMessage,omitempty"`
+	// example:
+	//
+	// 100
+	InvisibleTime *int64 `json:"invisibleTime,omitempty" xml:"invisibleTime,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	OperateTime *string `json:"operateTime,omitempty" xml:"operateTime,omitempty"`
+	// example:
+	//
+	// ADD
+	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
+}
+
+func (s GetTraceResponseBodyDataConsumerInfosRecordsOperations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataConsumerInfosRecordsOperations) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecordsOperations) SetDeadMessage(v bool) *GetTraceResponseBodyDataConsumerInfosRecordsOperations {
+	s.DeadMessage = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecordsOperations) SetInvisibleTime(v int64) *GetTraceResponseBodyDataConsumerInfosRecordsOperations {
+	s.InvisibleTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecordsOperations) SetOperateTime(v string) *GetTraceResponseBodyDataConsumerInfosRecordsOperations {
+	s.OperateTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataConsumerInfosRecordsOperations) SetOperateType(v string) *GetTraceResponseBodyDataConsumerInfosRecordsOperations {
+	s.OperateType = &v
+	return s
+}
+
+type GetTraceResponseBodyDataMessageInfo struct {
+	// example:
+	//
+	// {}
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// x.x.x.x
+	BornHost *string `json:"bornHost,omitempty" xml:"bornHost,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	BornTime *string `json:"bornTime,omitempty" xml:"bornTime,omitempty"`
+	// example:
+	//
+	// rmq-cn-u0t2ygjq505
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// xx
+	MessageGroup *string `json:"messageGroup,omitempty" xml:"messageGroup,omitempty"`
+	// example:
+	//
+	// 0A79275A00207A4F0F2916C92F9A0B94
+	MessageId   *string   `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	MessageKeys []*string `json:"messageKeys,omitempty" xml:"messageKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	MessageTag *string `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
+	// example:
+	//
+	// NORMAL
+	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// true
+	Setted *bool `json:"setted,omitempty" xml:"setted,omitempty"`
+	// example:
+	//
+	// x.x.x.x
+	StoreHost *string `json:"storeHost,omitempty" xml:"storeHost,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	StoreTime *string `json:"storeTime,omitempty" xml:"storeTime,omitempty"`
+	// example:
+	//
+	// Topic_normal_inspector
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	// example:
+	//
+	// xx
+	TransactionId  *string            `json:"transactionId,omitempty" xml:"transactionId,omitempty"`
+	UserProperties map[string]*string `json:"userProperties,omitempty" xml:"userProperties,omitempty"`
+}
+
+func (s GetTraceResponseBodyDataMessageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataMessageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetBody(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.Body = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetBornHost(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.BornHost = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetBornTime(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.BornTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetInstanceId(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetMessageGroup(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.MessageGroup = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetMessageId(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.MessageId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetMessageKeys(v []*string) *GetTraceResponseBodyDataMessageInfo {
+	s.MessageKeys = v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetMessageTag(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.MessageTag = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetMessageType(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.MessageType = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetRegionId(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetSetted(v bool) *GetTraceResponseBodyDataMessageInfo {
+	s.Setted = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetStoreHost(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.StoreHost = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetStoreTime(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.StoreTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetTopicName(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.TopicName = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetTransactionId(v string) *GetTraceResponseBodyDataMessageInfo {
+	s.TransactionId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataMessageInfo) SetUserProperties(v map[string]*string) *GetTraceResponseBodyDataMessageInfo {
+	s.UserProperties = v
+	return s
+}
+
+type GetTraceResponseBodyDataProducerInfo struct {
+	Records []*GetTraceResponseBodyDataProducerInfoRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+}
+
+func (s GetTraceResponseBodyDataProducerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataProducerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataProducerInfo) SetRecords(v []*GetTraceResponseBodyDataProducerInfoRecords) *GetTraceResponseBodyDataProducerInfo {
+	s.Records = v
+	return s
+}
+
+type GetTraceResponseBodyDataProducerInfoRecords struct {
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	ArriveTime *string `json:"arriveTime,omitempty" xml:"arriveTime,omitempty"`
+	// example:
+	//
+	// xx.xx.xx.xx
+	ClientHost *string `json:"clientHost,omitempty" xml:"clientHost,omitempty"`
+	// example:
+	//
+	// 0A79275A00207A4F0F2916C92F9A0B94
+	DlqOriginMessageId *string `json:"dlqOriginMessageId,omitempty" xml:"dlqOriginMessageId,omitempty"`
+	// example:
+	//
+	// test_topic
+	DlqOriginTopic *string `json:"dlqOriginTopic,omitempty" xml:"dlqOriginTopic,omitempty"`
+	// example:
+	//
+	// CONSOLE
+	MessageSource *string `json:"messageSource,omitempty" xml:"messageSource,omitempty"`
+	// example:
+	//
+	// 100
+	ProduceDuration *int64 `json:"produceDuration,omitempty" xml:"produceDuration,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	ProduceStatus *string `json:"produceStatus,omitempty" xml:"produceStatus,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	ProduceTime *string `json:"produceTime,omitempty" xml:"produceTime,omitempty"`
+	// example:
+	//
+	// xxx
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s GetTraceResponseBodyDataProducerInfoRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponseBodyDataProducerInfoRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetArriveTime(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.ArriveTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetClientHost(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.ClientHost = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetDlqOriginMessageId(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.DlqOriginMessageId = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetDlqOriginTopic(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.DlqOriginTopic = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetMessageSource(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.MessageSource = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetProduceDuration(v int64) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.ProduceDuration = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetProduceStatus(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.ProduceStatus = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetProduceTime(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.ProduceTime = &v
+	return s
+}
+
+func (s *GetTraceResponseBodyDataProducerInfoRecords) SetUserName(v string) *GetTraceResponseBodyDataProducerInfoRecords {
+	s.UserName = &v
+	return s
+}
+
+type GetTraceResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTraceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTraceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceResponse) SetHeaders(v map[string]*string) *GetTraceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTraceResponse) SetStatusCode(v int32) *GetTraceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTraceResponse) SetBody(v *GetTraceResponseBody) *GetTraceResponse {
+	s.Body = v
+	return s
+}
+
+type ListAvailableZonesResponseBody struct {
+	// The error code returned if the call failed.
+	//
+	// example:
+	//
+	// Topic.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data []*ListAvailableZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
 	// Parameter instanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -3487,18 +6381,26 @@ func (s *ListAvailableZonesResponseBody) SetSuccess(v bool) *ListAvailableZonesR
 }
 
 type ListAvailableZonesResponseBodyData struct {
+	// The time when the zone was created.
+	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the zone was last updated.
+	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the current zone.
+	//
 	// example:
 	//
 	// cn-qingdao-b
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// The name of the current zone.
+	//
 	// example:
 	//
 	// ha-cn-t9b30w902vm_qrs
@@ -3563,31 +6465,46 @@ func (s *ListAvailableZonesResponse) SetBody(v *ListAvailableZonesResponseBody) 
 }
 
 type ListConsumerConnectionsResponseBody struct {
+	// The returned error code.
+	//
 	// example:
 	//
 	// MissingPageNumber
-	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *ListConsumerConnectionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// A3620115-6F1F-5CFB-AA3F-BBD4853B2EC4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -3643,15 +6560,22 @@ func (s *ListConsumerConnectionsResponseBody) SetSuccess(v bool) *ListConsumerCo
 }
 
 type ListConsumerConnectionsResponseBodyData struct {
+	// The client connection list
 	Connections []*ListConsumerConnectionsResponseBodyDataConnections `json:"connections,omitempty" xml:"connections,omitempty" type:"Repeated"`
+	// The consumer group ID.
+	//
 	// example:
 	//
 	// CID-TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3687,26 +6611,42 @@ func (s *ListConsumerConnectionsResponseBodyData) SetRegionId(v string) *ListCon
 }
 
 type ListConsumerConnectionsResponseBodyDataConnections struct {
+	// The ID of the client.
+	//
 	// example:
 	//
 	// 172.17.135.197@17392#1936705963#551717232#9873695589062458
 	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// Host IP/Public IP
+	//
 	// example:
 	//
 	// xx.xx.xx.xx
 	EgressIp *string `json:"egressIp,omitempty" xml:"egressIp,omitempty"`
+	// The `hostname` of the cloud-native box.
+	//
 	// example:
 	//
 	// vos
 	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	// The language of the client.
+	//
 	// example:
 	//
 	// java
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// Consumption Mode
+	//
+	// - BROADCASTING
+	//
+	// - CLUSTERING
+	//
 	// example:
 	//
 	// BROADCASTING
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
+	// The version of the client.
+	//
 	// example:
 	//
 	// 1.0
@@ -3781,7 +6721,7 @@ func (s *ListConsumerConnectionsResponse) SetBody(v *ListConsumerConnectionsResp
 }
 
 type ListConsumerGroupSubscriptionsResponseBody struct {
-	// The returned error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -3789,25 +6729,25 @@ type ListConsumerGroupSubscriptionsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data []*ListConsumerGroupSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The returned dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The returned dynamic error message.
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// InstanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The returned HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -3819,7 +6759,7 @@ type ListConsumerGroupSubscriptionsResponseBody struct {
 	//
 	// 5F4D9D5F-625B-59FF-BD4F-DA8284575DB4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -3876,8 +6816,17 @@ func (s *ListConsumerGroupSubscriptionsResponseBody) SetSuccess(v bool) *ListCon
 }
 
 type ListConsumerGroupSubscriptionsResponseBodyData struct {
+	// Indicates whether message consumption is consistent. Valid values:
+	//
+	// 	- false: Unconsumed messages exist in the consumer group.
+	//
+	// 	- true: No unconsumed message exists in the consumer group.
+	//
+	// example:
+	//
+	// true
 	Consistency *bool `json:"consistency,omitempty" xml:"consistency,omitempty"`
-	// The consumer group ID.
+	// The ID of the consumer group.
 	//
 	// example:
 	//
@@ -3889,19 +6838,31 @@ type ListConsumerGroupSubscriptionsResponseBodyData struct {
 	//
 	// *
 	FilterExpression *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
-	// The type of the filter expression. Valid values: SQL, TAG, and UNSPECIFIED.
+	// The type of the filter expression. Valid values:
+	//
+	// 	- SQL: filters messages by using SQL expressions.
+	//
+	// 	- TAG: filters messages by using tags.
 	//
 	// example:
 	//
 	// SQL
 	FilterExpressionType *string `json:"filterExpressionType,omitempty" xml:"filterExpressionType,omitempty"`
-	// The consumption mode. Valid values: BROADCASTING and CLUSTERING.
+	// The consumption mode of the consumer group. Valid values:
+	//
+	// 	- BROADCASTING: broadcasting consumption
+	//
+	// 	- CLUSTERING: clustering consumption
 	//
 	// example:
 	//
 	// BROADCASTING
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
-	// The subscription status. Valid values: ONLINE and OFFLINE.
+	// The subscription status. Valid values:
+	//
+	// 	- ONLINE: The consumer group is online. If the consumer group contains multiple consumers, this value is returned as long as one of the consumers is online.
+	//
+	// 	- OFFLINE: The consumer group is offline. If the consumer group contains multiple consumers, this value is returned only if all consumers are offline.
 	//
 	// example:
 	//
@@ -4339,6 +7300,778 @@ func (s *ListConsumerGroupsResponse) SetBody(v *ListConsumerGroupsResponseBody) 
 	return s
 }
 
+type ListInstanceAccountRequest struct {
+	// example:
+	//
+	// ENABLE
+	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
+	// example:
+	//
+	// CUSTOMER
+	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// test
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListInstanceAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAccountRequest) SetAccountStatus(v string) *ListInstanceAccountRequest {
+	s.AccountStatus = &v
+	return s
+}
+
+func (s *ListInstanceAccountRequest) SetAccountType(v string) *ListInstanceAccountRequest {
+	s.AccountType = &v
+	return s
+}
+
+func (s *ListInstanceAccountRequest) SetPageNumber(v int32) *ListInstanceAccountRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceAccountRequest) SetPageSize(v int32) *ListInstanceAccountRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceAccountRequest) SetUsername(v string) *ListInstanceAccountRequest {
+	s.Username = &v
+	return s
+}
+
+type ListInstanceAccountResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListInstanceAccountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C115601B-8736-5BBF-AC99-7FEAE1245A80
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListInstanceAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAccountResponseBody) SetAccessDeniedDetail(v string) *ListInstanceAccountResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetCode(v string) *ListInstanceAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetData(v *ListInstanceAccountResponseBodyData) *ListInstanceAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetDynamicCode(v string) *ListInstanceAccountResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetDynamicMessage(v string) *ListInstanceAccountResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetHttpStatusCode(v int32) *ListInstanceAccountResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetMessage(v string) *ListInstanceAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetRequestId(v string) *ListInstanceAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBody) SetSuccess(v bool) *ListInstanceAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInstanceAccountResponseBodyData struct {
+	List []*ListInstanceAccountResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 24
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListInstanceAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAccountResponseBodyData) SetList(v []*ListInstanceAccountResponseBodyDataList) *ListInstanceAccountResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyData) SetPageNumber(v int64) *ListInstanceAccountResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyData) SetPageSize(v int64) *ListInstanceAccountResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyData) SetTotalCount(v int64) *ListInstanceAccountResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstanceAccountResponseBodyDataList struct {
+	// example:
+	//
+	// ENABLE
+	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
+	// example:
+	//
+	// CUSTOMER
+	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// test
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListInstanceAccountResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAccountResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAccountResponseBodyDataList) SetAccountStatus(v string) *ListInstanceAccountResponseBodyDataList {
+	s.AccountStatus = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyDataList) SetAccountType(v string) *ListInstanceAccountResponseBodyDataList {
+	s.AccountType = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyDataList) SetInstanceId(v string) *ListInstanceAccountResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyDataList) SetRegionId(v string) *ListInstanceAccountResponseBodyDataList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyDataList) SetUsername(v string) *ListInstanceAccountResponseBodyDataList {
+	s.Username = &v
+	return s
+}
+
+type ListInstanceAccountResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstanceAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAccountResponse) SetHeaders(v map[string]*string) *ListInstanceAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceAccountResponse) SetStatusCode(v int32) *ListInstanceAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponse) SetBody(v *ListInstanceAccountResponseBody) *ListInstanceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstanceAclRequest struct {
+	// example:
+	//
+	// CID-TEST
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListInstanceAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAclRequest) SetFilter(v string) *ListInstanceAclRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListInstanceAclRequest) SetPageNumber(v int32) *ListInstanceAclRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceAclRequest) SetPageSize(v int32) *ListInstanceAclRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListInstanceAclResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListInstanceAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DA4D2F89-E2C8-5F04-936B-60D55B055FA7
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListInstanceAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAclResponseBody) SetAccessDeniedDetail(v string) *ListInstanceAclResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetCode(v string) *ListInstanceAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetData(v *ListInstanceAclResponseBodyData) *ListInstanceAclResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetDynamicCode(v string) *ListInstanceAclResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetDynamicMessage(v string) *ListInstanceAclResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetHttpStatusCode(v int32) *ListInstanceAclResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetMessage(v string) *ListInstanceAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetRequestId(v string) *ListInstanceAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBody) SetSuccess(v bool) *ListInstanceAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInstanceAclResponseBodyData struct {
+	List []*ListInstanceAclResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 24
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListInstanceAclResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAclResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAclResponseBodyData) SetList(v []*ListInstanceAclResponseBodyDataList) *ListInstanceAclResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyData) SetPageNumber(v int64) *ListInstanceAclResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyData) SetPageSize(v int64) *ListInstanceAclResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyData) SetTotalCount(v int64) *ListInstanceAclResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstanceAclResponseBodyDataList struct {
+	// example:
+	//
+	// APACHE
+	AclType *string   `json:"aclType,omitempty" xml:"aclType,omitempty"`
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Allow
+	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId   *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// test
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// example:
+	//
+	// Topic
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// example:
+	//
+	// test
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListInstanceAclResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAclResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetAclType(v string) *ListInstanceAclResponseBodyDataList {
+	s.AclType = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetActions(v []*string) *ListInstanceAclResponseBodyDataList {
+	s.Actions = v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetDecision(v string) *ListInstanceAclResponseBodyDataList {
+	s.Decision = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetInstanceId(v string) *ListInstanceAclResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetIpWhitelists(v []*string) *ListInstanceAclResponseBodyDataList {
+	s.IpWhitelists = v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetRegionId(v string) *ListInstanceAclResponseBodyDataList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetResourceName(v string) *ListInstanceAclResponseBodyDataList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetResourceType(v string) *ListInstanceAclResponseBodyDataList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListInstanceAclResponseBodyDataList) SetUsername(v string) *ListInstanceAclResponseBodyDataList {
+	s.Username = &v
+	return s
+}
+
+type ListInstanceAclResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstanceAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceAclResponse) SetHeaders(v map[string]*string) *ListInstanceAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceAclResponse) SetStatusCode(v int32) *ListInstanceAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceAclResponse) SetBody(v *ListInstanceAclResponseBody) *ListInstanceAclResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstanceIpWhitelistRequest struct {
+	// example:
+	//
+	// 0.0.0.0/0
+	IpWhitelist *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListInstanceIpWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceIpWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceIpWhitelistRequest) SetIpWhitelist(v string) *ListInstanceIpWhitelistRequest {
+	s.IpWhitelist = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistRequest) SetPageNumber(v int32) *ListInstanceIpWhitelistRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistRequest) SetPageSize(v int32) *ListInstanceIpWhitelistRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListInstanceIpWhitelistResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// Instance.NotFound
+	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListInstanceIpWhitelistResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 7358418D-83BD-507A-8079-611C63E05674
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListInstanceIpWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceIpWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetAccessDeniedDetail(v string) *ListInstanceIpWhitelistResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetCode(v string) *ListInstanceIpWhitelistResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetData(v *ListInstanceIpWhitelistResponseBodyData) *ListInstanceIpWhitelistResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetDynamicCode(v string) *ListInstanceIpWhitelistResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetDynamicMessage(v string) *ListInstanceIpWhitelistResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetHttpStatusCode(v int32) *ListInstanceIpWhitelistResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetMessage(v string) *ListInstanceIpWhitelistResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetRequestId(v string) *ListInstanceIpWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBody) SetSuccess(v bool) *ListInstanceIpWhitelistResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInstanceIpWhitelistResponseBodyData struct {
+	List []*string `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListInstanceIpWhitelistResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceIpWhitelistResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceIpWhitelistResponseBodyData) SetList(v []*string) *ListInstanceIpWhitelistResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBodyData) SetPageNumber(v int64) *ListInstanceIpWhitelistResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBodyData) SetPageSize(v int64) *ListInstanceIpWhitelistResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponseBodyData) SetTotalCount(v int64) *ListInstanceIpWhitelistResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstanceIpWhitelistResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceIpWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstanceIpWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceIpWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceIpWhitelistResponse) SetHeaders(v map[string]*string) *ListInstanceIpWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponse) SetStatusCode(v int32) *ListInstanceIpWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceIpWhitelistResponse) SetBody(v *ListInstanceIpWhitelistResponseBody) *ListInstanceIpWhitelistResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstancesRequest struct {
 	// The filter condition that is used to query instances. If you do not configure this parameter, all instances are queried.
 	//
@@ -4346,21 +8079,21 @@ type ListInstancesRequest struct {
 	//
 	// rmq-cn-7e22ody****
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Valid values: 1 to 100000000.
 	//
-	// If the value that you specify for this parameter is less than 1, the system uses 1 as the value. If the value that you specify for this parameter is greater than 100000000, the system uses 100000000 as the value.
+	// If you set this parameter to a value smaller than 1, the system uses 1 as the value. If you set this parameter to a value greater than 100000000, the system uses 100000000 as the value.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
-	// Valid values: 10 to 200.
+	// Value values: 10 to 200.
 	//
-	// If the value that you specify for this parameter is less than 10, the system uses 10 as the value. If the value that you specify for this parameter is greater than 200, the system uses 200 as the value.
+	// If you set this parameter to a value smaller than 10, the system uses 10 as the value. If you set this parameter to a value greater than 200, the system uses 200 as the value.
 	//
 	// example:
 	//
@@ -4371,8 +8104,17 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// rg-acfmx7caj******
-	ResourceGroupId *string   `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SeriesCodes     []*string `json:"seriesCodes,omitempty" xml:"seriesCodes,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The primary edition of the instance.
+	//
+	// Valid values:
+	//
+	// 	- standard: Standard Edition
+	//
+	// 	- ultimate: Enterprise Platinum Edition
+	//
+	// 	- professional: Professional Edition
+	SeriesCodes []*string `json:"seriesCodes,omitempty" xml:"seriesCodes,omitempty" type:"Repeated"`
 	// The tags that are used to filter instances.
 	//
 	// example:
@@ -4426,21 +8168,21 @@ type ListInstancesShrinkRequest struct {
 	//
 	// rmq-cn-7e22ody****
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Valid values: 1 to 100000000.
 	//
-	// If the value that you specify for this parameter is less than 1, the system uses 1 as the value. If the value that you specify for this parameter is greater than 100000000, the system uses 100000000 as the value.
+	// If you set this parameter to a value smaller than 1, the system uses 1 as the value. If you set this parameter to a value greater than 100000000, the system uses 100000000 as the value.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
-	// Valid values: 10 to 200.
+	// Value values: 10 to 200.
 	//
-	// If the value that you specify for this parameter is less than 10, the system uses 10 as the value. If the value that you specify for this parameter is greater than 200, the system uses 200 as the value.
+	// If you set this parameter to a value smaller than 10, the system uses 10 as the value. If you set this parameter to a value greater than 200, the system uses 200 as the value.
 	//
 	// example:
 	//
@@ -4451,7 +8193,16 @@ type ListInstancesShrinkRequest struct {
 	// example:
 	//
 	// rg-acfmx7caj******
-	ResourceGroupId   *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The primary edition of the instance.
+	//
+	// Valid values:
+	//
+	// 	- standard: Standard Edition
+	//
+	// 	- ultimate: Enterprise Platinum Edition
+	//
+	// 	- professional: Professional Edition
 	SeriesCodesShrink *string `json:"seriesCodes,omitempty" xml:"seriesCodes,omitempty"`
 	// The tags that are used to filter instances.
 	//
@@ -4595,7 +8346,7 @@ func (s *ListInstancesResponseBody) SetSuccess(v bool) *ListInstancesResponseBod
 }
 
 type ListInstancesResponseBodyData struct {
-	// The paginated data.
+	// The pagination information.
 	List []*ListInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -4652,7 +8403,7 @@ type ListInstancesResponseBodyDataList struct {
 	//
 	// ons_rmqsub_public_cn
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// The time when the instance was created.
+	// The time when the version of the instance was updated.
 	//
 	// example:
 	//
@@ -4694,7 +8445,7 @@ type ListInstancesResponseBodyDataList struct {
 	//
 	// Subscription
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The product information of instance.
+	// The product information.
 	ProductInfo *ListInstancesResponseBodyDataListProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
 	// The ID of the region in which the instance resides.
 	//
@@ -4740,7 +8491,7 @@ type ListInstancesResponseBodyDataList struct {
 	//
 	// rmq
 	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	// The time when the instance was started.
+	// The time when the instance was created.
 	//
 	// example:
 	//
@@ -4912,7 +8663,13 @@ func (s *ListInstancesResponseBodyDataList) SetUserId(v string) *ListInstancesRe
 }
 
 type ListInstancesResponseBodyDataListProductInfo struct {
-	// Whether to enable tracking capability. Non-serverless instances are enabled by default, and serverless instances are optional for users.
+	// Indicates whether the message trace feature is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// This parameter is not in use. By default, the message trace feature is enabled for ApsaraMQ for RocketMQ instances, regardless of whether this parameter is configured.
 	//
 	// example:
 	//
@@ -4995,15 +8752,74 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
-type ListRegionsResponseBody struct {
+type ListMessagesRequest struct {
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// example:
 	//
-	// MissingPageNumber
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
-	Data []*ListRegionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 7F00000100207A4F0F294A938F7807AE
+	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
 	// example:
 	//
-	// ConsumerGroupId
+	// XSCBillResult
+	MessageKey *string `json:"messageKey,omitempty" xml:"messageKey,omitempty"`
+	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ScrollId   *string `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
+	StartTime  *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s ListMessagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesRequest) SetEndTime(v string) *ListMessagesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetMessageId(v string) *ListMessagesRequest {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetMessageKey(v string) *ListMessagesRequest {
+	s.MessageKey = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetPageNumber(v int32) *ListMessagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetPageSize(v int32) *ListMessagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetScrollId(v string) *ListMessagesRequest {
+	s.ScrollId = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetStartTime(v string) *ListMessagesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListMessagesResponseBody struct {
+	// example:
+	//
+	// MissingInstanceId
+	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListMessagesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
 	// example:
 	//
@@ -5019,8 +8835,322 @@ type ListRegionsResponseBody struct {
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// example:
 	//
+	// A3531B6A-5A88-52BD-B3C4-A024C3D0AA2E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListMessagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponseBody) SetCode(v string) *ListMessagesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetData(v *ListMessagesResponseBodyData) *ListMessagesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetDynamicCode(v string) *ListMessagesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetDynamicMessage(v string) *ListMessagesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetHttpStatusCode(v int32) *ListMessagesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetMessage(v string) *ListMessagesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetRequestId(v string) *ListMessagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetSuccess(v bool) *ListMessagesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMessagesResponseBodyData struct {
+	List []*ListMessagesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ScrollId *string `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListMessagesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponseBodyData) SetList(v []*ListMessagesResponseBodyDataList) *ListMessagesResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListMessagesResponseBodyData) SetPageNumber(v int64) *ListMessagesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyData) SetPageSize(v int64) *ListMessagesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyData) SetScrollId(v string) *ListMessagesResponseBodyData {
+	s.ScrollId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyData) SetTotalCount(v int64) *ListMessagesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMessagesResponseBodyDataList struct {
+	// example:
+	//
+	// {}
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// 100
+	BodySize *int32 `json:"bodySize,omitempty" xml:"bodySize,omitempty"`
+	// example:
+	//
+	// xx.xx.xx.xx
+	BornHost *string `json:"bornHost,omitempty" xml:"bornHost,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	BornTime *string `json:"bornTime,omitempty" xml:"bornTime,omitempty"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// xx
+	MessageGroup *string `json:"messageGroup,omitempty" xml:"messageGroup,omitempty"`
+	// example:
+	//
+	// 7F000001000114B4340C5ABF94500079
+	MessageId   *string   `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	MessageKeys []*string `json:"messageKeys,omitempty" xml:"messageKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	MessageTag *string `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
+	// example:
+	//
+	// NORMAL
+	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// xx.xx.xx.xx
+	StoreHost *string `json:"storeHost,omitempty" xml:"storeHost,omitempty"`
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	StoreTime *string `json:"storeTime,omitempty" xml:"storeTime,omitempty"`
+	// example:
+	//
+	// topic_test
+	TopicName      *string            `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	UserProperties map[string]*string `json:"userProperties,omitempty" xml:"userProperties,omitempty"`
+}
+
+func (s ListMessagesResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponseBodyDataList) SetBody(v string) *ListMessagesResponseBodyDataList {
+	s.Body = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetBodySize(v int32) *ListMessagesResponseBodyDataList {
+	s.BodySize = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetBornHost(v string) *ListMessagesResponseBodyDataList {
+	s.BornHost = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetBornTime(v string) *ListMessagesResponseBodyDataList {
+	s.BornTime = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetInstanceId(v string) *ListMessagesResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetMessageGroup(v string) *ListMessagesResponseBodyDataList {
+	s.MessageGroup = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetMessageId(v string) *ListMessagesResponseBodyDataList {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetMessageKeys(v []*string) *ListMessagesResponseBodyDataList {
+	s.MessageKeys = v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetMessageTag(v string) *ListMessagesResponseBodyDataList {
+	s.MessageTag = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetMessageType(v string) *ListMessagesResponseBodyDataList {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetRegionId(v string) *ListMessagesResponseBodyDataList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetStoreHost(v string) *ListMessagesResponseBodyDataList {
+	s.StoreHost = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetStoreTime(v string) *ListMessagesResponseBodyDataList {
+	s.StoreTime = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetTopicName(v string) *ListMessagesResponseBodyDataList {
+	s.TopicName = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataList) SetUserProperties(v map[string]*string) *ListMessagesResponseBodyDataList {
+	s.UserProperties = v
+	return s
+}
+
+type ListMessagesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMessagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponse) SetHeaders(v map[string]*string) *ListMessagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMessagesResponse) SetStatusCode(v int32) *ListMessagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMessagesResponse) SetBody(v *ListMessagesResponseBody) *ListMessagesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRegionsResponseBody struct {
+	// The error code.
+	//
+	// example:
+	//
+	// MissingPageNumber
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	Data []*ListRegionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// ConsumerGroupId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
 	// 0B962390-D84B-5D44-8C11-79DF40299D41
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5076,24 +9206,40 @@ func (s *ListRegionsResponseBody) SetSuccess(v bool) *ListRegionsResponseBody {
 }
 
 type ListRegionsResponseBodyData struct {
+	// The time when the ApsaraMQ for RocketMQ instance was created.
+	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The region name.
+	//
+	// example:
+	//
+	// hangzhou
 	RegionName *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
+	// Indicates whether ApsaraMQ for RocketMQ V4 is activated.
+	//
 	// example:
 	//
 	// true
 	SupportRocketmqV4 *bool `json:"supportRocketmqV4,omitempty" xml:"supportRocketmqV4,omitempty"`
+	// Indicates whether ApsaraMQ for RocketMQ V5 is activated.
+	//
 	// example:
 	//
 	// true
-	SupportRocketmqV5 *bool                              `json:"supportRocketmqV5,omitempty" xml:"supportRocketmqV5,omitempty"`
-	Tags              []*ListRegionsResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	SupportRocketmqV5 *bool `json:"supportRocketmqV5,omitempty" xml:"supportRocketmqV5,omitempty"`
+	// The region tags.
+	Tags []*ListRegionsResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The time when the ApsaraMQ for RocketMQ instance was last modified.
+	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
@@ -5144,10 +9290,14 @@ func (s *ListRegionsResponseBodyData) SetUpdateTime(v string) *ListRegionsRespon
 }
 
 type ListRegionsResponseBodyDataTags struct {
+	// The tag code.
+	//
 	// example:
 	//
 	// xx
 	TagCode *string `json:"tagCode,omitempty" xml:"tagCode,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// xx
@@ -5201,15 +9351,81 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 	return s
 }
 
-type ListTopicSubscriptionsResponseBody struct {
+type ListTagResourcesRequest struct {
 	// example:
 	//
-	// MissingInstanceId
-	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
-	Data []*ListTopicSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// d09e2b63e1b12d905b7080ff70
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// Topic
+	// cn-hangzhou
+	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// example:
+	//
+	// rmq-cn-lbj34bb2r0i
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// example:
+	//
+	// [{"key": "rmq-test", "value": "test"}]
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceGroupId(v string) *ListTagResourcesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v string) *ListTagResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v string) *ListTagResourcesRequest {
+	s.Tag = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListTagResourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
 	// example:
 	//
@@ -5221,12 +9437,245 @@ type ListTopicSubscriptionsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// example:
 	//
+	// The topic already exists.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// F00C6A70-C782-5DD6-9D11-0CFC710100C7
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetCode(v string) *ListTagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetData(v *ListTagResourcesResponseBodyData) *ListTagResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetDynamicCode(v string) *ListTagResourcesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetDynamicMessage(v string) *ListTagResourcesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetHttpStatusCode(v int32) *ListTagResourcesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetMessage(v string) *ListTagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetSuccess(v bool) *ListTagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTagResourcesResponseBodyData struct {
+	// example:
+	//
+	// d09e2b63e1b12d905b7080ff70
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// F00C6A70-C782-5DD6-9D11-0CFC710100C7
+	RequestId    *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyDataTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyData) SetNextToken(v string) *ListTagResourcesResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyData) SetRequestId(v string) *ListTagResourcesResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyData) SetTagResources(v []*ListTagResourcesResponseBodyDataTagResources) *ListTagResourcesResponseBodyData {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyDataTagResources struct {
+	// example:
+	//
+	// 1876441048322426
+	AliUid *int64 `json:"aliUid,omitempty" xml:"aliUid,omitempty"`
+	// example:
+	//
+	// custom
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// rmq-cn-pe334n08h08
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// example:
+	//
+	// public
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// key
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// example:
+	//
+	// value
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyDataTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyDataTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyDataTagResources) SetAliUid(v int64) *ListTagResourcesResponseBodyDataTagResources {
+	s.AliUid = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyDataTagResources) SetCategory(v string) *ListTagResourcesResponseBodyDataTagResources {
+	s.Category = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyDataTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyDataTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyDataTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyDataTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyDataTagResources) SetScope(v string) *ListTagResourcesResponseBodyDataTagResources {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyDataTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyDataTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyDataTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyDataTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTopicSubscriptionsResponseBody struct {
+	// The error code.
+	//
+	// example:
+	//
+	// MissingInstanceId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	Data []*ListTopicSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// Topic
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 92A9BE4E-B794-50C8-979C-0456E4D32943
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5282,27 +9731,48 @@ func (s *ListTopicSubscriptionsResponseBody) SetSuccess(v bool) *ListTopicSubscr
 }
 
 type ListTopicSubscriptionsResponseBodyData struct {
+	// Indicates whether message consumption is consistent. Valid values:
+	//
+	// 	- false: Unconsumed messages exist in the consumer group.
+	//
+	// 	- true: No unconsumed message exists in the consumer group.
+	//
+	// example:
+	//
+	// true
 	Consistency *string `json:"consistency,omitempty" xml:"consistency,omitempty"`
+	// The consumer group ID.
+	//
 	// example:
 	//
 	// CID-TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The filter expression.
+	//
 	// example:
 	//
 	// *
 	FilterExpression *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
+	// The type of the filter expression. Valid values: SQL, TAG, and UNSPECIFIED. The value SQL indicates that messages are filtered by using SQL expressions. The value TAG indicates that messages are filtered by using tags. The value UNSPECIFIED indicates that no filter expression type is specified.
+	//
 	// example:
 	//
 	// SQL
 	FilterExpressionType *string `json:"filterExpressionType,omitempty" xml:"filterExpressionType,omitempty"`
+	// The consumption mode. Valid values: BROADCASTING and CLUSTERING.
+	//
 	// example:
 	//
 	// BROADCASTING
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
+	// The subscription status. Valid values: ONLINE and OFFLINE.
+	//
 	// example:
 	//
 	// ONLINE
 	SubscriptionStatus *string `json:"subscriptionStatus,omitempty" xml:"subscriptionStatus,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// topic_test
@@ -5837,6 +10307,306 @@ func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsRespo
 	return s
 }
 
+type ListTracesRequest struct {
+	// example:
+	//
+	// 2023-05-19 10:10:09
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 0100163E0EC1F1965C04C7906700000000
+	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	// example:
+	//
+	// order_ceating
+	MessageKey *string `json:"messageKey,omitempty" xml:"messageKey,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// MESSAGE_ID
+	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	// example:
+	//
+	// 2023-05-10 10:42:11
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s ListTracesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTracesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTracesRequest) SetEndTime(v string) *ListTracesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTracesRequest) SetMessageId(v string) *ListTracesRequest {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ListTracesRequest) SetMessageKey(v string) *ListTracesRequest {
+	s.MessageKey = &v
+	return s
+}
+
+func (s *ListTracesRequest) SetPageNumber(v int32) *ListTracesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTracesRequest) SetPageSize(v int32) *ListTracesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTracesRequest) SetQueryType(v string) *ListTracesRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *ListTracesRequest) SetStartTime(v string) *ListTracesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListTracesResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string                     `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListTracesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EDFF77E1-1ED1-5389-B6A8-651D9433BBE5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTracesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTracesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTracesResponseBody) SetCode(v string) *ListTracesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTracesResponseBody) SetData(v *ListTracesResponseBodyData) *ListTracesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTracesResponseBody) SetDynamicCode(v string) *ListTracesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListTracesResponseBody) SetDynamicMessage(v string) *ListTracesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListTracesResponseBody) SetHttpStatusCode(v int32) *ListTracesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTracesResponseBody) SetMessage(v string) *ListTracesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTracesResponseBody) SetRequestId(v string) *ListTracesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTracesResponseBody) SetSuccess(v bool) *ListTracesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTracesResponseBodyData struct {
+	List []*ListTracesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListTracesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTracesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTracesResponseBodyData) SetList(v []*ListTracesResponseBodyDataList) *ListTracesResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListTracesResponseBodyData) SetPageNumber(v int64) *ListTracesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTracesResponseBodyData) SetPageSize(v int64) *ListTracesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTracesResponseBodyData) SetTotalCount(v int64) *ListTracesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTracesResponseBodyDataList struct {
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	BornTime *string `json:"bornTime,omitempty" xml:"bornTime,omitempty"`
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 7F00000100207A4F0F294A938F7807AE
+	MessageId   *string   `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	MessageKeys []*string `json:"messageKeys,omitempty" xml:"messageKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	MessageTag *string `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// topic_test
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s ListTracesResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTracesResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTracesResponseBodyDataList) SetBornTime(v string) *ListTracesResponseBodyDataList {
+	s.BornTime = &v
+	return s
+}
+
+func (s *ListTracesResponseBodyDataList) SetInstanceId(v string) *ListTracesResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTracesResponseBodyDataList) SetMessageId(v string) *ListTracesResponseBodyDataList {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ListTracesResponseBodyDataList) SetMessageKeys(v []*string) *ListTracesResponseBodyDataList {
+	s.MessageKeys = v
+	return s
+}
+
+func (s *ListTracesResponseBodyDataList) SetMessageTag(v string) *ListTracesResponseBodyDataList {
+	s.MessageTag = &v
+	return s
+}
+
+func (s *ListTracesResponseBodyDataList) SetRegionId(v string) *ListTracesResponseBodyDataList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTracesResponseBodyDataList) SetTopicName(v string) *ListTracesResponseBodyDataList {
+	s.TopicName = &v
+	return s
+}
+
+type ListTracesResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTracesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTracesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTracesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTracesResponse) SetHeaders(v map[string]*string) *ListTracesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTracesResponse) SetStatusCode(v int32) *ListTracesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTracesResponse) SetBody(v *ListTracesResponseBody) *ListTracesResponse {
+	s.Body = v
+	return s
+}
+
 type ResetConsumeOffsetRequest struct {
 	// The time when the consumer offset is reset.
 	//
@@ -5983,6 +10753,347 @@ func (s *ResetConsumeOffsetResponse) SetStatusCode(v int32) *ResetConsumeOffsetR
 }
 
 func (s *ResetConsumeOffsetResponse) SetBody(v *ResetConsumeOffsetResponseBody) *ResetConsumeOffsetResponse {
+	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rmq-cn-pe3355cs707
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"key": "rmq-test", "value": "test"}]
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v string) *TagResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v string) *TagResourcesRequest {
+	s.Tag = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 0B962390-D84B-5D44-8C11-79DF40299D41
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetCode(v string) *TagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetData(v bool) *TagResourcesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetDynamicCode(v string) *TagResourcesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetDynamicMessage(v string) *TagResourcesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetHttpStatusCode(v int32) *TagResourcesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetMessage(v string) *TagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	// example:
+	//
+	// true
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rmq-cn-pe3355cs707
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// example:
+	//
+	// ["key1", "key2"]
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v string) *UntagResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v string) *UntagResourcesRequest {
+	s.TagKey = &v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter deliveryOrderType is invalid.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// A07B41BD-6DD3-5349-9E76-00303DF04BBE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetCode(v string) *UntagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetData(v bool) *UntagResourcesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetDynamicCode(v string) *UntagResourcesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetDynamicMessage(v string) *UntagResourcesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetHttpStatusCode(v int32) *UntagResourcesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetMessage(v string) *UntagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -6285,6 +11396,10 @@ type UpdateInstanceRequestAclInfo struct {
 	// - true
 	//
 	// - false
+	//
+	// example:
+	//
+	// false
 	DefaultVpcAuthFree *bool `json:"defaultVpcAuthFree,omitempty" xml:"defaultVpcAuthFree,omitempty"`
 }
 
@@ -6551,6 +11666,334 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 	return s
 }
 
+type UpdateInstanceAccountRequest struct {
+	// example:
+	//
+	// ENABLE
+	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
+	// example:
+	//
+	// test
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+}
+
+func (s UpdateInstanceAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceAccountRequest) SetAccountStatus(v string) *UpdateInstanceAccountRequest {
+	s.AccountStatus = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountRequest) SetPassword(v string) *UpdateInstanceAccountRequest {
+	s.Password = &v
+	return s
+}
+
+type UpdateInstanceAccountResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// Instance.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// AF9A8B10-C426-530F-A0DD-96320B39****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateInstanceAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetAccessDeniedDetail(v string) *UpdateInstanceAccountResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetCode(v string) *UpdateInstanceAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetData(v bool) *UpdateInstanceAccountResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetDynamicCode(v string) *UpdateInstanceAccountResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetDynamicMessage(v string) *UpdateInstanceAccountResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetHttpStatusCode(v int32) *UpdateInstanceAccountResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetMessage(v string) *UpdateInstanceAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetRequestId(v string) *UpdateInstanceAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponseBody) SetSuccess(v bool) *UpdateInstanceAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateInstanceAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstanceAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceAccountResponse) SetHeaders(v map[string]*string) *UpdateInstanceAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponse) SetStatusCode(v int32) *UpdateInstanceAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountResponse) SetBody(v *UpdateInstanceAccountResponseBody) *UpdateInstanceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateInstanceAclRequest struct {
+	// example:
+	//
+	// Pub
+	Actions *string `json:"actions,omitempty" xml:"actions,omitempty"`
+	// example:
+	//
+	// Allow
+	Decision     *string   `json:"decision,omitempty" xml:"decision,omitempty"`
+	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Topic
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s UpdateInstanceAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceAclRequest) SetActions(v string) *UpdateInstanceAclRequest {
+	s.Actions = &v
+	return s
+}
+
+func (s *UpdateInstanceAclRequest) SetDecision(v string) *UpdateInstanceAclRequest {
+	s.Decision = &v
+	return s
+}
+
+func (s *UpdateInstanceAclRequest) SetIpWhitelists(v []*string) *UpdateInstanceAclRequest {
+	s.IpWhitelists = v
+	return s
+}
+
+func (s *UpdateInstanceAclRequest) SetResourceName(v string) *UpdateInstanceAclRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *UpdateInstanceAclRequest) SetResourceType(v string) *UpdateInstanceAclRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type UpdateInstanceAclResponseBody struct {
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// example:
+	//
+	// MissingInstanceId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C115601B-8736-5BBF-AC99-7FEAE1245A80
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateInstanceAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceAclResponseBody) SetAccessDeniedDetail(v string) *UpdateInstanceAclResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetCode(v string) *UpdateInstanceAclResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetData(v bool) *UpdateInstanceAclResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetDynamicCode(v string) *UpdateInstanceAclResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetDynamicMessage(v string) *UpdateInstanceAclResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetHttpStatusCode(v int32) *UpdateInstanceAclResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetMessage(v string) *UpdateInstanceAclResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetRequestId(v string) *UpdateInstanceAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponseBody) SetSuccess(v bool) *UpdateInstanceAclResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateInstanceAclResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstanceAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceAclResponse) SetHeaders(v map[string]*string) *UpdateInstanceAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceAclResponse) SetStatusCode(v int32) *UpdateInstanceAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceAclResponse) SetBody(v *UpdateInstanceAclResponseBody) *UpdateInstanceAclResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTopicRequest struct {
 	// The new remarks on the topic.
 	//
@@ -6697,6 +12140,301 @@ func (s *UpdateTopicResponse) SetStatusCode(v int32) *UpdateTopicResponse {
 }
 
 func (s *UpdateTopicResponse) SetBody(v *UpdateTopicResponseBody) *UpdateTopicResponse {
+	s.Body = v
+	return s
+}
+
+type VerifyConsumeMessageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zeekr-settlement-server-dc555456f-v2lcg@1@1@qfvorazqns
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TEST_FINANCE_STOCK_OUT_GROUP
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+}
+
+func (s VerifyConsumeMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyConsumeMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyConsumeMessageRequest) SetClientId(v string) *VerifyConsumeMessageRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageRequest) SetConsumerGroupId(v string) *VerifyConsumeMessageRequest {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+type VerifyConsumeMessageResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 5304143F-AB0E-5AB4-A227-7C5489216FD5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s VerifyConsumeMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyConsumeMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetCode(v string) *VerifyConsumeMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetData(v bool) *VerifyConsumeMessageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetDynamicCode(v string) *VerifyConsumeMessageResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetDynamicMessage(v string) *VerifyConsumeMessageResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetHttpStatusCode(v int32) *VerifyConsumeMessageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetMessage(v string) *VerifyConsumeMessageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetRequestId(v string) *VerifyConsumeMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponseBody) SetSuccess(v bool) *VerifyConsumeMessageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type VerifyConsumeMessageResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyConsumeMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VerifyConsumeMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyConsumeMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyConsumeMessageResponse) SetHeaders(v map[string]*string) *VerifyConsumeMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponse) SetStatusCode(v int32) *VerifyConsumeMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyConsumeMessageResponse) SetBody(v *VerifyConsumeMessageResponseBody) *VerifyConsumeMessageResponse {
+	s.Body = v
+	return s
+}
+
+type VerifySendMessageRequest struct {
+	// example:
+	//
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// xx
+	MessageKey *string `json:"messageKey,omitempty" xml:"messageKey,omitempty"`
+	// example:
+	//
+	// xx
+	MessageTag *string `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
+}
+
+func (s VerifySendMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifySendMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifySendMessageRequest) SetMessage(v string) *VerifySendMessageRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifySendMessageRequest) SetMessageKey(v string) *VerifySendMessageRequest {
+	s.MessageKey = &v
+	return s
+}
+
+func (s *VerifySendMessageRequest) SetMessageTag(v string) *VerifySendMessageRequest {
+	s.MessageTag = &v
+	return s
+}
+
+type VerifySendMessageResponseBody struct {
+	// example:
+	//
+	// InvalidConsumerGroupId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 0A64228900207A4F0F2931A4E0D40BE5
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ConsumerGroupId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// consumerGroupId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 3BD2C19B-66DE-59C7-B2F6-FD1BE21DC8C1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s VerifySendMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifySendMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifySendMessageResponseBody) SetCode(v string) *VerifySendMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifySendMessageResponseBody) SetData(v string) *VerifySendMessageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *VerifySendMessageResponseBody) SetDynamicCode(v string) *VerifySendMessageResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *VerifySendMessageResponseBody) SetDynamicMessage(v string) *VerifySendMessageResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *VerifySendMessageResponseBody) SetHttpStatusCode(v int32) *VerifySendMessageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *VerifySendMessageResponseBody) SetMessage(v string) *VerifySendMessageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifySendMessageResponseBody) SetRequestId(v string) *VerifySendMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifySendMessageResponseBody) SetSuccess(v bool) *VerifySendMessageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type VerifySendMessageResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifySendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VerifySendMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifySendMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifySendMessageResponse) SetHeaders(v map[string]*string) *VerifySendMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifySendMessageResponse) SetStatusCode(v int32) *VerifySendMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifySendMessageResponse) SetBody(v *VerifySendMessageResponseBody) *VerifySendMessageResponse {
 	s.Body = v
 	return s
 }
@@ -7036,6 +12774,218 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
+// 创建访问控制acl用户
+//
+// @param request - CreateInstanceAccountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceAccountResponse
+func (client *Client) CreateInstanceAccountWithOptions(instanceId *string, request *CreateInstanceAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceAccount"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/accounts"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制acl用户
+//
+// @param request - CreateInstanceAccountRequest
+//
+// @return CreateInstanceAccountResponse
+func (client *Client) CreateInstanceAccount(instanceId *string, request *CreateInstanceAccountRequest) (_result *CreateInstanceAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceAccountResponse{}
+	_body, _err := client.CreateInstanceAccountWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制acl数据
+//
+// @param request - CreateInstanceAclRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceAclResponse
+func (client *Client) CreateInstanceAclWithOptions(instanceId *string, username *string, request *CreateInstanceAclRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Actions)) {
+		body["actions"] = request.Actions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Decision)) {
+		body["decision"] = request.Decision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpWhitelists)) {
+		body["ipWhitelists"] = request.IpWhitelists
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		body["resourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceAcl"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/acl/account/" + tea.StringValue(openapiutil.GetEncodeParam(username))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制acl数据
+//
+// @param request - CreateInstanceAclRequest
+//
+// @return CreateInstanceAclResponse
+func (client *Client) CreateInstanceAcl(instanceId *string, username *string, request *CreateInstanceAclRequest) (_result *CreateInstanceAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceAclResponse{}
+	_body, _err := client.CreateInstanceAclWithOptions(instanceId, username, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制ip白名单
+//
+// @param request - CreateInstanceIpWhitelistRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceIpWhitelistResponse
+func (client *Client) CreateInstanceIpWhitelistWithOptions(instanceId *string, request *CreateInstanceIpWhitelistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceIpWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpWhitelists)) {
+		body["ipWhitelists"] = request.IpWhitelists
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceIpWhitelist"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/ip/whitelist"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceIpWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制ip白名单
+//
+// @param request - CreateInstanceIpWhitelistRequest
+//
+// @return CreateInstanceIpWhitelistResponse
+func (client *Client) CreateInstanceIpWhitelist(instanceId *string, request *CreateInstanceIpWhitelistRequest) (_result *CreateInstanceIpWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceIpWhitelistResponse{}
+	_body, _err := client.CreateInstanceIpWhitelistWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a topic.
 //
 // @param request - CreateTopicRequest
@@ -7166,6 +13116,78 @@ func (client *Client) DeleteConsumerGroup(instanceId *string, consumerGroupId *s
 
 // Summary:
 //
+// 取消消费组订阅关系
+//
+// @param request - DeleteConsumerGroupSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerGroupSubscriptionResponse
+func (client *Client) DeleteConsumerGroupSubscriptionWithOptions(instanceId *string, consumerGroupId *string, request *DeleteConsumerGroupSubscriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupSubscriptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterExpression)) {
+		query["filterExpression"] = request.FilterExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterType)) {
+		query["filterType"] = request.FilterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicName)) {
+		query["topicName"] = request.TopicName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConsumerGroupSubscription"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId)) + "/subscriptions"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteConsumerGroupSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消消费组订阅关系
+//
+// @param request - DeleteConsumerGroupSubscriptionRequest
+//
+// @return DeleteConsumerGroupSubscriptionResponse
+func (client *Client) DeleteConsumerGroupSubscription(instanceId *string, consumerGroupId *string, request *DeleteConsumerGroupSubscriptionRequest) (_result *DeleteConsumerGroupSubscriptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConsumerGroupSubscriptionResponse{}
+	_body, _err := client.DeleteConsumerGroupSubscriptionWithOptions(instanceId, consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a ApsaraMQ for RocketMQ instance.
 //
 // Description:
@@ -7223,6 +13245,188 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 	headers := make(map[string]*string)
 	_result = &DeleteInstanceResponse{}
 	_body, _err := client.DeleteInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制acl用户
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceAccountResponse
+func (client *Client) DeleteInstanceAccountWithOptions(instanceId *string, username *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceAccountResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceAccount"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/accounts/" + tea.StringValue(openapiutil.GetEncodeParam(username))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制acl用户
+//
+// @return DeleteInstanceAccountResponse
+func (client *Client) DeleteInstanceAccount(instanceId *string, username *string) (_result *DeleteInstanceAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceAccountResponse{}
+	_body, _err := client.DeleteInstanceAccountWithOptions(instanceId, username, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制acl数据
+//
+// @param request - DeleteInstanceAclRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceAclResponse
+func (client *Client) DeleteInstanceAclWithOptions(instanceId *string, username *string, request *DeleteInstanceAclRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["resourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceAcl"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/acl/account/" + tea.StringValue(openapiutil.GetEncodeParam(username))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制acl数据
+//
+// @param request - DeleteInstanceAclRequest
+//
+// @return DeleteInstanceAclResponse
+func (client *Client) DeleteInstanceAcl(instanceId *string, username *string, request *DeleteInstanceAclRequest) (_result *DeleteInstanceAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceAclResponse{}
+	_body, _err := client.DeleteInstanceAclWithOptions(instanceId, username, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制ip白名单
+//
+// @param request - DeleteInstanceIpWhitelistRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceIpWhitelistResponse
+func (client *Client) DeleteInstanceIpWhitelistWithOptions(instanceId *string, request *DeleteInstanceIpWhitelistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceIpWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpWhitelist)) {
+		query["ipWhitelist"] = request.IpWhitelist
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceIpWhitelist"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/ip/whitelist"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceIpWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制ip白名单
+//
+// @param request - DeleteInstanceIpWhitelistRequest
+//
+// @return DeleteInstanceIpWhitelistResponse
+func (client *Client) DeleteInstanceIpWhitelist(instanceId *string, request *DeleteInstanceIpWhitelistRequest) (_result *DeleteInstanceIpWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceIpWhitelistResponse{}
+	_body, _err := client.DeleteInstanceIpWhitelistWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7348,6 +13552,170 @@ func (client *Client) GetConsumerGroup(instanceId *string, consumerGroupId *stri
 
 // Summary:
 //
+// 查询消费者组堆积信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerGroupLagResponse
+func (client *Client) GetConsumerGroupLagWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConsumerGroupLagResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConsumerGroupLag"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId)) + "/lag"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConsumerGroupLagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组堆积信息
+//
+// @return GetConsumerGroupLagResponse
+func (client *Client) GetConsumerGroupLag(instanceId *string, consumerGroupId *string) (_result *GetConsumerGroupLagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumerGroupLagResponse{}
+	_body, _err := client.GetConsumerGroupLagWithOptions(instanceId, consumerGroupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费组订阅关系列表客户端分布
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerGroupSubscriptionResponse
+func (client *Client) GetConsumerGroupSubscriptionWithOptions(instanceId *string, consumerGroupId *string, topicName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConsumerGroupSubscriptionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConsumerGroupSubscription"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId)) + "/subscriptions/" + tea.StringValue(openapiutil.GetEncodeParam(topicName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConsumerGroupSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费组订阅关系列表客户端分布
+//
+// @return GetConsumerGroupSubscriptionResponse
+func (client *Client) GetConsumerGroupSubscription(instanceId *string, consumerGroupId *string, topicName *string) (_result *GetConsumerGroupSubscriptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumerGroupSubscriptionResponse{}
+	_body, _err := client.GetConsumerGroupSubscriptionWithOptions(instanceId, consumerGroupId, topicName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者堆栈信息
+//
+// @param request - GetConsumerStackRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerStackResponse
+func (client *Client) GetConsumerStackWithOptions(instanceId *string, consumerGroupId *string, request *GetConsumerStackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConsumerStackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["clientId"] = request.ClientId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConsumerStack"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId)) + "/stack"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConsumerStackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者堆栈信息
+//
+// @param request - GetConsumerStackRequest
+//
+// @return GetConsumerStackResponse
+func (client *Client) GetConsumerStack(instanceId *string, consumerGroupId *string, request *GetConsumerStackRequest) (_result *GetConsumerStackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumerStackResponse{}
+	_body, _err := client.GetConsumerStackWithOptions(instanceId, consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the detailed information about an instance.
 //
 // Description:
@@ -7406,6 +13774,120 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 
 // Summary:
 //
+// 获取实例账号
+//
+// @param request - GetInstanceAccountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceAccountResponse
+func (client *Client) GetInstanceAccountWithOptions(instanceId *string, request *GetInstanceAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceAccount"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/account"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例账号
+//
+// @param request - GetInstanceAccountRequest
+//
+// @return GetInstanceAccountResponse
+func (client *Client) GetInstanceAccount(instanceId *string, request *GetInstanceAccountRequest) (_result *GetInstanceAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceAccountResponse{}
+	_body, _err := client.GetInstanceAccountWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 消息详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMessageDetailResponse
+func (client *Client) GetMessageDetailWithOptions(instanceId *string, topicName *string, messageId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMessageDetailResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMessageDetail"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName)) + "/messages/" + tea.StringValue(openapiutil.GetEncodeParam(messageId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMessageDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 消息详情
+//
+// @return GetMessageDetailResponse
+func (client *Client) GetMessageDetail(instanceId *string, topicName *string, messageId *string) (_result *GetMessageDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMessageDetailResponse{}
+	_body, _err := client.GetMessageDetailWithOptions(instanceId, topicName, messageId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a specified topic.
 //
 // @param headers - map
@@ -7447,6 +13929,56 @@ func (client *Client) GetTopic(instanceId *string, topicName *string) (_result *
 	headers := make(map[string]*string)
 	_result = &GetTopicResponse{}
 	_body, _err := client.GetTopicWithOptions(instanceId, topicName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轨迹查询
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTraceResponse
+func (client *Client) GetTraceWithOptions(instanceId *string, topicName *string, messageId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTraceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrace"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName)) + "/traces/" + tea.StringValue(openapiutil.GetEncodeParam(messageId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTraceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轨迹查询
+//
+// @return GetTraceResponse
+func (client *Client) GetTrace(instanceId *string, topicName *string, messageId *string) (_result *GetTraceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTraceResponse{}
+	_body, _err := client.GetTraceWithOptions(instanceId, topicName, messageId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7556,7 +14088,7 @@ func (client *Client) ListConsumerConnections(instanceId *string, consumerGroupI
 
 // Summary:
 //
-// Queries the subscriptions of a consumer group.
+// Queries the subscriptions of a specific consumer group.
 //
 // @param headers - map
 //
@@ -7589,7 +14121,7 @@ func (client *Client) ListConsumerGroupSubscriptionsWithOptions(instanceId *stri
 
 // Summary:
 //
-// Queries the subscriptions of a consumer group.
+// Queries the subscriptions of a specific consumer group.
 //
 // @return ListConsumerGroupSubscriptionsResponse
 func (client *Client) ListConsumerGroupSubscriptions(instanceId *string, consumerGroupId *string) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
@@ -7686,7 +14218,231 @@ func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsum
 
 // Summary:
 //
-// Queries instances.
+// 访问控制acl用户列表
+//
+// @param request - ListInstanceAccountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceAccountResponse
+func (client *Client) ListInstanceAccountWithOptions(instanceId *string, request *ListInstanceAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountStatus)) {
+		query["accountStatus"] = request.AccountStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountType)) {
+		query["accountType"] = request.AccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceAccount"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/accounts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 访问控制acl用户列表
+//
+// @param request - ListInstanceAccountRequest
+//
+// @return ListInstanceAccountResponse
+func (client *Client) ListInstanceAccount(instanceId *string, request *ListInstanceAccountRequest) (_result *ListInstanceAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceAccountResponse{}
+	_body, _err := client.ListInstanceAccountWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 访问控制acl数据列表
+//
+// @param request - ListInstanceAclRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceAclResponse
+func (client *Client) ListInstanceAclWithOptions(instanceId *string, request *ListInstanceAclRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceAcl"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/acl"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 访问控制acl数据列表
+//
+// @param request - ListInstanceAclRequest
+//
+// @return ListInstanceAclResponse
+func (client *Client) ListInstanceAcl(instanceId *string, request *ListInstanceAclRequest) (_result *ListInstanceAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceAclResponse{}
+	_body, _err := client.ListInstanceAclWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询访问控制ip白名单列表
+//
+// @param request - ListInstanceIpWhitelistRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceIpWhitelistResponse
+func (client *Client) ListInstanceIpWhitelistWithOptions(instanceId *string, request *ListInstanceIpWhitelistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceIpWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpWhitelist)) {
+		query["ipWhitelist"] = request.IpWhitelist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceIpWhitelist"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/ip/whitelist"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceIpWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询访问控制ip白名单列表
+//
+// @param request - ListInstanceIpWhitelistRequest
+//
+// @return ListInstanceIpWhitelistResponse
+func (client *Client) ListInstanceIpWhitelist(instanceId *string, request *ListInstanceIpWhitelistRequest) (_result *ListInstanceIpWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceIpWhitelistResponse{}
+	_body, _err := client.ListInstanceIpWhitelistWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries all ApsaraMQ for RocketMQ instances in a specific region.
 //
 // Description:
 //
@@ -7761,7 +14517,7 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 // Summary:
 //
-// Queries instances.
+// Queries all ApsaraMQ for RocketMQ instances in a specific region.
 //
 // Description:
 //
@@ -7784,7 +14540,95 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// 查询region列表
+// 查询消息列表
+//
+// @param request - ListMessagesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMessagesResponse
+func (client *Client) ListMessagesWithOptions(instanceId *string, topicName *string, request *ListMessagesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMessagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["messageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageKey)) {
+		query["messageKey"] = request.MessageKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScrollId)) {
+		query["scrollId"] = request.ScrollId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMessages"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName)) + "/messages"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消息列表
+//
+// @param request - ListMessagesRequest
+//
+// @return ListMessagesResponse
+func (client *Client) ListMessages(instanceId *string, topicName *string, request *ListMessagesRequest) (_result *ListMessagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMessagesResponse{}
+	_body, _err := client.ListMessagesWithOptions(instanceId, topicName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries regions in which ApsaraMQ for RocketMQ is available.
 //
 // @param headers - map
 //
@@ -7817,7 +14661,7 @@ func (client *Client) ListRegionsWithOptions(headers map[string]*string, runtime
 
 // Summary:
 //
-// 查询region列表
+// Queries regions in which ApsaraMQ for RocketMQ is available.
 //
 // @return ListRegionsResponse
 func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
@@ -7834,7 +14678,91 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
-// 查询主题订阅关系列表
+// 查询可见的资源标签关系
+//
+// @param request - ListTagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resourceTag/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询可见的资源标签关系
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the subscriptions of a specific topic.
 //
 // @param headers - map
 //
@@ -7867,7 +14795,7 @@ func (client *Client) ListTopicSubscriptionsWithOptions(instanceId *string, topi
 
 // Summary:
 //
-// 查询主题订阅关系列表
+// Queries the subscriptions of a specific topic.
 //
 // @return ListTopicSubscriptionsResponse
 func (client *Client) ListTopicSubscriptions(instanceId *string, topicName *string) (_result *ListTopicSubscriptionsResponse, _err error) {
@@ -7966,6 +14894,94 @@ func (client *Client) ListTopics(instanceId *string, request *ListTopicsRequest)
 
 // Summary:
 //
+// 轨迹消息列表
+//
+// @param request - ListTracesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTracesResponse
+func (client *Client) ListTracesWithOptions(instanceId *string, topicName *string, request *ListTracesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTracesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["messageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageKey)) {
+		query["messageKey"] = request.MessageKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["queryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTraces"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName)) + "/traces"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTracesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轨迹消息列表
+//
+// @param request - ListTracesRequest
+//
+// @return ListTracesResponse
+func (client *Client) ListTraces(instanceId *string, topicName *string, request *ListTracesRequest) (_result *ListTracesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTracesResponse{}
+	_body, _err := client.ListTracesWithOptions(instanceId, topicName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets the consumer offset of a consumer group.
 //
 // @param request - ResetConsumeOffsetRequest
@@ -8025,6 +15041,162 @@ func (client *Client) ResetConsumeOffset(instanceId *string, consumerGroupId *st
 	headers := make(map[string]*string)
 	_result = &ResetConsumeOffsetResponse{}
 	_body, _err := client.ResetConsumeOffsetWithOptions(instanceId, consumerGroupId, topicName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户创建标签资源关系（用户标签）
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resourceTag/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户创建标签资源关系（用户标签）
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户删除标签资源关系
+//
+// @param request - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["all"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["tagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resourceTag/delete"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户删除标签资源关系
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8202,6 +15374,154 @@ func (client *Client) UpdateInstance(instanceId *string, request *UpdateInstance
 
 // Summary:
 //
+// 修改访问控制acl用户
+//
+// @param request - UpdateInstanceAccountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceAccountResponse
+func (client *Client) UpdateInstanceAccountWithOptions(instanceId *string, username *string, request *UpdateInstanceAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountStatus)) {
+		query["accountStatus"] = request.AccountStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["password"] = request.Password
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceAccount"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/accounts/" + tea.StringValue(openapiutil.GetEncodeParam(username))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改访问控制acl用户
+//
+// @param request - UpdateInstanceAccountRequest
+//
+// @return UpdateInstanceAccountResponse
+func (client *Client) UpdateInstanceAccount(instanceId *string, username *string, request *UpdateInstanceAccountRequest) (_result *UpdateInstanceAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceAccountResponse{}
+	_body, _err := client.UpdateInstanceAccountWithOptions(instanceId, username, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制acl数据
+//
+// @param request - UpdateInstanceAclRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceAclResponse
+func (client *Client) UpdateInstanceAclWithOptions(instanceId *string, username *string, request *UpdateInstanceAclRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Actions)) {
+		body["actions"] = request.Actions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Decision)) {
+		body["decision"] = request.Decision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpWhitelists)) {
+		body["ipWhitelists"] = request.IpWhitelists
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		body["resourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceAcl"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/acl/account/" + tea.StringValue(openapiutil.GetEncodeParam(username))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除访问控制acl数据
+//
+// @param request - UpdateInstanceAclRequest
+//
+// @return UpdateInstanceAclResponse
+func (client *Client) UpdateInstanceAcl(instanceId *string, username *string, request *UpdateInstanceAclRequest) (_result *UpdateInstanceAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceAclResponse{}
+	_body, _err := client.UpdateInstanceAclWithOptions(instanceId, username, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the basic information about a topic.
 //
 // @param request - UpdateTopicRequest
@@ -8257,6 +15577,146 @@ func (client *Client) UpdateTopic(instanceId *string, topicName *string, request
 	headers := make(map[string]*string)
 	_result = &UpdateTopicResponse{}
 	_body, _err := client.UpdateTopicWithOptions(instanceId, topicName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 消费验证
+//
+// @param request - VerifyConsumeMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyConsumeMessageResponse
+func (client *Client) VerifyConsumeMessageWithOptions(instanceId *string, topicName *string, messageId *string, request *VerifyConsumeMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyConsumeMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["clientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupId)) {
+		query["consumerGroupId"] = request.ConsumerGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyConsumeMessage"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName)) + "/messages/" + tea.StringValue(openapiutil.GetEncodeParam(messageId)) + "/action/verifyConsume"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyConsumeMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 消费验证
+//
+// @param request - VerifyConsumeMessageRequest
+//
+// @return VerifyConsumeMessageResponse
+func (client *Client) VerifyConsumeMessage(instanceId *string, topicName *string, messageId *string, request *VerifyConsumeMessageRequest) (_result *VerifyConsumeMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VerifyConsumeMessageResponse{}
+	_body, _err := client.VerifyConsumeMessageWithOptions(instanceId, topicName, messageId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送消息
+//
+// @param request - VerifySendMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifySendMessageResponse
+func (client *Client) VerifySendMessageWithOptions(instanceId *string, topicName *string, request *VerifySendMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifySendMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		body["message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageKey)) {
+		body["messageKey"] = request.MessageKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageTag)) {
+		body["messageTag"] = request.MessageTag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifySendMessage"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/topics/" + tea.StringValue(openapiutil.GetEncodeParam(topicName)) + "/messages"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifySendMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送消息
+//
+// @param request - VerifySendMessageRequest
+//
+// @return VerifySendMessageResponse
+func (client *Client) VerifySendMessage(instanceId *string, topicName *string, request *VerifySendMessageRequest) (_result *VerifySendMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VerifySendMessageResponse{}
+	_body, _err := client.VerifySendMessageWithOptions(instanceId, topicName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
