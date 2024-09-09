@@ -8161,10 +8161,11 @@ type CloneNacosConfigRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	DataIds        *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
+	// The configuration items that you want to clone. The value of this parameter is the combination of the values of the dataId and group parameters. Separate multiple configuration items with commas (,).
+	DataIds *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
 	// Deprecated
 	//
-	// The data structure.
+	// The list of configuration IDs.
 	//
 	// example:
 	//
@@ -8262,7 +8263,7 @@ type CloneNacosConfigResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of skipped operations.
+	// The data returned.
 	Data *CloneNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The number of successful operations.
 	//
@@ -8355,7 +8356,7 @@ func (s *CloneNacosConfigResponseBody) SetSuccess(v bool) *CloneNacosConfigRespo
 }
 
 type CloneNacosConfigResponseBodyData struct {
-	// The ID of the data.
+	// The details of the failed configurations.
 	FailData []*CloneNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
 	// The data structure.
 	//
@@ -14380,10 +14381,14 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetBody(v *CreateOrUpdateSwimm
 }
 
 type CreatePluginConfigRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
+	//
 	// example:
 	//
 	// status_code: 200
@@ -14394,30 +14399,45 @@ type CreatePluginConfigRequest struct {
 	//
 	// body: "{\\"rule\\": \\"global\\"}"
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The application scope of the plug-in. Valid values:
+	//
+	// 	- 0: global
+	//
+	// 	- 1: route
+	//
+	// 	- 2: domain name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// Indicates whether the plug-in is enabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-ubuwqygbq4783gqb2y3f87q****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The gateway plug-in ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
-	PluginId       *int64   `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginId *int64 `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// The domain IDs or route IDs. They are distinguished based on ConfigLevel.
 	ResourceIdList []*int64 `json:"ResourceIdList,omitempty" xml:"ResourceIdList,omitempty" type:"Repeated"`
 }
 
@@ -14465,10 +14485,14 @@ func (s *CreatePluginConfigRequest) SetResourceIdList(v []*int64) *CreatePluginC
 }
 
 type CreatePluginConfigShrinkRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
+	//
 	// example:
 	//
 	// status_code: 200
@@ -14479,30 +14503,45 @@ type CreatePluginConfigShrinkRequest struct {
 	//
 	// body: "{\\"rule\\": \\"global\\"}"
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The application scope of the plug-in. Valid values:
+	//
+	// 	- 0: global
+	//
+	// 	- 1: route
+	//
+	// 	- 2: domain name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// Indicates whether the plug-in is enabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-ubuwqygbq4783gqb2y3f87q****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The gateway plug-in ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
-	PluginId             *int64  `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginId *int64 `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// The domain IDs or route IDs. They are distinguished based on ConfigLevel.
 	ResourceIdListShrink *string `json:"ResourceIdList,omitempty" xml:"ResourceIdList,omitempty"`
 }
 
@@ -14550,10 +14589,14 @@ func (s *CreatePluginConfigShrinkRequest) SetResourceIdListShrink(v string) *Cre
 }
 
 type CreatePluginConfigResponseBody struct {
+	// The plug-in configuration ID.
+	//
 	// example:
 	//
 	// 10
 	PluginConfigID *int64 `json:"PluginConfigID,omitempty" xml:"PluginConfigID,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 03A3E2F4-6804-5663-9D5D-2EC47A1*****
@@ -19406,16 +19449,22 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 }
 
 type DeletePluginConfigRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The plug-in configuration ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19448,6 +19497,8 @@ func (s *DeletePluginConfigRequest) SetPluginConfigId(v int64) *DeletePluginConf
 }
 
 type DeletePluginConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DC34E4A3-5F1C-4E40-86EA-02EDF967****
@@ -21838,24 +21889,34 @@ func (s *FetchLosslessRuleListResponse) SetBody(v *FetchLosslessRuleListResponse
 }
 
 type GatewayBlackWhiteListRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is unavailable for public use.
+	//
 	// example:
 	//
 	// ""
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// parse from filterParams
+	// The filter parameters.
 	FilterParams *GatewayBlackWhiteListRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
+	// This parameter is unavailable for public use.
+	//
 	// example:
 	//
 	// ""
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 1.
+	//
 	// example:
 	//
 	// 1
@@ -21901,30 +21962,50 @@ func (s *GatewayBlackWhiteListRequest) SetPageSize(v int32) *GatewayBlackWhiteLi
 }
 
 type GatewayBlackWhiteListRequestFilterParams struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 81
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway. If this parameter is used together with the GatewayId parameter, the value of the GatewayId parameter is used.
+	//
 	// example:
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// This parameter is unavailable for public use.
+	//
 	// example:
 	//
 	// ""
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// This parameter is unavailable for public use.
+	//
 	// example:
 	//
 	// ""
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The content that you want to query.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	SearchContent *string `json:"SearchContent,omitempty" xml:"SearchContent,omitempty"`
+	// The query type. Valid values:
+	//
+	// 	- ROUTE: The list is queried by route. If the value of this parameter is ROUTE, set the SearchContent parameter to the route name.
+	//
+	// 	- DOMAIN: The list is queried by domain name. If the value of this parameter is DOMAIN, set the SearchContent parameter to the domain name.
+	//
+	// 	- IP: The list is queried by specified IP address. If the value of this parameter is IP, set the SearchContent parameter to the IP address.
+	//
 	// example:
 	//
 	// IP
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// This parameter is unavailable for public use.
+	//
 	// example:
 	//
 	// ""
@@ -21975,24 +22056,34 @@ func (s *GatewayBlackWhiteListRequestFilterParams) SetType(v string) *GatewayBla
 }
 
 type GatewayBlackWhiteListShrinkRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is unavailable for public use.
+	//
 	// example:
 	//
 	// ""
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// parse from filterParams
+	// The filter parameters.
 	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
+	// This parameter is unavailable for public use.
+	//
 	// example:
 	//
 	// ""
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 1.
+	//
 	// example:
 	//
 	// 1
@@ -22038,35 +22129,56 @@ func (s *GatewayBlackWhiteListShrinkRequest) SetPageSize(v int32) *GatewayBlackW
 }
 
 type GatewayBlackWhiteListResponseBody struct {
+	// The status code. A value of 200 is returned if the request is successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *GatewayBlackWhiteListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The placeholder in the dynamic error message. This parameter is not returned.
+	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not returned.
+	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 58E06A0A-BD2C-47A0-99C2-B100F353****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
 	// example:
 	//
 	// true
@@ -22127,15 +22239,22 @@ func (s *GatewayBlackWhiteListResponseBody) SetSuccess(v bool) *GatewayBlackWhit
 }
 
 type GatewayBlackWhiteListResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 1
-	PageSize *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*GatewayBlackWhiteListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned information.
+	Result []*GatewayBlackWhiteListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of instances returned.
+	//
 	// example:
 	//
 	// 1
@@ -22171,59 +22290,102 @@ func (s *GatewayBlackWhiteListResponseBodyData) SetTotalSize(v int32) *GatewayBl
 }
 
 type GatewayBlackWhiteListResponseBodyDataResult struct {
+	// The content of the blacklist.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 81
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The time when the blacklist or whitelist was created.
+	//
 	// example:
 	//
 	// 2024-08-02T02:43:40.000+0000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the rule was modified.
+	//
 	// example:
 	//
 	// 2024-08-02T02:43:40.000+0000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the blacklist and whitelist.
+	//
 	// example:
 	//
 	// 549
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to enable the whitelist feature.
+	//
 	// example:
 	//
 	// true
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// The name of the blacklist.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The comment.
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// 549
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The list of resource IDs in the JSON format.
+	//
+	// 	- If the value of the ResourceType parameter is ROUTE, the value of this parameter is the list of route IDs.
+	//
+	// 	- If the value of the ResourceType parameter is DOMAIN, the value of this parameter is the list of domain names.
+	//
 	// example:
 	//
 	// [234]
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
+	// The description of the resource name.
+	//
 	// example:
 	//
 	// {}
 	ResourceIdNameJson *string `json:"ResourceIdNameJson,omitempty" xml:"ResourceIdNameJson,omitempty"`
+	// The effective scope of the blacklist or whitelist. Valid values:
+	//
+	// 	- GATEWAY
+	//
+	// 	- DOMAIN
+	//
+	// 	- ROUTE
+	//
 	// example:
 	//
 	// GATEWAY
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The status of the blacklist or whitelist.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the blacklist and whitelist. The value is fixed to IP address blacklist and whitelist.
+	//
 	// example:
 	//
 	// IP
@@ -28555,6 +28717,7 @@ type GetGatewayServiceDetailResponseBodyData struct {
 	//
 	// test
 	ServiceNameInRegistry *string `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
+	ServicePort           *int32  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	// The protocol of the service.
 	//
 	// example:
@@ -28674,6 +28837,11 @@ func (s *GetGatewayServiceDetailResponseBodyData) SetServiceFQDN(v string) *GetG
 
 func (s *GetGatewayServiceDetailResponseBodyData) SetServiceNameInRegistry(v string) *GetGatewayServiceDetailResponseBodyData {
 	s.ServiceNameInRegistry = &v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyData) SetServicePort(v int32) *GetGatewayServiceDetailResponseBodyData {
+	s.ServicePort = &v
 	return s
 }
 
@@ -29729,7 +29897,7 @@ type GetKubernetesSourceResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data structure.
+	// The data returned.
 	Data []*GetKubernetesSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code returned.
 	//
@@ -43639,7 +43807,9 @@ type ListGatewayResponseBodyDataResultElasticPolicy struct {
 	// example:
 	//
 	// CronHPA
-	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	ElasticType               *string                                                                    `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	EnableScaleTimePolicyList []*ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList `json:"EnableScaleTimePolicyList,omitempty" xml:"EnableScaleTimePolicyList,omitempty" type:"Repeated"`
+	LoadWarningThreshold      *bool                                                                      `json:"LoadWarningThreshold,omitempty" xml:"LoadWarningThreshold,omitempty"`
 	// The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
 	//
 	// example:
@@ -43668,6 +43838,16 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetElasticType(v string
 	return s
 }
 
+func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetEnableScaleTimePolicyList(v []*ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList) *ListGatewayResponseBodyDataResultElasticPolicy {
+	s.EnableScaleTimePolicyList = v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetLoadWarningThreshold(v bool) *ListGatewayResponseBodyDataResultElasticPolicy {
+	s.LoadWarningThreshold = &v
+	return s
+}
+
 func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetMaxReplica(v int32) *ListGatewayResponseBodyDataResultElasticPolicy {
 	s.MaxReplica = &v
 	return s
@@ -43675,6 +43855,29 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetMaxReplica(v int32) 
 
 func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetTimePolicyList(v []*ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList) *ListGatewayResponseBodyDataResultElasticPolicy {
 	s.TimePolicyList = v
+	return s
+}
+
+type ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList) SetEndTime(v string) *ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList) SetStartTime(v string) *ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList {
+	s.StartTime = &v
 	return s
 }
 
@@ -80802,7 +81005,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwi
 
 // Summary:
 //
-// 创建插件配置
+// Creates a plug-in configuration.
 //
 // @param tmpReq - CreatePluginConfigRequest
 //
@@ -80874,7 +81077,7 @@ func (client *Client) CreatePluginConfigWithOptions(tmpReq *CreatePluginConfigRe
 
 // Summary:
 //
-// 创建插件配置
+// Creates a plug-in configuration.
 //
 // @param request - CreatePluginConfigRequest
 //
@@ -82662,7 +82865,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 
 // Summary:
 //
-// 删除插件配置
+// Deletes a plug-in configuration.
 //
 // @param request - DeletePluginConfigRequest
 //
@@ -82712,7 +82915,7 @@ func (client *Client) DeletePluginConfigWithOptions(request *DeletePluginConfigR
 
 // Summary:
 //
-// 删除插件配置
+// Deletes a plug-in configuration.
 //
 // @param request - DeletePluginConfigRequest
 //
@@ -83490,7 +83693,7 @@ func (client *Client) FetchLosslessRuleList(request *FetchLosslessRuleListReques
 
 // Summary:
 //
-// 黑白名单列表
+// Queries a list of blacklists and whitelists of a gateway.
 //
 // @param tmpReq - GatewayBlackWhiteListRequest
 //
@@ -83558,7 +83761,7 @@ func (client *Client) GatewayBlackWhiteListWithOptions(tmpReq *GatewayBlackWhite
 
 // Summary:
 //
-// 黑白名单列表
+// Queries a list of blacklists and whitelists of a gateway.
 //
 // @param request - GatewayBlackWhiteListRequest
 //
