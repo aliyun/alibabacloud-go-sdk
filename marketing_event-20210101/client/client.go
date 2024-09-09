@@ -18,6 +18,8 @@ type FindGuestCredentialsRecordRequest struct {
 	//
 	// 2023-08-07 12:00:00
 	DateTimeString *string `json:"DateTimeString,omitempty" xml:"DateTimeString,omitempty"`
+	EndDateTime    *string `json:"EndDateTime,omitempty" xml:"EndDateTime,omitempty"`
+	StartDateTime  *string `json:"StartDateTime,omitempty" xml:"StartDateTime,omitempty"`
 }
 
 func (s FindGuestCredentialsRecordRequest) String() string {
@@ -35,6 +37,16 @@ func (s *FindGuestCredentialsRecordRequest) SetActivityId(v string) *FindGuestCr
 
 func (s *FindGuestCredentialsRecordRequest) SetDateTimeString(v string) *FindGuestCredentialsRecordRequest {
 	s.DateTimeString = &v
+	return s
+}
+
+func (s *FindGuestCredentialsRecordRequest) SetEndDateTime(v string) *FindGuestCredentialsRecordRequest {
+	s.EndDateTime = &v
+	return s
+}
+
+func (s *FindGuestCredentialsRecordRequest) SetStartDateTime(v string) *FindGuestCredentialsRecordRequest {
+	s.StartDateTime = &v
 	return s
 }
 
@@ -391,6 +403,8 @@ type FindGuestTicketRecordRequest struct {
 	//
 	// 2023-09-04 15:14:00
 	DateTimeString *string `json:"DateTimeString,omitempty" xml:"DateTimeString,omitempty"`
+	EndDateTime    *string `json:"EndDateTime,omitempty" xml:"EndDateTime,omitempty"`
+	StartDateTime  *string `json:"StartDateTime,omitempty" xml:"StartDateTime,omitempty"`
 }
 
 func (s FindGuestTicketRecordRequest) String() string {
@@ -408,6 +422,16 @@ func (s *FindGuestTicketRecordRequest) SetActivityId(v string) *FindGuestTicketR
 
 func (s *FindGuestTicketRecordRequest) SetDateTimeString(v string) *FindGuestTicketRecordRequest {
 	s.DateTimeString = &v
+	return s
+}
+
+func (s *FindGuestTicketRecordRequest) SetEndDateTime(v string) *FindGuestTicketRecordRequest {
+	s.EndDateTime = &v
+	return s
+}
+
+func (s *FindGuestTicketRecordRequest) SetStartDateTime(v string) *FindGuestTicketRecordRequest {
+	s.StartDateTime = &v
 	return s
 }
 
@@ -1350,6 +1374,14 @@ func (client *Client) FindGuestCredentialsRecordWithOptions(request *FindGuestCr
 		query["DateTimeString"] = request.DateTimeString
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndDateTime)) {
+		query["EndDateTime"] = request.EndDateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDateTime)) {
+		query["StartDateTime"] = request.StartDateTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1412,6 +1444,14 @@ func (client *Client) FindGuestTicketRecordWithOptions(request *FindGuestTicketR
 
 	if !tea.BoolValue(util.IsUnset(request.DateTimeString)) {
 		query["DateTimeString"] = request.DateTimeString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDateTime)) {
+		query["EndDateTime"] = request.EndDateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDateTime)) {
+		query["StartDateTime"] = request.StartDateTime
 	}
 
 	req := &openapi.OpenApiRequest{
