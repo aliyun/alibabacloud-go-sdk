@@ -134,6 +134,8 @@ type AddTagsRequest struct {
 	//
 	// 0addcw****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The details about the tags.
+	//
 	// This parameter is required.
 	Tag []*AddTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -157,13 +159,13 @@ func (s *AddTagsRequest) SetTag(v []*AddTagsRequestTag) *AddTagsRequest {
 }
 
 type AddTagsRequestTag struct {
-	// The key of each tag. The tag includes a TagKey and TagValue. You can add a maximum of 10 tags at a time. You must specify a TagKey. You can leave a TagValue empty.
+	// The key of each tag. A tag consists of a tag key and a tag value. You can add a maximum of 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
 	//
 	// example:
 	//
 	// keyN
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of each tag. The tag includes a TagKey and TagValue. You can add a maximum of 10 tags at a time. You must specify a TagKey. You can leave a TagValue empty.
+	// The value of each tag. A tag consists of a tag key and a tag value. You can add a maximum of 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
 	//
 	// example:
 	//
@@ -190,7 +192,7 @@ func (s *AddTagsRequestTag) SetValue(v string) *AddTagsRequestTag {
 }
 
 type AddTagsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -1178,22 +1180,36 @@ func (s *CancelRecycleBinJobResponse) SetBody(v *CancelRecycleBinJobResponseBody
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the new resource group.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-acfmwavnfdf****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The region ID of the zone.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2412111.html) operation to query the latest region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 31a8e4****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
+	// Set the value to filesystem.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1231,6 +1247,8 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****
@@ -1425,60 +1443,102 @@ func (s *CreateAccessGroupResponse) SetBody(v *CreateAccessGroupResponseBody) *C
 }
 
 type CreateAccessPointRequest struct {
+	// The name of the permission group.
+	//
+	// This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+	//
+	// The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEFAULT_VPC_GROUP_NAME
 	AccessGroup *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	// The name of the access point.
+	//
 	// example:
 	//
 	// test
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	// Specifies whether to enable the RAM policy. Valid values:
+	//
+	// 	- true: The RAM policy is enabled.
+	//
+	// 	- false (default): The RAM policy is disabled.
+	//
+	// >  After the RAM policy is enabled for access points, no RAM user is allowed to use access points to mount and access data by default. To use access points to mount and access data as a RAM user, you must grant the related access permissions to the RAM user. If the RAM policy is disabled, access points can be anonymously mounted.
+	//
 	// example:
 	//
 	// false
 	EnabledRam *bool `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the owner group.
+	//
+	// This parameter is required if the RootDirectory directory does not exist.
+	//
 	// example:
 	//
 	// 1
 	OwnerGroupId *int32 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	// The owner ID.
+	//
+	// This parameter is required if the RootDirectory directory does not exist.
+	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int32 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The Portable Operating System Interface for UNIX (POSIX) permission. Default value: 0777.
+	//
+	// This field takes effect only if you specify the OwnerUserId and OwnerGroupId parameters.
+	//
 	// example:
 	//
 	// 0777
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// The ID of the POSIX user group.
+	//
 	// example:
 	//
 	// 123
 	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	// The secondary user group. Separate multiple user group IDs with commas (,).
+	//
 	// example:
 	//
 	// 123,345
 	PosixSecondaryGroupIds *string `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty"`
+	// The ID of the POSIX user.
+	//
 	// example:
 	//
 	// 123
 	PosixUserId *int32 `json:"PosixUserId,omitempty" xml:"PosixUserId,omitempty"`
+	// The root directory of the access point. The default value is /. If the directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
+	//
 	// example:
 	//
 	// /
 	RootDirectory *string `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty"`
+	// The VPC ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-2zesj9afh3y518k9o****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1561,7 +1621,10 @@ func (s *CreateAccessPointRequest) SetVswId(v string) *CreateAccessPointRequest 
 }
 
 type CreateAccessPointResponseBody struct {
+	// The access point.
 	AccessPoint *CreateAccessPointResponseBodyAccessPoint `json:"AccessPoint,omitempty" xml:"AccessPoint,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
@@ -1587,10 +1650,14 @@ func (s *CreateAccessPointResponseBody) SetRequestId(v string) *CreateAccessPoin
 }
 
 type CreateAccessPointResponseBodyAccessPoint struct {
+	// The domain name of the access point.
+	//
 	// example:
 	//
 	// ap-ie15ydanoz.001014****-w****.cn-hangzhou.nas.aliyuncs.com
 	AccessPointDomain *string `json:"AccessPointDomain,omitempty" xml:"AccessPointDomain,omitempty"`
+	// The ID of the access point.
+	//
 	// example:
 	//
 	// ap-ie15yd****
@@ -2003,7 +2070,9 @@ func (s *CreateAutoSnapshotPolicyResponse) SetBody(v *CreateAutoSnapshotPolicyRe
 type CreateDataFlowRequest struct {
 	// The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minutes.
 	//
-	// Valid values: 5 to 525600. Default value: 10.
+	// Valid values: 10 to 525600. Default value: 10.
+	//
+	// >  This parameter takes effect only for CPFS file systems.
 	//
 	// example:
 	//
@@ -2011,15 +2080,19 @@ type CreateDataFlowRequest struct {
 	AutoRefreshInterval *int64 `json:"AutoRefreshInterval,omitempty" xml:"AutoRefreshInterval,omitempty"`
 	// The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy.
 	//
-	// 	- None (default): Updated data in the source storage is not automatically imported into the CPFS file system. You can run a dataflow task to import the updated data from the source storage.
+	// 	- None (default): Updated data in the source storage is not automatically imported into the CPFS file system. You can run a data flow task to import the updated data from the source storage.
 	//
 	// 	- ImportChanged: Updated data in the source storage is automatically imported into the CPFS file system.
+	//
+	// >  This parameter takes effect only for CPFS file systems.
 	//
 	// example:
 	//
 	// None
 	AutoRefreshPolicy *string `json:"AutoRefreshPolicy,omitempty" xml:"AutoRefreshPolicy,omitempty"`
 	// The automatic update configurations.
+	//
+	// >  This parameter takes effect only for CPFS file systems.
 	//
 	// if can be null:
 	// false
@@ -2064,17 +2137,37 @@ type CreateDataFlowRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the file system.
 	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+	//
+	// >  CPFS file systems are available only on the China site (aliyun.com).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The directory in the CPFS for LINGJUN file system. Limits:
+	//
+	// 	- The directory must start and end with a forward slash (/).
+	//
+	// 	- The directory must be an existing directory in the CPFS for LINGJUN file system.
+	//
+	// 	- The directory must be 1 to 1023 characters in length.
+	//
+	// 	- The directory must be encoded in UTF-8.
+	//
+	// >  This parameter is required for CPFS for LINGJUN file systems.
+	//
 	// example:
 	//
 	// /path/
 	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
 	// The fileset ID.
+	//
+	// >  This parameter is required for CPFS file systems.
 	//
 	// example:
 	//
@@ -2101,13 +2194,11 @@ type CreateDataFlowRequest struct {
 	//
 	// 	- path: the name of the OSS bucket. Limits:
 	//
-	//     	- The name can contain only lowercase letters, digits, and hyphens (-). The name must start and end with a lowercase letter or digit.
+	//     	- The path can contain only lowercase letters, digits, and hyphens (-). The path must start and end with a lowercase letter or digit.
 	//
-	//     	- The name must be 8 to 128 characters in length.
+	//     	- The path can be up to 128 characters in length.
 	//
-	//     	- The name must be encoded in UTF-8.
-	//
-	//     	- The name cannot start with `http://` or `https://`.
+	//     	- The path must be encoded in UTF-8.
 	//
 	// >  The OSS bucket must be an existing bucket in the region.
 	//
@@ -2117,19 +2208,31 @@ type CreateDataFlowRequest struct {
 	//
 	// oss://bucket1
 	SourceStorage *string `json:"SourceStorage,omitempty" xml:"SourceStorage,omitempty"`
+	// The access path in the bucket of the source storage. Limits:
+	//
+	// 	- The path must start and end with a forward slash (/).
+	//
+	// 	- The path is case-sensitive.
+	//
+	// 	- The path must be 1 to 1023 characters in length.
+	//
+	// 	- The path must be encoded in UTF-8.
+	//
+	// >  This parameter is required for CPFS for LINGJUN file systems.
+	//
 	// example:
 	//
 	// /prefix/
 	SourceStoragePath *string `json:"SourceStoragePath,omitempty" xml:"SourceStoragePath,omitempty"`
-	// The maximum dataflow throughput. Unit: MB/s. Valid values:
+	// The maximum data flow throughput. Unit: MB/s. Valid values:
 	//
 	// 	- 600
 	//
-	// 	- 1,200
+	// 	- 1200
 	//
-	// 	- 1,500
+	// 	- 1500
 	//
-	// >  The dataflow throughput must be less than the I/O throughput of the file system
+	// >  The data flow throughput must be less than the I/O throughput of the file system. This parameter is required for CPFS file systems.
 	//
 	// example:
 	//
@@ -2223,7 +2326,7 @@ type CreateDataFlowRequestAutoRefreshs struct {
 	//
 	// 	- The directory must start and end with a forward slash (/).
 	//
-	// 	- The directory must be an existing directory in the CPFS file system and must be in a fileset where the dataflow is enabled.
+	// 	- The directory must be an existing directory in the CPFS file system and must be in a fileset where the data flow is enabled.
 	//
 	// if can be null:
 	// true
@@ -2320,10 +2423,21 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The conflict policy for files with the same name. Valid values:
+	//
+	// 	- SKIP_THE_FILE: skips files with the same name.
+	//
+	// 	- KEEP_LATEST: compares the update time and keeps the latest version.
+	//
+	// 	- OVERWRITE_EXISTING: forcibly overwrites the existing file.
+	//
+	// >  This parameter does not take effect for CPFS file systems.
+	//
 	// example:
 	//
 	// SKIP_THE_FILE
-	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
+	ConflictPolicy      *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
+	CreateDirIfNotExist *bool   `json:"CreateDirIfNotExist,omitempty" xml:"CreateDirIfNotExist,omitempty"`
 	// The dataflow ID.
 	//
 	// This parameter is required.
@@ -2346,11 +2460,11 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// Metadata
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The directory in which the dataflow task is executed.
+	// The directory in which the data flow task is executed.
 	//
 	// Limits:
 	//
-	// 	- The directory must be 2 to 1,024 characters in length.
+	// 	- The directory must be 1 to 1,023 characters in length.
 	//
 	// 	- The directory must be encoded in UTF-8.
 	//
@@ -2358,7 +2472,9 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// 	- Only one directory can be listed at a time.
 	//
-	// 	- The directory must be an existing directory in the CPFS file system and must be in a fileset where the dataflow is enabled.
+	// 	- If the TaskAction parameter is set to Export, the directory must be a relative path within the FileSystemPath.
+	//
+	// 	- If the TaskAction parameter is set to Import, the directory must be a relative path within the SourceStoragePath.
 	//
 	// example:
 	//
@@ -2377,22 +2493,35 @@ type CreateDataFlowTaskRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The list of files that are executed by the dataflow task.
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DstDirectory *string `json:"DstDirectory,omitempty" xml:"DstDirectory,omitempty"`
+	// The list of files that are executed by the data flow task.
 	//
 	// Limits:
 	//
 	// 	- The list must be encoded in UTF-8.
 	//
+	// 	- The total length of the file list cannot exceed 64 KB.
+	//
 	// 	- The file list is in JSON format.
 	//
-	// 	- If the source storage is Object Storage Service (OSS), the list name must comply with the naming conventions of OSS objects.
+	// 	- The path of a single file must be 1 to 1,023 characters in length and must start with a forward slash (/).
+	//
+	// 	- If the TaskAction parameter is set to Import, each element in the list represents an OSS object name.
+	//
+	// 	- If the TaskAction parameter is set to Export, each element in the list represents a CPFS file path.
 	//
 	// example:
 	//
 	// ["/path_in_cpfs/file1", "/path_in_cpfs/file2"]
 	EntryList *string `json:"EntryList,omitempty" xml:"EntryList,omitempty"`
 	// The ID of the file system.
+	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+	//
+	// >  CPFS file systems are available only on the China site (aliyun.com).
 	//
 	// This parameter is required.
 	//
@@ -2406,7 +2535,7 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// task-xxxx
 	SrcTaskId *string `json:"SrcTaskId,omitempty" xml:"SrcTaskId,omitempty"`
-	// The type of the dataflow task.
+	// The type of the data flow task.
 	//
 	// Valid values:
 	//
@@ -2416,7 +2545,9 @@ type CreateDataFlowTaskRequest struct {
 	//
 	// 	- Evict: releases the data blocks of a file in a CPFS file system. After the eviction, only the metadata of the file is retained in the CPFS file system. You can still query the file. However, the data blocks of the file are cleared and do not occupy the storage space in the CPFS file system. When you access the file data, the file is loaded from the source storage as required.
 	//
-	// 	- Inventory: obtains the inventory list managed by a dataflow from the CPFS file system, providing the cache status of inventories in the dataflow.
+	// 	- Inventory: obtains the inventory list managed by a data flow from the CPFS file system, providing the cache status of inventories in the data flow.
+	//
+	// >  CPFS for LINGJUN supports only the Import and Export tasks.
 	//
 	// example:
 	//
@@ -2442,6 +2573,11 @@ func (s *CreateDataFlowTaskRequest) SetConflictPolicy(v string) *CreateDataFlowT
 	return s
 }
 
+func (s *CreateDataFlowTaskRequest) SetCreateDirIfNotExist(v bool) *CreateDataFlowTaskRequest {
+	s.CreateDirIfNotExist = &v
+	return s
+}
+
 func (s *CreateDataFlowTaskRequest) SetDataFlowId(v string) *CreateDataFlowTaskRequest {
 	s.DataFlowId = &v
 	return s
@@ -2459,6 +2595,11 @@ func (s *CreateDataFlowTaskRequest) SetDirectory(v string) *CreateDataFlowTaskRe
 
 func (s *CreateDataFlowTaskRequest) SetDryRun(v bool) *CreateDataFlowTaskRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *CreateDataFlowTaskRequest) SetDstDirectory(v string) *CreateDataFlowTaskRequest {
+	s.DstDirectory = &v
 	return s
 }
 
@@ -2545,34 +2686,62 @@ func (s *CreateDataFlowTaskResponse) SetBody(v *CreateDataFlowTaskResponseBody) 
 }
 
 type CreateDirRequest struct {
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the owner group for the directory. Valid values: 0 to 4294967295.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	OwnerGroupId *int32 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	// The owner ID for the directory. Valid values: 0 to 4294967295.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int32 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The Portable Operating System Interface (POSIX) permissions applied to the root directory. The value is a valid octal number, such as 0755.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0755
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// Specifies whether to create a multi-level directory. Valid values:
+	//
+	// 	- true (default): If no multi-level directory exists, directories are created level by level.
+	//
+	// 	- false: Only the last level of directory is created. An error message is returned because the parent directory does not exist.
+	//
 	// example:
 	//
 	// true
 	Recursion *bool `json:"Recursion,omitempty" xml:"Recursion,omitempty"`
+	// The directory name.
+	//
+	// 	- The directory must start with a forward slash (/).
+	//
+	// 	- The directory can contain digits and letters.
+	//
+	// 	- The directory can contain underscores (_), hyphens (-), and periods (.).
+	//
+	// 	- The directory cannot contain symbolic links, such as the current directory (.), the upper-level directory (..), and other symbolic links.
+	//
+	// > 	- If the root directory does not exist, configure the information for directory creation. The system then automatically creates the specified root directory based on your settings.
+	//
+	// > 	- If the root directory exists, you do not need to configure the information for directory creation. The configurations for directory creation are ignored even if you configure the information.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2620,6 +2789,8 @@ func (s *CreateDirRequest) SetRootDirectory(v string) *CreateDirRequest {
 }
 
 type CreateDirResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****
@@ -2855,6 +3026,10 @@ type CreateFileSystemRequest struct {
 	// 	- The description must start with a letter and cannot start with `http://` or `https://`.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
@@ -2880,19 +3055,21 @@ type CreateFileSystemRequest struct {
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Specifies whether to encrypt the data in the NAS file system.
+	// Specifies whether to encrypt data in the file system.
 	//
-	// You can use a key that is managed by Key Management Service (KMS) to encrypt the data that is stored in a file system. When you read and write the encrypted data, the data is automatically decrypted.
+	// You can use the keys that are managed by Key Management Service (KMS) to encrypt data in a file system. When you read and write the encrypted data, the data is automatically decrypted.
 	//
 	// Valid values:
 	//
-	// 	- 0: The data in the file system is not encrypted.
+	// 	- 0 (default): The data in the file system is not encrypted.
 	//
 	// 	- 1: A NAS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
 	//
-	// 	- 2: A KMS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to extreme.
+	// 	- 2: A KMS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
 	//
-	// > You can use KMS-managed keys only in the following regions: US (Silicon Valley), US (Virginia), UK (London), Australia (Sydney), Germany (Frankfurt), India (Mumbai), and Singapore.
+	// >  	- Extreme NAS file system: All regions support KMS-managed keys.
+	//
+	// > 	- General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt), Australia (Sydney), and China East 1 Finance.
 	//
 	// example:
 	//
@@ -2917,6 +3094,10 @@ type CreateFileSystemRequest struct {
 	// The ID of the KMS-managed key.
 	//
 	// This parameter is required only if the EncryptType parameter is set to 2.
+	//
+	// example:
+	//
+	// 3c0b3885-2adf-483d-8a65-5e280689****
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// The protocol type.
 	//
@@ -2929,7 +3110,14 @@ type CreateFileSystemRequest struct {
 	// example:
 	//
 	// NFS
-	ProtocolType    *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The resource group ID.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+	//
+	// example:
+	//
+	// rg-acfmwavnfdf****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The snapshot ID.
 	//
@@ -2941,9 +3129,9 @@ type CreateFileSystemRequest struct {
 	//
 	// s-xxx
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The storage type.
+	// The storage class.
 	//
-	// 	- If the FileSystemType parameter is set to standard, you can set the StorageType parameter to Performance or Capacity.
+	// 	- If the FileSystemType parameter is set to standard, you can set the StorageType parameter to Performance, Capacity, or Premium.
 	//
 	// 	- If the FileSystemType parameter is set to extreme, you can set the StorageType parameter to standard or advance.
 	//
@@ -2956,10 +3144,18 @@ type CreateFileSystemRequest struct {
 	// The ID of the vSwitch.
 	//
 	// This parameter is reserved and does not take effect. You do not need to configure this parameter.
+	//
+	// example:
+	//
+	// vsw-2ze37k6jh8ums2fw2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the virtual private cloud (VPC).
 	//
 	// This parameter is reserved and does not take effect. You do not need to configure this parameter.
+	//
+	// example:
+	//
+	// vpc-bp1cbv1ljve4j5hlw****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	//
@@ -3144,8 +3340,19 @@ type CreateFilesetRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+	//
+	// 	- true: enables release protection.
+	//
+	// 	- false (default): disables release protection.
+	//
+	// >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The description of the fileset.
 	//
 	// 	- The description must be 2 to 128 characters in length.
@@ -3153,6 +3360,10 @@ type CreateFilesetRequest struct {
 	// 	- The description must start with a letter but cannot start with http:// or https://.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
@@ -3160,7 +3371,7 @@ type CreateFilesetRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FsetId parameter.
+	// 	- true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FsetId parameter.
 	//
 	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a fileset is created.
 	//
@@ -3591,8 +3802,17 @@ type CreateLifecycleRetrieveJobRequest struct {
 	// example:
 	//
 	// Paths.1=/pathway/doc1,Paths.2=/pathway/doc2
-	Paths       []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	StorageType *string   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The storage class.
+	//
+	// 	- InfrequentAccess (default): the Infrequent Access (IA) storage class.
+	//
+	// 	- Archive: the Archive storage class.
+	//
+	// example:
+	//
+	// InfrequentAccess
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s CreateLifecycleRetrieveJobRequest) String() string {
@@ -4020,6 +4240,10 @@ type CreateProtocolMountTargetRequest struct {
 	// 	- The description must start with a letter but cannot start with `http://` or `https://`.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run. The dry run checks parameter validity and prerequisites. The dry run does not create an export directory or incur fees.
 	//
@@ -4243,6 +4467,10 @@ type CreateProtocolServiceRequest struct {
 	// 	- The description must start with a letter and cannot start with `http://` or `https://`.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
@@ -4916,12 +5144,16 @@ func (s *DeleteAccessGroupResponse) SetBody(v *DeleteAccessGroupResponseBody) *D
 }
 
 type DeleteAccessPointRequest struct {
+	// The ID of the access point.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4949,6 +5181,8 @@ func (s *DeleteAccessPointRequest) SetFileSystemId(v string) *DeleteAccessPointR
 }
 
 type DeleteAccessPointResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
@@ -6399,15 +6633,35 @@ type DescribeAccessGroupsResponseBodyAccessGroupsAccessGroup struct {
 	// example:
 	//
 	// This is a test access group.
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the file system.
+	//
+	// Valid values:
+	//
+	// 	- standard: General-purpose Apsara File Storage NAS (NAS) file system
+	//
+	// 	- extreme: Extreme NAS file system
+	//
+	// 	- cpfs: Cloud Parallel File Storage (CPFS) file system
+	//
+	// >  CPFS file systems are available only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	// The number of mount targets to which the permission group is attached.
 	//
 	// example:
 	//
 	// 0
-	MountTargetCount *int32  `json:"MountTargetCount,omitempty" xml:"MountTargetCount,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MountTargetCount *int32 `json:"MountTargetCount,omitempty" xml:"MountTargetCount,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The total number of rules in the permission group.
 	//
 	// example:
@@ -6494,12 +6748,16 @@ func (s *DescribeAccessGroupsResponse) SetBody(v *DescribeAccessGroupsResponseBo
 }
 
 type DescribeAccessPointRequest struct {
+	// The ID of the access point.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6527,7 +6785,10 @@ func (s *DescribeAccessPointRequest) SetFileSystemId(v string) *DescribeAccessPo
 }
 
 type DescribeAccessPointResponseBody struct {
+	// The information about the access point.
 	AccessPoint *DescribeAccessPointResponseBodyAccessPoint `json:"AccessPoint,omitempty" xml:"AccessPoint,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6555,64 +6816,116 @@ func (s *DescribeAccessPointResponseBody) SetRequestId(v string) *DescribeAccess
 }
 
 type DescribeAccessPointResponseBodyAccessPoint struct {
+	// The Alibaba Cloud Resource Name (ARN) of the access point.
+	//
 	// example:
 	//
 	// acs:nas:cn-hangzhou:178321033379****:accesspoint/ap-ie15yd****
 	ARN *string `json:"ARN,omitempty" xml:"ARN,omitempty"`
+	// The name of the permission group.
+	//
 	// example:
 	//
 	// test
 	AccessGroup *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	// The ID of the access point.
+	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The name of the access point.
+	//
 	// example:
 	//
 	// test
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	// The time when the access point was created.
+	//
 	// example:
 	//
 	// 1709619668276167
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name of the access point.
+	//
 	// example:
 	//
 	// ap-ie15ydanoz.001014****-w****.cn-hangzhou.nas.aliyuncs.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether the RAM policy is enabled.
+	//
 	// example:
 	//
 	// false
 	EnabledRam *bool `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	// The ID of the file system.
+	//
 	// example:
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The time when the access point was modified.
+	//
 	// example:
 	//
 	// 1709619668276167
-	ModifyTime *string                                              `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	PosixUser  *DescribeAccessPointResponseBodyAccessPointPosixUser `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The POSIX user.
+	PosixUser *DescribeAccessPointResponseBodyAccessPointPosixUser `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The root directory.
+	//
 	// example:
 	//
 	// /
-	RootPath           *string                                                       `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	// The permissions to create the root directory.
 	RootPathPermission *DescribeAccessPointResponseBodyAccessPointRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
+	// The status of the root directory.
+	//
+	// Valid values:
+	//
+	// 	- 0: The rootpath status is unknown.
+	//
+	// 	- 1: The rootpath does not exist and may be deleted.
+	//
+	// 	- 2: The rootpath is normal.
+	//
 	// example:
 	//
 	// 2
 	RootPathStatus *string `json:"RootPathStatus,omitempty" xml:"RootPathStatus,omitempty"`
+	// The status of the access point.
+	//
+	// Valid values:
+	//
+	// 	- Active: The access point is available.
+	//
+	// 	- Inactive: The access point is unavailable.
+	//
+	// 	- Pending: The access point is being created.
+	//
+	// 	- Deleting: The access point is being deleted.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-2zevmwkwyztjuoffg****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// You must select the VPC of the Elastic Compute Service (ECS) instance on which you want to mount the file system.
+	//
 	// example:
 	//
 	// vpc-2zesj9afh3y518k9o****
@@ -6713,11 +7026,16 @@ func (s *DescribeAccessPointResponseBodyAccessPoint) SetVpcId(v string) *Describ
 }
 
 type DescribeAccessPointResponseBodyAccessPointPosixUser struct {
+	// The ID of the POSIX user group.
+	//
 	// example:
 	//
 	// 12
-	PosixGroupId           *int32   `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	// The IDs of the secondary user groups.
 	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
+	// The ID of the POSIX user.
+	//
 	// example:
 	//
 	// 123
@@ -6748,14 +7066,20 @@ func (s *DescribeAccessPointResponseBodyAccessPointPosixUser) SetPosixUserId(v i
 }
 
 type DescribeAccessPointResponseBodyAccessPointRootPathPermission struct {
+	// The ID of the owner group.
+	//
 	// example:
 	//
 	// 123
 	OwnerGroupId *int32 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	// The owner ID.
+	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int32 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The POSIX permission.
+	//
 	// example:
 	//
 	// 0755
@@ -6815,18 +7139,32 @@ func (s *DescribeAccessPointResponse) SetBody(v *DescribeAccessPointResponseBody
 }
 
 type DescribeAccessPointsRequest struct {
+	// The name of the permission group.
+	//
+	// This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+	//
+	// The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
+	//
 	// example:
 	//
 	// DEFAULT_VPC_GROUP_NAME
 	AccessGroup *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	// The ID of the file system.
+	//
 	// example:
 	//
 	// 174494****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The number of results for each query.
+	//
+	// Valid values: 10 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// MTY4NzcxOTcwMjAzMDk2Nzc0MyM4MDM4****
@@ -6862,17 +7200,24 @@ func (s *DescribeAccessPointsRequest) SetNextToken(v string) *DescribeAccessPoin
 }
 
 type DescribeAccessPointsResponseBody struct {
+	// The information about the access point.
 	AccessPoints []*DescribeAccessPointsResponseBodyAccessPoints `json:"AccessPoints,omitempty" xml:"AccessPoints,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// MTY4NzcxOTcwMjAzMDk2Nzc0MyM4MDM4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6299428C-3861-435D-AE54-9B330A00****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of access points.
+	//
 	// example:
 	//
 	// 20
@@ -6908,60 +7253,110 @@ func (s *DescribeAccessPointsResponseBody) SetTotalCount(v int32) *DescribeAcces
 }
 
 type DescribeAccessPointsResponseBodyAccessPoints struct {
+	// The Alibaba Cloud Resource Name (ARN) of the access point.
+	//
 	// example:
 	//
 	// acs:nas:cn-hangzhou:178321033379****:accesspoint/ap-ie15yd****
 	ARN *string `json:"ARN,omitempty" xml:"ARN,omitempty"`
+	// The name of the permission group.
+	//
 	// example:
 	//
 	// test
 	AccessGroup *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	// The ID of the access point.
+	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The name of the access point.
+	//
 	// example:
 	//
 	// test
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	// The time when the access point was created.
+	//
 	// example:
 	//
 	// 1709619668276167
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name of the access point.
+	//
 	// example:
 	//
 	// ap-ie15ydanoz.001014****-w****.cn-hangzhou.nas.aliyuncs.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether the Resource Access Management (RAM) policy is enabled.
+	//
 	// example:
 	//
 	// false
 	EnabledRam *bool `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	// The ID of the file system.
+	//
 	// example:
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The time when the access point was modified.
+	//
 	// example:
 	//
 	// 1709619668276167
-	ModifyTime *string                                                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	PosixUser  *DescribeAccessPointsResponseBodyAccessPointsPosixUser `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The Portable Operating System Interface for UNIX (POSIX) user.
+	PosixUser *DescribeAccessPointsResponseBodyAccessPointsPosixUser `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	// The root directory.
+	//
 	// example:
 	//
 	// /
-	RootPath           *string                                                         `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	// The permissions on the root directory.
 	RootPathPermission *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
+	// The status of the root directory.
+	//
+	// Valid values:
+	//
+	// 	- 0: The rootpath status is unknown.
+	//
+	// 	- 1: The rootpath does not exist and may be deleted.
+	//
+	// 	- 2: The rootpath is normal.
+	//
 	// example:
 	//
 	// 2
 	RootPathStatus *string `json:"RootPathStatus,omitempty" xml:"RootPathStatus,omitempty"`
+	// The status of the access point.
+	//
+	// Valid values:
+	//
+	// 	- Active: The access point is available.
+	//
+	// 	- Inactive: The access point is unavailable.
+	//
+	// 	- Pending: The access point is being created.
+	//
+	// 	- Deleting: The access point is being deleted.
+	//
+	// >  You can mount a file system only if the access point is in the Active state.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-2zevmwkwyztjuoffg****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-2zesj9afh3y518k9o****
@@ -7057,11 +7452,16 @@ func (s *DescribeAccessPointsResponseBodyAccessPoints) SetVpcId(v string) *Descr
 }
 
 type DescribeAccessPointsResponseBodyAccessPointsPosixUser struct {
+	// The ID of the POSIX user group.
+	//
 	// example:
 	//
 	// 12
-	PosixGroupId           *int32   `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	PosixGroupId *int32 `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	// The IDs of the secondary user groups.
 	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
+	// The ID of the POSIX user.
+	//
 	// example:
 	//
 	// 123
@@ -7092,14 +7492,20 @@ func (s *DescribeAccessPointsResponseBodyAccessPointsPosixUser) SetPosixUserId(v
 }
 
 type DescribeAccessPointsResponseBodyAccessPointsRootPathPermission struct {
+	// The ID of the owner group.
+	//
 	// example:
 	//
 	// 12
 	OwnerGroupId *int64 `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	// The owner ID.
+	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The POSIX permission.
+	//
 	// example:
 	//
 	// 0755
@@ -8338,14 +8744,16 @@ type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
 	// example:
 	//
 	// Metadata
-	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	DataType     *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Directory    *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	DstDirectory *string `json:"DstDirectory,omitempty" xml:"DstDirectory,omitempty"`
 	// The time when the task ended.
 	//
 	// example:
 	//
 	// 2021-08-04 18:27:35
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// *
 	//
 	// *
@@ -8383,7 +8791,10 @@ type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
 	// example:
 	//
 	// 240
-	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress      *int64                                                      `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ProgressStats *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats `json:"ProgressStats,omitempty" xml:"ProgressStats,omitempty" type:"Struct"`
+	// Deprecated
+	//
 	// null
 	//
 	// null``
@@ -8397,7 +8808,8 @@ type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
 	// example:
 	//
 	// /path_in_cpfs/reportfile.cvs
-	ReportPath *string `json:"ReportPath,omitempty" xml:"ReportPath,omitempty"`
+	ReportPath *string                                               `json:"ReportPath,omitempty" xml:"ReportPath,omitempty"`
+	Reports    *DescribeDataFlowTasksResponseBodyTaskInfoTaskReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Struct"`
 	// ://
 	//
 	// *
@@ -8495,8 +8907,18 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetDirectory(v string) *
 	return s
 }
 
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetDstDirectory(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.DstDirectory = &v
+	return s
+}
+
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetEndTime(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetErrorMsg(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.ErrorMsg = &v
 	return s
 }
 
@@ -8525,8 +8947,18 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetProgress(v int64) *De
 	return s
 }
 
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetProgressStats(v *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.ProgressStats = v
+	return s
+}
+
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetReportPath(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
 	s.ReportPath = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetReports(v *DescribeDataFlowTasksResponseBodyTaskInfoTaskReports) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.Reports = v
 	return s
 }
 
@@ -8552,6 +8984,105 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetTaskAction(v string) 
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetTaskId(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
 	s.TaskId = &v
+	return s
+}
+
+type DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats struct {
+	ActualBytes  *int64 `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	ActualFiles  *int64 `json:"ActualFiles,omitempty" xml:"ActualFiles,omitempty"`
+	AverageSpeed *int64 `json:"AverageSpeed,omitempty" xml:"AverageSpeed,omitempty"`
+	BytesDone    *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	BytesTotal   *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	FilesDone    *int64 `json:"FilesDone,omitempty" xml:"FilesDone,omitempty"`
+	FilesTotal   *int64 `json:"FilesTotal,omitempty" xml:"FilesTotal,omitempty"`
+	RemainTime   *int64 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+}
+
+func (s DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetActualBytes(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.ActualBytes = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetActualFiles(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.ActualFiles = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetAverageSpeed(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.AverageSpeed = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetBytesDone(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.BytesDone = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetBytesTotal(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.BytesTotal = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetFilesDone(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.FilesDone = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetFilesTotal(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.FilesTotal = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats) SetRemainTime(v int64) *DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats {
+	s.RemainTime = &v
+	return s
+}
+
+type DescribeDataFlowTasksResponseBodyTaskInfoTaskReports struct {
+	Report []*DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDataFlowTasksResponseBodyTaskInfoTaskReports) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowTasksResponseBodyTaskInfoTaskReports) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskReports) SetReport(v []*DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport) *DescribeDataFlowTasksResponseBodyTaskInfoTaskReports {
+	s.Report = v
+	return s
+}
+
+type DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport) SetName(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport) SetPath(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport {
+	s.Path = &v
 	return s
 }
 
@@ -8587,13 +9118,19 @@ func (s *DescribeDataFlowTasksResponse) SetBody(v *DescribeDataFlowTasksResponse
 type DescribeDataFlowsRequest struct {
 	// The ID of the file system.
 	//
+	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+	//
+	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+	//
+	// >  CPFS file systems are available only on the China site (aliyun.com).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cpfs-12345678
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The filter that is used to query dataflows.
+	// The filter that is used to query data flows.
 	//
 	// if can be null:
 	// true
@@ -8645,39 +9182,41 @@ func (s *DescribeDataFlowsRequest) SetNextToken(v string) *DescribeDataFlowsRequ
 type DescribeDataFlowsRequestFilters struct {
 	// The filter name. Valid values:
 	//
-	// 	- DataFlowIds: filters dataflows by dataflow ID.
+	// 	- DataFlowIds: filters data flows by data flow ID.
 	//
-	// 	- FsetIds: filters dataflows by fileset ID.
+	// 	- FsetIds: filters data flows by fileset ID.
 	//
-	// 	- FileSystemPath: filters dataflows based on the path of a fileset in a CPFS file system.
+	// 	- FileSystemPath: filters data flows based on the path of a fileset in a CPFS file system.
 	//
-	// 	- SourceStorage: filters dataflows based on the access path of the source storage.
+	// 	- SourceStorage: filters data flows based on the access path of the source storage.
 	//
-	// 	- ThroughputList: filters dataflows based on dataflow throughput.
+	// 	- ThroughputList: filters data flows based on data flow throughput.
 	//
-	// 	- Description: filters dataflows based on the fileset description.
+	// 	- Description: filters data flows based on the fileset description.
 	//
-	// 	- Status: filters dataflows based on dataflow status.
+	// 	- Status: filters data flows based on data flow status.
 	//
 	// example:
 	//
 	// FsetIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter. This parameter does not support wildcards.
+	// The filter value. This parameter does not support wildcards.
 	//
-	// 	- If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a dataflow ID or a group of dataflow IDs. You can specify a maximum of 10 dataflow IDs. Example: `dfid-12345678` or `dfid-12345678,dfid-12345679`.
+	// 	- If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `dfid-12345678` or `dfid-12345678,dfid-12345679`.
 	//
 	// 	- If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. Example: `fset-12345678` or `fset-12345678,fset-12345679`.
 	//
-	// 	- If Key set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value must be 2 to 1,024 characters in length. The value must be encoded in UTF-8.
+	// 	- If Key is set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value of the parameter must be 1 to 1,024 characters in length.
 	//
-	// 	- If Key is set to SourceStorage, set Value to the access path or a part of the access path of the source storage. The value must be 8 to 128 characters in length. The value must be encoded in UTF-8 and comply with the naming conventions of Object Storage Service (OSS) buckets.
+	// 	- If Key is set to SourceStorage, set Value to the access path or a part of the access path of the source storage. The path can be up to 1,024 characters in length.
 	//
-	// 	- If Key is set to ThroughputList, set Value to the dataflow throughput. Combined query is supported.
+	// 	- If Key is set to ThroughputList, set Value to the data flow throughput. Combined query is supported.
 	//
-	// 	- If Key is set to Description, set Value to a dataflow description or a part of the dataflow description.
+	// 	- If Key is set to Description, set Value to a data flow description or a part of the data flow description.
 	//
-	// 	- If Key is set to Status, set Value to the dataflow status.
+	// 	- If Key is set to Status, set Value to the data flow status.
+	//
+	// 	- If Key is set to SourceStoragePath, set Value to the access path or a part of the access path of the source storage. The path can be up to 1,024 characters in length.
 	//
 	// example:
 	//
@@ -8704,7 +9243,7 @@ func (s *DescribeDataFlowsRequestFilters) SetValue(v string) *DescribeDataFlowsR
 }
 
 type DescribeDataFlowsResponseBody struct {
-	// The details about dataflows.
+	// The details about data flows.
 	DataFlowInfo *DescribeDataFlowsResponseBodyDataFlowInfo `json:"DataFlowInfo,omitempty" xml:"DataFlowInfo,omitempty" type:"Struct"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
@@ -8762,10 +9301,14 @@ func (s *DescribeDataFlowsResponseBodyDataFlowInfo) SetDataFlow(v []*DescribeDat
 
 type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	// The details about automatic update policies.
+	//
+	// >  Only CPFS supports this parameter.
 	AutoRefresh *DescribeDataFlowsResponseBodyDataFlowInfoDataFlowAutoRefresh `json:"AutoRefresh,omitempty" xml:"AutoRefresh,omitempty" type:"Struct"`
 	// The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minutes.
 	//
 	// Valid values: 5 to 526600. Default value: 10.
+	//
+	// >  Only CPFS supports this parameter.
 	//
 	// example:
 	//
@@ -8773,9 +9316,11 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	AutoRefreshInterval *int64 `json:"AutoRefreshInterval,omitempty" xml:"AutoRefreshInterval,omitempty"`
 	// The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy. Valid values:
 	//
-	// 	- None: Updated data in the source storage is not automatically imported to the CPFS file system. You can run a dataflow task to import the updated data from the source storage.
+	// 	- None: Updated data in the source storage is not automatically imported into the CPFS file system. You can run a data flow task to import the updated data from the source storage.
 	//
-	// 	- ImportChanged: Updated data in the source storage is automatically imported to the CPFS file system.
+	// 	- ImportChanged: Updated data in the source storage is automatically imported into the CPFS file system.
+	//
+	// >  Only CPFS supports this parameter.
 	//
 	// example:
 	//
@@ -8804,6 +9349,10 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	// 	- The description must start with a letter but cannot start with `http://` or `https://`.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The error message returned. Valid values:
 	//
@@ -8812,6 +9361,10 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	// 	- SourceStorageUnreachable: The access path of the source storage is not found.
 	//
 	// 	- ThroughputTooLow: The dataflow throughput is low.
+	//
+	// example:
+	//
+	// SourceStorageUnreachable
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the file system.
 	//
@@ -8831,11 +9384,19 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	//
 	// 	- The directory must be a fileset directory in the CPFS file system.
 	//
+	// >  Only CPFS supports this parameter.
+	//
 	// example:
 	//
 	// /a/b/c/
 	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
 	// The description of the automatic update.
+	//
+	// >  Only CPFS supports this parameter.
+	//
+	// example:
+	//
+	// FsetTest
 	FsetDescription *string `json:"FsetDescription,omitempty" xml:"FsetDescription,omitempty"`
 	// The fileset ID.
 	//
@@ -8853,11 +9414,11 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	//
 	// SSL
 	SourceSecurityType *string `json:"SourceSecurityType,omitempty" xml:"SourceSecurityType,omitempty"`
-	// The access path of the source storage. Format:://.
+	// The access path of the source storage. Format: `<storage type>://<path>`.
 	//
 	// Parameters:
 	//
-	// 	- storage type: Only OSS is supported.
+	// 	- storage type: Only Object Storage Service (OSS) is supported.
 	//
 	// 	- path: the name of the OSS bucket.
 	//
@@ -8875,7 +9436,13 @@ type DescribeDataFlowsResponseBodyDataFlowInfoDataFlow struct {
 	//
 	// oss://bucket1
 	SourceStorage *string `json:"SourceStorage,omitempty" xml:"SourceStorage,omitempty"`
-	// 源端存储内的访问路径。
+	// The access path in the bucket of the source storage.
+	//
+	// >  Only CPFS for LINGJUN supports this parameter.
+	//
+	// example:
+	//
+	// /prefix/
 	SourceStoragePath *string `json:"SourceStoragePath,omitempty" xml:"SourceStoragePath,omitempty"`
 	// The dataflow status. Valid values:
 	//
@@ -9298,7 +9865,12 @@ type DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos struct {
 	// example:
 	//
 	// 800
-	SizeReal       *int64 `json:"SizeReal,omitempty" xml:"SizeReal,omitempty"`
+	SizeReal *int64 `json:"SizeReal,omitempty" xml:"SizeReal,omitempty"`
+	// The total size of files that a user has created in the directory. Unit: bytes.
+	//
+	// example:
+	//
+	// 858995833870
 	SizeRealInByte *int64 `json:"SizeRealInByte,omitempty" xml:"SizeRealInByte,omitempty"`
 	// The ID of the user that you specify to create a quota for the directory. The value depends on the value of the UserType parameter. Valid values: Uid and Gid.
 	//
@@ -9306,11 +9878,11 @@ type DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos struct {
 	//
 	// 500
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The type of the user ID. Valid values: Uid, Gid, and AllUsers.
+	// The type of user. Valid values: Uid, Gid, and AllUsers.
 	//
-	// 	- If the parameter is set to Uid or Gid, the value of the UserId parameter is returned.
+	// 	- If Uid or Gid is returned, a value is returned for UserId.
 	//
-	// 	- If the parameter is set to AllUsers, the value of the UserID parameter is empty.
+	// 	- If AllUsers is returned, UserId is empty.
 	//
 	// example:
 	//
@@ -9937,29 +10509,29 @@ func (s *DescribeFileSystemStatisticsResponse) SetBody(v *DescribeFileSystemStat
 type DescribeFileSystemsRequest struct {
 	// The ID of the file system.
 	//
-	// 	- Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+	// - Sample ID of a General-purpose NAS file system: 31a8e4****.
 	//
-	// 	- The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015\\*\\*\\*\\*.
+	// - The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015****.
 	//
-	// 	- The IDs of Cloud Parallel File Storage (CPFS) file systems must start with cpfs-, for example, cpfs-125487\\*\\*\\*\\*.
+	// - The IDs of Cloud Parallel File Storage (CPFS) file systems must start with cpfs-, for example, cpfs-125487****.
 	//
 	// > CPFS file systems are available only on the China site (aliyun.com).
 	//
 	// example:
 	//
-	// 109c04****
+	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The type of the file system.
 	//
 	// Valid values:
 	//
-	// 	- all (default): all types
+	// - all (default): all types
 	//
-	// 	- standard: General-purpose NAS file system
+	// - standard: General-purpose NAS file system
 	//
-	// 	- extreme: Extreme NAS file system
+	// - extreme: Extreme NAS file system
 	//
-	// 	- cpfs: CPFS file system
+	// - cpfs: CPFS file system
 	//
 	// > CPFS file systems are available only on the China site (aliyun.com).
 	//
@@ -9983,8 +10555,15 @@ type DescribeFileSystemsRequest struct {
 	//
 	// example:
 	//
-	// 1
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource group ID.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+	//
+	// example:
+	//
+	// rg-acfmwavnfdf****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The details about the tags.
 	Tag []*DescribeFileSystemsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -10046,25 +10625,33 @@ type DescribeFileSystemsRequestTag struct {
 	//
 	// Limits:
 	//
-	// 	- Valid values of N: 1 to 20.
+	// - Valid values of N: 1 to 20.
 	//
-	// 	- The tag key must be 1 to 128 characters in length.
+	// - The tag key must be 1 to 128 characters in length.
 	//
-	// 	- The tag key cannot start with `aliyun` or `acs:`.
+	// - The tag key cannot start with aliyun or acs:.
 	//
-	// 	- The tag key cannot contain `http://` or `https://`.
+	// - The tag key cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N to add to the resource.
 	//
 	// Limits:
 	//
-	// 	- Valid values of N: 1 to 20.
+	// - Valid values of N: 1 to 20.
 	//
-	// 	- The tag value must be 1 to 128 characters in length.
+	// - The tag value must be 1 to 128 characters in length.
 	//
-	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	// - The tag value cannot start with aliyun or acs:.
 	//
-	// 	- The tag value cannot contain `http://` or `https://`.
+	// - The tag value cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10166,6 +10753,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystems) SetFileSystem(v []*Describe
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
+	// Number of access points.
+	//
+	// example:
+	//
+	// 1
 	AccessPointCount *string `json:"AccessPointCount,omitempty" xml:"AccessPointCount,omitempty"`
 	// The bandwidth of the file system.
 	//
@@ -10181,17 +10773,17 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	//
 	// example:
 	//
-	// 1
+	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The billing method.
 	//
 	// Valid values:
 	//
-	// 	- Subscription: The subscription billing method is used.
+	// - Subscription: The subscription billing method is used.
 	//
-	// 	- PayAsYouGo: The pay-as-you-go billing method is used.
+	// - PayAsYouGo: The pay-as-you-go billing method is used.
 	//
-	// 	- Package: A storage plan is attached to the file system.
+	// - Package: A storage plan is attached to the file system.
 	//
 	// example:
 	//
@@ -10207,7 +10799,7 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	//
 	// example:
 	//
-	// 31a8e48eda
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The encryption type.
 	//
@@ -10239,11 +10831,11 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	//
 	// Valid values:
 	//
-	// 	- standard: General-purpose NAS file system
+	// - standard: General-purpose NAS file system
 	//
-	// 	- extreme: Extreme NAS file system
+	// - extreme: Extreme NAS file system
 	//
-	// 	- cpfs: CPFS file system
+	// - cpfs: CPFS file system
 	//
 	// > CPFS file systems are available only on the China site (aliyun.com).
 	//
@@ -10260,8 +10852,15 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// The Lightweight Directory Access Protocol (LDAP) configurations.
 	//
 	// This parameter is available only for CPFS file systems.
-	Ldap               *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
-	MeteredArchiveSize *int64                                                    `json:"MeteredArchiveSize,omitempty" xml:"MeteredArchiveSize,omitempty"`
+	Ldap *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
+	// Archive storage usage.
+	//
+	// Unit: Byte.
+	//
+	// example:
+	//
+	// 1611661312
+	MeteredArchiveSize *int64 `json:"MeteredArchiveSize,omitempty" xml:"MeteredArchiveSize,omitempty"`
 	// The storage usage of the Infrequent Access (IA) storage medium.
 	//
 	// Unit: bytes.
@@ -10280,7 +10879,8 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	MeteredSize *int64 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
 	// The information about mount targets.
 	MountTargets *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
-	Options      *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions      `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	// The options.
+	Options *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	// The information about storage plans.
 	Packages *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
 	// The protocol type of the file system.
@@ -10304,21 +10904,28 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+	//
+	// example:
+	//
+	// rg-acfmwavnfdf****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the file system. Valid values:
 	//
-	// 	- Pending: The file system is being created or modified.
+	// - Pending: The file system is being created or modified.
 	//
-	// 	- Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
+	// - Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
 	//
-	// 	- Stopped: The file system is unavailable.
+	// - Stopped: The file system is unavailable.
 	//
-	// 	- Extending: The file system is being scaled up.
+	// - Extending: The file system is being scaled up.
 	//
-	// 	- Stopping: The file system is being stopped.
+	// - Stopping: The file system is being stopped.
 	//
-	// 	- Deleting: The file system is being deleted.
+	// - Deleting: The file system is being deleted.
 	//
 	// example:
 	//
@@ -10328,13 +10935,13 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	//
 	// Valid values:
 	//
-	// 	- Valid values for General-purpose NAS file systems: Capacity and Performance.
+	// - Valid values for General-purpose NAS file systems: Capacity,Premium and Performance.
 	//
-	// 	- Valid values for Extreme NAS file systems: standard and advance.
+	// - Valid values for Extreme NAS file systems: standard and advance.
 	//
-	// 	- Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
+	// - Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
 	//
-	// > CPFS file systems are available only on the China site (aliyun.com).
+	//  > CPFS file systems are available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -10346,11 +10953,11 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	Tags *DescribeFileSystemsResponseBodyFileSystemsFileSystemTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The version number of the file system.
 	//
-	// This parameter is available only for Extreme NAS file systems.
+	// This parameter is available only for Extreme NAS file systems and CPFS file systems.
 	//
 	// example:
 	//
-	// 1
+	// 2.3.4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The ID of the zone where the file system resides.
 	//
@@ -10603,7 +11210,7 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget
 	//
 	// 	- Inactive: The mount target is unavailable.
 	//
-	// 	- Pending: The mount target is being created or modified.
+	// 	- Pending: The mount target is being processed.
 	//
 	// 	- Deleting: The mount target is being deleted.
 	//
@@ -10613,7 +11220,7 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget
 	//
 	// example:
 	//
-	// active
+	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags that are attached to the mount target.
 	Tags *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -10767,13 +11374,13 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget
 	//
 	// example:
 	//
-	// adasfsdfd
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
 	// example:
 	//
-	// afsa
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10796,6 +11403,17 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTa
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions struct {
+	// Specifies whether to enable the oplock feature. Valid values:
+	//
+	// 	- true: enables the feature.
+	//
+	// 	- false: disables the feature.
+	//
+	// >  Only Server Message Block (SMB) file systems support this feature.
+	//
+	// example:
+	//
+	// true
 	EnableOplock *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
 }
 
@@ -10846,9 +11464,9 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage struct 
 	//
 	// Valid values:
 	//
-	// 	- ssd: the storage plan for Performance NAS file systems
+	// - ssd: the storage plan for Performance NAS file systems.
 	//
-	// 	- hybrid: the storage plan for Capacity NAS file systems
+	// - hybrid: the storage plan for Capacity NAS file systems.
 	//
 	// example:
 	//
@@ -10940,13 +11558,13 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystemTagsTag struct {
 	//
 	// example:
 	//
-	// sdf
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
 	// example:
 	//
-	// asd123
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11173,9 +11791,24 @@ type DescribeFilesetsResponseBodyEntriesEntrie struct {
 	// example:
 	//
 	// 2021-09-30T10:08:08Z
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+	//
+	// example:
+	//
+	// true
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The fileset description.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The fileset path.
 	//
@@ -11318,8 +11951,20 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The storage class.
+	//
+	// 	- InfrequentAccess: the Infrequent Access (IA) storage class.
+	//
+	// 	- Archive: the Archive storage class.
+	//
+	// >  If the StorageType parameter is not specified, data retrieval tasks of all types are returned.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
@@ -11460,7 +12105,8 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	// example:
 	//
 	// /pathway/to/folder
-	Path  *string   `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The absolute paths to multiple directories associated with the lifecycle policy.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// The storage type of the data that is dumped to the IA storage medium.
 	//
@@ -12619,11 +13265,11 @@ type DescribeProtocolMountTargetRequestFilters struct {
 	//
 	// 	- If Key is set to ProtocolServiceIds, set Value to a protocol service ID. You can specify a maximum of 10 protocol service IDs. Example: `ptc-12345678` or `ptc-12345678,ptc-12345679`.
 	//
-	// 	- If Key is set to ExportIds, set Value to an export directory ID. You can specify a maximum of 10 export directory IDs. For example, `exp-12345678` or `exp-12345678,exp-12345679`.
+	// 	- If Key is set to ExportIds, set Value to an export directory ID. You can specify a maximum of 10 export directory IDs. Example: `exp-12345678` or `exp-12345678,exp-12345679`.
 	//
 	// 	- If Key is set to VpcIds, set Value to a VPC ID of the protocol service. You can specify a maximum of 10 VPC IDs. Example: `vpc-12345678` or `vpc-12345678,vpc-12345679`.
 	//
-	// 	- If Key is set to FsetIds, set Value to a fileset ID. You can specify a maximum of 10 fileset IDs. Example, `fset-12345678` or `fset-12345678,fset-12345679`.
+	// 	- If Key is set to FsetIds, set Value to a fileset ID. You can specify a maximum of 10 fileset IDs. Example: `fset-12345678` or `fset-12345678,fset-12345679`.
 	//
 	// 	- If Key is set to Paths, set Value to a path of the file system corresponding to the mount target. You can specify a maximum of 10 paths. Example: `/cpfs/mnt_1/` or `/cpfs/mnt_1/,/cpfs/mnt_2/`.
 	//
@@ -12707,6 +13353,10 @@ type DescribeProtocolMountTargetResponseBodyProtocolMountTargets struct {
 	// 2018-12-12T07:28:38Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the export directory for the protocol service.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the export directory for the protocol service.
 	//
@@ -12879,6 +13529,10 @@ type DescribeProtocolServiceRequest struct {
 	// 	- The description must start with a letter and cannot start with `http://` or `https://`.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the file system.
 	//
@@ -12900,7 +13554,7 @@ type DescribeProtocolServiceRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If not all dataflows are returned in a query, the return value of the NextToken parameter is not empty. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	//
 	// example:
 	//
@@ -13041,6 +13695,10 @@ type DescribeProtocolServiceResponseBodyProtocolServices struct {
 	// 	- The description must start with a letter and cannot start with `http://` or `https://`.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the file system.
 	//
@@ -15425,6 +16083,7 @@ func (s *GetRecycleBinAttributeResponseBody) SetRequestId(v string) *GetRecycleB
 }
 
 type GetRecycleBinAttributeResponseBodyRecycleBinAttribute struct {
+	ArchiveSize *int64 `json:"ArchiveSize,omitempty" xml:"ArchiveSize,omitempty"`
 	// The time at which the recycle bin was enabled.
 	//
 	// example:
@@ -15471,6 +16130,11 @@ func (s GetRecycleBinAttributeResponseBodyRecycleBinAttribute) String() string {
 
 func (s GetRecycleBinAttributeResponseBodyRecycleBinAttribute) GoString() string {
 	return s.String()
+}
+
+func (s *GetRecycleBinAttributeResponseBodyRecycleBinAttribute) SetArchiveSize(v int64) *GetRecycleBinAttributeResponseBodyRecycleBinAttribute {
+	s.ArchiveSize = &v
+	return s
 }
 
 func (s *GetRecycleBinAttributeResponseBodyRecycleBinAttribute) SetEnableTime(v string) *GetRecycleBinAttributeResponseBodyRecycleBinAttribute {
@@ -15532,9 +16196,11 @@ type ListDirectoriesAndFilesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- false (default): queries both directories and files
+	// 	- false (default): queries both directories and files.
 	//
-	// 	- true: queries only directories
+	// 	- true: queries only directories.
+	//
+	// >  If you set the StorageType parameter to All, you must set the DirectoryOnly parameter to true.
 	//
 	// example:
 	//
@@ -15574,9 +16240,15 @@ type ListDirectoriesAndFilesRequest struct {
 	//
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The storage type of the files.
+	// The storage class.
 	//
-	// Default value: InfrequentAccess (IA).
+	// 	- InfrequentAccess: the Infrequent Access (IA) storage class.
+	//
+	// 	- Archive: the Archive storage class.
+	//
+	// 	- All: all stored data.
+	//
+	// >  If you set the StorageType parameter to All, you must set the DirectoryOnly parameter to true.
 	//
 	// This parameter is required.
 	//
@@ -15690,17 +16362,30 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	// example:
 	//
 	// 66
-	FileId         *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	HasArchiveFile *string `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
-	// Indicates whether the directory contains files stored in the IA storage medium.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Indicates whether the directory contains files stored in the Archive storage class.
 	//
 	// This parameter is returned and valid only if the value of the Type parameter is Directory.
 	//
 	// Valid values:
 	//
-	// 	- true: The directory contains files stored in the IA storage medium.
+	// 	- true: The directory contains files stored in the Archive storage class.
 	//
-	// 	- false: The directory does not contain files stored in the IA storage medium.
+	// 	- false: The directory does not contain files stored in the Archive storage class.
+	//
+	// example:
+	//
+	// true
+	HasArchiveFile *string `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
+	// Indicates whether the directory contains files stored in the IA storage class.
+	//
+	// This parameter is returned and valid only if the value of the Type parameter is Directory.
+	//
+	// Valid values:
+	//
+	// 	- true: The directory contains files stored in the IA storage class.
+	//
+	// 	- false: The directory does not contain files stored in the IA storage class.
 	//
 	// example:
 	//
@@ -15754,13 +16439,15 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	//
 	// 1024
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The storage type of the file.
+	// The storage class.
 	//
 	// This parameter is returned and valid only if the value of the Type parameter is File.
 	//
 	// Valid values:
 	//
-	// 	- InfrequentAccess: IA storage medium
+	// 	- InfrequentAccess: the IA storage class.
+	//
+	// 	- Archive: the Archive storage class.
 	//
 	// example:
 	//
@@ -16392,7 +17079,7 @@ type ListRecycleBinJobsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the job. Valid values:
+	// The job status. Valid values:
 	//
 	// 	- Running: The job is running.
 	//
@@ -16406,7 +17093,7 @@ type ListRecycleBinJobsRequest struct {
 	//
 	// 	- Cancelled: The job is canceled.
 	//
-	// 	- All: all.Default value:All.
+	// 	- all (default)
 	//
 	// example:
 	//
@@ -16516,7 +17203,7 @@ type ListRecycleBinJobsResponseBodyJobs struct {
 	//
 	// 2021-05-30T10:08:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code.
+	// The error code returned.
 	//
 	// A valid value is returned only if you set the Status parameter to Fail or PartialSuccess.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -16665,7 +17352,7 @@ func (s *ListRecycleBinJobsResponse) SetBody(v *ListRecycleBinJobsResponseBody) 
 type ListRecycledDirectoriesAndFilesRequest struct {
 	// The ID of the directory that you want to query.
 	//
-	// You can call the [ListRecycleBinJobs](https://help.aliyun.com/document_detail/264192.html) operation to query the value of the FileId parameter.
+	// You can call the [ListRecentlyRecycledDirectories ](https://help.aliyun.com/document_detail/2412173.html)operation to query the file ID.
 	//
 	// This parameter is required.
 	//
@@ -16697,7 +17384,7 @@ type ListRecycledDirectoriesAndFilesRequest struct {
 	//
 	// example:
 	//
-	// 1256****25
+	// CJyNARIsMTY5OTI2NjQ3NTEzMjY2OTMwOF8xODA5NF8ufnl0YkROTl9uZXcuaXB5bmI=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -16735,6 +17422,10 @@ type ListRecycledDirectoriesAndFilesResponseBody struct {
 	// A pagination token.
 	//
 	// If all the files and directories are incompletely returned in a query, the return value of the NextToken parameter is not empty. In this case, you can specify a valid value for the NextToken parameter to continue the query.
+	//
+	// example:
+	//
+	// CKuO8QMSIjE2OTc3NzI0NjI5MTcyMTYyNDVfMzEzNTUyMF81MjEzODY=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//
@@ -16914,6 +17605,10 @@ func (s *ListRecycledDirectoriesAndFilesResponse) SetBody(v *ListRecycledDirecto
 
 type ListTagResourcesRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTcyNDU1MTYyNjIxNTMyNzM4NiMzNjExMzQxNw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource IDs.
 	//
@@ -17018,6 +17713,10 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If the value of this parameter is null, no queries are performed after the current query.
+	//
+	// example:
+	//
+	// MTcyNDU1MTYyNjIxNTMyNzM4NiMzNjExMzQxNw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//
@@ -17271,24 +17970,44 @@ func (s *ModifyAccessGroupResponse) SetBody(v *ModifyAccessGroupResponseBody) *M
 }
 
 type ModifyAccessPointRequest struct {
+	// The name of the permission group.
+	//
+	// This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+	//
+	// The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
+	//
 	// example:
 	//
 	// DEFAULT_VPC_GROUP_NAME
 	AccessGroup *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	// The ID of the access point.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The name of the access point.
+	//
 	// example:
 	//
 	// test
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	// Specifies whether to enable the Resource Access Management (RAM) policy. Valid values:
+	//
+	// 	- true: The RAM policy is enabled.
+	//
+	// 	- false (default): The RAM policy is disabled.
+	//
+	// >  After the RAM policy is enabled for access points, no RAM user is allowed to use access points to mount and access data by default. To use access points to mount and access data as a RAM user, you must grant the related access permissions to the RAM user. If the RAM policy is disabled, access points can be anonymously mounted.
+	//
 	// example:
 	//
 	// false
 	EnabledRam *bool `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17331,6 +18050,8 @@ func (s *ModifyAccessPointRequest) SetFileSystemId(v string) *ModifyAccessPointR
 }
 
 type ModifyAccessPointResponseBody struct {
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17746,6 +18467,10 @@ type ModifyDataFlowRequest struct {
 	// 	- The description must start with a letter but cannot start with http:// or https://.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
@@ -17769,15 +18494,15 @@ type ModifyDataFlowRequest struct {
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The maximum transmission bandwidth for a dataflow. Unit: MB/s. Valid values:
+	// The maximum data flow throughput. Unit: MB/s. Valid values:
 	//
 	// 	- 600
 	//
-	// 	- 1,200
+	// 	- 1200
 	//
-	// 	- 1,500
+	// 	- 1500
 	//
-	// >  The dataflow throughput must be less than the I/O throughput of the file system.
+	// >  The data flow throughput must be less than the I/O throughput of the file system.
 	//
 	// example:
 	//
@@ -17875,25 +18600,63 @@ func (s *ModifyDataFlowResponse) SetBody(v *ModifyDataFlowResponseBody) *ModifyD
 }
 
 type ModifyDataFlowAutoRefreshRequest struct {
+	// The automatic update interval. CPFS checks whether data is updated in the directory at the interval. If data is updated, CPFS runs an AutoRefresh task. Unit: minutes.
+	//
+	// Valid values: 5 to 526600. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	AutoRefreshInterval *int64 `json:"AutoRefreshInterval,omitempty" xml:"AutoRefreshInterval,omitempty"`
+	// The automatic update policy. CPFS imports data updates in the Object Storage Service (OSS) bucket to the CPFS file system based on this policy. Valid values:
+	//
+	// 	- None: CPFS does not automatically import data updates in the OSS bucket to the CPFS file system. You can import the data updates by using a dataflow task.
+	//
+	// 	- ImportChanged: CPFS automatically imports data updates in the OSS bucket to the CPFS file system.
+	//
 	// example:
 	//
 	// None
 	AutoRefreshPolicy *string `json:"AutoRefreshPolicy,omitempty" xml:"AutoRefreshPolicy,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The dataflow ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// dfid-194433a5be31****
 	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	// Specifies whether to perform a dry run.
+	//
+	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+	//
+	// Valid values:
+	//
+	// 	- true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
+	//
+	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 }
 
@@ -17936,6 +18699,8 @@ func (s *ModifyDataFlowAutoRefreshRequest) SetFileSystemId(v string) *ModifyData
 }
 
 type ModifyDataFlowAutoRefreshResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
@@ -18014,8 +18779,9 @@ type ModifyFileSystemRequest struct {
 	// example:
 	//
 	// 1ca404****
-	FileSystemId *string                         `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Options      *ModifyFileSystemRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The options.
+	Options *ModifyFileSystemRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 }
 
 func (s ModifyFileSystemRequest) String() string {
@@ -18042,6 +18808,17 @@ func (s *ModifyFileSystemRequest) SetOptions(v *ModifyFileSystemRequestOptions) 
 }
 
 type ModifyFileSystemRequestOptions struct {
+	// Specifies whether to enable the oplock feature. Valid values:
+	//
+	// 	- true: enables the feature.
+	//
+	// 	- false: disables the feature.
+	//
+	// >  Only Server Message Block (SMB) file systems support this feature.
+	//
+	// example:
+	//
+	// true
 	EnableOplock *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
 }
 
@@ -18088,7 +18865,8 @@ type ModifyFileSystemShrinkRequest struct {
 	// example:
 	//
 	// 1ca404****
-	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The options.
 	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
 }
 
@@ -18177,20 +18955,36 @@ type ModifyFilesetRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+	//
+	// 	- true: enables release protection.
+	//
+	// 	- false: disables release protection.
+	//
+	// >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The fileset description.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request.
 	//
-	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+	// During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset is modified and no fees incurred.
 	//
 	// Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
+	// 	- true: performs only a dry run. The system checks the required parameters, request syntax, service limits, and Apsara File Storage NAS (NAS) inventory data. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
 	//
-	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
+	// 	- false (default): performs a dry run and sends the request. If the request passes the dry run, the specified fileset is modified.
 	//
 	// example:
 	//
@@ -18304,22 +19098,30 @@ func (s *ModifyFilesetResponse) SetBody(v *ModifyFilesetResponseBody) *ModifyFil
 }
 
 type ModifyLDAPConfigRequest struct {
+	// The LDAP entry.
+	//
 	// example:
 	//
 	// cn=alibaba,dc=com
 	BindDN *string `json:"BindDN,omitempty" xml:"BindDN,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 109c042666
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The LDAP search base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dc=example
 	SearchBase *string `json:"SearchBase,omitempty" xml:"SearchBase,omitempty"`
+	// The LDAP service address.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18357,6 +19159,8 @@ func (s *ModifyLDAPConfigRequest) SetURI(v string) *ModifyLDAPConfigRequest {
 }
 
 type ModifyLDAPConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5B4511A7-C99E-4071-AA8C-32E2529DA963
@@ -18714,6 +19518,10 @@ type ModifyProtocolMountTargetRequest struct {
 	// 	- The description must start with a letter but cannot start with `http://` or `https://`.
 	//
 	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. The dry run checks parameter validity and prerequisites. The dry run does not modify the specified export directory or incur fees.
 	//
@@ -18868,7 +19676,7 @@ type ModifyProtocolServiceRequest struct {
 	//
 	// example:
 	//
-	// The description of the protocol service.
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. The dry run checks parameter validity and prerequisites. The dry run does not modify a file system or incur fees.
 	//
@@ -19170,6 +19978,7 @@ func (s *ModifySmbAclResponse) SetBody(v *ModifySmbAclResponseBody) *ModifySmbAc
 }
 
 type OpenNASServiceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The order ID.
 	//
 	// example:
@@ -19190,6 +19999,11 @@ func (s OpenNASServiceResponseBody) String() string {
 
 func (s OpenNASServiceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *OpenNASServiceResponseBody) SetAccessDeniedDetail(v string) *OpenNASServiceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *OpenNASServiceResponseBody) SetOrderId(v string) *OpenNASServiceResponseBody {
@@ -19346,6 +20160,8 @@ type RemoveTagsRequest struct {
 	//
 	// 0addcw****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The details about the tags.
+	//
 	// This parameter is required.
 	Tag []*RemoveTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -19369,13 +20185,13 @@ func (s *RemoveTagsRequest) SetTag(v []*RemoveTagsRequestTag) *RemoveTagsRequest
 }
 
 type RemoveTagsRequestTag struct {
-	// The key (TagKey) of Tag N. Each tag that you want to remove includes a TagKey and TagValue. You can specify 1 to 10 tags at a time. A TagKey cannot be an empty string, but a TagValue can be an empty string.
+	// The key of each tag. Each tag that you want to remove consists of a tag key and a tag value. You can specify 1 to 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
 	//
 	// example:
 	//
 	// keyN
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value (TagValue) of Tag N. Each tag that you want to remove includes a TagKey and TagValue. You can specify a maximum of 5 tags at a time. A TagKey cannot be an empty string, but a TagValue can be an empty string.
+	// The value of each tag. Each tag that you want to remove consists of a tag key and a tag value. You can specify a maximum of five tags at a time. The tag key cannot be empty. The tag value can be left empty.
 	//
 	// example:
 	//
@@ -19402,7 +20218,7 @@ func (s *RemoveTagsRequestTag) SetValue(v string) *RemoveTagsRequestTag {
 }
 
 type RemoveTagsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -20607,6 +21423,12 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AddClientToBlackList is deprecated
+//
+// Summary:
+//
+// 将客户端加入黑名单
+//
 // Description:
 //
 // The API operation is available only for CPFS file systems.
@@ -20616,6 +21438,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddClientToBlackListResponse
+// Deprecated
 func (client *Client) AddClientToBlackListWithOptions(request *AddClientToBlackListRequest, runtime *util.RuntimeOptions) (_result *AddClientToBlackListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20661,6 +21484,12 @@ func (client *Client) AddClientToBlackListWithOptions(request *AddClientToBlackL
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AddClientToBlackList is deprecated
+//
+// Summary:
+//
+// 将客户端加入黑名单
+//
 // Description:
 //
 // The API operation is available only for CPFS file systems.
@@ -20668,6 +21497,7 @@ func (client *Client) AddClientToBlackListWithOptions(request *AddClientToBlackL
 // @param request - AddClientToBlackListRequest
 //
 // @return AddClientToBlackListResponse
+// Deprecated
 func (client *Client) AddClientToBlackList(request *AddClientToBlackListRequest) (_result *AddClientToBlackListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddClientToBlackListResponse{}
@@ -20679,21 +21509,27 @@ func (client *Client) AddClientToBlackList(request *AddClientToBlackListRequest)
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AddTags is deprecated, please use NAS::2017-06-26::TagResources instead.
+//
+// Summary:
+//
+// Adds one or more tags to a file system or overwrites one or more tags of a file system.
+//
 // Description:
 //
-// ## Limits
+// >  The tag feature has been upgraded and this document will be unpublished. For more information, see TagResources.
 //
-// 	- Each tag includes a TagKey and a TagValue.
+// 	- Each tag consists of a tag key (TagKey) and a tag value (TagValue).
 //
-// 	- Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+// 	- Placeholders at the start and end of each TagKey and TagValue are automatically removed. Placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
 //
-// 	- You must specify a TagKey. You can leave a TagValue empty.
+// 	- You must specify a tag key. You can leave a tag value empty.
 //
-// 	- A TagKey and TagValue are not case-sensitive.
+// 	- The tag key and tag value are not case-sensitive.
 //
-// 	- A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
+// 	- A tag key can be up to 64 characters in length and a tag value can be up to 128 characters in length.
 //
-// 	- You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
+// 	- You can add a maximum of 10 tags to a file system. If you add two tags with the same tag key, the newly added tag will overwrite the existing tag.
 //
 // 	- If you remove a tag from all linked file systems, the tag is automatically deleted.
 //
@@ -20702,6 +21538,7 @@ func (client *Client) AddClientToBlackList(request *AddClientToBlackListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTagsResponse
+// Deprecated
 func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *util.RuntimeOptions) (_result *AddTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20739,27 +21576,34 @@ func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *util.
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AddTags is deprecated, please use NAS::2017-06-26::TagResources instead.
+//
+// Summary:
+//
+// Adds one or more tags to a file system or overwrites one or more tags of a file system.
+//
 // Description:
 //
-// ## Limits
+// >  The tag feature has been upgraded and this document will be unpublished. For more information, see TagResources.
 //
-// 	- Each tag includes a TagKey and a TagValue.
+// 	- Each tag consists of a tag key (TagKey) and a tag value (TagValue).
 //
-// 	- Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+// 	- Placeholders at the start and end of each TagKey and TagValue are automatically removed. Placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
 //
-// 	- You must specify a TagKey. You can leave a TagValue empty.
+// 	- You must specify a tag key. You can leave a tag value empty.
 //
-// 	- A TagKey and TagValue are not case-sensitive.
+// 	- The tag key and tag value are not case-sensitive.
 //
-// 	- A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
+// 	- A tag key can be up to 64 characters in length and a tag value can be up to 128 characters in length.
 //
-// 	- You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
+// 	- You can add a maximum of 10 tags to a file system. If you add two tags with the same tag key, the newly added tag will overwrite the existing tag.
 //
 // 	- If you remove a tag from all linked file systems, the tag is automatically deleted.
 //
 // @param request - AddTagsRequest
 //
 // @return AddTagsResponse
+// Deprecated
 func (client *Client) AddTags(request *AddTagsRequest) (_result *AddTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddTagsResponse{}
@@ -21481,7 +22325,7 @@ func (client *Client) CancelRecycleBinJob(request *CancelRecycleBinJobRequest) (
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group to which a file system belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -21535,7 +22379,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group to which a file system belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -21625,7 +22469,15 @@ func (client *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (_res
 
 // Summary:
 //
-// 创建接入点
+// Creates an access point.
+//
+// Description:
+//
+//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you perform the CreateAccessPoint operation successfully, call the DescribeAccessPoints or DescribeAccessPoint operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
+//
+// 	- Only General-purpose Network File System (NFS) file systems support this operation.
+//
+// 	- If you want to perform the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
 //
 // @param request - CreateAccessPointRequest
 //
@@ -21715,7 +22567,15 @@ func (client *Client) CreateAccessPointWithOptions(request *CreateAccessPointReq
 
 // Summary:
 //
-// 创建接入点
+// Creates an access point.
+//
+// Description:
+//
+//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you perform the CreateAccessPoint operation successfully, call the DescribeAccessPoints or DescribeAccessPoint operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
+//
+// 	- Only General-purpose Network File System (NFS) file systems support this operation.
+//
+// 	- If you want to perform the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
 //
 // @param request - CreateAccessPointRequest
 //
@@ -21941,75 +22801,111 @@ func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicy
 //
 // Description:
 //
-//   Billing
+//   Basic operations
 //
-//     	- If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+//     	- Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.4.0 and later support data flows.
 //
-//     	- When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
+//     	- You can create a data flow only when a CPFS or CPFS for LINGJUN file system is in the Running state.
 //
-// 	- Dataflow specifications
+//     	- A maximum of 10 data flows can be created for a CPFS or CPFS for LINGJUN file system.
 //
-//     	- The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-//
-//     	- When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
-//
-//     	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-//
-// 	- Fileset
-//
-//     	- The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
-//
-//     	- When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
-//
-//     	- A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
-//
-//     **
-//
-//     **Note*	- If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
-//
-// 	- Source storage
-//
-//     	- The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
-//
-//     	- CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
-//
-//     	- If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
-//
-//     	- Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
-//
-//         **
-//
-//         **Note*	- Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
-//
-// 	- AutoRefresh
-//
-//     	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-//
-//     	- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
-//
-//     	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
-//
-//     	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
-//
-//     	- When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-//
-//     **
-//
-//     **Note*	- The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
+//     	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
 //
 // 	- Permissions
 //
-//     When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+//     When you create a data flow, CPFS obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
 //
-// 	- Basic operations
+// 	- CPFS usage notes
 //
-//     	- Only CPFS V2.2.0 and later support dataflows.
+//     	- Billing
 //
-//     	- You can create a dataflow only if the CPFS file system is in the Running state.
+//         	- If you create a data flow, you are charged for using the data flow throughput. For more information, see [Billing of CPFS](https://help.aliyun.com/document_detail/111858.html).
 //
-//     	- A maximum of 10 dataflows can be created for a CPFS file system.
+//         	- When you configure the AutoRefresh feature for a data flow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
 //
-//     	- It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
+//     	- Data flow specifications
+//
+//         	- The data flow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The data flow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a data flow.
+//
+//         	- When you create a data flow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
+//
+//         	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the data flow whose throughput is changed meet the requirements.
+//
+//     	- Fileset
+//
+//         	- The destination for a data flow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+//
+//         	- When you create a data flow for a CPFS file system, the related fileset must already exist and cannot be nested with other filesets. Only one data flow can be created in a fileset, which corresponds to one source storage.
+//
+//         	- A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+//
+//      >   If data already exists in the fileset, after you create a data flow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+//
+//     	- AutoRefresh
+//
+//         	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a data flow task to load the updated data.
+//
+//         	- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//
+//         	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a data flow.
+//
+//         	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS data flow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the data flow status becomes `Misconfigured`. To resolve these issues, you can increase the data flow specifications or reduce the frequency of triggering the object modification event.
+//
+//         	- When you add an AutoRefresh configuration to the prefix for a CPFS data flow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS data flow.
+//
+//         > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//
+//     	- Source storage
+//
+//         	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//         	- CPFS data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//         	- If data flows for multiple CPFS file systems or multiple data flows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+//
+//         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//          >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS cannot access the data in the OSS bucket.
+//
+// 	- CPFS for LINGJUN usage notes
+//
+//     	- Source storage
+//
+//         	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//
+//         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//         > Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//
+//     	- Limits of data flows on file systems
+//
+//         	- You cannot rename a non-empty directory in a path that is associated with a data flow. Otherwise, the Permission Denied error message or an error message indicating that the directory is not empty is returned.
+//
+//         	- Proceed with caution when you use special characters in the names of directories and files. The following characters are supported: letters, digits, exclamation points (!), hyphens (-), underscores (_), periods (.), asterisks (\\*), and parentheses (()).
+//
+//         	- The path can be up to 1,023 characters in length.
+//
+//     	- Limits of data flows on import
+//
+//         	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
+//
+//         	- If an OSS bucket has multiple versions, only data of the latest version is used.
+//
+//         	- The name of a file or a subdirectory can be up to 255 bytes in length.
+//
+//     	- Limits of data flows on export
+//
+//         	- After a symbolic link is synchronized to OSS, the file that the symbolic link points to is not synchronized to OSS. In this case, the symbolic link is converted into a common object that contains no data.
+//
+//         	- Hard links can be synchronized to OSS only as common files that contain no link information.
+//
+//         	- After a file of the Socket, Device, or Pipe type is exported to an OSS bucket, the file is converted into a common object that contains no data.
+//
+//         	- The directory path can be up to 1,023 characters in length.
 //
 // @param request - CreateDataFlowRequest
 //
@@ -22103,75 +22999,111 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 //
 // Description:
 //
-//   Billing
+//   Basic operations
 //
-//     	- If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+//     	- Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.4.0 and later support data flows.
 //
-//     	- When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
+//     	- You can create a data flow only when a CPFS or CPFS for LINGJUN file system is in the Running state.
 //
-// 	- Dataflow specifications
+//     	- A maximum of 10 data flows can be created for a CPFS or CPFS for LINGJUN file system.
 //
-//     	- The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-//
-//     	- When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
-//
-//     	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-//
-// 	- Fileset
-//
-//     	- The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
-//
-//     	- When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
-//
-//     	- A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
-//
-//     **
-//
-//     **Note*	- If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
-//
-// 	- Source storage
-//
-//     	- The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
-//
-//     	- CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
-//
-//     	- If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
-//
-//     	- Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
-//
-//         **
-//
-//         **Note*	- Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
-//
-// 	- AutoRefresh
-//
-//     	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-//
-//     	- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
-//
-//     	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
-//
-//     	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
-//
-//     	- When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-//
-//     **
-//
-//     **Note*	- The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
+//     	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
 //
 // 	- Permissions
 //
-//     When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+//     When you create a data flow, CPFS obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
 //
-// 	- Basic operations
+// 	- CPFS usage notes
 //
-//     	- Only CPFS V2.2.0 and later support dataflows.
+//     	- Billing
 //
-//     	- You can create a dataflow only if the CPFS file system is in the Running state.
+//         	- If you create a data flow, you are charged for using the data flow throughput. For more information, see [Billing of CPFS](https://help.aliyun.com/document_detail/111858.html).
 //
-//     	- A maximum of 10 dataflows can be created for a CPFS file system.
+//         	- When you configure the AutoRefresh feature for a data flow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
 //
-//     	- It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
+//     	- Data flow specifications
+//
+//         	- The data flow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The data flow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a data flow.
+//
+//         	- When you create a data flow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
+//
+//         	- Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the data flow whose throughput is changed meet the requirements.
+//
+//     	- Fileset
+//
+//         	- The destination for a data flow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+//
+//         	- When you create a data flow for a CPFS file system, the related fileset must already exist and cannot be nested with other filesets. Only one data flow can be created in a fileset, which corresponds to one source storage.
+//
+//         	- A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+//
+//      >   If data already exists in the fileset, after you create a data flow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+//
+//     	- AutoRefresh
+//
+//         	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a data flow task to load the updated data.
+//
+//         	- AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//
+//         	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a data flow.
+//
+//         	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS data flow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the data flow status becomes `Misconfigured`. To resolve these issues, you can increase the data flow specifications or reduce the frequency of triggering the object modification event.
+//
+//         	- When you add an AutoRefresh configuration to the prefix for a CPFS data flow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS data flow.
+//
+//         > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//
+//     	- Source storage
+//
+//         	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//         	- CPFS data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//         	- If data flows for multiple CPFS file systems or multiple data flows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+//
+//         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//          >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS cannot access the data in the OSS bucket.
+//
+// 	- CPFS for LINGJUN usage notes
+//
+//     	- Source storage
+//
+//         	- The source storage is an OSS bucket. SourceStorage for a data flow must be an OSS bucket.
+//
+//         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//
+//         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//
+//         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//
+//         > Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//
+//     	- Limits of data flows on file systems
+//
+//         	- You cannot rename a non-empty directory in a path that is associated with a data flow. Otherwise, the Permission Denied error message or an error message indicating that the directory is not empty is returned.
+//
+//         	- Proceed with caution when you use special characters in the names of directories and files. The following characters are supported: letters, digits, exclamation points (!), hyphens (-), underscores (_), periods (.), asterisks (\\*), and parentheses (()).
+//
+//         	- The path can be up to 1,023 characters in length.
+//
+//     	- Limits of data flows on import
+//
+//         	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
+//
+//         	- If an OSS bucket has multiple versions, only data of the latest version is used.
+//
+//         	- The name of a file or a subdirectory can be up to 255 bytes in length.
+//
+//     	- Limits of data flows on export
+//
+//         	- After a symbolic link is synchronized to OSS, the file that the symbolic link points to is not synchronized to OSS. In this case, the symbolic link is converted into a common object that contains no data.
+//
+//         	- Hard links can be synchronized to OSS only as common files that contain no link information.
+//
+//         	- After a file of the Socket, Device, or Pipe type is exported to an OSS bucket, the file is converted into a common object that contains no data.
+//
+//         	- The directory path can be up to 1,023 characters in length.
 //
 // @param request - CreateDataFlowRequest
 //
@@ -22193,15 +23125,15 @@ func (client *Client) CreateDataFlow(request *CreateDataFlowRequest) (_result *C
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.3.4 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+// 	- You can create a data flow task only for a data flow that is in the Running state.
 //
-// 	- You can create a dataflow task only for a dataflow that is in the Running state.
+// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
-// 	- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+// 	- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
 //
-// 	- When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+// 	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -22222,6 +23154,10 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 		query["ConflictPolicy"] = request.ConflictPolicy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreateDirIfNotExist)) {
+		query["CreateDirIfNotExist"] = request.CreateDirIfNotExist
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DataFlowId)) {
 		query["DataFlowId"] = request.DataFlowId
 	}
@@ -22236,6 +23172,10 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DstDirectory)) {
+		query["DstDirectory"] = request.DstDirectory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EntryList)) {
@@ -22283,15 +23223,15 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.3.4 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+// 	- You can create a data flow task only for a data flow that is in the Running state.
 //
-// 	- You can create a dataflow task only for a dataflow that is in the Running state.
+// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
-// 	- Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+// 	- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
 //
-// 	- When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+// 	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -22309,7 +23249,11 @@ func (client *Client) CreateDataFlowTask(request *CreateDataFlowTaskRequest) (_r
 
 // Summary:
 //
-// 创建目录
+// Creates a directory in a file system.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - CreateDirRequest
 //
@@ -22371,7 +23315,11 @@ func (client *Client) CreateDirWithOptions(request *CreateDirRequest, runtime *u
 
 // Summary:
 //
-// 创建目录
+// Creates a directory in a file system.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - CreateDirRequest
 //
@@ -23565,7 +24513,7 @@ func (client *Client) CreateRecycleBinRestoreJob(request *CreateRecycleBinRestor
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -23639,7 +24587,7 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//   The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
 // 	- Only advanced Extreme NAS file systems support the snapshot feature.
 //
@@ -23745,7 +24693,13 @@ func (client *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (_res
 
 // Summary:
 //
-// 删除接入点
+// Deletes an access point.
+//
+// Description:
+//
+//   Only General-purpose Network File System (NFS) file systems support access points.
+//
+// 	- After an access point is deleted, all I/O operations that are being performed on the directory accessed over the access point are interrupted immediately. Exercise caution when you perform this operation.
 //
 // @param request - DeleteAccessPointRequest
 //
@@ -23791,7 +24745,13 @@ func (client *Client) DeleteAccessPointWithOptions(request *DeleteAccessPointReq
 
 // Summary:
 //
-// 删除接入点
+// Deletes an access point.
+//
+// Description:
+//
+//   Only General-purpose Network File System (NFS) file systems support access points.
+//
+// 	- After an access point is deleted, all I/O operations that are being performed on the directory accessed over the access point are interrupted immediately. Exercise caution when you perform this operation.
 //
 // @param request - DeleteAccessPointRequest
 //
@@ -24789,7 +25749,11 @@ func (client *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest)
 
 // Summary:
 //
-// 接入点详情页
+// Queries the details of an access point.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - DescribeAccessPointRequest
 //
@@ -24835,7 +25799,11 @@ func (client *Client) DescribeAccessPointWithOptions(request *DescribeAccessPoin
 
 // Summary:
 //
-// 接入点详情页
+// Queries the details of an access point.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - DescribeAccessPointRequest
 //
@@ -24853,7 +25821,11 @@ func (client *Client) DescribeAccessPoint(request *DescribeAccessPointRequest) (
 
 // Summary:
 //
-// 查询接入点信息
+// Queries the information about an access point.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - DescribeAccessPointsRequest
 //
@@ -24907,7 +25879,11 @@ func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPoi
 
 // Summary:
 //
-// 查询接入点信息
+// Queries the information about an access point.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - DescribeAccessPointsRequest
 //
@@ -25171,6 +26147,12 @@ func (client *Client) DescribeAutoSnapshotTasks(request *DescribeAutoSnapshotTas
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeBlackListClients is deprecated
+//
+// Summary:
+//
+// 获取CPFS服务中黑名单客户端的状态
+//
 // Description:
 //
 // The API operation is available only for CPFS file systems.
@@ -25180,6 +26162,7 @@ func (client *Client) DescribeAutoSnapshotTasks(request *DescribeAutoSnapshotTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBlackListClientsResponse
+// Deprecated
 func (client *Client) DescribeBlackListClientsWithOptions(request *DescribeBlackListClientsRequest, runtime *util.RuntimeOptions) (_result *DescribeBlackListClientsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25221,6 +26204,12 @@ func (client *Client) DescribeBlackListClientsWithOptions(request *DescribeBlack
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeBlackListClients is deprecated
+//
+// Summary:
+//
+// 获取CPFS服务中黑名单客户端的状态
+//
 // Description:
 //
 // The API operation is available only for CPFS file systems.
@@ -25228,6 +26217,7 @@ func (client *Client) DescribeBlackListClientsWithOptions(request *DescribeBlack
 // @param request - DescribeBlackListClientsRequest
 //
 // @return DescribeBlackListClientsResponse
+// Deprecated
 func (client *Client) DescribeBlackListClients(request *DescribeBlackListClientsRequest) (_result *DescribeBlackListClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBlackListClientsResponse{}
@@ -25333,11 +26323,9 @@ func (client *Client) DescribeDataFlowTasks(request *DescribeDataFlowTasksReques
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-//
-// 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
+// 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
 // 	- Combined query is supported.
 //
@@ -25397,11 +26385,9 @@ func (client *Client) DescribeDataFlowsWithOptions(request *DescribeDataFlowsReq
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//   Only Cloud Parallel File Storage (CPFS) V2.2.0 and later and CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-//
-// 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
+// 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
 // 	- Combined query is supported.
 //
@@ -27681,7 +28667,11 @@ func (client *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (_res
 
 // Summary:
 //
-// 修改接入点信息
+// Modifies the information about an access point.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - ModifyAccessPointRequest
 //
@@ -27739,7 +28729,11 @@ func (client *Client) ModifyAccessPointWithOptions(request *ModifyAccessPointReq
 
 // Summary:
 //
-// 修改接入点信息
+// Modifies the information about an access point.
+//
+// Description:
+//
+// Only General-purpose Network File System (NFS) file systems support this operation.
 //
 // @param request - ModifyAccessPointRequest
 //
@@ -28061,7 +29055,17 @@ func (client *Client) ModifyDataFlow(request *ModifyDataFlowRequest) (_result *M
 
 // Summary:
 //
-// 修改数据流动中的自动更新配置
+// Modifies an AutoRefresh configuration of a dataflow.
+//
+// Description:
+//
+//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//
+// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//
+// 	- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+//
+// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -28123,7 +29127,17 @@ func (client *Client) ModifyDataFlowAutoRefreshWithOptions(request *ModifyDataFl
 
 // Summary:
 //
-// 修改数据流动中的自动更新配置
+// Modifies an AutoRefresh configuration of a dataflow.
+//
+// Description:
+//
+//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//
+// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//
+// 	- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+//
+// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -28307,7 +29321,7 @@ func (client *Client) ModifyFileset(request *ModifyFilesetRequest) (_result *Mod
 
 // Description:
 //
-// #
+// The API operation is available only for Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - ModifyLDAPConfigRequest
 //
@@ -28361,7 +29375,7 @@ func (client *Client) ModifyLDAPConfigWithOptions(request *ModifyLDAPConfigReque
 
 // Description:
 //
-// #
+// The API operation is available only for Cloud Parallel File Storage (CPFS) file systems.
 //
 // @param request - ModifyLDAPConfigRequest
 //
@@ -28844,6 +29858,12 @@ func (client *Client) OpenNASService() (_result *OpenNASServiceResponse, _err er
 	return _result, _err
 }
 
+// Deprecated: OpenAPI RemoveClientFromBlackList is deprecated
+//
+// Summary:
+//
+// 移除黑名单
+//
 // Description:
 //
 // The IP address of a client to remove from the blacklist.
@@ -28853,6 +29873,7 @@ func (client *Client) OpenNASService() (_result *OpenNASServiceResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveClientFromBlackListResponse
+// Deprecated
 func (client *Client) RemoveClientFromBlackListWithOptions(request *RemoveClientFromBlackListRequest, runtime *util.RuntimeOptions) (_result *RemoveClientFromBlackListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28898,6 +29919,12 @@ func (client *Client) RemoveClientFromBlackListWithOptions(request *RemoveClient
 	return _result, _err
 }
 
+// Deprecated: OpenAPI RemoveClientFromBlackList is deprecated
+//
+// Summary:
+//
+// 移除黑名单
+//
 // Description:
 //
 // The IP address of a client to remove from the blacklist.
@@ -28905,6 +29932,7 @@ func (client *Client) RemoveClientFromBlackListWithOptions(request *RemoveClient
 // @param request - RemoveClientFromBlackListRequest
 //
 // @return RemoveClientFromBlackListResponse
+// Deprecated
 func (client *Client) RemoveClientFromBlackList(request *RemoveClientFromBlackListRequest) (_result *RemoveClientFromBlackListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveClientFromBlackListResponse{}
@@ -28916,15 +29944,24 @@ func (client *Client) RemoveClientFromBlackList(request *RemoveClientFromBlackLi
 	return _result, _err
 }
 
+// Deprecated: OpenAPI RemoveTags is deprecated, please use NAS::2017-06-26::UntagResources instead.
+//
+// Summary:
+//
+// Removes one or more tags from a file system.
+//
 // Description:
 //
-// A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
+// >  The tag feature has been upgraded and this document will be unpublished. For more information, see UntagResources.
+//
+// A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is still returned.
 //
 // @param request - RemoveTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveTagsResponse
+// Deprecated
 func (client *Client) RemoveTagsWithOptions(request *RemoveTagsRequest, runtime *util.RuntimeOptions) (_result *RemoveTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28962,13 +29999,22 @@ func (client *Client) RemoveTagsWithOptions(request *RemoveTagsRequest, runtime 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI RemoveTags is deprecated, please use NAS::2017-06-26::UntagResources instead.
+//
+// Summary:
+//
+// Removes one or more tags from a file system.
+//
 // Description:
 //
-// A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
+// >  The tag feature has been upgraded and this document will be unpublished. For more information, see UntagResources.
+//
+// A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is still returned.
 //
 // @param request - RemoveTagsRequest
 //
 // @return RemoveTagsResponse
+// Deprecated
 func (client *Client) RemoveTags(request *RemoveTagsRequest) (_result *RemoveTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveTagsResponse{}
