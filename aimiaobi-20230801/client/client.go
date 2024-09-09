@@ -9957,6 +9957,3579 @@ func (s *QueryAsyncTaskResponse) SetBody(v *QueryAsyncTaskResponseBody) *QueryAs
 	return s
 }
 
+type RunAbbreviationContentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 创新政务社交媒体功能。鼓励各地区、各部门结合实际，开发政务社交媒体的特色功能，如在线咨询服务、政策解读、互动问答等，增强政务社交媒体的互动性和实用性，提升公众参与度。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunAbbreviationContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunAbbreviationContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunAbbreviationContentRequest) SetContent(v string) *RunAbbreviationContentRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunAbbreviationContentRequest) SetWorkspaceId(v string) *RunAbbreviationContentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunAbbreviationContentResponseBody struct {
+	End     *bool                                      `json:"End,omitempty" xml:"End,omitempty"`
+	Header  *RunAbbreviationContentResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunAbbreviationContentResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunAbbreviationContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunAbbreviationContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunAbbreviationContentResponseBody) SetEnd(v bool) *RunAbbreviationContentResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBody) SetHeader(v *RunAbbreviationContentResponseBodyHeader) *RunAbbreviationContentResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBody) SetPayload(v *RunAbbreviationContentResponseBodyPayload) *RunAbbreviationContentResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBody) SetRequestId(v string) *RunAbbreviationContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunAbbreviationContentResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunAbbreviationContentResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunAbbreviationContentResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunAbbreviationContentResponseBodyHeader) SetErrorCode(v string) *RunAbbreviationContentResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyHeader) SetErrorMessage(v string) *RunAbbreviationContentResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyHeader) SetEvent(v string) *RunAbbreviationContentResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyHeader) SetEventInfo(v string) *RunAbbreviationContentResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyHeader) SetSessionId(v string) *RunAbbreviationContentResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyHeader) SetTaskId(v string) *RunAbbreviationContentResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyHeader) SetTraceId(v string) *RunAbbreviationContentResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunAbbreviationContentResponseBodyPayload struct {
+	Output *RunAbbreviationContentResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunAbbreviationContentResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunAbbreviationContentResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunAbbreviationContentResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunAbbreviationContentResponseBodyPayload) SetOutput(v *RunAbbreviationContentResponseBodyPayloadOutput) *RunAbbreviationContentResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyPayload) SetUsage(v *RunAbbreviationContentResponseBodyPayloadUsage) *RunAbbreviationContentResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunAbbreviationContentResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 这是测试输出
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunAbbreviationContentResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunAbbreviationContentResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunAbbreviationContentResponseBodyPayloadOutput) SetText(v string) *RunAbbreviationContentResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunAbbreviationContentResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunAbbreviationContentResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunAbbreviationContentResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunAbbreviationContentResponseBodyPayloadUsage) SetInputTokens(v int64) *RunAbbreviationContentResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunAbbreviationContentResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunAbbreviationContentResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunAbbreviationContentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunAbbreviationContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunAbbreviationContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunAbbreviationContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunAbbreviationContentResponse) SetHeaders(v map[string]*string) *RunAbbreviationContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunAbbreviationContentResponse) SetStatusCode(v int32) *RunAbbreviationContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunAbbreviationContentResponse) SetBody(v *RunAbbreviationContentResponseBody) *RunAbbreviationContentResponse {
+	s.Body = v
+	return s
+}
+
+type RunContinueContentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 创新政务社交媒体功能。鼓励各地区、各部门结合实际，开发政务社交媒体的特色功能，如在线咨询服务、政策解读、互动问答等，增强政务社交媒体的互动性和实用性，提升公众参与度。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunContinueContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContinueContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunContinueContentRequest) SetContent(v string) *RunContinueContentRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunContinueContentRequest) SetWorkspaceId(v string) *RunContinueContentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunContinueContentResponseBody struct {
+	End     *bool                                  `json:"End,omitempty" xml:"End,omitempty"`
+	Header  *RunContinueContentResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunContinueContentResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunContinueContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContinueContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunContinueContentResponseBody) SetEnd(v bool) *RunContinueContentResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBody) SetHeader(v *RunContinueContentResponseBodyHeader) *RunContinueContentResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunContinueContentResponseBody) SetPayload(v *RunContinueContentResponseBodyPayload) *RunContinueContentResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunContinueContentResponseBody) SetRequestId(v string) *RunContinueContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunContinueContentResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunContinueContentResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContinueContentResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunContinueContentResponseBodyHeader) SetErrorCode(v string) *RunContinueContentResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyHeader) SetErrorMessage(v string) *RunContinueContentResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyHeader) SetEvent(v string) *RunContinueContentResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyHeader) SetEventInfo(v string) *RunContinueContentResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyHeader) SetSessionId(v string) *RunContinueContentResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyHeader) SetTaskId(v string) *RunContinueContentResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyHeader) SetTraceId(v string) *RunContinueContentResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunContinueContentResponseBodyPayload struct {
+	Output *RunContinueContentResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunContinueContentResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunContinueContentResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContinueContentResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunContinueContentResponseBodyPayload) SetOutput(v *RunContinueContentResponseBodyPayloadOutput) *RunContinueContentResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyPayload) SetUsage(v *RunContinueContentResponseBodyPayloadUsage) *RunContinueContentResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunContinueContentResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 这是测试输出
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunContinueContentResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContinueContentResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunContinueContentResponseBodyPayloadOutput) SetText(v string) *RunContinueContentResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunContinueContentResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunContinueContentResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContinueContentResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunContinueContentResponseBodyPayloadUsage) SetInputTokens(v int64) *RunContinueContentResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunContinueContentResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunContinueContentResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunContinueContentResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunContinueContentResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunContinueContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunContinueContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContinueContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunContinueContentResponse) SetHeaders(v map[string]*string) *RunContinueContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunContinueContentResponse) SetStatusCode(v int32) *RunContinueContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunContinueContentResponse) SetBody(v *RunContinueContentResponseBody) *RunContinueContentResponse {
+	s.Body = v
+	return s
+}
+
+type RunExpandContentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 创新政务社交媒体功能。鼓励各地区、各部门结合实际，开发政务社交媒体的特色功能，如在线咨询服务、政策解读、互动问答等，增强政务社交媒体的互动性和实用性，提升公众参与度。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunExpandContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunExpandContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunExpandContentRequest) SetContent(v string) *RunExpandContentRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunExpandContentRequest) SetWorkspaceId(v string) *RunExpandContentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunExpandContentResponseBody struct {
+	End     *bool                                `json:"End,omitempty" xml:"End,omitempty"`
+	Header  *RunExpandContentResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunExpandContentResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunExpandContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunExpandContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunExpandContentResponseBody) SetEnd(v bool) *RunExpandContentResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBody) SetHeader(v *RunExpandContentResponseBodyHeader) *RunExpandContentResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunExpandContentResponseBody) SetPayload(v *RunExpandContentResponseBodyPayload) *RunExpandContentResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunExpandContentResponseBody) SetRequestId(v string) *RunExpandContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunExpandContentResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunExpandContentResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunExpandContentResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunExpandContentResponseBodyHeader) SetErrorCode(v string) *RunExpandContentResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyHeader) SetErrorMessage(v string) *RunExpandContentResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyHeader) SetEvent(v string) *RunExpandContentResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyHeader) SetEventInfo(v string) *RunExpandContentResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyHeader) SetSessionId(v string) *RunExpandContentResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyHeader) SetTaskId(v string) *RunExpandContentResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyHeader) SetTraceId(v string) *RunExpandContentResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunExpandContentResponseBodyPayload struct {
+	Output *RunExpandContentResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunExpandContentResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunExpandContentResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunExpandContentResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunExpandContentResponseBodyPayload) SetOutput(v *RunExpandContentResponseBodyPayloadOutput) *RunExpandContentResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyPayload) SetUsage(v *RunExpandContentResponseBodyPayloadUsage) *RunExpandContentResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunExpandContentResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 这是测试输出
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunExpandContentResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunExpandContentResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunExpandContentResponseBodyPayloadOutput) SetText(v string) *RunExpandContentResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunExpandContentResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunExpandContentResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunExpandContentResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunExpandContentResponseBodyPayloadUsage) SetInputTokens(v int64) *RunExpandContentResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunExpandContentResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunExpandContentResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunExpandContentResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunExpandContentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunExpandContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunExpandContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunExpandContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunExpandContentResponse) SetHeaders(v map[string]*string) *RunExpandContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunExpandContentResponse) SetStatusCode(v int32) *RunExpandContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunExpandContentResponse) SetBody(v *RunExpandContentResponseBody) *RunExpandContentResponse {
+	s.Body = v
+	return s
+}
+
+type RunKeywordsExtractionGenerationRequest struct {
+	// This parameter is required.
+	ReferenceData *RunKeywordsExtractionGenerationRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunKeywordsExtractionGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationRequest) SetReferenceData(v *RunKeywordsExtractionGenerationRequestReferenceData) *RunKeywordsExtractionGenerationRequest {
+	s.ReferenceData = v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationRequest) SetTaskId(v string) *RunKeywordsExtractionGenerationRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationRequest) SetWorkspaceId(v string) *RunKeywordsExtractionGenerationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunKeywordsExtractionGenerationRequestReferenceData struct {
+	// This parameter is required.
+	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+}
+
+func (s RunKeywordsExtractionGenerationRequestReferenceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationRequestReferenceData) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationRequestReferenceData) SetContents(v []*string) *RunKeywordsExtractionGenerationRequestReferenceData {
+	s.Contents = v
+	return s
+}
+
+type RunKeywordsExtractionGenerationShrinkRequest struct {
+	// This parameter is required.
+	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunKeywordsExtractionGenerationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationShrinkRequest) SetReferenceDataShrink(v string) *RunKeywordsExtractionGenerationShrinkRequest {
+	s.ReferenceDataShrink = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationShrinkRequest) SetTaskId(v string) *RunKeywordsExtractionGenerationShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationShrinkRequest) SetWorkspaceId(v string) *RunKeywordsExtractionGenerationShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunKeywordsExtractionGenerationResponseBody struct {
+	Header  *RunKeywordsExtractionGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunKeywordsExtractionGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 419F3FBE-5C8D-5949-AC29-E9615235D15A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunKeywordsExtractionGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBody) SetHeader(v *RunKeywordsExtractionGenerationResponseBodyHeader) *RunKeywordsExtractionGenerationResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBody) SetPayload(v *RunKeywordsExtractionGenerationResponseBodyPayload) *RunKeywordsExtractionGenerationResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBody) SetRequestId(v string) *RunKeywordsExtractionGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunKeywordsExtractionGenerationResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbid
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// xx
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 1a3d7c9f-3a6d-4e49-b176-2d8721a27397
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 8d55b429d7c6d321fcff54823e8d317b
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 210bc4e817219607963985396de8bd
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyHeader) SetErrorCode(v string) *RunKeywordsExtractionGenerationResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyHeader) SetErrorMessage(v string) *RunKeywordsExtractionGenerationResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyHeader) SetEvent(v string) *RunKeywordsExtractionGenerationResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyHeader) SetSessionId(v string) *RunKeywordsExtractionGenerationResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyHeader) SetTaskId(v string) *RunKeywordsExtractionGenerationResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyHeader) SetTraceId(v string) *RunKeywordsExtractionGenerationResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunKeywordsExtractionGenerationResponseBodyPayload struct {
+	Output *RunKeywordsExtractionGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunKeywordsExtractionGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyPayload) SetOutput(v *RunKeywordsExtractionGenerationResponseBodyPayloadOutput) *RunKeywordsExtractionGenerationResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyPayload) SetUsage(v *RunKeywordsExtractionGenerationResponseBodyPayloadUsage) *RunKeywordsExtractionGenerationResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunKeywordsExtractionGenerationResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyPayloadOutput) SetText(v string) *RunKeywordsExtractionGenerationResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunKeywordsExtractionGenerationResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyPayloadUsage) SetInputTokens(v int64) *RunKeywordsExtractionGenerationResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunKeywordsExtractionGenerationResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunKeywordsExtractionGenerationResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunKeywordsExtractionGenerationResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunKeywordsExtractionGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunKeywordsExtractionGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunKeywordsExtractionGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunKeywordsExtractionGenerationResponse) SetHeaders(v map[string]*string) *RunKeywordsExtractionGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponse) SetStatusCode(v int32) *RunKeywordsExtractionGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunKeywordsExtractionGenerationResponse) SetBody(v *RunKeywordsExtractionGenerationResponseBody) *RunKeywordsExtractionGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type RunStyleFeatureAnalysisRequest struct {
+	Contents    []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	MaterialIds []*int64  `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunStyleFeatureAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisRequest) SetContents(v []*string) *RunStyleFeatureAnalysisRequest {
+	s.Contents = v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisRequest) SetMaterialIds(v []*int64) *RunStyleFeatureAnalysisRequest {
+	s.MaterialIds = v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisRequest) SetWorkspaceId(v string) *RunStyleFeatureAnalysisRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunStyleFeatureAnalysisShrinkRequest struct {
+	ContentsShrink    *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	MaterialIdsShrink *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunStyleFeatureAnalysisShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisShrinkRequest) SetContentsShrink(v string) *RunStyleFeatureAnalysisShrinkRequest {
+	s.ContentsShrink = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisShrinkRequest) SetMaterialIdsShrink(v string) *RunStyleFeatureAnalysisShrinkRequest {
+	s.MaterialIdsShrink = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisShrinkRequest) SetWorkspaceId(v string) *RunStyleFeatureAnalysisShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunStyleFeatureAnalysisResponseBody struct {
+	End     *bool                                       `json:"End,omitempty" xml:"End,omitempty"`
+	Header  *RunStyleFeatureAnalysisResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunStyleFeatureAnalysisResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunStyleFeatureAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisResponseBody) SetEnd(v bool) *RunStyleFeatureAnalysisResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBody) SetHeader(v *RunStyleFeatureAnalysisResponseBodyHeader) *RunStyleFeatureAnalysisResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBody) SetPayload(v *RunStyleFeatureAnalysisResponseBodyPayload) *RunStyleFeatureAnalysisResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBody) SetRequestId(v string) *RunStyleFeatureAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunStyleFeatureAnalysisResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyHeader) SetErrorCode(v string) *RunStyleFeatureAnalysisResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyHeader) SetErrorMessage(v string) *RunStyleFeatureAnalysisResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyHeader) SetEvent(v string) *RunStyleFeatureAnalysisResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyHeader) SetEventInfo(v string) *RunStyleFeatureAnalysisResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyHeader) SetSessionId(v string) *RunStyleFeatureAnalysisResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyHeader) SetTaskId(v string) *RunStyleFeatureAnalysisResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyHeader) SetTraceId(v string) *RunStyleFeatureAnalysisResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunStyleFeatureAnalysisResponseBodyPayload struct {
+	Output *RunStyleFeatureAnalysisResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunStyleFeatureAnalysisResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyPayload) SetOutput(v *RunStyleFeatureAnalysisResponseBodyPayloadOutput) *RunStyleFeatureAnalysisResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyPayload) SetUsage(v *RunStyleFeatureAnalysisResponseBodyPayloadUsage) *RunStyleFeatureAnalysisResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunStyleFeatureAnalysisResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 这是测试输出
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyPayloadOutput) SetText(v string) *RunStyleFeatureAnalysisResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunStyleFeatureAnalysisResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyPayloadUsage) SetInputTokens(v int64) *RunStyleFeatureAnalysisResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunStyleFeatureAnalysisResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunStyleFeatureAnalysisResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunStyleFeatureAnalysisResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunStyleFeatureAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunStyleFeatureAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStyleFeatureAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunStyleFeatureAnalysisResponse) SetHeaders(v map[string]*string) *RunStyleFeatureAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponse) SetStatusCode(v int32) *RunStyleFeatureAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunStyleFeatureAnalysisResponse) SetBody(v *RunStyleFeatureAnalysisResponseBody) *RunStyleFeatureAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type RunSummaryGenerateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 创新政务社交媒体功能。鼓励各地区、各部门结合实际，开发政务社交媒体的特色功能，如在线咨询服务、政策解读、互动问答等，增强政务社交媒体的互动性和实用性，提升公众参与度。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 请为上述内容生成一段摘要，字数在100~200字以内。
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunSummaryGenerateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSummaryGenerateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSummaryGenerateRequest) SetContent(v string) *RunSummaryGenerateRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSummaryGenerateRequest) SetPrompt(v string) *RunSummaryGenerateRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunSummaryGenerateRequest) SetWorkspaceId(v string) *RunSummaryGenerateRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunSummaryGenerateResponseBody struct {
+	End     *bool                                  `json:"End,omitempty" xml:"End,omitempty"`
+	Header  *RunSummaryGenerateResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunSummaryGenerateResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunSummaryGenerateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSummaryGenerateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunSummaryGenerateResponseBody) SetEnd(v bool) *RunSummaryGenerateResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBody) SetHeader(v *RunSummaryGenerateResponseBodyHeader) *RunSummaryGenerateResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBody) SetPayload(v *RunSummaryGenerateResponseBodyPayload) *RunSummaryGenerateResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBody) SetRequestId(v string) *RunSummaryGenerateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunSummaryGenerateResponseBodyHeader struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Pop sign mismatch, please check.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// result-generated
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 模型生成事件
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunSummaryGenerateResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSummaryGenerateResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunSummaryGenerateResponseBodyHeader) SetErrorCode(v string) *RunSummaryGenerateResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyHeader) SetErrorMessage(v string) *RunSummaryGenerateResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyHeader) SetEvent(v string) *RunSummaryGenerateResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyHeader) SetEventInfo(v string) *RunSummaryGenerateResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyHeader) SetSessionId(v string) *RunSummaryGenerateResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyHeader) SetTaskId(v string) *RunSummaryGenerateResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyHeader) SetTraceId(v string) *RunSummaryGenerateResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunSummaryGenerateResponseBodyPayload struct {
+	Output *RunSummaryGenerateResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunSummaryGenerateResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunSummaryGenerateResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSummaryGenerateResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunSummaryGenerateResponseBodyPayload) SetOutput(v *RunSummaryGenerateResponseBodyPayloadOutput) *RunSummaryGenerateResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyPayload) SetUsage(v *RunSummaryGenerateResponseBodyPayloadUsage) *RunSummaryGenerateResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunSummaryGenerateResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 这是测试输出
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunSummaryGenerateResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSummaryGenerateResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunSummaryGenerateResponseBodyPayloadOutput) SetText(v string) *RunSummaryGenerateResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunSummaryGenerateResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunSummaryGenerateResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSummaryGenerateResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunSummaryGenerateResponseBodyPayloadUsage) SetInputTokens(v int64) *RunSummaryGenerateResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunSummaryGenerateResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunSummaryGenerateResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunSummaryGenerateResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunSummaryGenerateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunSummaryGenerateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSummaryGenerateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunSummaryGenerateResponse) SetHeaders(v map[string]*string) *RunSummaryGenerateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunSummaryGenerateResponse) SetStatusCode(v int32) *RunSummaryGenerateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSummaryGenerateResponse) SetBody(v *RunSummaryGenerateResponseBody) *RunSummaryGenerateResponse {
+	s.Body = v
+	return s
+}
+
+type RunTextPolishingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文本内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunTextPolishingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTextPolishingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTextPolishingRequest) SetContent(v string) *RunTextPolishingRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunTextPolishingRequest) SetWorkspaceId(v string) *RunTextPolishingRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunTextPolishingResponseBody struct {
+	Header  *RunTextPolishingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunTextPolishingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunTextPolishingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTextPolishingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunTextPolishingResponseBody) SetHeader(v *RunTextPolishingResponseBodyHeader) *RunTextPolishingResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunTextPolishingResponseBody) SetPayload(v *RunTextPolishingResponseBodyPayload) *RunTextPolishingResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunTextPolishingResponseBody) SetRequestId(v string) *RunTextPolishingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunTextPolishingResponseBodyHeader struct {
+	// example:
+	//
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 全链路ID
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunTextPolishingResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTextPolishingResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunTextPolishingResponseBodyHeader) SetErrorCode(v string) *RunTextPolishingResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyHeader) SetErrorMessage(v string) *RunTextPolishingResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyHeader) SetEvent(v string) *RunTextPolishingResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyHeader) SetOriginSessionId(v string) *RunTextPolishingResponseBodyHeader {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyHeader) SetSessionId(v string) *RunTextPolishingResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyHeader) SetTaskId(v string) *RunTextPolishingResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyHeader) SetTraceId(v string) *RunTextPolishingResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunTextPolishingResponseBodyPayload struct {
+	Output *RunTextPolishingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunTextPolishingResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunTextPolishingResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTextPolishingResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunTextPolishingResponseBodyPayload) SetOutput(v *RunTextPolishingResponseBodyPayloadOutput) *RunTextPolishingResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyPayload) SetUsage(v *RunTextPolishingResponseBodyPayloadUsage) *RunTextPolishingResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunTextPolishingResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 文本生成结果
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunTextPolishingResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTextPolishingResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunTextPolishingResponseBodyPayloadOutput) SetText(v string) *RunTextPolishingResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunTextPolishingResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunTextPolishingResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTextPolishingResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunTextPolishingResponseBodyPayloadUsage) SetInputTokens(v int64) *RunTextPolishingResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunTextPolishingResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunTextPolishingResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunTextPolishingResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunTextPolishingResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunTextPolishingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunTextPolishingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTextPolishingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunTextPolishingResponse) SetHeaders(v map[string]*string) *RunTextPolishingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunTextPolishingResponse) SetStatusCode(v int32) *RunTextPolishingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTextPolishingResponse) SetBody(v *RunTextPolishingResponseBody) *RunTextPolishingResponse {
+	s.Body = v
+	return s
+}
+
+type RunTitleGenerationRequest struct {
+	// This parameter is required.
+	ReferenceData *RunTitleGenerationRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunTitleGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationRequest) SetReferenceData(v *RunTitleGenerationRequestReferenceData) *RunTitleGenerationRequest {
+	s.ReferenceData = v
+	return s
+}
+
+func (s *RunTitleGenerationRequest) SetTaskId(v string) *RunTitleGenerationRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTitleGenerationRequest) SetWorkspaceId(v string) *RunTitleGenerationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunTitleGenerationRequestReferenceData struct {
+	// This parameter is required.
+	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+}
+
+func (s RunTitleGenerationRequestReferenceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationRequestReferenceData) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationRequestReferenceData) SetContents(v []*string) *RunTitleGenerationRequestReferenceData {
+	s.Contents = v
+	return s
+}
+
+type RunTitleGenerationShrinkRequest struct {
+	// This parameter is required.
+	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunTitleGenerationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationShrinkRequest) SetReferenceDataShrink(v string) *RunTitleGenerationShrinkRequest {
+	s.ReferenceDataShrink = &v
+	return s
+}
+
+func (s *RunTitleGenerationShrinkRequest) SetTaskId(v string) *RunTitleGenerationShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTitleGenerationShrinkRequest) SetWorkspaceId(v string) *RunTitleGenerationShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunTitleGenerationResponseBody struct {
+	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Header         *RunTitleGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	HttpStatusCode *string                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Payload        *RunTitleGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RunTitleGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationResponseBody) SetCode(v string) *RunTitleGenerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBody) SetHeader(v *RunTitleGenerationResponseBodyHeader) *RunTitleGenerationResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBody) SetHttpStatusCode(v string) *RunTitleGenerationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBody) SetMessage(v string) *RunTitleGenerationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBody) SetPayload(v *RunTitleGenerationResponseBodyPayload) *RunTitleGenerationResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBody) SetRequestId(v string) *RunTitleGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBody) SetSuccess(v bool) *RunTitleGenerationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RunTitleGenerationResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbid
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// xxx
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// 50a1cc8e-717e-4a2b-a76b-dc9734a8564b
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0a3d448f17000139741898287e0eb3
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunTitleGenerationResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationResponseBodyHeader) SetErrorCode(v string) *RunTitleGenerationResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyHeader) SetErrorMessage(v string) *RunTitleGenerationResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyHeader) SetEvent(v string) *RunTitleGenerationResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyHeader) SetSessionId(v string) *RunTitleGenerationResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyHeader) SetStatusCode(v int32) *RunTitleGenerationResponseBodyHeader {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyHeader) SetTaskId(v string) *RunTitleGenerationResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyHeader) SetTraceId(v string) *RunTitleGenerationResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunTitleGenerationResponseBodyPayload struct {
+	Output *RunTitleGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunTitleGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunTitleGenerationResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationResponseBodyPayload) SetOutput(v *RunTitleGenerationResponseBodyPayloadOutput) *RunTitleGenerationResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyPayload) SetUsage(v *RunTitleGenerationResponseBodyPayloadUsage) *RunTitleGenerationResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunTitleGenerationResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunTitleGenerationResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationResponseBodyPayloadOutput) SetText(v string) *RunTitleGenerationResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunTitleGenerationResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunTitleGenerationResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationResponseBodyPayloadUsage) SetInputTokens(v int64) *RunTitleGenerationResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunTitleGenerationResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunTitleGenerationResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunTitleGenerationResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunTitleGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunTitleGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTitleGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunTitleGenerationResponse) SetHeaders(v map[string]*string) *RunTitleGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunTitleGenerationResponse) SetStatusCode(v int32) *RunTitleGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTitleGenerationResponse) SetBody(v *RunTitleGenerationResponseBody) *RunTitleGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type RunTranslateGenerationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// toEnglish
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	ReferenceData *RunTranslateGenerationRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunTranslateGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationRequest) SetPrompt(v string) *RunTranslateGenerationRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunTranslateGenerationRequest) SetReferenceData(v *RunTranslateGenerationRequestReferenceData) *RunTranslateGenerationRequest {
+	s.ReferenceData = v
+	return s
+}
+
+func (s *RunTranslateGenerationRequest) SetTaskId(v string) *RunTranslateGenerationRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTranslateGenerationRequest) SetWorkspaceId(v string) *RunTranslateGenerationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunTranslateGenerationRequestReferenceData struct {
+	// This parameter is required.
+	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+}
+
+func (s RunTranslateGenerationRequestReferenceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationRequestReferenceData) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationRequestReferenceData) SetContents(v []*string) *RunTranslateGenerationRequestReferenceData {
+	s.Contents = v
+	return s
+}
+
+type RunTranslateGenerationShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// toEnglish
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunTranslateGenerationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationShrinkRequest) SetPrompt(v string) *RunTranslateGenerationShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunTranslateGenerationShrinkRequest) SetReferenceDataShrink(v string) *RunTranslateGenerationShrinkRequest {
+	s.ReferenceDataShrink = &v
+	return s
+}
+
+func (s *RunTranslateGenerationShrinkRequest) SetTaskId(v string) *RunTranslateGenerationShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTranslateGenerationShrinkRequest) SetWorkspaceId(v string) *RunTranslateGenerationShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunTranslateGenerationResponseBody struct {
+	Header  *RunTranslateGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunTranslateGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// DA021073-17CE-5CCF-9FEB-93226C766887
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunTranslateGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationResponseBody) SetHeader(v *RunTranslateGenerationResponseBodyHeader) *RunTranslateGenerationResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBody) SetPayload(v *RunTranslateGenerationResponseBodyPayload) *RunTranslateGenerationResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBody) SetRequestId(v string) *RunTranslateGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunTranslateGenerationResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbid
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// xx
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 91C2B2B8-7D12-4A8D-A724-1E576D30C096
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0abb781d17146157564845243e20b5
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunTranslateGenerationResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationResponseBodyHeader) SetErrorCode(v string) *RunTranslateGenerationResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyHeader) SetErrorMessage(v string) *RunTranslateGenerationResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyHeader) SetEvent(v string) *RunTranslateGenerationResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyHeader) SetSessionId(v string) *RunTranslateGenerationResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyHeader) SetTaskId(v string) *RunTranslateGenerationResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyHeader) SetTraceId(v string) *RunTranslateGenerationResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunTranslateGenerationResponseBodyPayload struct {
+	Output *RunTranslateGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunTranslateGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunTranslateGenerationResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationResponseBodyPayload) SetOutput(v *RunTranslateGenerationResponseBodyPayloadOutput) *RunTranslateGenerationResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyPayload) SetUsage(v *RunTranslateGenerationResponseBodyPayloadUsage) *RunTranslateGenerationResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunTranslateGenerationResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunTranslateGenerationResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationResponseBodyPayloadOutput) SetText(v string) *RunTranslateGenerationResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunTranslateGenerationResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunTranslateGenerationResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationResponseBodyPayloadUsage) SetInputTokens(v int64) *RunTranslateGenerationResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunTranslateGenerationResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunTranslateGenerationResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunTranslateGenerationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunTranslateGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunTranslateGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTranslateGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunTranslateGenerationResponse) SetHeaders(v map[string]*string) *RunTranslateGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunTranslateGenerationResponse) SetStatusCode(v int32) *RunTranslateGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTranslateGenerationResponse) SetBody(v *RunTranslateGenerationResponseBody) *RunTranslateGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type RunWriteToneGenerationRequest struct {
+	// This parameter is required.
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	ReferenceData *RunWriteToneGenerationRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunWriteToneGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationRequest) SetPrompt(v string) *RunWriteToneGenerationRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationRequest) SetReferenceData(v *RunWriteToneGenerationRequestReferenceData) *RunWriteToneGenerationRequest {
+	s.ReferenceData = v
+	return s
+}
+
+func (s *RunWriteToneGenerationRequest) SetTaskId(v string) *RunWriteToneGenerationRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationRequest) SetWorkspaceId(v string) *RunWriteToneGenerationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunWriteToneGenerationRequestReferenceData struct {
+	// This parameter is required.
+	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+}
+
+func (s RunWriteToneGenerationRequestReferenceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationRequestReferenceData) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationRequestReferenceData) SetContents(v []*string) *RunWriteToneGenerationRequestReferenceData {
+	s.Contents = v
+	return s
+}
+
+type RunWriteToneGenerationShrinkRequest struct {
+	// This parameter is required.
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// example:
+	//
+	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunWriteToneGenerationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationShrinkRequest) SetPrompt(v string) *RunWriteToneGenerationShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationShrinkRequest) SetReferenceDataShrink(v string) *RunWriteToneGenerationShrinkRequest {
+	s.ReferenceDataShrink = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationShrinkRequest) SetTaskId(v string) *RunWriteToneGenerationShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationShrinkRequest) SetWorkspaceId(v string) *RunWriteToneGenerationShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunWriteToneGenerationResponseBody struct {
+	Header  *RunWriteToneGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunWriteToneGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// FB698445-61DA-5361-BF73-1C5F1157E888
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunWriteToneGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationResponseBody) SetHeader(v *RunWriteToneGenerationResponseBodyHeader) *RunWriteToneGenerationResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBody) SetPayload(v *RunWriteToneGenerationResponseBodyPayload) *RunWriteToneGenerationResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBody) SetRequestId(v string) *RunWriteToneGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunWriteToneGenerationResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbid
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// xxx
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// F1953EE6-157C-40DC-BBF1-87C98AC27C51
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// F1953EE6-157C-40DC-BBF1-87C98AC27C51
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// F1953EE6-157C-40DC-BBF1-87C98AC27C51
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunWriteToneGenerationResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationResponseBodyHeader) SetErrorCode(v string) *RunWriteToneGenerationResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyHeader) SetErrorMessage(v string) *RunWriteToneGenerationResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyHeader) SetEvent(v string) *RunWriteToneGenerationResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyHeader) SetSessionId(v string) *RunWriteToneGenerationResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyHeader) SetTaskId(v string) *RunWriteToneGenerationResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyHeader) SetTraceId(v string) *RunWriteToneGenerationResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunWriteToneGenerationResponseBodyPayload struct {
+	Output *RunWriteToneGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunWriteToneGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunWriteToneGenerationResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationResponseBodyPayload) SetOutput(v *RunWriteToneGenerationResponseBodyPayloadOutput) *RunWriteToneGenerationResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyPayload) SetUsage(v *RunWriteToneGenerationResponseBodyPayloadUsage) *RunWriteToneGenerationResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunWriteToneGenerationResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunWriteToneGenerationResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationResponseBodyPayloadOutput) SetText(v string) *RunWriteToneGenerationResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunWriteToneGenerationResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunWriteToneGenerationResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationResponseBodyPayloadUsage) SetInputTokens(v int64) *RunWriteToneGenerationResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunWriteToneGenerationResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunWriteToneGenerationResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunWriteToneGenerationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunWriteToneGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunWriteToneGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWriteToneGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunWriteToneGenerationResponse) SetHeaders(v map[string]*string) *RunWriteToneGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponse) SetStatusCode(v int32) *RunWriteToneGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunWriteToneGenerationResponse) SetBody(v *RunWriteToneGenerationResponseBody) *RunWriteToneGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type RunWritingRequest struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 提示词
+	Prompt        *string                         `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ReferenceData *RunWritingRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId   *string                         `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WritingConfig *RunWritingRequestWritingConfig `json:"WritingConfig,omitempty" xml:"WritingConfig,omitempty" type:"Struct"`
+}
+
+func (s RunWritingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingRequest) SetOriginSessionId(v string) *RunWritingRequest {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunWritingRequest) SetPrompt(v string) *RunWritingRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunWritingRequest) SetReferenceData(v *RunWritingRequestReferenceData) *RunWritingRequest {
+	s.ReferenceData = v
+	return s
+}
+
+func (s *RunWritingRequest) SetSessionId(v string) *RunWritingRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingRequest) SetTaskId(v string) *RunWritingRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWritingRequest) SetWorkspaceId(v string) *RunWritingRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *RunWritingRequest) SetWritingConfig(v *RunWritingRequestWritingConfig) *RunWritingRequest {
+	s.WritingConfig = v
+	return s
+}
+
+type RunWritingRequestReferenceData struct {
+	Articles []*RunWritingRequestReferenceDataArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+}
+
+func (s RunWritingRequestReferenceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingRequestReferenceData) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingRequestReferenceData) SetArticles(v []*RunWritingRequestReferenceDataArticles) *RunWritingRequestReferenceData {
+	s.Articles = v
+	return s
+}
+
+type RunWritingRequestReferenceDataArticles struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 2124ca4d48a542d788aa86151e1a8c8b
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-08-28 11:38:28
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标签
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunWritingRequestReferenceDataArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingRequestReferenceDataArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetAuthor(v string) *RunWritingRequestReferenceDataArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetContent(v string) *RunWritingRequestReferenceDataArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetDocId(v string) *RunWritingRequestReferenceDataArticles {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetDocUuid(v string) *RunWritingRequestReferenceDataArticles {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetPubTime(v string) *RunWritingRequestReferenceDataArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetSource(v string) *RunWritingRequestReferenceDataArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetSummary(v string) *RunWritingRequestReferenceDataArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetTag(v string) *RunWritingRequestReferenceDataArticles {
+	s.Tag = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetTitle(v string) *RunWritingRequestReferenceDataArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunWritingRequestReferenceDataArticles) SetUrl(v string) *RunWritingRequestReferenceDataArticles {
+	s.Url = &v
+	return s
+}
+
+type RunWritingRequestWritingConfig struct {
+	// example:
+	//
+	// 写作领域，media:传媒,government:政务,market:营销
+	Domain    *string                                  `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	PromptTag *RunWritingRequestWritingConfigPromptTag `json:"PromptTag,omitempty" xml:"PromptTag,omitempty" type:"Struct"`
+	Tags      []*RunWritingRequestWritingConfigTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	UseSearch *bool `json:"UseSearch,omitempty" xml:"UseSearch,omitempty"`
+}
+
+func (s RunWritingRequestWritingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingRequestWritingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingRequestWritingConfig) SetDomain(v string) *RunWritingRequestWritingConfig {
+	s.Domain = &v
+	return s
+}
+
+func (s *RunWritingRequestWritingConfig) SetPromptTag(v *RunWritingRequestWritingConfigPromptTag) *RunWritingRequestWritingConfig {
+	s.PromptTag = v
+	return s
+}
+
+func (s *RunWritingRequestWritingConfig) SetTags(v []*RunWritingRequestWritingConfigTags) *RunWritingRequestWritingConfig {
+	s.Tags = v
+	return s
+}
+
+func (s *RunWritingRequestWritingConfig) SetUseSearch(v bool) *RunWritingRequestWritingConfig {
+	s.UseSearch = &v
+	return s
+}
+
+type RunWritingRequestWritingConfigPromptTag struct {
+	// example:
+	//
+	// 必要提示
+	NecessaryTips *string `json:"NecessaryTips,omitempty" xml:"NecessaryTips,omitempty"`
+	// example:
+	//
+	// 立场
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// 反向词
+	ReverseWords *string `json:"ReverseWords,omitempty" xml:"ReverseWords,omitempty"`
+	// example:
+	//
+	// 主题
+	Theme *string `json:"Theme,omitempty" xml:"Theme,omitempty"`
+}
+
+func (s RunWritingRequestWritingConfigPromptTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingRequestWritingConfigPromptTag) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingRequestWritingConfigPromptTag) SetNecessaryTips(v string) *RunWritingRequestWritingConfigPromptTag {
+	s.NecessaryTips = &v
+	return s
+}
+
+func (s *RunWritingRequestWritingConfigPromptTag) SetPosition(v string) *RunWritingRequestWritingConfigPromptTag {
+	s.Position = &v
+	return s
+}
+
+func (s *RunWritingRequestWritingConfigPromptTag) SetReverseWords(v string) *RunWritingRequestWritingConfigPromptTag {
+	s.ReverseWords = &v
+	return s
+}
+
+func (s *RunWritingRequestWritingConfigPromptTag) SetTheme(v string) *RunWritingRequestWritingConfigPromptTag {
+	s.Theme = &v
+	return s
+}
+
+type RunWritingRequestWritingConfigTags struct {
+	// example:
+	//
+	// 10
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// gcNumberSizeTag
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s RunWritingRequestWritingConfigTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingRequestWritingConfigTags) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingRequestWritingConfigTags) SetKeyword(v string) *RunWritingRequestWritingConfigTags {
+	s.Keyword = &v
+	return s
+}
+
+func (s *RunWritingRequestWritingConfigTags) SetTag(v string) *RunWritingRequestWritingConfigTags {
+	s.Tag = &v
+	return s
+}
+
+type RunWritingShrinkRequest struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 提示词
+	Prompt              *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WritingConfigShrink *string `json:"WritingConfig,omitempty" xml:"WritingConfig,omitempty"`
+}
+
+func (s RunWritingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingShrinkRequest) SetOriginSessionId(v string) *RunWritingShrinkRequest {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunWritingShrinkRequest) SetPrompt(v string) *RunWritingShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunWritingShrinkRequest) SetReferenceDataShrink(v string) *RunWritingShrinkRequest {
+	s.ReferenceDataShrink = &v
+	return s
+}
+
+func (s *RunWritingShrinkRequest) SetSessionId(v string) *RunWritingShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingShrinkRequest) SetTaskId(v string) *RunWritingShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWritingShrinkRequest) SetWorkspaceId(v string) *RunWritingShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *RunWritingShrinkRequest) SetWritingConfigShrink(v string) *RunWritingShrinkRequest {
+	s.WritingConfigShrink = &v
+	return s
+}
+
+type RunWritingResponseBody struct {
+	Header  *RunWritingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunWritingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunWritingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingResponseBody) SetHeader(v *RunWritingResponseBodyHeader) *RunWritingResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunWritingResponseBody) SetPayload(v *RunWritingResponseBodyPayload) *RunWritingResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunWritingResponseBody) SetRequestId(v string) *RunWritingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunWritingResponseBodyHeader struct {
+	// example:
+	//
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 400
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 全链路ID
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunWritingResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingResponseBodyHeader) SetErrorCode(v string) *RunWritingResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyHeader) SetErrorMessage(v string) *RunWritingResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyHeader) SetEvent(v string) *RunWritingResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyHeader) SetOriginSessionId(v string) *RunWritingResponseBodyHeader {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyHeader) SetSessionId(v string) *RunWritingResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyHeader) SetStatusCode(v int32) *RunWritingResponseBodyHeader {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyHeader) SetTaskId(v string) *RunWritingResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyHeader) SetTraceId(v string) *RunWritingResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunWritingResponseBodyPayload struct {
+	Output *RunWritingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunWritingResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunWritingResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingResponseBodyPayload) SetOutput(v *RunWritingResponseBodyPayloadOutput) *RunWritingResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayload) SetUsage(v *RunWritingResponseBodyPayloadUsage) *RunWritingResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunWritingResponseBodyPayloadOutput struct {
+	Articles []*RunWritingResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 文章精排之后的片段
+	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 大模型改变世界
+	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// example:
+	//
+	// 文本生成结果
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunWritingResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingResponseBodyPayloadOutput) SetArticles(v []*RunWritingResponseBodyPayloadOutputArticles) *RunWritingResponseBodyPayloadOutput {
+	s.Articles = v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutput) SetMiniDoc(v []*string) *RunWritingResponseBodyPayloadOutput {
+	s.MiniDoc = v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutput) SetSearchQuery(v string) *RunWritingResponseBodyPayloadOutput {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutput) SetText(v string) *RunWritingResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunWritingResponseBodyPayloadOutputArticles struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 98229f6001cf4deeb1668191d4eccc75
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-08-28 11:38:28
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标签
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunWritingResponseBodyPayloadOutputArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingResponseBodyPayloadOutputArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetAuthor(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetContent(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetDocId(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetDocUuid(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetPubTime(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetSource(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetSummary(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetTag(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.Tag = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetTitle(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadOutputArticles) SetUrl(v string) *RunWritingResponseBodyPayloadOutputArticles {
+	s.Url = &v
+	return s
+}
+
+type RunWritingResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 1
+	OutputTokens *int64            `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	TokenMap     map[string]*int64 `json:"TokenMap,omitempty" xml:"TokenMap,omitempty"`
+	// example:
+	//
+	// 2
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunWritingResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingResponseBodyPayloadUsage) SetInputTokens(v int64) *RunWritingResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunWritingResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadUsage) SetTokenMap(v map[string]*int64) *RunWritingResponseBodyPayloadUsage {
+	s.TokenMap = v
+	return s
+}
+
+func (s *RunWritingResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunWritingResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunWritingResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunWritingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunWritingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingResponse) SetHeaders(v map[string]*string) *RunWritingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunWritingResponse) SetStatusCode(v int32) *RunWritingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunWritingResponse) SetBody(v *RunWritingResponseBody) *RunWritingResponse {
+	s.Body = v
+	return s
+}
+
 type SaveCustomTextRequest struct {
 	// This parameter is required.
 	//
@@ -15194,6 +18767,806 @@ func (client *Client) QueryAsyncTask(request *QueryAsyncTaskRequest) (_result *Q
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAsyncTaskResponse{}
 	_body, _err := client.QueryAsyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容缩写
+//
+// @param request - RunAbbreviationContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunAbbreviationContentResponse
+func (client *Client) RunAbbreviationContentWithOptions(request *RunAbbreviationContentRequest, runtime *util.RuntimeOptions) (_result *RunAbbreviationContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunAbbreviationContent"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunAbbreviationContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容缩写
+//
+// @param request - RunAbbreviationContentRequest
+//
+// @return RunAbbreviationContentResponse
+func (client *Client) RunAbbreviationContent(request *RunAbbreviationContentRequest) (_result *RunAbbreviationContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunAbbreviationContentResponse{}
+	_body, _err := client.RunAbbreviationContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容续写
+//
+// @param request - RunContinueContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunContinueContentResponse
+func (client *Client) RunContinueContentWithOptions(request *RunContinueContentRequest, runtime *util.RuntimeOptions) (_result *RunContinueContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunContinueContent"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunContinueContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容续写
+//
+// @param request - RunContinueContentRequest
+//
+// @return RunContinueContentResponse
+func (client *Client) RunContinueContent(request *RunContinueContentRequest) (_result *RunContinueContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunContinueContentResponse{}
+	_body, _err := client.RunContinueContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容扩写
+//
+// @param request - RunExpandContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunExpandContentResponse
+func (client *Client) RunExpandContentWithOptions(request *RunExpandContentRequest, runtime *util.RuntimeOptions) (_result *RunExpandContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunExpandContent"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunExpandContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容扩写
+//
+// @param request - RunExpandContentRequest
+//
+// @return RunExpandContentResponse
+func (client *Client) RunExpandContent(request *RunExpandContentRequest) (_result *RunExpandContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunExpandContentResponse{}
+	_body, _err := client.RunExpandContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// AI妙笔-创作-抽取关键词
+//
+// @param tmpReq - RunKeywordsExtractionGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunKeywordsExtractionGenerationResponse
+func (client *Client) RunKeywordsExtractionGenerationWithOptions(tmpReq *RunKeywordsExtractionGenerationRequest, runtime *util.RuntimeOptions) (_result *RunKeywordsExtractionGenerationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunKeywordsExtractionGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReferenceData)) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, tea.String("ReferenceData"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReferenceDataShrink)) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunKeywordsExtractionGeneration"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunKeywordsExtractionGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// AI妙笔-创作-抽取关键词
+//
+// @param request - RunKeywordsExtractionGenerationRequest
+//
+// @return RunKeywordsExtractionGenerationResponse
+func (client *Client) RunKeywordsExtractionGeneration(request *RunKeywordsExtractionGenerationRequest) (_result *RunKeywordsExtractionGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunKeywordsExtractionGenerationResponse{}
+	_body, _err := client.RunKeywordsExtractionGenerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容特点分析
+//
+// @param tmpReq - RunStyleFeatureAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunStyleFeatureAnalysisResponse
+func (client *Client) RunStyleFeatureAnalysisWithOptions(tmpReq *RunStyleFeatureAnalysisRequest, runtime *util.RuntimeOptions) (_result *RunStyleFeatureAnalysisResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunStyleFeatureAnalysisShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Contents)) {
+		request.ContentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contents, tea.String("Contents"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MaterialIds)) {
+		request.MaterialIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MaterialIds, tea.String("MaterialIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentsShrink)) {
+		body["Contents"] = request.ContentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaterialIdsShrink)) {
+		body["MaterialIds"] = request.MaterialIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunStyleFeatureAnalysis"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunStyleFeatureAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容特点分析
+//
+// @param request - RunStyleFeatureAnalysisRequest
+//
+// @return RunStyleFeatureAnalysisResponse
+func (client *Client) RunStyleFeatureAnalysis(request *RunStyleFeatureAnalysisRequest) (_result *RunStyleFeatureAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunStyleFeatureAnalysisResponse{}
+	_body, _err := client.RunStyleFeatureAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容摘要生成
+//
+// @param request - RunSummaryGenerateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSummaryGenerateResponse
+func (client *Client) RunSummaryGenerateWithOptions(request *RunSummaryGenerateRequest, runtime *util.RuntimeOptions) (_result *RunSummaryGenerateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunSummaryGenerate"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunSummaryGenerateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 内容摘要生成
+//
+// @param request - RunSummaryGenerateRequest
+//
+// @return RunSummaryGenerateResponse
+func (client *Client) RunSummaryGenerate(request *RunSummaryGenerateRequest) (_result *RunSummaryGenerateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunSummaryGenerateResponse{}
+	_body, _err := client.RunSummaryGenerateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创作-文本润色
+//
+// @param request - RunTextPolishingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTextPolishingResponse
+func (client *Client) RunTextPolishingWithOptions(request *RunTextPolishingRequest, runtime *util.RuntimeOptions) (_result *RunTextPolishingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunTextPolishing"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunTextPolishingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创作-文本润色
+//
+// @param request - RunTextPolishingRequest
+//
+// @return RunTextPolishingResponse
+func (client *Client) RunTextPolishing(request *RunTextPolishingRequest) (_result *RunTextPolishingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunTextPolishingResponse{}
+	_body, _err := client.RunTextPolishingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙笔：标题生成
+//
+// @param tmpReq - RunTitleGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTitleGenerationResponse
+func (client *Client) RunTitleGenerationWithOptions(tmpReq *RunTitleGenerationRequest, runtime *util.RuntimeOptions) (_result *RunTitleGenerationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunTitleGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReferenceData)) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, tea.String("ReferenceData"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReferenceDataShrink)) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunTitleGeneration"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunTitleGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙笔：标题生成
+//
+// @param request - RunTitleGenerationRequest
+//
+// @return RunTitleGenerationResponse
+func (client *Client) RunTitleGeneration(request *RunTitleGenerationRequest) (_result *RunTitleGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunTitleGenerationResponse{}
+	_body, _err := client.RunTitleGenerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// AI妙笔-创作-中英文翻译
+//
+// @param tmpReq - RunTranslateGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTranslateGenerationResponse
+func (client *Client) RunTranslateGenerationWithOptions(tmpReq *RunTranslateGenerationRequest, runtime *util.RuntimeOptions) (_result *RunTranslateGenerationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunTranslateGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReferenceData)) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, tea.String("ReferenceData"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferenceDataShrink)) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunTranslateGeneration"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunTranslateGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// AI妙笔-创作-中英文翻译
+//
+// @param request - RunTranslateGenerationRequest
+//
+// @return RunTranslateGenerationResponse
+func (client *Client) RunTranslateGeneration(request *RunTranslateGenerationRequest) (_result *RunTranslateGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunTranslateGenerationResponse{}
+	_body, _err := client.RunTranslateGenerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// AI妙笔-创作-文风改写
+//
+// @param tmpReq - RunWriteToneGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunWriteToneGenerationResponse
+func (client *Client) RunWriteToneGenerationWithOptions(tmpReq *RunWriteToneGenerationRequest, runtime *util.RuntimeOptions) (_result *RunWriteToneGenerationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunWriteToneGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReferenceData)) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, tea.String("ReferenceData"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferenceDataShrink)) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunWriteToneGeneration"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunWriteToneGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// AI妙笔-创作-文风改写
+//
+// @param request - RunWriteToneGenerationRequest
+//
+// @return RunWriteToneGenerationResponse
+func (client *Client) RunWriteToneGeneration(request *RunWriteToneGenerationRequest) (_result *RunWriteToneGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunWriteToneGenerationResponse{}
+	_body, _err := client.RunWriteToneGenerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 直接写作
+//
+// @param tmpReq - RunWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunWritingResponse
+func (client *Client) RunWritingWithOptions(tmpReq *RunWritingRequest, runtime *util.RuntimeOptions) (_result *RunWritingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReferenceData)) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, tea.String("ReferenceData"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.WritingConfig)) {
+		request.WritingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingConfig, tea.String("WritingConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OriginSessionId)) {
+		body["OriginSessionId"] = request.OriginSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferenceDataShrink)) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WritingConfigShrink)) {
+		body["WritingConfig"] = request.WritingConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunWriting"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunWritingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 直接写作
+//
+// @param request - RunWritingRequest
+//
+// @return RunWritingResponse
+func (client *Client) RunWriting(request *RunWritingRequest) (_result *RunWritingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunWritingResponse{}
+	_body, _err := client.RunWritingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
