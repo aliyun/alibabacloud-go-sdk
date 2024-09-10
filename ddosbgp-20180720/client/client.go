@@ -3818,6 +3818,7 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// 30
 	DefenseTimesPercent *int32 `json:"DefenseTimesPercent,omitempty" xml:"DefenseTimesPercent,omitempty"`
+	DowngradeStatus     *int32 `json:"DowngradeStatus,omitempty" xml:"DowngradeStatus,omitempty"`
 	// The region ID of the Anti-DDoS Origin Enterprise instance.
 	//
 	// example:
@@ -3875,6 +3876,11 @@ func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetDefenseTimesPercent(
 	return s
 }
 
+func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetDowngradeStatus(v int32) *DescribeInstanceSpecsResponseBodyInstanceSpecs {
+	s.DowngradeStatus = &v
+	return s
+}
+
 func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetInstanceId(v string) *DescribeInstanceSpecsResponseBodyInstanceSpecs {
 	s.InstanceId = &v
 	return s
@@ -3912,7 +3918,9 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig struct {
 	// example:
 	//
 	// 0
-	BindIpCount *int32 `json:"BindIpCount,omitempty" xml:"BindIpCount,omitempty"`
+	BindIpCount   *int32  `json:"BindIpCount,omitempty" xml:"BindIpCount,omitempty"`
+	ElasticBwMbps *int32  `json:"ElasticBwMbps,omitempty" xml:"ElasticBwMbps,omitempty"`
+	ElasticBwMode *string `json:"ElasticBwMode,omitempty" xml:"ElasticBwMode,omitempty"`
 	// The burstable protection bandwidth of each protected IP address. Unit: Gbit/s.
 	//
 	// example:
@@ -3966,6 +3974,16 @@ func (s *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig) SetBandwidth(
 
 func (s *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig) SetBindIpCount(v int32) *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig {
 	s.BindIpCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig) SetElasticBwMbps(v int32) *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig {
+	s.ElasticBwMbps = &v
+	return s
+}
+
+func (s *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig) SetElasticBwMode(v string) *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig {
+	s.ElasticBwMode = &v
 	return s
 }
 
@@ -6558,7 +6576,10 @@ type ListPolicyRequest struct {
 	// example:
 	//
 	// 10
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The type of the policy. Valid values:
 	//
@@ -6665,7 +6686,10 @@ type ListPolicyResponseBodyPolicyList struct {
 	// example:
 	//
 	// test**
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the policy. Valid values:
 	//
