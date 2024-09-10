@@ -69,10 +69,11 @@ type CreateTaskRequestInput struct {
 	// example:
 	//
 	// pcm
-	Format                      *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	MultipleStreamsEnabled      *bool   `json:"MultipleStreamsEnabled,omitempty" xml:"MultipleStreamsEnabled,omitempty"`
-	OutputPath                  *string `json:"OutputPath,omitempty" xml:"OutputPath,omitempty"`
-	ProgressiveCallbacksEnabled *bool   `json:"ProgressiveCallbacksEnabled,omitempty" xml:"ProgressiveCallbacksEnabled,omitempty"`
+	Format                      *string   `json:"Format,omitempty" xml:"Format,omitempty"`
+	LanguageHints               []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
+	MultipleStreamsEnabled      *bool     `json:"MultipleStreamsEnabled,omitempty" xml:"MultipleStreamsEnabled,omitempty"`
+	OutputPath                  *string   `json:"OutputPath,omitempty" xml:"OutputPath,omitempty"`
+	ProgressiveCallbacksEnabled *bool     `json:"ProgressiveCallbacksEnabled,omitempty" xml:"ProgressiveCallbacksEnabled,omitempty"`
 	// example:
 	//
 	// 16000
@@ -105,6 +106,11 @@ func (s *CreateTaskRequestInput) SetFileUrl(v string) *CreateTaskRequestInput {
 
 func (s *CreateTaskRequestInput) SetFormat(v string) *CreateTaskRequestInput {
 	s.Format = &v
+	return s
+}
+
+func (s *CreateTaskRequestInput) SetLanguageHints(v []*string) *CreateTaskRequestInput {
+	s.LanguageHints = v
 	return s
 }
 
