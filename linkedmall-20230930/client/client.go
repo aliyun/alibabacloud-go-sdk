@@ -3617,7 +3617,8 @@ type Sku struct {
 	// example:
 	//
 	// Online
-	SkuStatus *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
+	SkuStatus            *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
+	SuggestedRetailPrice *int64  `json:"suggestedRetailPrice,omitempty" xml:"suggestedRetailPrice,omitempty"`
 	// example:
 	//
 	// 天蓝色
@@ -3709,6 +3710,11 @@ func (s *Sku) SetSkuSpecsCode(v string) *Sku {
 
 func (s *Sku) SetSkuStatus(v string) *Sku {
 	s.SkuStatus = &v
+	return s
+}
+
+func (s *Sku) SetSuggestedRetailPrice(v int64) *Sku {
+	s.SuggestedRetailPrice = &v
 	return s
 }
 
