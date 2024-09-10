@@ -617,6 +617,7 @@ type Task struct {
 	// This parameter is required.
 	SparkVersion *string            `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
 	Tags         map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	Timeout      *int32             `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -811,6 +812,11 @@ func (s *Task) SetSparkVersion(v string) *Task {
 
 func (s *Task) SetTags(v map[string]*string) *Task {
 	s.Tags = v
+	return s
+}
+
+func (s *Task) SetTimeout(v int32) *Task {
+	s.Timeout = &v
 	return s
 }
 
@@ -2712,19 +2718,19 @@ type ListReleaseVersionsRequest struct {
 	//
 	// 	- stable
 	//
-	// 	- beta
+	// 	- Beta
 	//
 	// example:
 	//
 	// stable
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
-	// The version of Serverless Spark.
+	// The version of EMR Serverless Spark.
 	//
 	// example:
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The status of the version. Valid values:
+	// The status of the version.
 	//
 	// Valid values:
 	//
@@ -2736,6 +2742,7 @@ type ListReleaseVersionsRequest struct {
 	//
 	// ONLINE
 	ReleaseVersionStatus *string `json:"releaseVersionStatus,omitempty" xml:"releaseVersionStatus,omitempty"`
+	WorkspaceId          *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ListReleaseVersionsRequest) String() string {
@@ -2763,6 +2770,11 @@ func (s *ListReleaseVersionsRequest) SetReleaseVersion(v string) *ListReleaseVer
 
 func (s *ListReleaseVersionsRequest) SetReleaseVersionStatus(v string) *ListReleaseVersionsRequest {
 	s.ReleaseVersionStatus = &v
+	return s
+}
+
+func (s *ListReleaseVersionsRequest) SetWorkspaceId(v string) *ListReleaseVersionsRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -2836,9 +2848,19 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	// Spark 3.3.1
 	CommunityVersion *string `json:"communityVersion,omitempty" xml:"communityVersion,omitempty"`
 	// The CPU architectures.
-	CpuArchitectures      []*string `json:"cpuArchitectures,omitempty" xml:"cpuArchitectures,omitempty" type:"Repeated"`
-	DisplayReleaseVersion *string   `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	Fusion                *bool     `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	CpuArchitectures []*string `json:"cpuArchitectures,omitempty" xml:"cpuArchitectures,omitempty" type:"Repeated"`
+	// The version number.
+	//
+	// example:
+	//
+	// esr-2.1 (Spark 3.3.1, Scala 2.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Indicates whether the Fusion engine is used for acceleration.
+	//
+	// example:
+	//
+	// true
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -2851,7 +2873,7 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// ASI
 	IaasType *string `json:"iaasType,omitempty" xml:"iaasType,omitempty"`
-	// The version.
+	// The version number.
 	//
 	// example:
 	//
@@ -4693,7 +4715,7 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 
 // Summary:
 //
-// 使用session运行SQL
+// Creates an SQL query task.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -4760,7 +4782,7 @@ func (client *Client) CreateSqlStatementWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// 使用session运行SQL
+// Creates an SQL query task.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -4843,7 +4865,7 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 
 // Summary:
 //
-// 获取Sql Statement状态
+// Queries the status of an SQL query task.
 //
 // @param request - GetSqlStatementRequest
 //
@@ -4888,7 +4910,7 @@ func (client *Client) GetSqlStatementWithOptions(workspaceId *string, statementI
 
 // Summary:
 //
-// 获取Sql Statement状态
+// Queries the status of an SQL query task.
 //
 // @param request - GetSqlStatementRequest
 //
@@ -5107,7 +5129,7 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 
 // Summary:
 //
-// 获取发布版本列表
+// Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
 //
 // @param request - ListReleaseVersionsRequest
 //
@@ -5138,6 +5160,10 @@ func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersion
 		query["releaseVersionStatus"] = request.ReleaseVersionStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5164,7 +5190,7 @@ func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersion
 
 // Summary:
 //
-// 获取发布版本列表
+// Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
 //
 // @param request - ListReleaseVersionsRequest
 //
@@ -5529,7 +5555,7 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 
 // Summary:
 //
-// 终止 session statement
+// Terminates an SQL query task.
 //
 // @param request - TerminateSqlStatementRequest
 //
@@ -5574,7 +5600,7 @@ func (client *Client) TerminateSqlStatementWithOptions(workspaceId *string, stat
 
 // Summary:
 //
-// 终止 session statement
+// Terminates an SQL query task.
 //
 // @param request - TerminateSqlStatementRequest
 //
