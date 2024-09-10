@@ -254,6 +254,7 @@ func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRules(
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
+	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
 	// The destination CIDR block that is used to match packets.
 	//
 	// Packets whose destination IP addresses fall into the specified destination CIDR block are considered a match. If you do not specify a destination CIDR block, packets are considered a match regardless of the destination IP address.
@@ -362,6 +363,11 @@ func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) Strin
 
 func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) GoString() string {
 	return s.String()
+}
+
+func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetAddressFamily(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.AddressFamily = &v
+	return s
 }
 
 func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetDstCidr(v string) *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules {
@@ -3772,6 +3778,7 @@ func (s *CreateTrafficMarkingPolicyRequest) SetTransitRouterId(v string) *Create
 }
 
 type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
+	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
 	// The destination CIDR block that is used to match packets.
 	//
 	// Packets whose destination IP addresses fall into the specified destination CIDR block meet the traffic classification rule. If you do not specify a destination CIDR block, all packets meet the traffic classification rule.
@@ -3896,6 +3903,11 @@ func (s CreateTrafficMarkingPolicyRequestTrafficMatchRules) String() string {
 
 func (s CreateTrafficMarkingPolicyRequestTrafficMatchRules) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTrafficMarkingPolicyRequestTrafficMatchRules) SetAddressFamily(v string) *CreateTrafficMarkingPolicyRequestTrafficMatchRules {
+	s.AddressFamily = &v
+	return s
 }
 
 func (s *CreateTrafficMarkingPolicyRequestTrafficMatchRules) SetDstCidr(v string) *CreateTrafficMarkingPolicyRequestTrafficMatchRules {
@@ -6780,7 +6792,8 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId                   *string            `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 	// The VPC ID.
 	//
 	// This parameter is required.
@@ -6883,6 +6896,11 @@ func (s *CreateTransitRouterVpcAttachmentRequest) SetTransitRouterId(v string) *
 	return s
 }
 
+func (s *CreateTransitRouterVpcAttachmentRequest) SetTransitRouterVPCAttachmentOptions(v map[string]*string) *CreateTransitRouterVpcAttachmentRequest {
+	s.TransitRouterVPCAttachmentOptions = v
+	return s
+}
+
 func (s *CreateTransitRouterVpcAttachmentRequest) SetVpcId(v string) *CreateTransitRouterVpcAttachmentRequest {
 	s.VpcId = &v
 	return s
@@ -6978,6 +6996,294 @@ func (s *CreateTransitRouterVpcAttachmentRequestZoneMappings) SetVSwitchId(v str
 }
 
 func (s *CreateTransitRouterVpcAttachmentRequestZoneMappings) SetZoneId(v string) *CreateTransitRouterVpcAttachmentRequestZoneMappings {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateTransitRouterVpcAttachmentShrinkRequest struct {
+	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+	//
+	// 	- **false:*	- (default)
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
+	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	//
+	// example:
+	//
+	// cen-j3jzhw1zpau2km****
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The billing method. The default value is **POSTPAY**, which specifies the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-001****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request.
+	//
+	// 	- **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// example:
+	//
+	// false
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the VPC is deployed.
+	//
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The information about the tags.
+	//
+	// You can specify at most 20 tags in each call.
+	Tag []*CreateTransitRouterVpcAttachmentShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The description of the VPC connection.
+	//
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	//
+	// example:
+	//
+	// testname
+	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	// The name of the VPC connection.
+	//
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	//
+	// example:
+	//
+	// testname
+	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	// The ID of the Enterprise Edition transit router.
+	//
+	// example:
+	//
+	// tr-bp1su1ytdxtataupl****
+	TransitRouterId                         *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterVPCAttachmentOptionsShrink *string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
+	// The VPC ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp1kbjcre9vtsebo1****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs. The default value is the ID of the current Alibaba Cloud account.
+	//
+	// > If the network instance and CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
+	//
+	// example:
+	//
+	// 1250123456123456
+	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	// A zone that supports Enterprise Edition transit routers.
+	//
+	// You can specify at most 10 zones.
+	//
+	// This parameter is required.
+	ZoneMappings []*CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+}
+
+func (s CreateTransitRouterVpcAttachmentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterVpcAttachmentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetAutoPublishRouteEnabled(v bool) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.AutoPublishRouteEnabled = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetCenId(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetChargeType(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetClientToken(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetDryRun(v bool) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetOwnerAccount(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetOwnerId(v int64) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetRegionId(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetResourceOwnerAccount(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetResourceOwnerId(v int64) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetTag(v []*CreateTransitRouterVpcAttachmentShrinkRequestTag) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetTransitRouterAttachmentDescription(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetTransitRouterAttachmentName(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetTransitRouterId(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetTransitRouterVPCAttachmentOptionsShrink(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.TransitRouterVPCAttachmentOptionsShrink = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetVpcId(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetVpcOwnerId(v int64) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.VpcOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetZoneMappings(v []*CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.ZoneMappings = v
+	return s
+}
+
+type CreateTransitRouterVpcAttachmentShrinkRequestTag struct {
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
+	// example:
+	//
+	// tagtest
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// tagtest
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTransitRouterVpcAttachmentShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterVpcAttachmentShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequestTag) SetKey(v string) *CreateTransitRouterVpcAttachmentShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequestTag) SetValue(v string) *CreateTransitRouterVpcAttachmentShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings struct {
+	// A vSwitch that is deployed in the zone that supports Enterprise Edition transit routers.
+	//
+	// You can specify vSwitches for at most 10 zones in each call.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1a214sbus8z3b54****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the zone that supports Enterprise Edition transit routers.
+	//
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+	//
+	// You can specify at most 10 zones in each call.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings) SetVSwitchId(v string) *CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings) SetZoneId(v string) *CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings {
 	s.ZoneId = &v
 	return s
 }
@@ -17110,6 +17416,7 @@ type DescribeGrantRulesToCenRequest struct {
 	//
 	// 125012345612****
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	EnabledIpv6          *bool  `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
 	// 	- If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults*	- in the response indicates the total number of entries returned.
 	//
 	// 	- If you specify a value for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults*	- indicates the number of entries to return in each batch. Valid values: **1*	- to **100**. The value of **MaxResults*	- in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults*	- to **20**.
@@ -17178,6 +17485,11 @@ func (s *DescribeGrantRulesToCenRequest) SetChildInstanceId(v string) *DescribeG
 
 func (s *DescribeGrantRulesToCenRequest) SetChildInstanceOwnerId(v int64) *DescribeGrantRulesToCenRequest {
 	s.ChildInstanceOwnerId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenRequest) SetEnabledIpv6(v bool) *DescribeGrantRulesToCenRequest {
+	s.EnabledIpv6 = &v
 	return s
 }
 
@@ -22015,6 +22327,7 @@ type ListGrantVSwitchesToCenRequest struct {
 	//
 	// cen-44m0p68spvlrqq****
 	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	EnabledIpv6  *bool   `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the page to return. Default value: **1**.
@@ -22073,6 +22386,11 @@ func (s ListGrantVSwitchesToCenRequest) GoString() string {
 
 func (s *ListGrantVSwitchesToCenRequest) SetCenId(v string) *ListGrantVSwitchesToCenRequest {
 	s.CenId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchesToCenRequest) SetEnabledIpv6(v bool) *ListGrantVSwitchesToCenRequest {
+	s.EnabledIpv6 = &v
 	return s
 }
 
@@ -22883,6 +23201,7 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTransi
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules struct {
+	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
 	// The destination CIDR block that is used to match packets.
 	//
 	// example:
@@ -22953,6 +23272,11 @@ func (s ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatch
 
 func (s ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules) GoString() string {
 	return s.String()
+}
+
+func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules) SetAddressFamily(v string) *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules {
+	s.AddressFamily = &v
+	return s
 }
 
 func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules) SetDstCidr(v string) *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules {
@@ -29189,7 +29513,8 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId                   *string            `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -29277,6 +29602,11 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Se
 
 func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterId(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
 	s.TransitRouterId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterVPCAttachmentOptions(v map[string]*string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterVPCAttachmentOptions = v
 	return s
 }
 
@@ -34994,6 +35324,7 @@ func (s *UpdateTrafficMarkingPolicyAttributeRequest) SetTrafficMarkingPolicyName
 }
 
 type UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules struct {
+	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
 	// The destination CIDR block that is used to match packets.
 	//
 	// Packets whose destination IP addresses fall into the specified destination CIDR block meet the traffic classification rule. If you do not specify a destination CIDR block, all packets meet the traffic classification rule.
@@ -35120,6 +35451,11 @@ func (s UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules) GoString
 	return s.String()
 }
 
+func (s *UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules) SetAddressFamily(v string) *UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules {
+	s.AddressFamily = &v
+	return s
+}
+
 func (s *UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules) SetDstCidr(v string) *UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules {
 	s.DstCidr = &v
 	return s
@@ -35161,6 +35497,7 @@ func (s *UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules) SetTraf
 }
 
 type UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules struct {
+	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
 	// The destination CIDR block that is used to match packets.
 	//
 	// example:
@@ -35215,6 +35552,11 @@ func (s UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules) Strin
 
 func (s UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules) SetAddressFamily(v string) *UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules {
+	s.AddressFamily = &v
+	return s
 }
 
 func (s *UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules) SetDstCidr(v string) *UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules {
@@ -36432,7 +36774,8 @@ type UpdateTransitRouterVpcAttachmentAttributeRequest struct {
 	// example:
 	//
 	// testname
-	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterAttachmentName       *string            `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 }
 
 func (s UpdateTransitRouterVpcAttachmentAttributeRequest) String() string {
@@ -36490,6 +36833,136 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetTransitRouterAttac
 
 func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetTransitRouterAttachmentName(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest {
 	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetTransitRouterVPCAttachmentOptions(v map[string]*string) *UpdateTransitRouterVpcAttachmentAttributeRequest {
+	s.TransitRouterVPCAttachmentOptions = v
+	return s
+}
+
+type UpdateTransitRouterVpcAttachmentAttributeShrinkRequest struct {
+	// Specifies whether to allow the Enterprise Edition transit router to advertise routes to the VPC. Valid values:
+	//
+	// 	- **false:*	- (default)
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
+	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	//
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-001****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Default values:
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request.
+	//
+	// 	- **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+	//
+	// example:
+	//
+	// false
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The description of the VPC connection.
+	//
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// testdesc
+	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	// The ID of the VPC connection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tr-attach-nls9fzkfat8934****
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	// The name of the VPC connection.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	//
+	// example:
+	//
+	// testname
+	TransitRouterAttachmentName             *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterVPCAttachmentOptionsShrink *string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
+}
+
+func (s UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetAutoPublishRouteEnabled(v bool) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.AutoPublishRouteEnabled = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetClientToken(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetDryRun(v bool) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetOwnerAccount(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetOwnerId(v int64) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetResourceOwnerAccount(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetResourceOwnerId(v int64) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetTransitRouterAttachmentDescription(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetTransitRouterAttachmentId(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetTransitRouterAttachmentName(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetTransitRouterVPCAttachmentOptionsShrink(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.TransitRouterVPCAttachmentOptionsShrink = &v
 	return s
 }
 
@@ -40644,16 +41117,22 @@ func (client *Client) CreateTransitRouterVbrAttachment(request *CreateTransitRou
 //
 // 	- VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
 //
-// @param request - CreateTransitRouterVpcAttachmentRequest
+// @param tmpReq - CreateTransitRouterVpcAttachmentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTransitRouterVpcAttachmentResponse
-func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(request *CreateTransitRouterVpcAttachmentRequest, runtime *util.RuntimeOptions) (_result *CreateTransitRouterVpcAttachmentResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(tmpReq *CreateTransitRouterVpcAttachmentRequest, runtime *util.RuntimeOptions) (_result *CreateTransitRouterVpcAttachmentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateTransitRouterVpcAttachmentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransitRouterVPCAttachmentOptions)) {
+		request.TransitRouterVPCAttachmentOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransitRouterVPCAttachmentOptions, tea.String("TransitRouterVPCAttachmentOptions"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
 		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
@@ -40709,6 +41188,10 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(request *Creat
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
 		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterVPCAttachmentOptionsShrink)) {
+		query["TransitRouterVPCAttachmentOptions"] = request.TransitRouterVPCAttachmentOptionsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
@@ -45173,6 +45656,10 @@ func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantR
 		query["ChildInstanceOwnerId"] = request.ChildInstanceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnabledIpv6)) {
+		query["EnabledIpv6"] = request.EnabledIpv6
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -47215,6 +47702,10 @@ func (client *Client) ListGrantVSwitchesToCenWithOptions(request *ListGrantVSwit
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CenId)) {
 		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnabledIpv6)) {
+		query["EnabledIpv6"] = request.EnabledIpv6
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -53380,16 +53871,22 @@ func (client *Client) UpdateTransitRouterVbrAttachmentAttribute(request *UpdateT
 //
 // 	- If a VPC connection is in the **Attached*	- state, the VPC connection is modified.
 //
-// @param request - UpdateTransitRouterVpcAttachmentAttributeRequest
+// @param tmpReq - UpdateTransitRouterVpcAttachmentAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTransitRouterVpcAttachmentAttributeResponse
-func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(request *UpdateTransitRouterVpcAttachmentAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateTransitRouterVpcAttachmentAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(tmpReq *UpdateTransitRouterVpcAttachmentAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateTransitRouterVpcAttachmentAttributeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateTransitRouterVpcAttachmentAttributeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransitRouterVPCAttachmentOptions)) {
+		request.TransitRouterVPCAttachmentOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransitRouterVPCAttachmentOptions, tea.String("TransitRouterVPCAttachmentOptions"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
 		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
@@ -53429,6 +53926,10 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(reque
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
 		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterVPCAttachmentOptionsShrink)) {
+		query["TransitRouterVPCAttachmentOptions"] = request.TransitRouterVPCAttachmentOptionsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
