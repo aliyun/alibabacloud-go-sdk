@@ -2069,8 +2069,9 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// null
-	Code     *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Datasets []*GetInstanceResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Code             *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	CredentialConfig *CredentialConfig                  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Datasets         []*GetInstanceResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 535.54.03
@@ -2253,6 +2254,11 @@ func (s *GetInstanceResponseBody) SetCloudDisks(v []*GetInstanceResponseBodyClou
 
 func (s *GetInstanceResponseBody) SetCode(v string) *GetInstanceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetCredentialConfig(v *CredentialConfig) *GetInstanceResponseBody {
+	s.CredentialConfig = v
 	return s
 }
 
@@ -5865,8 +5871,9 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// []
-	CloudDisks []*ListInstancesResponseBodyInstancesCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	Datasets   []*ListInstancesResponseBodyInstancesDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	CloudDisks       []*ListInstancesResponseBodyInstancesCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	CredentialConfig *CredentialConfig                               `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Datasets         []*ListInstancesResponseBodyInstancesDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 535.54.03
@@ -6027,6 +6034,11 @@ func (s *ListInstancesResponseBodyInstances) SetAffinity(v *ListInstancesRespons
 
 func (s *ListInstancesResponseBodyInstances) SetCloudDisks(v []*ListInstancesResponseBodyInstancesCloudDisks) *ListInstancesResponseBodyInstances {
 	s.CloudDisks = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetCredentialConfig(v *CredentialConfig) *ListInstancesResponseBodyInstances {
+	s.CredentialConfig = v
 	return s
 }
 
