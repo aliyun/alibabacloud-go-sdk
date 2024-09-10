@@ -808,6 +808,260 @@ func (s *DeleteCustomTextResponse) SetBody(v *DeleteCustomTextResponseBody) *Del
 	return s
 }
 
+type DeleteCustomTopicByTopicRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 话题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s DeleteCustomTopicByTopicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomTopicByTopicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomTopicByTopicRequest) SetAgentKey(v string) *DeleteCustomTopicByTopicRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicRequest) SetTopic(v string) *DeleteCustomTopicByTopicRequest {
+	s.Topic = &v
+	return s
+}
+
+type DeleteCustomTopicByTopicResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 33
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCustomTopicByTopicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomTopicByTopicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomTopicByTopicResponseBody) SetCode(v string) *DeleteCustomTopicByTopicResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicResponseBody) SetData(v int32) *DeleteCustomTopicByTopicResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicResponseBody) SetHttpStatusCode(v int32) *DeleteCustomTopicByTopicResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicResponseBody) SetMessage(v string) *DeleteCustomTopicByTopicResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicResponseBody) SetRequestId(v string) *DeleteCustomTopicByTopicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicResponseBody) SetSuccess(v bool) *DeleteCustomTopicByTopicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCustomTopicByTopicResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomTopicByTopicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomTopicByTopicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomTopicByTopicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomTopicByTopicResponse) SetHeaders(v map[string]*string) *DeleteCustomTopicByTopicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicResponse) SetStatusCode(v int32) *DeleteCustomTopicByTopicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomTopicByTopicResponse) SetBody(v *DeleteCustomTopicByTopicResponseBody) *DeleteCustomTopicByTopicResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomTopicViewPointByIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dfd73894e6a94fd79fe7ffbe865796fb
+	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+}
+
+func (s DeleteCustomTopicViewPointByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomTopicViewPointByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomTopicViewPointByIdRequest) SetAgentKey(v string) *DeleteCustomTopicViewPointByIdRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdRequest) SetCustomViewPointId(v string) *DeleteCustomTopicViewPointByIdRequest {
+	s.CustomViewPointId = &v
+	return s
+}
+
+type DeleteCustomTopicViewPointByIdResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 7
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCustomTopicViewPointByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomTopicViewPointByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponseBody) SetCode(v string) *DeleteCustomTopicViewPointByIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponseBody) SetData(v int32) *DeleteCustomTopicViewPointByIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponseBody) SetHttpStatusCode(v int32) *DeleteCustomTopicViewPointByIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponseBody) SetMessage(v string) *DeleteCustomTopicViewPointByIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponseBody) SetRequestId(v string) *DeleteCustomTopicViewPointByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponseBody) SetSuccess(v bool) *DeleteCustomTopicViewPointByIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCustomTopicViewPointByIdResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomTopicViewPointByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomTopicViewPointByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomTopicViewPointByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponse) SetHeaders(v map[string]*string) *DeleteCustomTopicViewPointByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponse) SetStatusCode(v int32) *DeleteCustomTopicViewPointByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomTopicViewPointByIdResponse) SetBody(v *DeleteCustomTopicViewPointByIdResponseBody) *DeleteCustomTopicViewPointByIdResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGeneratedContentRequest struct {
 	// This parameter is required.
 	//
@@ -1589,6 +1843,254 @@ func (s *ExportGeneratedContentResponse) SetStatusCode(v int32) *ExportGenerated
 }
 
 func (s *ExportGeneratedContentResponse) SetBody(v *ExportGeneratedContentResponseBody) *ExportGeneratedContentResponse {
+	s.Body = v
+	return s
+}
+
+type ExportHotTopicPlanningProposalsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 025c6cee437741368098b790c90166f8
+	CustomViewPointIds []*string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 导出文档类型，word:导出为word,xmind:导处为xmind
+	ExportType *string   `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	Titles     []*string `json:"Titles,omitempty" xml:"Titles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 选题策划类型：CustomViewPoints:自定义视角，HotViewPoints:热门视角、TimedViewPoints:时效性视角、WebReviewPoints:网友视角、FreshViewPoints:新颖视角
+	ViewPointType *string `json:"ViewPointType,omitempty" xml:"ViewPointType,omitempty"`
+}
+
+func (s ExportHotTopicPlanningProposalsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportHotTopicPlanningProposalsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportHotTopicPlanningProposalsRequest) SetAgentKey(v string) *ExportHotTopicPlanningProposalsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsRequest) SetCustomViewPointIds(v []*string) *ExportHotTopicPlanningProposalsRequest {
+	s.CustomViewPointIds = v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsRequest) SetExportType(v string) *ExportHotTopicPlanningProposalsRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsRequest) SetTitles(v []*string) *ExportHotTopicPlanningProposalsRequest {
+	s.Titles = v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsRequest) SetTopic(v string) *ExportHotTopicPlanningProposalsRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsRequest) SetTopicSource(v string) *ExportHotTopicPlanningProposalsRequest {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsRequest) SetViewPointType(v string) *ExportHotTopicPlanningProposalsRequest {
+	s.ViewPointType = &v
+	return s
+}
+
+type ExportHotTopicPlanningProposalsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 025c6cee437741368098b790c90166f8
+	CustomViewPointIdsShrink *string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty"`
+	// example:
+	//
+	// 导出文档类型，word:导出为word,xmind:导处为xmind
+	ExportType   *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	TitlesShrink *string `json:"Titles,omitempty" xml:"Titles,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 选题策划类型：CustomViewPoints:自定义视角，HotViewPoints:热门视角、TimedViewPoints:时效性视角、WebReviewPoints:网友视角、FreshViewPoints:新颖视角
+	ViewPointType *string `json:"ViewPointType,omitempty" xml:"ViewPointType,omitempty"`
+}
+
+func (s ExportHotTopicPlanningProposalsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportHotTopicPlanningProposalsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportHotTopicPlanningProposalsShrinkRequest) SetAgentKey(v string) *ExportHotTopicPlanningProposalsShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsShrinkRequest) SetCustomViewPointIdsShrink(v string) *ExportHotTopicPlanningProposalsShrinkRequest {
+	s.CustomViewPointIdsShrink = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsShrinkRequest) SetExportType(v string) *ExportHotTopicPlanningProposalsShrinkRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsShrinkRequest) SetTitlesShrink(v string) *ExportHotTopicPlanningProposalsShrinkRequest {
+	s.TitlesShrink = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsShrinkRequest) SetTopic(v string) *ExportHotTopicPlanningProposalsShrinkRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsShrinkRequest) SetTopicSource(v string) *ExportHotTopicPlanningProposalsShrinkRequest {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsShrinkRequest) SetViewPointType(v string) *ExportHotTopicPlanningProposalsShrinkRequest {
+	s.ViewPointType = &v
+	return s
+}
+
+type ExportHotTopicPlanningProposalsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 业务数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExportHotTopicPlanningProposalsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportHotTopicPlanningProposalsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportHotTopicPlanningProposalsResponseBody) SetCode(v string) *ExportHotTopicPlanningProposalsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsResponseBody) SetData(v string) *ExportHotTopicPlanningProposalsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsResponseBody) SetHttpStatusCode(v int32) *ExportHotTopicPlanningProposalsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsResponseBody) SetMessage(v string) *ExportHotTopicPlanningProposalsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsResponseBody) SetRequestId(v string) *ExportHotTopicPlanningProposalsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsResponseBody) SetSuccess(v bool) *ExportHotTopicPlanningProposalsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExportHotTopicPlanningProposalsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportHotTopicPlanningProposalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportHotTopicPlanningProposalsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportHotTopicPlanningProposalsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportHotTopicPlanningProposalsResponse) SetHeaders(v map[string]*string) *ExportHotTopicPlanningProposalsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsResponse) SetStatusCode(v int32) *ExportHotTopicPlanningProposalsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportHotTopicPlanningProposalsResponse) SetBody(v *ExportHotTopicPlanningProposalsResponseBody) *ExportHotTopicPlanningProposalsResponse {
 	s.Body = v
 	return s
 }
@@ -3268,6 +3770,299 @@ func (s *GetCustomTextResponse) SetBody(v *GetCustomTextResponseBody) *GetCustom
 	return s
 }
 
+type GetCustomTopicSelectionPerspectiveAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0dbf1055f8a2475d99904c3b76a0ffba
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskRequest) SetAgentKey(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskRequest) SetTaskId(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetCode(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetData(v *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetMessage(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetRequestId(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetSuccess(v bool) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
+	CustomViewPointsResult *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult `json:"CustomViewPointsResult,omitempty" xml:"CustomViewPointsResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// FAILED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetCustomViewPointsResult(v *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.CustomViewPointsResult = v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetErrorMessage(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetStatus(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult struct {
+	Attitudes []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 热点主题事件
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult) SetAttitudes(v []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult {
+	s.Attitudes = v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult) SetTopic(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult {
+	s.Topic = &v
+	return s
+}
+
+type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio      *string                                                                                                    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	ViewPoints []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) SetAttitude(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes {
+	s.Attitude = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) SetAttitudeType(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) SetRatio(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes) SetViewPoints(v []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes {
+	s.ViewPoints = v
+	return s
+}
+
+type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints struct {
+	Outlines []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints) SetOutlines(v []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints) SetPoint(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints) SetSummary(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines) SetOutline(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines) SetSummary(v string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type GetCustomTopicSelectionPerspectiveAnalysisTaskResponse struct {
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTopicSelectionPerspectiveAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse) SetHeaders(v map[string]*string) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse) SetStatusCode(v int32) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse) SetBody(v *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataSourceOrderConfigRequest struct {
 	// This parameter is required.
 	//
@@ -3449,6 +4244,200 @@ func (s *GetDataSourceOrderConfigResponse) SetStatusCode(v int32) *GetDataSource
 }
 
 func (s *GetDataSourceOrderConfigResponse) SetBody(v *GetDataSourceOrderConfigResponseBody) *GetDataSourceOrderConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetDocClusterTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 93771c8e1142467fb1aedf1763feba1e
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetDocClusterTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocClusterTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocClusterTaskRequest) SetAgentKey(v string) *GetDocClusterTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetDocClusterTaskRequest) SetTaskId(v string) *GetDocClusterTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetDocClusterTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDocClusterTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDocClusterTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocClusterTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocClusterTaskResponseBody) SetCode(v string) *GetDocClusterTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBody) SetData(v *GetDocClusterTaskResponseBodyData) *GetDocClusterTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBody) SetHttpStatusCode(v int32) *GetDocClusterTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBody) SetMessage(v string) *GetDocClusterTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBody) SetRequestId(v string) *GetDocClusterTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBody) SetSuccess(v bool) *GetDocClusterTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDocClusterTaskResponseBodyData struct {
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// PENDING
+	Status *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Topics []*GetDocClusterTaskResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+}
+
+func (s GetDocClusterTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocClusterTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocClusterTaskResponseBodyData) SetErrorMessage(v string) *GetDocClusterTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBodyData) SetStatus(v string) *GetDocClusterTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBodyData) SetTopics(v []*GetDocClusterTaskResponseBodyDataTopics) *GetDocClusterTaskResponseBodyData {
+	s.Topics = v
+	return s
+}
+
+type GetDocClusterTaskResponseBodyDataTopics struct {
+	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 聚类主题摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 聚类主题名
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetDocClusterTaskResponseBodyDataTopics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocClusterTaskResponseBodyDataTopics) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocClusterTaskResponseBodyDataTopics) SetDocIds(v []*string) *GetDocClusterTaskResponseBodyDataTopics {
+	s.DocIds = v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBodyDataTopics) SetSummary(v string) *GetDocClusterTaskResponseBodyDataTopics {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponseBodyDataTopics) SetTitle(v string) *GetDocClusterTaskResponseBodyDataTopics {
+	s.Title = &v
+	return s
+}
+
+type GetDocClusterTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocClusterTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocClusterTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocClusterTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocClusterTaskResponse) SetHeaders(v map[string]*string) *GetDocClusterTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocClusterTaskResponse) SetStatusCode(v int32) *GetDocClusterTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocClusterTaskResponse) SetBody(v *GetDocClusterTaskResponseBody) *GetDocClusterTaskResponse {
 	s.Body = v
 	return s
 }
@@ -5234,6 +6223,1247 @@ func (s *GetPropertiesResponse) SetStatusCode(v int32) *GetPropertiesResponse {
 }
 
 func (s *GetPropertiesResponse) SetBody(v *GetPropertiesResponseBody) *GetPropertiesResponse {
+	s.Body = v
+	return s
+}
+
+type GetTopicByIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 数据ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetTopicByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicByIdRequest) SetAgentKey(v string) *GetTopicByIdRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetTopicByIdRequest) SetId(v string) *GetTopicByIdRequest {
+	s.Id = &v
+	return s
+}
+
+type GetTopicByIdResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTopicByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTopicByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicByIdResponseBody) SetCode(v string) *GetTopicByIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBody) SetData(v *GetTopicByIdResponseBodyData) *GetTopicByIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTopicByIdResponseBody) SetHttpStatusCode(v int32) *GetTopicByIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBody) SetMessage(v string) *GetTopicByIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBody) SetRequestId(v string) *GetTopicByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBody) SetSuccess(v bool) *GetTopicByIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTopicByIdResponseBodyData struct {
+	// example:
+	//
+	// 异步任务ID（自定义主题场景下使用）
+	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// example:
+	//
+	// 创建用户ID（自定义主题场景下使用）
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 43
+	HotValue *int64 `json:"HotValue,omitempty" xml:"HotValue,omitempty"`
+	// example:
+	//
+	// 热榜ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// PENDING
+	Status           *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureSummary []*GetTopicByIdResponseBodyDataStructureSummary `json:"StructureSummary,omitempty" xml:"StructureSummary,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 热榜摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 异步任务失败错误信息
+	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// example:
+	//
+	// 14
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 主题唯一名称
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// 热榜源，目前支持的热榜源: Toutiao：头条、Quark：夸克、Baidu：百度、Sina：新浪。Custom：自定义、Aggregation：热点话题榜
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 数据版本
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetTopicByIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicByIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicByIdResponseBodyData) SetAsyncTaskId(v string) *GetTopicByIdResponseBodyData {
+	s.AsyncTaskId = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetCreateUser(v string) *GetTopicByIdResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetHotValue(v int64) *GetTopicByIdResponseBodyData {
+	s.HotValue = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetId(v string) *GetTopicByIdResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetStatus(v string) *GetTopicByIdResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetStructureSummary(v []*GetTopicByIdResponseBodyDataStructureSummary) *GetTopicByIdResponseBodyData {
+	s.StructureSummary = v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetSummary(v string) *GetTopicByIdResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetTaskErrorMessage(v string) *GetTopicByIdResponseBodyData {
+	s.TaskErrorMessage = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetTaskStatus(v int32) *GetTopicByIdResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetTopic(v string) *GetTopicByIdResponseBodyData {
+	s.Topic = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetTopicSource(v string) *GetTopicByIdResponseBodyData {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyData) SetVersion(v string) *GetTopicByIdResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type GetTopicByIdResponseBodyDataStructureSummary struct {
+	DocList []*GetTopicByIdResponseBodyDataStructureSummaryDocList `json:"DocList,omitempty" xml:"DocList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetTopicByIdResponseBodyDataStructureSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicByIdResponseBodyDataStructureSummary) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicByIdResponseBodyDataStructureSummary) SetDocList(v []*GetTopicByIdResponseBodyDataStructureSummaryDocList) *GetTopicByIdResponseBodyDataStructureSummary {
+	s.DocList = v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyDataStructureSummary) SetSummary(v string) *GetTopicByIdResponseBodyDataStructureSummary {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyDataStructureSummary) SetTitle(v string) *GetTopicByIdResponseBodyDataStructureSummary {
+	s.Title = &v
+	return s
+}
+
+type GetTopicByIdResponseBodyDataStructureSummaryDocList struct {
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetTopicByIdResponseBodyDataStructureSummaryDocList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicByIdResponseBodyDataStructureSummaryDocList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicByIdResponseBodyDataStructureSummaryDocList) SetSource(v string) *GetTopicByIdResponseBodyDataStructureSummaryDocList {
+	s.Source = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyDataStructureSummaryDocList) SetTitle(v string) *GetTopicByIdResponseBodyDataStructureSummaryDocList {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTopicByIdResponseBodyDataStructureSummaryDocList) SetUrl(v string) *GetTopicByIdResponseBodyDataStructureSummaryDocList {
+	s.Url = &v
+	return s
+}
+
+type GetTopicByIdResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTopicByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTopicByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicByIdResponse) SetHeaders(v map[string]*string) *GetTopicByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTopicByIdResponse) SetStatusCode(v int32) *GetTopicByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTopicByIdResponse) SetBody(v *GetTopicByIdResponseBody) *GetTopicByIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// c9f226b02cca4f42a84c5e955c39dfd2
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskRequest) SetAgentKey(v string) *GetTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskRequest) SetTaskId(v string) *GetTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) SetCode(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) SetData(v *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) *GetTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *GetTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) SetMessage(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) SetRequestId(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) SetSuccess(v bool) *GetTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// 错误信息
+	ErrorMessage          *string                                                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FreshViewPointsResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult `json:"FreshViewPointsResult,omitempty" xml:"FreshViewPointsResult,omitempty" type:"Struct"`
+	HotViewPointsResult   *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult   `json:"HotViewPointsResult,omitempty" xml:"HotViewPointsResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUSPENDED
+	Status                *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimedViewPointsResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult `json:"TimedViewPointsResult,omitempty" xml:"TimedViewPointsResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// 热点主题事件
+	Topic                 *string                                                                        `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	TopicSummaryResult    *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult    `json:"TopicSummaryResult,omitempty" xml:"TopicSummaryResult,omitempty" type:"Struct"`
+	WebReviewPointsResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult `json:"WebReviewPointsResult,omitempty" xml:"WebReviewPointsResult,omitempty" type:"Struct"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetErrorMessage(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetFreshViewPointsResult(v *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.FreshViewPointsResult = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetHotViewPointsResult(v *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.HotViewPointsResult = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetStatus(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetTimedViewPointsResult(v *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.TimedViewPointsResult = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetTopic(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.Topic = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetTopicSummaryResult(v *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.TopicSummaryResult = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetWebReviewPointsResult(v *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.WebReviewPointsResult = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult struct {
+	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult) SetAttitudes(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult {
+	s.Attitudes = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio      *string                                                                                             `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) SetAttitude(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes {
+	s.Attitude = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) SetAttitudeType(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) SetRatio(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes) SetViewPoints(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes {
+	s.ViewPoints = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints struct {
+	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints) SetOutlines(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints) SetPoint(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines) SetOutline(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult struct {
+	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult) SetAttitudes(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult {
+	s.Attitudes = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string                                                                                     `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	News         []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio      *string                                                                                           `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) SetAttitude(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes {
+	s.Attitude = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) SetAttitudeType(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) SetNews(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes {
+	s.News = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) SetRatio(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes) SetViewPoints(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes {
+	s.ViewPoints = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews struct {
+	// example:
+	//
+	// 9957175DEDCF49C5ACF7A956B4FD67B2
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 123456
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.png
+	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ["标签1","标签2"]
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 文章主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetDocId(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.DocId = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetDocUuid(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetImageUrls(v []*string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.ImageUrls = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetTags(v []*string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.Tags = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetTopic(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.Topic = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints struct {
+	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints) SetOutlines(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints) SetPoint(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines) SetOutline(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult struct {
+	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult) SetAttitudes(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult {
+	s.Attitudes = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// example:
+	//
+	// 2024-01-22 10:29
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// example:
+	//
+	// 新浪
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com/news/1.html
+	Url        *string                                                                                             `json:"Url,omitempty" xml:"Url,omitempty"`
+	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetAttitude(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.Attitude = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetAttitudeType(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetPubTime(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.PubTime = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetRatio(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetSource(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.Source = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetTitle(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetUrl(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.Url = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes) SetViewPoints(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes {
+	s.ViewPoints = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints struct {
+	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints) SetOutlines(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints) SetPoint(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines) SetOutline(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult struct {
+	Summaries []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries `json:"Summaries,omitempty" xml:"Summaries,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult) SetSummaries(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult {
+	s.Summaries = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries struct {
+	DocList []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList `json:"DocList,omitempty" xml:"DocList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries) SetDocList(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries {
+	s.DocList = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries) SetTitle(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries {
+	s.Title = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList struct {
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList) SetSource(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList {
+	s.Source = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList) SetTitle(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList) SetUrl(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList {
+	s.Url = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult struct {
+	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult) SetAttitudes(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult {
+	s.Attitudes = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string                                                                                           `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	Comments     []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio      *string                                                                                             `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) SetAttitude(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes {
+	s.Attitude = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) SetAttitudeType(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) SetComments(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes {
+	s.Comments = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) SetRatio(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes) SetViewPoints(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes {
+	s.ViewPoints = v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments struct {
+	// example:
+	//
+	// 来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 评论内容
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 当前评论所属的URL
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 评论用户名
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) SetSource(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments {
+	s.Source = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) SetText(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments {
+	s.Text = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) SetTitle(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) SetUrl(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments {
+	s.Url = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments) SetUsername(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments {
+	s.Username = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints struct {
+	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints) SetOutlines(v []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints) SetPoint(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines) SetOutline(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type GetTopicSelectionPerspectiveAnalysisTaskResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTopicSelectionPerspectiveAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicSelectionPerspectiveAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponse) SetHeaders(v map[string]*string) *GetTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponse) SetStatusCode(v int32) *GetTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponse) SetBody(v *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) *GetTopicSelectionPerspectiveAnalysisTaskResponse {
 	s.Body = v
 	return s
 }
@@ -7050,6 +9280,469 @@ func (s *ListCustomTextResponse) SetBody(v *ListCustomTextResponseBody) *ListCus
 	return s
 }
 
+type ListCustomViewPointsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点
+	//
+	//      *
+	Attitudes []*string `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 461591f4880747f890702c1b90494d1a
+	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+	// example:
+	//
+	// 7ece3d1212e04c9ca716ae2486228f3f
+	CustomViewPointIds []*string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 52
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// 1d20ed14db0840efb1c7eaaf4d46352b
+	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+}
+
+func (s ListCustomViewPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewPointsRequest) SetAgentKey(v string) *ListCustomViewPointsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetAttitude(v string) *ListCustomViewPointsRequest {
+	s.Attitude = &v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetAttitudes(v []*string) *ListCustomViewPointsRequest {
+	s.Attitudes = v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetCustomViewPointId(v string) *ListCustomViewPointsRequest {
+	s.CustomViewPointId = &v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetCustomViewPointIds(v []*string) *ListCustomViewPointsRequest {
+	s.CustomViewPointIds = v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetMaxResults(v int32) *ListCustomViewPointsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetNextToken(v string) *ListCustomViewPointsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetTopic(v string) *ListCustomViewPointsRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListCustomViewPointsRequest) SetTopicId(v string) *ListCustomViewPointsRequest {
+	s.TopicId = &v
+	return s
+}
+
+type ListCustomViewPointsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点
+	//
+	//      *
+	AttitudesShrink *string `json:"Attitudes,omitempty" xml:"Attitudes,omitempty"`
+	// example:
+	//
+	// 461591f4880747f890702c1b90494d1a
+	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+	// example:
+	//
+	// 7ece3d1212e04c9ca716ae2486228f3f
+	CustomViewPointIdsShrink *string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty"`
+	// example:
+	//
+	// 52
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// 1d20ed14db0840efb1c7eaaf4d46352b
+	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+}
+
+func (s ListCustomViewPointsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewPointsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetAgentKey(v string) *ListCustomViewPointsShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetAttitude(v string) *ListCustomViewPointsShrinkRequest {
+	s.Attitude = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetAttitudesShrink(v string) *ListCustomViewPointsShrinkRequest {
+	s.AttitudesShrink = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetCustomViewPointId(v string) *ListCustomViewPointsShrinkRequest {
+	s.CustomViewPointId = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetCustomViewPointIdsShrink(v string) *ListCustomViewPointsShrinkRequest {
+	s.CustomViewPointIdsShrink = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetMaxResults(v int32) *ListCustomViewPointsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetNextToken(v string) *ListCustomViewPointsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetTopic(v string) *ListCustomViewPointsShrinkRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListCustomViewPointsShrinkRequest) SetTopicId(v string) *ListCustomViewPointsShrinkRequest {
+	s.TopicId = &v
+	return s
+}
+
+type ListCustomViewPointsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListCustomViewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 60
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 73
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomViewPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewPointsResponseBody) SetCode(v string) *ListCustomViewPointsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetData(v []*ListCustomViewPointsResponseBodyData) *ListCustomViewPointsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetHttpStatusCode(v int32) *ListCustomViewPointsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetMaxResults(v int32) *ListCustomViewPointsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetMessage(v string) *ListCustomViewPointsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetNextToken(v string) *ListCustomViewPointsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetRequestId(v string) *ListCustomViewPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetSuccess(v bool) *ListCustomViewPointsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBody) SetTotalCount(v int32) *ListCustomViewPointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomViewPointsResponseBodyData struct {
+	// example:
+	//
+	// 2323ac73e174428a98c91097a59c67e0
+	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// example:
+	//
+	// 观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 2024-08-15 16:18:59
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 709806dd051042d5ab9de8bdbb3a64ca
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 参数校验失败
+	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// example:
+	//
+	// 1
+	TaskStatus *int32                                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	ViewPoints []*ListCustomViewPointsResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s ListCustomViewPointsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewPointsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetAsyncTaskId(v string) *ListCustomViewPointsResponseBodyData {
+	s.AsyncTaskId = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetAttitude(v string) *ListCustomViewPointsResponseBodyData {
+	s.Attitude = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetCreateTime(v string) *ListCustomViewPointsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetCreateUser(v string) *ListCustomViewPointsResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetId(v string) *ListCustomViewPointsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetStatus(v string) *ListCustomViewPointsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetTaskErrorMessage(v string) *ListCustomViewPointsResponseBodyData {
+	s.TaskErrorMessage = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetTaskStatus(v int32) *ListCustomViewPointsResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyData) SetViewPoints(v []*ListCustomViewPointsResponseBodyDataViewPoints) *ListCustomViewPointsResponseBodyData {
+	s.ViewPoints = v
+	return s
+}
+
+type ListCustomViewPointsResponseBodyDataViewPoints struct {
+	Outlines []*ListCustomViewPointsResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListCustomViewPointsResponseBodyDataViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewPointsResponseBodyDataViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewPointsResponseBodyDataViewPoints) SetOutlines(v []*ListCustomViewPointsResponseBodyDataViewPointsOutlines) *ListCustomViewPointsResponseBodyDataViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyDataViewPoints) SetPoint(v string) *ListCustomViewPointsResponseBodyDataViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyDataViewPoints) SetSummary(v string) *ListCustomViewPointsResponseBodyDataViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type ListCustomViewPointsResponseBodyDataViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListCustomViewPointsResponseBodyDataViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewPointsResponseBodyDataViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewPointsResponseBodyDataViewPointsOutlines) SetOutline(v string) *ListCustomViewPointsResponseBodyDataViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponseBodyDataViewPointsOutlines) SetSummary(v string) *ListCustomViewPointsResponseBodyDataViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type ListCustomViewPointsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCustomViewPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCustomViewPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewPointsResponse) SetHeaders(v map[string]*string) *ListCustomViewPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomViewPointsResponse) SetStatusCode(v int32) *ListCustomViewPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomViewPointsResponse) SetBody(v *ListCustomViewPointsResponseBody) *ListCustomViewPointsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDialoguesRequest struct {
 	// This parameter is required.
 	//
@@ -7305,6 +9998,250 @@ func (s *ListDialoguesResponse) SetStatusCode(v int32) *ListDialoguesResponse {
 }
 
 func (s *ListDialoguesResponse) SetBody(v *ListDialoguesResponseBody) *ListDialoguesResponse {
+	s.Body = v
+	return s
+}
+
+type ListFreshViewPointsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 6
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+}
+
+func (s ListFreshViewPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreshViewPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreshViewPointsRequest) SetAgentKey(v string) *ListFreshViewPointsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListFreshViewPointsRequest) SetMaxResults(v int32) *ListFreshViewPointsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListFreshViewPointsRequest) SetNextToken(v string) *ListFreshViewPointsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListFreshViewPointsRequest) SetTopic(v string) *ListFreshViewPointsRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListFreshViewPointsRequest) SetTopicSource(v string) *ListFreshViewPointsRequest {
+	s.TopicSource = &v
+	return s
+}
+
+type ListFreshViewPointsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListFreshViewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 94
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 26
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFreshViewPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreshViewPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreshViewPointsResponseBody) SetCode(v string) *ListFreshViewPointsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetData(v []*ListFreshViewPointsResponseBodyData) *ListFreshViewPointsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetHttpStatusCode(v int32) *ListFreshViewPointsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetMaxResults(v int32) *ListFreshViewPointsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetMessage(v string) *ListFreshViewPointsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetNextToken(v string) *ListFreshViewPointsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetRequestId(v string) *ListFreshViewPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetSuccess(v bool) *ListFreshViewPointsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBody) SetTotalCount(v int32) *ListFreshViewPointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFreshViewPointsResponseBodyData struct {
+	Outlines []*ListFreshViewPointsResponseBodyDataOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListFreshViewPointsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreshViewPointsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreshViewPointsResponseBodyData) SetOutlines(v []*ListFreshViewPointsResponseBodyDataOutlines) *ListFreshViewPointsResponseBodyData {
+	s.Outlines = v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBodyData) SetPoint(v string) *ListFreshViewPointsResponseBodyData {
+	s.Point = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBodyData) SetSummary(v string) *ListFreshViewPointsResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+type ListFreshViewPointsResponseBodyDataOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListFreshViewPointsResponseBodyDataOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreshViewPointsResponseBodyDataOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreshViewPointsResponseBodyDataOutlines) SetOutline(v string) *ListFreshViewPointsResponseBodyDataOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponseBodyDataOutlines) SetSummary(v string) *ListFreshViewPointsResponseBodyDataOutlines {
+	s.Summary = &v
+	return s
+}
+
+type ListFreshViewPointsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFreshViewPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFreshViewPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreshViewPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreshViewPointsResponse) SetHeaders(v map[string]*string) *ListFreshViewPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFreshViewPointsResponse) SetStatusCode(v int32) *ListFreshViewPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFreshViewPointsResponse) SetBody(v *ListFreshViewPointsResponseBody) *ListFreshViewPointsResponse {
 	s.Body = v
 	return s
 }
@@ -7979,6 +10916,1104 @@ func (s *ListHotNewsWithTypeResponse) SetStatusCode(v int32) *ListHotNewsWithTyp
 }
 
 func (s *ListHotNewsWithTypeResponse) SetBody(v *ListHotNewsWithTypeResponseBody) *ListHotNewsWithTypeResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotSourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 66
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListHotSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotSourcesRequest) SetAgentKey(v string) *ListHotSourcesRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListHotSourcesRequest) SetMaxResults(v int32) *ListHotSourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotSourcesRequest) SetNextToken(v string) *ListHotSourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListHotSourcesResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListHotSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 4
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHotSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotSourcesResponseBody) SetCode(v string) *ListHotSourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetData(v []*ListHotSourcesResponseBodyData) *ListHotSourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetHttpStatusCode(v int32) *ListHotSourcesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetMaxResults(v int32) *ListHotSourcesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetMessage(v string) *ListHotSourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetNextToken(v string) *ListHotSourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetRequestId(v string) *ListHotSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetSuccess(v bool) *ListHotSourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBody) SetTotalCount(v int32) *ListHotSourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHotSourcesResponseBodyData struct {
+	// example:
+	//
+	// 热榜源描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Show *bool `json:"Show,omitempty" xml:"Show,omitempty"`
+	// example:
+	//
+	// 86
+	Sort *int32 `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// example:
+	//
+	// 热榜源标识
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ListHotSourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotSourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotSourcesResponseBodyData) SetDescription(v string) *ListHotSourcesResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBodyData) SetShow(v bool) *ListHotSourcesResponseBodyData {
+	s.Show = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBodyData) SetSort(v int32) *ListHotSourcesResponseBodyData {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListHotSourcesResponseBodyData) SetSource(v string) *ListHotSourcesResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+type ListHotSourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHotSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotSourcesResponse) SetHeaders(v map[string]*string) *ListHotSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotSourcesResponse) SetStatusCode(v int32) *ListHotSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotSourcesResponse) SetBody(v *ListHotSourcesResponseBody) *ListHotSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotTopicsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TopicIds  []*string `json:"TopicIds,omitempty" xml:"TopicIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 根据热榜主题全文检索
+	TopicQuery *string `json:"TopicQuery,omitempty" xml:"TopicQuery,omitempty"`
+	// example:
+	//
+	// 热榜源筛选，支持的热榜源。热榜源详见API：ListHotSources
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 数据版本筛选
+	TopicVersion *string   `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	Topics       []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	WithNews *bool `json:"WithNews,omitempty" xml:"WithNews,omitempty"`
+}
+
+func (s ListHotTopicsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicsRequest) SetAgentKey(v string) *ListHotTopicsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetMaxResults(v int32) *ListHotTopicsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetNextToken(v string) *ListHotTopicsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetTopicIds(v []*string) *ListHotTopicsRequest {
+	s.TopicIds = v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetTopicQuery(v string) *ListHotTopicsRequest {
+	s.TopicQuery = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetTopicSource(v string) *ListHotTopicsRequest {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetTopicVersion(v string) *ListHotTopicsRequest {
+	s.TopicVersion = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetTopics(v []*string) *ListHotTopicsRequest {
+	s.Topics = v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetWithNews(v bool) *ListHotTopicsRequest {
+	s.WithNews = &v
+	return s
+}
+
+type ListHotTopicsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TopicIdsShrink *string `json:"TopicIds,omitempty" xml:"TopicIds,omitempty"`
+	// example:
+	//
+	// 根据热榜主题全文检索
+	TopicQuery *string `json:"TopicQuery,omitempty" xml:"TopicQuery,omitempty"`
+	// example:
+	//
+	// 热榜源筛选，支持的热榜源。热榜源详见API：ListHotSources
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 数据版本筛选
+	TopicVersion *string `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	TopicsShrink *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
+	// example:
+	//
+	// true
+	WithNews *bool `json:"WithNews,omitempty" xml:"WithNews,omitempty"`
+}
+
+func (s ListHotTopicsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicsShrinkRequest) SetAgentKey(v string) *ListHotTopicsShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetMaxResults(v int32) *ListHotTopicsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetNextToken(v string) *ListHotTopicsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetTopicIdsShrink(v string) *ListHotTopicsShrinkRequest {
+	s.TopicIdsShrink = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetTopicQuery(v string) *ListHotTopicsShrinkRequest {
+	s.TopicQuery = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetTopicSource(v string) *ListHotTopicsShrinkRequest {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetTopicVersion(v string) *ListHotTopicsShrinkRequest {
+	s.TopicVersion = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetTopicsShrink(v string) *ListHotTopicsShrinkRequest {
+	s.TopicsShrink = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetWithNews(v bool) *ListHotTopicsShrinkRequest {
+	s.WithNews = &v
+	return s
+}
+
+type ListHotTopicsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListHotTopicsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 94
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 23
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHotTopicsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicsResponseBody) SetCode(v string) *ListHotTopicsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetData(v []*ListHotTopicsResponseBodyData) *ListHotTopicsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetHttpStatusCode(v int32) *ListHotTopicsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetMaxResults(v int32) *ListHotTopicsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetMessage(v string) *ListHotTopicsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetNextToken(v string) *ListHotTopicsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetRequestId(v string) *ListHotTopicsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetSuccess(v bool) *ListHotTopicsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBody) SetTotalCount(v int32) *ListHotTopicsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHotTopicsResponseBodyData struct {
+	// example:
+	//
+	// 异步任务ID（自定义主题场景下使用）
+	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// example:
+	//
+	// 创建用户ID（自定义主题场景下使用）
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 61
+	HotValue *int64 `json:"HotValue,omitempty" xml:"HotValue,omitempty"`
+	// example:
+	//
+	// 热榜ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// FAILED
+	Status           *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureSummary []*ListHotTopicsResponseBodyDataStructureSummary `json:"StructureSummary,omitempty" xml:"StructureSummary,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 热榜摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 异步任务失败错误信息
+	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// example:
+	//
+	// 26
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 主题唯一名称
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// 热榜源，目前支持的热榜源: Toutiao：头条、Quark：夸克、Baidu：百度、Sina：新浪。Custom：自定义、Aggregation：热点话题榜
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 数据版本
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListHotTopicsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicsResponseBodyData) SetAsyncTaskId(v string) *ListHotTopicsResponseBodyData {
+	s.AsyncTaskId = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetCreateUser(v string) *ListHotTopicsResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetHotValue(v int64) *ListHotTopicsResponseBodyData {
+	s.HotValue = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetId(v string) *ListHotTopicsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetStatus(v string) *ListHotTopicsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetStructureSummary(v []*ListHotTopicsResponseBodyDataStructureSummary) *ListHotTopicsResponseBodyData {
+	s.StructureSummary = v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetSummary(v string) *ListHotTopicsResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetTaskErrorMessage(v string) *ListHotTopicsResponseBodyData {
+	s.TaskErrorMessage = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetTaskStatus(v int32) *ListHotTopicsResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetTopic(v string) *ListHotTopicsResponseBodyData {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetTopicSource(v string) *ListHotTopicsResponseBodyData {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetVersion(v string) *ListHotTopicsResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type ListHotTopicsResponseBodyDataStructureSummary struct {
+	DocList []*ListHotTopicsResponseBodyDataStructureSummaryDocList `json:"DocList,omitempty" xml:"DocList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListHotTopicsResponseBodyDataStructureSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicsResponseBodyDataStructureSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicsResponseBodyDataStructureSummary) SetDocList(v []*ListHotTopicsResponseBodyDataStructureSummaryDocList) *ListHotTopicsResponseBodyDataStructureSummary {
+	s.DocList = v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyDataStructureSummary) SetSummary(v string) *ListHotTopicsResponseBodyDataStructureSummary {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyDataStructureSummary) SetTitle(v string) *ListHotTopicsResponseBodyDataStructureSummary {
+	s.Title = &v
+	return s
+}
+
+type ListHotTopicsResponseBodyDataStructureSummaryDocList struct {
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// xxxxx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListHotTopicsResponseBodyDataStructureSummaryDocList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicsResponseBodyDataStructureSummaryDocList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicsResponseBodyDataStructureSummaryDocList) SetSource(v string) *ListHotTopicsResponseBodyDataStructureSummaryDocList {
+	s.Source = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyDataStructureSummaryDocList) SetTitle(v string) *ListHotTopicsResponseBodyDataStructureSummaryDocList {
+	s.Title = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyDataStructureSummaryDocList) SetUrl(v string) *ListHotTopicsResponseBodyDataStructureSummaryDocList {
+	s.Url = &v
+	return s
+}
+
+type ListHotTopicsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotTopicsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHotTopicsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicsResponse) SetHeaders(v map[string]*string) *ListHotTopicsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotTopicsResponse) SetStatusCode(v int32) *ListHotTopicsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotTopicsResponse) SetBody(v *ListHotTopicsResponseBody) *ListHotTopicsResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotViewPointsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 56
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+}
+
+func (s ListHotViewPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotViewPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotViewPointsRequest) SetAgentKey(v string) *ListHotViewPointsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListHotViewPointsRequest) SetMaxResults(v int32) *ListHotViewPointsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotViewPointsRequest) SetNextToken(v string) *ListHotViewPointsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotViewPointsRequest) SetTopic(v string) *ListHotViewPointsRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListHotViewPointsRequest) SetTopicSource(v string) *ListHotViewPointsRequest {
+	s.TopicSource = &v
+	return s
+}
+
+type ListHotViewPointsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListHotViewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 67
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 70
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHotViewPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotViewPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotViewPointsResponseBody) SetCode(v string) *ListHotViewPointsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetData(v []*ListHotViewPointsResponseBodyData) *ListHotViewPointsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetHttpStatusCode(v int32) *ListHotViewPointsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetMaxResults(v int32) *ListHotViewPointsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetMessage(v string) *ListHotViewPointsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetNextToken(v string) *ListHotViewPointsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetRequestId(v string) *ListHotViewPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetSuccess(v bool) *ListHotViewPointsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBody) SetTotalCount(v int32) *ListHotViewPointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHotViewPointsResponseBodyData struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string                                  `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	News         []*ListHotViewPointsResponseBodyDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio      *string                                        `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	ViewPoints []*ListHotViewPointsResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s ListHotViewPointsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotViewPointsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotViewPointsResponseBodyData) SetAttitude(v string) *ListHotViewPointsResponseBodyData {
+	s.Attitude = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyData) SetAttitudeType(v string) *ListHotViewPointsResponseBodyData {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyData) SetNews(v []*ListHotViewPointsResponseBodyDataNews) *ListHotViewPointsResponseBodyData {
+	s.News = v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyData) SetRatio(v string) *ListHotViewPointsResponseBodyData {
+	s.Ratio = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyData) SetViewPoints(v []*ListHotViewPointsResponseBodyDataViewPoints) *ListHotViewPointsResponseBodyData {
+	s.ViewPoints = v
+	return s
+}
+
+type ListHotViewPointsResponseBodyDataNews struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// xxxxx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 123456
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.png
+	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-01-22 10:29:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 新浪
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// ["标签1","标签2"]
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 文章主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListHotViewPointsResponseBodyDataNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotViewPointsResponseBodyDataNews) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetAuthor(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.Author = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetContent(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.Content = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetDocId(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetDocUuid(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetImageUrls(v []*string) *ListHotViewPointsResponseBodyDataNews {
+	s.ImageUrls = v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetPubTime(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.PubTime = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetSource(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.Source = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetSummary(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetTags(v []*string) *ListHotViewPointsResponseBodyDataNews {
+	s.Tags = v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetTitle(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.Title = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetTopic(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataNews) SetUrl(v string) *ListHotViewPointsResponseBodyDataNews {
+	s.Url = &v
+	return s
+}
+
+type ListHotViewPointsResponseBodyDataViewPoints struct {
+	Outlines []*ListHotViewPointsResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListHotViewPointsResponseBodyDataViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotViewPointsResponseBodyDataViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotViewPointsResponseBodyDataViewPoints) SetOutlines(v []*ListHotViewPointsResponseBodyDataViewPointsOutlines) *ListHotViewPointsResponseBodyDataViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataViewPoints) SetPoint(v string) *ListHotViewPointsResponseBodyDataViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataViewPoints) SetSummary(v string) *ListHotViewPointsResponseBodyDataViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type ListHotViewPointsResponseBodyDataViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListHotViewPointsResponseBodyDataViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotViewPointsResponseBodyDataViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotViewPointsResponseBodyDataViewPointsOutlines) SetOutline(v string) *ListHotViewPointsResponseBodyDataViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponseBodyDataViewPointsOutlines) SetSummary(v string) *ListHotViewPointsResponseBodyDataViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type ListHotViewPointsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotViewPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHotViewPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotViewPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotViewPointsResponse) SetHeaders(v map[string]*string) *ListHotViewPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotViewPointsResponse) SetStatusCode(v int32) *ListHotViewPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotViewPointsResponse) SetBody(v *ListHotViewPointsResponseBody) *ListHotViewPointsResponse {
 	s.Body = v
 	return s
 }
@@ -9472,6 +13507,1053 @@ func (s *ListMaterialDocumentsResponse) SetBody(v *ListMaterialDocumentsResponse
 	return s
 }
 
+type ListPlanningProposalRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// e7b26a9e1211444db8f0a984361a5e0f
+	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+	// example:
+	//
+	// 27971fc8f3ce4ed58c7e7fc4b503e432
+	CustomViewPointIds []*string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 73
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 标题
+	//
+	//      *
+	Titles []*string `json:"Titles,omitempty" xml:"Titles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 2024-09-10_08
+	TopicVersion *string `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CustomViewPoints
+	ViewPointType *string `json:"ViewPointType,omitempty" xml:"ViewPointType,omitempty"`
+}
+
+func (s ListPlanningProposalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlanningProposalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlanningProposalRequest) SetAgentKey(v string) *ListPlanningProposalRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetCustomViewPointId(v string) *ListPlanningProposalRequest {
+	s.CustomViewPointId = &v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetCustomViewPointIds(v []*string) *ListPlanningProposalRequest {
+	s.CustomViewPointIds = v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetMaxResults(v int32) *ListPlanningProposalRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetNextToken(v string) *ListPlanningProposalRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetTitles(v []*string) *ListPlanningProposalRequest {
+	s.Titles = v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetTopic(v string) *ListPlanningProposalRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetTopicSource(v string) *ListPlanningProposalRequest {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetTopicVersion(v string) *ListPlanningProposalRequest {
+	s.TopicVersion = &v
+	return s
+}
+
+func (s *ListPlanningProposalRequest) SetViewPointType(v string) *ListPlanningProposalRequest {
+	s.ViewPointType = &v
+	return s
+}
+
+type ListPlanningProposalShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// e7b26a9e1211444db8f0a984361a5e0f
+	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+	// example:
+	//
+	// 27971fc8f3ce4ed58c7e7fc4b503e432
+	CustomViewPointIdsShrink *string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty"`
+	// example:
+	//
+	// 73
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 标题
+	//
+	//      *
+	TitlesShrink *string `json:"Titles,omitempty" xml:"Titles,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 2024-09-10_08
+	TopicVersion *string `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CustomViewPoints
+	ViewPointType *string `json:"ViewPointType,omitempty" xml:"ViewPointType,omitempty"`
+}
+
+func (s ListPlanningProposalShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlanningProposalShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetAgentKey(v string) *ListPlanningProposalShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetCustomViewPointId(v string) *ListPlanningProposalShrinkRequest {
+	s.CustomViewPointId = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetCustomViewPointIdsShrink(v string) *ListPlanningProposalShrinkRequest {
+	s.CustomViewPointIdsShrink = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetMaxResults(v int32) *ListPlanningProposalShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetNextToken(v string) *ListPlanningProposalShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetTitlesShrink(v string) *ListPlanningProposalShrinkRequest {
+	s.TitlesShrink = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetTopic(v string) *ListPlanningProposalShrinkRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetTopicSource(v string) *ListPlanningProposalShrinkRequest {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetTopicVersion(v string) *ListPlanningProposalShrinkRequest {
+	s.TopicVersion = &v
+	return s
+}
+
+func (s *ListPlanningProposalShrinkRequest) SetViewPointType(v string) *ListPlanningProposalShrinkRequest {
+	s.ViewPointType = &v
+	return s
+}
+
+type ListPlanningProposalResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListPlanningProposalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 77
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 80
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPlanningProposalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlanningProposalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlanningProposalResponseBody) SetCode(v string) *ListPlanningProposalResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetData(v []*ListPlanningProposalResponseBodyData) *ListPlanningProposalResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetHttpStatusCode(v int32) *ListPlanningProposalResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetMaxResults(v int32) *ListPlanningProposalResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetMessage(v string) *ListPlanningProposalResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetNextToken(v string) *ListPlanningProposalResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetRequestId(v string) *ListPlanningProposalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetSuccess(v bool) *ListPlanningProposalResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBody) SetTotalCount(v int32) *ListPlanningProposalResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPlanningProposalResponseBodyData struct {
+	Outlines []*ListPlanningProposalResponseBodyDataOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	Summary  *string                                         `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title    *string                                         `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListPlanningProposalResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlanningProposalResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlanningProposalResponseBodyData) SetOutlines(v []*ListPlanningProposalResponseBodyDataOutlines) *ListPlanningProposalResponseBodyData {
+	s.Outlines = v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBodyData) SetSummary(v string) *ListPlanningProposalResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBodyData) SetTitle(v string) *ListPlanningProposalResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+type ListPlanningProposalResponseBodyDataOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListPlanningProposalResponseBodyDataOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlanningProposalResponseBodyDataOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlanningProposalResponseBodyDataOutlines) SetOutline(v string) *ListPlanningProposalResponseBodyDataOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponseBodyDataOutlines) SetSummary(v string) *ListPlanningProposalResponseBodyDataOutlines {
+	s.Summary = &v
+	return s
+}
+
+type ListPlanningProposalResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPlanningProposalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPlanningProposalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlanningProposalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlanningProposalResponse) SetHeaders(v map[string]*string) *ListPlanningProposalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPlanningProposalResponse) SetStatusCode(v int32) *ListPlanningProposalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPlanningProposalResponse) SetBody(v *ListPlanningProposalResponseBody) *ListPlanningProposalResponse {
+	s.Body = v
+	return s
+}
+
+type ListTimedViewAttitudeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 53
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+}
+
+func (s ListTimedViewAttitudeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimedViewAttitudeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimedViewAttitudeRequest) SetAgentKey(v string) *ListTimedViewAttitudeRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeRequest) SetMaxResults(v int32) *ListTimedViewAttitudeRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeRequest) SetNextToken(v string) *ListTimedViewAttitudeRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeRequest) SetTopic(v string) *ListTimedViewAttitudeRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeRequest) SetTopicSource(v string) *ListTimedViewAttitudeRequest {
+	s.TopicSource = &v
+	return s
+}
+
+type ListTimedViewAttitudeResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListTimedViewAttitudeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 15
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 58
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTimedViewAttitudeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimedViewAttitudeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetCode(v string) *ListTimedViewAttitudeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetData(v []*ListTimedViewAttitudeResponseBodyData) *ListTimedViewAttitudeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetHttpStatusCode(v int32) *ListTimedViewAttitudeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetMaxResults(v int32) *ListTimedViewAttitudeResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetMessage(v string) *ListTimedViewAttitudeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetNextToken(v string) *ListTimedViewAttitudeResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetRequestId(v string) *ListTimedViewAttitudeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetSuccess(v bool) *ListTimedViewAttitudeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBody) SetTotalCount(v int32) *ListTimedViewAttitudeResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTimedViewAttitudeResponseBodyData struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// example:
+	//
+	// 2024-01-22 10:29
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// example:
+	//
+	// 新浪
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com/news/1.html
+	Url        *string                                            `json:"Url,omitempty" xml:"Url,omitempty"`
+	ViewPoints []*ListTimedViewAttitudeResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s ListTimedViewAttitudeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimedViewAttitudeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetAttitude(v string) *ListTimedViewAttitudeResponseBodyData {
+	s.Attitude = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetAttitudeType(v string) *ListTimedViewAttitudeResponseBodyData {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetPubTime(v string) *ListTimedViewAttitudeResponseBodyData {
+	s.PubTime = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetRatio(v string) *ListTimedViewAttitudeResponseBodyData {
+	s.Ratio = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetSource(v string) *ListTimedViewAttitudeResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetTitle(v string) *ListTimedViewAttitudeResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetUrl(v string) *ListTimedViewAttitudeResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyData) SetViewPoints(v []*ListTimedViewAttitudeResponseBodyDataViewPoints) *ListTimedViewAttitudeResponseBodyData {
+	s.ViewPoints = v
+	return s
+}
+
+type ListTimedViewAttitudeResponseBodyDataViewPoints struct {
+	Outlines []*ListTimedViewAttitudeResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListTimedViewAttitudeResponseBodyDataViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimedViewAttitudeResponseBodyDataViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimedViewAttitudeResponseBodyDataViewPoints) SetOutlines(v []*ListTimedViewAttitudeResponseBodyDataViewPointsOutlines) *ListTimedViewAttitudeResponseBodyDataViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyDataViewPoints) SetPoint(v string) *ListTimedViewAttitudeResponseBodyDataViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyDataViewPoints) SetSummary(v string) *ListTimedViewAttitudeResponseBodyDataViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type ListTimedViewAttitudeResponseBodyDataViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListTimedViewAttitudeResponseBodyDataViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimedViewAttitudeResponseBodyDataViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimedViewAttitudeResponseBodyDataViewPointsOutlines) SetOutline(v string) *ListTimedViewAttitudeResponseBodyDataViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponseBodyDataViewPointsOutlines) SetSummary(v string) *ListTimedViewAttitudeResponseBodyDataViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type ListTimedViewAttitudeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTimedViewAttitudeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTimedViewAttitudeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimedViewAttitudeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimedViewAttitudeResponse) SetHeaders(v map[string]*string) *ListTimedViewAttitudeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponse) SetStatusCode(v int32) *ListTimedViewAttitudeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTimedViewAttitudeResponse) SetBody(v *ListTimedViewAttitudeResponseBody) *ListTimedViewAttitudeResponse {
+	s.Body = v
+	return s
+}
+
+type ListTopicRecommendEventListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 72
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListTopicRecommendEventListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicRecommendEventListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicRecommendEventListRequest) SetAgentKey(v string) *ListTopicRecommendEventListRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListRequest) SetMaxResults(v int32) *ListTopicRecommendEventListRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListRequest) SetNextToken(v string) *ListTopicRecommendEventListRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListTopicRecommendEventListResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 71
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// x\\"x\\"x
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 60
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTopicRecommendEventListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicRecommendEventListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetCode(v string) *ListTopicRecommendEventListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetData(v []*string) *ListTopicRecommendEventListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetHttpStatusCode(v int32) *ListTopicRecommendEventListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetMaxResults(v int32) *ListTopicRecommendEventListResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetMessage(v string) *ListTopicRecommendEventListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetNextToken(v string) *ListTopicRecommendEventListResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetRequestId(v string) *ListTopicRecommendEventListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetSuccess(v bool) *ListTopicRecommendEventListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponseBody) SetTotalCount(v int32) *ListTopicRecommendEventListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTopicRecommendEventListResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTopicRecommendEventListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTopicRecommendEventListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicRecommendEventListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicRecommendEventListResponse) SetHeaders(v map[string]*string) *ListTopicRecommendEventListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponse) SetStatusCode(v int32) *ListTopicRecommendEventListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTopicRecommendEventListResponse) SetBody(v *ListTopicRecommendEventListResponseBody) *ListTopicRecommendEventListResponse {
+	s.Body = v
+	return s
+}
+
+type ListTopicViewPointRecommendEventListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// xxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 66
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListTopicViewPointRecommendEventListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicViewPointRecommendEventListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicViewPointRecommendEventListRequest) SetAgentKey(v string) *ListTopicViewPointRecommendEventListRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListRequest) SetId(v string) *ListTopicViewPointRecommendEventListRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListRequest) SetMaxResults(v int32) *ListTopicViewPointRecommendEventListRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListRequest) SetNextToken(v string) *ListTopicViewPointRecommendEventListRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListTopicViewPointRecommendEventListResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 8
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 32
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTopicViewPointRecommendEventListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicViewPointRecommendEventListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetCode(v string) *ListTopicViewPointRecommendEventListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetData(v []*string) *ListTopicViewPointRecommendEventListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetHttpStatusCode(v int32) *ListTopicViewPointRecommendEventListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetMaxResults(v int32) *ListTopicViewPointRecommendEventListResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetMessage(v string) *ListTopicViewPointRecommendEventListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetNextToken(v string) *ListTopicViewPointRecommendEventListResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetRequestId(v string) *ListTopicViewPointRecommendEventListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetSuccess(v bool) *ListTopicViewPointRecommendEventListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponseBody) SetTotalCount(v int32) *ListTopicViewPointRecommendEventListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTopicViewPointRecommendEventListResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTopicViewPointRecommendEventListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTopicViewPointRecommendEventListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicViewPointRecommendEventListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicViewPointRecommendEventListResponse) SetHeaders(v map[string]*string) *ListTopicViewPointRecommendEventListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponse) SetStatusCode(v int32) *ListTopicViewPointRecommendEventListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTopicViewPointRecommendEventListResponse) SetBody(v *ListTopicViewPointRecommendEventListResponseBody) *ListTopicViewPointRecommendEventListResponse {
+	s.Body = v
+	return s
+}
+
 type ListVersionsRequest struct {
 	// This parameter is required.
 	//
@@ -9697,6 +14779,356 @@ func (s *ListVersionsResponse) SetStatusCode(v int32) *ListVersionsResponse {
 }
 
 func (s *ListVersionsResponse) SetBody(v *ListVersionsResponseBody) *ListVersionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWebReviewPointsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 81
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 热榜源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+}
+
+func (s ListWebReviewPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebReviewPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebReviewPointsRequest) SetAgentKey(v string) *ListWebReviewPointsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListWebReviewPointsRequest) SetMaxResults(v int32) *ListWebReviewPointsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWebReviewPointsRequest) SetNextToken(v string) *ListWebReviewPointsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWebReviewPointsRequest) SetTopic(v string) *ListWebReviewPointsRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListWebReviewPointsRequest) SetTopicSource(v string) *ListWebReviewPointsRequest {
+	s.TopicSource = &v
+	return s
+}
+
+type ListWebReviewPointsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListWebReviewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 79
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 下一页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 32
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListWebReviewPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebReviewPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebReviewPointsResponseBody) SetCode(v string) *ListWebReviewPointsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetData(v []*ListWebReviewPointsResponseBodyData) *ListWebReviewPointsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetHttpStatusCode(v int32) *ListWebReviewPointsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetMaxResults(v int32) *ListWebReviewPointsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetMessage(v string) *ListWebReviewPointsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetNextToken(v string) *ListWebReviewPointsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetRequestId(v string) *ListWebReviewPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetSuccess(v bool) *ListWebReviewPointsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBody) SetTotalCount(v int32) *ListWebReviewPointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWebReviewPointsResponseBodyData struct {
+	// example:
+	//
+	// 当前观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 观点类型
+	AttitudeType *string                                        `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	Comments     []*ListWebReviewPointsResponseBodyDataComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 当前观点占比
+	Ratio      *string                                          `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	ViewPoints []*ListWebReviewPointsResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
+}
+
+func (s ListWebReviewPointsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebReviewPointsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebReviewPointsResponseBodyData) SetAttitude(v string) *ListWebReviewPointsResponseBodyData {
+	s.Attitude = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyData) SetAttitudeType(v string) *ListWebReviewPointsResponseBodyData {
+	s.AttitudeType = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyData) SetComments(v []*ListWebReviewPointsResponseBodyDataComments) *ListWebReviewPointsResponseBodyData {
+	s.Comments = v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyData) SetRatio(v string) *ListWebReviewPointsResponseBodyData {
+	s.Ratio = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyData) SetViewPoints(v []*ListWebReviewPointsResponseBodyDataViewPoints) *ListWebReviewPointsResponseBodyData {
+	s.ViewPoints = v
+	return s
+}
+
+type ListWebReviewPointsResponseBodyDataComments struct {
+	// example:
+	//
+	// 来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 评论内容
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 当前评论所属的URL
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 评论用户名
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListWebReviewPointsResponseBodyDataComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebReviewPointsResponseBodyDataComments) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebReviewPointsResponseBodyDataComments) SetSource(v string) *ListWebReviewPointsResponseBodyDataComments {
+	s.Source = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyDataComments) SetText(v string) *ListWebReviewPointsResponseBodyDataComments {
+	s.Text = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyDataComments) SetTitle(v string) *ListWebReviewPointsResponseBodyDataComments {
+	s.Title = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyDataComments) SetUrl(v string) *ListWebReviewPointsResponseBodyDataComments {
+	s.Url = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyDataComments) SetUsername(v string) *ListWebReviewPointsResponseBodyDataComments {
+	s.Username = &v
+	return s
+}
+
+type ListWebReviewPointsResponseBodyDataViewPoints struct {
+	Outlines []*ListWebReviewPointsResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListWebReviewPointsResponseBodyDataViewPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebReviewPointsResponseBodyDataViewPoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebReviewPointsResponseBodyDataViewPoints) SetOutlines(v []*ListWebReviewPointsResponseBodyDataViewPointsOutlines) *ListWebReviewPointsResponseBodyDataViewPoints {
+	s.Outlines = v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyDataViewPoints) SetPoint(v string) *ListWebReviewPointsResponseBodyDataViewPoints {
+	s.Point = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyDataViewPoints) SetSummary(v string) *ListWebReviewPointsResponseBodyDataViewPoints {
+	s.Summary = &v
+	return s
+}
+
+type ListWebReviewPointsResponseBodyDataViewPointsOutlines struct {
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// example:
+	//
+	// 大纲摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s ListWebReviewPointsResponseBodyDataViewPointsOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebReviewPointsResponseBodyDataViewPointsOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebReviewPointsResponseBodyDataViewPointsOutlines) SetOutline(v string) *ListWebReviewPointsResponseBodyDataViewPointsOutlines {
+	s.Outline = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponseBodyDataViewPointsOutlines) SetSummary(v string) *ListWebReviewPointsResponseBodyDataViewPointsOutlines {
+	s.Summary = &v
+	return s
+}
+
+type ListWebReviewPointsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWebReviewPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWebReviewPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebReviewPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebReviewPointsResponse) SetHeaders(v map[string]*string) *ListWebReviewPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWebReviewPointsResponse) SetStatusCode(v int32) *ListWebReviewPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWebReviewPointsResponse) SetBody(v *ListWebReviewPointsResponseBody) *ListWebReviewPointsResponse {
 	s.Body = v
 	return s
 }
@@ -10467,6 +15899,812 @@ func (s *RunContinueContentResponse) SetBody(v *RunContinueContentResponseBody) 
 	return s
 }
 
+type RunCustomHotTopicAnalysisRequest struct {
+	// example:
+	//
+	// 模型反问
+	AskUser *string `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	// example:
+	//
+	// false
+	ForceAnalysisExistsTopic *bool `json:"ForceAnalysisExistsTopic,omitempty" xml:"ForceAnalysisExistsTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 用户输入Prompt
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 用户针对模型反问的输入
+	UserBack *string `json:"UserBack,omitempty" xml:"UserBack,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunCustomHotTopicAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisRequest) SetAskUser(v string) *RunCustomHotTopicAnalysisRequest {
+	s.AskUser = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisRequest) SetForceAnalysisExistsTopic(v bool) *RunCustomHotTopicAnalysisRequest {
+	s.ForceAnalysisExistsTopic = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisRequest) SetPrompt(v string) *RunCustomHotTopicAnalysisRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisRequest) SetSessionId(v string) *RunCustomHotTopicAnalysisRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisRequest) SetTaskId(v string) *RunCustomHotTopicAnalysisRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisRequest) SetUserBack(v string) *RunCustomHotTopicAnalysisRequest {
+	s.UserBack = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisRequest) SetWorkspaceId(v string) *RunCustomHotTopicAnalysisRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunCustomHotTopicAnalysisResponseBody struct {
+	Header  *RunCustomHotTopicAnalysisResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunCustomHotTopicAnalysisResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunCustomHotTopicAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBody) SetHeader(v *RunCustomHotTopicAnalysisResponseBodyHeader) *RunCustomHotTopicAnalysisResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBody) SetPayload(v *RunCustomHotTopicAnalysisResponseBodyPayload) *RunCustomHotTopicAnalysisResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBody) SetRequestId(v string) *RunCustomHotTopicAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunCustomHotTopicAnalysisResponseBodyHeader struct {
+	// example:
+	//
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 全链路ID
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyHeader) SetErrorCode(v string) *RunCustomHotTopicAnalysisResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyHeader) SetErrorMessage(v string) *RunCustomHotTopicAnalysisResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyHeader) SetEvent(v string) *RunCustomHotTopicAnalysisResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyHeader) SetOriginSessionId(v string) *RunCustomHotTopicAnalysisResponseBodyHeader {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyHeader) SetSessionId(v string) *RunCustomHotTopicAnalysisResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyHeader) SetTaskId(v string) *RunCustomHotTopicAnalysisResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyHeader) SetTraceId(v string) *RunCustomHotTopicAnalysisResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunCustomHotTopicAnalysisResponseBodyPayload struct {
+	Output *RunCustomHotTopicAnalysisResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunCustomHotTopicAnalysisResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayload) SetOutput(v *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) *RunCustomHotTopicAnalysisResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayload) SetUsage(v *RunCustomHotTopicAnalysisResponseBodyPayloadUsage) *RunCustomHotTopicAnalysisResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunCustomHotTopicAnalysisResponseBodyPayloadOutput struct {
+	Articles []*RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	AskUser  []*string                                                     `json:"AskUser,omitempty" xml:"AskUser,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 异步任务ID
+	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// example:
+	//
+	// 自定义选题视角
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// 大模型改变世界
+	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// example:
+	//
+	// 文本生成结果
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 话题ID
+	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetArticles(v []*RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) *RunCustomHotTopicAnalysisResponseBodyPayloadOutput {
+	s.Articles = v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetAskUser(v []*string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutput {
+	s.AskUser = v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetAsyncTaskId(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutput {
+	s.AsyncTaskId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetAttitude(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutput {
+	s.Attitude = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetSearchQuery(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutput {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetText(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) SetTopicId(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutput {
+	s.TopicId = &v
+	return s
+}
+
+type RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// a2103fcfbd5441f1991c72f8834833e3
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-08-27 14:50:47
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标签
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetAuthor(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetContent(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetDocId(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetDocUuid(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetPubTime(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetSource(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetSummary(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetTag(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.Tag = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetTitle(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) SetUrl(v string) *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles {
+	s.Url = &v
+	return s
+}
+
+type RunCustomHotTopicAnalysisResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 60
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 13
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 73
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadUsage) SetInputTokens(v int64) *RunCustomHotTopicAnalysisResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunCustomHotTopicAnalysisResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunCustomHotTopicAnalysisResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunCustomHotTopicAnalysisResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunCustomHotTopicAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunCustomHotTopicAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicAnalysisResponse) SetHeaders(v map[string]*string) *RunCustomHotTopicAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponse) SetStatusCode(v int32) *RunCustomHotTopicAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunCustomHotTopicAnalysisResponse) SetBody(v *RunCustomHotTopicAnalysisResponseBody) *RunCustomHotTopicAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisRequest struct {
+	// example:
+	//
+	// 模型反问
+	AskUser *string `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 自定义选题视角的Prompt
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 改写后的Query
+	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// example:
+	//
+	// true
+	SkipAskUser *bool `json:"SkipAskUser,omitempty" xml:"SkipAskUser,omitempty"`
+	// example:
+	//
+	// 热点主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// 热点主题ID
+	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	// example:
+	//
+	// 热点主题来源
+	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// example:
+	//
+	// 热点主题版本
+	TopicVersion *string `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	// example:
+	//
+	// 用户反馈
+	UserBack *string `json:"UserBack,omitempty" xml:"UserBack,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetAskUser(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.AskUser = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetPrompt(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetSearchQuery(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetSkipAskUser(v bool) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.SkipAskUser = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetTopic(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetTopicId(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.TopicId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetTopicSource(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.TopicSource = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetTopicVersion(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.TopicVersion = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetUserBack(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.UserBack = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisRequest) SetWorkspaceId(v string) *RunCustomHotTopicViewPointAnalysisRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisResponseBody struct {
+	Header  *RunCustomHotTopicViewPointAnalysisResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunCustomHotTopicViewPointAnalysisResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBody) SetHeader(v *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) *RunCustomHotTopicViewPointAnalysisResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBody) SetPayload(v *RunCustomHotTopicViewPointAnalysisResponseBodyPayload) *RunCustomHotTopicViewPointAnalysisResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBody) SetRequestId(v string) *RunCustomHotTopicViewPointAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisResponseBodyHeader struct {
+	// example:
+	//
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 全链路ID
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) SetErrorCode(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) SetErrorMessage(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) SetEvent(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) SetOriginSessionId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyHeader {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) SetSessionId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) SetTaskId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyHeader) SetTraceId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisResponseBodyPayload struct {
+	Output *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayload) SetOutput(v *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) *RunCustomHotTopicViewPointAnalysisResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayload) SetUsage(v *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage) *RunCustomHotTopicViewPointAnalysisResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput struct {
+	AskUser []*string `json:"AskUser,omitempty" xml:"AskUser,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 异步任务ID
+	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// example:
+	//
+	// 模型生成的自定义选题视角的观点
+	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+	// example:
+	//
+	// 文本生成结果
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 话题ID
+	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetAskUser(v []*string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
+	s.AskUser = v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetAsyncTaskId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
+	s.AsyncTaskId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetAttitude(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
+	s.Attitude = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetCustomViewPointId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
+	s.CustomViewPointId = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetText(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetTopicId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
+	s.TopicId = &v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 51
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 79
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 130
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage) SetInputTokens(v int64) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunCustomHotTopicViewPointAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponse) SetHeaders(v map[string]*string) *RunCustomHotTopicViewPointAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponse) SetStatusCode(v int32) *RunCustomHotTopicViewPointAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponse) SetBody(v *RunCustomHotTopicViewPointAnalysisResponseBody) *RunCustomHotTopicViewPointAnalysisResponse {
+	s.Body = v
+	return s
+}
+
 type RunExpandContentRequest struct {
 	// This parameter is required.
 	//
@@ -11019,6 +17257,873 @@ func (s *RunKeywordsExtractionGenerationResponse) SetStatusCode(v int32) *RunKey
 }
 
 func (s *RunKeywordsExtractionGenerationResponse) SetBody(v *RunKeywordsExtractionGenerationResponseBody) *RunKeywordsExtractionGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type RunStepByStepWritingRequest struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 提示词
+	Prompt        *string                                   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ReferenceData *RunStepByStepWritingRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId   *string                                   `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WritingConfig *RunStepByStepWritingRequestWritingConfig `json:"WritingConfig,omitempty" xml:"WritingConfig,omitempty" type:"Struct"`
+}
+
+func (s RunStepByStepWritingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequest) SetOriginSessionId(v string) *RunStepByStepWritingRequest {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequest) SetPrompt(v string) *RunStepByStepWritingRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequest) SetReferenceData(v *RunStepByStepWritingRequestReferenceData) *RunStepByStepWritingRequest {
+	s.ReferenceData = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequest) SetSessionId(v string) *RunStepByStepWritingRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequest) SetTaskId(v string) *RunStepByStepWritingRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequest) SetWorkspaceId(v string) *RunStepByStepWritingRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequest) SetWritingConfig(v *RunStepByStepWritingRequestWritingConfig) *RunStepByStepWritingRequest {
+	s.WritingConfig = v
+	return s
+}
+
+type RunStepByStepWritingRequestReferenceData struct {
+	Articles      []*RunStepByStepWritingRequestReferenceDataArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	MiniDoc       []*string                                           `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	Outlines      []*RunStepByStepWritingRequestReferenceDataOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	Summarization []*string                                           `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Repeated"`
+}
+
+func (s RunStepByStepWritingRequestReferenceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequestReferenceData) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequestReferenceData) SetArticles(v []*RunStepByStepWritingRequestReferenceDataArticles) *RunStepByStepWritingRequestReferenceData {
+	s.Articles = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceData) SetMiniDoc(v []*string) *RunStepByStepWritingRequestReferenceData {
+	s.MiniDoc = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceData) SetOutlines(v []*RunStepByStepWritingRequestReferenceDataOutlines) *RunStepByStepWritingRequestReferenceData {
+	s.Outlines = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceData) SetSummarization(v []*string) *RunStepByStepWritingRequestReferenceData {
+	s.Summarization = v
+	return s
+}
+
+type RunStepByStepWritingRequestReferenceDataArticles struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 8a20e007a6174522af4d6a2657d5526f
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// http://www.example.com
+	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// example:
+	//
+	// 2024-09-10 14:17:54
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标签
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunStepByStepWritingRequestReferenceDataArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequestReferenceDataArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetAuthor(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetContent(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetDocId(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetDocUuid(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetMediaUrl(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.MediaUrl = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetPubTime(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetSource(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetSummary(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetTag(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.Tag = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetTitle(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataArticles) SetUrl(v string) *RunStepByStepWritingRequestReferenceDataArticles {
+	s.Url = &v
+	return s
+}
+
+type RunStepByStepWritingRequestReferenceDataOutlines struct {
+	Articles []*RunStepByStepWritingRequestReferenceDataOutlinesArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+}
+
+func (s RunStepByStepWritingRequestReferenceDataOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequestReferenceDataOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataOutlines) SetArticles(v []*RunStepByStepWritingRequestReferenceDataOutlinesArticles) *RunStepByStepWritingRequestReferenceDataOutlines {
+	s.Articles = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataOutlines) SetOutline(v string) *RunStepByStepWritingRequestReferenceDataOutlines {
+	s.Outline = &v
+	return s
+}
+
+type RunStepByStepWritingRequestReferenceDataOutlinesArticles struct {
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 文章链接
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunStepByStepWritingRequestReferenceDataOutlinesArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequestReferenceDataOutlinesArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataOutlinesArticles) SetContent(v string) *RunStepByStepWritingRequestReferenceDataOutlinesArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataOutlinesArticles) SetTitle(v string) *RunStepByStepWritingRequestReferenceDataOutlinesArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestReferenceDataOutlinesArticles) SetUrl(v string) *RunStepByStepWritingRequestReferenceDataOutlinesArticles {
+	s.Url = &v
+	return s
+}
+
+type RunStepByStepWritingRequestWritingConfig struct {
+	// example:
+	//
+	// media
+	Domain    *string                                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Keywords  []*string                                          `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	PromptTag *RunStepByStepWritingRequestWritingConfigPromptTag `json:"PromptTag,omitempty" xml:"PromptTag,omitempty" type:"Struct"`
+	// example:
+	//
+	// 分步骤写作场景，传媒写作支持的写作场景:新闻写作(默认),新闻评论,通用文体，公文写作支持的写作场景:通知(默认),通告,通报,请示,决定,函,通用文体
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// Writing
+	Step *string                                         `json:"Step,omitempty" xml:"Step,omitempty"`
+	Tags []*RunStepByStepWritingRequestWritingConfigTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	UseSearch *bool `json:"UseSearch,omitempty" xml:"UseSearch,omitempty"`
+}
+
+func (s RunStepByStepWritingRequestWritingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequestWritingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetDomain(v string) *RunStepByStepWritingRequestWritingConfig {
+	s.Domain = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetKeywords(v []*string) *RunStepByStepWritingRequestWritingConfig {
+	s.Keywords = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetPromptTag(v *RunStepByStepWritingRequestWritingConfigPromptTag) *RunStepByStepWritingRequestWritingConfig {
+	s.PromptTag = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetScene(v string) *RunStepByStepWritingRequestWritingConfig {
+	s.Scene = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetStep(v string) *RunStepByStepWritingRequestWritingConfig {
+	s.Step = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetTags(v []*RunStepByStepWritingRequestWritingConfigTags) *RunStepByStepWritingRequestWritingConfig {
+	s.Tags = v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetUseSearch(v bool) *RunStepByStepWritingRequestWritingConfig {
+	s.UseSearch = &v
+	return s
+}
+
+type RunStepByStepWritingRequestWritingConfigPromptTag struct {
+	// example:
+	//
+	// 必要提示
+	NecessaryTips *string `json:"NecessaryTips,omitempty" xml:"NecessaryTips,omitempty"`
+	// example:
+	//
+	// 立场
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// 反向词
+	ReverseWords *string `json:"ReverseWords,omitempty" xml:"ReverseWords,omitempty"`
+	// example:
+	//
+	// 主题
+	Theme *string `json:"Theme,omitempty" xml:"Theme,omitempty"`
+}
+
+func (s RunStepByStepWritingRequestWritingConfigPromptTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequestWritingConfigPromptTag) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequestWritingConfigPromptTag) SetNecessaryTips(v string) *RunStepByStepWritingRequestWritingConfigPromptTag {
+	s.NecessaryTips = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfigPromptTag) SetPosition(v string) *RunStepByStepWritingRequestWritingConfigPromptTag {
+	s.Position = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfigPromptTag) SetReverseWords(v string) *RunStepByStepWritingRequestWritingConfigPromptTag {
+	s.ReverseWords = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfigPromptTag) SetTheme(v string) *RunStepByStepWritingRequestWritingConfigPromptTag {
+	s.Theme = &v
+	return s
+}
+
+type RunStepByStepWritingRequestWritingConfigTags struct {
+	// example:
+	//
+	// 10
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// gcNumberSizeTag
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s RunStepByStepWritingRequestWritingConfigTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingRequestWritingConfigTags) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingRequestWritingConfigTags) SetKeyword(v string) *RunStepByStepWritingRequestWritingConfigTags {
+	s.Keyword = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfigTags) SetTag(v string) *RunStepByStepWritingRequestWritingConfigTags {
+	s.Tag = &v
+	return s
+}
+
+type RunStepByStepWritingShrinkRequest struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 提示词
+	Prompt              *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WritingConfigShrink *string `json:"WritingConfig,omitempty" xml:"WritingConfig,omitempty"`
+}
+
+func (s RunStepByStepWritingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingShrinkRequest) SetOriginSessionId(v string) *RunStepByStepWritingShrinkRequest {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingShrinkRequest) SetPrompt(v string) *RunStepByStepWritingShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunStepByStepWritingShrinkRequest) SetReferenceDataShrink(v string) *RunStepByStepWritingShrinkRequest {
+	s.ReferenceDataShrink = &v
+	return s
+}
+
+func (s *RunStepByStepWritingShrinkRequest) SetSessionId(v string) *RunStepByStepWritingShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingShrinkRequest) SetTaskId(v string) *RunStepByStepWritingShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingShrinkRequest) SetWorkspaceId(v string) *RunStepByStepWritingShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingShrinkRequest) SetWritingConfigShrink(v string) *RunStepByStepWritingShrinkRequest {
+	s.WritingConfigShrink = &v
+	return s
+}
+
+type RunStepByStepWritingResponseBody struct {
+	Header  *RunStepByStepWritingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunStepByStepWritingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunStepByStepWritingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponseBody) SetHeader(v *RunStepByStepWritingResponseBodyHeader) *RunStepByStepWritingResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBody) SetPayload(v *RunStepByStepWritingResponseBodyPayload) *RunStepByStepWritingResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBody) SetRequestId(v string) *RunStepByStepWritingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunStepByStepWritingResponseBodyHeader struct {
+	// example:
+	//
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 全链路ID
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunStepByStepWritingResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponseBodyHeader) SetErrorCode(v string) *RunStepByStepWritingResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyHeader) SetErrorMessage(v string) *RunStepByStepWritingResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyHeader) SetEvent(v string) *RunStepByStepWritingResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyHeader) SetOriginSessionId(v string) *RunStepByStepWritingResponseBodyHeader {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyHeader) SetSessionId(v string) *RunStepByStepWritingResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyHeader) SetTaskId(v string) *RunStepByStepWritingResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyHeader) SetTraceId(v string) *RunStepByStepWritingResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunStepByStepWritingResponseBodyPayload struct {
+	Output *RunStepByStepWritingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunStepByStepWritingResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunStepByStepWritingResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponseBodyPayload) SetOutput(v *RunStepByStepWritingResponseBodyPayloadOutput) *RunStepByStepWritingResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayload) SetUsage(v *RunStepByStepWritingResponseBodyPayloadUsage) *RunStepByStepWritingResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunStepByStepWritingResponseBodyPayloadOutput struct {
+	Articles    []*RunStepByStepWritingResponseBodyPayloadOutputArticles  `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	ExtraOutput *RunStepByStepWritingResponseBodyPayloadOutputExtraOutput `json:"ExtraOutput,omitempty" xml:"ExtraOutput,omitempty" type:"Struct"`
+	// example:
+	//
+	// 文章精排之后的片段
+	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 大模型改变世界
+	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// example:
+	//
+	// 文本生成结果
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutput) SetArticles(v []*RunStepByStepWritingResponseBodyPayloadOutputArticles) *RunStepByStepWritingResponseBodyPayloadOutput {
+	s.Articles = v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutput) SetExtraOutput(v *RunStepByStepWritingResponseBodyPayloadOutputExtraOutput) *RunStepByStepWritingResponseBodyPayloadOutput {
+	s.ExtraOutput = v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutput) SetMiniDoc(v []*string) *RunStepByStepWritingResponseBodyPayloadOutput {
+	s.MiniDoc = v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutput) SetSearchQuery(v string) *RunStepByStepWritingResponseBodyPayloadOutput {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutput) SetText(v string) *RunStepByStepWritingResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunStepByStepWritingResponseBodyPayloadOutputArticles struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// f1da53894e784759946d22e2cb2b522a
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// http://www.example.com
+	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// example:
+	//
+	// 2024-09-10 14:17:53
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标签
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadOutputArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadOutputArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetAuthor(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetContent(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetDocId(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetDocUuid(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetMediaUrl(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.MediaUrl = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetPubTime(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetSource(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetSummary(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetTag(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.Tag = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetTitle(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) SetUrl(v string) *RunStepByStepWritingResponseBodyPayloadOutputArticles {
+	s.Url = &v
+	return s
+}
+
+type RunStepByStepWritingResponseBodyPayloadOutputExtraOutput struct {
+	Summarization []*string `json:"summarization,omitempty" xml:"summarization,omitempty" type:"Repeated"`
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadOutputExtraOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadOutputExtraOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadOutputExtraOutput) SetSummarization(v []*string) *RunStepByStepWritingResponseBodyPayloadOutputExtraOutput {
+	s.Summarization = v
+	return s
+}
+
+type RunStepByStepWritingResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 65
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 80
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 32
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadUsage) SetInputTokens(v int64) *RunStepByStepWritingResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunStepByStepWritingResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunStepByStepWritingResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunStepByStepWritingResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunStepByStepWritingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunStepByStepWritingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunStepByStepWritingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunStepByStepWritingResponse) SetHeaders(v map[string]*string) *RunStepByStepWritingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunStepByStepWritingResponse) SetStatusCode(v int32) *RunStepByStepWritingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunStepByStepWritingResponse) SetBody(v *RunStepByStepWritingResponseBody) *RunStepByStepWritingResponse {
 	s.Body = v
 	return s
 }
@@ -14815,6 +21920,840 @@ func (s *SubmitAsyncTaskResponse) SetBody(v *SubmitAsyncTaskResponseBody) *Submi
 	return s
 }
 
+type SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey  *string                                                              `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Documents []*SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 自定义观点的输入Prompt
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 待分析的主题名（documents与topic二者至少传一个）
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) SetAgentKey(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) SetDocuments(v []*SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.Documents = v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) SetPrompt(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) SetTopic(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.Topic = &v
+	return s
+}
+
+type SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2024-01-22 10:29:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 新浪
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetAuthor(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Author = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetContent(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetPubTime(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.PubTime = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetSource(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Source = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetSummary(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Summary = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetTitle(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetUrl(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Url = &v
+	return s
+}
+
+type SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 自定义观点的输入Prompt
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 待分析的主题名（documents与topic二者至少传一个）
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetAgentKey(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetDocumentsShrink(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.DocumentsShrink = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetPrompt(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetTopic(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.Topic = &v
+	return s
+}
+
+type SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetCode(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetData(v *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetMessage(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetRequestId(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) SetSuccess(v bool) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetTaskId(v string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse struct {
+	Headers    map[string]*string                                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse) SetHeaders(v map[string]*string) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse) SetStatusCode(v int32) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse) SetBody(v *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDocClusterTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	Documents []*SubmitDocClusterTaskRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 49
+	SummaryLength *int32 `json:"SummaryLength,omitempty" xml:"SummaryLength,omitempty"`
+	// example:
+	//
+	// 69
+	TitleLength *int32 `json:"TitleLength,omitempty" xml:"TitleLength,omitempty"`
+	// example:
+	//
+	// 15
+	TopicCount *int32 `json:"TopicCount,omitempty" xml:"TopicCount,omitempty"`
+}
+
+func (s SubmitDocClusterTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocClusterTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocClusterTaskRequest) SetAgentKey(v string) *SubmitDocClusterTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskRequest) SetDocuments(v []*SubmitDocClusterTaskRequestDocuments) *SubmitDocClusterTaskRequest {
+	s.Documents = v
+	return s
+}
+
+func (s *SubmitDocClusterTaskRequest) SetSummaryLength(v int32) *SubmitDocClusterTaskRequest {
+	s.SummaryLength = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskRequest) SetTitleLength(v int32) *SubmitDocClusterTaskRequest {
+	s.TitleLength = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskRequest) SetTopicCount(v int32) *SubmitDocClusterTaskRequest {
+	s.TopicCount = &v
+	return s
+}
+
+type SubmitDocClusterTaskRequestDocuments struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文档内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档ID。用于在返回聚类文章时标识文章。如果文章列表中都不传则使用数组索引作为ID。如果部分传则会报错
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 文档标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s SubmitDocClusterTaskRequestDocuments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocClusterTaskRequestDocuments) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocClusterTaskRequestDocuments) SetContent(v string) *SubmitDocClusterTaskRequestDocuments {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskRequestDocuments) SetDocId(v string) *SubmitDocClusterTaskRequestDocuments {
+	s.DocId = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskRequestDocuments) SetTitle(v string) *SubmitDocClusterTaskRequestDocuments {
+	s.Title = &v
+	return s
+}
+
+type SubmitDocClusterTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// example:
+	//
+	// 49
+	SummaryLength *int32 `json:"SummaryLength,omitempty" xml:"SummaryLength,omitempty"`
+	// example:
+	//
+	// 69
+	TitleLength *int32 `json:"TitleLength,omitempty" xml:"TitleLength,omitempty"`
+	// example:
+	//
+	// 15
+	TopicCount *int32 `json:"TopicCount,omitempty" xml:"TopicCount,omitempty"`
+}
+
+func (s SubmitDocClusterTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocClusterTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocClusterTaskShrinkRequest) SetAgentKey(v string) *SubmitDocClusterTaskShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskShrinkRequest) SetDocumentsShrink(v string) *SubmitDocClusterTaskShrinkRequest {
+	s.DocumentsShrink = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskShrinkRequest) SetSummaryLength(v int32) *SubmitDocClusterTaskShrinkRequest {
+	s.SummaryLength = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskShrinkRequest) SetTitleLength(v int32) *SubmitDocClusterTaskShrinkRequest {
+	s.TitleLength = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskShrinkRequest) SetTopicCount(v int32) *SubmitDocClusterTaskShrinkRequest {
+	s.TopicCount = &v
+	return s
+}
+
+type SubmitDocClusterTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitDocClusterTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitDocClusterTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocClusterTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocClusterTaskResponseBody) SetCode(v string) *SubmitDocClusterTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskResponseBody) SetData(v *SubmitDocClusterTaskResponseBodyData) *SubmitDocClusterTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitDocClusterTaskResponseBody) SetHttpStatusCode(v int32) *SubmitDocClusterTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskResponseBody) SetMessage(v string) *SubmitDocClusterTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskResponseBody) SetRequestId(v string) *SubmitDocClusterTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskResponseBody) SetSuccess(v bool) *SubmitDocClusterTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitDocClusterTaskResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitDocClusterTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocClusterTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocClusterTaskResponseBodyData) SetTaskId(v string) *SubmitDocClusterTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitDocClusterTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocClusterTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitDocClusterTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocClusterTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocClusterTaskResponse) SetHeaders(v map[string]*string) *SubmitDocClusterTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDocClusterTaskResponse) SetStatusCode(v int32) *SubmitDocClusterTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDocClusterTaskResponse) SetBody(v *SubmitDocClusterTaskResponseBody) *SubmitDocClusterTaskResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitTopicSelectionPerspectiveAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey  *string                                                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Documents []*SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TimedViewPoints
+	PerspectiveTypes []*string `json:"PerspectiveTypes,omitempty" xml:"PerspectiveTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 待分析的主题名（documents与topic二者至少传一个）
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) SetAgentKey(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) SetDocuments(v []*SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) *SubmitTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.Documents = v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) SetPerspectiveTypes(v []*string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.PerspectiveTypes = v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) SetTopic(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequest {
+	s.Topic = &v
+	return s
+}
+
+type SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2024-01-22 10:29:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 新浪
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetAuthor(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Author = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetContent(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetPubTime(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.PubTime = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetSource(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Source = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetSummary(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Summary = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetTitle(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetUrl(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Url = &v
+	return s
+}
+
+type SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// example:
+	//
+	// TimedViewPoints
+	PerspectiveTypesShrink *string `json:"PerspectiveTypes,omitempty" xml:"PerspectiveTypes,omitempty"`
+	// example:
+	//
+	// 待分析的主题名（documents与topic二者至少传一个）
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetAgentKey(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetDocumentsShrink(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.DocumentsShrink = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetPerspectiveTypesShrink(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.PerspectiveTypesShrink = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest) SetTopic(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest {
+	s.Topic = &v
+	return s
+}
+
+type SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) SetCode(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) SetData(v *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) SetMessage(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) SetRequestId(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) SetSuccess(v bool) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetTaskId(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData) SetTaskName(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
+type SubmitTopicSelectionPerspectiveAnalysisTaskResponse struct {
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponse) SetHeaders(v map[string]*string) *SubmitTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponse) SetStatusCode(v int32) *SubmitTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskResponse) SetBody(v *SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody) *SubmitTopicSelectionPerspectiveAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateCustomTextRequest struct {
 	// This parameter is required.
 	//
@@ -15974,6 +23913,138 @@ func (client *Client) DeleteCustomText(request *DeleteCustomTextRequest) (_resul
 
 // Summary:
 //
+// 根据主题删除自定义主题事件
+//
+// @param request - DeleteCustomTopicByTopicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomTopicByTopicResponse
+func (client *Client) DeleteCustomTopicByTopicWithOptions(request *DeleteCustomTopicByTopicRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomTopicByTopicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomTopicByTopic"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomTopicByTopicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据主题删除自定义主题事件
+//
+// @param request - DeleteCustomTopicByTopicRequest
+//
+// @return DeleteCustomTopicByTopicResponse
+func (client *Client) DeleteCustomTopicByTopic(request *DeleteCustomTopicByTopicRequest) (_result *DeleteCustomTopicByTopicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomTopicByTopicResponse{}
+	_body, _err := client.DeleteCustomTopicByTopicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据自定义观点ID删除自定义观点
+//
+// @param request - DeleteCustomTopicViewPointByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomTopicViewPointByIdResponse
+func (client *Client) DeleteCustomTopicViewPointByIdWithOptions(request *DeleteCustomTopicViewPointByIdRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomTopicViewPointByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomViewPointId)) {
+		body["CustomViewPointId"] = request.CustomViewPointId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomTopicViewPointById"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomTopicViewPointByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据自定义观点ID删除自定义观点
+//
+// @param request - DeleteCustomTopicViewPointByIdRequest
+//
+// @return DeleteCustomTopicViewPointByIdResponse
+func (client *Client) DeleteCustomTopicViewPointById(request *DeleteCustomTopicViewPointByIdRequest) (_result *DeleteCustomTopicViewPointByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomTopicViewPointByIdResponse{}
+	_body, _err := client.DeleteCustomTopicViewPointByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-删除。
 //
 // @param request - DeleteGeneratedContentRequest
@@ -16305,6 +24376,102 @@ func (client *Client) ExportGeneratedContent(request *ExportGeneratedContentRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportGeneratedContentResponse{}
 	_body, _err := client.ExportGeneratedContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+//
+// @param tmpReq - ExportHotTopicPlanningProposalsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportHotTopicPlanningProposalsResponse
+func (client *Client) ExportHotTopicPlanningProposalsWithOptions(tmpReq *ExportHotTopicPlanningProposalsRequest, runtime *util.RuntimeOptions) (_result *ExportHotTopicPlanningProposalsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExportHotTopicPlanningProposalsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomViewPointIds)) {
+		request.CustomViewPointIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomViewPointIds, tea.String("CustomViewPointIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Titles)) {
+		request.TitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Titles, tea.String("Titles"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomViewPointIdsShrink)) {
+		body["CustomViewPointIds"] = request.CustomViewPointIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		body["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TitlesShrink)) {
+		body["Titles"] = request.TitlesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewPointType)) {
+		body["ViewPointType"] = request.ViewPointType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportHotTopicPlanningProposals"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportHotTopicPlanningProposalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+//
+// @param request - ExportHotTopicPlanningProposalsRequest
+//
+// @return ExportHotTopicPlanningProposalsResponse
+func (client *Client) ExportHotTopicPlanningProposals(request *ExportHotTopicPlanningProposalsRequest) (_result *ExportHotTopicPlanningProposalsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportHotTopicPlanningProposalsResponse{}
+	_body, _err := client.ExportHotTopicPlanningProposalsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16912,6 +25079,72 @@ func (client *Client) GetCustomText(request *GetCustomTextRequest) (_result *Get
 
 // Summary:
 //
+// 获取自定义选题视角分析任务结果
+//
+// @param request - GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) GetCustomTopicSelectionPerspectiveAnalysisTaskWithOptions(request *GetCustomTopicSelectionPerspectiveAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomTopicSelectionPerspectiveAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCustomTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义选题视角分析任务结果
+//
+// @param request - GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @return GetCustomTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) GetCustomTopicSelectionPerspectiveAnalysisTask(request *GetCustomTopicSelectionPerspectiveAnalysisTaskRequest) (_result *GetCustomTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCustomTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.GetCustomTopicSelectionPerspectiveAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取系统数据源配置和个人配置
 //
 // @param request - GetDataSourceOrderConfigRequest
@@ -16969,6 +25202,72 @@ func (client *Client) GetDataSourceOrderConfig(request *GetDataSourceOrderConfig
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataSourceOrderConfigResponse{}
 	_body, _err := client.GetDataSourceOrderConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档聚合任务结果
+//
+// @param request - GetDocClusterTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocClusterTaskResponse
+func (client *Client) GetDocClusterTaskWithOptions(request *GetDocClusterTaskRequest, runtime *util.RuntimeOptions) (_result *GetDocClusterTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocClusterTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocClusterTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档聚合任务结果
+//
+// @param request - GetDocClusterTaskRequest
+//
+// @return GetDocClusterTaskResponse
+func (client *Client) GetDocClusterTask(request *GetDocClusterTaskRequest) (_result *GetDocClusterTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDocClusterTaskResponse{}
+	_body, _err := client.GetDocClusterTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17413,6 +25712,138 @@ func (client *Client) GetProperties(request *GetPropertiesRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPropertiesResponse{}
 	_body, _err := client.GetPropertiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据ID获取热点事件信息
+//
+// @param request - GetTopicByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTopicByIdResponse
+func (client *Client) GetTopicByIdWithOptions(request *GetTopicByIdRequest, runtime *util.RuntimeOptions) (_result *GetTopicByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTopicById"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTopicByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据ID获取热点事件信息
+//
+// @param request - GetTopicByIdRequest
+//
+// @return GetTopicByIdResponse
+func (client *Client) GetTopicById(request *GetTopicByIdRequest) (_result *GetTopicByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTopicByIdResponse{}
+	_body, _err := client.GetTopicByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取选题视角分析任务结果
+//
+// @param request - GetTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) GetTopicSelectionPerspectiveAnalysisTaskWithOptions(request *GetTopicSelectionPerspectiveAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *GetTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTopicSelectionPerspectiveAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取选题视角分析任务结果
+//
+// @param request - GetTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @return GetTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) GetTopicSelectionPerspectiveAnalysisTask(request *GetTopicSelectionPerspectiveAnalysisTaskRequest) (_result *GetTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.GetTopicSelectionPerspectiveAnalysisTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17962,6 +26393,110 @@ func (client *Client) ListCustomText(request *ListCustomTextRequest) (_result *L
 
 // Summary:
 //
+// 自定义视角列表
+//
+// @param tmpReq - ListCustomViewPointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomViewPointsResponse
+func (client *Client) ListCustomViewPointsWithOptions(tmpReq *ListCustomViewPointsRequest, runtime *util.RuntimeOptions) (_result *ListCustomViewPointsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListCustomViewPointsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Attitudes)) {
+		request.AttitudesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attitudes, tea.String("Attitudes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomViewPointIds)) {
+		request.CustomViewPointIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomViewPointIds, tea.String("CustomViewPointIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attitude)) {
+		body["Attitude"] = request.Attitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttitudesShrink)) {
+		body["Attitudes"] = request.AttitudesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomViewPointId)) {
+		body["CustomViewPointId"] = request.CustomViewPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomViewPointIdsShrink)) {
+		body["CustomViewPointIds"] = request.CustomViewPointIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicId)) {
+		body["TopicId"] = request.TopicId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomViewPoints"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomViewPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义视角列表
+//
+// @param request - ListCustomViewPointsRequest
+//
+// @return ListCustomViewPointsResponse
+func (client *Client) ListCustomViewPoints(request *ListCustomViewPointsRequest) (_result *ListCustomViewPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomViewPointsResponse{}
+	_body, _err := client.ListCustomViewPointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 生成历史列表
 //
 // @param request - ListDialoguesRequest
@@ -18039,6 +26574,84 @@ func (client *Client) ListDialogues(request *ListDialoguesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDialoguesResponse{}
 	_body, _err := client.ListDialoguesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新颖视角列表
+//
+// @param request - ListFreshViewPointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFreshViewPointsResponse
+func (client *Client) ListFreshViewPointsWithOptions(request *ListFreshViewPointsRequest, runtime *util.RuntimeOptions) (_result *ListFreshViewPointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFreshViewPoints"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFreshViewPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新颖视角列表
+//
+// @param request - ListFreshViewPointsRequest
+//
+// @return ListFreshViewPointsResponse
+func (client *Client) ListFreshViewPoints(request *ListFreshViewPointsRequest) (_result *ListFreshViewPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFreshViewPointsResponse{}
+	_body, _err := client.ListFreshViewPointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18217,6 +26830,258 @@ func (client *Client) ListHotNewsWithType(request *ListHotNewsWithTypeRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotNewsWithTypeResponse{}
 	_body, _err := client.ListHotNewsWithTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有平台热榜源列表
+//
+// @param request - ListHotSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotSourcesResponse
+func (client *Client) ListHotSourcesWithOptions(request *ListHotSourcesRequest, runtime *util.RuntimeOptions) (_result *ListHotSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotSources"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有平台热榜源列表
+//
+// @param request - ListHotSourcesRequest
+//
+// @return ListHotSourcesResponse
+func (client *Client) ListHotSources(request *ListHotSourcesRequest) (_result *ListHotSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHotSourcesResponse{}
+	_body, _err := client.ListHotSourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取热点事件列表
+//
+// @param tmpReq - ListHotTopicsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotTopicsResponse
+func (client *Client) ListHotTopicsWithOptions(tmpReq *ListHotTopicsRequest, runtime *util.RuntimeOptions) (_result *ListHotTopicsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListHotTopicsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TopicIds)) {
+		request.TopicIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TopicIds, tea.String("TopicIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Topics)) {
+		request.TopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Topics, tea.String("Topics"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicIdsShrink)) {
+		body["TopicIds"] = request.TopicIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicQuery)) {
+		body["TopicQuery"] = request.TopicQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicVersion)) {
+		body["TopicVersion"] = request.TopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicsShrink)) {
+		body["Topics"] = request.TopicsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithNews)) {
+		body["WithNews"] = request.WithNews
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotTopics"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotTopicsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取热点事件列表
+//
+// @param request - ListHotTopicsRequest
+//
+// @return ListHotTopicsResponse
+func (client *Client) ListHotTopics(request *ListHotTopicsRequest) (_result *ListHotTopicsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHotTopicsResponse{}
+	_body, _err := client.ListHotTopicsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 热门视角列表
+//
+// @param request - ListHotViewPointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotViewPointsResponse
+func (client *Client) ListHotViewPointsWithOptions(request *ListHotViewPointsRequest, runtime *util.RuntimeOptions) (_result *ListHotViewPointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotViewPoints"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotViewPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 热门视角列表
+//
+// @param request - ListHotViewPointsRequest
+//
+// @return ListHotViewPointsResponse
+func (client *Client) ListHotViewPoints(request *ListHotViewPointsRequest) (_result *ListHotViewPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHotViewPointsResponse{}
+	_body, _err := client.ListHotViewPointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18650,6 +27515,336 @@ func (client *Client) ListMaterialDocuments(request *ListMaterialDocumentsReques
 
 // Summary:
 //
+// 获取选题策划列表
+//
+// @param tmpReq - ListPlanningProposalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPlanningProposalResponse
+func (client *Client) ListPlanningProposalWithOptions(tmpReq *ListPlanningProposalRequest, runtime *util.RuntimeOptions) (_result *ListPlanningProposalResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPlanningProposalShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomViewPointIds)) {
+		request.CustomViewPointIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomViewPointIds, tea.String("CustomViewPointIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Titles)) {
+		request.TitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Titles, tea.String("Titles"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomViewPointId)) {
+		body["CustomViewPointId"] = request.CustomViewPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomViewPointIdsShrink)) {
+		body["CustomViewPointIds"] = request.CustomViewPointIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TitlesShrink)) {
+		body["Titles"] = request.TitlesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicVersion)) {
+		body["TopicVersion"] = request.TopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewPointType)) {
+		body["ViewPointType"] = request.ViewPointType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPlanningProposal"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPlanningProposalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取选题策划列表
+//
+// @param request - ListPlanningProposalRequest
+//
+// @return ListPlanningProposalResponse
+func (client *Client) ListPlanningProposal(request *ListPlanningProposalRequest) (_result *ListPlanningProposalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPlanningProposalResponse{}
+	_body, _err := client.ListPlanningProposalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 时效性视角列表
+//
+// @param request - ListTimedViewAttitudeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTimedViewAttitudeResponse
+func (client *Client) ListTimedViewAttitudeWithOptions(request *ListTimedViewAttitudeRequest, runtime *util.RuntimeOptions) (_result *ListTimedViewAttitudeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTimedViewAttitude"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTimedViewAttitudeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 时效性视角列表
+//
+// @param request - ListTimedViewAttitudeRequest
+//
+// @return ListTimedViewAttitudeResponse
+func (client *Client) ListTimedViewAttitude(request *ListTimedViewAttitudeRequest) (_result *ListTimedViewAttitudeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTimedViewAttitudeResponse{}
+	_body, _err := client.ListTimedViewAttitudeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取热点推荐事件
+//
+// @param request - ListTopicRecommendEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTopicRecommendEventListResponse
+func (client *Client) ListTopicRecommendEventListWithOptions(request *ListTopicRecommendEventListRequest, runtime *util.RuntimeOptions) (_result *ListTopicRecommendEventListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTopicRecommendEventList"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTopicRecommendEventListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取热点推荐事件
+//
+// @param request - ListTopicRecommendEventListRequest
+//
+// @return ListTopicRecommendEventListResponse
+func (client *Client) ListTopicRecommendEventList(request *ListTopicRecommendEventListRequest) (_result *ListTopicRecommendEventListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTopicRecommendEventListResponse{}
+	_body, _err := client.ListTopicRecommendEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取主题事件推荐观点列表
+//
+// @param request - ListTopicViewPointRecommendEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTopicViewPointRecommendEventListResponse
+func (client *Client) ListTopicViewPointRecommendEventListWithOptions(request *ListTopicViewPointRecommendEventListRequest, runtime *util.RuntimeOptions) (_result *ListTopicViewPointRecommendEventListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTopicViewPointRecommendEventList"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTopicViewPointRecommendEventListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取主题事件推荐观点列表
+//
+// @param request - ListTopicViewPointRecommendEventListRequest
+//
+// @return ListTopicViewPointRecommendEventListResponse
+func (client *Client) ListTopicViewPointRecommendEventList(request *ListTopicViewPointRecommendEventListRequest) (_result *ListTopicViewPointRecommendEventListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTopicViewPointRecommendEventListResponse{}
+	_body, _err := client.ListTopicViewPointRecommendEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取系统所有实例信息
 //
 // @param request - ListVersionsRequest
@@ -18701,6 +27896,84 @@ func (client *Client) ListVersions(request *ListVersionsRequest) (_result *ListV
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVersionsResponse{}
 	_body, _err := client.ListVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 网友视角列表
+//
+// @param request - ListWebReviewPointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebReviewPointsResponse
+func (client *Client) ListWebReviewPointsWithOptions(request *ListWebReviewPointsRequest, runtime *util.RuntimeOptions) (_result *ListWebReviewPointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWebReviewPoints"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWebReviewPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 网友视角列表
+//
+// @param request - ListWebReviewPointsRequest
+//
+// @return ListWebReviewPointsResponse
+func (client *Client) ListWebReviewPoints(request *ListWebReviewPointsRequest) (_result *ListWebReviewPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWebReviewPointsResponse{}
+	_body, _err := client.ListWebReviewPointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18904,6 +28177,186 @@ func (client *Client) RunContinueContent(request *RunContinueContentRequest) (_r
 
 // Summary:
 //
+// 自定义热点话题分析
+//
+// @param request - RunCustomHotTopicAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCustomHotTopicAnalysisResponse
+func (client *Client) RunCustomHotTopicAnalysisWithOptions(request *RunCustomHotTopicAnalysisRequest, runtime *util.RuntimeOptions) (_result *RunCustomHotTopicAnalysisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AskUser)) {
+		body["AskUser"] = request.AskUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceAnalysisExistsTopic)) {
+		body["ForceAnalysisExistsTopic"] = request.ForceAnalysisExistsTopic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserBack)) {
+		body["UserBack"] = request.UserBack
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunCustomHotTopicAnalysis"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunCustomHotTopicAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义热点话题分析
+//
+// @param request - RunCustomHotTopicAnalysisRequest
+//
+// @return RunCustomHotTopicAnalysisResponse
+func (client *Client) RunCustomHotTopicAnalysis(request *RunCustomHotTopicAnalysisRequest) (_result *RunCustomHotTopicAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunCustomHotTopicAnalysisResponse{}
+	_body, _err := client.RunCustomHotTopicAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义选题视角分析
+//
+// @param request - RunCustomHotTopicViewPointAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCustomHotTopicViewPointAnalysisResponse
+func (client *Client) RunCustomHotTopicViewPointAnalysisWithOptions(request *RunCustomHotTopicViewPointAnalysisRequest, runtime *util.RuntimeOptions) (_result *RunCustomHotTopicViewPointAnalysisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AskUser)) {
+		body["AskUser"] = request.AskUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchQuery)) {
+		body["SearchQuery"] = request.SearchQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipAskUser)) {
+		body["SkipAskUser"] = request.SkipAskUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicId)) {
+		body["TopicId"] = request.TopicId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicSource)) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicVersion)) {
+		body["TopicVersion"] = request.TopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserBack)) {
+		body["UserBack"] = request.UserBack
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunCustomHotTopicViewPointAnalysis"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunCustomHotTopicViewPointAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义选题视角分析
+//
+// @param request - RunCustomHotTopicViewPointAnalysisRequest
+//
+// @return RunCustomHotTopicViewPointAnalysisResponse
+func (client *Client) RunCustomHotTopicViewPointAnalysis(request *RunCustomHotTopicViewPointAnalysisRequest) (_result *RunCustomHotTopicViewPointAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunCustomHotTopicViewPointAnalysisResponse{}
+	_body, _err := client.RunCustomHotTopicViewPointAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 内容扩写
 //
 // @param request - RunExpandContentRequest
@@ -19033,6 +28486,100 @@ func (client *Client) RunKeywordsExtractionGeneration(request *RunKeywordsExtrac
 	runtime := &util.RuntimeOptions{}
 	_result = &RunKeywordsExtractionGenerationResponse{}
 	_body, _err := client.RunKeywordsExtractionGenerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创作-分步骤写作
+//
+// @param tmpReq - RunStepByStepWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunStepByStepWritingResponse
+func (client *Client) RunStepByStepWritingWithOptions(tmpReq *RunStepByStepWritingRequest, runtime *util.RuntimeOptions) (_result *RunStepByStepWritingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunStepByStepWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReferenceData)) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, tea.String("ReferenceData"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.WritingConfig)) {
+		request.WritingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingConfig, tea.String("WritingConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OriginSessionId)) {
+		body["OriginSessionId"] = request.OriginSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferenceDataShrink)) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WritingConfigShrink)) {
+		body["WritingConfig"] = request.WritingConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunStepByStepWriting"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunStepByStepWritingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创作-分步骤写作
+//
+// @param request - RunStepByStepWritingRequest
+//
+// @return RunStepByStepWritingResponse
+func (client *Client) RunStepByStepWriting(request *RunStepByStepWritingRequest) (_result *RunStepByStepWritingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunStepByStepWritingResponse{}
+	_body, _err := client.RunStepByStepWritingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20007,6 +29554,254 @@ func (client *Client) SubmitAsyncTask(request *SubmitAsyncTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAsyncTaskResponse{}
 	_body, _err := client.SubmitAsyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交自定义热点选题视角分析任务
+//
+// @param tmpReq - SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) SubmitCustomTopicSelectionPerspectiveAnalysisTaskWithOptions(tmpReq *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Documents)) {
+		request.DocumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Documents, tea.String("Documents"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentsShrink)) {
+		body["Documents"] = request.DocumentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitCustomTopicSelectionPerspectiveAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交自定义热点选题视角分析任务
+//
+// @param request - SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @return SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) SubmitCustomTopicSelectionPerspectiveAnalysisTask(request *SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest) (_result *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.SubmitCustomTopicSelectionPerspectiveAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交文档聚合任务
+//
+// @param tmpReq - SubmitDocClusterTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDocClusterTaskResponse
+func (client *Client) SubmitDocClusterTaskWithOptions(tmpReq *SubmitDocClusterTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitDocClusterTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitDocClusterTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Documents)) {
+		request.DocumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Documents, tea.String("Documents"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentsShrink)) {
+		body["Documents"] = request.DocumentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SummaryLength)) {
+		body["SummaryLength"] = request.SummaryLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TitleLength)) {
+		body["TitleLength"] = request.TitleLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicCount)) {
+		body["TopicCount"] = request.TopicCount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDocClusterTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDocClusterTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交文档聚合任务
+//
+// @param request - SubmitDocClusterTaskRequest
+//
+// @return SubmitDocClusterTaskResponse
+func (client *Client) SubmitDocClusterTask(request *SubmitDocClusterTaskRequest) (_result *SubmitDocClusterTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDocClusterTaskResponse{}
+	_body, _err := client.SubmitDocClusterTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交选题热点分析任务
+//
+// @param tmpReq - SubmitTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) SubmitTopicSelectionPerspectiveAnalysisTaskWithOptions(tmpReq *SubmitTopicSelectionPerspectiveAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Documents)) {
+		request.DocumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Documents, tea.String("Documents"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PerspectiveTypes)) {
+		request.PerspectiveTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PerspectiveTypes, tea.String("PerspectiveTypes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentsShrink)) {
+		body["Documents"] = request.DocumentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerspectiveTypesShrink)) {
+		body["PerspectiveTypes"] = request.PerspectiveTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitTopicSelectionPerspectiveAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交选题热点分析任务
+//
+// @param request - SubmitTopicSelectionPerspectiveAnalysisTaskRequest
+//
+// @return SubmitTopicSelectionPerspectiveAnalysisTaskResponse
+func (client *Client) SubmitTopicSelectionPerspectiveAnalysisTask(request *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) (_result *SubmitTopicSelectionPerspectiveAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitTopicSelectionPerspectiveAnalysisTaskResponse{}
+	_body, _err := client.SubmitTopicSelectionPerspectiveAnalysisTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
