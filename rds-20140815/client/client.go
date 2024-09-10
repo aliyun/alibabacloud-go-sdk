@@ -3348,7 +3348,25 @@ func (s *ConfirmNotifyResponse) SetBody(v *ConfirmNotifyResponseBody) *ConfirmNo
 }
 
 type CopyDatabaseRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// rm-uf6wjk5******
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// Destination database name.
+	//
+	// example:
+	//
+	// db2***
+	DstDBName *string `json:"DstDBName,omitempty" xml:"DstDBName,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Reserve account.
+	//
+	// example:
+	//
+	// 1
+	ReserveAccount *int32 `json:"ReserveAccount,omitempty" xml:"ReserveAccount,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -3357,6 +3375,12 @@ type CopyDatabaseRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Source database name.
+	//
+	// example:
+	//
+	// db1***
+	SrcDBName *string `json:"SrcDBName,omitempty" xml:"SrcDBName,omitempty"`
 }
 
 func (s CopyDatabaseRequest) String() string {
@@ -3367,8 +3391,23 @@ func (s CopyDatabaseRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CopyDatabaseRequest) SetDBInstanceName(v string) *CopyDatabaseRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *CopyDatabaseRequest) SetDstDBName(v string) *CopyDatabaseRequest {
+	s.DstDBName = &v
+	return s
+}
+
 func (s *CopyDatabaseRequest) SetOwnerId(v int64) *CopyDatabaseRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CopyDatabaseRequest) SetReserveAccount(v int32) *CopyDatabaseRequest {
+	s.ReserveAccount = &v
 	return s
 }
 
@@ -3384,6 +3423,11 @@ func (s *CopyDatabaseRequest) SetResourceOwnerAccount(v string) *CopyDatabaseReq
 
 func (s *CopyDatabaseRequest) SetResourceOwnerId(v int64) *CopyDatabaseRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CopyDatabaseRequest) SetSrcDBName(v string) *CopyDatabaseRequest {
+	s.SrcDBName = &v
 	return s
 }
 
@@ -8640,11 +8684,15 @@ type CreateDdrInstanceRequest struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// User-defined key ID for cloud disk encryption. Passing this parameter means turning on cloud disk encryption (it cannot be turned off after turning it on), and RoleARN needs to be passed in. You can view the key ID in the key management service console, or create a new key. For more information, see [Creating a Key](https://help.aliyun.com/document_detail/181610.html).
+	// The ID of the customer master key (CMK) for cloud disk encryption. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN*	- parameter. Cloud disk encryption cannot be disabled after it is enabled. You can obtain the ID of the key in the KMS console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
 	//
-	// > - This parameter is only applicable to RDS SQL Server instances.
+	// **
 	//
-	// > - You can also not pass this parameter and only need to pass in RoleARN, which means setting the cloud disk encryption type of the instance to the RDS managed service key (Default Service CMK).
+	// **Notes**
+	//
+	// 	- This parameter is applicable only to ApsaraDB RDS for SQL Server instances.
+	//
+	// 	- You can leave this parameter empty. If you do not specify this parameter, you only need to specify the **RoleARN*	- to use the service key that is managed by ApsaraDB RDS to encrypt cloud disks.
 	//
 	// example:
 	//
@@ -8760,9 +8808,9 @@ type CreateDdrInstanceRequest struct {
 	//
 	// BackupSet
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The global resource descriptor (ARN) of the RDS cloud service account authorized by the primary account to access the KMS permission. You can view the ARN information through the [CheckCloudResourceAuthorized](https://next.api.aliyun.com/document/Rds/2014-08-15/CheckCloudResourceAuthorized) API.
+	// The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect to ApsaraDB RDS to Key Management Service (KMS). You can call the [CheckCloudResourceAuthorized](https://help.aliyun.com/document_detail/2628797.html) operation to query the ARN.
 	//
-	// > This parameter is only available for RDS SQL Server instances.
+	// >  This parameter is applicable only to ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
@@ -12437,21 +12485,21 @@ type CreateReplicationLinkRequest struct {
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
 	// The name of the source instance.
 	//
-	// >  You must specify this parameter if **SourceCategory*	- is set to **aliyunRDS**.
+	// >  This parameter is required when you set the **SourceCategory*	- parameter to **aliyunRDS**.
 	//
 	// example:
 	//
 	// testInstance
 	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
-	// The ID of the region where the source instance is located.
+	// The region ID of the source instance.
 	//
-	// >  You must specify this parameter if **SourceCategory*	- is set to **aliyunRDS**.
+	// >  This parameter is required when you set the **SourceCategory*	- parameter to **aliyunRDS**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
-	// The port number of the source instance.
+	// The port of the source instance.
 	//
 	// example:
 	//
@@ -16961,7 +17009,7 @@ func (s *DescribeAccountsRequest) SetResourceOwnerId(v int64) *DescribeAccountsR
 }
 
 type DescribeAccountsResponseBody struct {
-	// The details about the account.
+	// The details of the account.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -20376,11 +20424,11 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 1
 	SupportVolumeShadowCopy *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
-	// Whether to support 5-minute log backup of SQL Server.
+	// Indicates whether log backups for SQL Server are performed verery five minutes.
 	//
-	// - 0 : Not Support
+	// 	- 0: No
 	//
-	// - 1 : Support
+	// 	- 1: Yes
 	//
 	// example:
 	//
@@ -63522,6 +63570,143 @@ func (s *ModifyADInfoResponse) SetBody(v *ModifyADInfoResponseBody) *ModifyADInf
 	return s
 }
 
+type ModifyAccountCheckPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DatabaseTest
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOC****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-acfmy****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyAccountCheckPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountCheckPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetAccountName(v string) *ModifyAccountCheckPolicyRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetCheckPolicy(v bool) *ModifyAccountCheckPolicyRequest {
+	s.CheckPolicy = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetClientToken(v string) *ModifyAccountCheckPolicyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetDBInstanceId(v string) *ModifyAccountCheckPolicyRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetOwnerAccount(v string) *ModifyAccountCheckPolicyRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetOwnerId(v int64) *ModifyAccountCheckPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetResourceGroupId(v string) *ModifyAccountCheckPolicyRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetResourceOwnerAccount(v string) *ModifyAccountCheckPolicyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyRequest) SetResourceOwnerId(v int64) *ModifyAccountCheckPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyAccountCheckPolicyResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 866F5EB8-4650-4061-87F0-379F6F968BCE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAccountCheckPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountCheckPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountCheckPolicyResponseBody) SetRequestId(v string) *ModifyAccountCheckPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAccountCheckPolicyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccountCheckPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAccountCheckPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountCheckPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountCheckPolicyResponse) SetHeaders(v map[string]*string) *ModifyAccountCheckPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyResponse) SetStatusCode(v int32) *ModifyAccountCheckPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAccountCheckPolicyResponse) SetBody(v *ModifyAccountCheckPolicyResponseBody) *ModifyAccountCheckPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAccountDescriptionRequest struct {
 	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
 	//
@@ -63765,6 +63950,130 @@ func (s *ModifyAccountMaskingPrivilegeResponse) SetStatusCode(v int32) *ModifyAc
 }
 
 func (s *ModifyAccountMaskingPrivilegeResponse) SetBody(v *ModifyAccountMaskingPrivilegeResponseBody) *ModifyAccountMaskingPrivilegeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAccountSecurityPolicyRequest struct {
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp1ibu****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"accountSecurityPolicy": {"MaximumPasswordAge": 30, "MinimumPasswordAge": 20}}
+	GroupPolicy  *string `json:"GroupPolicy,omitempty" xml:"GroupPolicy,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-acfmy****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyAccountSecurityPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountSecurityPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetClientToken(v string) *ModifyAccountSecurityPolicyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetDBInstanceId(v string) *ModifyAccountSecurityPolicyRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetGroupPolicy(v string) *ModifyAccountSecurityPolicyRequest {
+	s.GroupPolicy = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetOwnerAccount(v string) *ModifyAccountSecurityPolicyRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetOwnerId(v int64) *ModifyAccountSecurityPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetResourceGroupId(v string) *ModifyAccountSecurityPolicyRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetResourceOwnerAccount(v string) *ModifyAccountSecurityPolicyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyRequest) SetResourceOwnerId(v int64) *ModifyAccountSecurityPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyAccountSecurityPolicyResponseBody struct {
+	// example:
+	//
+	// F2911788-25E8-42E5-A3A3-1B38D263F01E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAccountSecurityPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountSecurityPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountSecurityPolicyResponseBody) SetRequestId(v string) *ModifyAccountSecurityPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAccountSecurityPolicyResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccountSecurityPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAccountSecurityPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountSecurityPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountSecurityPolicyResponse) SetHeaders(v map[string]*string) *ModifyAccountSecurityPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyResponse) SetStatusCode(v int32) *ModifyAccountSecurityPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAccountSecurityPolicyResponse) SetBody(v *ModifyAccountSecurityPolicyResponseBody) *ModifyAccountSecurityPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -71077,19 +71386,25 @@ func (s *ModifyDbProxyInstanceSslResponse) SetBody(v *ModifyDbProxyInstanceSslRe
 }
 
 type ModifyEventInfoRequest struct {
-	// The action parameter. Set this value in the JSON string format.
+	// The action-related parameters. You can add action-related parameters based on your business requirements. The parameter value varies with the value of the TaskAction parameter.
 	//
 	// example:
 	//
 	// {\\"recoverTime\\":\\"2023-04-17T14:02:35Z\\",\\"recoverMode\\":\\"timePoint\\"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// The event handling action. Set this value to archive or undo.
+	// The event handling action. Valid values:
+	//
+	// 	- **archive**
+	//
+	// 	- **undo**
+	//
+	// >  This parameter is required.
 	//
 	// example:
 	//
 	// archive
 	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
-	// The event ID. Separate multiple event IDs with commas (,). You can configure up to 20 event IDs.
+	// The event ID. You can call the DescribeEvents operation to obtain the IDs of the events. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
 	//
 	// This parameter is required.
 	//
@@ -71097,7 +71412,7 @@ type ModifyEventInfoRequest struct {
 	//
 	// 5422964
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -74187,7 +74502,17 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 }
 
 type ModifyTaskInfoRequest struct {
-	// The action parameter.
+	// The action-related parameters. You can add action-related parameters based on your business requirements. If you set the TaskAction parameter to modifySwitchTime, you must set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+	//
+	// The recoverMode field specifies the task restoration mode. valid values:
+	//
+	// 	- **timePoint**: The task is executed at a specified point in time.
+	//
+	// 	- **Immediate**: The task is executed immediately.
+	//
+	// 	- **maintainTime**: The task is executed based on the O\\&M time.
+	//
+	// The recoverTime field specifies restoration time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If you set the recoverMode field to timePoint, you must also specify the recoverTime field.
 	//
 	// example:
 	//
@@ -74210,21 +74535,13 @@ type ModifyTaskInfoRequest struct {
 	//
 	// ha_switch
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The name of the operation that you can call to execute the task. Valid values:
-	//
-	// 	- ImportImage
-	//
-	// 	- ExportImage
-	//
-	// 	- RedeployInstance
-	//
-	// 	- ModifyDiskSpec
+	// The task action. Set the value to modifySwitchTime. The value specifies that you want to change the switching time or restoration time.
 	//
 	// example:
 	//
 	// ImportImage
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The task ID.
+	// The task ID. You can call the DescribeTasks operation to query task IDs.
 	//
 	// This parameter is required.
 	//
@@ -83971,8 +84288,20 @@ func (client *Client) CopyDatabaseWithOptions(request *CopyDatabaseRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DstDBName)) {
+		query["DstDBName"] = request.DstDBName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReserveAccount)) {
+		query["ReserveAccount"] = request.ReserveAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -83985,6 +84314,10 @@ func (client *Client) CopyDatabaseWithOptions(request *CopyDatabaseRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcDBName)) {
+		query["SrcDBName"] = request.SrcDBName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -97768,7 +98101,7 @@ func (client *Client) DescribeHASwitchConfig(request *DescribeHASwitchConfigRequ
 
 // Summary:
 //
-// 事件中心事件列表
+// Queries historical events in the event center.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -97870,7 +98203,7 @@ func (client *Client) DescribeHistoryEventsWithOptions(request *DescribeHistoryE
 
 // Summary:
 //
-// 事件中心事件列表
+// Queries historical events in the event center.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -97888,7 +98221,7 @@ func (client *Client) DescribeHistoryEvents(request *DescribeHistoryEventsReques
 
 // Summary:
 //
-// Queries event statistics in the event center.
+// Queries the statistics of historical events in the event center.
 //
 // @param request - DescribeHistoryEventsStatRequest
 //
@@ -97946,7 +98279,7 @@ func (client *Client) DescribeHistoryEventsStatWithOptions(request *DescribeHist
 
 // Summary:
 //
-// Queries event statistics in the event center.
+// Queries the statistics of historical events in the event center.
 //
 // @param request - DescribeHistoryEventsStatRequest
 //
@@ -103120,21 +103453,25 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 //
 // 	- MySQL
 //
-// > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+//     **
+//
+//     **Note*	- This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
 //
 // 	- SQL Server
 //
-// > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+//     **
+//
+//     **Note*	- This operation is supported only for RDS instances that run SQL Server 2008 R2.
 //
 // 	- MariaDB
 //
-// ### [](#)Precautions
+// ### [](#)Prerequisites
 //
 // 	- Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
 //
 // 	- If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
 //
-// 	- Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash*	- values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
+// 	- Starting from September 01, 2024, the template algorithm for slow queries is optimized. When you call the operation, you must change the value of the **SQLHASH*	- parameter. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2845725~~).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -103224,21 +103561,25 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 //
 // 	- MySQL
 //
-// > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+//     **
+//
+//     **Note*	- This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
 //
 // 	- SQL Server
 //
-// > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+//     **
+//
+//     **Note*	- This operation is supported only for RDS instances that run SQL Server 2008 R2.
 //
 // 	- MariaDB
 //
-// ### [](#)Precautions
+// ### [](#)Prerequisites
 //
 // 	- Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
 //
 // 	- If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
 //
-// 	- Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash*	- values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
+// 	- Starting from September 01, 2024, the template algorithm for slow queries is optimized. When you call the operation, you must change the value of the **SQLHASH*	- parameter. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2845725~~).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -106078,6 +106419,98 @@ func (client *Client) ModifyADInfo(request *ModifyADInfoRequest) (_result *Modif
 
 // Summary:
 //
+// 修改账号检查策略
+//
+// @param request - ModifyAccountCheckPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountCheckPolicyResponse
+func (client *Client) ModifyAccountCheckPolicyWithOptions(request *ModifyAccountCheckPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountCheckPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckPolicy)) {
+		query["CheckPolicy"] = request.CheckPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccountCheckPolicy"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAccountCheckPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改账号检查策略
+//
+// @param request - ModifyAccountCheckPolicyRequest
+//
+// @return ModifyAccountCheckPolicyResponse
+func (client *Client) ModifyAccountCheckPolicy(request *ModifyAccountCheckPolicyRequest) (_result *ModifyAccountCheckPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAccountCheckPolicyResponse{}
+	_body, _err := client.ModifyAccountCheckPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the description of a database account.
 //
 // Description:
@@ -106261,6 +106694,94 @@ func (client *Client) ModifyAccountMaskingPrivilege(request *ModifyAccountMaskin
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountMaskingPrivilegeResponse{}
 	_body, _err := client.ModifyAccountMaskingPrivilegeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改密码策略
+//
+// @param request - ModifyAccountSecurityPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountSecurityPolicyResponse
+func (client *Client) ModifyAccountSecurityPolicyWithOptions(request *ModifyAccountSecurityPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountSecurityPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupPolicy)) {
+		query["GroupPolicy"] = request.GroupPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccountSecurityPolicy"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAccountSecurityPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改密码策略
+//
+// @param request - ModifyAccountSecurityPolicyRequest
+//
+// @return ModifyAccountSecurityPolicyResponse
+func (client *Client) ModifyAccountSecurityPolicy(request *ModifyAccountSecurityPolicyRequest) (_result *ModifyAccountSecurityPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAccountSecurityPolicyResponse{}
+	_body, _err := client.ModifyAccountSecurityPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -110572,7 +111093,7 @@ func (client *Client) ModifyDbProxyInstanceSsl(request *ModifyDbProxyInstanceSsl
 
 // Summary:
 //
-// 事件中心修改事件信息
+// Modifies information about the events in the event center.
 //
 // @param request - ModifyEventInfoRequest
 //
@@ -110630,7 +111151,7 @@ func (client *Client) ModifyEventInfoWithOptions(request *ModifyEventInfoRequest
 
 // Summary:
 //
-// 事件中心修改事件信息
+// Modifies information about the events in the event center.
 //
 // @param request - ModifyEventInfoRequest
 //
@@ -112698,7 +113219,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// Modifies the task information in the task center.
+// Modifies information about the historical tasks in the task center.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -112768,7 +113289,7 @@ func (client *Client) ModifyTaskInfoWithOptions(request *ModifyTaskInfoRequest, 
 
 // Summary:
 //
-// Modifies the task information in the task center.
+// Modifies information about the historical tasks in the task center.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -114908,17 +115429,17 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 //
 // Description:
 //
-// >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
+// >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
 //
-// ### [](#)Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
 // ### [](#)References
 //
-// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
-// 	- [Back up an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120824.html)
+// 	- [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
 //
 // 	- [Restore the data of an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120875.html)
 //
@@ -115014,17 +115535,17 @@ func (client *Client) RestoreDdrTableWithOptions(request *RestoreDdrTableRequest
 //
 // Description:
 //
-// >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
+// >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
 //
-// ### [](#)Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
 // ### [](#)References
 //
-// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
-// 	- [Back up an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120824.html)
+// 	- [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
 //
 // 	- [Restore the data of an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120875.html)
 //
