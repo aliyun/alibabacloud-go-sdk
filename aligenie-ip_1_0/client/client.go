@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -42,8 +39,23 @@ func (s *AddCartoonHeaders) SetAuthorization(v string) *AddCartoonHeaders {
 }
 
 type AddCartoonRequest struct {
-	HotelId       *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0***eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40c804***697
 	StartVideoMd5 *string `json:"StartVideoMd5,omitempty" xml:"StartVideoMd5,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://***.mp4
 	StartVideoUrl *string `json:"StartVideoUrl,omitempty" xml:"StartVideoUrl,omitempty"`
 }
 
@@ -71,10 +83,22 @@ func (s *AddCartoonRequest) SetStartVideoUrl(v string) *AddCartoonRequest {
 }
 
 type AddCartoonResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s AddCartoonResponseBody) String() string {
@@ -164,9 +188,17 @@ func (s *AddCustomQAHeaders) SetAuthorization(v string) *AddCustomQAHeaders {
 }
 
 type AddCustomQARequest struct {
-	Answers                []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
-	HotelId                *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	KeyWords               []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	Answers []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId  *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWords []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ***
 	MajorQuestion          *string   `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
 	SupplementaryQuestions []*string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty" type:"Repeated"`
 }
@@ -205,9 +237,17 @@ func (s *AddCustomQARequest) SetSupplementaryQuestions(v []*string) *AddCustomQA
 }
 
 type AddCustomQAShrinkRequest struct {
-	AnswersShrink                *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
-	HotelId                      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	KeyWordsShrink               *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	AnswersShrink *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId        *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWordsShrink *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	// example:
+	//
+	// ***
 	MajorQuestion                *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
 	SupplementaryQuestionsShrink *string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty"`
 }
@@ -246,10 +286,22 @@ func (s *AddCustomQAShrinkRequest) SetSupplementaryQuestionsShrink(v string) *Ad
 }
 
 type AddCustomQAResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7***726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s AddCustomQAResponseBody) String() string {
@@ -339,7 +391,13 @@ func (s *AddCustomQAV2Headers) SetAuthorization(v string) *AddCustomQAV2Headers 
 }
 
 type AddCustomQAV2Request struct {
-	Answers                []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Answers []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
 	HotelId                *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	KeyWords               []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
 	MajorQuestion          *string   `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
@@ -380,7 +438,13 @@ func (s *AddCustomQAV2Request) SetSupplementaryQuestions(v []*string) *AddCustom
 }
 
 type AddCustomQAV2ShrinkRequest struct {
-	AnswersShrink                *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// This parameter is required.
+	AnswersShrink *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
 	HotelId                      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	KeyWordsShrink               *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
 	MajorQuestion                *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
@@ -421,10 +485,19 @@ func (s *AddCustomQAV2ShrinkRequest) SetSupplementaryQuestionsShrink(v string) *
 }
 
 type AddCustomQAV2ResponseBody struct {
-	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *AddCustomQAV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                           `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FAFCD152-4791-5F2F-B0BE-2DC06FD4F05B
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *AddCustomQAV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s AddCustomQAV2ResponseBody) String() string {
@@ -456,17 +529,36 @@ func (s *AddCustomQAV2ResponseBody) SetStatusCode(v int32) *AddCustomQAV2Respons
 }
 
 type AddCustomQAV2ResponseBodyResult struct {
-	Answers       *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HotelId       *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	KeyWords      *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	Answers *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// example:
+	//
+	// 2023-01-10 10:01:59
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// a7***83
+	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	// example:
+	//
+	// 8xxx9
 	LastOperator  *string `json:"LastOperator,omitempty" xml:"LastOperator,omitempty"`
 	MajorQuestion *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
 	// qaID
-	QaId                  *string `json:"QaId,omitempty" xml:"QaId,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	QaId *string `json:"QaId,omitempty" xml:"QaId,omitempty"`
+	// example:
+	//
+	// 0
 	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupplementaryQuestion *string `json:"SupplementaryQuestion,omitempty" xml:"SupplementaryQuestion,omitempty"`
-	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2023-01-10 10:01:59
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s AddCustomQAV2ResponseBodyResult) String() string {
@@ -586,8 +678,18 @@ func (s *AddMessageTemplateHeaders) SetAuthorization(v string) *AddMessageTempla
 }
 
 type AddMessageTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 这是${hotel}的一个测试模板
 	TemplateDetail *string `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试模板
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s AddMessageTemplateRequest) String() string {
@@ -609,10 +711,19 @@ func (s *AddMessageTemplateRequest) SetTemplateName(v string) *AddMessageTemplat
 }
 
 type AddMessageTemplateResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *int64  `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 11
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s AddMessageTemplateResponseBody) String() string {
@@ -702,8 +813,14 @@ func (s *AddOrUpdateDisPlayModesHeaders) SetAuthorization(v string) *AddOrUpdate
 }
 
 type AddOrUpdateDisPlayModesRequest struct {
+	// This parameter is required.
 	HotelDeviceModeList []*string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
-	HotelId             *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s AddOrUpdateDisPlayModesRequest) String() string {
@@ -725,8 +842,14 @@ func (s *AddOrUpdateDisPlayModesRequest) SetHotelId(v string) *AddOrUpdateDisPla
 }
 
 type AddOrUpdateDisPlayModesShrinkRequest struct {
+	// This parameter is required.
 	HotelDeviceModeListShrink *string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty"`
-	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s AddOrUpdateDisPlayModesShrinkRequest) String() string {
@@ -748,10 +871,22 @@ func (s *AddOrUpdateDisPlayModesShrinkRequest) SetHotelId(v string) *AddOrUpdate
 }
 
 type AddOrUpdateDisPlayModesResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s AddOrUpdateDisPlayModesResponseBody) String() string {
@@ -841,12 +976,18 @@ func (s *AddOrUpdateHotelSettingHeaders) SetAuthorization(v string) *AddOrUpdate
 }
 
 type AddOrUpdateHotelSettingRequest struct {
-	HotelDeviceModeList []*string                                       `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
-	HotelId             *string                                         `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelScreenSaver    *AddOrUpdateHotelSettingRequestHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
-	NightMode           *AddOrUpdateHotelSettingRequestNightMode        `json:"NightMode,omitempty" xml:"NightMode,omitempty" type:"Struct"`
-	SettingType         *string                                         `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
-	Value               *string                                         `json:"Value,omitempty" xml:"Value,omitempty"`
+	HotelDeviceModeList []*string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a7a3***013
+	HotelId          *string                                         `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaver *AddOrUpdateHotelSettingRequestHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
+	NightMode        *AddOrUpdateHotelSettingRequestNightMode        `json:"NightMode,omitempty" xml:"NightMode,omitempty" type:"Struct"`
+	// example:
+	//
+	// SCREENSAVER
+	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s AddOrUpdateHotelSettingRequest) String() string {
@@ -888,8 +1029,14 @@ func (s *AddOrUpdateHotelSettingRequest) SetValue(v string) *AddOrUpdateHotelSet
 }
 
 type AddOrUpdateHotelSettingRequestHotelScreenSaver struct {
+	// example:
+	//
+	// https://a****jpg
 	ScreenSaverPicUrl *string `json:"ScreenSaverPicUrl,omitempty" xml:"ScreenSaverPicUrl,omitempty"`
-	ScreenSaverStyle  *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
+	// example:
+	//
+	// common-weather
+	ScreenSaverStyle *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
 }
 
 func (s AddOrUpdateHotelSettingRequestHotelScreenSaver) String() string {
@@ -913,10 +1060,22 @@ func (s *AddOrUpdateHotelSettingRequestHotelScreenSaver) SetScreenSaverStyle(v s
 type AddOrUpdateHotelSettingRequestNightMode struct {
 	DefaultBright *string `json:"DefaultBright,omitempty" xml:"DefaultBright,omitempty"`
 	DefaultVolume *string `json:"DefaultVolume,omitempty" xml:"DefaultVolume,omitempty"`
-	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	End           *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 22:00
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// screenoff
 	StandbyAction *string `json:"StandbyAction,omitempty" xml:"StandbyAction,omitempty"`
-	Start         *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	// example:
+	//
+	// 7:00
+	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s AddOrUpdateHotelSettingRequestNightMode) String() string {
@@ -959,11 +1118,17 @@ func (s *AddOrUpdateHotelSettingRequestNightMode) SetStart(v string) *AddOrUpdat
 
 type AddOrUpdateHotelSettingShrinkRequest struct {
 	HotelDeviceModeListShrink *string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty"`
-	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelScreenSaverShrink    *string `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty"`
-	NightModeShrink           *string `json:"NightMode,omitempty" xml:"NightMode,omitempty"`
-	SettingType               *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
-	Value                     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// a7a3***013
+	HotelId                *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaverShrink *string `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty"`
+	NightModeShrink        *string `json:"NightMode,omitempty" xml:"NightMode,omitempty"`
+	// example:
+	//
+	// SCREENSAVER
+	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s AddOrUpdateHotelSettingShrinkRequest) String() string {
@@ -1005,10 +1170,22 @@ func (s *AddOrUpdateHotelSettingShrinkRequest) SetValue(v string) *AddOrUpdateHo
 }
 
 type AddOrUpdateHotelSettingResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s AddOrUpdateHotelSettingResponseBody) String() string {
@@ -1098,7 +1275,13 @@ func (s *AddOrUpdateScreenSaverHeaders) SetAuthorization(v string) *AddOrUpdateS
 }
 
 type AddOrUpdateScreenSaverRequest struct {
-	HotelId          *string                                        `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	HotelScreenSaver *AddOrUpdateScreenSaverRequestHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
 }
 
@@ -1121,8 +1304,14 @@ func (s *AddOrUpdateScreenSaverRequest) SetHotelScreenSaver(v *AddOrUpdateScreen
 }
 
 type AddOrUpdateScreenSaverRequestHotelScreenSaver struct {
+	// example:
+	//
+	// xxx.png
 	ScreenSaverPicUrl *string `json:"ScreenSaverPicUrl,omitempty" xml:"ScreenSaverPicUrl,omitempty"`
-	ScreenSaverStyle  *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
+	// example:
+	//
+	// common-weather
+	ScreenSaverStyle *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
 }
 
 func (s AddOrUpdateScreenSaverRequestHotelScreenSaver) String() string {
@@ -1144,7 +1333,13 @@ func (s *AddOrUpdateScreenSaverRequestHotelScreenSaver) SetScreenSaverStyle(v st
 }
 
 type AddOrUpdateScreenSaverShrinkRequest struct {
-	HotelId                *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	HotelScreenSaverShrink *string `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty"`
 }
 
@@ -1167,10 +1362,22 @@ func (s *AddOrUpdateScreenSaverShrinkRequest) SetHotelScreenSaverShrink(v string
 }
 
 type AddOrUpdateScreenSaverResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4EED***9661
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s AddOrUpdateScreenSaverResponseBody) String() string {
@@ -1260,8 +1467,19 @@ func (s *AddOrUpdateWelcomeTextHeaders) SetAuthorization(v string) *AddOrUpdateW
 }
 
 type AddOrUpdateWelcomeTextRequest struct {
-	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	MusicUrl    *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://ailabsaicloudservice.alicdn.com/tmp/a.wav
+	MusicUrl *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	// This parameter is required.
 	WelcomeText *string `json:"WelcomeText,omitempty" xml:"WelcomeText,omitempty"`
 }
 
@@ -1290,10 +1508,22 @@ func (s *AddOrUpdateWelcomeTextRequest) SetWelcomeText(v string) *AddOrUpdateWel
 
 type AddOrUpdateWelcomeTextResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s AddOrUpdateWelcomeTextResponseBody) String() string {
@@ -1388,6 +1618,7 @@ func (s *AuditHotelHeaders) SetAuthorization(v string) *AuditHotelHeaders {
 }
 
 type AuditHotelRequest struct {
+	// This parameter is required.
 	AuditHotelReq *AuditHotelRequestAuditHotelReq `json:"AuditHotelReq,omitempty" xml:"AuditHotelReq,omitempty" type:"Struct"`
 }
 
@@ -1405,9 +1636,22 @@ func (s *AuditHotelRequest) SetAuditHotelReq(v *AuditHotelRequestAuditHotelReq) 
 }
 
 type AuditHotelRequestAuditHotelReq struct {
+	// example:
+	//
+	// 同意
 	AuditOpinion *string `json:"AuditOpinion,omitempty" xml:"AuditOpinion,omitempty"`
-	HotelId      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AuditHotelRequestAuditHotelReq) String() string {
@@ -1434,6 +1678,7 @@ func (s *AuditHotelRequestAuditHotelReq) SetStatus(v int32) *AuditHotelRequestAu
 }
 
 type AuditHotelShrinkRequest struct {
+	// This parameter is required.
 	AuditHotelReqShrink *string `json:"AuditHotelReq,omitempty" xml:"AuditHotelReq,omitempty"`
 }
 
@@ -1451,6 +1696,9 @@ func (s *AuditHotelShrinkRequest) SetAuditHotelReqShrink(v string) *AuditHotelSh
 }
 
 type AuditHotelResponseBody struct {
+	// example:
+	//
+	// 200
 	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
@@ -1545,7 +1793,13 @@ func (s *BatchAddHotelRoomHeaders) SetAuthorization(v string) *BatchAddHotelRoom
 }
 
 type BatchAddHotelRoomRequest struct {
-	HotelId    *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	RoomNoList []*string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty" type:"Repeated"`
 }
 
@@ -1568,7 +1822,13 @@ func (s *BatchAddHotelRoomRequest) SetRoomNoList(v []*string) *BatchAddHotelRoom
 }
 
 type BatchAddHotelRoomShrinkRequest struct {
-	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	RoomNoListShrink *string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty"`
 }
 
@@ -1591,7 +1851,13 @@ func (s *BatchAddHotelRoomShrinkRequest) SetRoomNoListShrink(v string) *BatchAdd
 }
 
 type BatchAddHotelRoomResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
@@ -1684,7 +1950,13 @@ func (s *BatchDeleteHotelRoomHeaders) SetAuthorization(v string) *BatchDeleteHot
 }
 
 type BatchDeleteHotelRoomRequest struct {
-	HotelId    *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	RoomNoList []*string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty" type:"Repeated"`
 }
 
@@ -1707,7 +1979,13 @@ func (s *BatchDeleteHotelRoomRequest) SetRoomNoList(v []*string) *BatchDeleteHot
 }
 
 type BatchDeleteHotelRoomShrinkRequest struct {
-	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	RoomNoListShrink *string `json:"RoomNoList,omitempty" xml:"RoomNoList,omitempty"`
 }
 
@@ -1730,7 +2008,13 @@ func (s *BatchDeleteHotelRoomShrinkRequest) SetRoomNoListShrink(v string) *Batch
 }
 
 type BatchDeleteHotelRoomResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
@@ -1823,8 +2107,18 @@ func (s *CheckoutWithAKHeaders) SetAuthorization(v string) *CheckoutWithAKHeader
 }
 
 type CheckoutWithAKRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s CheckoutWithAKRequest) String() string {
@@ -1846,10 +2140,22 @@ func (s *CheckoutWithAKRequest) SetRoomNo(v string) *CheckoutWithAKRequest {
 }
 
 type CheckoutWithAKResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C6***E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s CheckoutWithAKResponseBody) String() string {
@@ -1939,9 +2245,29 @@ func (s *ChildAccountAuthHeaders) SetAuthorization(v string) *ChildAccountAuthHe
 }
 
 type ChildAccountAuthRequest struct {
-	Account  *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AppKey   *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lee
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30471753
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAEV***E3d3Z2ETwh
 	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
 }
 
@@ -1975,10 +2301,22 @@ func (s *ChildAccountAuthRequest) SetTbOpenId(v string) *ChildAccountAuthRequest
 
 type ChildAccountAuthResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3DB51A10-327C-58D3-91DF-3A5A471C51E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ChildAccountAuthResponseBody) String() string {
@@ -2073,12 +2411,35 @@ func (s *ControlRoomDeviceHeaders) SetAuthorization(v string) *ControlRoomDevice
 }
 
 type ControlRoomDeviceRequest struct {
-	Cmd          *string            `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	DeviceIndex  *int32             `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
-	DeviceNumber *string            `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	HotelId      *string            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Properties   map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RoomNo       *string            `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thing.attribute.set
+	//
+	// thing.attribute.adjust
+	Cmd         *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	DeviceIndex *int32  `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INFRARED49122575595
+	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	Properties map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s ControlRoomDeviceRequest) String() string {
@@ -2120,12 +2481,35 @@ func (s *ControlRoomDeviceRequest) SetRoomNo(v string) *ControlRoomDeviceRequest
 }
 
 type ControlRoomDeviceShrinkRequest struct {
-	Cmd              *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	DeviceIndex      *int32  `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
-	DeviceNumber     *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thing.attribute.set
+	//
+	// thing.attribute.adjust
+	Cmd         *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	DeviceIndex *int32  `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INFRARED49122575595
+	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RoomNo           *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s ControlRoomDeviceShrinkRequest) String() string {
@@ -2167,8 +2551,14 @@ func (s *ControlRoomDeviceShrinkRequest) SetRoomNo(v string) *ControlRoomDeviceS
 }
 
 type ControlRoomDeviceResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7***726E
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ControlRoomDeviceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -2202,6 +2592,9 @@ func (s *ControlRoomDeviceResponseBody) SetResult(v *ControlRoomDeviceResponseBo
 }
 
 type ControlRoomDeviceResponseBodyResult struct {
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Status  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -2283,18 +2676,58 @@ func (s *CreateHotelHeaders) SetAuthorization(v string) *CreateHotelHeaders {
 }
 
 type CreateHotelRequest struct {
-	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	EstOpenTime  *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 333566791
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-10-1 00:00:00
+	EstOpenTime *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	// This parameter is required.
 	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
-	HotelEmail   *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
-	HotelName    *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	RelatedPk    *string `json:"RelatedPk,omitempty" xml:"RelatedPk,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test@hotel.com
+	HotelEmail *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	// This parameter is required.
+	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13xxxxxxxx
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jTO****Rw
+	RelatedPk *string `json:"RelatedPk,omitempty" xml:"RelatedPk,omitempty"`
 	// 酒店关联产品列表
 	RelatedPks []*string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty" type:"Repeated"`
-	Remark     *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RoomNum    *int32    `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
-	TbOpenId   *string   `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	RoomNum *int32 `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAEV***E3d3Z2ETwh
+	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
 }
 
 func (s CreateHotelRequest) String() string {
@@ -2361,18 +2794,58 @@ func (s *CreateHotelRequest) SetTbOpenId(v string) *CreateHotelRequest {
 }
 
 type CreateHotelShrinkRequest struct {
-	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	EstOpenTime  *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 333566791
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-10-1 00:00:00
+	EstOpenTime *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	// This parameter is required.
 	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
-	HotelEmail   *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
-	HotelName    *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	RelatedPk    *string `json:"RelatedPk,omitempty" xml:"RelatedPk,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test@hotel.com
+	HotelEmail *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	// This parameter is required.
+	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13xxxxxxxx
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jTO****Rw
+	RelatedPk *string `json:"RelatedPk,omitempty" xml:"RelatedPk,omitempty"`
 	// 酒店关联产品列表
 	RelatedPksShrink *string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty"`
-	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RoomNum          *int32  `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
-	TbOpenId         *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	RoomNum *int32 `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAEV***E3d3Z2ETwh
+	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
 }
 
 func (s CreateHotelShrinkRequest) String() string {
@@ -2440,10 +2913,22 @@ func (s *CreateHotelShrinkRequest) SetTbOpenId(v string) *CreateHotelShrinkReque
 
 type CreateHotelResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *string                `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5abfd9***2c38661
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s CreateHotelResponseBody) String() string {
@@ -2538,9 +3023,19 @@ func (s *CreateHotelAlarmHeaders) SetAuthorization(v string) *CreateHotelAlarmHe
 }
 
 type CreateHotelAlarmRequest struct {
-	HotelId      *string                              `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	MusicType    *string                              `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
-	Rooms        []*string                            `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cf2446fc9d144c85aaee4f9ae20a96e7
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// DOU_YIN
+	MusicType *string `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	// This parameter is required.
+	Rooms []*string `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+	// This parameter is required.
 	ScheduleInfo *CreateHotelAlarmRequestScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
 }
 
@@ -2575,6 +3070,8 @@ func (s *CreateHotelAlarmRequest) SetScheduleInfo(v *CreateHotelAlarmRequestSche
 type CreateHotelAlarmRequestScheduleInfo struct {
 	Once *CreateHotelAlarmRequestScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
 	// ONCE, WEEKLY
+	//
+	// This parameter is required.
 	Type   *string                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 	Weekly *CreateHotelAlarmRequestScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
 }
@@ -2603,11 +3100,26 @@ func (s *CreateHotelAlarmRequestScheduleInfo) SetWeekly(v *CreateHotelAlarmReque
 }
 
 type CreateHotelAlarmRequestScheduleInfoOnce struct {
-	Day    *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
-	Hour   *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 20
+	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// example:
+	//
+	// 19
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 30
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	Month  *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
-	Year   *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
+	// example:
+	//
+	// 9
+	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// example:
+	//
+	// 2022
+	Year *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
 }
 
 func (s CreateHotelAlarmRequestScheduleInfoOnce) String() string {
@@ -2645,8 +3157,14 @@ func (s *CreateHotelAlarmRequestScheduleInfoOnce) SetYear(v int32) *CreateHotelA
 
 type CreateHotelAlarmRequestScheduleInfoWeekly struct {
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
-	Hour       *int32   `json:"Hour,omitempty" xml:"Hour,omitempty"`
-	Minute     *int32   `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// example:
+	//
+	// 10
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 30
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
 }
 
 func (s CreateHotelAlarmRequestScheduleInfoWeekly) String() string {
@@ -2673,9 +3191,19 @@ func (s *CreateHotelAlarmRequestScheduleInfoWeekly) SetMinute(v int32) *CreateHo
 }
 
 type CreateHotelAlarmShrinkRequest struct {
-	HotelId            *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	MusicType          *string `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
-	RoomsShrink        *string `json:"Rooms,omitempty" xml:"Rooms,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cf2446fc9d144c85aaee4f9ae20a96e7
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// DOU_YIN
+	MusicType *string `json:"MusicType,omitempty" xml:"MusicType,omitempty"`
+	// This parameter is required.
+	RoomsShrink *string `json:"Rooms,omitempty" xml:"Rooms,omitempty"`
+	// This parameter is required.
 	ScheduleInfoShrink *string `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty"`
 }
 
@@ -2708,11 +3236,17 @@ func (s *CreateHotelAlarmShrinkRequest) SetScheduleInfoShrink(v string) *CreateH
 }
 
 type CreateHotelAlarmResponseBody struct {
-	Extentions map[string]interface{}                `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*CreateHotelAlarmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                                `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43***86881
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*CreateHotelAlarmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s CreateHotelAlarmResponseBody) String() string {
@@ -2749,11 +3283,23 @@ func (s *CreateHotelAlarmResponseBody) SetStatusCode(v int32) *CreateHotelAlarmR
 }
 
 type CreateHotelAlarmResponseBodyResult struct {
-	AlarmId      *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// example:
+	//
+	// 94
+	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// example:
+	//
+	// Pvk***TA==
 	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
 	FailMsg      *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
-	RoomNo       *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	UserOpenId   *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+	// example:
+	//
+	// 101
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// mg***Qd
+	UserOpenId *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
 }
 
 func (s CreateHotelAlarmResponseBodyResult) String() string {
@@ -2848,8 +3394,19 @@ func (s *CreateRcuSceneHeaders) SetAuthorization(v string) *CreateRcuSceneHeader
 }
 
 type CreateRcuSceneRequest struct {
-	HotelId             *string                                   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	SceneId             *string                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yoga
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
 	SceneRelationExtDTO *CreateRcuSceneRequestSceneRelationExtDTO `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty" type:"Struct"`
 }
 
@@ -2877,10 +3434,18 @@ func (s *CreateRcuSceneRequest) SetSceneRelationExtDTO(v *CreateRcuSceneRequestS
 }
 
 type CreateRcuSceneRequestSceneRelationExtDTO struct {
-	CorpusList  []*string `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Icon        *string   `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	CorpusList []*string `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/changjingmoshi/shuimian.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateRcuSceneRequestSceneRelationExtDTO) String() string {
@@ -2912,8 +3477,19 @@ func (s *CreateRcuSceneRequestSceneRelationExtDTO) SetName(v string) *CreateRcuS
 }
 
 type CreateRcuSceneShrinkRequest struct {
-	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	SceneId                   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yoga
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
 	SceneRelationExtDTOShrink *string `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty"`
 }
 
@@ -2941,10 +3517,22 @@ func (s *CreateRcuSceneShrinkRequest) SetSceneRelationExtDTOShrink(v string) *Cr
 }
 
 type CreateRcuSceneResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 844BA5CE-E30A-53CB-8A11-DE1F344C846D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s CreateRcuSceneResponseBody) String() string {
@@ -3034,6 +3622,9 @@ func (s *DeleteCartoonHeaders) SetAuthorization(v string) *DeleteCartoonHeaders 
 }
 
 type DeleteCartoonRequest struct {
+	// example:
+	//
+	// a7***83
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -3051,10 +3642,22 @@ func (s *DeleteCartoonRequest) SetHotelId(v string) *DeleteCartoonRequest {
 }
 
 type DeleteCartoonResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s DeleteCartoonResponseBody) String() string {
@@ -3145,7 +3748,12 @@ func (s *DeleteCustomQAHeaders) SetAuthorization(v string) *DeleteCustomQAHeader
 
 type DeleteCustomQARequest struct {
 	CustomQAIds []*string `json:"CustomQAIds,omitempty" xml:"CustomQAIds,omitempty" type:"Repeated"`
-	HotelId     *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s DeleteCustomQARequest) String() string {
@@ -3168,7 +3776,12 @@ func (s *DeleteCustomQARequest) SetHotelId(v string) *DeleteCustomQARequest {
 
 type DeleteCustomQAShrinkRequest struct {
 	CustomQAIdsShrink *string `json:"CustomQAIds,omitempty" xml:"CustomQAIds,omitempty"`
-	HotelId           *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s DeleteCustomQAShrinkRequest) String() string {
@@ -3190,10 +3803,22 @@ func (s *DeleteCustomQAShrinkRequest) SetHotelId(v string) *DeleteCustomQAShrink
 }
 
 type DeleteCustomQAResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C6***E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s DeleteCustomQAResponseBody) String() string {
@@ -3283,8 +3908,14 @@ func (s *DeleteHotelAlarmHeaders) SetAuthorization(v string) *DeleteHotelAlarmHe
 }
 
 type DeleteHotelAlarmRequest struct {
-	Alarms  []*DeleteHotelAlarmRequestAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
-	HotelId *string                          `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	Alarms []*DeleteHotelAlarmRequestAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s DeleteHotelAlarmRequest) String() string {
@@ -3306,10 +3937,28 @@ func (s *DeleteHotelAlarmRequest) SetHotelId(v string) *DeleteHotelAlarmRequest 
 }
 
 type DeleteHotelAlarmRequestAlarms struct {
-	AlarmId      *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5029
+	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PvkB***TA==
 	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
-	RoomNo       *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	UserOpenId   *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+	// example:
+	//
+	// 101
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mgw/k***HQd
+	UserOpenId *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
 }
 
 func (s DeleteHotelAlarmRequestAlarms) String() string {
@@ -3341,8 +3990,14 @@ func (s *DeleteHotelAlarmRequestAlarms) SetUserOpenId(v string) *DeleteHotelAlar
 }
 
 type DeleteHotelAlarmShrinkRequest struct {
+	// This parameter is required.
 	AlarmsShrink *string `json:"Alarms,omitempty" xml:"Alarms,omitempty"`
-	HotelId      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s DeleteHotelAlarmShrinkRequest) String() string {
@@ -3366,9 +4021,18 @@ func (s *DeleteHotelAlarmShrinkRequest) SetHotelId(v string) *DeleteHotelAlarmSh
 type DeleteHotelAlarmResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
 	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *int32                 `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// 43***881
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s DeleteHotelAlarmResponseBody) String() string {
@@ -3464,9 +4128,18 @@ func (s *DeleteHotelSceneBookItemHeaders) SetAuthorization(v string) *DeleteHote
 
 type DeleteHotelSceneBookItemRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Id      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 11823
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DeleteHotelSceneBookItemRequest) String() string {
@@ -3493,10 +4166,22 @@ func (s *DeleteHotelSceneBookItemRequest) SetName(v string) *DeleteHotelSceneBoo
 }
 
 type DeleteHotelSceneBookItemResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteHotelSceneBookItemResponseBody) String() string {
@@ -3586,7 +4271,13 @@ func (s *DeleteHotelSettingHeaders) SetAuthorization(v string) *DeleteHotelSetti
 }
 
 type DeleteHotelSettingRequest struct {
-	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// SCREENSAVER
 	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
 }
 
@@ -3609,10 +4300,22 @@ func (s *DeleteHotelSettingRequest) SetSettingType(v string) *DeleteHotelSetting
 }
 
 type DeleteHotelSettingResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C67****BB3E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s DeleteHotelSettingResponseBody) String() string {
@@ -3702,6 +4405,9 @@ func (s *DeleteMessageTemplateHeaders) SetAuthorization(v string) *DeleteMessage
 }
 
 type DeleteMessageTemplateRequest struct {
+	// example:
+	//
+	// 234
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -3719,10 +4425,22 @@ func (s *DeleteMessageTemplateRequest) SetTemplateId(v int64) *DeleteMessageTemp
 }
 
 type DeleteMessageTemplateResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F7E2****B7C94
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s DeleteMessageTemplateResponseBody) String() string {
@@ -3812,7 +4530,17 @@ func (s *DeleteRcuSceneHeaders) SetAuthorization(v string) *DeleteRcuSceneHeader
 }
 
 type DeleteRcuSceneRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yoga
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -3835,10 +4563,22 @@ func (s *DeleteRcuSceneRequest) SetSceneId(v string) *DeleteRcuSceneRequest {
 }
 
 type DeleteRcuSceneResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4F61A7B7-409C-525D-AFDB-238A4E88925A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s DeleteRcuSceneResponseBody) String() string {
@@ -3951,12 +4691,35 @@ func (s *DeviceControlRequest) SetUserInfo(v *DeviceControlRequestUserInfo) *Dev
 }
 
 type DeviceControlRequestPayload struct {
-	Category     *string            `json:"Category,omitempty" xml:"Category,omitempty"`
-	Cmd          *string            `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	DeviceNumber *string            `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	ExtendInfo   *string            `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	Location     *string            `json:"Location,omitempty" xml:"Location,omitempty"`
-	Properties   map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aircondition
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// open
+	Cmd *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// air_condition
+	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	// example:
+	//
+	// {}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// room
+	Location   *string            `json:"Location,omitempty" xml:"Location,omitempty"`
+	Properties map[string]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 }
 
 func (s DeviceControlRequestPayload) String() string {
@@ -3998,10 +4761,33 @@ func (s *DeviceControlRequestPayload) SetProperties(v map[string]*string) *Devic
 }
 
 type DeviceControlRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOFF****my7Iw=
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 1**2
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -4062,8 +4848,17 @@ func (s *DeviceControlShrinkRequest) SetUserInfoShrink(v string) *DeviceControlS
 }
 
 type DeviceControlResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43***28C-A810-5***-8747-EC226A086881
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DeviceControlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -4097,6 +4892,9 @@ func (s *DeviceControlResponseBody) SetResult(v *DeviceControlResponseBodyResult
 }
 
 type DeviceControlResponseBodyResult struct {
+	// example:
+	//
+	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -4172,6 +4970,11 @@ func (s *GetBasicInfoQAHeaders) SetAuthorization(v string) *GetBasicInfoQAHeader
 }
 
 type GetBasicInfoQARequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -4189,10 +4992,19 @@ func (s *GetBasicInfoQARequest) SetHotelId(v string) *GetBasicInfoQARequest {
 }
 
 type GetBasicInfoQAResponseBody struct {
-	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *GetBasicInfoQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                            `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7***726E
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetBasicInfoQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetBasicInfoQAResponseBody) String() string {
@@ -4224,7 +5036,13 @@ func (s *GetBasicInfoQAResponseBody) SetStatusCode(v int32) *GetBasicInfoQARespo
 }
 
 type GetBasicInfoQAResponseBodyResult struct {
-	CheckInTime       *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
+	// example:
+	//
+	// 11:11
+	CheckInTime *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
+	// example:
+	//
+	// 11:11
 	CheckOutTime      *string `json:"CheckOutTime,omitempty" xml:"CheckOutTime,omitempty"`
 	HotelAddress      *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
 	HotelIntroduction *string `json:"HotelIntroduction,omitempty" xml:"HotelIntroduction,omitempty"`
@@ -4232,9 +5050,12 @@ type GetBasicInfoQAResponseBodyResult struct {
 	HotelService      *string `json:"HotelService,omitempty" xml:"HotelService,omitempty"`
 	ParkingExpenses   *string `json:"ParkingExpenses,omitempty" xml:"ParkingExpenses,omitempty"`
 	ParkingPosition   *string `json:"ParkingPosition,omitempty" xml:"ParkingPosition,omitempty"`
-	PhoneNumber       *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	WifiName          *string `json:"WifiName,omitempty" xml:"WifiName,omitempty"`
-	WifiPassword      *string `json:"WifiPassword,omitempty" xml:"WifiPassword,omitempty"`
+	// example:
+	//
+	// 123***
+	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	WifiName     *string `json:"WifiName,omitempty" xml:"WifiName,omitempty"`
+	WifiPassword *string `json:"WifiPassword,omitempty" xml:"WifiPassword,omitempty"`
 }
 
 func (s GetBasicInfoQAResponseBodyResult) String() string {
@@ -4359,6 +5180,11 @@ func (s *GetCartoonHeaders) SetAuthorization(v string) *GetCartoonHeaders {
 }
 
 type GetCartoonRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -4376,10 +5202,19 @@ func (s *GetCartoonRequest) SetHotelId(v string) *GetCartoonRequest {
 }
 
 type GetCartoonResponseBody struct {
-	Message    *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *GetCartoonResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                        `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetCartoonResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetCartoonResponseBody) String() string {
@@ -4411,7 +5246,13 @@ func (s *GetCartoonResponseBody) SetStatusCode(v int32) *GetCartoonResponseBody 
 }
 
 type GetCartoonResponseBodyResult struct {
+	// example:
+	//
+	// https://ai***.mp4
 	StartVideoMd5 *string `json:"StartVideoMd5,omitempty" xml:"StartVideoMd5,omitempty"`
+	// example:
+	//
+	// 40c8***97
 	StartVideoUrl *string `json:"StartVideoUrl,omitempty" xml:"StartVideoUrl,omitempty"`
 }
 
@@ -4515,10 +5356,33 @@ func (s *GetHotelContactByGenieDeviceRequest) SetUserInfo(v *GetHotelContactByGe
 }
 
 type GetHotelContactByGenieDeviceRequestDeviceInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12**45
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 1**2
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -4556,10 +5420,33 @@ func (s *GetHotelContactByGenieDeviceRequestDeviceInfo) SetOrganizationId(v stri
 }
 
 type GetHotelContactByGenieDeviceRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12**45
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 1***2
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -4620,10 +5507,19 @@ func (s *GetHotelContactByGenieDeviceShrinkRequest) SetUserInfoShrink(v string) 
 }
 
 type GetHotelContactByGenieDeviceResponseBody struct {
-	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *GetHotelContactByGenieDeviceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                                          `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C6***E6FA
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetHotelContactByGenieDeviceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetHotelContactByGenieDeviceResponseBody) String() string {
@@ -4655,17 +5551,47 @@ func (s *GetHotelContactByGenieDeviceResponseBody) SetStatusCode(v int32) *GetHo
 }
 
 type GetHotelContactByGenieDeviceResponseBodyResult struct {
-	ExpireAt    *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1649472283046
+	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	// example:
+	//
+	// 2022-07-21 20:02:12
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-07-27 14:06:27
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Icon        *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Number      *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// xxx.icon
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 1
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 101
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// group
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2E57***D45F9
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetHotelContactByGenieDeviceResponseBodyResult) String() string {
@@ -4790,6 +5716,11 @@ func (s *GetHotelContactByNumberHeaders) SetAuthorization(v string) *GetHotelCon
 }
 
 type GetHotelContactByNumberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101
 	Number   *string                                 `json:"Number,omitempty" xml:"Number,omitempty"`
 	UserInfo *GetHotelContactByNumberRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -4813,10 +5744,33 @@ func (s *GetHotelContactByNumberRequest) SetUserInfo(v *GetHotelContactByNumberR
 }
 
 type GetHotelContactByNumberRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -4854,6 +5808,11 @@ func (s *GetHotelContactByNumberRequestUserInfo) SetOrganizationId(v string) *Ge
 }
 
 type GetHotelContactByNumberShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101
 	Number         *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
@@ -4877,10 +5836,19 @@ func (s *GetHotelContactByNumberShrinkRequest) SetUserInfoShrink(v string) *GetH
 }
 
 type GetHotelContactByNumberResponseBody struct {
-	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *GetHotelContactByNumberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                                     `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetHotelContactByNumberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetHotelContactByNumberResponseBody) String() string {
@@ -4912,14 +5880,35 @@ func (s *GetHotelContactByNumberResponseBody) SetStatusCode(v int32) *GetHotelCo
 }
 
 type GetHotelContactByNumberResponseBodyResult struct {
+	// example:
+	//
+	// 1649316479098
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Icon     *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// xxx.icon
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 101
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// group
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2E57***D45F9
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetHotelContactByNumberResponseBodyResult) String() string {
@@ -5046,10 +6035,33 @@ func (s *GetHotelContactsRequest) SetUserInfo(v *GetHotelContactsRequestUserInfo
 }
 
 type GetHotelContactsRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -5104,10 +6116,19 @@ func (s *GetHotelContactsShrinkRequest) SetUserInfoShrink(v string) *GetHotelCon
 }
 
 type GetHotelContactsResponseBody struct {
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*GetHotelContactsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                                `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*GetHotelContactsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetHotelContactsResponseBody) String() string {
@@ -5139,14 +6160,35 @@ func (s *GetHotelContactsResponseBody) SetStatusCode(v int32) *GetHotelContactsR
 }
 
 type GetHotelContactsResponseBodyResult struct {
+	// example:
+	//
+	// 1649472283046
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Icon     *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// cf24***96e7
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// xxx.icon
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 101
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// group
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 0862***A809
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetHotelContactsResponseBodyResult) String() string {
@@ -5256,6 +6298,7 @@ func (s *GetHotelHomeBackImageAndModesHeaders) SetAuthorization(v string) *GetHo
 }
 
 type GetHotelHomeBackImageAndModesRequest struct {
+	// This parameter is required.
 	UserInfo *GetHotelHomeBackImageAndModesRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -5273,9 +6316,29 @@ func (s *GetHotelHomeBackImageAndModesRequest) SetUserInfo(v *GetHotelHomeBackIm
 }
 
 type GetHotelHomeBackImageAndModesRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1248494721591392955
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PROJECT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mFU6VtVU+pgA8lx6rYMo7SPl11t+8b+8ALrn10MIPEdpK/HI9wELAEppYhPI1cYRDa4og8AMjAEBZKbLUwFjFA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
 	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
@@ -5314,6 +6377,7 @@ func (s *GetHotelHomeBackImageAndModesRequestUserInfo) SetOrganizationId(v strin
 }
 
 type GetHotelHomeBackImageAndModesShrinkRequest struct {
+	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
@@ -5331,8 +6395,17 @@ func (s *GetHotelHomeBackImageAndModesShrinkRequest) SetUserInfoShrink(v string)
 }
 
 type GetHotelHomeBackImageAndModesResponseBody struct {
-	Code      *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 394450FC-9035-1B7C-8829-BC88832473FC
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetHotelHomeBackImageAndModesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -5366,9 +6439,15 @@ func (s *GetHotelHomeBackImageAndModesResponseBody) SetResult(v *GetHotelHomeBac
 }
 
 type GetHotelHomeBackImageAndModesResponseBodyResult struct {
-	BackgroundImage *string                                                    `json:"BackgroundImage,omitempty" xml:"BackgroundImage,omitempty"`
-	HotelName       *string                                                    `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	ModeList        []*GetHotelHomeBackImageAndModesResponseBodyResultModeList `json:"ModeList,omitempty" xml:"ModeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://ailabs.alibabausercontent.com/platform/3d4fe6d66ec49d9789635f66627f0339/welcome_audios/976210a6532150f49c2677a8b7dbc105/l6fspbhn.jpg
+	BackgroundImage *string `json:"BackgroundImage,omitempty" xml:"BackgroundImage,omitempty"`
+	// example:
+	//
+	// 宣雍测试橙蜂酒店
+	HotelName *string                                                    `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	ModeList  []*GetHotelHomeBackImageAndModesResponseBodyResultModeList `json:"ModeList,omitempty" xml:"ModeList,omitempty" type:"Repeated"`
 }
 
 func (s GetHotelHomeBackImageAndModesResponseBodyResult) String() string {
@@ -5395,9 +6474,18 @@ func (s *GetHotelHomeBackImageAndModesResponseBodyResult) SetModeList(v []*GetHo
 }
 
 type GetHotelHomeBackImageAndModesResponseBodyResultModeList struct {
+	// example:
+	//
+	// 浪漫模式
 	CnName *string `json:"CnName,omitempty" xml:"CnName,omitempty"`
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Icon   *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// romantic
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/changjingmoshi/langman.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
 }
 
 func (s GetHotelHomeBackImageAndModesResponseBodyResultModeList) String() string {
@@ -5482,6 +6570,7 @@ func (s *GetHotelNoticeHeaders) SetAuthorization(v string) *GetHotelNoticeHeader
 }
 
 type GetHotelNoticeRequest struct {
+	// This parameter is required.
 	UserInfo *GetHotelNoticeRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -5499,10 +6588,25 @@ func (s *GetHotelNoticeRequest) SetUserInfo(v *GetHotelNoticeRequestUserInfo) *G
 }
 
 type GetHotelNoticeRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 12**45
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// example:
+	//
+	// PROJECT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// example:
+	//
+	// DAFE****ce3ej=
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 1
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -5540,6 +6644,7 @@ func (s *GetHotelNoticeRequestUserInfo) SetOrganizationId(v string) *GetHotelNot
 }
 
 type GetHotelNoticeShrinkRequest struct {
+	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
@@ -5557,11 +6662,24 @@ func (s *GetHotelNoticeShrinkRequest) SetUserInfoShrink(v string) *GetHotelNotic
 }
 
 type GetHotelNoticeResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// test notice...
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s GetHotelNoticeResponseBody) String() string {
@@ -5651,6 +6769,7 @@ func (s *GetHotelNoticeV2Headers) SetAuthorization(v string) *GetHotelNoticeV2He
 }
 
 type GetHotelNoticeV2Request struct {
+	// This parameter is required.
 	UserInfo *GetHotelNoticeV2RequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -5668,10 +6787,25 @@ func (s *GetHotelNoticeV2Request) SetUserInfo(v *GetHotelNoticeV2RequestUserInfo
 }
 
 type GetHotelNoticeV2RequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -5709,6 +6843,7 @@ func (s *GetHotelNoticeV2RequestUserInfo) SetOrganizationId(v string) *GetHotelN
 }
 
 type GetHotelNoticeV2ShrinkRequest struct {
+	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
@@ -5726,10 +6861,19 @@ func (s *GetHotelNoticeV2ShrinkRequest) SetUserInfoShrink(v string) *GetHotelNot
 }
 
 type GetHotelNoticeV2ResponseBody struct {
-	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *GetHotelNoticeV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                              `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0D0C***67DB
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetHotelNoticeV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetHotelNoticeV2ResponseBody) String() string {
@@ -5762,6 +6906,9 @@ func (s *GetHotelNoticeV2ResponseBody) SetStatusCode(v int32) *GetHotelNoticeV2R
 
 type GetHotelNoticeV2ResponseBodyResult struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// a7***83
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -5848,6 +6995,7 @@ func (s *GetHotelOrderDetailHeaders) SetAuthorization(v string) *GetHotelOrderDe
 }
 
 type GetHotelOrderDetailRequest struct {
+	// This parameter is required.
 	Payload *GetHotelOrderDetailRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
 }
 
@@ -5865,6 +7013,11 @@ func (s *GetHotelOrderDetailRequest) SetPayload(v *GetHotelOrderDetailRequestPay
 }
 
 type GetHotelOrderDetailRequestPayload struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20220714150702000168270112410630
 	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
 }
 
@@ -5882,6 +7035,7 @@ func (s *GetHotelOrderDetailRequestPayload) SetOrderNo(v string) *GetHotelOrderD
 }
 
 type GetHotelOrderDetailShrinkRequest struct {
+	// This parameter is required.
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 }
 
@@ -5899,8 +7053,17 @@ func (s *GetHotelOrderDetailShrinkRequest) SetPayloadShrink(v string) *GetHotelO
 }
 
 type GetHotelOrderDetailResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6F579407-13C4-1708-AFA2-B657BE5FE8F5
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*GetHotelOrderDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -5934,11 +7097,26 @@ func (s *GetHotelOrderDetailResponseBody) SetResult(v []*GetHotelOrderDetailResp
 }
 
 type GetHotelOrderDetailResponseBodyResult struct {
-	ApplyAmt  *int64  `json:"ApplyAmt,omitempty" xml:"ApplyAmt,omitempty"`
-	GmtCreate *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ItemUrl   *string `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Quantity  *int64  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// 200
+	ApplyAmt *int64 `json:"ApplyAmt,omitempty" xml:"ApplyAmt,omitempty"`
+	// example:
+	//
+	// 1659952892000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/jiudianmianban_fuwushangpintu/weixiu/dianqilei/chuanglian.png
+	ItemUrl *string `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
+	// example:
+	//
+	// 窗帘
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
 func (s GetHotelOrderDetailResponseBodyResult) String() string {
@@ -6033,8 +7211,18 @@ func (s *GetHotelRoomDeviceHeaders) SetAuthorization(v string) *GetHotelRoomDevi
 }
 
 type GetHotelRoomDeviceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s GetHotelRoomDeviceRequest) String() string {
@@ -6056,8 +7244,17 @@ func (s *GetHotelRoomDeviceRequest) SetRoomNo(v string) *GetHotelRoomDeviceReque
 }
 
 type GetHotelRoomDeviceResponseBody struct {
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// vrehvuifdsgrts
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*GetHotelRoomDeviceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -6091,12 +7288,30 @@ func (s *GetHotelRoomDeviceResponseBody) SetResult(v []*GetHotelRoomDeviceRespon
 }
 
 type GetHotelRoomDeviceResponseBodyResult struct {
+	// example:
+	//
+	// 1.0.0-release
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
-	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Mac             *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	OnlineStatus    *int32  `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// aa:aa:aa:aa:aa:aa
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 1
+	OnlineStatus *int32 `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// dsfdsfrgreg
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
 }
 
 func (s GetHotelRoomDeviceResponseBodyResult) String() string {
@@ -6213,9 +7428,13 @@ func (s *GetHotelSampleUtterancesRequest) SetUserInfo(v *GetHotelSampleUtterance
 }
 
 type GetHotelSampleUtterancesRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
 	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
@@ -6365,9 +7584,18 @@ func (s *GetHotelSceneItemDetailHeaders) SetAuthorization(v string) *GetHotelSce
 
 type GetHotelSceneItemDetailRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	ItemId  *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 10336
+	ItemId *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetHotelSceneItemDetailRequest) String() string {
@@ -6394,8 +7622,17 @@ func (s *GetHotelSceneItemDetailRequest) SetName(v string) *GetHotelSceneItemDet
 }
 
 type GetHotelSceneItemDetailResponseBody struct {
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetHotelSceneItemDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -6429,15 +7666,39 @@ func (s *GetHotelSceneItemDetailResponseBody) SetResult(v *GetHotelSceneItemDeta
 }
 
 type GetHotelSceneItemDetailResponseBodyResult struct {
+	// example:
+	//
+	// 客用品类
 	Category     *string                                                  `json:"Category,omitempty" xml:"Category,omitempty"`
 	DialogueList []*GetHotelSceneItemDetailResponseBodyResultDialogueList `json:"DialogueList,omitempty" xml:"DialogueList,omitempty" type:"Repeated"`
-	Icon         *string                                                  `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id           *int64                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Price        *int64                                                   `json:"Price,omitempty" xml:"Price,omitempty"`
-	Status       *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type         *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime   *int64                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/jiudianmianban_fuwushangpintu/wupin/keyongpinlei/zhijin.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 10336
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 擦鞋布
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 170
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 已添加
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// GOODS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1666168828
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetHotelSceneItemDetailResponseBodyResult) String() string {
@@ -6494,15 +7755,36 @@ func (s *GetHotelSceneItemDetailResponseBodyResult) SetUpdateTime(v int64) *GetH
 }
 
 type GetHotelSceneItemDetailResponseBodyResultDialogueList struct {
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DialogueId        *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
-	NoAnswer          *string `json:"NoAnswer,omitempty" xml:"NoAnswer,omitempty"`
-	NoAnswerTemplate  *string `json:"NoAnswerTemplate,omitempty" xml:"NoAnswerTemplate,omitempty"`
-	Process           *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
-	Question          *string `json:"Question,omitempty" xml:"Question,omitempty"`
-	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	UpdateTime        *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	YesAnswer         *string `json:"YesAnswer,omitempty" xml:"YesAnswer,omitempty"`
+	// example:
+	//
+	// 1666164774
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 336
+	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	NoAnswer   *string `json:"NoAnswer,omitempty" xml:"NoAnswer,omitempty"`
+	// example:
+	//
+	// 4
+	NoAnswerTemplate *string `json:"NoAnswerTemplate,omitempty" xml:"NoAnswerTemplate,omitempty"`
+	// example:
+	//
+	// 0
+	Process  *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
+	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// example:
+	//
+	// 10336
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// 1666164774
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	YesAnswer  *string `json:"YesAnswer,omitempty" xml:"YesAnswer,omitempty"`
+	// example:
+	//
+	// 4
 	YesAnswerTemplate *string `json:"YesAnswerTemplate,omitempty" xml:"YesAnswerTemplate,omitempty"`
 }
 
@@ -6623,6 +7905,7 @@ func (s *GetHotelScreenSaverHeaders) SetAuthorization(v string) *GetHotelScreenS
 }
 
 type GetHotelScreenSaverRequest struct {
+	// This parameter is required.
 	UserInfo *GetHotelScreenSaverRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -6640,9 +7923,29 @@ func (s *GetHotelScreenSaverRequest) SetUserInfo(v *GetHotelScreenSaverRequestUs
 }
 
 type GetHotelScreenSaverRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1248494721591392955
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PROJECT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mFU6VtVU+pgA8lx6rYMo7SPl11t+8b+8ALrn10MIPEdpK/HI9wELAEppYhPI1cYRDa4og8AMjAEBZKbLUwFjFA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
 	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
@@ -6681,6 +7984,7 @@ func (s *GetHotelScreenSaverRequestUserInfo) SetOrganizationId(v string) *GetHot
 }
 
 type GetHotelScreenSaverShrinkRequest struct {
+	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
@@ -6698,8 +8002,17 @@ func (s *GetHotelScreenSaverShrinkRequest) SetUserInfoShrink(v string) *GetHotel
 }
 
 type GetHotelScreenSaverResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5F0467E1-19F2-1757-B6D0-B79917BA2E81
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetHotelScreenSaverResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -6733,7 +8046,13 @@ func (s *GetHotelScreenSaverResponseBody) SetResult(v *GetHotelScreenSaverRespon
 }
 
 type GetHotelScreenSaverResponseBodyResult struct {
-	PicUrl    *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	// example:
+	//
+	// https://ailabs.alibabausercontent.com/platform/3d4fe6d66ec49d9789635f66627f0339/welcome_audios/976210a6532150f49c2677a8b7dbc105/l6fspbhd.jpg
+	PicUrl *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	// example:
+	//
+	// common-weather
 	StyleCode *string `json:"StyleCode,omitempty" xml:"StyleCode,omitempty"`
 }
 
@@ -6814,6 +8133,9 @@ func (s *GetHotelScreenSaverStyleHeaders) SetAuthorization(v string) *GetHotelSc
 }
 
 type GetHotelScreenSaverStyleRequest struct {
+	// example:
+	//
+	// af7***536
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -6831,10 +8153,19 @@ func (s *GetHotelScreenSaverStyleRequest) SetHotelId(v string) *GetHotelScreenSa
 }
 
 type GetHotelScreenSaverStyleResponseBody struct {
-	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*GetHotelScreenSaverStyleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                                        `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C67**6FA
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*GetHotelScreenSaverStyleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetHotelScreenSaverStyleResponseBody) String() string {
@@ -6867,8 +8198,17 @@ func (s *GetHotelScreenSaverStyleResponseBody) SetStatusCode(v int32) *GetHotelS
 
 type GetHotelScreenSaverStyleResponseBodyResult struct {
 	CnName *string `json:"CnName,omitempty" xml:"CnName,omitempty"`
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// common-weather
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// common-weather
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	// example:
+	//
+	// https://img.***.png
 	PicUrl *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
 }
 
@@ -6959,7 +8299,13 @@ func (s *GetHotelSettingHeaders) SetAuthorization(v string) *GetHotelSettingHead
 }
 
 type GetHotelSettingRequest struct {
-	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// SCREENSAVER
 	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
 }
 
@@ -6982,10 +8328,19 @@ func (s *GetHotelSettingRequest) SetSettingType(v string) *GetHotelSettingReques
 }
 
 type GetHotelSettingResponseBody struct {
-	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *GetHotelSettingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F7E2****B7C94
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetHotelSettingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetHotelSettingResponseBody) String() string {
@@ -7017,14 +8372,26 @@ func (s *GetHotelSettingResponseBody) SetStatusCode(v int32) *GetHotelSettingRes
 }
 
 type GetHotelSettingResponseBodyResult struct {
-	DeleteToken         *int64                                             `json:"DeleteToken,omitempty" xml:"DeleteToken,omitempty"`
-	ExtInfo             *string                                            `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	HotelDeviceModeList []*string                                          `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
-	HotelId             *string                                            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelScreenSaver    *GetHotelSettingResponseBodyResultHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
-	NightMode           *GetHotelSettingResponseBodyResultNightMode        `json:"NightMode,omitempty" xml:"NightMode,omitempty" type:"Struct"`
-	SettingType         *string                                            `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
-	Value               *string                                            `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 0
+	DeleteToken *int64 `json:"DeleteToken,omitempty" xml:"DeleteToken,omitempty"`
+	// example:
+	//
+	// {}
+	ExtInfo             *string   `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	HotelDeviceModeList []*string `json:"HotelDeviceModeList,omitempty" xml:"HotelDeviceModeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// af7***536
+	HotelId          *string                                            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelScreenSaver *GetHotelSettingResponseBodyResultHotelScreenSaver `json:"HotelScreenSaver,omitempty" xml:"HotelScreenSaver,omitempty" type:"Struct"`
+	NightMode        *GetHotelSettingResponseBodyResultNightMode        `json:"NightMode,omitempty" xml:"NightMode,omitempty" type:"Struct"`
+	// example:
+	//
+	// SCREENSAVER
+	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetHotelSettingResponseBodyResult) String() string {
@@ -7076,8 +8443,14 @@ func (s *GetHotelSettingResponseBodyResult) SetValue(v string) *GetHotelSettingR
 }
 
 type GetHotelSettingResponseBodyResultHotelScreenSaver struct {
+	// example:
+	//
+	// https://a***png
 	ScreenSaverPicUrl *string `json:"ScreenSaverPicUrl,omitempty" xml:"ScreenSaverPicUrl,omitempty"`
-	ScreenSaverStyle  *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
+	// example:
+	//
+	// common-weather
+	ScreenSaverStyle *string `json:"ScreenSaverStyle,omitempty" xml:"ScreenSaverStyle,omitempty"`
 }
 
 func (s GetHotelSettingResponseBodyResultHotelScreenSaver) String() string {
@@ -7103,10 +8476,22 @@ type GetHotelSettingResponseBodyResultNightMode struct {
 	DefaultBright *string `json:"DefaultBright,omitempty" xml:"DefaultBright,omitempty"`
 	// 夜间模式下的默认音量
 	DefaultVolume *string `json:"DefaultVolume,omitempty" xml:"DefaultVolume,omitempty"`
-	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	End           *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 22:00
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// screenoff
 	StandbyAction *string `json:"StandbyAction,omitempty" xml:"StandbyAction,omitempty"`
-	Start         *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	// example:
+	//
+	// 07:00
+	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s GetHotelSettingResponseBodyResultNightMode) String() string {
@@ -7206,11 +8591,20 @@ func (s *GetRelationProductListHeaders) SetAuthorization(v string) *GetRelationP
 }
 
 type GetRelationProductListResponseBody struct {
-	Extentions map[string]interface{}                      `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*GetRelationProductListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                                      `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*GetRelationProductListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetRelationProductListResponseBody) String() string {
@@ -7248,7 +8642,10 @@ func (s *GetRelationProductListResponseBody) SetStatusCode(v int32) *GetRelation
 
 type GetRelationProductListResponseBodyResult struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Pk   *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
+	// example:
+	//
+	// jTOSl***l1odxImRw
+	Pk *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
 }
 
 func (s GetRelationProductListResponseBodyResult) String() string {
@@ -7328,10 +8725,30 @@ func (s *GetUnionIdHeaders) SetAuthorization(v string) *GetUnionIdHeaders {
 }
 
 type GetUnionIdRequest struct {
-	EncodeKey  *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 125****0946
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType     *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 62a319****abdc
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEVICE_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 }
 
 func (s GetUnionIdRequest) String() string {
@@ -7363,10 +8780,19 @@ func (s *GetUnionIdRequest) SetIdType(v string) *GetUnionIdRequest {
 }
 
 type GetUnionIdResponseBody struct {
-	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*GetUnionIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                          `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*GetUnionIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetUnionIdResponseBody) String() string {
@@ -7398,8 +8824,14 @@ func (s *GetUnionIdResponseBody) SetStatusCode(v int32) *GetUnionIdResponseBody 
 }
 
 type GetUnionIdResponseBodyResult struct {
+	// example:
+	//
+	// 4325***765
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	UnionId        *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+	// example:
+	//
+	// 8bh2****8s8
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
 }
 
 func (s GetUnionIdResponseBodyResult) String() string {
@@ -7479,6 +8911,11 @@ func (s *GetWelcomeTextAndMusicHeaders) SetAuthorization(v string) *GetWelcomeTe
 }
 
 type GetWelcomeTextAndMusicRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -7496,11 +8933,20 @@ func (s *GetWelcomeTextAndMusicRequest) SetHotelId(v string) *GetWelcomeTextAndM
 }
 
 type GetWelcomeTextAndMusicResponseBody struct {
-	Extentions map[string]interface{}                    `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *GetWelcomeTextAndMusicResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                                    `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetWelcomeTextAndMusicResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s GetWelcomeTextAndMusicResponseBody) String() string {
@@ -7537,7 +8983,13 @@ func (s *GetWelcomeTextAndMusicResponseBody) SetStatusCode(v int32) *GetWelcomeT
 }
 
 type GetWelcomeTextAndMusicResponseBodyResult struct {
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// http://ailabsaicloudservice.alicdn.com/tmp/a.wav
 	MusicUrl *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
 	Text     *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
@@ -7624,11 +9076,31 @@ func (s *HotelQrBindHeaders) SetAuthorization(v string) *HotelQrBindHeaders {
 }
 
 type HotelQrBindRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ExtInfo  *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo   *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// freuisghrtiesnvfkdsvbfuidslnvfs
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s HotelQrBindRequest) String() string {
@@ -7665,10 +9137,19 @@ func (s *HotelQrBindRequest) SetRoomNo(v string) *HotelQrBindRequest {
 }
 
 type HotelQrBindResponseBody struct {
-	Message    *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *HotelQrBindResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                         `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73****9-175A-1324-8202-9FAAB*****A
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *HotelQrBindResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s HotelQrBindResponseBody) String() string {
@@ -7723,10 +9204,25 @@ func (s *HotelQrBindResponseBodyResult) SetOpenUserInfo(v *HotelQrBindResponseBo
 }
 
 type HotelQrBindResponseBodyResultOpenDeviceInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// example:
+	//
+	// xxxxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// aaaaaaaa
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -7764,10 +9260,25 @@ func (s *HotelQrBindResponseBodyResultOpenDeviceInfo) SetOrganizationId(v string
 }
 
 type HotelQrBindResponseBodyResultOpenUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// aaaaaaaa
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -7863,7 +9374,13 @@ func (s *ImportHotelConfigHeaders) SetAuthorization(v string) *ImportHotelConfig
 }
 
 type ImportHotelConfigRequest struct {
-	HotelId           *string                                    `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	ImportHotelConfig *ImportHotelConfigRequestImportHotelConfig `json:"ImportHotelConfig,omitempty" xml:"ImportHotelConfig,omitempty" type:"Struct"`
 }
 
@@ -7903,11 +9420,14 @@ func (s *ImportHotelConfigRequestImportHotelConfig) SetRcuCustomScenes(v []*Impo
 }
 
 type ImportHotelConfigRequestImportHotelConfigRcuCustomScenes struct {
+	// This parameter is required.
 	CorpusList  []*string `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
 	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	Icon        *string   `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId     *string   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) String() string {
@@ -7944,7 +9464,13 @@ func (s *ImportHotelConfigRequestImportHotelConfigRcuCustomScenes) SetSceneId(v 
 }
 
 type ImportHotelConfigShrinkRequest struct {
-	HotelId                 *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	ImportHotelConfigShrink *string `json:"ImportHotelConfig,omitempty" xml:"ImportHotelConfig,omitempty"`
 }
 
@@ -7967,10 +9493,22 @@ func (s *ImportHotelConfigShrinkRequest) SetImportHotelConfigShrink(v string) *I
 }
 
 type ImportHotelConfigResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ImportHotelConfigResponseBody) String() string {
@@ -8060,10 +9598,21 @@ func (s *ImportRoomControlDevicesHeaders) SetAuthorization(v string) *ImportRoom
 }
 
 type ImportRoomControlDevicesRequest struct {
-	EnableInfraredDeviceImport *string                                           `json:"EnableInfraredDeviceImport,omitempty" xml:"EnableInfraredDeviceImport,omitempty"`
-	HotelId                    *string                                           `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	LocationDevices            []*ImportRoomControlDevicesRequestLocationDevices `json:"LocationDevices,omitempty" xml:"LocationDevices,omitempty" type:"Repeated"`
-	RoomNo                     *string                                           `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	EnableInfraredDeviceImport *string `json:"EnableInfraredDeviceImport,omitempty" xml:"EnableInfraredDeviceImport,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vdgrefds
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	LocationDevices []*ImportRoomControlDevicesRequestLocationDevices `json:"LocationDevices,omitempty" xml:"LocationDevices,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s ImportRoomControlDevicesRequest) String() string {
@@ -8095,9 +9644,14 @@ func (s *ImportRoomControlDevicesRequest) SetRoomNo(v string) *ImportRoomControl
 }
 
 type ImportRoomControlDevicesRequestLocationDevices struct {
-	Devices      []*ImportRoomControlDevicesRequestLocationDevicesDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	Location     *string                                                  `json:"Location,omitempty" xml:"Location,omitempty"`
-	LocationName *string                                                  `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	Devices []*ImportRoomControlDevicesRequestLocationDevicesDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// room
+	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
 }
 
 func (s ImportRoomControlDevicesRequestLocationDevices) String() string {
@@ -8124,21 +9678,30 @@ func (s *ImportRoomControlDevicesRequestLocationDevices) SetLocationName(v strin
 }
 
 type ImportRoomControlDevicesRequestLocationDevicesDevices struct {
-	AliasList         []*string                                                               `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
-	Brand             *string                                                                 `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	City              *string                                                                 `json:"City,omitempty" xml:"City,omitempty"`
-	ConnectType       *string                                                                 `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	AliasList   []*string `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
+	Brand       *string   `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	City        *string   `json:"City,omitempty" xml:"City,omitempty"`
+	ConnectType *string   `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	// This parameter is required.
 	DeviceName        *string                                                                 `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	Dn                *string                                                                 `json:"Dn,omitempty" xml:"Dn,omitempty"`
 	InfraredId        *string                                                                 `json:"InfraredId,omitempty" xml:"InfraredId,omitempty"`
 	InfraredIndex     *string                                                                 `json:"InfraredIndex,omitempty" xml:"InfraredIndex,omitempty"`
 	InfraredVersion   *string                                                                 `json:"InfraredVersion,omitempty" xml:"InfraredVersion,omitempty"`
 	MultiKeySwitchExt *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt `json:"MultiKeySwitchExt,omitempty" xml:"MultiKeySwitchExt,omitempty" type:"Struct"`
-	Name              *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Number            *string                                                                 `json:"Number,omitempty" xml:"Number,omitempty"`
-	Pk                *string                                                                 `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	Province          *string                                                                 `json:"Province,omitempty" xml:"Province,omitempty"`
-	ServiceProvider   *string                                                                 `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// light
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// night_light
+	Number          *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Pk              *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
+	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	ServiceProvider *string `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
 }
 
 func (s ImportRoomControlDevicesRequestLocationDevicesDevices) String() string {
@@ -8284,9 +9847,20 @@ func (s *ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtS
 
 type ImportRoomControlDevicesShrinkRequest struct {
 	EnableInfraredDeviceImport *string `json:"EnableInfraredDeviceImport,omitempty" xml:"EnableInfraredDeviceImport,omitempty"`
-	HotelId                    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	LocationDevicesShrink      *string `json:"LocationDevices,omitempty" xml:"LocationDevices,omitempty"`
-	RoomNo                     *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vdgrefds
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	LocationDevicesShrink *string `json:"LocationDevices,omitempty" xml:"LocationDevices,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s ImportRoomControlDevicesShrinkRequest) String() string {
@@ -8319,10 +9893,22 @@ func (s *ImportRoomControlDevicesShrinkRequest) SetRoomNo(v string) *ImportRoomC
 
 type ImportRoomControlDevicesResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *int32                 `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// fdsfregtre
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ImportRoomControlDevicesResponseBody) String() string {
@@ -8417,7 +10003,17 @@ func (s *ImportRoomGenieScenesHeaders) SetAuthorization(v string) *ImportRoomGen
 }
 
 type ImportRoomGenieScenesRequest struct {
-	HotelId   *string                                  `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
 	RoomNo    *string                                  `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 	SceneList []*ImportRoomGenieScenesRequestSceneList `json:"SceneList,omitempty" xml:"SceneList,omitempty" type:"Repeated"`
 }
@@ -8446,13 +10042,29 @@ func (s *ImportRoomGenieScenesRequest) SetSceneList(v []*ImportRoomGenieScenesRe
 }
 
 type ImportRoomGenieScenesRequestSceneList struct {
-	Actions        []*ImportRoomGenieScenesRequestSceneListActions  `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	Description    *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	Display        *bool                                            `json:"Display,omitempty" xml:"Display,omitempty"`
-	Icon           *string                                          `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	SceneName      *string                                          `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	TriggerLogical *int32                                           `json:"TriggerLogical,omitempty" xml:"TriggerLogical,omitempty"`
-	Triggers       []*ImportRoomGenieScenesRequestSceneListTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Actions     []*ImportRoomGenieScenesRequestSceneListActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	Description *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Display *bool `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// http://xxx.com/yyy.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// This parameter is required.
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TriggerLogical *int32 `json:"TriggerLogical,omitempty" xml:"TriggerLogical,omitempty"`
+	// This parameter is required.
+	Triggers []*ImportRoomGenieScenesRequestSceneListTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s ImportRoomGenieScenesRequestSceneList) String() string {
@@ -8534,7 +10146,17 @@ func (s *ImportRoomGenieScenesRequestSceneListActions) SetType(v int32) *ImportR
 }
 
 type ImportRoomGenieScenesRequestSceneListActionsAttributeValues struct {
-	AttributeName  *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// powerstate
+	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
 }
 
@@ -8557,10 +10179,26 @@ func (s *ImportRoomGenieScenesRequestSceneListActionsAttributeValues) SetAttribu
 }
 
 type ImportRoomGenieScenesRequestSceneListActionsDevice struct {
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DeviceIndex  *int32  `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// light
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 0
+	DeviceIndex *int32 `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3c5d2ab8f9ec
 	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	Type         *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ImportRoomGenieScenesRequestSceneListActionsDevice) String() string {
@@ -8595,7 +10233,12 @@ type ImportRoomGenieScenesRequestSceneListTriggers struct {
 	AttributeValues []*ImportRoomGenieScenesRequestSceneListTriggersAttributeValues `json:"AttributeValues,omitempty" xml:"AttributeValues,omitempty" type:"Repeated"`
 	CorpusList      []*string                                                       `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
 	Device          *ImportRoomGenieScenesRequestSceneListTriggersDevice            `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
-	Type            *int32                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ImportRoomGenieScenesRequestSceneListTriggers) String() string {
@@ -8627,7 +10270,9 @@ func (s *ImportRoomGenieScenesRequestSceneListTriggers) SetType(v int32) *Import
 }
 
 type ImportRoomGenieScenesRequestSceneListTriggersAttributeValues struct {
-	AttributeName  *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// This parameter is required.
+	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// This parameter is required.
 	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
 }
 
@@ -8650,8 +10295,10 @@ func (s *ImportRoomGenieScenesRequestSceneListTriggersAttributeValues) SetAttrib
 }
 
 type ImportRoomGenieScenesRequestSceneListTriggersDevice struct {
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DeviceIndex  *string `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	// This parameter is required.
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeviceIndex *string `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	// This parameter is required.
 	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
 }
 
@@ -8679,7 +10326,17 @@ func (s *ImportRoomGenieScenesRequestSceneListTriggersDevice) SetDeviceNumber(v 
 }
 
 type ImportRoomGenieScenesShrinkRequest struct {
-	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a3***013
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
 	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 	SceneListShrink *string `json:"SceneList,omitempty" xml:"SceneList,omitempty"`
 }
@@ -8708,10 +10365,22 @@ func (s *ImportRoomGenieScenesShrinkRequest) SetSceneListShrink(v string) *Impor
 }
 
 type ImportRoomGenieScenesResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C6***E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ImportRoomGenieScenesResponseBody) String() string {
@@ -8802,8 +10471,16 @@ func (s *InsertHotelSceneBookItemHeaders) SetAuthorization(v string) *InsertHote
 
 type InsertHotelSceneBookItemRequest struct {
 	// addHotelSceneItemReq
+	//
+	// This parameter is required.
 	AddHotelSceneItemReq *InsertHotelSceneBookItemRequestAddHotelSceneItemReq `json:"AddHotelSceneItemReq,omitempty" xml:"AddHotelSceneItemReq,omitempty" type:"Struct"`
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -8827,10 +10504,31 @@ func (s *InsertHotelSceneBookItemRequest) SetHotelId(v string) *InsertHotelScene
 
 type InsertHotelSceneBookItemRequestAddHotelSceneItemReq struct {
 	// icon
-	Icon  *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Price *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://ailabs.alibabausercontent.com/platform/28d7a91e3c05db3855725fc39e0387e7/welcome_audios/aa918294b6ca3aa115c51135bf9b80cb/l9f996sq.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 青椒肉丝
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1250
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FOOD
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s InsertHotelSceneBookItemRequestAddHotelSceneItemReq) String() string {
@@ -8863,8 +10561,16 @@ func (s *InsertHotelSceneBookItemRequestAddHotelSceneItemReq) SetType(v string) 
 
 type InsertHotelSceneBookItemShrinkRequest struct {
 	// addHotelSceneItemReq
+	//
+	// This parameter is required.
 	AddHotelSceneItemReqShrink *string `json:"AddHotelSceneItemReq,omitempty" xml:"AddHotelSceneItemReq,omitempty"`
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -8887,11 +10593,24 @@ func (s *InsertHotelSceneBookItemShrinkRequest) SetHotelId(v string) *InsertHote
 }
 
 type InsertHotelSceneBookItemResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 36FB***80C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s InsertHotelSceneBookItemResponseBody) String() string {
@@ -8981,9 +10700,24 @@ func (s *InvokeRobotPushHeaders) SetAuthorization(v string) *InvokeRobotPushHead
 }
 
 type InvokeRobotPushRequest struct {
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GET
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	RoomNo   *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s InvokeRobotPushRequest) String() string {
@@ -9010,10 +10744,22 @@ func (s *InvokeRobotPushRequest) SetRoomNo(v string) *InvokeRobotPushRequest {
 }
 
 type InvokeRobotPushResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C6***E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s InvokeRobotPushResponseBody) String() string {
@@ -9103,10 +10849,19 @@ func (s *ListAllProvincesHeaders) SetAuthorization(v string) *ListAllProvincesHe
 }
 
 type ListAllProvincesResponseBody struct {
-	Message    *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32    `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 00534880-4397-5134-B212-1030B7A37C27
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListAllProvincesResponseBody) String() string {
@@ -9196,6 +10951,7 @@ func (s *ListCitiesByProvinceHeaders) SetAuthorization(v string) *ListCitiesByPr
 }
 
 type ListCitiesByProvinceRequest struct {
+	// This parameter is required.
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
@@ -9213,10 +10969,19 @@ func (s *ListCitiesByProvinceRequest) SetProvince(v string) *ListCitiesByProvinc
 }
 
 type ListCitiesByProvinceResponseBody struct {
-	Message    *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32    `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 860194F7-9593-50EA-8E53-BCEC0D325A00
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListCitiesByProvinceResponseBody) String() string {
@@ -9306,9 +11071,18 @@ func (s *ListCustomQAHeaders) SetAuthorization(v string) *ListCustomQAHeaders {
 }
 
 type ListCustomQARequest struct {
-	HotelId *string                  `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Keyword *string                  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Page    *ListCustomQARequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// ***
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
+	Page *ListCustomQARequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 }
 
 func (s ListCustomQARequest) String() string {
@@ -9335,8 +11109,18 @@ func (s *ListCustomQARequest) SetPage(v *ListCustomQARequestPage) *ListCustomQAR
 }
 
 type ListCustomQARequestPage struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListCustomQARequestPage) String() string {
@@ -9358,8 +11142,17 @@ func (s *ListCustomQARequestPage) SetPageSize(v int32) *ListCustomQARequestPage 
 }
 
 type ListCustomQAShrinkRequest struct {
-	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// ***
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
 	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
 }
 
@@ -9387,11 +11180,20 @@ func (s *ListCustomQAShrinkRequest) SetPageShrink(v string) *ListCustomQAShrinkR
 }
 
 type ListCustomQAResponseBody struct {
-	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Page       *ListCustomQAResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListCustomQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                            `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page    *ListCustomQAResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0EC7***726E
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListCustomQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListCustomQAResponseBody) String() string {
@@ -9428,9 +11230,18 @@ func (s *ListCustomQAResponseBody) SetStatusCode(v int32) *ListCustomQAResponseB
 }
 
 type ListCustomQAResponseBodyPage struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 21
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListCustomQAResponseBodyPage) String() string {
@@ -9457,15 +11268,42 @@ func (s *ListCustomQAResponseBodyPage) SetTotal(v int32) *ListCustomQAResponseBo
 }
 
 type ListCustomQAResponseBodyResult struct {
-	Answers               *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomQAId            *string `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
-	HotelId               *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	KeyWords              *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	MajorQuestion         *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
-	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 22;11
+	Answers *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// example:
+	//
+	// 2023-01-10 10:01:59
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 111
+	CustomQAId *string `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// 22;11
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	// example:
+	//
+	// ***
+	MajorQuestion *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 22;11
 	SupplementaryQuestion *string `json:"SupplementaryQuestion,omitempty" xml:"SupplementaryQuestion,omitempty"`
-	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2023-01-10 10:01:59
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListCustomQAResponseBodyResult) String() string {
@@ -9581,6 +11419,12 @@ func (s *ListDialogueTemplateHeaders) SetAuthorization(v string) *ListDialogueTe
 
 type ListDialogueTemplateRequest struct {
 	// hotelId
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -9598,9 +11442,19 @@ func (s *ListDialogueTemplateRequest) SetHotelId(v string) *ListDialogueTemplate
 }
 
 type ListDialogueTemplateResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 0EC7*726E
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListDialogueTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -9635,9 +11489,18 @@ func (s *ListDialogueTemplateResponseBody) SetResult(v []*ListDialogueTemplateRe
 
 type ListDialogueTemplateResponseBodyResult struct {
 	TemplateDetail *ListDialogueTemplateResponseBodyResultTemplateDetail `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty" type:"Struct"`
-	TemplateId     *int64                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName   *string                                               `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	Type           *string                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 4
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 物品多轮模板
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// GOODS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListDialogueTemplateResponseBodyResult) String() string {
@@ -9692,9 +11555,18 @@ func (s *ListDialogueTemplateResponseBodyResultTemplateDetail) SetSecondDialogue
 }
 
 type ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate struct {
+	// example:
+	//
+	// ${goodsName}${price}元，请问需要服务员送来吗？
 	NonzeroPriceYesAnswer *string `json:"NonzeroPriceYesAnswer,omitempty" xml:"NonzeroPriceYesAnswer,omitempty"`
-	ZeroPriceNoAnswer     *string `json:"ZeroPriceNoAnswer,omitempty" xml:"ZeroPriceNoAnswer,omitempty"`
-	ZeroPriceYesAnswer    *string `json:"ZeroPriceYesAnswer,omitempty" xml:"ZeroPriceYesAnswer,omitempty"`
+	// example:
+	//
+	// 对不起，暂时不提供此物品。
+	ZeroPriceNoAnswer *string `json:"ZeroPriceNoAnswer,omitempty" xml:"ZeroPriceNoAnswer,omitempty"`
+	// example:
+	//
+	// 好的，服务员会尽快送来。
+	ZeroPriceYesAnswer *string `json:"ZeroPriceYesAnswer,omitempty" xml:"ZeroPriceYesAnswer,omitempty"`
 }
 
 func (s ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTemplate) String() string {
@@ -9721,7 +11593,13 @@ func (s *ListDialogueTemplateResponseBodyResultTemplateDetailFirstDialogueTempla
 }
 
 type ListDialogueTemplateResponseBodyResultTemplateDetailSecondDialogueTemplate struct {
-	NonzeroPriceNoAnswer  *string `json:"NonzeroPriceNoAnswer,omitempty" xml:"NonzeroPriceNoAnswer,omitempty"`
+	// example:
+	//
+	// 好的，已取消。
+	NonzeroPriceNoAnswer *string `json:"NonzeroPriceNoAnswer,omitempty" xml:"NonzeroPriceNoAnswer,omitempty"`
+	// example:
+	//
+	// 好的，服务员会尽快送来${goodsName}
 	NonzeroPriceYesAnswer *string `json:"NonzeroPriceYesAnswer,omitempty" xml:"NonzeroPriceYesAnswer,omitempty"`
 }
 
@@ -9802,6 +11680,9 @@ func (s *ListHotelAlarmHeaders) SetAuthorization(v string) *ListHotelAlarmHeader
 }
 
 type ListHotelAlarmRequest struct {
+	// example:
+	//
+	// a7a3***013
 	HotelId *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	Rooms   []*string `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
 }
@@ -9825,6 +11706,9 @@ func (s *ListHotelAlarmRequest) SetRooms(v []*string) *ListHotelAlarmRequest {
 }
 
 type ListHotelAlarmShrinkRequest struct {
+	// example:
+	//
+	// a7a3***013
 	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	RoomsShrink *string `json:"Rooms,omitempty" xml:"Rooms,omitempty"`
 }
@@ -9848,11 +11732,17 @@ func (s *ListHotelAlarmShrinkRequest) SetRoomsShrink(v string) *ListHotelAlarmSh
 }
 
 type ListHotelAlarmResponseBody struct {
-	Extentions map[string]interface{}              `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListHotelAlarmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                              `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43***881
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListHotelAlarmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListHotelAlarmResponseBody) String() string {
@@ -9889,10 +11779,19 @@ func (s *ListHotelAlarmResponseBody) SetStatusCode(v int32) *ListHotelAlarmRespo
 }
 
 type ListHotelAlarmResponseBodyResult struct {
-	AlarmId      *int64                                        `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// example:
+	//
+	// 5039
+	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// example:
+	//
+	// PvkB****VVTA==
 	DeviceOpenId *string                                       `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
 	ScheduleInfo *ListHotelAlarmResponseBodyResultScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
-	UserOpenId   *string                                       `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+	// example:
+	//
+	// mgw/k***HQd
+	UserOpenId *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
 }
 
 func (s ListHotelAlarmResponseBodyResult) String() string {
@@ -9926,6 +11825,10 @@ func (s *ListHotelAlarmResponseBodyResult) SetUserOpenId(v string) *ListHotelAla
 type ListHotelAlarmResponseBodyResultScheduleInfo struct {
 	Once *ListHotelAlarmResponseBodyResultScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
 	// ONCE, WEEKLY
+	//
+	// example:
+	//
+	// ONCE
 	Type   *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 	Weekly *ListHotelAlarmResponseBodyResultScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
 }
@@ -9954,11 +11857,26 @@ func (s *ListHotelAlarmResponseBodyResultScheduleInfo) SetWeekly(v *ListHotelAla
 }
 
 type ListHotelAlarmResponseBodyResultScheduleInfoOnce struct {
-	Day    *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
-	Hour   *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 20
+	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// example:
+	//
+	// 10
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 30
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	Month  *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
-	Year   *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
+	// example:
+	//
+	// 9
+	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// example:
+	//
+	// 2022
+	Year *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
 }
 
 func (s ListHotelAlarmResponseBodyResultScheduleInfoOnce) String() string {
@@ -9996,8 +11914,14 @@ func (s *ListHotelAlarmResponseBodyResultScheduleInfoOnce) SetYear(v int32) *Lis
 
 type ListHotelAlarmResponseBodyResultScheduleInfoWeekly struct {
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
-	Hour       *int32   `json:"Hour,omitempty" xml:"Hour,omitempty"`
-	Minute     *int32   `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// example:
+	//
+	// 10
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 0
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
 }
 
 func (s ListHotelAlarmResponseBodyResultScheduleInfoWeekly) String() string {
@@ -10099,9 +12023,13 @@ func (s *ListHotelControlDeviceRequest) SetUserInfo(v *ListHotelControlDeviceReq
 }
 
 type ListHotelControlDeviceRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
 	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
@@ -10254,7 +12182,10 @@ type ListHotelInfoResponseBody struct {
 	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result     []*ListHotelInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListHotelInfoResponseBody) String() string {
@@ -10293,8 +12224,11 @@ func (s *ListHotelInfoResponseBody) SetStatusCode(v int32) *ListHotelInfoRespons
 type ListHotelInfoResponseBodyResult struct {
 	AuthAccount  []*ListHotelInfoResponseBodyResultAuthAccount `json:"AuthAccount,omitempty" xml:"AuthAccount,omitempty" type:"Repeated"`
 	HotelAddress *string                                       `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
-	HotelId      *string                                       `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelName    *string                                       `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// example:
+	//
+	// cf2446fc9d144c85aaee4f9ae20a96e7
+	HotelId   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
 }
 
 func (s ListHotelInfoResponseBodyResult) String() string {
@@ -10326,6 +12260,9 @@ func (s *ListHotelInfoResponseBodyResult) SetHotelName(v string) *ListHotelInfoR
 }
 
 type ListHotelInfoResponseBodyResultAuthAccount struct {
+	// example:
+	//
+	// leetest
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -10401,7 +12338,13 @@ func (s *ListHotelMessageTemplateHeaders) SetAuthorization(v string) *ListHotelM
 }
 
 type ListHotelMessageTemplateResponseBody struct {
-	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListHotelMessageTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -10436,11 +12379,26 @@ func (s *ListHotelMessageTemplateResponseBody) SetResult(v []*ListHotelMessageTe
 }
 
 type ListHotelMessageTemplateResponseBodyResult struct {
-	AuditMark      *string `json:"AuditMark,omitempty" xml:"AuditMark,omitempty"`
-	AuditStatus    *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// example:
+	//
+	// 不通过
+	AuditMark *string `json:"AuditMark,omitempty" xml:"AuditMark,omitempty"`
+	// example:
+	//
+	// COMMIT
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// example:
+	//
+	// 这是${hotel}的一个测试模板
 	TemplateDetail *string `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty"`
-	TemplateId     *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 测试模板
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListHotelMessageTemplateResponseBodyResult) String() string {
@@ -10535,7 +12493,9 @@ func (s *ListHotelOrderHeaders) SetAuthorization(v string) *ListHotelOrderHeader
 }
 
 type ListHotelOrderRequest struct {
-	Payload  *ListHotelOrderRequestPayload  `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// This parameter is required.
+	Payload *ListHotelOrderRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// This parameter is required.
 	UserInfo *ListHotelOrderRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -10558,6 +12518,7 @@ func (s *ListHotelOrderRequest) SetUserInfo(v *ListHotelOrderRequestUserInfo) *L
 }
 
 type ListHotelOrderRequestPayload struct {
+	// This parameter is required.
 	Page *ListHotelOrderRequestPayloadPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 }
 
@@ -10575,8 +12536,18 @@ func (s *ListHotelOrderRequestPayload) SetPage(v *ListHotelOrderRequestPayloadPa
 }
 
 type ListHotelOrderRequestPayloadPage struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListHotelOrderRequestPayloadPage) String() string {
@@ -10598,9 +12569,29 @@ func (s *ListHotelOrderRequestPayloadPage) SetPageSize(v int64) *ListHotelOrderR
 }
 
 type ListHotelOrderRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1248494721591392955
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PROJECT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mFU6VtVU+pgA8lx6rYMo7SPl11t+8b+8ALrn10MIPEdpK/HI9wELAEppYhPI1cYRDa4og8AMjAEBZKbLUwFjFA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
 	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
@@ -10639,7 +12630,9 @@ func (s *ListHotelOrderRequestUserInfo) SetOrganizationId(v string) *ListHotelOr
 }
 
 type ListHotelOrderShrinkRequest struct {
-	PayloadShrink  *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
+	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
@@ -10662,9 +12655,18 @@ func (s *ListHotelOrderShrinkRequest) SetUserInfoShrink(v string) *ListHotelOrde
 }
 
 type ListHotelOrderResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	Page      *ListHotelOrderResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page    *ListHotelOrderResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 07F61FDA-606F-10A0-8ED0-C6CE62710A48
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListHotelOrderResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -10703,11 +12705,23 @@ func (s *ListHotelOrderResponseBody) SetResult(v []*ListHotelOrderResponseBodyRe
 }
 
 type ListHotelOrderResponseBodyPage struct {
-	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 21
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 7
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListHotelOrderResponseBodyPage) String() string {
@@ -10744,15 +12758,42 @@ func (s *ListHotelOrderResponseBodyPage) SetTotalPage(v int32) *ListHotelOrderRe
 }
 
 type ListHotelOrderResponseBodyResult struct {
-	ApplyAmt    *int64  `json:"ApplyAmt,omitempty" xml:"ApplyAmt,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	OrderNo     *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
-	Quantity    *int64  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	RoomNo      *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 21.5
+	ApplyAmt *int64 `json:"ApplyAmt,omitempty" xml:"ApplyAmt,omitempty"`
+	// example:
+	//
+	// 1659952892000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 20220808180132000114508555527711
+	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	// example:
+	//
+	// 12
+	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// 2001
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// INIT
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// REPAIR
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/changjingfenlei/shebeiweixiu.png
 	TypeIconUrl *string `json:"TypeIconUrl,omitempty" xml:"TypeIconUrl,omitempty"`
-	TypeName    *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	// example:
+	//
+	// 设备维修
+	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
 func (s ListHotelOrderResponseBodyResult) String() string {
@@ -10867,8 +12908,15 @@ func (s *ListHotelRoomsHeaders) SetAuthorization(v string) *ListHotelRoomsHeader
 }
 
 type ListHotelRoomsRequest struct {
+	// if can be null:
+	// true
 	HotelAdminRoom *ListHotelRoomsRequestHotelAdminRoom `json:"HotelAdminRoom,omitempty" xml:"HotelAdminRoom,omitempty" type:"Struct"`
-	HotelId        *string                              `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s ListHotelRoomsRequest) String() string {
@@ -10907,8 +12955,15 @@ func (s *ListHotelRoomsRequestHotelAdminRoom) SetRoomNo(v string) *ListHotelRoom
 }
 
 type ListHotelRoomsShrinkRequest struct {
+	// if can be null:
+	// true
 	HotelAdminRoomShrink *string `json:"HotelAdminRoom,omitempty" xml:"HotelAdminRoom,omitempty"`
-	HotelId              *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
 func (s ListHotelRoomsShrinkRequest) String() string {
@@ -10930,7 +12985,13 @@ func (s *ListHotelRoomsShrinkRequest) SetHotelId(v string) *ListHotelRoomsShrink
 }
 
 type ListHotelRoomsResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListHotelRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -10965,8 +13026,14 @@ func (s *ListHotelRoomsResponseBody) SetResult(v []*ListHotelRoomsResponseBodyRe
 }
 
 type ListHotelRoomsResponseBodyResult struct {
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// 102
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s ListHotelRoomsResponseBodyResult) String() string {
@@ -11047,9 +13114,21 @@ func (s *ListHotelSceneBookItemsHeaders) SetAuthorization(v string) *ListHotelSc
 
 type ListHotelSceneBookItemsRequest struct {
 	// hotelID
-	HotelId *string                             `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Page    *ListHotelSceneBookItemsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	Type    *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	Page *ListHotelSceneBookItemsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FOOD
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListHotelSceneBookItemsRequest) String() string {
@@ -11076,8 +13155,18 @@ func (s *ListHotelSceneBookItemsRequest) SetType(v string) *ListHotelSceneBookIt
 }
 
 type ListHotelSceneBookItemsRequestPage struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListHotelSceneBookItemsRequestPage) String() string {
@@ -11100,9 +13189,21 @@ func (s *ListHotelSceneBookItemsRequestPage) SetPageSize(v int32) *ListHotelScen
 
 type ListHotelSceneBookItemsShrinkRequest struct {
 	// hotelID
-	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
 	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FOOD
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListHotelSceneBookItemsShrinkRequest) String() string {
@@ -11129,8 +13230,17 @@ func (s *ListHotelSceneBookItemsShrinkRequest) SetType(v string) *ListHotelScene
 }
 
 type ListHotelSceneBookItemsResponseBody struct {
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListHotelSceneBookItemsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -11187,11 +13297,26 @@ func (s *ListHotelSceneBookItemsResponseBodyResult) SetSceneItemList(v []*ListHo
 }
 
 type ListHotelSceneBookItemsResponseBodyResultPage struct {
-	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// True
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 23
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 3
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListHotelSceneBookItemsResponseBodyResultPage) String() string {
@@ -11228,13 +13353,34 @@ func (s *ListHotelSceneBookItemsResponseBodyResultPage) SetTotalPage(v int32) *L
 }
 
 type ListHotelSceneBookItemsResponseBodyResultSceneItemList struct {
-	Icon       *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Price      *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// https://ailabs.alibabausercontent.com/platform/28d7a91e3c05db3855725fc39e0387e7/welcome_audios/aa918294b6ca3aa115c51135bf9b80cb/l9f996sq.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 11824
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 青椒肉丝
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1850
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 已添加
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// FOOD
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1666161803
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListHotelSceneBookItemsResponseBodyResultSceneItemList) String() string {
@@ -11339,7 +13485,9 @@ func (s *ListHotelSceneItemHeaders) SetAuthorization(v string) *ListHotelSceneIt
 }
 
 type ListHotelSceneItemRequest struct {
-	Payload  *ListHotelSceneItemRequestPayload  `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// This parameter is required.
+	Payload *ListHotelSceneItemRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// This parameter is required.
 	UserInfo *ListHotelSceneItemRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -11362,6 +13510,11 @@ func (s *ListHotelSceneItemRequest) SetUserInfo(v *ListHotelSceneItemRequestUser
 }
 
 type ListHotelSceneItemRequestPayload struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GOODS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -11379,9 +13532,29 @@ func (s *ListHotelSceneItemRequestPayload) SetType(v string) *ListHotelSceneItem
 }
 
 type ListHotelSceneItemRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1248494721591392955
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PROJECT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mFU6VtVU+pgA8lx6rYMo7SPl11t+8b+8ALrn10MIPEdpK/HI9wELAEppYhPI1cYRDa4og8AMjAEBZKbLUwFjFA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
 	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
@@ -11420,7 +13593,9 @@ func (s *ListHotelSceneItemRequestUserInfo) SetOrganizationId(v string) *ListHot
 }
 
 type ListHotelSceneItemShrinkRequest struct {
-	PayloadShrink  *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
+	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
@@ -11443,9 +13618,18 @@ func (s *ListHotelSceneItemShrinkRequest) SetUserInfoShrink(v string) *ListHotel
 }
 
 type ListHotelSceneItemResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	Page      *ListHotelSceneItemResponseBodyPage   `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page    *ListHotelSceneItemResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// CEADB586-51CB-1B6B-95BD-AB85A7A08E97
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListHotelSceneItemResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -11484,11 +13668,23 @@ func (s *ListHotelSceneItemResponseBody) SetResult(v *ListHotelSceneItemResponse
 }
 
 type ListHotelSceneItemResponseBodyPage struct {
-	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 12
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 6
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListHotelSceneItemResponseBodyPage) String() string {
@@ -11542,8 +13738,11 @@ func (s *ListHotelSceneItemResponseBodyResult) SetSecondCategoryList(v []*ListHo
 }
 
 type ListHotelSceneItemResponseBodyResultSecondCategoryList struct {
-	ItemList           []*ListHotelSceneItemResponseBodyResultSecondCategoryListItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
-	SecondCategoryName *string                                                           `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
+	ItemList []*ListHotelSceneItemResponseBodyResultSecondCategoryListItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 客用品类
+	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
 }
 
 func (s ListHotelSceneItemResponseBodyResultSecondCategoryList) String() string {
@@ -11565,14 +13764,35 @@ func (s *ListHotelSceneItemResponseBodyResultSecondCategoryList) SetSecondCatego
 }
 
 type ListHotelSceneItemResponseBodyResultSecondCategoryListItemList struct {
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Icon         *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Price        *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	ResidueLimit *int64  `json:"ResidueLimit,omitempty" xml:"ResidueLimit,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 客用品类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/jiudianmianban_fuwushangpintu/wupin/keyongpinlei/mianqian.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 152860
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 棉签
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Price        *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	ResidueLimit *int64 `json:"ResidueLimit,omitempty" xml:"ResidueLimit,omitempty"`
+	// example:
+	//
+	// 已添加
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// GOODS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListHotelSceneItemResponseBodyResultSecondCategoryListItemList) String() string {
@@ -11683,8 +13903,16 @@ func (s *ListHotelSceneItemsHeaders) SetAuthorization(v string) *ListHotelSceneI
 
 type ListHotelSceneItemsRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	// ListHotelSceneReq
+	//
+	// This parameter is required.
 	ListHotelSceneReq *ListHotelSceneItemsRequestListHotelSceneReq `json:"ListHotelSceneReq,omitempty" xml:"ListHotelSceneReq,omitempty" type:"Struct"`
 }
 
@@ -11707,11 +13935,26 @@ func (s *ListHotelSceneItemsRequest) SetListHotelSceneReq(v *ListHotelSceneItems
 }
 
 type ListHotelSceneItemsRequestListHotelSceneReq struct {
-	Category *string                                          `json:"Category,omitempty" xml:"Category,omitempty"`
-	Keywords *string                                          `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	Page     *ListHotelSceneItemsRequestListHotelSceneReqPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	Status   *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type     *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 客用品类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 棉签
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// This parameter is required.
+	Page *ListHotelSceneItemsRequestListHotelSceneReqPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 已添加
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GOODS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListHotelSceneItemsRequestListHotelSceneReq) String() string {
@@ -11748,8 +13991,14 @@ func (s *ListHotelSceneItemsRequestListHotelSceneReq) SetType(v string) *ListHot
 }
 
 type ListHotelSceneItemsRequestListHotelSceneReqPage struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListHotelSceneItemsRequestListHotelSceneReqPage) String() string {
@@ -11772,8 +14021,16 @@ func (s *ListHotelSceneItemsRequestListHotelSceneReqPage) SetPageSize(v int32) *
 
 type ListHotelSceneItemsShrinkRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	// ListHotelSceneReq
+	//
+	// This parameter is required.
 	ListHotelSceneReqShrink *string `json:"ListHotelSceneReq,omitempty" xml:"ListHotelSceneReq,omitempty"`
 }
 
@@ -11796,8 +14053,17 @@ func (s *ListHotelSceneItemsShrinkRequest) SetListHotelSceneReqShrink(v string) 
 }
 
 type ListHotelSceneItemsResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListHotelSceneItemsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -11854,11 +14120,26 @@ func (s *ListHotelSceneItemsResponseBodyResult) SetSceneItemList(v []*ListHotelS
 }
 
 type ListHotelSceneItemsResponseBodyResultPage struct {
-	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// False
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 23
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 3
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListHotelSceneItemsResponseBodyResultPage) String() string {
@@ -11896,20 +14177,45 @@ func (s *ListHotelSceneItemsResponseBodyResultPage) SetTotalPage(v int32) *ListH
 
 type ListHotelSceneItemsResponseBodyResultSceneItemList struct {
 	BeyondLimitReply *string `json:"BeyondLimitReply,omitempty" xml:"BeyondLimitReply,omitempty"`
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DeliveryMethod   *string `json:"DeliveryMethod,omitempty" xml:"DeliveryMethod,omitempty"`
-	Icon             *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 客用品类
+	Category       *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeliveryMethod *string `json:"DeliveryMethod,omitempty" xml:"DeliveryMethod,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/jiudianmianban_fuwushangpintu/wupin/keyongpinlei/mianqian.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	// id
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LimitNumber   *int32  `json:"LimitNumber,omitempty" xml:"LimitNumber,omitempty"`
-	LimitSwitch   *int32  `json:"LimitSwitch,omitempty" xml:"LimitSwitch,omitempty"`
+	//
+	// example:
+	//
+	// 10336
+	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	LimitNumber *int32 `json:"LimitNumber,omitempty" xml:"LimitNumber,omitempty"`
+	LimitSwitch *int32 `json:"LimitSwitch,omitempty" xml:"LimitSwitch,omitempty"`
+	// example:
+	//
+	// 棉签
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
-	Price         *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	RobotName     *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 160
+	Price     *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	// example:
+	//
+	// 已添加
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// GOODS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1666163226
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListHotelSceneItemsResponseBodyResultSceneItemList) String() string {
@@ -12049,6 +14355,7 @@ func (s *ListHotelServiceCategoryHeaders) SetAuthorization(v string) *ListHotelS
 }
 
 type ListHotelServiceCategoryRequest struct {
+	// This parameter is required.
 	Payload *ListHotelServiceCategoryRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
 }
 
@@ -12066,6 +14373,11 @@ func (s *ListHotelServiceCategoryRequest) SetPayload(v *ListHotelServiceCategory
 }
 
 type ListHotelServiceCategoryRequestPayload struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL_SERVICE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -12083,6 +14395,7 @@ func (s *ListHotelServiceCategoryRequestPayload) SetType(v string) *ListHotelSer
 }
 
 type ListHotelServiceCategoryShrinkRequest struct {
+	// This parameter is required.
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 }
 
@@ -12100,8 +14413,17 @@ func (s *ListHotelServiceCategoryShrinkRequest) SetPayloadShrink(v string) *List
 }
 
 type ListHotelServiceCategoryResponseBody struct {
-	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5373C821-65D2-1764-B9F9-951914937FF5
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListHotelServiceCategoryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -12135,10 +14457,25 @@ func (s *ListHotelServiceCategoryResponseBody) SetResult(v []*ListHotelServiceCa
 }
 
 type ListHotelServiceCategoryResponseBodyResult struct {
+	// example:
+	//
+	// GOODS
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 生活及洗漱用品
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/changjingfenlei/wupintianjia.png
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 物品添加
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// HOTEL_SERVICE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -12234,9 +14571,17 @@ func (s *ListHotelsHeaders) SetAuthorization(v string) *ListHotelsHeaders {
 }
 
 type ListHotelsRequest struct {
+	// if can be null:
+	// true
 	HotelRequest *ListHotelsRequestHotelRequest `json:"HotelRequest,omitempty" xml:"HotelRequest,omitempty" type:"Struct"`
-	Page         *ListHotelsRequestPage         `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	Status       *int32                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	Page *ListHotelsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListHotelsRequest) String() string {
@@ -12280,8 +14625,18 @@ func (s *ListHotelsRequestHotelRequest) SetHotelId(v string) *ListHotelsRequestH
 }
 
 type ListHotelsRequestPage struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListHotelsRequestPage) String() string {
@@ -12303,9 +14658,17 @@ func (s *ListHotelsRequestPage) SetPageSize(v int32) *ListHotelsRequestPage {
 }
 
 type ListHotelsShrinkRequest struct {
+	// if can be null:
+	// true
 	HotelRequestShrink *string `json:"HotelRequest,omitempty" xml:"HotelRequest,omitempty"`
-	PageShrink         *string `json:"Page,omitempty" xml:"Page,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListHotelsShrinkRequest) String() string {
@@ -12332,7 +14695,13 @@ func (s *ListHotelsShrinkRequest) SetStatus(v int32) *ListHotelsShrinkRequest {
 }
 
 type ListHotelsResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -12391,16 +14760,43 @@ func (s *ListHotelsResponseBodyResult) SetPage(v *ListHotelsResponseBodyResultPa
 }
 
 type ListHotelsResponseBodyResultHotelInfoList struct {
-	AccountNames       []*string `json:"AccountNames,omitempty" xml:"AccountNames,omitempty" type:"Repeated"`
-	CreateTime         *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HotelAddress       *string   `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
-	HotelId            *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelName          *string   `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	IndustryType       *string   `json:"IndustryType,omitempty" xml:"IndustryType,omitempty"`
-	PhoneNumber        *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	RelatedProductName *string   `json:"RelatedProductName,omitempty" xml:"RelatedProductName,omitempty"`
-	RoomNum            *int32    `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
-	Status             *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	AccountNames []*string `json:"AccountNames,omitempty" xml:"AccountNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1654568802000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 酒店地址
+	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	// example:
+	//
+	// 73ab1b03018d4da69b5bef17095f569b
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// 酒店名称
+	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// example:
+	//
+	// 酒店
+	IndustryType *string `json:"IndustryType,omitempty" xml:"IndustryType,omitempty"`
+	// example:
+	//
+	// 13312340987
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// example:
+	//
+	// 测试产品
+	RelatedProductName *string `json:"RelatedProductName,omitempty" xml:"RelatedProductName,omitempty"`
+	// example:
+	//
+	// 12
+	RoomNum *int32 `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListHotelsResponseBodyResultHotelInfoList) String() string {
@@ -12462,11 +14858,23 @@ func (s *ListHotelsResponseBodyResultHotelInfoList) SetStatus(v int32) *ListHote
 }
 
 type ListHotelsResponseBodyResultPage struct {
-	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 23
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 3
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListHotelsResponseBodyResultPage) String() string {
@@ -12561,6 +14969,7 @@ func (s *ListInfraredDeviceBrandsHeaders) SetAuthorization(v string) *ListInfrar
 }
 
 type ListInfraredDeviceBrandsRequest struct {
+	// This parameter is required.
 	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	ServiceProvider *string `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
 }
@@ -12584,10 +14993,19 @@ func (s *ListInfraredDeviceBrandsRequest) SetServiceProvider(v string) *ListInfr
 }
 
 type ListInfraredDeviceBrandsResponseBody struct {
-	Message    *string              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     map[string][]*string `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32               `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 860194F7-9593-50EA-8E53-BCEC0D325A00
+	RequestId *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    map[string][]*string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListInfraredDeviceBrandsResponseBody) String() string {
@@ -12677,9 +15095,15 @@ func (s *ListInfraredRemoteControllersHeaders) SetAuthorization(v string) *ListI
 }
 
 type ListInfraredRemoteControllersRequest struct {
-	Brand           *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	City            *string `json:"City,omitempty" xml:"City,omitempty"`
+	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	// This parameter is required.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
 	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
 	ServiceProvider *string `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
@@ -12724,10 +15148,19 @@ func (s *ListInfraredRemoteControllersRequest) SetServiceProvider(v string) *Lis
 }
 
 type ListInfraredRemoteControllersResponseBody struct {
-	Message    *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListInfraredRemoteControllersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0C90A059-3653-5356-A78E-8A6BDA606155
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListInfraredRemoteControllersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListInfraredRemoteControllersResponseBody) String() string {
@@ -12759,8 +15192,17 @@ func (s *ListInfraredRemoteControllersResponseBody) SetStatusCode(v int32) *List
 }
 
 type ListInfraredRemoteControllersResponseBodyResult struct {
-	Index   *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
-	Rid     *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 3747
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// example:
+	//
+	// 4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -12846,7 +15288,9 @@ func (s *ListSTBServiceProvidersHeaders) SetAuthorization(v string) *ListSTBServ
 }
 
 type ListSTBServiceProvidersRequest struct {
-	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	// This parameter is required.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// This parameter is required.
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
@@ -12869,10 +15313,19 @@ func (s *ListSTBServiceProvidersRequest) SetProvince(v string) *ListSTBServicePr
 }
 
 type ListSTBServiceProvidersResponseBody struct {
-	Message    *string              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     map[string][]*string `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32               `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1036C376-7A37-5A73-BE8B-C6DB40107EC1
+	RequestId *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    map[string][]*string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListSTBServiceProvidersResponseBody) String() string {
@@ -12963,8 +15416,19 @@ func (s *ListSceneCategoryHeaders) SetAuthorization(v string) *ListSceneCategory
 
 type ListSceneCategoryRequest struct {
 	// hotelId
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// REPAIR
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListSceneCategoryRequest) String() string {
@@ -12986,9 +15450,19 @@ func (s *ListSceneCategoryRequest) SetType(v string) *ListSceneCategoryRequest {
 }
 
 type ListSceneCategoryResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 0EC7*726E
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -13080,8 +15554,19 @@ func (s *ListServiceQAHeaders) SetAuthorization(v string) *ListServiceQAHeaders 
 }
 
 type ListServiceQARequest struct {
-	Active  *bool                     `json:"Active,omitempty" xml:"Active,omitempty"`
-	HotelId *string                   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// true
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// ***
 	Keyword *string                   `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Page    *ListServiceQARequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 }
@@ -13115,8 +15600,14 @@ func (s *ListServiceQARequest) SetPage(v *ListServiceQARequestPage) *ListService
 }
 
 type ListServiceQARequestPage struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListServiceQARequestPage) String() string {
@@ -13138,8 +15629,19 @@ func (s *ListServiceQARequestPage) SetPageSize(v int32) *ListServiceQARequestPag
 }
 
 type ListServiceQAShrinkRequest struct {
-	Active     *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// true
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// ***
 	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
 }
@@ -13173,11 +15675,20 @@ func (s *ListServiceQAShrinkRequest) SetPageShrink(v string) *ListServiceQAShrin
 }
 
 type ListServiceQAResponseBody struct {
-	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	Page       *ListServiceQAResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListServiceQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page    *ListServiceQAResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0EC7***726E
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListServiceQAResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListServiceQAResponseBody) String() string {
@@ -13214,9 +15725,18 @@ func (s *ListServiceQAResponseBody) SetStatusCode(v int32) *ListServiceQARespons
 }
 
 type ListServiceQAResponseBodyPage struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 12
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListServiceQAResponseBodyPage) String() string {
@@ -13243,10 +15763,22 @@ func (s *ListServiceQAResponseBodyPage) SetTotal(v int32) *ListServiceQAResponse
 }
 
 type ListServiceQAResponseBodyResult struct {
-	Active      *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	Answer      *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// example:
+	//
+	// true
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// example:
+	//
+	// ***
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// example:
+	//
+	// 2022-07-27 14:06:27
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Question    *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// example:
+	//
+	// 1
 	ServiceQAId *int64  `json:"ServiceQAId,omitempty" xml:"ServiceQAId,omitempty"`
 	Templates   *string `json:"Templates,omitempty" xml:"Templates,omitempty"`
 }
@@ -13348,17 +15880,49 @@ func (s *ListTicketsHeaders) SetAuthorization(v string) *ListTicketsHeaders {
 }
 
 type ListTicketsRequest struct {
-	EndTime        *string                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HotelId        *string                 `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	IsDesc         *bool                   `json:"IsDesc,omitempty" xml:"IsDesc,omitempty"`
-	IsNeedCallback *bool                   `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
-	IsNeedCharges  *bool                   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
-	Page           *ListTicketsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	RoomNo         *string                 `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	SortField      *string                 `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	StartTime      *string                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status         *string                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2022-09-14 14:23:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// true
+	IsDesc *bool `json:"IsDesc,omitempty" xml:"IsDesc,omitempty"`
+	// example:
+	//
+	// false
+	IsNeedCallback *bool `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
+	// example:
+	//
+	// false
+	IsNeedCharges *bool                   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
+	Page          *ListTicketsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// gmtCalled
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	// example:
+	//
+	// 2022-04-08 09:39:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// waiting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ""
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTicketsRequest) String() string {
@@ -13425,8 +15989,14 @@ func (s *ListTicketsRequest) SetType(v string) *ListTicketsRequest {
 }
 
 type ListTicketsRequestPage struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListTicketsRequestPage) String() string {
@@ -13448,17 +16018,49 @@ func (s *ListTicketsRequestPage) SetPageSize(v int32) *ListTicketsRequestPage {
 }
 
 type ListTicketsShrinkRequest struct {
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HotelId        *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	IsDesc         *bool   `json:"IsDesc,omitempty" xml:"IsDesc,omitempty"`
-	IsNeedCallback *bool   `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
-	IsNeedCharges  *bool   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
-	PageShrink     *string `json:"Page,omitempty" xml:"Page,omitempty"`
-	RoomNo         *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	SortField      *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2022-09-14 14:23:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// true
+	IsDesc *bool `json:"IsDesc,omitempty" xml:"IsDesc,omitempty"`
+	// example:
+	//
+	// false
+	IsNeedCallback *bool `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
+	// example:
+	//
+	// false
+	IsNeedCharges *bool   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
+	PageShrink    *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// gmtCalled
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	// example:
+	//
+	// 2022-04-08 09:39:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// waiting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ""
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTicketsShrinkRequest) String() string {
@@ -13525,11 +16127,20 @@ func (s *ListTicketsShrinkRequest) SetType(v string) *ListTicketsShrinkRequest {
 }
 
 type ListTicketsResponseBody struct {
-	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	Page       *ListTicketsResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListTicketsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                           `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page    *ListTicketsResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0EC7***726E
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListTicketsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ListTicketsResponseBody) String() string {
@@ -13566,9 +16177,18 @@ func (s *ListTicketsResponseBody) SetStatusCode(v int32) *ListTicketsResponseBod
 }
 
 type ListTicketsResponseBodyPage struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 5
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListTicketsResponseBodyPage) String() string {
@@ -13595,26 +16215,80 @@ func (s *ListTicketsResponseBodyPage) SetTotal(v int32) *ListTicketsResponseBody
 }
 
 type ListTicketsResponseBodyResult struct {
-	Action            *bool                                   `json:"Action,omitempty" xml:"Action,omitempty"`
-	AssignedHandler   *string                                 `json:"AssignedHandler,omitempty" xml:"AssignedHandler,omitempty"`
-	ChargesRemark     *string                                 `json:"ChargesRemark,omitempty" xml:"ChargesRemark,omitempty"`
-	CompleteRemark    *string                                 `json:"CompleteRemark,omitempty" xml:"CompleteRemark,omitempty"`
-	Dialogs           []*ListTicketsResponseBodyResultDialogs `json:"Dialogs,omitempty" xml:"Dialogs,omitempty" type:"Repeated"`
-	GmtCalled         *string                                 `json:"GmtCalled,omitempty" xml:"GmtCalled,omitempty"`
-	GmtCreate         *string                                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtDelayed        *string                                 `json:"GmtDelayed,omitempty" xml:"GmtDelayed,omitempty"`
-	GmtModified       *string                                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GroupKey          *string                                 `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	Id                *int64                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsAcceptedCharges *bool                                   `json:"IsAcceptedCharges,omitempty" xml:"IsAcceptedCharges,omitempty"`
-	IsDelayed         *bool                                   `json:"IsDelayed,omitempty" xml:"IsDelayed,omitempty"`
-	IsNeedCallback    *bool                                   `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
-	IsNeedCharges     *bool                                   `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
-	Operations        []map[string]interface{}                `json:"Operations,omitempty" xml:"Operations,omitempty" type:"Repeated"`
-	Remark            *string                                 `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RoomNo            *string                                 `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	Status            *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type              *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// false
+	Action *bool `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// ***
+	AssignedHandler *string `json:"AssignedHandler,omitempty" xml:"AssignedHandler,omitempty"`
+	// example:
+	//
+	// ***
+	ChargesRemark *string `json:"ChargesRemark,omitempty" xml:"ChargesRemark,omitempty"`
+	// example:
+	//
+	// ***
+	CompleteRemark *string                                 `json:"CompleteRemark,omitempty" xml:"CompleteRemark,omitempty"`
+	Dialogs        []*ListTicketsResponseBodyResultDialogs `json:"Dialogs,omitempty" xml:"Dialogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-01-09 00:00:00
+	GmtCalled *string `json:"GmtCalled,omitempty" xml:"GmtCalled,omitempty"`
+	// example:
+	//
+	// 2023-01-09 00:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2023-01-09 00:00:00
+	GmtDelayed *string `json:"GmtDelayed,omitempty" xml:"GmtDelayed,omitempty"`
+	// example:
+	//
+	// 2023-01-09 00:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 2023***93975
+	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	// example:
+	//
+	// 45
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// false
+	IsAcceptedCharges *bool `json:"IsAcceptedCharges,omitempty" xml:"IsAcceptedCharges,omitempty"`
+	// example:
+	//
+	// true
+	IsDelayed *bool `json:"IsDelayed,omitempty" xml:"IsDelayed,omitempty"`
+	// example:
+	//
+	// false
+	IsNeedCallback *bool `json:"IsNeedCallback,omitempty" xml:"IsNeedCallback,omitempty"`
+	// example:
+	//
+	// false
+	IsNeedCharges *bool                    `json:"IsNeedCharges,omitempty" xml:"IsNeedCharges,omitempty"`
+	Operations    []map[string]interface{} `json:"Operations,omitempty" xml:"Operations,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ***
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 101
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// waiting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ""
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTicketsResponseBodyResult) String() string {
@@ -13807,9 +16481,24 @@ func (s *PageGetHotelRoomDevicesHeaders) SetAuthorization(v string) *PageGetHote
 }
 
 type PageGetHotelRoomDevicesRequest struct {
-	HotelId    *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s PageGetHotelRoomDevicesRequest) String() string {
@@ -13836,12 +16525,21 @@ func (s *PageGetHotelRoomDevicesRequest) SetPageSize(v int32) *PageGetHotelRoomD
 }
 
 type PageGetHotelRoomDevicesResponseBody struct {
-	Extentions map[string]interface{}                       `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	Page       *PageGetHotelRoomDevicesResponseBodyPage     `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*PageGetHotelRoomDevicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	StatusCode *int32                                       `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page    *PageGetHotelRoomDevicesResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4EFBDDF4-B19D-526C-8C3D-CD8AB51974EE
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*PageGetHotelRoomDevicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s PageGetHotelRoomDevicesResponseBody) String() string {
@@ -13883,13 +16581,34 @@ func (s *PageGetHotelRoomDevicesResponseBody) SetStatusCode(v int32) *PageGetHot
 }
 
 type PageGetHotelRoomDevicesResponseBodyPage struct {
-	End        *int32 `json:"End,omitempty" xml:"End,omitempty"`
-	HasNext    *bool  `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 4
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// False
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Start      *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// example:
+	//
+	// 5
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s PageGetHotelRoomDevicesResponseBodyPage) String() string {
@@ -13936,12 +16655,30 @@ func (s *PageGetHotelRoomDevicesResponseBodyPage) SetTotalPage(v int32) *PageGet
 }
 
 type PageGetHotelRoomDevicesResponseBodyResult struct {
+	// example:
+	//
+	// V21.10.00.313
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
-	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Mac             *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	OnlineStatus    *int32  `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// a7***83
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// b4:xx:xx:xx:65:2b
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 1
+	OnlineStatus *int32 `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// example:
+	//
+	// 2001
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// 1200xxx048
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
 }
 
 func (s PageGetHotelRoomDevicesResponseBodyResult) String() string {
@@ -14041,6 +16778,7 @@ func (s *PmsEventReportHeaders) SetAuthorization(v string) *PmsEventReportHeader
 }
 
 type PmsEventReportRequest struct {
+	// This parameter is required.
 	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 }
 
@@ -14058,10 +16796,19 @@ func (s *PmsEventReportRequest) SetPayload(v string) *PmsEventReportRequest {
 }
 
 type PmsEventReportResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s PmsEventReportResponseBody) String() string {
@@ -14152,6 +16899,8 @@ func (s *PushHotelMessageHeaders) SetAuthorization(v string) *PushHotelMessageHe
 
 type PushHotelMessageRequest struct {
 	// pushHotelMessageReq
+	//
+	// This parameter is required.
 	PushHotelMessageReq *PushHotelMessageRequestPushHotelMessageReq `json:"PushHotelMessageReq,omitempty" xml:"PushHotelMessageReq,omitempty" type:"Struct"`
 }
 
@@ -14169,10 +16918,25 @@ func (s *PushHotelMessageRequest) SetPushHotelMessageReq(v *PushHotelMessageRequ
 }
 
 type PushHotelMessageRequestPushHotelMessageReq struct {
-	HotelId    *string            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	ParamMap   map[string]*string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
-	RoomNo     *string            `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	TemplateId *int64             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId  *string            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	ParamMap map[string]*string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 102
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s PushHotelMessageRequestPushHotelMessageReq) String() string {
@@ -14205,6 +16969,8 @@ func (s *PushHotelMessageRequestPushHotelMessageReq) SetTemplateId(v int64) *Pus
 
 type PushHotelMessageShrinkRequest struct {
 	// pushHotelMessageReq
+	//
+	// This parameter is required.
 	PushHotelMessageReqShrink *string `json:"PushHotelMessageReq,omitempty" xml:"PushHotelMessageReq,omitempty"`
 }
 
@@ -14222,7 +16988,13 @@ func (s *PushHotelMessageShrinkRequest) SetPushHotelMessageReqShrink(v string) *
 }
 
 type PushHotelMessageResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
@@ -14315,9 +17087,12 @@ func (s *PushVoiceBoxCommandsHeaders) SetAuthorization(v string) *PushVoiceBoxCo
 }
 
 type PushVoiceBoxCommandsRequest struct {
+	// This parameter is required.
 	Commands []*PushVoiceBoxCommandsRequestCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	HotelId  *string                                `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo   *string                                `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s PushVoiceBoxCommandsRequest) String() string {
@@ -14344,9 +17119,11 @@ func (s *PushVoiceBoxCommandsRequest) SetRoomNo(v string) *PushVoiceBoxCommandsR
 }
 
 type PushVoiceBoxCommandsRequestCommands struct {
+	// This parameter is required.
 	CommandDomain *string `json:"CommandDomain,omitempty" xml:"CommandDomain,omitempty"`
-	CommandName   *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
-	Payload       *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
+	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+	Payload     *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 }
 
 func (s PushVoiceBoxCommandsRequestCommands) String() string {
@@ -14373,9 +17150,12 @@ func (s *PushVoiceBoxCommandsRequestCommands) SetPayload(v string) *PushVoiceBox
 }
 
 type PushVoiceBoxCommandsShrinkRequest struct {
+	// This parameter is required.
 	CommandsShrink *string `json:"Commands,omitempty" xml:"Commands,omitempty"`
-	HotelId        *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo         *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s PushVoiceBoxCommandsShrinkRequest) String() string {
@@ -14501,10 +17281,24 @@ func (s *PushWelcomeHeaders) SetAuthorization(v string) *PushWelcomeHeaders {
 }
 
 type PushWelcomeRequest struct {
-	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// http://ailabsaicloudservice.alicdn.com/tmp/a.wav
 	WelcomeMusicUrl *string `json:"WelcomeMusicUrl,omitempty" xml:"WelcomeMusicUrl,omitempty"`
-	WelcomeText     *string `json:"WelcomeText,omitempty" xml:"WelcomeText,omitempty"`
+	// This parameter is required.
+	WelcomeText *string `json:"WelcomeText,omitempty" xml:"WelcomeText,omitempty"`
 }
 
 func (s PushWelcomeRequest) String() string {
@@ -14536,10 +17330,22 @@ func (s *PushWelcomeRequest) SetWelcomeText(v string) *PushWelcomeRequest {
 }
 
 type PushWelcomeResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s PushWelcomeResponseBody) String() string {
@@ -14629,7 +17435,17 @@ func (s *PushWelcomeTextAndMusicHeaders) SetAuthorization(v string) *PushWelcome
 }
 
 type PushWelcomeTextAndMusicRequest struct {
-	HotelId          *string            `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
 	RoomNo           *string            `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 	TemplateVariable map[string]*string `json:"TemplateVariable,omitempty" xml:"TemplateVariable,omitempty"`
 }
@@ -14658,7 +17474,17 @@ func (s *PushWelcomeTextAndMusicRequest) SetTemplateVariable(v map[string]*strin
 }
 
 type PushWelcomeTextAndMusicShrinkRequest struct {
-	HotelId                *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
 	RoomNo                 *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 	TemplateVariableShrink *string `json:"TemplateVariable,omitempty" xml:"TemplateVariable,omitempty"`
 }
@@ -14688,10 +17514,22 @@ func (s *PushWelcomeTextAndMusicShrinkRequest) SetTemplateVariableShrink(v strin
 
 type PushWelcomeTextAndMusicResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F7E2****B7C94
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s PushWelcomeTextAndMusicResponseBody) String() string {
@@ -14832,9 +17670,18 @@ func (s *QueryDeviceStatusRequestPayload) SetProperties(v map[string]*string) *Q
 }
 
 type QueryDeviceStatusRequestPayloadLocationDevices struct {
+	// example:
+	//
+	// night_light
 	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	DeviceType   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// light
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// room
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s QueryDeviceStatusRequestPayloadLocationDevices) String() string {
@@ -14861,10 +17708,33 @@ func (s *QueryDeviceStatusRequestPayloadLocationDevices) SetLocation(v string) *
 }
 
 type QueryDeviceStatusRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -14925,8 +17795,17 @@ func (s *QueryDeviceStatusShrinkRequest) SetUserInfoShrink(v string) *QueryDevic
 }
 
 type QueryDeviceStatusResponseBody struct {
-	Code      *int32               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// fdsgrefds
 	RequestId *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []map[string]*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -15018,13 +17897,31 @@ func (s *QueryHotelRoomDetailHeaders) SetAuthorization(v string) *QueryHotelRoom
 }
 
 type QueryHotelRoomDetailRequest struct {
+	// example:
+	//
+	// 520a0c0***5eb
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Mac     *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// example:
+	//
+	// 38:c8:**:**:f5:22
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 	// 设备sn信息
+	//
 	// 注：若在mac uuid sn全都输入的情况下 按照输入正确的内容查询 若全输入都是正确的 则 按照 uuid > mac > sn 优先级查询
+	//
 	// 传入mac uuid sn其中一个 则酒店id和房间号可不传
-	Sn   *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	//
+	// example:
+	//
+	// 280**28
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// 588***96j5WU
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -15062,10 +17959,19 @@ func (s *QueryHotelRoomDetailRequest) SetUuid(v string) *QueryHotelRoomDetailReq
 }
 
 type QueryHotelRoomDetailResponseBody struct {
-	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *QueryHotelRoomDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	StatusCode *int32                                  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryHotelRoomDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryHotelRoomDetailResponseBody) String() string {
@@ -15097,16 +18003,25 @@ func (s *QueryHotelRoomDetailResponseBody) SetStatusCode(v int32) *QueryHotelRoo
 }
 
 type QueryHotelRoomDetailResponseBodyResult struct {
-	AuthAccounts       []*QueryHotelRoomDetailResponseBodyResultAuthAccounts  `json:"AuthAccounts,omitempty" xml:"AuthAccounts,omitempty" type:"Repeated"`
-	ConnectType        *string                                                `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
-	CreatorAccountName *string                                                `json:"CreatorAccountName,omitempty" xml:"CreatorAccountName,omitempty"`
-	DeviceInfos        []*QueryHotelRoomDetailResponseBodyResultDeviceInfos   `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
-	HotelId            *string                                                `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelName          *string                                                `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	OtherService       *QueryHotelRoomDetailResponseBodyResultOtherService    `json:"OtherService,omitempty" xml:"OtherService,omitempty" type:"Struct"`
-	RoomControlInfo    *QueryHotelRoomDetailResponseBodyResultRoomControlInfo `json:"RoomControlInfo,omitempty" xml:"RoomControlInfo,omitempty" type:"Struct"`
-	RoomNo             *string                                                `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	RoomServiceInfo    *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo `json:"RoomServiceInfo,omitempty" xml:"RoomServiceInfo,omitempty" type:"Struct"`
+	AuthAccounts []*QueryHotelRoomDetailResponseBodyResultAuthAccounts `json:"AuthAccounts,omitempty" xml:"AuthAccounts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rcu
+	ConnectType        *string                                              `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	CreatorAccountName *string                                              `json:"CreatorAccountName,omitempty" xml:"CreatorAccountName,omitempty"`
+	DeviceInfos        []*QueryHotelRoomDetailResponseBodyResultDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a7***83
+	HotelId         *string                                                `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName       *string                                                `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	OtherService    *QueryHotelRoomDetailResponseBodyResultOtherService    `json:"OtherService,omitempty" xml:"OtherService,omitempty" type:"Struct"`
+	RoomControlInfo *QueryHotelRoomDetailResponseBodyResultRoomControlInfo `json:"RoomControlInfo,omitempty" xml:"RoomControlInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2001
+	RoomNo          *string                                                `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	RoomServiceInfo *QueryHotelRoomDetailResponseBodyResultRoomServiceInfo `json:"RoomServiceInfo,omitempty" xml:"RoomServiceInfo,omitempty" type:"Struct"`
 }
 
 func (s QueryHotelRoomDetailResponseBodyResult) String() string {
@@ -15169,7 +18084,10 @@ func (s *QueryHotelRoomDetailResponseBodyResult) SetRoomServiceInfo(v *QueryHote
 
 type QueryHotelRoomDetailResponseBodyResultAuthAccounts struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AuthTime    *string `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
+	// example:
+	//
+	// 2023-01-01 12:00:00
+	AuthTime *string `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
 }
 
 func (s QueryHotelRoomDetailResponseBodyResultAuthAccounts) String() string {
@@ -15191,13 +18109,31 @@ func (s *QueryHotelRoomDetailResponseBodyResultAuthAccounts) SetAuthTime(v strin
 }
 
 type QueryHotelRoomDetailResponseBodyResultDeviceInfos struct {
-	ActiveTime      *string `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
-	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// 2023-01-01 12:00:00
+	ActiveTime *string `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// 6.1.8-RS-20230425.1806
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
-	Mac             *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	OnlineStatus    *int32  `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// fa:03:23:58:c3:00
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 1
+	OnlineStatus *int32 `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// example:
+	//
+	// sag42dlz4qf
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// 41c95c18a0a643bcb58edf438877def5
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s QueryHotelRoomDetailResponseBodyResultDeviceInfos) String() string {
@@ -15244,7 +18180,13 @@ func (s *QueryHotelRoomDetailResponseBodyResultDeviceInfos) SetUuid(v string) *Q
 }
 
 type QueryHotelRoomDetailResponseBodyResultOtherService struct {
-	OpenCall        *bool  `json:"OpenCall,omitempty" xml:"OpenCall,omitempty"`
+	// example:
+	//
+	// false
+	OpenCall *bool `json:"OpenCall,omitempty" xml:"OpenCall,omitempty"`
+	// example:
+	//
+	// 0
 	UnhandleTickets *int32 `json:"UnhandleTickets,omitempty" xml:"UnhandleTickets,omitempty"`
 }
 
@@ -15267,12 +18209,24 @@ func (s *QueryHotelRoomDetailResponseBodyResultOtherService) SetUnhandleTickets(
 }
 
 type QueryHotelRoomDetailResponseBodyResultRoomControlInfo struct {
-	AppId        *int64                                                              `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName      *string                                                             `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DeviceInfos  []*QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
-	RcuUrl       *string                                                             `json:"RcuUrl,omitempty" xml:"RcuUrl,omitempty"`
-	TemplateId   *int64                                                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string                                                             `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 78
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// app
+	AppName     *string                                                             `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DeviceInfos []*QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://www.xxx.com
+	RcuUrl *string `json:"RcuUrl,omitempty" xml:"RcuUrl,omitempty"`
+	// example:
+	//
+	// 1170
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s QueryHotelRoomDetailResponseBodyResultRoomControlInfo) String() string {
@@ -15314,17 +18268,41 @@ func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfo) SetTemplateName(
 }
 
 type QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos struct {
-	CategoryEnName    *string `json:"CategoryEnName,omitempty" xml:"CategoryEnName,omitempty"`
-	CategoryId        *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CategoryName      *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// light
+	CategoryEnName *string `json:"CategoryEnName,omitempty" xml:"CategoryEnName,omitempty"`
+	// example:
+	//
+	// 3
+	CategoryId   *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// rcu
 	DeviceConnectType *string `json:"DeviceConnectType,omitempty" xml:"DeviceConnectType,omitempty"`
-	DeviceCount       *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
-	DeviceId          *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	LocationEnName    *string `json:"LocationEnName,omitempty" xml:"LocationEnName,omitempty"`
-	LocationId        *int64  `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	LocationName      *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
-	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	// example:
+	//
+	// 4
+	DeviceCount *int32 `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// example:
+	//
+	// readLight
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// room
+	LocationEnName *string `json:"LocationEnName,omitempty" xml:"LocationEnName,omitempty"`
+	// example:
+	//
+	// 1
+	LocationId   *int64  `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
+	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	// example:
+	//
+	// a1ueWGP6W2L
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 }
 
 func (s QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) String() string {
@@ -15391,10 +18369,22 @@ func (s *QueryHotelRoomDetailResponseBodyResultRoomControlInfoDeviceInfos) SetPr
 }
 
 type QueryHotelRoomDetailResponseBodyResultRoomServiceInfo struct {
-	BookServiceCnt   *int32 `json:"BookServiceCnt,omitempty" xml:"BookServiceCnt,omitempty"`
-	GoodsServiceCnt  *int32 `json:"GoodsServiceCnt,omitempty" xml:"GoodsServiceCnt,omitempty"`
+	// example:
+	//
+	// 0
+	BookServiceCnt *int32 `json:"BookServiceCnt,omitempty" xml:"BookServiceCnt,omitempty"`
+	// example:
+	//
+	// 10
+	GoodsServiceCnt *int32 `json:"GoodsServiceCnt,omitempty" xml:"GoodsServiceCnt,omitempty"`
+	// example:
+	//
+	// 10
 	RepairServiceCnt *int32 `json:"RepairServiceCnt,omitempty" xml:"RepairServiceCnt,omitempty"`
-	RoomServiceCnt   *int32 `json:"RoomServiceCnt,omitempty" xml:"RoomServiceCnt,omitempty"`
+	// example:
+	//
+	// 12
+	RoomServiceCnt *int32 `json:"RoomServiceCnt,omitempty" xml:"RoomServiceCnt,omitempty"`
 }
 
 func (s QueryHotelRoomDetailResponseBodyResultRoomServiceInfo) String() string {
@@ -15484,8 +18474,18 @@ func (s *QueryRoomControlDevicesHeaders) SetAuthorization(v string) *QueryRoomCo
 }
 
 type QueryRoomControlDevicesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	RoomNo  *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
 }
 
 func (s QueryRoomControlDevicesRequest) String() string {
@@ -15507,8 +18507,17 @@ func (s *QueryRoomControlDevicesRequest) SetRoomNo(v string) *QueryRoomControlDe
 }
 
 type QueryRoomControlDevicesResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// fdsgfdscvre
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryRoomControlDevicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -15542,9 +18551,12 @@ func (s *QueryRoomControlDevicesResponseBody) SetResult(v []*QueryRoomControlDev
 }
 
 type QueryRoomControlDevicesResponseBodyResult struct {
-	Devices      []*QueryRoomControlDevicesResponseBodyResultDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	Location     *string                                             `json:"Location,omitempty" xml:"Location,omitempty"`
-	LocationName *string                                             `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	Devices []*QueryRoomControlDevicesResponseBodyResultDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// room
+	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
 }
 
 func (s QueryRoomControlDevicesResponseBodyResult) String() string {
@@ -15577,9 +18589,15 @@ type QueryRoomControlDevicesResponseBodyResultDevices struct {
 	DeviceName        *string                                                            `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	DeviceStatus      *string                                                            `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
 	MultiKeySwitchExt *QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt `json:"MultiKeySwitchExt,omitempty" xml:"MultiKeySwitchExt,omitempty" type:"Struct"`
-	Name              *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Number            *string                                                            `json:"Number,omitempty" xml:"Number,omitempty"`
-	PK                *string                                                            `json:"PK,omitempty" xml:"PK,omitempty"`
+	// example:
+	//
+	// light
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// night_light
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	PK     *string `json:"PK,omitempty" xml:"PK,omitempty"`
 }
 
 func (s QueryRoomControlDevicesResponseBodyResultDevices) String() string {
@@ -15734,6 +18752,428 @@ func (s *QueryRoomControlDevicesResponse) SetBody(v *QueryRoomControlDevicesResp
 	return s
 }
 
+type QueryRoomControlDevicesAndStatusHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s QueryRoomControlDevicesAndStatusHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusHeaders) SetCommonHeaders(v map[string]*string) *QueryRoomControlDevicesAndStatusHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusHeaders) SetXAcsAligenieAccessToken(v string) *QueryRoomControlDevicesAndStatusHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusHeaders) SetAuthorization(v string) *QueryRoomControlDevicesAndStatusHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type QueryRoomControlDevicesAndStatusRequest struct {
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s QueryRoomControlDevicesAndStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusRequest) SetHotelId(v string) *QueryRoomControlDevicesAndStatusRequest {
+	s.HotelId = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusRequest) SetRoomNo(v string) *QueryRoomControlDevicesAndStatusRequest {
+	s.RoomNo = &v
+	return s
+}
+
+type QueryRoomControlDevicesAndStatusResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C67***6FA
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryRoomControlDevicesAndStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBody) SetCode(v int32) *QueryRoomControlDevicesAndStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBody) SetMessage(v string) *QueryRoomControlDevicesAndStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBody) SetRequestId(v string) *QueryRoomControlDevicesAndStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBody) SetResult(v []*QueryRoomControlDevicesAndStatusResponseBodyResult) *QueryRoomControlDevicesAndStatusResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBody) SetStatusCode(v int32) *QueryRoomControlDevicesAndStatusResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type QueryRoomControlDevicesAndStatusResponseBodyResult struct {
+	Devices []*QueryRoomControlDevicesAndStatusResponseBodyResultDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// room
+	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResult) SetDevices(v []*QueryRoomControlDevicesAndStatusResponseBodyResultDevices) *QueryRoomControlDevicesAndStatusResponseBodyResult {
+	s.Devices = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResult) SetLocation(v string) *QueryRoomControlDevicesAndStatusResponseBodyResult {
+	s.Location = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResult) SetLocationName(v string) *QueryRoomControlDevicesAndStatusResponseBodyResult {
+	s.LocationName = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResult) SetRoomNo(v string) *QueryRoomControlDevicesAndStatusResponseBodyResult {
+	s.RoomNo = &v
+	return s
+}
+
+type QueryRoomControlDevicesAndStatusResponseBodyResultDevices struct {
+	AliasList []*string `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
+	Brand     *string   `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	City      *string   `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// rcu
+	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	DeviceName  *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// {"powerstate": "1"}
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// example:
+	//
+	// 3c5d***9ec
+	Dn *string `json:"Dn,omitempty" xml:"Dn,omitempty"`
+	// example:
+	//
+	// 9**7
+	InfraredId *string `json:"InfraredId,omitempty" xml:"InfraredId,omitempty"`
+	// example:
+	//
+	// 2
+	InfraredIndex *string `json:"InfraredIndex,omitempty" xml:"InfraredIndex,omitempty"`
+	// example:
+	//
+	// 3.0
+	InfraredVersion   *string                                                                     `json:"InfraredVersion,omitempty" xml:"InfraredVersion,omitempty"`
+	MultiKeySwitchExt *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt `json:"MultiKeySwitchExt,omitempty" xml:"MultiKeySwitchExt,omitempty" type:"Struct"`
+	// example:
+	//
+	// light
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// night_light
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 50255129
+	Pk              *string            `json:"Pk,omitempty" xml:"Pk,omitempty"`
+	Province        *string            `json:"Province,omitempty" xml:"Province,omitempty"`
+	ServiceProvider *string            `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
+	Status          map[string]*string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResultDevices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResultDevices) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetAliasList(v []*string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.AliasList = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetBrand(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.Brand = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetCity(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.City = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetConnectType(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.ConnectType = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetDeviceName(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetDeviceStatus(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.DeviceStatus = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetDn(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.Dn = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetInfraredId(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.InfraredId = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetInfraredIndex(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.InfraredIndex = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetInfraredVersion(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.InfraredVersion = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetMultiKeySwitchExt(v *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.MultiKeySwitchExt = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetName(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetNumber(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.Number = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetPk(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.Pk = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetProvince(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.Province = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetServiceProvider(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.ServiceProvider = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevices) SetStatus(v map[string]*string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevices {
+	s.Status = v
+	return s
+}
+
+type QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt struct {
+	SwitchList []*QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList `json:"SwitchList,omitempty" xml:"SwitchList,omitempty" type:"Repeated"`
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt) SetSwitchList(v []*QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt {
+	s.SwitchList = v
+	return s
+}
+
+type QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList struct {
+	AliasList []*string `json:"AliasList,omitempty" xml:"AliasList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// light
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1
+	DeviceIndex *int32  `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
+	DeviceName  *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "powerstate": "0"
+	//
+	// }
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// example:
+	//
+	// e2
+	ElementCode *string `json:"ElementCode,omitempty" xml:"ElementCode,omitempty"`
+	// example:
+	//
+	// room
+	Location *string            `json:"Location,omitempty" xml:"Location,omitempty"`
+	Status   map[string]*string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags     []*string          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetAliasList(v []*string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.AliasList = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetCategory(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.Category = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetDeviceIndex(v int32) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceIndex = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetDeviceName(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetDeviceStatus(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.DeviceStatus = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetElementCode(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.ElementCode = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetLocation(v string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.Location = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetStatus(v map[string]*string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.Status = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList) SetTags(v []*string) *QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList {
+	s.Tags = v
+	return s
+}
+
+type QueryRoomControlDevicesAndStatusResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRoomControlDevicesAndStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRoomControlDevicesAndStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRoomControlDevicesAndStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponse) SetHeaders(v map[string]*string) *QueryRoomControlDevicesAndStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponse) SetStatusCode(v int32) *QueryRoomControlDevicesAndStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRoomControlDevicesAndStatusResponse) SetBody(v *QueryRoomControlDevicesAndStatusResponseBody) *QueryRoomControlDevicesAndStatusResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySceneListHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -15764,6 +19204,11 @@ func (s *QuerySceneListHeaders) SetAuthorization(v string) *QuerySceneListHeader
 }
 
 type QuerySceneListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
 	HotelId         *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	SceneStates     []*int32  `json:"SceneStates,omitempty" xml:"SceneStates,omitempty" type:"Repeated"`
 	SceneTypes      []*string `json:"SceneTypes,omitempty" xml:"SceneTypes,omitempty" type:"Repeated"`
@@ -15799,6 +19244,11 @@ func (s *QuerySceneListRequest) SetTemplateInfoIds(v []*string) *QuerySceneListR
 }
 
 type QuerySceneListShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
 	HotelId               *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	SceneStatesShrink     *string `json:"SceneStates,omitempty" xml:"SceneStates,omitempty"`
 	SceneTypesShrink      *string `json:"SceneTypes,omitempty" xml:"SceneTypes,omitempty"`
@@ -15834,10 +19284,19 @@ func (s *QuerySceneListShrinkRequest) SetTemplateInfoIdsShrink(v string) *QueryS
 }
 
 type QuerySceneListResponseBody struct {
-	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results    []*QuerySceneListResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	StatusCode *int32                               `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FAFCD152-4791-5F2F-B0BE-2DC06FD4F05B
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*QuerySceneListResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QuerySceneListResponseBody) String() string {
@@ -15869,11 +19328,26 @@ func (s *QuerySceneListResponseBody) SetStatusCode(v int32) *QuerySceneListRespo
 }
 
 type QuerySceneListResponseBodyResults struct {
-	Icon                *string                                                 `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	SceneId             *string                                                 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName           *string                                                 `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	SceneSource         *string                                                 `json:"SceneSource,omitempty" xml:"SceneSource,omitempty"`
-	SceneState          *int32                                                  `json:"SceneState,omitempty" xml:"SceneState,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/changjingmoshi/shuimian.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 73
+	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// external
+	SceneSource *string `json:"SceneSource,omitempty" xml:"SceneSource,omitempty"`
+	// example:
+	//
+	// 1
+	SceneState *int32 `json:"SceneState,omitempty" xml:"SceneState,omitempty"`
+	// example:
+	//
+	// common
 	SceneType           *string                                                 `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 	TemplateInfoDTOList []*QuerySceneListResponseBodyResultsTemplateInfoDTOList `json:"TemplateInfoDTOList,omitempty" xml:"TemplateInfoDTOList,omitempty" type:"Repeated"`
 	UnavailableReason   *string                                                 `json:"UnavailableReason,omitempty" xml:"UnavailableReason,omitempty"`
@@ -15929,8 +19403,14 @@ func (s *QuerySceneListResponseBodyResults) SetUnavailableReason(v string) *Quer
 
 type QuerySceneListResponseBodyResultsTemplateInfoDTOList struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 6962
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 101
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s QuerySceneListResponseBodyResultsTemplateInfoDTOList) String() string {
@@ -16015,10 +19495,30 @@ func (s *RemoveChildAccountAuthHeaders) SetAuthorization(v string) *RemoveChildA
 }
 
 type RemoveChildAccountAuthRequest struct {
-	AppKey           *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30**53
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tbxxxx
 	ChildAccountName *string `json:"ChildAccountName,omitempty" xml:"ChildAccountName,omitempty"`
-	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	TbOpenId         *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAEV***E3d3Z2ETwh
+	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
 }
 
 func (s RemoveChildAccountAuthRequest) String() string {
@@ -16050,10 +19550,22 @@ func (s *RemoveChildAccountAuthRequest) SetTbOpenId(v string) *RemoveChildAccoun
 }
 
 type RemoveChildAccountAuthResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F12B***F34E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s RemoveChildAccountAuthResponseBody) String() string {
@@ -16144,8 +19656,24 @@ func (s *RemoveHotelHeaders) SetAuthorization(v string) *RemoveHotelHeaders {
 
 type RemoveHotelRequest struct {
 	// appkey
-	AppKey   *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30193305
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAEVK***UE3d3Z2ETwh
 	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
 }
 
@@ -16174,11 +19702,24 @@ func (s *RemoveHotelRequest) SetTbOpenId(v string) *RemoveHotelRequest {
 
 type RemoveHotelResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	//
+	// example:
+	//
+	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s RemoveHotelResponseBody) String() string {
@@ -16273,6 +19814,11 @@ func (s *ResetWelcomeTextAndMusicHeaders) SetAuthorization(v string) *ResetWelco
 }
 
 type ResetWelcomeTextAndMusicRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 }
 
@@ -16291,10 +19837,22 @@ func (s *ResetWelcomeTextAndMusicRequest) SetHotelId(v string) *ResetWelcomeText
 
 type ResetWelcomeTextAndMusicResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool                  `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s ResetWelcomeTextAndMusicResponseBody) String() string {
@@ -16412,10 +19970,33 @@ func (s *RoomCheckOutRequest) SetUserInfo(v *RoomCheckOutRequestUserInfo) *RoomC
 }
 
 type RoomCheckOutRequestDeviceInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -16453,10 +20034,33 @@ func (s *RoomCheckOutRequestDeviceInfo) SetOrganizationId(v string) *RoomCheckOu
 }
 
 type RoomCheckOutRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOTEL
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rV/XSgPuxZjx/hN3iw8U+e8ou***lk1r43LWcVW6fvY1Rr4sEPFodpnA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 123
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -16517,10 +20121,22 @@ func (s *RoomCheckOutShrinkRequest) SetUserInfoShrink(v string) *RoomCheckOutShr
 }
 
 type RoomCheckOutResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// dsvrevd
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RoomCheckOutResponseBody) String() string {
@@ -16610,7 +20226,9 @@ func (s *SubmitHotelOrderHeaders) SetAuthorization(v string) *SubmitHotelOrderHe
 }
 
 type SubmitHotelOrderRequest struct {
-	Payload  *SubmitHotelOrderRequestPayload  `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// This parameter is required.
+	Payload *SubmitHotelOrderRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// This parameter is required.
 	UserInfo *SubmitHotelOrderRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -16633,8 +20251,14 @@ func (s *SubmitHotelOrderRequest) SetUserInfo(v *SubmitHotelOrderRequestUserInfo
 }
 
 type SubmitHotelOrderRequestPayload struct {
+	// This parameter is required.
 	ItemList []*SubmitHotelOrderRequestPayloadItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
-	Type     *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GOODS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitHotelOrderRequestPayload) String() string {
@@ -16656,7 +20280,17 @@ func (s *SubmitHotelOrderRequestPayload) SetType(v string) *SubmitHotelOrderRequ
 }
 
 type SubmitHotelOrderRequestPayloadItemList struct {
-	ItemId   *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 152860
+	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
@@ -16679,9 +20313,29 @@ func (s *SubmitHotelOrderRequestPayloadItemList) SetQuantity(v int64) *SubmitHot
 }
 
 type SubmitHotelOrderRequestUserInfo struct {
-	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
-	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1248494721591392955
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PROJECT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mFU6VtVU+pgA8lx6rYMo7SPl11t+8b+8ALrn10MIPEdpK/HI9wELAEppYhPI1cYRDa4og8AMjAEBZKbLUwFjFA==
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
 	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
@@ -16720,7 +20374,9 @@ func (s *SubmitHotelOrderRequestUserInfo) SetOrganizationId(v string) *SubmitHot
 }
 
 type SubmitHotelOrderShrinkRequest struct {
-	PayloadShrink  *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
+	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
@@ -16743,9 +20399,21 @@ func (s *SubmitHotelOrderShrinkRequest) SetUserInfoShrink(v string) *SubmitHotel
 }
 
 type SubmitHotelOrderResponseBody struct {
-	Code       *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CCCF2E86-D9B5-12A6-AD25-8A06933D2B0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20220809104752000114671478353329
 	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
@@ -16842,14 +20510,44 @@ func (s *SyncDeviceStatusWithAkHeaders) SetAuthorization(v string) *SyncDeviceSt
 }
 
 type SyncDeviceStatusWithAkRequest struct {
-	CategoryCnName  *string `json:"CategoryCnName,omitempty" xml:"CategoryCnName,omitempty"`
-	CategoryEnName  *string `json:"CategoryEnName,omitempty" xml:"CategoryEnName,omitempty"`
-	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	HotelId         *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Location        *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	LocationCnName  *string `json:"LocationCnName,omitempty" xml:"LocationCnName,omitempty"`
-	Number          *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	RoomNo          *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	CategoryCnName *string `json:"CategoryCnName,omitempty" xml:"CategoryCnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// light
+	CategoryEnName *string `json:"CategoryEnName,omitempty" xml:"CategoryEnName,omitempty"`
+	DeviceName     *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// room
+	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationCnName *string `json:"LocationCnName,omitempty" xml:"LocationCnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bedLight
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1211
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Switch          *int32  `json:"Switch,omitempty" xml:"Switch,omitempty"`
 	FanSpeed        *string `json:"fanSpeed,omitempty" xml:"fanSpeed,omitempty"`
 	Mode            *string `json:"mode,omitempty" xml:"mode,omitempty"`
@@ -16937,10 +20635,22 @@ func (s *SyncDeviceStatusWithAkRequest) SetValue(v int32) *SyncDeviceStatusWithA
 }
 
 type SyncDeviceStatusWithAkResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// F12B6147-5925-19E5-A3AD-E1EE1360F34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s SyncDeviceStatusWithAkResponseBody) String() string {
@@ -17030,18 +20740,43 @@ func (s *UpdateBasicInfoQAHeaders) SetAuthorization(v string) *UpdateBasicInfoQA
 }
 
 type UpdateBasicInfoQARequest struct {
-	CheckInTime       *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
-	CheckOutTime      *string `json:"CheckOutTime,omitempty" xml:"CheckOutTime,omitempty"`
-	HotelAddress      *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11:11
+	CheckInTime *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11:11
+	CheckOutTime *string `json:"CheckOutTime,omitempty" xml:"CheckOutTime,omitempty"`
+	// This parameter is required.
+	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
 	HotelId           *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	HotelIntroduction *string `json:"HotelIntroduction,omitempty" xml:"HotelIntroduction,omitempty"`
 	HotelMember       *string `json:"HotelMember,omitempty" xml:"HotelMember,omitempty"`
 	HotelService      *string `json:"HotelService,omitempty" xml:"HotelService,omitempty"`
-	ParkingExpenses   *string `json:"ParkingExpenses,omitempty" xml:"ParkingExpenses,omitempty"`
-	ParkingPosition   *string `json:"ParkingPosition,omitempty" xml:"ParkingPosition,omitempty"`
-	PhoneNumber       *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	WifiName          *string `json:"WifiName,omitempty" xml:"WifiName,omitempty"`
-	WifiPassword      *string `json:"WifiPassword,omitempty" xml:"WifiPassword,omitempty"`
+	// This parameter is required.
+	ParkingExpenses *string `json:"ParkingExpenses,omitempty" xml:"ParkingExpenses,omitempty"`
+	// This parameter is required.
+	ParkingPosition *string `json:"ParkingPosition,omitempty" xml:"ParkingPosition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123***
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// This parameter is required.
+	WifiName *string `json:"WifiName,omitempty" xml:"WifiName,omitempty"`
+	// This parameter is required.
+	WifiPassword *string `json:"WifiPassword,omitempty" xml:"WifiPassword,omitempty"`
 }
 
 func (s UpdateBasicInfoQARequest) String() string {
@@ -17113,10 +20848,22 @@ func (s *UpdateBasicInfoQARequest) SetWifiPassword(v string) *UpdateBasicInfoQAR
 }
 
 type UpdateBasicInfoQAResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7***726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateBasicInfoQAResponseBody) String() string {
@@ -17206,10 +20953,23 @@ func (s *UpdateCustomQAHeaders) SetAuthorization(v string) *UpdateCustomQAHeader
 }
 
 type UpdateCustomQARequest struct {
-	Answers                []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
-	CustomQAId             *string   `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
-	HotelId                *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	KeyWords               []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	Answers []*string `json:"Answers,omitempty" xml:"Answers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CustomQAId *string `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId  *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWords []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ***
 	MajorQuestion          *string   `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
 	SupplementaryQuestions []*string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty" type:"Repeated"`
 }
@@ -17253,10 +21013,23 @@ func (s *UpdateCustomQARequest) SetSupplementaryQuestions(v []*string) *UpdateCu
 }
 
 type UpdateCustomQAShrinkRequest struct {
-	AnswersShrink                *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
-	CustomQAId                   *string `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
-	HotelId                      *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	KeyWordsShrink               *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	AnswersShrink *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CustomQAId *string `json:"CustomQAId,omitempty" xml:"CustomQAId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId        *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	KeyWordsShrink *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	// example:
+	//
+	// ***
 	MajorQuestion                *string `json:"MajorQuestion,omitempty" xml:"MajorQuestion,omitempty"`
 	SupplementaryQuestionsShrink *string `json:"SupplementaryQuestions,omitempty" xml:"SupplementaryQuestions,omitempty"`
 }
@@ -17300,10 +21073,22 @@ func (s *UpdateCustomQAShrinkRequest) SetSupplementaryQuestionsShrink(v string) 
 }
 
 type UpdateCustomQAResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C6***BB3E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateCustomQAResponseBody) String() string {
@@ -17393,17 +21178,44 @@ func (s *UpdateHotelHeaders) SetAuthorization(v string) *UpdateHotelHeaders {
 }
 
 type UpdateHotelRequest struct {
-	AppKey       *string   `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	EstOpenTime  *string   `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
-	HotelAddress *string   `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
-	HotelEmail   *string   `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
-	HotelId      *string   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelName    *string   `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	PhoneNumber  *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	RelatedPks   []*string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty" type:"Repeated"`
-	Remark       *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RoomNum      *int32    `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
-	TbOpenId     *string   `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 31342884
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// 2022-02-22 00:00:00
+	EstOpenTime  *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	// example:
+	//
+	// a*****@hotel.com
+	HotelEmail *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// example:
+	//
+	// 130***
+	PhoneNumber *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RelatedPks  []*string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty" type:"Repeated"`
+	Remark      *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 4
+	RoomNum *int32 `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAEVK***UE3d3Z2ETwh
+	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
 }
 
 func (s UpdateHotelRequest) String() string {
@@ -17470,17 +21282,44 @@ func (s *UpdateHotelRequest) SetTbOpenId(v string) *UpdateHotelRequest {
 }
 
 type UpdateHotelShrinkRequest struct {
-	AppKey           *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	EstOpenTime      *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
-	HotelAddress     *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
-	HotelEmail       *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
-	HotelId          *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	HotelName        *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 31342884
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// 2022-02-22 00:00:00
+	EstOpenTime  *string `json:"EstOpenTime,omitempty" xml:"EstOpenTime,omitempty"`
+	HotelAddress *string `json:"HotelAddress,omitempty" xml:"HotelAddress,omitempty"`
+	// example:
+	//
+	// a*****@hotel.com
+	HotelEmail *string `json:"HotelEmail,omitempty" xml:"HotelEmail,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6dd44fd16084db8a60d69fd625d9f0f
+	HotelId   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
+	// example:
+	//
+	// 130***
 	PhoneNumber      *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	RelatedPksShrink *string `json:"RelatedPks,omitempty" xml:"RelatedPks,omitempty"`
 	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RoomNum          *int32  `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
-	TbOpenId         *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
+	// example:
+	//
+	// 4
+	RoomNum *int32 `json:"RoomNum,omitempty" xml:"RoomNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAEVK***UE3d3Z2ETwh
+	TbOpenId *string `json:"TbOpenId,omitempty" xml:"TbOpenId,omitempty"`
 }
 
 func (s UpdateHotelShrinkRequest) String() string {
@@ -17548,11 +21387,24 @@ func (s *UpdateHotelShrinkRequest) SetTbOpenId(v string) *UpdateHotelShrinkReque
 
 type UpdateHotelResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	//
+	// example:
+	//
+	// 46C53AEB-B19C-5C42-B32E-A726979C126F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateHotelResponseBody) String() string {
@@ -17647,7 +21499,13 @@ func (s *UpdateHotelAlarmHeaders) SetAuthorization(v string) *UpdateHotelAlarmHe
 }
 
 type UpdateHotelAlarmRequest struct {
-	Alarms       []*UpdateHotelAlarmRequestAlarms     `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Alarms []*UpdateHotelAlarmRequestAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a381a668bc485980bed3876a75e013
 	HotelId      *string                              `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	ScheduleInfo *UpdateHotelAlarmRequestScheduleInfo `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty" type:"Struct"`
 }
@@ -17676,10 +21534,28 @@ func (s *UpdateHotelAlarmRequest) SetScheduleInfo(v *UpdateHotelAlarmRequestSche
 }
 
 type UpdateHotelAlarmRequestAlarms struct {
-	AlarmId      *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567
+	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pvk***VTA==
 	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
-	RoomNo       *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
-	UserOpenId   *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
+	// example:
+	//
+	// 101
+	RoomNo *string `json:"RoomNo,omitempty" xml:"RoomNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mgw/***dHQd
+	UserOpenId *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
 }
 
 func (s UpdateHotelAlarmRequestAlarms) String() string {
@@ -17713,6 +21589,10 @@ func (s *UpdateHotelAlarmRequestAlarms) SetUserOpenId(v string) *UpdateHotelAlar
 type UpdateHotelAlarmRequestScheduleInfo struct {
 	Once *UpdateHotelAlarmRequestScheduleInfoOnce `json:"Once,omitempty" xml:"Once,omitempty" type:"Struct"`
 	// ONCE, WEEKLY
+	//
+	// example:
+	//
+	// ONCE
 	Type   *string                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 	Weekly *UpdateHotelAlarmRequestScheduleInfoWeekly `json:"Weekly,omitempty" xml:"Weekly,omitempty" type:"Struct"`
 }
@@ -17741,11 +21621,26 @@ func (s *UpdateHotelAlarmRequestScheduleInfo) SetWeekly(v *UpdateHotelAlarmReque
 }
 
 type UpdateHotelAlarmRequestScheduleInfoOnce struct {
-	Day    *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
-	Hour   *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 20
+	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// example:
+	//
+	// 10
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 0
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	Month  *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
-	Year   *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
+	// example:
+	//
+	// 9
+	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// example:
+	//
+	// 2022
+	Year *int32 `json:"Year,omitempty" xml:"Year,omitempty"`
 }
 
 func (s UpdateHotelAlarmRequestScheduleInfoOnce) String() string {
@@ -17783,8 +21678,14 @@ func (s *UpdateHotelAlarmRequestScheduleInfoOnce) SetYear(v int32) *UpdateHotelA
 
 type UpdateHotelAlarmRequestScheduleInfoWeekly struct {
 	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
-	Hour       *int32   `json:"Hour,omitempty" xml:"Hour,omitempty"`
-	Minute     *int32   `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// example:
+	//
+	// 10
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// example:
+	//
+	// 0
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
 }
 
 func (s UpdateHotelAlarmRequestScheduleInfoWeekly) String() string {
@@ -17811,7 +21712,13 @@ func (s *UpdateHotelAlarmRequestScheduleInfoWeekly) SetMinute(v int32) *UpdateHo
 }
 
 type UpdateHotelAlarmShrinkRequest struct {
-	AlarmsShrink       *string `json:"Alarms,omitempty" xml:"Alarms,omitempty"`
+	// This parameter is required.
+	AlarmsShrink *string `json:"Alarms,omitempty" xml:"Alarms,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a7a381a668bc485980bed3876a75e013
 	HotelId            *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	ScheduleInfoShrink *string `json:"ScheduleInfo,omitempty" xml:"ScheduleInfo,omitempty"`
 }
@@ -17841,10 +21748,22 @@ func (s *UpdateHotelAlarmShrinkRequest) SetScheduleInfoShrink(v string) *UpdateH
 
 type UpdateHotelAlarmResponseBody struct {
 	Extentions map[string]interface{} `json:"Extentions,omitempty" xml:"Extentions,omitempty"`
-	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *int32                 `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C67BD9-175A-1324-8202-9FAABBB3E6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateHotelAlarmResponseBody) String() string {
@@ -17940,8 +21859,16 @@ func (s *UpdateHotelSceneBookItemHeaders) SetAuthorization(v string) *UpdateHote
 
 type UpdateHotelSceneBookItemRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	// updateHotelSceneBookReq
+	//
+	// This parameter is required.
 	UpdateHotelSceneBookReq *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq `json:"UpdateHotelSceneBookReq,omitempty" xml:"UpdateHotelSceneBookReq,omitempty" type:"Struct"`
 }
 
@@ -17965,10 +21892,27 @@ func (s *UpdateHotelSceneBookItemRequest) SetUpdateHotelSceneBookReq(v *UpdateHo
 
 type UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq struct {
 	// icon
-	Icon  *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Price *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://ailabs.alibabausercontent.com/platform/28d7a91e3c05db3855725fc39e0387e7/welcome_audios/aa918294b6ca3aa115c51135bf9b80cb/l9f996sq.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 青椒肉丝
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1250
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
 }
 
 func (s UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) String() string {
@@ -18001,8 +21945,16 @@ func (s *UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq) SetPrice(v int6
 
 type UpdateHotelSceneBookItemShrinkRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	// updateHotelSceneBookReq
+	//
+	// This parameter is required.
 	UpdateHotelSceneBookReqShrink *string `json:"UpdateHotelSceneBookReq,omitempty" xml:"UpdateHotelSceneBookReq,omitempty"`
 }
 
@@ -18025,10 +21977,22 @@ func (s *UpdateHotelSceneBookItemShrinkRequest) SetUpdateHotelSceneBookReqShrink
 }
 
 type UpdateHotelSceneBookItemResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7*726E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateHotelSceneBookItemResponseBody) String() string {
@@ -18119,10 +22083,20 @@ func (s *UpdateHotelSceneItemHeaders) SetAuthorization(v string) *UpdateHotelSce
 
 type UpdateHotelSceneItemRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	// updateHotelSceneReq
+	//
+	// This parameter is required.
 	UpdateHotelSceneOperateReq *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq `json:"UpdateHotelSceneOperateReq,omitempty" xml:"UpdateHotelSceneOperateReq,omitempty" type:"Struct"`
 	// UpdateHotelSceneReq
+	//
+	// This parameter is required.
 	UpdateHotelSceneReq *UpdateHotelSceneItemRequestUpdateHotelSceneReq `json:"UpdateHotelSceneReq,omitempty" xml:"UpdateHotelSceneReq,omitempty" type:"Struct"`
 }
 
@@ -18150,8 +22124,18 @@ func (s *UpdateHotelSceneItemRequest) SetUpdateHotelSceneReq(v *UpdateHotelScene
 }
 
 type UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq struct {
-	IsUseTemplateAnswer *bool   `json:"IsUseTemplateAnswer,omitempty" xml:"IsUseTemplateAnswer,omitempty"`
-	OperateType         *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsUseTemplateAnswer *bool `json:"IsUseTemplateAnswer,omitempty" xml:"IsUseTemplateAnswer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 }
 
 func (s UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq) String() string {
@@ -18173,20 +22157,41 @@ func (s *UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq) SetOperateType(v
 }
 
 type UpdateHotelSceneItemRequestUpdateHotelSceneReq struct {
-	BeyondLimitReply *string                                                       `json:"BeyondLimitReply,omitempty" xml:"BeyondLimitReply,omitempty"`
-	DeliveryMethod   *string                                                       `json:"DeliveryMethod,omitempty" xml:"DeliveryMethod,omitempty"`
-	DialogueList     []*UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList `json:"DialogueList,omitempty" xml:"DialogueList,omitempty" type:"Repeated"`
+	BeyondLimitReply *string `json:"BeyondLimitReply,omitempty" xml:"BeyondLimitReply,omitempty"`
+	DeliveryMethod   *string `json:"DeliveryMethod,omitempty" xml:"DeliveryMethod,omitempty"`
+	// This parameter is required.
+	DialogueList []*UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList `json:"DialogueList,omitempty" xml:"DialogueList,omitempty" type:"Repeated"`
 	// icon
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/jiudianmianban_fuwushangpintu/wupin/keyongpinlei/mianqian.png
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	// itemID
+	//
+	// example:
+	//
+	// 10337
 	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	LimitNumber   *int64  `json:"LimitNumber,omitempty" xml:"LimitNumber,omitempty"`
 	LimitSwitch   *int32  `json:"LimitSwitch,omitempty" xml:"LimitSwitch,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
-	Price         *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	RobotName     *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 165
+	Price     *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 已添加
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateHotelSceneItemRequestUpdateHotelSceneReq) String() string {
@@ -18258,14 +22263,36 @@ func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReq) SetStatus(v string) *Up
 }
 
 type UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList struct {
-	DialogueId       *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
-	NoAnswer         *string `json:"NoAnswer,omitempty" xml:"NoAnswer,omitempty"`
+	// example:
+	//
+	// 335
+	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	// example:
+	//
+	// 对不起，暂时不提供此物品
+	NoAnswer *string `json:"NoAnswer,omitempty" xml:"NoAnswer,omitempty"`
+	// example:
+	//
+	// 4
 	NoAnswerTemplate *string `json:"NoAnswerTemplate,omitempty" xml:"NoAnswerTemplate,omitempty"`
-	Process          *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
-	Question         *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// example:
+	//
+	// 0
+	Process  *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
+	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
 	// itemId
-	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	YesAnswer         *string `json:"YesAnswer,omitempty" xml:"YesAnswer,omitempty"`
+	//
+	// example:
+	//
+	// 10337
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// 纸巾1.5元，请问需要么？
+	YesAnswer *string `json:"YesAnswer,omitempty" xml:"YesAnswer,omitempty"`
+	// example:
+	//
+	// 4
 	YesAnswerTemplate *string `json:"YesAnswerTemplate,omitempty" xml:"YesAnswerTemplate,omitempty"`
 }
 
@@ -18319,10 +22346,20 @@ func (s *UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList) SetYesAnswe
 
 type UpdateHotelSceneItemShrinkRequest struct {
 	// hotelID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80d84ea8ed9e422fbad52715c8fc56f1
 	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
 	// updateHotelSceneReq
+	//
+	// This parameter is required.
 	UpdateHotelSceneOperateReqShrink *string `json:"UpdateHotelSceneOperateReq,omitempty" xml:"UpdateHotelSceneOperateReq,omitempty"`
 	// UpdateHotelSceneReq
+	//
+	// This parameter is required.
 	UpdateHotelSceneReqShrink *string `json:"UpdateHotelSceneReq,omitempty" xml:"UpdateHotelSceneReq,omitempty"`
 }
 
@@ -18350,10 +22387,22 @@ func (s *UpdateHotelSceneItemShrinkRequest) SetUpdateHotelSceneReqShrink(v strin
 }
 
 type UpdateHotelSceneItemResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0D0C***67DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateHotelSceneItemResponseBody) String() string {
@@ -18444,8 +22493,13 @@ func (s *UpdateMessageTemplateHeaders) SetAuthorization(v string) *UpdateMessage
 
 type UpdateMessageTemplateRequest struct {
 	TemplateDetail *string `json:"TemplateDetail,omitempty" xml:"TemplateDetail,omitempty"`
-	TemplateId     *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123123
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s UpdateMessageTemplateRequest) String() string {
@@ -18472,10 +22526,22 @@ func (s *UpdateMessageTemplateRequest) SetTemplateName(v string) *UpdateMessageT
 }
 
 type UpdateMessageTemplateResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43***881
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateMessageTemplateResponseBody) String() string {
@@ -18565,8 +22631,19 @@ func (s *UpdateRcuSceneHeaders) SetAuthorization(v string) *UpdateRcuSceneHeader
 }
 
 type UpdateRcuSceneRequest struct {
-	HotelId             *string                                   `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	SceneId             *string                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yoga
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
 	SceneRelationExtDTO *UpdateRcuSceneRequestSceneRelationExtDTO `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty" type:"Struct"`
 }
 
@@ -18596,8 +22673,11 @@ func (s *UpdateRcuSceneRequest) SetSceneRelationExtDTO(v *UpdateRcuSceneRequestS
 type UpdateRcuSceneRequestSceneRelationExtDTO struct {
 	CorpusList  []*string `json:"CorpusList,omitempty" xml:"CorpusList,omitempty" type:"Repeated"`
 	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Icon        *string   `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// https://ailabsaicloudservice.alicdn.com/hotel/icon/changjingmoshi/shuimian.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateRcuSceneRequestSceneRelationExtDTO) String() string {
@@ -18629,8 +22709,19 @@ func (s *UpdateRcuSceneRequestSceneRelationExtDTO) SetName(v string) *UpdateRcuS
 }
 
 type UpdateRcuSceneShrinkRequest struct {
-	HotelId                   *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	SceneId                   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yoga
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
 	SceneRelationExtDTOShrink *string `json:"SceneRelationExtDTO,omitempty" xml:"SceneRelationExtDTO,omitempty"`
 }
 
@@ -18658,10 +22749,22 @@ func (s *UpdateRcuSceneShrinkRequest) SetSceneRelationExtDTOShrink(v string) *Up
 }
 
 type UpdateRcuSceneResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3A680F3A-6672-5A47-AB28-12BBCD80C679
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateRcuSceneResponseBody) String() string {
@@ -18751,10 +22854,21 @@ func (s *UpdateServiceQAHeaders) SetAuthorization(v string) *UpdateServiceQAHead
 }
 
 type UpdateServiceQARequest struct {
-	Answer      *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	HotelId     *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	ServiceQAId *int64  `json:"ServiceQAId,omitempty" xml:"ServiceQAId,omitempty"`
-	IsActive    *bool   `json:"isActive,omitempty" xml:"isActive,omitempty"`
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af7***536
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceQAId *int64 `json:"ServiceQAId,omitempty" xml:"ServiceQAId,omitempty"`
+	// example:
+	//
+	// true
+	IsActive *bool `json:"isActive,omitempty" xml:"isActive,omitempty"`
 }
 
 func (s UpdateServiceQARequest) String() string {
@@ -18786,10 +22900,22 @@ func (s *UpdateServiceQARequest) SetIsActive(v bool) *UpdateServiceQARequest {
 }
 
 type UpdateServiceQAResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73C67***6FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateServiceQAResponseBody) String() string {
@@ -18879,9 +23005,24 @@ func (s *UpdateTicketHeaders) SetAuthorization(v string) *UpdateTicketHeaders {
 }
 
 type UpdateTicketRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023***93975
 	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	HotelId  *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 520a0c0***5eb
+	HotelId *string `json:"HotelId,omitempty" xml:"HotelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waiting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateTicketRequest) String() string {
@@ -18908,10 +23049,22 @@ func (s *UpdateTicketRequest) SetStatus(v string) *UpdateTicketRequest {
 }
 
 type UpdateTicketResponseBody struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EC7***726E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s UpdateTicketResponseBody) String() string {
@@ -19018,6 +23171,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加动画
+//
+// @param request - AddCartoonRequest
+//
+// @param headers - AddCartoonHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCartoonResponse
 func (client *Client) AddCartoonWithOptions(request *AddCartoonRequest, headers *AddCartoonHeaders, runtime *util.RuntimeOptions) (_result *AddCartoonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19073,6 +23237,13 @@ func (client *Client) AddCartoonWithOptions(request *AddCartoonRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加动画
+//
+// @param request - AddCartoonRequest
+//
+// @return AddCartoonResponse
 func (client *Client) AddCartoon(request *AddCartoonRequest) (_result *AddCartoonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddCartoonHeaders{}
@@ -19085,6 +23256,17 @@ func (client *Client) AddCartoon(request *AddCartoonRequest) (_result *AddCartoo
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增自定义问答
+//
+// @param tmpReq - AddCustomQARequest
+//
+// @param headers - AddCustomQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCustomQAResponse
 func (client *Client) AddCustomQAWithOptions(tmpReq *AddCustomQARequest, headers *AddCustomQAHeaders, runtime *util.RuntimeOptions) (_result *AddCustomQAResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19162,6 +23344,13 @@ func (client *Client) AddCustomQAWithOptions(tmpReq *AddCustomQARequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增自定义问答
+//
+// @param request - AddCustomQARequest
+//
+// @return AddCustomQAResponse
 func (client *Client) AddCustomQA(request *AddCustomQARequest) (_result *AddCustomQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddCustomQAHeaders{}
@@ -19174,6 +23363,17 @@ func (client *Client) AddCustomQA(request *AddCustomQARequest) (_result *AddCust
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加问答V2
+//
+// @param tmpReq - AddCustomQAV2Request
+//
+// @param headers - AddCustomQAV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCustomQAV2Response
 func (client *Client) AddCustomQAV2WithOptions(tmpReq *AddCustomQAV2Request, headers *AddCustomQAV2Headers, runtime *util.RuntimeOptions) (_result *AddCustomQAV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19251,6 +23451,13 @@ func (client *Client) AddCustomQAV2WithOptions(tmpReq *AddCustomQAV2Request, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加问答V2
+//
+// @param request - AddCustomQAV2Request
+//
+// @return AddCustomQAV2Response
 func (client *Client) AddCustomQAV2(request *AddCustomQAV2Request) (_result *AddCustomQAV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddCustomQAV2Headers{}
@@ -19263,6 +23470,17 @@ func (client *Client) AddCustomQAV2(request *AddCustomQAV2Request) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加消息模板
+//
+// @param request - AddMessageTemplateRequest
+//
+// @param headers - AddMessageTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMessageTemplateResponse
 func (client *Client) AddMessageTemplateWithOptions(request *AddMessageTemplateRequest, headers *AddMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *AddMessageTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19314,6 +23532,13 @@ func (client *Client) AddMessageTemplateWithOptions(request *AddMessageTemplateR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加消息模板
+//
+// @param request - AddMessageTemplateRequest
+//
+// @return AddMessageTemplateResponse
 func (client *Client) AddMessageTemplate(request *AddMessageTemplateRequest) (_result *AddMessageTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddMessageTemplateHeaders{}
@@ -19326,6 +23551,17 @@ func (client *Client) AddMessageTemplate(request *AddMessageTemplateRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或者编辑带屏展示模式
+//
+// @param tmpReq - AddOrUpdateDisPlayModesRequest
+//
+// @param headers - AddOrUpdateDisPlayModesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddOrUpdateDisPlayModesResponse
 func (client *Client) AddOrUpdateDisPlayModesWithOptions(tmpReq *AddOrUpdateDisPlayModesRequest, headers *AddOrUpdateDisPlayModesHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateDisPlayModesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19383,6 +23619,13 @@ func (client *Client) AddOrUpdateDisPlayModesWithOptions(tmpReq *AddOrUpdateDisP
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或者编辑带屏展示模式
+//
+// @param request - AddOrUpdateDisPlayModesRequest
+//
+// @return AddOrUpdateDisPlayModesResponse
 func (client *Client) AddOrUpdateDisPlayModes(request *AddOrUpdateDisPlayModesRequest) (_result *AddOrUpdateDisPlayModesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddOrUpdateDisPlayModesHeaders{}
@@ -19395,6 +23638,17 @@ func (client *Client) AddOrUpdateDisPlayModes(request *AddOrUpdateDisPlayModesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或者编辑定制配置
+//
+// @param tmpReq - AddOrUpdateHotelSettingRequest
+//
+// @param headers - AddOrUpdateHotelSettingHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddOrUpdateHotelSettingResponse
 func (client *Client) AddOrUpdateHotelSettingWithOptions(tmpReq *AddOrUpdateHotelSettingRequest, headers *AddOrUpdateHotelSettingHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateHotelSettingResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19476,6 +23730,13 @@ func (client *Client) AddOrUpdateHotelSettingWithOptions(tmpReq *AddOrUpdateHote
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或者编辑定制配置
+//
+// @param request - AddOrUpdateHotelSettingRequest
+//
+// @return AddOrUpdateHotelSettingResponse
 func (client *Client) AddOrUpdateHotelSetting(request *AddOrUpdateHotelSettingRequest) (_result *AddOrUpdateHotelSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddOrUpdateHotelSettingHeaders{}
@@ -19488,6 +23749,17 @@ func (client *Client) AddOrUpdateHotelSetting(request *AddOrUpdateHotelSettingRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或者编辑带屏屏保
+//
+// @param tmpReq - AddOrUpdateScreenSaverRequest
+//
+// @param headers - AddOrUpdateScreenSaverHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddOrUpdateScreenSaverResponse
 func (client *Client) AddOrUpdateScreenSaverWithOptions(tmpReq *AddOrUpdateScreenSaverRequest, headers *AddOrUpdateScreenSaverHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateScreenSaverResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19545,6 +23817,13 @@ func (client *Client) AddOrUpdateScreenSaverWithOptions(tmpReq *AddOrUpdateScree
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或者编辑带屏屏保
+//
+// @param request - AddOrUpdateScreenSaverRequest
+//
+// @return AddOrUpdateScreenSaverResponse
 func (client *Client) AddOrUpdateScreenSaver(request *AddOrUpdateScreenSaverRequest) (_result *AddOrUpdateScreenSaverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddOrUpdateScreenSaverHeaders{}
@@ -19557,6 +23836,17 @@ func (client *Client) AddOrUpdateScreenSaver(request *AddOrUpdateScreenSaverRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加/更新欢迎语信息
+//
+// @param request - AddOrUpdateWelcomeTextRequest
+//
+// @param headers - AddOrUpdateWelcomeTextHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddOrUpdateWelcomeTextResponse
 func (client *Client) AddOrUpdateWelcomeTextWithOptions(request *AddOrUpdateWelcomeTextRequest, headers *AddOrUpdateWelcomeTextHeaders, runtime *util.RuntimeOptions) (_result *AddOrUpdateWelcomeTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19612,6 +23902,13 @@ func (client *Client) AddOrUpdateWelcomeTextWithOptions(request *AddOrUpdateWelc
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加/更新欢迎语信息
+//
+// @param request - AddOrUpdateWelcomeTextRequest
+//
+// @return AddOrUpdateWelcomeTextResponse
 func (client *Client) AddOrUpdateWelcomeText(request *AddOrUpdateWelcomeTextRequest) (_result *AddOrUpdateWelcomeTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddOrUpdateWelcomeTextHeaders{}
@@ -19624,6 +23921,17 @@ func (client *Client) AddOrUpdateWelcomeText(request *AddOrUpdateWelcomeTextRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 审批酒店
+//
+// @param tmpReq - AuditHotelRequest
+//
+// @param headers - AuditHotelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuditHotelResponse
 func (client *Client) AuditHotelWithOptions(tmpReq *AuditHotelRequest, headers *AuditHotelHeaders, runtime *util.RuntimeOptions) (_result *AuditHotelResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19677,6 +23985,13 @@ func (client *Client) AuditHotelWithOptions(tmpReq *AuditHotelRequest, headers *
 	return _result, _err
 }
 
+// Summary:
+//
+// 审批酒店
+//
+// @param request - AuditHotelRequest
+//
+// @return AuditHotelResponse
 func (client *Client) AuditHotel(request *AuditHotelRequest) (_result *AuditHotelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AuditHotelHeaders{}
@@ -19689,6 +24004,17 @@ func (client *Client) AuditHotel(request *AuditHotelRequest) (_result *AuditHote
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建房间
+//
+// @param tmpReq - BatchAddHotelRoomRequest
+//
+// @param headers - BatchAddHotelRoomHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchAddHotelRoomResponse
 func (client *Client) BatchAddHotelRoomWithOptions(tmpReq *BatchAddHotelRoomRequest, headers *BatchAddHotelRoomHeaders, runtime *util.RuntimeOptions) (_result *BatchAddHotelRoomResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19746,6 +24072,13 @@ func (client *Client) BatchAddHotelRoomWithOptions(tmpReq *BatchAddHotelRoomRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建房间
+//
+// @param request - BatchAddHotelRoomRequest
+//
+// @return BatchAddHotelRoomResponse
 func (client *Client) BatchAddHotelRoom(request *BatchAddHotelRoomRequest) (_result *BatchAddHotelRoomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BatchAddHotelRoomHeaders{}
@@ -19758,6 +24091,17 @@ func (client *Client) BatchAddHotelRoom(request *BatchAddHotelRoomRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除房间
+//
+// @param tmpReq - BatchDeleteHotelRoomRequest
+//
+// @param headers - BatchDeleteHotelRoomHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteHotelRoomResponse
 func (client *Client) BatchDeleteHotelRoomWithOptions(tmpReq *BatchDeleteHotelRoomRequest, headers *BatchDeleteHotelRoomHeaders, runtime *util.RuntimeOptions) (_result *BatchDeleteHotelRoomResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19815,6 +24159,13 @@ func (client *Client) BatchDeleteHotelRoomWithOptions(tmpReq *BatchDeleteHotelRo
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除房间
+//
+// @param request - BatchDeleteHotelRoomRequest
+//
+// @return BatchDeleteHotelRoomResponse
 func (client *Client) BatchDeleteHotelRoom(request *BatchDeleteHotelRoomRequest) (_result *BatchDeleteHotelRoomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BatchDeleteHotelRoomHeaders{}
@@ -19827,6 +24178,17 @@ func (client *Client) BatchDeleteHotelRoom(request *BatchDeleteHotelRoomRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店退房，清楚例如闹钟等定时信息
+//
+// @param request - CheckoutWithAKRequest
+//
+// @param headers - CheckoutWithAKHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckoutWithAKResponse
 func (client *Client) CheckoutWithAKWithOptions(request *CheckoutWithAKRequest, headers *CheckoutWithAKHeaders, runtime *util.RuntimeOptions) (_result *CheckoutWithAKResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19878,6 +24240,13 @@ func (client *Client) CheckoutWithAKWithOptions(request *CheckoutWithAKRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店退房，清楚例如闹钟等定时信息
+//
+// @param request - CheckoutWithAKRequest
+//
+// @return CheckoutWithAKResponse
 func (client *Client) CheckoutWithAK(request *CheckoutWithAKRequest) (_result *CheckoutWithAKResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CheckoutWithAKHeaders{}
@@ -19890,6 +24259,17 @@ func (client *Client) CheckoutWithAK(request *CheckoutWithAKRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 子账号授权
+//
+// @param request - ChildAccountAuthRequest
+//
+// @param headers - ChildAccountAuthHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChildAccountAuthResponse
 func (client *Client) ChildAccountAuthWithOptions(request *ChildAccountAuthRequest, headers *ChildAccountAuthHeaders, runtime *util.RuntimeOptions) (_result *ChildAccountAuthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19949,6 +24329,13 @@ func (client *Client) ChildAccountAuthWithOptions(request *ChildAccountAuthReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 子账号授权
+//
+// @param request - ChildAccountAuthRequest
+//
+// @return ChildAccountAuthResponse
 func (client *Client) ChildAccountAuth(request *ChildAccountAuthRequest) (_result *ChildAccountAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ChildAccountAuthHeaders{}
@@ -19961,6 +24348,17 @@ func (client *Client) ChildAccountAuth(request *ChildAccountAuthRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 控制房间内设备
+//
+// @param tmpReq - ControlRoomDeviceRequest
+//
+// @param headers - ControlRoomDeviceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ControlRoomDeviceResponse
 func (client *Client) ControlRoomDeviceWithOptions(tmpReq *ControlRoomDeviceRequest, headers *ControlRoomDeviceHeaders, runtime *util.RuntimeOptions) (_result *ControlRoomDeviceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20034,6 +24432,13 @@ func (client *Client) ControlRoomDeviceWithOptions(tmpReq *ControlRoomDeviceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 控制房间内设备
+//
+// @param request - ControlRoomDeviceRequest
+//
+// @return ControlRoomDeviceResponse
 func (client *Client) ControlRoomDevice(request *ControlRoomDeviceRequest) (_result *ControlRoomDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ControlRoomDeviceHeaders{}
@@ -20046,6 +24451,17 @@ func (client *Client) ControlRoomDevice(request *ControlRoomDeviceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建酒店项目
+//
+// @param tmpReq - CreateHotelRequest
+//
+// @param headers - CreateHotelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHotelResponse
 func (client *Client) CreateHotelWithOptions(tmpReq *CreateHotelRequest, headers *CreateHotelHeaders, runtime *util.RuntimeOptions) (_result *CreateHotelResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20139,6 +24555,13 @@ func (client *Client) CreateHotelWithOptions(tmpReq *CreateHotelRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建酒店项目
+//
+// @param request - CreateHotelRequest
+//
+// @return CreateHotelResponse
 func (client *Client) CreateHotel(request *CreateHotelRequest) (_result *CreateHotelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateHotelHeaders{}
@@ -20151,6 +24574,17 @@ func (client *Client) CreateHotel(request *CreateHotelRequest) (_result *CreateH
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建闹钟
+//
+// @param tmpReq - CreateHotelAlarmRequest
+//
+// @param headers - CreateHotelAlarmHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHotelAlarmResponse
 func (client *Client) CreateHotelAlarmWithOptions(tmpReq *CreateHotelAlarmRequest, headers *CreateHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *CreateHotelAlarmResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20220,6 +24654,13 @@ func (client *Client) CreateHotelAlarmWithOptions(tmpReq *CreateHotelAlarmReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建闹钟
+//
+// @param request - CreateHotelAlarmRequest
+//
+// @return CreateHotelAlarmResponse
 func (client *Client) CreateHotelAlarm(request *CreateHotelAlarmRequest) (_result *CreateHotelAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateHotelAlarmHeaders{}
@@ -20232,6 +24673,17 @@ func (client *Client) CreateHotelAlarm(request *CreateHotelAlarmRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店rcu自定义场景创建
+//
+// @param tmpReq - CreateRcuSceneRequest
+//
+// @param headers - CreateRcuSceneHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRcuSceneResponse
 func (client *Client) CreateRcuSceneWithOptions(tmpReq *CreateRcuSceneRequest, headers *CreateRcuSceneHeaders, runtime *util.RuntimeOptions) (_result *CreateRcuSceneResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20293,6 +24745,13 @@ func (client *Client) CreateRcuSceneWithOptions(tmpReq *CreateRcuSceneRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店rcu自定义场景创建
+//
+// @param request - CreateRcuSceneRequest
+//
+// @return CreateRcuSceneResponse
 func (client *Client) CreateRcuScene(request *CreateRcuSceneRequest) (_result *CreateRcuSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateRcuSceneHeaders{}
@@ -20305,6 +24764,17 @@ func (client *Client) CreateRcuScene(request *CreateRcuSceneRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除动画
+//
+// @param request - DeleteCartoonRequest
+//
+// @param headers - DeleteCartoonHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCartoonResponse
 func (client *Client) DeleteCartoonWithOptions(request *DeleteCartoonRequest, headers *DeleteCartoonHeaders, runtime *util.RuntimeOptions) (_result *DeleteCartoonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20352,6 +24822,13 @@ func (client *Client) DeleteCartoonWithOptions(request *DeleteCartoonRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除动画
+//
+// @param request - DeleteCartoonRequest
+//
+// @return DeleteCartoonResponse
 func (client *Client) DeleteCartoon(request *DeleteCartoonRequest) (_result *DeleteCartoonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteCartoonHeaders{}
@@ -20364,6 +24841,17 @@ func (client *Client) DeleteCartoon(request *DeleteCartoonRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义问答
+//
+// @param tmpReq - DeleteCustomQARequest
+//
+// @param headers - DeleteCustomQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomQAResponse
 func (client *Client) DeleteCustomQAWithOptions(tmpReq *DeleteCustomQARequest, headers *DeleteCustomQAHeaders, runtime *util.RuntimeOptions) (_result *DeleteCustomQAResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20421,6 +24909,13 @@ func (client *Client) DeleteCustomQAWithOptions(tmpReq *DeleteCustomQARequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义问答
+//
+// @param request - DeleteCustomQARequest
+//
+// @return DeleteCustomQAResponse
 func (client *Client) DeleteCustomQA(request *DeleteCustomQARequest) (_result *DeleteCustomQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteCustomQAHeaders{}
@@ -20433,6 +24928,17 @@ func (client *Client) DeleteCustomQA(request *DeleteCustomQARequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除酒店闹钟
+//
+// @param tmpReq - DeleteHotelAlarmRequest
+//
+// @param headers - DeleteHotelAlarmHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHotelAlarmResponse
 func (client *Client) DeleteHotelAlarmWithOptions(tmpReq *DeleteHotelAlarmRequest, headers *DeleteHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *DeleteHotelAlarmResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20490,6 +24996,13 @@ func (client *Client) DeleteHotelAlarmWithOptions(tmpReq *DeleteHotelAlarmReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除酒店闹钟
+//
+// @param request - DeleteHotelAlarmRequest
+//
+// @return DeleteHotelAlarmResponse
 func (client *Client) DeleteHotelAlarm(request *DeleteHotelAlarmRequest) (_result *DeleteHotelAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteHotelAlarmHeaders{}
@@ -20502,6 +25015,17 @@ func (client *Client) DeleteHotelAlarm(request *DeleteHotelAlarmRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订删除
+//
+// @param request - DeleteHotelSceneBookItemRequest
+//
+// @param headers - DeleteHotelSceneBookItemHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHotelSceneBookItemResponse
 func (client *Client) DeleteHotelSceneBookItemWithOptions(request *DeleteHotelSceneBookItemRequest, headers *DeleteHotelSceneBookItemHeaders, runtime *util.RuntimeOptions) (_result *DeleteHotelSceneBookItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20557,6 +25081,13 @@ func (client *Client) DeleteHotelSceneBookItemWithOptions(request *DeleteHotelSc
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订删除
+//
+// @param request - DeleteHotelSceneBookItemRequest
+//
+// @return DeleteHotelSceneBookItemResponse
 func (client *Client) DeleteHotelSceneBookItem(request *DeleteHotelSceneBookItemRequest) (_result *DeleteHotelSceneBookItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteHotelSceneBookItemHeaders{}
@@ -20569,6 +25100,17 @@ func (client *Client) DeleteHotelSceneBookItem(request *DeleteHotelSceneBookItem
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除定制配置
+//
+// @param request - DeleteHotelSettingRequest
+//
+// @param headers - DeleteHotelSettingHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHotelSettingResponse
 func (client *Client) DeleteHotelSettingWithOptions(request *DeleteHotelSettingRequest, headers *DeleteHotelSettingHeaders, runtime *util.RuntimeOptions) (_result *DeleteHotelSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20620,6 +25162,13 @@ func (client *Client) DeleteHotelSettingWithOptions(request *DeleteHotelSettingR
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除定制配置
+//
+// @param request - DeleteHotelSettingRequest
+//
+// @return DeleteHotelSettingResponse
 func (client *Client) DeleteHotelSetting(request *DeleteHotelSettingRequest) (_result *DeleteHotelSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteHotelSettingHeaders{}
@@ -20632,6 +25181,17 @@ func (client *Client) DeleteHotelSetting(request *DeleteHotelSettingRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除消息通知模板
+//
+// @param request - DeleteMessageTemplateRequest
+//
+// @param headers - DeleteMessageTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMessageTemplateResponse
 func (client *Client) DeleteMessageTemplateWithOptions(request *DeleteMessageTemplateRequest, headers *DeleteMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *DeleteMessageTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20679,6 +25239,13 @@ func (client *Client) DeleteMessageTemplateWithOptions(request *DeleteMessageTem
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除消息通知模板
+//
+// @param request - DeleteMessageTemplateRequest
+//
+// @return DeleteMessageTemplateResponse
 func (client *Client) DeleteMessageTemplate(request *DeleteMessageTemplateRequest) (_result *DeleteMessageTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteMessageTemplateHeaders{}
@@ -20691,6 +25258,17 @@ func (client *Client) DeleteMessageTemplate(request *DeleteMessageTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除酒店自定义rcu场景
+//
+// @param request - DeleteRcuSceneRequest
+//
+// @param headers - DeleteRcuSceneHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRcuSceneResponse
 func (client *Client) DeleteRcuSceneWithOptions(request *DeleteRcuSceneRequest, headers *DeleteRcuSceneHeaders, runtime *util.RuntimeOptions) (_result *DeleteRcuSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20742,6 +25320,13 @@ func (client *Client) DeleteRcuSceneWithOptions(request *DeleteRcuSceneRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除酒店自定义rcu场景
+//
+// @param request - DeleteRcuSceneRequest
+//
+// @return DeleteRcuSceneResponse
 func (client *Client) DeleteRcuScene(request *DeleteRcuSceneRequest) (_result *DeleteRcuSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteRcuSceneHeaders{}
@@ -20754,6 +25339,17 @@ func (client *Client) DeleteRcuScene(request *DeleteRcuSceneRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 设备控制
+//
+// @param tmpReq - DeviceControlRequest
+//
+// @param headers - DeviceControlHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeviceControlResponse
 func (client *Client) DeviceControlWithOptions(tmpReq *DeviceControlRequest, headers *DeviceControlHeaders, runtime *util.RuntimeOptions) (_result *DeviceControlResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20815,6 +25411,13 @@ func (client *Client) DeviceControlWithOptions(tmpReq *DeviceControlRequest, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// 设备控制
+//
+// @param request - DeviceControlRequest
+//
+// @return DeviceControlResponse
 func (client *Client) DeviceControl(request *DeviceControlRequest) (_result *DeviceControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeviceControlHeaders{}
@@ -20827,6 +25430,17 @@ func (client *Client) DeviceControl(request *DeviceControlRequest) (_result *Dev
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取基础信息问答
+//
+// @param request - GetBasicInfoQARequest
+//
+// @param headers - GetBasicInfoQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBasicInfoQAResponse
 func (client *Client) GetBasicInfoQAWithOptions(request *GetBasicInfoQARequest, headers *GetBasicInfoQAHeaders, runtime *util.RuntimeOptions) (_result *GetBasicInfoQAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20874,6 +25488,13 @@ func (client *Client) GetBasicInfoQAWithOptions(request *GetBasicInfoQARequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取基础信息问答
+//
+// @param request - GetBasicInfoQARequest
+//
+// @return GetBasicInfoQAResponse
 func (client *Client) GetBasicInfoQA(request *GetBasicInfoQARequest) (_result *GetBasicInfoQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetBasicInfoQAHeaders{}
@@ -20886,6 +25507,17 @@ func (client *Client) GetBasicInfoQA(request *GetBasicInfoQARequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询动画
+//
+// @param request - GetCartoonRequest
+//
+// @param headers - GetCartoonHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCartoonResponse
 func (client *Client) GetCartoonWithOptions(request *GetCartoonRequest, headers *GetCartoonHeaders, runtime *util.RuntimeOptions) (_result *GetCartoonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20933,6 +25565,13 @@ func (client *Client) GetCartoonWithOptions(request *GetCartoonRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询动画
+//
+// @param request - GetCartoonRequest
+//
+// @return GetCartoonResponse
 func (client *Client) GetCartoon(request *GetCartoonRequest) (_result *GetCartoonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetCartoonHeaders{}
@@ -20945,6 +25584,17 @@ func (client *Client) GetCartoon(request *GetCartoonRequest) (_result *GetCartoo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取当前设备的通话信息
+//
+// @param tmpReq - GetHotelContactByGenieDeviceRequest
+//
+// @param headers - GetHotelContactByGenieDeviceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelContactByGenieDeviceResponse
 func (client *Client) GetHotelContactByGenieDeviceWithOptions(tmpReq *GetHotelContactByGenieDeviceRequest, headers *GetHotelContactByGenieDeviceHeaders, runtime *util.RuntimeOptions) (_result *GetHotelContactByGenieDeviceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21006,6 +25656,13 @@ func (client *Client) GetHotelContactByGenieDeviceWithOptions(tmpReq *GetHotelCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取当前设备的通话信息
+//
+// @param request - GetHotelContactByGenieDeviceRequest
+//
+// @return GetHotelContactByGenieDeviceResponse
 func (client *Client) GetHotelContactByGenieDevice(request *GetHotelContactByGenieDeviceRequest) (_result *GetHotelContactByGenieDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelContactByGenieDeviceHeaders{}
@@ -21018,6 +25675,17 @@ func (client *Client) GetHotelContactByGenieDevice(request *GetHotelContactByGen
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据号码获取酒店联系人
+//
+// @param tmpReq - GetHotelContactByNumberRequest
+//
+// @param headers - GetHotelContactByNumberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelContactByNumberResponse
 func (client *Client) GetHotelContactByNumberWithOptions(tmpReq *GetHotelContactByNumberRequest, headers *GetHotelContactByNumberHeaders, runtime *util.RuntimeOptions) (_result *GetHotelContactByNumberResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21077,6 +25745,13 @@ func (client *Client) GetHotelContactByNumberWithOptions(tmpReq *GetHotelContact
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据号码获取酒店联系人
+//
+// @param request - GetHotelContactByNumberRequest
+//
+// @return GetHotelContactByNumberResponse
 func (client *Client) GetHotelContactByNumber(request *GetHotelContactByNumberRequest) (_result *GetHotelContactByNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelContactByNumberHeaders{}
@@ -21089,6 +25764,17 @@ func (client *Client) GetHotelContactByNumber(request *GetHotelContactByNumberRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店联系人
+//
+// @param tmpReq - GetHotelContactsRequest
+//
+// @param headers - GetHotelContactsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelContactsResponse
 func (client *Client) GetHotelContactsWithOptions(tmpReq *GetHotelContactsRequest, headers *GetHotelContactsHeaders, runtime *util.RuntimeOptions) (_result *GetHotelContactsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21142,6 +25828,13 @@ func (client *Client) GetHotelContactsWithOptions(tmpReq *GetHotelContactsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店联系人
+//
+// @param request - GetHotelContactsRequest
+//
+// @return GetHotelContactsResponse
 func (client *Client) GetHotelContacts(request *GetHotelContactsRequest) (_result *GetHotelContactsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelContactsHeaders{}
@@ -21154,6 +25847,17 @@ func (client *Client) GetHotelContacts(request *GetHotelContactsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取首页背景图和场景模式
+//
+// @param tmpReq - GetHotelHomeBackImageAndModesRequest
+//
+// @param headers - GetHotelHomeBackImageAndModesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelHomeBackImageAndModesResponse
 func (client *Client) GetHotelHomeBackImageAndModesWithOptions(tmpReq *GetHotelHomeBackImageAndModesRequest, headers *GetHotelHomeBackImageAndModesHeaders, runtime *util.RuntimeOptions) (_result *GetHotelHomeBackImageAndModesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21207,6 +25911,13 @@ func (client *Client) GetHotelHomeBackImageAndModesWithOptions(tmpReq *GetHotelH
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取首页背景图和场景模式
+//
+// @param request - GetHotelHomeBackImageAndModesRequest
+//
+// @return GetHotelHomeBackImageAndModesResponse
 func (client *Client) GetHotelHomeBackImageAndModes(request *GetHotelHomeBackImageAndModesRequest) (_result *GetHotelHomeBackImageAndModesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelHomeBackImageAndModesHeaders{}
@@ -21219,6 +25930,17 @@ func (client *Client) GetHotelHomeBackImageAndModes(request *GetHotelHomeBackIma
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店通知
+//
+// @param tmpReq - GetHotelNoticeRequest
+//
+// @param headers - GetHotelNoticeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelNoticeResponse
 func (client *Client) GetHotelNoticeWithOptions(tmpReq *GetHotelNoticeRequest, headers *GetHotelNoticeHeaders, runtime *util.RuntimeOptions) (_result *GetHotelNoticeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21272,6 +25994,13 @@ func (client *Client) GetHotelNoticeWithOptions(tmpReq *GetHotelNoticeRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店通知
+//
+// @param request - GetHotelNoticeRequest
+//
+// @return GetHotelNoticeResponse
 func (client *Client) GetHotelNotice(request *GetHotelNoticeRequest) (_result *GetHotelNoticeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelNoticeHeaders{}
@@ -21284,6 +26013,17 @@ func (client *Client) GetHotelNotice(request *GetHotelNoticeRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店通知
+//
+// @param tmpReq - GetHotelNoticeV2Request
+//
+// @param headers - GetHotelNoticeV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelNoticeV2Response
 func (client *Client) GetHotelNoticeV2WithOptions(tmpReq *GetHotelNoticeV2Request, headers *GetHotelNoticeV2Headers, runtime *util.RuntimeOptions) (_result *GetHotelNoticeV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21337,6 +26077,13 @@ func (client *Client) GetHotelNoticeV2WithOptions(tmpReq *GetHotelNoticeV2Reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店通知
+//
+// @param request - GetHotelNoticeV2Request
+//
+// @return GetHotelNoticeV2Response
 func (client *Client) GetHotelNoticeV2(request *GetHotelNoticeV2Request) (_result *GetHotelNoticeV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelNoticeV2Headers{}
@@ -21349,6 +26096,17 @@ func (client *Client) GetHotelNoticeV2(request *GetHotelNoticeV2Request) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店订单详情
+//
+// @param tmpReq - GetHotelOrderDetailRequest
+//
+// @param headers - GetHotelOrderDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelOrderDetailResponse
 func (client *Client) GetHotelOrderDetailWithOptions(tmpReq *GetHotelOrderDetailRequest, headers *GetHotelOrderDetailHeaders, runtime *util.RuntimeOptions) (_result *GetHotelOrderDetailResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21402,6 +26160,13 @@ func (client *Client) GetHotelOrderDetailWithOptions(tmpReq *GetHotelOrderDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店订单详情
+//
+// @param request - GetHotelOrderDetailRequest
+//
+// @return GetHotelOrderDetailResponse
 func (client *Client) GetHotelOrderDetail(request *GetHotelOrderDetailRequest) (_result *GetHotelOrderDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelOrderDetailHeaders{}
@@ -21414,6 +26179,17 @@ func (client *Client) GetHotelOrderDetail(request *GetHotelOrderDetailRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店房间猫精设备信息
+//
+// @param request - GetHotelRoomDeviceRequest
+//
+// @param headers - GetHotelRoomDeviceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelRoomDeviceResponse
 func (client *Client) GetHotelRoomDeviceWithOptions(request *GetHotelRoomDeviceRequest, headers *GetHotelRoomDeviceHeaders, runtime *util.RuntimeOptions) (_result *GetHotelRoomDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21465,6 +26241,13 @@ func (client *Client) GetHotelRoomDeviceWithOptions(request *GetHotelRoomDeviceR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店房间猫精设备信息
+//
+// @param request - GetHotelRoomDeviceRequest
+//
+// @return GetHotelRoomDeviceResponse
 func (client *Client) GetHotelRoomDevice(request *GetHotelRoomDeviceRequest) (_result *GetHotelRoomDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelRoomDeviceHeaders{}
@@ -21477,6 +26260,17 @@ func (client *Client) GetHotelRoomDevice(request *GetHotelRoomDeviceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取推荐语料
+//
+// @param tmpReq - GetHotelSampleUtterancesRequest
+//
+// @param headers - GetHotelSampleUtterancesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelSampleUtterancesResponse
 func (client *Client) GetHotelSampleUtterancesWithOptions(tmpReq *GetHotelSampleUtterancesRequest, headers *GetHotelSampleUtterancesHeaders, runtime *util.RuntimeOptions) (_result *GetHotelSampleUtterancesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21530,6 +26324,13 @@ func (client *Client) GetHotelSampleUtterancesWithOptions(tmpReq *GetHotelSample
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取推荐语料
+//
+// @param request - GetHotelSampleUtterancesRequest
+//
+// @return GetHotelSampleUtterancesResponse
 func (client *Client) GetHotelSampleUtterances(request *GetHotelSampleUtterancesRequest) (_result *GetHotelSampleUtterancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelSampleUtterancesHeaders{}
@@ -21542,6 +26343,17 @@ func (client *Client) GetHotelSampleUtterances(request *GetHotelSampleUtterances
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景详情
+//
+// @param request - GetHotelSceneItemDetailRequest
+//
+// @param headers - GetHotelSceneItemDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelSceneItemDetailResponse
 func (client *Client) GetHotelSceneItemDetailWithOptions(request *GetHotelSceneItemDetailRequest, headers *GetHotelSceneItemDetailHeaders, runtime *util.RuntimeOptions) (_result *GetHotelSceneItemDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21597,6 +26409,13 @@ func (client *Client) GetHotelSceneItemDetailWithOptions(request *GetHotelSceneI
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景详情
+//
+// @param request - GetHotelSceneItemDetailRequest
+//
+// @return GetHotelSceneItemDetailResponse
 func (client *Client) GetHotelSceneItemDetail(request *GetHotelSceneItemDetailRequest) (_result *GetHotelSceneItemDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelSceneItemDetailHeaders{}
@@ -21609,6 +26428,17 @@ func (client *Client) GetHotelSceneItemDetail(request *GetHotelSceneItemDetailRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店屏保
+//
+// @param tmpReq - GetHotelScreenSaverRequest
+//
+// @param headers - GetHotelScreenSaverHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelScreenSaverResponse
 func (client *Client) GetHotelScreenSaverWithOptions(tmpReq *GetHotelScreenSaverRequest, headers *GetHotelScreenSaverHeaders, runtime *util.RuntimeOptions) (_result *GetHotelScreenSaverResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21662,6 +26492,13 @@ func (client *Client) GetHotelScreenSaverWithOptions(tmpReq *GetHotelScreenSaver
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店屏保
+//
+// @param request - GetHotelScreenSaverRequest
+//
+// @return GetHotelScreenSaverResponse
 func (client *Client) GetHotelScreenSaver(request *GetHotelScreenSaverRequest) (_result *GetHotelScreenSaverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelScreenSaverHeaders{}
@@ -21674,6 +26511,17 @@ func (client *Client) GetHotelScreenSaver(request *GetHotelScreenSaverRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取屏保列表
+//
+// @param request - GetHotelScreenSaverStyleRequest
+//
+// @param headers - GetHotelScreenSaverStyleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelScreenSaverStyleResponse
 func (client *Client) GetHotelScreenSaverStyleWithOptions(request *GetHotelScreenSaverStyleRequest, headers *GetHotelScreenSaverStyleHeaders, runtime *util.RuntimeOptions) (_result *GetHotelScreenSaverStyleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21721,6 +26569,13 @@ func (client *Client) GetHotelScreenSaverStyleWithOptions(request *GetHotelScree
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取屏保列表
+//
+// @param request - GetHotelScreenSaverStyleRequest
+//
+// @return GetHotelScreenSaverStyleResponse
 func (client *Client) GetHotelScreenSaverStyle(request *GetHotelScreenSaverStyleRequest) (_result *GetHotelScreenSaverStyleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelScreenSaverStyleHeaders{}
@@ -21733,6 +26588,17 @@ func (client *Client) GetHotelScreenSaverStyle(request *GetHotelScreenSaverStyle
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询定制配置
+//
+// @param request - GetHotelSettingRequest
+//
+// @param headers - GetHotelSettingHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotelSettingResponse
 func (client *Client) GetHotelSettingWithOptions(request *GetHotelSettingRequest, headers *GetHotelSettingHeaders, runtime *util.RuntimeOptions) (_result *GetHotelSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21784,6 +26650,13 @@ func (client *Client) GetHotelSettingWithOptions(request *GetHotelSettingRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询定制配置
+//
+// @param request - GetHotelSettingRequest
+//
+// @return GetHotelSettingResponse
 func (client *Client) GetHotelSetting(request *GetHotelSettingRequest) (_result *GetHotelSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetHotelSettingHeaders{}
@@ -21796,6 +26669,15 @@ func (client *Client) GetHotelSetting(request *GetHotelSettingRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 关联产品列表查看
+//
+// @param headers - GetRelationProductListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRelationProductListResponse
 func (client *Client) GetRelationProductListWithOptions(headers *GetRelationProductListHeaders, runtime *util.RuntimeOptions) (_result *GetRelationProductListResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -21833,6 +26715,11 @@ func (client *Client) GetRelationProductListWithOptions(headers *GetRelationProd
 	return _result, _err
 }
 
+// Summary:
+//
+// 关联产品列表查看
+//
+// @return GetRelationProductListResponse
 func (client *Client) GetRelationProductList() (_result *GetRelationProductListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetRelationProductListHeaders{}
@@ -21845,6 +26732,17 @@ func (client *Client) GetRelationProductList() (_result *GetRelationProductListR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织下unionId列表
+//
+// @param request - GetUnionIdRequest
+//
+// @param headers - GetUnionIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUnionIdResponse
 func (client *Client) GetUnionIdWithOptions(request *GetUnionIdRequest, headers *GetUnionIdHeaders, runtime *util.RuntimeOptions) (_result *GetUnionIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21904,6 +26802,13 @@ func (client *Client) GetUnionIdWithOptions(request *GetUnionIdRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织下unionId列表
+//
+// @param request - GetUnionIdRequest
+//
+// @return GetUnionIdResponse
 func (client *Client) GetUnionId(request *GetUnionIdRequest) (_result *GetUnionIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUnionIdHeaders{}
@@ -21916,6 +26821,17 @@ func (client *Client) GetUnionId(request *GetUnionIdRequest) (_result *GetUnionI
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询欢迎语信息
+//
+// @param request - GetWelcomeTextAndMusicRequest
+//
+// @param headers - GetWelcomeTextAndMusicHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWelcomeTextAndMusicResponse
 func (client *Client) GetWelcomeTextAndMusicWithOptions(request *GetWelcomeTextAndMusicRequest, headers *GetWelcomeTextAndMusicHeaders, runtime *util.RuntimeOptions) (_result *GetWelcomeTextAndMusicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21963,6 +26879,13 @@ func (client *Client) GetWelcomeTextAndMusicWithOptions(request *GetWelcomeTextA
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询欢迎语信息
+//
+// @param request - GetWelcomeTextAndMusicRequest
+//
+// @return GetWelcomeTextAndMusicResponse
 func (client *Client) GetWelcomeTextAndMusic(request *GetWelcomeTextAndMusicRequest) (_result *GetWelcomeTextAndMusicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetWelcomeTextAndMusicHeaders{}
@@ -21975,6 +26898,17 @@ func (client *Client) GetWelcomeTextAndMusic(request *GetWelcomeTextAndMusicRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店带屏设备扫码绑定
+//
+// @param request - HotelQrBindRequest
+//
+// @param headers - HotelQrBindHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelQrBindResponse
 func (client *Client) HotelQrBindWithOptions(request *HotelQrBindRequest, headers *HotelQrBindHeaders, runtime *util.RuntimeOptions) (_result *HotelQrBindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22038,6 +26972,13 @@ func (client *Client) HotelQrBindWithOptions(request *HotelQrBindRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店带屏设备扫码绑定
+//
+// @param request - HotelQrBindRequest
+//
+// @return HotelQrBindResponse
 func (client *Client) HotelQrBind(request *HotelQrBindRequest) (_result *HotelQrBindResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelQrBindHeaders{}
@@ -22050,6 +26991,17 @@ func (client *Client) HotelQrBind(request *HotelQrBindRequest) (_result *HotelQr
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量导入酒店配置
+//
+// @param tmpReq - ImportHotelConfigRequest
+//
+// @param headers - ImportHotelConfigHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportHotelConfigResponse
 func (client *Client) ImportHotelConfigWithOptions(tmpReq *ImportHotelConfigRequest, headers *ImportHotelConfigHeaders, runtime *util.RuntimeOptions) (_result *ImportHotelConfigResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22107,6 +27059,13 @@ func (client *Client) ImportHotelConfigWithOptions(tmpReq *ImportHotelConfigRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量导入酒店配置
+//
+// @param request - ImportHotelConfigRequest
+//
+// @return ImportHotelConfigResponse
 func (client *Client) ImportHotelConfig(request *ImportHotelConfigRequest) (_result *ImportHotelConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ImportHotelConfigHeaders{}
@@ -22119,6 +27078,17 @@ func (client *Client) ImportHotelConfig(request *ImportHotelConfigRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量导入设备（同时补充房型）
+//
+// @param tmpReq - ImportRoomControlDevicesRequest
+//
+// @param headers - ImportRoomControlDevicesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportRoomControlDevicesResponse
 func (client *Client) ImportRoomControlDevicesWithOptions(tmpReq *ImportRoomControlDevicesRequest, headers *ImportRoomControlDevicesHeaders, runtime *util.RuntimeOptions) (_result *ImportRoomControlDevicesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22184,6 +27154,13 @@ func (client *Client) ImportRoomControlDevicesWithOptions(tmpReq *ImportRoomCont
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量导入设备（同时补充房型）
+//
+// @param request - ImportRoomControlDevicesRequest
+//
+// @return ImportRoomControlDevicesResponse
 func (client *Client) ImportRoomControlDevices(request *ImportRoomControlDevicesRequest) (_result *ImportRoomControlDevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ImportRoomControlDevicesHeaders{}
@@ -22196,6 +27173,17 @@ func (client *Client) ImportRoomControlDevices(request *ImportRoomControlDevices
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入房间内精灵场景
+//
+// @param tmpReq - ImportRoomGenieScenesRequest
+//
+// @param headers - ImportRoomGenieScenesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportRoomGenieScenesResponse
 func (client *Client) ImportRoomGenieScenesWithOptions(tmpReq *ImportRoomGenieScenesRequest, headers *ImportRoomGenieScenesHeaders, runtime *util.RuntimeOptions) (_result *ImportRoomGenieScenesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22257,6 +27245,13 @@ func (client *Client) ImportRoomGenieScenesWithOptions(tmpReq *ImportRoomGenieSc
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入房间内精灵场景
+//
+// @param request - ImportRoomGenieScenesRequest
+//
+// @return ImportRoomGenieScenesResponse
 func (client *Client) ImportRoomGenieScenes(request *ImportRoomGenieScenesRequest) (_result *ImportRoomGenieScenesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ImportRoomGenieScenesHeaders{}
@@ -22269,6 +27264,17 @@ func (client *Client) ImportRoomGenieScenes(request *ImportRoomGenieScenesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订新增
+//
+// @param tmpReq - InsertHotelSceneBookItemRequest
+//
+// @param headers - InsertHotelSceneBookItemHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertHotelSceneBookItemResponse
 func (client *Client) InsertHotelSceneBookItemWithOptions(tmpReq *InsertHotelSceneBookItemRequest, headers *InsertHotelSceneBookItemHeaders, runtime *util.RuntimeOptions) (_result *InsertHotelSceneBookItemResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22328,6 +27334,13 @@ func (client *Client) InsertHotelSceneBookItemWithOptions(tmpReq *InsertHotelSce
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订新增
+//
+// @param request - InsertHotelSceneBookItemRequest
+//
+// @return InsertHotelSceneBookItemResponse
 func (client *Client) InsertHotelSceneBookItem(request *InsertHotelSceneBookItemRequest) (_result *InsertHotelSceneBookItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsertHotelSceneBookItemHeaders{}
@@ -22340,6 +27353,17 @@ func (client *Client) InsertHotelSceneBookItem(request *InsertHotelSceneBookItem
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人服务，消息推送
+//
+// @param request - InvokeRobotPushRequest
+//
+// @param headers - InvokeRobotPushHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeRobotPushResponse
 func (client *Client) InvokeRobotPushWithOptions(request *InvokeRobotPushRequest, headers *InvokeRobotPushHeaders, runtime *util.RuntimeOptions) (_result *InvokeRobotPushResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22395,6 +27419,13 @@ func (client *Client) InvokeRobotPushWithOptions(request *InvokeRobotPushRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人服务，消息推送
+//
+// @param request - InvokeRobotPushRequest
+//
+// @return InvokeRobotPushResponse
 func (client *Client) InvokeRobotPush(request *InvokeRobotPushRequest) (_result *InvokeRobotPushResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvokeRobotPushHeaders{}
@@ -22407,6 +27438,15 @@ func (client *Client) InvokeRobotPush(request *InvokeRobotPushRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询省份
+//
+// @param headers - ListAllProvincesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAllProvincesResponse
 func (client *Client) ListAllProvincesWithOptions(headers *ListAllProvincesHeaders, runtime *util.RuntimeOptions) (_result *ListAllProvincesResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -22444,6 +27484,11 @@ func (client *Client) ListAllProvincesWithOptions(headers *ListAllProvincesHeade
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询省份
+//
+// @return ListAllProvincesResponse
 func (client *Client) ListAllProvinces() (_result *ListAllProvincesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListAllProvincesHeaders{}
@@ -22456,6 +27501,17 @@ func (client *Client) ListAllProvinces() (_result *ListAllProvincesResponse, _er
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询城市
+//
+// @param request - ListCitiesByProvinceRequest
+//
+// @param headers - ListCitiesByProvinceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCitiesByProvinceResponse
 func (client *Client) ListCitiesByProvinceWithOptions(request *ListCitiesByProvinceRequest, headers *ListCitiesByProvinceHeaders, runtime *util.RuntimeOptions) (_result *ListCitiesByProvinceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22503,6 +27559,13 @@ func (client *Client) ListCitiesByProvinceWithOptions(request *ListCitiesByProvi
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询城市
+//
+// @param request - ListCitiesByProvinceRequest
+//
+// @return ListCitiesByProvinceResponse
 func (client *Client) ListCitiesByProvince(request *ListCitiesByProvinceRequest) (_result *ListCitiesByProvinceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListCitiesByProvinceHeaders{}
@@ -22515,6 +27578,17 @@ func (client *Client) ListCitiesByProvince(request *ListCitiesByProvinceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义问答列表
+//
+// @param tmpReq - ListCustomQARequest
+//
+// @param headers - ListCustomQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomQAResponse
 func (client *Client) ListCustomQAWithOptions(tmpReq *ListCustomQARequest, headers *ListCustomQAHeaders, runtime *util.RuntimeOptions) (_result *ListCustomQAResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22576,6 +27650,13 @@ func (client *Client) ListCustomQAWithOptions(tmpReq *ListCustomQARequest, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义问答列表
+//
+// @param request - ListCustomQARequest
+//
+// @return ListCustomQAResponse
 func (client *Client) ListCustomQA(request *ListCustomQARequest) (_result *ListCustomQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListCustomQAHeaders{}
@@ -22588,6 +27669,17 @@ func (client *Client) ListCustomQA(request *ListCustomQARequest) (_result *ListC
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景对话模板
+//
+// @param request - ListDialogueTemplateRequest
+//
+// @param headers - ListDialogueTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDialogueTemplateResponse
 func (client *Client) ListDialogueTemplateWithOptions(request *ListDialogueTemplateRequest, headers *ListDialogueTemplateHeaders, runtime *util.RuntimeOptions) (_result *ListDialogueTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22635,6 +27727,13 @@ func (client *Client) ListDialogueTemplateWithOptions(request *ListDialogueTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景对话模板
+//
+// @param request - ListDialogueTemplateRequest
+//
+// @return ListDialogueTemplateResponse
 func (client *Client) ListDialogueTemplate(request *ListDialogueTemplateRequest) (_result *ListDialogueTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListDialogueTemplateHeaders{}
@@ -22647,6 +27746,17 @@ func (client *Client) ListDialogueTemplate(request *ListDialogueTemplateRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店闹钟
+//
+// @param tmpReq - ListHotelAlarmRequest
+//
+// @param headers - ListHotelAlarmHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelAlarmResponse
 func (client *Client) ListHotelAlarmWithOptions(tmpReq *ListHotelAlarmRequest, headers *ListHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *ListHotelAlarmResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22704,6 +27814,13 @@ func (client *Client) ListHotelAlarmWithOptions(tmpReq *ListHotelAlarmRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店闹钟
+//
+// @param request - ListHotelAlarmRequest
+//
+// @return ListHotelAlarmResponse
 func (client *Client) ListHotelAlarm(request *ListHotelAlarmRequest) (_result *ListHotelAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelAlarmHeaders{}
@@ -22716,6 +27833,17 @@ func (client *Client) ListHotelAlarm(request *ListHotelAlarmRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店设备列表
+//
+// @param tmpReq - ListHotelControlDeviceRequest
+//
+// @param headers - ListHotelControlDeviceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelControlDeviceResponse
 func (client *Client) ListHotelControlDeviceWithOptions(tmpReq *ListHotelControlDeviceRequest, headers *ListHotelControlDeviceHeaders, runtime *util.RuntimeOptions) (_result *ListHotelControlDeviceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22769,6 +27897,13 @@ func (client *Client) ListHotelControlDeviceWithOptions(tmpReq *ListHotelControl
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店设备列表
+//
+// @param request - ListHotelControlDeviceRequest
+//
+// @return ListHotelControlDeviceResponse
 func (client *Client) ListHotelControlDevice(request *ListHotelControlDeviceRequest) (_result *ListHotelControlDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelControlDeviceHeaders{}
@@ -22781,6 +27916,15 @@ func (client *Client) ListHotelControlDevice(request *ListHotelControlDeviceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店列表
+//
+// @param headers - ListHotelInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelInfoResponse
 func (client *Client) ListHotelInfoWithOptions(headers *ListHotelInfoHeaders, runtime *util.RuntimeOptions) (_result *ListHotelInfoResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -22818,6 +27962,11 @@ func (client *Client) ListHotelInfoWithOptions(headers *ListHotelInfoHeaders, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店列表
+//
+// @return ListHotelInfoResponse
 func (client *Client) ListHotelInfo() (_result *ListHotelInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelInfoHeaders{}
@@ -22830,6 +27979,15 @@ func (client *Client) ListHotelInfo() (_result *ListHotelInfoResponse, _err erro
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取消息模板
+//
+// @param headers - ListHotelMessageTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelMessageTemplateResponse
 func (client *Client) ListHotelMessageTemplateWithOptions(headers *ListHotelMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *ListHotelMessageTemplateResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -22867,6 +28025,11 @@ func (client *Client) ListHotelMessageTemplateWithOptions(headers *ListHotelMess
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取消息模板
+//
+// @return ListHotelMessageTemplateResponse
 func (client *Client) ListHotelMessageTemplate() (_result *ListHotelMessageTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelMessageTemplateHeaders{}
@@ -22879,6 +28042,17 @@ func (client *Client) ListHotelMessageTemplate() (_result *ListHotelMessageTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单列表
+//
+// @param tmpReq - ListHotelOrderRequest
+//
+// @param headers - ListHotelOrderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelOrderResponse
 func (client *Client) ListHotelOrderWithOptions(tmpReq *ListHotelOrderRequest, headers *ListHotelOrderHeaders, runtime *util.RuntimeOptions) (_result *ListHotelOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22940,6 +28114,13 @@ func (client *Client) ListHotelOrderWithOptions(tmpReq *ListHotelOrderRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单列表
+//
+// @param request - ListHotelOrderRequest
+//
+// @return ListHotelOrderResponse
 func (client *Client) ListHotelOrder(request *ListHotelOrderRequest) (_result *ListHotelOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelOrderHeaders{}
@@ -22952,6 +28133,17 @@ func (client *Client) ListHotelOrder(request *ListHotelOrderRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店的所有房间
+//
+// @param tmpReq - ListHotelRoomsRequest
+//
+// @param headers - ListHotelRoomsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelRoomsResponse
 func (client *Client) ListHotelRoomsWithOptions(tmpReq *ListHotelRoomsRequest, headers *ListHotelRoomsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelRoomsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23009,6 +28201,13 @@ func (client *Client) ListHotelRoomsWithOptions(tmpReq *ListHotelRoomsRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店的所有房间
+//
+// @param request - ListHotelRoomsRequest
+//
+// @return ListHotelRoomsResponse
 func (client *Client) ListHotelRooms(request *ListHotelRoomsRequest) (_result *ListHotelRoomsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelRoomsHeaders{}
@@ -23021,6 +28220,17 @@ func (client *Client) ListHotelRooms(request *ListHotelRoomsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订列表（餐饮/SPA休闲/打车）
+//
+// @param tmpReq - ListHotelSceneBookItemsRequest
+//
+// @param headers - ListHotelSceneBookItemsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelSceneBookItemsResponse
 func (client *Client) ListHotelSceneBookItemsWithOptions(tmpReq *ListHotelSceneBookItemsRequest, headers *ListHotelSceneBookItemsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelSceneBookItemsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23084,6 +28294,13 @@ func (client *Client) ListHotelSceneBookItemsWithOptions(tmpReq *ListHotelSceneB
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订列表（餐饮/SPA休闲/打车）
+//
+// @param request - ListHotelSceneBookItemsRequest
+//
+// @return ListHotelSceneBookItemsResponse
 func (client *Client) ListHotelSceneBookItems(request *ListHotelSceneBookItemsRequest) (_result *ListHotelSceneBookItemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelSceneBookItemsHeaders{}
@@ -23096,6 +28313,17 @@ func (client *Client) ListHotelSceneBookItems(request *ListHotelSceneBookItemsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务项目
+//
+// @param tmpReq - ListHotelSceneItemRequest
+//
+// @param headers - ListHotelSceneItemHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelSceneItemResponse
 func (client *Client) ListHotelSceneItemWithOptions(tmpReq *ListHotelSceneItemRequest, headers *ListHotelSceneItemHeaders, runtime *util.RuntimeOptions) (_result *ListHotelSceneItemResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23157,6 +28385,13 @@ func (client *Client) ListHotelSceneItemWithOptions(tmpReq *ListHotelSceneItemRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务项目
+//
+// @param request - ListHotelSceneItemRequest
+//
+// @return ListHotelSceneItemResponse
 func (client *Client) ListHotelSceneItem(request *ListHotelSceneItemRequest) (_result *ListHotelSceneItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelSceneItemHeaders{}
@@ -23169,6 +28404,17 @@ func (client *Client) ListHotelSceneItem(request *ListHotelSceneItemRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景列表（物品/服务/维修）
+//
+// @param tmpReq - ListHotelSceneItemsRequest
+//
+// @param headers - ListHotelSceneItemsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelSceneItemsResponse
 func (client *Client) ListHotelSceneItemsWithOptions(tmpReq *ListHotelSceneItemsRequest, headers *ListHotelSceneItemsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelSceneItemsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23228,6 +28474,13 @@ func (client *Client) ListHotelSceneItemsWithOptions(tmpReq *ListHotelSceneItems
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景列表（物品/服务/维修）
+//
+// @param request - ListHotelSceneItemsRequest
+//
+// @return ListHotelSceneItemsResponse
 func (client *Client) ListHotelSceneItems(request *ListHotelSceneItemsRequest) (_result *ListHotelSceneItemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelSceneItemsHeaders{}
@@ -23240,6 +28493,17 @@ func (client *Client) ListHotelSceneItems(request *ListHotelSceneItemsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务分类列表
+//
+// @param tmpReq - ListHotelServiceCategoryRequest
+//
+// @param headers - ListHotelServiceCategoryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelServiceCategoryResponse
 func (client *Client) ListHotelServiceCategoryWithOptions(tmpReq *ListHotelServiceCategoryRequest, headers *ListHotelServiceCategoryHeaders, runtime *util.RuntimeOptions) (_result *ListHotelServiceCategoryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23293,6 +28557,13 @@ func (client *Client) ListHotelServiceCategoryWithOptions(tmpReq *ListHotelServi
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务分类列表
+//
+// @param request - ListHotelServiceCategoryRequest
+//
+// @return ListHotelServiceCategoryResponse
 func (client *Client) ListHotelServiceCategory(request *ListHotelServiceCategoryRequest) (_result *ListHotelServiceCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelServiceCategoryHeaders{}
@@ -23305,6 +28576,17 @@ func (client *Client) ListHotelServiceCategory(request *ListHotelServiceCategory
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店列表(待审批/已拒绝/已通过)
+//
+// @param tmpReq - ListHotelsRequest
+//
+// @param headers - ListHotelsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotelsResponse
 func (client *Client) ListHotelsWithOptions(tmpReq *ListHotelsRequest, headers *ListHotelsHeaders, runtime *util.RuntimeOptions) (_result *ListHotelsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23372,6 +28654,13 @@ func (client *Client) ListHotelsWithOptions(tmpReq *ListHotelsRequest, headers *
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店列表(待审批/已拒绝/已通过)
+//
+// @param request - ListHotelsRequest
+//
+// @return ListHotelsResponse
 func (client *Client) ListHotels(request *ListHotelsRequest) (_result *ListHotelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListHotelsHeaders{}
@@ -23384,6 +28673,17 @@ func (client *Client) ListHotels(request *ListHotelsRequest) (_result *ListHotel
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询红外品牌列表
+//
+// @param request - ListInfraredDeviceBrandsRequest
+//
+// @param headers - ListInfraredDeviceBrandsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInfraredDeviceBrandsResponse
 func (client *Client) ListInfraredDeviceBrandsWithOptions(request *ListInfraredDeviceBrandsRequest, headers *ListInfraredDeviceBrandsHeaders, runtime *util.RuntimeOptions) (_result *ListInfraredDeviceBrandsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23435,6 +28735,13 @@ func (client *Client) ListInfraredDeviceBrandsWithOptions(request *ListInfraredD
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询红外品牌列表
+//
+// @param request - ListInfraredDeviceBrandsRequest
+//
+// @return ListInfraredDeviceBrandsResponse
 func (client *Client) ListInfraredDeviceBrands(request *ListInfraredDeviceBrandsRequest) (_result *ListInfraredDeviceBrandsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListInfraredDeviceBrandsHeaders{}
@@ -23447,6 +28754,17 @@ func (client *Client) ListInfraredDeviceBrands(request *ListInfraredDeviceBrands
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询红外码库列表
+//
+// @param request - ListInfraredRemoteControllersRequest
+//
+// @param headers - ListInfraredRemoteControllersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInfraredRemoteControllersResponse
 func (client *Client) ListInfraredRemoteControllersWithOptions(request *ListInfraredRemoteControllersRequest, headers *ListInfraredRemoteControllersHeaders, runtime *util.RuntimeOptions) (_result *ListInfraredRemoteControllersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23514,6 +28832,13 @@ func (client *Client) ListInfraredRemoteControllersWithOptions(request *ListInfr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询红外码库列表
+//
+// @param request - ListInfraredRemoteControllersRequest
+//
+// @return ListInfraredRemoteControllersResponse
 func (client *Client) ListInfraredRemoteControllers(request *ListInfraredRemoteControllersRequest) (_result *ListInfraredRemoteControllersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListInfraredRemoteControllersHeaders{}
@@ -23526,6 +28851,17 @@ func (client *Client) ListInfraredRemoteControllers(request *ListInfraredRemoteC
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务提供商
+//
+// @param request - ListSTBServiceProvidersRequest
+//
+// @param headers - ListSTBServiceProvidersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSTBServiceProvidersResponse
 func (client *Client) ListSTBServiceProvidersWithOptions(request *ListSTBServiceProvidersRequest, headers *ListSTBServiceProvidersHeaders, runtime *util.RuntimeOptions) (_result *ListSTBServiceProvidersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23577,6 +28913,13 @@ func (client *Client) ListSTBServiceProvidersWithOptions(request *ListSTBService
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务提供商
+//
+// @param request - ListSTBServiceProvidersRequest
+//
+// @return ListSTBServiceProvidersResponse
 func (client *Client) ListSTBServiceProviders(request *ListSTBServiceProvidersRequest) (_result *ListSTBServiceProvidersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListSTBServiceProvidersHeaders{}
@@ -23589,6 +28932,17 @@ func (client *Client) ListSTBServiceProviders(request *ListSTBServiceProvidersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景分类
+//
+// @param request - ListSceneCategoryRequest
+//
+// @param headers - ListSceneCategoryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSceneCategoryResponse
 func (client *Client) ListSceneCategoryWithOptions(request *ListSceneCategoryRequest, headers *ListSceneCategoryHeaders, runtime *util.RuntimeOptions) (_result *ListSceneCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23640,6 +28994,13 @@ func (client *Client) ListSceneCategoryWithOptions(request *ListSceneCategoryReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景分类
+//
+// @param request - ListSceneCategoryRequest
+//
+// @return ListSceneCategoryResponse
 func (client *Client) ListSceneCategory(request *ListSceneCategoryRequest) (_result *ListSceneCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListSceneCategoryHeaders{}
@@ -23652,6 +29013,17 @@ func (client *Client) ListSceneCategory(request *ListSceneCategoryRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务设施问答列表
+//
+// @param tmpReq - ListServiceQARequest
+//
+// @param headers - ListServiceQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceQAResponse
 func (client *Client) ListServiceQAWithOptions(tmpReq *ListServiceQARequest, headers *ListServiceQAHeaders, runtime *util.RuntimeOptions) (_result *ListServiceQAResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23717,6 +29089,13 @@ func (client *Client) ListServiceQAWithOptions(tmpReq *ListServiceQARequest, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务设施问答列表
+//
+// @param request - ListServiceQARequest
+//
+// @return ListServiceQAResponse
 func (client *Client) ListServiceQA(request *ListServiceQARequest) (_result *ListServiceQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListServiceQAHeaders{}
@@ -23729,6 +29108,17 @@ func (client *Client) ListServiceQA(request *ListServiceQARequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询工单列表
+//
+// @param tmpReq - ListTicketsRequest
+//
+// @param headers - ListTicketsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTicketsResponse
 func (client *Client) ListTicketsWithOptions(tmpReq *ListTicketsRequest, headers *ListTicketsHeaders, runtime *util.RuntimeOptions) (_result *ListTicketsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23822,6 +29212,13 @@ func (client *Client) ListTicketsWithOptions(tmpReq *ListTicketsRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询工单列表
+//
+// @param request - ListTicketsRequest
+//
+// @return ListTicketsResponse
 func (client *Client) ListTickets(request *ListTicketsRequest) (_result *ListTicketsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListTicketsHeaders{}
@@ -23834,6 +29231,17 @@ func (client *Client) ListTickets(request *ListTicketsRequest) (_result *ListTic
 	return _result, _err
 }
 
+// Summary:
+//
+// 分页查询酒店房间主控设备
+//
+// @param request - PageGetHotelRoomDevicesRequest
+//
+// @param headers - PageGetHotelRoomDevicesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PageGetHotelRoomDevicesResponse
 func (client *Client) PageGetHotelRoomDevicesWithOptions(request *PageGetHotelRoomDevicesRequest, headers *PageGetHotelRoomDevicesHeaders, runtime *util.RuntimeOptions) (_result *PageGetHotelRoomDevicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23889,6 +29297,13 @@ func (client *Client) PageGetHotelRoomDevicesWithOptions(request *PageGetHotelRo
 	return _result, _err
 }
 
+// Summary:
+//
+// 分页查询酒店房间主控设备
+//
+// @param request - PageGetHotelRoomDevicesRequest
+//
+// @return PageGetHotelRoomDevicesResponse
 func (client *Client) PageGetHotelRoomDevices(request *PageGetHotelRoomDevicesRequest) (_result *PageGetHotelRoomDevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PageGetHotelRoomDevicesHeaders{}
@@ -23901,6 +29316,17 @@ func (client *Client) PageGetHotelRoomDevices(request *PageGetHotelRoomDevicesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// pms事件上报
+//
+// @param request - PmsEventReportRequest
+//
+// @param headers - PmsEventReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PmsEventReportResponse
 func (client *Client) PmsEventReportWithOptions(request *PmsEventReportRequest, headers *PmsEventReportHeaders, runtime *util.RuntimeOptions) (_result *PmsEventReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23948,6 +29374,13 @@ func (client *Client) PmsEventReportWithOptions(request *PmsEventReportRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// pms事件上报
+//
+// @param request - PmsEventReportRequest
+//
+// @return PmsEventReportResponse
 func (client *Client) PmsEventReport(request *PmsEventReportRequest) (_result *PmsEventReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PmsEventReportHeaders{}
@@ -23960,6 +29393,17 @@ func (client *Client) PmsEventReport(request *PmsEventReportRequest) (_result *P
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送酒店消息
+//
+// @param tmpReq - PushHotelMessageRequest
+//
+// @param headers - PushHotelMessageHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushHotelMessageResponse
 func (client *Client) PushHotelMessageWithOptions(tmpReq *PushHotelMessageRequest, headers *PushHotelMessageHeaders, runtime *util.RuntimeOptions) (_result *PushHotelMessageResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24013,6 +29457,13 @@ func (client *Client) PushHotelMessageWithOptions(tmpReq *PushHotelMessageReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送酒店消息
+//
+// @param request - PushHotelMessageRequest
+//
+// @return PushHotelMessageResponse
 func (client *Client) PushHotelMessage(request *PushHotelMessageRequest) (_result *PushHotelMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PushHotelMessageHeaders{}
@@ -24025,6 +29476,17 @@ func (client *Client) PushHotelMessage(request *PushHotelMessageRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送音箱指令
+//
+// @param tmpReq - PushVoiceBoxCommandsRequest
+//
+// @param headers - PushVoiceBoxCommandsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushVoiceBoxCommandsResponse
 func (client *Client) PushVoiceBoxCommandsWithOptions(tmpReq *PushVoiceBoxCommandsRequest, headers *PushVoiceBoxCommandsHeaders, runtime *util.RuntimeOptions) (_result *PushVoiceBoxCommandsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24086,6 +29548,13 @@ func (client *Client) PushVoiceBoxCommandsWithOptions(tmpReq *PushVoiceBoxComman
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送音箱指令
+//
+// @param request - PushVoiceBoxCommandsRequest
+//
+// @return PushVoiceBoxCommandsResponse
 func (client *Client) PushVoiceBoxCommands(request *PushVoiceBoxCommandsRequest) (_result *PushVoiceBoxCommandsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PushVoiceBoxCommandsHeaders{}
@@ -24098,6 +29567,17 @@ func (client *Client) PushVoiceBoxCommands(request *PushVoiceBoxCommandsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 直接推送欢迎语
+//
+// @param request - PushWelcomeRequest
+//
+// @param headers - PushWelcomeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushWelcomeResponse
 func (client *Client) PushWelcomeWithOptions(request *PushWelcomeRequest, headers *PushWelcomeHeaders, runtime *util.RuntimeOptions) (_result *PushWelcomeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24157,6 +29637,13 @@ func (client *Client) PushWelcomeWithOptions(request *PushWelcomeRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 直接推送欢迎语
+//
+// @param request - PushWelcomeRequest
+//
+// @return PushWelcomeResponse
 func (client *Client) PushWelcome(request *PushWelcomeRequest) (_result *PushWelcomeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PushWelcomeHeaders{}
@@ -24169,6 +29656,17 @@ func (client *Client) PushWelcome(request *PushWelcomeRequest) (_result *PushWel
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送欢迎语
+//
+// @param tmpReq - PushWelcomeTextAndMusicRequest
+//
+// @param headers - PushWelcomeTextAndMusicHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushWelcomeTextAndMusicResponse
 func (client *Client) PushWelcomeTextAndMusicWithOptions(tmpReq *PushWelcomeTextAndMusicRequest, headers *PushWelcomeTextAndMusicHeaders, runtime *util.RuntimeOptions) (_result *PushWelcomeTextAndMusicResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24230,6 +29728,13 @@ func (client *Client) PushWelcomeTextAndMusicWithOptions(tmpReq *PushWelcomeText
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送欢迎语
+//
+// @param request - PushWelcomeTextAndMusicRequest
+//
+// @return PushWelcomeTextAndMusicResponse
 func (client *Client) PushWelcomeTextAndMusic(request *PushWelcomeTextAndMusicRequest) (_result *PushWelcomeTextAndMusicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PushWelcomeTextAndMusicHeaders{}
@@ -24242,6 +29747,17 @@ func (client *Client) PushWelcomeTextAndMusic(request *PushWelcomeTextAndMusicRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店设备状态/模式状态查询
+//
+// @param tmpReq - QueryDeviceStatusRequest
+//
+// @param headers - QueryDeviceStatusHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDeviceStatusResponse
 func (client *Client) QueryDeviceStatusWithOptions(tmpReq *QueryDeviceStatusRequest, headers *QueryDeviceStatusHeaders, runtime *util.RuntimeOptions) (_result *QueryDeviceStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24303,6 +29819,13 @@ func (client *Client) QueryDeviceStatusWithOptions(tmpReq *QueryDeviceStatusRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店设备状态/模式状态查询
+//
+// @param request - QueryDeviceStatusRequest
+//
+// @return QueryDeviceStatusResponse
 func (client *Client) QueryDeviceStatus(request *QueryDeviceStatusRequest) (_result *QueryDeviceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryDeviceStatusHeaders{}
@@ -24315,6 +29838,17 @@ func (client *Client) QueryDeviceStatus(request *QueryDeviceStatusRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询房间详细信息
+//
+// @param request - QueryHotelRoomDetailRequest
+//
+// @param headers - QueryHotelRoomDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHotelRoomDetailResponse
 func (client *Client) QueryHotelRoomDetailWithOptions(request *QueryHotelRoomDetailRequest, headers *QueryHotelRoomDetailHeaders, runtime *util.RuntimeOptions) (_result *QueryHotelRoomDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24378,6 +29912,13 @@ func (client *Client) QueryHotelRoomDetailWithOptions(request *QueryHotelRoomDet
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询房间详细信息
+//
+// @param request - QueryHotelRoomDetailRequest
+//
+// @return QueryHotelRoomDetailResponse
 func (client *Client) QueryHotelRoomDetail(request *QueryHotelRoomDetailRequest) (_result *QueryHotelRoomDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryHotelRoomDetailHeaders{}
@@ -24390,6 +29931,17 @@ func (client *Client) QueryHotelRoomDetail(request *QueryHotelRoomDetailRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店房间客控设备
+//
+// @param request - QueryRoomControlDevicesRequest
+//
+// @param headers - QueryRoomControlDevicesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRoomControlDevicesResponse
 func (client *Client) QueryRoomControlDevicesWithOptions(request *QueryRoomControlDevicesRequest, headers *QueryRoomControlDevicesHeaders, runtime *util.RuntimeOptions) (_result *QueryRoomControlDevicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24441,6 +29993,13 @@ func (client *Client) QueryRoomControlDevicesWithOptions(request *QueryRoomContr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店房间客控设备
+//
+// @param request - QueryRoomControlDevicesRequest
+//
+// @return QueryRoomControlDevicesResponse
 func (client *Client) QueryRoomControlDevices(request *QueryRoomControlDevicesRequest) (_result *QueryRoomControlDevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryRoomControlDevicesHeaders{}
@@ -24453,6 +30012,98 @@ func (client *Client) QueryRoomControlDevices(request *QueryRoomControlDevicesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询房间被控设备包含设备状态
+//
+// @param request - QueryRoomControlDevicesAndStatusRequest
+//
+// @param headers - QueryRoomControlDevicesAndStatusHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRoomControlDevicesAndStatusResponse
+func (client *Client) QueryRoomControlDevicesAndStatusWithOptions(request *QueryRoomControlDevicesAndStatusRequest, headers *QueryRoomControlDevicesAndStatusHeaders, runtime *util.RuntimeOptions) (_result *QueryRoomControlDevicesAndStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotelId)) {
+		body["HotelId"] = request.HotelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomNo)) {
+		body["RoomNo"] = request.RoomNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRoomControlDevicesAndStatus"),
+		Version:     tea.String("ip_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ip/queryRoomControlDevicesAndStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRoomControlDevicesAndStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询房间被控设备包含设备状态
+//
+// @param request - QueryRoomControlDevicesAndStatusRequest
+//
+// @return QueryRoomControlDevicesAndStatusResponse
+func (client *Client) QueryRoomControlDevicesAndStatus(request *QueryRoomControlDevicesAndStatusRequest) (_result *QueryRoomControlDevicesAndStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryRoomControlDevicesAndStatusHeaders{}
+	_result = &QueryRoomControlDevicesAndStatusResponse{}
+	_body, _err := client.QueryRoomControlDevicesAndStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询酒店场景列表
+//
+// @param tmpReq - QuerySceneListRequest
+//
+// @param headers - QuerySceneListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySceneListResponse
 func (client *Client) QuerySceneListWithOptions(tmpReq *QuerySceneListRequest, headers *QuerySceneListHeaders, runtime *util.RuntimeOptions) (_result *QuerySceneListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24526,6 +30177,13 @@ func (client *Client) QuerySceneListWithOptions(tmpReq *QuerySceneListRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店场景列表
+//
+// @param request - QuerySceneListRequest
+//
+// @return QuerySceneListResponse
 func (client *Client) QuerySceneList(request *QuerySceneListRequest) (_result *QuerySceneListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QuerySceneListHeaders{}
@@ -24538,6 +30196,17 @@ func (client *Client) QuerySceneList(request *QuerySceneListRequest) (_result *Q
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除子账号授权
+//
+// @param request - RemoveChildAccountAuthRequest
+//
+// @param headers - RemoveChildAccountAuthHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveChildAccountAuthResponse
 func (client *Client) RemoveChildAccountAuthWithOptions(request *RemoveChildAccountAuthRequest, headers *RemoveChildAccountAuthHeaders, runtime *util.RuntimeOptions) (_result *RemoveChildAccountAuthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24597,6 +30266,13 @@ func (client *Client) RemoveChildAccountAuthWithOptions(request *RemoveChildAcco
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除子账号授权
+//
+// @param request - RemoveChildAccountAuthRequest
+//
+// @return RemoveChildAccountAuthResponse
 func (client *Client) RemoveChildAccountAuth(request *RemoveChildAccountAuthRequest) (_result *RemoveChildAccountAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RemoveChildAccountAuthHeaders{}
@@ -24609,6 +30285,17 @@ func (client *Client) RemoveChildAccountAuth(request *RemoveChildAccountAuthRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除酒店项目
+//
+// @param request - RemoveHotelRequest
+//
+// @param headers - RemoveHotelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveHotelResponse
 func (client *Client) RemoveHotelWithOptions(request *RemoveHotelRequest, headers *RemoveHotelHeaders, runtime *util.RuntimeOptions) (_result *RemoveHotelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24664,6 +30351,13 @@ func (client *Client) RemoveHotelWithOptions(request *RemoveHotelRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除酒店项目
+//
+// @param request - RemoveHotelRequest
+//
+// @return RemoveHotelResponse
 func (client *Client) RemoveHotel(request *RemoveHotelRequest) (_result *RemoveHotelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RemoveHotelHeaders{}
@@ -24676,6 +30370,17 @@ func (client *Client) RemoveHotel(request *RemoveHotelRequest) (_result *RemoveH
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置欢迎语信息
+//
+// @param request - ResetWelcomeTextAndMusicRequest
+//
+// @param headers - ResetWelcomeTextAndMusicHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetWelcomeTextAndMusicResponse
 func (client *Client) ResetWelcomeTextAndMusicWithOptions(request *ResetWelcomeTextAndMusicRequest, headers *ResetWelcomeTextAndMusicHeaders, runtime *util.RuntimeOptions) (_result *ResetWelcomeTextAndMusicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24723,6 +30428,13 @@ func (client *Client) ResetWelcomeTextAndMusicWithOptions(request *ResetWelcomeT
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置欢迎语信息
+//
+// @param request - ResetWelcomeTextAndMusicRequest
+//
+// @return ResetWelcomeTextAndMusicResponse
 func (client *Client) ResetWelcomeTextAndMusic(request *ResetWelcomeTextAndMusicRequest) (_result *ResetWelcomeTextAndMusicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ResetWelcomeTextAndMusicHeaders{}
@@ -24735,6 +30447,17 @@ func (client *Client) ResetWelcomeTextAndMusic(request *ResetWelcomeTextAndMusic
 	return _result, _err
 }
 
+// Summary:
+//
+// 退房
+//
+// @param tmpReq - RoomCheckOutRequest
+//
+// @param headers - RoomCheckOutHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RoomCheckOutResponse
 func (client *Client) RoomCheckOutWithOptions(tmpReq *RoomCheckOutRequest, headers *RoomCheckOutHeaders, runtime *util.RuntimeOptions) (_result *RoomCheckOutResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24796,6 +30519,13 @@ func (client *Client) RoomCheckOutWithOptions(tmpReq *RoomCheckOutRequest, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 退房
+//
+// @param request - RoomCheckOutRequest
+//
+// @return RoomCheckOutResponse
 func (client *Client) RoomCheckOut(request *RoomCheckOutRequest) (_result *RoomCheckOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RoomCheckOutHeaders{}
@@ -24808,6 +30538,17 @@ func (client *Client) RoomCheckOut(request *RoomCheckOutRequest) (_result *RoomC
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交酒店订单
+//
+// @param tmpReq - SubmitHotelOrderRequest
+//
+// @param headers - SubmitHotelOrderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitHotelOrderResponse
 func (client *Client) SubmitHotelOrderWithOptions(tmpReq *SubmitHotelOrderRequest, headers *SubmitHotelOrderHeaders, runtime *util.RuntimeOptions) (_result *SubmitHotelOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24869,6 +30610,13 @@ func (client *Client) SubmitHotelOrderWithOptions(tmpReq *SubmitHotelOrderReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交酒店订单
+//
+// @param request - SubmitHotelOrderRequest
+//
+// @return SubmitHotelOrderResponse
 func (client *Client) SubmitHotelOrder(request *SubmitHotelOrderRequest) (_result *SubmitHotelOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SubmitHotelOrderHeaders{}
@@ -24881,6 +30629,17 @@ func (client *Client) SubmitHotelOrder(request *SubmitHotelOrderRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步客控设备状态到主控设备
+//
+// @param request - SyncDeviceStatusWithAkRequest
+//
+// @param headers - SyncDeviceStatusWithAkHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDeviceStatusWithAkResponse
 func (client *Client) SyncDeviceStatusWithAkWithOptions(request *SyncDeviceStatusWithAkRequest, headers *SyncDeviceStatusWithAkHeaders, runtime *util.RuntimeOptions) (_result *SyncDeviceStatusWithAkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24980,6 +30739,13 @@ func (client *Client) SyncDeviceStatusWithAkWithOptions(request *SyncDeviceStatu
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步客控设备状态到主控设备
+//
+// @param request - SyncDeviceStatusWithAkRequest
+//
+// @return SyncDeviceStatusWithAkResponse
 func (client *Client) SyncDeviceStatusWithAk(request *SyncDeviceStatusWithAkRequest) (_result *SyncDeviceStatusWithAkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SyncDeviceStatusWithAkHeaders{}
@@ -24992,6 +30758,17 @@ func (client *Client) SyncDeviceStatusWithAk(request *SyncDeviceStatusWithAkRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改基础信息问答
+//
+// @param request - UpdateBasicInfoQARequest
+//
+// @param headers - UpdateBasicInfoQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBasicInfoQAResponse
 func (client *Client) UpdateBasicInfoQAWithOptions(request *UpdateBasicInfoQARequest, headers *UpdateBasicInfoQAHeaders, runtime *util.RuntimeOptions) (_result *UpdateBasicInfoQAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25083,6 +30860,13 @@ func (client *Client) UpdateBasicInfoQAWithOptions(request *UpdateBasicInfoQAReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改基础信息问答
+//
+// @param request - UpdateBasicInfoQARequest
+//
+// @return UpdateBasicInfoQAResponse
 func (client *Client) UpdateBasicInfoQA(request *UpdateBasicInfoQARequest) (_result *UpdateBasicInfoQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateBasicInfoQAHeaders{}
@@ -25095,6 +30879,17 @@ func (client *Client) UpdateBasicInfoQA(request *UpdateBasicInfoQARequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义问答
+//
+// @param tmpReq - UpdateCustomQARequest
+//
+// @param headers - UpdateCustomQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomQAResponse
 func (client *Client) UpdateCustomQAWithOptions(tmpReq *UpdateCustomQARequest, headers *UpdateCustomQAHeaders, runtime *util.RuntimeOptions) (_result *UpdateCustomQAResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25176,6 +30971,13 @@ func (client *Client) UpdateCustomQAWithOptions(tmpReq *UpdateCustomQARequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义问答
+//
+// @param request - UpdateCustomQARequest
+//
+// @return UpdateCustomQAResponse
 func (client *Client) UpdateCustomQA(request *UpdateCustomQARequest) (_result *UpdateCustomQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateCustomQAHeaders{}
@@ -25188,6 +30990,17 @@ func (client *Client) UpdateCustomQA(request *UpdateCustomQARequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改酒店项目
+//
+// @param tmpReq - UpdateHotelRequest
+//
+// @param headers - UpdateHotelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHotelResponse
 func (client *Client) UpdateHotelWithOptions(tmpReq *UpdateHotelRequest, headers *UpdateHotelHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25281,6 +31094,13 @@ func (client *Client) UpdateHotelWithOptions(tmpReq *UpdateHotelRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改酒店项目
+//
+// @param request - UpdateHotelRequest
+//
+// @return UpdateHotelResponse
 func (client *Client) UpdateHotel(request *UpdateHotelRequest) (_result *UpdateHotelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateHotelHeaders{}
@@ -25293,6 +31113,17 @@ func (client *Client) UpdateHotel(request *UpdateHotelRequest) (_result *UpdateH
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改酒店闹钟
+//
+// @param tmpReq - UpdateHotelAlarmRequest
+//
+// @param headers - UpdateHotelAlarmHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHotelAlarmResponse
 func (client *Client) UpdateHotelAlarmWithOptions(tmpReq *UpdateHotelAlarmRequest, headers *UpdateHotelAlarmHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelAlarmResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25358,6 +31189,13 @@ func (client *Client) UpdateHotelAlarmWithOptions(tmpReq *UpdateHotelAlarmReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改酒店闹钟
+//
+// @param request - UpdateHotelAlarmRequest
+//
+// @return UpdateHotelAlarmResponse
 func (client *Client) UpdateHotelAlarm(request *UpdateHotelAlarmRequest) (_result *UpdateHotelAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateHotelAlarmHeaders{}
@@ -25370,6 +31208,17 @@ func (client *Client) UpdateHotelAlarm(request *UpdateHotelAlarmRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订编辑
+//
+// @param tmpReq - UpdateHotelSceneBookItemRequest
+//
+// @param headers - UpdateHotelSceneBookItemHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHotelSceneBookItemResponse
 func (client *Client) UpdateHotelSceneBookItemWithOptions(tmpReq *UpdateHotelSceneBookItemRequest, headers *UpdateHotelSceneBookItemHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelSceneBookItemResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25429,6 +31278,13 @@ func (client *Client) UpdateHotelSceneBookItemWithOptions(tmpReq *UpdateHotelSce
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景预订编辑
+//
+// @param request - UpdateHotelSceneBookItemRequest
+//
+// @return UpdateHotelSceneBookItemResponse
 func (client *Client) UpdateHotelSceneBookItem(request *UpdateHotelSceneBookItemRequest) (_result *UpdateHotelSceneBookItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateHotelSceneBookItemHeaders{}
@@ -25441,6 +31297,17 @@ func (client *Client) UpdateHotelSceneBookItem(request *UpdateHotelSceneBookItem
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景修改（开启/关闭/编辑）
+//
+// @param tmpReq - UpdateHotelSceneItemRequest
+//
+// @param headers - UpdateHotelSceneItemHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHotelSceneItemResponse
 func (client *Client) UpdateHotelSceneItemWithOptions(tmpReq *UpdateHotelSceneItemRequest, headers *UpdateHotelSceneItemHeaders, runtime *util.RuntimeOptions) (_result *UpdateHotelSceneItemResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25508,6 +31375,13 @@ func (client *Client) UpdateHotelSceneItemWithOptions(tmpReq *UpdateHotelSceneIt
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店场景修改（开启/关闭/编辑）
+//
+// @param request - UpdateHotelSceneItemRequest
+//
+// @return UpdateHotelSceneItemResponse
 func (client *Client) UpdateHotelSceneItem(request *UpdateHotelSceneItemRequest) (_result *UpdateHotelSceneItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateHotelSceneItemHeaders{}
@@ -25520,6 +31394,17 @@ func (client *Client) UpdateHotelSceneItem(request *UpdateHotelSceneItemRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新消息通知模板
+//
+// @param request - UpdateMessageTemplateRequest
+//
+// @param headers - UpdateMessageTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMessageTemplateResponse
 func (client *Client) UpdateMessageTemplateWithOptions(request *UpdateMessageTemplateRequest, headers *UpdateMessageTemplateHeaders, runtime *util.RuntimeOptions) (_result *UpdateMessageTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25575,6 +31460,13 @@ func (client *Client) UpdateMessageTemplateWithOptions(request *UpdateMessageTem
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新消息通知模板
+//
+// @param request - UpdateMessageTemplateRequest
+//
+// @return UpdateMessageTemplateResponse
 func (client *Client) UpdateMessageTemplate(request *UpdateMessageTemplateRequest) (_result *UpdateMessageTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateMessageTemplateHeaders{}
@@ -25587,6 +31479,17 @@ func (client *Client) UpdateMessageTemplate(request *UpdateMessageTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改酒店自定义rcu场景
+//
+// @param tmpReq - UpdateRcuSceneRequest
+//
+// @param headers - UpdateRcuSceneHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRcuSceneResponse
 func (client *Client) UpdateRcuSceneWithOptions(tmpReq *UpdateRcuSceneRequest, headers *UpdateRcuSceneHeaders, runtime *util.RuntimeOptions) (_result *UpdateRcuSceneResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25648,6 +31551,13 @@ func (client *Client) UpdateRcuSceneWithOptions(tmpReq *UpdateRcuSceneRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改酒店自定义rcu场景
+//
+// @param request - UpdateRcuSceneRequest
+//
+// @return UpdateRcuSceneResponse
 func (client *Client) UpdateRcuScene(request *UpdateRcuSceneRequest) (_result *UpdateRcuSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateRcuSceneHeaders{}
@@ -25660,6 +31570,17 @@ func (client *Client) UpdateRcuScene(request *UpdateRcuSceneRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改服务设施问答
+//
+// @param request - UpdateServiceQARequest
+//
+// @param headers - UpdateServiceQAHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceQAResponse
 func (client *Client) UpdateServiceQAWithOptions(request *UpdateServiceQARequest, headers *UpdateServiceQAHeaders, runtime *util.RuntimeOptions) (_result *UpdateServiceQAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25719,6 +31640,13 @@ func (client *Client) UpdateServiceQAWithOptions(request *UpdateServiceQARequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改服务设施问答
+//
+// @param request - UpdateServiceQARequest
+//
+// @return UpdateServiceQAResponse
 func (client *Client) UpdateServiceQA(request *UpdateServiceQARequest) (_result *UpdateServiceQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateServiceQAHeaders{}
@@ -25731,6 +31659,17 @@ func (client *Client) UpdateServiceQA(request *UpdateServiceQARequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改工单
+//
+// @param request - UpdateTicketRequest
+//
+// @param headers - UpdateTicketHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTicketResponse
 func (client *Client) UpdateTicketWithOptions(request *UpdateTicketRequest, headers *UpdateTicketHeaders, runtime *util.RuntimeOptions) (_result *UpdateTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25786,6 +31725,13 @@ func (client *Client) UpdateTicketWithOptions(request *UpdateTicketRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改工单
+//
+// @param request - UpdateTicketRequest
+//
+// @return UpdateTicketResponse
 func (client *Client) UpdateTicket(request *UpdateTicketRequest) (_result *UpdateTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateTicketHeaders{}
