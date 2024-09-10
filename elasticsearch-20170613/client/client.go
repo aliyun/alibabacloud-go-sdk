@@ -7364,7 +7364,9 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// 5601
 	KibanaPort               *int32                                                 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
+	KibanaPrivateDomain      *string                                                `json:"kibanaPrivateDomain,omitempty" xml:"kibanaPrivateDomain,omitempty"`
 	KibanaPrivateIPWhitelist []*string                                              `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+	KibanaPrivatePort        *string                                                `json:"kibanaPrivatePort,omitempty" xml:"kibanaPrivatePort,omitempty"`
 	MasterConfiguration      *DescribeInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
 	NetworkConfig            *DescribeInstanceResponseBodyResultNetworkConfig       `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 	// example:
@@ -7590,8 +7592,18 @@ func (s *DescribeInstanceResponseBodyResult) SetKibanaPort(v int32) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyResult) SetKibanaPrivateDomain(v string) *DescribeInstanceResponseBodyResult {
+	s.KibanaPrivateDomain = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyResult) SetKibanaPrivateIPWhitelist(v []*string) *DescribeInstanceResponseBodyResult {
 	s.KibanaPrivateIPWhitelist = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetKibanaPrivatePort(v string) *DescribeInstanceResponseBodyResult {
+	s.KibanaPrivatePort = &v
 	return s
 }
 
