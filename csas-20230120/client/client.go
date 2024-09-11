@@ -500,8 +500,11 @@ func (s *CreateIdpDepartmentResponse) SetBody(v *CreateIdpDepartmentResponseBody
 
 type CreatePrivateAccessApplicationRequest struct {
 	// This parameter is required.
-	Addresses   []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Addresses                    []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	BrowserAccessStatus          *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	Description                  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7ProxyDomainAutomaticPrefix *string   `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	L7ProxyDomainCustom          *string   `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -538,8 +541,23 @@ func (s *CreatePrivateAccessApplicationRequest) SetAddresses(v []*string) *Creat
 	return s
 }
 
+func (s *CreatePrivateAccessApplicationRequest) SetBrowserAccessStatus(v string) *CreatePrivateAccessApplicationRequest {
+	s.BrowserAccessStatus = &v
+	return s
+}
+
 func (s *CreatePrivateAccessApplicationRequest) SetDescription(v string) *CreatePrivateAccessApplicationRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationRequest) SetL7ProxyDomainAutomaticPrefix(v string) *CreatePrivateAccessApplicationRequest {
+	s.L7ProxyDomainAutomaticPrefix = &v
+	return s
+}
+
+func (s *CreatePrivateAccessApplicationRequest) SetL7ProxyDomainCustom(v string) *CreatePrivateAccessApplicationRequest {
+	s.L7ProxyDomainCustom = &v
 	return s
 }
 
@@ -4283,13 +4301,16 @@ type GetPrivateAccessApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// pa-application-e12860ef6c48****
-	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ConnectorIds  []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
+	ApplicationId       *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	BrowserAccessStatus *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	ConnectorIds        []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2022-08-30 16:50:32
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7ProxyDomainAutomatic *string `json:"L7ProxyDomainAutomatic,omitempty" xml:"L7ProxyDomainAutomatic,omitempty"`
+	L7ProxyDomainCustom    *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// example:
 	//
 	// private_access_application_name
@@ -4325,6 +4346,11 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetApplicationId(v 
 	return s
 }
 
+func (s *GetPrivateAccessApplicationResponseBodyApplication) SetBrowserAccessStatus(v string) *GetPrivateAccessApplicationResponseBodyApplication {
+	s.BrowserAccessStatus = &v
+	return s
+}
+
 func (s *GetPrivateAccessApplicationResponseBodyApplication) SetConnectorIds(v []*string) *GetPrivateAccessApplicationResponseBodyApplication {
 	s.ConnectorIds = v
 	return s
@@ -4337,6 +4363,16 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetCreateTime(v str
 
 func (s *GetPrivateAccessApplicationResponseBodyApplication) SetDescription(v string) *GetPrivateAccessApplicationResponseBodyApplication {
 	s.Description = &v
+	return s
+}
+
+func (s *GetPrivateAccessApplicationResponseBodyApplication) SetL7ProxyDomainAutomatic(v string) *GetPrivateAccessApplicationResponseBodyApplication {
+	s.L7ProxyDomainAutomatic = &v
+	return s
+}
+
+func (s *GetPrivateAccessApplicationResponseBodyApplication) SetL7ProxyDomainCustom(v string) *GetPrivateAccessApplicationResponseBodyApplication {
+	s.L7ProxyDomainCustom = &v
 	return s
 }
 
@@ -8728,6 +8764,7 @@ func (s *ListPopTrafficStatisticsResponse) SetBody(v *ListPopTrafficStatisticsRe
 }
 
 type ListPrivateAccessApplicationsRequest struct {
+	AccessModes *string `json:"AccessModes,omitempty" xml:"AccessModes,omitempty"`
 	// example:
 	//
 	// 192.168.0.0/16
@@ -8770,6 +8807,11 @@ func (s ListPrivateAccessApplicationsRequest) String() string {
 
 func (s ListPrivateAccessApplicationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationsRequest) SetAccessModes(v string) *ListPrivateAccessApplicationsRequest {
+	s.AccessModes = &v
+	return s
 }
 
 func (s *ListPrivateAccessApplicationsRequest) SetAddress(v string) *ListPrivateAccessApplicationsRequest {
@@ -8857,13 +8899,16 @@ type ListPrivateAccessApplicationsResponseBodyApplications struct {
 	// example:
 	//
 	// pa-application-e12860ef6c48****
-	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ConnectorIds  []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
+	ApplicationId       *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	BrowserAccessStatus *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	ConnectorIds        []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2022-12-16 15:03:42
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7ProxyDomainAutomatic *string `json:"L7ProxyDomainAutomatic,omitempty" xml:"L7ProxyDomainAutomatic,omitempty"`
+	L7ProxyDomainCustom    *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// example:
 	//
 	// private_access_application_name
@@ -8899,6 +8944,11 @@ func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetApplicationId
 	return s
 }
 
+func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetBrowserAccessStatus(v string) *ListPrivateAccessApplicationsResponseBodyApplications {
+	s.BrowserAccessStatus = &v
+	return s
+}
+
 func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetConnectorIds(v []*string) *ListPrivateAccessApplicationsResponseBodyApplications {
 	s.ConnectorIds = v
 	return s
@@ -8911,6 +8961,16 @@ func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetCreateTime(v 
 
 func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetDescription(v string) *ListPrivateAccessApplicationsResponseBodyApplications {
 	s.Description = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetL7ProxyDomainAutomatic(v string) *ListPrivateAccessApplicationsResponseBodyApplications {
+	s.L7ProxyDomainAutomatic = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetL7ProxyDomainCustom(v string) *ListPrivateAccessApplicationsResponseBodyApplications {
+	s.L7ProxyDomainCustom = &v
 	return s
 }
 
@@ -13269,7 +13329,10 @@ type UpdatePrivateAccessApplicationRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// if can be null:
 	// true
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	L7ProxyDomainCustom          *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	L7ProxyDomainPrivate         *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
 	// example:
 	//
 	// Cover
@@ -13308,6 +13371,21 @@ func (s *UpdatePrivateAccessApplicationRequest) SetApplicationId(v string) *Upda
 
 func (s *UpdatePrivateAccessApplicationRequest) SetDescription(v string) *UpdatePrivateAccessApplicationRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) SetL7ProxyDomainAutomaticPrefix(v string) *UpdatePrivateAccessApplicationRequest {
+	s.L7ProxyDomainAutomaticPrefix = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) SetL7ProxyDomainCustom(v string) *UpdatePrivateAccessApplicationRequest {
+	s.L7ProxyDomainCustom = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationRequest) SetL7ProxyDomainPrivate(v string) *UpdatePrivateAccessApplicationRequest {
+	s.L7ProxyDomainPrivate = &v
 	return s
 }
 
@@ -15374,8 +15452,20 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(request *CreateP
 		bodyFlat["Addresses"] = request.Addresses
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BrowserAccessStatus)) {
+		body["BrowserAccessStatus"] = request.BrowserAccessStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L7ProxyDomainAutomaticPrefix)) {
+		body["L7ProxyDomainAutomaticPrefix"] = request.L7ProxyDomainAutomaticPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L7ProxyDomainCustom)) {
+		body["L7ProxyDomainCustom"] = request.L7ProxyDomainCustom
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -19802,6 +19892,18 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(request *UpdateP
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L7ProxyDomainAutomaticPrefix)) {
+		body["L7ProxyDomainAutomaticPrefix"] = request.L7ProxyDomainAutomaticPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L7ProxyDomainCustom)) {
+		body["L7ProxyDomainCustom"] = request.L7ProxyDomainCustom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L7ProxyDomainPrivate)) {
+		body["L7ProxyDomainPrivate"] = request.L7ProxyDomainPrivate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
