@@ -9886,6 +9886,99 @@ func (s *UnbindDeviceSeatsResponse) SetBody(v *UnbindDeviceSeatsResponseBody) *U
 	return s
 }
 
+type UnbindPasswordFreeLoginUserRequest struct {
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s UnbindPasswordFreeLoginUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindPasswordFreeLoginUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindPasswordFreeLoginUserRequest) SetSerialNumber(v string) *UnbindPasswordFreeLoginUserRequest {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *UnbindPasswordFreeLoginUserRequest) SetUuid(v string) *UnbindPasswordFreeLoginUserRequest {
+	s.Uuid = &v
+	return s
+}
+
+type UnbindPasswordFreeLoginUserResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnbindPasswordFreeLoginUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindPasswordFreeLoginUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindPasswordFreeLoginUserResponseBody) SetCode(v string) *UnbindPasswordFreeLoginUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnbindPasswordFreeLoginUserResponseBody) SetHttpStatusCode(v int32) *UnbindPasswordFreeLoginUserResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UnbindPasswordFreeLoginUserResponseBody) SetMessage(v string) *UnbindPasswordFreeLoginUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UnbindPasswordFreeLoginUserResponseBody) SetRequestId(v string) *UnbindPasswordFreeLoginUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnbindPasswordFreeLoginUserResponseBody) SetSuccess(v bool) *UnbindPasswordFreeLoginUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnbindPasswordFreeLoginUserResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindPasswordFreeLoginUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnbindPasswordFreeLoginUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindPasswordFreeLoginUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindPasswordFreeLoginUserResponse) SetHeaders(v map[string]*string) *UnbindPasswordFreeLoginUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindPasswordFreeLoginUserResponse) SetStatusCode(v int32) *UnbindPasswordFreeLoginUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindPasswordFreeLoginUserResponse) SetBody(v *UnbindPasswordFreeLoginUserResponseBody) *UnbindPasswordFreeLoginUserResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAliasRequest struct {
 	Alias    *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
@@ -15304,6 +15397,70 @@ func (client *Client) UnbindDeviceSeats(request *UnbindDeviceSeatsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindDeviceSeatsResponse{}
 	_body, _err := client.UnbindDeviceSeatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑免密登录用户
+//
+// @param request - UnbindPasswordFreeLoginUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindPasswordFreeLoginUserResponse
+func (client *Client) UnbindPasswordFreeLoginUserWithOptions(request *UnbindPasswordFreeLoginUserRequest, runtime *util.RuntimeOptions) (_result *UnbindPasswordFreeLoginUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		body["SerialNumber"] = request.SerialNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindPasswordFreeLoginUser"),
+		Version:     tea.String("2021-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindPasswordFreeLoginUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑免密登录用户
+//
+// @param request - UnbindPasswordFreeLoginUserRequest
+//
+// @return UnbindPasswordFreeLoginUserResponse
+func (client *Client) UnbindPasswordFreeLoginUser(request *UnbindPasswordFreeLoginUserRequest) (_result *UnbindPasswordFreeLoginUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindPasswordFreeLoginUserResponse{}
+	_body, _err := client.UnbindPasswordFreeLoginUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
