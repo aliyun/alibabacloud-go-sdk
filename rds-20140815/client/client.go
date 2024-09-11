@@ -4448,11 +4448,11 @@ type CreateDBInstanceRequest struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to automatically create a proxy. Valid values:
+	// Specifies whether to automatically create a database proxy. Valid values:
 	//
-	// 	- **true**: automatically creates a proxy. By default, general-purpose proxies are enabled.
+	// 	- **true**: automatically creates a database proxy. By default, a general-purpose database proxy is created.
 	//
-	// 	- **false**: does not automatically create a proxy.
+	// 	- **false**: does not automatically create a database proxy.
 	//
 	// example:
 	//
@@ -4460,11 +4460,11 @@ type CreateDBInstanceRequest struct {
 	AutoCreateProxy *bool `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
-	// 	- **true**: enables the feature. Make sure that your account balance is sufficient.
+	// 	- **true**: enables the feature. You must make sure that your account balance is sufficient.
 	//
 	// 	- **false**: disables the feature. An unpaid order is generated.
 	//
-	// >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+	// >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// example:
 	//
@@ -4821,11 +4821,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// >
 	//
-	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	//
+	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -4865,7 +4867,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **Month**
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -4924,7 +4926,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// >  ApsaraDB RDS for MariaDB does not support serverless instances.
 	ServerlessConfig *CreateDBInstanceRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if the instance runs MySQL or PostgreSQL. Valid values:
+	// Specifies whether to enable the automatic storage expansion feature for the instance. If the instance runs MySQL or PostgreSQL, this feature is supported. Valid values:
 	//
 	// 	- **Enable**
 	//
@@ -4948,7 +4950,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **50**
 	//
-	// >  If you set the **StorageAutoScale*	- parameter to **Enable**, you must specify this parameter.
+	// >  If you set the **StorageAutoScale*	- parameter to **Enable**, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -5032,13 +5034,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// rds_20200229
 	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration of the instance. Valid values:
 	//
 	// 	- If you set the **Period*	- parameter to **Year**, the value of the **UsedTime*	- parameter ranges from **1 to 5**.
 	//
 	// 	- If you set the **Period*	- parameter to **Month**, the value of the **UsedTime*	- parameter ranges from **1 to 11**.
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -5432,13 +5434,13 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**
 	//
-	// >  The value of this parameter must be greater than or equal to the value of **MinCapacity*	- and can be set only to an **integer**.
+	// >  The value of this parameter must be greater than or equal to the value of the **MinCapacity*	- parameter and can be set only to an **integer**.
 	//
 	// example:
 	//
 	// 8
 	MaxCapacity *float64 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// The minimum value of RCUs. Valid values:
+	// The minimum number of RCUs. Valid values:
 	//
 	// 	- Serverless ApsaraDB RDS for MySQL instances: **0.5 to 32**.
 	//
@@ -5446,7 +5448,7 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
 	//
-	// >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
+	// >  The value of this parameter must be less than or equal to the value of the **MaxCapacity*	- parameter.
 	//
 	// example:
 	//
@@ -5560,11 +5562,11 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to automatically create a proxy. Valid values:
+	// Specifies whether to automatically create a database proxy. Valid values:
 	//
-	// 	- **true**: automatically creates a proxy. By default, general-purpose proxies are enabled.
+	// 	- **true**: automatically creates a database proxy. By default, a general-purpose database proxy is created.
 	//
-	// 	- **false**: does not automatically create a proxy.
+	// 	- **false**: does not automatically create a database proxy.
 	//
 	// example:
 	//
@@ -5572,11 +5574,11 @@ type CreateDBInstanceShrinkRequest struct {
 	AutoCreateProxy *bool `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
-	// 	- **true**: enables the feature. Make sure that your account balance is sufficient.
+	// 	- **true**: enables the feature. You must make sure that your account balance is sufficient.
 	//
 	// 	- **false**: disables the feature. An unpaid order is generated.
 	//
-	// >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+	// >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// example:
 	//
@@ -5933,11 +5935,13 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// >
 	//
-	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	//
+	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -5977,7 +5981,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **Month**
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -6036,7 +6040,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// >  ApsaraDB RDS for MariaDB does not support serverless instances.
 	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
-	// Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if the instance runs MySQL or PostgreSQL. Valid values:
+	// Specifies whether to enable the automatic storage expansion feature for the instance. If the instance runs MySQL or PostgreSQL, this feature is supported. Valid values:
 	//
 	// 	- **Enable**
 	//
@@ -6060,7 +6064,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **50**
 	//
-	// >  If you set the **StorageAutoScale*	- parameter to **Enable**, you must specify this parameter.
+	// >  If you set the **StorageAutoScale*	- parameter to **Enable**, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -6144,13 +6148,13 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// rds_20200229
 	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration of the instance. Valid values:
 	//
 	// 	- If you set the **Period*	- parameter to **Year**, the value of the **UsedTime*	- parameter ranges from **1 to 5**.
 	//
 	// 	- If you set the **Period*	- parameter to **Month**, the value of the **UsedTime*	- parameter ranges from **1 to 11**.
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
 	//
 	// example:
 	//
