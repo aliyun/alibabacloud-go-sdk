@@ -5548,6 +5548,742 @@ func (s *ModifyDeviceInfoResponse) SetBody(v *ModifyDeviceInfoResponseBody) *Mod
 	return s
 }
 
+type Vehicle5ItemQueryRequest struct {
+	// example:
+	//
+	// normal
+	ParamType  *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
+	// example:
+	//
+	// 02
+	VehicleType *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
+}
+
+func (s Vehicle5ItemQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Vehicle5ItemQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Vehicle5ItemQueryRequest) SetParamType(v string) *Vehicle5ItemQueryRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *Vehicle5ItemQueryRequest) SetVehicleNum(v string) *Vehicle5ItemQueryRequest {
+	s.VehicleNum = &v
+	return s
+}
+
+func (s *Vehicle5ItemQueryRequest) SetVehicleType(v string) *Vehicle5ItemQueryRequest {
+	s.VehicleType = &v
+	return s
+}
+
+type Vehicle5ItemQueryResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0D******
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *Vehicle5ItemQueryResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s Vehicle5ItemQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Vehicle5ItemQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Vehicle5ItemQueryResponseBody) SetCode(v string) *Vehicle5ItemQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Vehicle5ItemQueryResponseBody) SetMessage(v string) *Vehicle5ItemQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Vehicle5ItemQueryResponseBody) SetRequestId(v string) *Vehicle5ItemQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Vehicle5ItemQueryResponseBody) SetResultObject(v *Vehicle5ItemQueryResponseBodyResultObject) *Vehicle5ItemQueryResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type Vehicle5ItemQueryResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	VehicleInfo *string `json:"VehicleInfo,omitempty" xml:"VehicleInfo,omitempty"`
+}
+
+func (s Vehicle5ItemQueryResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Vehicle5ItemQueryResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *Vehicle5ItemQueryResponseBodyResultObject) SetBizCode(v string) *Vehicle5ItemQueryResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *Vehicle5ItemQueryResponseBodyResultObject) SetVehicleInfo(v string) *Vehicle5ItemQueryResponseBodyResultObject {
+	s.VehicleInfo = &v
+	return s
+}
+
+type Vehicle5ItemQueryResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Vehicle5ItemQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s Vehicle5ItemQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Vehicle5ItemQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Vehicle5ItemQueryResponse) SetHeaders(v map[string]*string) *Vehicle5ItemQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Vehicle5ItemQueryResponse) SetStatusCode(v int32) *Vehicle5ItemQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Vehicle5ItemQueryResponse) SetBody(v *Vehicle5ItemQueryResponseBody) *Vehicle5ItemQueryResponse {
+	s.Body = v
+	return s
+}
+
+type VehicleInsureQueryRequest struct {
+	// example:
+	//
+	// normal
+	ParamType  *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
+	// example:
+	//
+	// 02
+	VehicleType *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
+	// example:
+	//
+	// LB**************
+	Vin *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
+}
+
+func (s VehicleInsureQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleInsureQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleInsureQueryRequest) SetParamType(v string) *VehicleInsureQueryRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *VehicleInsureQueryRequest) SetVehicleNum(v string) *VehicleInsureQueryRequest {
+	s.VehicleNum = &v
+	return s
+}
+
+func (s *VehicleInsureQueryRequest) SetVehicleType(v string) *VehicleInsureQueryRequest {
+	s.VehicleType = &v
+	return s
+}
+
+func (s *VehicleInsureQueryRequest) SetVin(v string) *VehicleInsureQueryRequest {
+	s.Vin = &v
+	return s
+}
+
+type VehicleInsureQueryResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5A6229C0-E156-48E4-B6EC-0F52********
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *VehicleInsureQueryResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s VehicleInsureQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleInsureQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleInsureQueryResponseBody) SetCode(v string) *VehicleInsureQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VehicleInsureQueryResponseBody) SetMessage(v string) *VehicleInsureQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VehicleInsureQueryResponseBody) SetRequestId(v string) *VehicleInsureQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VehicleInsureQueryResponseBody) SetResultObject(v *VehicleInsureQueryResponseBodyResultObject) *VehicleInsureQueryResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type VehicleInsureQueryResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "firstInsuranceDate": "****-**-**",
+	//
+	//     "lastInsuranceDate": "****-**",
+	//
+	//     "latestInsuranceDate": "****-**",
+	//
+	//     "latestInsuranceDateStart": "****-**"
+	//
+	//   }
+	VehicleInfo *string `json:"VehicleInfo,omitempty" xml:"VehicleInfo,omitempty"`
+}
+
+func (s VehicleInsureQueryResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleInsureQueryResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleInsureQueryResponseBodyResultObject) SetBizCode(v string) *VehicleInsureQueryResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *VehicleInsureQueryResponseBodyResultObject) SetVehicleInfo(v string) *VehicleInsureQueryResponseBodyResultObject {
+	s.VehicleInfo = &v
+	return s
+}
+
+type VehicleInsureQueryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VehicleInsureQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VehicleInsureQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleInsureQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleInsureQueryResponse) SetHeaders(v map[string]*string) *VehicleInsureQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VehicleInsureQueryResponse) SetStatusCode(v int32) *VehicleInsureQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VehicleInsureQueryResponse) SetBody(v *VehicleInsureQueryResponseBody) *VehicleInsureQueryResponse {
+	s.Body = v
+	return s
+}
+
+type VehicleMetaVerifyRequest struct {
+	// example:
+	//
+	// 4****************1
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// example:
+	//
+	// normal
+	ParamType  *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
+	// example:
+	//
+	// 02
+	VehicleType *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
+	// example:
+	//
+	// VEHICLE_2_META
+	VerifyMetaType *string `json:"VerifyMetaType,omitempty" xml:"VerifyMetaType,omitempty"`
+}
+
+func (s VehicleMetaVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyRequest) SetIdentifyNum(v string) *VehicleMetaVerifyRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyRequest) SetParamType(v string) *VehicleMetaVerifyRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyRequest) SetUserName(v string) *VehicleMetaVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyRequest) SetVehicleNum(v string) *VehicleMetaVerifyRequest {
+	s.VehicleNum = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyRequest) SetVehicleType(v string) *VehicleMetaVerifyRequest {
+	s.VehicleType = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyRequest) SetVerifyMetaType(v string) *VehicleMetaVerifyRequest {
+	s.VerifyMetaType = &v
+	return s
+}
+
+type VehicleMetaVerifyResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 8FC3D6AC-9FED-4311-8DA7-C4BF4*****
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *VehicleMetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s VehicleMetaVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyResponseBody) SetCode(v string) *VehicleMetaVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyResponseBody) SetMessage(v string) *VehicleMetaVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyResponseBody) SetRequestId(v string) *VehicleMetaVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyResponseBody) SetResultObject(v *VehicleMetaVerifyResponseBodyResultObject) *VehicleMetaVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type VehicleMetaVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+}
+
+func (s VehicleMetaVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyResponseBodyResultObject) SetBizCode(v string) *VehicleMetaVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+type VehicleMetaVerifyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VehicleMetaVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VehicleMetaVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyResponse) SetHeaders(v map[string]*string) *VehicleMetaVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VehicleMetaVerifyResponse) SetStatusCode(v int32) *VehicleMetaVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyResponse) SetBody(v *VehicleMetaVerifyResponseBody) *VehicleMetaVerifyResponse {
+	s.Body = v
+	return s
+}
+
+type VehicleMetaVerifyV2Request struct {
+	// example:
+	//
+	// 4****************1
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// example:
+	//
+	// normal
+	ParamType  *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
+	// example:
+	//
+	// 02
+	VehicleType *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
+	// example:
+	//
+	// VEHICLE_3_META
+	VerifyMetaType *string `json:"VerifyMetaType,omitempty" xml:"VerifyMetaType,omitempty"`
+}
+
+func (s VehicleMetaVerifyV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyV2Request) SetIdentifyNum(v string) *VehicleMetaVerifyV2Request {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2Request) SetParamType(v string) *VehicleMetaVerifyV2Request {
+	s.ParamType = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2Request) SetUserName(v string) *VehicleMetaVerifyV2Request {
+	s.UserName = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2Request) SetVehicleNum(v string) *VehicleMetaVerifyV2Request {
+	s.VehicleNum = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2Request) SetVehicleType(v string) *VehicleMetaVerifyV2Request {
+	s.VehicleType = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2Request) SetVerifyMetaType(v string) *VehicleMetaVerifyV2Request {
+	s.VerifyMetaType = &v
+	return s
+}
+
+type VehicleMetaVerifyV2ResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5A6229C0-E156-48E4-B6EC-0F528B******
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *VehicleMetaVerifyV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s VehicleMetaVerifyV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyV2ResponseBody) SetCode(v string) *VehicleMetaVerifyV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2ResponseBody) SetMessage(v string) *VehicleMetaVerifyV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2ResponseBody) SetRequestId(v string) *VehicleMetaVerifyV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2ResponseBody) SetResultObject(v *VehicleMetaVerifyV2ResponseBodyResultObject) *VehicleMetaVerifyV2ResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type VehicleMetaVerifyV2ResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	VehicleInfo *string `json:"VehicleInfo,omitempty" xml:"VehicleInfo,omitempty"`
+}
+
+func (s VehicleMetaVerifyV2ResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyV2ResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyV2ResponseBodyResultObject) SetBizCode(v string) *VehicleMetaVerifyV2ResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2ResponseBodyResultObject) SetVehicleInfo(v string) *VehicleMetaVerifyV2ResponseBodyResultObject {
+	s.VehicleInfo = &v
+	return s
+}
+
+type VehicleMetaVerifyV2Response struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VehicleMetaVerifyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VehicleMetaVerifyV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleMetaVerifyV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleMetaVerifyV2Response) SetHeaders(v map[string]*string) *VehicleMetaVerifyV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2Response) SetStatusCode(v int32) *VehicleMetaVerifyV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VehicleMetaVerifyV2Response) SetBody(v *VehicleMetaVerifyV2ResponseBody) *VehicleMetaVerifyV2Response {
+	s.Body = v
+	return s
+}
+
+type VehicleQueryRequest struct {
+	// example:
+	//
+	// normal
+	ParamType  *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
+	// example:
+	//
+	// 02
+	VehicleType *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
+}
+
+func (s VehicleQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleQueryRequest) SetParamType(v string) *VehicleQueryRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *VehicleQueryRequest) SetVehicleNum(v string) *VehicleQueryRequest {
+	s.VehicleNum = &v
+	return s
+}
+
+func (s *VehicleQueryRequest) SetVehicleType(v string) *VehicleQueryRequest {
+	s.VehicleType = &v
+	return s
+}
+
+type VehicleQueryResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D6163397-15C5-419C-9ACC-B7C83*******
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *VehicleQueryResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s VehicleQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleQueryResponseBody) SetCode(v string) *VehicleQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VehicleQueryResponseBody) SetMessage(v string) *VehicleQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VehicleQueryResponseBody) SetRequestId(v string) *VehicleQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VehicleQueryResponseBody) SetResultObject(v *VehicleQueryResponseBodyResultObject) *VehicleQueryResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type VehicleQueryResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	VehicleInfo *string `json:"VehicleInfo,omitempty" xml:"VehicleInfo,omitempty"`
+}
+
+func (s VehicleQueryResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleQueryResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleQueryResponseBodyResultObject) SetBizCode(v string) *VehicleQueryResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *VehicleQueryResponseBodyResultObject) SetVehicleInfo(v string) *VehicleQueryResponseBodyResultObject {
+	s.VehicleInfo = &v
+	return s
+}
+
+type VehicleQueryResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VehicleQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VehicleQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VehicleQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VehicleQueryResponse) SetHeaders(v map[string]*string) *VehicleQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VehicleQueryResponse) SetStatusCode(v int32) *VehicleQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VehicleQueryResponse) SetBody(v *VehicleQueryResponseBody) *VehicleQueryResponse {
+	s.Body = v
+	return s
+}
+
 type VerifyMaterialRequest struct {
 	// This parameter is required.
 	//
@@ -8183,6 +8919,374 @@ func (client *Client) ModifyDeviceInfo(request *ModifyDeviceInfoRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDeviceInfoResponse{}
 	_body, _err := client.ModifyDeviceInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 车五项信息识别
+//
+// @param request - Vehicle5ItemQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Vehicle5ItemQueryResponse
+func (client *Client) Vehicle5ItemQueryWithOptions(request *Vehicle5ItemQueryRequest, runtime *util.RuntimeOptions) (_result *Vehicle5ItemQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleNum)) {
+		query["VehicleNum"] = request.VehicleNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleType)) {
+		query["VehicleType"] = request.VehicleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Vehicle5ItemQuery"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Vehicle5ItemQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 车五项信息识别
+//
+// @param request - Vehicle5ItemQueryRequest
+//
+// @return Vehicle5ItemQueryResponse
+func (client *Client) Vehicle5ItemQuery(request *Vehicle5ItemQueryRequest) (_result *Vehicle5ItemQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Vehicle5ItemQueryResponse{}
+	_body, _err := client.Vehicle5ItemQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆投保日期查询
+//
+// @param request - VehicleInsureQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VehicleInsureQueryResponse
+func (client *Client) VehicleInsureQueryWithOptions(request *VehicleInsureQueryRequest, runtime *util.RuntimeOptions) (_result *VehicleInsureQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleNum)) {
+		query["VehicleNum"] = request.VehicleNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleType)) {
+		query["VehicleType"] = request.VehicleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vin)) {
+		query["Vin"] = request.Vin
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VehicleInsureQuery"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VehicleInsureQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆投保日期查询
+//
+// @param request - VehicleInsureQueryRequest
+//
+// @return VehicleInsureQueryResponse
+func (client *Client) VehicleInsureQuery(request *VehicleInsureQueryRequest) (_result *VehicleInsureQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VehicleInsureQueryResponse{}
+	_body, _err := client.VehicleInsureQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆要素核验
+//
+// @param request - VehicleMetaVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VehicleMetaVerifyResponse
+func (client *Client) VehicleMetaVerifyWithOptions(request *VehicleMetaVerifyRequest, runtime *util.RuntimeOptions) (_result *VehicleMetaVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleNum)) {
+		query["VehicleNum"] = request.VehicleNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleType)) {
+		query["VehicleType"] = request.VehicleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyMetaType)) {
+		query["VerifyMetaType"] = request.VerifyMetaType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VehicleMetaVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VehicleMetaVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆要素核验
+//
+// @param request - VehicleMetaVerifyRequest
+//
+// @return VehicleMetaVerifyResponse
+func (client *Client) VehicleMetaVerify(request *VehicleMetaVerifyRequest) (_result *VehicleMetaVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VehicleMetaVerifyResponse{}
+	_body, _err := client.VehicleMetaVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆要素核验增强版
+//
+// @param request - VehicleMetaVerifyV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VehicleMetaVerifyV2Response
+func (client *Client) VehicleMetaVerifyV2WithOptions(request *VehicleMetaVerifyV2Request, runtime *util.RuntimeOptions) (_result *VehicleMetaVerifyV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleNum)) {
+		query["VehicleNum"] = request.VehicleNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleType)) {
+		query["VehicleType"] = request.VehicleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyMetaType)) {
+		query["VerifyMetaType"] = request.VerifyMetaType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VehicleMetaVerifyV2"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VehicleMetaVerifyV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆要素核验增强版
+//
+// @param request - VehicleMetaVerifyV2Request
+//
+// @return VehicleMetaVerifyV2Response
+func (client *Client) VehicleMetaVerifyV2(request *VehicleMetaVerifyV2Request) (_result *VehicleMetaVerifyV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VehicleMetaVerifyV2Response{}
+	_body, _err := client.VehicleMetaVerifyV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆信息识别
+//
+// @param request - VehicleQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VehicleQueryResponse
+func (client *Client) VehicleQueryWithOptions(request *VehicleQueryRequest, runtime *util.RuntimeOptions) (_result *VehicleQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleNum)) {
+		query["VehicleNum"] = request.VehicleNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VehicleType)) {
+		query["VehicleType"] = request.VehicleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VehicleQuery"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VehicleQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 车辆信息识别
+//
+// @param request - VehicleQueryRequest
+//
+// @return VehicleQueryResponse
+func (client *Client) VehicleQuery(request *VehicleQueryRequest) (_result *VehicleQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VehicleQueryResponse{}
+	_body, _err := client.VehicleQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
