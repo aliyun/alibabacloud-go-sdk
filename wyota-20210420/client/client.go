@@ -2,7 +2,6 @@
 package client
 
 import (
-	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -1015,6 +1014,105 @@ func (s *BindAccountLessLoginUserResponse) SetStatusCode(v int32) *BindAccountLe
 }
 
 func (s *BindAccountLessLoginUserResponse) SetBody(v *BindAccountLessLoginUserResponseBody) *BindAccountLessLoginUserResponse {
+	s.Body = v
+	return s
+}
+
+type BindPasswordFreeLoginUserRequest struct {
+	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s BindPasswordFreeLoginUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindPasswordFreeLoginUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindPasswordFreeLoginUserRequest) SetEndUserId(v string) *BindPasswordFreeLoginUserRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserRequest) SetSerialNumber(v string) *BindPasswordFreeLoginUserRequest {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserRequest) SetUuid(v string) *BindPasswordFreeLoginUserRequest {
+	s.Uuid = &v
+	return s
+}
+
+type BindPasswordFreeLoginUserResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindPasswordFreeLoginUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindPasswordFreeLoginUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindPasswordFreeLoginUserResponseBody) SetCode(v string) *BindPasswordFreeLoginUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserResponseBody) SetHttpStatusCode(v int32) *BindPasswordFreeLoginUserResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserResponseBody) SetMessage(v string) *BindPasswordFreeLoginUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserResponseBody) SetRequestId(v string) *BindPasswordFreeLoginUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserResponseBody) SetSuccess(v bool) *BindPasswordFreeLoginUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindPasswordFreeLoginUserResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindPasswordFreeLoginUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindPasswordFreeLoginUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindPasswordFreeLoginUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindPasswordFreeLoginUserResponse) SetHeaders(v map[string]*string) *BindPasswordFreeLoginUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserResponse) SetStatusCode(v int32) *BindPasswordFreeLoginUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserResponse) SetBody(v *BindPasswordFreeLoginUserResponseBody) *BindPasswordFreeLoginUserResponse {
 	s.Body = v
 	return s
 }
@@ -10360,13 +10458,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.ProductId = tea.String("wyota")
-	gatewayClient, _err := gatewayclient.NewClient()
-	if _err != nil {
-		return _err
-	}
-
-	client.Spi = gatewayClient
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -10433,7 +10525,7 @@ func (client *Client) ActivateDeviceWithOptions(request *ActivateDeviceRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ActivateDeviceResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10512,24 +10604,13 @@ func (client *Client) AddDeviceFromSNWithOptions(request *AddDeviceFromSNRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddDeviceFromSNResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddDeviceFromSNResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddDeviceFromSNResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10608,7 +10689,7 @@ func (client *Client) AddDeviceSeatsAndLabelsWithOptions(request *AddDeviceSeats
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddDeviceSeatsAndLabelsResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10683,24 +10764,13 @@ func (client *Client) AddDevicesFromCSVWithOptions(request *AddDevicesFromCSVReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddDevicesFromCSVResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddDevicesFromCSVResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddDevicesFromCSVResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10754,24 +10824,13 @@ func (client *Client) AddLabelsWithOptions(request *AddLabelsRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10833,24 +10892,13 @@ func (client *Client) AddOrUpdateDeviceSeatsWithOptions(request *AddOrUpdateDevi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddOrUpdateDeviceSeatsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddOrUpdateDeviceSeatsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddOrUpdateDeviceSeatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10912,24 +10960,13 @@ func (client *Client) AddTerminalWithOptions(request *AddTerminalRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddTerminalResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddTerminalResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddTerminalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10987,24 +11024,13 @@ func (client *Client) AttachEndUsersWithOptions(request *AttachEndUsersRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AttachEndUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AttachEndUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AttachEndUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11066,24 +11092,13 @@ func (client *Client) AttachLabelWithOptions(request *AttachLabelRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AttachLabelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AttachLabelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AttachLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11145,24 +11160,13 @@ func (client *Client) AttachLabelsWithOptions(request *AttachLabelsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AttachLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AttachLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AttachLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11224,24 +11228,13 @@ func (client *Client) BindAccountLessLoginUserWithOptions(request *BindAccountLe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BindAccountLessLoginUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BindAccountLessLoginUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BindAccountLessLoginUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11255,6 +11248,74 @@ func (client *Client) BindAccountLessLoginUser(request *BindAccountLessLoginUser
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAccountLessLoginUserResponse{}
 	_body, _err := client.BindAccountLessLoginUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定免账号登录用户
+//
+// @param request - BindPasswordFreeLoginUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindPasswordFreeLoginUserResponse
+func (client *Client) BindPasswordFreeLoginUserWithOptions(request *BindPasswordFreeLoginUserRequest, runtime *util.RuntimeOptions) (_result *BindPasswordFreeLoginUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		body["SerialNumber"] = request.SerialNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindPasswordFreeLoginUser"),
+		Version:     tea.String("2021-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindPasswordFreeLoginUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定免账号登录用户
+//
+// @param request - BindPasswordFreeLoginUserRequest
+//
+// @return BindPasswordFreeLoginUserResponse
+func (client *Client) BindPasswordFreeLoginUser(request *BindPasswordFreeLoginUserRequest) (_result *BindPasswordFreeLoginUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindPasswordFreeLoginUserResponse{}
+	_body, _err := client.BindPasswordFreeLoginUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11328,7 +11389,7 @@ func (client *Client) CheckUuidValidWithOptions(request *CheckUuidValidRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckUuidValidResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11439,24 +11500,13 @@ func (client *Client) CreateAppOtaTaskWithOptions(request *CreateAppOtaTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAppOtaTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAppOtaTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAppOtaTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11582,24 +11632,13 @@ func (client *Client) CreateAppOtaVersionWithOptions(request *CreateAppOtaVersio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAppOtaVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAppOtaVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAppOtaVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11653,24 +11692,13 @@ func (client *Client) DeleteAppOtaVersionsWithOptions(request *DeleteAppOtaVersi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAppOtaVersionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAppOtaVersionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAppOtaVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11734,24 +11762,13 @@ func (client *Client) DeleteDevicesWithOptions(request *DeleteDevicesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDevicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDevicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11813,24 +11830,13 @@ func (client *Client) DeleteLabelWithOptions(request *DeleteLabelRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteLabelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteLabelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11908,24 +11914,13 @@ func (client *Client) DescribeAppOtaVersionWithOptions(request *DescribeAppOtaVe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppOtaVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppOtaVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppOtaVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12000,7 +11995,7 @@ func (client *Client) DescribeDeviceSeatsWithOptions(request *DescribeDeviceSeat
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeviceSeatsResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12072,7 +12067,7 @@ func (client *Client) DescribeDeviceVersionDetailWithOptions(request *DescribeDe
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeviceVersionDetailResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12143,24 +12138,13 @@ func (client *Client) DescribeSnLabelCountsWithOptions(request *DescribeSnLabelC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSnLabelCountsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSnLabelCountsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSnLabelCountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12231,7 +12215,7 @@ func (client *Client) DescribeWorkZonesWithOptions(request *DescribeWorkZonesReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWorkZonesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12294,24 +12278,13 @@ func (client *Client) DetachEndUsersWithOptions(request *DetachEndUsersRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DetachEndUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DetachEndUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DetachEndUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12373,24 +12346,13 @@ func (client *Client) DetachLabelWithOptions(request *DetachLabelRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DetachLabelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DetachLabelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DetachLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12452,24 +12414,13 @@ func (client *Client) DetachLabelsWithOptions(request *DetachLabelsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DetachLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DetachLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DetachLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12528,7 +12479,7 @@ func (client *Client) GenerateOssUrlWithOptions(request *GenerateOssUrlRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateOssUrlResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12604,7 +12555,7 @@ func (client *Client) GetAppOtaLatestVersionWithOptions(request *GetAppOtaLatest
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAppOtaLatestVersionResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12684,7 +12635,7 @@ func (client *Client) GetDeviceConfigsWithOptions(request *GetDeviceConfigsReque
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDeviceConfigsResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12743,24 +12694,13 @@ func (client *Client) GetDeviceOtaAutoStatusWithOptions(request *GetDeviceOtaAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDeviceOtaAutoStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDeviceOtaAutoStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDeviceOtaAutoStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12851,7 +12791,7 @@ func (client *Client) GetDeviceOtaInfoWithOptions(request *GetDeviceOtaInfoReque
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDeviceOtaInfoResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12922,24 +12862,13 @@ func (client *Client) GetDeviceOtaInfoTestWithOptions(request *GetDeviceOtaInfoT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDeviceOtaInfoTestResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDeviceOtaInfoTestResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDeviceOtaInfoTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12993,24 +12922,13 @@ func (client *Client) GetDeviceOtaTaskVersionInfoWithOptions(request *GetDeviceO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDeviceOtaTaskVersionInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDeviceOtaTaskVersionInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDeviceOtaTaskVersionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13076,24 +12994,13 @@ func (client *Client) GetDeviceUpgradeStatusWithOptions(request *GetDeviceUpgrad
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDeviceUpgradeStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDeviceUpgradeStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDeviceUpgradeStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13155,24 +13062,13 @@ func (client *Client) GetExportDeviceInfoOssUrlWithOptions(request *GetExportDev
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetExportDeviceInfoOssUrlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetExportDeviceInfoOssUrlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetExportDeviceInfoOssUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13235,7 +13131,7 @@ func (client *Client) GetFbOssConfigWithOptions(request *GetFbOssConfigRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFbOssConfigResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13294,24 +13190,13 @@ func (client *Client) GetOssConfigWithOptions(request *GetOssConfigRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetOssConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetOssConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetOssConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13365,24 +13250,13 @@ func (client *Client) GetVersionDownloadUrlWithOptions(request *GetVersionDownlo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetVersionDownloadUrlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetVersionDownloadUrlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetVersionDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13440,24 +13314,13 @@ func (client *Client) ListDeviceOtaTaskByTenantWithOptions(request *ListDeviceOt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDeviceOtaTaskByTenantResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDeviceOtaTaskByTenantResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDeviceOtaTaskByTenantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13527,24 +13390,13 @@ func (client *Client) ListDeviceSeatsWithOptions(request *ListDeviceSeatsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDeviceSeatsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDeviceSeatsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDeviceSeatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13668,24 +13520,13 @@ func (client *Client) ListDevicesWithOptions(request *ListDevicesRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDevicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDevicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13729,7 +13570,7 @@ func (client *Client) ListFbIssueLabelsWithOptions(runtime *util.RuntimeOptions)
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFbIssueLabelsResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13791,7 +13632,7 @@ func (client *Client) ListFbIssueLabelsByLCWithOptions(request *ListFbIssueLabel
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFbIssueLabelsByLCResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13862,24 +13703,13 @@ func (client *Client) ListLabelsWithOptions(request *ListLabelsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13941,24 +13771,13 @@ func (client *Client) ListTenantDeviceOtaInfoWithOptions(request *ListTenantDevi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTenantDeviceOtaInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTenantDeviceOtaInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTenantDeviceOtaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14060,24 +13879,13 @@ func (client *Client) ListTerminalWithOptions(request *ListTerminalRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTerminalResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTerminalResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTerminalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14153,24 +13961,13 @@ func (client *Client) ListTerminalsWithOptions(request *ListTerminalsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTerminalsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTerminalsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTerminalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14237,7 +14034,7 @@ func (client *Client) ListTrustDevicesWithOptions(request *ListTrustDevicesReque
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTrustDevicesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14329,7 +14126,7 @@ func (client *Client) ListUserFbAcIssuesWithOptions(request *ListUserFbAcIssuesR
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListUserFbAcIssuesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14461,7 +14258,7 @@ func (client *Client) ListUserFbIssuesWithOptions(request *ListUserFbIssuesReque
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListUserFbIssuesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14528,24 +14325,13 @@ func (client *Client) ModifyDevicesSecureNetworkTypeWithOptions(request *ModifyD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDevicesSecureNetworkTypeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDevicesSecureNetworkTypeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDevicesSecureNetworkTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14603,24 +14389,13 @@ func (client *Client) ModifySecureNetworkTypeWithOptions(request *ModifySecureNe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifySecureNetworkTypeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifySecureNetworkTypeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifySecureNetworkTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14727,7 +14502,7 @@ func (client *Client) RegisterDeviceWithOptions(request *RegisterDeviceRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterDeviceResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14819,7 +14594,7 @@ func (client *Client) ReportAppOtaInfoWithOptions(request *ReportAppOtaInfoReque
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportAppOtaInfoResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14899,7 +14674,7 @@ func (client *Client) ReportDeviceOtaInfoWithOptions(request *ReportDeviceOtaInf
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportDeviceOtaInfoResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14997,7 +14772,7 @@ func (client *Client) ReportUserFbAcIssueWithOptions(tmpReq *ReportUserFbAcIssue
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportUserFbAcIssueResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15159,7 +14934,7 @@ func (client *Client) ReportUserFbIssueWithOptions(tmpReq *ReportUserFbIssueRequ
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportUserFbIssueResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15239,24 +15014,13 @@ func (client *Client) SendOpsMessageToTerminalsWithOptions(request *SendOpsMessa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SendOpsMessageToTerminalsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SendOpsMessageToTerminalsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SendOpsMessageToTerminalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15326,24 +15090,13 @@ func (client *Client) SetDeviceOtaAutoStatusWithOptions(request *SetDeviceOtaAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetDeviceOtaAutoStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetDeviceOtaAutoStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetDeviceOtaAutoStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15401,24 +15154,13 @@ func (client *Client) SetDeviceOtaTaskStatusWithOptions(request *SetDeviceOtaTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetDeviceOtaTaskStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetDeviceOtaTaskStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetDeviceOtaTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15476,24 +15218,13 @@ func (client *Client) UnbindAccountLessLoginUserWithOptions(request *UnbindAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnbindAccountLessLoginUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnbindAccountLessLoginUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnbindAccountLessLoginUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15553,24 +15284,13 @@ func (client *Client) UnbindDeviceSeatsWithOptions(tmpReq *UnbindDeviceSeatsRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnbindDeviceSeatsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnbindDeviceSeatsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnbindDeviceSeatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15632,24 +15352,13 @@ func (client *Client) UpdateAliasWithOptions(request *UpdateAliasRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateAliasResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateAliasResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateAliasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15723,24 +15432,13 @@ func (client *Client) UpdateDeviceBindedEndUserWithOptions(request *UpdateDevice
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDeviceBindedEndUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDeviceBindedEndUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDeviceBindedEndUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15798,24 +15496,13 @@ func (client *Client) UpdateLabelWithOptions(request *UpdateLabelRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLabelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLabelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15961,24 +15648,13 @@ func (client *Client) UpdateTerminalPolicyWithOptions(request *UpdateTerminalPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateTerminalPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateTerminalPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateTerminalPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
