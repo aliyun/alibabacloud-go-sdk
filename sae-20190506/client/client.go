@@ -485,6 +485,7 @@ type Application struct {
 	NamespaceName           *string                  `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
 	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	ProgrammingLanguage     *string                  `json:"programmingLanguage,omitempty" xml:"programmingLanguage,omitempty"`
 	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	ScaleConfig             *ScaleConfig             `json:"scaleConfig,omitempty" xml:"scaleConfig,omitempty"`
 	SlsConfig               *SLSConfig               `json:"slsConfig,omitempty" xml:"slsConfig,omitempty"`
@@ -712,6 +713,11 @@ func (s *Application) SetNasConfig(v *NASConfig) *Application {
 
 func (s *Application) SetOssMountConfig(v *OSSMountConfig) *Application {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *Application) SetProgrammingLanguage(v string) *Application {
+	s.ProgrammingLanguage = &v
 	return s
 }
 
@@ -1948,6 +1954,7 @@ type CreateApplicationInput struct {
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnableAppMetric         *bool                    `json:"enableAppMetric,omitempty" xml:"enableAppMetric,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
@@ -1967,6 +1974,7 @@ type CreateApplicationInput struct {
 	NamespaceID             *string                  `json:"namespaceID,omitempty" xml:"namespaceID,omitempty"`
 	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	ProgrammingLanguage     *string                  `json:"programmingLanguage,omitempty" xml:"programmingLanguage,omitempty"`
 	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	ScaleConfig             *ScaleConfig             `json:"scaleConfig,omitempty" xml:"scaleConfig,omitempty"`
 	SlsConfig               *SLSConfig               `json:"slsConfig,omitempty" xml:"slsConfig,omitempty"`
@@ -2041,6 +2049,11 @@ func (s *CreateApplicationInput) SetDescription(v string) *CreateApplicationInpu
 
 func (s *CreateApplicationInput) SetDiskSize(v int32) *CreateApplicationInput {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *CreateApplicationInput) SetEnableAppMetric(v bool) *CreateApplicationInput {
+	s.EnableAppMetric = &v
 	return s
 }
 
@@ -2136,6 +2149,11 @@ func (s *CreateApplicationInput) SetNasConfig(v *NASConfig) *CreateApplicationIn
 
 func (s *CreateApplicationInput) SetOssMountConfig(v *OSSMountConfig) *CreateApplicationInput {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *CreateApplicationInput) SetProgrammingLanguage(v string) *CreateApplicationInput {
+	s.ProgrammingLanguage = &v
 	return s
 }
 
@@ -5965,8 +5983,10 @@ type UpdateApplicationInput struct {
 	LivenessProbe           *Probe                   `json:"livenessProbe,omitempty" xml:"livenessProbe,omitempty"`
 	LogConfig               *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
 	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NamespaceID             *string                  `json:"namespaceID,omitempty" xml:"namespaceID,omitempty"`
 	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	ProgrammingLanguage     *string                  `json:"programmingLanguage,omitempty" xml:"programmingLanguage,omitempty"`
 	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	ScaleConfig             *ScaleConfig             `json:"scaleConfig,omitempty" xml:"scaleConfig,omitempty"`
 	SlsConfig               *SLSConfig               `json:"slsConfig,omitempty" xml:"slsConfig,omitempty"`
@@ -6129,6 +6149,11 @@ func (s *UpdateApplicationInput) SetMemorySize(v int32) *UpdateApplicationInput 
 	return s
 }
 
+func (s *UpdateApplicationInput) SetNamespaceID(v string) *UpdateApplicationInput {
+	s.NamespaceID = &v
+	return s
+}
+
 func (s *UpdateApplicationInput) SetNasConfig(v *NASConfig) *UpdateApplicationInput {
 	s.NasConfig = v
 	return s
@@ -6136,6 +6161,11 @@ func (s *UpdateApplicationInput) SetNasConfig(v *NASConfig) *UpdateApplicationIn
 
 func (s *UpdateApplicationInput) SetOssMountConfig(v *OSSMountConfig) *UpdateApplicationInput {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *UpdateApplicationInput) SetProgrammingLanguage(v string) *UpdateApplicationInput {
+	s.ProgrammingLanguage = &v
 	return s
 }
 
@@ -10457,6 +10487,7 @@ type CreateIngressRequest struct {
 	//
 	// ingress-for-sae-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -10518,6 +10549,11 @@ func (s *CreateIngressRequest) SetDefaultRule(v string) *CreateIngressRequest {
 
 func (s *CreateIngressRequest) SetDescription(v string) *CreateIngressRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetIdleTimeout(v int32) *CreateIngressRequest {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -22757,7 +22793,8 @@ type DescribeIngressResponseBodyData struct {
 	// example:
 	//
 	// 87
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The default rule.
 	//
 	// example:
@@ -22842,6 +22879,11 @@ func (s *DescribeIngressResponseBodyData) SetDescription(v string) *DescribeIngr
 
 func (s *DescribeIngressResponseBodyData) SetId(v int64) *DescribeIngressResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetIdleTimeout(v int32) *DescribeIngressResponseBodyData {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -40312,6 +40354,7 @@ type UpdateIngressRequest struct {
 	//
 	// ingress-sae-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -40363,6 +40406,11 @@ func (s *UpdateIngressRequest) SetDefaultRule(v string) *UpdateIngressRequest {
 
 func (s *UpdateIngressRequest) SetDescription(v string) *UpdateIngressRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetIdleTimeout(v int32) *UpdateIngressRequest {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -43243,6 +43291,10 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
@@ -50942,6 +50994,10 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IngressId)) {
