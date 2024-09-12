@@ -19793,6 +19793,7 @@ type ListPublicKeysRequest struct {
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// example:
 	//
 	// 1
@@ -19818,6 +19819,11 @@ func (s *ListPublicKeysRequest) SetKeyGroup(v string) *ListPublicKeysRequest {
 
 func (s *ListPublicKeysRequest) SetKeyName(v string) *ListPublicKeysRequest {
 	s.KeyName = &v
+	return s
+}
+
+func (s *ListPublicKeysRequest) SetKeyType(v string) *ListPublicKeysRequest {
+	s.KeyType = &v
 	return s
 }
 
@@ -19898,6 +19904,7 @@ type ListPublicKeysResponseBodyPublicKeys struct {
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// example:
 	//
 	// 2024-06-11T14:26:48+08:00
@@ -19929,6 +19936,11 @@ func (s *ListPublicKeysResponseBodyPublicKeys) SetKeyGroup(v string) *ListPublic
 
 func (s *ListPublicKeysResponseBodyPublicKeys) SetKeyName(v string) *ListPublicKeysResponseBodyPublicKeys {
 	s.KeyName = &v
+	return s
+}
+
+func (s *ListPublicKeysResponseBodyPublicKeys) SetKeyType(v string) *ListPublicKeysResponseBodyPublicKeys {
+	s.KeyType = &v
 	return s
 }
 
@@ -20191,6 +20203,7 @@ func (s *ManageLoginResponseBody) SetRequestId(v string) *ManageLoginResponseBod
 }
 
 type ManageLoginResponseBodyLoginInfo struct {
+	AdbLoginPort *int32 `json:"AdbLoginPort,omitempty" xml:"AdbLoginPort,omitempty"`
 	// example:
 	//
 	// 12.10.4.10
@@ -20207,6 +20220,11 @@ func (s ManageLoginResponseBodyLoginInfo) String() string {
 
 func (s ManageLoginResponseBodyLoginInfo) GoString() string {
 	return s.String()
+}
+
+func (s *ManageLoginResponseBodyLoginInfo) SetAdbLoginPort(v int32) *ManageLoginResponseBodyLoginInfo {
+	s.AdbLoginPort = &v
+	return s
 }
 
 func (s *ManageLoginResponseBodyLoginInfo) SetLoginHostname(v string) *ManageLoginResponseBodyLoginInfo {
@@ -25246,6 +25264,7 @@ type UploadPublicKeyRequest struct {
 	//
 	// mykey-v1.0
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 }
 
 func (s UploadPublicKeyRequest) String() string {
@@ -25273,6 +25292,11 @@ func (s *UploadPublicKeyRequest) SetKeyGroup(v string) *UploadPublicKeyRequest {
 
 func (s *UploadPublicKeyRequest) SetKeyName(v string) *UploadPublicKeyRequest {
 	s.KeyName = &v
+	return s
+}
+
+func (s *UploadPublicKeyRequest) SetKeyType(v string) *UploadPublicKeyRequest {
+	s.KeyType = &v
 	return s
 }
 
@@ -36404,6 +36428,10 @@ func (client *Client) UploadPublicKeyWithOptions(request *UploadPublicKeyRequest
 
 	if !tea.BoolValue(util.IsUnset(request.KeyName)) {
 		query["KeyName"] = request.KeyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyType)) {
+		query["KeyType"] = request.KeyType
 	}
 
 	req := &openapi.OpenApiRequest{
