@@ -1044,7 +1044,8 @@ func (s *GetImageAnalyzeTaskStatusResponse) SetBody(v *GetImageAnalyzeTaskStatus
 }
 
 type GetQueryAnalysisRequest struct {
-	History []*GetQueryAnalysisRequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
+	Functions []*GetQueryAnalysisRequestFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
+	History   []*GetQueryAnalysisRequestHistory   `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
@@ -1057,6 +1058,11 @@ func (s GetQueryAnalysisRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetQueryAnalysisRequest) SetFunctions(v []*GetQueryAnalysisRequestFunctions) *GetQueryAnalysisRequest {
+	s.Functions = v
+	return s
+}
+
 func (s *GetQueryAnalysisRequest) SetHistory(v []*GetQueryAnalysisRequestHistory) *GetQueryAnalysisRequest {
 	s.History = v
 	return s
@@ -1064,6 +1070,29 @@ func (s *GetQueryAnalysisRequest) SetHistory(v []*GetQueryAnalysisRequestHistory
 
 func (s *GetQueryAnalysisRequest) SetQuery(v string) *GetQueryAnalysisRequest {
 	s.Query = &v
+	return s
+}
+
+type GetQueryAnalysisRequestFunctions struct {
+	Name       *string                `json:"name,omitempty" xml:"name,omitempty"`
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+}
+
+func (s GetQueryAnalysisRequestFunctions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueryAnalysisRequestFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueryAnalysisRequestFunctions) SetName(v string) *GetQueryAnalysisRequestFunctions {
+	s.Name = &v
+	return s
+}
+
+func (s *GetQueryAnalysisRequestFunctions) SetParameters(v map[string]interface{}) *GetQueryAnalysisRequestFunctions {
+	s.Parameters = v
 	return s
 }
 
@@ -1126,9 +1155,10 @@ func (s *GetQueryAnalysisResponseBody) SetUsage(v *GetQueryAnalysisResponseBodyU
 }
 
 type GetQueryAnalysisResponseBodyResult struct {
-	Intent  *string   `json:"intent,omitempty" xml:"intent,omitempty"`
-	Queries []*string `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
-	Query   *string   `json:"query,omitempty" xml:"query,omitempty"`
+	Intent  *string                `json:"intent,omitempty" xml:"intent,omitempty"`
+	Queries []*string              `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
+	Query   *string                `json:"query,omitempty" xml:"query,omitempty"`
+	Sql     map[string]interface{} `json:"sql,omitempty" xml:"sql,omitempty"`
 }
 
 func (s GetQueryAnalysisResponseBodyResult) String() string {
@@ -1151,6 +1181,11 @@ func (s *GetQueryAnalysisResponseBodyResult) SetQueries(v []*string) *GetQueryAn
 
 func (s *GetQueryAnalysisResponseBodyResult) SetQuery(v string) *GetQueryAnalysisResponseBodyResult {
 	s.Query = &v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBodyResult) SetSql(v map[string]interface{}) *GetQueryAnalysisResponseBodyResult {
+	s.Sql = v
 	return s
 }
 
@@ -2150,6 +2185,10 @@ func (client *Client) GetQueryAnalysisWithOptions(workspaceName *string, service
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Functions)) {
+		body["functions"] = request.Functions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.History)) {
 		body["history"] = request.History
 	}
