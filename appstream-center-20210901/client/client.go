@@ -1608,6 +1608,7 @@ func (s *CreateAppInstanceGroupRequestNetworkRoutes) SetMode(v string) *CreateAp
 }
 
 type CreateAppInstanceGroupRequestNodePool struct {
+	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
 	// example:
 	//
 	// 10
@@ -1658,6 +1659,11 @@ func (s CreateAppInstanceGroupRequestNodePool) String() string {
 
 func (s CreateAppInstanceGroupRequestNodePool) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestNodePool) SetMaxIdleAppInstanceAmount(v int32) *CreateAppInstanceGroupRequestNodePool {
+	s.MaxIdleAppInstanceAmount = &v
+	return s
 }
 
 func (s *CreateAppInstanceGroupRequestNodePool) SetMaxScalingAmount(v int32) *CreateAppInstanceGroupRequestNodePool {
@@ -3524,7 +3530,8 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	// example:
 	//
 	// 2
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount                   *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
 	// example:
 	//
 	// 8
@@ -3599,6 +3606,11 @@ func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) GoString(
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetAmount(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool {
 	s.Amount = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetMaxIdleAppInstanceAmount(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool {
+	s.MaxIdleAppInstanceAmount = &v
 	return s
 }
 
@@ -6024,7 +6036,8 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	// example:
 	//
 	// 2
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount                   *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
 	// example:
 	//
 	// 8
@@ -6099,6 +6112,11 @@ func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) GoString
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetAmount(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool {
 	s.Amount = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetMaxIdleAppInstanceAmount(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool {
+	s.MaxIdleAppInstanceAmount = &v
 	return s
 }
 
@@ -8710,6 +8728,7 @@ func (s *ModifyNodePoolAttributeRequest) SetProductType(v string) *ModifyNodePoo
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategy struct {
+	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
 	// example:
 	//
 	// 10
@@ -8767,6 +8786,11 @@ func (s ModifyNodePoolAttributeRequestNodePoolStrategy) String() string {
 
 func (s ModifyNodePoolAttributeRequestNodePoolStrategy) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetMaxIdleAppInstanceAmount(v int32) *ModifyNodePoolAttributeRequestNodePoolStrategy {
+	s.MaxIdleAppInstanceAmount = &v
+	return s
 }
 
 func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetMaxScalingAmount(v int32) *ModifyNodePoolAttributeRequestNodePoolStrategy {
