@@ -49393,6 +49393,99 @@ func (s *ReleaseWorkerInstanceResponse) SetBody(v *ReleaseWorkerInstanceResponse
 	return s
 }
 
+type RemoveStandbyInstanceRequest struct {
+	// example:
+	//
+	// false
+	Forced *bool `json:"Forced,omitempty" xml:"Forced,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob608fgj1q****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob4bv8o7sp****
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s RemoveStandbyInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStandbyInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStandbyInstanceRequest) SetForced(v bool) *RemoveStandbyInstanceRequest {
+	s.Forced = &v
+	return s
+}
+
+func (s *RemoveStandbyInstanceRequest) SetInstanceId(v string) *RemoveStandbyInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RemoveStandbyInstanceRequest) SetTargetInstanceId(v string) *RemoveStandbyInstanceRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type RemoveStandbyInstanceResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EE205C00-30E4-****-****-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveStandbyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStandbyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStandbyInstanceResponseBody) SetRequestId(v string) *RemoveStandbyInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveStandbyInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveStandbyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveStandbyInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStandbyInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStandbyInstanceResponse) SetHeaders(v map[string]*string) *RemoveStandbyInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveStandbyInstanceResponse) SetStatusCode(v int32) *RemoveStandbyInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveStandbyInstanceResponse) SetBody(v *RemoveStandbyInstanceResponseBody) *RemoveStandbyInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeProjectRequest struct {
 	// This parameter is required.
 	//
@@ -61659,6 +61752,74 @@ func (client *Client) ReleaseWorkerInstance(request *ReleaseWorkerInstanceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseWorkerInstanceResponse{}
 	_body, _err := client.ReleaseWorkerInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 备实例解耦
+//
+// @param request - RemoveStandbyInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveStandbyInstanceResponse
+func (client *Client) RemoveStandbyInstanceWithOptions(request *RemoveStandbyInstanceRequest, runtime *util.RuntimeOptions) (_result *RemoveStandbyInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Forced)) {
+		body["Forced"] = request.Forced
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
+		body["TargetInstanceId"] = request.TargetInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveStandbyInstance"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveStandbyInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 备实例解耦
+//
+// @param request - RemoveStandbyInstanceRequest
+//
+// @return RemoveStandbyInstanceResponse
+func (client *Client) RemoveStandbyInstance(request *RemoveStandbyInstanceRequest) (_result *RemoveStandbyInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveStandbyInstanceResponse{}
+	_body, _err := client.RemoveStandbyInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
