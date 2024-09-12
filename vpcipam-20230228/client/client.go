@@ -278,9 +278,10 @@ type CreateIpamRequest struct {
 	// example:
 	//
 	// rg-acfmxazb4ph6aiy****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId      *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*CreateIpamRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateIpamRequest) String() string {
@@ -343,6 +344,34 @@ func (s *CreateIpamRequest) SetResourceOwnerAccount(v string) *CreateIpamRequest
 
 func (s *CreateIpamRequest) SetResourceOwnerId(v int64) *CreateIpamRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateIpamRequest) SetTag(v []*CreateIpamRequestTag) *CreateIpamRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateIpamRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIpamRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpamRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpamRequestTag) SetKey(v string) *CreateIpamRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateIpamRequestTag) SetValue(v string) *CreateIpamRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -453,6 +482,7 @@ type CreateIpamPoolRequest struct {
 	//
 	// 8
 	AllocationMinCidrMask *int32 `json:"AllocationMinCidrMask,omitempty" xml:"AllocationMinCidrMask,omitempty"`
+	AutoImport            *bool  `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
@@ -496,7 +526,8 @@ type CreateIpamPoolRequest struct {
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
-	SourceIpamPoolId *string `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
+	SourceIpamPoolId *string                     `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
+	Tag              []*CreateIpamPoolRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateIpamPoolRequest) String() string {
@@ -519,6 +550,11 @@ func (s *CreateIpamPoolRequest) SetAllocationMaxCidrMask(v int32) *CreateIpamPoo
 
 func (s *CreateIpamPoolRequest) SetAllocationMinCidrMask(v int32) *CreateIpamPoolRequest {
 	s.AllocationMinCidrMask = &v
+	return s
+}
+
+func (s *CreateIpamPoolRequest) SetAutoImport(v bool) *CreateIpamPoolRequest {
+	s.AutoImport = &v
 	return s
 }
 
@@ -584,6 +620,34 @@ func (s *CreateIpamPoolRequest) SetResourceOwnerId(v int64) *CreateIpamPoolReque
 
 func (s *CreateIpamPoolRequest) SetSourceIpamPoolId(v string) *CreateIpamPoolRequest {
 	s.SourceIpamPoolId = &v
+	return s
+}
+
+func (s *CreateIpamPoolRequest) SetTag(v []*CreateIpamPoolRequestTag) *CreateIpamPoolRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateIpamPoolRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIpamPoolRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpamPoolRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpamPoolRequestTag) SetKey(v string) *CreateIpamPoolRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateIpamPoolRequestTag) SetValue(v string) *CreateIpamPoolRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -824,9 +888,10 @@ type CreateIpamScopeRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*CreateIpamScopeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateIpamScopeRequest) String() string {
@@ -889,6 +954,34 @@ func (s *CreateIpamScopeRequest) SetResourceOwnerAccount(v string) *CreateIpamSc
 
 func (s *CreateIpamScopeRequest) SetResourceOwnerId(v int64) *CreateIpamScopeRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateIpamScopeRequest) SetTag(v []*CreateIpamScopeRequestTag) *CreateIpamScopeRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateIpamScopeRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIpamScopeRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpamScopeRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpamScopeRequestTag) SetKey(v string) *CreateIpamScopeRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateIpamScopeRequestTag) SetValue(v string) *CreateIpamScopeRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1670,6 +1763,8 @@ type ListIpamPoolAllocationsRequest struct {
 	// 192.168.1.0/24
 	Cidr                  *string   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	IpamPoolAllocationIds []*string `json:"IpamPoolAllocationIds,omitempty" xml:"IpamPoolAllocationIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
@@ -1729,6 +1824,7 @@ func (s *ListIpamPoolAllocationsRequest) SetRegionId(v string) *ListIpamPoolAllo
 }
 
 type ListIpamPoolAllocationsResponseBody struct {
+	Count               *int64                                                    `json:"Count,omitempty" xml:"Count,omitempty"`
 	IpamPoolAllocations []*ListIpamPoolAllocationsResponseBodyIpamPoolAllocations `json:"IpamPoolAllocations,omitempty" xml:"IpamPoolAllocations,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -1754,6 +1850,11 @@ func (s ListIpamPoolAllocationsResponseBody) String() string {
 
 func (s ListIpamPoolAllocationsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpamPoolAllocationsResponseBody) SetCount(v int64) *ListIpamPoolAllocationsResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *ListIpamPoolAllocationsResponseBody) SetIpamPoolAllocations(v []*ListIpamPoolAllocationsResponseBodyIpamPoolAllocations) *ListIpamPoolAllocationsResponseBody {
@@ -1981,6 +2082,7 @@ func (s *ListIpamPoolCidrsRequest) SetRegionId(v string) *ListIpamPoolCidrsReque
 }
 
 type ListIpamPoolCidrsResponseBody struct {
+	Count         *int64                                        `json:"Count,omitempty" xml:"Count,omitempty"`
 	IpamPoolCidrs []*ListIpamPoolCidrsResponseBodyIpamPoolCidrs `json:"IpamPoolCidrs,omitempty" xml:"IpamPoolCidrs,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2006,6 +2108,11 @@ func (s ListIpamPoolCidrsResponseBody) String() string {
 
 func (s ListIpamPoolCidrsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpamPoolCidrsResponseBody) SetCount(v int64) *ListIpamPoolCidrsResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *ListIpamPoolCidrsResponseBody) SetIpamPoolCidrs(v []*ListIpamPoolCidrsResponseBodyIpamPoolCidrs) *ListIpamPoolCidrsResponseBody {
@@ -2110,6 +2217,7 @@ type ListIpamPoolsRequest struct {
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	IsShared    *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
 	// example:
 	//
 	// 10
@@ -2163,6 +2271,11 @@ func (s *ListIpamPoolsRequest) SetIpamPoolName(v string) *ListIpamPoolsRequest {
 
 func (s *ListIpamPoolsRequest) SetIpamScopeId(v string) *ListIpamPoolsRequest {
 	s.IpamScopeId = &v
+	return s
+}
+
+func (s *ListIpamPoolsRequest) SetIsShared(v bool) *ListIpamPoolsRequest {
+	s.IsShared = &v
 	return s
 }
 
@@ -2251,6 +2364,7 @@ func (s *ListIpamPoolsRequestTags) SetValue(v string) *ListIpamPoolsRequestTags 
 }
 
 type ListIpamPoolsResponseBody struct {
+	Count     *int64                                `json:"Count,omitempty" xml:"Count,omitempty"`
 	IpamPools []*ListIpamPoolsResponseBodyIpamPools `json:"IpamPools,omitempty" xml:"IpamPools,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2276,6 +2390,11 @@ func (s ListIpamPoolsResponseBody) String() string {
 
 func (s ListIpamPoolsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpamPoolsResponseBody) SetCount(v int64) *ListIpamPoolsResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *ListIpamPoolsResponseBody) SetIpamPools(v []*ListIpamPoolsResponseBodyIpamPools) *ListIpamPoolsResponseBody {
@@ -2316,6 +2435,7 @@ type ListIpamPoolsResponseBodyIpamPools struct {
 	//
 	// 8
 	AllocationMinCidrMask *int32 `json:"AllocationMinCidrMask,omitempty" xml:"AllocationMinCidrMask,omitempty"`
+	AutoImport            *bool  `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
 	// example:
 	//
 	// 2023-04-19T16:49:01Z
@@ -2356,6 +2476,7 @@ type ListIpamPoolsResponseBodyIpamPools struct {
 	//
 	// private
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
+	IsShared      *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
 	// example:
 	//
 	// 1210123456******
@@ -2406,6 +2527,11 @@ func (s *ListIpamPoolsResponseBodyIpamPools) SetAllocationMinCidrMask(v int32) *
 	return s
 }
 
+func (s *ListIpamPoolsResponseBodyIpamPools) SetAutoImport(v bool) *ListIpamPoolsResponseBodyIpamPools {
+	s.AutoImport = &v
+	return s
+}
+
 func (s *ListIpamPoolsResponseBodyIpamPools) SetCreateTime(v string) *ListIpamPoolsResponseBodyIpamPools {
 	s.CreateTime = &v
 	return s
@@ -2453,6 +2579,11 @@ func (s *ListIpamPoolsResponseBodyIpamPools) SetIpamScopeId(v string) *ListIpamP
 
 func (s *ListIpamPoolsResponseBodyIpamPools) SetIpamScopeType(v string) *ListIpamPoolsResponseBodyIpamPools {
 	s.IpamScopeType = &v
+	return s
+}
+
+func (s *ListIpamPoolsResponseBodyIpamPools) SetIsShared(v bool) *ListIpamPoolsResponseBodyIpamPools {
+	s.IsShared = &v
 	return s
 }
 
@@ -2581,6 +2712,7 @@ type ListIpamResourceCidrsRequest struct {
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListIpamResourceCidrsRequest) String() string {
@@ -2631,7 +2763,13 @@ func (s *ListIpamResourceCidrsRequest) SetResourceType(v string) *ListIpamResour
 	return s
 }
 
+func (s *ListIpamResourceCidrsRequest) SetVpcId(v string) *ListIpamResourceCidrsRequest {
+	s.VpcId = &v
+	return s
+}
+
 type ListIpamResourceCidrsResponseBody struct {
+	Count             *int64                                                `json:"Count,omitempty" xml:"Count,omitempty"`
 	IpamResourceCidrs []*ListIpamResourceCidrsResponseBodyIpamResourceCidrs `json:"IpamResourceCidrs,omitempty" xml:"IpamResourceCidrs,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2657,6 +2795,11 @@ func (s ListIpamResourceCidrsResponseBody) String() string {
 
 func (s ListIpamResourceCidrsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpamResourceCidrsResponseBody) SetCount(v int64) *ListIpamResourceCidrsResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *ListIpamResourceCidrsResponseBody) SetIpamResourceCidrs(v []*ListIpamResourceCidrsResponseBodyIpamResourceCidrs) *ListIpamResourceCidrsResponseBody {
@@ -2749,6 +2892,7 @@ type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListIpamResourceCidrsResponseBodyIpamResourceCidrs) String() string {
@@ -2836,6 +2980,11 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetSourceCidr(v str
 
 func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetStatus(v string) *ListIpamResourceCidrsResponseBodyIpamResourceCidrs {
 	s.Status = &v
+	return s
+}
+
+func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetVpcId(v string) *ListIpamResourceCidrsResponseBodyIpamResourceCidrs {
+	s.VpcId = &v
 	return s
 }
 
@@ -3010,6 +3159,7 @@ func (s *ListIpamScopesRequestTags) SetValue(v string) *ListIpamScopesRequestTag
 }
 
 type ListIpamScopesResponseBody struct {
+	Count      *int64                                  `json:"Count,omitempty" xml:"Count,omitempty"`
 	IpamScopes []*ListIpamScopesResponseBodyIpamScopes `json:"IpamScopes,omitempty" xml:"IpamScopes,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3035,6 +3185,11 @@ func (s ListIpamScopesResponseBody) String() string {
 
 func (s ListIpamScopesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpamScopesResponseBody) SetCount(v int64) *ListIpamScopesResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *ListIpamScopesResponseBody) SetIpamScopes(v []*ListIpamScopesResponseBodyIpamScopes) *ListIpamScopesResponseBody {
@@ -3360,6 +3515,7 @@ func (s *ListIpamsRequestTags) SetValue(v string) *ListIpamsRequestTags {
 }
 
 type ListIpamsResponseBody struct {
+	Count *int64                        `json:"Count,omitempty" xml:"Count,omitempty"`
 	Ipams []*ListIpamsResponseBodyIpams `json:"Ipams,omitempty" xml:"Ipams,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3385,6 +3541,11 @@ func (s ListIpamsResponseBody) String() string {
 
 func (s ListIpamsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpamsResponseBody) SetCount(v int64) *ListIpamsResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *ListIpamsResponseBody) SetIpams(v []*ListIpamsResponseBodyIpams) *ListIpamsResponseBody {
@@ -4403,6 +4564,7 @@ type UpdateIpamPoolRequest struct {
 	//
 	// 8
 	AllocationMinCidrMask *int32 `json:"AllocationMinCidrMask,omitempty" xml:"AllocationMinCidrMask,omitempty"`
+	AutoImport            *bool  `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
 	// example:
 	//
 	// true
@@ -4461,6 +4623,11 @@ func (s *UpdateIpamPoolRequest) SetAllocationMaxCidrMask(v int32) *UpdateIpamPoo
 
 func (s *UpdateIpamPoolRequest) SetAllocationMinCidrMask(v int32) *UpdateIpamPoolRequest {
 	s.AllocationMinCidrMask = &v
+	return s
+}
+
+func (s *UpdateIpamPoolRequest) SetAutoImport(v bool) *UpdateIpamPoolRequest {
+	s.AutoImport = &v
 	return s
 }
 
@@ -4964,6 +5131,10 @@ func (client *Client) CreateIpamWithOptions(request *CreateIpamRequest, runtime 
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5028,6 +5199,10 @@ func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, 
 		query["AllocationMinCidrMask"] = request.AllocationMinCidrMask
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AutoImport)) {
+		query["AutoImport"] = request.AutoImport
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -5078,6 +5253,10 @@ func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIpamPoolId)) {
 		query["SourceIpamPoolId"] = request.SourceIpamPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5242,6 +5421,10 @@ func (client *Client) CreateIpamScopeWithOptions(request *CreateIpamScopeRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5904,6 +6087,10 @@ func (client *Client) ListIpamPoolsWithOptions(request *ListIpamPoolsRequest, ru
 		query["IpamScopeId"] = request.IpamScopeId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsShared)) {
+		query["IsShared"] = request.IsShared
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -6026,6 +6213,10 @@ func (client *Client) ListIpamResourceCidrsWithOptions(request *ListIpamResource
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6746,6 +6937,10 @@ func (client *Client) UpdateIpamPoolWithOptions(request *UpdateIpamPoolRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.AllocationMinCidrMask)) {
 		query["AllocationMinCidrMask"] = request.AllocationMinCidrMask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoImport)) {
+		query["AutoImport"] = request.AutoImport
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClearAllocationDefaultCidrMask)) {
