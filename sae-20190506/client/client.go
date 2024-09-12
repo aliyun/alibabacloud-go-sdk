@@ -8847,7 +8847,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// true
-	Deploy *bool `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// 3.5.3
 	//
 	// example:
@@ -9174,6 +9175,11 @@ func (s *CreateApplicationRequest) SetCustomHostAlias(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetDeploy(v bool) *CreateApplicationRequest {
 	s.Deploy = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetDotnet(v string) *CreateApplicationRequest {
+	s.Dotnet = &v
 	return s
 }
 
@@ -14014,6 +14020,7 @@ type DeployApplicationRequest struct {
 	//
 	// true
 	Deploy *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
 	//
 	// example:
@@ -14513,6 +14520,11 @@ func (s *DeployApplicationRequest) SetCustomHostAlias(v string) *DeployApplicati
 
 func (s *DeployApplicationRequest) SetDeploy(v string) *DeployApplicationRequest {
 	s.Deploy = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetDotnet(v string) *DeployApplicationRequest {
+	s.Dotnet = &v
 	return s
 }
 
@@ -15665,6 +15677,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// [{"hostName":"test.host.name","ip":"0.0.0.0"}]
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	Dotnet          *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
 	//
 	// example:
@@ -16221,6 +16234,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetCpu(v int32) *DescribeApp
 
 func (s *DescribeApplicationConfigResponseBodyData) SetCustomHostAlias(v string) *DescribeApplicationConfigResponseBodyData {
 	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetDotnet(v string) *DescribeApplicationConfigResponseBodyData {
+	s.Dotnet = &v
 	return s
 }
 
@@ -42721,6 +42739,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["Deploy"] = request.Deploy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Dotnet)) {
+		query["Dotnet"] = request.Dotnet
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
 		query["EdasContainerVersion"] = request.EdasContainerVersion
 	}
@@ -44751,6 +44773,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.Deploy)) {
 		query["Deploy"] = request.Deploy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dotnet)) {
+		query["Dotnet"] = request.Dotnet
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
