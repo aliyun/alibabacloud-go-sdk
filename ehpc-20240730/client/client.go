@@ -1599,6 +1599,312 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 	return s
 }
 
+type CreateJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-FYUr32****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// TestJob
+	JobName *string                  `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobSpec *CreateJobRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Struct"`
+}
+
+func (s CreateJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequest) SetClusterId(v string) *CreateJobRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetJobName(v string) *CreateJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetJobSpec(v *CreateJobRequestJobSpec) *CreateJobRequest {
+	s.JobSpec = v
+	return s
+}
+
+type CreateJobRequestJobSpec struct {
+	// example:
+	//
+	// 1-5:2
+	ArrayRequest *string `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /home/xxx/test.job
+	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
+	// example:
+	//
+	// comp
+	JobQueue *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	// example:
+	//
+	// /bin/sleep 10
+	PostCmdLine *string `json:"PostCmdLine,omitempty" xml:"PostCmdLine,omitempty"`
+	// example:
+	//
+	// 1
+	Priority  *string                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Resources *CreateJobRequestJobSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	// example:
+	//
+	// testuser
+	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
+	// example:
+	//
+	// xxx
+	RunasUserPassword *string `json:"RunasUserPassword,omitempty" xml:"RunasUserPassword,omitempty"`
+	// example:
+	//
+	// /home/xxx/job.err
+	StderrPath *string `json:"StderrPath,omitempty" xml:"StderrPath,omitempty"`
+	// example:
+	//
+	// /home/xxx/job.out
+	StdoutPath *string `json:"StdoutPath,omitempty" xml:"StdoutPath,omitempty"`
+	// example:
+	//
+	// [{"Name":"x", "Value":"y"}]
+	Variables *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	// example:
+	//
+	// 360:48:50
+	WallTime *string `json:"WallTime,omitempty" xml:"WallTime,omitempty"`
+}
+
+func (s CreateJobRequestJobSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequestJobSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestJobSpec) SetArrayRequest(v string) *CreateJobRequestJobSpec {
+	s.ArrayRequest = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetCommandLine(v string) *CreateJobRequestJobSpec {
+	s.CommandLine = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetJobQueue(v string) *CreateJobRequestJobSpec {
+	s.JobQueue = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetPostCmdLine(v string) *CreateJobRequestJobSpec {
+	s.PostCmdLine = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetPriority(v string) *CreateJobRequestJobSpec {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetResources(v *CreateJobRequestJobSpecResources) *CreateJobRequestJobSpec {
+	s.Resources = v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetRunasUser(v string) *CreateJobRequestJobSpec {
+	s.RunasUser = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetRunasUserPassword(v string) *CreateJobRequestJobSpec {
+	s.RunasUserPassword = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetStderrPath(v string) *CreateJobRequestJobSpec {
+	s.StderrPath = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetStdoutPath(v string) *CreateJobRequestJobSpec {
+	s.StdoutPath = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetVariables(v string) *CreateJobRequestJobSpec {
+	s.Variables = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpec) SetWallTime(v string) *CreateJobRequestJobSpec {
+	s.WallTime = &v
+	return s
+}
+
+type CreateJobRequestJobSpecResources struct {
+	// example:
+	//
+	// 2
+	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// 1
+	Gpus *int32 `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
+	// example:
+	//
+	// 4gb
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 2
+	Nodes *int32 `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+}
+
+func (s CreateJobRequestJobSpecResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequestJobSpecResources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestJobSpecResources) SetCores(v int32) *CreateJobRequestJobSpecResources {
+	s.Cores = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpecResources) SetGpus(v int32) *CreateJobRequestJobSpecResources {
+	s.Gpus = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpecResources) SetMemory(v string) *CreateJobRequestJobSpecResources {
+	s.Memory = &v
+	return s
+}
+
+func (s *CreateJobRequestJobSpecResources) SetNodes(v int32) *CreateJobRequestJobSpecResources {
+	s.Nodes = &v
+	return s
+}
+
+type CreateJobShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-FYUr32****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// TestJob
+	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobSpecShrink *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
+}
+
+func (s CreateJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobShrinkRequest) SetClusterId(v string) *CreateJobShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetJobName(v string) *CreateJobShrinkRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetJobSpecShrink(v string) *CreateJobShrinkRequest {
+	s.JobSpecShrink = &v
+	return s
+}
+
+type CreateJobResponseBody struct {
+	// example:
+	//
+	// Submitted batch job 10\\n
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// A0A38A38-1565-555E-B597-E48A2E******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponseBody) SetJobId(v string) *CreateJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetSuccess(v string) *CreateJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponse) SetHeaders(v map[string]*string) *CreateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateJobResponse) SetStatusCode(v int32) *CreateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateNodesRequest struct {
 	// example:
 	//
@@ -4546,6 +4852,562 @@ func (s *GetCommonLogDetailResponse) SetStatusCode(v int32) *GetCommonLogDetailR
 }
 
 func (s *GetCommonLogDetailResponse) SetBody(v *GetCommonLogDetailResponseBody) *GetCommonLogDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-FYUr32****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.manager
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobRequest) SetClusterId(v string) *GetJobRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetJobRequest) SetJobId(v string) *GetJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetJobResponseBody struct {
+	JobInfo *GetJobResponseBodyJobInfo `json:"JobInfo,omitempty" xml:"JobInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 04F0****-1335-****-A1D7-6C044FE7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBody) SetJobInfo(v *GetJobResponseBodyJobInfo) *GetJobResponseBody {
+	s.JobInfo = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetSuccess(v string) *GetJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetJobResponseBodyJobInfo struct {
+	// example:
+	//
+	// 1
+	ArrayJobId *string `json:"ArrayJobId,omitempty" xml:"ArrayJobId,omitempty"`
+	// example:
+	//
+	// 3
+	ArrayJobSubId *string `json:"ArrayJobSubId,omitempty" xml:"ArrayJobSubId,omitempty"`
+	// example:
+	//
+	// 1-5:2
+	ArrayRequest *string `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
+	// example:
+	//
+	// /home/huangsf/ehpc/job_meta.pbs
+	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
+	// example:
+	//
+	// 2024-08-16T10:52:48
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// /home/xxx/STDIN.e1
+	ErrorLog *string `json:"ErrorLog,omitempty" xml:"ErrorLog,omitempty"`
+	// example:
+	//
+	// {}
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// 1.manager
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// testJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// workq
+	JobQueue *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	// example:
+	//
+	// 2024-08-16T10:52:48
+	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// compute000
+	NodeList *string `json:"NodeList,omitempty" xml:"NodeList,omitempty"`
+	// example:
+	//
+	// /home/xxx/STDIN.o1
+	OutputLog *string `json:"OutputLog,omitempty" xml:"OutputLog,omitempty"`
+	// example:
+	//
+	// 0
+	Priority      *string                                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Resources     *GetJobResponseBodyJobInfoResources     `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	ResourcesUsed *GetJobResponseBodyJobInfoResourcesUsed `json:"ResourcesUsed,omitempty" xml:"ResourcesUsed,omitempty" type:"Struct"`
+	// example:
+	//
+	// testuser
+	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
+	// example:
+	//
+	// 2024-08-16T10:52:48
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	State     *string                               `json:"State,omitempty" xml:"State,omitempty"`
+	Variables []*GetJobResponseBodyJobInfoVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s GetJobResponseBodyJobInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfo) SetArrayJobId(v string) *GetJobResponseBodyJobInfo {
+	s.ArrayJobId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetArrayJobSubId(v string) *GetJobResponseBodyJobInfo {
+	s.ArrayJobSubId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetArrayRequest(v string) *GetJobResponseBodyJobInfo {
+	s.ArrayRequest = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetCommandLine(v string) *GetJobResponseBodyJobInfo {
+	s.CommandLine = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetCreateTime(v string) *GetJobResponseBodyJobInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetErrorLog(v string) *GetJobResponseBodyJobInfo {
+	s.ErrorLog = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetExtraInfo(v string) *GetJobResponseBodyJobInfo {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetJobId(v string) *GetJobResponseBodyJobInfo {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetJobName(v string) *GetJobResponseBodyJobInfo {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetJobQueue(v string) *GetJobResponseBodyJobInfo {
+	s.JobQueue = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetLastModifyTime(v string) *GetJobResponseBodyJobInfo {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetNodeList(v string) *GetJobResponseBodyJobInfo {
+	s.NodeList = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetOutputLog(v string) *GetJobResponseBodyJobInfo {
+	s.OutputLog = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetPriority(v string) *GetJobResponseBodyJobInfo {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetResources(v *GetJobResponseBodyJobInfoResources) *GetJobResponseBodyJobInfo {
+	s.Resources = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetResourcesUsed(v *GetJobResponseBodyJobInfoResourcesUsed) *GetJobResponseBodyJobInfo {
+	s.ResourcesUsed = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetRunasUser(v string) *GetJobResponseBodyJobInfo {
+	s.RunasUser = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetStartTime(v string) *GetJobResponseBodyJobInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetState(v string) *GetJobResponseBodyJobInfo {
+	s.State = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetVariables(v []*GetJobResponseBodyJobInfoVariables) *GetJobResponseBodyJobInfo {
+	s.Variables = v
+	return s
+}
+
+type GetJobResponseBodyJobInfoResources struct {
+	// example:
+	//
+	// 2
+	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// 1
+	Gpus *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
+	// example:
+	//
+	// 1gb
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 1
+	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+}
+
+func (s GetJobResponseBodyJobInfoResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfoResources) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoResources) SetCores(v string) *GetJobResponseBodyJobInfoResources {
+	s.Cores = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoResources) SetGpus(v string) *GetJobResponseBodyJobInfoResources {
+	s.Gpus = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoResources) SetMemory(v string) *GetJobResponseBodyJobInfoResources {
+	s.Memory = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoResources) SetNodes(v string) *GetJobResponseBodyJobInfoResources {
+	s.Nodes = &v
+	return s
+}
+
+type GetJobResponseBodyJobInfoResourcesUsed struct {
+	// example:
+	//
+	// 2
+	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// 512mb
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 2
+	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+}
+
+func (s GetJobResponseBodyJobInfoResourcesUsed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfoResourcesUsed) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoResourcesUsed) SetCores(v string) *GetJobResponseBodyJobInfoResourcesUsed {
+	s.Cores = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoResourcesUsed) SetMemory(v string) *GetJobResponseBodyJobInfoResourcesUsed {
+	s.Memory = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoResourcesUsed) SetNodes(v string) *GetJobResponseBodyJobInfoResourcesUsed {
+	s.Nodes = &v
+	return s
+}
+
+type GetJobResponseBodyJobInfoVariables struct {
+	// example:
+	//
+	// ProxyIP
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 10.x.x.x
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetJobResponseBodyJobInfoVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfoVariables) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoVariables) SetName(v string) *GetJobResponseBodyJobInfoVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoVariables) SetValue(v string) *GetJobResponseBodyJobInfoVariables {
+	s.Value = &v
+	return s
+}
+
+type GetJobResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobResponse) SetStatusCode(v int32) *GetJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetJobLogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-jeJki6****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.manager
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// stdout
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// 20480
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s GetJobLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobLogRequest) SetClusterId(v string) *GetJobLogRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetJobId(v string) *GetJobLogRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetLogType(v string) *GetJobLogRequest {
+	s.LogType = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetOffset(v string) *GetJobLogRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetSize(v string) *GetJobLogRequest {
+	s.Size = &v
+	return s
+}
+
+type GetJobLogResponseBody struct {
+	// example:
+	//
+	// 1.manager
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// B745C159-3155-4B94-95D0-4B73D4D2****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// aG9zdG5hbWU=
+	StderrLog *string `json:"StderrLog,omitempty" xml:"StderrLog,omitempty"`
+	// example:
+	//
+	// 0
+	StderrLogSize *string `json:"StderrLogSize,omitempty" xml:"StderrLogSize,omitempty"`
+	// example:
+	//
+	// aG9zdG5hbWU=
+	StdoutLog *string `json:"StdoutLog,omitempty" xml:"StdoutLog,omitempty"`
+	// example:
+	//
+	// 4096
+	StdoutLogSize *string `json:"StdoutLogSize,omitempty" xml:"StdoutLogSize,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetJobLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobLogResponseBody) SetJobId(v string) *GetJobLogResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetRequestId(v string) *GetJobLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetStderrLog(v string) *GetJobLogResponseBody {
+	s.StderrLog = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetStderrLogSize(v string) *GetJobLogResponseBody {
+	s.StderrLogSize = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetStdoutLog(v string) *GetJobLogResponseBody {
+	s.StdoutLog = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetStdoutLogSize(v string) *GetJobLogResponseBody {
+	s.StdoutLogSize = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetSuccess(v string) *GetJobLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetJobLogResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobLogResponse) SetHeaders(v map[string]*string) *GetJobLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobLogResponse) SetStatusCode(v int32) *GetJobLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobLogResponse) SetBody(v *GetJobLogResponseBody) *GetJobLogResponse {
 	s.Body = v
 	return s
 }
@@ -7590,6 +8452,517 @@ func (s *ListInstalledSoftwaresResponse) SetBody(v *ListInstalledSoftwaresRespon
 	return s
 }
 
+type ListJobsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-csbua72***
+	ClusterId *string                   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	JobFilter *ListJobsRequestJobFilter `json:"JobFilter,omitempty" xml:"JobFilter,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsRequest) SetClusterId(v string) *ListJobsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetJobFilter(v *ListJobsRequestJobFilter) *ListJobsRequest {
+	s.JobFilter = v
+	return s
+}
+
+func (s *ListJobsRequest) SetPageNumber(v string) *ListJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetPageSize(v string) *ListJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListJobsRequestJobFilter struct {
+	// example:
+	//
+	// 1724123085
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 1724122486
+	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// example:
+	//
+	// testjob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// all
+	JobStatus *string                         `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	Nodes     []*string                       `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Queues    []*string                       `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+	SortBy    *ListJobsRequestJobFilterSortBy `json:"SortBy,omitempty" xml:"SortBy,omitempty" type:"Struct"`
+	Users     []*string                       `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s ListJobsRequestJobFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsRequestJobFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsRequestJobFilter) SetCreateTimeEnd(v string) *ListJobsRequestJobFilter {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilter) SetCreateTimeStart(v string) *ListJobsRequestJobFilter {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilter) SetJobName(v string) *ListJobsRequestJobFilter {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilter) SetJobStatus(v string) *ListJobsRequestJobFilter {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilter) SetNodes(v []*string) *ListJobsRequestJobFilter {
+	s.Nodes = v
+	return s
+}
+
+func (s *ListJobsRequestJobFilter) SetQueues(v []*string) *ListJobsRequestJobFilter {
+	s.Queues = v
+	return s
+}
+
+func (s *ListJobsRequestJobFilter) SetSortBy(v *ListJobsRequestJobFilterSortBy) *ListJobsRequestJobFilter {
+	s.SortBy = v
+	return s
+}
+
+func (s *ListJobsRequestJobFilter) SetUsers(v []*string) *ListJobsRequestJobFilter {
+	s.Users = v
+	return s
+}
+
+type ListJobsRequestJobFilterSortBy struct {
+	// example:
+	//
+	// asc
+	ExecuteOrder *string `json:"ExecuteOrder,omitempty" xml:"ExecuteOrder,omitempty"`
+	// example:
+	//
+	// desc
+	PendOrder *string `json:"PendOrder,omitempty" xml:"PendOrder,omitempty"`
+	// example:
+	//
+	// asc
+	SubmitOrder *string `json:"SubmitOrder,omitempty" xml:"SubmitOrder,omitempty"`
+}
+
+func (s ListJobsRequestJobFilterSortBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsRequestJobFilterSortBy) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsRequestJobFilterSortBy) SetExecuteOrder(v string) *ListJobsRequestJobFilterSortBy {
+	s.ExecuteOrder = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilterSortBy) SetPendOrder(v string) *ListJobsRequestJobFilterSortBy {
+	s.PendOrder = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilterSortBy) SetSubmitOrder(v string) *ListJobsRequestJobFilterSortBy {
+	s.SubmitOrder = &v
+	return s
+}
+
+type ListJobsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-csbua72***
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	JobFilterShrink *string `json:"JobFilter,omitempty" xml:"JobFilter,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListJobsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsShrinkRequest) SetClusterId(v string) *ListJobsShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetJobFilterShrink(v string) *ListJobsShrinkRequest {
+	s.JobFilterShrink = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetPageNumber(v string) *ListJobsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetPageSize(v string) *ListJobsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListJobsResponseBody struct {
+	Jobs []*ListJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EABFBD93-58BE-53F3-BBFE-8654BB2E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBody) SetJobs(v []*ListJobsResponseBodyJobs) *ListJobsResponseBody {
+	s.Jobs = v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetPageNumber(v int32) *ListJobsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetPageSize(v int32) *ListJobsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetRequestId(v string) *ListJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetSuccess(v bool) *ListJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetTotalCount(v int32) *ListJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListJobsResponseBodyJobs struct {
+	// example:
+	//
+	// testjob
+	JobName *string                          `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobSpec *ListJobsResponseBodyJobsJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Struct"`
+}
+
+func (s ListJobsResponseBodyJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBodyJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBodyJobs) SetJobName(v string) *ListJobsResponseBodyJobs {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobs) SetJobSpec(v *ListJobsResponseBodyJobsJobSpec) *ListJobsResponseBodyJobs {
+	s.JobSpec = v
+	return s
+}
+
+type ListJobsResponseBodyJobsJobSpec struct {
+	ArrayJobId    *string `json:"ArrayJobId,omitempty" xml:"ArrayJobId,omitempty"`
+	ArrayJobSubId *string `json:"ArrayJobSubId,omitempty" xml:"ArrayJobSubId,omitempty"`
+	// example:
+	//
+	// 1-5:2
+	ArrayRequest *string `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
+	// example:
+	//
+	// jobDescription
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 12
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// comp
+	JobQueue *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	// example:
+	//
+	// 1724123085
+	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// compute[002,005,003]
+	NodeList *string `json:"NodeList,omitempty" xml:"NodeList,omitempty"`
+	// example:
+	//
+	// 0
+	Priority  *string                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Resources *ListJobsResponseBodyJobsJobSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	// example:
+	//
+	// testuser1
+	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// ./Temp
+	StderrPath *string `json:"StderrPath,omitempty" xml:"StderrPath,omitempty"`
+	// example:
+	//
+	// ./Temp
+	StdoutPath *string `json:"StdoutPath,omitempty" xml:"StdoutPath,omitempty"`
+	// example:
+	//
+	// 1724122486
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// example:
+	//
+	// {"PBS_O_SHELL":"/bin/bash", 	"PBS_O_HOST":"manager", 	"PBS_O_SYSTEM":"Linux", 	"PBS_O_LANG":"en_US.UTF-8", 	"PBS_O_QUEUE":"workq"}
+	Variables *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+}
+
+func (s ListJobsResponseBodyJobsJobSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBodyJobsJobSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetArrayJobId(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.ArrayJobId = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetArrayJobSubId(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.ArrayJobSubId = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetArrayRequest(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.ArrayRequest = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetComment(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetId(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.Id = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetJobQueue(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.JobQueue = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetLastModifyTime(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetNodeList(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.NodeList = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetPriority(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetResources(v *ListJobsResponseBodyJobsJobSpecResources) *ListJobsResponseBodyJobsJobSpec {
+	s.Resources = v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetRunasUser(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.RunasUser = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetState(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.State = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetStderrPath(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.StderrPath = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetStdoutPath(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.StdoutPath = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetSubmitTime(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.SubmitTime = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetVariables(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.Variables = &v
+	return s
+}
+
+type ListJobsResponseBodyJobsJobSpecResources struct {
+	// example:
+	//
+	// 6
+	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// 0
+	Gpus *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
+	// example:
+	//
+	// 1536MB
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 3
+	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+}
+
+func (s ListJobsResponseBodyJobsJobSpecResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBodyJobsJobSpecResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResources) SetCores(v string) *ListJobsResponseBodyJobsJobSpecResources {
+	s.Cores = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResources) SetGpus(v string) *ListJobsResponseBodyJobsJobSpecResources {
+	s.Gpus = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResources) SetMemory(v string) *ListJobsResponseBodyJobsJobSpecResources {
+	s.Memory = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResources) SetNodes(v string) *ListJobsResponseBodyJobsJobSpecResources {
+	s.Nodes = &v
+	return s
+}
+
+type ListJobsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponse) SetHeaders(v map[string]*string) *ListJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobsResponse) SetStatusCode(v int32) *ListJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
+	s.Body = v
+	return s
+}
+
 type ListNodesRequest struct {
 	// example:
 	//
@@ -9001,7 +10374,7 @@ type ListUsersRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 50.
 	//
-	// Default value: 10.
+	// Default value: 10
 	//
 	// example:
 	//
@@ -9206,6 +10579,138 @@ func (s *ListUsersResponse) SetStatusCode(v int32) *ListUsersResponse {
 }
 
 func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse {
+	s.Body = v
+	return s
+}
+
+type StopJobsRequest struct {
+	// The cluster ID.
+	//
+	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-FYUr32****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IDs of the jobs that you want to stop.
+	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+}
+
+func (s StopJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopJobsRequest) SetClusterId(v string) *StopJobsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *StopJobsRequest) SetJobIds(v []*string) *StopJobsRequest {
+	s.JobIds = v
+	return s
+}
+
+type StopJobsShrinkRequest struct {
+	// The cluster ID.
+	//
+	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-FYUr32****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IDs of the jobs that you want to stop.
+	JobIdsShrink *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+}
+
+func (s StopJobsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopJobsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopJobsShrinkRequest) SetClusterId(v string) *StopJobsShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *StopJobsShrinkRequest) SetJobIdsShrink(v string) *StopJobsShrinkRequest {
+	s.JobIdsShrink = &v
+	return s
+}
+
+type StopJobsResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// F8868A00-6757-5542-BDD6-E1040D94****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StopJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopJobsResponseBody) SetRequestId(v string) *StopJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopJobsResponseBody) SetSuccess(v string) *StopJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopJobsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopJobsResponse) SetHeaders(v map[string]*string) *StopJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopJobsResponse) SetStatusCode(v int32) *StopJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopJobsResponse) SetBody(v *StopJobsResponseBody) *StopJobsResponse {
 	s.Body = v
 	return s
 }
@@ -10573,6 +12078,80 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
+// 创建作业
+//
+// @param tmpReq - CreateJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateJobResponse
+func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.JobSpec)) {
+		request.JobSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobSpec, tea.String("JobSpec"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		query["JobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobSpecShrink)) {
+		query["JobSpec"] = request.JobSpecShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJob"),
+		Version:     tea.String("2024-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建作业
+//
+// @param request - CreateJobRequest
+//
+// @return CreateJobResponse
+func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateJobResponse{}
+	_body, _err := client.CreateJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 集群扩容节点
 //
 // @param tmpReq - CreateNodesRequest
@@ -11513,6 +13092,146 @@ func (client *Client) GetCommonLogDetail(request *GetCommonLogDetailRequest) (_r
 
 // Summary:
 //
+// 获取作业详情
+//
+// @param request - GetJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobResponse
+func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJob"),
+		Version:     tea.String("2024-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取作业详情
+//
+// @param request - GetJobRequest
+//
+// @return GetJobResponse
+func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJobResponse{}
+	_body, _err := client.GetJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取作业日志输出
+//
+// @param request - GetJobLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobLogResponse
+func (client *Client) GetJobLogWithOptions(request *GetJobLogRequest, runtime *util.RuntimeOptions) (_result *GetJobLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobLog"),
+		Version:     tea.String("2024-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取作业日志输出
+//
+// @param request - GetJobLogRequest
+//
+// @return GetJobLogResponse
+func (client *Client) GetJobLog(request *GetJobLogRequest) (_result *GetJobLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJobLogResponse{}
+	_body, _err := client.GetJobLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询集群的队列配置信息
 //
 // @param request - GetQueueRequest
@@ -12247,6 +13966,84 @@ func (client *Client) ListInstalledSoftwares(request *ListInstalledSoftwaresRequ
 
 // Summary:
 //
+// 查询作业列表
+//
+// @param tmpReq - ListJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobsResponse
+func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListJobsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.JobFilter)) {
+		request.JobFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobFilter, tea.String("JobFilter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobFilterShrink)) {
+		query["JobFilter"] = request.JobFilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobs"),
+		Version:     tea.String("2024-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询作业列表
+//
+// @param request - ListJobsRequest
+//
+// @return ListJobsResponse
+func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询节点列表
 //
 // @param tmpReq - ListNodesRequest
@@ -12598,6 +14395,76 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
 	_body, _err := client.ListUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops jobs in a cluster.
+//
+// @param tmpReq - StopJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopJobsResponse
+func (client *Client) StopJobsWithOptions(tmpReq *StopJobsRequest, runtime *util.RuntimeOptions) (_result *StopJobsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopJobsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.JobIds)) {
+		request.JobIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobIds, tea.String("JobIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIdsShrink)) {
+		query["JobIds"] = request.JobIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopJobs"),
+		Version:     tea.String("2024-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops jobs in a cluster.
+//
+// @param request - StopJobsRequest
+//
+// @return StopJobsResponse
+func (client *Client) StopJobs(request *StopJobsRequest) (_result *StopJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopJobsResponse{}
+	_body, _err := client.StopJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

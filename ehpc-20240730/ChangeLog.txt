@@ -1,3 +1,11 @@
+2024-09-12 Version: v1.1.0
+- Support API CreateJob.
+- Support API GetJob.
+- Support API GetJobLog.
+- Support API ListJobs.
+- Support API StopJobs.
+
+
 2024-09-06 Version: v1.0.0
 - Generated golang 2024-07-30 for EHPC.
 
