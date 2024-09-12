@@ -1,3 +1,13 @@
+2024-09-12 Version: v3.3.2
+- Update API CreateService: add param DryRun.
+- Update API CreateService: update response param.
+- Update API UpdateService: add param DryRun.
+- Update API UpdateService: update param Commodity.
+- Update API UpdateService: update param UpdateOption.
+- Update API UpdateService: update response param.
+- Update API UpdateServiceInstanceAttribute: add param Reason.
+
+
 2024-07-30 Version: v3.3.1
 - Update API UpdateService: update param UpdateOption.
 

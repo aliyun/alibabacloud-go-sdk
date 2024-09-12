@@ -1180,6 +1180,7 @@ type CreateServiceRequest struct {
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The duration for which hosted O\\&M is implemented. Unit: seconds.
 	//
 	// example:
@@ -1359,6 +1360,11 @@ func (s *CreateServiceRequest) SetDeployMetadata(v string) *CreateServiceRequest
 
 func (s *CreateServiceRequest) SetDeployType(v string) *CreateServiceRequest {
 	s.DeployType = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetDryRun(v bool) *CreateServiceRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -1610,6 +1616,7 @@ func (s *CreateServiceRequestTag) SetValue(v string) *CreateServiceRequestTag {
 }
 
 type CreateServiceResponseBody struct {
+	DryRunResult *CreateServiceResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -1644,6 +1651,11 @@ func (s CreateServiceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateServiceResponseBody) SetDryRunResult(v *CreateServiceResponseBodyDryRunResult) *CreateServiceResponseBody {
+	s.DryRunResult = v
+	return s
+}
+
 func (s *CreateServiceResponseBody) SetRequestId(v string) *CreateServiceResponseBody {
 	s.RequestId = &v
 	return s
@@ -1661,6 +1673,75 @@ func (s *CreateServiceResponseBody) SetStatus(v string) *CreateServiceResponseBo
 
 func (s *CreateServiceResponseBody) SetVersion(v string) *CreateServiceResponseBody {
 	s.Version = &v
+	return s
+}
+
+type CreateServiceResponseBodyDryRunResult struct {
+	RolePolicy *CreateServiceResponseBodyDryRunResultRolePolicy `json:"RolePolicy,omitempty" xml:"RolePolicy,omitempty" type:"Struct"`
+}
+
+func (s CreateServiceResponseBodyDryRunResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceResponseBodyDryRunResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceResponseBodyDryRunResult) SetRolePolicy(v *CreateServiceResponseBodyDryRunResultRolePolicy) *CreateServiceResponseBodyDryRunResult {
+	s.RolePolicy = v
+	return s
+}
+
+type CreateServiceResponseBodyDryRunResultRolePolicy struct {
+	MissingPolicy []*CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy `json:"MissingPolicy,omitempty" xml:"MissingPolicy,omitempty" type:"Repeated"`
+	Policy        *string                                                         `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s CreateServiceResponseBodyDryRunResultRolePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceResponseBodyDryRunResultRolePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceResponseBodyDryRunResultRolePolicy) SetMissingPolicy(v []*CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) *CreateServiceResponseBodyDryRunResultRolePolicy {
+	s.MissingPolicy = v
+	return s
+}
+
+func (s *CreateServiceResponseBodyDryRunResultRolePolicy) SetPolicy(v string) *CreateServiceResponseBodyDryRunResultRolePolicy {
+	s.Policy = &v
+	return s
+}
+
+type CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy struct {
+	Action      []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
+	Resource    *string   `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ServiceName *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) SetAction(v []*string) *CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy {
+	s.Action = v
+	return s
+}
+
+func (s *CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) SetResource(v string) *CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy {
+	s.Resource = &v
+	return s
+}
+
+func (s *CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) SetServiceName(v string) *CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy {
+	s.ServiceName = &v
 	return s
 }
 
@@ -11767,6 +11848,7 @@ type UpdateServiceRequest struct {
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The duration for which hosted O\\&M is implemented. Unit: seconds.
 	//
 	// example:
@@ -11943,6 +12025,11 @@ func (s *UpdateServiceRequest) SetDeployType(v string) *UpdateServiceRequest {
 	return s
 }
 
+func (s *UpdateServiceRequest) SetDryRun(v bool) *UpdateServiceRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *UpdateServiceRequest) SetDuration(v int64) *UpdateServiceRequest {
 	s.Duration = &v
 	return s
@@ -12089,7 +12176,7 @@ type UpdateServiceRequestCommodityComponentsMappings struct {
 	// example:
 	//
 	// This parameter is not publicly accessible.
-	Mappings *string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
+	Mappings map[string]*string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
 	// This parameter is not publicly accessible.
 	//
 	// example:
@@ -12106,8 +12193,8 @@ func (s UpdateServiceRequestCommodityComponentsMappings) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateServiceRequestCommodityComponentsMappings) SetMappings(v string) *UpdateServiceRequestCommodityComponentsMappings {
-	s.Mappings = &v
+func (s *UpdateServiceRequestCommodityComponentsMappings) SetMappings(v map[string]*string) *UpdateServiceRequestCommodityComponentsMappings {
+	s.Mappings = v
 	return s
 }
 
@@ -12374,6 +12461,11 @@ func (s *UpdateServiceRequestServiceInfoAgreements) SetUrl(v string) *UpdateServ
 }
 
 type UpdateServiceRequestUpdateOption struct {
+	// Is need to update the artifacts
+	//
+	// example:
+	//
+	// true
 	UpdateArtifact *bool `json:"UpdateArtifact,omitempty" xml:"UpdateArtifact,omitempty"`
 	// The options for update the service. Valid values:
 	//
@@ -12456,6 +12548,7 @@ type UpdateServiceShrinkRequest struct {
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The duration for which hosted O\\&M is implemented. Unit: seconds.
 	//
 	// example:
@@ -12629,6 +12722,11 @@ func (s *UpdateServiceShrinkRequest) SetDeployMetadata(v string) *UpdateServiceS
 
 func (s *UpdateServiceShrinkRequest) SetDeployType(v string) *UpdateServiceShrinkRequest {
 	s.DeployType = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequest) SetDryRun(v bool) *UpdateServiceShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -12833,6 +12931,7 @@ func (s *UpdateServiceShrinkRequestServiceInfoAgreements) SetUrl(v string) *Upda
 }
 
 type UpdateServiceResponseBody struct {
+	DryRunResult *UpdateServiceResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -12849,8 +12948,82 @@ func (s UpdateServiceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateServiceResponseBody) SetDryRunResult(v *UpdateServiceResponseBodyDryRunResult) *UpdateServiceResponseBody {
+	s.DryRunResult = v
+	return s
+}
+
 func (s *UpdateServiceResponseBody) SetRequestId(v string) *UpdateServiceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceResponseBodyDryRunResult struct {
+	RolePolicy *UpdateServiceResponseBodyDryRunResultRolePolicy `json:"RolePolicy,omitempty" xml:"RolePolicy,omitempty" type:"Struct"`
+}
+
+func (s UpdateServiceResponseBodyDryRunResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceResponseBodyDryRunResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceResponseBodyDryRunResult) SetRolePolicy(v *UpdateServiceResponseBodyDryRunResultRolePolicy) *UpdateServiceResponseBodyDryRunResult {
+	s.RolePolicy = v
+	return s
+}
+
+type UpdateServiceResponseBodyDryRunResultRolePolicy struct {
+	MissingPolicy []*UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy `json:"MissingPolicy,omitempty" xml:"MissingPolicy,omitempty" type:"Repeated"`
+	Policy        *string                                                         `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s UpdateServiceResponseBodyDryRunResultRolePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceResponseBodyDryRunResultRolePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceResponseBodyDryRunResultRolePolicy) SetMissingPolicy(v []*UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) *UpdateServiceResponseBodyDryRunResultRolePolicy {
+	s.MissingPolicy = v
+	return s
+}
+
+func (s *UpdateServiceResponseBodyDryRunResultRolePolicy) SetPolicy(v string) *UpdateServiceResponseBodyDryRunResultRolePolicy {
+	s.Policy = &v
+	return s
+}
+
+type UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy struct {
+	Action      []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
+	Resource    *string   `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ServiceName *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) SetAction(v []*string) *UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy {
+	s.Action = v
+	return s
+}
+
+func (s *UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) SetResource(v string) *UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy {
+	s.Resource = &v
+	return s
+}
+
+func (s *UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy) SetServiceName(v string) *UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy {
+	s.ServiceName = &v
 	return s
 }
 
@@ -12894,6 +13067,7 @@ type UpdateServiceInstanceAttributeRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The License Data
 	LicenseData *UpdateServiceInstanceAttributeRequestLicenseData `json:"LicenseData,omitempty" xml:"LicenseData,omitempty" type:"Struct"`
+	Reason      *string                                           `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -12927,6 +13101,11 @@ func (s *UpdateServiceInstanceAttributeRequest) SetEndTime(v string) *UpdateServ
 
 func (s *UpdateServiceInstanceAttributeRequest) SetLicenseData(v *UpdateServiceInstanceAttributeRequestLicenseData) *UpdateServiceInstanceAttributeRequest {
 	s.LicenseData = v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeRequest) SetReason(v string) *UpdateServiceInstanceAttributeRequest {
+	s.Reason = &v
 	return s
 }
 
@@ -12973,6 +13152,7 @@ type UpdateServiceInstanceAttributeShrinkRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The License Data
 	LicenseDataShrink *string `json:"LicenseData,omitempty" xml:"LicenseData,omitempty"`
+	Reason            *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -13006,6 +13186,11 @@ func (s *UpdateServiceInstanceAttributeShrinkRequest) SetEndTime(v string) *Upda
 
 func (s *UpdateServiceInstanceAttributeShrinkRequest) SetLicenseDataShrink(v string) *UpdateServiceInstanceAttributeShrinkRequest {
 	s.LicenseDataShrink = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeShrinkRequest) SetReason(v string) *UpdateServiceInstanceAttributeShrinkRequest {
+	s.Reason = &v
 	return s
 }
 
@@ -13974,6 +14159,10 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DeployType)) {
 		query["DeployType"] = request.DeployType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Duration)) {
@@ -16479,6 +16668,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 		query["DeployType"] = request.DeployType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Duration)) {
 		query["Duration"] = request.Duration
 	}
@@ -16619,6 +16812,10 @@ func (client *Client) UpdateServiceInstanceAttributeWithOptions(tmpReq *UpdateSe
 
 	if !tea.BoolValue(util.IsUnset(request.LicenseDataShrink)) {
 		query["LicenseData"] = request.LicenseDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
