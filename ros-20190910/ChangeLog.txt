@@ -1,3 +1,7 @@
+2024-09-12 Version: v4.2.4
+- Update API CreateStackGroup: add param StackArn.
+
+
 2024-08-09 Version: v4.2.3
 - Generated golang 2019-09-10 for ROS.
 

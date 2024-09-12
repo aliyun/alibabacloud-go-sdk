@@ -2094,6 +2094,7 @@ type CreateStackGroupRequest struct {
 	//
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackArn        *string `json:"StackArn,omitempty" xml:"StackArn,omitempty"`
 	// The name of the stack group. The name must be unique within a region.\\
 	//
 	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
@@ -2188,6 +2189,11 @@ func (s *CreateStackGroupRequest) SetRegionId(v string) *CreateStackGroupRequest
 
 func (s *CreateStackGroupRequest) SetResourceGroupId(v string) *CreateStackGroupRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetStackArn(v string) *CreateStackGroupRequest {
+	s.StackArn = &v
 	return s
 }
 
@@ -2427,6 +2433,7 @@ type CreateStackGroupShrinkRequest struct {
 	//
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackArn        *string `json:"StackArn,omitempty" xml:"StackArn,omitempty"`
 	// The name of the stack group. The name must be unique within a region.\\
 	//
 	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
@@ -2521,6 +2528,11 @@ func (s *CreateStackGroupShrinkRequest) SetRegionId(v string) *CreateStackGroupS
 
 func (s *CreateStackGroupShrinkRequest) SetResourceGroupId(v string) *CreateStackGroupShrinkRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequest) SetStackArn(v string) *CreateStackGroupShrinkRequest {
+	s.StackArn = &v
 	return s
 }
 
@@ -27179,6 +27191,10 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackArn)) {
+		query["StackArn"] = request.StackArn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
