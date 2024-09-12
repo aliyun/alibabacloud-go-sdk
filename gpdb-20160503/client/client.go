@@ -5985,6 +5985,94 @@ func (s *CreateVectorIndexResponse) SetBody(v *CreateVectorIndexResponseBody) *C
 	return s
 }
 
+type DeleteAccountRequest struct {
+	// The name of the database account. The privileged account cannot be deleted.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testuser
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp***************
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s DeleteAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountRequest) SetAccountName(v string) *DeleteAccountRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *DeleteAccountRequest) SetDBInstanceId(v string) *DeleteAccountRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type DeleteAccountResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A5396****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponseBody) SetRequestId(v string) *DeleteAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccountResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponse) SetHeaders(v map[string]*string) *DeleteAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccountResponse) SetStatusCode(v int32) *DeleteAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCollectionRequest struct {
 	// The name of the collection.
 	//
@@ -26345,6 +26433,177 @@ func (s *ExecuteStatementResponse) SetBody(v *ExecuteStatementResponseBody) *Exe
 	return s
 }
 
+type GetAccountRequest struct {
+	// The name of the database account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testuser
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s GetAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountRequest) SetAccountName(v string) *GetAccountRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *GetAccountRequest) SetDBInstanceId(v string) *GetAccountRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type GetAccountResponseBody struct {
+	// The new description of the database account.
+	//
+	// 	- The description must start with a letter.
+	//
+	// 	- The description cannot start with `http://` or `https://`.
+	//
+	// 	- The description can contain letters, underscores (_), hyphens (-), and digits.
+	//
+	// 	- The description must be 2 to 256 characters in length.
+	//
+	// example:
+	//
+	// The instance used by this account to log in is DBInstanceId. The name used to log in is AccountName.
+	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// The name of the initial account.
+	//
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	//
+	// 	- The name cannot start with gp.
+	//
+	// 	- The name must be 2 to 16 characters in length.
+	//
+	// example:
+	//
+	// testaccount
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The status of the member that you want to query.
+	//
+	// 	- **enabled**: managed.
+	//
+	// 	- **disabled**: not managed.
+	//
+	// 	- **disabling**: being deleted.
+	//
+	// example:
+	//
+	// 1
+	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// 	- Normal: standard account
+	//
+	// 	- Super: privileged account
+	//
+	// example:
+	//
+	// Normal
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// CA7E4276-E2D5-5F8D-AF06-9EAB3F6C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountResponseBody) SetAccountDescription(v string) *GetAccountResponseBody {
+	s.AccountDescription = &v
+	return s
+}
+
+func (s *GetAccountResponseBody) SetAccountName(v string) *GetAccountResponseBody {
+	s.AccountName = &v
+	return s
+}
+
+func (s *GetAccountResponseBody) SetAccountStatus(v string) *GetAccountResponseBody {
+	s.AccountStatus = &v
+	return s
+}
+
+func (s *GetAccountResponseBody) SetAccountType(v string) *GetAccountResponseBody {
+	s.AccountType = &v
+	return s
+}
+
+func (s *GetAccountResponseBody) SetDBInstanceId(v string) *GetAccountResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *GetAccountResponseBody) SetRequestId(v string) *GetAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAccountResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountResponse) SetHeaders(v map[string]*string) *GetAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccountResponse) SetStatusCode(v int32) *GetAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAccountResponse) SetBody(v *GetAccountResponseBody) *GetAccountResponse {
+	s.Body = v
+	return s
+}
+
 type GetSecretValueRequest struct {
 	// The instance ID.
 	//
@@ -32359,6 +32618,154 @@ func (s *ModifyDBInstanceMaintainTimeResponse) SetBody(v *ModifyDBInstanceMainta
 	return s
 }
 
+type ModifyDBInstancePayTypeRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp***************
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- Postpaid: pay-as-you-go.
+	//
+	// 	- Prepaid: subscription.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// This parameter must be specified only when PayType is set to Prepaid.
+	//
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The subscription duration.
+	//
+	// 	- Valid values when Period is set to Month: 1 to 9.
+	//
+	// 	- Valid values when Period is set to Year: 1 to 3.
+	//
+	// This parameter must be specified only when PayType is set to Prepaid.
+	//
+	// example:
+	//
+	// 1
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+}
+
+func (s ModifyDBInstancePayTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstancePayTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstancePayTypeRequest) SetDBInstanceId(v string) *ModifyDBInstancePayTypeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstancePayTypeRequest) SetPayType(v string) *ModifyDBInstancePayTypeRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *ModifyDBInstancePayTypeRequest) SetPeriod(v string) *ModifyDBInstancePayTypeRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *ModifyDBInstancePayTypeRequest) SetUsedTime(v int32) *ModifyDBInstancePayTypeRequest {
+	s.UsedTime = &v
+	return s
+}
+
+type ModifyDBInstancePayTypeResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp***************
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 50578361067****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A5396F2****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstancePayTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstancePayTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstancePayTypeResponseBody) SetDBInstanceId(v string) *ModifyDBInstancePayTypeResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstancePayTypeResponseBody) SetOrderId(v string) *ModifyDBInstancePayTypeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyDBInstancePayTypeResponseBody) SetRequestId(v string) *ModifyDBInstancePayTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstancePayTypeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstancePayTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBInstancePayTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstancePayTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstancePayTypeResponse) SetHeaders(v map[string]*string) *ModifyDBInstancePayTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstancePayTypeResponse) SetStatusCode(v int32) *ModifyDBInstancePayTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstancePayTypeResponse) SetBody(v *ModifyDBInstancePayTypeResponseBody) *ModifyDBInstancePayTypeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceResourceGroupRequest struct {
 	// The ID of the instance.
 	//
@@ -35645,10 +36052,22 @@ func (s *QueryCollectionDataRequest) SetWorkspaceId(v string) *QueryCollectionDa
 }
 
 type QueryCollectionDataRequestRelationalTableFilter struct {
+	// example:
+	//
+	// doc_id
 	CollectionMetadataField *string `json:"CollectionMetadataField,omitempty" xml:"CollectionMetadataField,omitempty"`
-	Condition               *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	TableField              *string `json:"TableField,omitempty" xml:"TableField,omitempty"`
-	TableName               *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// tags @> ARRAY[\\"art\\"]
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// id
+	TableField *string `json:"TableField,omitempty" xml:"TableField,omitempty"`
+	// example:
+	//
+	// my_rds_table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s QueryCollectionDataRequestRelationalTableFilter) String() string {
@@ -37417,6 +37836,314 @@ func (s *ReleaseInstancePublicConnectionResponse) SetStatusCode(v int32) *Releas
 }
 
 func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePublicConnectionResponseBody) *ReleaseInstancePublicConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type RerankRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Documents    []*string `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxChunksPerDoc *int32 `json:"MaxChunksPerDoc,omitempty" xml:"MaxChunksPerDoc,omitempty"`
+	// example:
+	//
+	// bge-reranker-v2-m3
+	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Query   *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	ReturnDocuments *bool `json:"ReturnDocuments,omitempty" xml:"ReturnDocuments,omitempty"`
+	// example:
+	//
+	// 3
+	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+}
+
+func (s RerankRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerankRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RerankRequest) SetDBInstanceId(v string) *RerankRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *RerankRequest) SetDocuments(v []*string) *RerankRequest {
+	s.Documents = v
+	return s
+}
+
+func (s *RerankRequest) SetMaxChunksPerDoc(v int32) *RerankRequest {
+	s.MaxChunksPerDoc = &v
+	return s
+}
+
+func (s *RerankRequest) SetModel(v string) *RerankRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *RerankRequest) SetOwnerId(v int64) *RerankRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RerankRequest) SetQuery(v string) *RerankRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RerankRequest) SetRegionId(v string) *RerankRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RerankRequest) SetReturnDocuments(v bool) *RerankRequest {
+	s.ReturnDocuments = &v
+	return s
+}
+
+func (s *RerankRequest) SetTopK(v int32) *RerankRequest {
+	s.TopK = &v
+	return s
+}
+
+type RerankShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// example:
+	//
+	// 10
+	MaxChunksPerDoc *int32 `json:"MaxChunksPerDoc,omitempty" xml:"MaxChunksPerDoc,omitempty"`
+	// example:
+	//
+	// bge-reranker-v2-m3
+	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Query   *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	ReturnDocuments *bool `json:"ReturnDocuments,omitempty" xml:"ReturnDocuments,omitempty"`
+	// example:
+	//
+	// 3
+	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+}
+
+func (s RerankShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerankShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RerankShrinkRequest) SetDBInstanceId(v string) *RerankShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetDocumentsShrink(v string) *RerankShrinkRequest {
+	s.DocumentsShrink = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetMaxChunksPerDoc(v int32) *RerankShrinkRequest {
+	s.MaxChunksPerDoc = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetModel(v string) *RerankShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetOwnerId(v int64) *RerankShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetQuery(v string) *RerankShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetRegionId(v string) *RerankShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetReturnDocuments(v bool) *RerankShrinkRequest {
+	s.ReturnDocuments = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetTopK(v int32) *RerankShrinkRequest {
+	s.TopK = &v
+	return s
+}
+
+type RerankResponseBody struct {
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *RerankResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 100
+	Tokens *int32 `json:"Tokens,omitempty" xml:"Tokens,omitempty"`
+}
+
+func (s RerankResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerankResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RerankResponseBody) SetMessage(v string) *RerankResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RerankResponseBody) SetRequestId(v string) *RerankResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RerankResponseBody) SetResults(v *RerankResponseBodyResults) *RerankResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *RerankResponseBody) SetStatus(v string) *RerankResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *RerankResponseBody) SetTokens(v int32) *RerankResponseBody {
+	s.Tokens = &v
+	return s
+}
+
+type RerankResponseBodyResults struct {
+	Results []*RerankResponseBodyResultsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s RerankResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerankResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *RerankResponseBodyResults) SetResults(v []*RerankResponseBodyResultsResults) *RerankResponseBodyResults {
+	s.Results = v
+	return s
+}
+
+type RerankResponseBodyResultsResults struct {
+	Document *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 2.31412
+	RelevanceScore *float32 `json:"RelevanceScore,omitempty" xml:"RelevanceScore,omitempty"`
+}
+
+func (s RerankResponseBodyResultsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerankResponseBodyResultsResults) GoString() string {
+	return s.String()
+}
+
+func (s *RerankResponseBodyResultsResults) SetDocument(v string) *RerankResponseBodyResultsResults {
+	s.Document = &v
+	return s
+}
+
+func (s *RerankResponseBodyResultsResults) SetIndex(v int32) *RerankResponseBodyResultsResults {
+	s.Index = &v
+	return s
+}
+
+func (s *RerankResponseBodyResultsResults) SetRelevanceScore(v float32) *RerankResponseBodyResultsResults {
+	s.RelevanceScore = &v
+	return s
+}
+
+type RerankResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RerankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RerankResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerankResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RerankResponse) SetHeaders(v map[string]*string) *RerankResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RerankResponse) SetStatusCode(v int32) *RerankResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RerankResponse) SetBody(v *RerankResponseBody) *RerankResponse {
 	s.Body = v
 	return s
 }
@@ -44277,6 +45004,70 @@ func (client *Client) CreateVectorIndex(request *CreateVectorIndexRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVectorIndexResponse{}
 	_body, _err := client.CreateVectorIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据库账号
+//
+// @param request - DeleteAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccountResponse
+func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccount"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据库账号
+//
+// @param request - DeleteAccountRequest
+//
+// @return DeleteAccountResponse
+func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.DeleteAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51260,6 +52051,70 @@ func (client *Client) ExecuteStatement(request *ExecuteStatementRequest) (_resul
 
 // Summary:
 //
+// 获取特定的账号信息
+//
+// @param request - GetAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountResponse
+func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime *util.RuntimeOptions) (_result *GetAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccount"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取特定的账号信息
+//
+// @param request - GetAccountRequest
+//
+// @return GetAccountResponse
+func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccountResponse{}
+	_body, _err := client.GetAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about an access credential.
 //
 // @param request - GetSecretValueRequest
@@ -53436,6 +54291,78 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 
 // Summary:
 //
+// 包年包月/按量付费转换改造
+//
+// @param request - ModifyDBInstancePayTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstancePayTypeResponse
+func (client *Client) ModifyDBInstancePayTypeWithOptions(request *ModifyDBInstancePayTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstancePayTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstancePayType"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstancePayTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 包年包月/按量付费转换改造
+//
+// @param request - ModifyDBInstancePayTypeRequest
+//
+// @return ModifyDBInstancePayTypeResponse
+func (client *Client) ModifyDBInstancePayType(request *ModifyDBInstancePayTypeRequest) (_result *ModifyDBInstancePayTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstancePayTypeResponse{}
+	_body, _err := client.ModifyDBInstancePayTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves an AnalyticDB for PostgreSQL instance to a resource group.
 //
 // Description:
@@ -54112,6 +55039,12 @@ func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_resul
 //
 // Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
 //
+// Description:
+//
+//   You can call this operation only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+//
+// 	- You can call this operation only for AnalyticDB for PostgreSQL instances in Serverless automatic scheduling mode.
+//
 // @param request - ModifySQLCollectorPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -54157,6 +55090,12 @@ func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLColl
 // Summary:
 //
 // Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+//
+// Description:
+//
+//   You can call this operation only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+//
+// 	- You can call this operation only for AnalyticDB for PostgreSQL instances in Serverless automatic scheduling mode.
 //
 // @param request - ModifySQLCollectorPolicyRequest
 //
@@ -55322,6 +56261,106 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstancePublicConnectionResponse{}
 	_body, _err := client.ReleaseInstancePublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过模型对文档进行打分和重排序
+//
+// @param tmpReq - RerankRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RerankResponse
+func (client *Client) RerankWithOptions(tmpReq *RerankRequest, runtime *util.RuntimeOptions) (_result *RerankResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RerankShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Documents)) {
+		request.DocumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Documents, tea.String("Documents"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentsShrink)) {
+		body["Documents"] = request.DocumentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxChunksPerDoc)) {
+		body["MaxChunksPerDoc"] = request.MaxChunksPerDoc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnDocuments)) {
+		body["ReturnDocuments"] = request.ReturnDocuments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopK)) {
+		body["TopK"] = request.TopK
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Rerank"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RerankResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过模型对文档进行打分和重排序
+//
+// @param request - RerankRequest
+//
+// @return RerankResponse
+func (client *Client) Rerank(request *RerankRequest) (_result *RerankResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RerankResponse{}
+	_body, _err := client.RerankWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
