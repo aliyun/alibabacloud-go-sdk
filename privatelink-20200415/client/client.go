@@ -173,7 +173,8 @@ type AddZoneToVpcEndpointRequest struct {
 	// example:
 	//
 	// ep-hp33b2e43fays7s8****
-	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointId  *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	// The region ID of the endpoint.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
@@ -228,6 +229,11 @@ func (s *AddZoneToVpcEndpointRequest) SetDryRun(v bool) *AddZoneToVpcEndpointReq
 
 func (s *AddZoneToVpcEndpointRequest) SetEndpointId(v string) *AddZoneToVpcEndpointRequest {
 	s.EndpointId = &v
+	return s
+}
+
+func (s *AddZoneToVpcEndpointRequest) SetIpv6Address(v string) *AddZoneToVpcEndpointRequest {
+	s.Ipv6Address = &v
 	return s
 }
 
@@ -760,6 +766,7 @@ func (s *CheckProductOpenResponse) SetBody(v *CheckProductOpenResponseBody) *Che
 }
 
 type CreateVpcEndpointRequest struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
@@ -873,6 +880,11 @@ func (s CreateVpcEndpointRequest) String() string {
 
 func (s CreateVpcEndpointRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVpcEndpointRequest) SetAddressIpVersion(v string) *CreateVpcEndpointRequest {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *CreateVpcEndpointRequest) SetClientToken(v string) *CreateVpcEndpointRequest {
@@ -989,6 +1001,7 @@ func (s *CreateVpcEndpointRequestTag) SetValue(v string) *CreateVpcEndpointReque
 }
 
 type CreateVpcEndpointRequestZone struct {
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	// The ID of the vSwitch where you want to create the endpoint ENI in the zone. You can specify up to 10 vSwitch IDs.
 	//
 	// example:
@@ -1021,6 +1034,11 @@ func (s CreateVpcEndpointRequestZone) GoString() string {
 	return s.String()
 }
 
+func (s *CreateVpcEndpointRequestZone) SetIpv6Address(v string) *CreateVpcEndpointRequestZone {
+	s.Ipv6Address = &v
+	return s
+}
+
 func (s *CreateVpcEndpointRequestZone) SetVSwitchId(v string) *CreateVpcEndpointRequestZone {
 	s.VSwitchId = &v
 	return s
@@ -1037,6 +1055,7 @@ func (s *CreateVpcEndpointRequestZone) SetIp(v string) *CreateVpcEndpointRequest
 }
 
 type CreateVpcEndpointResponseBody struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The bandwidth of the endpoint connection. Unit: Mbit/s.
 	//
 	// example:
@@ -1149,6 +1168,11 @@ func (s CreateVpcEndpointResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateVpcEndpointResponseBody) SetAddressIpVersion(v string) *CreateVpcEndpointResponseBody {
+	s.AddressIpVersion = &v
+	return s
+}
+
 func (s *CreateVpcEndpointResponseBody) SetBandwidth(v int64) *CreateVpcEndpointResponseBody {
 	s.Bandwidth = &v
 	return s
@@ -1244,6 +1268,7 @@ func (s *CreateVpcEndpointResponse) SetBody(v *CreateVpcEndpointResponseBody) *C
 }
 
 type CreateVpcEndpointServiceRequest struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// Specifies whether to automatically accept endpoint connection requests. Valid values:
 	//
 	// 	- **true**
@@ -1320,6 +1345,8 @@ type CreateVpcEndpointServiceRequest struct {
 	//
 	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	//
 	// 	- **true**
@@ -1350,6 +1377,11 @@ func (s CreateVpcEndpointServiceRequest) String() string {
 
 func (s CreateVpcEndpointServiceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVpcEndpointServiceRequest) SetAddressIpVersion(v string) *CreateVpcEndpointServiceRequest {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *CreateVpcEndpointServiceRequest) SetAutoAcceptEnabled(v bool) *CreateVpcEndpointServiceRequest {
@@ -1502,6 +1534,7 @@ func (s *CreateVpcEndpointServiceRequestTag) SetValue(v string) *CreateVpcEndpoi
 }
 
 type CreateVpcEndpointServiceResponseBody struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	//
 	// 	- **true**
@@ -1606,6 +1639,11 @@ func (s CreateVpcEndpointServiceResponseBody) String() string {
 
 func (s CreateVpcEndpointServiceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVpcEndpointServiceResponseBody) SetAddressIpVersion(v string) *CreateVpcEndpointServiceResponseBody {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *CreateVpcEndpointServiceResponseBody) SetAutoAcceptEnabled(v bool) *CreateVpcEndpointServiceResponseBody {
@@ -3104,6 +3142,7 @@ func (s *GetVpcEndpointAttributeRequest) SetRegionId(v string) *GetVpcEndpointAt
 }
 
 type GetVpcEndpointAttributeResponseBody struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The bandwidth of the endpoint connection. Unit: Mbit/s.
 	//
 	// example:
@@ -3271,6 +3310,11 @@ func (s GetVpcEndpointAttributeResponseBody) String() string {
 
 func (s GetVpcEndpointAttributeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVpcEndpointAttributeResponseBody) SetAddressIpVersion(v string) *GetVpcEndpointAttributeResponseBody {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *GetVpcEndpointAttributeResponseBody) SetBandwidth(v int32) *GetVpcEndpointAttributeResponseBody {
@@ -3447,6 +3491,7 @@ func (s *GetVpcEndpointServiceAttributeRequest) SetServiceId(v string) *GetVpcEn
 }
 
 type GetVpcEndpointServiceAttributeResponseBody struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// Indicates whether endpoint connection requests are automatically accepted. Valid values:
 	//
 	// 	- **true**
@@ -3569,6 +3614,8 @@ type GetVpcEndpointServiceAttributeResponseBody struct {
 	//
 	// Active
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// Deprecated
+	//
 	// Indicates whether IPv6 is enabled for the endpoint service. Valid values:
 	//
 	// 	- **true**
@@ -3607,6 +3654,11 @@ func (s GetVpcEndpointServiceAttributeResponseBody) String() string {
 
 func (s GetVpcEndpointServiceAttributeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBody) SetAddressIpVersion(v string) *GetVpcEndpointServiceAttributeResponseBody {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *GetVpcEndpointServiceAttributeResponseBody) SetAutoAcceptEnabled(v bool) *GetVpcEndpointServiceAttributeResponseBody {
@@ -5215,6 +5267,7 @@ func (s *ListVpcEndpointServiceUsersResponse) SetBody(v *ListVpcEndpointServiceU
 }
 
 type ListVpcEndpointServicesRequest struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// Specifies whether to automatically accept endpoint connection requests. Valid values:
 	//
 	// 	- **true**
@@ -5329,6 +5382,11 @@ func (s ListVpcEndpointServicesRequest) String() string {
 
 func (s ListVpcEndpointServicesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpcEndpointServicesRequest) SetAddressIpVersion(v string) *ListVpcEndpointServicesRequest {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *ListVpcEndpointServicesRequest) SetAutoAcceptEnabled(v bool) *ListVpcEndpointServicesRequest {
@@ -5500,6 +5558,7 @@ func (s *ListVpcEndpointServicesResponseBody) SetTotalCount(v int32) *ListVpcEnd
 }
 
 type ListVpcEndpointServicesResponseBodyServices struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// Indicates whether endpoint connection requests are automatically accepted. Valid values:
 	//
 	// 	- **true**: Endpoint connection requests are automatically accepted.
@@ -5616,6 +5675,8 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	//
 	// Active
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// Deprecated
+	//
 	// Indicates whether the endpoint service supports IPv6. Valid values:
 	//
 	// 	- **true**
@@ -5654,6 +5715,11 @@ func (s ListVpcEndpointServicesResponseBodyServices) String() string {
 
 func (s ListVpcEndpointServicesResponseBodyServices) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServices) SetAddressIpVersion(v string) *ListVpcEndpointServicesResponseBodyServices {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *ListVpcEndpointServicesResponseBodyServices) SetAutoAcceptEnabled(v bool) *ListVpcEndpointServicesResponseBodyServices {
@@ -6022,6 +6088,7 @@ func (s *ListVpcEndpointServicesByEndUserResponseBody) SetTotalCount(v string) *
 }
 
 type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The payer. Valid values:
 	//
 	// 	- **Endpoint**: the service consumer
@@ -6098,6 +6165,11 @@ func (s ListVpcEndpointServicesByEndUserResponseBodyServices) String() string {
 
 func (s ListVpcEndpointServicesByEndUserResponseBodyServices) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetAddressIpVersion(v string) *ListVpcEndpointServicesByEndUserResponseBodyServices {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetPayer(v string) *ListVpcEndpointServicesByEndUserResponseBodyServices {
@@ -6494,6 +6566,7 @@ func (s *ListVpcEndpointZonesResponse) SetBody(v *ListVpcEndpointZonesResponseBo
 }
 
 type ListVpcEndpointsRequest struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
 	// 	- **Pending**: The endpoint connection is being modified.
@@ -6602,6 +6675,11 @@ func (s ListVpcEndpointsRequest) String() string {
 
 func (s ListVpcEndpointsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpcEndpointsRequest) SetAddressIpVersion(v string) *ListVpcEndpointsRequest {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *ListVpcEndpointsRequest) SetConnectionStatus(v string) *ListVpcEndpointsRequest {
@@ -6768,6 +6846,7 @@ func (s *ListVpcEndpointsResponseBody) SetTotalCount(v int32) *ListVpcEndpointsR
 }
 
 type ListVpcEndpointsResponseBodyEndpoints struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The bandwidth of the endpoint connection. Unit: Mbit/s.
 	//
 	// example:
@@ -6917,6 +6996,11 @@ func (s ListVpcEndpointsResponseBodyEndpoints) String() string {
 
 func (s ListVpcEndpointsResponseBodyEndpoints) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpcEndpointsResponseBodyEndpoints) SetAddressIpVersion(v string) *ListVpcEndpointsResponseBodyEndpoints {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *ListVpcEndpointsResponseBodyEndpoints) SetBandwidth(v int64) *ListVpcEndpointsResponseBodyEndpoints {
@@ -7761,6 +7845,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateVpcEndpointAttributeRequest struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
@@ -7820,6 +7905,11 @@ func (s UpdateVpcEndpointAttributeRequest) String() string {
 
 func (s UpdateVpcEndpointAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateVpcEndpointAttributeRequest) SetAddressIpVersion(v string) *UpdateVpcEndpointAttributeRequest {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *UpdateVpcEndpointAttributeRequest) SetClientToken(v string) *UpdateVpcEndpointAttributeRequest {
@@ -8051,6 +8141,7 @@ func (s *UpdateVpcEndpointConnectionAttributeResponse) SetBody(v *UpdateVpcEndpo
 }
 
 type UpdateVpcEndpointServiceAttributeRequest struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// Specifies whether to automatically accept endpoint connection requests. Valid values:
 	//
 	// 	- **true**
@@ -8113,6 +8204,8 @@ type UpdateVpcEndpointServiceAttributeRequest struct {
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to enable IPv6. Valid values:
 	//
 	// 	- **true**
@@ -8141,6 +8234,11 @@ func (s UpdateVpcEndpointServiceAttributeRequest) String() string {
 
 func (s UpdateVpcEndpointServiceAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateVpcEndpointServiceAttributeRequest) SetAddressIpVersion(v string) *UpdateVpcEndpointServiceAttributeRequest {
+	s.AddressIpVersion = &v
+	return s
 }
 
 func (s *UpdateVpcEndpointServiceAttributeRequest) SetAutoAcceptEnabled(v bool) *UpdateVpcEndpointServiceAttributeRequest {
@@ -8784,6 +8882,10 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 		query["EndpointId"] = request.EndpointId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Ipv6Address)) {
+		query["Ipv6Address"] = request.Ipv6Address
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9193,6 +9295,10 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
+		query["AddressIpVersion"] = request.AddressIpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -9335,6 +9441,10 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
+		query["AddressIpVersion"] = request.AddressIpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoAcceptEnabled)) {
 		query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
 	}
@@ -10977,6 +11087,10 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
+		query["AddressIpVersion"] = request.AddressIpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoAcceptEnabled)) {
 		query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
 	}
@@ -11257,6 +11371,10 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
+		query["AddressIpVersion"] = request.AddressIpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConnectionStatus)) {
 		query["ConnectionStatus"] = request.ConnectionStatus
 	}
@@ -11807,6 +11925,10 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
+		query["AddressIpVersion"] = request.AddressIpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -11995,6 +12117,10 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
+		query["AddressIpVersion"] = request.AddressIpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoAcceptEnabled)) {
 		query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
 	}
