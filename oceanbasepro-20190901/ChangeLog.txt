@@ -1,3 +1,7 @@
+2024-09-13 Version: v8.2.0
+- Support API RemoveStandbyInstance.
+
+
 2024-09-12 Version: v8.1.0
 - Support API RemoveStandbyInstance.
 
