@@ -4440,6 +4440,158 @@ func (s *InitFaceVerifyResponse) SetBody(v *InitFaceVerifyResponseBody) *InitFac
 	return s
 }
 
+type InsertWhiteListSettingRequest struct {
+	// example:
+	//
+	// 330103xxxxxxxxxxxx
+	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// example:
+	//
+	// shsf57a4e0d9981c3bd66dc754f3d3cd
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 100000xxxx
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// antcloudauth
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// example:
+	//
+	// 30
+	ValidDay *int32 `json:"ValidDay,omitempty" xml:"ValidDay,omitempty"`
+}
+
+func (s InsertWhiteListSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertWhiteListSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertWhiteListSettingRequest) SetCertNo(v string) *InsertWhiteListSettingRequest {
+	s.CertNo = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingRequest) SetCertifyId(v string) *InsertWhiteListSettingRequest {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingRequest) SetRemark(v string) *InsertWhiteListSettingRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingRequest) SetSceneId(v int64) *InsertWhiteListSettingRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingRequest) SetServiceCode(v string) *InsertWhiteListSettingRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingRequest) SetValidDay(v int32) *InsertWhiteListSettingRequest {
+	s.ValidDay = &v
+	return s
+}
+
+type InsertWhiteListSettingResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	ResultObject *bool `json:"ResultObject,omitempty" xml:"ResultObject,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InsertWhiteListSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertWhiteListSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertWhiteListSettingResponseBody) SetCode(v string) *InsertWhiteListSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingResponseBody) SetMessage(v string) *InsertWhiteListSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingResponseBody) SetRequestId(v string) *InsertWhiteListSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingResponseBody) SetResultObject(v bool) *InsertWhiteListSettingResponseBody {
+	s.ResultObject = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingResponseBody) SetSuccess(v bool) *InsertWhiteListSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InsertWhiteListSettingResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertWhiteListSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InsertWhiteListSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertWhiteListSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertWhiteListSettingResponse) SetHeaders(v map[string]*string) *InsertWhiteListSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertWhiteListSettingResponse) SetStatusCode(v int32) *InsertWhiteListSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertWhiteListSettingResponse) SetBody(v *InsertWhiteListSettingResponseBody) *InsertWhiteListSettingResponse {
+	s.Body = v
+	return s
+}
+
 type LivenessFaceVerifyRequest struct {
 	CertifyId              *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	Crop                   *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
@@ -5544,6 +5696,467 @@ func (s *ModifyDeviceInfoResponse) SetStatusCode(v int32) *ModifyDeviceInfoRespo
 }
 
 func (s *ModifyDeviceInfoResponse) SetBody(v *ModifyDeviceInfoResponseBody) *ModifyDeviceInfoResponse {
+	s.Body = v
+	return s
+}
+
+type PageQueryWhiteListSettingRequest struct {
+	// example:
+	//
+	// 330103xxxxxxxxxxxx
+	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// example:
+	//
+	// sha75b4e19a1ddda059b920757b0e12b
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1000000xxx
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// antcloudauth
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// example:
+	//
+	// VALID
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1725379200000
+	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
+	// example:
+	//
+	// 1725120000000
+	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+}
+
+func (s PageQueryWhiteListSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQueryWhiteListSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetCertNo(v string) *PageQueryWhiteListSettingRequest {
+	s.CertNo = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetCertifyId(v string) *PageQueryWhiteListSettingRequest {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetCurrentPage(v int32) *PageQueryWhiteListSettingRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetPageSize(v int32) *PageQueryWhiteListSettingRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetSceneId(v int64) *PageQueryWhiteListSettingRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetServiceCode(v string) *PageQueryWhiteListSettingRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetStatus(v string) *PageQueryWhiteListSettingRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetValidEndDate(v string) *PageQueryWhiteListSettingRequest {
+	s.ValidEndDate = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingRequest) SetValidStartDate(v string) *PageQueryWhiteListSettingRequest {
+	s.ValidStartDate = &v
+	return s
+}
+
+type PageQueryWhiteListSettingResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject []*PageQueryWhiteListSettingResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 28
+	TotalItem *int32 `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
+	// example:
+	//
+	// 3
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s PageQueryWhiteListSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQueryWhiteListSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetCode(v string) *PageQueryWhiteListSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetCurrentPage(v int32) *PageQueryWhiteListSettingResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetMessage(v string) *PageQueryWhiteListSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetPageSize(v int32) *PageQueryWhiteListSettingResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetRequestId(v string) *PageQueryWhiteListSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetResultObject(v []*PageQueryWhiteListSettingResponseBodyResultObject) *PageQueryWhiteListSettingResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetSuccess(v bool) *PageQueryWhiteListSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetTotalItem(v int32) *PageQueryWhiteListSettingResponseBody {
+	s.TotalItem = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBody) SetTotalPage(v int32) *PageQueryWhiteListSettingResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type PageQueryWhiteListSettingResponseBodyResultObject struct {
+	// example:
+	//
+	// 330103xxxxxxxxxxxx
+	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// example:
+	//
+	// sha43d9cabd52d370d9f4cca9468f71e
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// 2024-08-30 14:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-08-30 14:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 234822
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 1000000332
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// antcloudauth
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// example:
+	//
+	// VALID
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-09-02 13:57:51
+	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
+	// example:
+	//
+	// 2024-08-30 13:57:51
+	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+}
+
+func (s PageQueryWhiteListSettingResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQueryWhiteListSettingResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetCertNo(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.CertNo = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetCertifyId(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetGmtCreate(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetGmtModified(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetId(v int64) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.Id = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetRemark(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.Remark = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetSceneId(v int64) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.SceneId = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetServiceCode(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetStatus(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.Status = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetValidEndDate(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.ValidEndDate = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponseBodyResultObject) SetValidStartDate(v string) *PageQueryWhiteListSettingResponseBodyResultObject {
+	s.ValidStartDate = &v
+	return s
+}
+
+type PageQueryWhiteListSettingResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PageQueryWhiteListSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PageQueryWhiteListSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PageQueryWhiteListSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PageQueryWhiteListSettingResponse) SetHeaders(v map[string]*string) *PageQueryWhiteListSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponse) SetStatusCode(v int32) *PageQueryWhiteListSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PageQueryWhiteListSettingResponse) SetBody(v *PageQueryWhiteListSettingResponseBody) *PageQueryWhiteListSettingResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveWhiteListSettingRequest struct {
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// antcloudauth
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s RemoveWhiteListSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWhiteListSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWhiteListSettingRequest) SetIds(v []*int64) *RemoveWhiteListSettingRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *RemoveWhiteListSettingRequest) SetServiceCode(v string) *RemoveWhiteListSettingRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type RemoveWhiteListSettingShrinkRequest struct {
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// antcloudauth
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s RemoveWhiteListSettingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWhiteListSettingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWhiteListSettingShrinkRequest) SetIdsShrink(v string) *RemoveWhiteListSettingShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *RemoveWhiteListSettingShrinkRequest) SetServiceCode(v string) *RemoveWhiteListSettingShrinkRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type RemoveWhiteListSettingResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	ResultObject *bool `json:"ResultObject,omitempty" xml:"ResultObject,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RemoveWhiteListSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWhiteListSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWhiteListSettingResponseBody) SetCode(v string) *RemoveWhiteListSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RemoveWhiteListSettingResponseBody) SetMessage(v string) *RemoveWhiteListSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveWhiteListSettingResponseBody) SetRequestId(v string) *RemoveWhiteListSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveWhiteListSettingResponseBody) SetResultObject(v bool) *RemoveWhiteListSettingResponseBody {
+	s.ResultObject = &v
+	return s
+}
+
+func (s *RemoveWhiteListSettingResponseBody) SetSuccess(v bool) *RemoveWhiteListSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RemoveWhiteListSettingResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveWhiteListSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveWhiteListSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWhiteListSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWhiteListSettingResponse) SetHeaders(v map[string]*string) *RemoveWhiteListSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveWhiteListSettingResponse) SetStatusCode(v int32) *RemoveWhiteListSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveWhiteListSettingResponse) SetBody(v *RemoveWhiteListSettingResponseBody) *RemoveWhiteListSettingResponse {
 	s.Body = v
 	return s
 }
@@ -8416,6 +9029,86 @@ func (client *Client) InitFaceVerify(request *InitFaceVerifyRequest) (_result *I
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增实人白名单
+//
+// @param request - InsertWhiteListSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertWhiteListSettingResponse
+func (client *Client) InsertWhiteListSettingWithOptions(request *InsertWhiteListSettingRequest, runtime *util.RuntimeOptions) (_result *InsertWhiteListSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertNo)) {
+		query["CertNo"] = request.CertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidDay)) {
+		query["ValidDay"] = request.ValidDay
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertWhiteListSetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertWhiteListSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增实人白名单
+//
+// @param request - InsertWhiteListSettingRequest
+//
+// @return InsertWhiteListSettingResponse
+func (client *Client) InsertWhiteListSetting(request *InsertWhiteListSettingRequest) (_result *InsertWhiteListSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InsertWhiteListSettingResponse{}
+	_body, _err := client.InsertWhiteListSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - LivenessFaceVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8919,6 +9612,168 @@ func (client *Client) ModifyDeviceInfo(request *ModifyDeviceInfoRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDeviceInfoResponse{}
 	_body, _err := client.ModifyDeviceInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询实人白名单配置
+//
+// @param request - PageQueryWhiteListSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PageQueryWhiteListSettingResponse
+func (client *Client) PageQueryWhiteListSettingWithOptions(request *PageQueryWhiteListSettingRequest, runtime *util.RuntimeOptions) (_result *PageQueryWhiteListSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertNo)) {
+		query["CertNo"] = request.CertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidEndDate)) {
+		query["ValidEndDate"] = request.ValidEndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidStartDate)) {
+		query["ValidStartDate"] = request.ValidStartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PageQueryWhiteListSetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PageQueryWhiteListSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询实人白名单配置
+//
+// @param request - PageQueryWhiteListSettingRequest
+//
+// @return PageQueryWhiteListSettingResponse
+func (client *Client) PageQueryWhiteListSetting(request *PageQueryWhiteListSettingRequest) (_result *PageQueryWhiteListSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PageQueryWhiteListSettingResponse{}
+	_body, _err := client.PageQueryWhiteListSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实人白名单
+//
+// @param tmpReq - RemoveWhiteListSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveWhiteListSettingResponse
+func (client *Client) RemoveWhiteListSettingWithOptions(tmpReq *RemoveWhiteListSettingRequest, runtime *util.RuntimeOptions) (_result *RemoveWhiteListSettingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveWhiteListSettingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		query["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveWhiteListSetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveWhiteListSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实人白名单
+//
+// @param request - RemoveWhiteListSettingRequest
+//
+// @return RemoveWhiteListSettingResponse
+func (client *Client) RemoveWhiteListSetting(request *RemoveWhiteListSettingRequest) (_result *RemoveWhiteListSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveWhiteListSettingResponse{}
+	_body, _err := client.RemoveWhiteListSettingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
