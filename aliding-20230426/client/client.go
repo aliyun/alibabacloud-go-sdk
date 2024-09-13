@@ -880,6 +880,270 @@ func (s *AddMeetingRoomsResponse) SetBody(v *AddMeetingRoomsResponseBody) *AddMe
 	return s
 }
 
+type AddRecordPermissionHeaders struct {
+	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *AddRecordPermissionHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s AddRecordPermissionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionHeaders) SetCommonHeaders(v map[string]*string) *AddRecordPermissionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddRecordPermissionHeaders) SetAccountContext(v *AddRecordPermissionHeadersAccountContext) *AddRecordPermissionHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type AddRecordPermissionHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s AddRecordPermissionHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionHeadersAccountContext) SetAccountId(v string) *AddRecordPermissionHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type AddRecordPermissionShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s AddRecordPermissionShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionShrinkHeaders) SetCommonHeaders(v map[string]*string) *AddRecordPermissionShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddRecordPermissionShrinkHeaders) SetAccountContextShrink(v string) *AddRecordPermissionShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type AddRecordPermissionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// minutes
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1dddwrqrq
+	ConferenceId  *string                                  `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	TenantContext *AddRecordPermissionRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AddRecordPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionRequest) SetBizType(v string) *AddRecordPermissionRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *AddRecordPermissionRequest) SetConferenceId(v string) *AddRecordPermissionRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *AddRecordPermissionRequest) SetTenantContext(v *AddRecordPermissionRequestTenantContext) *AddRecordPermissionRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *AddRecordPermissionRequest) SetUserId(v string) *AddRecordPermissionRequest {
+	s.UserId = &v
+	return s
+}
+
+type AddRecordPermissionRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s AddRecordPermissionRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionRequestTenantContext) SetTenantId(v string) *AddRecordPermissionRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type AddRecordPermissionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// minutes
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1dddwrqrq
+	ConferenceId        *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AddRecordPermissionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionShrinkRequest) SetBizType(v string) *AddRecordPermissionShrinkRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *AddRecordPermissionShrinkRequest) SetConferenceId(v string) *AddRecordPermissionShrinkRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *AddRecordPermissionShrinkRequest) SetTenantContextShrink(v string) *AddRecordPermissionShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *AddRecordPermissionShrinkRequest) SetUserId(v string) *AddRecordPermissionShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type AddRecordPermissionResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s AddRecordPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionResponseBody) SetCode(v string) *AddRecordPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddRecordPermissionResponseBody) SetRequestId(v string) *AddRecordPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddRecordPermissionResponseBody) SetVendorRequestId(v string) *AddRecordPermissionResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *AddRecordPermissionResponseBody) SetVendorType(v string) *AddRecordPermissionResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type AddRecordPermissionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddRecordPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddRecordPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecordPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecordPermissionResponse) SetHeaders(v map[string]*string) *AddRecordPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddRecordPermissionResponse) SetStatusCode(v int32) *AddRecordPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddRecordPermissionResponse) SetBody(v *AddRecordPermissionResponseBody) *AddRecordPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type AddScenegroupMemberHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *AddScenegroupMemberHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -34344,6 +34608,222 @@ func (s *GetUserIdResponse) SetBody(v *GetUserIdResponseBody) *GetUserIdResponse
 	return s
 }
 
+type GetUserIdByOrgIdAndStaffIdHeaders struct {
+	CommonHeaders  map[string]*string                               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetUserIdByOrgIdAndStaffIdHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdByOrgIdAndStaffIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdHeaders) SetAccountContext(v *GetUserIdByOrgIdAndStaffIdHeadersAccountContext) *GetUserIdByOrgIdAndStaffIdHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetUserIdByOrgIdAndStaffIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdHeadersAccountContext) SetAccountId(v string) *GetUserIdByOrgIdAndStaffIdHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetUserIdByOrgIdAndStaffIdShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetUserIdByOrgIdAndStaffIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdShrinkHeaders) SetAccountContextShrink(v string) *GetUserIdByOrgIdAndStaffIdShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetUserIdByOrgIdAndStaffIdRequest struct {
+	// example:
+	//
+	// 123456
+	OrgId         *int64                                          `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	TenantContext *GetUserIdByOrgIdAndStaffIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdRequest) SetOrgId(v int64) *GetUserIdByOrgIdAndStaffIdRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdRequest) SetTenantContext(v *GetUserIdByOrgIdAndStaffIdRequestTenantContext) *GetUserIdByOrgIdAndStaffIdRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetUserIdByOrgIdAndStaffIdRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdRequestTenantContext) SetTenantId(v string) *GetUserIdByOrgIdAndStaffIdRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetUserIdByOrgIdAndStaffIdShrinkRequest struct {
+	// example:
+	//
+	// 123456
+	OrgId               *int64  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdShrinkRequest) SetOrgId(v int64) *GetUserIdByOrgIdAndStaffIdShrinkRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdShrinkRequest) SetTenantContextShrink(v string) *GetUserIdByOrgIdAndStaffIdShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetUserIdByOrgIdAndStaffIdResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 01223245436
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdResponseBody) SetRequestId(v string) *GetUserIdByOrgIdAndStaffIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdResponseBody) SetUserId(v string) *GetUserIdByOrgIdAndStaffIdResponseBody {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdResponseBody) SetVendorRequestId(v string) *GetUserIdByOrgIdAndStaffIdResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdResponseBody) SetVendorType(v string) *GetUserIdByOrgIdAndStaffIdResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetUserIdByOrgIdAndStaffIdResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserIdByOrgIdAndStaffIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUserIdByOrgIdAndStaffIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdByOrgIdAndStaffIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdResponse) SetHeaders(v map[string]*string) *GetUserIdByOrgIdAndStaffIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdResponse) SetStatusCode(v int32) *GetUserIdByOrgIdAndStaffIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserIdByOrgIdAndStaffIdResponse) SetBody(v *GetUserIdByOrgIdAndStaffIdResponseBody) *GetUserIdByOrgIdAndStaffIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserLatestPlanHeaders struct {
 	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetUserLatestPlanHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -42302,6 +42782,385 @@ func (s *ListTeamsResponse) SetStatusCode(v int32) *ListTeamsResponse {
 }
 
 func (s *ListTeamsResponse) SetBody(v *ListTeamsResponseBody) *ListTeamsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTemplateHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListTemplateHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListTemplateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateHeaders) SetCommonHeaders(v map[string]*string) *ListTemplateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTemplateHeaders) SetAccountContext(v *ListTemplateHeadersAccountContext) *ListTemplateHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListTemplateHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListTemplateHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateHeadersAccountContext) SetAccountId(v string) *ListTemplateHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListTemplateShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListTemplateShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListTemplateShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTemplateShrinkHeaders) SetAccountContextShrink(v string) *ListTemplateShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// zzz
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public_template
+	TemplateType  *string                           `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TenantContext *ListTemplateRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// workspaceId
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateRequest) SetMaxResults(v int32) *ListTemplateRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTemplateRequest) SetNextToken(v string) *ListTemplateRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTemplateRequest) SetTemplateType(v string) *ListTemplateRequest {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *ListTemplateRequest) SetTenantContext(v *ListTemplateRequestTenantContext) *ListTemplateRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *ListTemplateRequest) SetWorkspaceId(v string) *ListTemplateRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListTemplateRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s ListTemplateRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateRequestTenantContext) SetTenantId(v string) *ListTemplateRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type ListTemplateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// zzz
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public_template
+	TemplateType        *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// workspaceId
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateShrinkRequest) SetMaxResults(v int32) *ListTemplateShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTemplateShrinkRequest) SetNextToken(v string) *ListTemplateShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTemplateShrinkRequest) SetTemplateType(v string) *ListTemplateShrinkRequest {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *ListTemplateShrinkRequest) SetTenantContextShrink(v string) *ListTemplateShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *ListTemplateShrinkRequest) SetWorkspaceId(v string) *ListTemplateShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListTemplateResponseBody struct {
+	// example:
+	//
+	// true
+	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	// example:
+	//
+	// next_token
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// []
+	TemplateList []*ListTemplateResponseBodyTemplateList `json:"templateList,omitempty" xml:"templateList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateResponseBody) SetHasMore(v bool) *ListTemplateResponseBody {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListTemplateResponseBody) SetNextToken(v string) *ListTemplateResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTemplateResponseBody) SetRequestId(v string) *ListTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTemplateResponseBody) SetTemplateList(v []*ListTemplateResponseBodyTemplateList) *ListTemplateResponseBody {
+	s.TemplateList = v
+	return s
+}
+
+func (s *ListTemplateResponseBody) SetVendorRequestId(v string) *ListTemplateResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListTemplateResponseBody) SetVendorType(v string) *ListTemplateResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListTemplateResponseBodyTemplateList struct {
+	// example:
+	//
+	// URL
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// example:
+	//
+	// 1596506100000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// WORKBOOK
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// 123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// user_template
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// example:
+	//
+	// title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1596506100000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// workspaceId
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListTemplateResponseBodyTemplateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateResponseBodyTemplateList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetCoverUrl(v string) *ListTemplateResponseBodyTemplateList {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetCreateTime(v int64) *ListTemplateResponseBodyTemplateList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetDocType(v string) *ListTemplateResponseBodyTemplateList {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetId(v string) *ListTemplateResponseBodyTemplateList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetTemplateType(v string) *ListTemplateResponseBodyTemplateList {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetTitle(v string) *ListTemplateResponseBodyTemplateList {
+	s.Title = &v
+	return s
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetUpdateTime(v int64) *ListTemplateResponseBodyTemplateList {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListTemplateResponseBodyTemplateList) SetWorkspaceId(v string) *ListTemplateResponseBodyTemplateList {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListTemplateResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateResponse) SetHeaders(v map[string]*string) *ListTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTemplateResponse) SetStatusCode(v int32) *ListTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -50877,6 +51736,265 @@ func (s *QueryOrgTodoTasksResponse) SetStatusCode(v int32) *QueryOrgTodoTasksRes
 }
 
 func (s *QueryOrgTodoTasksResponse) SetBody(v *QueryOrgTodoTasksResponseBody) *QueryOrgTodoTasksResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRecordMinutesUrlHeaders struct {
+	CommonHeaders  map[string]*string                          `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryRecordMinutesUrlHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryRecordMinutesUrlHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlHeaders) SetCommonHeaders(v map[string]*string) *QueryRecordMinutesUrlHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlHeaders) SetAccountContext(v *QueryRecordMinutesUrlHeadersAccountContext) *QueryRecordMinutesUrlHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryRecordMinutesUrlHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryRecordMinutesUrlHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlHeadersAccountContext) SetAccountId(v string) *QueryRecordMinutesUrlHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryRecordMinutesUrlShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryRecordMinutesUrlShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryRecordMinutesUrlShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlShrinkHeaders) SetAccountContextShrink(v string) *QueryRecordMinutesUrlShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryRecordMinutesUrlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// minutes
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1dddwrqrq
+	ConferenceId  *string                                    `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	TenantContext *QueryRecordMinutesUrlRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s QueryRecordMinutesUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlRequest) SetBizType(v string) *QueryRecordMinutesUrlRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlRequest) SetConferenceId(v string) *QueryRecordMinutesUrlRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlRequest) SetTenantContext(v *QueryRecordMinutesUrlRequestTenantContext) *QueryRecordMinutesUrlRequest {
+	s.TenantContext = v
+	return s
+}
+
+type QueryRecordMinutesUrlRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryRecordMinutesUrlRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlRequestTenantContext) SetTenantId(v string) *QueryRecordMinutesUrlRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryRecordMinutesUrlShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// minutes
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1dddwrqrq
+	ConferenceId        *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s QueryRecordMinutesUrlShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlShrinkRequest) SetBizType(v string) *QueryRecordMinutesUrlShrinkRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlShrinkRequest) SetConferenceId(v string) *QueryRecordMinutesUrlShrinkRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlShrinkRequest) SetTenantContextShrink(v string) *QueryRecordMinutesUrlShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type QueryRecordMinutesUrlResponseBody struct {
+	RecordMinutesUrls []*QueryRecordMinutesUrlResponseBodyRecordMinutesUrls `json:"recordMinutesUrls,omitempty" xml:"recordMinutesUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s QueryRecordMinutesUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlResponseBody) SetRecordMinutesUrls(v []*QueryRecordMinutesUrlResponseBodyRecordMinutesUrls) *QueryRecordMinutesUrlResponseBody {
+	s.RecordMinutesUrls = v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlResponseBody) SetRequestId(v string) *QueryRecordMinutesUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlResponseBody) SetVendorRequestId(v string) *QueryRecordMinutesUrlResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlResponseBody) SetVendorType(v string) *QueryRecordMinutesUrlResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type QueryRecordMinutesUrlResponseBodyRecordMinutesUrls struct {
+	// example:
+	//
+	// url
+	RecordMinutesUrl *string `json:"RecordMinutesUrl,omitempty" xml:"RecordMinutesUrl,omitempty"`
+}
+
+func (s QueryRecordMinutesUrlResponseBodyRecordMinutesUrls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlResponseBodyRecordMinutesUrls) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlResponseBodyRecordMinutesUrls) SetRecordMinutesUrl(v string) *QueryRecordMinutesUrlResponseBodyRecordMinutesUrls {
+	s.RecordMinutesUrl = &v
+	return s
+}
+
+type QueryRecordMinutesUrlResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRecordMinutesUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRecordMinutesUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecordMinutesUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecordMinutesUrlResponse) SetHeaders(v map[string]*string) *QueryRecordMinutesUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlResponse) SetStatusCode(v int32) *QueryRecordMinutesUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRecordMinutesUrlResponse) SetBody(v *QueryRecordMinutesUrlResponseBody) *QueryRecordMinutesUrlResponse {
 	s.Body = v
 	return s
 }
@@ -66020,6 +67138,103 @@ func (client *Client) AddMeetingRooms(request *AddMeetingRoomsRequest) (_result 
 
 // Summary:
 //
+// 添加闪记权限
+//
+// @param tmpReq - AddRecordPermissionRequest
+//
+// @param tmpHeader - AddRecordPermissionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRecordPermissionResponse
+func (client *Client) AddRecordPermissionWithOptions(tmpReq *AddRecordPermissionRequest, tmpHeader *AddRecordPermissionHeaders, runtime *util.RuntimeOptions) (_result *AddRecordPermissionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddRecordPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &AddRecordPermissionShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
+		body["ConferenceId"] = request.ConferenceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddRecordPermission"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/addRecordPermission"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddRecordPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加闪记权限
+//
+// @param request - AddRecordPermissionRequest
+//
+// @return AddRecordPermissionResponse
+func (client *Client) AddRecordPermission(request *AddRecordPermissionRequest) (_result *AddRecordPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddRecordPermissionHeaders{}
+	_result = &AddRecordPermissionResponse{}
+	_body, _err := client.AddRecordPermissionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增群成员
 //
 // @param request - AddScenegroupMemberRequest
@@ -76292,6 +77507,95 @@ func (client *Client) GetUserId(request *GetUserIdRequest) (_result *GetUserIdRe
 
 // Summary:
 //
+// 根据orgId和staffId获取用户userId
+//
+// @param tmpReq - GetUserIdByOrgIdAndStaffIdRequest
+//
+// @param tmpHeader - GetUserIdByOrgIdAndStaffIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdByOrgIdAndStaffIdResponse
+func (client *Client) GetUserIdByOrgIdAndStaffIdWithOptions(tmpReq *GetUserIdByOrgIdAndStaffIdRequest, tmpHeader *GetUserIdByOrgIdAndStaffIdHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByOrgIdAndStaffIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetUserIdByOrgIdAndStaffIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetUserIdByOrgIdAndStaffIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserIdByOrgIdAndStaffId"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/im/getUserIdByOrgIdAndStaffId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserIdByOrgIdAndStaffIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据orgId和staffId获取用户userId
+//
+// @param request - GetUserIdByOrgIdAndStaffIdRequest
+//
+// @return GetUserIdByOrgIdAndStaffIdResponse
+func (client *Client) GetUserIdByOrgIdAndStaffId(request *GetUserIdByOrgIdAndStaffIdRequest) (_result *GetUserIdByOrgIdAndStaffIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUserIdByOrgIdAndStaffIdHeaders{}
+	_result = &GetUserIdByOrgIdAndStaffIdResponse{}
+	_body, _err := client.GetUserIdByOrgIdAndStaffIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取用户最新的有效的专属账号迁移方案
 //
 // @param tmpReq - GetUserLatestPlanRequest
@@ -78310,6 +79614,107 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 
 // Summary:
 //
+// 查询文档模板
+//
+// @param tmpReq - ListTemplateRequest
+//
+// @param tmpHeader - ListTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplateResponse
+func (client *Client) ListTemplateWithOptions(tmpReq *ListTemplateRequest, tmpHeader *ListTemplateHeaders, runtime *util.RuntimeOptions) (_result *ListTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &ListTemplateShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		body["TemplateType"] = request.TemplateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTemplate"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/listTemplate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文档模板
+//
+// @param request - ListTemplateRequest
+//
+// @return ListTemplateResponse
+func (client *Client) ListTemplate(request *ListTemplateRequest) (_result *ListTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListTemplateHeaders{}
+	_result = &ListTemplateResponse{}
+	_body, _err := client.ListTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取知识库列表
 //
 // @param tmpReq - ListWorkspacesRequest
@@ -80247,6 +81652,99 @@ func (client *Client) QueryOrgTodoTasks(request *QueryOrgTodoTasksRequest) (_res
 	headers := &QueryOrgTodoTasksHeaders{}
 	_result = &QueryOrgTodoTasksResponse{}
 	_body, _err := client.QueryOrgTodoTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询闪记的链接，可通过链接查看闪记内容
+//
+// @param tmpReq - QueryRecordMinutesUrlRequest
+//
+// @param tmpHeader - QueryRecordMinutesUrlHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRecordMinutesUrlResponse
+func (client *Client) QueryRecordMinutesUrlWithOptions(tmpReq *QueryRecordMinutesUrlRequest, tmpHeader *QueryRecordMinutesUrlHeaders, runtime *util.RuntimeOptions) (_result *QueryRecordMinutesUrlResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryRecordMinutesUrlShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryRecordMinutesUrlShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
+		body["ConferenceId"] = request.ConferenceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRecordMinutesUrl"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/queryRecordMinutesUrl"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRecordMinutesUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询闪记的链接，可通过链接查看闪记内容
+//
+// @param request - QueryRecordMinutesUrlRequest
+//
+// @return QueryRecordMinutesUrlResponse
+func (client *Client) QueryRecordMinutesUrl(request *QueryRecordMinutesUrlRequest) (_result *QueryRecordMinutesUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryRecordMinutesUrlHeaders{}
+	_result = &QueryRecordMinutesUrlResponse{}
+	_body, _err := client.QueryRecordMinutesUrlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
