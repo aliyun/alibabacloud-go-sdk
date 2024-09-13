@@ -107,7 +107,9 @@ type DescribeFileModerationResultResponseBodyData struct {
 	// doc
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	// The pagination information.
-	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
+	PageResult  []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
+	PageSummary *DescribeFileModerationResultResponseBodyDataPageSummary  `json:"PageSummary,omitempty" xml:"PageSummary,omitempty" type:"Struct"`
+	RiskLevel   *string                                                   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The URL of the moderation object.
 	//
 	// example:
@@ -136,6 +138,16 @@ func (s *DescribeFileModerationResultResponseBodyData) SetDocType(v string) *Des
 
 func (s *DescribeFileModerationResultResponseBodyData) SetPageResult(v []*DescribeFileModerationResultResponseBodyDataPageResult) *DescribeFileModerationResultResponseBodyData {
 	s.PageResult = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetPageSummary(v *DescribeFileModerationResultResponseBodyDataPageSummary) *DescribeFileModerationResultResponseBodyData {
+	s.PageSummary = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyData {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -212,7 +224,8 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
 	// Label information.
 	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
 	// Location information.
-	Location *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Location  *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	RiskLevel *string                                                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The moderation service.
 	//
 	// example:
@@ -244,6 +257,11 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetL
 	return s
 }
 
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyDataPageResultImageResult {
+	s.RiskLevel = &v
+	return s
+}
+
 func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetService(v string) *DescribeFileModerationResultResponseBodyDataPageResultImageResult {
 	s.Service = &v
 	return s
@@ -255,7 +273,8 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResul
 	// example:
 	//
 	// 25.0
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The details of the labels.
 	//
 	// example:
@@ -274,6 +293,11 @@ func (s DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelRe
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) SetConfidence(v float32) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult {
 	s.Confidence = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult {
+	s.Description = &v
 	return s
 }
 
@@ -349,7 +373,8 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	// example:
 	//
 	// porn
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The risk details that are hit.
 	//
 	// example:
@@ -400,6 +425,11 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetLa
 	return s
 }
 
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.RiskLevel = &v
+	return s
+}
+
 func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetRiskTips(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
 	s.RiskTips = &v
 	return s
@@ -422,6 +452,133 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetTe
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetTextSegment(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
 	s.TextSegment = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummary struct {
+	ImageSummary *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary `json:"ImageSummary,omitempty" xml:"ImageSummary,omitempty" type:"Struct"`
+	PageSum      *int32                                                               `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
+	TextSummary  *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary  `json:"TextSummary,omitempty" xml:"TextSummary,omitempty" type:"Struct"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetImageSummary(v *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) *DescribeFileModerationResultResponseBodyDataPageSummary {
+	s.ImageSummary = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetPageSum(v int32) *DescribeFileModerationResultResponseBodyDataPageSummary {
+	s.PageSum = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetTextSummary(v *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) *DescribeFileModerationResultResponseBodyDataPageSummary {
+	s.TextSummary = v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary struct {
+	ImageLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
+	RiskLevel   *string                                                                           `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) SetImageLabels(v []*DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels) *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary {
+	s.ImageLabels = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary {
+	s.RiskLevel = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	LabelSum    *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels) SetLabel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels) SetLabelSum(v int32) *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels {
+	s.LabelSum = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary struct {
+	RiskLevel  *string                                                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TextLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels `json:"TextLabels,omitempty" xml:"TextLabels,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) SetTextLabels(v []*DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary {
+	s.TextLabels = v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels struct {
+	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	LabelSum *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) SetLabel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) SetLabelSum(v int32) *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels {
+	s.LabelSum = &v
 	return s
 }
 
@@ -1820,6 +1977,7 @@ func (s *ImageModerationResponseBodyData) SetRiskLevel(v string) *ImageModeratio
 type ImageModerationResponseBodyDataExt struct {
 	// If a custom image library is hit, information about the hit custom image library is returned.
 	CustomImage []*ImageModerationResponseBodyDataExtCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	FaceData    []*ImageModerationResponseBodyDataExtFaceData    `json:"FaceData,omitempty" xml:"FaceData,omitempty" type:"Repeated"`
 	// Logo information.
 	LogoData []*ImageModerationResponseBodyDataExtLogoData `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
 	// Returns the text information in the recognized image.
@@ -1842,6 +2000,11 @@ func (s ImageModerationResponseBodyDataExt) GoString() string {
 
 func (s *ImageModerationResponseBodyDataExt) SetCustomImage(v []*ImageModerationResponseBodyDataExtCustomImage) *ImageModerationResponseBodyDataExt {
 	s.CustomImage = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExt) SetFaceData(v []*ImageModerationResponseBodyDataExtFaceData) *ImageModerationResponseBodyDataExt {
+	s.FaceData = v
 	return s
 }
 
@@ -1911,6 +2074,297 @@ func (s *ImageModerationResponseBodyDataExtCustomImage) SetLibId(v string) *Imag
 
 func (s *ImageModerationResponseBodyDataExtCustomImage) SetLibName(v string) *ImageModerationResponseBodyDataExtCustomImage {
 	s.LibName = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceData struct {
+	Age       *int32                                               `json:"Age,omitempty" xml:"Age,omitempty"`
+	Bang      *ImageModerationResponseBodyDataExtFaceDataBang      `json:"Bang,omitempty" xml:"Bang,omitempty" type:"Struct"`
+	Gender    *ImageModerationResponseBodyDataExtFaceDataGender    `json:"Gender,omitempty" xml:"Gender,omitempty" type:"Struct"`
+	Glasses   *string                                              `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	Hairstyle *ImageModerationResponseBodyDataExtFaceDataHairstyle `json:"Hairstyle,omitempty" xml:"Hairstyle,omitempty" type:"Struct"`
+	Hat       *ImageModerationResponseBodyDataExtFaceDataHat       `json:"Hat,omitempty" xml:"Hat,omitempty" type:"Struct"`
+	Location  *ImageModerationResponseBodyDataExtFaceDataLocation  `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Mask      *ImageModerationResponseBodyDataExtFaceDataMask      `json:"Mask,omitempty" xml:"Mask,omitempty" type:"Struct"`
+	Mustache  *ImageModerationResponseBodyDataExtFaceDataMustache  `json:"Mustache,omitempty" xml:"Mustache,omitempty" type:"Struct"`
+	Quality   *ImageModerationResponseBodyDataExtFaceDataQuality   `json:"Quality,omitempty" xml:"Quality,omitempty" type:"Struct"`
+	Smile     *float32                                             `json:"Smile,omitempty" xml:"Smile,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetAge(v int32) *ImageModerationResponseBodyDataExtFaceData {
+	s.Age = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetBang(v *ImageModerationResponseBodyDataExtFaceDataBang) *ImageModerationResponseBodyDataExtFaceData {
+	s.Bang = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetGender(v *ImageModerationResponseBodyDataExtFaceDataGender) *ImageModerationResponseBodyDataExtFaceData {
+	s.Gender = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetGlasses(v string) *ImageModerationResponseBodyDataExtFaceData {
+	s.Glasses = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetHairstyle(v *ImageModerationResponseBodyDataExtFaceDataHairstyle) *ImageModerationResponseBodyDataExtFaceData {
+	s.Hairstyle = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetHat(v *ImageModerationResponseBodyDataExtFaceDataHat) *ImageModerationResponseBodyDataExtFaceData {
+	s.Hat = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetLocation(v *ImageModerationResponseBodyDataExtFaceDataLocation) *ImageModerationResponseBodyDataExtFaceData {
+	s.Location = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetMask(v *ImageModerationResponseBodyDataExtFaceDataMask) *ImageModerationResponseBodyDataExtFaceData {
+	s.Mask = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetMustache(v *ImageModerationResponseBodyDataExtFaceDataMustache) *ImageModerationResponseBodyDataExtFaceData {
+	s.Mustache = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetQuality(v *ImageModerationResponseBodyDataExtFaceDataQuality) *ImageModerationResponseBodyDataExtFaceData {
+	s.Quality = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceData) SetSmile(v float32) *ImageModerationResponseBodyDataExtFaceData {
+	s.Smile = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataBang struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataBang) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataBang) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataBang) SetConfidence(v float32) *ImageModerationResponseBodyDataExtFaceDataBang {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataBang) SetValue(v string) *ImageModerationResponseBodyDataExtFaceDataBang {
+	s.Value = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataGender struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataGender) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataGender) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataGender) SetConfidence(v float32) *ImageModerationResponseBodyDataExtFaceDataGender {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataGender) SetValue(v string) *ImageModerationResponseBodyDataExtFaceDataGender {
+	s.Value = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataHairstyle struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataHairstyle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataHairstyle) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataHairstyle) SetConfidence(v float32) *ImageModerationResponseBodyDataExtFaceDataHairstyle {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataHairstyle) SetValue(v string) *ImageModerationResponseBodyDataExtFaceDataHairstyle {
+	s.Value = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataHat struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataHat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataHat) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataHat) SetConfidence(v float32) *ImageModerationResponseBodyDataExtFaceDataHat {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataHat) SetValue(v string) *ImageModerationResponseBodyDataExtFaceDataHat {
+	s.Value = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataLocation) SetH(v int32) *ImageModerationResponseBodyDataExtFaceDataLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataLocation) SetW(v int32) *ImageModerationResponseBodyDataExtFaceDataLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataLocation) SetX(v int32) *ImageModerationResponseBodyDataExtFaceDataLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataLocation) SetY(v int32) *ImageModerationResponseBodyDataExtFaceDataLocation {
+	s.Y = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataMask struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataMask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataMask) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataMask) SetConfidence(v float32) *ImageModerationResponseBodyDataExtFaceDataMask {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataMask) SetValue(v string) *ImageModerationResponseBodyDataExtFaceDataMask {
+	s.Value = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataMustache struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataMustache) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataMustache) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataMustache) SetConfidence(v float32) *ImageModerationResponseBodyDataExtFaceDataMustache {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataMustache) SetValue(v string) *ImageModerationResponseBodyDataExtFaceDataMustache {
+	s.Value = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtFaceDataQuality struct {
+	Blur      *float32 `json:"Blur,omitempty" xml:"Blur,omitempty"`
+	Integrity *float32 `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
+	Pitch     *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	Roll      *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	Yaw       *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataQuality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtFaceDataQuality) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataQuality) SetBlur(v float32) *ImageModerationResponseBodyDataExtFaceDataQuality {
+	s.Blur = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataQuality) SetIntegrity(v float32) *ImageModerationResponseBodyDataExtFaceDataQuality {
+	s.Integrity = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataQuality) SetPitch(v float32) *ImageModerationResponseBodyDataExtFaceDataQuality {
+	s.Pitch = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataQuality) SetRoll(v float32) *ImageModerationResponseBodyDataExtFaceDataQuality {
+	s.Roll = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtFaceDataQuality) SetYaw(v float32) *ImageModerationResponseBodyDataExtFaceDataQuality {
+	s.Yaw = &v
 	return s
 }
 
