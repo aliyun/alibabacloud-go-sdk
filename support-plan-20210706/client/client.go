@@ -180,50 +180,35 @@ func (s *CloseTaskOrderResponse) SetBody(v *CloseTaskOrderResponseBody) *CloseTa
 }
 
 type CreateTaskOrderRequest struct {
-	// example:
-	//
-	// 建单人姓名：快手客户
-	CustomerRealName *string `json:"CustomerRealName,omitempty" xml:"CustomerRealName,omitempty"`
-	// example:
-	//
-	// 123
-	CustomerUserId *string `json:"CustomerUserId,omitempty" xml:"CustomerUserId,omitempty"`
-	// example:
-	//
-	// 重要性描述
-	ImportantDescription *string `json:"ImportantDescription,omitempty" xml:"ImportantDescription,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 如:normal或者hurry
-	IsImportant *string `json:"IsImportant,omitempty" xml:"IsImportant,omitempty"`
+	// 123
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	IsUrgent     *bool   `json:"IsUrgent,omitempty" xml:"IsUrgent,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cid+lUpHxTIXt7DYqJDcpVxlA==
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
-	// productType
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 3270
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// example:
-	//
-	// lc-云享咨询
-	ProductTypeName *string `json:"ProductTypeName,omitempty" xml:"ProductTypeName,omitempty"`
-	// taskTitle
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 任务单标题：必填
-	TaskTitle *string `json:"TaskTitle,omitempty" xml:"TaskTitle,omitempty"`
+	Overview *string `json:"Overview,omitempty" xml:"Overview,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 重要性描述
+	UrgentDescription *string `json:"UrgentDescription,omitempty" xml:"UrgentDescription,omitempty"`
 }
 
 func (s CreateTaskOrderRequest) String() string {
@@ -234,23 +219,13 @@ func (s CreateTaskOrderRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTaskOrderRequest) SetCustomerRealName(v string) *CreateTaskOrderRequest {
-	s.CustomerRealName = &v
+func (s *CreateTaskOrderRequest) SetCreateUserId(v string) *CreateTaskOrderRequest {
+	s.CreateUserId = &v
 	return s
 }
 
-func (s *CreateTaskOrderRequest) SetCustomerUserId(v string) *CreateTaskOrderRequest {
-	s.CustomerUserId = &v
-	return s
-}
-
-func (s *CreateTaskOrderRequest) SetImportantDescription(v string) *CreateTaskOrderRequest {
-	s.ImportantDescription = &v
-	return s
-}
-
-func (s *CreateTaskOrderRequest) SetIsImportant(v string) *CreateTaskOrderRequest {
-	s.IsImportant = &v
+func (s *CreateTaskOrderRequest) SetIsUrgent(v bool) *CreateTaskOrderRequest {
+	s.IsUrgent = &v
 	return s
 }
 
@@ -259,18 +234,18 @@ func (s *CreateTaskOrderRequest) SetOpenGroupId(v string) *CreateTaskOrderReques
 	return s
 }
 
-func (s *CreateTaskOrderRequest) SetProductType(v string) *CreateTaskOrderRequest {
-	s.ProductType = &v
+func (s *CreateTaskOrderRequest) SetOverview(v string) *CreateTaskOrderRequest {
+	s.Overview = &v
 	return s
 }
 
-func (s *CreateTaskOrderRequest) SetProductTypeName(v string) *CreateTaskOrderRequest {
-	s.ProductTypeName = &v
+func (s *CreateTaskOrderRequest) SetProductCode(v string) *CreateTaskOrderRequest {
+	s.ProductCode = &v
 	return s
 }
 
-func (s *CreateTaskOrderRequest) SetTaskTitle(v string) *CreateTaskOrderRequest {
-	s.TaskTitle = &v
+func (s *CreateTaskOrderRequest) SetUrgentDescription(v string) *CreateTaskOrderRequest {
+	s.UrgentDescription = &v
 	return s
 }
 
@@ -1153,24 +1128,6 @@ func (s *GetEnterpriseDingtalkGroupCustomerMemberResponse) SetBody(v *GetEnterpr
 }
 
 type ListDdTaskOrderRequest struct {
-	// callerParentId
-	//
-	// example:
-	//
-	// 123
-	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
-	// callerType
-	//
-	// example:
-	//
-	// 123
-	CallerType *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
-	// callerUid
-	//
-	// example:
-	//
-	// 123
-	CallerUid *int64 `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	// createRealName
 	//
 	// example:
@@ -1182,37 +1139,28 @@ type ListDdTaskOrderRequest struct {
 	// example:
 	//
 	// 2024-08-20 14:09:16
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsUrgent *bool   `json:"IsUrgent,omitempty" xml:"IsUrgent,omitempty"`
 	// openGroupId
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// DAWNN14N
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
-	// orderId
-	//
-	// example:
-	//
-	// E2112019N14PBY
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// pageNo
 	//
 	// example:
 	//
 	// 1
-	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// pageSize
 	//
 	// example:
 	//
 	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// 2F8557E4-742B-1CF7-8E83-28CD0C1F7B48
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// startTime
 	//
 	// example:
@@ -1235,21 +1183,6 @@ func (s ListDdTaskOrderRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDdTaskOrderRequest) SetCallerParentId(v int64) *ListDdTaskOrderRequest {
-	s.CallerParentId = &v
-	return s
-}
-
-func (s *ListDdTaskOrderRequest) SetCallerType(v string) *ListDdTaskOrderRequest {
-	s.CallerType = &v
-	return s
-}
-
-func (s *ListDdTaskOrderRequest) SetCallerUid(v int64) *ListDdTaskOrderRequest {
-	s.CallerUid = &v
-	return s
-}
-
 func (s *ListDdTaskOrderRequest) SetCreateRealName(v string) *ListDdTaskOrderRequest {
 	s.CreateRealName = &v
 	return s
@@ -1260,28 +1193,23 @@ func (s *ListDdTaskOrderRequest) SetEndTime(v string) *ListDdTaskOrderRequest {
 	return s
 }
 
+func (s *ListDdTaskOrderRequest) SetIsUrgent(v bool) *ListDdTaskOrderRequest {
+	s.IsUrgent = &v
+	return s
+}
+
 func (s *ListDdTaskOrderRequest) SetOpenGroupId(v string) *ListDdTaskOrderRequest {
 	s.OpenGroupId = &v
 	return s
 }
 
-func (s *ListDdTaskOrderRequest) SetOrderId(v string) *ListDdTaskOrderRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *ListDdTaskOrderRequest) SetPageNo(v string) *ListDdTaskOrderRequest {
+func (s *ListDdTaskOrderRequest) SetPageNo(v int64) *ListDdTaskOrderRequest {
 	s.PageNo = &v
 	return s
 }
 
-func (s *ListDdTaskOrderRequest) SetPageSize(v string) *ListDdTaskOrderRequest {
+func (s *ListDdTaskOrderRequest) SetPageSize(v int64) *ListDdTaskOrderRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListDdTaskOrderRequest) SetRequestId(v string) *ListDdTaskOrderRequest {
-	s.RequestId = &v
 	return s
 }
 
@@ -1395,7 +1323,7 @@ type ListEnterpriseDingtalkGroupCustomerMembersRequest struct {
 	//
 	// example:
 	//
-	// 123
+	// DAWNN14N
 	OpenGroupId *string `json:"OpenGroupId,omitempty" xml:"OpenGroupId,omitempty"`
 }
 
@@ -1416,8 +1344,8 @@ type ListEnterpriseDingtalkGroupCustomerMembersResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data []*EnterpriseDingtalkGroupMember `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Code *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Invalid data
@@ -1445,7 +1373,7 @@ func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBody) SetCode(v strin
 	return s
 }
 
-func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBody) SetData(v []*EnterpriseDingtalkGroupMember) *ListEnterpriseDingtalkGroupCustomerMembersResponseBody {
+func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBody) SetData(v []*ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData) *ListEnterpriseDingtalkGroupCustomerMembersResponseBody {
 	s.Data = v
 	return s
 }
@@ -1462,6 +1390,35 @@ func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBody) SetRequestId(v 
 
 func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBody) SetSuccess(v bool) *ListEnterpriseDingtalkGroupCustomerMembersResponseBody {
 	s.Success = &v
+	return s
+}
+
+type ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData struct {
+	IsAdmin *bool   `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData) SetIsAdmin(v bool) *ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData {
+	s.IsAdmin = &v
+	return s
+}
+
+func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData) SetName(v string) *ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData) SetUserId(v string) *ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData {
+	s.UserId = &v
 	return s
 }
 
@@ -2299,36 +2256,28 @@ func (client *Client) CreateTaskOrderWithOptions(request *CreateTaskOrderRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CustomerRealName)) {
-		query["CustomerRealName"] = request.CustomerRealName
+	if !tea.BoolValue(util.IsUnset(request.CreateUserId)) {
+		query["CreateUserId"] = request.CreateUserId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CustomerUserId)) {
-		query["CustomerUserId"] = request.CustomerUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImportantDescription)) {
-		query["ImportantDescription"] = request.ImportantDescription
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsImportant)) {
-		query["IsImportant"] = request.IsImportant
+	if !tea.BoolValue(util.IsUnset(request.IsUrgent)) {
+		query["IsUrgent"] = request.IsUrgent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OpenGroupId)) {
 		query["OpenGroupId"] = request.OpenGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
-		query["ProductType"] = request.ProductType
+	if !tea.BoolValue(util.IsUnset(request.Overview)) {
+		query["Overview"] = request.Overview
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProductTypeName)) {
-		query["ProductTypeName"] = request.ProductTypeName
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TaskTitle)) {
-		query["TaskTitle"] = request.TaskTitle
+	if !tea.BoolValue(util.IsUnset(request.UrgentDescription)) {
+		query["UrgentDescription"] = request.UrgentDescription
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2687,18 +2636,6 @@ func (client *Client) ListDdTaskOrderWithOptions(request *ListDdTaskOrderRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
-		query["CallerParentId"] = request.CallerParentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CallerType)) {
-		query["CallerType"] = request.CallerType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CallerUid)) {
-		query["CallerUid"] = request.CallerUid
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CreateRealName)) {
 		query["CreateRealName"] = request.CreateRealName
 	}
@@ -2707,12 +2644,12 @@ func (client *Client) ListDdTaskOrderWithOptions(request *ListDdTaskOrderRequest
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OpenGroupId)) {
-		query["OpenGroupId"] = request.OpenGroupId
+	if !tea.BoolValue(util.IsUnset(request.IsUrgent)) {
+		query["IsUrgent"] = request.IsUrgent
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
-		query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OpenGroupId)) {
+		query["OpenGroupId"] = request.OpenGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
@@ -2721,10 +2658,6 @@ func (client *Client) ListDdTaskOrderWithOptions(request *ListDdTaskOrderRequest
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
-		query["RequestId"] = request.RequestId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -2790,13 +2723,13 @@ func (client *Client) ListEnterpriseDingtalkGroupCustomerMembersWithOptions(requ
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OpenGroupId)) {
-		body["OpenGroupId"] = request.OpenGroupId
+		query["OpenGroupId"] = request.OpenGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListEnterpriseDingtalkGroupCustomerMembers"),

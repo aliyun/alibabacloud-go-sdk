@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/support-plan-20210706
+module github.com/alibabacloud-go/support-plan-20210706/v2
 
 go 1.14
 
