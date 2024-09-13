@@ -2531,15 +2531,15 @@ func (s *CreateAlarmResponse) SetBody(v *CreateAlarmResponseBody) *CreateAlarmRe
 }
 
 type CreateEciScalingConfigurationRequest struct {
-	// Information about the Container Registry Enterprise Edition instance.
+	// The Container Registry Enterprise Edition instances.
 	AcrRegistryInfos []*CreateEciScalingConfigurationRequestAcrRegistryInfos `json:"AcrRegistryInfos,omitempty" xml:"AcrRegistryInfos,omitempty" type:"Repeated"`
-	// The validity period. Unit: seconds.
+	// The validity period of the scaling configuration. Unit: seconds.
 	//
 	// example:
 	//
 	// 1000
 	ActiveDeadlineSeconds *int64 `json:"ActiveDeadlineSeconds,omitempty" xml:"ActiveDeadlineSeconds,omitempty"`
-	// Specifies whether to automatically create an elastic IP address (EIP) and bind the EIP to the elastic container instance.
+	// Specifies whether to automatically create elastic IP addresses (EIPs) and bind the EIPs to elastic container instances.
 	//
 	// example:
 	//
@@ -2559,15 +2559,15 @@ type CreateEciScalingConfigurationRequest struct {
 	AutoMatchImageCache *bool `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
 	// The name series of elastic container instances.
 	//
-	// If you want to use an ordered container group name, specify the value for this parameter in the following format: name_prefix[begin_number,bits]name_suffix.
+	// If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix[begin_number,bits]name_suffix.
 	//
 	// example:
 	//
 	// nginx-test
 	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	// The containers per elastic container instance.
+	// The containers on the elastic container instance.
 	Containers []*CreateEciScalingConfigurationRequestContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	// Specifies whether to enable the cost optimization feature. Valid values:
+	// Specifies whether to enable the Cost Optimization feature. Valid values:
 	//
 	// 	- true
 	//
@@ -2577,31 +2577,31 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// false
 	CostOptimization *bool `json:"CostOptimization,omitempty" xml:"CostOptimization,omitempty"`
-	// The number of vCPUs of the elastic container instance.
+	// The number of vCPUs per elastic container instance.
 	//
 	// example:
 	//
 	// 1.0
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Number of physical CPU cores This parameter is not available for all instance types. For more information, see [Specify custom CPU options](https://help.aliyun.com/document_detail/197781.html).
+	// The number of physical CPU cores. You can specify this parameter for specific instance types. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
 	//
 	// example:
 	//
 	// 2
 	CpuOptionsCore *int32 `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
-	// The number of threads per core. This parameter is not available for all instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify custom CPU options](https://help.aliyun.com/document_detail/197781.html).
+	// The number of threads per core. You can specify this parameter for specific instance types. A value of 1 specifies that Hyper-Threading is disabled. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
 	//
 	// example:
 	//
 	// 2
 	CpuOptionsThreadsPerCore *int32 `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
-	// The bucket that caches data.
+	// The bucket that you want to use to store data caches.
 	//
 	// example:
 	//
 	// default
 	DataCacheBucket *string `json:"DataCacheBucket,omitempty" xml:"DataCacheBucket,omitempty"`
-	// Specifies whether to enable the Performance Burst feature for the ESSD AutoPL disk that caches data. Valid values:
+	// Specifies whether to enable the performance burst feature when ESSD AutoPL disks are used to store data caches. Valid values:
 	//
 	// 	- true
 	//
@@ -2615,15 +2615,15 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// false
 	DataCacheBurstingEnabled *bool `json:"DataCacheBurstingEnabled,omitempty" xml:"DataCacheBurstingEnabled,omitempty"`
-	// The performance level (PL) of the cloud disk that caches disk. We recommend that you use enhanced SSDs (ESSDs). Valid values:
+	// The PL of the cloud disk that you want to use to store data caches. We recommend that you use ESSDs. Valid values:
 	//
-	// 	- PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
+	// 	- PL0: An ESSD can provide up to 10,000 random read/write IOPS.
 	//
-	// 	- PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
+	// 	- PL1: An ESSD can provide up to 50,000 random read/write IOPS.
 	//
-	// 	- PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
+	// 	- PL2: An ESSD can provide up to 100,000 random read/write IOPS.
 	//
-	// 	- PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// 	- PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
 	// Default value: PL1.
 	//
@@ -2633,7 +2633,7 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// PL1
 	DataCachePL *string `json:"DataCachePL,omitempty" xml:"DataCachePL,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk that caches data. Valid values: 0 to min{50,000, 1,000 × *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800+50 x *Capacity, 50,000}.
+	// The provisioned IOPS of the ESSD AutoPL disk that you want to use to store data caches. Valid values: 0 to min{50,000, 1,000 × *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × *Capacity, 50,000}.
 	//
 	// >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
@@ -2641,7 +2641,7 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// 40000
 	DataCacheProvisionedIops *int32 `json:"DataCacheProvisionedIops,omitempty" xml:"DataCacheProvisionedIops,omitempty"`
-	// > This parameter is unavailable.
+	// >  This parameter is unavailable for use.
 	//
 	// example:
 	//
@@ -2649,47 +2649,47 @@ type CreateEciScalingConfigurationRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IP addresses of the DNS servers.
 	DnsConfigNameServers []*string `json:"DnsConfigNameServers,omitempty" xml:"DnsConfigNameServers,omitempty" type:"Repeated"`
-	// The options. Each option is in the name-value pair format. The value in the name-value pair is optional.
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.
 	DnsConfigOptions []*CreateEciScalingConfigurationRequestDnsConfigOptions `json:"DnsConfigOptions,omitempty" xml:"DnsConfigOptions,omitempty" type:"Repeated"`
-	// The DNS lookup domains.
+	// The search domains of the DNS servers.
 	DnsConfigSearchs []*string `json:"DnsConfigSearchs,omitempty" xml:"DnsConfigSearchs,omitempty" type:"Repeated"`
 	// The Domain Name System (DNS) policy. Valid values:
 	//
-	// 	- None: uses the DNS that is set for the DnsConfig field.
+	// 	- None: uses the DNS that is specified by DnsConfig.
 	//
-	// 	- Default: use the DNS that is set for the runtime environment.
+	// 	- Default: uses the DNS that is specified for the runtime environment.
 	//
 	// example:
 	//
 	// Default
 	DnsPolicy *string `json:"DnsPolicy,omitempty" xml:"DnsPolicy,omitempty"`
-	// The maximum outbound bandwidth. Unit: bytes.
+	// The maximum outbound bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
 	// 1024000
 	EgressBandwidth *int64 `json:"EgressBandwidth,omitempty" xml:"EgressBandwidth,omitempty"`
-	// The bandwidth of the EIP. Default value: 5 Mbit/s.
+	// The EIP bandwidth. Default value: 5. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 5
 	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// > This parameter is unavailable.
+	// >  This parameter is unavailable for use.
 	//
 	// example:
 	//
 	// false
 	EnableSls *bool `json:"EnableSls,omitempty" xml:"EnableSls,omitempty"`
-	// The size of the temporary storage space. By default, an ESSD of the PL1 type is used. Unit: GiB.
+	// The size of the temporary storage space. By default, an Enterprise SSD (ESSD) of performance level 1 (PL1) is used. Unit: GiB.
 	//
 	// example:
 	//
 	// 20
 	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	// The hostnames and IP addresses of a container that you want to add to the hosts file of the elastic container instance.
+	// The custom hostnames of the containers.
 	HostAliases []*CreateEciScalingConfigurationRequestHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
-	// The name of the elastic container instance.
+	// The hostname series of elastic container instances.
 	//
 	// example:
 	//
@@ -2711,26 +2711,27 @@ type CreateEciScalingConfigurationRequest struct {
 	IngressBandwidth *int64 `json:"IngressBandwidth,omitempty" xml:"IngressBandwidth,omitempty"`
 	// The init containers.
 	InitContainers []*CreateEciScalingConfigurationRequestInitContainers `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-	// The level of the instance type, which is used to filter the instance types that meet the specified criteria. This parameter takes effect only if you set the `CostOptimization` parameter to true. Valid values:
+	// The level of the instance family. You can specify this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective, but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
+	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](https://help.aliyun.com/document_detail/59977.html) topic of burstable instances.
+	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
 	//
 	// example:
 	//
 	// EnterpriseLevel
-	InstanceFamilyLevel *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	InstanceTypes       []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	// The ECS instance types that you want to use to create elastic container instances. You can specify up to five ECS instance types.
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The number of IPv6 addresses.
 	//
 	// example:
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
+	// The load balancing weight of each elastic container instance. Valid values: 1 to 100.
 	//
 	// Default value: 50.
 	//
@@ -2738,16 +2739,16 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// 50
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
-	// The memory size of the elastic container instance. Unit: GiB.
+	// The memory size per elastic container instance. Unit: GiB.
 	//
 	// example:
 	//
 	// 2.0
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The domain name of the Network Time Protocol (NTP) server.
+	// The endpoints of the Network Time Protocol (NTP) servers.
 	NtpServers []*string `json:"NtpServers,omitempty" xml:"NtpServers,omitempty" type:"Repeated"`
 	OwnerId    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the RAM role for the elastic container instance. You can use an instance RAM role to access both elastic container instances and Elastic Compute Service (ECS) instances. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
+	// The name of the instance Resource Access Management (RAM) role. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
 	//
 	// example:
 	//
@@ -2760,13 +2761,13 @@ type CreateEciScalingConfigurationRequest struct {
 	// rg-uf66jeqopgqa9hdn****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The restart policy of the elastic container instance. Valid values:
+	// The restart policy of elastic container instances. Valid values:
 	//
-	// 	- Always: always restarts the elastic container instance.
+	// 	- Always: always restarts elastic container instances.
 	//
-	// 	- Never: never restarts the elastic container instance.
+	// 	- Never: never restarts elastic container instances.
 	//
-	// 	- OnFailure: restarts the elastic container instance upon failures.
+	// 	- OnFailure: restarts elastic container instances upon failures.
 	//
 	// Default value: Always.
 	//
@@ -2774,15 +2775,15 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// Always
 	RestartPolicy *string `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	// The name of the scaling configuration. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit.
+	// The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter or a digit.
 	//
-	// The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify this parameter, the value of the ScalingConfigurationId parameter is used.
+	// The name of the scaling configuration must be unique in a scaling group within a region. If you do not specify this parameter, the value of ScalingConfigurationId is used.
 	//
 	// example:
 	//
 	// scalingconfig****
 	ScalingConfigurationName *string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
-	// The ID of the scaling group in which you want to create the scaling configuration.
+	// The ID of the scaling group to which the scaling configuration belongs.
 	//
 	// This parameter is required.
 	//
@@ -2792,17 +2793,17 @@ type CreateEciScalingConfigurationRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The system information of the security context in which the elastic container instance runs.
 	SecurityContextSysctls []*CreateEciScalingConfigurationRequestSecurityContextSysctls `json:"SecurityContextSysctls,omitempty" xml:"SecurityContextSysctls,omitempty" type:"Repeated"`
-	// The ID of the security group with which you want to associate the elastic container instance. Elastic container instances that are associated with the same security group can access each other.
+	// The ID of the security group to which elastic container instances belong. Elastic container instances that belong to the same security group can communicate with each other.
 	//
-	// If you do not specify a security group, the system uses the default security group in the region that you selected. Make sure that the inbound rules of the security group contain the protocols and the port numbers of the containers that you want to expose. If you do not have a default security group in the region, the system creates a default security group, and then adds the declared container protocols and port numbers to the inbound rules of the security group.
+	// If you do not specify a security group, the system uses the default security group in the region that you selected. Make sure that the inbound rules of the security group contain the protocols and port numbers of the containers that you want to expose. If you do not have a default security group in the region, the system creates a default security group, and then adds the container protocols and port numbers that you specified to the inbound rules of the security group.
 	//
 	// example:
 	//
 	// sg-uf66jeqopgqa9hdn****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The maximum hourly price of the preemptible elastic container instance. The value can be accurate to three decimal places.
+	// The maximum hourly price of preemptible elastic container instances. The value can be accurate to three decimal places.
 	//
-	// If you set the SpotStrategy parameter to SpotWithPriceLimit, you must also specify the SpotPriceLimit parameter.
+	// If you set SpotStrategy to SpotWithPriceLimit, you must specify SpotPriceLimit.
 	//
 	// example:
 	//
@@ -2822,19 +2823,19 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// SpotPriceLimit
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The tags of the elastic container instance. The tags must be specified in the key-value pair format. You can specify up to 20 tags. When you specify tag keys and tag values, take note of the following items:
+	// The tags of elastic container instances. Tags must be specified as key-value pairs. You can specify up to 20 tags for each elastic container instance. When you specify Key and Value, take note of the following items:
 	//
-	// 	- A tag key can be up to 64 characters in length. The key cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You cannot specify an empty string as a tag key.
+	// 	- A tag key can be up to 64 characters in length. The key cannot start with acs: or aliyun or contain `http://` or `https://`. You cannot specify an empty string as a tag key.
 	//
-	// 	- A tag value can be up to 128 characters in length. The value cannot start with acs: or aliyun and cannot contain `http://` or `https://`. You can specify an empty string as a tag value.
+	// 	- A tag value can be up to 128 characters in length. The value cannot start with acs: or aliyun or contain `http://` or `https://`. You can specify an empty string as a tag value.
 	Tags []*CreateEciScalingConfigurationRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The buffer time in which the program handles operations before the program is stopped. Unit: seconds.
+	// The buffer time during which a program handles operations before the program stops. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	// Information about the volumes.
+	// The volumes.
 	Volumes []*CreateEciScalingConfigurationRequestVolumes `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
 }
 
@@ -3092,7 +3093,7 @@ func (s *CreateEciScalingConfigurationRequest) SetVolumes(v []*CreateEciScalingC
 }
 
 type CreateEciScalingConfigurationRequestAcrRegistryInfos struct {
-	// The domain names of the Container Registry Enterprise Edition instances. By default, all domain names of the Container Registry Enterprise Edition instances are displayed. You can specify one or more domain names. Separate multiple domain names with commas (,).
+	// The domain names of the Container Registry Enterprise Edition instances. By default, all domain names are displayed. Separate multiple domain names with commas (,).
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the Container Registry Enterprise Edition instance.
 	//
@@ -3146,9 +3147,9 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	LivenessProbe   *CreateEciScalingConfigurationRequestContainersLivenessProbe   `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" type:"Struct"`
 	ReadinessProbe  *CreateEciScalingConfigurationRequestContainersReadinessProbe  `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" type:"Struct"`
 	SecurityContext *CreateEciScalingConfigurationRequestContainersSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
-	// The container startup arguments. You can specify up to 10 arguments.
+	// The startup arguments of the containers. You can specify up to 10 arguments.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// The commands that you want to run by using the CLI for liveness probing within the container.
+	// The commands that you can run by using a CLI to perform liveness probes within the container.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 	// The number of vCPUs per container.
 	//
@@ -3182,27 +3183,27 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	//
 	// Always
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	// The commands that you want to run by using the CLI to configure the postStart callback function within the container.
+	// The commands that you can run by using a CLI to configure the postStart callback function within the container.
 	LifecyclePostStartHandlerExecs []*string `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
-	// The IP address of the host to which you want to send HTTP GET requests to configure the postStart callback function.
+	// The IP address of the host to which you send an HTTP GET request to configure the postStart callback function.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerHttpGetHost *string `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
-	// The path to which you want to send HTTP GET requests to configure the postStart callback function.
+	// The path to which you send an HTTP GET request to configure the postStart callback function.
 	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePostStartHandlerHttpGetPath *string `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
-	// The port over which you want to send HTTP GET requests to configure the postStart callback function.
+	// The port over which you send an HTTP GET request to configure the postStart callback function.
 	//
 	// example:
 	//
 	// 5050
 	LifecyclePostStartHandlerHttpGetPort *int32 `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
-	// The protocol type of HTTP GET requests that you want to send to configure the postStart callback function. Valid values:
+	// The protocol type of the HTTP GET request that you send to configure the postStart callback function. Valid values:
 	//
 	// 	- HTTP
 	//
@@ -3212,39 +3213,39 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	//
 	// HTTPS
 	LifecyclePostStartHandlerHttpGetScheme *string `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
-	// The IP address of the host detected by the TCP sockets that you want to use to configure the postStart callback function.
+	// The IP address of the host detected by the TCP socket that you use to configure the postStart callback function.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerTcpSocketHost *string `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
-	// The port detected by the TCP sockets that you want to use to configure the postStart callback function.
+	// The port detected by the TCP socket that you use to configure the postStart callback function.
 	//
 	// example:
 	//
 	// 80
 	LifecyclePostStartHandlerTcpSocketPort *int32 `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
-	// The commands that you want to run by using the CLI to configure the preStop callback function within the container.
+	// The commands that you can run by using a CLI to configure the preStop callback function within the container.
 	LifecyclePreStopHandlerExecs []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
-	// The IP address of the host to which you want to send HTTP GET requests to configure the preStop callback function.
+	// The IP address of the host to which you send an HTTP GET request to configure the preStop callback function.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerHttpGetHost *string `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
-	// The path to which you want to send HTTP GET requests to configure the preStop callback function.
+	// The path to which you send an HTTP GET request to configure the preStop callback function.
 	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePreStopHandlerHttpGetPath *string `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
-	// The port over which you want to send HTTP GET requests to configure the preStop callback function.
+	// The port over which you send an HTTP GET request to configure the preStop callback function.
 	//
 	// example:
 	//
 	// 88
 	LifecyclePreStopHandlerHttpGetPort *int32 `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
-	// The protocol type of the HTTP GET requests that you want to send to configure the preStop callback function. Valid values:
+	// The protocol type of the HTTP GET request that you send to configure the preStop callback function. Valid values:
 	//
 	// 	- HTTP
 	//
@@ -3254,13 +3255,13 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	//
 	// HTTP
 	LifecyclePreStopHandlerHttpGetScheme *string `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
-	// The IP address of the host detected by the TCP sockets that you want to use to configure the preStop callback function.
+	// The IP address of the host detected by the TCP socket that you use to configure the preStop callback function.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerTcpSocketHost *string `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
-	// The port detected by the TCP sockets that you want to use to configure the preStop callback function.
+	// The port detected by the TCP socket that you use to configure the preStop callback function.
 	//
 	// example:
 	//
@@ -3288,9 +3289,9 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	//
 	// false
 	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	// Specifies whether standard input streams remain connected during multiple sessions when StdinOnce is set to true.
+	// Specifies whether standard input streams remain connected during multiple sessions if Stdin is set to true.
 	//
-	// If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected and remain disconnected until the container is restarted.
+	// If you set StdinOnce to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected and remain disconnected until the container is restarted.
 	//
 	// example:
 	//
@@ -3779,7 +3780,7 @@ func (s *CreateEciScalingConfigurationRequestContainersSecurityContextCapability
 }
 
 type CreateEciScalingConfigurationRequestContainersEnvironmentVars struct {
-	// >  This parameter is not available for use.
+	// >  This parameter is unavailable for use.
 	//
 	// example:
 	//
@@ -3860,21 +3861,21 @@ func (s *CreateEciScalingConfigurationRequestContainersPorts) SetProtocol(v stri
 }
 
 type CreateEciScalingConfigurationRequestContainersVolumeMounts struct {
-	// The directory in which the container mounts the volume.
+	// The directory to which the container mounts the volume.
 	//
-	// >  Data under this directory is overwritten by data on the volume. Specify this parameter with caution.
+	// >  Data in this directory is overwritten by data on the volume. Specify this parameter with caution.
 	//
 	// example:
 	//
 	// /pod/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The mount propagation settings of the volume. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
+	// The mount propagation settings of the volume. Mount propagation enables volume sharing from one container to other containers within the same pod or to containers across separate pods on the same node. Valid values:
 	//
-	// 	- None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the volume.
+	// 	- None: Subsequent mounts executed on the volume or its subdirectories do not propagate to the volume.
 	//
-	// 	- HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the volume.
+	// 	- HostToCotainer: Subsequent mounts executed on the volume or its subdirectories propagate to the volume.
 	//
-	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the volume. In addition, any volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
+	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed on the volume or its subdirectories propagate to the volume. All volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
 	//
 	// Default value: None.
 	//
@@ -3882,7 +3883,7 @@ type CreateEciScalingConfigurationRequestContainersVolumeMounts struct {
 	//
 	// None
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	// The volume name. The value of this parameter is the same as the value of Volumes.Name.
+	// The name of the volume. The value of this parameter is the same as the value of Volumes.Name.
 	//
 	// example:
 	//
@@ -3900,7 +3901,7 @@ type CreateEciScalingConfigurationRequestContainersVolumeMounts struct {
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The volume subdirectory.
+	// The subdirectory of the volume.
 	//
 	// example:
 	//
@@ -3975,9 +3976,9 @@ func (s *CreateEciScalingConfigurationRequestDnsConfigOptions) SetValue(v string
 }
 
 type CreateEciScalingConfigurationRequestHostAliases struct {
-	// The hostname that you want to add.
+	// The hostnames of the containers that you want to add.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The IP address that you want to add.
+	// The IP address of the container that you want to add.
 	//
 	// example:
 	//
@@ -4010,7 +4011,7 @@ type CreateEciScalingConfigurationRequestImageRegistryCredentials struct {
 	//
 	// yourpaasword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The domain name of the image repository.
+	// The endpoint of the image repository.
 	//
 	// example:
 	//
@@ -4049,23 +4050,23 @@ func (s *CreateEciScalingConfigurationRequestImageRegistryCredentials) SetUserNa
 
 type CreateEciScalingConfigurationRequestInitContainers struct {
 	SecurityContext *CreateEciScalingConfigurationRequestInitContainersSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
-	// The arguments that correspond to the startup commands of the container. You can specify up to 10 arguments.
+	// The startup arguments of the init container. You can specify up to 10 arguments.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// The list of commands that you want to run to start the container.
+	// The startup commands of the init container.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	// The number of vCPUs that you want to allocate to the container.
+	// The number of vCPUs per init container.
 	//
 	// example:
 	//
 	// 0.5
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of GPUs that you want to allocate to the container.
+	// The number of GPUs per init container.
 	//
 	// example:
 	//
 	// 1
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The container image.
+	// The image of the init container.
 	//
 	// example:
 	//
@@ -4079,23 +4080,23 @@ type CreateEciScalingConfigurationRequestInitContainers struct {
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
 	// The environment variables of the init container.
 	InitContainerEnvironmentVars []*CreateEciScalingConfigurationRequestInitContainersInitContainerEnvironmentVars `json:"InitContainerEnvironmentVars,omitempty" xml:"InitContainerEnvironmentVars,omitempty" type:"Repeated"`
-	// The ports of the init container.
+	// The ports of init containers.
 	InitContainerPorts []*CreateEciScalingConfigurationRequestInitContainersInitContainerPorts `json:"InitContainerPorts,omitempty" xml:"InitContainerPorts,omitempty" type:"Repeated"`
-	// Information about the volume mounts of the init container.
+	// The volume mounts of the init container.
 	InitContainerVolumeMounts []*CreateEciScalingConfigurationRequestInitContainersInitContainerVolumeMounts `json:"InitContainerVolumeMounts,omitempty" xml:"InitContainerVolumeMounts,omitempty" type:"Repeated"`
-	// The size of the memory. Unit: GiB.
+	// The memory size per init container. Unit: GiB.
 	//
 	// example:
 	//
 	// 1.0
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The name of the container.
+	// The name of the init container.
 	//
 	// example:
 	//
 	// test-init
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The working directory.
+	// The working directory of the init container.
 	//
 	// example:
 	//
@@ -4223,19 +4224,19 @@ func (s *CreateEciScalingConfigurationRequestInitContainersSecurityContextCapabi
 }
 
 type CreateEciScalingConfigurationRequestInitContainersInitContainerEnvironmentVars struct {
-	// > This parameter is unavailable.
+	// >  This parameter is unavailable for use.
 	//
 	// example:
 	//
 	// path
 	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
-	// The key of the environment variable. Specify the key in the `[0-9a-zA-Z]` format. The key must be 1 to 128 characters in length. The key can contain underscores (_) and cannot start with a digit.
+	// The name of the environment variable. The name can be 1 to 128 characters in length and can contain letters, underscores (_), and digits. It cannot start with a digit. Specify the value in the `[0-9a-zA-Z]` format.
 	//
 	// example:
 	//
 	// Path
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the environment variable. The value must be 0 to 256 characters in length.
+	// The value of the environment variable. The value can be up to 256 characters in length.
 	//
 	// example:
 	//
@@ -4273,7 +4274,7 @@ type CreateEciScalingConfigurationRequestInitContainersInitContainerPorts struct
 	//
 	// 1
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
 	// 	- TCP
 	//
@@ -4304,19 +4305,19 @@ func (s *CreateEciScalingConfigurationRequestInitContainersInitContainerPorts) S
 }
 
 type CreateEciScalingConfigurationRequestInitContainersInitContainerVolumeMounts struct {
-	// The path to which the volume is mounted. Data under this path is overwritten by the data on the volume.
+	// The directory to which the init container mounts the volume. The data stored in this directory is overwritten by the data on the volume. Specify this parameter with caution.
 	//
 	// example:
 	//
 	// /usr/share/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The mount propagation settings of the volume . Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+	// The mount propagation settings of the volume. Mount propagation enables volume sharing from one container to other containers within the same pod or to containers across separate pods on the same node. Valid values:
 	//
-	// 	- None: The volume mount does not receive subsequent mounts that are mounted to this volume or its subdirectories.
+	// 	- None: Subsequent mounts executed on the volume or its subdirectories do not propagate to the volume.
 	//
-	// 	- HostToContainer: The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories.
+	// 	- HostToCotainer: Subsequent mounts executed on the volume or its subdirectories propagate to the volume.
 	//
-	// 	- Bidirectional: This value is similar to HostToContainer. The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories. In addition, all volume mounts that are created by the container are propagated back to the instance and to all containers of all pods that use the same volume.
+	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed on the volume or its subdirectories propagate to the volume. All volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
 	//
 	// example:
 	//
@@ -4336,7 +4337,7 @@ type CreateEciScalingConfigurationRequestInitContainersInitContainerVolumeMounts
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The subdirectory of the volume. The elastic container instance can mount different directories of the same volume to different subdirectories of containers.
+	// The subdirectory of the volume. The pod can mount different directories of the same volume to different subdirectories of init containers.
 	//
 	// example:
 	//
@@ -4378,7 +4379,7 @@ func (s *CreateEciScalingConfigurationRequestInitContainersInitContainerVolumeMo
 }
 
 type CreateEciScalingConfigurationRequestSecurityContextSysctls struct {
-	// The variable name of the security context in which the elastic container instance runs.
+	// The variable name of the security context in which the container group runs.
 	//
 	// example:
 	//
@@ -4411,17 +4412,17 @@ func (s *CreateEciScalingConfigurationRequestSecurityContextSysctls) SetValue(v 
 }
 
 type CreateEciScalingConfigurationRequestTags struct {
-	// The tag key of the elastic container instance. You can specify 1 to 20 tags.
+	// The tag key of the elastic container instance.
 	//
-	// You cannot specify an empty string as a tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` or contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// version
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the elastic container instance. You can specify 1 to 20 tags.
+	// The tag value of the elastic container instance.
 	//
-	// You can specify an empty string as a tag value. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -4467,7 +4468,7 @@ type CreateEciScalingConfigurationRequestVolumes struct {
 	//
 	// default-volume1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the Host file or path. Examples: File, Directory, and Socket.
+	// The type of the Host directory. Examples: File, Directory, and Socket.
 	//
 	// example:
 	//
@@ -4662,19 +4663,19 @@ func (s *CreateEciScalingConfigurationRequestVolumesNFSVolume) SetServer(v strin
 }
 
 type CreateEciScalingConfigurationRequestVolumesConfigFileVolumeConfigFileToPaths struct {
-	// The content of the configuration file, which can be up to 32 KB in size.
+	// The content of the configuration file (32 KB).
 	//
 	// example:
 	//
 	// bGl1bWk=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The permissions on ConfigFileVolume.
+	// The permissions on the configuration file.
 	//
 	// example:
 	//
 	// 0644
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The name of the environment variable. The name must be 1 to 128 characters in length. Specify the name in the `[0-9a-zA-Z]` format. The name can contain underscores and cannot start with a digit.
+	// The name of the environment variable.
 	//
 	// example:
 	//
@@ -4706,13 +4707,13 @@ func (s *CreateEciScalingConfigurationRequestVolumesConfigFileVolumeConfigFileTo
 }
 
 type CreateEciScalingConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 89945DD3-9072-47D0-A318-353284CF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the elastic container instance.
+	// The ID of the elastic container instance (container group).
 	//
 	// example:
 	//
@@ -9743,7 +9744,9 @@ type CreateScalingRuleRequest struct {
 	// example:
 	//
 	// 300
-	EstimatedInstanceWarmup *int32 `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
+	EstimatedInstanceWarmup *int32                                   `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
+	HybridMetrics           []*CreateScalingRuleRequestHybridMetrics `json:"HybridMetrics,omitempty" xml:"HybridMetrics,omitempty" type:"Repeated"`
+	HybridMonitorNamespace  *string                                  `json:"HybridMonitorNamespace,omitempty" xml:"HybridMonitorNamespace,omitempty"`
 	// The maximum number of ECS instances that can be contained in the scaling group. If you specify InitialMaxSize, you must specify `PredictiveValueBehavior`.
 	//
 	// The default value of this parameter is the value of MaxSize.
@@ -9786,6 +9789,7 @@ type CreateScalingRuleRequest struct {
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	// The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
 	//
 	// example:
@@ -9941,6 +9945,16 @@ func (s *CreateScalingRuleRequest) SetEstimatedInstanceWarmup(v int32) *CreateSc
 	return s
 }
 
+func (s *CreateScalingRuleRequest) SetHybridMetrics(v []*CreateScalingRuleRequestHybridMetrics) *CreateScalingRuleRequest {
+	s.HybridMetrics = v
+	return s
+}
+
+func (s *CreateScalingRuleRequest) SetHybridMonitorNamespace(v string) *CreateScalingRuleRequest {
+	s.HybridMonitorNamespace = &v
+	return s
+}
+
 func (s *CreateScalingRuleRequest) SetInitialMaxSize(v int32) *CreateScalingRuleRequest {
 	s.InitialMaxSize = &v
 	return s
@@ -9948,6 +9962,11 @@ func (s *CreateScalingRuleRequest) SetInitialMaxSize(v int32) *CreateScalingRule
 
 func (s *CreateScalingRuleRequest) SetMetricName(v string) *CreateScalingRuleRequest {
 	s.MetricName = &v
+	return s
+}
+
+func (s *CreateScalingRuleRequest) SetMetricType(v string) *CreateScalingRuleRequest {
+	s.MetricType = &v
 	return s
 }
 
@@ -10060,6 +10079,70 @@ func (s *CreateScalingRuleRequestAlarmDimensions) SetDimensionKey(v string) *Cre
 }
 
 func (s *CreateScalingRuleRequestAlarmDimensions) SetDimensionValue(v string) *CreateScalingRuleRequestAlarmDimensions {
+	s.DimensionValue = &v
+	return s
+}
+
+type CreateScalingRuleRequestHybridMetrics struct {
+	Dimensions []*CreateScalingRuleRequestHybridMetricsDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Expression *string                                            `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Id         *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	MetricName *string                                            `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Statistic  *string                                            `json:"Statistic,omitempty" xml:"Statistic,omitempty"`
+}
+
+func (s CreateScalingRuleRequestHybridMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingRuleRequestHybridMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingRuleRequestHybridMetrics) SetDimensions(v []*CreateScalingRuleRequestHybridMetricsDimensions) *CreateScalingRuleRequestHybridMetrics {
+	s.Dimensions = v
+	return s
+}
+
+func (s *CreateScalingRuleRequestHybridMetrics) SetExpression(v string) *CreateScalingRuleRequestHybridMetrics {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateScalingRuleRequestHybridMetrics) SetId(v string) *CreateScalingRuleRequestHybridMetrics {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateScalingRuleRequestHybridMetrics) SetMetricName(v string) *CreateScalingRuleRequestHybridMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *CreateScalingRuleRequestHybridMetrics) SetStatistic(v string) *CreateScalingRuleRequestHybridMetrics {
+	s.Statistic = &v
+	return s
+}
+
+type CreateScalingRuleRequestHybridMetricsDimensions struct {
+	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+}
+
+func (s CreateScalingRuleRequestHybridMetricsDimensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingRuleRequestHybridMetricsDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingRuleRequestHybridMetricsDimensions) SetDimensionKey(v string) *CreateScalingRuleRequestHybridMetricsDimensions {
+	s.DimensionKey = &v
+	return s
+}
+
+func (s *CreateScalingRuleRequestHybridMetricsDimensions) SetDimensionValue(v string) *CreateScalingRuleRequestHybridMetricsDimensions {
 	s.DimensionValue = &v
 	return s
 }
@@ -11725,7 +11808,9 @@ type DescribeAlarmsResponseBodyAlarmList struct {
 	// example:
 	//
 	// &&
-	ExpressionsLogicOperator *string `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
+	ExpressionsLogicOperator *string                                             `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
+	HybridMetrics            []*DescribeAlarmsResponseBodyAlarmListHybridMetrics `json:"HybridMetrics,omitempty" xml:"HybridMetrics,omitempty" type:"Repeated"`
+	HybridMonitorNamespace   *string                                             `json:"HybridMonitorNamespace,omitempty" xml:"HybridMonitorNamespace,omitempty"`
 	// The metric name. Valid values:
 	//
 	// 	- CpuUtilization: the CPU utilization of an Elastic Compute Service (ECS) instance. Unit: %.
@@ -11817,7 +11902,8 @@ type DescribeAlarmsResponseBodyAlarmList struct {
 	// example:
 	//
 	// 300
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PromQL *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
 	// The ID of the scaling group to which the event-triggered task is associated.
 	//
 	// example:
@@ -11914,6 +12000,16 @@ func (s *DescribeAlarmsResponseBodyAlarmList) SetExpressionsLogicOperator(v stri
 	return s
 }
 
+func (s *DescribeAlarmsResponseBodyAlarmList) SetHybridMetrics(v []*DescribeAlarmsResponseBodyAlarmListHybridMetrics) *DescribeAlarmsResponseBodyAlarmList {
+	s.HybridMetrics = v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmList) SetHybridMonitorNamespace(v string) *DescribeAlarmsResponseBodyAlarmList {
+	s.HybridMonitorNamespace = &v
+	return s
+}
+
 func (s *DescribeAlarmsResponseBodyAlarmList) SetMetricName(v string) *DescribeAlarmsResponseBodyAlarmList {
 	s.MetricName = &v
 	return s
@@ -11931,6 +12027,11 @@ func (s *DescribeAlarmsResponseBodyAlarmList) SetName(v string) *DescribeAlarmsR
 
 func (s *DescribeAlarmsResponseBodyAlarmList) SetPeriod(v int32) *DescribeAlarmsResponseBodyAlarmList {
 	s.Period = &v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmList) SetPromQL(v string) *DescribeAlarmsResponseBodyAlarmList {
+	s.PromQL = &v
 	return s
 }
 
@@ -12152,6 +12253,70 @@ func (s *DescribeAlarmsResponseBodyAlarmListExpressions) SetStatistics(v string)
 
 func (s *DescribeAlarmsResponseBodyAlarmListExpressions) SetThreshold(v float32) *DescribeAlarmsResponseBodyAlarmListExpressions {
 	s.Threshold = &v
+	return s
+}
+
+type DescribeAlarmsResponseBodyAlarmListHybridMetrics struct {
+	Dimensions []*DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Expression *string                                                       `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Id         *string                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	MetricName *string                                                       `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Statistic  *string                                                       `json:"Statistic,omitempty" xml:"Statistic,omitempty"`
+}
+
+func (s DescribeAlarmsResponseBodyAlarmListHybridMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmsResponseBodyAlarmListHybridMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListHybridMetrics) SetDimensions(v []*DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions) *DescribeAlarmsResponseBodyAlarmListHybridMetrics {
+	s.Dimensions = v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListHybridMetrics) SetExpression(v string) *DescribeAlarmsResponseBodyAlarmListHybridMetrics {
+	s.Expression = &v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListHybridMetrics) SetId(v string) *DescribeAlarmsResponseBodyAlarmListHybridMetrics {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListHybridMetrics) SetMetricName(v string) *DescribeAlarmsResponseBodyAlarmListHybridMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListHybridMetrics) SetStatistic(v string) *DescribeAlarmsResponseBodyAlarmListHybridMetrics {
+	s.Statistic = &v
+	return s
+}
+
+type DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions struct {
+	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+}
+
+func (s DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions) SetDimensionKey(v string) *DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions {
+	s.DimensionKey = &v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions) SetDimensionValue(v string) *DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions {
+	s.DimensionValue = &v
 	return s
 }
 
@@ -24654,7 +24819,9 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	// example:
 	//
 	// 300
-	EstimatedInstanceWarmup *int32 `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
+	EstimatedInstanceWarmup *int32                                                       `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
+	HybridMetrics           []*DescribeScalingRulesResponseBodyScalingRulesHybridMetrics `json:"HybridMetrics,omitempty" xml:"HybridMetrics,omitempty" type:"Repeated"`
+	HybridMonitorNamespace  *string                                                      `json:"HybridMonitorNamespace,omitempty" xml:"HybridMonitorNamespace,omitempty"`
 	// The maximum number of ECS instances that can be contained in the scaling group. If you specify this parameter, you must also specify PredictiveValueBehavior.
 	//
 	// example:
@@ -24673,6 +24840,7 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	// The minimum number of instances that must be scaled. This parameter takes effect only if you set ScalingRuleType to SimpleScalingRule or StepScalingRule and set AdjustmentType to PercentChangeInCapacity.
 	//
 	// example:
@@ -24822,6 +24990,16 @@ func (s *DescribeScalingRulesResponseBodyScalingRules) SetEstimatedInstanceWarmu
 	return s
 }
 
+func (s *DescribeScalingRulesResponseBodyScalingRules) SetHybridMetrics(v []*DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) *DescribeScalingRulesResponseBodyScalingRules {
+	s.HybridMetrics = v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRules) SetHybridMonitorNamespace(v string) *DescribeScalingRulesResponseBodyScalingRules {
+	s.HybridMonitorNamespace = &v
+	return s
+}
+
 func (s *DescribeScalingRulesResponseBodyScalingRules) SetInitialMaxSize(v int32) *DescribeScalingRulesResponseBodyScalingRules {
 	s.InitialMaxSize = &v
 	return s
@@ -24834,6 +25012,11 @@ func (s *DescribeScalingRulesResponseBodyScalingRules) SetMaxSize(v int32) *Desc
 
 func (s *DescribeScalingRulesResponseBodyScalingRules) SetMetricName(v string) *DescribeScalingRulesResponseBodyScalingRules {
 	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRules) SetMetricType(v string) *DescribeScalingRulesResponseBodyScalingRules {
+	s.MetricType = &v
 	return s
 }
 
@@ -25102,6 +25285,70 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions) SetDimens
 }
 
 func (s *DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions) SetDimensionValue(v string) *DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions {
+	s.DimensionValue = &v
+	return s
+}
+
+type DescribeScalingRulesResponseBodyScalingRulesHybridMetrics struct {
+	Dimensions []*DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Expression *string                                                                `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Id         *string                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	MetricName *string                                                                `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Statistic  *string                                                                `json:"Statistic,omitempty" xml:"Statistic,omitempty"`
+}
+
+func (s DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) SetDimensions(v []*DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions) *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics {
+	s.Dimensions = v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) SetExpression(v string) *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics {
+	s.Expression = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) SetId(v string) *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) SetMetricName(v string) *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics) SetStatistic(v string) *DescribeScalingRulesResponseBodyScalingRulesHybridMetrics {
+	s.Statistic = &v
+	return s
+}
+
+type DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions struct {
+	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+}
+
+func (s DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions) SetDimensionKey(v string) *DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions {
+	s.DimensionKey = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions) SetDimensionValue(v string) *DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions {
 	s.DimensionValue = &v
 	return s
 }
@@ -35614,7 +35861,9 @@ type ModifyScalingRuleRequest struct {
 	// example:
 	//
 	// 60
-	EstimatedInstanceWarmup *int32 `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
+	EstimatedInstanceWarmup *int32                                   `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
+	HybridMetrics           []*ModifyScalingRuleRequestHybridMetrics `json:"HybridMetrics,omitempty" xml:"HybridMetrics,omitempty" type:"Repeated"`
+	HybridMonitorNamespace  *string                                  `json:"HybridMonitorNamespace,omitempty" xml:"HybridMonitorNamespace,omitempty"`
 	// The maximum number of ECS instances that can be contained in the scaling group. If you specify InitialMaxSize, you must specify `PredictiveValueBehavior`.
 	//
 	// example:
@@ -35651,6 +35900,7 @@ type ModifyScalingRuleRequest struct {
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	// The minimum number of instances to scale. This parameter takes effect only if you create a simple scaling rule or step scaling rule and set `AdjustmentType` to `PercentChangeInCapacity`.
 	//
 	// example:
@@ -35771,6 +36021,16 @@ func (s *ModifyScalingRuleRequest) SetEstimatedInstanceWarmup(v int32) *ModifySc
 	return s
 }
 
+func (s *ModifyScalingRuleRequest) SetHybridMetrics(v []*ModifyScalingRuleRequestHybridMetrics) *ModifyScalingRuleRequest {
+	s.HybridMetrics = v
+	return s
+}
+
+func (s *ModifyScalingRuleRequest) SetHybridMonitorNamespace(v string) *ModifyScalingRuleRequest {
+	s.HybridMonitorNamespace = &v
+	return s
+}
+
 func (s *ModifyScalingRuleRequest) SetInitialMaxSize(v int32) *ModifyScalingRuleRequest {
 	s.InitialMaxSize = &v
 	return s
@@ -35778,6 +36038,11 @@ func (s *ModifyScalingRuleRequest) SetInitialMaxSize(v int32) *ModifyScalingRule
 
 func (s *ModifyScalingRuleRequest) SetMetricName(v string) *ModifyScalingRuleRequest {
 	s.MetricName = &v
+	return s
+}
+
+func (s *ModifyScalingRuleRequest) SetMetricType(v string) *ModifyScalingRuleRequest {
+	s.MetricType = &v
 	return s
 }
 
@@ -35885,6 +36150,70 @@ func (s *ModifyScalingRuleRequestAlarmDimensions) SetDimensionKey(v string) *Mod
 }
 
 func (s *ModifyScalingRuleRequestAlarmDimensions) SetDimensionValue(v string) *ModifyScalingRuleRequestAlarmDimensions {
+	s.DimensionValue = &v
+	return s
+}
+
+type ModifyScalingRuleRequestHybridMetrics struct {
+	Dimensions []*ModifyScalingRuleRequestHybridMetricsDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	Expression *string                                            `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Id         *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	MetricName *string                                            `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Statistic  *string                                            `json:"Statistic,omitempty" xml:"Statistic,omitempty"`
+}
+
+func (s ModifyScalingRuleRequestHybridMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingRuleRequestHybridMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingRuleRequestHybridMetrics) SetDimensions(v []*ModifyScalingRuleRequestHybridMetricsDimensions) *ModifyScalingRuleRequestHybridMetrics {
+	s.Dimensions = v
+	return s
+}
+
+func (s *ModifyScalingRuleRequestHybridMetrics) SetExpression(v string) *ModifyScalingRuleRequestHybridMetrics {
+	s.Expression = &v
+	return s
+}
+
+func (s *ModifyScalingRuleRequestHybridMetrics) SetId(v string) *ModifyScalingRuleRequestHybridMetrics {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyScalingRuleRequestHybridMetrics) SetMetricName(v string) *ModifyScalingRuleRequestHybridMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *ModifyScalingRuleRequestHybridMetrics) SetStatistic(v string) *ModifyScalingRuleRequestHybridMetrics {
+	s.Statistic = &v
+	return s
+}
+
+type ModifyScalingRuleRequestHybridMetricsDimensions struct {
+	DimensionKey   *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+}
+
+func (s ModifyScalingRuleRequestHybridMetricsDimensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingRuleRequestHybridMetricsDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingRuleRequestHybridMetricsDimensions) SetDimensionKey(v string) *ModifyScalingRuleRequestHybridMetricsDimensions {
+	s.DimensionKey = &v
+	return s
+}
+
+func (s *ModifyScalingRuleRequestHybridMetricsDimensions) SetDimensionValue(v string) *ModifyScalingRuleRequestHybridMetricsDimensions {
 	s.DimensionValue = &v
 	return s
 }
@@ -40350,13 +40679,13 @@ func (client *Client) CreateAlarm(request *CreateAlarmRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-outs.
+// Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-out events.
 //
 // Description:
 //
-// A scaling configuration is a template that is used to create elastic container instances during scale-out activities.
+// A scaling configuration is a template that is used to create elastic container instances during scale-out events.
 //
-// You can specify the Cpu and Memory parameters to determine the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances of the instance type that is provided at the lowest price. This scaling mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+// You can specify CPU and Memory to determine the range of instance types. Then, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances by using the lowest-priced instance type. This method applies only if you set Scaling Policy to Cost Optimization Policy and no instance type is specified in the scaling configuration.
 //
 // @param request - CreateEciScalingConfigurationRequest
 //
@@ -40590,13 +40919,13 @@ func (client *Client) CreateEciScalingConfigurationWithOptions(request *CreateEc
 
 // Summary:
 //
-// Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-outs.
+// Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-out events.
 //
 // Description:
 //
-// A scaling configuration is a template that is used to create elastic container instances during scale-out activities.
+// A scaling configuration is a template that is used to create elastic container instances during scale-out events.
 //
-// You can specify the Cpu and Memory parameters to determine the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances of the instance type that is provided at the lowest price. This scaling mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+// You can specify CPU and Memory to determine the range of instance types. Then, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances by using the lowest-priced instance type. This method applies only if you set Scaling Policy to Cost Optimization Policy and no instance type is specified in the scaling configuration.
 //
 // @param request - CreateEciScalingConfigurationRequest
 //
@@ -41543,12 +41872,24 @@ func (client *Client) CreateScalingRuleWithOptions(request *CreateScalingRuleReq
 		query["EstimatedInstanceWarmup"] = request.EstimatedInstanceWarmup
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HybridMetrics)) {
+		query["HybridMetrics"] = request.HybridMetrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HybridMonitorNamespace)) {
+		query["HybridMonitorNamespace"] = request.HybridMonitorNamespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InitialMaxSize)) {
 		query["InitialMaxSize"] = request.InitialMaxSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
 		query["MetricName"] = request.MetricName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinAdjustmentMagnitude)) {
@@ -47367,12 +47708,24 @@ func (client *Client) ModifyScalingRuleWithOptions(request *ModifyScalingRuleReq
 		query["EstimatedInstanceWarmup"] = request.EstimatedInstanceWarmup
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HybridMetrics)) {
+		query["HybridMetrics"] = request.HybridMetrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HybridMonitorNamespace)) {
+		query["HybridMonitorNamespace"] = request.HybridMonitorNamespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InitialMaxSize)) {
 		query["InitialMaxSize"] = request.InitialMaxSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
 		query["MetricName"] = request.MetricName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinAdjustmentMagnitude)) {
