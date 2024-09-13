@@ -9,6 +9,375 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ListHotTopicSummariesRequest struct {
+	// example:
+	//
+	// xx
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// xx
+	HotTopic *string `json:"hotTopic,omitempty" xml:"hotTopic,omitempty"`
+	// example:
+	//
+	// 2024-09-13_12
+	HotTopicVersion *string `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// JlroP3CjgQh5PQDlH3ArzADkBTPZgVqo+64jhZRglNq0mEYoV5SlGb/Juvo8CdfYE9rlwEr2pIJQwdaYotak9g==
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListHotTopicSummariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesRequest) SetCategory(v string) *ListHotTopicSummariesRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesRequest) SetHotTopic(v string) *ListHotTopicSummariesRequest {
+	s.HotTopic = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesRequest) SetHotTopicVersion(v string) *ListHotTopicSummariesRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesRequest) SetMaxResults(v int32) *ListHotTopicSummariesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesRequest) SetNextToken(v string) *ListHotTopicSummariesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListHotTopicSummariesResponseBody struct {
+	// example:
+	//
+	// xx
+	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*ListHotTopicSummariesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// JlroP3CjgQh5PQDlH3ArzADkBTPZgVqo+64jhZRglNq0mEYoV5SlGb/Juvo8CdfYE9rlwEr2pIJQwdaYotak9g==
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListHotTopicSummariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetCode(v string) *ListHotTopicSummariesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetData(v []*ListHotTopicSummariesResponseBodyData) *ListHotTopicSummariesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetHttpStatusCode(v int32) *ListHotTopicSummariesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetMaxResults(v int32) *ListHotTopicSummariesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetMessage(v string) *ListHotTopicSummariesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetNextToken(v string) *ListHotTopicSummariesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetRequestId(v string) *ListHotTopicSummariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetSuccess(v bool) *ListHotTopicSummariesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBody) SetTotalCount(v int32) *ListHotTopicSummariesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHotTopicSummariesResponseBodyData struct {
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// xx
+	HotTopic *string `json:"hotTopic,omitempty" xml:"hotTopic,omitempty"`
+	// example:
+	//
+	// 2024-09-13_12
+	HotTopicVersion *string `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	// example:
+	//
+	// 1000000
+	HotValue *float64 `json:"hotValue,omitempty" xml:"hotValue,omitempty"`
+	// example:
+	//
+	// db5dc5b3d8954a30b65ba700c9dda3bb
+	Id      *string                                       `json:"id,omitempty" xml:"id,omitempty"`
+	News    []*ListHotTopicSummariesResponseBodyDataNews  `json:"news,omitempty" xml:"news,omitempty" type:"Repeated"`
+	Summary *ListHotTopicSummariesResponseBodyDataSummary `json:"summary,omitempty" xml:"summary,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	TextSummary *string `json:"textSummary,omitempty" xml:"textSummary,omitempty"`
+}
+
+func (s ListHotTopicSummariesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetCategory(v string) *ListHotTopicSummariesResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetHotTopic(v string) *ListHotTopicSummariesResponseBodyData {
+	s.HotTopic = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetHotTopicVersion(v string) *ListHotTopicSummariesResponseBodyData {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetHotValue(v float64) *ListHotTopicSummariesResponseBodyData {
+	s.HotValue = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetId(v string) *ListHotTopicSummariesResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetNews(v []*ListHotTopicSummariesResponseBodyDataNews) *ListHotTopicSummariesResponseBodyData {
+	s.News = v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetSummary(v *ListHotTopicSummariesResponseBodyDataSummary) *ListHotTopicSummariesResponseBodyData {
+	s.Summary = v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyData) SetTextSummary(v string) *ListHotTopicSummariesResponseBodyData {
+	s.TextSummary = &v
+	return s
+}
+
+type ListHotTopicSummariesResponseBodyDataNews struct {
+	Comments []*ListHotTopicSummariesResponseBodyDataNewsComments `json:"comments,omitempty" xml:"comments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 2024-09-10 15:32:00
+	PubTime *string `json:"pubTime,omitempty" xml:"pubTime,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// url
+	//
+	// example:
+	//
+	// http://xxx
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListHotTopicSummariesResponseBodyDataNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesResponseBodyDataNews) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataNews) SetComments(v []*ListHotTopicSummariesResponseBodyDataNewsComments) *ListHotTopicSummariesResponseBodyDataNews {
+	s.Comments = v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataNews) SetContent(v string) *ListHotTopicSummariesResponseBodyDataNews {
+	s.Content = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataNews) SetPubTime(v string) *ListHotTopicSummariesResponseBodyDataNews {
+	s.PubTime = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataNews) SetTitle(v string) *ListHotTopicSummariesResponseBodyDataNews {
+	s.Title = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataNews) SetUrl(v string) *ListHotTopicSummariesResponseBodyDataNews {
+	s.Url = &v
+	return s
+}
+
+type ListHotTopicSummariesResponseBodyDataNewsComments struct {
+	// example:
+	//
+	// xx
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s ListHotTopicSummariesResponseBodyDataNewsComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesResponseBodyDataNewsComments) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataNewsComments) SetText(v string) *ListHotTopicSummariesResponseBodyDataNewsComments {
+	s.Text = &v
+	return s
+}
+
+type ListHotTopicSummariesResponseBodyDataSummary struct {
+	Summaries []*ListHotTopicSummariesResponseBodyDataSummarySummaries `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
+}
+
+func (s ListHotTopicSummariesResponseBodyDataSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesResponseBodyDataSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataSummary) SetSummaries(v []*ListHotTopicSummariesResponseBodyDataSummarySummaries) *ListHotTopicSummariesResponseBodyDataSummary {
+	s.Summaries = v
+	return s
+}
+
+type ListHotTopicSummariesResponseBodyDataSummarySummaries struct {
+	// example:
+	//
+	// xx
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ListHotTopicSummariesResponseBodyDataSummarySummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesResponseBodyDataSummarySummaries) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataSummarySummaries) SetSummary(v string) *ListHotTopicSummariesResponseBodyDataSummarySummaries {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponseBodyDataSummarySummaries) SetTitle(v string) *ListHotTopicSummariesResponseBodyDataSummarySummaries {
+	s.Title = &v
+	return s
+}
+
+type ListHotTopicSummariesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotTopicSummariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHotTopicSummariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotTopicSummariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotTopicSummariesResponse) SetHeaders(v map[string]*string) *ListHotTopicSummariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponse) SetStatusCode(v int32) *ListHotTopicSummariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotTopicSummariesResponse) SetBody(v *ListHotTopicSummariesResponseBody) *ListHotTopicSummariesResponse {
+	s.Body = v
+	return s
+}
+
 type RunMarketingInformationExtractRequest struct {
 	CustomPrompt *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
 	ExtractType  *string `json:"extractType,omitempty" xml:"extractType,omitempty"`
@@ -1665,6 +2034,7 @@ func (s *RunVideoAnalysisResponseBodyHeader) SetTraceId(v string) *RunVideoAnaly
 
 type RunVideoAnalysisResponseBodyPayload struct {
 	Output *RunVideoAnalysisResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunVideoAnalysisResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s RunVideoAnalysisResponseBodyPayload) String() string {
@@ -1677,6 +2047,11 @@ func (s RunVideoAnalysisResponseBodyPayload) GoString() string {
 
 func (s *RunVideoAnalysisResponseBodyPayload) SetOutput(v *RunVideoAnalysisResponseBodyPayloadOutput) *RunVideoAnalysisResponseBodyPayload {
 	s.Output = v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayload) SetUsage(v *RunVideoAnalysisResponseBodyPayloadUsage) *RunVideoAnalysisResponseBodyPayload {
+	s.Usage = v
 	return s
 }
 
@@ -2193,6 +2568,35 @@ func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResultUsage)
 	return s
 }
 
+type RunVideoAnalysisResponseBodyPayloadUsage struct {
+	InputTokens  *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	TotalTokens  *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadUsage) SetInputTokens(v int64) *RunVideoAnalysisResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunVideoAnalysisResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunVideoAnalysisResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
 type RunVideoAnalysisResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -2262,6 +2666,86 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-新闻播报-获取热点话题摘要列表
+//
+// @param request - ListHotTopicSummariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotTopicSummariesResponse
+func (client *Client) ListHotTopicSummariesWithOptions(workspaceId *string, request *ListHotTopicSummariesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListHotTopicSummariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotTopic)) {
+		body["hotTopic"] = request.HotTopic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotTopicVersion)) {
+		body["hotTopicVersion"] = request.HotTopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotTopicSummaries"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/listHotTopicSummaries"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotTopicSummariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-新闻播报-获取热点话题摘要列表
+//
+// @param request - ListHotTopicSummariesRequest
+//
+// @return ListHotTopicSummariesResponse
+func (client *Client) ListHotTopicSummaries(workspaceId *string, request *ListHotTopicSummariesRequest) (_result *ListHotTopicSummariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListHotTopicSummariesResponse{}
+	_body, _err := client.ListHotTopicSummariesWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
