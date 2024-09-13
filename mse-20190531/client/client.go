@@ -8150,6 +8150,121 @@ func (s *BindSentinelBlockFallbackDefinitionResponse) SetBody(v *BindSentinelBlo
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfm34x43l*****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mse-cn-xxxxxxxxxxx，
+	//
+	// gw-xxxxxxxxxxxxxxxxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// example:
+	//
+	// Cluster,Gateway
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetAcceptLanguage(v string) *ChangeResourceGroupRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResourceGroupRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 54973C90-F379-4372-9AA5-053A3F7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CloneNacosConfigRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -13098,7 +13213,8 @@ type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson struct {
 	// example:
 	//
 	// 0
-	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	CanaryModel *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	Condition   *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The matching conditions.
 	Conditions []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// The ID of the gateway.
@@ -13133,6 +13249,11 @@ func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) GoString(
 
 func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetCanaryModel(v int32) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
 	s.CanaryModel = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetCondition(v string) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
+	s.Condition = &v
 	return s
 }
 
@@ -13918,7 +14039,8 @@ type CreateOrUpdateSwimmingLaneGroupRequest struct {
 	// example:
 	//
 	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwimVersion *int32 `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
 }
 
 func (s CreateOrUpdateSwimmingLaneGroupRequest) String() string {
@@ -14004,6 +14126,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetStatus(v int32) *CreateOrUpd
 	return s
 }
 
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetSwimVersion(v int32) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.SwimVersion = &v
+	return s
+}
+
 type CreateOrUpdateSwimmingLaneGroupShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -14084,7 +14211,8 @@ type CreateOrUpdateSwimmingLaneGroupShrinkRequest struct {
 	// example:
 	//
 	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwimVersion *int32 `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
 }
 
 func (s CreateOrUpdateSwimmingLaneGroupShrinkRequest) String() string {
@@ -14167,6 +14295,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetRouteIdsShrink(v strin
 
 func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetSwimVersion(v int32) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.SwimVersion = &v
 	return s
 }
 
@@ -47199,6 +47332,7 @@ type ListGatewayRouteResponseBodyDataResult struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The domain names.
 	DomainNameList []*string `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	DynamicRoute   *bool     `json:"DynamicRoute,omitempty" xml:"DynamicRoute,omitempty"`
 	// Indicates whether Web Application Firewall (WAF) is activated.
 	//
 	// example:
@@ -47337,6 +47471,11 @@ func (s *ListGatewayRouteResponseBodyDataResult) SetDomainName(v string) *ListGa
 
 func (s *ListGatewayRouteResponseBodyDataResult) SetDomainNameList(v []*string) *ListGatewayRouteResponseBodyDataResult {
 	s.DomainNameList = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDynamicRoute(v bool) *ListGatewayRouteResponseBodyDataResult {
+	s.DynamicRoute = &v
 	return s
 }
 
@@ -57055,7 +57194,8 @@ type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions stru
 	// example:
 	//
 	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// header
@@ -57081,6 +57221,11 @@ func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions)
 
 func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) SetName(v string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions {
 	s.Name = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) SetNameList(v []*string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions {
+	s.NameList = v
 	return s
 }
 
@@ -57322,7 +57467,8 @@ type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SwimVersion *int32  `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
 	// example:
 	//
 	// 12345
@@ -57389,6 +57535,11 @@ func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetRecordCanaryDetail(v bool
 
 func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetRegion(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
 	s.Region = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetSwimVersion(v int32) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.SwimVersion = &v
 	return s
 }
 
@@ -79215,6 +79366,82 @@ func (client *Client) BindSentinelBlockFallbackDefinition(request *BindSentinelB
 
 // Summary:
 //
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Clones an existing Nacos configuration from a namespace to another namespace.
 //
 // Description:
@@ -80960,6 +81187,10 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(tmpReq *CreateO
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwimVersion)) {
+		query["SwimVersion"] = request.SwimVersion
 	}
 
 	req := &openapi.OpenApiRequest{
