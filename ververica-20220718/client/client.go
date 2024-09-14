@@ -883,7 +883,8 @@ type DeploymentTarget struct {
 	// example:
 	//
 	// namespace
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Namespace *string        `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Quota     *ResourceQuota `json:"quota,omitempty" xml:"quota,omitempty"`
 }
 
 func (s DeploymentTarget) String() string {
@@ -901,6 +902,11 @@ func (s *DeploymentTarget) SetName(v string) *DeploymentTarget {
 
 func (s *DeploymentTarget) SetNamespace(v string) *DeploymentTarget {
 	s.Namespace = &v
+	return s
+}
+
+func (s *DeploymentTarget) SetQuota(v *ResourceQuota) *DeploymentTarget {
+	s.Quota = v
 	return s
 }
 
@@ -1170,6 +1176,83 @@ func (s *ErrorDetails) SetLineNumber(v string) *ErrorDetails {
 
 func (s *ErrorDetails) SetMessage(v string) *ErrorDetails {
 	s.Message = &v
+	return s
+}
+
+type Event struct {
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000680003
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000001
+	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// example:
+	//
+	// STATE_TRANSITION_IS_COMPLETED
+	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000005043
+	JobId   *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s Event) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Event) GoString() string {
+	return s.String()
+}
+
+func (s *Event) SetCreatedAt(v int64) *Event {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Event) SetDeploymentId(v string) *Event {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *Event) SetEventId(v string) *Event {
+	s.EventId = &v
+	return s
+}
+
+func (s *Event) SetEventName(v string) *Event {
+	s.EventName = &v
+	return s
+}
+
+func (s *Event) SetJobId(v string) *Event {
+	s.JobId = &v
+	return s
+}
+
+func (s *Event) SetMessage(v string) *Event {
+	s.Message = &v
+	return s
+}
+
+func (s *Event) SetNamespace(v string) *Event {
+	s.Namespace = &v
+	return s
+}
+
+func (s *Event) SetWorkspace(v string) *Event {
+	s.Workspace = &v
 	return s
 }
 
@@ -1787,6 +1870,7 @@ func (s *JobMetric) SetTotalMemoryByte(v int64) *JobMetric {
 
 type JobStartParameters struct {
 	DeploymentId   *string          `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	JobId          *string          `json:"jobId,omitempty" xml:"jobId,omitempty"`
 	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -1805,6 +1889,11 @@ func (s JobStartParameters) GoString() string {
 
 func (s *JobStartParameters) SetDeploymentId(v string) *JobStartParameters {
 	s.DeploymentId = &v
+	return s
+}
+
+func (s *JobStartParameters) SetJobId(v string) *JobStartParameters {
+	s.JobId = &v
 	return s
 }
 
@@ -2360,6 +2449,71 @@ func (s *Node) SetTables(v []*LineageTable) *Node {
 	return s
 }
 
+type PeriodicSchedulingPolicy struct {
+	IsFinished *bool `json:"isFinished,omitempty" xml:"isFinished,omitempty"`
+	// example:
+	//
+	// 1723195800000
+	OnlyOnceTriggerTime *int64 `json:"onlyOnceTriggerTime,omitempty" xml:"onlyOnceTriggerTime,omitempty"`
+	// example:
+	//
+	// true
+	OnlyOnceTriggerTimeIsExpired *bool `json:"onlyOnceTriggerTimeIsExpired,omitempty" xml:"onlyOnceTriggerTimeIsExpired,omitempty"`
+	// example:
+	//
+	// DAY
+	PeriodicSchedulingLevel  *string  `json:"periodicSchedulingLevel,omitempty" xml:"periodicSchedulingLevel,omitempty"`
+	PeriodicSchedulingValues []*int32 `json:"periodicSchedulingValues,omitempty" xml:"periodicSchedulingValues,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1723199340000
+	PeriodicTriggerTime *int64                `json:"periodicTriggerTime,omitempty" xml:"periodicTriggerTime,omitempty"`
+	ResourceSetting     *BriefResourceSetting `json:"resourceSetting,omitempty" xml:"resourceSetting,omitempty"`
+}
+
+func (s PeriodicSchedulingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PeriodicSchedulingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *PeriodicSchedulingPolicy) SetIsFinished(v bool) *PeriodicSchedulingPolicy {
+	s.IsFinished = &v
+	return s
+}
+
+func (s *PeriodicSchedulingPolicy) SetOnlyOnceTriggerTime(v int64) *PeriodicSchedulingPolicy {
+	s.OnlyOnceTriggerTime = &v
+	return s
+}
+
+func (s *PeriodicSchedulingPolicy) SetOnlyOnceTriggerTimeIsExpired(v bool) *PeriodicSchedulingPolicy {
+	s.OnlyOnceTriggerTimeIsExpired = &v
+	return s
+}
+
+func (s *PeriodicSchedulingPolicy) SetPeriodicSchedulingLevel(v string) *PeriodicSchedulingPolicy {
+	s.PeriodicSchedulingLevel = &v
+	return s
+}
+
+func (s *PeriodicSchedulingPolicy) SetPeriodicSchedulingValues(v []*int32) *PeriodicSchedulingPolicy {
+	s.PeriodicSchedulingValues = v
+	return s
+}
+
+func (s *PeriodicSchedulingPolicy) SetPeriodicTriggerTime(v int64) *PeriodicSchedulingPolicy {
+	s.PeriodicTriggerTime = &v
+	return s
+}
+
+func (s *PeriodicSchedulingPolicy) SetResourceSetting(v *BriefResourceSetting) *PeriodicSchedulingPolicy {
+	s.ResourceSetting = v
+	return s
+}
+
 type PrimaryKey struct {
 	Columns        []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
 	ConstraintName *string   `json:"constraintName,omitempty" xml:"constraintName,omitempty"`
@@ -2510,8 +2664,7 @@ func (s *Relation) SetSource(v string) *Relation {
 }
 
 type RescaleJobParam struct {
-	JobParallelism    *int64                 `json:"jobParallelism,omitempty" xml:"jobParallelism,omitempty"`
-	VertexParallelism map[string]interface{} `json:"vertexParallelism,omitempty" xml:"vertexParallelism,omitempty"`
+	JobParallelism *int64 `json:"jobParallelism,omitempty" xml:"jobParallelism,omitempty"`
 }
 
 func (s RescaleJobParam) String() string {
@@ -2527,8 +2680,55 @@ func (s *RescaleJobParam) SetJobParallelism(v int64) *RescaleJobParam {
 	return s
 }
 
-func (s *RescaleJobParam) SetVertexParallelism(v map[string]interface{}) *RescaleJobParam {
-	s.VertexParallelism = v
+type ResourceQuota struct {
+	Limit *ResourceSpec `json:"limit,omitempty" xml:"limit,omitempty"`
+	Used  *ResourceSpec `json:"used,omitempty" xml:"used,omitempty"`
+}
+
+func (s ResourceQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceQuota) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceQuota) SetLimit(v *ResourceSpec) *ResourceQuota {
+	s.Limit = v
+	return s
+}
+
+func (s *ResourceQuota) SetUsed(v *ResourceSpec) *ResourceQuota {
+	s.Used = v
+	return s
+}
+
+type ResourceSpec struct {
+	// example:
+	//
+	// 1.0
+	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// 4Gi
+	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+}
+
+func (s ResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceSpec) SetCpu(v float64) *ResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ResourceSpec) SetMemory(v string) *ResourceSpec {
+	s.Memory = &v
 	return s
 }
 
@@ -2703,9 +2903,416 @@ func (s *SavepointStatus) SetState(v string) *SavepointStatus {
 	return s
 }
 
+type ScheduledPlan struct {
+	// example:
+	//
+	// 1723197248
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000001
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// 1723197248
+	ModifiedAt *string `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// test-scheduled-plan
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// USER_DEFINED
+	Origin                     *string                     `json:"origin,omitempty" xml:"origin,omitempty"`
+	PeriodicSchedulingPolicies []*PeriodicSchedulingPolicy `json:"periodicSchedulingPolicies,omitempty" xml:"periodicSchedulingPolicies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// f3b4ec1e-85dc-4b1d-9726-1d7f4c37****
+	ScheduledPlanId *string `json:"scheduledPlanId,omitempty" xml:"scheduledPlanId,omitempty"`
+	// example:
+	//
+	// FINISHED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// true
+	UpdatedByUser *bool `json:"updatedByUser,omitempty" xml:"updatedByUser,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ScheduledPlan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduledPlan) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduledPlan) SetCreatedAt(v string) *ScheduledPlan {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetCreator(v string) *ScheduledPlan {
+	s.Creator = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetCreatorName(v string) *ScheduledPlan {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetDeploymentId(v string) *ScheduledPlan {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetModifiedAt(v string) *ScheduledPlan {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetModifier(v string) *ScheduledPlan {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetModifierName(v string) *ScheduledPlan {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetName(v string) *ScheduledPlan {
+	s.Name = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetNamespace(v string) *ScheduledPlan {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetOrigin(v string) *ScheduledPlan {
+	s.Origin = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetPeriodicSchedulingPolicies(v []*PeriodicSchedulingPolicy) *ScheduledPlan {
+	s.PeriodicSchedulingPolicies = v
+	return s
+}
+
+func (s *ScheduledPlan) SetScheduledPlanId(v string) *ScheduledPlan {
+	s.ScheduledPlanId = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetStatus(v string) *ScheduledPlan {
+	s.Status = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetUpdatedByUser(v bool) *ScheduledPlan {
+	s.UpdatedByUser = &v
+	return s
+}
+
+func (s *ScheduledPlan) SetWorkspace(v string) *ScheduledPlan {
+	s.Workspace = &v
+	return s
+}
+
+type ScheduledPlanAppliedInfo struct {
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000001
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	ExpectedState *string `json:"expectedState,omitempty" xml:"expectedState,omitempty"`
+	// example:
+	//
+	// 1723197248
+	ModifiedAt *string `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// f3b4ec1e-85dc-4b1d-9726-1d7f4c37****
+	ScheduledPlanId *string `json:"scheduledPlanId,omitempty" xml:"scheduledPlanId,omitempty"`
+	// example:
+	//
+	// test-scheduled-plan
+	ScheduledPlanName *string `json:"scheduledPlanName,omitempty" xml:"scheduledPlanName,omitempty"`
+	// example:
+	//
+	// WAITING
+	StatusState *string `json:"statusState,omitempty" xml:"statusState,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ScheduledPlanAppliedInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduledPlanAppliedInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduledPlanAppliedInfo) SetDeploymentId(v string) *ScheduledPlanAppliedInfo {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetExpectedState(v string) *ScheduledPlanAppliedInfo {
+	s.ExpectedState = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetModifiedAt(v string) *ScheduledPlanAppliedInfo {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetModifier(v string) *ScheduledPlanAppliedInfo {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetModifierName(v string) *ScheduledPlanAppliedInfo {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetNamespace(v string) *ScheduledPlanAppliedInfo {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetScheduledPlanId(v string) *ScheduledPlanAppliedInfo {
+	s.ScheduledPlanId = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetScheduledPlanName(v string) *ScheduledPlanAppliedInfo {
+	s.ScheduledPlanName = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetStatusState(v string) *ScheduledPlanAppliedInfo {
+	s.StatusState = &v
+	return s
+}
+
+func (s *ScheduledPlanAppliedInfo) SetWorkspace(v string) *ScheduledPlanAppliedInfo {
+	s.Workspace = &v
+	return s
+}
+
+type ScheduledPlanExecutedInfo struct {
+	// example:
+	//
+	// 1723197248
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000001
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// 0e6d3bab-2277-4ed1-b573-9de6413d****
+	JobResourceUpgradingId *string `json:"jobResourceUpgradingId,omitempty" xml:"jobResourceUpgradingId,omitempty"`
+	// example:
+	//
+	// 1723197248
+	ModifiedAt *string `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// test-scheduled-plan
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// SCHEDULED_PLAN
+	Origin *string `json:"origin,omitempty" xml:"origin,omitempty"`
+	// example:
+	//
+	// f8a2d5d9-9fc5-4273-bfcc-2a3cd354****
+	OriginJobId *string                      `json:"originJobId,omitempty" xml:"originJobId,omitempty"`
+	Status      *ScheduledPlanExecutedStatus `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ScheduledPlanExecutedInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduledPlanExecutedInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduledPlanExecutedInfo) SetCreatedAt(v string) *ScheduledPlanExecutedInfo {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetCreator(v string) *ScheduledPlanExecutedInfo {
+	s.Creator = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetCreatorName(v string) *ScheduledPlanExecutedInfo {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetDeploymentId(v string) *ScheduledPlanExecutedInfo {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetJobResourceUpgradingId(v string) *ScheduledPlanExecutedInfo {
+	s.JobResourceUpgradingId = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetModifiedAt(v string) *ScheduledPlanExecutedInfo {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetModifier(v string) *ScheduledPlanExecutedInfo {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetModifierName(v string) *ScheduledPlanExecutedInfo {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetName(v string) *ScheduledPlanExecutedInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetNamespace(v string) *ScheduledPlanExecutedInfo {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetOrigin(v string) *ScheduledPlanExecutedInfo {
+	s.Origin = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetOriginJobId(v string) *ScheduledPlanExecutedInfo {
+	s.OriginJobId = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetStatus(v *ScheduledPlanExecutedStatus) *ScheduledPlanExecutedInfo {
+	s.Status = v
+	return s
+}
+
+func (s *ScheduledPlanExecutedInfo) SetWorkspace(v string) *ScheduledPlanExecutedInfo {
+	s.Workspace = &v
+	return s
+}
+
+type ScheduledPlanExecutedStatus struct {
+	// example:
+	//
+	// HOT_UPDATE
+	RestartType *string `json:"restartType,omitempty" xml:"restartType,omitempty"`
+	// example:
+	//
+	// UPGRADED
+	StatusState *string `json:"statusState,omitempty" xml:"statusState,omitempty"`
+}
+
+func (s ScheduledPlanExecutedStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduledPlanExecutedStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduledPlanExecutedStatus) SetRestartType(v string) *ScheduledPlanExecutedStatus {
+	s.RestartType = &v
+	return s
+}
+
+func (s *ScheduledPlanExecutedStatus) SetStatusState(v string) *ScheduledPlanExecutedStatus {
+	s.StatusState = &v
+	return s
+}
+
 type Schema struct {
 	Columns        []*TableColumn   `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	PrimaryKey     []*PrimaryKey    `json:"primaryKey,omitempty" xml:"primaryKey,omitempty" type:"Repeated"`
+	PrimaryKey     *PrimaryKey      `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
 	WatermarkSpecs []*WatermarkSpec `json:"watermarkSpecs,omitempty" xml:"watermarkSpecs,omitempty" type:"Repeated"`
 }
 
@@ -2722,13 +3329,246 @@ func (s *Schema) SetColumns(v []*TableColumn) *Schema {
 	return s
 }
 
-func (s *Schema) SetPrimaryKey(v []*PrimaryKey) *Schema {
+func (s *Schema) SetPrimaryKey(v *PrimaryKey) *Schema {
 	s.PrimaryKey = v
 	return s
 }
 
 func (s *Schema) SetWatermarkSpecs(v []*WatermarkSpec) *Schema {
 	s.WatermarkSpecs = v
+	return s
+}
+
+type SessionCluster struct {
+	BasicResourceSetting *BasicResourceSetting `json:"basicResourceSetting,omitempty" xml:"basicResourceSetting,omitempty"`
+	CreatedAt            *int64                `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// default-queue
+	DeploymentTargetName *string `json:"deploymentTargetName,omitempty" xml:"deploymentTargetName,omitempty"`
+	// example:
+	//
+	// vvr-6.0.7-flink-1.15
+	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// example:
+	//
+	// {"taskmanager.numberOfTaskSlots":"1"}
+	FlinkConf  map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
+	Labels     map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
+	Logging    *Logging               `json:"logging,omitempty" xml:"logging,omitempty"`
+	ModifiedAt *int64                 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// test-sessionCluster
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// 1f68a52c-1760-43c6-97fb-afe0674b****
+	SessionClusterId *string               `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	Status           *SessionClusterStatus `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s SessionCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SessionCluster) GoString() string {
+	return s.String()
+}
+
+func (s *SessionCluster) SetBasicResourceSetting(v *BasicResourceSetting) *SessionCluster {
+	s.BasicResourceSetting = v
+	return s
+}
+
+func (s *SessionCluster) SetCreatedAt(v int64) *SessionCluster {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *SessionCluster) SetCreator(v string) *SessionCluster {
+	s.Creator = &v
+	return s
+}
+
+func (s *SessionCluster) SetCreatorName(v string) *SessionCluster {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *SessionCluster) SetDeploymentTargetName(v string) *SessionCluster {
+	s.DeploymentTargetName = &v
+	return s
+}
+
+func (s *SessionCluster) SetEngineVersion(v string) *SessionCluster {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *SessionCluster) SetFlinkConf(v map[string]interface{}) *SessionCluster {
+	s.FlinkConf = v
+	return s
+}
+
+func (s *SessionCluster) SetLabels(v map[string]interface{}) *SessionCluster {
+	s.Labels = v
+	return s
+}
+
+func (s *SessionCluster) SetLogging(v *Logging) *SessionCluster {
+	s.Logging = v
+	return s
+}
+
+func (s *SessionCluster) SetModifiedAt(v int64) *SessionCluster {
+	s.ModifiedAt = &v
+	return s
+}
+
+func (s *SessionCluster) SetModifier(v string) *SessionCluster {
+	s.Modifier = &v
+	return s
+}
+
+func (s *SessionCluster) SetModifierName(v string) *SessionCluster {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *SessionCluster) SetName(v string) *SessionCluster {
+	s.Name = &v
+	return s
+}
+
+func (s *SessionCluster) SetNamespace(v string) *SessionCluster {
+	s.Namespace = &v
+	return s
+}
+
+func (s *SessionCluster) SetSessionClusterId(v string) *SessionCluster {
+	s.SessionClusterId = &v
+	return s
+}
+
+func (s *SessionCluster) SetStatus(v *SessionClusterStatus) *SessionCluster {
+	s.Status = v
+	return s
+}
+
+func (s *SessionCluster) SetWorkspace(v string) *SessionCluster {
+	s.Workspace = &v
+	return s
+}
+
+type SessionClusterFailureInfo struct {
+	FailedAt *int64  `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
+	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
+	Reason   *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s SessionClusterFailureInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SessionClusterFailureInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SessionClusterFailureInfo) SetFailedAt(v int64) *SessionClusterFailureInfo {
+	s.FailedAt = &v
+	return s
+}
+
+func (s *SessionClusterFailureInfo) SetMessage(v string) *SessionClusterFailureInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *SessionClusterFailureInfo) SetReason(v string) *SessionClusterFailureInfo {
+	s.Reason = &v
+	return s
+}
+
+type SessionClusterRunningInfo struct {
+	LastUpdateTime         *int64    `json:"lastUpdateTime,omitempty" xml:"lastUpdateTime,omitempty"`
+	ReferenceDeploymentIds []*string `json:"referenceDeploymentIds,omitempty" xml:"referenceDeploymentIds,omitempty" type:"Repeated"`
+	StartedAt              *int64    `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+}
+
+func (s SessionClusterRunningInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SessionClusterRunningInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SessionClusterRunningInfo) SetLastUpdateTime(v int64) *SessionClusterRunningInfo {
+	s.LastUpdateTime = &v
+	return s
+}
+
+func (s *SessionClusterRunningInfo) SetReferenceDeploymentIds(v []*string) *SessionClusterRunningInfo {
+	s.ReferenceDeploymentIds = v
+	return s
+}
+
+func (s *SessionClusterRunningInfo) SetStartedAt(v int64) *SessionClusterRunningInfo {
+	s.StartedAt = &v
+	return s
+}
+
+type SessionClusterStatus struct {
+	CurrentSessionClusterStatus *string                    `json:"currentSessionClusterStatus,omitempty" xml:"currentSessionClusterStatus,omitempty"`
+	Failure                     *SessionClusterFailureInfo `json:"failure,omitempty" xml:"failure,omitempty"`
+	Running                     *SessionClusterRunningInfo `json:"running,omitempty" xml:"running,omitempty"`
+}
+
+func (s SessionClusterStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SessionClusterStatus) GoString() string {
+	return s.String()
+}
+
+func (s *SessionClusterStatus) SetCurrentSessionClusterStatus(v string) *SessionClusterStatus {
+	s.CurrentSessionClusterStatus = &v
+	return s
+}
+
+func (s *SessionClusterStatus) SetFailure(v *SessionClusterFailureInfo) *SessionClusterStatus {
+	s.Failure = v
+	return s
+}
+
+func (s *SessionClusterStatus) SetRunning(v *SessionClusterRunningInfo) *SessionClusterStatus {
+	s.Running = v
 	return s
 }
 
@@ -3427,6 +4267,125 @@ func (s *WatermarkSpec) SetWatermarkExpression(v string) *WatermarkSpec {
 	return s
 }
 
+type ApplyScheduledPlanHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ApplyScheduledPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyScheduledPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyScheduledPlanHeaders) SetCommonHeaders(v map[string]*string) *ApplyScheduledPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyScheduledPlanHeaders) SetWorkspace(v string) *ApplyScheduledPlanHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ApplyScheduledPlanResponseBody struct {
+	Data *ScheduledPlanAppliedInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ApplyScheduledPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyScheduledPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyScheduledPlanResponseBody) SetData(v *ScheduledPlanAppliedInfo) *ApplyScheduledPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ApplyScheduledPlanResponseBody) SetErrorCode(v string) *ApplyScheduledPlanResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ApplyScheduledPlanResponseBody) SetErrorMessage(v string) *ApplyScheduledPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ApplyScheduledPlanResponseBody) SetHttpCode(v int32) *ApplyScheduledPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ApplyScheduledPlanResponseBody) SetRequestId(v string) *ApplyScheduledPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyScheduledPlanResponseBody) SetSuccess(v bool) *ApplyScheduledPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApplyScheduledPlanResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyScheduledPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyScheduledPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyScheduledPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyScheduledPlanResponse) SetHeaders(v map[string]*string) *ApplyScheduledPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyScheduledPlanResponse) SetStatusCode(v int32) *ApplyScheduledPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyScheduledPlanResponse) SetBody(v *ApplyScheduledPlanResponseBody) *ApplyScheduledPlanResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -3718,6 +4677,153 @@ func (s *CreateDeploymentDraftResponse) SetStatusCode(v int32) *CreateDeployment
 }
 
 func (s *CreateDeploymentDraftResponse) SetBody(v *CreateDeploymentDraftResponseBody) *CreateDeploymentDraftResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDeploymentTargetHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s CreateDeploymentTargetHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentTargetHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentTargetHeaders) SetCommonHeaders(v map[string]*string) *CreateDeploymentTargetHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateDeploymentTargetHeaders) SetWorkspace(v string) *CreateDeploymentTargetHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type CreateDeploymentTargetRequest struct {
+	Body *ResourceSpec `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dt
+	DeploymentTargetName *string `json:"deploymentTargetName,omitempty" xml:"deploymentTargetName,omitempty"`
+}
+
+func (s CreateDeploymentTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentTargetRequest) SetBody(v *ResourceSpec) *CreateDeploymentTargetRequest {
+	s.Body = v
+	return s
+}
+
+func (s *CreateDeploymentTargetRequest) SetDeploymentTargetName(v string) *CreateDeploymentTargetRequest {
+	s.DeploymentTargetName = &v
+	return s
+}
+
+type CreateDeploymentTargetResponseBody struct {
+	Data *DeploymentTarget `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateDeploymentTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentTargetResponseBody) SetData(v *DeploymentTarget) *CreateDeploymentTargetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDeploymentTargetResponseBody) SetErrorCode(v string) *CreateDeploymentTargetResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDeploymentTargetResponseBody) SetErrorMessage(v string) *CreateDeploymentTargetResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDeploymentTargetResponseBody) SetHttpCode(v int32) *CreateDeploymentTargetResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateDeploymentTargetResponseBody) SetRequestId(v string) *CreateDeploymentTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDeploymentTargetResponseBody) SetSuccess(v bool) *CreateDeploymentTargetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDeploymentTargetResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDeploymentTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDeploymentTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentTargetResponse) SetHeaders(v map[string]*string) *CreateDeploymentTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeploymentTargetResponse) SetStatusCode(v int32) *CreateDeploymentTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeploymentTargetResponse) SetBody(v *CreateDeploymentTargetResponseBody) *CreateDeploymentTargetResponse {
 	s.Body = v
 	return s
 }
@@ -4194,6 +5300,278 @@ func (s *CreateSavepointResponse) SetStatusCode(v int32) *CreateSavepointRespons
 }
 
 func (s *CreateSavepointResponse) SetBody(v *CreateSavepointResponseBody) *CreateSavepointResponse {
+	s.Body = v
+	return s
+}
+
+type CreateScheduledPlanHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s CreateScheduledPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduledPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduledPlanHeaders) SetCommonHeaders(v map[string]*string) *CreateScheduledPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateScheduledPlanHeaders) SetWorkspace(v string) *CreateScheduledPlanHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type CreateScheduledPlanRequest struct {
+	Body *ScheduledPlan `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateScheduledPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduledPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduledPlanRequest) SetBody(v *ScheduledPlan) *CreateScheduledPlanRequest {
+	s.Body = v
+	return s
+}
+
+type CreateScheduledPlanResponseBody struct {
+	Data *ScheduledPlan `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateScheduledPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduledPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduledPlanResponseBody) SetData(v *ScheduledPlan) *CreateScheduledPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateScheduledPlanResponseBody) SetErrorCode(v string) *CreateScheduledPlanResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateScheduledPlanResponseBody) SetErrorMessage(v string) *CreateScheduledPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateScheduledPlanResponseBody) SetHttpCode(v int32) *CreateScheduledPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateScheduledPlanResponseBody) SetRequestId(v string) *CreateScheduledPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateScheduledPlanResponseBody) SetSuccess(v bool) *CreateScheduledPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateScheduledPlanResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScheduledPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateScheduledPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduledPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduledPlanResponse) SetHeaders(v map[string]*string) *CreateScheduledPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateScheduledPlanResponse) SetStatusCode(v int32) *CreateScheduledPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateScheduledPlanResponse) SetBody(v *CreateScheduledPlanResponseBody) *CreateScheduledPlanResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSessionClusterHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s CreateSessionClusterHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSessionClusterHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSessionClusterHeaders) SetCommonHeaders(v map[string]*string) *CreateSessionClusterHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateSessionClusterHeaders) SetWorkspace(v string) *CreateSessionClusterHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type CreateSessionClusterRequest struct {
+	Body *SessionCluster `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSessionClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSessionClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSessionClusterRequest) SetBody(v *SessionCluster) *CreateSessionClusterRequest {
+	s.Body = v
+	return s
+}
+
+type CreateSessionClusterResponseBody struct {
+	Data *SessionCluster `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSessionClusterResponseBody) SetData(v *SessionCluster) *CreateSessionClusterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSessionClusterResponseBody) SetErrorCode(v string) *CreateSessionClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateSessionClusterResponseBody) SetErrorMessage(v string) *CreateSessionClusterResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSessionClusterResponseBody) SetHttpCode(v int32) *CreateSessionClusterResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateSessionClusterResponseBody) SetRequestId(v string) *CreateSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSessionClusterResponseBody) SetSuccess(v bool) *CreateSessionClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSessionClusterResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSessionClusterResponse) SetHeaders(v map[string]*string) *CreateSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSessionClusterResponse) SetStatusCode(v int32) *CreateSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSessionClusterResponse) SetBody(v *CreateSessionClusterResponseBody) *CreateSessionClusterResponse {
 	s.Body = v
 	return s
 }
@@ -4890,6 +6268,125 @@ func (s *DeleteDeploymentDraftResponse) SetBody(v *DeleteDeploymentDraftResponse
 	return s
 }
 
+type DeleteDeploymentTargetHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteDeploymentTargetHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentTargetHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentTargetHeaders) SetCommonHeaders(v map[string]*string) *DeleteDeploymentTargetHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteDeploymentTargetHeaders) SetWorkspace(v string) *DeleteDeploymentTargetHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteDeploymentTargetResponseBody struct {
+	Data *DeploymentTarget `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteDeploymentTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentTargetResponseBody) SetData(v *DeploymentTarget) *DeleteDeploymentTargetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteDeploymentTargetResponseBody) SetErrorCode(v string) *DeleteDeploymentTargetResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteDeploymentTargetResponseBody) SetErrorMessage(v string) *DeleteDeploymentTargetResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDeploymentTargetResponseBody) SetHttpCode(v int32) *DeleteDeploymentTargetResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteDeploymentTargetResponseBody) SetRequestId(v string) *DeleteDeploymentTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDeploymentTargetResponseBody) SetSuccess(v bool) *DeleteDeploymentTargetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDeploymentTargetResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDeploymentTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDeploymentTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentTargetResponse) SetHeaders(v map[string]*string) *DeleteDeploymentTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeploymentTargetResponse) SetStatusCode(v int32) *DeleteDeploymentTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDeploymentTargetResponse) SetBody(v *DeleteDeploymentTargetResponseBody) *DeleteDeploymentTargetResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFolderHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// This parameter is required.
@@ -5386,6 +6883,244 @@ func (s *DeleteSavepointResponse) SetStatusCode(v int32) *DeleteSavepointRespons
 }
 
 func (s *DeleteSavepointResponse) SetBody(v *DeleteSavepointResponseBody) *DeleteSavepointResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteScheduledPlanHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteScheduledPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScheduledPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScheduledPlanHeaders) SetCommonHeaders(v map[string]*string) *DeleteScheduledPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteScheduledPlanHeaders) SetWorkspace(v string) *DeleteScheduledPlanHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteScheduledPlanResponseBody struct {
+	Data *ScheduledPlan `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteScheduledPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScheduledPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScheduledPlanResponseBody) SetData(v *ScheduledPlan) *DeleteScheduledPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteScheduledPlanResponseBody) SetErrorCode(v string) *DeleteScheduledPlanResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteScheduledPlanResponseBody) SetErrorMessage(v string) *DeleteScheduledPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteScheduledPlanResponseBody) SetHttpCode(v int32) *DeleteScheduledPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteScheduledPlanResponseBody) SetRequestId(v string) *DeleteScheduledPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteScheduledPlanResponseBody) SetSuccess(v bool) *DeleteScheduledPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteScheduledPlanResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteScheduledPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteScheduledPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScheduledPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScheduledPlanResponse) SetHeaders(v map[string]*string) *DeleteScheduledPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteScheduledPlanResponse) SetStatusCode(v int32) *DeleteScheduledPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteScheduledPlanResponse) SetBody(v *DeleteScheduledPlanResponseBody) *DeleteScheduledPlanResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSessionClusterHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteSessionClusterHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSessionClusterHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSessionClusterHeaders) SetCommonHeaders(v map[string]*string) *DeleteSessionClusterHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteSessionClusterHeaders) SetWorkspace(v string) *DeleteSessionClusterHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteSessionClusterResponseBody struct {
+	Data *SessionCluster `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSessionClusterResponseBody) SetData(v *SessionCluster) *DeleteSessionClusterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteSessionClusterResponseBody) SetErrorCode(v string) *DeleteSessionClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteSessionClusterResponseBody) SetErrorMessage(v string) *DeleteSessionClusterResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteSessionClusterResponseBody) SetHttpCode(v int32) *DeleteSessionClusterResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteSessionClusterResponseBody) SetRequestId(v string) *DeleteSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSessionClusterResponseBody) SetSuccess(v bool) *DeleteSessionClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSessionClusterResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSessionClusterResponse) SetHeaders(v map[string]*string) *DeleteSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSessionClusterResponse) SetStatusCode(v int32) *DeleteSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSessionClusterResponse) SetBody(v *DeleteSessionClusterResponseBody) *DeleteSessionClusterResponse {
 	s.Body = v
 	return s
 }
@@ -6484,6 +8219,147 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncResponse) SetBody(v *GenerateReso
 	return s
 }
 
+type GetAppliedScheduledPlanHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetAppliedScheduledPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedScheduledPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedScheduledPlanHeaders) SetCommonHeaders(v map[string]*string) *GetAppliedScheduledPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanHeaders) SetWorkspace(v string) *GetAppliedScheduledPlanHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetAppliedScheduledPlanRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5737ef81-d2f1-49cf-8752-30910809****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+}
+
+func (s GetAppliedScheduledPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedScheduledPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedScheduledPlanRequest) SetDeploymentId(v string) *GetAppliedScheduledPlanRequest {
+	s.DeploymentId = &v
+	return s
+}
+
+type GetAppliedScheduledPlanResponseBody struct {
+	Data *ScheduledPlanAppliedInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetAppliedScheduledPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedScheduledPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedScheduledPlanResponseBody) SetData(v *ScheduledPlanAppliedInfo) *GetAppliedScheduledPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanResponseBody) SetErrorCode(v string) *GetAppliedScheduledPlanResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanResponseBody) SetErrorMessage(v string) *GetAppliedScheduledPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanResponseBody) SetHttpCode(v int32) *GetAppliedScheduledPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanResponseBody) SetRequestId(v string) *GetAppliedScheduledPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanResponseBody) SetSuccess(v bool) *GetAppliedScheduledPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAppliedScheduledPlanResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppliedScheduledPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAppliedScheduledPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedScheduledPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedScheduledPlanResponse) SetHeaders(v map[string]*string) *GetAppliedScheduledPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanResponse) SetStatusCode(v int32) *GetAppliedScheduledPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAppliedScheduledPlanResponse) SetBody(v *GetAppliedScheduledPlanResponseBody) *GetAppliedScheduledPlanResponse {
+	s.Body = v
+	return s
+}
+
 type GetCatalogsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// This parameter is required.
@@ -7279,6 +9155,190 @@ func (s *GetDeploymentDraftLockResponse) SetBody(v *GetDeploymentDraftLockRespon
 	return s
 }
 
+type GetEventsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetEventsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventsHeaders) SetCommonHeaders(v map[string]*string) *GetEventsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetEventsHeaders) SetWorkspace(v string) *GetEventsHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetEventsRequest struct {
+	// example:
+	//
+	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s GetEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventsRequest) SetDeploymentId(v string) *GetEventsRequest {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *GetEventsRequest) SetPageIndex(v int32) *GetEventsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetEventsRequest) SetPageSize(v int32) *GetEventsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetEventsResponseBody struct {
+	Data []*Event `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 4
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s GetEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventsResponseBody) SetData(v []*Event) *GetEventsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetErrorCode(v string) *GetEventsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetErrorMessage(v string) *GetEventsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetHttpCode(v int32) *GetEventsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetPageIndex(v int32) *GetEventsResponseBody {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetPageSize(v int32) *GetEventsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetRequestId(v string) *GetEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetSuccess(v bool) *GetEventsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetEventsResponseBody) SetTotalSize(v int32) *GetEventsResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type GetEventsResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventsResponse) SetHeaders(v map[string]*string) *GetEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEventsResponse) SetStatusCode(v int32) *GetEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEventsResponse) SetBody(v *GetEventsResponseBody) *GetEventsResponse {
+	s.Body = v
+	return s
+}
+
 type GetFolderHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// This parameter is required.
@@ -7328,6 +9388,7 @@ func (s *GetFolderRequest) SetFolderId(v string) *GetFolderRequest {
 }
 
 type GetFolderResponseBody struct {
+	// The data structure of the folder.
 	Data *Folder `json:"data,omitempty" xml:"data,omitempty"`
 	// example:
 	//
@@ -8379,6 +10440,125 @@ func (s *GetSavepointResponse) SetBody(v *GetSavepointResponseBody) *GetSavepoin
 	return s
 }
 
+type GetSessionClusterHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetSessionClusterHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterHeaders) SetCommonHeaders(v map[string]*string) *GetSessionClusterHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetSessionClusterHeaders) SetWorkspace(v string) *GetSessionClusterHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetSessionClusterResponseBody struct {
+	Data *SessionCluster `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponseBody) SetData(v *SessionCluster) *GetSessionClusterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSessionClusterResponseBody) SetErrorCode(v string) *GetSessionClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBody) SetErrorMessage(v string) *GetSessionClusterResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBody) SetHttpCode(v int32) *GetSessionClusterResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBody) SetRequestId(v string) *GetSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBody) SetSuccess(v bool) *GetSessionClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSessionClusterResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponse) SetHeaders(v map[string]*string) *GetSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSessionClusterResponse) SetStatusCode(v int32) *GetSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSessionClusterResponse) SetBody(v *GetSessionClusterResponseBody) *GetSessionClusterResponse {
+	s.Body = v
+	return s
+}
+
 type GetTablesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// This parameter is required.
@@ -8428,6 +10608,7 @@ func (s *GetTablesRequest) SetTableName(v string) *GetTablesRequest {
 }
 
 type GetTablesResponseBody struct {
+	// If the value of success was true, the list and details of tables that meet the condition were returned. If the value of success was false, a null value was returned.
 	Data []*Table `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -10583,6 +12764,483 @@ func (s *ListSavepointsResponse) SetBody(v *ListSavepointsResponseBody) *ListSav
 	return s
 }
 
+type ListScheduledPlanHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ListScheduledPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanHeaders) SetCommonHeaders(v map[string]*string) *ListScheduledPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListScheduledPlanHeaders) SetWorkspace(v string) *ListScheduledPlanHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ListScheduledPlanRequest struct {
+	// example:
+	//
+	// 737d0921-c5ac-47fc-9ba9-07a1e0b4****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListScheduledPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanRequest) SetDeploymentId(v string) *ListScheduledPlanRequest {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *ListScheduledPlanRequest) SetPageIndex(v int32) *ListScheduledPlanRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListScheduledPlanRequest) SetPageSize(v int32) *ListScheduledPlanRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListScheduledPlanResponseBody struct {
+	Data []*ScheduledPlan `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 4
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListScheduledPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanResponseBody) SetData(v []*ScheduledPlan) *ListScheduledPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetErrorCode(v string) *ListScheduledPlanResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetErrorMessage(v string) *ListScheduledPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetHttpCode(v int32) *ListScheduledPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetPageIndex(v int32) *ListScheduledPlanResponseBody {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetPageSize(v int32) *ListScheduledPlanResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetRequestId(v string) *ListScheduledPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetSuccess(v bool) *ListScheduledPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponseBody) SetTotalSize(v int32) *ListScheduledPlanResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type ListScheduledPlanResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListScheduledPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListScheduledPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanResponse) SetHeaders(v map[string]*string) *ListScheduledPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListScheduledPlanResponse) SetStatusCode(v int32) *ListScheduledPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListScheduledPlanResponse) SetBody(v *ListScheduledPlanResponseBody) *ListScheduledPlanResponse {
+	s.Body = v
+	return s
+}
+
+type ListScheduledPlanExecutedHistoryHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ListScheduledPlanExecutedHistoryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanExecutedHistoryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanExecutedHistoryHeaders) SetCommonHeaders(v map[string]*string) *ListScheduledPlanExecutedHistoryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryHeaders) SetWorkspace(v string) *ListScheduledPlanExecutedHistoryHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ListScheduledPlanExecutedHistoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// SCHEDULED_PLAN
+	Origin *string `json:"origin,omitempty" xml:"origin,omitempty"`
+}
+
+func (s ListScheduledPlanExecutedHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanExecutedHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanExecutedHistoryRequest) SetDeploymentId(v string) *ListScheduledPlanExecutedHistoryRequest {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryRequest) SetOrigin(v string) *ListScheduledPlanExecutedHistoryRequest {
+	s.Origin = &v
+	return s
+}
+
+type ListScheduledPlanExecutedHistoryResponseBody struct {
+	Data []*ScheduledPlanExecutedInfo `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success   *bool  `json:"success,omitempty" xml:"success,omitempty"`
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListScheduledPlanExecutedHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanExecutedHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetData(v []*ScheduledPlanExecutedInfo) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetErrorCode(v string) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetErrorMessage(v string) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetHttpCode(v int32) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetPageIndex(v int32) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetPageSize(v int32) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetRequestId(v string) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetSuccess(v bool) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponseBody) SetTotalSize(v int32) *ListScheduledPlanExecutedHistoryResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type ListScheduledPlanExecutedHistoryResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListScheduledPlanExecutedHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListScheduledPlanExecutedHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScheduledPlanExecutedHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponse) SetHeaders(v map[string]*string) *ListScheduledPlanExecutedHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponse) SetStatusCode(v int32) *ListScheduledPlanExecutedHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListScheduledPlanExecutedHistoryResponse) SetBody(v *ListScheduledPlanExecutedHistoryResponseBody) *ListScheduledPlanExecutedHistoryResponse {
+	s.Body = v
+	return s
+}
+
+type ListSessionClustersHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ListSessionClustersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersHeaders) SetCommonHeaders(v map[string]*string) *ListSessionClustersHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListSessionClustersHeaders) SetWorkspace(v string) *ListSessionClustersHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ListSessionClustersResponseBody struct {
+	Data []*SessionCluster `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListSessionClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponseBody) SetData(v []*SessionCluster) *ListSessionClustersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetErrorCode(v string) *ListSessionClustersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetErrorMessage(v string) *ListSessionClustersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetHttpCode(v int32) *ListSessionClustersResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetRequestId(v string) *ListSessionClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetSuccess(v bool) *ListSessionClustersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSessionClustersResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSessionClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSessionClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponse) SetHeaders(v map[string]*string) *ListSessionClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSessionClustersResponse) SetStatusCode(v int32) *ListSessionClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSessionClustersResponse) SetBody(v *ListSessionClustersResponseBody) *ListSessionClustersResponse {
+	s.Body = v
+	return s
+}
+
 type ListVariablesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -10818,7 +13476,7 @@ func (s *RegisterCustomConnectorHeaders) SetWorkspace(v string) *RegisterCustomC
 }
 
 type RegisterCustomConnectorRequest struct {
-	// The URL in which the JAR package of the custom connector is stored. The URL must be connected to the platform.
+	// The URL in which the JAR package of the custom connector is stored. The platform must be able to access this address.
 	//
 	// This parameter is required.
 	//
@@ -10842,7 +13500,7 @@ func (s *RegisterCustomConnectorRequest) SetJarUrl(v string) *RegisterCustomConn
 }
 
 type RegisterCustomConnectorResponseBody struct {
-	// If the value of success was true, a list of deployments in which custom connectors were registered was returned. If the value of success was false, a null value was returned.
+	// If the value of success was true, a list of deployments in which custom connectors were deleted was returned. If the value of success was false, a null value was returned.
 	Data []*Connector `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// 	- If the value of success was false, an error code was returned.
 	//
@@ -11441,6 +14099,238 @@ func (s *StartJobWithParamsResponse) SetBody(v *StartJobWithParamsResponseBody) 
 	return s
 }
 
+type StartSessionClusterHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s StartSessionClusterHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSessionClusterHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StartSessionClusterHeaders) SetCommonHeaders(v map[string]*string) *StartSessionClusterHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StartSessionClusterHeaders) SetWorkspace(v string) *StartSessionClusterHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type StartSessionClusterResponseBody struct {
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCF-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StartSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartSessionClusterResponseBody) SetErrorCode(v string) *StartSessionClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StartSessionClusterResponseBody) SetErrorMessage(v string) *StartSessionClusterResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StartSessionClusterResponseBody) SetHttpCode(v int32) *StartSessionClusterResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *StartSessionClusterResponseBody) SetRequestId(v string) *StartSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartSessionClusterResponseBody) SetSuccess(v bool) *StartSessionClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartSessionClusterResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartSessionClusterResponse) SetHeaders(v map[string]*string) *StartSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartSessionClusterResponse) SetStatusCode(v int32) *StartSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartSessionClusterResponse) SetBody(v *StartSessionClusterResponseBody) *StartSessionClusterResponse {
+	s.Body = v
+	return s
+}
+
+type StopApplyScheduledPlanHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s StopApplyScheduledPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopApplyScheduledPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StopApplyScheduledPlanHeaders) SetCommonHeaders(v map[string]*string) *StopApplyScheduledPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StopApplyScheduledPlanHeaders) SetWorkspace(v string) *StopApplyScheduledPlanHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type StopApplyScheduledPlanResponseBody struct {
+	Data *ScheduledPlanAppliedInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StopApplyScheduledPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopApplyScheduledPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopApplyScheduledPlanResponseBody) SetData(v *ScheduledPlanAppliedInfo) *StopApplyScheduledPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StopApplyScheduledPlanResponseBody) SetErrorCode(v string) *StopApplyScheduledPlanResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StopApplyScheduledPlanResponseBody) SetErrorMessage(v string) *StopApplyScheduledPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StopApplyScheduledPlanResponseBody) SetHttpCode(v int32) *StopApplyScheduledPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *StopApplyScheduledPlanResponseBody) SetRequestId(v string) *StopApplyScheduledPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopApplyScheduledPlanResponseBody) SetSuccess(v bool) *StopApplyScheduledPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopApplyScheduledPlanResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopApplyScheduledPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopApplyScheduledPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopApplyScheduledPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopApplyScheduledPlanResponse) SetHeaders(v map[string]*string) *StopApplyScheduledPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopApplyScheduledPlanResponse) SetStatusCode(v int32) *StopApplyScheduledPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopApplyScheduledPlanResponse) SetBody(v *StopApplyScheduledPlanResponseBody) *StopApplyScheduledPlanResponse {
+	s.Body = v
+	return s
+}
+
 type StopJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -11595,6 +14485,119 @@ func (s *StopJobResponse) SetStatusCode(v int32) *StopJobResponse {
 }
 
 func (s *StopJobResponse) SetBody(v *StopJobResponseBody) *StopJobResponse {
+	s.Body = v
+	return s
+}
+
+type StopSessionClusterHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s StopSessionClusterHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSessionClusterHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StopSessionClusterHeaders) SetCommonHeaders(v map[string]*string) *StopSessionClusterHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StopSessionClusterHeaders) SetWorkspace(v string) *StopSessionClusterHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type StopSessionClusterResponseBody struct {
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StopSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopSessionClusterResponseBody) SetErrorCode(v string) *StopSessionClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StopSessionClusterResponseBody) SetErrorMessage(v string) *StopSessionClusterResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StopSessionClusterResponseBody) SetHttpCode(v int32) *StopSessionClusterResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *StopSessionClusterResponseBody) SetRequestId(v string) *StopSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopSessionClusterResponseBody) SetSuccess(v bool) *StopSessionClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopSessionClusterResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopSessionClusterResponse) SetHeaders(v map[string]*string) *StopSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopSessionClusterResponse) SetStatusCode(v int32) *StopSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopSessionClusterResponse) SetBody(v *StopSessionClusterResponseBody) *StopSessionClusterResponse {
 	s.Body = v
 	return s
 }
@@ -11894,6 +14897,142 @@ func (s *UpdateDeploymentDraftResponse) SetBody(v *UpdateDeploymentDraftResponse
 	return s
 }
 
+type UpdateDeploymentTargetHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateDeploymentTargetHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentTargetHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentTargetHeaders) SetCommonHeaders(v map[string]*string) *UpdateDeploymentTargetHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateDeploymentTargetHeaders) SetWorkspace(v string) *UpdateDeploymentTargetHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateDeploymentTargetRequest struct {
+	Body *ResourceSpec `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDeploymentTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentTargetRequest) SetBody(v *ResourceSpec) *UpdateDeploymentTargetRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateDeploymentTargetResponseBody struct {
+	Data *DeploymentTarget `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateDeploymentTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentTargetResponseBody) SetData(v *DeploymentTarget) *UpdateDeploymentTargetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateDeploymentTargetResponseBody) SetErrorCode(v string) *UpdateDeploymentTargetResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentTargetResponseBody) SetErrorMessage(v string) *UpdateDeploymentTargetResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateDeploymentTargetResponseBody) SetHttpCode(v int32) *UpdateDeploymentTargetResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentTargetResponseBody) SetRequestId(v string) *UpdateDeploymentTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDeploymentTargetResponseBody) SetSuccess(v bool) *UpdateDeploymentTargetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDeploymentTargetResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDeploymentTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDeploymentTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentTargetResponse) SetHeaders(v map[string]*string) *UpdateDeploymentTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeploymentTargetResponse) SetStatusCode(v int32) *UpdateDeploymentTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentTargetResponse) SetBody(v *UpdateDeploymentTargetResponseBody) *UpdateDeploymentTargetResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFolderHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// This parameter is required.
@@ -12181,6 +15320,278 @@ func (s *UpdateMemberResponse) SetStatusCode(v int32) *UpdateMemberResponse {
 }
 
 func (s *UpdateMemberResponse) SetBody(v *UpdateMemberResponseBody) *UpdateMemberResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateScheduledPlanHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateScheduledPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduledPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduledPlanHeaders) SetCommonHeaders(v map[string]*string) *UpdateScheduledPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateScheduledPlanHeaders) SetWorkspace(v string) *UpdateScheduledPlanHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateScheduledPlanRequest struct {
+	Body *ScheduledPlan `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateScheduledPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduledPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduledPlanRequest) SetBody(v *ScheduledPlan) *UpdateScheduledPlanRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateScheduledPlanResponseBody struct {
+	Data *ScheduledPlan `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateScheduledPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduledPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduledPlanResponseBody) SetData(v *ScheduledPlan) *UpdateScheduledPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateScheduledPlanResponseBody) SetErrorCode(v string) *UpdateScheduledPlanResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateScheduledPlanResponseBody) SetErrorMessage(v string) *UpdateScheduledPlanResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateScheduledPlanResponseBody) SetHttpCode(v int32) *UpdateScheduledPlanResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateScheduledPlanResponseBody) SetRequestId(v string) *UpdateScheduledPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateScheduledPlanResponseBody) SetSuccess(v bool) *UpdateScheduledPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateScheduledPlanResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateScheduledPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateScheduledPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduledPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduledPlanResponse) SetHeaders(v map[string]*string) *UpdateScheduledPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateScheduledPlanResponse) SetStatusCode(v int32) *UpdateScheduledPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateScheduledPlanResponse) SetBody(v *UpdateScheduledPlanResponseBody) *UpdateScheduledPlanResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSessionClusterHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 710d6a64d8c34d
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateSessionClusterHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionClusterHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionClusterHeaders) SetCommonHeaders(v map[string]*string) *UpdateSessionClusterHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateSessionClusterHeaders) SetWorkspace(v string) *UpdateSessionClusterHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateSessionClusterRequest struct {
+	Body *SessionCluster `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSessionClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionClusterRequest) SetBody(v *SessionCluster) *UpdateSessionClusterRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateSessionClusterResponseBody struct {
+	Data *SessionCluster `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1EF03B0C-F44F-47AD-BB48-D002D0F7B8C9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionClusterResponseBody) SetData(v *SessionCluster) *UpdateSessionClusterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateSessionClusterResponseBody) SetErrorCode(v string) *UpdateSessionClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateSessionClusterResponseBody) SetErrorMessage(v string) *UpdateSessionClusterResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateSessionClusterResponseBody) SetHttpCode(v int32) *UpdateSessionClusterResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateSessionClusterResponseBody) SetRequestId(v string) *UpdateSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSessionClusterResponseBody) SetSuccess(v bool) *UpdateSessionClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSessionClusterResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionClusterResponse) SetHeaders(v map[string]*string) *UpdateSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSessionClusterResponse) SetStatusCode(v int32) *UpdateSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSessionClusterResponse) SetBody(v *UpdateSessionClusterResponseBody) *UpdateSessionClusterResponse {
 	s.Body = v
 	return s
 }
@@ -12542,6 +15953,65 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 执行定时计划
+//
+// @param headers - ApplyScheduledPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyScheduledPlanResponse
+func (client *Client) ApplyScheduledPlanWithOptions(namespace *string, scheduledPlanId *string, headers *ApplyScheduledPlanHeaders, runtime *util.RuntimeOptions) (_result *ApplyScheduledPlanResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyScheduledPlan"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/scheduled-plans/" + tea.StringValue(openapiutil.GetEncodeParam(scheduledPlanId)) + "%3Aapply"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyScheduledPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行定时计划
+//
+// @return ApplyScheduledPlanResponse
+func (client *Client) ApplyScheduledPlan(namespace *string, scheduledPlanId *string) (_result *ApplyScheduledPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ApplyScheduledPlanHeaders{}
+	_result = &ApplyScheduledPlanResponse{}
+	_body, _err := client.ApplyScheduledPlanWithOptions(namespace, scheduledPlanId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a deployment.
 //
 // @param request - CreateDeploymentRequest
@@ -12669,6 +16139,80 @@ func (client *Client) CreateDeploymentDraft(namespace *string, request *CreateDe
 	headers := &CreateDeploymentDraftHeaders{}
 	_result = &CreateDeploymentDraftResponse{}
 	_body, _err := client.CreateDeploymentDraftWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建deploymentTarget
+//
+// @param request - CreateDeploymentTargetRequest
+//
+// @param headers - CreateDeploymentTargetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeploymentTargetResponse
+func (client *Client) CreateDeploymentTargetWithOptions(namespace *string, request *CreateDeploymentTargetRequest, headers *CreateDeploymentTargetHeaders, runtime *util.RuntimeOptions) (_result *CreateDeploymentTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentTargetName)) {
+		query["deploymentTargetName"] = request.DeploymentTargetName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeploymentTarget"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-targets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeploymentTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建deploymentTarget
+//
+// @param request - CreateDeploymentTargetRequest
+//
+// @return CreateDeploymentTargetResponse
+func (client *Client) CreateDeploymentTarget(namespace *string, request *CreateDeploymentTargetRequest) (_result *CreateDeploymentTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateDeploymentTargetHeaders{}
+	_result = &CreateDeploymentTargetResponse{}
+	_body, _err := client.CreateDeploymentTargetWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12886,6 +16430,142 @@ func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepoin
 	headers := &CreateSavepointHeaders{}
 	_result = &CreateSavepointResponse{}
 	_body, _err := client.CreateSavepointWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建定时执行计划
+//
+// @param request - CreateScheduledPlanRequest
+//
+// @param headers - CreateScheduledPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScheduledPlanResponse
+func (client *Client) CreateScheduledPlanWithOptions(namespace *string, request *CreateScheduledPlanRequest, headers *CreateScheduledPlanHeaders, runtime *util.RuntimeOptions) (_result *CreateScheduledPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateScheduledPlan"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/scheduled-plans"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateScheduledPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建定时执行计划
+//
+// @param request - CreateScheduledPlanRequest
+//
+// @return CreateScheduledPlanResponse
+func (client *Client) CreateScheduledPlan(namespace *string, request *CreateScheduledPlanRequest) (_result *CreateScheduledPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateScheduledPlanHeaders{}
+	_result = &CreateScheduledPlanResponse{}
+	_body, _err := client.CreateScheduledPlanWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建session集群
+//
+// @param request - CreateSessionClusterRequest
+//
+// @param headers - CreateSessionClusterHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSessionClusterResponse
+func (client *Client) CreateSessionClusterWithOptions(namespace *string, request *CreateSessionClusterRequest, headers *CreateSessionClusterHeaders, runtime *util.RuntimeOptions) (_result *CreateSessionClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSessionCluster"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sessionclusters"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建session集群
+//
+// @param request - CreateSessionClusterRequest
+//
+// @return CreateSessionClusterResponse
+func (client *Client) CreateSessionCluster(namespace *string, request *CreateSessionClusterRequest) (_result *CreateSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateSessionClusterHeaders{}
+	_result = &CreateSessionClusterResponse{}
+	_body, _err := client.CreateSessionClusterWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13208,6 +16888,65 @@ func (client *Client) DeleteDeploymentDraft(namespace *string, deploymentDraftId
 
 // Summary:
 //
+// 删除deploymentTarget
+//
+// @param headers - DeleteDeploymentTargetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeploymentTargetResponse
+func (client *Client) DeleteDeploymentTargetWithOptions(namespace *string, deploymentTargetName *string, headers *DeleteDeploymentTargetHeaders, runtime *util.RuntimeOptions) (_result *DeleteDeploymentTargetResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeploymentTarget"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-targets/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentTargetName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeploymentTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除deploymentTarget
+//
+// @return DeleteDeploymentTargetResponse
+func (client *Client) DeleteDeploymentTarget(namespace *string, deploymentTargetName *string) (_result *DeleteDeploymentTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteDeploymentTargetHeaders{}
+	_result = &DeleteDeploymentTargetResponse{}
+	_body, _err := client.DeleteDeploymentTargetWithOptions(namespace, deploymentTargetName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // delete a folder
 //
 // @param headers - DeleteFolderHeaders
@@ -13435,6 +17174,124 @@ func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_
 	headers := &DeleteSavepointHeaders{}
 	_result = &DeleteSavepointResponse{}
 	_body, _err := client.DeleteSavepointWithOptions(namespace, savepointId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除定时执行计划
+//
+// @param headers - DeleteScheduledPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScheduledPlanResponse
+func (client *Client) DeleteScheduledPlanWithOptions(namespace *string, scheduledPlanId *string, headers *DeleteScheduledPlanHeaders, runtime *util.RuntimeOptions) (_result *DeleteScheduledPlanResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteScheduledPlan"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/scheduled-plans/" + tea.StringValue(openapiutil.GetEncodeParam(scheduledPlanId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteScheduledPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除定时执行计划
+//
+// @return DeleteScheduledPlanResponse
+func (client *Client) DeleteScheduledPlan(namespace *string, scheduledPlanId *string) (_result *DeleteScheduledPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteScheduledPlanHeaders{}
+	_result = &DeleteScheduledPlanResponse{}
+	_body, _err := client.DeleteScheduledPlanWithOptions(namespace, scheduledPlanId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除session集群
+//
+// @param headers - DeleteSessionClusterHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSessionClusterResponse
+func (client *Client) DeleteSessionClusterWithOptions(namespace *string, sessionClusterName *string, headers *DeleteSessionClusterHeaders, runtime *util.RuntimeOptions) (_result *DeleteSessionClusterResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSessionCluster"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sessionclusters/" + tea.StringValue(openapiutil.GetEncodeParam(sessionClusterName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除session集群
+//
+// @return DeleteSessionClusterResponse
+func (client *Client) DeleteSessionCluster(namespace *string, sessionClusterName *string) (_result *DeleteSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteSessionClusterHeaders{}
+	_result = &DeleteSessionClusterResponse{}
+	_body, _err := client.DeleteSessionClusterWithOptions(namespace, sessionClusterName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13928,6 +17785,79 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, 
 
 // Summary:
 //
+// 获取应用中的执行定时计划
+//
+// @param request - GetAppliedScheduledPlanRequest
+//
+// @param headers - GetAppliedScheduledPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppliedScheduledPlanResponse
+func (client *Client) GetAppliedScheduledPlanWithOptions(namespace *string, request *GetAppliedScheduledPlanRequest, headers *GetAppliedScheduledPlanHeaders, runtime *util.RuntimeOptions) (_result *GetAppliedScheduledPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentId)) {
+		query["deploymentId"] = request.DeploymentId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppliedScheduledPlan"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/scheduled-plans%3AgetExecutedScheduledPlan"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppliedScheduledPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用中的执行定时计划
+//
+// @param request - GetAppliedScheduledPlanRequest
+//
+// @return GetAppliedScheduledPlanResponse
+func (client *Client) GetAppliedScheduledPlan(namespace *string, request *GetAppliedScheduledPlanRequest) (_result *GetAppliedScheduledPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetAppliedScheduledPlanHeaders{}
+	_result = &GetAppliedScheduledPlanResponse{}
+	_body, _err := client.GetAppliedScheduledPlanWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取catalog
 //
 // @param request - GetCatalogsRequest
@@ -14315,6 +18245,87 @@ func (client *Client) GetDeploymentDraftLock(namespace *string, request *GetDepl
 	headers := &GetDeploymentDraftLockHeaders{}
 	_result = &GetDeploymentDraftLockResponse{}
 	_body, _err := client.GetDeploymentDraftLockWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取运行事件
+//
+// @param request - GetEventsRequest
+//
+// @param headers - GetEventsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEventsResponse
+func (client *Client) GetEventsWithOptions(namespace *string, request *GetEventsRequest, headers *GetEventsHeaders, runtime *util.RuntimeOptions) (_result *GetEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentId)) {
+		query["deploymentId"] = request.DeploymentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEvents"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/events"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取运行事件
+//
+// @param request - GetEventsRequest
+//
+// @return GetEventsResponse
+func (client *Client) GetEvents(namespace *string, request *GetEventsRequest) (_result *GetEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetEventsHeaders{}
+	_result = &GetEventsResponse{}
+	_body, _err := client.GetEventsWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14810,6 +18821,65 @@ func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_res
 	headers := &GetSavepointHeaders{}
 	_result = &GetSavepointResponse{}
 	_body, _err := client.GetSavepointWithOptions(namespace, savepointId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取session集群
+//
+// @param headers - GetSessionClusterHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSessionClusterResponse
+func (client *Client) GetSessionClusterWithOptions(namespace *string, sessionClusterName *string, headers *GetSessionClusterHeaders, runtime *util.RuntimeOptions) (_result *GetSessionClusterResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSessionCluster"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sessionclusters/" + tea.StringValue(openapiutil.GetEncodeParam(sessionClusterName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取session集群
+//
+// @return GetSessionClusterResponse
+func (client *Client) GetSessionCluster(namespace *string, sessionClusterName *string) (_result *GetSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetSessionClusterHeaders{}
+	_result = &GetSessionClusterResponse{}
+	_body, _err := client.GetSessionClusterWithOptions(namespace, sessionClusterName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15728,6 +19798,223 @@ func (client *Client) ListSavepoints(namespace *string, request *ListSavepointsR
 
 // Summary:
 //
+// 列表定时执行计划
+//
+// @param request - ListScheduledPlanRequest
+//
+// @param headers - ListScheduledPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScheduledPlanResponse
+func (client *Client) ListScheduledPlanWithOptions(namespace *string, request *ListScheduledPlanRequest, headers *ListScheduledPlanHeaders, runtime *util.RuntimeOptions) (_result *ListScheduledPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentId)) {
+		query["deploymentId"] = request.DeploymentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScheduledPlan"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/scheduled-plans"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListScheduledPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表定时执行计划
+//
+// @param request - ListScheduledPlanRequest
+//
+// @return ListScheduledPlanResponse
+func (client *Client) ListScheduledPlan(namespace *string, request *ListScheduledPlanRequest) (_result *ListScheduledPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListScheduledPlanHeaders{}
+	_result = &ListScheduledPlanResponse{}
+	_body, _err := client.ListScheduledPlanWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取作业资源变更历史
+//
+// @param request - ListScheduledPlanExecutedHistoryRequest
+//
+// @param headers - ListScheduledPlanExecutedHistoryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScheduledPlanExecutedHistoryResponse
+func (client *Client) ListScheduledPlanExecutedHistoryWithOptions(namespace *string, request *ListScheduledPlanExecutedHistoryRequest, headers *ListScheduledPlanExecutedHistoryHeaders, runtime *util.RuntimeOptions) (_result *ListScheduledPlanExecutedHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentId)) {
+		query["deploymentId"] = request.DeploymentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		query["origin"] = request.Origin
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScheduledPlanExecutedHistory"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/job-resource-upgradings"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListScheduledPlanExecutedHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取作业资源变更历史
+//
+// @param request - ListScheduledPlanExecutedHistoryRequest
+//
+// @return ListScheduledPlanExecutedHistoryResponse
+func (client *Client) ListScheduledPlanExecutedHistory(namespace *string, request *ListScheduledPlanExecutedHistoryRequest) (_result *ListScheduledPlanExecutedHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListScheduledPlanExecutedHistoryHeaders{}
+	_result = &ListScheduledPlanExecutedHistoryResponse{}
+	_body, _err := client.ListScheduledPlanExecutedHistoryWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举session集群
+//
+// @param headers - ListSessionClustersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSessionClustersResponse
+func (client *Client) ListSessionClustersWithOptions(namespace *string, headers *ListSessionClustersHeaders, runtime *util.RuntimeOptions) (_result *ListSessionClustersResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSessionClusters"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sessionclusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSessionClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举session集群
+//
+// @return ListSessionClustersResponse
+func (client *Client) ListSessionClusters(namespace *string) (_result *ListSessionClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListSessionClustersHeaders{}
+	_result = &ListSessionClustersResponse{}
+	_body, _err := client.ListSessionClustersWithOptions(namespace, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains a list of variables.
 //
 // @param request - ListVariablesRequest
@@ -16101,6 +20388,124 @@ func (client *Client) StartJobWithParams(namespace *string, request *StartJobWit
 
 // Summary:
 //
+// 启动session集群
+//
+// @param headers - StartSessionClusterHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartSessionClusterResponse
+func (client *Client) StartSessionClusterWithOptions(namespace *string, sessionClusterName *string, headers *StartSessionClusterHeaders, runtime *util.RuntimeOptions) (_result *StartSessionClusterResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartSessionCluster"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sessionclusters/" + tea.StringValue(openapiutil.GetEncodeParam(sessionClusterName)) + "%3Astart"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动session集群
+//
+// @return StartSessionClusterResponse
+func (client *Client) StartSessionCluster(namespace *string, sessionClusterName *string) (_result *StartSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &StartSessionClusterHeaders{}
+	_result = &StartSessionClusterResponse{}
+	_body, _err := client.StartSessionClusterWithOptions(namespace, sessionClusterName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止应用执行定时计划
+//
+// @param headers - StopApplyScheduledPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopApplyScheduledPlanResponse
+func (client *Client) StopApplyScheduledPlanWithOptions(namespace *string, scheduledPlanId *string, headers *StopApplyScheduledPlanHeaders, runtime *util.RuntimeOptions) (_result *StopApplyScheduledPlanResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopApplyScheduledPlan"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/scheduled-plans/" + tea.StringValue(openapiutil.GetEncodeParam(scheduledPlanId)) + "%3Astop"),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopApplyScheduledPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止应用执行定时计划
+//
+// @return StopApplyScheduledPlanResponse
+func (client *Client) StopApplyScheduledPlan(namespace *string, scheduledPlanId *string) (_result *StopApplyScheduledPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &StopApplyScheduledPlanHeaders{}
+	_result = &StopApplyScheduledPlanResponse{}
+	_body, _err := client.StopApplyScheduledPlanWithOptions(namespace, scheduledPlanId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops a job.
 //
 // @param request - StopJobRequest
@@ -16160,6 +20565,65 @@ func (client *Client) StopJob(namespace *string, jobId *string, request *StopJob
 	headers := &StopJobHeaders{}
 	_result = &StopJobResponse{}
 	_body, _err := client.StopJobWithOptions(namespace, jobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止session集群
+//
+// @param headers - StopSessionClusterHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopSessionClusterResponse
+func (client *Client) StopSessionClusterWithOptions(namespace *string, sessionClusterName *string, headers *StopSessionClusterHeaders, runtime *util.RuntimeOptions) (_result *StopSessionClusterResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopSessionCluster"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sessionclusters/" + tea.StringValue(openapiutil.GetEncodeParam(sessionClusterName)) + "%3Astop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止session集群
+//
+// @return StopSessionClusterResponse
+func (client *Client) StopSessionCluster(namespace *string, sessionClusterName *string) (_result *StopSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &StopSessionClusterHeaders{}
+	_result = &StopSessionClusterResponse{}
+	_body, _err := client.StopSessionClusterWithOptions(namespace, sessionClusterName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16305,6 +20769,74 @@ func (client *Client) UpdateDeploymentDraft(namespace *string, deploymentDraftId
 
 // Summary:
 //
+// 修改deploymentTarget
+//
+// @param request - UpdateDeploymentTargetRequest
+//
+// @param headers - UpdateDeploymentTargetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeploymentTargetResponse
+func (client *Client) UpdateDeploymentTargetWithOptions(namespace *string, deploymentTargetName *string, request *UpdateDeploymentTargetRequest, headers *UpdateDeploymentTargetHeaders, runtime *util.RuntimeOptions) (_result *UpdateDeploymentTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeploymentTarget"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployment-targets/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentTargetName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeploymentTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改deploymentTarget
+//
+// @param request - UpdateDeploymentTargetRequest
+//
+// @return UpdateDeploymentTargetResponse
+func (client *Client) UpdateDeploymentTarget(namespace *string, deploymentTargetName *string, request *UpdateDeploymentTargetRequest) (_result *UpdateDeploymentTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateDeploymentTargetHeaders{}
+	_result = &UpdateDeploymentTargetResponse{}
+	_body, _err := client.UpdateDeploymentTargetWithOptions(namespace, deploymentTargetName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // update a folder
 //
 // @param request - UpdateFolderRequest
@@ -16432,6 +20964,142 @@ func (client *Client) UpdateMember(namespace *string, request *UpdateMemberReque
 	headers := &UpdateMemberHeaders{}
 	_result = &UpdateMemberResponse{}
 	_body, _err := client.UpdateMemberWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新定时执行计划
+//
+// @param request - UpdateScheduledPlanRequest
+//
+// @param headers - UpdateScheduledPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScheduledPlanResponse
+func (client *Client) UpdateScheduledPlanWithOptions(namespace *string, scheduledPlanId *string, request *UpdateScheduledPlanRequest, headers *UpdateScheduledPlanHeaders, runtime *util.RuntimeOptions) (_result *UpdateScheduledPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateScheduledPlan"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/scheduled-plans/" + tea.StringValue(openapiutil.GetEncodeParam(scheduledPlanId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateScheduledPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新定时执行计划
+//
+// @param request - UpdateScheduledPlanRequest
+//
+// @return UpdateScheduledPlanResponse
+func (client *Client) UpdateScheduledPlan(namespace *string, scheduledPlanId *string, request *UpdateScheduledPlanRequest) (_result *UpdateScheduledPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateScheduledPlanHeaders{}
+	_result = &UpdateScheduledPlanResponse{}
+	_body, _err := client.UpdateScheduledPlanWithOptions(namespace, scheduledPlanId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新session集群
+//
+// @param request - UpdateSessionClusterRequest
+//
+// @param headers - UpdateSessionClusterHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSessionClusterResponse
+func (client *Client) UpdateSessionClusterWithOptions(namespace *string, sessionClusterName *string, request *UpdateSessionClusterRequest, headers *UpdateSessionClusterHeaders, runtime *util.RuntimeOptions) (_result *UpdateSessionClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSessionCluster"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sessionclusters/" + tea.StringValue(openapiutil.GetEncodeParam(sessionClusterName))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新session集群
+//
+// @param request - UpdateSessionClusterRequest
+//
+// @return UpdateSessionClusterResponse
+func (client *Client) UpdateSessionCluster(namespace *string, sessionClusterName *string, request *UpdateSessionClusterRequest) (_result *UpdateSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateSessionClusterHeaders{}
+	_result = &UpdateSessionClusterResponse{}
+	_body, _err := client.UpdateSessionClusterWithOptions(namespace, sessionClusterName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
