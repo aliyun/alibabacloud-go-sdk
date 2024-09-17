@@ -1,3 +1,8 @@
+2024-09-17 Version: v1.8.4
+- Update API CreateIndex: add param DataSource.
+- Update API Retrieve: add param Images.
+
+
 2024-09-06 Version: v1.8.3
 - Generated golang 2023-12-29 for bailian.
 

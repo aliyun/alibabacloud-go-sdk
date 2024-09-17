@@ -913,10 +913,11 @@ type CreateIndexRequest struct {
 	// example:
 	//
 	// 128
-	ChunkSize   *int32                       `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Columns     []*CreateIndexRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Description *string                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	DocumentIds []*string                    `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	ChunkSize   *int32                        `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	Columns     []*CreateIndexRequestColumns  `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	DataSource  *CreateIndexRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Description *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocumentIds []*string                     `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// text-embedding-v2
@@ -990,6 +991,11 @@ func (s *CreateIndexRequest) SetChunkSize(v int32) *CreateIndexRequest {
 
 func (s *CreateIndexRequest) SetColumns(v []*CreateIndexRequestColumns) *CreateIndexRequest {
 	s.Columns = v
+	return s
+}
+
+func (s *CreateIndexRequest) SetDataSource(v *CreateIndexRequestDataSource) *CreateIndexRequest {
+	s.DataSource = v
 	return s
 }
 
@@ -1099,6 +1105,77 @@ func (s *CreateIndexRequestColumns) SetType(v string) *CreateIndexRequestColumns
 	return s
 }
 
+type CreateIndexRequestDataSource struct {
+	CredentialId  *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	CredentialKey *string `json:"CredentialKey,omitempty" xml:"CredentialKey,omitempty"`
+	Database      *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Endpoint      *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	IsPrivateLink *bool   `json:"IsPrivateLink,omitempty" xml:"IsPrivateLink,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SubPath       *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	SubType       *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	Table         *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateIndexRequestDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndexRequestDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndexRequestDataSource) SetCredentialId(v string) *CreateIndexRequestDataSource {
+	s.CredentialId = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetCredentialKey(v string) *CreateIndexRequestDataSource {
+	s.CredentialKey = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetDatabase(v string) *CreateIndexRequestDataSource {
+	s.Database = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetEndpoint(v string) *CreateIndexRequestDataSource {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetIsPrivateLink(v bool) *CreateIndexRequestDataSource {
+	s.IsPrivateLink = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetRegion(v string) *CreateIndexRequestDataSource {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetSubPath(v string) *CreateIndexRequestDataSource {
+	s.SubPath = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetSubType(v string) *CreateIndexRequestDataSource {
+	s.SubType = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetTable(v string) *CreateIndexRequestDataSource {
+	s.Table = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSource) SetType(v string) *CreateIndexRequestDataSource {
+	s.Type = &v
+	return s
+}
+
 type CreateIndexShrinkRequest struct {
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
 	// example:
@@ -1106,6 +1183,7 @@ type CreateIndexShrinkRequest struct {
 	// 128
 	ChunkSize         *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
 	ColumnsShrink     *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
+	DataSourceShrink  *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
 	// example:
@@ -1181,6 +1259,11 @@ func (s *CreateIndexShrinkRequest) SetChunkSize(v int32) *CreateIndexShrinkReque
 
 func (s *CreateIndexShrinkRequest) SetColumnsShrink(v string) *CreateIndexShrinkRequest {
 	s.ColumnsShrink = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetDataSourceShrink(v string) *CreateIndexShrinkRequest {
+	s.DataSourceShrink = &v
 	return s
 }
 
@@ -5105,7 +5188,8 @@ type RetrieveRequest struct {
 	// example:
 	//
 	// false
-	EnableRewrite *bool `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
+	EnableRewrite *bool     `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
+	Images        []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -5154,6 +5238,11 @@ func (s *RetrieveRequest) SetEnableReranking(v bool) *RetrieveRequest {
 
 func (s *RetrieveRequest) SetEnableRewrite(v bool) *RetrieveRequest {
 	s.EnableRewrite = &v
+	return s
+}
+
+func (s *RetrieveRequest) SetImages(v []*string) *RetrieveRequest {
+	s.Images = v
 	return s
 }
 
@@ -5251,7 +5340,8 @@ type RetrieveShrinkRequest struct {
 	// example:
 	//
 	// false
-	EnableRewrite *bool `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
+	EnableRewrite *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
+	ImagesShrink  *string `json:"Images,omitempty" xml:"Images,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -5300,6 +5390,11 @@ func (s *RetrieveShrinkRequest) SetEnableReranking(v bool) *RetrieveShrinkReques
 
 func (s *RetrieveShrinkRequest) SetEnableRewrite(v bool) *RetrieveShrinkRequest {
 	s.EnableRewrite = &v
+	return s
+}
+
+func (s *RetrieveShrinkRequest) SetImagesShrink(v string) *RetrieveShrinkRequest {
+	s.ImagesShrink = &v
 	return s
 }
 
@@ -6705,6 +6800,10 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 		request.ColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Columns, tea.String("Columns"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataSource)) {
+		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, tea.String("DataSource"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentIds)) {
 		request.DocumentIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentIds, tea.String("DocumentIds"), tea.String("json"))
 	}
@@ -6720,6 +6819,10 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 
 	if !tea.BoolValue(util.IsUnset(request.ColumnsShrink)) {
 		query["Columns"] = request.ColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceShrink)) {
+		query["DataSource"] = request.DataSourceShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -8203,6 +8306,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 	}
 	request := &RetrieveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Images)) {
+		request.ImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Images, tea.String("Images"), tea.String("simple"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Rerank)) {
 		request.RerankShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rerank, tea.String("Rerank"), tea.String("json"))
 	}
@@ -8226,6 +8333,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 
 	if !tea.BoolValue(util.IsUnset(request.EnableRewrite)) {
 		query["EnableRewrite"] = request.EnableRewrite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImagesShrink)) {
+		query["Images"] = request.ImagesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
