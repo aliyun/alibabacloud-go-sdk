@@ -1,3 +1,7 @@
+2024-09-18 Version: v2.0.5
+- Update API Initialize: add param ShowGuidePage.
+
+
 2024-08-29 Version: v2.0.4
 - Update API FaceLiveness: update response param.
 
