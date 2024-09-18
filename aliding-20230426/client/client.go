@@ -33780,6 +33780,435 @@ func (s *GetTemplateListByUserIdResponse) SetBody(v *GetTemplateListByUserIdResp
 	return s
 }
 
+type GetTodoTaskHeaders struct {
+	CommonHeaders  map[string]*string                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetTodoTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskHeaders) SetCommonHeaders(v map[string]*string) *GetTodoTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTodoTaskHeaders) SetAccountContext(v *GetTodoTaskHeadersAccountContext) *GetTodoTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetTodoTaskHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetTodoTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskHeadersAccountContext) SetAccountId(v string) *GetTodoTaskHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetTodoTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetTodoTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetTodoTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTodoTaskShrinkHeaders) SetAccountContextShrink(v string) *GetTodoTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetTodoTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPJpwtxxxx
+	TaskId        *string                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TenantContext *GetTodoTaskRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetTodoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskRequest) SetTaskId(v string) *GetTodoTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTodoTaskRequest) SetTenantContext(v *GetTodoTaskRequestTenantContext) *GetTodoTaskRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetTodoTaskRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetTodoTaskRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskRequestTenantContext) SetTenantId(v string) *GetTodoTaskRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetTodoTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPJpwtxxxx
+	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetTodoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskShrinkRequest) SetTaskId(v string) *GetTodoTaskShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTodoTaskShrinkRequest) SetTenantContextShrink(v string) *GetTodoTaskShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetTodoTaskResponseBody struct {
+	// example:
+	//
+	// isv_dingtalkTodo
+	BizTag *string `json:"bizTag,omitempty" xml:"bizTag,omitempty"`
+	// example:
+	//
+	// 此参数禁止发布
+	CardTypeId *string `json:"cardTypeId,omitempty" xml:"cardTypeId,omitempty"`
+	// example:
+	//
+	// 1617675000000
+	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// 012345
+	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// example:
+	//
+	// 应用可以调用该接口获取钉钉待办任务详情信息及状态。
+	Description *string                           `json:"description,omitempty" xml:"description,omitempty"`
+	DetailUrl   *GetTodoTaskResponseBodyDetailUrl `json:"detailUrl,omitempty" xml:"detailUrl,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Done *bool `json:"done,omitempty" xml:"done,omitempty"`
+	// example:
+	//
+	// 1617675000000
+	DueTime     *int64    `json:"dueTime,omitempty" xml:"dueTime,omitempty"`
+	ExecutorIds []*string `json:"executorIds,omitempty" xml:"executorIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617675000000
+	FinishTime *int64 `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	// example:
+	//
+	// OPJpwtxxxx
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// true
+	IsOnlyShowExecutor *bool `json:"isOnlyShowExecutor,omitempty" xml:"isOnlyShowExecutor,omitempty"`
+	// example:
+	//
+	// 1617675000000
+	ModifiedTime *int64 `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	// example:
+	//
+	// 012345
+	ModifierId     *string   `json:"modifierId,omitempty" xml:"modifierId,omitempty"`
+	ParticipantIds []*string `json:"participantIds,omitempty" xml:"participantIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// example:
+	//
+	// PUoiinWIxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// isv_dingtalkTodo
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// isv_dingxxx
+	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// example:
+	//
+	// 1617675000000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 接入钉钉待办
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// example:
+	//
+	// orgId1
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// example:
+	//
+	// org
+	TenantType *string `json:"tenantType,omitempty" xml:"tenantType,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetTodoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskResponseBody) SetBizTag(v string) *GetTodoTaskResponseBody {
+	s.BizTag = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetCardTypeId(v string) *GetTodoTaskResponseBody {
+	s.CardTypeId = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetCreatedTime(v int64) *GetTodoTaskResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetCreatorId(v string) *GetTodoTaskResponseBody {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetDescription(v string) *GetTodoTaskResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetDetailUrl(v *GetTodoTaskResponseBodyDetailUrl) *GetTodoTaskResponseBody {
+	s.DetailUrl = v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetDone(v bool) *GetTodoTaskResponseBody {
+	s.Done = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetDueTime(v int64) *GetTodoTaskResponseBody {
+	s.DueTime = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetExecutorIds(v []*string) *GetTodoTaskResponseBody {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetFinishTime(v int64) *GetTodoTaskResponseBody {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetId(v string) *GetTodoTaskResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetIsOnlyShowExecutor(v bool) *GetTodoTaskResponseBody {
+	s.IsOnlyShowExecutor = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetModifiedTime(v int64) *GetTodoTaskResponseBody {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetModifierId(v string) *GetTodoTaskResponseBody {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetParticipantIds(v []*string) *GetTodoTaskResponseBody {
+	s.ParticipantIds = v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetPriority(v int32) *GetTodoTaskResponseBody {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetRequestId(v string) *GetTodoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetSource(v string) *GetTodoTaskResponseBody {
+	s.Source = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetSourceId(v string) *GetTodoTaskResponseBody {
+	s.SourceId = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetStartTime(v int64) *GetTodoTaskResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetSubject(v string) *GetTodoTaskResponseBody {
+	s.Subject = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetTenantId(v string) *GetTodoTaskResponseBody {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetTenantType(v string) *GetTodoTaskResponseBody {
+	s.TenantType = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetVendorRequestId(v string) *GetTodoTaskResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBody) SetVendorType(v string) *GetTodoTaskResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetTodoTaskResponseBodyDetailUrl struct {
+	// example:
+	//
+	// dingtalk://dingtalkclient/action/open_mini_app?miniAppId={0}&ddMode=push&page=pages%2ftask-detail%2ftask-detail%3ftaskId%3d{1}
+	AppUrl *string `json:"AppUrl,omitempty" xml:"AppUrl,omitempty"`
+	// example:
+	//
+	// https://todo.dingtalk.com/ding-portal/detail/task/{0}
+	PcUrl *string `json:"PcUrl,omitempty" xml:"PcUrl,omitempty"`
+}
+
+func (s GetTodoTaskResponseBodyDetailUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskResponseBodyDetailUrl) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskResponseBodyDetailUrl) SetAppUrl(v string) *GetTodoTaskResponseBodyDetailUrl {
+	s.AppUrl = &v
+	return s
+}
+
+func (s *GetTodoTaskResponseBodyDetailUrl) SetPcUrl(v string) *GetTodoTaskResponseBodyDetailUrl {
+	s.PcUrl = &v
+	return s
+}
+
+type GetTodoTaskResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTodoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTodoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTodoTaskResponse) SetHeaders(v map[string]*string) *GetTodoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTodoTaskResponse) SetStatusCode(v int32) *GetTodoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTodoTaskResponse) SetBody(v *GetTodoTaskResponseBody) *GetTodoTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserHeaders struct {
 	CommonHeaders  map[string]*string            `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetUserHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -77320,6 +77749,95 @@ func (client *Client) GetTemplateListByUserId(request *GetTemplateListByUserIdRe
 	headers := &GetTemplateListByUserIdHeaders{}
 	_result = &GetTemplateListByUserIdResponse{}
 	_body, _err := client.GetTemplateListByUserIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉待办任务详情
+//
+// @param tmpReq - GetTodoTaskRequest
+//
+// @param tmpHeader - GetTodoTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTodoTaskResponse
+func (client *Client) GetTodoTaskWithOptions(tmpReq *GetTodoTaskRequest, tmpHeader *GetTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *GetTodoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetTodoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetTodoTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTodoTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/getTodoTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTodoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉钉待办任务详情
+//
+// @param request - GetTodoTaskRequest
+//
+// @return GetTodoTaskResponse
+func (client *Client) GetTodoTask(request *GetTodoTaskRequest) (_result *GetTodoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetTodoTaskHeaders{}
+	_result = &GetTodoTaskResponse{}
+	_body, _err := client.GetTodoTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
