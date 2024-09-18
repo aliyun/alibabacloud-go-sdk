@@ -76,7 +76,8 @@ func (s *CreateLdpsComputeGroupRequest) SetSecurityToken(v string) *CreateLdpsCo
 }
 
 type CreateLdpsComputeGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLdpsComputeGroupResponseBody) String() string {
@@ -85,6 +86,11 @@ func (s CreateLdpsComputeGroupResponseBody) String() string {
 
 func (s CreateLdpsComputeGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLdpsComputeGroupResponseBody) SetAccessDeniedDetail(v string) *CreateLdpsComputeGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateLdpsComputeGroupResponseBody) SetRequestId(v string) *CreateLdpsComputeGroupResponseBody {
@@ -432,7 +438,19 @@ type CreateLindormInstanceRequest struct {
 	//
 	// lindorm.sn1.large
 	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	LtsNum  *string `json:"LtsNum,omitempty" xml:"LtsNum,omitempty"`
+	// The number of LTS engine nodes for the instance, with values ranging from **0*	- to **60**.
+	//
+	// example:
+	//
+	// 2
+	LtsNum *string `json:"LtsNum,omitempty" xml:"LtsNum,omitempty"`
+	// Specification of the LTS engine nodes for the instance. Values:
+	//
+	// - **lindorm.c.xlarge**: Represents 4 cores and 8GB (dedicated specification). - **lindorm.g.xlarge**: Represents 4 cores and 16GB (dedicated specification). - **lindorm.c.2xlarge**: Represents 8 cores and 16GB (dedicated specification). - **lindorm.g.2xlarge**: Represents 8 cores and 32GB (dedicated specification). - **lindorm.c.4xlarge**: Represents 16 cores and 32GB (dedicated specification). - **lindorm.g.4xlarge**: Represents 16 cores and 64GB (dedicated specification). - **lindorm.c.8xlarge**: Represents 32 cores and 64GB (dedicated specification). - **lindorm.g.8xlarge**: Represents 32 cores and 128GB (dedicated specification).
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	LtsSpec *string `json:"LtsSpec,omitempty" xml:"LtsSpec,omitempty"`
 	// The combinations of zones that are available for the multi-zone instance. You can go to the purchase page of Lindorm to view the supported zone combinations.
 	//
@@ -496,6 +514,8 @@ type CreateLindormInstanceRequest struct {
 	//
 	// vsw-uf6fdqa7c0pipnqzq****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// Multi-zone instance, availability zone ID of the primary zone. **This parameter is required if you need to create a multi-zone instance.**
+	//
 	// example:
 	//
 	// cn-shanghai-e
@@ -853,6 +873,7 @@ func (s *CreateLindormInstanceRequest) SetZoneId(v string) *CreateLindormInstanc
 }
 
 type CreateLindormInstanceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the Lindorm instance that is created.
 	//
 	// example:
@@ -879,6 +900,11 @@ func (s CreateLindormInstanceResponseBody) String() string {
 
 func (s CreateLindormInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLindormInstanceResponseBody) SetAccessDeniedDetail(v string) *CreateLindormInstanceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateLindormInstanceResponseBody) SetInstanceId(v string) *CreateLindormInstanceResponseBody {
@@ -921,6 +947,113 @@ func (s *CreateLindormInstanceResponse) SetStatusCode(v int32) *CreateLindormIns
 }
 
 func (s *CreateLindormInstanceResponse) SetBody(v *CreateLindormInstanceResponseBody) *CreateLindormInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomResourceRequest struct {
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteCustomResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomResourceRequest) SetInstanceId(v string) *DeleteCustomResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteCustomResourceRequest) SetName(v string) *DeleteCustomResourceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteCustomResourceRequest) SetOwnerAccount(v string) *DeleteCustomResourceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomResourceRequest) SetOwnerId(v int64) *DeleteCustomResourceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteCustomResourceRequest) SetRegionId(v string) *DeleteCustomResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteCustomResourceRequest) SetResourceOwnerAccount(v string) *DeleteCustomResourceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomResourceRequest) SetResourceOwnerId(v int64) *DeleteCustomResourceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteCustomResourceRequest) SetSecurityToken(v string) *DeleteCustomResourceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteCustomResourceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomResourceResponseBody) SetRequestId(v string) *DeleteCustomResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomResourceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomResourceResponse) SetHeaders(v map[string]*string) *DeleteCustomResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomResourceResponse) SetStatusCode(v int32) *DeleteCustomResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomResourceResponse) SetBody(v *DeleteCustomResourceResponseBody) *DeleteCustomResourceResponse {
 	s.Body = v
 	return s
 }
@@ -987,7 +1120,8 @@ func (s *DeleteLdpsComputeGroupRequest) SetSecurityToken(v string) *DeleteLdpsCo
 }
 
 type DeleteLdpsComputeGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteLdpsComputeGroupResponseBody) String() string {
@@ -996,6 +1130,11 @@ func (s DeleteLdpsComputeGroupResponseBody) String() string {
 
 func (s DeleteLdpsComputeGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteLdpsComputeGroupResponseBody) SetAccessDeniedDetail(v string) *DeleteLdpsComputeGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteLdpsComputeGroupResponseBody) SetRequestId(v string) *DeleteLdpsComputeGroupResponseBody {
@@ -1028,6 +1167,112 @@ func (s *DeleteLdpsComputeGroupResponse) SetStatusCode(v int32) *DeleteLdpsCompu
 }
 
 func (s *DeleteLdpsComputeGroupResponse) SetBody(v *DeleteLdpsComputeGroupResponseBody) *DeleteLdpsComputeGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeployLdpsSemiManagedComponentRequest struct {
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeployLdpsSemiManagedComponentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployLdpsSemiManagedComponentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetComponentName(v string) *DeployLdpsSemiManagedComponentRequest {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetInstanceId(v string) *DeployLdpsSemiManagedComponentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetOwnerAccount(v string) *DeployLdpsSemiManagedComponentRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetOwnerId(v int64) *DeployLdpsSemiManagedComponentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetRegionId(v string) *DeployLdpsSemiManagedComponentRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetResourceOwnerAccount(v string) *DeployLdpsSemiManagedComponentRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetResourceOwnerId(v int64) *DeployLdpsSemiManagedComponentRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentRequest) SetSecurityToken(v string) *DeployLdpsSemiManagedComponentRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeployLdpsSemiManagedComponentResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeployLdpsSemiManagedComponentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployLdpsSemiManagedComponentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployLdpsSemiManagedComponentResponseBody) SetRequestId(v string) *DeployLdpsSemiManagedComponentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeployLdpsSemiManagedComponentResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployLdpsSemiManagedComponentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployLdpsSemiManagedComponentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployLdpsSemiManagedComponentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployLdpsSemiManagedComponentResponse) SetHeaders(v map[string]*string) *DeployLdpsSemiManagedComponentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentResponse) SetStatusCode(v int32) *DeployLdpsSemiManagedComponentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployLdpsSemiManagedComponentResponse) SetBody(v *DeployLdpsSemiManagedComponentResponseBody) *DeployLdpsSemiManagedComponentResponse {
 	s.Body = v
 	return s
 }
@@ -1241,8 +1486,9 @@ func (s *GetClientSourceIpRequest) SetSecurityToken(v string) *GetClientSourceIp
 }
 
 type GetClientSourceIpResponseBody struct {
-	ClientIp  *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	ClientIp           *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetClientSourceIpResponseBody) String() string {
@@ -1251,6 +1497,11 @@ func (s GetClientSourceIpResponseBody) String() string {
 
 func (s GetClientSourceIpResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetClientSourceIpResponseBody) SetAccessDeniedDetail(v string) *GetClientSourceIpResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetClientSourceIpResponseBody) SetClientIp(v string) *GetClientSourceIpResponseBody {
@@ -1347,9 +1598,10 @@ func (s *GetEngineDefaultAuthRequest) SetSecurityToken(v string) *GetEngineDefau
 }
 
 type GetEngineDefaultAuthResponseBody struct {
-	AuthInfos  []*GetEngineDefaultAuthResponseBodyAuthInfos `json:"AuthInfos,omitempty" xml:"AuthInfos,omitempty" type:"Repeated"`
-	InstanceId *string                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string                                      `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	AuthInfos          []*GetEngineDefaultAuthResponseBodyAuthInfos `json:"AuthInfos,omitempty" xml:"AuthInfos,omitempty" type:"Repeated"`
+	InstanceId         *string                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId          *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEngineDefaultAuthResponseBody) String() string {
@@ -1358,6 +1610,11 @@ func (s GetEngineDefaultAuthResponseBody) String() string {
 
 func (s GetEngineDefaultAuthResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetEngineDefaultAuthResponseBody) SetAccessDeniedDetail(v string) *GetEngineDefaultAuthResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetEngineDefaultAuthResponseBody) SetAuthInfos(v []*GetEngineDefaultAuthResponseBodyAuthInfos) *GetEngineDefaultAuthResponseBody {
@@ -1488,6 +1745,7 @@ func (s *GetInstanceIpWhiteListRequest) SetSecurityToken(v string) *GetInstanceI
 }
 
 type GetInstanceIpWhiteListResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The details about the IP address whitelists.
 	GroupList []*GetInstanceIpWhiteListResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	// The ID of the Lindorm instance.
@@ -1511,6 +1769,11 @@ func (s GetInstanceIpWhiteListResponseBody) String() string {
 
 func (s GetInstanceIpWhiteListResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceIpWhiteListResponseBody) SetAccessDeniedDetail(v string) *GetInstanceIpWhiteListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetInstanceIpWhiteListResponseBody) SetGroupList(v []*GetInstanceIpWhiteListResponseBodyGroupList) *GetInstanceIpWhiteListResponseBody {
@@ -1644,9 +1907,10 @@ func (s *GetInstanceSecurityGroupsRequest) SetSecurityToken(v string) *GetInstan
 }
 
 type GetInstanceSecurityGroupsResponseBody struct {
-	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityGroups []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string   `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityGroups     []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceSecurityGroupsResponseBody) String() string {
@@ -1655,6 +1919,11 @@ func (s GetInstanceSecurityGroupsResponseBody) String() string {
 
 func (s GetInstanceSecurityGroupsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceSecurityGroupsResponseBody) SetAccessDeniedDetail(v string) *GetInstanceSecurityGroupsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetInstanceSecurityGroupsResponseBody) SetInstanceId(v string) *GetInstanceSecurityGroupsResponseBody {
@@ -2179,14 +2448,20 @@ func (s *GetLindormInstanceRequest) SetSecurityToken(v string) *GetLindormInstan
 }
 
 type GetLindormInstanceResponseBody struct {
+	// 16-digit AliUid of the Alibaba Cloud primary account (main account).
+	//
 	// example:
 	//
 	// 164901546557****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Multi-AZ instance, coordinating Availability Zone virtual switch ID, which must be located in the Availability Zone corresponding to ArbiterZoneId.
+	//
 	// example:
 	//
 	// vsw-uf6664pqjawb87k36****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// Multi-zone instance, coordinating Availability Zone ID.
+	//
 	// example:
 	//
 	// cn-shanghai-g
@@ -2201,6 +2476,12 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// 1.0
 	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	// Indicates whether auto-renewal is enabled, with the following returns:
+	//
+	// - **true**: Enabled. - **false**: Disabled.
+	//
+	// > This parameter is returned when the instance\\"s payment type is prepaid.
+	//
 	// example:
 	//
 	// false
@@ -2225,18 +2506,26 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// cloud_efficiency
 	CoreDiskCategory *string `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
+	// Multi-zone instance, number of core nodes.
+	//
 	// example:
 	//
 	// 4
 	CoreNum *int32 `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
+	// Multi-zone instance, core single-node disk capacity.
+	//
 	// example:
 	//
 	// 400
 	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
+	// Multi-zone instance, core node specification.
+	//
 	// example:
 	//
 	// lindorm.g.xlarge
 	CoreSpec *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
+	// The timestamp in milliseconds between the instance creation time and 1970-01-01 00:00:00.
+	//
 	// example:
 	//
 	// 1627290664000
@@ -2247,6 +2536,10 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// 2021-07-26 17:10:26
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether deletion protection is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Disabled.
+	//
 	// example:
 	//
 	// false
@@ -2271,10 +2564,14 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// cloud_efficiency
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// The threshold for disk space.
+	//
 	// example:
 	//
 	// 80%
 	DiskThreshold *string `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
+	// Disk space usage rate.
+	//
 	// example:
 	//
 	// 0.0%
@@ -2287,18 +2584,39 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// true
 	EnableBlob *bool `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
+	// Indicates whether the data subscription feature for the instance is enabled. Returns:
+	//
+	// - **true**: Enabled. - **false**: Not enabled.
+	//
 	// example:
 	//
 	// false
 	EnableCdc *bool `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
+	// Indicates whether the instance\\"s compute engine is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Not enabled.
+	//
 	// example:
 	//
 	// true
 	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	// Indicates whether the Key Management Service (KMS) is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Disabled.
+	//
 	// example:
 	//
 	// false
-	EnableKms    *bool `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	EnableKms *bool `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	// Indicates whether the wide-table engine supports Thrift and CQL protocols. If not supported, the SwitchLProxyService interface can be used to enable or disable.
+	//
+	// True indicates support
+	//
+	// False indicates no support
+	//
+	// example:
+	//
+	// False
 	EnableLProxy *bool `json:"EnableLProxy,omitempty" xml:"EnableLProxy,omitempty"`
 	// Indicates whether the LTS engine is activated for the instance. Valid values:
 	//
@@ -2330,36 +2648,62 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// False
 	EnableMLCtrl *bool `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
+	// Indicates whether SSL link encryption is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Disabled.
+	//
 	// example:
 	//
 	// false
 	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// Whether to enable the Compute Engine History Server.
+	//
 	// example:
 	//
 	// true
 	EnableShs *bool `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
+	// Indicates whether the instance has the stream engine enabled. Return values:
+	//
+	// - **true**: Stream engine is enabled. - **false**: Stream engine is not enabled.
+	//
 	// example:
 	//
 	// true
 	EnableStream *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
 	// The latest version number of the engine.
 	EngineList []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	// Supported engine types, the return value is obtained by performing addition operations on the values of the following engine types.
+	//
+	// - 1: Search Engine - 2: Time Series Engine - 4: Wide Table Engine - 8: File Engine
+	//
+	// > For example: If EngineType is 15, where 15 = 8 + 4 + 2 + 1, it indicates that the instance supports Search Engine, Time Series Engine, Wide Table Engine, and File Engine. If EngineType is 6, where 6 = 4 + 2, it signifies that the instance supports Time Series Engine and Wide Table Engine.
+	//
 	// example:
 	//
 	// 15
 	EngineType *int32 `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// Expiration time of the instance, format: **yyyy-MM-dd HH:mm:ss**.
+	//
+	// > This parameter is only returned when the payment type is pre-paid.
+	//
 	// example:
 	//
 	// 2021-08-27 00:00:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The millisecond value between the instance expiration time and 1970-01-01 00:00:00.
+	//
 	// example:
 	//
 	// 1629993600000
 	ExpiredMilliseconds *int64 `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// test0726
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ld-bp1o3y0yme2i2****
@@ -2412,14 +2756,22 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// ACTIVATION
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// Instance\\"s storage capacity.
+	//
 	// example:
 	//
 	// 480
 	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	// Multi-zone instance, log node disk type, returns:
+	//
+	// - **cloud_efficiency**：Standard cloud storage. - **cloud_ssd**：Performance cloud storage.
+	//
 	// example:
 	//
 	// cloud_ssd
 	LogDiskCategory *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
+	// Multi-zone instance, number of log nodes.
+	//
 	// example:
 	//
 	// 4
@@ -2430,22 +2782,34 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// 400GB
 	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	// Multi-zone instance, log node specification.
+	//
 	// example:
 	//
 	// lindorm.sn1.large
 	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	// Maintainable end time.
+	//
 	// example:
 	//
 	// 20:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// Maintainable start time.
+	//
 	// example:
 	//
 	// 00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// Multi-zone combinations. For support details on zone combinations, please refer to the product page.
+	//
+	// - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) A+B+C. - **cn-hangzhou-ehi-aliyun**: East China 1 (Hangzhou) E+H+I. - **cn-beijing-acd-aliyun**: North China 2 (Beijing) A+C+D. - **ap-southeast-1-abc-aliyun**: Singapore A+B+C. - **cn-zhangjiakou-abc-aliyun**: North China 3 (Zhangjiakou) A+B+C. - **cn-shanghai-efg-aliyun**: East China 2 (Shanghai) E+F+G. - **cn-shanghai-abd-aliyun**: East China 2 (Shanghai) A+B+D. - **cn-hangzhou-bef-aliyun**: East China 1 (Hangzhou) B+E+F. - **cn-hangzhou-bce-aliyun**: East China 1 (Hangzhou) B+C+E. - **cn-beijing-fgh-aliyun**: North China 2 (Beijing) F+G+H. - **cn-shenzhen-abc-aliyun**: South China 1 (Shenzhen) A+B+C.
+	//
 	// example:
 	//
 	// cn-shanghai-efg-aliyun
 	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
+	// Instance\\"s network type.
+	//
 	// example:
 	//
 	// vpc
@@ -2456,34 +2820,52 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Multi-zone instance, the virtual switch ID of the primary availability zone, which must be in the availability zone corresponding to PrimaryZoneId.
+	//
 	// example:
 	//
 	// vsw-uf6fdqa7c0pipnqzq****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// Multi-zone instance, availability zone ID of the primary zone.
+	//
 	// example:
 	//
 	// cn-shanghai-e
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 633F1BE4-C8DA-5744-8FDF-A3075C3FE37F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2wvd6oia****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Instance type, valid values:
+	//
+	// - **lindorm**：represents a Lindorm single-zone instance. - **lindorm_multizone**：represents a Lindorm multi-zone instance. - **serverless_lindorm**：represents a Lindorm Serverless instance. - **lindorm_standalone**：represents a Lindorm standalone instance. - **lts**：represents the Lindorm Data Channel Service type.
+	//
 	// example:
 	//
 	// lindorm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// Multi-zone instance, the virtual switch ID of the backup availability zone, which must be in the availability zone corresponding to StandbyZoneId.
+	//
 	// example:
 	//
 	// vsw-2zec0kcn08cgdtr6****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// Multi-zone instance, backup availability zone\\"s availability zone ID.
+	//
 	// example:
 	//
 	// cn-shanghai-f
@@ -2500,6 +2882,8 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// vsw-bp1vbjzmod9q3l9eo****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// Availability Zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
@@ -2812,7 +3196,7 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	//
 	// 	- **store**: LindormDFS.
 	//
-	// 	- **bds*	- :Lindorm Tunnel Service (LTS).
+	// 	- **bds**: Lindorm Tunnel Service (LTS).
 	//
 	// 	- **compute**: Lindorm Distributed Processing System (LDPS).
 	//
@@ -2836,7 +3220,7 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	//
 	// 2.2.19.2
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The memory size of the engine nodes
+	// The memory size of the engine nodes.
 	//
 	// example:
 	//
@@ -2984,6 +3368,8 @@ func (s *GetLindormInstanceEngineListRequest) SetSecurityToken(v string) *GetLin
 }
 
 type GetLindormInstanceEngineListResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The list of engines that can run on the specified instance.
 	EngineList []*GetLindormInstanceEngineListResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3003,6 +3389,11 @@ func (s GetLindormInstanceEngineListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetLindormInstanceEngineListResponseBody) SetAccessDeniedDetail(v string) *GetLindormInstanceEngineListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
 func (s *GetLindormInstanceEngineListResponseBody) SetEngineList(v []*GetLindormInstanceEngineListResponseBodyEngineList) *GetLindormInstanceEngineListResponseBody {
 	s.EngineList = v
 	return s
@@ -3019,10 +3410,21 @@ func (s *GetLindormInstanceEngineListResponseBody) SetRequestId(v string) *GetLi
 }
 
 type GetLindormInstanceEngineListResponseBodyEngineList struct {
+	// The type of engine that can run on the instance. Valid values:
+	//
+	// 	- **lindorm**: LindormTable.
+	//
+	// 	- **tsdb**: LindormTSDB.
+	//
+	// 	- **solr**: LindormSearch.
+	//
+	// 	- **store**: LindormDFS.
+	//
 	// example:
 	//
 	// lindorm
-	EngineType  *string                                                          `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The list of connection information about the engine.
 	NetInfoList []*GetLindormInstanceEngineListResponseBodyEngineListNetInfoList `json:"NetInfoList,omitempty" xml:"NetInfoList,omitempty" type:"Repeated"`
 }
 
@@ -3045,18 +3447,44 @@ func (s *GetLindormInstanceEngineListResponseBodyEngineList) SetNetInfoList(v []
 }
 
 type GetLindormInstanceEngineListResponseBodyEngineListNetInfoList struct {
+	// The method by which the connection information can be used to access LindormTable. Valid values:
+	//
+	// 	- **0**: The default value. This value can be ignored.
+	//
+	// 	- **1**: The connection information can be used to access LindormTable by using ApsaraDB for HBase API for Java.
+	//
+	// 	- **2**: The connection information can be used to access LindormTable by using ApsaraDB for HBase API for a non-Java language.
+	//
+	// 	- **3**: The connection information can be used to access LindormTable by using the LindormTable endpoint for CQL.
+	//
+	// 	- **4**: The connection information can be used to access LindormTable by using the LindormTable endpoint for SQL.
+	//
+	// 	- **5**: The connection information can be used to access Lindorm by using the LindormTable endpoint for Amazon S3.
+	//
+	// 	- **6**: The connection information can be used to access Lindorm by using the LindormTable endpoint for MySQL.
+	//
 	// example:
 	//
 	// 1
 	AccessType *int32 `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The endpoint that is used to connect to the engine.
+	//
 	// example:
 	//
 	// ld-bp1nq34mv3smk****-proxy-lindorm.lindorm.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The network type of the endpoint. Valid values:
+	//
+	// 	- **0**: Internet
+	//
+	// 	- **2**: virtual private cloud (VPC)
+	//
 	// example:
 	//
 	// 2
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The port number used to connect to the engine.
+	//
 	// example:
 	//
 	// 30020
@@ -3123,22 +3551,32 @@ func (s *GetLindormInstanceEngineListResponse) SetBody(v *GetLindormInstanceEngi
 type GetLindormInstanceListRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the pages to return,
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of instances to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword contained in the names of Lindorm instances you want to query. Fuzzy queries based on the keyword is supported.
+	//
 	// example:
 	//
 	// test
 	QueryStr *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
+	// The ID of the region in which the instances that you want to query is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
 	// example:
 	//
 	// rg-aek3b63arvg27vi
@@ -3146,15 +3584,40 @@ type GetLindormInstanceListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The series of instances that you want to query. Valid values:
+	//
+	// 	- **lindorm**: The instance is a single-zone Lindorm instance.
+	//
+	// 	- **lindorm_multizone**: The instance is a multi-zone Lindorm instance.
+	//
+	// 	- **serverless_lindorm**: The instance is a Lindorm Serverless instance.
+	//
+	// 	- **lindorm_standalone**: The instance is a single-node Lindorm instance.
+	//
+	// 	- **lts**: The instance is an LTS instance.
+	//
 	// example:
 	//
 	// lindorm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The engine supported by the instances that you want to query. The engines are indicated by different numbers:
+	//
+	// 	- **1**: LindormSearch.
+	//
+	// 	- **2**: LindormTSDB.
+	//
+	// 	- **4**: LindormTable.
+	//
+	// 	- **8**: LindormDFS.
+	//
+	// > The value of this parameter is the sum of all numbers that indicate the engines supported by the instance. For example, if you set the value of this parameter to 15, which is the sum of 1, 2, 4, and 8, this operation queries instances that support all four engines. If you set the value of this parameter to 6, which is the sum of 2 and 4, this operation queries instances that support LindormTSDB and LindormTable.
+	//
 	// example:
 	//
 	// 15
-	SupportEngine *int32                              `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
-	Tag           []*GetLindormInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SupportEngine *int32 `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
+	// The list of tags associated with the specified instances.
+	Tag []*GetLindormInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetLindormInstanceListRequest) String() string {
@@ -3231,10 +3694,18 @@ func (s *GetLindormInstanceListRequest) SetTag(v []*GetLindormInstanceListReques
 }
 
 type GetLindormInstanceListRequestTag struct {
+	// The key of tag N of the instances you want to query. You can specify 1 to 20 tag keys.
+	//
+	// > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N of the instances you want to query. You can specify 1 to 20 tag values.
+	//
+	// > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
+	//
 	// example:
 	//
 	// 2.2.18
@@ -3260,19 +3731,28 @@ func (s *GetLindormInstanceListRequestTag) SetValue(v string) *GetLindormInstanc
 }
 
 type GetLindormInstanceListResponseBody struct {
+	// The list of instance.
 	InstanceList []*GetLindormInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	// The number of returned pages.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of instances that are returned on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1CA1FAFD-E8DC-51C2-AA7E-CA6E2D049BA0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned instances.
+	//
 	// example:
 	//
 	// 1
@@ -3313,83 +3793,224 @@ func (s *GetLindormInstanceListResponseBody) SetTotal(v int32) *GetLindormInstan
 }
 
 type GetLindormInstanceListResponseBodyInstanceList struct {
+	// The 16-digit AliUid of the Alibaba Cloud account that owns the instance.
+	//
 	// example:
 	//
 	// 164901546557****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The time when the instance is created. This value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1631772842000
 	CreateMilliseconds *int64 `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	// The time when the instance is created.
+	//
 	// example:
 	//
 	// 2021-09-16 14:13:13
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableColumn *bool   `json:"EnableColumn,omitempty" xml:"EnableColumn,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the column storage engine is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Not enabled.
+	//
+	// example:
+	//
+	// true
+	EnableColumn *bool `json:"EnableColumn,omitempty" xml:"EnableColumn,omitempty"`
+	// Indicates whether LDPS is activated for the instance. Valid values:
+	//
+	// 	- **true**: LDPS is activated for the instance.
+	//
+	// 	- **false**: LDPS is not activated for the instance.
+	//
 	// example:
 	//
 	// true
 	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EnableLts     *bool `json:"EnableLts,omitempty" xml:"EnableLts,omitempty"`
+	// Indicates whether the LTS engine is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Not enabled.
+	//
+	// example:
+	//
+	// true
+	EnableLts *bool `json:"EnableLts,omitempty" xml:"EnableLts,omitempty"`
+	// Indicates whether the message engine is enabled, returning:
+	//
+	// - **true**: Enabled. - **false**: Not enabled.
+	//
+	// example:
+	//
+	// true
 	EnableMessage *bool `json:"EnableMessage,omitempty" xml:"EnableMessage,omitempty"`
+	// Indicates whether the Lindorm streaming engine is activated for the instance. Valid values:
+	//
+	// 	- **true**: The Lindorm streaming engine is activated for the instance.
+	//
+	// 	- **false**: The Lindorm streaming engine is not activated for the instance.
+	//
 	// example:
 	//
 	// true
 	EnableStream *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
+	// Whether the vector engine is enabled, returns:
+	//
+	// - **true**: Enabled. - **false**: Not enabled.
+	//
+	// example:
+	//
+	// true
 	EnableVector *bool `json:"EnableVector,omitempty" xml:"EnableVector,omitempty"`
+	// The engine supported by the instance. The engines are indicated by different numbers:
+	//
+	// 	- **1**: LindormSearch.
+	//
+	// 	- **2**: LindormTSDB.
+	//
+	// 	- **4**: LindormTable.
+	//
+	// 	- **8**: LindormDFS.
+	//
+	// > The value of this parameter is the sum of all numbers that indicate the engines supported by the instance. For example, if the value of this parameter is 15, which is the sum of 1, 2, 4, and 8, the instance supports all four engines. If the value of this parameter is 6, which is the sum of 2 and 4, the instance supports LindormTSDB and LindormTable.
+	//
 	// example:
 	//
 	// 15
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The time when the instance expires.
+	//
+	// > This parameter is returned only if the billing method of the instance is subscription.
+	//
 	// example:
 	//
 	// 2022-04-26 00:00:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The time when the instance expires. This value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1650902400000
 	ExpiredMilliseconds *int64 `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// test
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// The ID of the instance
+	//
 	// example:
 	//
 	// ld-bp17pwu1541ia****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// 	- **CREATING**: The instance is being created.
+	//
+	// 	- **ACTIVATION**: The instance is running.
+	//
+	// 	- **COLD_EXPANDING**: The Capacity storage of the instance is being scaled up.
+	//
+	// 	- **MINOR_VERSION_TRANSING**: The minor version of the instance is being updated.
+	//
+	// 	- **RESIZING**: The nodes in the instance are being scaled up.
+	//
+	// 	- **SHRINKING**: The nodes in the instance are being scaled down.
+	//
+	// 	- **CLASS_CHANGING**: The specification of the instance is being changed.
+	//
+	// 	- **SSL_SWITCHING: SSL**: The SSL configurations of the instance are being changed.
+	//
+	// 	- **CDC_OPENING**: Data subscription is being enabled for the instance.
+	//
+	// 	- **TRANSFER**: The data of the instance is being transferred.
+	//
+	// 	- **DATABASE_TRANSFER**: The data of the instance is being transferred to databases.
+	//
+	// 	- **GUARD_CREATING**: A disaster recovery instance is being created.
+	//
+	// 	- **BACKUP_RECOVERING**: The data of the instance is being restored from a backup.
+	//
+	// 	- **DATABASE_IMPORTING**: Data is being imported to the instance.
+	//
+	// 	- **NET_MODIFYING**: The network configurations of the instance are being changed.
+	//
+	// 	- **NET_SWITCHING**: The network of the instance is being switched between a virtual private cloud (VPC) and the Internet.
+	//
+	// 	- **NET_CREATING**: The connection to the instance is being created.
+	//
+	// 	- **NET_DELETING**: The connection to the instance is being deleted.
+	//
+	// 	- **DELETING**: The instance is being deleted.
+	//
+	// 	- **RESTARTING**: The instance is restarting.
+	//
+	// 	- **LOCKED**: The instance is locked because it expires.
+	//
 	// example:
 	//
 	// ACTIVATION
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The storage capacity of the instance.
+	//
 	// example:
 	//
 	// 960
 	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	// The network type of the instance.
+	//
 	// example:
 	//
 	// vpc
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **PREPAY**: subscription.
+	//
+	// 	- **POSTPAY**: pay-as-you-go.
+	//
 	// example:
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
 	// example:
 	//
 	// rg-aekzledqeat****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The series of the instance. Valid values:
+	//
+	// 	- **lindorm**: The instance is a Lindorm instance.
+	//
+	// 	- **serverless_lindorm**: The instance is a Lindorm Serverless instance.
+	//
+	// 	- **lindorm_standalone**: The instance is a single-node Lindorm instance.
+	//
+	// 	- **lts**: The instance is an LTS instance.
+	//
 	// example:
 	//
 	// lindorm
-	ServiceType *string                                               `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Tags        []*GetLindormInstanceListResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The list of tags associated with the specified instances.
+	Tags []*GetLindormInstanceListResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the VPC in which the instance is deployed.
+	//
 	// example:
 	//
 	// vpc-bp1n3i15v90el48nx****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone in which the instance is created.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
@@ -3525,10 +4146,14 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetZoneId(v string) *Ge
 }
 
 type GetLindormInstanceListResponseBodyInstanceListTags struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// 2.2.18
@@ -3637,8 +4262,9 @@ func (s *ListLdpsComputeGroupsRequest) SetSecurityToken(v string) *ListLdpsCompu
 }
 
 type ListLdpsComputeGroupsResponseBody struct {
-	GroupList []*ListLdpsComputeGroupsResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string                                       `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	GroupList          []*ListLdpsComputeGroupsResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListLdpsComputeGroupsResponseBody) String() string {
@@ -3647,6 +4273,11 @@ func (s ListLdpsComputeGroupsResponseBody) String() string {
 
 func (s ListLdpsComputeGroupsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListLdpsComputeGroupsResponseBody) SetAccessDeniedDetail(v string) *ListLdpsComputeGroupsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListLdpsComputeGroupsResponseBody) SetGroupList(v []*ListLdpsComputeGroupsResponseBodyGroupList) *ListLdpsComputeGroupsResponseBody {
@@ -3661,6 +4292,7 @@ func (s *ListLdpsComputeGroupsResponseBody) SetRequestId(v string) *ListLdpsComp
 
 type ListLdpsComputeGroupsResponseBodyGroupList struct {
 	GroupName  *string                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IsDefault  *bool                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
 }
 
@@ -3674,6 +4306,11 @@ func (s ListLdpsComputeGroupsResponseBodyGroupList) GoString() string {
 
 func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetGroupName(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
 	s.GroupName = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetIsDefault(v bool) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.IsDefault = &v
 	return s
 }
 
@@ -4070,6 +4707,7 @@ func (s *ModifyInstancePayTypeRequest) SetSecurityToken(v string) *ModifyInstanc
 }
 
 type ModifyInstancePayTypeResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -4096,6 +4734,11 @@ func (s ModifyInstancePayTypeResponseBody) String() string {
 
 func (s ModifyInstancePayTypeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstancePayTypeResponseBody) SetAccessDeniedDetail(v string) *ModifyInstancePayTypeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ModifyInstancePayTypeResponseBody) SetInstanceId(v string) *ModifyInstancePayTypeResponseBody {
@@ -4203,7 +4846,8 @@ func (s *OpenComputeEngineRequest) SetSecurityToken(v string) *OpenComputeEngine
 }
 
 type OpenComputeEngineResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OpenComputeEngineResponseBody) String() string {
@@ -4212,6 +4856,11 @@ func (s OpenComputeEngineResponseBody) String() string {
 
 func (s OpenComputeEngineResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *OpenComputeEngineResponseBody) SetAccessDeniedDetail(v string) *OpenComputeEngineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *OpenComputeEngineResponseBody) SetRequestId(v string) *OpenComputeEngineResponseBody {
@@ -4309,7 +4958,8 @@ func (s *OpenComputePreCheckRequest) SetSecurityToken(v string) *OpenComputePreC
 }
 
 type OpenComputePreCheckResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OpenComputePreCheckResponseBody) String() string {
@@ -4318,6 +4968,11 @@ func (s OpenComputePreCheckResponseBody) String() string {
 
 func (s OpenComputePreCheckResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *OpenComputePreCheckResponseBody) SetAccessDeniedDetail(v string) *OpenComputePreCheckResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *OpenComputePreCheckResponseBody) SetRequestId(v string) *OpenComputePreCheckResponseBody {
@@ -4361,6 +5016,8 @@ type ReleaseLindormInstanceRequest struct {
 	//
 	// false
 	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// Instance ID, which can be obtained by calling the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4418,6 +5075,8 @@ func (s *ReleaseLindormInstanceRequest) SetSecurityToken(v string) *ReleaseLindo
 }
 
 type ReleaseLindormInstanceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// F67BFFF3-F5C2-45B5-9C28-6E4A1E51****
@@ -4568,13 +5227,14 @@ func (s *RenewLindormInstanceRequest) SetSecurityToken(v string) *RenewLindormIn
 }
 
 type RenewLindormInstanceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
 	//
 	// ld-bp1z3506imz2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+	// The ID of the order. You can obtain the order ID on the Orders page of the Expenses and Costs console.
 	//
 	// example:
 	//
@@ -4594,6 +5254,11 @@ func (s RenewLindormInstanceResponseBody) String() string {
 
 func (s RenewLindormInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RenewLindormInstanceResponseBody) SetAccessDeniedDetail(v string) *RenewLindormInstanceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *RenewLindormInstanceResponseBody) SetInstanceId(v string) *RenewLindormInstanceResponseBody {
@@ -4702,7 +5367,8 @@ func (s *RestartLdpsComputeGroupRequest) SetSecurityToken(v string) *RestartLdps
 }
 
 type RestartLdpsComputeGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RestartLdpsComputeGroupResponseBody) String() string {
@@ -4711,6 +5377,11 @@ func (s RestartLdpsComputeGroupResponseBody) String() string {
 
 func (s RestartLdpsComputeGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RestartLdpsComputeGroupResponseBody) SetAccessDeniedDetail(v string) *RestartLdpsComputeGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *RestartLdpsComputeGroupResponseBody) SetRequestId(v string) *RestartLdpsComputeGroupResponseBody {
@@ -4743,6 +5414,119 @@ func (s *RestartLdpsComputeGroupResponse) SetStatusCode(v int32) *RestartLdpsCom
 }
 
 func (s *RestartLdpsComputeGroupResponse) SetBody(v *RestartLdpsComputeGroupResponseBody) *RestartLdpsComputeGroupResponse {
+	s.Body = v
+	return s
+}
+
+type SetDefaultOlapComputeGroupRequest struct {
+	// This parameter is required.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsDefault            *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SetDefaultOlapComputeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultOlapComputeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetGroupName(v string) *SetDefaultOlapComputeGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetInstanceId(v string) *SetDefaultOlapComputeGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetIsDefault(v bool) *SetDefaultOlapComputeGroupRequest {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetOwnerAccount(v string) *SetDefaultOlapComputeGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetOwnerId(v int64) *SetDefaultOlapComputeGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetRegionId(v string) *SetDefaultOlapComputeGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetResourceOwnerAccount(v string) *SetDefaultOlapComputeGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetResourceOwnerId(v int64) *SetDefaultOlapComputeGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupRequest) SetSecurityToken(v string) *SetDefaultOlapComputeGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SetDefaultOlapComputeGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDefaultOlapComputeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultOlapComputeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultOlapComputeGroupResponseBody) SetRequestId(v string) *SetDefaultOlapComputeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDefaultOlapComputeGroupResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDefaultOlapComputeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetDefaultOlapComputeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultOlapComputeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultOlapComputeGroupResponse) SetHeaders(v map[string]*string) *SetDefaultOlapComputeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupResponse) SetStatusCode(v int32) *SetDefaultOlapComputeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDefaultOlapComputeGroupResponse) SetBody(v *SetDefaultOlapComputeGroupResponseBody) *SetDefaultOlapComputeGroupResponse {
 	s.Body = v
 	return s
 }
@@ -4819,6 +5603,7 @@ func (s *SwitchLSQLV3MySQLServiceRequest) SetSecurityToken(v string) *SwitchLSQL
 }
 
 type SwitchLSQLV3MySQLServiceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -4833,6 +5618,11 @@ func (s SwitchLSQLV3MySQLServiceResponseBody) String() string {
 
 func (s SwitchLSQLV3MySQLServiceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SwitchLSQLV3MySQLServiceResponseBody) SetAccessDeniedDetail(v string) *SwitchLSQLV3MySQLServiceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *SwitchLSQLV3MySQLServiceResponseBody) SetRequestId(v string) *SwitchLSQLV3MySQLServiceResponseBody {
@@ -5278,6 +6068,7 @@ func (s *UpdateInstanceIpWhiteListRequest) SetSecurityToken(v string) *UpdateIns
 }
 
 type UpdateInstanceIpWhiteListResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -5292,6 +6083,11 @@ func (s UpdateInstanceIpWhiteListResponseBody) String() string {
 
 func (s UpdateInstanceIpWhiteListResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceIpWhiteListResponseBody) SetAccessDeniedDetail(v string) *UpdateInstanceIpWhiteListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateInstanceIpWhiteListResponseBody) SetRequestId(v string) *UpdateInstanceIpWhiteListResponseBody {
@@ -5497,7 +6293,8 @@ func (s *UpdateLdpsComputeGroupRequest) SetSecurityToken(v string) *UpdateLdpsCo
 }
 
 type UpdateLdpsComputeGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateLdpsComputeGroupResponseBody) String() string {
@@ -5506,6 +6303,11 @@ func (s UpdateLdpsComputeGroupResponseBody) String() string {
 
 func (s UpdateLdpsComputeGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateLdpsComputeGroupResponseBody) SetAccessDeniedDetail(v string) *UpdateLdpsComputeGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateLdpsComputeGroupResponseBody) SetRequestId(v string) *UpdateLdpsComputeGroupResponseBody {
@@ -5943,6 +6745,140 @@ func (s *UpgradeLindormInstanceResponse) SetStatusCode(v int32) *UpgradeLindormI
 }
 
 func (s *UpgradeLindormInstanceResponse) SetBody(v *UpgradeLindormInstanceResponseBody) *UpgradeLindormInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeLindormV2StreamEngineRequest struct {
+	// This parameter is required.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	Quantity             *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ResourceGroupName    *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// This parameter is required.
+	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// This parameter is required.
+	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
+}
+
+func (s UpgradeLindormV2StreamEngineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeLindormV2StreamEngineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetInstanceId(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetOwnerAccount(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetOwnerId(v int64) *UpgradeLindormV2StreamEngineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetQuantity(v int32) *UpgradeLindormV2StreamEngineRequest {
+	s.Quantity = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetResourceGroupName(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetResourceOwnerAccount(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetResourceOwnerId(v int64) *UpgradeLindormV2StreamEngineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetSecurityToken(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetSpec(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.Spec = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetSpecId(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.SpecId = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetUpgradeType(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.UpgradeType = &v
+	return s
+}
+
+type UpgradeLindormV2StreamEngineResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpgradeLindormV2StreamEngineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeLindormV2StreamEngineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeLindormV2StreamEngineResponseBody) SetAccessDeniedDetail(v string) *UpgradeLindormV2StreamEngineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineResponseBody) SetRequestId(v string) *UpgradeLindormV2StreamEngineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeLindormV2StreamEngineResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeLindormV2StreamEngineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpgradeLindormV2StreamEngineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeLindormV2StreamEngineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeLindormV2StreamEngineResponse) SetHeaders(v map[string]*string) *UpgradeLindormV2StreamEngineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineResponse) SetStatusCode(v int32) *UpgradeLindormV2StreamEngineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeLindormV2StreamEngineResponse) SetBody(v *UpgradeLindormV2StreamEngineResponseBody) *UpgradeLindormV2StreamEngineResponse {
 	s.Body = v
 	return s
 }
@@ -6402,6 +7338,86 @@ func (client *Client) CreateLindormInstance(request *CreateLindormInstanceReques
 	return _result, _err
 }
 
+// @param request - DeleteCustomResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomResourceResponse
+func (client *Client) DeleteCustomResourceWithOptions(request *DeleteCustomResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomResource"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteCustomResourceRequest
+//
+// @return DeleteCustomResourceResponse
+func (client *Client) DeleteCustomResource(request *DeleteCustomResourceRequest) (_result *DeleteCustomResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomResourceResponse{}
+	_body, _err := client.DeleteCustomResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteLdpsComputeGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6475,6 +7491,86 @@ func (client *Client) DeleteLdpsComputeGroup(request *DeleteLdpsComputeGroupRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLdpsComputeGroupResponse{}
 	_body, _err := client.DeleteLdpsComputeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeployLdpsSemiManagedComponentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployLdpsSemiManagedComponentResponse
+func (client *Client) DeployLdpsSemiManagedComponentWithOptions(request *DeployLdpsSemiManagedComponentRequest, runtime *util.RuntimeOptions) (_result *DeployLdpsSemiManagedComponentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentName)) {
+		query["ComponentName"] = request.ComponentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployLdpsSemiManagedComponent"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeployLdpsSemiManagedComponentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeployLdpsSemiManagedComponentRequest
+//
+// @return DeployLdpsSemiManagedComponentResponse
+func (client *Client) DeployLdpsSemiManagedComponent(request *DeployLdpsSemiManagedComponentRequest) (_result *DeployLdpsSemiManagedComponentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeployLdpsSemiManagedComponentResponse{}
+	_body, _err := client.DeployLdpsSemiManagedComponentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7270,6 +8366,10 @@ func (client *Client) GetLindormInstanceEngineList(request *GetLindormInstanceEn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the instances that meet the specified conditions.
+//
 // @param request - GetLindormInstanceListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7356,6 +8456,10 @@ func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the instances that meet the specified conditions.
+//
 // @param request - GetLindormInstanceListRequest
 //
 // @return GetLindormInstanceListResponse
@@ -7550,7 +8654,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7396b91aC5VjZ7#/commodity/vm_intl) of Lindorm.
 //
 // @param request - ModifyInstancePayTypeRequest
 //
@@ -7630,7 +8734,7 @@ func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePa
 //
 // You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7396b91aC5VjZ7#/commodity/vm_intl) of Lindorm.
 //
 // @param request - ModifyInstancePayTypeRequest
 //
@@ -7806,6 +8910,10 @@ func (client *Client) OpenComputePreCheck(request *OpenComputePreCheckRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a Lindorm instance.
+//
 // @param request - ReleaseLindormInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7868,6 +8976,10 @@ func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormI
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a Lindorm instance.
+//
 // @param request - ReleaseLindormInstanceRequest
 //
 // @return ReleaseLindormInstanceResponse
@@ -8059,6 +9171,90 @@ func (client *Client) RestartLdpsComputeGroup(request *RestartLdpsComputeGroupRe
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartLdpsComputeGroupResponse{}
 	_body, _err := client.RestartLdpsComputeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SetDefaultOlapComputeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDefaultOlapComputeGroupResponse
+func (client *Client) SetDefaultOlapComputeGroupWithOptions(request *SetDefaultOlapComputeGroupRequest, runtime *util.RuntimeOptions) (_result *SetDefaultOlapComputeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDefault)) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultOlapComputeGroup"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDefaultOlapComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SetDefaultOlapComputeGroupRequest
+//
+// @return SetDefaultOlapComputeGroupResponse
+func (client *Client) SetDefaultOlapComputeGroup(request *SetDefaultOlapComputeGroupRequest) (_result *SetDefaultOlapComputeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDefaultOlapComputeGroupResponse{}
+	_body, _err := client.SetDefaultOlapComputeGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8779,6 +9975,98 @@ func (client *Client) UpgradeLindormInstance(request *UpgradeLindormInstanceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeLindormInstanceResponse{}
 	_body, _err := client.UpgradeLindormInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpgradeLindormV2StreamEngineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeLindormV2StreamEngineResponse
+func (client *Client) UpgradeLindormV2StreamEngineWithOptions(request *UpgradeLindormV2StreamEngineRequest, runtime *util.RuntimeOptions) (_result *UpgradeLindormV2StreamEngineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		query["Spec"] = request.Spec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecId)) {
+		query["SpecId"] = request.SpecId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeType)) {
+		query["UpgradeType"] = request.UpgradeType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeLindormV2StreamEngine"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeLindormV2StreamEngineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpgradeLindormV2StreamEngineRequest
+//
+// @return UpgradeLindormV2StreamEngineResponse
+func (client *Client) UpgradeLindormV2StreamEngine(request *UpgradeLindormV2StreamEngineRequest) (_result *UpgradeLindormV2StreamEngineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeLindormV2StreamEngineResponse{}
+	_body, _err := client.UpgradeLindormV2StreamEngineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
