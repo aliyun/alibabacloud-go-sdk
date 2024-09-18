@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,17 +11,36 @@ import (
 
 type ConfigNetStatusRequest struct {
 	// The CIDR block of the anti-DDoS diversion instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.168.XX.XX/22
 	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
 	// The regions in which the CIDR block needs to be advertised or withdrawn from advertising. If you leave this parameter empty, the CIDR blocks in all regions are configured.
 	//
-	// >  You can call the [QueryNetList](~~2639086~~) operation to obtain the regions of the CIDR blocks.
+	// >  You can call the [QueryNetList](https://help.aliyun.com/document_detail/2639086.html) operation to obtain the regions of the CIDR blocks.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the anti-DDoS diversion instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddos_diversion_public_cn-xxxxxxxxxxxxx
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 	// The status of the CIDR block. Valid values:
 	//
-	// *   enable: advertises the CIDR block.
-	// *   disable: withdraws the advertising of the CIDR block.
+	// 	- enable: advertises the CIDR block.
+	//
+	// 	- disable: withdraws the advertising of the CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The subnet CIDR blocks of the CIDR block.
 	SubNets []*string `json:"SubNets,omitempty" xml:"SubNets,omitempty" type:"Repeated"`
@@ -66,12 +82,25 @@ func (s *ConfigNetStatusRequest) SetSubNets(v []*string) *ConfigNetStatusRequest
 type ConfigNetStatusResponseBody struct {
 	// The status code.
 	//
-	// *   **200**: The request was successful.
-	// *   Other codes: The request failed.
+	// 	- **200**: The request was successful.
+	//
+	// 	- Other codes: The request failed.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B0949F09-B9C1-1D5E-8F27-0A5BF3CD5D95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -129,19 +158,42 @@ func (s *ConfigNetStatusResponse) SetBody(v *ConfigNetStatusResponseBody) *Confi
 
 type ListInstanceRequest struct {
 	// The name of the instance.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
 	// The page number. Default value: 1
+	//
+	// example:
+	//
+	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The ID of the anti-DDoS diversion instance.
+	//
+	// example:
+	//
+	// ddos_diversion_public_cn-xxxxxxxxxxxxx
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   normal
-	// *   expired
-	// *   deleting
-	// *   stopped
+	// - normal
+	//
+	// - expired
+	//
+	// - deleting
+	//
+	// - stopped
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -181,14 +233,27 @@ func (s *ListInstanceRequest) SetStatus(v string) *ListInstanceRequest {
 type ListInstanceResponseBody struct {
 	// The status code.
 	//
-	// *   **200**: The request was successful.
-	// *   Other codes: The request failed.
+	// - 200: The request was successful.
+	//
+	// - Other codes: The request failed.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *ListInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The response parameters.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B0949F09-B9C1-1D5E-8F27-0A5BF3CD5D95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -221,10 +286,26 @@ func (s *ListInstanceResponseBody) SetRequestId(v string) *ListInstanceResponseB
 }
 
 type ListInstanceResponseBodyData struct {
+	// The details of the anti-DDoS diversion instance.
 	Instances []*ListInstanceResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	Num       *int64                                   `json:"Num,omitempty" xml:"Num,omitempty"`
-	Page      *int64                                   `json:"Page,omitempty" xml:"Page,omitempty"`
-	Total     *int64                                   `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 100
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListInstanceResponseBodyData) String() string {
@@ -256,17 +337,76 @@ func (s *ListInstanceResponseBodyData) SetTotal(v int64) *ListInstanceResponseBo
 }
 
 type ListInstanceResponseBodyDataInstances struct {
-	Comment    *string                                    `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	GmtCreate  *string                                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtExpire  *string                                    `json:"GmtExpire,omitempty" xml:"GmtExpire,omitempty"`
-	GmtModify  *string                                    `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	InstanceId *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name       *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	SaleId     *string                                    `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
-	Spec       *ListInstanceResponseBodyDataInstancesSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	Status     *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId     *string                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// description
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The purchase time.
+	//
+	// example:
+	//
+	// 2022-12-15 11:10:42
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The expiration time.
+	//
+	// example:
+	//
+	// 2023-02-23 00:00:00
+	GmtExpire *string `json:"GmtExpire,omitempty" xml:"GmtExpire,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2022-12-15 11:10:42
+	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// The alias of the instance.
+	//
+	// example:
+	//
+	// ddos_diversion_public_cn-xxxxxxxxxxxxx_xxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations of the instance.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddos_diversion_public_cn-xxxxxxxxxxxxx
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The specifications of the instance.
+	Spec *ListInstanceResponseBodyDataInstancesSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	// The status of the instance. Valid values:
+	//
+	// - normal
+	//
+	// - expired
+	//
+	// - deleting
+	//
+	// - stopped
+	//
+	// example:
+	//
+	// normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 177xxxxxxxxxxxxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListInstanceResponseBodyDataInstances) String() string {
@@ -333,18 +473,78 @@ func (s *ListInstanceResponseBodyDataInstances) SetUserId(v string) *ListInstanc
 }
 
 type ListInstanceResponseBodyDataInstancesSpec struct {
-	Coverage                   *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	DiversionType              *string `json:"DiversionType,omitempty" xml:"DiversionType,omitempty"`
-	Edition                    *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	IdcNumbers                 *string `json:"IdcNumbers,omitempty" xml:"IdcNumbers,omitempty"`
-	InitialInstallation        *string `json:"InitialInstallation,omitempty" xml:"InitialInstallation,omitempty"`
-	InitialQty                 *string `json:"InitialQty,omitempty" xml:"InitialQty,omitempty"`
-	IpSubnetNums               *string `json:"IpSubnetNums,omitempty" xml:"IpSubnetNums,omitempty"`
-	MitigationAnalysis         *string `json:"MitigationAnalysis,omitempty" xml:"MitigationAnalysis,omitempty"`
+	// The region of the asset.
+	//
+	// example:
+	//
+	// international_and_hmt
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The diversion mode. Valid values: on-demand always-on
+	//
+	// example:
+	//
+	// on-demand
+	DiversionType *string `json:"DiversionType,omitempty" xml:"DiversionType,omitempty"`
+	// The mitigation plan.
+	//
+	// example:
+	//
+	// enterprise
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The number of data centers. Valid values: 1 to 10.
+	//
+	// example:
+	//
+	// 1
+	IdcNumbers *string `json:"IdcNumbers,omitempty" xml:"IdcNumbers,omitempty"`
+	// The initial installation mode.
+	//
+	// example:
+	//
+	// gre_tunnel_by_pccw
+	InitialInstallation *string `json:"InitialInstallation,omitempty" xml:"InitialInstallation,omitempty"`
+	// The initial installation quantity.
+	//
+	// example:
+	//
+	// 1
+	InitialQty *string `json:"InitialQty,omitempty" xml:"InitialQty,omitempty"`
+	// The number of CIDR blocks. Value range: 1 to 10000.
+	//
+	// example:
+	//
+	// 1
+	IpSubnetNums *string `json:"IpSubnetNums,omitempty" xml:"IpSubnetNums,omitempty"`
+	// The mitigation analysis feature.
+	//
+	// example:
+	//
+	// off
+	MitigationAnalysis *string `json:"MitigationAnalysis,omitempty" xml:"MitigationAnalysis,omitempty"`
+	// The log storage capacity.
+	//
+	// example:
+	//
+	// 3T
 	MitigationAnalysisCapacity *string `json:"MitigationAnalysisCapacity,omitempty" xml:"MitigationAnalysisCapacity,omitempty"`
-	MitigationCapacity         *string `json:"MitigationCapacity,omitempty" xml:"MitigationCapacity,omitempty"`
-	MitigationNums             *string `json:"MitigationNums,omitempty" xml:"MitigationNums,omitempty"`
-	NormalBandwidth            *string `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
+	// The maximum mitigation capability.
+	//
+	// example:
+	//
+	// unlimited
+	MitigationCapacity *string `json:"MitigationCapacity,omitempty" xml:"MitigationCapacity,omitempty"`
+	// The number of mitigation sessions.
+	//
+	// example:
+	//
+	// unlimited
+	MitigationNums *string `json:"MitigationNums,omitempty" xml:"MitigationNums,omitempty"`
+	// The service traffic. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 100
+	NormalBandwidth *string `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
 }
 
 func (s ListInstanceResponseBodyDataInstancesSpec) String() string {
@@ -446,21 +646,47 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 
 type QueryNetListRequest struct {
 	// The primary CIDR block of the anti-DDoS diversion instance for which an extended CIDR block is configured. If no extended CIDR blocks are configured for the anti-DDoS diversion instance, leave this parameter empty.
+	//
+	// example:
+	//
+	// 192.168.XX.XX/22
 	MainNet *string `json:"MainNet,omitempty" xml:"MainNet,omitempty"`
 	// The scheduling mode. Valid values:
 	//
-	// *   manual: manual scheduling
-	// *   netflow-auto: automatic scheduling
+	// - manual: manual scheduling
+	//
+	// - netflow-auto: automatic scheduling
+	//
+	// example:
+	//
+	// netflow-auto
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The CIDR block of the anti-DDoS diversion instance.
 	//
-	// >  If no extended CIDR blocks are configured for the anti-DDoS diversion instance, this parameter specifies the CIDR block of the instance. If an extended CIDR block is configured for the anti-DDoS diversion instance, this parameter specifies the extended CIDR block that is configured for the instance. If this parameter is specified, the MainNet parameter is required.
+	//
+	// > If no extended CIDR blocks are configured for the anti-DDoS diversion instance, this parameter specifies the CIDR block of the instance. If an extended CIDR block is configured for the anti-DDoS diversion instance, this parameter specifies the extended CIDR block that is configured for the instance. If this parameter is specified, the MainNet parameter is required.
+	//
+	// example:
+	//
+	// 192.168.XX.XX/24
 	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
 	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
 	// The page number. Default value: 1
+	//
+	// example:
+	//
+	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The ID of the anti-DDoS diversion instance.
+	//
+	// example:
+	//
+	// ddos_diversion_public_cn-xxxxxxxxxxxxx
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 }
 
@@ -505,14 +731,27 @@ func (s *QueryNetListRequest) SetSaleId(v string) *QueryNetListRequest {
 type QueryNetListResponseBody struct {
 	// The status code.
 	//
-	// *   **200**: The request was successful.
-	// *   Other codes: The request failed.
+	// - 200: The request was successful.
+	//
+	// - Other codes: The request failed.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The CIDR blocks.
 	Data *QueryNetListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The response parameters.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 24B652B5-AEFF-3F03-9114-00D053C42277
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -545,10 +784,26 @@ func (s *QueryNetListResponseBody) SetRequestId(v string) *QueryNetListResponseB
 }
 
 type QueryNetListResponseBodyData struct {
-	Nets  []*QueryNetListResponseBodyDataNets `json:"Nets,omitempty" xml:"Nets,omitempty" type:"Repeated"`
-	Num   *int64                              `json:"Num,omitempty" xml:"Num,omitempty"`
-	Page  *int64                              `json:"Page,omitempty" xml:"Page,omitempty"`
-	Total *int64                              `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The configuration of the CIDR block.
+	Nets []*QueryNetListResponseBodyDataNets `json:"Nets,omitempty" xml:"Nets,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 100
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryNetListResponseBodyData) String() string {
@@ -580,20 +835,97 @@ func (s *QueryNetListResponseBodyData) SetTotal(v int64) *QueryNetListResponseBo
 }
 
 type QueryNetListResponseBodyDataNets struct {
-	DDoSDefense   *QueryNetListResponseBodyDataNetsDDoSDefense `json:"DDoSDefense,omitempty" xml:"DDoSDefense,omitempty" type:"Struct"`
-	Declared      []*QueryNetListResponseBodyDataNetsDeclared  `json:"Declared,omitempty" xml:"Declared,omitempty" type:"Repeated"`
-	DeclaredState *int32                                       `json:"DeclaredState,omitempty" xml:"DeclaredState,omitempty"`
-	FwdEffect     *int64                                       `json:"FwdEffect,omitempty" xml:"FwdEffect,omitempty"`
-	GmtCreate     *string                                      `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModify     *string                                      `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	Mode          *string                                      `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Net           *string                                      `json:"Net,omitempty" xml:"Net,omitempty"`
-	NetExtend     *string                                      `json:"NetExtend,omitempty" xml:"NetExtend,omitempty"`
-	NetMain       *int64                                       `json:"NetMain,omitempty" xml:"NetMain,omitempty"`
-	NetType       *string                                      `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	SaleId        *string                                      `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
-	UpstreamType  *string                                      `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
-	UserId        *string                                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The DDoS mitigation configuration of the CIDR block.
+	DDoSDefense *QueryNetListResponseBodyDataNetsDDoSDefense `json:"DDoSDefense,omitempty" xml:"DDoSDefense,omitempty" type:"Struct"`
+	// The advertising details.
+	Declared []*QueryNetListResponseBodyDataNetsDeclared `json:"Declared,omitempty" xml:"Declared,omitempty" type:"Repeated"`
+	// The advertising status of the CIDR block. Valid values:
+	//
+	// - 0: The CIDR block is not advertised.
+	//
+	// - 1: The CIDR block is advertised.
+	//
+	// example:
+	//
+	// 1
+	DeclaredState *int32 `json:"DeclaredState,omitempty" xml:"DeclaredState,omitempty"`
+	// Indicates whether the forwarding configuration takes effect. Valid values:
+	//
+	// - 0: The forwarding configuration takes effect.
+	//
+	// - 1: The forwarding configuration does not take effect.
+	//
+	// - -1: The forwarding configuration is being deleted.
+	//
+	// example:
+	//
+	// 1
+	FwdEffect *int64 `json:"FwdEffect,omitempty" xml:"FwdEffect,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2023-02-23 00:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
+	// example:
+	//
+	// 2023-02-24 00:00:00
+	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// The scheduling mode.
+	//
+	// example:
+	//
+	// manual
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The CIDR block of the anti-DDoS diversion instance.
+	//
+	// example:
+	//
+	// 192.168.XX.XX/24
+	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	// Indicates whether the CIDR block needs to be extended. Valid values:
+	//
+	// - 0: The CIDR block needs to be extended.
+	//
+	// - 1: The CIDR block does not need to be extended.
+	//
+	// example:
+	//
+	// 1
+	NetExtend *string `json:"NetExtend,omitempty" xml:"NetExtend,omitempty"`
+	// The primary CIDR block.
+	//
+	// example:
+	//
+	// 192.168.XX.XX/22
+	NetMain *string `json:"NetMain,omitempty" xml:"NetMain,omitempty"`
+	// The type of the CIDR block.
+	//
+	// example:
+	//
+	// ipv4
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Permit  *int32  `json:"Permit,omitempty" xml:"Permit,omitempty"`
+	// The ID of the anti-DDoS diversion instance.
+	//
+	// example:
+	//
+	// ddos_diversion_public_cn-xxxxxxxxxxxxx
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The reinjection type.
+	//
+	// example:
+	//
+	// aliyun_line
+	UpstreamType *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 177xxxxxxxxxxxxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryNetListResponseBodyDataNets) String() string {
@@ -649,13 +981,18 @@ func (s *QueryNetListResponseBodyDataNets) SetNetExtend(v string) *QueryNetListR
 	return s
 }
 
-func (s *QueryNetListResponseBodyDataNets) SetNetMain(v int64) *QueryNetListResponseBodyDataNets {
+func (s *QueryNetListResponseBodyDataNets) SetNetMain(v string) *QueryNetListResponseBodyDataNets {
 	s.NetMain = &v
 	return s
 }
 
 func (s *QueryNetListResponseBodyDataNets) SetNetType(v string) *QueryNetListResponseBodyDataNets {
 	s.NetType = &v
+	return s
+}
+
+func (s *QueryNetListResponseBodyDataNets) SetPermit(v int32) *QueryNetListResponseBodyDataNets {
+	s.Permit = &v
 	return s
 }
 
@@ -675,9 +1012,12 @@ func (s *QueryNetListResponseBodyDataNets) SetUserId(v string) *QueryNetListResp
 }
 
 type QueryNetListResponseBodyDataNetsDDoSDefense struct {
-	CleanTh  *QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh  `json:"CleanTh,omitempty" xml:"CleanTh,omitempty" type:"Struct"`
+	// The configuration of traffic scrubbing.
+	CleanTh *QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh `json:"CleanTh,omitempty" xml:"CleanTh,omitempty" type:"Struct"`
+	// The configuration of the mitigation policy.
 	DjPolicy *QueryNetListResponseBodyDataNetsDDoSDefenseDjPolicy `json:"DjPolicy,omitempty" xml:"DjPolicy,omitempty" type:"Struct"`
-	HoleTh   *QueryNetListResponseBodyDataNetsDDoSDefenseHoleTh   `json:"HoleTh,omitempty" xml:"HoleTh,omitempty" type:"Struct"`
+	// The configuration of blackhole filtering.
+	HoleTh *QueryNetListResponseBodyDataNetsDDoSDefenseHoleTh `json:"HoleTh,omitempty" xml:"HoleTh,omitempty" type:"Struct"`
 }
 
 func (s QueryNetListResponseBodyDataNetsDDoSDefense) String() string {
@@ -704,8 +1044,18 @@ func (s *QueryNetListResponseBodyDataNetsDDoSDefense) SetHoleTh(v *QueryNetListR
 }
 
 type QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh struct {
+	// The traffic scrubbing threshold in Mbit/s.
+	//
+	// example:
+	//
+	// 0
 	Mbps *int32 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
-	Pps  *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// The traffic scrubbing threshold in packets per second (pps)
+	//
+	// example:
+	//
+	// 0
+	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
 func (s QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh) String() string {
@@ -727,6 +1077,11 @@ func (s *QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh) SetPps(v int32) *Qu
 }
 
 type QueryNetListResponseBodyDataNetsDDoSDefenseDjPolicy struct {
+	// The name of the mitigation policy.
+	//
+	// example:
+	//
+	// test_polilciy-xxx
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -744,6 +1099,11 @@ func (s *QueryNetListResponseBodyDataNetsDDoSDefenseDjPolicy) SetPolicyName(v st
 }
 
 type QueryNetListResponseBodyDataNetsDDoSDefenseHoleTh struct {
+	// The blackhole filtering threshold.
+	//
+	// example:
+	//
+	// 0
 	ThreshMbps *int32 `json:"ThreshMbps,omitempty" xml:"ThreshMbps,omitempty"`
 }
 
@@ -761,8 +1121,22 @@ func (s *QueryNetListResponseBodyDataNetsDDoSDefenseHoleTh) SetThreshMbps(v int3
 }
 
 type QueryNetListResponseBodyDataNetsDeclared struct {
+	// Indicates whether the CIDR block is advertised. Valid values:
+	//
+	// - 0: The CIDR block is not advertised.
+	//
+	// - 1: The CIDR block is advertised.
+	//
+	// example:
+	//
+	// 0
 	Declared *string `json:"Declared,omitempty" xml:"Declared,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region in which the CIDR block is advertised.
+	//
+	// example:
+	//
+	// oe26
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryNetListResponseBodyDataNetsDeclared) String() string {
@@ -859,6 +1233,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the advertising of a CIDR block.
+//
+// @param request - ConfigNetStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigNetStatusResponse
 func (client *Client) ConfigNetStatusWithOptions(request *ConfigNetStatusRequest, runtime *util.RuntimeOptions) (_result *ConfigNetStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -908,6 +1291,13 @@ func (client *Client) ConfigNetStatusWithOptions(request *ConfigNetStatusRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the advertising of a CIDR block.
+//
+// @param request - ConfigNetStatusRequest
+//
+// @return ConfigNetStatusResponse
 func (client *Client) ConfigNetStatus(request *ConfigNetStatusRequest) (_result *ConfigNetStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigNetStatusResponse{}
@@ -919,6 +1309,15 @@ func (client *Client) ConfigNetStatus(request *ConfigNetStatusRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries anti-DDoS diversion instances.
+//
+// @param request - ListInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceResponse
 func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runtime *util.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -968,6 +1367,13 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries anti-DDoS diversion instances.
+//
+// @param request - ListInstanceRequest
+//
+// @return ListInstanceResponse
 func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceResponse{}
@@ -979,6 +1385,15 @@ func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the CIDR blocks of an anti-DDoS diversion instance.
+//
+// @param request - QueryNetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryNetListResponse
 func (client *Client) QueryNetListWithOptions(request *QueryNetListRequest, runtime *util.RuntimeOptions) (_result *QueryNetListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1032,6 +1447,13 @@ func (client *Client) QueryNetListWithOptions(request *QueryNetListRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the CIDR blocks of an anti-DDoS diversion instance.
+//
+// @param request - QueryNetListRequest
+//
+// @return QueryNetListResponse
 func (client *Client) QueryNetList(request *QueryNetListRequest) (_result *QueryNetListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryNetListResponse{}
