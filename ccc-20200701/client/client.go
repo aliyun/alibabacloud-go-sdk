@@ -12226,7 +12226,9 @@ type GetCallDetailRecordResponseBodyData struct {
 	// example:
 	//
 	// agent1,agent2
-	AgentNames *string `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	AgentNames           *string                                             `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	AnalyticsReport      *GetCallDetailRecordResponseBodyDataAnalyticsReport `json:"AnalyticsReport,omitempty" xml:"AnalyticsReport,omitempty" type:"Struct"`
+	AnalyticsReportReady *bool                                               `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
 	// example:
 	//
 	// 50
@@ -12324,6 +12326,16 @@ func (s *GetCallDetailRecordResponseBodyData) SetAgentIds(v string) *GetCallDeta
 
 func (s *GetCallDetailRecordResponseBodyData) SetAgentNames(v string) *GetCallDetailRecordResponseBodyData {
 	s.AgentNames = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyData) SetAnalyticsReport(v *GetCallDetailRecordResponseBodyDataAnalyticsReport) *GetCallDetailRecordResponseBodyData {
+	s.AnalyticsReport = v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyData) SetAnalyticsReportReady(v bool) *GetCallDetailRecordResponseBodyData {
+	s.AnalyticsReportReady = &v
 	return s
 }
 
@@ -12523,6 +12535,187 @@ func (s *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence) SetEvent(v
 
 func (s *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence) SetEventTime(v int64) *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence {
 	s.EventTime = &v
+	return s
+}
+
+type GetCallDetailRecordResponseBodyDataAnalyticsReport struct {
+	Emotion        *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion        `json:"Emotion,omitempty" xml:"Emotion,omitempty" type:"Struct"`
+	ProblemSolving *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving `json:"ProblemSolving,omitempty" xml:"ProblemSolving,omitempty" type:"Struct"`
+	Satisfaction   *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction   `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty" type:"Struct"`
+	TodoList       *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList       `json:"TodoList,omitempty" xml:"TodoList,omitempty" type:"Struct"`
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReport) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReport) SetEmotion(v *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) *GetCallDetailRecordResponseBodyDataAnalyticsReport {
+	s.Emotion = v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReport) SetProblemSolving(v *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) *GetCallDetailRecordResponseBodyDataAnalyticsReport {
+	s.ProblemSolving = v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReport) SetSatisfaction(v *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) *GetCallDetailRecordResponseBodyDataAnalyticsReport {
+	s.Satisfaction = v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReport) SetTodoList(v *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) *GetCallDetailRecordResponseBodyDataAnalyticsReport {
+	s.TodoList = v
+	return s
+}
+
+type GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion struct {
+	Confidence *int32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) SetConfidence(v int32) *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion {
+	s.Confidence = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) SetRemark(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) SetSuccess(v bool) *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion {
+	s.Success = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) SetTaskId(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion) SetType(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion {
+	s.Type = &v
+	return s
+}
+
+type GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving struct {
+	Problem  *string `json:"Problem,omitempty" xml:"Problem,omitempty"`
+	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	Solved   *bool   `json:"Solved,omitempty" xml:"Solved,omitempty"`
+	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) SetProblem(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving {
+	s.Problem = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) SetSolution(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving {
+	s.Solution = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) SetSolved(v bool) *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving {
+	s.Solved = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) SetSuccess(v bool) *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving {
+	s.Success = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving) SetTaskId(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving {
+	s.TaskId = &v
+	return s
+}
+
+type GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction struct {
+	Remark                  *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SatisfactionDescription *string `json:"SatisfactionDescription,omitempty" xml:"SatisfactionDescription,omitempty"`
+	Success                 *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) SetRemark(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) SetSatisfactionDescription(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction {
+	s.SatisfactionDescription = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) SetSuccess(v bool) *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction {
+	s.Success = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction) SetTaskId(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction {
+	s.TaskId = &v
+	return s
+}
+
+type GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList struct {
+	Success *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId  *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Tasks   []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) SetSuccess(v bool) *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList {
+	s.Success = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) SetTaskId(v string) *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) SetTasks(v []*string) *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList {
+	s.Tasks = v
 	return s
 }
 
@@ -26635,7 +26828,8 @@ type ListCallDetailRecordsV2Request struct {
 	// example:
 	//
 	// agent@ccc-test
-	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId              *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AnalyticsReportReady *bool   `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
 	// example:
 	//
 	// 021****4972
@@ -26749,6 +26943,11 @@ func (s *ListCallDetailRecordsV2Request) SetAccessChannelTypeList(v string) *Lis
 
 func (s *ListCallDetailRecordsV2Request) SetAgentId(v string) *ListCallDetailRecordsV2Request {
 	s.AgentId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetAnalyticsReportReady(v bool) *ListCallDetailRecordsV2Request {
+	s.AnalyticsReportReady = &v
 	return s
 }
 
@@ -26984,8 +27183,10 @@ type ListCallDetailRecordsV2ResponseBodyDataList struct {
 	// example:
 	//
 	// agent@ccc-test
-	AgentIds   *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	AgentNames *string `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	AgentIds             *string                                                     `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	AgentNames           *string                                                     `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	AnalyticsReport      *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport `json:"AnalyticsReport,omitempty" xml:"AnalyticsReport,omitempty" type:"Struct"`
+	AnalyticsReportReady *bool                                                       `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
 	// example:
 	//
 	// 053xxxx3127
@@ -27191,6 +27392,16 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAgentIds(v string) *Lis
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAgentNames(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
 	s.AgentNames = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAnalyticsReport(v *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AnalyticsReport = v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAnalyticsReportReady(v bool) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AnalyticsReportReady = &v
 	return s
 }
 
@@ -27421,6 +27632,187 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetTransferCount(v int64) 
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetWaitTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
 	s.WaitTime = &v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport struct {
+	Emotion        *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion        `json:"Emotion,omitempty" xml:"Emotion,omitempty" type:"Struct"`
+	ProblemSolving *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving `json:"ProblemSolving,omitempty" xml:"ProblemSolving,omitempty" type:"Struct"`
+	Satisfaction   *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction   `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty" type:"Struct"`
+	TodoList       *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList       `json:"TodoList,omitempty" xml:"TodoList,omitempty" type:"Struct"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) SetEmotion(v *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport {
+	s.Emotion = v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) SetProblemSolving(v *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport {
+	s.ProblemSolving = v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) SetSatisfaction(v *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport {
+	s.Satisfaction = v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) SetTodoList(v *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport {
+	s.TodoList = v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion struct {
+	Confidence *int32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) SetConfidence(v int32) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) SetRemark(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) SetSuccess(v bool) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) SetTaskId(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) SetType(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion {
+	s.Type = &v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving struct {
+	Problem  *string `json:"Problem,omitempty" xml:"Problem,omitempty"`
+	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	Solved   *bool   `json:"Solved,omitempty" xml:"Solved,omitempty"`
+	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) SetProblem(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving {
+	s.Problem = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) SetSolution(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving {
+	s.Solution = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) SetSolved(v bool) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving {
+	s.Solved = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) SetSuccess(v bool) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) SetTaskId(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving {
+	s.TaskId = &v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction struct {
+	Remark                  *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SatisfactionDescription *string `json:"SatisfactionDescription,omitempty" xml:"SatisfactionDescription,omitempty"`
+	Success                 *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) SetRemark(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) SetSatisfactionDescription(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction {
+	s.SatisfactionDescription = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) SetSuccess(v bool) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) SetTaskId(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction {
+	s.TaskId = &v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList struct {
+	Success *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId  *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Tasks   []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) SetSuccess(v bool) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) SetTaskId(v string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) SetTasks(v []*string) *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList {
+	s.Tasks = v
 	return s
 }
 
@@ -72086,6 +72478,10 @@ func (client *Client) ListCallDetailRecordsV2WithOptions(request *ListCallDetail
 
 	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
 		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AnalyticsReportReady)) {
+		query["AnalyticsReportReady"] = request.AnalyticsReportReady
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Broker)) {
