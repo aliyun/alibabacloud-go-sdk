@@ -2871,7 +2871,8 @@ type CreateCenRouteMapRequest struct {
 	// example:
 	//
 	// false
-	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	DestinationRegionIds               []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
 	// The IDs of the destination route tables to which routes are evaluated. You can enter at most 32 route table IDs.
 	//
 	// > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
@@ -3150,6 +3151,11 @@ func (s *CreateCenRouteMapRequest) SetDestinationInstanceIds(v []*string) *Creat
 
 func (s *CreateCenRouteMapRequest) SetDestinationInstanceIdsReverseMatch(v bool) *CreateCenRouteMapRequest {
 	s.DestinationInstanceIdsReverseMatch = &v
+	return s
+}
+
+func (s *CreateCenRouteMapRequest) SetDestinationRegionIds(v []*string) *CreateCenRouteMapRequest {
+	s.DestinationRegionIds = v
 	return s
 }
 
@@ -15127,7 +15133,8 @@ type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
 	// example:
 	//
 	// false
-	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	DestinationInstanceIdsReverseMatch *bool                                                                  `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	DestinationRegionIds               *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Struct"`
 	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
 	//
 	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the destination route table IDs are in the current region.
@@ -15315,6 +15322,11 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationInstan
 	return s
 }
 
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationRegionIds(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.DestinationRegionIds = v
+	return s
+}
+
 func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetDestinationRouteTableIds(v *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.DestinationRouteTableIds = v
 	return s
@@ -15463,6 +15475,23 @@ func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds)
 
 func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds) SetDestinationInstanceId(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds {
 	s.DestinationInstanceId = v
+	return s
+}
+
+type DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds struct {
+	DestinationRegionId []*string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds) SetDestinationRegionId(v []*string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds {
+	s.DestinationRegionId = v
 	return s
 }
 
@@ -31337,7 +31366,8 @@ type ModifyCenRouteMapRequest struct {
 	// example:
 	//
 	// false
-	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	DestinationRegionIds               []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
 	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
 	//
 	// > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
@@ -31594,6 +31624,11 @@ func (s *ModifyCenRouteMapRequest) SetDestinationInstanceIds(v []*string) *Modif
 
 func (s *ModifyCenRouteMapRequest) SetDestinationInstanceIdsReverseMatch(v bool) *ModifyCenRouteMapRequest {
 	s.DestinationInstanceIdsReverseMatch = &v
+	return s
+}
+
+func (s *ModifyCenRouteMapRequest) SetDestinationRegionIds(v []*string) *ModifyCenRouteMapRequest {
+	s.DestinationRegionIds = v
 	return s
 }
 
@@ -39252,6 +39287,10 @@ func (client *Client) CreateCenRouteMapWithOptions(request *CreateCenRouteMapReq
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationInstanceIdsReverseMatch)) {
 		query["DestinationInstanceIdsReverseMatch"] = request.DestinationInstanceIdsReverseMatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegionIds)) {
+		query["DestinationRegionIds"] = request.DestinationRegionIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationRouteTableIds)) {
@@ -50498,6 +50537,10 @@ func (client *Client) ModifyCenRouteMapWithOptions(request *ModifyCenRouteMapReq
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationInstanceIdsReverseMatch)) {
 		query["DestinationInstanceIdsReverseMatch"] = request.DestinationInstanceIdsReverseMatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegionIds)) {
+		query["DestinationRegionIds"] = request.DestinationRegionIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationRouteTableIds)) {

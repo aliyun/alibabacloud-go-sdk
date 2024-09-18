@@ -1,3 +1,9 @@
+2024-09-18 Version: v2.1.8
+- Update API CreateCenRouteMap: add param DestinationRegionIds.
+- Update API DescribeCenRouteMaps: update response param.
+- Update API ModifyCenRouteMap: add param DestinationRegionIds.
+
+
 2024-09-10 Version: v2.1.7
 - Update API AddTrafficMatchRuleToTrafficMarkingPolicy: update param TrafficMatchRules.
 - Update API CreateTrafficMarkingPolicy: update param TrafficMatchRules.
