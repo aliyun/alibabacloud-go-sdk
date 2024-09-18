@@ -657,6 +657,7 @@ type BuildIndexRequest struct {
 	//
 	// 20201010
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	Tag       *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s BuildIndexRequest) String() string {
@@ -699,6 +700,11 @@ func (s *BuildIndexRequest) SetGeneration(v int64) *BuildIndexRequest {
 
 func (s *BuildIndexRequest) SetPartition(v string) *BuildIndexRequest {
 	s.Partition = &v
+	return s
+}
+
+func (s *BuildIndexRequest) SetTag(v string) *BuildIndexRequest {
+	s.Tag = &v
 	return s
 }
 
@@ -1613,7 +1619,9 @@ type CreateDataSourceRequestConfig struct {
 	// example:
 	//
 	// opensearch
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
 	//
 	// example:
@@ -1656,6 +1664,7 @@ type CreateDataSourceRequestConfig struct {
 	//
 	// item
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s CreateDataSourceRequestConfig) String() string {
@@ -1678,6 +1687,16 @@ func (s *CreateDataSourceRequestConfig) SetAccessSecret(v string) *CreateDataSou
 
 func (s *CreateDataSourceRequestConfig) SetBucket(v string) *CreateDataSourceRequestConfig {
 	s.Bucket = &v
+	return s
+}
+
+func (s *CreateDataSourceRequestConfig) SetCatalog(v string) *CreateDataSourceRequestConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *CreateDataSourceRequestConfig) SetDatabase(v string) *CreateDataSourceRequestConfig {
+	s.Database = &v
 	return s
 }
 
@@ -1713,6 +1732,11 @@ func (s *CreateDataSourceRequestConfig) SetProject(v string) *CreateDataSourceRe
 
 func (s *CreateDataSourceRequestConfig) SetTable(v string) *CreateDataSourceRequestConfig {
 	s.Table = &v
+	return s
+}
+
+func (s *CreateDataSourceRequestConfig) SetTag(v string) *CreateDataSourceRequestConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -2280,7 +2304,9 @@ type CreateIndexRequestDataSourceInfoConfig struct {
 	// example:
 	//
 	// test-bucket
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
 	//
 	// example:
@@ -2323,6 +2349,7 @@ type CreateIndexRequestDataSourceInfoConfig struct {
 	//
 	// bbt_rec_swing_u2i2i_score_be_v1
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s CreateIndexRequestDataSourceInfoConfig) String() string {
@@ -2345,6 +2372,16 @@ func (s *CreateIndexRequestDataSourceInfoConfig) SetAccessSecret(v string) *Crea
 
 func (s *CreateIndexRequestDataSourceInfoConfig) SetBucket(v string) *CreateIndexRequestDataSourceInfoConfig {
 	s.Bucket = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfoConfig) SetCatalog(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfoConfig) SetDatabase(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.Database = &v
 	return s
 }
 
@@ -2380,6 +2417,11 @@ func (s *CreateIndexRequestDataSourceInfoConfig) SetProject(v string) *CreateInd
 
 func (s *CreateIndexRequestDataSourceInfoConfig) SetTable(v string) *CreateIndexRequestDataSourceInfoConfig {
 	s.Table = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfoConfig) SetTag(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -3266,7 +3308,9 @@ type CreateTableRequestDataSourceConfig struct {
 	// example:
 	//
 	// antsys-flytest-ci
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
 	// example:
@@ -3297,6 +3341,7 @@ type CreateTableRequestDataSourceConfig struct {
 	//
 	// test56
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s CreateTableRequestDataSourceConfig) String() string {
@@ -3322,6 +3367,16 @@ func (s *CreateTableRequestDataSourceConfig) SetBucket(v string) *CreateTableReq
 	return s
 }
 
+func (s *CreateTableRequestDataSourceConfig) SetCatalog(v string) *CreateTableRequestDataSourceConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *CreateTableRequestDataSourceConfig) SetDatabase(v string) *CreateTableRequestDataSourceConfig {
+	s.Database = &v
+	return s
+}
+
 func (s *CreateTableRequestDataSourceConfig) SetEndpoint(v string) *CreateTableRequestDataSourceConfig {
 	s.Endpoint = &v
 	return s
@@ -3344,6 +3399,11 @@ func (s *CreateTableRequestDataSourceConfig) SetProject(v string) *CreateTableRe
 
 func (s *CreateTableRequestDataSourceConfig) SetTable(v string) *CreateTableRequestDataSourceConfig {
 	s.Table = &v
+	return s
+}
+
+func (s *CreateTableRequestDataSourceConfig) SetTag(v string) *CreateTableRequestDataSourceConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -6521,7 +6581,9 @@ type GetDataSourceDeployResponseBodyResultStorage struct {
 	// example:
 	//
 	// antsys-miniapp-chongwen-static
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
 	// example:
@@ -6556,6 +6618,7 @@ type GetDataSourceDeployResponseBodyResultStorage struct {
 	//
 	// behavior
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s GetDataSourceDeployResponseBodyResultStorage) String() string {
@@ -6578,6 +6641,16 @@ func (s *GetDataSourceDeployResponseBodyResultStorage) SetAccessSecret(v string)
 
 func (s *GetDataSourceDeployResponseBodyResultStorage) SetBucket(v string) *GetDataSourceDeployResponseBodyResultStorage {
 	s.Bucket = &v
+	return s
+}
+
+func (s *GetDataSourceDeployResponseBodyResultStorage) SetCatalog(v string) *GetDataSourceDeployResponseBodyResultStorage {
+	s.Catalog = &v
+	return s
+}
+
+func (s *GetDataSourceDeployResponseBodyResultStorage) SetDatabase(v string) *GetDataSourceDeployResponseBodyResultStorage {
+	s.Database = &v
 	return s
 }
 
@@ -6613,6 +6686,11 @@ func (s *GetDataSourceDeployResponseBodyResultStorage) SetProject(v string) *Get
 
 func (s *GetDataSourceDeployResponseBodyResultStorage) SetTable(v string) *GetDataSourceDeployResponseBodyResultStorage {
 	s.Table = &v
+	return s
+}
+
+func (s *GetDataSourceDeployResponseBodyResultStorage) SetTag(v string) *GetDataSourceDeployResponseBodyResultStorage {
+	s.Tag = &v
 	return s
 }
 
@@ -7690,7 +7768,9 @@ type GetIndexResponseBodyResultDataSourceInfoConfig struct {
 	// example:
 	//
 	// ha3test-oss
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
 	// example:
@@ -7733,6 +7813,7 @@ type GetIndexResponseBodyResultDataSourceInfoConfig struct {
 	//
 	// dump_odps_demo
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s GetIndexResponseBodyResultDataSourceInfoConfig) String() string {
@@ -7755,6 +7836,16 @@ func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetAccessSecret(v strin
 
 func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetBucket(v string) *GetIndexResponseBodyResultDataSourceInfoConfig {
 	s.Bucket = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetCatalog(v string) *GetIndexResponseBodyResultDataSourceInfoConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetDatabase(v string) *GetIndexResponseBodyResultDataSourceInfoConfig {
+	s.Database = &v
 	return s
 }
 
@@ -7790,6 +7881,11 @@ func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetProject(v string) *G
 
 func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetTable(v string) *GetIndexResponseBodyResultDataSourceInfoConfig {
 	s.Table = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetTag(v string) *GetIndexResponseBodyResultDataSourceInfoConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -12131,12 +12227,15 @@ func (s *ListIndexRecoverRecordsResponse) SetBody(v *ListIndexRecoverRecordsResp
 }
 
 type ListIndexesRequest struct {
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// Specifies whether the OpenSearch Vector Search Edition instance is of the new version.
 	//
 	// example:
 	//
 	// true
-	NewMode *bool `json:"newMode,omitempty" xml:"newMode,omitempty"`
+	NewMode *bool   `json:"newMode,omitempty" xml:"newMode,omitempty"`
+	Table   *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s ListIndexesRequest) String() string {
@@ -12147,8 +12246,23 @@ func (s ListIndexesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListIndexesRequest) SetCatalog(v string) *ListIndexesRequest {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ListIndexesRequest) SetDatabase(v string) *ListIndexesRequest {
+	s.Database = &v
+	return s
+}
+
 func (s *ListIndexesRequest) SetNewMode(v bool) *ListIndexesRequest {
 	s.NewMode = &v
+	return s
+}
+
+func (s *ListIndexesRequest) SetTable(v string) *ListIndexesRequest {
+	s.Table = &v
 	return s
 }
 
@@ -12425,7 +12539,9 @@ type ListIndexesResponseBodyResultDataSourceInfoConfig struct {
 	// example:
 	//
 	// ha3test-oss
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
 	// example:
@@ -12468,6 +12584,7 @@ type ListIndexesResponseBodyResultDataSourceInfoConfig struct {
 	//
 	// dump_odps_demo
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s ListIndexesResponseBodyResultDataSourceInfoConfig) String() string {
@@ -12490,6 +12607,16 @@ func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetAccessSecret(v st
 
 func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetBucket(v string) *ListIndexesResponseBodyResultDataSourceInfoConfig {
 	s.Bucket = &v
+	return s
+}
+
+func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetCatalog(v string) *ListIndexesResponseBodyResultDataSourceInfoConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetDatabase(v string) *ListIndexesResponseBodyResultDataSourceInfoConfig {
+	s.Database = &v
 	return s
 }
 
@@ -12525,6 +12652,11 @@ func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetProject(v string)
 
 func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetTable(v string) *ListIndexesResponseBodyResultDataSourceInfoConfig {
 	s.Table = &v
+	return s
+}
+
+func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetTag(v string) *ListIndexesResponseBodyResultDataSourceInfoConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -12878,6 +13010,9 @@ func (s *ListInstanceSpecsResponse) SetBody(v *ListInstanceSpecsResponseBody) *L
 }
 
 type ListInstancesRequest struct {
+	Catalog        *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
+	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
 	//
 	// example:
@@ -12914,6 +13049,7 @@ type ListInstancesRequest struct {
 	//
 	// rg-aekzgpiswzbksdi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Table           *string `json:"table,omitempty" xml:"table,omitempty"`
 	// The tags of the instance.
 	Tags []*ListInstancesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
@@ -12924,6 +13060,21 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequest) SetCatalog(v string) *ListInstancesRequest {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetDataSourceType(v string) *ListInstancesRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetDatabase(v string) *ListInstancesRequest {
+	s.Database = &v
+	return s
 }
 
 func (s *ListInstancesRequest) SetDescription(v string) *ListInstancesRequest {
@@ -12953,6 +13104,11 @@ func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetTable(v string) *ListInstancesRequest {
+	s.Table = &v
 	return s
 }
 
@@ -12995,6 +13151,9 @@ func (s *ListInstancesRequestTags) SetValue(v string) *ListInstancesRequestTags 
 }
 
 type ListInstancesShrinkRequest struct {
+	Catalog        *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
+	Database       *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
 	//
 	// example:
@@ -13031,6 +13190,7 @@ type ListInstancesShrinkRequest struct {
 	//
 	// rg-aekzgpiswzbksdi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Table           *string `json:"table,omitempty" xml:"table,omitempty"`
 	// The tags of the instance.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
@@ -13041,6 +13201,21 @@ func (s ListInstancesShrinkRequest) String() string {
 
 func (s ListInstancesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesShrinkRequest) SetCatalog(v string) *ListInstancesShrinkRequest {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetDataSourceType(v string) *ListInstancesShrinkRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetDatabase(v string) *ListInstancesShrinkRequest {
+	s.Database = &v
+	return s
 }
 
 func (s *ListInstancesShrinkRequest) SetDescription(v string) *ListInstancesShrinkRequest {
@@ -13070,6 +13245,11 @@ func (s *ListInstancesShrinkRequest) SetPageSize(v int32) *ListInstancesShrinkRe
 
 func (s *ListInstancesShrinkRequest) SetResourceGroupId(v string) *ListInstancesShrinkRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetTable(v string) *ListInstancesShrinkRequest {
+	s.Table = &v
 	return s
 }
 
@@ -13136,7 +13316,8 @@ type ListInstancesResponseBodyResult struct {
 	// example:
 	//
 	// 2022-06-04T02:03:21Z
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime        *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DataSourceDetails []*ListInstancesResponseBodyResultDataSourceDetails `json:"dataSourceDetails,omitempty" xml:"dataSourceDetails,omitempty" type:"Repeated"`
 	// The description of the instance.
 	//
 	// example:
@@ -13219,6 +13400,11 @@ func (s *ListInstancesResponseBodyResult) SetCreateTime(v string) *ListInstances
 	return s
 }
 
+func (s *ListInstancesResponseBodyResult) SetDataSourceDetails(v []*ListInstancesResponseBodyResultDataSourceDetails) *ListInstancesResponseBodyResult {
+	s.DataSourceDetails = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyResult) SetDescription(v string) *ListInstancesResponseBodyResult {
 	s.Description = &v
 	return s
@@ -13291,6 +13477,118 @@ func (s *ListInstancesResponseBodyResult) SetUserName(v string) *ListInstancesRe
 
 func (s *ListInstancesResponseBodyResult) SetVersion(v string) *ListInstancesResponseBodyResult {
 	s.Version = &v
+	return s
+}
+
+type ListInstancesResponseBodyResultDataSourceDetails struct {
+	Config    *ListInstancesResponseBodyResultDataSourceDetailsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	IndexName *string                                                 `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	Type      *string                                                 `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListInstancesResponseBodyResultDataSourceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyResultDataSourceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetails) SetConfig(v *ListInstancesResponseBodyResultDataSourceDetailsConfig) *ListInstancesResponseBodyResultDataSourceDetails {
+	s.Config = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetails) SetIndexName(v string) *ListInstancesResponseBodyResultDataSourceDetails {
+	s.IndexName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetails) SetType(v string) *ListInstancesResponseBodyResultDataSourceDetails {
+	s.Type = &v
+	return s
+}
+
+type ListInstancesResponseBodyResultDataSourceDetailsConfig struct {
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	Bucket    *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog   *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database  *string `json:"database,omitempty" xml:"database,omitempty"`
+	Endpoint  *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OssPath   *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	Path      *string `json:"path,omitempty" xml:"path,omitempty"`
+	Project   *string `json:"project,omitempty" xml:"project,omitempty"`
+	Table     *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag       *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s ListInstancesResponseBodyResultDataSourceDetailsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyResultDataSourceDetailsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetAccessKey(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetBucket(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Bucket = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetCatalog(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetDatabase(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Database = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetEndpoint(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetNamespace(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetOssPath(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.OssPath = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetPartition(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Partition = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetPath(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Path = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetProject(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Project = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetTable(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Table = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultDataSourceDetailsConfig) SetTag(v string) *ListInstancesResponseBodyResultDataSourceDetailsConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -15951,7 +16249,9 @@ type ModifyDataSourceDeployRequestStorage struct {
 	// example:
 	//
 	// test-bucket
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
 	// example:
@@ -15994,6 +16294,7 @@ type ModifyDataSourceDeployRequestStorage struct {
 	//
 	// item
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s ModifyDataSourceDeployRequestStorage) String() string {
@@ -16016,6 +16317,16 @@ func (s *ModifyDataSourceDeployRequestStorage) SetAccessSecret(v string) *Modify
 
 func (s *ModifyDataSourceDeployRequestStorage) SetBucket(v string) *ModifyDataSourceDeployRequestStorage {
 	s.Bucket = &v
+	return s
+}
+
+func (s *ModifyDataSourceDeployRequestStorage) SetCatalog(v string) *ModifyDataSourceDeployRequestStorage {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ModifyDataSourceDeployRequestStorage) SetDatabase(v string) *ModifyDataSourceDeployRequestStorage {
+	s.Database = &v
 	return s
 }
 
@@ -16051,6 +16362,11 @@ func (s *ModifyDataSourceDeployRequestStorage) SetProject(v string) *ModifyDataS
 
 func (s *ModifyDataSourceDeployRequestStorage) SetTable(v string) *ModifyDataSourceDeployRequestStorage {
 	s.Table = &v
+	return s
+}
+
+func (s *ModifyDataSourceDeployRequestStorage) SetTag(v string) *ModifyDataSourceDeployRequestStorage {
+	s.Tag = &v
 	return s
 }
 
@@ -16299,7 +16615,8 @@ type ModifyIndexRequest struct {
 	// example:
 	//
 	// vpc_hz_domain_1
-	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	Domain *string                `json:"domain,omitempty" xml:"domain,omitempty"`
+	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The maximum number of full indexes that can be concurrently merged.
 	//
 	// example:
@@ -16382,6 +16699,11 @@ func (s *ModifyIndexRequest) SetDescription(v string) *ModifyIndexRequest {
 
 func (s *ModifyIndexRequest) SetDomain(v string) *ModifyIndexRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *ModifyIndexRequest) SetExtend(v map[string]interface{}) *ModifyIndexRequest {
+	s.Extend = v
 	return s
 }
 
@@ -16547,7 +16869,9 @@ type ModifyIndexRequestDataSourceInfoConfig struct {
 	// example:
 	//
 	// test-bucket
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
 	// example:
@@ -16590,6 +16914,7 @@ type ModifyIndexRequestDataSourceInfoConfig struct {
 	//
 	// item
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s ModifyIndexRequestDataSourceInfoConfig) String() string {
@@ -16612,6 +16937,16 @@ func (s *ModifyIndexRequestDataSourceInfoConfig) SetAccessSecret(v string) *Modi
 
 func (s *ModifyIndexRequestDataSourceInfoConfig) SetBucket(v string) *ModifyIndexRequestDataSourceInfoConfig {
 	s.Bucket = &v
+	return s
+}
+
+func (s *ModifyIndexRequestDataSourceInfoConfig) SetCatalog(v string) *ModifyIndexRequestDataSourceInfoConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ModifyIndexRequestDataSourceInfoConfig) SetDatabase(v string) *ModifyIndexRequestDataSourceInfoConfig {
+	s.Database = &v
 	return s
 }
 
@@ -16647,6 +16982,11 @@ func (s *ModifyIndexRequestDataSourceInfoConfig) SetProject(v string) *ModifyInd
 
 func (s *ModifyIndexRequestDataSourceInfoConfig) SetTable(v string) *ModifyIndexRequestDataSourceInfoConfig {
 	s.Table = &v
+	return s
+}
+
+func (s *ModifyIndexRequestDataSourceInfoConfig) SetTag(v string) *ModifyIndexRequestDataSourceInfoConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -17926,7 +18266,9 @@ type ModifyTableRequestDataSourceConfig struct {
 	// example:
 	//
 	// antsys-shujiang-osstest
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
 	// example:
@@ -17957,6 +18299,7 @@ type ModifyTableRequestDataSourceConfig struct {
 	//
 	// behavior
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Tag   *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s ModifyTableRequestDataSourceConfig) String() string {
@@ -17982,6 +18325,16 @@ func (s *ModifyTableRequestDataSourceConfig) SetBucket(v string) *ModifyTableReq
 	return s
 }
 
+func (s *ModifyTableRequestDataSourceConfig) SetCatalog(v string) *ModifyTableRequestDataSourceConfig {
+	s.Catalog = &v
+	return s
+}
+
+func (s *ModifyTableRequestDataSourceConfig) SetDatabase(v string) *ModifyTableRequestDataSourceConfig {
+	s.Database = &v
+	return s
+}
+
 func (s *ModifyTableRequestDataSourceConfig) SetEndpoint(v string) *ModifyTableRequestDataSourceConfig {
 	s.Endpoint = &v
 	return s
@@ -18004,6 +18357,11 @@ func (s *ModifyTableRequestDataSourceConfig) SetProject(v string) *ModifyTableRe
 
 func (s *ModifyTableRequestDataSourceConfig) SetTable(v string) *ModifyTableRequestDataSourceConfig {
 	s.Table = &v
+	return s
+}
+
+func (s *ModifyTableRequestDataSourceConfig) SetTag(v string) *ModifyTableRequestDataSourceConfig {
+	s.Tag = &v
 	return s
 }
 
@@ -20442,6 +20800,10 @@ func (client *Client) BuildIndexWithOptions(instanceId *string, request *BuildIn
 
 	if !tea.BoolValue(util.IsUnset(request.Partition)) {
 		body["partition"] = request.Partition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24444,8 +24806,20 @@ func (client *Client) ListIndexesWithOptions(instanceId *string, request *ListIn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Catalog)) {
+		query["catalog"] = request.Catalog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["database"] = request.Database
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NewMode)) {
 		query["newMode"] = request.NewMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Table)) {
+		query["table"] = request.Table
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24618,6 +24992,18 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Catalog)) {
+		query["catalog"] = request.Catalog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["dataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["database"] = request.Database
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["description"] = request.Description
 	}
@@ -24640,6 +25026,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Table)) {
+		query["table"] = request.Table
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
@@ -26317,6 +26707,10 @@ func (client *Client) ModifyIndexWithOptions(instanceId *string, indexName *stri
 
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
 		body["domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		body["extend"] = request.Extend
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MergeParallelNum)) {
