@@ -14,6 +14,206 @@ import (
 	"io"
 )
 
+type CreateFinReportSummaryTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableTable *bool `json:"enableTable,omitempty" xml:"enableTable,omitempty"`
+	// example:
+	//
+	// 10
+	EndPage     *int32  `json:"endPage,omitempty" xml:"endPage,omitempty"`
+	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3akzl28vap
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 1
+	StartPage *int32 `json:"startPage,omitempty" xml:"startPage,omitempty"`
+	// example:
+	//
+	// custom
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+}
+
+func (s CreateFinReportSummaryTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFinReportSummaryTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetDocId(v string) *CreateFinReportSummaryTaskRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetEnableTable(v bool) *CreateFinReportSummaryTaskRequest {
+	s.EnableTable = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetEndPage(v int32) *CreateFinReportSummaryTaskRequest {
+	s.EndPage = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetInstruction(v string) *CreateFinReportSummaryTaskRequest {
+	s.Instruction = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetLibraryId(v string) *CreateFinReportSummaryTaskRequest {
+	s.LibraryId = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetModelId(v string) *CreateFinReportSummaryTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetStartPage(v int32) *CreateFinReportSummaryTaskRequest {
+	s.StartPage = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskRequest) SetTaskType(v string) *CreateFinReportSummaryTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+type CreateFinReportSummaryTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// example:
+	//
+	// 3284627354
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s CreateFinReportSummaryTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFinReportSummaryTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetCost(v int64) *CreateFinReportSummaryTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetData(v string) *CreateFinReportSummaryTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetDataType(v string) *CreateFinReportSummaryTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetErrCode(v string) *CreateFinReportSummaryTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetMessage(v string) *CreateFinReportSummaryTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetRequestId(v string) *CreateFinReportSummaryTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetSuccess(v bool) *CreateFinReportSummaryTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponseBody) SetTime(v string) *CreateFinReportSummaryTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type CreateFinReportSummaryTaskResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFinReportSummaryTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFinReportSummaryTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFinReportSummaryTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFinReportSummaryTaskResponse) SetHeaders(v map[string]*string) *CreateFinReportSummaryTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponse) SetStatusCode(v int32) *CreateFinReportSummaryTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFinReportSummaryTaskResponse) SetBody(v *CreateFinReportSummaryTaskResponseBody) *CreateFinReportSummaryTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateLibraryRequest struct {
 	// This parameter is required.
 	Description  *string                           `json:"description,omitempty" xml:"description,omitempty"`
@@ -990,6 +1190,137 @@ func (s *DeleteLibraryResponse) SetStatusCode(v int32) *DeleteLibraryResponse {
 }
 
 func (s *DeleteLibraryResponse) SetBody(v *DeleteLibraryResponseBody) *DeleteLibraryResponse {
+	s.Body = v
+	return s
+}
+
+type EvictTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17071319
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s EvictTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvictTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EvictTaskRequest) SetTaskId(v string) *EvictTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type EvictTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// example:
+	//
+	// 17071319
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 44BD277A-87F9-5310-8D63-3E6645F1DA85
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s EvictTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvictTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EvictTaskResponseBody) SetCost(v int64) *EvictTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *EvictTaskResponseBody) SetData(v string) *EvictTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *EvictTaskResponseBody) SetDataType(v string) *EvictTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *EvictTaskResponseBody) SetErrCode(v string) *EvictTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *EvictTaskResponseBody) SetMessage(v string) *EvictTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EvictTaskResponseBody) SetRequestId(v string) *EvictTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EvictTaskResponseBody) SetSuccess(v bool) *EvictTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *EvictTaskResponseBody) SetTime(v string) *EvictTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type EvictTaskResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EvictTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EvictTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvictTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EvictTaskResponse) SetHeaders(v map[string]*string) *EvictTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EvictTaskResponse) SetStatusCode(v int32) *EvictTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EvictTaskResponse) SetBody(v *EvictTaskResponseBody) *EvictTaskResponse {
 	s.Body = v
 	return s
 }
@@ -4172,6 +4503,443 @@ func (s *GetParseResultResponse) SetStatusCode(v int32) *GetParseResultResponse 
 }
 
 func (s *GetParseResultResponse) SetBody(v *GetParseResultResponseBody) *GetParseResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetSummaryTaskResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17071319
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetSummaryTaskResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTaskResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTaskResultRequest) SetTaskId(v string) *GetSummaryTaskResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetSummaryTaskResultResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                                `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *GetSummaryTaskResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 0bc13a9517168617617186457e401f
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GetSummaryTaskResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTaskResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetCost(v int64) *GetSummaryTaskResultResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetData(v *GetSummaryTaskResultResponseBodyData) *GetSummaryTaskResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetDataType(v string) *GetSummaryTaskResultResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetErrCode(v string) *GetSummaryTaskResultResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetMessage(v string) *GetSummaryTaskResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetRequestId(v string) *GetSummaryTaskResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetSuccess(v bool) *GetSummaryTaskResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBody) SetTime(v string) *GetSummaryTaskResultResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GetSummaryTaskResultResponseBodyData struct {
+	Choices []*GetSummaryTaskResultResponseBodyDataChoices `json:"choices,omitempty" xml:"choices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1726285125915
+	Created *int64 `json:"created,omitempty" xml:"created,omitempty"`
+	// example:
+	//
+	// 1202
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 0bc13a9517168617617186457e401f
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// 300
+	TotalTokens *int32                                     `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	Usage       *GetSummaryTaskResultResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetSummaryTaskResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTaskResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetChoices(v []*GetSummaryTaskResultResponseBodyDataChoices) *GetSummaryTaskResultResponseBodyData {
+	s.Choices = v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetCreated(v int64) *GetSummaryTaskResultResponseBodyData {
+	s.Created = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetId(v string) *GetSummaryTaskResultResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetModelId(v string) *GetSummaryTaskResultResponseBodyData {
+	s.ModelId = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetRequestId(v string) *GetSummaryTaskResultResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetTime(v string) *GetSummaryTaskResultResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetTotalTokens(v int32) *GetSummaryTaskResultResponseBodyData {
+	s.TotalTokens = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyData) SetUsage(v *GetSummaryTaskResultResponseBodyDataUsage) *GetSummaryTaskResultResponseBodyData {
+	s.Usage = v
+	return s
+}
+
+type GetSummaryTaskResultResponseBodyDataChoices struct {
+	// example:
+	//
+	// stop
+	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// example:
+	//
+	// 0
+	Index   *int32                                              `json:"index,omitempty" xml:"index,omitempty"`
+	Message *GetSummaryTaskResultResponseBodyDataChoicesMessage `json:"message,omitempty" xml:"message,omitempty" type:"Struct"`
+}
+
+func (s GetSummaryTaskResultResponseBodyDataChoices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTaskResultResponseBodyDataChoices) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataChoices) SetFinishReason(v string) *GetSummaryTaskResultResponseBodyDataChoices {
+	s.FinishReason = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataChoices) SetIndex(v int32) *GetSummaryTaskResultResponseBodyDataChoices {
+	s.Index = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataChoices) SetMessage(v *GetSummaryTaskResultResponseBodyDataChoicesMessage) *GetSummaryTaskResultResponseBodyDataChoices {
+	s.Message = v
+	return s
+}
+
+type GetSummaryTaskResultResponseBodyDataChoicesMessage struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// assistant
+	Role      *string                  `json:"role,omitempty" xml:"role,omitempty"`
+	ToolCalls []map[string]interface{} `json:"toolCalls,omitempty" xml:"toolCalls,omitempty" type:"Repeated"`
+}
+
+func (s GetSummaryTaskResultResponseBodyDataChoicesMessage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTaskResultResponseBodyDataChoicesMessage) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataChoicesMessage) SetContent(v string) *GetSummaryTaskResultResponseBodyDataChoicesMessage {
+	s.Content = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataChoicesMessage) SetRole(v string) *GetSummaryTaskResultResponseBodyDataChoicesMessage {
+	s.Role = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataChoicesMessage) SetToolCalls(v []map[string]interface{}) *GetSummaryTaskResultResponseBodyDataChoicesMessage {
+	s.ToolCalls = v
+	return s
+}
+
+type GetSummaryTaskResultResponseBodyDataUsage struct {
+	// example:
+	//
+	// 0
+	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	// example:
+	//
+	// 0
+	ImageTokens *int32 `json:"imageTokens,omitempty" xml:"imageTokens,omitempty"`
+	// example:
+	//
+	// 100
+	InputTokens *int32 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	OutputTokens *int32 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 300
+	TotalTokens *int32 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s GetSummaryTaskResultResponseBodyDataUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTaskResultResponseBodyDataUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataUsage) SetImageCount(v int32) *GetSummaryTaskResultResponseBodyDataUsage {
+	s.ImageCount = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataUsage) SetImageTokens(v int32) *GetSummaryTaskResultResponseBodyDataUsage {
+	s.ImageTokens = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataUsage) SetInputTokens(v int32) *GetSummaryTaskResultResponseBodyDataUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataUsage) SetOutputTokens(v int32) *GetSummaryTaskResultResponseBodyDataUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponseBodyDataUsage) SetTotalTokens(v int32) *GetSummaryTaskResultResponseBodyDataUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetSummaryTaskResultResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSummaryTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSummaryTaskResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSummaryTaskResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSummaryTaskResultResponse) SetHeaders(v map[string]*string) *GetSummaryTaskResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponse) SetStatusCode(v int32) *GetSummaryTaskResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSummaryTaskResultResponse) SetBody(v *GetSummaryTaskResultResponseBody) *GetSummaryTaskResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskStatusRequest struct {
+	// This parameter is required.
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusRequest) SetTaskId(v string) *GetTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTaskStatusResponseBody struct {
+	Cost      *int64  `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	DataType  *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	ErrCode   *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	Time      *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GetTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusResponseBody) SetCost(v int64) *GetTaskStatusResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetTaskStatusResponseBody) SetData(v string) *GetTaskStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetTaskStatusResponseBody) SetDataType(v string) *GetTaskStatusResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetTaskStatusResponseBody) SetErrCode(v string) *GetTaskStatusResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetTaskStatusResponseBody) SetMessage(v string) *GetTaskStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTaskStatusResponseBody) SetRequestId(v string) *GetTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskStatusResponseBody) SetSuccess(v bool) *GetTaskStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTaskStatusResponseBody) SetTime(v string) *GetTaskStatusResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GetTaskStatusResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusResponse) SetHeaders(v map[string]*string) *GetTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskStatusResponse) SetStatusCode(v int32) *GetTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskStatusResponse {
 	s.Body = v
 	return s
 }
@@ -7559,6 +8327,98 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 创建财报总结任务
+//
+// @param request - CreateFinReportSummaryTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFinReportSummaryTaskResponse
+func (client *Client) CreateFinReportSummaryTaskWithOptions(workspaceId *string, request *CreateFinReportSummaryTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFinReportSummaryTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["docId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableTable)) {
+		body["enableTable"] = request.EnableTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPage)) {
+		body["endPage"] = request.EndPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instruction)) {
+		body["instruction"] = request.Instruction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryId)) {
+		body["libraryId"] = request.LibraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPage)) {
+		body["startPage"] = request.StartPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		body["taskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFinReportSummaryTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/summary"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFinReportSummaryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建财报总结任务
+//
+// @param request - CreateFinReportSummaryTaskRequest
+//
+// @return CreateFinReportSummaryTaskResponse
+func (client *Client) CreateFinReportSummaryTask(workspaceId *string, request *CreateFinReportSummaryTaskRequest) (_result *CreateFinReportSummaryTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFinReportSummaryTaskResponse{}
+	_body, _err := client.CreateFinReportSummaryTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建文档库
 //
 // @param request - CreateLibraryRequest
@@ -7830,6 +8690,70 @@ func (client *Client) DeleteLibrary(workspaceId *string, request *DeleteLibraryR
 	headers := make(map[string]*string)
 	_result = &DeleteLibraryResponse{}
 	_body, _err := client.DeleteLibraryWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 中断任务
+//
+// @param request - EvictTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EvictTaskResponse
+func (client *Client) EvictTaskWithOptions(workspaceId *string, request *EvictTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EvictTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EvictTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/evict"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EvictTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 中断任务
+//
+// @param request - EvictTaskRequest
+//
+// @return EvictTaskResponse
+func (client *Client) EvictTask(workspaceId *string, request *EvictTaskRequest) (_result *EvictTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EvictTaskResponse{}
+	_body, _err := client.EvictTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8480,6 +9404,134 @@ func (client *Client) GetParseResult(workspaceId *string, request *GetParseResul
 	headers := make(map[string]*string)
 	_result = &GetParseResultResponse{}
 	_body, _err := client.GetParseResultWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取财报总结任务结果
+//
+// @param request - GetSummaryTaskResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSummaryTaskResultResponse
+func (client *Client) GetSummaryTaskResultWithOptions(workspaceId *string, request *GetSummaryTaskResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSummaryTaskResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSummaryTaskResult"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/summary/result"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSummaryTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取财报总结任务结果
+//
+// @param request - GetSummaryTaskResultRequest
+//
+// @return GetSummaryTaskResultResponse
+func (client *Client) GetSummaryTaskResult(workspaceId *string, request *GetSummaryTaskResultRequest) (_result *GetSummaryTaskResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSummaryTaskResultResponse{}
+	_body, _err := client.GetSummaryTaskResultWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取财报总结任务结果
+//
+// @param request - GetTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskStatusResponse
+func (client *Client) GetTaskStatusWithOptions(workspaceId *string, request *GetTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskStatus"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取财报总结任务结果
+//
+// @param request - GetTaskStatusRequest
+//
+// @return GetTaskStatusResponse
+func (client *Client) GetTaskStatus(workspaceId *string, request *GetTaskStatusRequest) (_result *GetTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTaskStatusResponse{}
+	_body, _err := client.GetTaskStatusWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
