@@ -45520,7 +45520,8 @@ type GetRemindResponseBodyData struct {
 	// example:
 	//
 	// OWNER
-	AlertUnit *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
+	AlertUnit  *string  `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
+	AllowNodes []*int64 `json:"AllowNodes,omitempty" xml:"AllowNodes,omitempty" type:"Repeated"`
 	// The baselines to which the custom alert rule is applied. This parameter is returned if the value of the RemindUnit parameter is BASELINE.
 	Baselines []*GetRemindResponseBodyDataBaselines `json:"Baselines,omitempty" xml:"Baselines,omitempty" type:"Repeated"`
 	// The workflows to which the custom alert rule is applied. This parameter is returned if the value of the RemindUnit parameter is BIZPROCESS.
@@ -45566,7 +45567,8 @@ type GetRemindResponseBodyData struct {
 	// The nodes to which the custom alert rule is applied. This parameter is returned if the value of the RemindUnit parameter is NODE.
 	Nodes []*GetRemindResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The workspaces to which the custom alert rule is applied. This parameter is returned if the value of the RemindUnit parameter is PROJECT.
-	Projects []*GetRemindResponseBodyDataProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	Projects  []*GetRemindResponseBodyDataProjects  `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	Receivers []*GetRemindResponseBodyDataReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
 	// The custom alert rule ID.
 	//
 	// example:
@@ -45626,6 +45628,11 @@ func (s *GetRemindResponseBodyData) SetAlertUnit(v string) *GetRemindResponseBod
 	return s
 }
 
+func (s *GetRemindResponseBodyData) SetAllowNodes(v []*int64) *GetRemindResponseBodyData {
+	s.AllowNodes = v
+	return s
+}
+
 func (s *GetRemindResponseBodyData) SetBaselines(v []*GetRemindResponseBodyDataBaselines) *GetRemindResponseBodyData {
 	s.Baselines = v
 	return s
@@ -45668,6 +45675,11 @@ func (s *GetRemindResponseBodyData) SetNodes(v []*GetRemindResponseBodyDataNodes
 
 func (s *GetRemindResponseBodyData) SetProjects(v []*GetRemindResponseBodyDataProjects) *GetRemindResponseBodyData {
 	s.Projects = v
+	return s
+}
+
+func (s *GetRemindResponseBodyData) SetReceivers(v []*GetRemindResponseBodyDataReceivers) *GetRemindResponseBodyData {
+	s.Receivers = v
 	return s
 }
 
@@ -45834,6 +45846,29 @@ func (s GetRemindResponseBodyDataProjects) GoString() string {
 
 func (s *GetRemindResponseBodyDataProjects) SetProjectId(v int64) *GetRemindResponseBodyDataProjects {
 	s.ProjectId = &v
+	return s
+}
+
+type GetRemindResponseBodyDataReceivers struct {
+	AlertTargets []*string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty" type:"Repeated"`
+	AlertUnit    *string   `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
+}
+
+func (s GetRemindResponseBodyDataReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRemindResponseBodyDataReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *GetRemindResponseBodyDataReceivers) SetAlertTargets(v []*string) *GetRemindResponseBodyDataReceivers {
+	s.AlertTargets = v
+	return s
+}
+
+func (s *GetRemindResponseBodyDataReceivers) SetAlertUnit(v string) *GetRemindResponseBodyDataReceivers {
+	s.AlertUnit = &v
 	return s
 }
 
