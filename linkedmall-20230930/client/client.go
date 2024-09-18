@@ -1668,6 +1668,10 @@ type OrderResult struct {
 	OrderAmount *int64 `json:"orderAmount,omitempty" xml:"orderAmount,omitempty"`
 	// example:
 	//
+	// 系统关单
+	OrderClosedReason *string `json:"orderClosedReason,omitempty" xml:"orderClosedReason,omitempty"`
+	// example:
+	//
 	// 6692****5457
 	OrderId       *string            `json:"orderId,omitempty" xml:"orderId,omitempty"`
 	OrderLineList []*OrderLineResult `json:"orderLineList,omitempty" xml:"orderLineList,omitempty" type:"Repeated"`
@@ -1706,6 +1710,11 @@ func (s *OrderResult) SetLogisticsStatus(v string) *OrderResult {
 
 func (s *OrderResult) SetOrderAmount(v int64) *OrderResult {
 	s.OrderAmount = &v
+	return s
+}
+
+func (s *OrderResult) SetOrderClosedReason(v string) *OrderResult {
+	s.OrderClosedReason = &v
 	return s
 }
 
