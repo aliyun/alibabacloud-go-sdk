@@ -1045,6 +1045,205 @@ func (s *SparkAttemptInfo) SetState(v string) *SparkAttemptInfo {
 	return s
 }
 
+type SparkBatchSQL struct {
+	// example:
+	//
+	// amv-xxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// schema is not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// query
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// 1723521767000
+	QueryEndTime *int64 `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
+	// example:
+	//
+	// amv-202401-xx
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// example:
+	//
+	// 1723521767000
+	QueryStartTime *int64 `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// example:
+	//
+	// RUNNING
+	QueryState *string `json:"QueryState,omitempty" xml:"QueryState,omitempty"`
+	// example:
+	//
+	// 1723521767000
+	QuerySubmissionTime *int64 `json:"QuerySubmissionTime,omitempty" xml:"QuerySubmissionTime,omitempty"`
+	// example:
+	//
+	// spark_rg
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// example:
+	//
+	// default
+	Schema     *string                   `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	Statements []*SparkBatchSQLStatement `json:"Statements,omitempty" xml:"Statements,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12222222
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s SparkBatchSQL) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SparkBatchSQL) GoString() string {
+	return s.String()
+}
+
+func (s *SparkBatchSQL) SetDBClusterId(v string) *SparkBatchSQL {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetErrMessage(v string) *SparkBatchSQL {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetQuery(v string) *SparkBatchSQL {
+	s.Query = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetQueryEndTime(v int64) *SparkBatchSQL {
+	s.QueryEndTime = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetQueryId(v string) *SparkBatchSQL {
+	s.QueryId = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetQueryStartTime(v int64) *SparkBatchSQL {
+	s.QueryStartTime = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetQueryState(v string) *SparkBatchSQL {
+	s.QueryState = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetQuerySubmissionTime(v int64) *SparkBatchSQL {
+	s.QuerySubmissionTime = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetResourceGroupName(v string) *SparkBatchSQL {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetSchema(v string) *SparkBatchSQL {
+	s.Schema = &v
+	return s
+}
+
+func (s *SparkBatchSQL) SetStatements(v []*SparkBatchSQLStatement) *SparkBatchSQL {
+	s.Statements = v
+	return s
+}
+
+func (s *SparkBatchSQL) SetUid(v int64) *SparkBatchSQL {
+	s.Uid = &v
+	return s
+}
+
+type SparkBatchSQLStatement struct {
+	// example:
+	//
+	// SELECT 100
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1723521767000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// table is not found
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// JSON格式执行结果集
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// oss://yourbucket/result.json
+	ResultUri *string `json:"ResultUri,omitempty" xml:"ResultUri,omitempty"`
+	// example:
+	//
+	// 1723521767000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// RUNNING
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// amv-20240711-stmt
+	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s SparkBatchSQLStatement) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SparkBatchSQLStatement) GoString() string {
+	return s.String()
+}
+
+func (s *SparkBatchSQLStatement) SetCode(v string) *SparkBatchSQLStatement {
+	s.Code = &v
+	return s
+}
+
+func (s *SparkBatchSQLStatement) SetEndTime(v int64) *SparkBatchSQLStatement {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SparkBatchSQLStatement) SetError(v string) *SparkBatchSQLStatement {
+	s.Error = &v
+	return s
+}
+
+func (s *SparkBatchSQLStatement) SetResult(v string) *SparkBatchSQLStatement {
+	s.Result = &v
+	return s
+}
+
+func (s *SparkBatchSQLStatement) SetResultUri(v string) *SparkBatchSQLStatement {
+	s.ResultUri = &v
+	return s
+}
+
+func (s *SparkBatchSQLStatement) SetStartTime(v int64) *SparkBatchSQLStatement {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SparkBatchSQLStatement) SetState(v string) *SparkBatchSQLStatement {
+	s.State = &v
+	return s
+}
+
+func (s *SparkBatchSQLStatement) SetStatementId(v string) *SparkBatchSQLStatement {
+	s.StatementId = &v
+	return s
+}
+
 type SparkOperatorInfo struct {
 	MetricValue  *int64 `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
 	OperatorName []byte `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
@@ -2540,7 +2739,7 @@ type CreateDBClusterRequest struct {
 	//
 	// 1880808684
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The amount of reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
 	//
@@ -2652,7 +2851,7 @@ type CreateDBClusterRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	SourceDbClusterId *string `json:"SourceDbClusterId,omitempty" xml:"SourceDbClusterId,omitempty"`
-	// The amount of reserved storage resources. Unit: AnalyticDB compute units (ACUs). Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The amount of reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
 	//
@@ -3004,7 +3203,7 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// 	- **Job**
 	//
-	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -3018,15 +3217,15 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// N/A
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum reserved computing resources. Unit: ACU.
+	// The maximum reserved computing resources.
 	//
-	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
+	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
 	//
-	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
+	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
 	//
 	// example:
 	//
-	// 48
+	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
 	// A reserved parameter.
 	//
@@ -3034,15 +3233,15 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// N/A
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum reserved computing resources. Unit: AnalyticDB Compute Units (ACUs).
+	// The minimum reserved computing resources.
 	//
-	// 	- When GroupType is set to Interactive, set this parameter to 16 ACUs.
+	// 	- When GroupType is set to Interactive, set this parameter to 16ACU.
 	//
-	// 	- When GroupType is set to Job, set this parameter to 0 ACUs.
+	// 	- When GroupType is set to Job, set this parameter to 0ACU.
 	//
 	// example:
 	//
-	// 0
+	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The region ID of the cluster.
 	//
@@ -3237,7 +3436,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// 	- **Job**
 	//
-	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -3251,15 +3450,15 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// N/A
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum reserved computing resources. Unit: ACU.
+	// The maximum reserved computing resources.
 	//
-	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
+	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
 	//
-	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
+	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
 	//
 	// example:
 	//
-	// 48
+	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
 	// A reserved parameter.
 	//
@@ -3267,15 +3466,15 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// N/A
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum reserved computing resources. Unit: AnalyticDB Compute Units (ACUs).
+	// The minimum reserved computing resources.
 	//
-	// 	- When GroupType is set to Interactive, set this parameter to 16 ACUs.
+	// 	- When GroupType is set to Interactive, set this parameter to 16ACU.
 	//
-	// 	- When GroupType is set to Job, set this parameter to 0 ACUs.
+	// 	- When GroupType is set to Job, set this parameter to 0ACU.
 	//
 	// example:
 	//
-	// 0
+	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The region ID of the cluster.
 	//
@@ -5241,7 +5440,7 @@ func (s *DeleteSparkTemplateResponse) SetBody(v *DeleteSparkTemplateResponseBody
 }
 
 type DeleteSparkTemplateFileRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -6182,7 +6381,7 @@ type DescribeAccountsRequest struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -6398,9 +6597,9 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 }
 
 type DescribeAdbMySqlColumnsRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a specific region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -6408,7 +6607,7 @@ type DescribeAdbMySqlColumnsRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
 	//
@@ -6626,7 +6825,7 @@ func (s *DescribeAdbMySqlColumnsResponse) SetBody(v *DescribeAdbMySqlColumnsResp
 }
 
 type DescribeAdbMySqlSchemasRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -6634,7 +6833,7 @@ type DescribeAdbMySqlSchemasRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
 	//
@@ -6753,7 +6952,7 @@ func (s *DescribeAdbMySqlSchemasResponse) SetBody(v *DescribeAdbMySqlSchemasResp
 }
 
 type DescribeAdbMySqlTablesRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -6761,7 +6960,7 @@ type DescribeAdbMySqlTablesRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
 	//
@@ -8510,7 +8709,7 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 7
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	// The cycle based on which backups are performed. If more than one day of the week are specified, the days of the week are separated by commas (,). Valid value:
+	// The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid value:
 	//
 	// 	- Monday
 	//
@@ -9414,7 +9613,7 @@ type DescribeClusterResourceDetailResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the cluster resource usage.
+	// The queried resource usage.
 	Data *DescribeClusterResourceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -9454,7 +9653,7 @@ type DescribeClusterResourceDetailResponseBodyData struct {
 	//
 	// 16ACU
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -9542,7 +9741,7 @@ type DescribeClusterResourceDetailResponseBodyDataResourceGroupList struct {
 	//
 	// 0
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACUs.
+	// The maximum amount of reserved computing resources.
 	//
 	// example:
 	//
@@ -9554,7 +9753,7 @@ type DescribeClusterResourceDetailResponseBodyDataResourceGroupList struct {
 	//
 	// 0
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: ACUs.
+	// The minimum amount of reserved computing resources.
 	//
 	// example:
 	//
@@ -13224,7 +13423,7 @@ func (s *DescribeDBClustersResponse) SetBody(v *DescribeDBClustersResponseBody) 
 }
 
 type DescribeDBResourceGroupRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -13246,7 +13445,7 @@ type DescribeDBResourceGroupRequest struct {
 	//
 	// 	- **Job**
 	//
-	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//
@@ -13297,7 +13496,7 @@ func (s *DescribeDBResourceGroupRequest) SetResourceOwnerAccount(v string) *Desc
 }
 
 type DescribeDBResourceGroupResponseBody struct {
-	// The queried resource group.
+	// The queried resource groups.
 	GroupsInfo []*DescribeDBResourceGroupResponseBodyGroupsInfo `json:"GroupsInfo,omitempty" xml:"GroupsInfo,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -13344,7 +13543,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// 2022-08-29T03:34:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The minimum amount of elastic computing resources. Unit: ACUs.
+	// The minimum amount of elastic computing resources.
 	//
 	// example:
 	//
@@ -13394,7 +13593,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// N/A
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACUs.
+	// The maximum amount of reserved computing resources.
 	//
 	// example:
 	//
@@ -13408,7 +13607,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// N/A
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
+	// The minimum amount of reserved computing resources.
 	//
 	// example:
 	//
@@ -15751,9 +15950,9 @@ type DescribeElasticPlansRequest struct {
 	ElasticPlanName *string `json:"ElasticPlanName,omitempty" xml:"ElasticPlanName,omitempty"`
 	// Specifies whether to query the scaling plans that are immediately enabled after the plans are created. Valid values:
 	//
-	// 	- true
+	// 	- **true**
 	//
-	// 	- false
+	// 	- **false**
 	//
 	// example:
 	//
@@ -15787,7 +15986,9 @@ type DescribeElasticPlansRequest struct {
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The type of the scaling plan. Valid values:
 	//
-	// EXECUTOR: the interactive resource group type, which specifies the computing resource type. WORKER: the EIU type.
+	// 	- **EXECUTOR**: the interactive resource group type, which specifies the computing resource type.
+	//
+	// 	- **WORKER**: the EIU type.
 	//
 	// example:
 	//
@@ -15903,9 +16104,9 @@ func (s *DescribeElasticPlansResponseBody) SetTotalCount(v int32) *DescribeElast
 type DescribeElasticPlansResponseBodyElasticPlans struct {
 	// Indicates whether **Proportional Default Scaling for EIUs*	- is enabled. Valid values:
 	//
-	// 	- true
+	// 	- **true**
 	//
-	// 	- false
+	// 	- **false**
 	//
 	// example:
 	//
@@ -15917,11 +16118,11 @@ type DescribeElasticPlansResponseBodyElasticPlans struct {
 	//
 	// test
 	ElasticPlanName *string `json:"ElasticPlanName,omitempty" xml:"ElasticPlanName,omitempty"`
-	// Indicates whether the scaling plan was immediately enabled after the plan is created. Valid values:
+	// Indicates whether the scaling plan is immediately enabled after the plan is created. Valid values:
 	//
-	// 	- true
+	// 	- **true**
 	//
-	// 	- false
+	// 	- **false**
 	//
 	// example:
 	//
@@ -15951,9 +16152,9 @@ type DescribeElasticPlansResponseBodyElasticPlans struct {
 	TargetSize *string `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
 	// The type of the scaling plan. Valid values:
 	//
-	// 	- EXECUTOR: interactive resource group.
+	// 	- **EXECUTOR**: the interactive resource group type, which specifies the computing resource type.
 	//
-	// 	- WORKER: EIU.
+	// 	- **WORKER**: the EIU type.
 	//
 	// example:
 	//
@@ -18115,7 +18316,7 @@ type DescribeSQLPatternsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The queried SQL pattern.
+	// The queried SQL patterns.
 	PatternDetails []*DescribeSQLPatternsResponseBodyPatternDetails `json:"PatternDetails,omitempty" xml:"PatternDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -18487,7 +18688,7 @@ func (s *DescribeSQLPatternsResponse) SetBody(v *DescribeSQLPatternsResponseBody
 }
 
 type DescribeSchemasRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -18570,7 +18771,7 @@ func (s *DescribeSchemasResponseBodyItems) SetSchema(v []*DescribeSchemasRespons
 }
 
 type DescribeSchemasResponseBodyItemsSchema struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -18632,9 +18833,9 @@ func (s *DescribeSchemasResponse) SetBody(v *DescribeSchemasResponseBody) *Descr
 }
 
 type DescribeSparkCodeLogRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -19993,7 +20194,7 @@ func (s *DescribeTableAccessCountResponse) SetBody(v *DescribeTableAccessCountRe
 }
 
 type DescribeTablesRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -20087,7 +20288,7 @@ func (s *DescribeTablesResponseBodyItems) SetTable(v []*DescribeTablesResponseBo
 }
 
 type DescribeTablesResponseBodyItemsTable struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -21290,7 +21491,7 @@ type GetSparkAppAttemptLogResponseBodyData struct {
 	//
 	// s202204132018hzprec1ac61a000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -21389,9 +21590,9 @@ type GetSparkAppInfoRequest struct {
 	//
 	// s202205201533hz1209892000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// example:
 	//
@@ -23091,7 +23292,7 @@ func (s *GetSparkTemplateFolderTreeResponse) SetBody(v *GetSparkTemplateFolderTr
 }
 
 type GetSparkTemplateFullTreeRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -25452,7 +25653,7 @@ func (s *ListSparkLogAnalyzeTasksResponse) SetBody(v *ListSparkLogAnalyzeTasksRe
 }
 
 type ListSparkTemplateFileIdsRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -26005,9 +26206,9 @@ type ModifyAuditLogConfigRequest struct {
 	//
 	// on
 	AuditLogStatus *string `json:"AuditLogStatus,omitempty" xml:"AuditLogStatus,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -26018,9 +26219,9 @@ type ModifyAuditLogConfigRequest struct {
 	EngineType   *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -26608,7 +26809,7 @@ func (s *ModifyClusterConnectionStringResponse) SetBody(v *ModifyClusterConnecti
 }
 
 type ModifyDBClusterRequest struct {
-	// The reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is approximately equal to 1 core and 4 GB memory.
+	// The reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
 	//
@@ -26638,6 +26839,10 @@ type ModifyDBClusterRequest struct {
 	EnableDefaultResourcePool *bool   `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// LegacyForm
+	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
@@ -26649,7 +26854,7 @@ type ModifyDBClusterRequest struct {
 	ReservedNodeCount    *int32  `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
 	ReservedNodeSize     *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The reserved storage resources. Unit: ACUs. Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is approximately equal to 1 core and 4 GB memory.
+	// The reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
 	//
@@ -26689,6 +26894,11 @@ func (s *ModifyDBClusterRequest) SetOwnerAccount(v string) *ModifyDBClusterReque
 
 func (s *ModifyDBClusterRequest) SetOwnerId(v int64) *ModifyDBClusterRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterRequest) SetProductForm(v string) *ModifyDBClusterRequest {
+	s.ProductForm = &v
 	return s
 }
 
@@ -27034,11 +27244,11 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// N/A
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACU.
+	// The maximum amount of reserved computing resources.
 	//
-	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
+	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
 	//
-	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
+	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
 	//
 	// example:
 	//
@@ -27050,7 +27260,7 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// N/A
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
+	// The minimum amount of reserved computing resources.
 	//
 	// 	- If the GroupType parameter is set to Interactive, set the value to 16ACU.
 	//
@@ -27251,11 +27461,11 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// N/A
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACU.
+	// The maximum amount of reserved computing resources.
 	//
-	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
+	// 	- If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
 	//
-	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
+	// 	- If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
 	//
 	// example:
 	//
@@ -27267,7 +27477,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// N/A
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
+	// The minimum amount of reserved computing resources.
 	//
 	// 	- If the GroupType parameter is set to Interactive, set the value to 16ACU.
 	//
@@ -27560,9 +27770,9 @@ func (s *ModifyElasticPlanResponse) SetBody(v *ModifyElasticPlanResponseBody) *M
 }
 
 type ModifyPerformanceViewRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -27761,9 +27971,9 @@ func (s *ModifyPerformanceViewRequestViewDetailCategoriesKeys) SetSelected(v boo
 }
 
 type ModifyPerformanceViewShrinkRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -31346,11 +31556,11 @@ func (client *Client) DeleteSparkTemplate(request *DeleteSparkTemplateRequest) (
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - DeleteSparkTemplateFileRequest
 //
@@ -31400,11 +31610,11 @@ func (client *Client) DeleteSparkTemplateFileWithOptions(request *DeleteSparkTem
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - DeleteSparkTemplateFileRequest
 //
@@ -31774,7 +31984,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the information about table columns for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -31834,7 +32044,7 @@ func (client *Client) DescribeAdbMySqlColumnsWithOptions(request *DescribeAdbMyS
 
 // Summary:
 //
-// Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the information about table columns for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -31858,7 +32068,7 @@ func (client *Client) DescribeAdbMySqlColumns(request *DescribeAdbMySqlColumnsRe
 
 // Summary:
 //
-// Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries a list of databases for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -31910,7 +32120,7 @@ func (client *Client) DescribeAdbMySqlSchemasWithOptions(request *DescribeAdbMyS
 
 // Summary:
 //
-// Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries a list of databases for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -31934,7 +32144,7 @@ func (client *Client) DescribeAdbMySqlSchemas(request *DescribeAdbMySqlSchemasRe
 
 // Summary:
 //
-// Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries a list of tables for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -31990,7 +32200,7 @@ func (client *Client) DescribeAdbMySqlTablesWithOptions(request *DescribeAdbMySq
 
 // Summary:
 //
-// Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries a list of tables for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -32766,11 +32976,11 @@ func (client *Client) DescribeClusterNetInfo(request *DescribeClusterNetInfoRequ
 
 // Summary:
 //
-// 获取集群资源统计
+// Queries the information about resource usage of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeClusterResourceDetailRequest
 //
@@ -32812,11 +33022,11 @@ func (client *Client) DescribeClusterResourceDetailWithOptions(request *Describe
 
 // Summary:
 //
-// 获取集群资源统计
+// Queries the information about resource usage of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeClusterResourceDetailRequest
 //
@@ -35412,6 +35622,10 @@ func (client *Client) DescribeSqlPattern(request *DescribeSqlPatternRequest) (_r
 //
 // Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+//
 // @param request - DescribeStorageResourceUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -35461,6 +35675,10 @@ func (client *Client) DescribeStorageResourceUsageWithOptions(request *DescribeS
 // Summary:
 //
 // Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - DescribeStorageResourceUsageRequest
 //
@@ -36222,11 +36440,11 @@ func (client *Client) GetDatabaseObjects(request *GetDatabaseObjectsRequest) (_r
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkAppAttemptLogRequest
 //
@@ -36286,11 +36504,11 @@ func (client *Client) GetSparkAppAttemptLogWithOptions(request *GetSparkAppAttem
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkAppAttemptLogRequest
 //
@@ -37198,11 +37416,11 @@ func (client *Client) GetSparkTemplateFolderTree(request *GetSparkTemplateFolder
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkTemplateFullTreeRequest
 //
@@ -37248,11 +37466,11 @@ func (client *Client) GetSparkTemplateFullTreeWithOptions(request *GetSparkTempl
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkTemplateFullTreeRequest
 //
@@ -38292,11 +38510,11 @@ func (client *Client) ListSparkLogAnalyzeTasks(request *ListSparkLogAnalyzeTasks
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - ListSparkTemplateFileIdsRequest
 //
@@ -38342,11 +38560,11 @@ func (client *Client) ListSparkTemplateFileIdsWithOptions(request *ListSparkTemp
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - ListSparkTemplateFileIdsRequest
 //
@@ -39009,6 +39227,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductForm)) {
+		query["ProductForm"] = request.ProductForm
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -39868,11 +40090,11 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - SetSparkAppLogRootPathRequest
 //
@@ -39926,11 +40148,11 @@ func (client *Client) SetSparkAppLogRootPathWithOptions(request *SetSparkAppLogR
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - SetSparkAppLogRootPathRequest
 //
