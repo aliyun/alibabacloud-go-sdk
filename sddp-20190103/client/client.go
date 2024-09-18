@@ -9984,7 +9984,8 @@ type DescribeInstancesResponseBodyItems struct {
 	// example:
 	//
 	// 1637622793000
-	LastFinishTime *int64 `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
+	LastFinishTime *int64  `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
+	MemberAliUid   *string `json:"MemberAliUid,omitempty" xml:"MemberAliUid,omitempty"`
 	// A list of tags.
 	ModelTags []*DescribeInstancesResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	// The name of the data asset.
@@ -10132,6 +10133,11 @@ func (s *DescribeInstancesResponseBodyItems) SetLabelsec(v bool) *DescribeInstan
 
 func (s *DescribeInstancesResponseBodyItems) SetLastFinishTime(v int64) *DescribeInstancesResponseBodyItems {
 	s.LastFinishTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetMemberAliUid(v string) *DescribeInstancesResponseBodyItems {
+	s.MemberAliUid = &v
 	return s
 }
 
@@ -10666,20 +10672,26 @@ type DescribeOssObjectDetailV2ResponseBodyOssObjectDetail struct {
 	// example:
 	//
 	// Excel file
-	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	CategoryName     *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	FileCategoryName *string `json:"FileCategoryName,omitempty" xml:"FileCategoryName,omitempty"`
+	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModelTagIds      *string `json:"ModelTagIds,omitempty" xml:"ModelTagIds,omitempty"`
 	// example:
 	//
 	// obj_id
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObjectAcl *string `json:"ObjectAcl,omitempty" xml:"ObjectAcl,omitempty"`
 	// example:
 	//
 	// cn-zhangjiakou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RiskLevelId *int32  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	// example:
 	//
 	// S1
 	RiskLevelName *string                                                         `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
 	RuleList      []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	Size          *int64                                                          `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) String() string {
@@ -10700,13 +10712,38 @@ func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetCategoryName(v
 	return s
 }
 
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetFileCategoryName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.FileCategoryName = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetId(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetModelTagIds(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.ModelTagIds = &v
+	return s
+}
+
 func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetName(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
 	s.Name = &v
 	return s
 }
 
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetObjectAcl(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.ObjectAcl = &v
+	return s
+}
+
 func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetRegionId(v string) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetRiskLevelId(v int32) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.RiskLevelId = &v
 	return s
 }
 
@@ -10717,6 +10754,11 @@ func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetRiskLevelName(
 
 func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetRuleList(v []*DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
 	s.RuleList = v
+	return s
+}
+
+func (s *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail) SetSize(v int64) *DescribeOssObjectDetailV2ResponseBodyOssObjectDetail {
+	s.Size = &v
 	return s
 }
 
