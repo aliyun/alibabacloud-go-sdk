@@ -184,7 +184,8 @@ type AddFileRequest struct {
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
-	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	Parser *string   `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s AddFileRequest) String() string {
@@ -207,6 +208,61 @@ func (s *AddFileRequest) SetLeaseId(v string) *AddFileRequest {
 
 func (s *AddFileRequest) SetParser(v string) *AddFileRequest {
 	s.Parser = &v
+	return s
+}
+
+func (s *AddFileRequest) SetTags(v []*string) *AddFileRequest {
+	s.Tags = v
+	return s
+}
+
+type AddFileShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 68abd1dea7b6404d8f7d7b9f7fbd332d.1716698936847
+	LeaseId *string `json:"LeaseId,omitempty" xml:"LeaseId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DASHSCOPE_DOCMIND
+	Parser     *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s AddFileShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFileShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddFileShrinkRequest) SetCategoryId(v string) *AddFileShrinkRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *AddFileShrinkRequest) SetLeaseId(v string) *AddFileShrinkRequest {
+	s.LeaseId = &v
+	return s
+}
+
+func (s *AddFileShrinkRequest) SetParser(v string) *AddFileShrinkRequest {
+	s.Parser = &v
+	return s
+}
+
+func (s *AddFileShrinkRequest) SetTagsShrink(v string) *AddFileShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
@@ -2368,7 +2424,8 @@ type DescribeFileResponseBodyData struct {
 	// example:
 	//
 	// PARSE_SUCCESS
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFileResponseBodyData) String() string {
@@ -2416,6 +2473,11 @@ func (s *DescribeFileResponseBodyData) SetSizeInBytes(v int64) *DescribeFileResp
 
 func (s *DescribeFileResponseBodyData) SetStatus(v string) *DescribeFileResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeFileResponseBodyData) SetTags(v []*string) *DescribeFileResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -3813,7 +3875,8 @@ type ListFileResponseBodyDataFileList struct {
 	// example:
 	//
 	// 200
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListFileResponseBodyDataFileList) String() string {
@@ -3861,6 +3924,11 @@ func (s *ListFileResponseBodyDataFileList) SetSizeInBytes(v int64) *ListFileResp
 
 func (s *ListFileResponseBodyDataFileList) SetStatus(v string) *ListFileResponseBodyDataFileList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetTags(v []*string) *ListFileResponseBodyDataFileList {
+	s.Tags = v
 	return s
 }
 
@@ -6552,18 +6620,24 @@ func (client *Client) AddCategory(WorkspaceId *string, request *AddCategoryReque
 //
 // 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
 //
-// @param request - AddFileRequest
+// @param tmpReq - AddFileRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddFileResponse
-func (client *Client) AddFileWithOptions(WorkspaceId *string, request *AddFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddFileResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddFileResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &AddFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
 		body["CategoryId"] = request.CategoryId
@@ -6575,6 +6649,10 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, request *AddFileRe
 
 	if !tea.BoolValue(util.IsUnset(request.Parser)) {
 		body["Parser"] = request.Parser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
