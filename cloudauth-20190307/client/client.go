@@ -1518,9 +1518,13 @@ type CredentialVerifyRequest struct {
 	// example:
 	//
 	// 1
-	IsOCR      *string `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
-	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	IsOCR          *string                                  `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
+	MerchantDetail []*CredentialVerifyRequestMerchantDetail `json:"MerchantDetail,omitempty" xml:"MerchantDetail,omitempty" type:"Repeated"`
+	MerchantId     *string                                  `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
+	ProductCode    *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Prompt         *string                                  `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	PromptModel    *string                                  `json:"PromptModel,omitempty" xml:"PromptModel,omitempty"`
+	UserName       *string                                  `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CredentialVerifyRequest) String() string {
@@ -1571,12 +1575,174 @@ func (s *CredentialVerifyRequest) SetIsOCR(v string) *CredentialVerifyRequest {
 	return s
 }
 
+func (s *CredentialVerifyRequest) SetMerchantDetail(v []*CredentialVerifyRequestMerchantDetail) *CredentialVerifyRequest {
+	s.MerchantDetail = v
+	return s
+}
+
 func (s *CredentialVerifyRequest) SetMerchantId(v string) *CredentialVerifyRequest {
 	s.MerchantId = &v
 	return s
 }
 
+func (s *CredentialVerifyRequest) SetProductCode(v string) *CredentialVerifyRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetPrompt(v string) *CredentialVerifyRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetPromptModel(v string) *CredentialVerifyRequest {
+	s.PromptModel = &v
+	return s
+}
+
 func (s *CredentialVerifyRequest) SetUserName(v string) *CredentialVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+type CredentialVerifyRequestMerchantDetail struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CredentialVerifyRequestMerchantDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyRequestMerchantDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyRequestMerchantDetail) SetKey(v string) *CredentialVerifyRequestMerchantDetail {
+	s.Key = &v
+	return s
+}
+
+func (s *CredentialVerifyRequestMerchantDetail) SetValue(v string) *CredentialVerifyRequestMerchantDetail {
+	s.Value = &v
+	return s
+}
+
+type CredentialVerifyShrinkRequest struct {
+	// example:
+	//
+	// 4601*****
+	CertNum *string `json:"CertNum,omitempty" xml:"CertNum,omitempty"`
+	// example:
+	//
+	// 0104
+	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	// example:
+	//
+	// 01
+	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	// example:
+	//
+	// 429001********8211
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// example:
+	//
+	// base64
+	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
+	// example:
+	//
+	// http://marry.momocdn.com/avatar/3B/B6/3BB6527E-7467-926E-1048-B43614F20CC420230803_L.jpg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// 0
+	IsCheck *string `json:"IsCheck,omitempty" xml:"IsCheck,omitempty"`
+	// example:
+	//
+	// 1
+	IsOCR                *string `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
+	MerchantDetailShrink *string `json:"MerchantDetail,omitempty" xml:"MerchantDetail,omitempty"`
+	MerchantId           *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
+	ProductCode          *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Prompt               *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	PromptModel          *string `json:"PromptModel,omitempty" xml:"PromptModel,omitempty"`
+	UserName             *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CredentialVerifyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyShrinkRequest) SetCertNum(v string) *CredentialVerifyShrinkRequest {
+	s.CertNum = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetCredName(v string) *CredentialVerifyShrinkRequest {
+	s.CredName = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetCredType(v string) *CredentialVerifyShrinkRequest {
+	s.CredType = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetIdentifyNum(v string) *CredentialVerifyShrinkRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetImageContext(v string) *CredentialVerifyShrinkRequest {
+	s.ImageContext = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetImageUrl(v string) *CredentialVerifyShrinkRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetIsCheck(v string) *CredentialVerifyShrinkRequest {
+	s.IsCheck = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetIsOCR(v string) *CredentialVerifyShrinkRequest {
+	s.IsOCR = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetMerchantDetailShrink(v string) *CredentialVerifyShrinkRequest {
+	s.MerchantDetailShrink = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetMerchantId(v string) *CredentialVerifyShrinkRequest {
+	s.MerchantId = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetProductCode(v string) *CredentialVerifyShrinkRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetPrompt(v string) *CredentialVerifyShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetPromptModel(v string) *CredentialVerifyShrinkRequest {
+	s.PromptModel = &v
+	return s
+}
+
+func (s *CredentialVerifyShrinkRequest) SetUserName(v string) *CredentialVerifyShrinkRequest {
 	s.UserName = &v
 	return s
 }
@@ -1644,7 +1810,8 @@ type CredentialVerifyResponseBodyResultObject struct {
 	// example:
 	//
 	// *
-	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	VerifyResult *string                                           `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	VlResult     *CredentialVerifyResponseBodyResultObjectVlResult `json:"VlResult,omitempty" xml:"VlResult,omitempty" type:"Struct"`
 }
 
 func (s CredentialVerifyResponseBodyResultObject) String() string {
@@ -1687,6 +1854,34 @@ func (s *CredentialVerifyResponseBodyResultObject) SetVerifyDetail(v string) *Cr
 
 func (s *CredentialVerifyResponseBodyResultObject) SetVerifyResult(v string) *CredentialVerifyResponseBodyResultObject {
 	s.VerifyResult = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetVlResult(v *CredentialVerifyResponseBodyResultObjectVlResult) *CredentialVerifyResponseBodyResultObject {
+	s.VlResult = v
+	return s
+}
+
+type CredentialVerifyResponseBodyResultObjectVlResult struct {
+	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	VlContent map[string]interface{} `json:"VlContent,omitempty" xml:"VlContent,omitempty"`
+}
+
+func (s CredentialVerifyResponseBodyResultObjectVlResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyResponseBodyResultObjectVlResult) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyResponseBodyResultObjectVlResult) SetSuccess(v bool) *CredentialVerifyResponseBodyResultObjectVlResult {
+	s.Success = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBodyResultObjectVlResult) SetVlContent(v map[string]interface{}) *CredentialVerifyResponseBodyResultObjectVlResult {
+	s.VlContent = v
 	return s
 }
 
@@ -8000,16 +8195,22 @@ func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest) (
 //
 // 凭证核验
 //
-// @param request - CredentialVerifyRequest
+// @param tmpReq - CredentialVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CredentialVerifyResponse
-func (client *Client) CredentialVerifyWithOptions(request *CredentialVerifyRequest, runtime *util.RuntimeOptions) (_result *CredentialVerifyResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CredentialVerifyWithOptions(tmpReq *CredentialVerifyRequest, runtime *util.RuntimeOptions) (_result *CredentialVerifyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CredentialVerifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MerchantDetail)) {
+		request.MerchantDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MerchantDetail, tea.String("MerchantDetail"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CertNum)) {
 		query["CertNum"] = request.CertNum
@@ -8039,8 +8240,24 @@ func (client *Client) CredentialVerifyWithOptions(request *CredentialVerifyReque
 		query["IsOCR"] = request.IsOCR
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MerchantDetailShrink)) {
+		query["MerchantDetail"] = request.MerchantDetailShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MerchantId)) {
 		query["MerchantId"] = request.MerchantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromptModel)) {
+		query["PromptModel"] = request.PromptModel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
