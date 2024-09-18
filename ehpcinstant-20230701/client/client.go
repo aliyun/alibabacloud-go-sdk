@@ -362,7 +362,8 @@ func (s *CreateJobRequestDeploymentPolicy) SetNetwork(v *CreateJobRequestDeploym
 }
 
 type CreateJobRequestDeploymentPolicyNetwork struct {
-	Vswitch []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
+	EnableExternalIpAddress *bool     `json:"EnableExternalIpAddress,omitempty" xml:"EnableExternalIpAddress,omitempty"`
+	Vswitch                 []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
 }
 
 func (s CreateJobRequestDeploymentPolicyNetwork) String() string {
@@ -371,6 +372,11 @@ func (s CreateJobRequestDeploymentPolicyNetwork) String() string {
 
 func (s CreateJobRequestDeploymentPolicyNetwork) GoString() string {
 	return s.String()
+}
+
+func (s *CreateJobRequestDeploymentPolicyNetwork) SetEnableExternalIpAddress(v bool) *CreateJobRequestDeploymentPolicyNetwork {
+	s.EnableExternalIpAddress = &v
+	return s
 }
 
 func (s *CreateJobRequestDeploymentPolicyNetwork) SetVswitch(v []*string) *CreateJobRequestDeploymentPolicyNetwork {
@@ -1853,7 +1859,8 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetNetwork(v *GetJobResponse
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicyNetwork struct {
-	Vswitch []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
+	EnableExternalIpAddress *bool     `json:"EnableExternalIpAddress,omitempty" xml:"EnableExternalIpAddress,omitempty"`
+	Vswitch                 []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfoDeploymentPolicyNetwork) String() string {
@@ -1862,6 +1869,11 @@ func (s GetJobResponseBodyJobInfoDeploymentPolicyNetwork) String() string {
 
 func (s GetJobResponseBodyJobInfoDeploymentPolicyNetwork) GoString() string {
 	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) SetEnableExternalIpAddress(v bool) *GetJobResponseBodyJobInfoDeploymentPolicyNetwork {
+	s.EnableExternalIpAddress = &v
+	return s
 }
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) SetVswitch(v []*string) *GetJobResponseBodyJobInfoDeploymentPolicyNetwork {
@@ -2987,10 +2999,11 @@ type ListJobExecutorsResponseBodyExecutors struct {
 	// example:
 	//
 	// 2024-02-20 10:04:18
-	EndTime    *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecutorId *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	HostName   []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	IpAddress  []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	EndTime           *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecutorId        *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
+	HostName          []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	IpAddress         []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Running
@@ -3026,6 +3039,11 @@ func (s *ListJobExecutorsResponseBodyExecutors) SetEndTime(v string) *ListJobExe
 
 func (s *ListJobExecutorsResponseBodyExecutors) SetExecutorId(v string) *ListJobExecutorsResponseBodyExecutors {
 	s.ExecutorId = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetExternalIpAddress(v []*string) *ListJobExecutorsResponseBodyExecutors {
+	s.ExternalIpAddress = v
 	return s
 }
 
