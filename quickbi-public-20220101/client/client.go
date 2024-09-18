@@ -10779,6 +10779,10 @@ type QueryDatasetInfoResponseBodyResultDimensionList struct {
 	//
 	// city
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
+	// example:
+	//
+	// hhhh
+	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
 	// The type of the dimension. Valid values:
 	//
 	// 	- standard_dimension: General Dimension
@@ -10841,6 +10845,11 @@ func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetExpression(v string
 
 func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetFactColumn(v string) *QueryDatasetInfoResponseBodyResultDimensionList {
 	s.FactColumn = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetFieldDescription(v string) *QueryDatasetInfoResponseBodyResultDimensionList {
+	s.FieldDescription = &v
 	return s
 }
 
@@ -10954,6 +10963,10 @@ type QueryDatasetInfoResponseBodyResultMeasureList struct {
 	//
 	// profit_amt
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
+	// example:
+	//
+	// hhhh
+	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
 	// An expression that calculates a measure; valid only for calculated measures.
 	//
 	// example:
@@ -10999,6 +11012,11 @@ func (s *QueryDatasetInfoResponseBodyResultMeasureList) SetExpression(v string) 
 
 func (s *QueryDatasetInfoResponseBodyResultMeasureList) SetFactColumn(v string) *QueryDatasetInfoResponseBodyResultMeasureList {
 	s.FactColumn = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultMeasureList) SetFieldDescription(v string) *QueryDatasetInfoResponseBodyResultMeasureList {
+	s.FieldDescription = &v
 	return s
 }
 
@@ -19352,6 +19370,10 @@ func (client *Client) AddUserTagMeta(request *AddUserTagMetaRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加成员到指定工作空间。
+//
 // @param request - AddUserToWorkspaceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -19398,6 +19420,10 @@ func (client *Client) AddUserToWorkspaceWithOptions(request *AddUserToWorkspaceR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加成员到指定工作空间。
+//
 // @param request - AddUserToWorkspaceRequest
 //
 // @return AddUserToWorkspaceResponse
@@ -19412,6 +19438,10 @@ func (client *Client) AddUserToWorkspace(request *AddUserToWorkspaceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量添加成员到工作空间。
+//
 // @param request - AddWorkspaceUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -19458,6 +19488,10 @@ func (client *Client) AddWorkspaceUsersWithOptions(request *AddWorkspaceUsersReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量添加成员到工作空间。
+//
 // @param request - AddWorkspaceUsersRequest
 //
 // @return AddWorkspaceUsersResponse
@@ -19474,7 +19508,7 @@ func (client *Client) AddWorkspaceUsers(request *AddWorkspaceUsersRequest) (_res
 
 // Summary:
 //
-// 触发数据集抽取加速
+// 触发数据集抽取加速。
 //
 // @param request - AllotDatasetAccelerationTaskRequest
 //
@@ -19516,7 +19550,7 @@ func (client *Client) AllotDatasetAccelerationTaskWithOptions(request *AllotData
 
 // Summary:
 //
-// 触发数据集抽取加速
+// 触发数据集抽取加速。
 //
 // @param request - AllotDatasetAccelerationTaskRequest
 //
@@ -19610,7 +19644,7 @@ func (client *Client) AuthorizeMenu(request *AuthorizeMenuRequest) (_result *Aut
 
 // Summary:
 //
-// 批量添加飞书用户
+// 批量添加飞书用户。
 //
 // @param request - BatchAddFeishuUsersRequest
 //
@@ -19668,7 +19702,7 @@ func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUser
 
 // Summary:
 //
-// 批量添加飞书用户
+// 批量添加飞书用户。
 //
 // @param request - BatchAddFeishuUsersRequest
 //
@@ -19684,6 +19718,10 @@ func (client *Client) BatchAddFeishuUsers(request *BatchAddFeishuUsersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据门户菜单ID，取消指定用户、用户组的授权记录。
+//
 // @param request - CancelAuthorizationMenuRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -19734,6 +19772,10 @@ func (client *Client) CancelAuthorizationMenuWithOptions(request *CancelAuthoriz
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据门户菜单ID，取消指定用户、用户组的授权记录。
+//
 // @param request - CancelAuthorizationMenuRequest
 //
 // @return CancelAuthorizationMenuResponse
@@ -20014,7 +20056,7 @@ func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *Che
 
 // Summary:
 //
-// 生成三方嵌入的ticket
+// 生成三方嵌入的ticket。
 //
 // @param request - CreateTicketRequest
 //
@@ -20088,7 +20130,7 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, runt
 
 // Summary:
 //
-// 生成三方嵌入的ticket
+// 生成三方嵌入的ticket。
 //
 // @param request - CreateTicketRequest
 //
@@ -20106,7 +20148,7 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// 生成智能小Q嵌入ticket
+// 生成智能小Q嵌入ticket。
 //
 // @param request - CreateTicket4CopilotRequest
 //
@@ -20168,7 +20210,7 @@ func (client *Client) CreateTicket4CopilotWithOptions(request *CreateTicket4Copi
 
 // Summary:
 //
-// 生成智能小Q嵌入ticket
+// 生成智能小Q嵌入ticket。
 //
 // @param request - CreateTicket4CopilotRequest
 //
@@ -20258,7 +20300,7 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
-// 查询引用指定数据集下的作品信息
+// 查询引用指定数据集下的作品信息。
 //
 // @param request - DataSetBloodRequest
 //
@@ -20308,7 +20350,7 @@ func (client *Client) DataSetBloodWithOptions(request *DataSetBloodRequest, runt
 
 // Summary:
 //
-// 查询引用指定数据集下的作品信息
+// 查询引用指定数据集下的作品信息。
 //
 // @param request - DataSetBloodRequest
 //
@@ -20326,7 +20368,7 @@ func (client *Client) DataSetBlood(request *DataSetBloodRequest) (_result *DataS
 
 // Summary:
 //
-// 查询引用指定数据源下的数据集信息
+// 查询引用指定数据源下的数据集信息。
 //
 // @param request - DataSourceBloodRequest
 //
@@ -20368,7 +20410,7 @@ func (client *Client) DataSourceBloodWithOptions(request *DataSourceBloodRequest
 
 // Summary:
 //
-// 查询引用指定数据源下的数据集信息
+// 查询引用指定数据源下的数据集信息。
 //
 // @param request - DataSourceBloodRequest
 //
@@ -20712,6 +20754,10 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定工作空间的成员。
+//
 // @param request - DeleteUserFromWorkspaceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -20754,6 +20800,10 @@ func (client *Client) DeleteUserFromWorkspaceWithOptions(request *DeleteUserFrom
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定工作空间的成员。
+//
 // @param request - DeleteUserFromWorkspaceRequest
 //
 // @return DeleteUserFromWorkspaceResponse
@@ -21086,7 +21136,7 @@ func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_resul
 
 // Summary:
 //
-// 概述
+// 查询API数据源列表。
 //
 // @param request - ListApiDatasourceRequest
 //
@@ -21140,7 +21190,7 @@ func (client *Client) ListApiDatasourceWithOptions(request *ListApiDatasourceReq
 
 // Summary:
 //
-// 概述
+// 查询API数据源列表。
 //
 // @param request - ListApiDatasourceRequest
 //
@@ -21348,6 +21398,10 @@ func (client *Client) ListCubeDataLevelPermissionConfig(request *ListCubeDataLev
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据行列权限种类，获取数据集行列权限的白名单列表。
+//
 // @param request - ListDataLevelPermissionWhiteListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -21390,6 +21444,10 @@ func (client *Client) ListDataLevelPermissionWhiteListWithOptions(request *ListD
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据行列权限种类，获取数据集行列权限的白名单列表。
+//
 // @param request - ListDataLevelPermissionWhiteListRequest
 //
 // @return ListDataLevelPermissionWhiteListResponse
@@ -21406,7 +21464,7 @@ func (client *Client) ListDataLevelPermissionWhiteList(request *ListDataLevelPer
 
 // Summary:
 //
-// 概述
+// 获取指定用户在首页看板中展示的收藏作品列表。
 //
 // @param request - ListFavoriteReportsRequest
 //
@@ -21460,7 +21518,7 @@ func (client *Client) ListFavoriteReportsWithOptions(request *ListFavoriteReport
 
 // Summary:
 //
-// 概述
+// 获取指定用户在首页看板中展示的收藏作品列表。
 //
 // @param request - ListFavoriteReportsRequest
 //
@@ -21478,7 +21536,7 @@ func (client *Client) ListFavoriteReports(request *ListFavoriteReportsRequest) (
 
 // Summary:
 //
-// 获取指定组织角色下的用户列表
+// 获取指定组织角色下的用户列表。
 //
 // @param request - ListOrganizationRoleUsersRequest
 //
@@ -21532,7 +21590,7 @@ func (client *Client) ListOrganizationRoleUsersWithOptions(request *ListOrganiza
 
 // Summary:
 //
-// 获取指定组织角色下的用户列表
+// 获取指定组织角色下的用户列表。
 //
 // @param request - ListOrganizationRoleUsersRequest
 //
@@ -21550,7 +21608,7 @@ func (client *Client) ListOrganizationRoleUsers(request *ListOrganizationRoleUse
 
 // Summary:
 //
-// 获取组织级别自定义角色列表
+// 获取组织级别自定义角色列表。
 //
 // @param request - ListOrganizationRolesRequest
 //
@@ -21581,7 +21639,7 @@ func (client *Client) ListOrganizationRolesWithOptions(runtime *util.RuntimeOpti
 
 // Summary:
 //
-// 获取组织级别自定义角色列表
+// 获取组织级别自定义角色列表。
 //
 // @return ListOrganizationRolesResponse
 func (client *Client) ListOrganizationRoles() (_result *ListOrganizationRolesResponse, _err error) {
@@ -21721,7 +21779,7 @@ func (client *Client) ListPortalMenus(request *ListPortalMenusRequest) (_result 
 
 // Summary:
 //
-// 获取首页看板常看和足迹列表
+// 获取首页看板常看和足迹列表。
 //
 // @param request - ListRecentViewReportsRequest
 //
@@ -21783,7 +21841,7 @@ func (client *Client) ListRecentViewReportsWithOptions(request *ListRecentViewRe
 
 // Summary:
 //
-// 获取首页看板常看和足迹列表
+// 获取首页看板常看和足迹列表。
 //
 // @param request - ListRecentViewReportsRequest
 //
@@ -21801,7 +21859,7 @@ func (client *Client) ListRecentViewReports(request *ListRecentViewReportsReques
 
 // Summary:
 //
-// 概述
+// 获取指定用户在首页看板中展示的被授权的作品列表。
 //
 // @param request - ListSharedReportsRequest
 //
@@ -21855,7 +21913,7 @@ func (client *Client) ListSharedReportsWithOptions(request *ListSharedReportsReq
 
 // Summary:
 //
-// 概述
+// 获取指定用户在首页看板中展示的被授权的作品列表。
 //
 // @param request - ListSharedReportsRequest
 //
@@ -21933,7 +21991,7 @@ func (client *Client) ListUserGroupsByUserId(request *ListUserGroupsByUserIdRequ
 
 // Summary:
 //
-// 获取指定空间角色下的用户列表
+// 获取指定空间角色下的用户列表。
 //
 // @param request - ListWorkspaceRoleUsersRequest
 //
@@ -21991,7 +22049,7 @@ func (client *Client) ListWorkspaceRoleUsersWithOptions(request *ListWorkspaceRo
 
 // Summary:
 //
-// 获取指定空间角色下的用户列表
+// 获取指定空间角色下的用户列表。
 //
 // @param request - ListWorkspaceRoleUsersRequest
 //
@@ -22009,7 +22067,7 @@ func (client *Client) ListWorkspaceRoleUsers(request *ListWorkspaceRoleUsersRequ
 
 // Summary:
 //
-// 获取空间角色列表
+// 获取空间角色列表。
 //
 // @param request - ListWorkspaceRolesRequest
 //
@@ -22051,7 +22109,7 @@ func (client *Client) ListWorkspaceRolesWithOptions(request *ListWorkspaceRolesR
 
 // Summary:
 //
-// 获取空间角色列表
+// 获取空间角色列表。
 //
 // @param request - ListWorkspaceRolesRequest
 //
@@ -22069,7 +22127,7 @@ func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_r
 
 // Summary:
 //
-// 修改指定API数据源参数值
+// 修改指定API数据源参数值。
 //
 // @param request - ModifyApiDatasourceParametersRequest
 //
@@ -22119,7 +22177,7 @@ func (client *Client) ModifyApiDatasourceParametersWithOptions(request *ModifyAp
 
 // Summary:
 //
-// 修改指定API数据源参数值
+// 修改指定API数据源参数值。
 //
 // @param request - ModifyApiDatasourceParametersRequest
 //
@@ -22137,7 +22195,7 @@ func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasource
 
 // Summary:
 //
-// 修改智能问数嵌入配置
+// 修改智能问数嵌入配置。
 //
 // @param request - ModifyCopilotEmbedConfigRequest
 //
@@ -22191,7 +22249,7 @@ func (client *Client) ModifyCopilotEmbedConfigWithOptions(request *ModifyCopilot
 
 // Summary:
 //
-// 修改智能问数嵌入配置
+// 修改智能问数嵌入配置。
 //
 // @param request - ModifyCopilotEmbedConfigRequest
 //
@@ -22209,7 +22267,7 @@ func (client *Client) ModifyCopilotEmbedConfig(request *ModifyCopilotEmbedConfig
 
 // Summary:
 //
-// 根据审批人获取相应的审批流信息
+// 根据审批人获取相应的审批流信息。
 //
 // @param request - QueryApprovalInfoRequest
 //
@@ -22263,7 +22321,7 @@ func (client *Client) QueryApprovalInfoWithOptions(request *QueryApprovalInfoReq
 
 // Summary:
 //
-// 根据审批人获取相应的审批流信息
+// 根据审批人获取相应的审批流信息。
 //
 // @param request - QueryApprovalInfoRequest
 //
@@ -22281,7 +22339,7 @@ func (client *Client) QueryApprovalInfo(request *QueryApprovalInfoRequest) (_res
 
 // Summary:
 //
-// 查询审计日志信息
+// 查询审计日志信息。
 //
 // @param request - QueryAuditLogRequest
 //
@@ -22347,7 +22405,7 @@ func (client *Client) QueryAuditLogWithOptions(request *QueryAuditLogRequest, ru
 
 // Summary:
 //
-// 查询审计日志信息
+// 查询审计日志信息。
 //
 // @param request - QueryAuditLogRequest
 //
@@ -22365,7 +22423,7 @@ func (client *Client) QueryAuditLog(request *QueryAuditLogRequest) (_result *Que
 
 // Summary:
 //
-// 查询组件性能列表
+// 查询组件性能列表。
 //
 // @param request - QueryComponentPerformanceRequest
 //
@@ -22431,7 +22489,7 @@ func (client *Client) QueryComponentPerformanceWithOptions(request *QueryCompone
 
 // Summary:
 //
-// 查询组件性能列表
+// 查询组件性能列表。
 //
 // @param request - QueryComponentPerformanceRequest
 //
@@ -22449,7 +22507,7 @@ func (client *Client) QueryComponentPerformance(request *QueryComponentPerforman
 
 // Summary:
 //
-// 获取开通小Q嵌入的配置列表
+// 获取开通小Q嵌入的配置列表。
 //
 // @param request - QueryCopilotEmbedConfigRequest
 //
@@ -22491,7 +22549,7 @@ func (client *Client) QueryCopilotEmbedConfigWithOptions(request *QueryCopilotEm
 
 // Summary:
 //
-// 获取开通小Q嵌入的配置列表
+// 获取开通小Q嵌入的配置列表。
 //
 // @param request - QueryCopilotEmbedConfigRequest
 //
@@ -22509,7 +22567,7 @@ func (client *Client) QueryCopilotEmbedConfig(request *QueryCopilotEmbedConfigRe
 
 // Summary:
 //
-// 查询数据集优化建议
+// 查询数据集优化建议。
 //
 // @param request - QueryCubeOptimizationRequest
 //
@@ -22551,7 +22609,7 @@ func (client *Client) QueryCubeOptimizationWithOptions(request *QueryCubeOptimiz
 
 // Summary:
 //
-// 查询数据集优化建议
+// 查询数据集优化建议。
 //
 // @param request - QueryCubeOptimizationRequest
 //
@@ -22569,7 +22627,7 @@ func (client *Client) QueryCubeOptimization(request *QueryCubeOptimizationReques
 
 // Summary:
 //
-// 查询数据集性能
+// 查询数据集性能。
 //
 // @param request - QueryCubePerformanceRequest
 //
@@ -22631,7 +22689,7 @@ func (client *Client) QueryCubePerformanceWithOptions(request *QueryCubePerforma
 
 // Summary:
 //
-// 查询数据集性能
+// 查询数据集性能。
 //
 // @param request - QueryCubePerformanceRequest
 //
@@ -22649,7 +22707,7 @@ func (client *Client) QueryCubePerformance(request *QueryCubePerformanceRequest)
 
 // Summary:
 //
-// 调用开放数据服务API
+// 调用开放数据服务API。
 //
 // @param request - QueryDataRequest
 //
@@ -22703,7 +22761,7 @@ func (client *Client) QueryDataWithOptions(request *QueryDataRequest, runtime *u
 
 // Summary:
 //
-// 调用开放数据服务API
+// 调用开放数据服务API。
 //
 // @param request - QueryDataRequest
 //
@@ -22721,7 +22779,7 @@ func (client *Client) QueryData(request *QueryDataRequest) (_result *QueryDataRe
 
 // Summary:
 //
-// 获取数据范围目录列表
+// 获取数据范围目录列表。
 //
 // @param request - QueryDataRangeRequest
 //
@@ -22767,7 +22825,7 @@ func (client *Client) QueryDataRangeWithOptions(request *QueryDataRangeRequest, 
 
 // Summary:
 //
-// 获取数据范围目录列表
+// 获取数据范围目录列表。
 //
 // @param request - QueryDataRangeRequest
 //
@@ -22861,7 +22919,7 @@ func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_resul
 
 // Summary:
 //
-// 查询数据服务API列表
+// 查询数据服务API列表。
 //
 // @param request - QueryDataServiceListRequest
 //
@@ -22915,7 +22973,7 @@ func (client *Client) QueryDataServiceListWithOptions(request *QueryDataServiceL
 
 // Summary:
 //
-// 查询数据服务API列表
+// 查询数据服务API列表。
 //
 // @param request - QueryDataServiceListRequest
 //
@@ -23147,6 +23205,10 @@ func (client *Client) QueryDatasetList(request *QueryDatasetListRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定数据集的行级权限开关状态。
+//
 // @param request - QueryDatasetSwitchInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -23185,6 +23247,10 @@ func (client *Client) QueryDatasetSwitchInfoWithOptions(request *QueryDatasetSwi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定数据集的行级权限开关状态。
+//
 // @param request - QueryDatasetSwitchInfoRequest
 //
 // @return QueryDatasetSwitchInfoResponse
@@ -23822,6 +23888,10 @@ func (client *Client) QueryUserGroupListByParentId(request *QueryUserGroupListBy
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户组下的成员列表信息。
+//
 // @param request - QueryUserGroupMemberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -23864,6 +23934,10 @@ func (client *Client) QueryUserGroupMemberWithOptions(request *QueryUserGroupMem
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户组下的成员列表信息。
+//
 // @param request - QueryUserGroupMemberRequest
 //
 // @return QueryUserGroupMemberResponse
@@ -24002,6 +24076,10 @@ func (client *Client) QueryUserInfoByUserId(request *QueryUserInfoByUserIdReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询组织成员列表信息。
+//
 // @param request - QueryUserListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -24036,6 +24114,10 @@ func (client *Client) QueryUserListWithOptions(request *QueryUserListRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询组织成员列表信息。
+//
 // @param request - QueryUserListRequest
 //
 // @return QueryUserListResponse
@@ -24050,6 +24132,10 @@ func (client *Client) QueryUserList(request *QueryUserListRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定工作空间成员的预置空间角色信息。
+//
 // @param request - QueryUserRoleInfoInWorkspaceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -24092,6 +24178,10 @@ func (client *Client) QueryUserRoleInfoInWorkspaceWithOptions(request *QueryUser
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定工作空间成员的预置空间角色信息。
+//
 // @param request - QueryUserRoleInfoInWorkspaceRequest
 //
 // @return QueryUserRoleInfoInWorkspaceResponse
@@ -24545,6 +24635,10 @@ func (client *Client) QueryWorkspaceRoleConfig(request *QueryWorkspaceRoleConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定工作空间下的成员列表信息。
+//
 // @param request - QueryWorkspaceUserListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -24595,6 +24689,10 @@ func (client *Client) QueryWorkspaceUserListWithOptions(request *QueryWorkspaceU
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定工作空间下的成员列表信息。
+//
 // @param request - QueryWorkspaceUserListRequest
 //
 // @return QueryWorkspaceUserListResponse
@@ -24741,6 +24839,10 @@ func (client *Client) SaveFavorites(request *SaveFavoritesRequest) (_result *Sav
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置行列权限的额外配置
+//
 // @param request - SetDataLevelPermissionExtraConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -24787,6 +24889,10 @@ func (client *Client) SetDataLevelPermissionExtraConfigWithOptions(request *SetD
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置行列权限的额外配置
+//
 // @param request - SetDataLevelPermissionExtraConfigRequest
 //
 // @return SetDataLevelPermissionExtraConfigResponse
@@ -24801,6 +24907,10 @@ func (client *Client) SetDataLevelPermissionExtraConfig(request *SetDataLevelPer
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置单条数据集行列权限配置信息（新增和更新）
+//
 // @param request - SetDataLevelPermissionRuleConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -24839,6 +24949,10 @@ func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDa
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置单条数据集行列权限配置信息（新增和更新）
+//
 // @param request - SetDataLevelPermissionRuleConfigRequest
 //
 // @return SetDataLevelPermissionRuleConfigResponse
@@ -25293,6 +25407,10 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 用于更新组织成员标签元信息
+//
 // @param request - UpdateUserTagMetaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25339,6 +25457,10 @@ func (client *Client) UpdateUserTagMetaWithOptions(request *UpdateUserTagMetaReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 用于更新组织成员标签元信息
+//
 // @param request - UpdateUserTagMetaRequest
 //
 // @return UpdateUserTagMetaResponse
@@ -25353,6 +25475,10 @@ func (client *Client) UpdateUserTagMeta(request *UpdateUserTagMetaRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新组织成员标签值
+//
 // @param request - UpdateUserTagValueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25399,6 +25525,10 @@ func (client *Client) UpdateUserTagValueWithOptions(request *UpdateUserTagValueR
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新组织成员标签值
+//
 // @param request - UpdateUserTagValueRequest
 //
 // @return UpdateUserTagValueResponse
@@ -25413,6 +25543,10 @@ func (client *Client) UpdateUserTagValue(request *UpdateUserTagValueRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改工作空间下指定成员的角色，已有的角色会被覆盖
+//
 // @param request - UpdateWorkspaceUserRoleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25459,6 +25593,10 @@ func (client *Client) UpdateWorkspaceUserRoleWithOptions(request *UpdateWorkspac
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改工作空间下指定成员的角色，已有的角色会被覆盖
+//
 // @param request - UpdateWorkspaceUserRoleRequest
 //
 // @return UpdateWorkspaceUserRoleResponse
@@ -25473,6 +25611,10 @@ func (client *Client) UpdateWorkspaceUserRole(request *UpdateWorkspaceUserRoleRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新工作空间成员的角色信息，已有角色会被覆盖
+//
 // @param request - UpdateWorkspaceUsersRoleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25519,6 +25661,10 @@ func (client *Client) UpdateWorkspaceUsersRoleWithOptions(request *UpdateWorkspa
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新工作空间成员的角色信息，已有角色会被覆盖
+//
 // @param request - UpdateWorkspaceUsersRoleRequest
 //
 // @return UpdateWorkspaceUsersRoleResponse
