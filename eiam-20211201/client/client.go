@@ -2561,6 +2561,94 @@ func (s *DeleteOrganizationalUnitResponse) SetBody(v *DeleteOrganizationalUnitRe
 	return s
 }
 
+type DeleteOrganizationalUnitChildrenRequest struct {
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Organizational Unit ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
+}
+
+func (s DeleteOrganizationalUnitChildrenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOrganizationalUnitChildrenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOrganizationalUnitChildrenRequest) SetInstanceId(v string) *DeleteOrganizationalUnitChildrenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteOrganizationalUnitChildrenRequest) SetOrganizationalUnitId(v string) *DeleteOrganizationalUnitChildrenRequest {
+	s.OrganizationalUnitId = &v
+	return s
+}
+
+type DeleteOrganizationalUnitChildrenResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteOrganizationalUnitChildrenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOrganizationalUnitChildrenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOrganizationalUnitChildrenResponseBody) SetRequestId(v string) *DeleteOrganizationalUnitChildrenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteOrganizationalUnitChildrenResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOrganizationalUnitChildrenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOrganizationalUnitChildrenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOrganizationalUnitChildrenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOrganizationalUnitChildrenResponse) SetHeaders(v map[string]*string) *DeleteOrganizationalUnitChildrenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOrganizationalUnitChildrenResponse) SetStatusCode(v int32) *DeleteOrganizationalUnitChildrenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOrganizationalUnitChildrenResponse) SetBody(v *DeleteOrganizationalUnitChildrenResponseBody) *DeleteOrganizationalUnitChildrenResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteUserRequest struct {
 	// The instance ID.
 	//
@@ -5009,13 +5097,21 @@ func (s *GetApplicationProvisioningScopeResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope struct {
-	// 同步授权的组列表
+	// Synchronize the list of authorized groups
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// 租户最大授权主体quota数量
+	// Instance Indicates the maximum quota number of authorized agents
+	//
+	// example:
+	//
+	// 20
 	MaxQuota *int32 `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
 	// The list of organizational units that are authorized for account synchronization.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// 已使用授权主体quota数量
+	// Indicates the quota number of used authorized agents
+	//
+	// example:
+	//
+	// 10
 	UsedQuota *int32 `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
@@ -5548,6 +5644,7 @@ type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig struct
 	//
 	// https://home.console.aliyun.com
 	DefaultRelayState *string `json:"DefaultRelayState,omitempty" xml:"DefaultRelayState,omitempty"`
+	IdPEntityId       *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
 	// The Format attribute of the NameID element in the SAML assertion. Valid values:
 	//
 	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
@@ -5614,6 +5711,11 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) S
 
 func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) SetDefaultRelayState(v string) *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig {
 	s.DefaultRelayState = &v
+	return s
+}
+
+func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) SetIdPEntityId(v string) *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig {
+	s.IdPEntityId = &v
 	return s
 }
 
@@ -9842,6 +9944,8 @@ type GetUserResponseBodyUser struct {
 	//
 	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
+	// Preferred language
+	//
 	// example:
 	//
 	// en-US
@@ -12342,8 +12446,18 @@ type ListGroupsForUserResponseBodyGroups struct {
 	// example:
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
-	GroupId                       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupMemberRelationSourceId   *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Account membership source ID
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	GroupMemberRelationSourceId *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
+	// Account membership source type
+	//
+	// example:
+	//
+	// build_in
 	GroupMemberRelationSourceType *string `json:"GroupMemberRelationSourceType,omitempty" xml:"GroupMemberRelationSourceType,omitempty"`
 }
 
@@ -13455,7 +13569,7 @@ type ListOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 组织ID列表。size限制最大100。
+	// The IDs of organizational units.
 	//
 	// example:
 	//
@@ -13467,7 +13581,7 @@ type ListOrganizationalUnitsRequest struct {
 	//
 	// name_001
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
-	// 组织名称，左匹配
+	// Organization name, matching left
 	//
 	// example:
 	//
@@ -15915,7 +16029,7 @@ func (s *ListSynchronizationJobsResponse) SetBody(v *ListSynchronizationJobsResp
 }
 
 type ListUsersRequest struct {
-	// 账户展示名，模糊匹配
+	// Displayname
 	//
 	// example:
 	//
@@ -15983,7 +16097,7 @@ type ListUsersRequest struct {
 	//
 	// id_wovwffm62xifdziem7an7xxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// 账户的ID集合
+	// User ID set
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 	// The source ID of the account.
 	//
@@ -16007,7 +16121,7 @@ type ListUsersRequest struct {
 	//
 	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
-	// 账户名，左模糊匹配
+	// Username
 	//
 	// example:
 	//
@@ -16692,7 +16806,17 @@ func (s *ListUsersForGroupResponseBody) SetUsers(v []*ListUsersForGroupResponseB
 }
 
 type ListUsersForGroupResponseBodyUsers struct {
-	GroupMemberRelationSourceId   *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
+	// Account membership source id
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	GroupMemberRelationSourceId *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
+	// Account membership source type
+	//
+	// example:
+	//
+	// build_in
 	GroupMemberRelationSourceType *string `json:"GroupMemberRelationSourceType,omitempty" xml:"GroupMemberRelationSourceType,omitempty"`
 	// The account ID.
 	//
@@ -18231,7 +18355,7 @@ type SetApplicationProvisioningScopeRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 授权同步出的组列表
+	// List of groups that are authorized to be synchronized from
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
@@ -18349,7 +18473,7 @@ type SetApplicationSsoConfigRequest struct {
 	//
 	// http://127.0.0.1:8000/start_login?enterprise_code=ABCDEF
 	InitLoginUrl *string `json:"InitLoginUrl,omitempty" xml:"InitLoginUrl,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -18359,7 +18483,7 @@ type SetApplicationSsoConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Open ID Connect (OIDC)-based SSO configuration attributes of the application.
 	OidcSsoConfig *SetApplicationSsoConfigRequestOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
-	// The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application.
+	// The Security Assertion Markup Language (SAML)-based single sign-on (SSO) configuration attributes of the application.
 	SamlSsoConfig *SetApplicationSsoConfigRequestSamlSsoConfig `json:"SamlSsoConfig,omitempty" xml:"SamlSsoConfig,omitempty" type:"Struct"`
 }
 
@@ -18599,7 +18723,11 @@ func (s *SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims) SetClaimValueE
 }
 
 type SetApplicationSsoConfigRequestSamlSsoConfig struct {
-	// assertion是否签名
+	// Specifies whether to calculate the signature for the assertion. You cannot set ResponseSigned and AssertionSigned to false at the same time.
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
@@ -18613,6 +18741,7 @@ type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	//
 	// https://home.console.aliyun.com
 	DefaultRelayState *string `json:"DefaultRelayState,omitempty" xml:"DefaultRelayState,omitempty"`
+	IdPEntityId       *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
 	// The Format attribute of the NameID element in the SAML assertion. Valid values:
 	//
 	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
@@ -18633,7 +18762,11 @@ type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	//
 	// user.email
 	NameIdValueExpression *string `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
-	// response是否签名
+	// Specifies whether to calculate the signature for the response. You cannot set ResponseSigned and AssertionSigned to false at the same time.
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
@@ -18641,17 +18774,33 @@ type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	ResponseSigned *bool `json:"ResponseSigned,omitempty" xml:"ResponseSigned,omitempty"`
 	// The algorithm that is used to calculate the signature for the SAML assertion.
 	//
+	// Enumeration value:
+	//
+	// 	- RSA-SHA256
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the Rivest-Shamir-Adleman (RSA)-Secure Hash Algorithm 256 (SHA-256) algorithm
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
 	// example:
 	//
 	// RSA-SHA256
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The entity ID of the application in SAML. The application assumes the role of service provider.
+	// The entity ID of the application in SAML.
 	//
 	// example:
 	//
 	// urn:alibaba:cloudcomputing
 	SpEntityId *string `json:"SpEntityId,omitempty" xml:"SpEntityId,omitempty"`
-	// The Assertion Consumer Service (ACS) URL of the application in SAML. The application assumes the role of service provider.
+	// The Assertion Consumer Service (ACS) URL of the application in SAML.
 	//
 	// example:
 	//
@@ -18679,6 +18828,11 @@ func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetAttributeStatements(v [
 
 func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetDefaultRelayState(v string) *SetApplicationSsoConfigRequestSamlSsoConfig {
 	s.DefaultRelayState = &v
+	return s
+}
+
+func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetIdPEntityId(v string) *SetApplicationSsoConfigRequestSamlSsoConfig {
+	s.IdPEntityId = &v
 	return s
 }
 
@@ -18746,7 +18900,7 @@ func (s *SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements) SetAttr
 }
 
 type SetApplicationSsoConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -18883,13 +19037,13 @@ func (s *SetDefaultDomainResponse) SetBody(v *SetDefaultDomainResponseBody) *Set
 }
 
 type SetForgetPasswordConfigurationRequest struct {
-	// 身份认证渠道。枚举取值:email(邮件)、sms(短信)
+	// The authentication channels. Valid values: email and sms.
 	//
 	// example:
 	//
 	// email
 	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
-	// 忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
+	// The status of the forgot password feature. Valid values: enabled and disabled.
 	//
 	// This parameter is required.
 	//
@@ -20020,7 +20174,7 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 }
 
 type UpdateGroupDescriptionRequest struct {
-	// The description of the account group. The value can be up to 256 characters in length.
+	// The description of the account group.
 	//
 	// example:
 	//
@@ -22654,6 +22808,70 @@ func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnit
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOrganizationalUnitResponse{}
 	_body, _err := client.DeleteOrganizationalUnitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+//
+// @param request - DeleteOrganizationalUnitChildrenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOrganizationalUnitChildrenResponse
+func (client *Client) DeleteOrganizationalUnitChildrenWithOptions(request *DeleteOrganizationalUnitChildrenRequest, runtime *util.RuntimeOptions) (_result *DeleteOrganizationalUnitChildrenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitId)) {
+		query["OrganizationalUnitId"] = request.OrganizationalUnitId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOrganizationalUnitChildren"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteOrganizationalUnitChildrenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+//
+// @param request - DeleteOrganizationalUnitChildrenRequest
+//
+// @return DeleteOrganizationalUnitChildrenResponse
+func (client *Client) DeleteOrganizationalUnitChildren(request *DeleteOrganizationalUnitChildrenRequest) (_result *DeleteOrganizationalUnitChildrenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOrganizationalUnitChildrenResponse{}
+	_body, _err := client.DeleteOrganizationalUnitChildrenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
