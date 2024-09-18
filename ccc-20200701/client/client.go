@@ -13335,6 +13335,174 @@ func (s *GetChatMediaUrlResponse) SetBody(v *GetChatMediaUrlResponseBody) *GetCh
 	return s
 }
 
+type GetChatRoutingProfileRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetChatRoutingProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatRoutingProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatRoutingProfileRequest) SetInstanceId(v string) *GetChatRoutingProfileRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetChatRoutingProfileResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetChatRoutingProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 30C7D235-DDCF-4C7F-A462-5E2598252C2B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetChatRoutingProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatRoutingProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatRoutingProfileResponseBody) SetCode(v string) *GetChatRoutingProfileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponseBody) SetData(v *GetChatRoutingProfileResponseBodyData) *GetChatRoutingProfileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponseBody) SetHttpStatusCode(v int32) *GetChatRoutingProfileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponseBody) SetMessage(v string) *GetChatRoutingProfileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponseBody) SetRequestId(v string) *GetChatRoutingProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatRoutingProfileResponseBodyData struct {
+	// example:
+	//
+	// {
+	//
+	//     "AllowExceedingLimitWhenTransferring": false,
+	//
+	//     "ConcurrencyLimit": 4,
+	//
+	//     "AllowExceedingLimitWhenClaiming": true,
+	//
+	//     "Enabled": true
+	//
+	// }
+	AgentConcurrencySettings *string `json:"AgentConcurrencySettings,omitempty" xml:"AgentConcurrencySettings,omitempty"`
+	// example:
+	//
+	// {"IdleChatTimeoutSeconds":300}
+	ChatSettings *string `json:"ChatSettings,omitempty" xml:"ChatSettings,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "AgentRingTimeoutSeconds": 30,
+	//
+	//     "Enabled": true,
+	//
+	//     "MaxNumberOfConversationsAgentCanMiss": 5,
+	//
+	//     "PostAgentMissingConversionsAction": "Nothing"
+	//
+	// }
+	DistributionSettings *string `json:"DistributionSettings,omitempty" xml:"DistributionSettings,omitempty"`
+	// example:
+	//
+	// Automatic
+	RoutingType *string `json:"RoutingType,omitempty" xml:"RoutingType,omitempty"`
+}
+
+func (s GetChatRoutingProfileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatRoutingProfileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatRoutingProfileResponseBodyData) SetAgentConcurrencySettings(v string) *GetChatRoutingProfileResponseBodyData {
+	s.AgentConcurrencySettings = &v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponseBodyData) SetChatSettings(v string) *GetChatRoutingProfileResponseBodyData {
+	s.ChatSettings = &v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponseBodyData) SetDistributionSettings(v string) *GetChatRoutingProfileResponseBodyData {
+	s.DistributionSettings = &v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponseBodyData) SetRoutingType(v string) *GetChatRoutingProfileResponseBodyData {
+	s.RoutingType = &v
+	return s
+}
+
+type GetChatRoutingProfileResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatRoutingProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatRoutingProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatRoutingProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatRoutingProfileResponse) SetHeaders(v map[string]*string) *GetChatRoutingProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponse) SetStatusCode(v int32) *GetChatRoutingProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatRoutingProfileResponse) SetBody(v *GetChatRoutingProfileResponseBody) *GetChatRoutingProfileResponse {
+	s.Body = v
+	return s
+}
+
 type GetContactFlowRequest struct {
 	// This parameter is required.
 	//
@@ -63535,6 +63703,152 @@ func (s *UpdateCampaignResponse) SetBody(v *UpdateCampaignResponseBody) *UpdateC
 	return s
 }
 
+type UpdateChatRoutingProfileRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "RoutingType": "Automatic",
+	//
+	//     "AgentConcurrencySettings": {
+	//
+	//         "AllowExceedingLimitWhenTransferring": false,
+	//
+	//         "ConcurrencyLimit": 4,
+	//
+	//         "AllowExceedingLimitWhenClaiming": true,
+	//
+	//         "Enabled": true
+	//
+	//     },
+	//
+	//     "ChatSettings": {
+	//
+	//         "IdleChatTimeoutSeconds": 300
+	//
+	//     },
+	//
+	//     "DistributionSettings": {
+	//
+	//         "Enabled": true,
+	//
+	//         "AgentRingTimeoutSeconds": 119,
+	//
+	//         "MaxNumberOfConversationsAgentCanMiss": 5,
+	//
+	//         "PostAgentMissingConversionsAction": "Nothing"
+	//
+	//     }
+	//
+	// }
+	RoutingProfiles *string `json:"RoutingProfiles,omitempty" xml:"RoutingProfiles,omitempty"`
+}
+
+func (s UpdateChatRoutingProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatRoutingProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatRoutingProfileRequest) SetInstanceId(v string) *UpdateChatRoutingProfileRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateChatRoutingProfileRequest) SetRoutingProfiles(v string) *UpdateChatRoutingProfileRequest {
+	s.RoutingProfiles = &v
+	return s
+}
+
+type UpdateChatRoutingProfileResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BC976D32-AC4C-4E0F-8AA9-F4BC6C4E2B3E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateChatRoutingProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatRoutingProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatRoutingProfileResponseBody) SetCode(v string) *UpdateChatRoutingProfileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateChatRoutingProfileResponseBody) SetHttpStatusCode(v int32) *UpdateChatRoutingProfileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateChatRoutingProfileResponseBody) SetMessage(v string) *UpdateChatRoutingProfileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateChatRoutingProfileResponseBody) SetParams(v []*string) *UpdateChatRoutingProfileResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateChatRoutingProfileResponseBody) SetRequestId(v string) *UpdateChatRoutingProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateChatRoutingProfileResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChatRoutingProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateChatRoutingProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatRoutingProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatRoutingProfileResponse) SetHeaders(v map[string]*string) *UpdateChatRoutingProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateChatRoutingProfileResponse) SetStatusCode(v int32) *UpdateChatRoutingProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateChatRoutingProfileResponse) SetBody(v *UpdateChatRoutingProfileResponseBody) *UpdateChatRoutingProfileResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateConfigItemsRequest struct {
 	// This parameter is required.
 	//
@@ -68594,6 +68908,58 @@ func (client *Client) GetChatMediaUrl(request *GetChatMediaUrlRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetChatMediaUrlResponse{}
 	_body, _err := client.GetChatMediaUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetChatRoutingProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatRoutingProfileResponse
+func (client *Client) GetChatRoutingProfileWithOptions(request *GetChatRoutingProfileRequest, runtime *util.RuntimeOptions) (_result *GetChatRoutingProfileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatRoutingProfile"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatRoutingProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetChatRoutingProfileRequest
+//
+// @return GetChatRoutingProfileResponse
+func (client *Client) GetChatRoutingProfile(request *GetChatRoutingProfileRequest) (_result *GetChatRoutingProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetChatRoutingProfileResponse{}
+	_body, _err := client.GetChatRoutingProfileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -79700,6 +80066,62 @@ func (client *Client) UpdateCampaign(request *UpdateCampaignRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCampaignResponse{}
 	_body, _err := client.UpdateCampaignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateChatRoutingProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChatRoutingProfileResponse
+func (client *Client) UpdateChatRoutingProfileWithOptions(request *UpdateChatRoutingProfileRequest, runtime *util.RuntimeOptions) (_result *UpdateChatRoutingProfileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutingProfiles)) {
+		query["RoutingProfiles"] = request.RoutingProfiles
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateChatRoutingProfile"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateChatRoutingProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateChatRoutingProfileRequest
+//
+// @return UpdateChatRoutingProfileResponse
+func (client *Client) UpdateChatRoutingProfile(request *UpdateChatRoutingProfileRequest) (_result *UpdateChatRoutingProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateChatRoutingProfileResponse{}
+	_body, _err := client.UpdateChatRoutingProfileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
