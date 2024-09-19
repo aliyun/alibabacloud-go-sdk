@@ -2269,7 +2269,8 @@ type ListExecutorsRequestFilter struct {
 	// example:
 	//
 	// testJob
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Status  []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1703819914
@@ -2300,6 +2301,11 @@ func (s *ListExecutorsRequestFilter) SetIpAddresses(v []*string) *ListExecutorsR
 
 func (s *ListExecutorsRequestFilter) SetJobName(v string) *ListExecutorsRequestFilter {
 	s.JobName = &v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetStatus(v []*string) *ListExecutorsRequestFilter {
+	s.Status = v
 	return s
 }
 
@@ -2417,10 +2423,11 @@ type ListExecutorsResponseBodyExecutors struct {
 	// example:
 	//
 	// job-xxxx-task0-1
-	ExecutorId *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	HostName   []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	Image      *string   `json:"Image,omitempty" xml:"Image,omitempty"`
-	IpAddress  []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	ExecutorId        *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
+	HostName          []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	Image             *string   `json:"Image,omitempty" xml:"Image,omitempty"`
+	IpAddress         []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
 	// example:
 	//
 	// job-hy1nggvyukuvkr******
@@ -2428,7 +2435,9 @@ type ListExecutorsResponseBodyExecutors struct {
 	// example:
 	//
 	// testJob
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName      *string                                     `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Resource     *ListExecutorsResponseBodyExecutorsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	ResourceType *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// example:
 	//
 	// Running
@@ -2440,7 +2449,9 @@ type ListExecutorsResponseBodyExecutors struct {
 	// example:
 	//
 	// task0
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskName        *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskSustainable *bool   `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
+	VswitchId       *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListExecutorsResponseBodyExecutors) String() string {
@@ -2471,6 +2482,11 @@ func (s *ListExecutorsResponseBodyExecutors) SetExecutorId(v string) *ListExecut
 	return s
 }
 
+func (s *ListExecutorsResponseBodyExecutors) SetExternalIpAddress(v []*string) *ListExecutorsResponseBodyExecutors {
+	s.ExternalIpAddress = v
+	return s
+}
+
 func (s *ListExecutorsResponseBodyExecutors) SetHostName(v []*string) *ListExecutorsResponseBodyExecutors {
 	s.HostName = v
 	return s
@@ -2496,6 +2512,16 @@ func (s *ListExecutorsResponseBodyExecutors) SetJobName(v string) *ListExecutors
 	return s
 }
 
+func (s *ListExecutorsResponseBodyExecutors) SetResource(v *ListExecutorsResponseBodyExecutorsResource) *ListExecutorsResponseBodyExecutors {
+	s.Resource = v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetResourceType(v string) *ListExecutorsResponseBodyExecutors {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *ListExecutorsResponseBodyExecutors) SetStatus(v string) *ListExecutorsResponseBodyExecutors {
 	s.Status = &v
 	return s
@@ -2508,6 +2534,68 @@ func (s *ListExecutorsResponseBodyExecutors) SetStatusReason(v string) *ListExec
 
 func (s *ListExecutorsResponseBodyExecutors) SetTaskName(v string) *ListExecutorsResponseBodyExecutors {
 	s.TaskName = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetTaskSustainable(v bool) *ListExecutorsResponseBodyExecutors {
+	s.TaskSustainable = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetVswitchId(v string) *ListExecutorsResponseBodyExecutors {
+	s.VswitchId = &v
+	return s
+}
+
+type ListExecutorsResponseBodyExecutorsResource struct {
+	Cores  *float32                                           `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks  []*ListExecutorsResponseBodyExecutorsResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	Memory *float32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s ListExecutorsResponseBodyExecutorsResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsResponseBodyExecutorsResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsResponseBodyExecutorsResource) SetCores(v float32) *ListExecutorsResponseBodyExecutorsResource {
+	s.Cores = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutorsResource) SetDisks(v []*ListExecutorsResponseBodyExecutorsResourceDisks) *ListExecutorsResponseBodyExecutorsResource {
+	s.Disks = v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutorsResource) SetMemory(v float32) *ListExecutorsResponseBodyExecutorsResource {
+	s.Memory = &v
+	return s
+}
+
+type ListExecutorsResponseBodyExecutorsResourceDisks struct {
+	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListExecutorsResponseBodyExecutorsResourceDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsResponseBodyExecutorsResourceDisks) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsResponseBodyExecutorsResourceDisks) SetSize(v int32) *ListExecutorsResponseBodyExecutorsResourceDisks {
+	s.Size = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutorsResourceDisks) SetType(v string) *ListExecutorsResponseBodyExecutorsResourceDisks {
+	s.Type = &v
 	return s
 }
 
