@@ -31095,8 +31095,9 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// true
-	EnableAuthToken *string            `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
-	ExtraInfo       map[string]*string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	EnableAuthToken *string `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
+	// The additional information (returned only for console requests).
+	ExtraInfo map[string]*string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The ID of the Grafana workspace.
 	//
 	// example:
@@ -33029,7 +33030,8 @@ type GetRumAppInfoResponseBodyData struct {
 	// example:
 	//
 	// web
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType                   *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	BackendServiceTraceRegion *string `json:"BackendServiceTraceRegion,omitempty" xml:"BackendServiceTraceRegion,omitempty"`
 	// The mobile collection configurations.
 	BonreeSDKConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfig `json:"BonreeSDKConfig,omitempty" xml:"BonreeSDKConfig,omitempty" type:"Struct"`
 	// The domain name of the SDK.
@@ -33139,6 +33141,11 @@ func (s *GetRumAppInfoResponseBodyData) SetAppGroup(v string) *GetRumAppInfoResp
 
 func (s *GetRumAppInfoResponseBodyData) SetAppType(v string) *GetRumAppInfoResponseBodyData {
 	s.AppType = &v
+	return s
+}
+
+func (s *GetRumAppInfoResponseBodyData) SetBackendServiceTraceRegion(v string) *GetRumAppInfoResponseBodyData {
+	s.BackendServiceTraceRegion = &v
 	return s
 }
 
@@ -68437,7 +68444,8 @@ type UpdateRumAppRequest struct {
 	// example:
 	//
 	// true
-	AutoRestart *bool `json:"AutoRestart,omitempty" xml:"AutoRestart,omitempty"`
+	AutoRestart               *bool   `json:"AutoRestart,omitempty" xml:"AutoRestart,omitempty"`
+	BackendServiceTraceRegion *string `json:"BackendServiceTraceRegion,omitempty" xml:"BackendServiceTraceRegion,omitempty"`
 	// The collection configurations of the mobile SDK. You can enable or disable collection configurations based on the app version.
 	//
 	// example:
@@ -68501,6 +68509,11 @@ func (s UpdateRumAppRequest) GoString() string {
 
 func (s *UpdateRumAppRequest) SetAutoRestart(v bool) *UpdateRumAppRequest {
 	s.AutoRestart = &v
+	return s
+}
+
+func (s *UpdateRumAppRequest) SetBackendServiceTraceRegion(v string) *UpdateRumAppRequest {
+	s.BackendServiceTraceRegion = &v
 	return s
 }
 
@@ -74985,7 +74998,7 @@ func (client *Client) CreateRumApp(request *CreateRumAppRequest) (_result *Creat
 //
 // Description:
 //
-// This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
+// This operation returns a URL. You can upload files to the URL. For more information, see [Upload local files with signed URLs](https://help.aliyun.com/document_detail/2579659.html).
 //
 // @param request - CreateRumUploadFileUrlRequest
 //
@@ -75059,7 +75072,7 @@ func (client *Client) CreateRumUploadFileUrlWithOptions(request *CreateRumUpload
 //
 // Description:
 //
-// This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
+// This operation returns a URL. You can upload files to the URL. For more information, see [Upload local files with signed URLs](https://help.aliyun.com/document_detail/2579659.html).
 //
 // @param request - CreateRumUploadFileUrlRequest
 //
@@ -89538,6 +89551,10 @@ func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoRestart)) {
 		query["AutoRestart"] = request.AutoRestart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendServiceTraceRegion)) {
+		query["BackendServiceTraceRegion"] = request.BackendServiceTraceRegion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BonreeSDKConfigJson)) {
