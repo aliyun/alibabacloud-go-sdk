@@ -6888,6 +6888,7 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
 	// 9957175DEDCF49C5ACF7A956B4FD67B2
@@ -6900,14 +6901,18 @@ type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult
 	//
 	// https://www.example.com/aaa.png
 	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	Source    *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	Summary   *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// example:
 	//
 	// ["标签1","标签2"]
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags  []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Title *string   `json:"Title,omitempty" xml:"Title,omitempty"`
 	// example:
 	//
 	// 文章主题
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) String() string {
@@ -6916,6 +6921,11 @@ func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRes
 
 func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) GoString() string {
 	return s.String()
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetContent(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.Content = &v
+	return s
 }
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetDocId(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
@@ -6933,13 +6943,33 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 	return s
 }
 
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetSource(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.Source = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetSummary(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.Summary = &v
+	return s
+}
+
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetTags(v []*string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
 	s.Tags = v
 	return s
 }
 
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetTitle(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.Title = &v
+	return s
+}
+
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetTopic(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
 	s.Topic = &v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetUrl(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.Url = &v
 	return s
 }
 
