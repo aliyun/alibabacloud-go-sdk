@@ -1,3 +1,6 @@
+2024-09-19 Version: v1.8.6
+- Generated golang 2023-12-29 for bailian.
+
 2024-09-18 Version: v1.8.5
 - Update API AddFile: add param Tags.
 - Update API DescribeFile: update response param.
