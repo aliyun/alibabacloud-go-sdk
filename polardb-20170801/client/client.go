@@ -22169,7 +22169,8 @@ type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
 	// example:
 	//
 	// 0
-	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	ReturnRowCounts *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	SQLHash         *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
 	// The SQL statement that is executed in the query.
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 }
@@ -22224,6 +22225,11 @@ func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetQueryTimes(v i
 
 func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetReturnRowCounts(v int64) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
 	s.ReturnRowCounts = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord) SetSQLHash(v string) *DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord {
+	s.SQLHash = &v
 	return s
 }
 
@@ -33346,12 +33352,17 @@ type UpgradeDBClusterVersionRequest struct {
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
+	// The code of the db version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
 	//
 	// example:
 	//
 	// 20230707
-	TargetDBRevisionVersionCode    *string `json:"TargetDBRevisionVersionCode,omitempty" xml:"TargetDBRevisionVersionCode,omitempty"`
+	TargetDBRevisionVersionCode *string `json:"TargetDBRevisionVersionCode,omitempty" xml:"TargetDBRevisionVersionCode,omitempty"`
+	// The code of the proxy version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
+	//
+	// example:
+	//
+	// 20240702
 	TargetProxyRevisionVersionCode *string `json:"TargetProxyRevisionVersionCode,omitempty" xml:"TargetProxyRevisionVersionCode,omitempty"`
 	// The upgrade tag. The value is fixed as **INNOVATE**.
 	//
@@ -33363,11 +33374,11 @@ type UpgradeDBClusterVersionRequest struct {
 	//
 	// INNOVATE
 	UpgradeLabel *string `json:"UpgradeLabel,omitempty" xml:"UpgradeLabel,omitempty"`
-	// The upgrade policy. Valid values:
+	// The engine version upgrade policy. Valid values:
 	//
 	// 	- **HOT**: hot upgrade.
 	//
-	// 	- **COLD**: cold upgrade. Only PolarDB for MySQL Cluster Edition that runs MySQL 8.0 supports this upgrade method.
+	// 	- **COLD**: cold upgrade. Only PolarDB for MySQL 8.0 Cluster Edition supports this upgrade method.
 	//
 	// example:
 	//
