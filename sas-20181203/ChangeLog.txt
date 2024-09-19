@@ -1,3 +1,11 @@
+2024-09-19 Version: v3.1.0
+- Support API BatchCreateMaliciousNote.
+- Support API ListPrivateK8s.
+- Support API ModifyAttestor.
+- Support API SetImageBuildRiskStatus.
+- Update API DescribeSuspiciousUUIDConfig: update response param.
+
+
 2024-09-11 Version: v3.0.1
 - Update API DescribeSecurityEventOperations: update response param.
 
