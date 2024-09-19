@@ -10308,6 +10308,8 @@ func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsRespo
 }
 
 type ListTracesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-05-19 10:10:09
@@ -10320,18 +10322,26 @@ type ListTracesRequest struct {
 	//
 	// order_ceating
 	MessageKey *string `json:"messageKey,omitempty" xml:"messageKey,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MESSAGE_ID
 	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-05-10 10:42:11
