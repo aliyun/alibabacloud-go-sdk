@@ -642,6 +642,514 @@ func (s *OrgEmissionModuleEmissionList) SetRatio(v float64) *OrgEmissionModuleEm
 	return s
 }
 
+type BatchSaveInstructionStatusRequest struct {
+	FactoryId  *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	PKey       *string `json:"pKey,omitempty" xml:"pKey,omitempty"`
+	StatusList *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
+}
+
+func (s BatchSaveInstructionStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveInstructionStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveInstructionStatusRequest) SetFactoryId(v string) *BatchSaveInstructionStatusRequest {
+	s.FactoryId = &v
+	return s
+}
+
+func (s *BatchSaveInstructionStatusRequest) SetPKey(v string) *BatchSaveInstructionStatusRequest {
+	s.PKey = &v
+	return s
+}
+
+func (s *BatchSaveInstructionStatusRequest) SetStatusList(v string) *BatchSaveInstructionStatusRequest {
+	s.StatusList = &v
+	return s
+}
+
+type BatchSaveInstructionStatusResponseBody struct {
+	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s BatchSaveInstructionStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveInstructionStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveInstructionStatusResponseBody) SetData(v bool) *BatchSaveInstructionStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchSaveInstructionStatusResponseBody) SetRequestId(v string) *BatchSaveInstructionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchSaveInstructionStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchSaveInstructionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchSaveInstructionStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveInstructionStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveInstructionStatusResponse) SetHeaders(v map[string]*string) *BatchSaveInstructionStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchSaveInstructionStatusResponse) SetStatusCode(v int32) *BatchSaveInstructionStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchSaveInstructionStatusResponse) SetBody(v *BatchSaveInstructionStatusResponseBody) *BatchSaveInstructionStatusResponse {
+	s.Body = v
+	return s
+}
+
+type BatchUpdateSystemRunningPlanRequest struct {
+	ControlType         *int32   `json:"controlType,omitempty" xml:"controlType,omitempty"`
+	DateType            *int32   `json:"dateType,omitempty" xml:"dateType,omitempty"`
+	EarliestStartupTime *string  `json:"earliestStartupTime,omitempty" xml:"earliestStartupTime,omitempty"`
+	EndTime             *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	FactoryId           *string  `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	LatestShutdownTime  *string  `json:"latestShutdownTime,omitempty" xml:"latestShutdownTime,omitempty"`
+	MaxCarbonDioxide    *float64 `json:"maxCarbonDioxide,omitempty" xml:"maxCarbonDioxide,omitempty"`
+	MaxTem              *float64 `json:"maxTem,omitempty" xml:"maxTem,omitempty"`
+	MinTem              *float64 `json:"minTem,omitempty" xml:"minTem,omitempty"`
+	SeasonMode          *int32   `json:"seasonMode,omitempty" xml:"seasonMode,omitempty"`
+	StartTime           *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	SystemId            *string  `json:"systemId,omitempty" xml:"systemId,omitempty"`
+	WorkingEndTime      *string  `json:"workingEndTime,omitempty" xml:"workingEndTime,omitempty"`
+	WorkingStartTime    *string  `json:"workingStartTime,omitempty" xml:"workingStartTime,omitempty"`
+}
+
+func (s BatchUpdateSystemRunningPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateSystemRunningPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetControlType(v int32) *BatchUpdateSystemRunningPlanRequest {
+	s.ControlType = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetDateType(v int32) *BatchUpdateSystemRunningPlanRequest {
+	s.DateType = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetEarliestStartupTime(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.EarliestStartupTime = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetEndTime(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetFactoryId(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.FactoryId = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetLatestShutdownTime(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.LatestShutdownTime = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetMaxCarbonDioxide(v float64) *BatchUpdateSystemRunningPlanRequest {
+	s.MaxCarbonDioxide = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetMaxTem(v float64) *BatchUpdateSystemRunningPlanRequest {
+	s.MaxTem = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetMinTem(v float64) *BatchUpdateSystemRunningPlanRequest {
+	s.MinTem = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetSeasonMode(v int32) *BatchUpdateSystemRunningPlanRequest {
+	s.SeasonMode = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetStartTime(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetSystemId(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.SystemId = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetWorkingEndTime(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.WorkingEndTime = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanRequest) SetWorkingStartTime(v string) *BatchUpdateSystemRunningPlanRequest {
+	s.WorkingStartTime = &v
+	return s
+}
+
+type BatchUpdateSystemRunningPlanResponseBody struct {
+	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s BatchUpdateSystemRunningPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateSystemRunningPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateSystemRunningPlanResponseBody) SetData(v bool) *BatchUpdateSystemRunningPlanResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanResponseBody) SetRequestId(v string) *BatchUpdateSystemRunningPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchUpdateSystemRunningPlanResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchUpdateSystemRunningPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchUpdateSystemRunningPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateSystemRunningPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateSystemRunningPlanResponse) SetHeaders(v map[string]*string) *BatchUpdateSystemRunningPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanResponse) SetStatusCode(v int32) *BatchUpdateSystemRunningPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchUpdateSystemRunningPlanResponse) SetBody(v *BatchUpdateSystemRunningPlanResponseBody) *BatchUpdateSystemRunningPlanResponse {
+	s.Body = v
+	return s
+}
+
+type EditProhibitedDevicesRequest struct {
+	FactoryId              *string                                               `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	HvacDeviceConfigVOList []*EditProhibitedDevicesRequestHvacDeviceConfigVOList `json:"hvacDeviceConfigVOList,omitempty" xml:"hvacDeviceConfigVOList,omitempty" type:"Repeated"`
+	SystemId               *string                                               `json:"systemId,omitempty" xml:"systemId,omitempty"`
+}
+
+func (s EditProhibitedDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditProhibitedDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditProhibitedDevicesRequest) SetFactoryId(v string) *EditProhibitedDevicesRequest {
+	s.FactoryId = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequest) SetHvacDeviceConfigVOList(v []*EditProhibitedDevicesRequestHvacDeviceConfigVOList) *EditProhibitedDevicesRequest {
+	s.HvacDeviceConfigVOList = v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequest) SetSystemId(v string) *EditProhibitedDevicesRequest {
+	s.SystemId = &v
+	return s
+}
+
+type EditProhibitedDevicesRequestHvacDeviceConfigVOList struct {
+	BuildingId        *string `json:"buildingId,omitempty" xml:"buildingId,omitempty"`
+	DeviceId          *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	DeviceName        *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
+	DeviceType        *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
+	FenceId           *string `json:"fenceId,omitempty" xml:"fenceId,omitempty"`
+	FloorId           *string `json:"floorId,omitempty" xml:"floorId,omitempty"`
+	IsForbidden       *int32  `json:"isForbidden,omitempty" xml:"isForbidden,omitempty"`
+	IsUnfavorableArea *int32  `json:"isUnfavorableArea,omitempty" xml:"isUnfavorableArea,omitempty"`
+}
+
+func (s EditProhibitedDevicesRequestHvacDeviceConfigVOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditProhibitedDevicesRequestHvacDeviceConfigVOList) GoString() string {
+	return s.String()
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetBuildingId(v string) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.BuildingId = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetDeviceId(v string) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetDeviceName(v string) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetDeviceType(v string) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetFenceId(v string) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.FenceId = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetFloorId(v string) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.FloorId = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetIsForbidden(v int32) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.IsForbidden = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetIsUnfavorableArea(v int32) *EditProhibitedDevicesRequestHvacDeviceConfigVOList {
+	s.IsUnfavorableArea = &v
+	return s
+}
+
+type EditProhibitedDevicesResponseBody struct {
+	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s EditProhibitedDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditProhibitedDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditProhibitedDevicesResponseBody) SetData(v bool) *EditProhibitedDevicesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesResponseBody) SetRequestId(v string) *EditProhibitedDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EditProhibitedDevicesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditProhibitedDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EditProhibitedDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditProhibitedDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EditProhibitedDevicesResponse) SetHeaders(v map[string]*string) *EditProhibitedDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EditProhibitedDevicesResponse) SetStatusCode(v int32) *EditProhibitedDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EditProhibitedDevicesResponse) SetBody(v *EditProhibitedDevicesResponseBody) *EditProhibitedDevicesResponse {
+	s.Body = v
+	return s
+}
+
+type EditUnfavorableAreaDevicesRequest struct {
+	FactoryId              *string                                                    `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	HvacDeviceConfigVOList []*EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList `json:"hvacDeviceConfigVOList,omitempty" xml:"hvacDeviceConfigVOList,omitempty" type:"Repeated"`
+	SystemId               *string                                                    `json:"systemId,omitempty" xml:"systemId,omitempty"`
+}
+
+func (s EditUnfavorableAreaDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditUnfavorableAreaDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditUnfavorableAreaDevicesRequest) SetFactoryId(v string) *EditUnfavorableAreaDevicesRequest {
+	s.FactoryId = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequest) SetHvacDeviceConfigVOList(v []*EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) *EditUnfavorableAreaDevicesRequest {
+	s.HvacDeviceConfigVOList = v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequest) SetSystemId(v string) *EditUnfavorableAreaDevicesRequest {
+	s.SystemId = &v
+	return s
+}
+
+type EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList struct {
+	BuildingId        *string `json:"buildingId,omitempty" xml:"buildingId,omitempty"`
+	DeviceId          *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	DeviceName        *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
+	DeviceType        *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
+	FenceId           *string `json:"fenceId,omitempty" xml:"fenceId,omitempty"`
+	FloorId           *string `json:"floorId,omitempty" xml:"floorId,omitempty"`
+	IsForbidden       *int32  `json:"isForbidden,omitempty" xml:"isForbidden,omitempty"`
+	IsUnfavorableArea *int32  `json:"isUnfavorableArea,omitempty" xml:"isUnfavorableArea,omitempty"`
+}
+
+func (s EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) GoString() string {
+	return s.String()
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetBuildingId(v string) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.BuildingId = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetDeviceId(v string) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetDeviceName(v string) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetDeviceType(v string) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetFenceId(v string) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.FenceId = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetFloorId(v string) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.FloorId = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetIsForbidden(v int32) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.IsForbidden = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetIsUnfavorableArea(v int32) *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList {
+	s.IsUnfavorableArea = &v
+	return s
+}
+
+type EditUnfavorableAreaDevicesResponseBody struct {
+	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s EditUnfavorableAreaDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditUnfavorableAreaDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditUnfavorableAreaDevicesResponseBody) SetData(v bool) *EditUnfavorableAreaDevicesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesResponseBody) SetRequestId(v string) *EditUnfavorableAreaDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EditUnfavorableAreaDevicesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditUnfavorableAreaDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EditUnfavorableAreaDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditUnfavorableAreaDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EditUnfavorableAreaDevicesResponse) SetHeaders(v map[string]*string) *EditUnfavorableAreaDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesResponse) SetStatusCode(v int32) *EditUnfavorableAreaDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EditUnfavorableAreaDevicesResponse) SetBody(v *EditUnfavorableAreaDevicesResponseBody) *EditUnfavorableAreaDevicesResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateResultRequest struct {
 	// The enterprise code.
 	//
@@ -6109,7 +6617,9 @@ type GetInventoryListRequest struct {
 	//
 	// resource
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The type of the obtained environmental impact: gwp indicates the carbon footprint of climate change. For more information, see the type value of the enumerated values.
+	// The type of the obtained environmental impact: gwp indicates the carbon footprint of climate change.
+	//
+	// <props="intl">[For more information, see the environment impact category enumeration.](https://www.alibabacloud.com/help/en/energy-expert/developer-reference/enumerated-values-of-energy-expert#RhGn7)
 	//
 	// This parameter is required.
 	//
@@ -7293,7 +7803,7 @@ type PushItemDataRequest struct {
 	//
 	// C-20210223-01
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Push data list.
+	// List of data to be pushed.
 	//
 	// This parameter is required.
 	Items *PushItemDataRequestItems `json:"items,omitempty" xml:"items,omitempty" type:"Struct"`
@@ -7655,6 +8165,165 @@ func (s *SendDocumentAskQuestionResponse) SetBody(v *SendDocumentAskQuestionResp
 	return s
 }
 
+type SetRunningPlanRequest struct {
+	ControlType         *int32   `json:"controlType,omitempty" xml:"controlType,omitempty"`
+	DateType            *int32   `json:"dateType,omitempty" xml:"dateType,omitempty"`
+	EarliestStartupTime *string  `json:"earliestStartupTime,omitempty" xml:"earliestStartupTime,omitempty"`
+	EndTime             *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	FactoryId           *string  `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	LatestShutdownTime  *string  `json:"latestShutdownTime,omitempty" xml:"latestShutdownTime,omitempty"`
+	MaxCarbonDioxide    *float64 `json:"maxCarbonDioxide,omitempty" xml:"maxCarbonDioxide,omitempty"`
+	MaxTem              *float64 `json:"maxTem,omitempty" xml:"maxTem,omitempty"`
+	MinTem              *float64 `json:"minTem,omitempty" xml:"minTem,omitempty"`
+	PKey                *string  `json:"pKey,omitempty" xml:"pKey,omitempty"`
+	SeasonMode          *int32   `json:"seasonMode,omitempty" xml:"seasonMode,omitempty"`
+	StartTime           *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StatisticsTime      *string  `json:"statisticsTime,omitempty" xml:"statisticsTime,omitempty"`
+	SystemId            *string  `json:"systemId,omitempty" xml:"systemId,omitempty"`
+	WorkingEndTime      *string  `json:"workingEndTime,omitempty" xml:"workingEndTime,omitempty"`
+	WorkingStartTime    *string  `json:"workingStartTime,omitempty" xml:"workingStartTime,omitempty"`
+}
+
+func (s SetRunningPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetRunningPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetRunningPlanRequest) SetControlType(v int32) *SetRunningPlanRequest {
+	s.ControlType = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetDateType(v int32) *SetRunningPlanRequest {
+	s.DateType = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetEarliestStartupTime(v string) *SetRunningPlanRequest {
+	s.EarliestStartupTime = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetEndTime(v string) *SetRunningPlanRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetFactoryId(v string) *SetRunningPlanRequest {
+	s.FactoryId = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetLatestShutdownTime(v string) *SetRunningPlanRequest {
+	s.LatestShutdownTime = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetMaxCarbonDioxide(v float64) *SetRunningPlanRequest {
+	s.MaxCarbonDioxide = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetMaxTem(v float64) *SetRunningPlanRequest {
+	s.MaxTem = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetMinTem(v float64) *SetRunningPlanRequest {
+	s.MinTem = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetPKey(v string) *SetRunningPlanRequest {
+	s.PKey = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetSeasonMode(v int32) *SetRunningPlanRequest {
+	s.SeasonMode = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetStartTime(v string) *SetRunningPlanRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetStatisticsTime(v string) *SetRunningPlanRequest {
+	s.StatisticsTime = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetSystemId(v string) *SetRunningPlanRequest {
+	s.SystemId = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetWorkingEndTime(v string) *SetRunningPlanRequest {
+	s.WorkingEndTime = &v
+	return s
+}
+
+func (s *SetRunningPlanRequest) SetWorkingStartTime(v string) *SetRunningPlanRequest {
+	s.WorkingStartTime = &v
+	return s
+}
+
+type SetRunningPlanResponseBody struct {
+	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s SetRunningPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetRunningPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetRunningPlanResponseBody) SetData(v bool) *SetRunningPlanResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SetRunningPlanResponseBody) SetRequestId(v string) *SetRunningPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetRunningPlanResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetRunningPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetRunningPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetRunningPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetRunningPlanResponse) SetHeaders(v map[string]*string) *SetRunningPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetRunningPlanResponse) SetStatusCode(v int32) *SetRunningPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetRunningPlanResponse) SetBody(v *SetRunningPlanResponseBody) *SetRunningPlanResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitDocumentAnalyzeJobRequest struct {
 	// This parameter is required.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
@@ -7866,6 +8535,338 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略执行状态反馈
+//
+// @param request - BatchSaveInstructionStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchSaveInstructionStatusResponse
+func (client *Client) BatchSaveInstructionStatusWithOptions(request *BatchSaveInstructionStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchSaveInstructionStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FactoryId)) {
+		body["factoryId"] = request.FactoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PKey)) {
+		body["pKey"] = request.PKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		body["statusList"] = request.StatusList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchSaveInstructionStatus"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/hvac/batchSaveInstructionStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchSaveInstructionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略执行状态反馈
+//
+// @param request - BatchSaveInstructionStatusRequest
+//
+// @return BatchSaveInstructionStatusResponse
+func (client *Client) BatchSaveInstructionStatus(request *BatchSaveInstructionStatusRequest) (_result *BatchSaveInstructionStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchSaveInstructionStatusResponse{}
+	_body, _err := client.BatchSaveInstructionStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量设置空调站点运行计划
+//
+// @param request - BatchUpdateSystemRunningPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateSystemRunningPlanResponse
+func (client *Client) BatchUpdateSystemRunningPlanWithOptions(request *BatchUpdateSystemRunningPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchUpdateSystemRunningPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ControlType)) {
+		body["controlType"] = request.ControlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DateType)) {
+		body["dateType"] = request.DateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EarliestStartupTime)) {
+		body["earliestStartupTime"] = request.EarliestStartupTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FactoryId)) {
+		body["factoryId"] = request.FactoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LatestShutdownTime)) {
+		body["latestShutdownTime"] = request.LatestShutdownTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxCarbonDioxide)) {
+		body["maxCarbonDioxide"] = request.MaxCarbonDioxide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxTem)) {
+		body["maxTem"] = request.MaxTem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinTem)) {
+		body["minTem"] = request.MinTem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeasonMode)) {
+		body["seasonMode"] = request.SeasonMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemId)) {
+		body["systemId"] = request.SystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkingEndTime)) {
+		body["workingEndTime"] = request.WorkingEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkingStartTime)) {
+		body["workingStartTime"] = request.WorkingStartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchUpdateSystemRunningPlan"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/hvac/batchUpdateSystemRunningPlan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchUpdateSystemRunningPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量设置空调站点运行计划
+//
+// @param request - BatchUpdateSystemRunningPlanRequest
+//
+// @return BatchUpdateSystemRunningPlanResponse
+func (client *Client) BatchUpdateSystemRunningPlan(request *BatchUpdateSystemRunningPlanRequest) (_result *BatchUpdateSystemRunningPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchUpdateSystemRunningPlanResponse{}
+	_body, _err := client.BatchUpdateSystemRunningPlanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑禁用设备
+//
+// @param request - EditProhibitedDevicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditProhibitedDevicesResponse
+func (client *Client) EditProhibitedDevicesWithOptions(request *EditProhibitedDevicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EditProhibitedDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FactoryId)) {
+		body["factoryId"] = request.FactoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HvacDeviceConfigVOList)) {
+		body["hvacDeviceConfigVOList"] = request.HvacDeviceConfigVOList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemId)) {
+		body["systemId"] = request.SystemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EditProhibitedDevices"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/hvac/editProhibitedDevices"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EditProhibitedDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑禁用设备
+//
+// @param request - EditProhibitedDevicesRequest
+//
+// @return EditProhibitedDevicesResponse
+func (client *Client) EditProhibitedDevices(request *EditProhibitedDevicesRequest) (_result *EditProhibitedDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EditProhibitedDevicesResponse{}
+	_body, _err := client.EditProhibitedDevicesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑不利区设备
+//
+// @param request - EditUnfavorableAreaDevicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditUnfavorableAreaDevicesResponse
+func (client *Client) EditUnfavorableAreaDevicesWithOptions(request *EditUnfavorableAreaDevicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EditUnfavorableAreaDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FactoryId)) {
+		body["factoryId"] = request.FactoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HvacDeviceConfigVOList)) {
+		body["hvacDeviceConfigVOList"] = request.HvacDeviceConfigVOList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemId)) {
+		body["systemId"] = request.SystemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EditUnfavorableAreaDevices"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/hvac/editUnfavorableAreaDevices"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EditUnfavorableAreaDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑不利区设备
+//
+// @param request - EditUnfavorableAreaDevicesRequest
+//
+// @return EditUnfavorableAreaDevicesResponse
+func (client *Client) EditUnfavorableAreaDevices(request *EditUnfavorableAreaDevicesRequest) (_result *EditUnfavorableAreaDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EditUnfavorableAreaDevicesResponse{}
+	_body, _err := client.EditUnfavorableAreaDevicesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8269,9 +9270,9 @@ func (client *Client) GetDataQualityAnalysis(request *GetDataQualityAnalysisRequ
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
-// - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+// - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
 //
-// <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+// <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
 //
 // @param request - GetDeviceInfoRequest
 //
@@ -8334,9 +9335,9 @@ func (client *Client) GetDeviceInfoWithOptions(request *GetDeviceInfoRequest, he
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
-// - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+// - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
 //
-// <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+// <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
 //
 // @param request - GetDeviceInfoRequest
 //
@@ -8365,9 +9366,9 @@ func (client *Client) GetDeviceInfo(request *GetDeviceInfoRequest) (_result *Get
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
-// - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+// - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
 //
-// <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+// <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
 //
 // @param request - GetDeviceListRequest
 //
@@ -8422,9 +9423,9 @@ func (client *Client) GetDeviceListWithOptions(request *GetDeviceListRequest, he
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
-// - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+// - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
 //
-// <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+// <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
 //
 // @param request - GetDeviceListRequest
 //
@@ -9535,9 +10536,9 @@ func (client *Client) GetInventoryList(request *GetInventoryListRequest) (_resul
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
-// - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+// - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
 //
-// <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+// <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
 //
 // @param headers - map
 //
@@ -9578,9 +10579,9 @@ func (client *Client) GetOrgAndFactoryWithOptions(headers map[string]*string, ru
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
-// - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+// - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
 //
-// <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+// <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
 //
 // @return GetOrgAndFactoryResponse
 func (client *Client) GetOrgAndFactory() (_result *GetOrgAndFactoryResponse, _err error) {
@@ -10212,6 +11213,130 @@ func (client *Client) SendDocumentAskQuestion(request *SendDocumentAskQuestionRe
 	headers := make(map[string]*string)
 	_result = &SendDocumentAskQuestionResponse{}
 	_body, _err := client.SendDocumentAskQuestionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置运行计划
+//
+// @param request - SetRunningPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetRunningPlanResponse
+func (client *Client) SetRunningPlanWithOptions(request *SetRunningPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetRunningPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ControlType)) {
+		body["controlType"] = request.ControlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DateType)) {
+		body["dateType"] = request.DateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EarliestStartupTime)) {
+		body["earliestStartupTime"] = request.EarliestStartupTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FactoryId)) {
+		body["factoryId"] = request.FactoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LatestShutdownTime)) {
+		body["latestShutdownTime"] = request.LatestShutdownTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxCarbonDioxide)) {
+		body["maxCarbonDioxide"] = request.MaxCarbonDioxide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxTem)) {
+		body["maxTem"] = request.MaxTem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinTem)) {
+		body["minTem"] = request.MinTem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PKey)) {
+		body["pKey"] = request.PKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeasonMode)) {
+		body["seasonMode"] = request.SeasonMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsTime)) {
+		body["statisticsTime"] = request.StatisticsTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemId)) {
+		body["systemId"] = request.SystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkingEndTime)) {
+		body["workingEndTime"] = request.WorkingEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkingStartTime)) {
+		body["workingStartTime"] = request.WorkingStartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetRunningPlan"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/hvac/setRunningPlan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetRunningPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置运行计划
+//
+// @param request - SetRunningPlanRequest
+//
+// @return SetRunningPlanResponse
+func (client *Client) SetRunningPlan(request *SetRunningPlanRequest) (_result *SetRunningPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetRunningPlanResponse{}
+	_body, _err := client.SetRunningPlanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
