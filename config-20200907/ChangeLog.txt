@@ -1,3 +1,11 @@
+2024-09-23 Version: v2.4.9
+- Update API CreateAggregateConfigRule: add param ExtendContent.
+- Update API CreateConfigRule: add param ExtendContent.
+- Update API GetAggregateConfigRule: update response param.
+- Update API GetConfigRule: update response param.
+- Update API UpdateConfigRule: add param ExtendContent.
+
+
 2024-08-29 Version: v2.4.8
 - Update API ListAggregateDiscoveredResources: add param EndUpdateTimestamp.
 - Update API ListAggregateDiscoveredResources: add param ExcludeResourceTypes.

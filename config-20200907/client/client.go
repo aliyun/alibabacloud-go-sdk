@@ -2177,6 +2177,7 @@ type CreateAggregateConfigRuleRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                             `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*CreateAggregateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	ExtendContent           *string                                             `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -2375,6 +2376,11 @@ func (s *CreateAggregateConfigRuleRequest) SetExcludeTagsScope(v []*CreateAggreg
 	return s
 }
 
+func (s *CreateAggregateConfigRuleRequest) SetExtendContent(v string) *CreateAggregateConfigRuleRequest {
+	s.ExtendContent = &v
+	return s
+}
+
 func (s *CreateAggregateConfigRuleRequest) SetFolderIdsScope(v string) *CreateAggregateConfigRuleRequest {
 	s.FolderIdsScope = &v
 	return s
@@ -2558,6 +2564,7 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*CreateAggregateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	ExtendContent           *string                                                   `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -2753,6 +2760,11 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v st
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeTagsScope(v []*CreateAggregateConfigRuleShrinkRequestExcludeTagsScope) *CreateAggregateConfigRuleShrinkRequest {
 	s.ExcludeTagsScope = v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetExtendContent(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.ExtendContent = &v
 	return s
 }
 
@@ -4425,6 +4437,7 @@ type CreateConfigRuleRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                    `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*CreateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	ExtendContent           *string                                    `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The input parameter of the rule.
 	//
 	// example:
@@ -4591,6 +4604,11 @@ func (s *CreateConfigRuleRequest) SetExcludeTagsScope(v []*CreateConfigRuleReque
 	return s
 }
 
+func (s *CreateConfigRuleRequest) SetExtendContent(v string) *CreateConfigRuleRequest {
+	s.ExtendContent = &v
+	return s
+}
+
 func (s *CreateConfigRuleRequest) SetInputParameters(v map[string]interface{}) *CreateConfigRuleRequest {
 	s.InputParameters = v
 	return s
@@ -4740,6 +4758,7 @@ type CreateConfigRuleShrinkRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                          `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*CreateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	ExtendContent           *string                                          `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The input parameter of the rule.
 	//
 	// example:
@@ -4903,6 +4922,11 @@ func (s *CreateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *Cr
 
 func (s *CreateConfigRuleShrinkRequest) SetExcludeTagsScope(v []*CreateConfigRuleShrinkRequestExcludeTagsScope) *CreateConfigRuleShrinkRequest {
 	s.ExcludeTagsScope = v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequest) SetExtendContent(v string) *CreateConfigRuleShrinkRequest {
+	s.ExtendContent = &v
 	return s
 }
 
@@ -10579,6 +10603,7 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	// 23642660635687****
 	ExcludeResourceIdsScope *string                                                         `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	ExtendContent           *string                                                         `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -10774,6 +10799,11 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeResourceIdsScop
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeTagsScope(v []*GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.ExcludeTagsScope = v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExtendContent(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ExtendContent = &v
 	return s
 }
 
@@ -15748,6 +15778,7 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	// 23642660635687****
 	ExcludeResourceIdsScope *string                                                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*GetConfigRuleResponseBodyConfigRuleExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	ExtendContent           *string                                                `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The input parameters of the rule.
 	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	// The details of the managed rule.
@@ -15918,6 +15949,11 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetExcludeResourceIdsScope(v strin
 
 func (s *GetConfigRuleResponseBodyConfigRule) SetExcludeTagsScope(v []*GetConfigRuleResponseBodyConfigRuleExcludeTagsScope) *GetConfigRuleResponseBodyConfigRule {
 	s.ExcludeTagsScope = v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetExtendContent(v string) *GetConfigRuleResponseBodyConfigRule {
+	s.ExtendContent = &v
 	return s
 }
 
@@ -34173,6 +34209,9 @@ type UpdateConfigRuleRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                    `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*UpdateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The input parameters of the rule.
 	//
 	// example:
@@ -34311,6 +34350,11 @@ func (s *UpdateConfigRuleRequest) SetExcludeResourceIdsScope(v string) *UpdateCo
 
 func (s *UpdateConfigRuleRequest) SetExcludeTagsScope(v []*UpdateConfigRuleRequestExcludeTagsScope) *UpdateConfigRuleRequest {
 	s.ExcludeTagsScope = v
+	return s
+}
+
+func (s *UpdateConfigRuleRequest) SetExtendContent(v string) *UpdateConfigRuleRequest {
+	s.ExtendContent = &v
 	return s
 }
 
@@ -34461,6 +34505,9 @@ type UpdateConfigRuleShrinkRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                          `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*UpdateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The input parameters of the rule.
 	//
 	// example:
@@ -34599,6 +34646,11 @@ func (s *UpdateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *Up
 
 func (s *UpdateConfigRuleShrinkRequest) SetExcludeTagsScope(v []*UpdateConfigRuleShrinkRequestExcludeTagsScope) *UpdateConfigRuleShrinkRequest {
 	s.ExcludeTagsScope = v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequest) SetExtendContent(v string) *UpdateConfigRuleShrinkRequest {
+	s.ExtendContent = &v
 	return s
 }
 
@@ -36400,6 +36452,10 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtendContent)) {
+		body["ExtendContent"] = request.ExtendContent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FolderIdsScope)) {
 		body["FolderIdsScope"] = request.FolderIdsScope
 	}
@@ -37046,6 +37102,10 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
 		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendContent)) {
+		body["ExtendContent"] = request.ExtendContent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
@@ -43070,7 +43130,7 @@ func (client *Client) ListAggregateResourceRelations(request *ListAggregateResou
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see[ Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema)
 //
 // >
 //
@@ -43128,7 +43188,7 @@ func (client *Client) ListAggregateResourcesByAdvancedSearchWithOptions(request 
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see[ Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema)
 //
 // >
 //
@@ -44410,7 +44470,7 @@ func (client *Client) ListResourceRelations(request *ListResourceRelationsReques
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema).
 //
 // >
 //
@@ -44464,7 +44524,7 @@ func (client *Client) ListResourcesByAdvancedSearchWithOptions(request *ListReso
 //
 // Description:
 //
-// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
+// When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema).
 //
 // >
 //
@@ -46407,6 +46467,10 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
 		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendContent)) {
+		body["ExtendContent"] = request.ExtendContent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
