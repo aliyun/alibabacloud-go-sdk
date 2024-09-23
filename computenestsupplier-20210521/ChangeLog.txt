@@ -1,3 +1,7 @@
+2024-09-23 Version: v3.4.0
+- Support API PreLaunchService.
+
+
 2024-09-12 Version: v3.3.2
 - Update API CreateService: add param DryRun.
 - Update API CreateService: update response param.

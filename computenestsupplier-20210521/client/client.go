@@ -10453,6 +10453,97 @@ func (s *ModifyServiceInstanceResourcesResponse) SetBody(v *ModifyServiceInstanc
 	return s
 }
 
+type PreLaunchServiceRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-f7024a22ea5149xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s PreLaunchServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreLaunchServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreLaunchServiceRequest) SetClientToken(v string) *PreLaunchServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *PreLaunchServiceRequest) SetRegionId(v string) *PreLaunchServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *PreLaunchServiceRequest) SetServiceId(v string) *PreLaunchServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type PreLaunchServiceResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PreLaunchServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreLaunchServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PreLaunchServiceResponseBody) SetRequestId(v string) *PreLaunchServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PreLaunchServiceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PreLaunchServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PreLaunchServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreLaunchServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PreLaunchServiceResponse) SetHeaders(v map[string]*string) *PreLaunchServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PreLaunchServiceResponse) SetStatusCode(v int32) *PreLaunchServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PreLaunchServiceResponse) SetBody(v *PreLaunchServiceResponseBody) *PreLaunchServiceResponse {
+	s.Body = v
+	return s
+}
+
 type PushMeteringDataRequest struct {
 	// The metering data. Parameters in the example value:
 	//
@@ -15982,6 +16073,74 @@ func (client *Client) ModifyServiceInstanceResources(request *ModifyServiceInsta
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyServiceInstanceResourcesResponse{}
 	_body, _err := client.ModifyServiceInstanceResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预发布服务
+//
+// @param request - PreLaunchServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreLaunchServiceResponse
+func (client *Client) PreLaunchServiceWithOptions(request *PreLaunchServiceRequest, runtime *util.RuntimeOptions) (_result *PreLaunchServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreLaunchService"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PreLaunchServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预发布服务
+//
+// @param request - PreLaunchServiceRequest
+//
+// @return PreLaunchServiceResponse
+func (client *Client) PreLaunchService(request *PreLaunchServiceRequest) (_result *PreLaunchServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PreLaunchServiceResponse{}
+	_body, _err := client.PreLaunchServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
