@@ -752,6 +752,10 @@ type CreateCsrRequest struct {
 	// 123.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The name of the company.
+	//
+	// example:
+	//
+	// aly
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	// The code of the country or region in which the organization is located. For example, you can use CN to indicate China and use US to indicate the United States.
 	//
@@ -1471,6 +1475,8 @@ func (s *DeleteDeploymentJobResponse) SetBody(v *DeleteDeploymentJobResponseBody
 }
 
 type DeletePCACertRequest struct {
+	// The unique identifier of the certificate. You can call the [ListCert](https://help.aliyun.com/document_detail/452331.html) operation to query the unique identifiers of certificates.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1493,6 +1499,8 @@ func (s *DeletePCACertRequest) SetIdentifier(v string) *DeletePCACertRequest {
 }
 
 type DeletePCACertResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
@@ -3261,6 +3269,12 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// ---BEGIN CERTIFICATE----- MIIF...... -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// The unique identifier of the certificate. The value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
+	//
+	// example:
+	//
+	// 10741304-cn-hangzhou
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The city of the company or organization to which the certificate purchaser belongs.
 	//
 	// example:
@@ -3447,6 +3461,11 @@ func (s *GetUserCertificateDetailResponseBody) SetBuyInAliyun(v bool) *GetUserCe
 
 func (s *GetUserCertificateDetailResponseBody) SetCert(v string) *GetUserCertificateDetailResponseBody {
 	s.Cert = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetCertIdentifier(v string) *GetUserCertificateDetailResponseBody {
+	s.CertIdentifier = &v
 	return s
 }
 
@@ -5118,6 +5137,10 @@ type ListContactResponseBodyContactList struct {
 	// 1
 	MobileStatus *int32 `json:"MobileStatus,omitempty" xml:"MobileStatus,omitempty"`
 	// The name of the contact.
+	//
+	// example:
+	//
+	// ty-yaoyue.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The webhook URL of the chatbot.
 	//
@@ -5330,6 +5353,10 @@ type ListCsrResponseBodyCsrList struct {
 	// example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The name of the company.
+	//
+	// example:
+	//
+	// corp_name
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	// The code of the country or region in which the organization is located. For example, you can use CN to indicate China and use US to indicate the United States. The default value is the code of the country or region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued. For more information about country codes, see the "Country codes" section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
 	//
@@ -9974,6 +10001,18 @@ func (client *Client) DeleteDeploymentJob(request *DeleteDeploymentJobRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a private certificate from a certificate application repository.
+//
+// Description:
+//
+// You can call the DeletePCACert operation to delete a private certificate from a certificate application repository.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
 // @param request - DeletePCACertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10012,6 +10051,18 @@ func (client *Client) DeletePCACertWithOptions(request *DeletePCACertRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a private certificate from a certificate application repository.
+//
+// Description:
+//
+// You can call the DeletePCACert operation to delete a private certificate from a certificate application repository.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
 // @param request - DeletePCACertRequest
 //
 // @return DeletePCACertResponse
