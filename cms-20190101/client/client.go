@@ -3073,6 +3073,8 @@ type CreateDynamicTagGroupRequest struct {
 	//
 	// true
 	EnableSubscribeEvent *bool `json:"EnableSubscribeEvent,omitempty" xml:"EnableSubscribeEvent,omitempty"`
+	// The conditional expressions used to create an application group based on the tag.
+	//
 	// This parameter is required.
 	MatchExpress []*CreateDynamicTagGroupRequestMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
 	// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values:
@@ -3168,7 +3170,7 @@ type CreateDynamicTagGroupRequestMatchExpress struct {
 	//
 	// appname
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// The tag values of the cloud resources. In this example, set the value of N to 1.
+	// The tag values of the cloud resources. Set the value of N to 1.
 	//
 	// >  If you set the `MatchExpress.N.TagValueMatchFunction` parameter, you must also set the `MatchExpress.N.TagValue` parameter.
 	//
@@ -3176,7 +3178,7 @@ type CreateDynamicTagGroupRequestMatchExpress struct {
 	//
 	// instance
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// The method that is used to match the tag values of the cloud resources. In this example, set the value of N to 1. Valid values:
+	// The method that is used to match the tag values of the cloud resources. Set the value of N to 1. Valid values:
 	//
 	// 	- contains: contains
 	//
@@ -5013,7 +5015,7 @@ type CreateHostAvailabilityRequestTaskOption struct {
 	//
 	// ok
 	HttpResponseMatchContent *string `json:"HttpResponseMatchContent,omitempty" xml:"HttpResponseMatchContent,omitempty"`
-	// The URI that you want to monitor. This parameter must be specified when TaskType is set to HTTP.
+	// The URI that you want to monitor. This parameter is required if the TaskType parameter is set to HTTP or Telnet.
 	//
 	// example:
 	//
@@ -5029,7 +5031,7 @@ type CreateHostAvailabilityRequestTaskOption struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The domain name or IP address that you want to monitor.
 	//
-	// > This parameter must be specified when TaskType is set to PING or TELNET.
+	// >  This parameter is required if the TaskType parameter is set to PING.
 	//
 	// example:
 	//
@@ -6939,17 +6941,17 @@ func (s *CreateMetricRuleBlackListResponse) SetBody(v *CreateMetricRuleBlackList
 }
 
 type CreateMetricRuleResourcesRequest struct {
-	// Specifies whether to overwrite the existing data. Valid values:
+	// Specifies whether to overwrite existing resources. Valid values:
 	//
-	// 	- true: The resources submitted this time will overwrite the previous associated resources.
+	// 	- true: The resources submitted this time overwrite the previously associated resources.
 	//
-	// 	- false: The resources submitted this time will not overwrite the previous associated resources. The associated resources after submission include the previous associated resources and the resources submitted this time.
+	// 	- false: The resources submitted this time do not overwrite the previously associated resources. The associated resources after submission include the previously associated resources and the resources submitted this time.
 	//
 	// example:
 	//
 	// false
 	Overwrite *string `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	// The resources to be associated with the alert rule. The value is a JSON array.
+	// The resources that are associated with the alert rule. Set the value to a JSON array.
 	//
 	// >  You can add up to 100 resources each time. An alert rule can be associated with up to 3,000 resources.
 	//
@@ -6991,9 +6993,9 @@ func (s *CreateMetricRuleResourcesRequest) SetRuleId(v string) *CreateMetricRule
 }
 
 type CreateMetricRuleResourcesResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -7005,13 +7007,13 @@ type CreateMetricRuleResourcesResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0671A721-0D7A-4F11-BB77-2416325D65AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
 	//
 	// example:
 	//
@@ -8566,9 +8568,9 @@ type CreateSiteMonitorRequest struct {
 	//
 	// HanZhou_ECS1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the site monitoring task.
+	// The protocol that is used by the site monitoring task.
 	//
-	// Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	// Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
 	//
 	// This parameter is required.
 	//
@@ -11071,7 +11073,7 @@ func (s *DeleteMetricRuleBlackListResponse) SetBody(v *DeleteMetricRuleBlackList
 }
 
 type DeleteMetricRuleResourcesRequest struct {
-	// The resources to be disassociated from the alert rule.
+	// The resources that are associated with the alert rule.
 	//
 	// This parameter is required.
 	//
@@ -11108,31 +11110,31 @@ func (s *DeleteMetricRuleResourcesRequest) SetRuleId(v string) *DeleteMetricRule
 }
 
 type DeleteMetricRuleResourcesResponseBody struct {
-	// The HTTP status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
 	// The alert does not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8A35882-90C6-4F03-BBEB-153C180398EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// 	- true
 	//
-	// 	- false: The call failed.
+	// 	- false
 	//
 	// example:
 	//
@@ -16996,7 +16998,7 @@ type DescribeContactListRequest struct {
 	//
 	// Alice
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Default value: 1.
 	//
@@ -17004,7 +17006,7 @@ type DescribeContactListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Default value: 100.
 	//
@@ -17056,7 +17058,7 @@ func (s *DescribeContactListRequest) SetRegionId(v string) *DescribeContactListR
 type DescribeContactListResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -17064,29 +17066,29 @@ type DescribeContactListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The alert contacts.
 	Contacts *DescribeContactListResponseBodyContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	// The error message.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The Request is not authorization.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 06D5ECC2-B9BE-42A4-8FA3-1A610FB08B83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// 	- true: The request was successful.
 	//
-	// 	- false: The call failed.
+	// 	- false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -17156,7 +17158,7 @@ type DescribeContactListResponseBodyContactsContact struct {
 	//
 	// The email address must be activated after it is added as the value specified for the alert notification method. The value PENDING indicates that the email address is not activated. The value OK indicates that the email address is activated.
 	ChannelsState *DescribeContactListResponseBodyContactsContactChannelsState `json:"ChannelsState,omitempty" xml:"ChannelsState,omitempty" type:"Struct"`
-	// The alert contact groups.
+	// None.
 	ContactGroups *DescribeContactListResponseBodyContactsContactContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
 	// The timestamp when the alert contact was created.
 	//
@@ -17166,7 +17168,7 @@ type DescribeContactListResponseBodyContactsContact struct {
 	//
 	// 1552356159000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the alert contact.
+	// The description.
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The language in which the alert information is displayed. Valid values:
 	//
@@ -17261,7 +17263,7 @@ type DescribeContactListResponseBodyContactsContactChannels struct {
 	//
 	// Alice@example.com
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	// The phone number of the alert contact.
+	// The phone number of the alert contac.
 	//
 	// example:
 	//
@@ -17302,7 +17304,7 @@ type DescribeContactListResponseBodyContactsContactChannelsState struct {
 	//
 	// Valid value: OK. The value OK indicates that the TradeManager ID is valid and can receive alert notifications.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
 	//
 	// example:
 	//
@@ -17318,9 +17320,9 @@ type DescribeContactListResponseBodyContactsContactChannelsState struct {
 	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
 	// The status of the email address. Valid values:
 	//
-	// 	- PENDING: The email address is not activated. Alert notifications can be sent to the email address only after the email address is activated.
+	// 	- PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
 	//
-	// 	- OK: The email address is activated and can receive alert notifications.
+	// 	- OK: The phone number is activated and can receive alert notifications.
 	//
 	// example:
 	//
@@ -17332,7 +17334,7 @@ type DescribeContactListResponseBodyContactsContactChannelsState struct {
 	//
 	// 	- OK: The phone number is activated and can receive alert notifications.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
 	//
 	// example:
 	//
@@ -18492,7 +18494,7 @@ func (s *DescribeCustomEventHistogramResponse) SetBody(v *DescribeCustomEventHis
 }
 
 type DescribeCustomMetricListRequest struct {
-	// The dimensions that specify the resources for which you want to query custom metrics.
+	// The dimensions based on which the resources are queried.
 	//
 	// example:
 	//
@@ -18500,13 +18502,13 @@ type DescribeCustomMetricListRequest struct {
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The ID of the application group.
 	//
-	// For more information, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+	// For information about how to query the IDs of application groups, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
 	//
 	// example:
 	//
 	// 7378****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The MD5 value of the HTTP request body. The MD5 value is a 128-bit hash value used to verify the uniqueness of the reported custom metrics.
+	// The MD5 value of the HTTP request body. The MD5 value is a 128-bit hash value used to verify the uniqueness of the reported monitoring data.
 	//
 	// example:
 	//
@@ -18518,7 +18520,7 @@ type DescribeCustomMetricListRequest struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// Pages start from page 1. Default value: 1.
 	//
@@ -18526,7 +18528,7 @@ type DescribeCustomMetricListRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Pages start from page 1. Default value: 10.
 	//
@@ -18581,9 +18583,9 @@ func (s *DescribeCustomMetricListRequest) SetRegionId(v string) *DescribeCustomM
 }
 
 type DescribeCustomMetricListResponseBody struct {
-	// The HTTP status code.
+	// The responses code.
 	//
-	// >  The value 200 indicates that the call is successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -18595,7 +18597,7 @@ type DescribeCustomMetricListResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -27100,13 +27102,13 @@ func (s *DescribeMetricRuleBlackListResponse) SetBody(v *DescribeMetricRuleBlack
 }
 
 type DescribeMetricRuleCountRequest struct {
-	// The name of the metric. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The metric name. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The namespace of the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -27139,15 +27141,15 @@ func (s *DescribeMetricRuleCountRequest) SetRegionId(v string) *DescribeMetricRu
 }
 
 type DescribeMetricRuleCountResponseBody struct {
-	// The HTTP status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -27155,17 +27157,17 @@ type DescribeMetricRuleCountResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The number of alert rules in each state.
 	MetricRuleCount *DescribeMetricRuleCountResponseBodyMetricRuleCount `json:"MetricRuleCount,omitempty" xml:"MetricRuleCount,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// FF38D33A-67C1-40EB-AB65-FAEE51EDB644
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// 	- true
 	//
-	// 	- false: The call failed.
+	// 	- false
 	//
 	// example:
 	//
@@ -27453,7 +27455,7 @@ func (s *DescribeMetricRuleListRequest) SetRuleName(v string) *DescribeMetricRul
 }
 
 type DescribeMetricRuleListResponseBody struct {
-	// The details of the alert rules.
+	// The alert rules.
 	Alarms *DescribeMetricRuleListResponseBodyAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -27653,9 +27655,9 @@ type DescribeMetricRuleListResponseBodyAlarmsAlarm struct {
 	//
 	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The Prometheus alert rule.
+	// The Prometheus alerts.
 	//
-	// >  This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+	// >  This parameter is required only if you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheus *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus `json:"Prometheus,omitempty" xml:"Prometheus,omitempty" type:"Struct"`
 	// The resources that are associated with the alert rule.
 	//
@@ -27845,13 +27847,13 @@ type DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression struct {
 	//
 	// $Average > ($instanceId == \\"i-io8kfvcpp7x5****\\"? 80: 50)
 	ExpressionRaw *string `json:"ExpressionRaw,omitempty" xml:"ExpressionRaw,omitempty"`
-	// The level of the alert. Valid values:
+	// The alert level. Valid values:
 	//
-	// 	- Critical
+	// 	- CRITICAL
 	//
-	// 	- Warn
+	// 	- WARN
 	//
-	// 	- Info
+	// 	- INFO
 	//
 	// example:
 	//
@@ -28378,13 +28380,13 @@ type DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus struct {
 	//
 	// >  This parameter is equivalent to the annotations parameter of open source Prometheus.
 	Annotations *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Struct"`
-	// The level of the alert. Valid values:
+	// The alert level. Valid values:
 	//
-	// 	- Critical
+	// 	- CRITICAL
 	//
-	// 	- Warn
+	// 	- WARN
 	//
-	// 	- Info
+	// 	- INFO
 	//
 	// example:
 	//
@@ -35887,7 +35889,10 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// A
-	DnsType              *string                                                                             `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	DnsType *string `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	// example:
+	//
+	// false
 	EmptyMessage         *bool                                                                               `json:"empty_message,omitempty" xml:"empty_message,omitempty"`
 	ExpectExistString    *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString    `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Struct"`
 	ExpectNonExistString *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString `json:"expect_non_exist_string,omitempty" xml:"expect_non_exist_string,omitempty" type:"Struct"`
@@ -35925,7 +35930,12 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// get
 	HttpMethod *string `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	IpNetwork  *string `json:"ip_network,omitempty" xml:"ip_network,omitempty"`
+	// ip_network indicates the network type of the task. Valid values: v4, v6, and auto. Default value: v4.
+	//
+	// example:
+	//
+	// v4
+	IpNetwork *string `json:"ip_network,omitempty" xml:"ip_network,omitempty"`
 	// example:
 	//
 	// true
@@ -35960,6 +35970,14 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// 80
 	PingPort *int32 `json:"ping_port,omitempty" xml:"ping_port,omitempty"`
+	// The PING protocol type. Valid values:
+	//
+	// 	- icmp
+	//
+	// 	- tcp
+	//
+	// 	- udp
+	//
 	// example:
 	//
 	// icmp,tcp,udp
@@ -35975,9 +35993,15 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// TCP
-	Protocol    *string                                                                   `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	QuicEnabled *bool                                                                     `json:"quic_enabled,omitempty" xml:"quic_enabled,omitempty"`
-	QuicTarget  *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonQuicTarget `json:"quic_target,omitempty" xml:"quic_target,omitempty" type:"Struct"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Indicates whether the Quick UDP Internet Connections (QUIC) protocol is used for browser detection. Valid values: true false Default value: false.
+	//
+	// example:
+	//
+	// true
+	QuicEnabled *bool `json:"quic_enabled,omitempty" xml:"quic_enabled,omitempty"`
+	// The sites for which the QUIC protocol is forcibly used.
+	QuicTarget *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonQuicTarget `json:"quic_target,omitempty" xml:"quic_target,omitempty" type:"Struct"`
 	// The content of the HTTP request.
 	//
 	// example:
@@ -36014,6 +36038,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// 0
 	RetryDelay *int32 `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	ScreenShot *bool  `json:"screen_shot,omitempty" xml:"screen_shot,omitempty"`
 	// example:
 	//
 	// false
@@ -36247,6 +36272,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetResp
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetRetryDelay(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.RetryDelay = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetScreenShot(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.ScreenShot = &v
 	return s
 }
 
@@ -36590,11 +36620,11 @@ func (s *DescribeSiteMonitorAttributeResponse) SetBody(v *DescribeSiteMonitorAtt
 }
 
 type DescribeSiteMonitorDataRequest struct {
-	// The end of the time range for the query. Supported formats:
+	// The end of the time range to query. The following formats are supported:
 	//
-	// 	- UNIX timestamp: The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// 	- UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
 	//
-	// 	- Time format: The value is in the YYYY-MM-DDThh:mm:ssZ format.
+	// 	- UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
@@ -36606,7 +36636,7 @@ type DescribeSiteMonitorDataRequest struct {
 	//
 	// 1000
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The name of the metric. Valid values:
+	// The metric name. Valid values:
 	//
 	// 	- Availability
 	//
@@ -36618,13 +36648,13 @@ type DescribeSiteMonitorDataRequest struct {
 	//
 	// Availability
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The pagination cursor.
+	// The pagination token.
 	//
 	// example:
 	//
 	// 49f7b317-7645-4cc9-94fd-ea42e5220930ea42e5220930ea42e522****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The interval at which monitoring data is returned. The value is an integral multiple of 60. Unit: seconds.
+	// The statistical period. The value is an integral multiple of 60. Unit: seconds.
 	//
 	// >  The default value equals the minimum interval at which detection requests are sent to the monitored address.
 	//
@@ -36633,17 +36663,17 @@ type DescribeSiteMonitorDataRequest struct {
 	// 60
 	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range for the query. Supported formats:
+	// The start of the time range to query. The following formats are supported:
 	//
-	// 	- UNIX timestamp: The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// 	- UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
 	//
-	// 	- Time format: The value is in the YYYY-MM-DDThh:mm:ssZ format.
+	// 	- UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 1551579637000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the site monitoring task.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -36717,15 +36747,15 @@ func (s *DescribeSiteMonitorDataRequest) SetType(v string) *DescribeSiteMonitorD
 }
 
 type DescribeSiteMonitorDataResponseBody struct {
-	// The HTTP status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned monitoring data.
+	// The monitoring data.
 	//
 	// example:
 	//
@@ -36737,19 +36767,19 @@ type DescribeSiteMonitorDataResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pagination cursor.
+	// The pagination token.
 	//
 	// example:
 	//
 	// ea42e5220930ea42e522****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3febb181-0d98-4af9-8b04-7faf36b048b9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
 	//
 	// example:
 	//
@@ -38064,17 +38094,10 @@ func (s *DescribeSiteMonitorListResponse) SetBody(v *DescribeSiteMonitorListResp
 }
 
 type DescribeSiteMonitorLogRequest struct {
-	// 浏览器类型。
-	//
 	// example:
 	//
 	// Chrome
-	Browser *string `json:"Browser,omitempty" xml:"Browser,omitempty"`
-	// 该参数已废弃，无需关注。
-	//
-	// example:
-	//
-	// 无
+	Browser     *string `json:"Browser,omitempty" xml:"Browser,omitempty"`
 	BrowserInfo *string `json:"BrowserInfo,omitempty" xml:"BrowserInfo,omitempty"`
 	// The city identification code.
 	//
@@ -38082,8 +38105,6 @@ type DescribeSiteMonitorLogRequest struct {
 	//
 	// 546
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 设备类型（模拟屏幕大小类型）。
-	//
 	// example:
 	//
 	// laptop
@@ -38366,29 +38387,29 @@ func (s *DescribeSiteMonitorQuotaRequest) SetRegionId(v string) *DescribeSiteMon
 }
 
 type DescribeSiteMonitorQuotaResponseBody struct {
-	// The HTTP status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The quotas and version of site monitoring.
+	// The quota.
 	Data *DescribeSiteMonitorQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 26860260-76C6-404E-AB7A-EB98D36A6885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// 	- true
 	//
-	// 	- false: The call failed.
+	// 	- false
 	//
 	// example:
 	//
@@ -38430,11 +38451,11 @@ func (s *DescribeSiteMonitorQuotaResponseBody) SetSuccess(v string) *DescribeSit
 }
 
 type DescribeSiteMonitorQuotaResponseBodyData struct {
-	// Indicates whether the second-level monitoring is enabled. Valid values:
+	// Indicates whether second-level monitoring is enabled. Valid values:
 	//
-	// 	- true
+	// 	- true: Second-level monitoring is enabled.
 	//
-	// 	- false
+	// 	- false: Second-level monitoring is disabled.
 	//
 	// example:
 	//
@@ -38544,7 +38565,7 @@ func (s *DescribeSiteMonitorQuotaResponse) SetBody(v *DescribeSiteMonitorQuotaRe
 }
 
 type DescribeSiteMonitorStatisticsRequest struct {
-	// The name of the metric. Valid values:
+	// The metric name. Valid values:
 	//
 	// 	- Availability
 	//
@@ -38559,7 +38580,7 @@ type DescribeSiteMonitorStatisticsRequest struct {
 	// Availability
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The timestamp that specifies the beginning of the time range to query.
+	// The beginning of the time range to query.
 	//
 	// Unit: milliseconds. The default value is 1 hour ahead of the current time.
 	//
@@ -38579,7 +38600,7 @@ type DescribeSiteMonitorStatisticsRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The statistical period.
 	//
-	// Unit: minutes. Default value: 1440 (1 day). Maximum value: 43200 (30 days).
+	// Unit: minutes. Default value: 1440 (one day). Maximum value: 43200 (30 days).
 	//
 	// example:
 	//
@@ -38621,15 +38642,15 @@ func (s *DescribeSiteMonitorStatisticsRequest) SetTimeRange(v string) *DescribeS
 }
 
 type DescribeSiteMonitorStatisticsResponseBody struct {
-	// The HTTP status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The statistics of the specified metric.
+	// The statistics.
 	//
 	// example:
 	//
@@ -38641,17 +38662,17 @@ type DescribeSiteMonitorStatisticsResponseBody struct {
 	//
 	// Succcessful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3AD2724D-E317-4BFB-B422-D6691D071BE1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The call is successful.
+	// 	- true
 	//
-	// 	- false: The call fails.
+	// 	- false
 	//
 	// example:
 	//
@@ -40951,6 +40972,8 @@ func (s *DisableHostAvailabilityResponse) SetBody(v *DisableHostAvailabilityResp
 
 type DisableMetricRulesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the alert rule. Valid values of N: 1 to 20.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40978,9 +41001,9 @@ func (s *DisableMetricRulesRequest) SetRuleId(v []*string) *DisableMetricRulesRe
 }
 
 type DisableMetricRulesResponseBody struct {
-	// The HTTP status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -40992,17 +41015,17 @@ type DisableMetricRulesResponseBody struct {
 	//
 	// RuleId is mandatory for this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// FF38D33A-67C1-40EB-AB65-FAEE51EDB644
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The call was successful.
+	// 	- true
 	//
-	// 	- false: The call failed.
+	// 	- false
 	//
 	// example:
 	//
@@ -41069,7 +41092,7 @@ func (s *DisableMetricRulesResponse) SetBody(v *DisableMetricRulesResponseBody) 
 
 type DisableSiteMonitorsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the site monitoring tasks. Separate multiple IDs with commas (,).
+	// The ID of the site monitoring task. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -41098,15 +41121,15 @@ func (s *DisableSiteMonitorsRequest) SetTaskIds(v string) *DisableSiteMonitorsRe
 }
 
 type DisableSiteMonitorsResponseBody struct {
-	// The status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates a success.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of detection points that were monitored by the site monitoring tasks.
+	// The number of detection points that are affected by the site monitoring tasks.
 	Data *DisableSiteMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -41114,17 +41137,17 @@ type DisableSiteMonitorsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3fcd12e7-d387-42ee-b77e-661c775bb17f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: successful.
+	// 	- true
 	//
-	// 	- false: failed.
+	// 	- false
 	//
 	// example:
 	//
@@ -41868,7 +41891,7 @@ func (s *EnableMetricRulesResponse) SetBody(v *EnableMetricRulesResponseBody) *E
 
 type EnableSiteMonitorsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the site monitoring tasks. Separate multiple instance IDs with commas (,).
+	// The ID of the site monitoring task. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -41897,9 +41920,9 @@ func (s *EnableSiteMonitorsRequest) SetTaskIds(v string) *EnableSiteMonitorsRequ
 }
 
 type EnableSiteMonitorsResponseBody struct {
-	// The status code.
+	// The responses code.
 	//
-	// >  The status code 200 indicates a success.
+	// >  The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -41913,17 +41936,17 @@ type EnableSiteMonitorsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3fcd12e7-d387-42ee-b77e-661c775bb17f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: successful.
+	// 	- true
 	//
-	// 	- false: failed.
+	// 	- false
 	//
 	// example:
 	//
@@ -42817,7 +42840,7 @@ type ModifyHostAvailabilityRequestTaskOption struct {
 	//
 	// ok
 	HttpResponseMatchContent *string `json:"HttpResponseMatchContent,omitempty" xml:"HttpResponseMatchContent,omitempty"`
-	// The URI that you want to monitor. This parameter must be specified when TaskType is set to HTTP.
+	// The URI that you want to monitor. This parameter is required if the TaskType parameter is set to HTTP or Telnet.
 	//
 	// example:
 	//
@@ -42833,7 +42856,7 @@ type ModifyHostAvailabilityRequestTaskOption struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The domain name or IP address that you want to monitor.
 	//
-	// > This parameter must be specified when TaskType is set to PING or TELNET. For more information about how to configure the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
+	// >  This parameter is required if the TaskType parameter is set to PING. For more information about how to set the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
 	//
 	// example:
 	//
@@ -50699,6 +50722,8 @@ type PutResourceMetricRuleRequestEscalationsCritical struct {
 	//
 	// 	- NotEqualToThreshold: not equal to the threshold
 	//
+	// 	- EqualToThreshold: equal to the threshold
+	//
 	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
 	// 	- LessThanYesterday: less than the metric value at the same time yesterday
@@ -50786,6 +50811,8 @@ type PutResourceMetricRuleRequestEscalationsInfo struct {
 	//
 	// 	- NotEqualToThreshold: not equal to the threshold
 	//
+	// 	- EqualToThreshold: equal to the threshold
+	//
 	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
 	// 	- LessThanYesterday: less than the metric value at the same time yesterday
@@ -50872,6 +50899,8 @@ type PutResourceMetricRuleRequestEscalationsWarn struct {
 	// 	- LessThanThreshold: less than the threshold
 	//
 	// 	- NotEqualToThreshold: not equal to the threshold
+	//
+	// 	- EqualToThreshold: equal to the threshold
 	//
 	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
@@ -51037,6 +51066,8 @@ type PutResourceMetricRuleRequestCompositeExpressionExpressionList struct {
 	// 	- LessThanThreshold: less than the threshold
 	//
 	// 	- NotEqualToThreshold: not equal to the threshold
+	//
+	// 	- EqualToThreshold: equal to the threshold
 	//
 	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
@@ -51528,6 +51559,8 @@ type PutResourceMetricRuleShrinkRequestEscalationsCritical struct {
 	//
 	// 	- NotEqualToThreshold: not equal to the threshold
 	//
+	// 	- EqualToThreshold: equal to the threshold
+	//
 	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
 	// 	- LessThanYesterday: less than the metric value at the same time yesterday
@@ -51615,6 +51648,8 @@ type PutResourceMetricRuleShrinkRequestEscalationsInfo struct {
 	//
 	// 	- NotEqualToThreshold: not equal to the threshold
 	//
+	// 	- EqualToThreshold: equal to the threshold
+	//
 	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
 	// 	- LessThanYesterday: less than the metric value at the same time yesterday
@@ -51701,6 +51736,8 @@ type PutResourceMetricRuleShrinkRequestEscalationsWarn struct {
 	// 	- LessThanThreshold: less than the threshold
 	//
 	// 	- NotEqualToThreshold: not equal to the threshold
+	//
+	// 	- EqualToThreshold: equal to the threshold
 	//
 	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
 	//
@@ -57807,11 +57844,11 @@ func (client *Client) DescribeCustomEventHistogram(request *DescribeCustomEventH
 
 // Summary:
 //
-// Queries the reported custom metrics of a cloud service.
+// Queries the reported monitoring data.
 //
 // Description:
 //
-// >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
+// >  You can call the DescribeMetricList operation to query the metrics of cloud services. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
 //
 // @param request - DescribeCustomMetricListRequest
 //
@@ -57873,11 +57910,11 @@ func (client *Client) DescribeCustomMetricListWithOptions(request *DescribeCusto
 
 // Summary:
 //
-// Queries the reported custom metrics of a cloud service.
+// Queries the reported monitoring data.
 //
 // Description:
 //
-// >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
+// >  You can call the DescribeMetricList operation to query the metrics of cloud services. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
 //
 // @param request - DescribeCustomMetricListRequest
 //
@@ -61229,6 +61266,10 @@ func (client *Client) DescribeSiteMonitorAttribute(request *DescribeSiteMonitorA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the fine-grained monitoring data of a site monitoring task.
+//
 // @param request - DescribeSiteMonitorDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -61295,6 +61336,10 @@ func (client *Client) DescribeSiteMonitorDataWithOptions(request *DescribeSiteMo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the fine-grained monitoring data of a site monitoring task.
+//
 // @param request - DescribeSiteMonitorDataRequest
 //
 // @return DescribeSiteMonitorDataResponse
@@ -61597,6 +61642,10 @@ func (client *Client) DescribeSiteMonitorLog(request *DescribeSiteMonitorLogRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the quotas and version of site monitoring.
+//
 // @param request - DescribeSiteMonitorQuotaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -61628,6 +61677,10 @@ func (client *Client) DescribeSiteMonitorQuotaWithOptions(request *DescribeSiteM
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the quotas and version of site monitoring.
+//
 // @param request - DescribeSiteMonitorQuotaRequest
 //
 // @return DescribeSiteMonitorQuotaResponse
@@ -61642,9 +61695,13 @@ func (client *Client) DescribeSiteMonitorQuota(request *DescribeSiteMonitorQuota
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics of a specified metric for a specified site monitoring task.
+//
 // Description:
 //
-// This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c****`. The result indicates that the availability rate of the site is `100%`.
+// This topic provides an example on how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c****`. The result indicates that the availability rate of the site is `100%`.
 //
 // @param request - DescribeSiteMonitorStatisticsRequest
 //
@@ -61696,9 +61753,13 @@ func (client *Client) DescribeSiteMonitorStatisticsWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics of a specified metric for a specified site monitoring task.
+//
 // Description:
 //
-// This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c****`. The result indicates that the availability rate of the site is `100%`.
+// This topic provides an example on how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c****`. The result indicates that the availability rate of the site is `100%`.
 //
 // @param request - DescribeSiteMonitorStatisticsRequest
 //
@@ -62395,6 +62456,10 @@ func (client *Client) DisableHostAvailability(request *DisableHostAvailabilityRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables alert rules.
+//
 // @param request - DisableMetricRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62433,6 +62498,10 @@ func (client *Client) DisableMetricRulesWithOptions(request *DisableMetricRulesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables alert rules.
+//
 // @param request - DisableMetricRulesRequest
 //
 // @return DisableMetricRulesResponse
@@ -62447,6 +62516,10 @@ func (client *Client) DisableMetricRules(request *DisableMetricRulesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables site monitoring tasks.
+//
 // @param request - DisableSiteMonitorsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62485,6 +62558,10 @@ func (client *Client) DisableSiteMonitorsWithOptions(request *DisableSiteMonitor
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables site monitoring tasks.
+//
 // @param request - DisableSiteMonitorsRequest
 //
 // @return DisableSiteMonitorsResponse
@@ -62779,6 +62856,10 @@ func (client *Client) EnableMetricRules(request *EnableMetricRulesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables site monitoring tasks.
+//
 // @param request - EnableSiteMonitorsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62817,6 +62898,10 @@ func (client *Client) EnableSiteMonitorsWithOptions(request *EnableSiteMonitorsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables site monitoring tasks.
+//
 // @param request - EnableSiteMonitorsRequest
 //
 // @return EnableSiteMonitorsResponse
@@ -65202,7 +65287,7 @@ func (client *Client) PutMonitoringConfig(request *PutMonitoringConfigRequest) (
 
 // Summary:
 //
-// Creates an alert rule for a metric of a resource.
+// Configures an alert rule.
 //
 // Description:
 //
@@ -65326,7 +65411,7 @@ func (client *Client) PutResourceMetricRuleWithOptions(tmpReq *PutResourceMetric
 
 // Summary:
 //
-// Creates an alert rule for a metric of a resource.
+// Configures an alert rule.
 //
 // Description:
 //
