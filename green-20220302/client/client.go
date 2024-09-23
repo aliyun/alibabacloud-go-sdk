@@ -18,6 +18,8 @@ type DescribeFileModerationResultRequest struct {
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	// The parameters required by the moderation service. The value is a JSON string.
 	//
+	// 	- taskId: required. The URL of the object that you want to moderate. Make sure that the URL can be accessed over the Internet.
+	//
 	// example:
 	//
 	// {\\"taskId\\":\\"vi_f_hPgx9PFIQISdlfA888hOFG-1yJq8v\\"}
@@ -43,7 +45,7 @@ func (s *DescribeFileModerationResultRequest) SetServiceParameters(v string) *De
 }
 
 type DescribeFileModerationResultResponseBody struct {
-	// The returned HTTP status code.
+	// The returned HTTP status code. The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -57,7 +59,7 @@ type DescribeFileModerationResultResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -100,17 +102,23 @@ type DescribeFileModerationResultResponseBodyData struct {
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Optional, document type.
+	// Optional. The document type.
 	//
 	// example:
 	//
 	// doc
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// The pagination information.
-	PageResult  []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
-	PageSummary *DescribeFileModerationResultResponseBodyDataPageSummary  `json:"PageSummary,omitempty" xml:"PageSummary,omitempty" type:"Struct"`
-	RiskLevel   *string                                                   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The URL of the moderation object.
+	// An array that consists of the moderation results.
+	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
+	// Summary of results
+	PageSummary *DescribeFileModerationResultResponseBodyDataPageSummary `json:"PageSummary,omitempty" xml:"PageSummary,omitempty" type:"Struct"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The URL of the moderated object.
 	//
 	// example:
 	//
@@ -157,9 +165,9 @@ func (s *DescribeFileModerationResultResponseBodyData) SetUrl(v string) *Describ
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResult struct {
-	// Image detection results.
+	// The image moderation results.
 	ImageResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
-	// The image url.
+	// The image URL.
 	//
 	// example:
 	//
@@ -171,9 +179,9 @@ type DescribeFileModerationResultResponseBodyDataPageResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Text detection results.
+	// The text moderation results.
 	TextResult []*DescribeFileModerationResultResponseBodyDataPageResultTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
-	// the text url.
+	// The text URL.
 	//
 	// example:
 	//
@@ -215,17 +223,22 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetTextUrl(v st
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// This is a title.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Label information.
+	// The label information.
 	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
-	// Location information.
-	Location  *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	RiskLevel *string                                                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The location information
+	Location *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The moderation service.
 	//
 	// example:
@@ -268,13 +281,18 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetS
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
-	// Confidence score, 0 to 100, reserved to 2 decimal places.
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
 	//
 	// example:
 	//
 	// 25.0
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// This is a title.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The details of the labels.
 	//
 	// example:
@@ -362,7 +380,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocati
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
-	// Description
+	// The description.
 	//
 	// example:
 	//
@@ -373,7 +391,12 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	// example:
 	//
 	// porn
-	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The risk details that are hit.
 	//
@@ -393,13 +416,13 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// chat_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// Text content.
+	// The text content.
 	//
 	// example:
 	//
 	// This is a text.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Text segmentation information.
+	// The text segmentation information.
 	//
 	// example:
 	//
@@ -456,9 +479,16 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetTe
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummary struct {
+	// Image Results Summary
 	ImageSummary *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary `json:"ImageSummary,omitempty" xml:"ImageSummary,omitempty" type:"Struct"`
-	PageSum      *int32                                                               `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
-	TextSummary  *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary  `json:"TextSummary,omitempty" xml:"TextSummary,omitempty" type:"Struct"`
+	// Number of pages
+	//
+	// example:
+	//
+	// 1
+	PageSum *int32 `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
+	// Text Results Summary
+	TextSummary *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary `json:"TextSummary,omitempty" xml:"TextSummary,omitempty" type:"Struct"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummary) String() string {
@@ -485,8 +515,14 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetTextSummary
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary struct {
+	// Image Label
 	ImageLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
-	RiskLevel   *string                                                                           `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) String() string {
@@ -508,9 +544,24 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) Se
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels struct {
+	// The description.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	LabelSum    *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+	// The details of the labels.
+	//
+	// example:
+	//
+	// contraband
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The number of times that the label is matched.
+	//
+	// example:
+	//
+	// 1
+	LabelSum *int32 `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels) String() string {
@@ -537,7 +588,13 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImag
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary struct {
-	RiskLevel  *string                                                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Text Label
 	TextLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels `json:"TextLabels,omitempty" xml:"TextLabels,omitempty" type:"Repeated"`
 }
 
@@ -560,8 +617,18 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) Set
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels struct {
-	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	LabelSum *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+	// The details of the labels.
+	//
+	// example:
+	//
+	// contraband
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The number of times that the label is matched.
+	//
+	// example:
+	//
+	// 1
+	LabelSum *int32 `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels) String() string {
@@ -1977,7 +2044,8 @@ func (s *ImageModerationResponseBodyData) SetRiskLevel(v string) *ImageModeratio
 type ImageModerationResponseBodyDataExt struct {
 	// If a custom image library is hit, information about the hit custom image library is returned.
 	CustomImage []*ImageModerationResponseBodyDataExtCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	FaceData    []*ImageModerationResponseBodyDataExtFaceData    `json:"FaceData,omitempty" xml:"FaceData,omitempty" type:"Repeated"`
+	// The returned face attribute information
+	FaceData []*ImageModerationResponseBodyDataExtFaceData `json:"FaceData,omitempty" xml:"FaceData,omitempty" type:"Repeated"`
 	// Logo information.
 	LogoData []*ImageModerationResponseBodyDataExtLogoData `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
 	// Returns the text information in the recognized image.
@@ -2078,17 +2146,46 @@ func (s *ImageModerationResponseBodyDataExtCustomImage) SetLibName(v string) *Im
 }
 
 type ImageModerationResponseBodyDataExtFaceData struct {
-	Age       *int32                                               `json:"Age,omitempty" xml:"Age,omitempty"`
-	Bang      *ImageModerationResponseBodyDataExtFaceDataBang      `json:"Bang,omitempty" xml:"Bang,omitempty" type:"Struct"`
-	Gender    *ImageModerationResponseBodyDataExtFaceDataGender    `json:"Gender,omitempty" xml:"Gender,omitempty" type:"Struct"`
-	Glasses   *string                                              `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	// The age recognition result.
+	//
+	// example:
+	//
+	// 18
+	Age *int32 `json:"Age,omitempty" xml:"Age,omitempty"`
+	// Indicates whether the recognition result of bangs is available.
+	Bang *ImageModerationResponseBodyDataExtFaceDataBang `json:"Bang,omitempty" xml:"Bang,omitempty" type:"Struct"`
+	// The gender recognition result.
+	Gender *ImageModerationResponseBodyDataExtFaceDataGender `json:"Gender,omitempty" xml:"Gender,omitempty" type:"Struct"`
+	// The recognition result of whether to wear glasses.
+	//
+	// - None: No glasses.
+	//
+	// - Wear: Wear glasses.
+	//
+	// - Sunglass: Wear sunglasses.
+	//
+	// example:
+	//
+	// Common
+	Glasses *string `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	// The hairstyle recognition result.
 	Hairstyle *ImageModerationResponseBodyDataExtFaceDataHairstyle `json:"Hairstyle,omitempty" xml:"Hairstyle,omitempty" type:"Struct"`
-	Hat       *ImageModerationResponseBodyDataExtFaceDataHat       `json:"Hat,omitempty" xml:"Hat,omitempty" type:"Struct"`
-	Location  *ImageModerationResponseBodyDataExtFaceDataLocation  `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	Mask      *ImageModerationResponseBodyDataExtFaceDataMask      `json:"Mask,omitempty" xml:"Mask,omitempty" type:"Struct"`
-	Mustache  *ImageModerationResponseBodyDataExtFaceDataMustache  `json:"Mustache,omitempty" xml:"Mustache,omitempty" type:"Struct"`
-	Quality   *ImageModerationResponseBodyDataExtFaceDataQuality   `json:"Quality,omitempty" xml:"Quality,omitempty" type:"Struct"`
-	Smile     *float32                                             `json:"Smile,omitempty" xml:"Smile,omitempty"`
+	// The recognition result of whether to wear a hat.
+	Hat *ImageModerationResponseBodyDataExtFaceDataHat `json:"Hat,omitempty" xml:"Hat,omitempty" type:"Struct"`
+	// The location of the face.
+	Location *ImageModerationResponseBodyDataExtFaceDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// The recognition result of whether to wear a mask.
+	Mask *ImageModerationResponseBodyDataExtFaceDataMask `json:"Mask,omitempty" xml:"Mask,omitempty" type:"Struct"`
+	// The identification result of whether there is a beard.
+	Mustache *ImageModerationResponseBodyDataExtFaceDataMustache `json:"Mustache,omitempty" xml:"Mustache,omitempty" type:"Struct"`
+	// The quality information of the face image.
+	Quality *ImageModerationResponseBodyDataExtFaceDataQuality `json:"Quality,omitempty" xml:"Quality,omitempty" type:"Struct"`
+	// The smiling degree of the face.
+	//
+	// example:
+	//
+	// 85.88
+	Smile *float32 `json:"Smile,omitempty" xml:"Smile,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceData) String() string {
@@ -2155,8 +2252,18 @@ func (s *ImageModerationResponseBodyDataExtFaceData) SetSmile(v float32) *ImageM
 }
 
 type ImageModerationResponseBodyDataExtFaceDataBang struct {
+	// The confidence level of the bang recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+	//
+	// example:
+	//
+	// 81.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Indicates whether the recognition result of bangs is available.
+	//
+	// example:
+	//
+	// Has
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceDataBang) String() string {
@@ -2178,8 +2285,22 @@ func (s *ImageModerationResponseBodyDataExtFaceDataBang) SetValue(v string) *Ima
 }
 
 type ImageModerationResponseBodyDataExtFaceDataGender struct {
+	// The confidence level of the gender recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+	//
+	// example:
+	//
+	// 81.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The gender recognition result. Valid values:
+	//
+	// - Male
+	//
+	// - FeMale
+	//
+	// example:
+	//
+	// FeMale
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceDataGender) String() string {
@@ -2201,8 +2322,24 @@ func (s *ImageModerationResponseBodyDataExtFaceDataGender) SetValue(v string) *I
 }
 
 type ImageModerationResponseBodyDataExtFaceDataHairstyle struct {
+	// The confidence level of the hairstyle recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+	//
+	// example:
+	//
+	// 81.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The hairstyle recognition result. Valid values:
+	//
+	// - Bald: bald head.
+	//
+	// - Long: Long hair.
+	//
+	// - Short: Short hair.
+	//
+	// example:
+	//
+	// Short
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceDataHairstyle) String() string {
@@ -2224,8 +2361,22 @@ func (s *ImageModerationResponseBodyDataExtFaceDataHairstyle) SetValue(v string)
 }
 
 type ImageModerationResponseBodyDataExtFaceDataHat struct {
+	// The confidence level of the result of wearing the hat. Valid values: 0 to 100. A higher value indicates a more credible result.
+	//
+	// example:
+	//
+	// 88.88
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The recognition result of whether to wear the hat. Valid values:
+	//
+	// - Wear: Wear a hat.
+	//
+	// - None: No hat.
+	//
+	// example:
+	//
+	// Wear
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceDataHat) String() string {
@@ -2247,9 +2398,29 @@ func (s *ImageModerationResponseBodyDataExtFaceDataHat) SetValue(v string) *Imag
 }
 
 type ImageModerationResponseBodyDataExtFaceDataLocation struct {
+	// The height of the face area. Unit: pixels.
+	//
+	// example:
+	//
+	// 26
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The width of the face area. Unit: pixels.
+	//
+	// example:
+	//
+	// 83
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// The distance from the upper-left corner of the face area to the y-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
+	//
+	// example:
+	//
+	// 41
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The distance from the upper-left corner of the face area to the x-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
+	//
+	// example:
+	//
+	// 84
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -2282,8 +2453,22 @@ func (s *ImageModerationResponseBodyDataExtFaceDataLocation) SetY(v int32) *Imag
 }
 
 type ImageModerationResponseBodyDataExtFaceDataMask struct {
+	// The confidence level of the result of wearing the mask. Valid values: 0 to 100. A higher value indicates a more credible result.
+	//
+	// example:
+	//
+	// 99.99
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The recognition result of whether to wear a mask. Valid values:
+	//
+	// - Wear a mask.
+	//
+	//  - None: No mask.
+	//
+	// example:
+	//
+	// Wear
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceDataMask) String() string {
@@ -2305,8 +2490,22 @@ func (s *ImageModerationResponseBodyDataExtFaceDataMask) SetValue(v string) *Ima
 }
 
 type ImageModerationResponseBodyDataExtFaceDataMustache struct {
+	// The confidence level of the result of the beard. Valid values: 0 to 100. A higher value indicates a more credible result.
+	//
+	// example:
+	//
+	// 99.99
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The identification result of whether there is a beard.Valid values:
+	//
+	// - Has:have a beard.
+	//
+	// - None:No beard.
+	//
+	// example:
+	//
+	// Has
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceDataMustache) String() string {
@@ -2328,11 +2527,44 @@ func (s *ImageModerationResponseBodyDataExtFaceDataMustache) SetValue(v string) 
 }
 
 type ImageModerationResponseBodyDataExtFaceDataQuality struct {
-	Blur      *float32 `json:"Blur,omitempty" xml:"Blur,omitempty"`
+	// The blur of the face image. Valid values: 0 to 100. The higher the score, the more fuzzy it is.
+	//
+	// Recommended values: 0 to 25.
+	//
+	// example:
+	//
+	// 5.88
+	Blur *float32 `json:"Blur,omitempty" xml:"Blur,omitempty"`
+	// The integrity of the human face. Recommended values:80 to 100.
+	//
+	// example:
+	//
+	// 100.0
 	Integrity *float32 `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
-	Pitch     *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	Roll      *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	Yaw       *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+	// The head-up or head-down angle of the face.
+	//
+	// Recommended values:-30 to 30.
+	//
+	// example:
+	//
+	// 5.88
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// The plane rotation angle of the face.
+	//
+	// Recommended values:-30 to 30.
+	//
+	// example:
+	//
+	// 5.18
+	Roll *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	// The left and right shaking angle of the human face.
+	//
+	// Recommended values:-30 to 30.
+	//
+	// example:
+	//
+	// 5.18
+	Yaw *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtFaceDataQuality) String() string {
@@ -3920,7 +4152,8 @@ type VideoModerationResultResponseBodyData struct {
 	// example:
 	//
 	// liveId
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId    *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The task ID.
 	//
 	// example:
@@ -3957,6 +4190,11 @@ func (s *VideoModerationResultResponseBodyData) SetLiveId(v string) *VideoModera
 	return s
 }
 
+func (s *VideoModerationResultResponseBodyData) SetRiskLevel(v string) *VideoModerationResultResponseBodyData {
+	s.RiskLevel = &v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyData) SetTaskId(v string) *VideoModerationResultResponseBodyData {
 	s.TaskId = &v
 	return s
@@ -3965,6 +4203,7 @@ func (s *VideoModerationResultResponseBodyData) SetTaskId(v string) *VideoModera
 type VideoModerationResultResponseBodyDataAudioResult struct {
 	// Summary of voice labels.
 	AudioSummarys []*VideoModerationResultResponseBodyDataAudioResultAudioSummarys `json:"AudioSummarys,omitempty" xml:"AudioSummarys,omitempty" type:"Repeated"`
+	RiskLevel     *string                                                          `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The details about the text in the moderated voice. The value is a JSON array that contains one or more elements. Each element corresponds to a text entry.
 	SliceDetails []*VideoModerationResultResponseBodyDataAudioResultSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 }
@@ -3979,6 +4218,11 @@ func (s VideoModerationResultResponseBodyDataAudioResult) GoString() string {
 
 func (s *VideoModerationResultResponseBodyDataAudioResult) SetAudioSummarys(v []*VideoModerationResultResponseBodyDataAudioResultAudioSummarys) *VideoModerationResultResponseBodyDataAudioResult {
 	s.AudioSummarys = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResult) SetRiskLevel(v string) *VideoModerationResultResponseBodyDataAudioResult {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -4044,7 +4288,8 @@ type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
 	// example:
 	//
 	// porn
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// Subcategory labels. Multiple labels are separated by commas (,).
 	//
 	// example:
@@ -4117,6 +4362,11 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetLabels
 	return s
 }
 
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetRiskLevel(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.RiskLevel = &v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetRiskTips(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
 	s.RiskTips = &v
 	return s
@@ -4162,7 +4412,8 @@ type VideoModerationResultResponseBodyDataFrameResult struct {
 	// The summary of the labels against which captured frames are matched.
 	FrameSummarys []*VideoModerationResultResponseBodyDataFrameResultFrameSummarys `json:"FrameSummarys,omitempty" xml:"FrameSummarys,omitempty" type:"Repeated"`
 	// The information about the frames that match the labels.
-	Frames []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	Frames    []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	RiskLevel *string                                                   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResult) String() string {
@@ -4188,7 +4439,13 @@ func (s *VideoModerationResultResponseBodyDataFrameResult) SetFrames(v []*VideoM
 	return s
 }
 
+func (s *VideoModerationResultResponseBodyDataFrameResult) SetRiskLevel(v string) *VideoModerationResultResponseBodyDataFrameResult {
+	s.RiskLevel = &v
+	return s
+}
+
 type VideoModerationResultResponseBodyDataFrameResultFrameSummarys struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label against which a captured frame is matched.
 	//
 	// example:
@@ -4211,6 +4468,11 @@ func (s VideoModerationResultResponseBodyDataFrameResultFrameSummarys) GoString(
 	return s.String()
 }
 
+func (s *VideoModerationResultResponseBodyDataFrameResultFrameSummarys) SetDescription(v string) *VideoModerationResultResponseBodyDataFrameResultFrameSummarys {
+	s.Description = &v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyDataFrameResultFrameSummarys) SetLabel(v string) *VideoModerationResultResponseBodyDataFrameResultFrameSummarys {
 	s.Label = &v
 	return s
@@ -4229,7 +4491,8 @@ type VideoModerationResultResponseBodyDataFrameResultFrames struct {
 	// 338
 	Offset *float32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	// The results of frame moderation parameters such as the label parameter and the confidence parameter.
-	Results []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	Results   []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RiskLevel *string                                                          `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The temporary URL of a captured frame. This URL is valid for 30 minutes.
 	//
 	// example:
@@ -4259,6 +4522,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetOffset(v flo
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetResults(v []*VideoModerationResultResponseBodyDataFrameResultFramesResults) *VideoModerationResultResponseBodyDataFrameResultFrames {
 	s.Results = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetRiskLevel(v string) *VideoModerationResultResponseBodyDataFrameResultFrames {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -4383,7 +4651,8 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResultsResult struct 
 	// example:
 	//
 	// 50
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label returned after a frame is moderated. Multiple risk labels and the corresponding scores of confidence levels may be returned for a frame.
 	//
 	// example:
@@ -4402,6 +4671,11 @@ func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) GoS
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) SetConfidence(v float32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult {
 	s.Confidence = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) SetDescription(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult {
+	s.Description = &v
 	return s
 }
 
