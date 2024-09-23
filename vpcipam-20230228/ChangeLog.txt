@@ -1,3 +1,6 @@
+2024-09-23 Version: v1.0.3
+- Generated golang 2023-02-28 for VpcIpam.
+
 2024-09-12 Version: v1.0.2
 - Update API CreateIpam: add param Tag.
 - Update API CreateIpamPool: add param AutoImport.
