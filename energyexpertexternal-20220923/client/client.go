@@ -8325,6 +8325,7 @@ func (s *SetRunningPlanResponse) SetBody(v *SetRunningPlanResponseBody) *SetRunn
 }
 
 type SubmitDocumentAnalyzeJobRequest struct {
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
 	// This parameter is required.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// example:
@@ -8351,6 +8352,11 @@ func (s SubmitDocumentAnalyzeJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitDocumentAnalyzeJobRequest) SetDataType(v string) *SubmitDocumentAnalyzeJobRequest {
+	s.DataType = &v
+	return s
+}
+
 func (s *SubmitDocumentAnalyzeJobRequest) SetFileName(v string) *SubmitDocumentAnalyzeJobRequest {
 	s.FileName = &v
 	return s
@@ -8372,6 +8378,7 @@ func (s *SubmitDocumentAnalyzeJobRequest) SetTemplateId(v string) *SubmitDocumen
 }
 
 type SubmitDocumentAnalyzeJobAdvanceRequest struct {
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
 	// This parameter is required.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// example:
@@ -8396,6 +8403,11 @@ func (s SubmitDocumentAnalyzeJobAdvanceRequest) String() string {
 
 func (s SubmitDocumentAnalyzeJobAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitDocumentAnalyzeJobAdvanceRequest) SetDataType(v string) *SubmitDocumentAnalyzeJobAdvanceRequest {
+	s.DataType = &v
+	return s
 }
 
 func (s *SubmitDocumentAnalyzeJobAdvanceRequest) SetFileName(v string) *SubmitDocumentAnalyzeJobAdvanceRequest {
@@ -11361,6 +11373,10 @@ func (client *Client) SubmitDocumentAnalyzeJobWithOptions(request *SubmitDocumen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		query["dataType"] = request.DataType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		query["fileName"] = request.FileName
 	}
