@@ -1,3 +1,11 @@
+2024-09-24 Version: v3.2.1
+- Update API DescribeWebLockBindList: add param Uuid.
+- Update API DescribeWebLockBindList: update response param.
+- Update API DescribeWebLockConfigList: add param Id.
+- Update API DescribeWebLockConfigList: update response param.
+- Update API ModifyWebLockCreateConfig: update response param.
+
+
 2024-09-23 Version: v3.2.0
 - Support API AddPublishBatch.
 - Support API DescribeHybridProxyClusterList.
