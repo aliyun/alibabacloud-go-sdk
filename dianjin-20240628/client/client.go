@@ -6482,6 +6482,329 @@ func (s *RecallDocumentResponse) SetBody(v *RecallDocumentResponseBody) *RecallD
 	return s
 }
 
+type RecognizeIntentionRequest struct {
+	// example:
+	//
+	// false
+	Analysis *bool `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// common
+	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// This parameter is required.
+	Conversation              *string                                               `json:"conversation,omitempty" xml:"conversation,omitempty"`
+	GlobalIntentionList       []*RecognizeIntentionRequestGlobalIntentionList       `json:"globalIntentionList,omitempty" xml:"globalIntentionList,omitempty" type:"Repeated"`
+	HierarchicalIntentionList []*RecognizeIntentionRequestHierarchicalIntentionList `json:"hierarchicalIntentionList,omitempty" xml:"hierarchicalIntentionList,omitempty" type:"Repeated"`
+	IntentionList             []*RecognizeIntentionRequestIntentionList             `json:"intentionList,omitempty" xml:"intentionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// common
+	OpType *string `json:"opType,omitempty" xml:"opType,omitempty"`
+	// example:
+	//
+	// false
+	Recommend *bool `json:"recommend,omitempty" xml:"recommend,omitempty"`
+}
+
+func (s RecognizeIntentionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIntentionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIntentionRequest) SetAnalysis(v bool) *RecognizeIntentionRequest {
+	s.Analysis = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequest) SetBizType(v string) *RecognizeIntentionRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequest) SetConversation(v string) *RecognizeIntentionRequest {
+	s.Conversation = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequest) SetGlobalIntentionList(v []*RecognizeIntentionRequestGlobalIntentionList) *RecognizeIntentionRequest {
+	s.GlobalIntentionList = v
+	return s
+}
+
+func (s *RecognizeIntentionRequest) SetHierarchicalIntentionList(v []*RecognizeIntentionRequestHierarchicalIntentionList) *RecognizeIntentionRequest {
+	s.HierarchicalIntentionList = v
+	return s
+}
+
+func (s *RecognizeIntentionRequest) SetIntentionList(v []*RecognizeIntentionRequestIntentionList) *RecognizeIntentionRequest {
+	s.IntentionList = v
+	return s
+}
+
+func (s *RecognizeIntentionRequest) SetOpType(v string) *RecognizeIntentionRequest {
+	s.OpType = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequest) SetRecommend(v bool) *RecognizeIntentionRequest {
+	s.Recommend = &v
+	return s
+}
+
+type RecognizeIntentionRequestGlobalIntentionList struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// example:
+	//
+	// 1810566978021232640
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+}
+
+func (s RecognizeIntentionRequestGlobalIntentionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIntentionRequestGlobalIntentionList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIntentionRequestGlobalIntentionList) SetDescription(v string) *RecognizeIntentionRequestGlobalIntentionList {
+	s.Description = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequestGlobalIntentionList) SetIntention(v string) *RecognizeIntentionRequestGlobalIntentionList {
+	s.Intention = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequestGlobalIntentionList) SetIntentionCode(v string) *RecognizeIntentionRequestGlobalIntentionList {
+	s.IntentionCode = &v
+	return s
+}
+
+type RecognizeIntentionRequestHierarchicalIntentionList struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// example:
+	//
+	// 1810929291010150400
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+}
+
+func (s RecognizeIntentionRequestHierarchicalIntentionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIntentionRequestHierarchicalIntentionList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIntentionRequestHierarchicalIntentionList) SetDescription(v string) *RecognizeIntentionRequestHierarchicalIntentionList {
+	s.Description = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequestHierarchicalIntentionList) SetIntention(v string) *RecognizeIntentionRequestHierarchicalIntentionList {
+	s.Intention = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequestHierarchicalIntentionList) SetIntentionCode(v string) *RecognizeIntentionRequestHierarchicalIntentionList {
+	s.IntentionCode = &v
+	return s
+}
+
+type RecognizeIntentionRequestIntentionList struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// example:
+	//
+	// 1808766224000262144
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+}
+
+func (s RecognizeIntentionRequestIntentionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIntentionRequestIntentionList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIntentionRequestIntentionList) SetDescription(v string) *RecognizeIntentionRequestIntentionList {
+	s.Description = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequestIntentionList) SetIntention(v string) *RecognizeIntentionRequestIntentionList {
+	s.Intention = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequestIntentionList) SetIntentionCode(v string) *RecognizeIntentionRequestIntentionList {
+	s.IntentionCode = &v
+	return s
+}
+
+type RecognizeIntentionResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                              `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *RecognizeIntentionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 003D019A-1BB3-53EC-A0D2-CE76DA5D73B1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s RecognizeIntentionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIntentionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIntentionResponseBody) SetCost(v int64) *RecognizeIntentionResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBody) SetData(v *RecognizeIntentionResponseBodyData) *RecognizeIntentionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBody) SetDataType(v string) *RecognizeIntentionResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBody) SetErrCode(v string) *RecognizeIntentionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBody) SetMessage(v string) *RecognizeIntentionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBody) SetRequestId(v string) *RecognizeIntentionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBody) SetSuccess(v bool) *RecognizeIntentionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBody) SetTime(v string) *RecognizeIntentionResponseBody {
+	s.Time = &v
+	return s
+}
+
+type RecognizeIntentionResponseBodyData struct {
+	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
+	// example:
+	//
+	// 1
+	IntentionCode      *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionName      *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	RecommendIntention *string `json:"recommendIntention,omitempty" xml:"recommendIntention,omitempty"`
+	RecommendScript    *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
+}
+
+func (s RecognizeIntentionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIntentionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIntentionResponseBodyData) SetAnalysisProcess(v string) *RecognizeIntentionResponseBodyData {
+	s.AnalysisProcess = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBodyData) SetIntentionCode(v string) *RecognizeIntentionResponseBodyData {
+	s.IntentionCode = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBodyData) SetIntentionName(v string) *RecognizeIntentionResponseBodyData {
+	s.IntentionName = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBodyData) SetRecommendIntention(v string) *RecognizeIntentionResponseBodyData {
+	s.RecommendIntention = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBodyData) SetRecommendScript(v string) *RecognizeIntentionResponseBodyData {
+	s.RecommendScript = &v
+	return s
+}
+
+type RecognizeIntentionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeIntentionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeIntentionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIntentionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIntentionResponse) SetHeaders(v map[string]*string) *RecognizeIntentionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeIntentionResponse) SetStatusCode(v int32) *RecognizeIntentionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponse) SetBody(v *RecognizeIntentionResponseBody) *RecognizeIntentionResponse {
+	s.Body = v
+	return s
+}
+
 type RunChatResultGenerationRequest struct {
 	// example:
 	//
@@ -9804,6 +10127,98 @@ func (client *Client) RecallDocument(workspaceId *string, request *RecallDocumen
 	headers := make(map[string]*string)
 	_result = &RecallDocumentResponse{}
 	_body, _err := client.RecallDocumentWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 意图识别
+//
+// @param request - RecognizeIntentionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeIntentionResponse
+func (client *Client) RecognizeIntentionWithOptions(workspaceId *string, request *RecognizeIntentionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RecognizeIntentionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Analysis)) {
+		body["analysis"] = request.Analysis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["bizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Conversation)) {
+		body["conversation"] = request.Conversation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalIntentionList)) {
+		body["globalIntentionList"] = request.GlobalIntentionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HierarchicalIntentionList)) {
+		body["hierarchicalIntentionList"] = request.HierarchicalIntentionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentionList)) {
+		body["intentionList"] = request.IntentionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpType)) {
+		body["opType"] = request.OpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recommend)) {
+		body["recommend"] = request.Recommend
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeIntention"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/recog/intent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeIntentionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 意图识别
+//
+// @param request - RecognizeIntentionRequest
+//
+// @return RecognizeIntentionResponse
+func (client *Client) RecognizeIntention(workspaceId *string, request *RecognizeIntentionRequest) (_result *RecognizeIntentionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RecognizeIntentionResponse{}
+	_body, _err := client.RecognizeIntentionWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

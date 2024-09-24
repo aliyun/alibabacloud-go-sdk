@@ -1,3 +1,7 @@
+2024-09-24 Version: v1.3.0
+- Support API RecognizeIntention.
+
+
 2024-09-18 Version: v1.2.0
 - Support API CreateFinReportSummaryTask.
 - Support API EvictTask.
