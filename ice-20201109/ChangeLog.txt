@@ -1,3 +1,7 @@
+2024-09-24 Version: v4.6.1
+- Update API UpdateAIAgentInstance: add param UserData.
+
+
 2024-09-02 Version: v4.6.0
 - Support API DescribeAIAgentInstance.
 - Support API DescribeNotifyConfig.

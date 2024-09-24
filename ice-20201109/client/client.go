@@ -52518,6 +52518,7 @@ type UpdateAIAgentInstanceRequest struct {
 	// 39f8e0bc005e4f309379701645f4****
 	InstanceId     *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	UserData       *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateAIAgentInstanceRequest) String() string {
@@ -52538,6 +52539,11 @@ func (s *UpdateAIAgentInstanceRequest) SetTemplateConfig(v *AIAgentTemplateConfi
 	return s
 }
 
+func (s *UpdateAIAgentInstanceRequest) SetUserData(v string) *UpdateAIAgentInstanceRequest {
+	s.UserData = &v
+	return s
+}
+
 type UpdateAIAgentInstanceShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -52546,6 +52552,7 @@ type UpdateAIAgentInstanceShrinkRequest struct {
 	// 39f8e0bc005e4f309379701645f4****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateAIAgentInstanceShrinkRequest) String() string {
@@ -52563,6 +52570,11 @@ func (s *UpdateAIAgentInstanceShrinkRequest) SetInstanceId(v string) *UpdateAIAg
 
 func (s *UpdateAIAgentInstanceShrinkRequest) SetTemplateConfigShrink(v string) *UpdateAIAgentInstanceShrinkRequest {
 	s.TemplateConfigShrink = &v
+	return s
+}
+
+func (s *UpdateAIAgentInstanceShrinkRequest) SetUserData(v string) *UpdateAIAgentInstanceShrinkRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -69137,6 +69149,10 @@ func (client *Client) UpdateAIAgentInstanceWithOptions(tmpReq *UpdateAIAgentInst
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateConfigShrink)) {
 		query["TemplateConfig"] = request.TemplateConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
