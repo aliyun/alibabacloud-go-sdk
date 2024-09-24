@@ -3125,7 +3125,7 @@ type GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList struct {
 	//
 	// 2
 	DiscountAmount *float64 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	ERROR          *string  `json:"ERROR,omitempty" xml:"ERROR,omitempty"`
+	Error          *string  `json:"Error,omitempty" xml:"Error,omitempty"`
 	// example:
 	//
 	// vpc
@@ -3155,8 +3155,8 @@ func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetDiscou
 	return s
 }
 
-func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetERROR(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
-	s.ERROR = &v
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetError(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.Error = &v
 	return s
 }
 
@@ -5225,8 +5225,8 @@ type QueryInstanceSpec4ModifyResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QueryInstanceSpec4ModifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
 	// Success
@@ -5259,8 +5259,8 @@ func (s *QueryInstanceSpec4ModifyResponseBody) SetCode(v string) *QueryInstanceS
 	return s
 }
 
-func (s *QueryInstanceSpec4ModifyResponseBody) SetData(v string) *QueryInstanceSpec4ModifyResponseBody {
-	s.Data = &v
+func (s *QueryInstanceSpec4ModifyResponseBody) SetData(v *QueryInstanceSpec4ModifyResponseBodyData) *QueryInstanceSpec4ModifyResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -5276,6 +5276,64 @@ func (s *QueryInstanceSpec4ModifyResponseBody) SetRequestId(v string) *QueryInst
 
 func (s *QueryInstanceSpec4ModifyResponseBody) SetSuccess(v bool) *QueryInstanceSpec4ModifyResponseBody {
 	s.Success = &v
+	return s
+}
+
+type QueryInstanceSpec4ModifyResponseBodyData struct {
+	OptionalValues []*QueryInstanceSpec4ModifyResponseBodyDataOptionalValues `json:"OptionalValues,omitempty" xml:"OptionalValues,omitempty" type:"Repeated"`
+}
+
+func (s QueryInstanceSpec4ModifyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceSpec4ModifyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBodyData) SetOptionalValues(v []*QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) *QueryInstanceSpec4ModifyResponseBodyData {
+	s.OptionalValues = v
+	return s
+}
+
+type QueryInstanceSpec4ModifyResponseBodyDataOptionalValues struct {
+	Label *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	Max   *float64 `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min   *float64 `json:"Min,omitempty" xml:"Min,omitempty"`
+	Step  *float64 `json:"Step,omitempty" xml:"Step,omitempty"`
+	Value *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) SetLabel(v string) *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) SetMax(v float64) *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues {
+	s.Max = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) SetMin(v float64) *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues {
+	s.Min = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) SetStep(v float64) *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues {
+	s.Step = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues) SetValue(v string) *QueryInstanceSpec4ModifyResponseBodyDataOptionalValues {
+	s.Value = &v
 	return s
 }
 
