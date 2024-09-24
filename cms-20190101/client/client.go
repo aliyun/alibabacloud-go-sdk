@@ -2015,13 +2015,13 @@ func (s *AddTagsRequest) SetTag(v []*AddTagsRequestTag) *AddTagsRequest {
 }
 
 type AddTagsRequestTag struct {
-	// The key of tag N.
+	// The tag key.
 	//
 	// Valid values of N: 1 to 3. A tag key can be 1 to 64 characters in length.
 	//
 	// You can create a tag key or specify an existing tag key. For more information about how to obtain a tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
 	//
-	// > The tag key cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+	// >  The tag key cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
 	//
 	// This parameter is required.
 	//
@@ -2029,13 +2029,13 @@ type AddTagsRequestTag struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
 	// Valid values of N: 1 to 3. A tag value can be 1 to 64 characters in length.
 	//
-	// You can create a tag value or specify an existing tag value. For more information about how to obtain a tag value, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145557.html).
+	// You can create a tag value or specify an existing tag value. For more information about how to obtain a tag value, see [DescribeTagValueList](https://help.aliyun.com/document_detail/145557.html).
 	//
-	// > The tag value cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+	// >  The tag value cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
 	//
 	// This parameter is required.
 	//
@@ -35774,6 +35774,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity struct
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	// The carrier name.
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) String() string {
@@ -35801,6 +35802,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) S
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) SetIspName(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity {
 	s.IspName = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) SetType(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity {
+	s.Type = &v
 	return s
 }
 
@@ -38738,6 +38744,332 @@ func (s *DescribeSiteMonitorStatisticsResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeSiteMonitorStatisticsResponse) SetBody(v *DescribeSiteMonitorStatisticsResponseBody) *DescribeSiteMonitorStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSyntheticProbeListRequest struct {
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// false
+	IdcProbe *bool `json:"IdcProbe,omitempty" xml:"IdcProbe,omitempty"`
+	// example:
+	//
+	// false
+	Ipv4 *bool `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
+	// example:
+	//
+	// false
+	Ipv6 *bool   `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Isp  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// false
+	LmProbe *bool `json:"LmProbe,omitempty" xml:"LmProbe,omitempty"`
+	// example:
+	//
+	// false
+	MbProbe  *bool   `json:"MbProbe,omitempty" xml:"MbProbe,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// true
+	ViewAll *bool `json:"ViewAll,omitempty" xml:"ViewAll,omitempty"`
+}
+
+func (s DescribeSyntheticProbeListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSyntheticProbeListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetCity(v string) *DescribeSyntheticProbeListRequest {
+	s.City = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetIdcProbe(v bool) *DescribeSyntheticProbeListRequest {
+	s.IdcProbe = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetIpv4(v bool) *DescribeSyntheticProbeListRequest {
+	s.Ipv4 = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetIpv6(v bool) *DescribeSyntheticProbeListRequest {
+	s.Ipv6 = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetIsp(v string) *DescribeSyntheticProbeListRequest {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetLmProbe(v bool) *DescribeSyntheticProbeListRequest {
+	s.LmProbe = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetMbProbe(v bool) *DescribeSyntheticProbeListRequest {
+	s.MbProbe = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetRegionId(v string) *DescribeSyntheticProbeListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListRequest) SetViewAll(v bool) *DescribeSyntheticProbeListRequest {
+	s.ViewAll = &v
+	return s
+}
+
+type DescribeSyntheticProbeListResponseBody struct {
+	// example:
+	//
+	// 200
+	Code        *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	IspCityList []*DescribeSyntheticProbeListResponseBodyIspCityList `json:"IspCityList,omitempty" xml:"IspCityList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// The specified resource is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 87170bc7-e28a-4c93-b9bf-90a1dbe84736
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSyntheticProbeListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSyntheticProbeListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSyntheticProbeListResponseBody) SetCode(v string) *DescribeSyntheticProbeListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBody) SetIspCityList(v []*DescribeSyntheticProbeListResponseBodyIspCityList) *DescribeSyntheticProbeListResponseBody {
+	s.IspCityList = v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBody) SetMessage(v string) *DescribeSyntheticProbeListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBody) SetRequestId(v string) *DescribeSyntheticProbeListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBody) SetSuccess(v string) *DescribeSyntheticProbeListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSyntheticProbeListResponseBodyIspCityList struct {
+	AreaCn *string `json:"AreaCn,omitempty" xml:"AreaCn,omitempty"`
+	// example:
+	//
+	// Huabei
+	AreaEn *string `json:"AreaEn,omitempty" xml:"AreaEn,omitempty"`
+	// example:
+	//
+	// 738
+	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	CityCn *string `json:"CityCn,omitempty" xml:"CityCn,omitempty"`
+	// example:
+	//
+	// Beijing
+	CityEn *string `json:"CityEn,omitempty" xml:"CityEn,omitempty"`
+	// example:
+	//
+	// 629
+	Country   *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	CountryCn *string `json:"CountryCn,omitempty" xml:"CountryCn,omitempty"`
+	// example:
+	//
+	// China
+	CountryEn *string `json:"CountryEn,omitempty" xml:"CountryEn,omitempty"`
+	// example:
+	//
+	// 1
+	IdcV4ProbeCount *int32    `json:"IdcV4ProbeCount,omitempty" xml:"IdcV4ProbeCount,omitempty"`
+	IdcV6ProbeCount *int32    `json:"IdcV6ProbeCount,omitempty" xml:"IdcV6ProbeCount,omitempty"`
+	IpPool          []*string `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 232
+	Isp   *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	IspCn *string `json:"IspCn,omitempty" xml:"IspCn,omitempty"`
+	// example:
+	//
+	// China-Unicom
+	IspEn *string `json:"IspEn,omitempty" xml:"IspEn,omitempty"`
+	// example:
+	//
+	// 1
+	LmProbeCount *int32 `json:"LmProbeCount,omitempty" xml:"LmProbeCount,omitempty"`
+	// example:
+	//
+	// 1
+	MbProbeCount *int32 `json:"MbProbeCount,omitempty" xml:"MbProbeCount,omitempty"`
+	// example:
+	//
+	// 264
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionCn *string `json:"RegionCn,omitempty" xml:"RegionCn,omitempty"`
+	// example:
+	//
+	// Jiangxi
+	RegionEn *string `json:"RegionEn,omitempty" xml:"RegionEn,omitempty"`
+}
+
+func (s DescribeSyntheticProbeListResponseBodyIspCityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSyntheticProbeListResponseBodyIspCityList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetAreaCn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.AreaCn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetAreaEn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.AreaEn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetCity(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.City = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetCityCn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.CityCn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetCityEn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.CityEn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetCountry(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.Country = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetCountryCn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.CountryCn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetCountryEn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.CountryEn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetIdcV4ProbeCount(v int32) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.IdcV4ProbeCount = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetIdcV6ProbeCount(v int32) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.IdcV6ProbeCount = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetIpPool(v []*string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.IpPool = v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetIsp(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetIspCn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.IspCn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetIspEn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.IspEn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetLmProbeCount(v int32) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.LmProbeCount = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetMbProbeCount(v int32) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.MbProbeCount = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetRegion(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetRegionCn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.RegionCn = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponseBodyIspCityList) SetRegionEn(v string) *DescribeSyntheticProbeListResponseBodyIspCityList {
+	s.RegionEn = &v
+	return s
+}
+
+type DescribeSyntheticProbeListResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSyntheticProbeListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSyntheticProbeListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSyntheticProbeListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSyntheticProbeListResponse) SetHeaders(v map[string]*string) *DescribeSyntheticProbeListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponse) SetStatusCode(v int32) *DescribeSyntheticProbeListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSyntheticProbeListResponse) SetBody(v *DescribeSyntheticProbeListResponseBody) *DescribeSyntheticProbeListResponse {
 	s.Body = v
 	return s
 }
@@ -61768,6 +62100,94 @@ func (client *Client) DescribeSiteMonitorStatistics(request *DescribeSiteMonitor
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSiteMonitorStatisticsResponse{}
 	_body, _err := client.DescribeSiteMonitorStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询拨测探测节点列表
+//
+// @param request - DescribeSyntheticProbeListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSyntheticProbeListResponse
+func (client *Client) DescribeSyntheticProbeListWithOptions(request *DescribeSyntheticProbeListRequest, runtime *util.RuntimeOptions) (_result *DescribeSyntheticProbeListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdcProbe)) {
+		query["IdcProbe"] = request.IdcProbe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv4)) {
+		query["Ipv4"] = request.Ipv4
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6)) {
+		query["Ipv6"] = request.Ipv6
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmProbe)) {
+		query["LmProbe"] = request.LmProbe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MbProbe)) {
+		query["MbProbe"] = request.MbProbe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewAll)) {
+		query["ViewAll"] = request.ViewAll
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSyntheticProbeList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSyntheticProbeListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询拨测探测节点列表
+//
+// @param request - DescribeSyntheticProbeListRequest
+//
+// @return DescribeSyntheticProbeListResponse
+func (client *Client) DescribeSyntheticProbeList(request *DescribeSyntheticProbeListRequest) (_result *DescribeSyntheticProbeListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSyntheticProbeListResponse{}
+	_body, _err := client.DescribeSyntheticProbeListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
