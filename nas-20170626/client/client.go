@@ -749,6 +749,128 @@ func (s *CancelDataFlowAutoRefreshResponse) SetBody(v *CancelDataFlowAutoRefresh
 	return s
 }
 
+type CancelDataFlowSubTaskRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dfid-194433a5be31****
+	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// subTaskId-370kyfmyknxcyzw****
+	DataFlowSubTaskId *string `json:"DataFlowSubTaskId,omitempty" xml:"DataFlowSubTaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// taskId-12345678
+	DataFlowTaskId *string `json:"DataFlowTaskId,omitempty" xml:"DataFlowTaskId,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bmcpfs-370lx1ev9ss27o0****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s CancelDataFlowSubTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelDataFlowSubTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelDataFlowSubTaskRequest) SetClientToken(v string) *CancelDataFlowSubTaskRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CancelDataFlowSubTaskRequest) SetDataFlowId(v string) *CancelDataFlowSubTaskRequest {
+	s.DataFlowId = &v
+	return s
+}
+
+func (s *CancelDataFlowSubTaskRequest) SetDataFlowSubTaskId(v string) *CancelDataFlowSubTaskRequest {
+	s.DataFlowSubTaskId = &v
+	return s
+}
+
+func (s *CancelDataFlowSubTaskRequest) SetDataFlowTaskId(v string) *CancelDataFlowSubTaskRequest {
+	s.DataFlowTaskId = &v
+	return s
+}
+
+func (s *CancelDataFlowSubTaskRequest) SetDryRun(v bool) *CancelDataFlowSubTaskRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CancelDataFlowSubTaskRequest) SetFileSystemId(v string) *CancelDataFlowSubTaskRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type CancelDataFlowSubTaskResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelDataFlowSubTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelDataFlowSubTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelDataFlowSubTaskResponseBody) SetRequestId(v string) *CancelDataFlowSubTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelDataFlowSubTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelDataFlowSubTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelDataFlowSubTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelDataFlowSubTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelDataFlowSubTaskResponse) SetHeaders(v map[string]*string) *CancelDataFlowSubTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelDataFlowSubTaskResponse) SetStatusCode(v int32) *CancelDataFlowSubTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelDataFlowSubTaskResponse) SetBody(v *CancelDataFlowSubTaskResponseBody) *CancelDataFlowSubTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CancelDataFlowTaskRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
 	//
@@ -2408,6 +2530,183 @@ func (s *CreateDataFlowResponse) SetStatusCode(v int32) *CreateDataFlowResponse 
 }
 
 func (s *CreateDataFlowResponse) SetBody(v *CreateDataFlowResponseBody) *CreateDataFlowResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataFlowSubTaskRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Condition   *CreateDataFlowSubTaskRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dfid-194433a5be31****
+	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// taskId-12345678
+	DataFlowTaskId *string `json:"DataFlowTaskId,omitempty" xml:"DataFlowTaskId,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /mnt/file.png
+	DstFilePath *string `json:"DstFilePath,omitempty" xml:"DstFilePath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bmcpfs-370lx1ev9ss27o0****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /test/file.png
+	SrcFilePath *string `json:"SrcFilePath,omitempty" xml:"SrcFilePath,omitempty"`
+}
+
+func (s CreateDataFlowSubTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataFlowSubTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetClientToken(v string) *CreateDataFlowSubTaskRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetCondition(v *CreateDataFlowSubTaskRequestCondition) *CreateDataFlowSubTaskRequest {
+	s.Condition = v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetDataFlowId(v string) *CreateDataFlowSubTaskRequest {
+	s.DataFlowId = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetDataFlowTaskId(v string) *CreateDataFlowSubTaskRequest {
+	s.DataFlowTaskId = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetDryRun(v bool) *CreateDataFlowSubTaskRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetDstFilePath(v string) *CreateDataFlowSubTaskRequest {
+	s.DstFilePath = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetFileSystemId(v string) *CreateDataFlowSubTaskRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequest) SetSrcFilePath(v string) *CreateDataFlowSubTaskRequest {
+	s.SrcFilePath = &v
+	return s
+}
+
+type CreateDataFlowSubTaskRequestCondition struct {
+	// example:
+	//
+	// 1725897600000000000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 68
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateDataFlowSubTaskRequestCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataFlowSubTaskRequestCondition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataFlowSubTaskRequestCondition) SetModifyTime(v int64) *CreateDataFlowSubTaskRequestCondition {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskRequestCondition) SetSize(v int64) *CreateDataFlowSubTaskRequestCondition {
+	s.Size = &v
+	return s
+}
+
+type CreateDataFlowSubTaskResponseBody struct {
+	// example:
+	//
+	// subTaskId-370kyfmyknxcyzw****
+	DataFlowSubTaskId *string `json:"DataFlowSubTaskId,omitempty" xml:"DataFlowSubTaskId,omitempty"`
+	// example:
+	//
+	// A70BEE5D-76D3-49FB-B58F-1F398211A5C3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDataFlowSubTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataFlowSubTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataFlowSubTaskResponseBody) SetDataFlowSubTaskId(v string) *CreateDataFlowSubTaskResponseBody {
+	s.DataFlowSubTaskId = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskResponseBody) SetRequestId(v string) *CreateDataFlowSubTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDataFlowSubTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataFlowSubTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataFlowSubTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataFlowSubTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataFlowSubTaskResponse) SetHeaders(v map[string]*string) *CreateDataFlowSubTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskResponse) SetStatusCode(v int32) *CreateDataFlowSubTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataFlowSubTaskResponse) SetBody(v *CreateDataFlowSubTaskResponseBody) *CreateDataFlowSubTaskResponse {
 	s.Body = v
 	return s
 }
@@ -8537,6 +8836,377 @@ func (s *DescribeBlackListClientsResponse) SetStatusCode(v int32) *DescribeBlack
 }
 
 func (s *DescribeBlackListClientsResponse) SetBody(v *DescribeBlackListClientsResponseBody) *DescribeBlackListClientsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataFlowSubTasksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bmcpfs-370lx1ev9ss27o0****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// if can be null:
+	// false
+	Filters []*DescribeDataFlowSubTasksRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// iWk0AQAAAAAvY2FzZS8=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s DescribeDataFlowSubTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksRequest) SetFileSystemId(v string) *DescribeDataFlowSubTasksRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksRequest) SetFilters(v []*DescribeDataFlowSubTasksRequestFilters) *DescribeDataFlowSubTasksRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksRequest) SetMaxResults(v int64) *DescribeDataFlowSubTasksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksRequest) SetNextToken(v string) *DescribeDataFlowSubTasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+type DescribeDataFlowSubTasksRequestFilters struct {
+	// example:
+	//
+	// DataFlowSubTaskIds
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// subTaskId-370kyfmyknxcyzw****
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDataFlowSubTasksRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksRequestFilters) SetKey(v string) *DescribeDataFlowSubTasksRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksRequestFilters) SetValue(v string) *DescribeDataFlowSubTasksRequestFilters {
+	s.Value = &v
+	return s
+}
+
+type DescribeDataFlowSubTasksResponseBody struct {
+	DataFlowSubTask *DescribeDataFlowSubTasksResponseBodyDataFlowSubTask `json:"DataFlowSubTask,omitempty" xml:"DataFlowSubTask,omitempty" type:"Struct"`
+	// example:
+	//
+	// pUJaUwAAAABhdGUyNTk1MQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 98696EF0-1607-4E9D-B01D-F20930B6****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDataFlowSubTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksResponseBody) SetDataFlowSubTask(v *DescribeDataFlowSubTasksResponseBodyDataFlowSubTask) *DescribeDataFlowSubTasksResponseBody {
+	s.DataFlowSubTask = v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBody) SetNextToken(v string) *DescribeDataFlowSubTasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBody) SetRequestId(v string) *DescribeDataFlowSubTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDataFlowSubTasksResponseBodyDataFlowSubTask struct {
+	DataFlowSubTask []*DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask `json:"DataFlowSubTask,omitempty" xml:"DataFlowSubTask,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTask) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTask) SetDataFlowSubTask(v []*DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTask {
+	s.DataFlowSubTask = v
+	return s
+}
+
+type DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask struct {
+	// example:
+	//
+	// 2024-07-01 19:59:29
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// dfid-194433a5be31****
+	DataFlowId *string `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	// example:
+	//
+	// subTaskId-370kyfmyknxcyzw****
+	DataFlowSubTaskId *string `json:"DataFlowSubTaskId,omitempty" xml:"DataFlowSubTaskId,omitempty"`
+	// example:
+	//
+	// taskId-12345678
+	DataFlowTaskId *string `json:"DataFlowTaskId,omitempty" xml:"DataFlowTaskId,omitempty"`
+	// example:
+	//
+	// /mnt/file.png
+	DstFilePath *string `json:"DstFilePath,omitempty" xml:"DstFilePath,omitempty"`
+	// example:
+	//
+	// 2024-07-04 11:14:22
+	EndTime    *string                                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErrorMsg   *string                                                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	FileDetail *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// bmcpfs-370lx1ev9ss27o0****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// example:
+	//
+	// 10000
+	Progress      *int32                                                                           `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ProgressStats *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats `json:"ProgressStats,omitempty" xml:"ProgressStats,omitempty" type:"Struct"`
+	// example:
+	//
+	// /test/file.png
+	SrcFilePath *string `json:"SrcFilePath,omitempty" xml:"SrcFilePath,omitempty"`
+	// example:
+	//
+	// 2024-07-03 10:43:16
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetCreateTime(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetDataFlowId(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.DataFlowId = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetDataFlowSubTaskId(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.DataFlowSubTaskId = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetDataFlowTaskId(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.DataFlowTaskId = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetDstFilePath(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.DstFilePath = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetEndTime(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetErrorMsg(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetFileDetail(v *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.FileDetail = v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetFileSystemId(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetProgress(v int32) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetProgressStats(v *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.ProgressStats = v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetSrcFilePath(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.SrcFilePath = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetStartTime(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask) SetStatus(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask {
+	s.Status = &v
+	return s
+}
+
+type DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail struct {
+	// example:
+	//
+	// crc64:850309505450944****
+	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	// example:
+	//
+	// 1721167603
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 68
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail) SetChecksum(v string) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail {
+	s.Checksum = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail) SetModifyTime(v int64) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail) SetSize(v int64) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail {
+	s.Size = &v
+	return s
+}
+
+type DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats struct {
+	// example:
+	//
+	// 68
+	ActualBytes *int64 `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	// example:
+	//
+	// 34
+	AverageSpeed *int64 `json:"AverageSpeed,omitempty" xml:"AverageSpeed,omitempty"`
+	// example:
+	//
+	// 68
+	BytesDone *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	// example:
+	//
+	// 68
+	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats) SetActualBytes(v int64) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats {
+	s.ActualBytes = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats) SetAverageSpeed(v int64) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats {
+	s.AverageSpeed = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats) SetBytesDone(v int64) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats {
+	s.BytesDone = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats) SetBytesTotal(v int64) *DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats {
+	s.BytesTotal = &v
+	return s
+}
+
+type DescribeDataFlowSubTasksResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDataFlowSubTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDataFlowSubTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataFlowSubTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataFlowSubTasksResponse) SetHeaders(v map[string]*string) *DescribeDataFlowSubTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponse) SetStatusCode(v int32) *DescribeDataFlowSubTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataFlowSubTasksResponse) SetBody(v *DescribeDataFlowSubTasksResponseBody) *DescribeDataFlowSubTasksResponse {
 	s.Body = v
 	return s
 }
@@ -22005,6 +22675,86 @@ func (client *Client) CancelDataFlowAutoRefresh(request *CancelDataFlowAutoRefre
 
 // Summary:
 //
+// 取消数据流动任务队列中尚未执行的子任务
+//
+// @param request - CancelDataFlowSubTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelDataFlowSubTaskResponse
+func (client *Client) CancelDataFlowSubTaskWithOptions(request *CancelDataFlowSubTaskRequest, runtime *util.RuntimeOptions) (_result *CancelDataFlowSubTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFlowId)) {
+		query["DataFlowId"] = request.DataFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFlowSubTaskId)) {
+		query["DataFlowSubTaskId"] = request.DataFlowSubTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFlowTaskId)) {
+		query["DataFlowTaskId"] = request.DataFlowTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelDataFlowSubTask"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelDataFlowSubTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消数据流动任务队列中尚未执行的子任务
+//
+// @param request - CancelDataFlowSubTaskRequest
+//
+// @return CancelDataFlowSubTaskResponse
+func (client *Client) CancelDataFlowSubTask(request *CancelDataFlowSubTaskRequest) (_result *CancelDataFlowSubTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelDataFlowSubTaskResponse{}
+	_body, _err := client.CancelDataFlowSubTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels a dataflow task that is not running.
 //
 // Description:
@@ -23112,6 +23862,94 @@ func (client *Client) CreateDataFlow(request *CreateDataFlowRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataFlowResponse{}
 	_body, _err := client.CreateDataFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据流动子任务
+//
+// @param request - CreateDataFlowSubTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataFlowSubTaskResponse
+func (client *Client) CreateDataFlowSubTaskWithOptions(request *CreateDataFlowSubTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDataFlowSubTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Condition)) {
+		query["Condition"] = request.Condition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFlowId)) {
+		query["DataFlowId"] = request.DataFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFlowTaskId)) {
+		query["DataFlowTaskId"] = request.DataFlowTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DstFilePath)) {
+		query["DstFilePath"] = request.DstFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcFilePath)) {
+		query["SrcFilePath"] = request.SrcFilePath
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataFlowSubTask"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataFlowSubTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据流动子任务
+//
+// @param request - CreateDataFlowSubTaskRequest
+//
+// @return CreateDataFlowSubTaskResponse
+func (client *Client) CreateDataFlowSubTask(request *CreateDataFlowSubTaskRequest) (_result *CreateDataFlowSubTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataFlowSubTaskResponse{}
+	_body, _err := client.CreateDataFlowSubTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26222,6 +27060,78 @@ func (client *Client) DescribeBlackListClients(request *DescribeBlackListClients
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBlackListClientsResponse{}
 	_body, _err := client.DescribeBlackListClientsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据流动子任务
+//
+// @param request - DescribeDataFlowSubTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataFlowSubTasksResponse
+func (client *Client) DescribeDataFlowSubTasksWithOptions(request *DescribeDataFlowSubTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeDataFlowSubTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataFlowSubTasks"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataFlowSubTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据流动子任务
+//
+// @param request - DescribeDataFlowSubTasksRequest
+//
+// @return DescribeDataFlowSubTasksResponse
+func (client *Client) DescribeDataFlowSubTasks(request *DescribeDataFlowSubTasksRequest) (_result *DescribeDataFlowSubTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataFlowSubTasksResponse{}
+	_body, _err := client.DescribeDataFlowSubTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
