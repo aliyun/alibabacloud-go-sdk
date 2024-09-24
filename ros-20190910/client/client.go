@@ -14456,6 +14456,210 @@ func (s *GetTemplateSummaryResponse) SetBody(v *GetTemplateSummaryResponseBody) 
 	return s
 }
 
+type ImportStacksToStackGroupRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Import ops stacks to stack group
+	OperationDescription *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	// example:
+	//
+	// {"FailureToleranceCount": 1,"MaxConcurrentCount": 2}
+	OperationPreferences map[string]interface{} `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId                   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDirectoryFolderIds []*string `json:"ResourceDirectoryFolderIds,omitempty" xml:"ResourceDirectoryFolderIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	StackArns []*string `json:"StackArns,omitempty" xml:"StackArns,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyStackGroup
+	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+}
+
+func (s ImportStacksToStackGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportStacksToStackGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportStacksToStackGroupRequest) SetClientToken(v string) *ImportStacksToStackGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupRequest) SetOperationDescription(v string) *ImportStacksToStackGroupRequest {
+	s.OperationDescription = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupRequest) SetOperationPreferences(v map[string]interface{}) *ImportStacksToStackGroupRequest {
+	s.OperationPreferences = v
+	return s
+}
+
+func (s *ImportStacksToStackGroupRequest) SetRegionId(v string) *ImportStacksToStackGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupRequest) SetResourceDirectoryFolderIds(v []*string) *ImportStacksToStackGroupRequest {
+	s.ResourceDirectoryFolderIds = v
+	return s
+}
+
+func (s *ImportStacksToStackGroupRequest) SetStackArns(v []*string) *ImportStacksToStackGroupRequest {
+	s.StackArns = v
+	return s
+}
+
+func (s *ImportStacksToStackGroupRequest) SetStackGroupName(v string) *ImportStacksToStackGroupRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+type ImportStacksToStackGroupShrinkRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Import ops stacks to stack group
+	OperationDescription *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	// example:
+	//
+	// {"FailureToleranceCount": 1,"MaxConcurrentCount": 2}
+	OperationPreferencesShrink *string `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId                         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDirectoryFolderIdsShrink *string `json:"ResourceDirectoryFolderIds,omitempty" xml:"ResourceDirectoryFolderIds,omitempty"`
+	// This parameter is required.
+	StackArnsShrink *string `json:"StackArns,omitempty" xml:"StackArns,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyStackGroup
+	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+}
+
+func (s ImportStacksToStackGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportStacksToStackGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportStacksToStackGroupShrinkRequest) SetClientToken(v string) *ImportStacksToStackGroupShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupShrinkRequest) SetOperationDescription(v string) *ImportStacksToStackGroupShrinkRequest {
+	s.OperationDescription = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupShrinkRequest) SetOperationPreferencesShrink(v string) *ImportStacksToStackGroupShrinkRequest {
+	s.OperationPreferencesShrink = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupShrinkRequest) SetRegionId(v string) *ImportStacksToStackGroupShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupShrinkRequest) SetResourceDirectoryFolderIdsShrink(v string) *ImportStacksToStackGroupShrinkRequest {
+	s.ResourceDirectoryFolderIdsShrink = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupShrinkRequest) SetStackArnsShrink(v string) *ImportStacksToStackGroupShrinkRequest {
+	s.StackArnsShrink = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupShrinkRequest) SetStackGroupName(v string) *ImportStacksToStackGroupShrinkRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+type ImportStacksToStackGroupResponseBody struct {
+	// example:
+	//
+	// 6da106ca-1784-4a6f-a7e1-e723863d****
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// example:
+	//
+	// 14A07460-EBE7-47CA-9757-12CC4761D47A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportStacksToStackGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportStacksToStackGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportStacksToStackGroupResponseBody) SetOperationId(v string) *ImportStacksToStackGroupResponseBody {
+	s.OperationId = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupResponseBody) SetRequestId(v string) *ImportStacksToStackGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportStacksToStackGroupResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportStacksToStackGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportStacksToStackGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportStacksToStackGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportStacksToStackGroupResponse) SetHeaders(v map[string]*string) *ImportStacksToStackGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportStacksToStackGroupResponse) SetStatusCode(v int32) *ImportStacksToStackGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportStacksToStackGroupResponse) SetBody(v *ImportStacksToStackGroupResponseBody) *ImportStacksToStackGroupResponse {
+	s.Body = v
+	return s
+}
+
 type ListAITaskEventsRequest struct {
 	// example:
 	//
@@ -30717,6 +30921,96 @@ func (client *Client) GetTemplateSummary(request *GetTemplateSummaryRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemplateSummaryResponse{}
 	_body, _err := client.GetTemplateSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ImportStacksToStackGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportStacksToStackGroupResponse
+func (client *Client) ImportStacksToStackGroupWithOptions(tmpReq *ImportStacksToStackGroupRequest, runtime *util.RuntimeOptions) (_result *ImportStacksToStackGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportStacksToStackGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
+		request.OperationPreferencesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationPreferences, tea.String("OperationPreferences"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceDirectoryFolderIds)) {
+		request.ResourceDirectoryFolderIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceDirectoryFolderIds, tea.String("ResourceDirectoryFolderIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StackArns)) {
+		request.StackArnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StackArns, tea.String("StackArns"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationDescription)) {
+		query["OperationDescription"] = request.OperationDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPreferencesShrink)) {
+		query["OperationPreferences"] = request.OperationPreferencesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryFolderIdsShrink)) {
+		query["ResourceDirectoryFolderIds"] = request.ResourceDirectoryFolderIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackArnsShrink)) {
+		query["StackArns"] = request.StackArnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportStacksToStackGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportStacksToStackGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ImportStacksToStackGroupRequest
+//
+// @return ImportStacksToStackGroupResponse
+func (client *Client) ImportStacksToStackGroup(request *ImportStacksToStackGroupRequest) (_result *ImportStacksToStackGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportStacksToStackGroupResponse{}
+	_body, _err := client.ImportStacksToStackGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
