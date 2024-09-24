@@ -10,6 +10,7 @@ import (
 )
 
 type AnalyzeConversationRequest struct {
+	CategoryTags []*AnalyzeConversationRequestCategoryTags `json:"categoryTags,omitempty" xml:"categoryTags,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Dialogue *AnalyzeConversationRequestDialogue   `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
 	Examples []*AnalyzeConversationRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
@@ -27,7 +28,8 @@ type AnalyzeConversationRequest struct {
 	// example:
 	//
 	// false
-	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	Stream       *bool                                     `json:"stream,omitempty" xml:"stream,omitempty"`
+	UserProfiles []*AnalyzeConversationRequestUserProfiles `json:"userProfiles,omitempty" xml:"userProfiles,omitempty" type:"Repeated"`
 }
 
 func (s AnalyzeConversationRequest) String() string {
@@ -36,6 +38,11 @@ func (s AnalyzeConversationRequest) String() string {
 
 func (s AnalyzeConversationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AnalyzeConversationRequest) SetCategoryTags(v []*AnalyzeConversationRequestCategoryTags) *AnalyzeConversationRequest {
+	s.CategoryTags = v
+	return s
 }
 
 func (s *AnalyzeConversationRequest) SetDialogue(v *AnalyzeConversationRequestDialogue) *AnalyzeConversationRequest {
@@ -75,6 +82,34 @@ func (s *AnalyzeConversationRequest) SetServiceInspection(v *AnalyzeConversation
 
 func (s *AnalyzeConversationRequest) SetStream(v bool) *AnalyzeConversationRequest {
 	s.Stream = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetUserProfiles(v []*AnalyzeConversationRequestUserProfiles) *AnalyzeConversationRequest {
+	s.UserProfiles = v
+	return s
+}
+
+type AnalyzeConversationRequestCategoryTags struct {
+	TagDesc *string `json:"tagDesc,omitempty" xml:"tagDesc,omitempty"`
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s AnalyzeConversationRequestCategoryTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestCategoryTags) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestCategoryTags) SetTagDesc(v string) *AnalyzeConversationRequestCategoryTags {
+	s.TagDesc = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestCategoryTags) SetTagName(v string) *AnalyzeConversationRequestCategoryTags {
+	s.TagName = &v
 	return s
 }
 
@@ -309,6 +344,29 @@ func (s *AnalyzeConversationRequestServiceInspectionInspectionContents) SetConte
 
 func (s *AnalyzeConversationRequestServiceInspectionInspectionContents) SetTitle(v string) *AnalyzeConversationRequestServiceInspectionInspectionContents {
 	s.Title = &v
+	return s
+}
+
+type AnalyzeConversationRequestUserProfiles struct {
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s AnalyzeConversationRequestUserProfiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequestUserProfiles) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequestUserProfiles) SetName(v string) *AnalyzeConversationRequestUserProfiles {
+	s.Name = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequestUserProfiles) SetValue(v string) *AnalyzeConversationRequestUserProfiles {
+	s.Value = &v
 	return s
 }
 
@@ -1384,6 +1442,10 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryTags)) {
+		body["categoryTags"] = request.CategoryTags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Dialogue)) {
 		body["dialogue"] = request.Dialogue
 	}
@@ -1414,6 +1476,10 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 
 	if !tea.BoolValue(util.IsUnset(request.Stream)) {
 		body["stream"] = request.Stream
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProfiles)) {
+		body["userProfiles"] = request.UserProfiles
 	}
 
 	req := &openapi.OpenApiRequest{
