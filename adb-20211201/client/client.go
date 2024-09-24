@@ -2738,7 +2738,8 @@ type CreateDBClusterRequest struct {
 	// example:
 	//
 	// 1880808684
-	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	BackupSetId         *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	CloneSourceRegionId *string `json:"CloneSourceRegionId,omitempty" xml:"CloneSourceRegionId,omitempty"`
 	// The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
@@ -2911,6 +2912,11 @@ func (s CreateDBClusterRequest) GoString() string {
 
 func (s *CreateDBClusterRequest) SetBackupSetId(v string) *CreateDBClusterRequest {
 	s.BackupSetId = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetCloneSourceRegionId(v string) *CreateDBClusterRequest {
+	s.CloneSourceRegionId = &v
 	return s
 }
 
@@ -30375,6 +30381,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BackupSetId)) {
 		query["BackupSetId"] = request.BackupSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloneSourceRegionId)) {
+		query["CloneSourceRegionId"] = request.CloneSourceRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ComputeResource)) {

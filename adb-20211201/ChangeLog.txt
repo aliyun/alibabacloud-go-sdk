@@ -1,3 +1,8 @@
+2024-09-24 Version: v2.0.8
+- Update API CreateDBCluster: add param CloneSourceRegionId.
+- Update API CreateDBCluster: update param ProductForm.
+
+
 2024-09-18 Version: v2.0.7
 - Update API ModifyDBCluster: add param ProductForm.
 
