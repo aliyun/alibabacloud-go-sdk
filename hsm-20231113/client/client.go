@@ -10,16 +10,26 @@ import (
 )
 
 type ConfigAuditLogRequest struct {
+	// The status of the audit log feature.
+	//
+	// 	- enable
+	//
+	// 	- disable
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enable
 	AuditAction *string `json:"AuditAction,omitempty" xml:"AuditAction,omitempty"`
+	// The bucket to which audit logs are delivered.
+	//
 	// example:
 	//
 	// hsm-log
 	AuditOssBucket *string `json:"AuditOssBucket,omitempty" xml:"AuditOssBucket,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52,6 +62,8 @@ func (s *ConfigAuditLogRequest) SetRegionId(v string) *ConfigAuditLogRequest {
 }
 
 type ConfigAuditLogResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 42B118FB-16A6-56FB-B877-D58637EEC6AF
@@ -399,12 +411,16 @@ func (s *ConfigClusterCertificateResponse) SetBody(v *ConfigClusterCertificateRe
 }
 
 type ConfigClusterNameRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cluster-BqxX63Bsgfaisdf****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -432,6 +448,8 @@ func (s *ConfigClusterNameRequest) SetClusterName(v string) *ConfigClusterNameRe
 }
 
 type ConfigClusterNameResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -632,12 +650,16 @@ func (s *ConfigClusterSubnetResponse) SetBody(v *ConfigClusterSubnetResponseBody
 }
 
 type ConfigClusterWhitelistRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cluster-729dm40FG****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IP address whitelist of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -665,6 +687,8 @@ func (s *ConfigClusterWhitelistRequest) SetWhitelist(v string) *ConfigClusterWhi
 }
 
 type ConfigClusterWhitelistResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -796,30 +820,40 @@ func (s *ConfigImageRemarkResponse) SetBody(v *ConfigImageRemarkResponseBody) *C
 }
 
 type ConfigInstanceIpAddressRequest struct {
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hsm-cn-mp90fxef****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the HSM in the VPC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitch ID of the subnet to which the HSM belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-u7gb0qahu****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC to which the HSM belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -862,6 +896,8 @@ func (s *ConfigInstanceIpAddressRequest) SetVpcId(v string) *ConfigInstanceIpAdd
 }
 
 type ConfigInstanceIpAddressResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -911,12 +947,16 @@ func (s *ConfigInstanceIpAddressResponse) SetBody(v *ConfigInstanceIpAddressResp
 }
 
 type ConfigInstanceRemarkRequest struct {
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hsm-cn-vj30bil8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The description.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -944,6 +984,8 @@ func (s *ConfigInstanceRemarkRequest) SetRemark(v string) *ConfigInstanceRemarkR
 }
 
 type ConfigInstanceRemarkResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -1225,18 +1267,24 @@ func (s *CopyImageResponse) SetBody(v *CopyImageResponseBody) *CopyImageResponse
 }
 
 type CreateClusterRequest struct {
+	// The cluster name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cluster_on****
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hsm_intl-sg-uz63ixak****
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1269,10 +1317,14 @@ func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
 }
 
 type CreateClusterResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cluster-729dm40FG****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F58413E-8F57-585B-BE48-64CC1E31133C
@@ -1327,6 +1379,8 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type DeleteClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1349,6 +1403,8 @@ func (s *DeleteClusterRequest) SetClusterId(v string) *DeleteClusterRequest {
 }
 
 type DeleteClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -2154,6 +2210,8 @@ func (s *GetBackupResponse) SetBody(v *GetBackupResponseBody) *GetBackupResponse
 }
 
 type GetClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2176,7 +2234,10 @@ func (s *GetClusterRequest) SetClusterId(v string) *GetClusterRequest {
 }
 
 type GetClusterResponseBody struct {
+	// The information about the cluster.
 	Cluster *GetClusterResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -2202,6 +2263,8 @@ func (s *GetClusterResponseBody) SetRequestId(v string) *GetClusterResponseBody 
 }
 
 type GetClusterResponseBodyCluster struct {
+	// The cluster certificate.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
@@ -2214,20 +2277,28 @@ type GetClusterResponseBodyCluster struct {
 	//
 	// -----END CERTIFICATE-----
 	ClusterCertificate *string `json:"ClusterCertificate,omitempty" xml:"ClusterCertificate,omitempty"`
+	// The certificate signing request (CSR) file of the cluster.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----\\nMIIC5TCCAc0CAQAwgZ8xWTAJBgNVBAYTAlVTMAkGA1UECAwCQ0EwDQYDVQQKDAZD\\nYXZpdW0wDQYDVQQLDAZOM0ZJUFMwDgYDVQQHDAdTYW5Kb3NlMBMGA1UdEQwMMTk****
 	//
 	// -----END CERTIFICATE REQUEST-----
 	ClusterCsr *string `json:"ClusterCsr,omitempty" xml:"ClusterCsr,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cluster-p94y1dud9ts****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// cluster_polar_****
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The self-signed certificate of the cluster.
+	//
 	// example:
 	//
 	// ----BEGIN CERTIFICATE-----
@@ -2240,36 +2311,62 @@ type GetClusterResponseBodyCluster struct {
 	//
 	// -----END CERTIFICATE-----
 	ClusterOwnerCertificate *string `json:"ClusterOwnerCertificate,omitempty" xml:"ClusterOwnerCertificate,omitempty"`
+	// The time when the cluster was created. Unit: milliseconds. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1641275680000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The device type.
+	//
 	// example:
 	//
 	// jnta
-	DeviceType *string                                   `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	Instances  []*GetClusterResponseBodyClusterInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// The HSMs in the cluster.
+	Instances []*GetClusterResponseBodyClusterInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The ID of the region in which the cluster resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of hardware security modules (HSMs) in the cluster.
+	//
 	// example:
 	//
 	// 2
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The cluster status.
+	//
+	// 	- NEW: The cluster is not initialized.
+	//
+	// 	- INITIALIZED: The cluster is initialized.
+	//
+	// 	- DELETED: The cluster is deleted.
+	//
+	// 	- SYNCHRONIZING: The cluster is being synchronized.
+	//
+	// 	- TO_DELETE: The cluster is to be deleted.
+	//
 	// example:
 	//
 	// NEW
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
+	//
 	// example:
 	//
 	// vpc-8vbt0fjdm29hofvbo****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The IP address whitelist of the cluster.
+	//
 	// example:
 	//
 	// 130.176.XX.XX
-	Whitelist *string                               `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
-	Zones     []*GetClusterResponseBodyClusterZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
+	// The information about the zone in which the cluster is deployed.
+	Zones []*GetClusterResponseBodyClusterZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s GetClusterResponseBodyCluster) String() string {
@@ -2351,14 +2448,24 @@ func (s *GetClusterResponseBodyCluster) SetZones(v []*GetClusterResponseBodyClus
 }
 
 type GetClusterResponseBodyClusterInstances struct {
+	// The HSM ID.
+	//
 	// example:
 	//
 	// hsm-cn-g6z3v0uf****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the HSM is the master HSM.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Master *bool `json:"Master,omitempty" xml:"Master,omitempty"`
+	// The sequence number of the HSM in the cluster.
+	//
 	// example:
 	//
 	// 1
@@ -2389,10 +2496,14 @@ func (s *GetClusterResponseBodyClusterInstances) SetNodeId(v int32) *GetClusterR
 }
 
 type GetClusterResponseBodyClusterZones struct {
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-uf61s651p69bdgmki****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
@@ -2661,6 +2772,8 @@ func (s *GetImageResponse) SetBody(v *GetImageResponseBody) *GetImageResponse {
 }
 
 type GetInstanceRequest struct {
+	// The HSM ID.
+	//
 	// example:
 	//
 	// hsm-cn-vj30bil****
@@ -2681,7 +2794,10 @@ func (s *GetInstanceRequest) SetInstanceId(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponseBody struct {
+	// The HSM details.
 	Instance *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -2707,74 +2823,135 @@ func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBod
 }
 
 type GetInstanceResponseBodyInstance struct {
+	// The ID of the cluster to which the HSM belongs.
+	//
 	// example:
 	//
 	// cluster-w3G9vOJI2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// cluster_online
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The time when the HSM was created.
+	//
 	// example:
 	//
 	// 1699515963000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The device type.
+	//
 	// example:
 	//
 	// jnta.SJJ1528-G
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// The time when the instance expired.
+	//
 	// example:
 	//
 	// 1699496389720
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The HSM ID.
+	//
 	// example:
 	//
 	// hsm-cn-g4t3jwsc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the HSM in the VPC.
+	//
 	// example:
 	//
 	// 10.192.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Indicates whether the HSM is for trial use. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// Indicates whether the HSM is the master HSM.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Master *bool `json:"Master,omitempty" xml:"Master,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 23576634952****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The HSM description.
+	//
 	// example:
 	//
 	// hsmOnline
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The HSM status.
+	//
+	// 	- PENDING
+	//
+	// 	- ACTIVE
+	//
+	// 	- EXPIRED
+	//
+	// 	- INVALID
+	//
+	// 	- FAILURE
+	//
+	// 	- RESET
+	//
+	// 	- PAUSED
+	//
+	// 	- MODIFYING
+	//
 	// example:
 	//
 	// EXPIRED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TenantIsolationType *string `json:"TenantIsolationType,omitempty" xml:"TenantIsolationType,omitempty"`
+	// The ID of the vSwitch configured for the HSM.
+	//
 	// example:
 	//
 	// vsw-bp1mvfs31ltt0wyhf****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The vendor information.
+	//
 	// example:
 	//
 	// jnta
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the HSM belongs.
+	//
 	// example:
 	//
 	// vpc-uf69i66j9kmoko52p****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The IP address whitelist of the HSM.
+	//
 	// example:
 	//
 	// 18.68.XX.XX
 	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-b
@@ -2851,6 +3028,11 @@ func (s *GetInstanceResponseBodyInstance) SetRemark(v string) *GetInstanceRespon
 
 func (s *GetInstanceResponseBodyInstance) SetStatus(v string) *GetInstanceResponseBodyInstance {
 	s.Status = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetTenantIsolationType(v string) *GetInstanceResponseBodyInstance {
+	s.TenantIsolationType = &v
 	return s
 }
 
@@ -3109,6 +3291,8 @@ func (s *InitializeAuditLogResponse) SetBody(v *InitializeAuditLogResponseBody) 
 }
 
 type InitializeClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3131,6 +3315,8 @@ func (s *InitializeClusterRequest) SetClusterId(v string) *InitializeClusterRequ
 }
 
 type InitializeClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049366F216
@@ -3180,12 +3366,16 @@ func (s *InitializeClusterResponse) SetBody(v *InitializeClusterResponseBody) *I
 }
 
 type JoinClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cluster-NZB9Oj5Yfd8Y****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the HSM that you want to add to the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3213,7 +3403,10 @@ func (s *JoinClusterRequest) SetInstanceId(v string) *JoinClusterRequest {
 }
 
 type JoinClusterResponseBody struct {
+	// The task details.
 	Job *JoinClusterResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -3239,34 +3432,66 @@ func (s *JoinClusterResponseBody) SetRequestId(v string) *JoinClusterResponseBod
 }
 
 type JoinClusterResponseBodyJob struct {
+	// Indicates whether the task is complete. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1711764127000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned if the task fails.
+	//
 	// example:
 	//
 	// OperationTimeout
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// job-202401250936hze747fd7e0007005
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task progress. Unit: percent (%).
+	//
 	// example:
 	//
 	// 86
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The response parameters.
+	//
 	// example:
 	//
 	// success
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- success
+	//
+	// 	- running
+	//
+	// 	- cancel
+	//
+	// 	- fail
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the action.
+	//
+	// 	- create: creates a task.
+	//
+	// 	- cancel: cancels a task.
+	//
 	// example:
 	//
 	// create
@@ -3351,12 +3576,16 @@ func (s *JoinClusterResponse) SetBody(v *JoinClusterResponseBody) *JoinClusterRe
 }
 
 type LeaveClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cluster-729dm40FG****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the HSM that you want to remove from the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3384,6 +3613,8 @@ func (s *LeaveClusterRequest) SetInstanceId(v string) *LeaveClusterRequest {
 }
 
 type LeaveClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -3750,18 +3981,24 @@ func (s *ListBackupsResponse) SetBody(v *ListBackupsResponseBody) *ListBackupsRe
 }
 
 type ListClustersRequest struct {
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3794,19 +4031,28 @@ func (s *ListClustersRequest) SetRegionId(v string) *ListClustersRequest {
 }
 
 type ListClustersResponseBody struct {
+	// Details of the clusters.
 	Clusters []*ListClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 114
@@ -3847,10 +4093,24 @@ func (s *ListClustersResponseBody) SetTotal(v int32) *ListClustersResponseBody {
 }
 
 type ListClustersResponseBodyClusters struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cluster-w3G9vOJI2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster status.
+	//
+	// 	- NEW: not initialized
+	//
+	// 	- INITIALIZED: initialized
+	//
+	// 	- DELETED: deleted
+	//
+	// 	- SYNCHRONIZING: being synchronized
+	//
+	// 	- TO_DELETE: pending deletion
+	//
 	// example:
 	//
 	// INITIALIZED
@@ -4188,18 +4448,25 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 }
 
 type ListInstancesRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TenantIsolationType *string `json:"TenantIsolationType,omitempty" xml:"TenantIsolationType,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -4225,20 +4492,34 @@ func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
 	return s
 }
 
+func (s *ListInstancesRequest) SetTenantIsolationType(v string) *ListInstancesRequest {
+	s.TenantIsolationType = &v
+	return s
+}
+
 type ListInstancesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Instances   []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The HSMs.
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 80
@@ -4279,10 +4560,14 @@ func (s *ListInstancesResponseBody) SetTotal(v int32) *ListInstancesResponseBody
 }
 
 type ListInstancesResponseBodyInstances struct {
+	// The HSM ID.
+	//
 	// example:
 	//
 	// hsm-cn-vj30bil8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The HSM status. PENDING ACTIVE EXPIRED INVALID FAILURE RESET PAUSED MODIFYING
+	//
 	// example:
 	//
 	// ACTIVE
@@ -4441,6 +4726,8 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type PauseInstanceRequest struct {
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4463,6 +4750,8 @@ func (s *PauseInstanceRequest) SetInstanceId(v string) *PauseInstanceRequest {
 }
 
 type PauseInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049366F216
@@ -4512,6 +4801,8 @@ func (s *PauseInstanceResponse) SetBody(v *PauseInstanceResponseBody) *PauseInst
 }
 
 type QuickInitInstanceRequest struct {
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4534,7 +4825,10 @@ func (s *QuickInitInstanceRequest) SetInstanceId(v string) *QuickInitInstanceReq
 }
 
 type QuickInitInstanceResponseBody struct {
+	// The task details.
 	Job *QuickInitInstanceResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049366F216
@@ -4560,34 +4854,50 @@ func (s *QuickInitInstanceResponseBody) SetRequestId(v string) *QuickInitInstanc
 }
 
 type QuickInitInstanceResponseBodyJob struct {
+	// Indicates whether the task is complete.
+	//
 	// example:
 	//
 	// true
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1699515963000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned if the task fails.
+	//
 	// example:
 	//
 	// OperationTimeout
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// job-000fi9k1v2hclo321sal
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task progress. Unit: percent (%).
+	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The response parameters.
+	//
 	// example:
 	//
 	// success
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The task status. Valid values: success running cancel fail
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the SQL statement. Valid values: create: creates a task. cancel: cancels a task.
+	//
 	// example:
 	//
 	// create
@@ -4741,6 +5051,8 @@ func (s *ResetBackupResponse) SetBody(v *ResetBackupResponseBody) *ResetBackupRe
 }
 
 type ResetInstanceRequest struct {
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4763,7 +5075,10 @@ func (s *ResetInstanceRequest) SetInstanceId(v string) *ResetInstanceRequest {
 }
 
 type ResetInstanceResponseBody struct {
+	// The task details.
 	Job *ResetInstanceResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -4789,34 +5104,50 @@ func (s *ResetInstanceResponseBody) SetRequestId(v string) *ResetInstanceRespons
 }
 
 type ResetInstanceResponseBodyJob struct {
+	// Indicates whether the task is complete. Valid values:
+	//
 	// example:
 	//
 	// true
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1653274407000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned if the task fails.
+	//
 	// example:
 	//
 	// OperationTimeout
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// job-0007bl8oev0u3jqyfu6a
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task progress. Unit: percent (%).
+	//
 	// example:
 	//
 	// 80
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The response parameters.
+	//
 	// example:
 	//
 	// success
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The task status. Valid values: success running cancel fail
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the action. create: creates a task. cancel: cancels a task.
+	//
 	// example:
 	//
 	// create
@@ -4901,12 +5232,16 @@ func (s *ResetInstanceResponse) SetBody(v *ResetInstanceResponseBody) *ResetInst
 }
 
 type RestoreInstanceRequest struct {
+	// The ID of the image that you want to use to restore the HSM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// image-eaOGHkRDQgh4****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4934,7 +5269,10 @@ func (s *RestoreInstanceRequest) SetInstanceId(v string) *RestoreInstanceRequest
 }
 
 type RestoreInstanceResponseBody struct {
+	// The task details.
 	Job *RestoreInstanceResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049366F216
@@ -4960,34 +5298,50 @@ func (s *RestoreInstanceResponseBody) SetRequestId(v string) *RestoreInstanceRes
 }
 
 type RestoreInstanceResponseBodyJob struct {
+	// Indicates whether the task is complete.
+	//
 	// example:
 	//
 	// true
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1711764127000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned if the task fails.
+	//
 	// example:
 	//
 	// OperationTimeout
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// job-540356379023708160
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task progress. Unit: percent (%).
+	//
 	// example:
 	//
 	// 50
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The response returned if the task succeeds.
+	//
 	// example:
 	//
 	// success
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The task status. Valid values:
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the action. Valid values: create: creates a task. cancel: cancels a task.
+	//
 	// example:
 	//
 	// create
@@ -5072,6 +5426,8 @@ func (s *RestoreInstanceResponse) SetBody(v *RestoreInstanceResponseBody) *Resto
 }
 
 type ResumeInstanceRequest struct {
+	// The HSM ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5094,6 +5450,8 @@ func (s *ResumeInstanceRequest) SetInstanceId(v string) *ResumeInstanceRequest {
 }
 
 type ResumeInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -5143,12 +5501,16 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 }
 
 type SwitchClusterMasterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cluster-w3G9vOJI2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the HSM that you want to promote to the master HSM.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5176,6 +5538,8 @@ func (s *SwitchClusterMasterRequest) SetInstanceId(v string) *SwitchClusterMaste
 }
 
 type SwitchClusterMasterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -5225,6 +5589,8 @@ func (s *SwitchClusterMasterResponse) SetBody(v *SwitchClusterMasterResponseBody
 }
 
 type SyncClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5247,7 +5613,10 @@ func (s *SyncClusterRequest) SetClusterId(v string) *SyncClusterRequest {
 }
 
 type SyncClusterResponseBody struct {
+	// The task details.
 	Job *SyncClusterResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C467B38-3910-447D-87BC-AC049166F216
@@ -5273,34 +5642,66 @@ func (s *SyncClusterResponseBody) SetRequestId(v string) *SyncClusterResponseBod
 }
 
 type SyncClusterResponseBodyJob struct {
+	// Indicates whether the task is complete. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1711764127000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned if the task fails.
+	//
 	// example:
 	//
 	// OperationTimeout
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// job-000bu7m5vjmyz9s7qz85
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task progress. Unit: percent (%).
+	//
 	// example:
 	//
 	// 90
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The response parameters.
+	//
 	// example:
 	//
 	// success
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- success
+	//
+	// 	- running
+	//
+	// 	- cancel
+	//
+	// 	- fail
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the action.
+	//
+	// 	- create: creates a task.
+	//
+	// 	- cancel: cancels a task.
+	//
 	// example:
 	//
 	// create
@@ -5433,7 +5834,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 查询用户地域下审计日志功能开通
+// Enables or disables the audit log feature and delivers audit logs to buckets.
+//
+// Description:
+//
+//   The region of the bucket must be the same as the region where the security audit feature is enabled.
+//
+// 	- If the security audit feature is enabled, do not delete Object Storage Service (OSS) buckets. If you delete OSS buckets, audit logs fail to be delivered.
+//
+// 	- Only electronic virtual security modules (EVSMs) and general virtual security modules (GVSMs) within the Chinese mainland support the security audit feature.
 //
 // @param request - ConfigAuditLogRequest
 //
@@ -5483,7 +5892,15 @@ func (client *Client) ConfigAuditLogWithOptions(request *ConfigAuditLogRequest, 
 
 // Summary:
 //
-// 查询用户地域下审计日志功能开通
+// Enables or disables the audit log feature and delivers audit logs to buckets.
+//
+// Description:
+//
+//   The region of the bucket must be the same as the region where the security audit feature is enabled.
+//
+// 	- If the security audit feature is enabled, do not delete Object Storage Service (OSS) buckets. If you delete OSS buckets, audit logs fail to be delivered.
+//
+// 	- Only electronic virtual security modules (EVSMs) and general virtual security modules (GVSMs) within the Chinese mainland support the security audit feature.
 //
 // @param request - ConfigAuditLogRequest
 //
@@ -5713,7 +6130,7 @@ func (client *Client) ConfigClusterCertificate(request *ConfigClusterCertificate
 
 // Summary:
 //
-// 配置集群名称
+// Modifies the name of a cluster.
 //
 // @param request - ConfigClusterNameRequest
 //
@@ -5759,7 +6176,7 @@ func (client *Client) ConfigClusterNameWithOptions(request *ConfigClusterNameReq
 
 // Summary:
 //
-// 配置集群名称
+// Modifies the name of a cluster.
 //
 // @param request - ConfigClusterNameRequest
 //
@@ -5855,7 +6272,11 @@ func (client *Client) ConfigClusterSubnet(request *ConfigClusterSubnetRequest) (
 
 // Summary:
 //
-// 配置集群名称
+// Modifies the IP address whitelist of a cluster.
+//
+// Description:
+//
+// The IP address whitelist of a cluster has a higher priority than the IP address whitelist of a hardware security module (HSM) in the cluster. In cluster mode, we recommend that you create an IP address whitelist for your cluster. In this case, you do not need to create an IP address for the HSM in the cluster.
 //
 // @param request - ConfigClusterWhitelistRequest
 //
@@ -5901,7 +6322,11 @@ func (client *Client) ConfigClusterWhitelistWithOptions(request *ConfigClusterWh
 
 // Summary:
 //
-// 配置集群名称
+// Modifies the IP address whitelist of a cluster.
+//
+// Description:
+//
+// The IP address whitelist of a cluster has a higher priority than the IP address whitelist of a hardware security module (HSM) in the cluster. In cluster mode, we recommend that you create an IP address whitelist for your cluster. In this case, you do not need to create an IP address for the HSM in the cluster.
 //
 // @param request - ConfigClusterWhitelistRequest
 //
@@ -5981,6 +6406,14 @@ func (client *Client) ConfigImageRemark(request *ConfigImageRemarkRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the virtual private cloud (VPC) endpoint of a hardware security module (HSM).
+//
+// Description:
+//
+// After you add an HSM to a cluster, you cannot modify the VPC endpoint of the HSM.
+//
 // @param request - ConfigInstanceIpAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6035,6 +6468,14 @@ func (client *Client) ConfigInstanceIpAddressWithOptions(request *ConfigInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the virtual private cloud (VPC) endpoint of a hardware security module (HSM).
+//
+// Description:
+//
+// After you add an HSM to a cluster, you cannot modify the VPC endpoint of the HSM.
+//
 // @param request - ConfigInstanceIpAddressRequest
 //
 // @return ConfigInstanceIpAddressResponse
@@ -6049,6 +6490,10 @@ func (client *Client) ConfigInstanceIpAddress(request *ConfigInstanceIpAddressRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a hardware security module (HSM).
+//
 // @param request - ConfigInstanceRemarkRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6091,6 +6536,10 @@ func (client *Client) ConfigInstanceRemarkWithOptions(request *ConfigInstanceRem
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a hardware security module (HSM).
+//
 // @param request - ConfigInstanceRemarkRequest
 //
 // @return ConfigInstanceRemarkResponse
@@ -6233,6 +6682,14 @@ func (client *Client) CopyImage(request *CopyImageRequest) (_result *CopyImageRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a hardware security module (HSM) as the master HSM to create a cluster.
+//
+// Description:
+//
+// The master HSM that you specify to create a cluster must be in the ACTIVE state.
+//
 // @param request - CreateClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6279,6 +6736,14 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a hardware security module (HSM) as the master HSM to create a cluster.
+//
+// Description:
+//
+// The master HSM that you specify to create a cluster must be in the ACTIVE state.
+//
 // @param request - CreateClusterRequest
 //
 // @return CreateClusterResponse
@@ -6293,6 +6758,14 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a cluster.
+//
+// Description:
+//
+// You can delete a cluster only when no hardware security modules (HSMs) exist in the cluster.
+//
 // @param request - DeleteClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6331,6 +6804,14 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a cluster.
+//
+// Description:
+//
+// You can delete a cluster only when no hardware security modules (HSMs) exist in the cluster.
+//
 // @param request - DeleteClusterRequest
 //
 // @return DeleteClusterResponse
@@ -6649,6 +7130,10 @@ func (client *Client) GetBackup(request *GetBackupRequest) (_result *GetBackupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a cluster.
+//
 // @param request - GetClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6687,6 +7172,10 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a cluster.
+//
 // @param request - GetClusterRequest
 //
 // @return GetClusterResponse
@@ -6761,6 +7250,10 @@ func (client *Client) GetImage(request *GetImageRequest) (_result *GetImageRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a hardware security module (HSM).
+//
 // @param request - GetInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6799,6 +7292,10 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a hardware security module (HSM).
+//
 // @param request - GetInstanceRequest
 //
 // @return GetInstanceResponse
@@ -6922,7 +7419,13 @@ func (client *Client) InitializeAuditLog() (_result *InitializeAuditLogResponse,
 
 // Summary:
 //
-// 初始化集群（原activeCluster）
+// Initializes a cluster.
+//
+// Description:
+//
+//   The cluster is not initialized, but the master hardware security module (HSM) of the cluster is initialized.
+//
+// 	- Two or more vSwitches are configured for the cluster.
 //
 // @param request - InitializeClusterRequest
 //
@@ -6964,7 +7467,13 @@ func (client *Client) InitializeClusterWithOptions(request *InitializeClusterReq
 
 // Summary:
 //
-// 初始化集群（原activeCluster）
+// Initializes a cluster.
+//
+// Description:
+//
+//   The cluster is not initialized, but the master hardware security module (HSM) of the cluster is initialized.
+//
+// 	- Two or more vSwitches are configured for the cluster.
 //
 // @param request - InitializeClusterRequest
 //
@@ -6980,6 +7489,14 @@ func (client *Client) InitializeCluster(request *InitializeClusterRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a hardware security module (HSM) to the current cluster.
+//
+// Description:
+//
+// You can add an HSM only to the cluster that is in the INITIALIZED state, and the HSM must be enabled or disabled and is not initialized.
+//
 // @param request - JoinClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7022,6 +7539,14 @@ func (client *Client) JoinClusterWithOptions(request *JoinClusterRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a hardware security module (HSM) to the current cluster.
+//
+// Description:
+//
+// You can add an HSM only to the cluster that is in the INITIALIZED state, and the HSM must be enabled or disabled and is not initialized.
+//
 // @param request - JoinClusterRequest
 //
 // @return JoinClusterResponse
@@ -7036,6 +7561,16 @@ func (client *Client) JoinCluster(request *JoinClusterRequest) (_result *JoinClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a hardware security module (HSM) from the current cluster.
+//
+// Description:
+//
+//   If non-master HSMs exist in a cluster, you cannot remove the master HSM from the cluster.
+//
+// 	- After the master HSM is removed from a cluster, the cluster enters the TO_DELETE state and cannot be restored to be available. Proceed with caution.
+//
 // @param request - LeaveClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7078,6 +7613,16 @@ func (client *Client) LeaveClusterWithOptions(request *LeaveClusterRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a hardware security module (HSM) from the current cluster.
+//
+// Description:
+//
+//   If non-master HSMs exist in a cluster, you cannot remove the master HSM from the cluster.
+//
+// 	- After the master HSM is removed from a cluster, the cluster enters the TO_DELETE state and cannot be restored to be available. Proceed with caution.
+//
 // @param request - LeaveClusterRequest
 //
 // @return LeaveClusterResponse
@@ -7172,6 +7717,10 @@ func (client *Client) ListBackups(request *ListBackupsRequest) (_result *ListBac
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the clusters that meet the query conditions.
+//
 // @param request - ListClustersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7218,6 +7767,10 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the clusters that meet the query conditions.
+//
 // @param request - ListClustersRequest
 //
 // @return ListClustersResponse
@@ -7308,6 +7861,10 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the hardware security modules (HSMs) that meet the query conditions.
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7329,6 +7886,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantIsolationType)) {
+		body["TenantIsolationType"] = request.TenantIsolationType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7354,6 +7915,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the hardware security modules (HSMs) that meet the query conditions.
+//
 // @param request - ListInstancesRequest
 //
 // @return ListInstancesResponse
@@ -7440,6 +8005,14 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deactivates a hardware security module (HSM).
+//
+// Description:
+//
+// After you deactivate an HSM, the relevant service operations fail. Proceed with caution.
+//
 // @param request - PauseInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7478,6 +8051,14 @@ func (client *Client) PauseInstanceWithOptions(request *PauseInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deactivates a hardware security module (HSM).
+//
+// Description:
+//
+// After you deactivate an HSM, the relevant service operations fail. Proceed with caution.
+//
 // @param request - PauseInstanceRequest
 //
 // @return PauseInstanceResponse
@@ -7492,6 +8073,14 @@ func (client *Client) PauseInstance(request *PauseInstanceRequest) (_result *Pau
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes a hardware security module (HSM).
+//
+// Description:
+//
+// This operation is supported only for general virtual security modules (GVSMs) that are deployed in regions in the Chinese mainland.
+//
 // @param request - QuickInitInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7530,6 +8119,14 @@ func (client *Client) QuickInitInstanceWithOptions(request *QuickInitInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes a hardware security module (HSM).
+//
+// Description:
+//
+// This operation is supported only for general virtual security modules (GVSMs) that are deployed in regions in the Chinese mainland.
+//
 // @param request - QuickInitInstanceRequest
 //
 // @return QuickInitInstanceResponse
@@ -7604,6 +8201,14 @@ func (client *Client) ResetBackup(request *ResetBackupRequest) (_result *ResetBa
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets a hardware security module (HSM).
+//
+// Description:
+//
+// After an HSM is reset, all related data is deleted and cannot be recovered. Exercise caution.
+//
 // @param request - ResetInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7642,6 +8247,14 @@ func (client *Client) ResetInstanceWithOptions(request *ResetInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets a hardware security module (HSM).
+//
+// Description:
+//
+// After an HSM is reset, all related data is deleted and cannot be recovered. Exercise caution.
+//
 // @param request - ResetInstanceRequest
 //
 // @return ResetInstanceResponse
@@ -7656,6 +8269,14 @@ func (client *Client) ResetInstance(request *ResetInstanceRequest) (_result *Res
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores a hardware security module (HSM) by using an image.
+//
+// Description:
+//
+// You can use images to restore only HSMs that are suspended or deactivated.
+//
 // @param request - RestoreInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7698,6 +8319,14 @@ func (client *Client) RestoreInstanceWithOptions(request *RestoreInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores a hardware security module (HSM) by using an image.
+//
+// Description:
+//
+// You can use images to restore only HSMs that are suspended or deactivated.
+//
 // @param request - RestoreInstanceRequest
 //
 // @return RestoreInstanceResponse
@@ -7712,6 +8341,10 @@ func (client *Client) RestoreInstance(request *RestoreInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes a deactivated hardware security module (HSM).
+//
 // @param request - ResumeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7750,6 +8383,10 @@ func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes a deactivated hardware security module (HSM).
+//
 // @param request - ResumeInstanceRequest
 //
 // @return ResumeInstanceResponse
@@ -7764,6 +8401,10 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// Promote a non-master hardware security module (HSM) in a cluster to the master HSM.
+//
 // @param request - SwitchClusterMasterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7806,6 +8447,10 @@ func (client *Client) SwitchClusterMasterWithOptions(request *SwitchClusterMaste
 	return _result, _err
 }
 
+// Summary:
+//
+// Promote a non-master hardware security module (HSM) in a cluster to the master HSM.
+//
 // @param request - SwitchClusterMasterRequest
 //
 // @return SwitchClusterMasterResponse
@@ -7820,6 +8465,14 @@ func (client *Client) SwitchClusterMaster(request *SwitchClusterMasterRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes HSM data in a cluster.
+//
+// Description:
+//
+// This operation is supported only for hardware security modules (HSMs) that are created in regions in the Chinese mainland.
+//
 // @param request - SyncClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7858,6 +8511,14 @@ func (client *Client) SyncClusterWithOptions(request *SyncClusterRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes HSM data in a cluster.
+//
+// Description:
+//
+// This operation is supported only for hardware security modules (HSMs) that are created in regions in the Chinese mainland.
+//
 // @param request - SyncClusterRequest
 //
 // @return SyncClusterResponse
