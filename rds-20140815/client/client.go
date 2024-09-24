@@ -3743,7 +3743,14 @@ type CreateAccountRequest struct {
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	CheckPolicy *bool   `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
+	// Specifies whether to apply the password policy.
+	//
+	// >  This parameter is available only for specific ApsaraDB RDS for SQL Server instances. If your instance uses the shared instance family or runs SQL Server 2008 R2, this parameter is unavailable.
+	//
+	// example:
+	//
+	// true
+	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
@@ -11755,13 +11762,35 @@ func (s *CreatePostgresExtensionsResponse) SetBody(v *CreatePostgresExtensionsRe
 }
 
 type CreateRCDeploymentSetRequest struct {
-	ClientToken                      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeploymentSetName                *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupCount                       *int64  `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// deployment_test
+	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
+	GroupCount *int64 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// example:
+	//
+	// CancelMembershipAndStart
 	OnUnableToRedeployFailedInstance *string `json:"OnUnableToRedeployFailedInstance,omitempty" xml:"OnUnableToRedeployFailedInstance,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Availability
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
@@ -11809,8 +11838,14 @@ func (s *CreateRCDeploymentSetRequest) SetStrategy(v string) *CreateRCDeployment
 }
 
 type CreateRCDeploymentSetResponseBody struct {
+	// example:
+	//
+	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRCDeploymentSetResponseBody) String() string {
@@ -13657,11 +13692,9 @@ func (s *DeleteBackupResponse) SetBody(v *DeleteBackupResponseBody) *DeleteBacku
 type DeleteBackupFileRequest struct {
 	// The backup set ID. You can specify the IDs of up to 100 backup sets at a time. Separate the IDs with commas (,).
 	//
-	// >
+	// > 	- If the instance runs SQL Server, only the ID of the backup set for an individual database is supported.
 	//
-	// 	- If the instance runs SQL Server, only the ID of the backup set for an individual database is supported.
-	//
-	// 	- You can call the DescribeBackups operation to query the backup set ID.
+	// > 	- You can call the DescribeBackups operation to query the backup set ID.
 	//
 	// example:
 	//
@@ -15360,8 +15393,16 @@ func (s *DeletePostgresExtensionsResponse) SetBody(v *DeletePostgresExtensionsRe
 
 type DeleteRCDeploymentSetRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15384,6 +15425,9 @@ func (s *DeleteRCDeploymentSetRequest) SetRegionId(v string) *DeleteRCDeployment
 }
 
 type DeleteRCDeploymentSetResponseBody struct {
+	// example:
+	//
+	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15507,12 +15551,24 @@ func (s *DeleteRCInstanceResponse) SetBody(v *DeleteRCInstanceResponseBody) *Del
 }
 
 type DeleteRCInstancesRequest struct {
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Force  *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// example:
+	//
+	// Yes
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// This parameter is required.
-	InstanceId            []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TerminateSubscription *bool     `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// true
+	TerminateSubscription *bool `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
 }
 
 func (s DeleteRCInstancesRequest) String() string {
@@ -15549,12 +15605,24 @@ func (s *DeleteRCInstancesRequest) SetTerminateSubscription(v bool) *DeleteRCIns
 }
 
 type DeleteRCInstancesShrinkRequest struct {
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Force  *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// example:
+	//
+	// Yes
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// This parameter is required.
-	InstanceIdShrink      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TerminateSubscription *bool   `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
+	InstanceIdShrink *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// true
+	TerminateSubscription *bool `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
 }
 
 func (s DeleteRCInstancesShrinkRequest) String() string {
@@ -15591,6 +15659,9 @@ func (s *DeleteRCInstancesShrinkRequest) SetTerminateSubscription(v bool) *Delet
 }
 
 type DeleteRCInstancesResponseBody struct {
+	// example:
+	//
+	// E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16012,9 +16083,9 @@ type DeleteSlotRequest struct {
 	SlotName *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
 	// The status of the replication slot. You can call the DescribeSlots operation to query the status of the replication slot. Valid values:
 	//
-	// 	- ACTIVE
+	// 	- **ACTIVE**
 	//
-	// 	- INACTIVE
+	// 	- **INACTIVE**
 	//
 	// This parameter is required.
 	//
@@ -16964,7 +17035,7 @@ type DescribeAccountsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid value: **30 to 200**. Default value: **30**.
+	// The number of entries per page. Valid value: **30 to 200**. Default value: **30**.
 	//
 	// example:
 	//
@@ -17013,7 +17084,7 @@ func (s *DescribeAccountsRequest) SetResourceOwnerId(v int64) *DescribeAccountsR
 }
 
 type DescribeAccountsResponseBody struct {
-	// The details of the account.
+	// The information about the account.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -17156,8 +17227,15 @@ type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	// example:
 	//
 	// f
-	BypassRLS   *string `json:"BypassRLS,omitempty" xml:"BypassRLS,omitempty"`
-	CheckPolicy *bool   `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
+	BypassRLS *string `json:"BypassRLS,omitempty" xml:"BypassRLS,omitempty"`
+	// Indicates whether the password policy is applied.
+	//
+	// >  This parameter is returned only for instances that run SQL Server.
+	//
+	// example:
+	//
+	// true
+	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
 	// Indicates whether the account has the permissions to create databases. Valid values:
 	//
 	// 	- **t**: The account has the permissions to create databases.
@@ -17190,7 +17268,14 @@ type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The details about the permissions that are granted to the account.
 	DatabasePrivileges *DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Struct"`
-	PasswordExpireTime *string                                                                  `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
+	// The expiration time of the password.
+	//
+	// >  This parameter is returned only for instances that run SQL Server.
+	//
+	// example:
+	//
+	// 2024-10-21
+	PasswordExpireTime *string `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
 	// Indicates whether the number of databases that are managed by the account exceeds the upper limit. Valid values:
 	//
 	// 	- **1**: The number of databases that are managed by the account exceeds the upper limit.
@@ -25851,7 +25936,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// The number of cores that are configured for the instance.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The disk usage of the instance. Unit: MB.
+	// The disk usage of the instance. Unit: byte.
 	//
 	// example:
 	//
@@ -25941,7 +26026,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Disaster recovery source instance information.
+	// Disaster Recovery Instance Information
 	//
 	// example:
 	//
@@ -25981,7 +26066,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 2019-03-27T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The extended information of the instance.
+	// The extended information about the instance.
 	Extra *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
 	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	//
@@ -26854,11 +26939,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBCluste
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
-	// Instance account group policy.
+	// The group policy of the instance account.
 	//
-	// - MaximumPasswordAge: Maximum usage time
+	// 	- MaximumPasswordAge: maximum use time
 	//
-	// - MinimumPasswordAge: Minimum usage time
+	// 	- MinimumPasswordAge: minimum use time
 	//
 	// example:
 	//
@@ -41529,29 +41614,29 @@ type DescribeHistoryTasksRequest struct {
 	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- Scheduled
+	// 	- **Scheduled**
 	//
-	// 	- Running
+	// 	- **Running**
 	//
-	// 	- Succeed
+	// 	- **Succeed**
 	//
-	// 	- Failed
+	// 	- **Failed**
 	//
-	// 	- Cancelling
+	// 	- **Cancelling**
 	//
-	// 	- Canceled
+	// 	- **Canceled**
 	//
-	// 	- Waiting
+	// 	- **Waiting**
 	//
-	// Separate multiple states with commas (,). This parameter is empty by default, which indicates that tasks in all states are queried.
+	// Separate multiple values with commas (,). By default, this parameter is left empty, which indicates that tasks in all statuses are queried.
 	//
 	// example:
 	//
 	// Scheduled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of task IDs.
+	// The task ID. You can call the DescribeTasks operation to query the task ID. If multiple task IDs exist, separate them with commas (,). You can specify up to 30 task IDs. By default, this parameter is left empty, which indicates that all tasks are queried.
 	//
 	// example:
 	//
@@ -41675,13 +41760,13 @@ func (s *DescribeHistoryTasksRequest) SetToStartTime(v string) *DescribeHistoryT
 type DescribeHistoryTasksResponseBody struct {
 	// The tasks.
 	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **10 to 100**. Default value: **10**.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -41741,15 +41826,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	//         {
 	//
-	//           "step_name": "exec_task", // The name of the step, which matches CurrentStepName.
-	//
-	//           "action_info": {    // The actions supported for this step.
-	//
-	//             "Waiting": [      // The status, which matches Status.
-	//
-	//               "modifySwitchTime" // The action. Multiple actions are supported.
-	//
-	//             ]
+	//           "step_name": "exec_task", // The name of the step, which matches CurrentStepName.      "action_info": {    // The actions supported for this step.        "Waiting": [      // The status, which matches Status.          "modifySwitchTime" // The action. Multiple actions are supported.        ]
 	//
 	//           }
 	//
@@ -41757,15 +41834,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	//         {
 	//
-	//           "step_name": "init_task", // The name of the step.
-	//
-	//           "action_info": {    // The actions supported for this step.
-	//
-	//             "Running": [      // The status.
-	//
-	//               "cancel",       // The action.
-	//
-	//               "pause"
+	//           "step_name": "init_task", // The name of the step.      "action_info": {    // The actions supported for this step.        "Running": [      // The status.          "cancel",       // The action.          "pause"
 	//
 	//             ]
 	//
@@ -41777,7 +41846,13 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	//     }
 	//
-	// The system may support the following actions: retry cancel modifySwitchTime: changes the switching or restoration time.
+	// The system may support the following actions:
+	//
+	// 	- **retry**: retries the action.
+	//
+	// 	- **cancel**: cancels the action.
+	//
+	// 	- **modifySwitchTime**: changes the switching time or restoration time.
 	//
 	// example:
 	//
@@ -41789,7 +41864,11 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// 141345906006****
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
-	// The request source. Valid values: System User
+	// The source of the request. Valid values:
+	//
+	// 	- **System**
+	//
+	// 	- **User**
 	//
 	// example:
 	//
@@ -41807,37 +41886,37 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// mysql
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The end time of the task. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The end time of the task.
 	//
 	// example:
 	//
 	// 2022-02-03T12:06:17Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance ID. Example: rm-xxx.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name, which is a user-defined alias.
+	// The instance name.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of the instance. Example: user instance.
+	// The instance category.
 	//
 	// example:
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The product. Example: rds.
+	// The service name.
 	//
 	// example:
 	//
 	// rds
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The task progress. Valid values: 0 to 100.
+	// Indicates the task progress.
 	//
 	// example:
 	//
@@ -41861,13 +41940,13 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// 1000
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	// The start time of the task. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The start time of the task.
 	//
 	// example:
 	//
 	// 2022-02-03T11:31:03Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task.
+	// The task status. Valid values:
 	//
 	// 	- Scheduled
 	//
@@ -41887,19 +41966,19 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task details provided in the form of a JSON string. The JSON string can be customized and extended to include additional information about the task. The details vary based on the task type.
+	// The task details.
 	//
 	// example:
 	//
 	// {\\"callerUid\\":\\"test\\"}
 	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
-	// The task ID in the t-\\*\\*\\	- format.
+	// The task ID.
 	//
 	// example:
 	//
 	// t-83br18hloy3faf****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type or name.
+	// The task type.
 	//
 	// example:
 	//
@@ -49038,9 +49117,9 @@ type DescribePostgresExtensionsResponseBodyInstalledExtensions struct {
 	//
 	// {dblink,plpgsql}
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	// Alibaba Cloud account ID.
+	// The ID of the Alibaba Cloud account.
 	//
-	// > Only exclusive plug-ins (plug-ins written by users) will return this parameter. Each Alibaba Cloud account only displays its own exclusive plug-ins.
+	// >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -49150,9 +49229,9 @@ type DescribePostgresExtensionsResponseBodyUninstalledExtensions struct {
 	//
 	// {dblink,plpgsql}
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	// Alibaba Cloud account ID.
+	// The ID of the Alibaba Cloud account.
 	//
-	// > Only exclusive plug-ins (plug-ins written by users) will return this parameter. Each Alibaba Cloud account only displays its own exclusive plug-ins.
+	// >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -50616,12 +50695,31 @@ func (s *DescribeQuickSaleConfigResponse) SetBody(v *DescribeQuickSaleConfigResp
 }
 
 type DescribeRCDeploymentSetsRequest struct {
-	DeploymentSetIds  *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
+	// example:
+	//
+	// ["ds-2zeeuw16zo2gr9e6****"]
+	DeploymentSetIds *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
+	// example:
+	//
+	// deployment_test
 	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Availability
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
@@ -50665,11 +50763,26 @@ func (s *DescribeRCDeploymentSetsRequest) SetStrategy(v string) *DescribeRCDeplo
 
 type DescribeRCDeploymentSetsResponseBody struct {
 	DeploymentSets *DescribeRCDeploymentSetsResponseBodyDeploymentSets `json:"DeploymentSets,omitempty" xml:"DeploymentSets,omitempty" type:"Struct"`
-	PageNumber     *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 39265F46-EC77-4036-8AC4-F035F32F6BE2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRCDeploymentSetsResponseBody) String() string {
@@ -50728,18 +50841,48 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSets) SetDeploymentSet(v 
 }
 
 type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
-	Capacities               *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities  `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
-	CreateTime               *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeploymentSetDescription *string                                                                     `json:"DeploymentSetDescription,omitempty" xml:"DeploymentSetDescription,omitempty"`
-	DeploymentSetId          *string                                                                     `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	DeploymentSetName        *string                                                                     `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	DeploymentStrategy       *string                                                                     `json:"DeploymentStrategy,omitempty" xml:"DeploymentStrategy,omitempty"`
-	Domain                   *string                                                                     `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Granularity              *string                                                                     `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	GroupCount               *int32                                                                      `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
-	InstanceAmount           *int32                                                                      `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
-	InstanceIds              *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	Strategy                 *string                                                                     `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	Capacities *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-06-19T07:15:44Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test
+	DeploymentSetDescription *string `json:"DeploymentSetDescription,omitempty" xml:"DeploymentSetDescription,omitempty"`
+	// example:
+	//
+	// ds-ob5n4rbgy****
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// example:
+	//
+	// deployment_test
+	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	// example:
+	//
+	// Availability
+	DeploymentStrategy *string `json:"DeploymentStrategy,omitempty" xml:"DeploymentStrategy,omitempty"`
+	// example:
+	//
+	// default
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// None
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// 3
+	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceAmount *int32                                                                      `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
+	InstanceIds    *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// example:
+	//
+	// LooseDispersion
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) String() string {
@@ -50828,9 +50971,18 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapaciti
 }
 
 type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity struct {
-	AvailableAmount *int32  `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
-	UsedAmount      *int32  `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 18
+	AvailableAmount *int32 `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// example:
+	//
+	// 2
+	UsedAmount *int32 `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-j
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity) String() string {
@@ -50903,12 +51055,28 @@ func (s *DescribeRCDeploymentSetsResponse) SetBody(v *DescribeRCDeploymentSetsRe
 }
 
 type DescribeRCImageListRequest struct {
+	// example:
+	//
+	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// self
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRCImageListRequest) String() string {
@@ -50945,12 +51113,27 @@ func (s *DescribeRCImageListRequest) SetType(v string) *DescribeRCImageListReque
 }
 
 type DescribeRCImageListResponseBody struct {
-	Images     []*DescribeRCImageListResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Images []*DescribeRCImageListResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 5
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2553A660-E4EB-4AF4-A402-8AFF70A49143
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRCImageListResponseBody) String() string {
@@ -50992,19 +51175,55 @@ func (s *DescribeRCImageListResponseBody) SetTotalCount(v int32) *DescribeRCImag
 }
 
 type DescribeRCImageListResponseBodyImages struct {
+	// example:
+	//
+	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// example:
+	//
+	// 2024-04-25T02:17:40Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// m-2oqiu973jwcxe****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// Created_from_i-2zeh17y17sz677x****
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// 2
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	IsPublic     *bool   `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
-	OSName       *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	OSNameEn     *string `json:"OSNameEn,omitempty" xml:"OSNameEn,omitempty"`
-	OSType       *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	Size         *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage        *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// example:
+	//
+	// false
+	IsPublic *bool   `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	OSName   *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud Linux  2.1903 LTS 64 bit Quick Boot
+	OSNameEn *string `json:"OSNameEn,omitempty" xml:"OSNameEn,omitempty"`
+	// example:
+	//
+	// linux
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// example:
+	//
+	// 40
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// instance
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s DescribeRCImageListResponseBodyImages) String() string {
@@ -51111,8 +51330,15 @@ func (s *DescribeRCImageListResponse) SetBody(v *DescribeRCImageListResponseBody
 
 type DescribeRCInstanceAttributeRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRCInstanceAttributeRequest) String() string {
@@ -51134,48 +51360,138 @@ func (s *DescribeRCInstanceAttributeRequest) SetRegionId(v string) *DescribeRCIn
 }
 
 type DescribeRCInstanceAttributeResponseBody struct {
-	ClusterId           *string                                           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Cpu                 *int32                                            `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime        *string                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// None
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 4
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 2024-04-22T06:52:23Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// None
 	CreditSpecification *string                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
 	DataDisks           *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
 	// if can be null:
 	// true
-	DedicatedHostAttribute  *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute `json:"DedicatedHostAttribute,omitempty" xml:"DedicatedHostAttribute,omitempty" type:"Struct"`
-	DeploymentSetId         *string                                                        `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	Description             *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	DiskType                *string                                                        `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EcsInstanceType         *string                                                        `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	EipAddress              *DescribeRCInstanceAttributeResponseBodyEipAddress             `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
-	EnableJumboFrame        *bool                                                          `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
-	ExpiredTime             *string                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HostName                *string                                                        `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	HostType                *string                                                        `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	ImageId                 *string                                                        `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InnerIpAddress          *DescribeRCInstanceAttributeResponseBodyInnerIpAddress         `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
-	InstanceId              *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName            *string                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceNetworkType     *string                                                        `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	InstanceType            *string                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType      *string                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandwidthIn  *int32                                                         `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	InternetMaxBandwidthOut *int32                                                         `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	IoOptimized             *string                                                        `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	KeyPairName             *string                                                        `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	Memory                  *int32                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OperationLocks          *DescribeRCInstanceAttributeResponseBodyOperationLocks         `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
-	PublicIpAddress         *DescribeRCInstanceAttributeResponseBodyPublicIpAddress        `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
-	RegionId                *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityGroupIds        *DescribeRCInstanceAttributeResponseBodySecurityGroupIds       `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	SerialNumber            *string                                                        `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Status                  *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	StoppedMode             *string                                                        `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
-	VlanId                  *string                                                        `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	DedicatedHostAttribute *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute `json:"DedicatedHostAttribute,omitempty" xml:"DedicatedHostAttribute,omitempty" type:"Struct"`
+	// example:
+	//
+	// ds-uf6c8qerk019bj1l****
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// None
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// ecs.g6.2xlarge
+	EcsInstanceType *string                                            `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	EipAddress      *DescribeRCInstanceAttributeResponseBodyEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// example:
+	//
+	// 2024-08-10T00:00:00Z
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// iZ2zej1n3cin51rlmby****
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// example:
+	//
+	// dhg_cloud_ssd
+	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	// example:
+	//
+	// m-2oqiu973jwcxe****
+	ImageId        *string                                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InnerIpAddress *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	// example:
+	//
+	// rc-dh2jf9n6j4s14926****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// vpc
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// example:
+	//
+	// mysql.x4.xlarge.6cm
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// PayByTraffic
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	// example:
+	//
+	// 5
+	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// example:
+	//
+	// optimized
+	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	// example:
+	//
+	// test_01
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// example:
+	//
+	// 8192
+	Memory          *int32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	OperationLocks  *DescribeRCInstanceAttributeResponseBodyOperationLocks  `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
+	PublicIpAddress *DescribeRCInstanceAttributeResponseBodyPublicIpAddress `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// EA2D4F34-01A7-46EB-A339-D80882135206
+	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityGroupIds *DescribeRCInstanceAttributeResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	// example:
+	//
+	// b076f6ff-46d1-4234-a608-4e951ed6****
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Not-applicable
+	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	// example:
+	//
+	// None
+	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
 	// if can be null:
 	// true
 	VpcAttributes *DescribeRCInstanceAttributeResponseBodyVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
-	ZoneId        *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCInstanceAttributeResponseBody) String() string {
@@ -51394,11 +51710,26 @@ func (s *DescribeRCInstanceAttributeResponseBodyDataDisks) SetDataDisk(v []*Desc
 }
 
 type DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk struct {
-	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted          *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size               *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// true
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// example:
+	//
+	// true
+	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// example:
+	//
+	// PL1
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 40
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) String() string {
@@ -51435,7 +51766,13 @@ func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) SetSize(v int
 }
 
 type DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute struct {
-	DedicatedHostId   *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// example:
+	//
+	// None
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// example:
+	//
+	// None
 	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
 }
 
@@ -51458,10 +51795,22 @@ func (s *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute) SetDedic
 }
 
 type DescribeRCInstanceAttributeResponseBodyEipAddress struct {
-	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// example:
+	//
+	// eip-bp14k3rz6cbg6zxbe****
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// example:
+	//
+	// 5
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// example:
+	//
+	// paybytraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// example:
+	//
+	// 8.147.XXX.XXX
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 }
 
 func (s DescribeRCInstanceAttributeResponseBodyEipAddress) String() string {
@@ -51527,6 +51876,9 @@ func (s *DescribeRCInstanceAttributeResponseBodyOperationLocks) SetLockReason(v 
 }
 
 type DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason struct {
+	// example:
+	//
+	// None
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 }
 
@@ -51578,10 +51930,19 @@ func (s *DescribeRCInstanceAttributeResponseBodySecurityGroupIds) SetSecurityGro
 }
 
 type DescribeRCInstanceAttributeResponseBodyVpcAttributes struct {
+	// example:
+	//
+	// None
 	NatIpAddress     *string                                                               `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
 	PrivateIpAddress *DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Struct"`
-	VSwitchId        *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId            *string                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-bp1nt15muovrc5qdj****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-2zeu747v4765aw2id****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCInstanceAttributeResponseBodyVpcAttributes) String() string {
@@ -51659,11 +52020,26 @@ func (s *DescribeRCInstanceAttributeResponse) SetBody(v *DescribeRCInstanceAttri
 }
 
 type DescribeRCInstancesRequest struct {
+	// example:
+	//
+	// rm-2ze704f*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// vpc-uf6f7l4fg90****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCInstancesRequest) String() string {
@@ -51700,11 +52076,23 @@ func (s *DescribeRCInstancesRequest) SetVpcId(v string) *DescribeRCInstancesRequ
 }
 
 type DescribeRCInstancesResponseBody struct {
-	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RCInstances []*DescribeRCInstancesResponseBodyRCInstances `json:"RCInstances,omitempty" xml:"RCInstances,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRCInstancesResponseBody) String() string {
@@ -51741,16 +52129,46 @@ func (s *DescribeRCInstancesResponseBody) SetTotalCount(v int32) *DescribeRCInst
 }
 
 type DescribeRCInstancesResponseBodyRCInstances struct {
+	// example:
+	//
+	// testrdscustom
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// rds_custom
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	HostIp      *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
-	HostName    *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 2023-03-22 07:56:53.0
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 172.30.XXX.XXX
+	HostIp *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	// example:
+	//
+	// i-2zeaiz4g9u23f40m****
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// example:
+	//
+	// rm-2ze704f*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vpc-uf6f7l4fg90****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCInstancesResponseBodyRCInstances) String() string {
@@ -51841,16 +52259,44 @@ func (s *DescribeRCInstancesResponse) SetBody(v *DescribeRCInstancesResponseBody
 }
 
 type DescribeRCMetricListRequest struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Express    *string `json:"Express,omitempty" xml:"Express,omitempty"`
+	// example:
+	//
+	// 2024-08-06 10:15:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// None
+	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+	// example:
+	//
+	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Length     *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// example:
+	//
+	// 1000
+	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CPUUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Period     *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 6178f1825f9fb76ce0b5e8707e68181f
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 60
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2024-08-06 10:05:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeRCMetricListRequest) String() string {
@@ -51907,13 +52353,34 @@ func (s *DescribeRCMetricListRequest) SetStartTime(v string) *DescribeRCMetricLi
 }
 
 type DescribeRCMetricListResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// [{\\"timestamp\\":1722909960000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988087373\\",\\"Minimum\\":0.097,\\"Maximum\\":0.097,\\"Average\\":0.097},{\\"timestamp\\":1722910020000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988087373\\",\\"Minimum\\":0.093,\\"Maximum\\":0.093,\\"Average\\":0.093}]
 	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Period     *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6178f1825f9fb76ce0b5e8707e68181f
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 60
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// EA2D4F34-01A7-46EB-A339-D80882135206
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRCMetricListResponseBody) String() string {
@@ -53400,13 +53867,13 @@ type DescribeReplicationLinkLogsRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the task. You can call the **CreateReplicationLink*	- operation to create the task ID of the disaster recovery instance.
+	// The task ID. You must set this parameter to the ID of the task that you create by calling the **CreateReplicationLink*	- operation for the disaster recovery instance.
 	//
 	// example:
 	//
 	// 8413252
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task. You can call the **CreateReplicationLink*	- operation to create a disaster recovery instance. You can specify a task name in the request parameters of the call.
+	// The task name. You must set this parameter to the name of the task that you create by calling the **CreateReplicationLink*	- operation for the disaster recovery instance.
 	//
 	// example:
 	//
@@ -59206,7 +59673,7 @@ type DescribeVSwitchesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC to which the VSwitch belongs.
+	// The ID of the VPC to which the vSwitch belongs.
 	//
 	// > You must configure this parameter or **DedicatedHostGroupId**.
 	//
@@ -59214,7 +59681,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// vpc-bp1opxu1zkhn**********
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the VSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the VSwitch that is deployed in the specified zone are returned.
+	// The ID of the zone to which the vSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the VSwitch that is deployed in the specified zone are returned.
 	//
 	// example:
 	//
@@ -63575,22 +64042,30 @@ func (s *ModifyADInfoResponse) SetBody(v *ModifyADInfoResponseBody) *ModifyADInf
 }
 
 type ModifyAccountCheckPolicyRequest struct {
+	// The account username.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DatabaseTest
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Specifies whether to apply the password policy
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -63599,6 +64074,8 @@ type ModifyAccountCheckPolicyRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The resource group ID. For more information about resource groups, see related documentation.
+	//
 	// example:
 	//
 	// rg-acfmy****
@@ -63845,6 +64322,7 @@ type ModifyAccountMaskingPrivilegeRequest struct {
 	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	Privilege            *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
@@ -63876,6 +64354,11 @@ func (s *ModifyAccountMaskingPrivilegeRequest) SetOwnerId(v string) *ModifyAccou
 
 func (s *ModifyAccountMaskingPrivilegeRequest) SetPrivilege(v string) *ModifyAccountMaskingPrivilegeRequest {
 	s.Privilege = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetRegionId(v string) *ModifyAccountMaskingPrivilegeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -63959,16 +64442,30 @@ func (s *ModifyAccountMaskingPrivilegeResponse) SetBody(v *ModifyAccountMaskingP
 }
 
 type ModifyAccountSecurityPolicyRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-bp1ibu****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The custom password policy for the account of the ApsaraDB RDS for SQL Server instance. The following policies are supported:
+	//
+	// 	- `{"account security policy": {"MaximumPasswordAge": Specify the maximum password age}}`: You can configure only the maximum password age. After the maximum password age is reached, you must change the password.
+	//
+	// 	- `{"accountSecurityPolicy": {"MaximumPasswordAge": Specify the minimum password age}}`: You can configure only the minimum password age. During the specified period, you cannot change the password.
+	//
+	// 	- `{"accountSecurityPolicy": {"MaximumPasswordAge": Specify the maximum password age, "MinimumPasswordAge": Specify the minimum password age}}`: You can configure the maximum and minimum password age at the same time.
+	//
+	// >  The minimum password age cannot be greater than the maximum password age. Valid values for the minimum password age: 0 to 998. Valid values for the maximum password age: 0 to 999.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -63977,6 +64474,8 @@ type ModifyAccountSecurityPolicyRequest struct {
 	GroupPolicy  *string `json:"GroupPolicy,omitempty" xml:"GroupPolicy,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmy****
@@ -64034,6 +64533,8 @@ func (s *ModifyAccountSecurityPolicyRequest) SetResourceOwnerId(v int64) *Modify
 }
 
 type ModifyAccountSecurityPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F2911788-25E8-42E5-A3A3-1B38D263F01E
@@ -68272,6 +68773,17 @@ func (s *ModifyDBInstanceSecurityGroupRuleResponse) SetBody(v *ModifyDBInstanceS
 }
 
 type ModifyDBInstanceSpecRequest struct {
+	// Specifies whether to upgrade the major engine version of the instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// >When you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, set this parameter to true. When you upgrade the major engine version, you must also specify required parameters such as DBInstanceId, EngineVersion, DBInstanceClass, and Category, and optional parameters such as ZoneId, ZoneIdSlave1, and VSwitchId.
+	//
+	// example:
+	//
+	// false
 	AllowMajorVersionUpgrade *bool `json:"AllowMajorVersionUpgrade,omitempty" xml:"AllowMajorVersionUpgrade,omitempty"`
 	// Specifies whether to use vouchers to offset fees. Valid values:
 	//
@@ -68309,9 +68821,9 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	//     	- **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
 	//
-	//     **
 	//
-	//     **Note*	- If you set the **EngineVersion*	- parameter to an SQL Server version number, you must also specify this parameter.
+	//
+	// > If you set the **EngineVersion*	- parameter to an SQL Server version number, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -68385,9 +68897,9 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// 	- **TempUpgrade**: performs auto scaling on a subscription instance that runs SQL Server. This value is required for auto scaling.
 	//
-	// 	- **Serverless**: modifies the auto scaling settings of a serverless instance. This value is required if you want to modify the auto scaling settings of a serverless instance.
+	// 	- **Serverless**: modifies the auto scaling settings of a serverless instance.
 	//
-	// >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to ESSD, you do not need to specify Direction.
+	// >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to Enterprise SSD (ESSD), you do not need to specify Direction.
 	//
 	// example:
 	//
@@ -68399,7 +68911,7 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **ScheduleTime**: The effective time takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: The effective time takes effect at the point in time that you specify. The value of ScheduleTime must be a specific point in time that is 12 hours later than the current time. In this case, The value of EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -68490,7 +69002,18 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// 3
-	UsedTime  *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID. The vSwitch must belong to the zone that is specified by **ZoneId**.
+	//
+	// 	- If you set **InstanceNetworkType*	- to **VPC**, you must also specify this parameter.
+	//
+	// 	- If you specify ZoneSlaveId1, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
+	//
+	// > When you upgrade the major engine version, if you want to specify a vSwitch or change the vSwitch for the RDS instance, you must also specify this parameter.
+	//
+	// example:
+	//
+	// vsw-bp1oxflciovg9l7163lr7
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
@@ -68507,7 +69030,14 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// cn-hangzhou-b
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID of the secondary instance. If you set this parameter to the same value as the **ZoneId*	- parameter, the single-zone deployment method is used. If you set this parameter to a different value from the **ZoneId*	- parameter, the multi-zone deployment method is used.
+	//
+	// > If you must specify a secondary zone or change the secondary zone to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, you must also specify this parameter.
+	//
+	// example:
+	//
+	// cn-hangzhou-c
 	ZoneIdSlave1 *string `json:"ZoneIdSlave1,omitempty" xml:"ZoneIdSlave1,omitempty"`
 }
 
@@ -68666,9 +69196,7 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// >
-	//
-	// 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
+	// > This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
 	//
 	// if can be null:
 	// false
@@ -68715,11 +69243,9 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// >
+	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
 	//
-	// 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
-	//
-	// 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+	// > 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
 	//
 	// example:
 	//
@@ -68756,6 +69282,17 @@ func (s *ModifyDBInstanceSpecRequestServerlessConfiguration) SetSwitchForce(v bo
 }
 
 type ModifyDBInstanceSpecShrinkRequest struct {
+	// Specifies whether to upgrade the major engine version of the instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// >When you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, set this parameter to true. When you upgrade the major engine version, you must also specify required parameters such as DBInstanceId, EngineVersion, DBInstanceClass, and Category, and optional parameters such as ZoneId, ZoneIdSlave1, and VSwitchId.
+	//
+	// example:
+	//
+	// false
 	AllowMajorVersionUpgrade *bool `json:"AllowMajorVersionUpgrade,omitempty" xml:"AllowMajorVersionUpgrade,omitempty"`
 	// Specifies whether to use vouchers to offset fees. Valid values:
 	//
@@ -68793,9 +69330,9 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	//     	- **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
 	//
-	//     **
 	//
-	//     **Note*	- If you set the **EngineVersion*	- parameter to an SQL Server version number, you must also specify this parameter.
+	//
+	// > If you set the **EngineVersion*	- parameter to an SQL Server version number, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -68869,9 +69406,9 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// 	- **TempUpgrade**: performs auto scaling on a subscription instance that runs SQL Server. This value is required for auto scaling.
 	//
-	// 	- **Serverless**: modifies the auto scaling settings of a serverless instance. This value is required if you want to modify the auto scaling settings of a serverless instance.
+	// 	- **Serverless**: modifies the auto scaling settings of a serverless instance.
 	//
-	// >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to ESSD, you do not need to specify Direction.
+	// >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to Enterprise SSD (ESSD), you do not need to specify Direction.
 	//
 	// example:
 	//
@@ -68883,7 +69420,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **ScheduleTime**: The effective time takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: The effective time takes effect at the point in time that you specify. The value of ScheduleTime must be a specific point in time that is 12 hours later than the current time. In this case, The value of EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -68974,7 +69511,18 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// 3
-	UsedTime  *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID. The vSwitch must belong to the zone that is specified by **ZoneId**.
+	//
+	// 	- If you set **InstanceNetworkType*	- to **VPC**, you must also specify this parameter.
+	//
+	// 	- If you specify ZoneSlaveId1, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
+	//
+	// > When you upgrade the major engine version, if you want to specify a vSwitch or change the vSwitch for the RDS instance, you must also specify this parameter.
+	//
+	// example:
+	//
+	// vsw-bp1oxflciovg9l7163lr7
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The RDS edition of the instance. Valid values:
 	//
@@ -68991,7 +69539,14 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou-b
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID of the secondary instance. If you set this parameter to the same value as the **ZoneId*	- parameter, the single-zone deployment method is used. If you set this parameter to a different value from the **ZoneId*	- parameter, the multi-zone deployment method is used.
+	//
+	// > If you must specify a secondary zone or change the secondary zone to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance, you must also specify this parameter.
+	//
+	// example:
+	//
+	// cn-hangzhou-c
 	ZoneIdSlave1 *string `json:"ZoneIdSlave1,omitempty" xml:"ZoneIdSlave1,omitempty"`
 }
 
@@ -72252,6 +72807,7 @@ type ModifyMaskingRulesRequest struct {
 	Enabled              *string                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	MaskingAlgo          *string                              `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId              *string                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RuleConfig           *ModifyMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
@@ -72289,6 +72845,11 @@ func (s *ModifyMaskingRulesRequest) SetMaskingAlgo(v string) *ModifyMaskingRules
 
 func (s *ModifyMaskingRulesRequest) SetOwnerId(v string) *ModifyMaskingRulesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetRegionId(v string) *ModifyMaskingRulesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -72348,6 +72909,7 @@ type ModifyMaskingRulesShrinkRequest struct {
 	Enabled              *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	MaskingAlgo          *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RuleConfigShrink     *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
@@ -72385,6 +72947,11 @@ func (s *ModifyMaskingRulesShrinkRequest) SetMaskingAlgo(v string) *ModifyMaskin
 
 func (s *ModifyMaskingRulesShrinkRequest) SetOwnerId(v string) *ModifyMaskingRulesShrinkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetRegionId(v string) *ModifyMaskingRulesShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -73141,12 +73708,30 @@ func (s *ModifyParameterGroupResponse) SetBody(v *ModifyParameterGroupResponseBo
 }
 
 type ModifyRCInstanceRequest struct {
-	AutoPay      *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// Up
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// rm-uf62br2491p5l****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// mysql.i8.large.2cm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hagnzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyRCInstanceRequest) String() string {
@@ -73188,7 +73773,13 @@ func (s *ModifyRCInstanceRequest) SetRegionId(v string) *ModifyRCInstanceRequest
 }
 
 type ModifyRCInstanceResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 100789370230206
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 6EF82B07-28D2-48D1-B5D6-7E78FED277C7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -74348,7 +74939,7 @@ type ModifySecurityIpsRequest struct {
 	// Cover
 	ModifyMode      *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the IP addresses in the IP address whitelist. Set the value to IPv4. IPv6 is not supported.
+	// The IP address type. The value is fixed as IPv4.
 	//
 	// example:
 	//
@@ -76061,11 +76652,24 @@ func (s *QueryRecommendByCodeResponse) SetBody(v *QueryRecommendByCodeResponseBo
 }
 
 type RebootRCInstanceRequest struct {
-	DryRun    *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// false
 	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rc-m5sc1271fv344a1r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RebootRCInstanceRequest) String() string {
@@ -76097,6 +76701,9 @@ func (s *RebootRCInstanceRequest) SetRegionId(v string) *RebootRCInstanceRequest
 }
 
 type RebootRCInstanceResponseBody struct {
+	// example:
+	//
+	// 3E36DB6E-AE3B-53B6-A703-85F883FD1B2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -77823,12 +78430,30 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type ResizeRCInstanceDiskRequest struct {
-	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NewSize    *int64  `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 100
+	NewSize *int64 `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// online
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ResizeRCInstanceDiskRequest) String() string {
@@ -77870,7 +78495,13 @@ func (s *ResizeRCInstanceDiskRequest) SetType(v string) *ResizeRCInstanceDiskReq
 }
 
 type ResizeRCInstanceDiskResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 230546833080102
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -78659,34 +79290,107 @@ func (s *RevokeOperatorPermissionResponse) SetBody(v *RevokeOperatorPermissionRe
 
 type RunRCInstancesRequest struct {
 	// This parameter is required.
-	Amount             *int32                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoPay            *bool                            `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew          *bool                            `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ClientToken        *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataDisk           []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	DeploymentSetId    *string                          `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	Description        *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	DryRun             *bool                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	ImageId            *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceChargeType *string                          `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceName       *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DataDisk    []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ds-uf6670sipmph5j5b6ke4
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// example:
+	//
+	// Instance_Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// image-dsvjzw2ii8n4fvr6de
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// Prepaid
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// example:
+	//
+	// ceshi
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// This parameter is required.
-	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	IoOptimized             *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Period                  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	//
+	// example:
+	//
+	// mysql.i8.large.2cm
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// null
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// example:
+	//
+	// null
+	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// example:
+	//
+	// null
+	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	// example:
+	//
+	// dell5502
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// example:
+	//
+	// 2F9e9@a69c!e18b569c8
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Year
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// This parameter is required.
-	RegionId                    *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityEnhancementStrategy *string                          `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	SecurityGroupId             *string                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SystemDisk                  *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// null
+	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	// example:
+	//
+	// sg-uf6av412xaxixuezol6w
+	SecurityGroupId *string                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SystemDisk      *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-2vcd61ngm890sk****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-beijing-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s RunRCInstancesRequest) String() string {
@@ -78823,11 +79527,26 @@ func (s *RunRCInstancesRequest) SetZoneId(v string) *RunRCInstancesRequest {
 }
 
 type RunRCInstancesRequestDataDisk struct {
-	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted          *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size               *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// local_ssd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// null
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// example:
+	//
+	// false
+	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// example:
+	//
+	// null
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s RunRCInstancesRequestDataDisk) String() string {
@@ -78864,8 +79583,14 @@ func (s *RunRCInstancesRequestDataDisk) SetSize(v int32) *RunRCInstancesRequestD
 }
 
 type RunRCInstancesRequestSystemDisk struct {
+	// example:
+	//
+	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Size     *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 20
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s RunRCInstancesRequestSystemDisk) String() string {
@@ -78888,34 +79613,107 @@ func (s *RunRCInstancesRequestSystemDisk) SetSize(v string) *RunRCInstancesReque
 
 type RunRCInstancesShrinkRequest struct {
 	// This parameter is required.
-	Amount             *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew          *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataDiskShrink     *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
-	DeploymentSetId    *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
+	// example:
+	//
+	// ds-uf6670sipmph5j5b6ke4
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// example:
+	//
+	// Instance_Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// image-dsvjzw2ii8n4fvr6de
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// Prepaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// ceshi
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// This parameter is required.
-	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	IoOptimized             *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Period                  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	//
+	// example:
+	//
+	// mysql.i8.large.2cm
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// null
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// example:
+	//
+	// null
+	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// example:
+	//
+	// null
+	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	// example:
+	//
+	// dell5502
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// example:
+	//
+	// 2F9e9@a69c!e18b569c8
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Year
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// This parameter is required.
-	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// null
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	SecurityGroupId             *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SystemDiskShrink            *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	// example:
+	//
+	// sg-uf6av412xaxixuezol6w
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SystemDiskShrink *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-2vcd61ngm890sk****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-beijing-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s RunRCInstancesShrinkRequest) String() string {
@@ -79053,8 +79851,14 @@ func (s *RunRCInstancesShrinkRequest) SetZoneId(v string) *RunRCInstancesShrinkR
 
 type RunRCInstancesResponseBody struct {
 	InstanceIdSets *RunRCInstancesResponseBodyInstanceIdSets `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Struct"`
-	OrderId        *string                                   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 237850846720798
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 535BD857-E88F-5B4F-A18C-FAF59A74741F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RunRCInstancesResponseBody) String() string {
@@ -79406,8 +80210,15 @@ func (s *StartDBInstanceResponse) SetBody(v *StartDBInstanceResponseBody) *Start
 
 type StartRCInstanceRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rc-l02u59b2kjfd2us0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartRCInstanceRequest) String() string {
@@ -79429,6 +80240,9 @@ func (s *StartRCInstanceRequest) SetRegionId(v string) *StartRCInstanceRequest {
 }
 
 type StartRCInstanceResponseBody struct {
+	// example:
+	//
+	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -79581,10 +80395,20 @@ func (s *StopDBInstanceResponse) SetBody(v *StopDBInstanceResponseBody) *StopDBI
 }
 
 type StopRCInstanceRequest struct {
+	// example:
+	//
+	// false
 	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rc-m5sc1271fv344a1r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopRCInstanceRequest) String() string {
@@ -79611,6 +80435,9 @@ func (s *StopRCInstanceRequest) SetRegionId(v string) *StopRCInstanceRequest {
 }
 
 type StopRCInstanceResponseBody struct {
+	// example:
+	//
+	// 3E36DB6E-AE3B-53B6-A703-85F883FD1B2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -80100,8 +80927,14 @@ func (s *SwitchDBInstanceVpcResponse) SetBody(v *SwitchDBInstanceVpcResponseBody
 }
 
 type SyncRCKeyPairRequest struct {
+	// example:
+	//
+	// customer_keypairs
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SyncRCKeyPairRequest) String() string {
@@ -80123,8 +80956,11 @@ func (s *SyncRCKeyPairRequest) SetRegionId(v string) *SyncRCKeyPairRequest {
 }
 
 type SyncRCKeyPairResponseBody struct {
-	Data      *SyncRCKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SyncRCKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 60478CCB-95EA-5D06-8A51-CAC83A316E9A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SyncRCKeyPairResponseBody) String() string {
@@ -80146,6 +80982,9 @@ func (s *SyncRCKeyPairResponseBody) SetRequestId(v string) *SyncRCKeyPairRespons
 }
 
 type SyncRCKeyPairResponseBodyData struct {
+	// example:
+	//
+	// true
 	IsSyncInfo *bool `json:"IsSyncInfo,omitempty" xml:"IsSyncInfo,omitempty"`
 }
 
@@ -84639,7 +85478,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 //
 // ### [](#)Usage notes
 //
-// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/437245.html).
+// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/2402073.html).
 //
 // ### [](#)Precautions
 //
@@ -84737,7 +85576,7 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // ### [](#)Usage notes
 //
-// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/437245.html).
+// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/2402073.html).
 //
 // ### [](#)Precautions
 //
@@ -102093,7 +102932,7 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 
 // Summary:
 //
-// Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+// Queries the operation logs of the data synchronization task for a specified ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -102161,7 +103000,7 @@ func (client *Client) DescribeReplicationLinkLogsWithOptions(request *DescribeRe
 
 // Summary:
 //
-// Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+// Queries the operation logs of the data synchronization task for a specified ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -106423,7 +107262,13 @@ func (client *Client) ModifyADInfo(request *ModifyADInfoRequest) (_result *Modif
 
 // Summary:
 //
-// 修改账号检查策略
+// Checks whether a password policy is applied to an account.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- SQL Server
 //
 // @param request - ModifyAccountCheckPolicyRequest
 //
@@ -106497,7 +107342,13 @@ func (client *Client) ModifyAccountCheckPolicyWithOptions(request *ModifyAccount
 
 // Summary:
 //
-// 修改账号检查策略
+// Checks whether a password policy is applied to an account.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// 	- SQL Server
 //
 // @param request - ModifyAccountCheckPolicyRequest
 //
@@ -106652,6 +107503,10 @@ func (client *Client) ModifyAccountMaskingPrivilegeWithOptions(request *ModifyAc
 		query["Privilege"] = request.Privilege
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -106707,7 +107562,19 @@ func (client *Client) ModifyAccountMaskingPrivilege(request *ModifyAccountMaskin
 
 // Summary:
 //
-// 修改密码策略
+// Configures or modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+//
+// [Create a custom password policy for an account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95640.html)
 //
 // @param request - ModifyAccountSecurityPolicyRequest
 //
@@ -106777,7 +107644,19 @@ func (client *Client) ModifyAccountSecurityPolicyWithOptions(request *ModifyAcco
 
 // Summary:
 //
-// 修改密码策略
+// Configures or modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+//
+// [Create a custom password policy for an account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95640.html)
 //
 // @param request - ModifyAccountSecurityPolicyRequest
 //
@@ -111738,6 +112617,10 @@ func (client *Client) ModifyMaskingRulesWithOptions(tmpReq *ModifyMaskingRulesRe
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
