@@ -1,3 +1,10 @@
+2024-09-24 Version: v1.23.9
+- Update API ListApplications: update response param.
+- Update API RescaleApplicationVertically: add param autoEnableApplicationScalingRule.
+- Update API RescaleApplicationVertically: add param minReadyInstanceRatio.
+- Update API RescaleApplicationVertically: add param minReadyInstances.
+
+
 2024-09-12 Version: v1.23.8
 - Update API CreateApplication: add param Dotnet.
 - Update API DeployApplication: add param Dotnet.

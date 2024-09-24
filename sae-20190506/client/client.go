@@ -31014,7 +31014,8 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// example:
 	//
 	// 1000
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu      *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The number of application instances.
 	//
 	// example:
@@ -31055,6 +31056,7 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// cn-beijing:demo
 	NamespaceId         *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	PackageUrl          *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	// The region ID.
 	//
@@ -31115,6 +31117,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetCpu(v int32) *ListAppl
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) SetImageUrl(v string) *ListApplicationsResponseBodyDataApplications {
+	s.ImageUrl = &v
+	return s
+}
+
 func (s *ListApplicationsResponseBodyDataApplications) SetInstances(v int32) *ListApplicationsResponseBodyDataApplications {
 	s.Instances = &v
 	return s
@@ -31137,6 +31144,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetMseNamespaceId(v strin
 
 func (s *ListApplicationsResponseBodyDataApplications) SetNamespaceId(v string) *ListApplicationsResponseBodyDataApplications {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetPackageUrl(v string) *ListApplicationsResponseBodyDataApplications {
+	s.PackageUrl = &v
 	return s
 }
 
@@ -36767,7 +36779,10 @@ type RescaleApplicationVerticallyRequest struct {
 	// example:
 	//
 	// 2048
-	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory                           *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	AutoEnableApplicationScalingRule *bool   `json:"autoEnableApplicationScalingRule,omitempty" xml:"autoEnableApplicationScalingRule,omitempty"`
+	MinReadyInstanceRatio            *int32  `json:"minReadyInstanceRatio,omitempty" xml:"minReadyInstanceRatio,omitempty"`
+	MinReadyInstances                *int32  `json:"minReadyInstances,omitempty" xml:"minReadyInstances,omitempty"`
 }
 
 func (s RescaleApplicationVerticallyRequest) String() string {
@@ -36790,6 +36805,21 @@ func (s *RescaleApplicationVerticallyRequest) SetCpu(v string) *RescaleApplicati
 
 func (s *RescaleApplicationVerticallyRequest) SetMemory(v string) *RescaleApplicationVerticallyRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *RescaleApplicationVerticallyRequest) SetAutoEnableApplicationScalingRule(v bool) *RescaleApplicationVerticallyRequest {
+	s.AutoEnableApplicationScalingRule = &v
+	return s
+}
+
+func (s *RescaleApplicationVerticallyRequest) SetMinReadyInstanceRatio(v int32) *RescaleApplicationVerticallyRequest {
+	s.MinReadyInstanceRatio = &v
+	return s
+}
+
+func (s *RescaleApplicationVerticallyRequest) SetMinReadyInstances(v int32) *RescaleApplicationVerticallyRequest {
+	s.MinReadyInstances = &v
 	return s
 }
 
@@ -49722,6 +49752,18 @@ func (client *Client) RescaleApplicationVerticallyWithOptions(request *RescaleAp
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
 		query["Memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoEnableApplicationScalingRule)) {
+		query["autoEnableApplicationScalingRule"] = request.AutoEnableApplicationScalingRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
+		query["minReadyInstanceRatio"] = request.MinReadyInstanceRatio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
+		query["minReadyInstances"] = request.MinReadyInstances
 	}
 
 	req := &openapi.OpenApiRequest{
