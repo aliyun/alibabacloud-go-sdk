@@ -2773,6 +2773,447 @@ func (s *GetPotentialFailZonesResponse) SetBody(v *GetPotentialFailZonesResponse
 	return s
 }
 
+type GetResource4ModifyRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BE68D71ZY5YYIU9R
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 1
+	NextToken *int64 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s GetResource4ModifyRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResource4ModifyRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResource4ModifyRecordRequest) SetApplicationId(v string) *GetResource4ModifyRecordRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordRequest) SetMaxResults(v int64) *GetResource4ModifyRecordRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordRequest) SetNextToken(v int64) *GetResource4ModifyRecordRequest {
+	s.NextToken = &v
+	return s
+}
+
+type GetResource4ModifyRecordResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "",
+	//
+	//     "AuthPrincipalOwnerId": "",
+	//
+	//     "EncodedDiagnosticMessage": "",
+	//
+	//     "AuthPrincipalType": "",
+	//
+	//     "AuthPrincipalDisplayName": "",
+	//
+	//     "NoPermissionType": "",
+	//
+	//     "AuthAction": ""
+	//
+	//   }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetResource4ModifyRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 123
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetResource4ModifyRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResource4ModifyRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResource4ModifyRecordResponseBody) SetAccessDeniedDetail(v string) *GetResource4ModifyRecordResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBody) SetCode(v string) *GetResource4ModifyRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBody) SetData(v []*GetResource4ModifyRecordResponseBodyData) *GetResource4ModifyRecordResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBody) SetMessage(v string) *GetResource4ModifyRecordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBody) SetNextToken(v string) *GetResource4ModifyRecordResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBody) SetRequestId(v string) *GetResource4ModifyRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBody) SetTotalCount(v string) *GetResource4ModifyRecordResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetResource4ModifyRecordResponseBodyData struct {
+	// example:
+	//
+	// {\\"InstanceId\\": \\"\\", \\"AttributeName\\": \\"drmCommand\\", \\"Id\\": 16800, \\"Desc\\": \\"test\\"}
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// example:
+	//
+	// 1726645341000
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// rm-uf6308dyal1*****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Finish
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// rds
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetResource4ModifyRecordResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResource4ModifyRecordResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetResource4ModifyRecordResponseBodyData) SetAttribute(v string) *GetResource4ModifyRecordResponseBodyData {
+	s.Attribute = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBodyData) SetModifyTime(v string) *GetResource4ModifyRecordResponseBodyData {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBodyData) SetResourceId(v string) *GetResource4ModifyRecordResponseBodyData {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBodyData) SetStatus(v string) *GetResource4ModifyRecordResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBodyData) SetType(v string) *GetResource4ModifyRecordResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetResource4ModifyRecordResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResource4ModifyRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetResource4ModifyRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResource4ModifyRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResource4ModifyRecordResponse) SetHeaders(v map[string]*string) *GetResource4ModifyRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponse) SetStatusCode(v int32) *GetResource4ModifyRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponse) SetBody(v *GetResource4ModifyRecordResponseBody) *GetResource4ModifyRecordResponse {
+	s.Body = v
+	return s
+}
+
+type GetResult4QueryInstancePrice4ModifyRequest struct {
+	// example:
+	//
+	// 02S7UU41WKJL7ERR
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 58d5d8c5b5489150417a7cd6caa614bb
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetResult4QueryInstancePrice4ModifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResult4QueryInstancePrice4ModifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyRequest) SetApplicationId(v string) *GetResult4QueryInstancePrice4ModifyRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyRequest) SetTaskId(v string) *GetResult4QueryInstancePrice4ModifyRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetResult4QueryInstancePrice4ModifyResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "",
+	//
+	//     "AuthPrincipalOwnerId": "",
+	//
+	//     "EncodedDiagnosticMessage": "",
+	//
+	//     "AuthPrincipalType": "",
+	//
+	//     "AuthPrincipalDisplayName": "",
+	//
+	//     "NoPermissionType": "",
+	//
+	//     "AuthAction": ""
+	//
+	//   }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetResult4QueryInstancePrice4ModifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBody) SetAccessDeniedDetail(v string) *GetResult4QueryInstancePrice4ModifyResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBody) SetCode(v string) *GetResult4QueryInstancePrice4ModifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBody) SetData(v *GetResult4QueryInstancePrice4ModifyResponseBodyData) *GetResult4QueryInstancePrice4ModifyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBody) SetMessage(v string) *GetResult4QueryInstancePrice4ModifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBody) SetRequestId(v string) *GetResult4QueryInstancePrice4ModifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetResult4QueryInstancePrice4ModifyResponseBodyData struct {
+	PriceList []*GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// d9a3e99b-6954-4a16-ad51-954db4a528b7
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyData) SetPriceList(v []*GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) *GetResult4QueryInstancePrice4ModifyResponseBodyData {
+	s.PriceList = v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyData) SetStatus(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyData) SetTaskId(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList struct {
+	// example:
+	//
+	// 2
+	DiscountAmount *float64 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	ERROR          *string  `json:"ERROR,omitempty" xml:"ERROR,omitempty"`
+	// example:
+	//
+	// vpc
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// example:
+	//
+	// 3
+	OriginalAmount *float64 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	PriceUnit      *string  `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	PromotionName  *string  `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// 1
+	TradeAmount *float64 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetDiscountAmount(v float64) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetERROR(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.ERROR = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetNodeType(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.NodeType = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetOriginalAmount(v float64) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetPriceUnit(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.PriceUnit = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetPromotionName(v string) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList) SetTradeAmount(v float64) *GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList {
+	s.TradeAmount = &v
+	return s
+}
+
+type GetResult4QueryInstancePrice4ModifyResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResult4QueryInstancePrice4ModifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResult4QueryInstancePrice4ModifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponse) SetHeaders(v map[string]*string) *GetResult4QueryInstancePrice4ModifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponse) SetStatusCode(v int32) *GetResult4QueryInstancePrice4ModifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResult4QueryInstancePrice4ModifyResponse) SetBody(v *GetResult4QueryInstancePrice4ModifyResponseBody) *GetResult4QueryInstancePrice4ModifyResponse {
+	s.Body = v
+	return s
+}
+
 type GetTemplateRequest struct {
 	// Template Area
 	//
@@ -4288,6 +4729,581 @@ func (s *ListTemplateResponse) SetStatusCode(v int32) *ListTemplateResponse {
 }
 
 func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApplicationSpecRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02S7UU41WKJL7ERR
+	ApplicationId *string                                     `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	InstanceSpec  []*ModifyApplicationSpecRequestInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Repeated"`
+}
+
+func (s ModifyApplicationSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApplicationSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApplicationSpecRequest) SetApplicationId(v string) *ModifyApplicationSpecRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecRequest) SetInstanceSpec(v []*ModifyApplicationSpecRequestInstanceSpec) *ModifyApplicationSpecRequest {
+	s.InstanceSpec = v
+	return s
+}
+
+type ModifyApplicationSpecRequestInstanceSpec struct {
+	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// example:
+	//
+	// rm-2ze8f4ah378a*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ModifyApplicationSpecRequestInstanceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApplicationSpecRequestInstanceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApplicationSpecRequestInstanceSpec) SetConfiguration(v map[string]interface{}) *ModifyApplicationSpecRequestInstanceSpec {
+	s.Configuration = v
+	return s
+}
+
+func (s *ModifyApplicationSpecRequestInstanceSpec) SetInstanceId(v string) *ModifyApplicationSpecRequestInstanceSpec {
+	s.InstanceId = &v
+	return s
+}
+
+type ModifyApplicationSpecShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02S7UU41WKJL7ERR
+	ApplicationId      *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	InstanceSpecShrink *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+}
+
+func (s ModifyApplicationSpecShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApplicationSpecShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApplicationSpecShrinkRequest) SetApplicationId(v string) *ModifyApplicationSpecShrinkRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecShrinkRequest) SetInstanceSpecShrink(v string) *ModifyApplicationSpecShrinkRequest {
+	s.InstanceSpecShrink = &v
+	return s
+}
+
+type ModifyApplicationSpecResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "",
+	//
+	//     "AuthPrincipalOwnerId": "",
+	//
+	//     "EncodedDiagnosticMessage": "",
+	//
+	//     "AuthPrincipalType": "",
+	//
+	//     "AuthPrincipalDisplayName": "",
+	//
+	//     "NoPermissionType": "",
+	//
+	//     "AuthAction": ""
+	//
+	//   }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -1
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A3488F1D-xxxx-xxxx-xxxx-5374BA0F3562
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyApplicationSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApplicationSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApplicationSpecResponseBody) SetAccessDeniedDetail(v string) *ModifyApplicationSpecResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecResponseBody) SetCode(v string) *ModifyApplicationSpecResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecResponseBody) SetData(v string) *ModifyApplicationSpecResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecResponseBody) SetMessage(v string) *ModifyApplicationSpecResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecResponseBody) SetRequestId(v string) *ModifyApplicationSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecResponseBody) SetSuccess(v string) *ModifyApplicationSpecResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyApplicationSpecResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApplicationSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApplicationSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApplicationSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApplicationSpecResponse) SetHeaders(v map[string]*string) *ModifyApplicationSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApplicationSpecResponse) SetStatusCode(v int32) *ModifyApplicationSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApplicationSpecResponse) SetBody(v *ModifyApplicationSpecResponseBody) *ModifyApplicationSpecResponse {
+	s.Body = v
+	return s
+}
+
+type QueryInstancePrice4ModifyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 002XWH7MXB8MJRU0
+	ApplicationId *string                `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf66k9143r2ch*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s QueryInstancePrice4ModifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancePrice4ModifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancePrice4ModifyRequest) SetApplicationId(v string) *QueryInstancePrice4ModifyRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyRequest) SetConfiguration(v map[string]interface{}) *QueryInstancePrice4ModifyRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyRequest) SetInstanceId(v string) *QueryInstancePrice4ModifyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type QueryInstancePrice4ModifyShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 002XWH7MXB8MJRU0
+	ApplicationId       *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf66k9143r2ch*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s QueryInstancePrice4ModifyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancePrice4ModifyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancePrice4ModifyShrinkRequest) SetApplicationId(v string) *QueryInstancePrice4ModifyShrinkRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyShrinkRequest) SetConfigurationShrink(v string) *QueryInstancePrice4ModifyShrinkRequest {
+	s.ConfigurationShrink = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyShrinkRequest) SetInstanceId(v string) *QueryInstancePrice4ModifyShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type QueryInstancePrice4ModifyResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "",
+	//
+	//     "AuthPrincipalOwnerId": "",
+	//
+	//     "EncodedDiagnosticMessage": "",
+	//
+	//     "AuthPrincipalType": "",
+	//
+	//     "AuthPrincipalDisplayName": "",
+	//
+	//     "NoPermissionType": "",
+	//
+	//     "AuthAction": ""
+	//
+	//   }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// taskId
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9656C816-1E9A-58D2-86D5-710678D61AF1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryInstancePrice4ModifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancePrice4ModifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancePrice4ModifyResponseBody) SetAccessDeniedDetail(v string) *QueryInstancePrice4ModifyResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyResponseBody) SetCode(v string) *QueryInstancePrice4ModifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyResponseBody) SetData(v string) *QueryInstancePrice4ModifyResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyResponseBody) SetMessage(v string) *QueryInstancePrice4ModifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyResponseBody) SetRequestId(v string) *QueryInstancePrice4ModifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyResponseBody) SetSuccess(v string) *QueryInstancePrice4ModifyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryInstancePrice4ModifyResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryInstancePrice4ModifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryInstancePrice4ModifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancePrice4ModifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancePrice4ModifyResponse) SetHeaders(v map[string]*string) *QueryInstancePrice4ModifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyResponse) SetStatusCode(v int32) *QueryInstancePrice4ModifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryInstancePrice4ModifyResponse) SetBody(v *QueryInstancePrice4ModifyResponseBody) *QueryInstancePrice4ModifyResponse {
+	s.Body = v
+	return s
+}
+
+type QueryInstanceSpec4ModifyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BE68D71ZY5YYIU9R
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf66k9143r2ch*****
+	InstanceId *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MethodName *string                `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s QueryInstanceSpec4ModifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceSpec4ModifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceSpec4ModifyRequest) SetApplicationId(v string) *QueryInstanceSpec4ModifyRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyRequest) SetInstanceId(v string) *QueryInstanceSpec4ModifyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyRequest) SetMethodName(v string) *QueryInstanceSpec4ModifyRequest {
+	s.MethodName = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyRequest) SetParameters(v map[string]interface{}) *QueryInstanceSpec4ModifyRequest {
+	s.Parameters = v
+	return s
+}
+
+type QueryInstanceSpec4ModifyShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BE68D71ZY5YYIU9R
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf66k9143r2ch*****
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MethodName       *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s QueryInstanceSpec4ModifyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceSpec4ModifyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceSpec4ModifyShrinkRequest) SetApplicationId(v string) *QueryInstanceSpec4ModifyShrinkRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyShrinkRequest) SetInstanceId(v string) *QueryInstanceSpec4ModifyShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyShrinkRequest) SetMethodName(v string) *QueryInstanceSpec4ModifyShrinkRequest {
+	s.MethodName = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyShrinkRequest) SetParametersShrink(v string) *QueryInstanceSpec4ModifyShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+type QueryInstanceSpec4ModifyResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "",
+	//
+	//     "AuthPrincipalOwnerId": "",
+	//
+	//     "EncodedDiagnosticMessage": "",
+	//
+	//     "AuthPrincipalType": "",
+	//
+	//     "AuthPrincipalDisplayName": "",
+	//
+	//     "NoPermissionType": "",
+	//
+	//     "AuthAction": ""
+	//
+	//   }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 847C9D0A-BABD-589C-8A9C-6464409EDED9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryInstanceSpec4ModifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceSpec4ModifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBody) SetAccessDeniedDetail(v string) *QueryInstanceSpec4ModifyResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBody) SetCode(v string) *QueryInstanceSpec4ModifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBody) SetData(v string) *QueryInstanceSpec4ModifyResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBody) SetMessage(v string) *QueryInstanceSpec4ModifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBody) SetRequestId(v string) *QueryInstanceSpec4ModifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponseBody) SetSuccess(v bool) *QueryInstanceSpec4ModifyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryInstanceSpec4ModifyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryInstanceSpec4ModifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryInstanceSpec4ModifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstanceSpec4ModifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstanceSpec4ModifyResponse) SetHeaders(v map[string]*string) *QueryInstanceSpec4ModifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponse) SetStatusCode(v int32) *QueryInstanceSpec4ModifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryInstanceSpec4ModifyResponse) SetBody(v *QueryInstanceSpec4ModifyResponseBody) *QueryInstanceSpec4ModifyResponse {
 	s.Body = v
 	return s
 }
@@ -6340,6 +7356,138 @@ func (client *Client) GetPotentialFailZones(request *GetPotentialFailZonesReques
 
 // Summary:
 //
+// 获取询价应用变配记录
+//
+// @param request - GetResource4ModifyRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResource4ModifyRecordResponse
+func (client *Client) GetResource4ModifyRecordWithOptions(request *GetResource4ModifyRecordRequest, runtime *util.RuntimeOptions) (_result *GetResource4ModifyRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResource4ModifyRecord"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResource4ModifyRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取询价应用变配记录
+//
+// @param request - GetResource4ModifyRecordRequest
+//
+// @return GetResource4ModifyRecordResponse
+func (client *Client) GetResource4ModifyRecord(request *GetResource4ModifyRecordRequest) (_result *GetResource4ModifyRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResource4ModifyRecordResponse{}
+	_body, _err := client.GetResource4ModifyRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取询价结果
+//
+// @param request - GetResult4QueryInstancePrice4ModifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResult4QueryInstancePrice4ModifyResponse
+func (client *Client) GetResult4QueryInstancePrice4ModifyWithOptions(request *GetResult4QueryInstancePrice4ModifyRequest, runtime *util.RuntimeOptions) (_result *GetResult4QueryInstancePrice4ModifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResult4QueryInstancePrice4Modify"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResult4QueryInstancePrice4ModifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取询价结果
+//
+// @param request - GetResult4QueryInstancePrice4ModifyRequest
+//
+// @return GetResult4QueryInstancePrice4ModifyResponse
+func (client *Client) GetResult4QueryInstancePrice4Modify(request *GetResult4QueryInstancePrice4ModifyRequest) (_result *GetResult4QueryInstancePrice4ModifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResult4QueryInstancePrice4ModifyResponse{}
+	_body, _err := client.GetResult4QueryInstancePrice4ModifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Get template images and information about architecture diagrams.
 //
 // @param request - GetTemplateRequest
@@ -6851,6 +7999,228 @@ func (client *Client) ListTemplate(request *ListTemplateRequest) (_result *ListT
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTemplateResponse{}
 	_body, _err := client.ListTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交应用变配
+//
+// @param tmpReq - ModifyApplicationSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApplicationSpecResponse
+func (client *Client) ModifyApplicationSpecWithOptions(tmpReq *ModifyApplicationSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyApplicationSpecResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyApplicationSpecShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceSpec)) {
+		request.InstanceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceSpec, tea.String("InstanceSpec"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpecShrink)) {
+		body["InstanceSpec"] = request.InstanceSpecShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApplicationSpec"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApplicationSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交应用变配
+//
+// @param request - ModifyApplicationSpecRequest
+//
+// @return ModifyApplicationSpecResponse
+func (client *Client) ModifyApplicationSpec(request *ModifyApplicationSpecRequest) (_result *ModifyApplicationSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApplicationSpecResponse{}
+	_body, _err := client.ModifyApplicationSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询变配价格
+//
+// @param tmpReq - QueryInstancePrice4ModifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstancePrice4ModifyResponse
+func (client *Client) QueryInstancePrice4ModifyWithOptions(tmpReq *QueryInstancePrice4ModifyRequest, runtime *util.RuntimeOptions) (_result *QueryInstancePrice4ModifyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryInstancePrice4ModifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Configuration)) {
+		request.ConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configuration, tea.String("Configuration"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationShrink)) {
+		body["Configuration"] = request.ConfigurationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstancePrice4Modify"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryInstancePrice4ModifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询变配价格
+//
+// @param request - QueryInstancePrice4ModifyRequest
+//
+// @return QueryInstancePrice4ModifyResponse
+func (client *Client) QueryInstancePrice4Modify(request *QueryInstancePrice4ModifyRequest) (_result *QueryInstancePrice4ModifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInstancePrice4ModifyResponse{}
+	_body, _err := client.QueryInstancePrice4ModifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询变配规格列表
+//
+// @param tmpReq - QueryInstanceSpec4ModifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceSpec4ModifyResponse
+func (client *Client) QueryInstanceSpec4ModifyWithOptions(tmpReq *QueryInstanceSpec4ModifyRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceSpec4ModifyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryInstanceSpec4ModifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MethodName)) {
+		body["MethodName"] = request.MethodName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceSpec4Modify"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryInstanceSpec4ModifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询变配规格列表
+//
+// @param request - QueryInstanceSpec4ModifyRequest
+//
+// @return QueryInstanceSpec4ModifyResponse
+func (client *Client) QueryInstanceSpec4Modify(request *QueryInstanceSpec4ModifyRequest) (_result *QueryInstanceSpec4ModifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInstanceSpec4ModifyResponse{}
+	_body, _err := client.QueryInstanceSpec4ModifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
