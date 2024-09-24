@@ -11756,6 +11756,7 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	AddressGroupList []*DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList `json:"AddressGroupList,omitempty" xml:"AddressGroupList,omitempty" type:"Repeated"`
 	// The application ports.
 	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
+	AssetCount          *int64                                                                   `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
 	// The type of the tag. Valid values:
 	//
 	// 	- **Suspicious**
@@ -11835,13 +11836,15 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	// example:
 	//
 	// true
-	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	IsMarkNormal *bool   `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
 	// The outbound traffic. Unit: bytes.
 	//
 	// example:
 	//
 	// 965
-	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutBytes          *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	PrivateAssetCount *int64 `json:"PrivateAssetCount,omitempty" xml:"PrivateAssetCount,omitempty"`
 	// The UUID of the access control policy.
 	//
 	// example:
@@ -11921,6 +11924,11 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetApplicationPortL
 	return s
 }
 
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAssetCount(v int64) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.AssetCount = &v
+	return s
+}
+
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetCategoryClassId(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
 	s.CategoryClassId = &v
 	return s
@@ -11966,8 +11974,18 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetIsMarkNormal(v b
 	return s
 }
 
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetLocationName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.LocationName = &v
+	return s
+}
+
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetOutBytes(v int64) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
 	s.OutBytes = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetPrivateAssetCount(v int64) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.PrivateAssetCount = &v
 	return s
 }
 
@@ -12525,7 +12543,9 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// example:
 	//
 	// fdad-fdafa-dafa-dfa****
-	AddressGroupUUID *string `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	AddressGroupUUID    *string   `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	AssetCount          *int64    `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
 	// The website service.
 	//
 	// example:
@@ -12623,7 +12643,8 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// example:
 	//
 	// 4582
-	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutBytes          *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	PrivateAssetCount *int64 `json:"PrivateAssetCount,omitempty" xml:"PrivateAssetCount,omitempty"`
 	// The ID of the access control policy.
 	//
 	// example:
@@ -12703,6 +12724,16 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAddressGroupUUID(v str
 	return s
 }
 
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetApplicationNameList(v []*string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.ApplicationNameList = v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAssetCount(v int64) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.AssetCount = &v
+	return s
+}
+
 func (s *DescribeOutgoingDomainResponseBodyDomainList) SetBusiness(v string) *DescribeOutgoingDomainResponseBodyDomainList {
 	s.Business = &v
 	return s
@@ -12760,6 +12791,11 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetOrganization(v string)
 
 func (s *DescribeOutgoingDomainResponseBodyDomainList) SetOutBytes(v int64) *DescribeOutgoingDomainResponseBodyDomainList {
 	s.OutBytes = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetPrivateAssetCount(v int64) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.PrivateAssetCount = &v
 	return s
 }
 
