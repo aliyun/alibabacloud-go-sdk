@@ -33248,6 +33248,7 @@ type GetServiceListPageResponseBodyDataResult struct {
 	//
 	// sc-A
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The service version.
 	//
 	// example:
@@ -33291,6 +33292,11 @@ func (s *GetServiceListPageResponseBodyDataResult) SetInstanceNum(v int32) *GetS
 
 func (s *GetServiceListPageResponseBodyDataResult) SetServiceName(v string) *GetServiceListPageResponseBodyDataResult {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *GetServiceListPageResponseBodyDataResult) SetServiceType(v string) *GetServiceListPageResponseBodyDataResult {
+	s.ServiceType = &v
 	return s
 }
 
