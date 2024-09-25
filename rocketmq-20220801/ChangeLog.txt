@@ -1,3 +1,6 @@
+2024-09-25 Version: v1.5.3
+- Generated golang 2022-08-01 for RocketMQ.
+
 2024-09-23 Version: v1.5.2
 - Generated golang 2022-08-01 for RocketMQ.
 
