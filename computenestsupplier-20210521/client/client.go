@@ -6900,6 +6900,138 @@ func (s *GetUploadCredentialsResponse) SetBody(v *GetUploadCredentialsResponseBo
 	return s
 }
 
+type LaunchServiceRequest struct {
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Recommend   *bool   `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a544xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s LaunchServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LaunchServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LaunchServiceRequest) SetCategories(v []*string) *LaunchServiceRequest {
+	s.Categories = v
+	return s
+}
+
+func (s *LaunchServiceRequest) SetClientToken(v string) *LaunchServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *LaunchServiceRequest) SetRecommend(v bool) *LaunchServiceRequest {
+	s.Recommend = &v
+	return s
+}
+
+func (s *LaunchServiceRequest) SetRegionId(v string) *LaunchServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *LaunchServiceRequest) SetServiceId(v string) *LaunchServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *LaunchServiceRequest) SetServiceVersion(v string) *LaunchServiceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type LaunchServiceResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// PublishNewVersion
+	ServiceLaunchResultType *string `json:"ServiceLaunchResultType,omitempty" xml:"ServiceLaunchResultType,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s LaunchServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LaunchServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LaunchServiceResponseBody) SetRequestId(v string) *LaunchServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LaunchServiceResponseBody) SetServiceLaunchResultType(v string) *LaunchServiceResponseBody {
+	s.ServiceLaunchResultType = &v
+	return s
+}
+
+func (s *LaunchServiceResponseBody) SetVersion(v string) *LaunchServiceResponseBody {
+	s.Version = &v
+	return s
+}
+
+type LaunchServiceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LaunchServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LaunchServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LaunchServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LaunchServiceResponse) SetHeaders(v map[string]*string) *LaunchServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LaunchServiceResponse) SetStatusCode(v int32) *LaunchServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LaunchServiceResponse) SetBody(v *LaunchServiceResponseBody) *LaunchServiceResponse {
+	s.Body = v
+	return s
+}
+
 type ListAcrImageRepositoriesRequest struct {
 	// The type of the artifact. Default value: AcrImage. Valid values:
 	//
@@ -15358,6 +15490,78 @@ func (client *Client) GetUploadCredentials(request *GetUploadCredentialsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUploadCredentialsResponse{}
 	_body, _err := client.GetUploadCredentialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - LaunchServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LaunchServiceResponse
+func (client *Client) LaunchServiceWithOptions(request *LaunchServiceRequest, runtime *util.RuntimeOptions) (_result *LaunchServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Categories)) {
+		query["Categories"] = request.Categories
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recommend)) {
+		query["Recommend"] = request.Recommend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LaunchService"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LaunchServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - LaunchServiceRequest
+//
+// @return LaunchServiceResponse
+func (client *Client) LaunchService(request *LaunchServiceRequest) (_result *LaunchServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LaunchServiceResponse{}
+	_body, _err := client.LaunchServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
