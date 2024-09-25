@@ -1,3 +1,6 @@
+2024-09-25 Version: v6.1.10
+- Generated golang 2017-08-01 for polardb.
+
 2024-09-19 Version: v6.1.9
 - Update API DeleteDBCluster: update param AccessKeyId.
 - Update API DeleteDBCluster: update param BackupRetentionPolicyOnClusterDeletion.

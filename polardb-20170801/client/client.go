@@ -3362,13 +3362,13 @@ type CreateDatabaseRequest struct {
 	//
 	// utf8
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
-	// The language that indicates the collation of the databases that are created.
+	// The language that defines the collation rules in the database.
 	//
-	// > 	- The language must be compatible with the character set that is specified by **CharacterSetName**.
+	// >
 	//
-	// >	- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
+	// 	- The language must be compatible with the character set that is specified by **CharacterSetName**.
 	//
-	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Then, click **Create Database**.
+	// 	- This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster. To view the valid values of this parameter, perform the following steps: Log on to the PolarDB console and click the ID of the cluster. In the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Then, click **Create Database**.
 	//
 	// example:
 	//
@@ -15197,11 +15197,13 @@ func (s *DescribeDBInitializeVariableRequest) SetResourceOwnerId(v int64) *Descr
 }
 
 type DescribeDBInitializeVariableResponseBody struct {
-	// The type of the database engine. Valid values:
+	// The database type. Valid values:
 	//
 	// 	- Oracle
 	//
 	// 	- PostgreSQL
+	//
+	// 	- MySQL
 	//
 	// example:
 	//
@@ -15291,15 +15293,15 @@ type DescribeDBInitializeVariableResponseBodyVariablesVariable struct {
 	Collate *string `json:"Collate,omitempty" xml:"Collate,omitempty"`
 	// The language that indicates the character type of the database.
 	//
-	// >- The language must be compatible with the character set that is specified by **CharacterSetName**.
+	// >
 	//
-	// >- The specified value must be the same as the value of **Collate**.
+	// 	- The language must be compatible with the character set that is specified by **CharacterSetName**.
 	//
-	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+	// 	- The specified parameter value must be the same as the value of **Collate**.
 	//
-	// >- This parameter is optional for PolarDB for MySQL clusters.
+	// 	- If the PolarDB cluster runs PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL, this parameter is required. If the cluster runs PolarDB for MySQL, this parameter is not supported.
 	//
-	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Then, click **Create Database**.
+	// To view the valid values of this parameter, perform the following steps: First, log on to the PolarDB console and click the ID of a cluster. Then, in the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Finally, click **Create Database**.
 	//
 	// example:
 	//
@@ -39081,7 +39083,7 @@ func (client *Client) DescribeDBClustersWithBackups(request *DescribeDBClustersW
 
 // Summary:
 //
-// Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+// Queries attributes such as character sets and collations supported by a database in a PolarDB cluster.
 //
 // @param request - DescribeDBInitializeVariableRequest
 //
@@ -39139,7 +39141,7 @@ func (client *Client) DescribeDBInitializeVariableWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+// Queries attributes such as character sets and collations supported by a database in a PolarDB cluster.
 //
 // @param request - DescribeDBInitializeVariableRequest
 //
