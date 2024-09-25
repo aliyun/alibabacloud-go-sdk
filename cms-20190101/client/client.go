@@ -36568,6 +36568,7 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHi
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig struct {
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId       *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -36579,6 +36580,11 @@ func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig) String() 
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig) SetRegion(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig {
+	s.Region = &v
+	return s
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig) SetSecurityGroupId(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig {
