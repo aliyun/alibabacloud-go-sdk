@@ -2102,8 +2102,9 @@ type CreateDocRequest struct {
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
-	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Config      *string                        `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content     *string                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocMetadata []*CreateDocRequestDocMetadata `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2032-05-25T16:28:36Z
@@ -2153,6 +2154,11 @@ func (s *CreateDocRequest) SetContent(v string) *CreateDocRequest {
 	return s
 }
 
+func (s *CreateDocRequest) SetDocMetadata(v []*CreateDocRequestDocMetadata) *CreateDocRequest {
+	s.DocMetadata = v
+	return s
+}
+
 func (s *CreateDocRequest) SetEndDate(v string) *CreateDocRequest {
 	s.EndDate = &v
 	return s
@@ -2183,6 +2189,64 @@ func (s *CreateDocRequest) SetUrl(v string) *CreateDocRequest {
 	return s
 }
 
+type CreateDocRequestDocMetadata struct {
+	BusinessViewId      *string                                           `json:"BusinessViewId,omitempty" xml:"BusinessViewId,omitempty"`
+	BusinessViewName    *string                                           `json:"BusinessViewName,omitempty" xml:"BusinessViewName,omitempty"`
+	MetaCellInfoDTOList []*CreateDocRequestDocMetadataMetaCellInfoDTOList `json:"MetaCellInfoDTOList,omitempty" xml:"MetaCellInfoDTOList,omitempty" type:"Repeated"`
+}
+
+func (s CreateDocRequestDocMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocRequestDocMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocRequestDocMetadata) SetBusinessViewId(v string) *CreateDocRequestDocMetadata {
+	s.BusinessViewId = &v
+	return s
+}
+
+func (s *CreateDocRequestDocMetadata) SetBusinessViewName(v string) *CreateDocRequestDocMetadata {
+	s.BusinessViewName = &v
+	return s
+}
+
+func (s *CreateDocRequestDocMetadata) SetMetaCellInfoDTOList(v []*CreateDocRequestDocMetadataMetaCellInfoDTOList) *CreateDocRequestDocMetadata {
+	s.MetaCellInfoDTOList = v
+	return s
+}
+
+type CreateDocRequestDocMetadataMetaCellInfoDTOList struct {
+	FieldCode *string `json:"FieldCode,omitempty" xml:"FieldCode,omitempty"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDocRequestDocMetadataMetaCellInfoDTOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocRequestDocMetadataMetaCellInfoDTOList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocRequestDocMetadataMetaCellInfoDTOList) SetFieldCode(v string) *CreateDocRequestDocMetadataMetaCellInfoDTOList {
+	s.FieldCode = &v
+	return s
+}
+
+func (s *CreateDocRequestDocMetadataMetaCellInfoDTOList) SetFieldName(v string) *CreateDocRequestDocMetadataMetaCellInfoDTOList {
+	s.FieldName = &v
+	return s
+}
+
+func (s *CreateDocRequestDocMetadataMetaCellInfoDTOList) SetValue(v string) *CreateDocRequestDocMetadataMetaCellInfoDTOList {
+	s.Value = &v
+	return s
+}
+
 type CreateDocShrinkRequest struct {
 	// example:
 	//
@@ -2197,8 +2261,9 @@ type CreateDocShrinkRequest struct {
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
-	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocMetadataShrink *string `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty"`
 	// example:
 	//
 	// 2032-05-25T16:28:36Z
@@ -2245,6 +2310,11 @@ func (s *CreateDocShrinkRequest) SetConfig(v string) *CreateDocShrinkRequest {
 
 func (s *CreateDocShrinkRequest) SetContent(v string) *CreateDocShrinkRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetDocMetadataShrink(v string) *CreateDocShrinkRequest {
+	s.DocMetadataShrink = &v
 	return s
 }
 
@@ -5426,11 +5496,12 @@ type DescribeDocResponseBody struct {
 	// example:
 	//
 	// 1111111111
-	CreateUserId   *int64                            `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string                           `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocInfo        *DescribeDocResponseBodyDocInfo   `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
-	DocName        *string                           `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	DocTags        []*DescribeDocResponseBodyDocTags `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
+	CreateUserId   *int64                                `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName *string                               `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocInfo        *DescribeDocResponseBodyDocInfo       `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
+	DocMetadata    []*DescribeDocResponseBodyDocMetadata `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty" type:"Repeated"`
+	DocName        *string                               `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	DocTags        []*DescribeDocResponseBodyDocTags     `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 20
@@ -5523,6 +5594,11 @@ func (s *DescribeDocResponseBody) SetCreateUserName(v string) *DescribeDocRespon
 
 func (s *DescribeDocResponseBody) SetDocInfo(v *DescribeDocResponseBodyDocInfo) *DescribeDocResponseBody {
 	s.DocInfo = v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetDocMetadata(v []*DescribeDocResponseBodyDocMetadata) *DescribeDocResponseBody {
+	s.DocMetadata = v
 	return s
 }
 
@@ -5669,6 +5745,64 @@ func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaText(v string) *Describe
 
 func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaType(v string) *DescribeDocResponseBodyDocInfoDocParas {
 	s.ParaType = &v
+	return s
+}
+
+type DescribeDocResponseBodyDocMetadata struct {
+	BusinessViewId      *string                                                  `json:"BusinessViewId,omitempty" xml:"BusinessViewId,omitempty"`
+	BusinessViewName    *string                                                  `json:"BusinessViewName,omitempty" xml:"BusinessViewName,omitempty"`
+	MetaCellInfoDTOList []*DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList `json:"MetaCellInfoDTOList,omitempty" xml:"MetaCellInfoDTOList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDocResponseBodyDocMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBodyDocMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBodyDocMetadata) SetBusinessViewId(v string) *DescribeDocResponseBodyDocMetadata {
+	s.BusinessViewId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocMetadata) SetBusinessViewName(v string) *DescribeDocResponseBodyDocMetadata {
+	s.BusinessViewName = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocMetadata) SetMetaCellInfoDTOList(v []*DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) *DescribeDocResponseBodyDocMetadata {
+	s.MetaCellInfoDTOList = v
+	return s
+}
+
+type DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList struct {
+	FieldCode *string `json:"FieldCode,omitempty" xml:"FieldCode,omitempty"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) SetFieldCode(v string) *DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList {
+	s.FieldCode = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) SetFieldName(v string) *DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList {
+	s.FieldName = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) SetValue(v string) *DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList {
+	s.Value = &v
 	return s
 }
 
@@ -12681,9 +12815,10 @@ type UpdateDocRequest struct {
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
-	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	Config      *string                        `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content     *string                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocMetadata []*UpdateDocRequestDocMetadata `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty" type:"Repeated"`
+	DocName     *string                        `json:"DocName,omitempty" xml:"DocName,omitempty"`
 	// example:
 	//
 	// 2023-03-11T23:59:59Z
@@ -12734,6 +12869,11 @@ func (s *UpdateDocRequest) SetContent(v string) *UpdateDocRequest {
 	return s
 }
 
+func (s *UpdateDocRequest) SetDocMetadata(v []*UpdateDocRequestDocMetadata) *UpdateDocRequest {
+	s.DocMetadata = v
+	return s
+}
+
 func (s *UpdateDocRequest) SetDocName(v string) *UpdateDocRequest {
 	s.DocName = &v
 	return s
@@ -12769,6 +12909,64 @@ func (s *UpdateDocRequest) SetTitle(v string) *UpdateDocRequest {
 	return s
 }
 
+type UpdateDocRequestDocMetadata struct {
+	BusinessViewId      *string                                           `json:"BusinessViewId,omitempty" xml:"BusinessViewId,omitempty"`
+	BusinessViewName    *string                                           `json:"BusinessViewName,omitempty" xml:"BusinessViewName,omitempty"`
+	MetaCellInfoDTOList []*UpdateDocRequestDocMetadataMetaCellInfoDTOList `json:"MetaCellInfoDTOList,omitempty" xml:"MetaCellInfoDTOList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDocRequestDocMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocRequestDocMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocRequestDocMetadata) SetBusinessViewId(v string) *UpdateDocRequestDocMetadata {
+	s.BusinessViewId = &v
+	return s
+}
+
+func (s *UpdateDocRequestDocMetadata) SetBusinessViewName(v string) *UpdateDocRequestDocMetadata {
+	s.BusinessViewName = &v
+	return s
+}
+
+func (s *UpdateDocRequestDocMetadata) SetMetaCellInfoDTOList(v []*UpdateDocRequestDocMetadataMetaCellInfoDTOList) *UpdateDocRequestDocMetadata {
+	s.MetaCellInfoDTOList = v
+	return s
+}
+
+type UpdateDocRequestDocMetadataMetaCellInfoDTOList struct {
+	FieldCode *string `json:"FieldCode,omitempty" xml:"FieldCode,omitempty"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDocRequestDocMetadataMetaCellInfoDTOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocRequestDocMetadataMetaCellInfoDTOList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocRequestDocMetadataMetaCellInfoDTOList) SetFieldCode(v string) *UpdateDocRequestDocMetadataMetaCellInfoDTOList {
+	s.FieldCode = &v
+	return s
+}
+
+func (s *UpdateDocRequestDocMetadataMetaCellInfoDTOList) SetFieldName(v string) *UpdateDocRequestDocMetadataMetaCellInfoDTOList {
+	s.FieldName = &v
+	return s
+}
+
+func (s *UpdateDocRequestDocMetadataMetaCellInfoDTOList) SetValue(v string) *UpdateDocRequestDocMetadataMetaCellInfoDTOList {
+	s.Value = &v
+	return s
+}
+
 type UpdateDocShrinkRequest struct {
 	// example:
 	//
@@ -12781,9 +12979,10 @@ type UpdateDocShrinkRequest struct {
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
-	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocMetadataShrink *string `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty"`
+	DocName           *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
 	// example:
 	//
 	// 2023-03-11T23:59:59Z
@@ -12831,6 +13030,11 @@ func (s *UpdateDocShrinkRequest) SetConfig(v string) *UpdateDocShrinkRequest {
 
 func (s *UpdateDocShrinkRequest) SetContent(v string) *UpdateDocShrinkRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetDocMetadataShrink(v string) *UpdateDocShrinkRequest {
+	s.DocMetadataShrink = &v
 	return s
 }
 
@@ -14964,6 +15168,10 @@ func (client *Client) CreateDocWithOptions(tmpReq *CreateDocRequest, runtime *ut
 	}
 	request := &CreateDocShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocMetadata)) {
+		request.DocMetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocMetadata, tea.String("DocMetadata"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
 		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
 	}
@@ -14983,6 +15191,10 @@ func (client *Client) CreateDocWithOptions(tmpReq *CreateDocRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocMetadataShrink)) {
+		query["DocMetadata"] = request.DocMetadataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
@@ -19568,6 +19780,10 @@ func (client *Client) UpdateDocWithOptions(tmpReq *UpdateDocRequest, runtime *ut
 	}
 	request := &UpdateDocShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocMetadata)) {
+		request.DocMetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocMetadata, tea.String("DocMetadata"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
 		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
 	}
@@ -19587,6 +19803,10 @@ func (client *Client) UpdateDocWithOptions(tmpReq *UpdateDocRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocMetadataShrink)) {
+		query["DocMetadata"] = request.DocMetadataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DocName)) {
