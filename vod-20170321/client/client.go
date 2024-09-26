@@ -9,6 +9,233 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AppInfoDTO struct {
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 1-普通应用，2-内嵌SDK.
+	AppType   *int32                 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	GmtCreate *string                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	ItemId    *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Platforms []*AppInfoDTOPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	UserId    *int64                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AppInfoDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppInfoDTO) GoString() string {
+	return s.String()
+}
+
+func (s *AppInfoDTO) SetAppName(v string) *AppInfoDTO {
+	s.AppName = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetAppType(v int32) *AppInfoDTO {
+	s.AppType = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetGmtCreate(v string) *AppInfoDTO {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetItemId(v string) *AppInfoDTO {
+	s.ItemId = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetPlatforms(v []*AppInfoDTOPlatforms) *AppInfoDTO {
+	s.Platforms = v
+	return s
+}
+
+func (s *AppInfoDTO) SetUserId(v int64) *AppInfoDTO {
+	s.UserId = &v
+	return s
+}
+
+type AppInfoDTOPlatforms struct {
+	ItemId         *string   `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LicenseItemIds []*string `json:"LicenseItemIds,omitempty" xml:"LicenseItemIds,omitempty" type:"Repeated"`
+	PkgName        *string   `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
+	PkgSignature   *string   `json:"PkgSignature,omitempty" xml:"PkgSignature,omitempty"`
+	PlatformType   *int64    `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	Type           *int64    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AppInfoDTOPlatforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppInfoDTOPlatforms) GoString() string {
+	return s.String()
+}
+
+func (s *AppInfoDTOPlatforms) SetItemId(v string) *AppInfoDTOPlatforms {
+	s.ItemId = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetLicenseItemIds(v []*string) *AppInfoDTOPlatforms {
+	s.LicenseItemIds = v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetPkgName(v string) *AppInfoDTOPlatforms {
+	s.PkgName = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetPkgSignature(v string) *AppInfoDTOPlatforms {
+	s.PkgSignature = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetPlatformType(v int64) *AppInfoDTOPlatforms {
+	s.PlatformType = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetType(v int64) *AppInfoDTOPlatforms {
+	s.Type = &v
+	return s
+}
+
+type LicenseInstanceAppDTO struct {
+	AppId            *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BeginOn          *string                                `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
+	ContractNo       *string                                `json:"ContractNo,omitempty" xml:"ContractNo,omitempty"`
+	CreationTime     *string                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ExpiredOn        *string                                `json:"ExpiredOn,omitempty" xml:"ExpiredOn,omitempty"`
+	InstanceId       *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemId           *string                                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LicenseConfigs   []*LicenseInstanceAppDTOLicenseConfigs `json:"LicenseConfigs,omitempty" xml:"LicenseConfigs,omitempty" type:"Repeated"`
+	ModificationTime *string                                `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Status           *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId           *int64                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s LicenseInstanceAppDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseInstanceAppDTO) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseInstanceAppDTO) SetAppId(v string) *LicenseInstanceAppDTO {
+	s.AppId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetBeginOn(v string) *LicenseInstanceAppDTO {
+	s.BeginOn = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetContractNo(v string) *LicenseInstanceAppDTO {
+	s.ContractNo = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetCreationTime(v string) *LicenseInstanceAppDTO {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetExpiredOn(v string) *LicenseInstanceAppDTO {
+	s.ExpiredOn = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetInstanceId(v string) *LicenseInstanceAppDTO {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetItemId(v string) *LicenseInstanceAppDTO {
+	s.ItemId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetLicenseConfigs(v []*LicenseInstanceAppDTOLicenseConfigs) *LicenseInstanceAppDTO {
+	s.LicenseConfigs = v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetModificationTime(v string) *LicenseInstanceAppDTO {
+	s.ModificationTime = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetStatus(v string) *LicenseInstanceAppDTO {
+	s.Status = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetUserId(v int64) *LicenseInstanceAppDTO {
+	s.UserId = &v
+	return s
+}
+
+type LicenseInstanceAppDTOLicenseConfigs struct {
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	FeatureIds      *string `json:"FeatureIds,omitempty" xml:"FeatureIds,omitempty"`
+	SdkId           *int32  `json:"SdkId,omitempty" xml:"SdkId,omitempty"`
+	SdkName         *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	Subscription    *string `json:"Subscription,omitempty" xml:"Subscription,omitempty"`
+	SubscriptionImp *string `json:"SubscriptionImp,omitempty" xml:"SubscriptionImp,omitempty"`
+	SubscriptionPkg *string `json:"SubscriptionPkg,omitempty" xml:"SubscriptionPkg,omitempty"`
+}
+
+func (s LicenseInstanceAppDTOLicenseConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseInstanceAppDTOLicenseConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetBusinessType(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetFeatureIds(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.FeatureIds = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSdkId(v int32) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SdkId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSdkName(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SdkName = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscription(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.Subscription = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionImp(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SubscriptionImp = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionPkg(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SubscriptionPkg = &v
+	return s
+}
+
 type AddAITemplateRequest struct {
 	// The detailed configurations of the AI template. The value must be a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	//
@@ -557,7 +784,7 @@ func (s *AddEditingProjectResponse) SetBody(v *AddEditingProjectResponseBody) *A
 }
 
 type AddEditingProjectMaterialsRequest struct {
-	// The ID of the material. Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
+	// Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
 	//
 	// >  If you specify multiple materials, make sure that the materials are of the same type as specified in MaterialType.
 	//
@@ -675,6 +902,10 @@ type AddEditingProjectMaterialsResponseBodyMaterialList struct {
 	// 1000487543
 	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The category name of the material.
+	//
+	// example:
+	//
+	// cate1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The thumbnail URL.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
@@ -684,13 +915,17 @@ type AddEditingProjectMaterialsResponseBodyMaterialList struct {
 	//
 	// 2019-10-02T08:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
 	// 1234751840694470
 	CustomerId *int64 `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
 	// The description of the material.
+	//
+	// example:
+	//
+	// test material
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The duration of the material. Unit: seconds. The value is accurate to four decimal places.
 	//
@@ -2169,6 +2404,110 @@ func (s *CancelUrlUploadJobsResponse) SetBody(v *CancelUrlUploadJobsResponseBody
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aekzko7fsuj****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-xxxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// example:
+	//
+	// AppInfo
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResourceGroupRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 25818875-5F78-4A*****F6-D7393642CA58
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAppInfoRequest struct {
 	// The name of the application. The application name must be unique.
 	//
@@ -2191,7 +2530,12 @@ type CreateAppInfoRequest struct {
 	// example:
 	//
 	// myfirstapp
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aekzko7fsuj****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3274,6 +3618,8 @@ type DecryptKMSDataKeyResponseBody struct {
 	//
 	// tRYXuCwgja12xxO1N/gZERDDCLw9doZEQiPDk/Bv****
 	Plaintext *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
@@ -3933,12 +4279,22 @@ func (s *DeleteEditingProjectResponse) SetBody(v *DeleteEditingProjectResponseBo
 }
 
 type DeleteEditingProjectMaterialsRequest struct {
+	// The material ID. Separate multiple material IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9e3101bf24bf41c*****123318788ca
 	MaterialIds *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
+	// The type of the material. Valid values:
+	//
+	// 	- **video**
+	//
+	// 	- **audio**
+	//
+	// 	- **image**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3947,6 +4303,8 @@ type DeleteEditingProjectMaterialsRequest struct {
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4001,6 +4359,8 @@ func (s *DeleteEditingProjectMaterialsRequest) SetResourceOwnerId(v string) *Del
 }
 
 type DeleteEditingProjectMaterialsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 746FFA07-8BBB-46*****B1-3E94E3B2915E
@@ -6431,13 +6791,23 @@ func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertList) Set
 }
 
 type DescribeVodCertificateListResponseBodyCertificateListModelCertListCert struct {
+	// The algorithm.
+	//
+	// example:
+	//
+	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ID of the certificate.
 	//
 	// example:
 	//
 	// 235437
-	CertId         *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 14173772-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The name of the certificate.
 	//
@@ -6450,17 +6820,37 @@ type DescribeVodCertificateListResponseBodyCertificateListModelCertListCert stru
 	// example:
 	//
 	// test
-	Common          *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainMatchCert *bool   `json:"DomainMatchCert,omitempty" xml:"DomainMatchCert,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 1725206400000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// DomainMatchCert.
+	//
+	// example:
+	//
+	// false
+	DomainMatchCert *bool `json:"DomainMatchCert,omitempty" xml:"DomainMatchCert,omitempty"`
+	// The time when the certificate expired.
+	//
+	// example:
+	//
+	// 1759507200000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The fingerprint of the certificate.
 	//
 	// example:
 	//
 	// ****
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// cert-cn-cd806ae0fdfbfa60
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The certificate authority (CA) that issued the certificate.
 	//
 	// example:
@@ -6472,7 +6862,12 @@ type DescribeVodCertificateListResponseBodyCertificateListModelCertListCert stru
 	// example:
 	//
 	// 1512388610
-	LastTime      *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The signAlgorithm.
+	//
+	// example:
+	//
+	// sha256withrsa
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
 }
 
@@ -7161,7 +7556,7 @@ func (s *DescribeVodDomainCertificateInfoRequest) SetOwnerId(v int64) *DescribeV
 }
 
 type DescribeVodDomainCertificateInfoResponseBody struct {
-	// The certificate information about the domain name.
+	// The certificate information.
 	CertInfos *DescribeVodDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -7219,7 +7614,12 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	//
 	// 2018-06-03T13:03:39Z
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	CertId         *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 13227737-cn-hangzhou
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The validity period of the certificate. Unit: months or years.
 	//
 	// example:
@@ -7237,8 +7637,18 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// example:
 	//
 	// Let\\"s Encrypt
-	CertOrg       *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
-	CertRegion    *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	// The region where the certificate is used.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// The time when the certificate became effective.
+	//
+	// example:
+	//
+	// 2023-04-26T20:23:38Z
 	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
 	// The type of the certificate. Valid values:
 	//
@@ -7251,15 +7661,38 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// example:
 	//
 	// free
-	CertType          *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	CertUpdateTime    *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The time at which the certificate was updated.
+	//
+	// example:
+	//
+	// 2023-04-26T20:23:38Z
+	CertUpdateTime *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
+	// The CNAME status of the domain name.
+	//
+	// 	- **ok**: The domain name points to the CNAME assigned by Alibaba Cloud CDN.
+	//
+	// 	- **cname_error**: An error occurred and the domain name cannot point to the CNAME.
+	//
+	// 	- **op_domain_cname_error*	- : An error occurred to the CNAME of the top-level domain. The domain name cannot point to the CNAME.
+	//
+	// 	- **unsupport_wildcard**: The wildcard domain name is not supported.
+	//
+	// example:
+	//
+	// ok
 	DomainCnameStatus *string `json:"DomainCnameStatus,omitempty" xml:"DomainCnameStatus,omitempty"`
 	// The accelerated domain name whose ICP filing status you want to update.
 	//
 	// example:
 	//
 	// example.com
-	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The public key of the certificate.
+	//
+	// example:
+	//
+	// ****
 	ServerCertificate *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
 	// The status of the SSL certificate.
 	//
@@ -12044,8 +12477,6 @@ type DescribeVodMediaPlayDataRequest struct {
 	//
 	// 	- **eu-central-1**: Germany (Frankfurt)
 	//
-	// 	- **ap-south-1**: India (Mumbai) (disabled)
-	//
 	// example:
 	//
 	// cn-beijing
@@ -12221,6 +12652,10 @@ type DescribeVodMediaPlayDataResponseBodyQoeInfoList struct {
 	// 246
 	VideoDuration *float32 `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
 	// The name of the audio or video file.
+	//
+	// example:
+	//
+	// title
 	VideoTitle *string `json:"VideoTitle,omitempty" xml:"VideoTitle,omitempty"`
 }
 
@@ -12381,6 +12816,10 @@ func (s *DescribeVodRangeDataByLocateAndIspServiceRequest) SetStartTime(v string
 
 type DescribeVodRangeDataByLocateAndIspServiceResponseBody struct {
 	// The returned result. The value is in the JSON format. These parameters indicate the following information in sequence: UNIX time, region, ISP, distribution of HTTP status codes, response time, bandwidth (bit/s), average response rate, page views, cache hit ratio, and request hit ratio.
+	//
+	// example:
+	//
+	// {"1472659200":{"tianjin":{"unicom":{"http_codes":{"000":0,"200":6,"400":0},"rt":4183,"bandwidth":46639,"avg_speed":7773,"pv":6,"hit_rate":0.93,"request_hit_rate":0.66}}}}
 	JsonResult *string `json:"JsonResult,omitempty" xml:"JsonResult,omitempty"`
 	// The ID of the request.
 	//
@@ -13203,6 +13642,10 @@ func (s *DescribeVodSSLCertificateListResponse) SetBody(v *DescribeVodSSLCertifi
 }
 
 type DescribeVodStorageDataRequest struct {
+	// The ID of the application.
+	//
+	// 	- Default value: **app-1000000**.
+	//
 	// example:
 	//
 	// app-1000000
@@ -17656,7 +18099,7 @@ func (s *GetAppInfosRequest) SetAppIds(v string) *GetAppInfosRequest {
 }
 
 type GetAppInfosResponseBody struct {
-	// The details of each application.
+	// The details of applications.
 	AppInfoList []*GetAppInfosResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
 	// The HTTP status code that is returned.
 	//
@@ -17733,7 +18176,12 @@ type GetAppInfosResponseBodyAppInfoList struct {
 	//
 	// 2019-03-01T09:00:00Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aekzko7fsuj****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the application. Valid values:
 	//
 	// 	- **Normal**
@@ -23917,7 +24365,12 @@ type GetMezzanineInfoResponseBodyMezzanine struct {
 	// example:
 	//
 	// oss
-	OutputType       *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// The preprocess status od the media.
+	//
+	// example:
+	//
+	// UnPreprocess
 	PreprocessStatus *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
 	// The period of time in which the object remains in the restored state.
 	//
@@ -29641,20 +30094,25 @@ func (s *ListAITemplateResponse) SetBody(v *ListAITemplateResponseBody) *ListAIT
 }
 
 type ListAppInfoRequest struct {
-	// The number of the page to return. By default, pages start from page 1.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
+	// The number of entries per page. Default value: **10**. Maximum value: **100**.
 	//
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzko7fsuj****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the application. After an application is created, it enters the **Normal*	- state. Valid values:
+	// The status of the application. You can specify the status of the applications that you want to query. After an application is created, it enters the **Normal*	- state. Valid values:
 	//
 	// 	- **Normal**
 	//
@@ -29695,7 +30153,7 @@ func (s *ListAppInfoRequest) SetStatus(v string) *ListAppInfoRequest {
 }
 
 type ListAppInfoResponseBody struct {
-	// The details of each application.
+	// The details of applications.
 	AppInfoList []*ListAppInfoResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -29765,8 +30223,18 @@ type ListAppInfoResponseBodyAppInfoList struct {
 	//
 	// 2019-03-01T09:00:00Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 地域。
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzko7fsuj****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the application. Valid values:
 	//
 	// 	- **Normal**
@@ -31784,6 +32252,8 @@ func (s *ListWatermarkRequest) SetAppId(v string) *ListWatermarkRequest {
 }
 
 type ListWatermarkResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
@@ -31842,6 +32312,10 @@ type ListWatermarkResponseBodyWatermarkInfos struct {
 	// NotDefault
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The name of the watermark template.
+	//
+	// example:
+	//
+	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the watermark template.
 	//
@@ -31854,6 +32328,10 @@ type ListWatermarkResponseBodyWatermarkInfos struct {
 	// Text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The configuration information of the watermark such as the display position and special effects. The value is a JSON string. The configuration parameters for image and text watermarks are different. For more information about the parameter structure, see [WatermarkConfig](~~98618#section-h01-44s-2lr~~).
+	//
+	// example:
+	//
+	// {"FontColor": "Blue","FontSize": 80,"Content": "test watermark"}
 	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
 	// The ID of the watermark template.
 	//
@@ -32062,8 +32540,26 @@ func (s *MoveAppResourceResponse) SetBody(v *MoveAppResourceResponseBody) *MoveA
 }
 
 type PreloadVodObjectCachesRequest struct {
-	Area      *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	L2Preload *bool   `json:"L2Preload,omitempty" xml:"L2Preload,omitempty"`
+	// The acceleration region in which you want to prefetch content. If you do not specify a region, the value overseas is used.
+	//
+	// 	- **domestic**: Chinese mainland
+	//
+	// 	- **overseas**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// domestic
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// Specifies whether to prefetch content to POPs. Valid values:
+	//
+	// 	- **true**: prefetches content to nodes that include L2 DCDN nodes.
+	//
+	// 	- **false**: prefetches content to L2 POPs or L3 POPs.
+	//
+	// example:
+	//
+	// true
+	L2Preload *bool `json:"L2Preload,omitempty" xml:"L2Preload,omitempty"`
 	// The URL of the file to be prefetched. Separate multiple URLs with line breaks (\\n or \\r\\n).
 	//
 	// This parameter is required.
@@ -32074,7 +32570,20 @@ type PreloadVodObjectCachesRequest struct {
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	WithHeader    *string `json:"WithHeader,omitempty" xml:"WithHeader,omitempty"`
+	// The custom header for prefetch in the JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "Accept-Encoding": [
+	//
+	//             "gzip, deflate, br"
+	//
+	//       ]
+	//
+	// }
+	WithHeader *string `json:"WithHeader,omitempty" xml:"WithHeader,omitempty"`
 }
 
 func (s PreloadVodObjectCachesRequest) String() string {
@@ -35372,6 +35881,8 @@ func (s *SetCrossdomainContentResponse) SetBody(v *SetCrossdomainContentResponse
 }
 
 type SetDefaultAITemplateRequest struct {
+	// The ID of the AI template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35394,10 +35905,14 @@ func (s *SetDefaultAITemplateRequest) SetTemplateId(v string) *SetDefaultAITempl
 }
 
 type SetDefaultAITemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8E70E3F8-E2EE-47BC-4677-379D6F28****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the AI template.
+	//
 	// example:
 	//
 	// 1706a0063dd733f6a823ef32e0a5****
@@ -35744,7 +36259,7 @@ type SetMessageCallbackRequest struct {
 	//
 	// 	- **HTTP**
 	//
-	// 	- **MNS**
+	// 	- **Simple Message Queue(formerly MNS)**
 	//
 	// example:
 	//
@@ -35762,13 +36277,13 @@ type SetMessageCallbackRequest struct {
 	//
 	// FileUploadComplete
 	EventTypeList *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
-	// The public endpoint of Message Service (MNS). This parameter only takes effect when the CallbackType parameter is set to **MNS**. To obtain the public endpoint, log on to the [MNS console](https://account.aliyun.com/login/login.html) and click **Get Endpoint*	- in the upper-right corner of the Topics page. For more information, see [Endpoint](https://help.aliyun.com/document_detail/27480.html).
+	// The public endpoint of Message Service (MNS). This parameter only takes effect when the CallbackType parameter is set to **Simple Message Queue(formerly MNS)**. To obtain the public endpoint, log on to the [Simple Message Queue(formerly MNS) console](https://account.aliyun.com/login/login.html) and click **Get Endpoint*	- in the upper-right corner of the Topics page. For more information, see [Endpoint](https://help.aliyun.com/document_detail/27480.html).
 	//
 	// example:
 	//
 	// http://****.mns.cn-shanghai.aliyuncs.com/
 	MnsEndpoint *string `json:"MnsEndpoint,omitempty" xml:"MnsEndpoint,omitempty"`
-	// The name of the MNS queue. You can obtain the name of the MNS queue on the **Queues*	- page in the [MNS console](https://account.aliyun.com/login/login.html). This parameter is required when you set CallbackType to **MNS**.
+	// The name of the Simple Message Queue(formerly MNS). You can obtain the name of the Simple Message Queue(formerly MNS) on the **Queues*	- page in the [Simple Message Queue(formerly MNS) console](https://account.aliyun.com/login/login.html). This parameter is required when you set CallbackType to **Simple Message Queue(formerly MNS)**.
 	//
 	// example:
 	//
@@ -39328,6 +39843,8 @@ func (s *UpdateVideoInfosResponse) SetBody(v *UpdateVideoInfosResponseBody) *Upd
 }
 
 type UpdateVodDomainRequest struct {
+	// The domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39336,10 +39853,14 @@ type UpdateVodDomainRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The information about the addresses of origin servers.
+	//
 	// example:
 	//
 	// [{"content":"1.1.1.1","type":"ipaddr","priority":"20","port":80}]
 	Sources *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The top-level domain.
+	//
 	// example:
 	//
 	// example.com
@@ -39380,6 +39901,8 @@ func (s *UpdateVodDomainRequest) SetTopLevelDomain(v string) *UpdateVodDomainReq
 }
 
 type UpdateVodDomainResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-****-2C4477247A74
@@ -41597,6 +42120,78 @@ func (client *Client) CancelUrlUploadJobs(request *CancelUrlUploadJobsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelUrlUploadJobsResponse{}
 	_body, _err := client.CancelUrlUploadJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44890,13 +45485,15 @@ func (client *Client) DescribeVodDomainMax95BpsData(request *DescribeVodDomainMa
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account.
+// This operation is available only in the China (Shanghai) region.
+//
+// 	- You can call this operation up to 100 times per second per account.
 //
 // 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
-// The time granularity varies with the time range specified by the Interval parameter. The following table describes the time period within which historical data is available and the data delay.
+// The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
 //
 // |Time granularity|Maximum time range per query|Historical data available|Data delay|
 //
@@ -44906,7 +45503,7 @@ func (client *Client) DescribeVodDomainMax95BpsData(request *DescribeVodDomainMa
 //
 // |1 hour|31 days|186 days|3 to 4 hours|
 //
-// |1 day|366 days|366 days|4 hours in most cases, not more than 24 hours|
+// |1 day|366 days|366 days|4 to 24 hours|
 //
 // ---
 //
@@ -44978,13 +45575,15 @@ func (client *Client) DescribeVodDomainQpsDataWithOptions(request *DescribeVodDo
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account.
+// This operation is available only in the China (Shanghai) region.
+//
+// 	- You can call this operation up to 100 times per second per account.
 //
 // 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
-// The time granularity varies with the time range specified by the Interval parameter. The following table describes the time period within which historical data is available and the data delay.
+// The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
 //
 // |Time granularity|Maximum time range per query|Historical data available|Data delay|
 //
@@ -44994,7 +45593,7 @@ func (client *Client) DescribeVodDomainQpsDataWithOptions(request *DescribeVodDo
 //
 // |1 hour|31 days|186 days|3 to 4 hours|
 //
-// |1 day|366 days|366 days|4 hours in most cases, not more than 24 hours|
+// |1 day|366 days|366 days|4 to 24 hours|
 //
 // ---
 //
@@ -50514,7 +51113,13 @@ func (client *Client) ListAITemplate(request *ListAITemplateRequest) (_result *L
 //
 // Description:
 //
-// Supports filtering queries by application status.
+// ### [](#)Usage notes
+//
+// You can query applications based on states.
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - ListAppInfoRequest
 //
@@ -50572,7 +51177,13 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 //
 // Description:
 //
-// Supports filtering queries by application status.
+// ### [](#)Usage notes
+//
+// You can query applications based on states.
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - ListAppInfoRequest
 //

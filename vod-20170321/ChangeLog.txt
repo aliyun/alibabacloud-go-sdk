@@ -1,3 +1,7 @@
+2024-09-26 Version: v4.3.0
+- Support API ChangeResourceGroup.
+
+
 2024-08-21 Version: v4.2.0
 - Support API DescribeVodSSLCertificateList.
 - Support API SetVodDomainSSLCertificate.
