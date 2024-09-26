@@ -9,6 +9,285 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type GenerateBroadcastNewsRequest struct {
+	// This parameter is required.
+	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
+}
+
+func (s GenerateBroadcastNewsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateBroadcastNewsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateBroadcastNewsRequest) SetPrompt(v string) *GenerateBroadcastNewsRequest {
+	s.Prompt = &v
+	return s
+}
+
+type GenerateBroadcastNewsResponseBody struct {
+	// example:
+	//
+	// xx
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GenerateBroadcastNewsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GenerateBroadcastNewsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateBroadcastNewsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateBroadcastNewsResponseBody) SetCode(v string) *GenerateBroadcastNewsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBody) SetData(v *GenerateBroadcastNewsResponseBodyData) *GenerateBroadcastNewsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBody) SetHttpStatusCode(v int32) *GenerateBroadcastNewsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBody) SetMessage(v string) *GenerateBroadcastNewsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBody) SetRequestId(v string) *GenerateBroadcastNewsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBody) SetSuccess(v bool) *GenerateBroadcastNewsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateBroadcastNewsResponseBodyData struct {
+	HotTopicSummaries []*GenerateBroadcastNewsResponseBodyDataHotTopicSummaries `json:"hotTopicSummaries,omitempty" xml:"hotTopicSummaries,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2bb0ea82dafd48a8817fadc4c90e2b52
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 3feb69ed02d9b1a17d0f1a942675d300
+	TaskId *string                                     `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	Text   *string                                     `json:"text,omitempty" xml:"text,omitempty"`
+	Usage  *GenerateBroadcastNewsResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GenerateBroadcastNewsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateBroadcastNewsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateBroadcastNewsResponseBodyData) SetHotTopicSummaries(v []*GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) *GenerateBroadcastNewsResponseBodyData {
+	s.HotTopicSummaries = v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyData) SetSessionId(v string) *GenerateBroadcastNewsResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyData) SetTaskId(v string) *GenerateBroadcastNewsResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyData) SetText(v string) *GenerateBroadcastNewsResponseBodyData {
+	s.Text = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyData) SetUsage(v *GenerateBroadcastNewsResponseBodyDataUsage) *GenerateBroadcastNewsResponseBodyData {
+	s.Usage = v
+	return s
+}
+
+type GenerateBroadcastNewsResponseBodyDataHotTopicSummaries struct {
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	HotTopic *string `json:"hotTopic,omitempty" xml:"hotTopic,omitempty"`
+	// example:
+	//
+	// 2024-09-13_08
+	HotTopicVersion *string `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	// example:
+	//
+	// 1000000
+	HotValue *float64 `json:"hotValue,omitempty" xml:"hotValue,omitempty"`
+	// example:
+	//
+	// 1458tb3bjo7531kap42a
+	Id     *string                                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Images []*GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxx
+	TextSummary *string `json:"textSummary,omitempty" xml:"textSummary,omitempty"`
+}
+
+func (s GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetCategory(v string) *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries {
+	s.Category = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetHotTopic(v string) *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries {
+	s.HotTopic = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetHotTopicVersion(v string) *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetHotValue(v float64) *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries {
+	s.HotValue = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetId(v string) *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries {
+	s.Id = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetImages(v []*GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages) *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries {
+	s.Images = v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetTextSummary(v string) *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries {
+	s.TextSummary = &v
+	return s
+}
+
+type GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages struct {
+	// example:
+	//
+	// http://xxx.com/xxx.jpeg
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages) SetUrl(v string) *GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages {
+	s.Url = &v
+	return s
+}
+
+type GenerateBroadcastNewsResponseBodyDataUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 3
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s GenerateBroadcastNewsResponseBodyDataUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateBroadcastNewsResponseBodyDataUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataUsage) SetInputTokens(v int64) *GenerateBroadcastNewsResponseBodyDataUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataUsage) SetOutputTokens(v int64) *GenerateBroadcastNewsResponseBodyDataUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponseBodyDataUsage) SetTotalTokens(v int64) *GenerateBroadcastNewsResponseBodyDataUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GenerateBroadcastNewsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateBroadcastNewsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateBroadcastNewsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateBroadcastNewsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateBroadcastNewsResponse) SetHeaders(v map[string]*string) *GenerateBroadcastNewsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponse) SetStatusCode(v int32) *GenerateBroadcastNewsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateBroadcastNewsResponse) SetBody(v *GenerateBroadcastNewsResponseBody) *GenerateBroadcastNewsResponse {
+	s.Body = v
+	return s
+}
+
 type ListHotTopicSummariesRequest struct {
 	// example:
 	//
@@ -2016,11 +2295,13 @@ type RunVideoAnalysisRequest struct {
 	// example:
 	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5ax
-	OriginalSessionId *string `json:"originalSessionId,omitempty" xml:"originalSessionId,omitempty"`
+	OriginalSessionId *string  `json:"originalSessionId,omitempty" xml:"originalSessionId,omitempty"`
+	SnapshotInterval  *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
 	// example:
 	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
 	TaskId                         *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	VideoExtraInfo                 *string `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
 	VideoModelCustomPromptTemplate *string `json:"videoModelCustomPromptTemplate,omitempty" xml:"videoModelCustomPromptTemplate,omitempty"`
 	// example:
 	//
@@ -2065,8 +2346,18 @@ func (s *RunVideoAnalysisRequest) SetOriginalSessionId(v string) *RunVideoAnalys
 	return s
 }
 
+func (s *RunVideoAnalysisRequest) SetSnapshotInterval(v float64) *RunVideoAnalysisRequest {
+	s.SnapshotInterval = &v
+	return s
+}
+
 func (s *RunVideoAnalysisRequest) SetTaskId(v string) *RunVideoAnalysisRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequest) SetVideoExtraInfo(v string) *RunVideoAnalysisRequest {
+	s.VideoExtraInfo = &v
 	return s
 }
 
@@ -2099,11 +2390,13 @@ type RunVideoAnalysisShrinkRequest struct {
 	// example:
 	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5ax
-	OriginalSessionId *string `json:"originalSessionId,omitempty" xml:"originalSessionId,omitempty"`
+	OriginalSessionId *string  `json:"originalSessionId,omitempty" xml:"originalSessionId,omitempty"`
+	SnapshotInterval  *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
 	// example:
 	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
 	TaskId                         *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	VideoExtraInfo                 *string `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
 	VideoModelCustomPromptTemplate *string `json:"videoModelCustomPromptTemplate,omitempty" xml:"videoModelCustomPromptTemplate,omitempty"`
 	// example:
 	//
@@ -2148,8 +2441,18 @@ func (s *RunVideoAnalysisShrinkRequest) SetOriginalSessionId(v string) *RunVideo
 	return s
 }
 
+func (s *RunVideoAnalysisShrinkRequest) SetSnapshotInterval(v float64) *RunVideoAnalysisShrinkRequest {
+	s.SnapshotInterval = &v
+	return s
+}
+
 func (s *RunVideoAnalysisShrinkRequest) SetTaskId(v string) *RunVideoAnalysisShrinkRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetVideoExtraInfo(v string) *RunVideoAnalysisShrinkRequest {
+	s.VideoExtraInfo = &v
 	return s
 }
 
@@ -2914,6 +3217,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 新闻播报-抽取分类获取播报热点
+//
+// @param request - GenerateBroadcastNewsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateBroadcastNewsResponse
+func (client *Client) GenerateBroadcastNewsWithOptions(workspaceId *string, request *GenerateBroadcastNewsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateBroadcastNewsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["prompt"] = request.Prompt
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateBroadcastNews"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/GenerateBroadcastNews"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateBroadcastNewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新闻播报-抽取分类获取播报热点
+//
+// @param request - GenerateBroadcastNewsRequest
+//
+// @return GenerateBroadcastNewsResponse
+func (client *Client) GenerateBroadcastNews(workspaceId *string, request *GenerateBroadcastNewsRequest) (_result *GenerateBroadcastNewsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateBroadcastNewsResponse{}
+	_body, _err := client.GenerateBroadcastNewsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 轻应用-新闻播报-获取热点话题摘要列表
 //
 // @param request - ListHotTopicSummariesRequest
@@ -3515,8 +3882,16 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 		body["originalSessionId"] = request.OriginalSessionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SnapshotInterval)) {
+		body["snapshotInterval"] = request.SnapshotInterval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		body["taskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoExtraInfo)) {
+		body["videoExtraInfo"] = request.VideoExtraInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoModelCustomPromptTemplate)) {
