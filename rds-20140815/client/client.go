@@ -2110,7 +2110,8 @@ type CloneDBInstanceRequest struct {
 	// example:
 	//
 	// mysql.n1.micro.1
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -2347,6 +2348,11 @@ func (s *CloneDBInstanceRequest) SetClientToken(v string) *CloneDBInstanceReques
 
 func (s *CloneDBInstanceRequest) SetDBInstanceClass(v string) *CloneDBInstanceRequest {
 	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *CloneDBInstanceRequest) SetDBInstanceDescription(v string) *CloneDBInstanceRequest {
+	s.DBInstanceDescription = &v
 	return s
 }
 
@@ -2642,7 +2648,8 @@ type CloneDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// mysql.n1.micro.1
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -2879,6 +2886,11 @@ func (s *CloneDBInstanceShrinkRequest) SetClientToken(v string) *CloneDBInstance
 
 func (s *CloneDBInstanceShrinkRequest) SetDBInstanceClass(v string) *CloneDBInstanceShrinkRequest {
 	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *CloneDBInstanceShrinkRequest) SetDBInstanceDescription(v string) *CloneDBInstanceShrinkRequest {
+	s.DBInstanceDescription = &v
 	return s
 }
 
@@ -3354,14 +3366,14 @@ type CopyDatabaseRequest struct {
 	//
 	// rm-uf6wjk5******
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Destination database name.
+	// The destination database name.
 	//
 	// example:
 	//
 	// db2***
 	DstDBName *string `json:"DstDBName,omitempty" xml:"DstDBName,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Reserve account.
+	// The reserved account.
 	//
 	// example:
 	//
@@ -3375,7 +3387,7 @@ type CopyDatabaseRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Source database name.
+	// The source database name.
 	//
 	// example:
 	//
@@ -3743,9 +3755,13 @@ type CreateAccountRequest struct {
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// Specifies whether to apply the password policy.
+	// Specifies whether to use a password policy.
 	//
-	// >  This parameter is available only for specific ApsaraDB RDS for SQL Server instances. If your instance uses the shared instance family or runs SQL Server 2008 R2, this parameter is unavailable.
+	// >
+	//
+	// 	- This parameter is available only for ApsaraDB RDS for SQL Server instances that do not belong to the shared instance family and do not run SQL Server 2008 R2.
+	//
+	// 	- Before you call this operation, you must configure a password policy for the account of your instance. For more information, see [Configure a password policy for the account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2848317.html).
 	//
 	// example:
 	//
@@ -11762,32 +11778,64 @@ func (s *CreatePostgresExtensionsResponse) SetBody(v *CreatePostgresExtensionsRe
 }
 
 type CreateRCDeploymentSetRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The deployment set name. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (.), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// deployment_test
 	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	// The description of the deployment set. The value must be 2 to 256 characters in length and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of groups in the deployment set. Valid values: 1 to 7.
+	//
+	// Default value: 3.
+	//
+	// >  This parameter takes effect only when `Strategy is set to AvailabilityGroup`.
+	//
 	// example:
 	//
 	// 3
 	GroupCount *int64 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// The emergency solution to use in the scenario in which instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+	//
+	// 	- **CancelMembershipAndStart**: removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+	//
+	// 	- **KeepStopped**: does not remove the instances from the deployment set and keeps the instances in the Stopped state.
+	//
+	// Default value: CancelMembershipAndStart.
+	//
 	// example:
 	//
 	// CancelMembershipAndStart
 	OnUnableToRedeployFailedInstance *string `json:"OnUnableToRedeployFailedInstance,omitempty" xml:"OnUnableToRedeployFailedInstance,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The deployment strategy. Valid values:
+	//
+	// 	- **Availability**: high-availability strategy
+	//
+	// 	- **AvailabilityGroup**: high-availability group strategy
+	//
+	// 	- **LowLatency**: low latency strategy
+	//
+	// Default value: Availability.
+	//
 	// example:
 	//
 	// Availability
@@ -11838,10 +11886,14 @@ func (s *CreateRCDeploymentSetRequest) SetStrategy(v string) *CreateRCDeployment
 }
 
 type CreateRCDeploymentSetResponseBody struct {
+	// The deployment set ID.
+	//
 	// example:
 	//
 	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
@@ -15392,12 +15444,16 @@ func (s *DeletePostgresExtensionsResponse) SetBody(v *DeletePostgresExtensionsRe
 }
 
 type DeleteRCDeploymentSetRequest struct {
+	// The deployment set ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15425,6 +15481,8 @@ func (s *DeleteRCDeploymentSetRequest) SetRegionId(v string) *DeleteRCDeployment
 }
 
 type DeleteRCDeploymentSetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
@@ -15551,20 +15609,42 @@ func (s *DeleteRCInstanceResponse) SetBody(v *DeleteRCInstanceResponseBody) *Del
 }
 
 type DeleteRCInstancesRequest struct {
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to forcefully release a running instance. Valid values:
+	//
+	// 	- **Yes**
+	//
+	// 	- **No*	- (default)
+	//
 	// example:
 	//
 	// Yes
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The details of the instance.
+	//
 	// This parameter is required.
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to release an expired subscription instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// example:
 	//
 	// true
@@ -15605,20 +15685,42 @@ func (s *DeleteRCInstancesRequest) SetTerminateSubscription(v bool) *DeleteRCIns
 }
 
 type DeleteRCInstancesShrinkRequest struct {
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to forcefully release a running instance. Valid values:
+	//
+	// 	- **Yes**
+	//
+	// 	- **No*	- (default)
+	//
 	// example:
 	//
 	// Yes
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The details of the instance.
+	//
 	// This parameter is required.
 	InstanceIdShrink *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to release an expired subscription instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// example:
 	//
 	// true
@@ -15659,6 +15761,8 @@ func (s *DeleteRCInstancesShrinkRequest) SetTerminateSubscription(v bool) *Delet
 }
 
 type DeleteRCInstancesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34
@@ -18815,13 +18919,13 @@ type DescribeAvailableClassesRequest struct {
 	//
 	// 	- **cloud_ssd**: standard SSD.
 	//
-	// 	- **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
+	// 	- **cloud_essd**: performance level 1 (PL1) Enterprise SSD (ESSD)
 	//
-	// 	- **cloud_essd2**: ESSDs of PL2
+	// 	- **cloud_essd2**: PL2 ESSD
 	//
-	// 	- **cloud_essd3**: ESSD of PL3
+	// 	- **cloud_essd3**: PL3 ESSD
 	//
-	// > Serverless instances support only ESSDs of PL 1. For a serverless instance, you must set this parameter to **cloud_essd**.
+	// >  Serverless instances use only PL1 ESSDs. If you want to create a serverless instance, you must set this parameter to **cloud_essd**.
 	//
 	// This parameter is required.
 	//
@@ -18887,7 +18991,7 @@ type DescribeAvailableClassesRequest struct {
 	//
 	// Prepaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The type of the order. Set the value to **BUY**
+	// The type of order. Set the value to **BUY**
 	//
 	// example:
 	//
@@ -50695,28 +50799,54 @@ func (s *DescribeQuickSaleConfigResponse) SetBody(v *DescribeQuickSaleConfigResp
 }
 
 type DescribeRCDeploymentSetsRequest struct {
+	// The IDs of the deployment sets. The value can be a JSON array that consists of deployment set IDs in the format of `["ds-xxxxxxxxx", "ds-yyyyyyyyy", ... "ds-zzzzzzzzz"]`. You can specify up to 100 deployment set IDs in each request. Separate the deployment set IDs with commas (,).
+	//
 	// example:
 	//
 	// ["ds-2zeeuw16zo2gr9e6****"]
 	DeploymentSetIds *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
+	// The deployment set name. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// deployment_test
 	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	// The page number.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Maximum value: 50.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The deployment strategy. Valid values:
+	//
+	// 	- **Availability**: high availability strategy
+	//
+	// 	- **AvailabilityGroup**: high availability group strategy
+	//
+	// Default value: Availability.
+	//
 	// example:
 	//
 	// Availability
@@ -50762,23 +50892,34 @@ func (s *DescribeRCDeploymentSetsRequest) SetStrategy(v string) *DescribeRCDeplo
 }
 
 type DescribeRCDeploymentSetsResponseBody struct {
+	// The details of the deployment set.
 	DeploymentSets *DescribeRCDeploymentSetsResponseBodyDeploymentSets `json:"DeploymentSets,omitempty" xml:"DeploymentSets,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 39265F46-EC77-4036-8AC4-F035F32F6BE2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -50841,44 +50982,68 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSets) SetDeploymentSet(v 
 }
 
 type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
+	// The details of the capacities of the deployment set. This parameter is valid only when the deployment set contains existing RDS Custom instances. The value contains the details of the capacities of the deployment set in different zones.
 	Capacities *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
+	// The time when the deployment set was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-06-19T07:15:44Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deployment set description.
+	//
 	// example:
 	//
 	// test
 	DeploymentSetDescription *string `json:"DeploymentSetDescription,omitempty" xml:"DeploymentSetDescription,omitempty"`
+	// The deployment set ID.
+	//
 	// example:
 	//
 	// ds-ob5n4rbgy****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// The deployment set name.
+	//
 	// example:
 	//
 	// deployment_test
 	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	// The deployment strategy. The return value of this parameter is the value of the `Strategy` request parameter.
+	//
 	// example:
 	//
 	// Availability
 	DeploymentStrategy *string `json:"DeploymentStrategy,omitempty" xml:"DeploymentStrategy,omitempty"`
+	// The deployment domain.
+	//
 	// example:
 	//
 	// default
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The deployment granularity.
+	//
 	// example:
 	//
 	// None
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The number of groups in the deployment set.
+	//
+	// >  This parameter is valid only when the Strategy request parameter is set to AvailabilityGroup.
+	//
 	// example:
 	//
 	// 3
 	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// The number of RDS Custom instances in the deployment set.
+	//
 	// example:
 	//
 	// 1
-	InstanceAmount *int32                                                                      `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
-	InstanceIds    *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
+	// The ID of the RDS Custom instance in the deployment set.
+	InstanceIds *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// The deployment strategy.
+	//
 	// example:
 	//
 	// LooseDispersion
@@ -50971,14 +51136,20 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapaciti
 }
 
 type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesCapacity struct {
+	// The number of RDS Custom instances that reside in the zone and can be added to the deployment set.
+	//
 	// example:
 	//
 	// 18
 	AvailableAmount *int32 `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// The number of RDS Custom instances that reside in the zone in the deployment set.
+	//
 	// example:
 	//
 	// 2
 	UsedAmount *int32 `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
+	// The zone ID. Only the IDs of the zones to which the existing RDS Custom instances in the deployment set belong are returned.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
@@ -51055,24 +51226,38 @@ func (s *DescribeRCDeploymentSetsResponse) SetBody(v *DescribeRCDeploymentSetsRe
 }
 
 type DescribeRCImageListRequest struct {
+	// The image architecture. Valid values:
+	//
+	// 	- x86_64
+	//
+	// 	- arm64
+	//
 	// example:
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The image type. Set the value to **self**.
+	//
 	// example:
 	//
 	// self
@@ -51113,23 +51298,34 @@ func (s *DescribeRCImageListRequest) SetType(v string) *DescribeRCImageListReque
 }
 
 type DescribeRCImageListResponseBody struct {
+	// The information about the images.
 	Images []*DescribeRCImageListResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2553A660-E4EB-4AF4-A402-8AFF70A49143
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of images.
+	//
 	// example:
 	//
 	// 2
@@ -51175,51 +51371,100 @@ func (s *DescribeRCImageListResponseBody) SetTotalCount(v int32) *DescribeRCImag
 }
 
 type DescribeRCImageListResponseBodyImages struct {
+	// The image architecture. Valid values:
+	//
+	// 	- x86_64
+	//
+	// 	- arm64
+	//
 	// example:
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// The time when the image was created.
+	//
 	// example:
 	//
 	// 2024-04-25T02:17:40Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the image.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// m-2oqiu973jwcxe****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// Created_from_i-2zeh17y17sz677x****
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image version.
+	//
 	// example:
 	//
 	// 2
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// Indicates whether the image is a public image. Public images include public images provided by Alibaba Cloud and custom images published as community images.
+	//
+	// 	- **true**: The image is a public image.
+	//
+	// 	- **false**: The image is not a public image.
+	//
 	// example:
 	//
 	// false
-	IsPublic *bool   `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
-	OSName   *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	IsPublic *bool `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	// The display name of the operating system in Chinese.
+	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// The display name of the operating system in English.
+	//
 	// example:
 	//
 	// Alibaba Cloud Linux  2.1903 LTS 64 bit Quick Boot
 	OSNameEn *string `json:"OSNameEn,omitempty" xml:"OSNameEn,omitempty"`
+	// The type of the operating system. Valid values:
+	//
+	// 	- **windows**
+	//
+	// 	- **linux**
+	//
 	// example:
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The image size. Unit: GiB.
+	//
 	// example:
 	//
 	// 40
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The image status. Valid values:
+	//
+	// 	- **Unavailable**
+	//
+	// 	- **Available**
+	//
+	// 	- **Creating**
+	//
+	// 	- **CreateFailed**
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the image is used by the RDS Custom instance. Valid values:
+	//
+	// 	- **instance**: The image is used to create one or more RDS Custom instances.
+	//
+	// 	- **none**: The image is not used to create RDS Custom instances.
+	//
 	// example:
 	//
 	// instance
@@ -51329,12 +51574,16 @@ func (s *DescribeRCImageListResponse) SetBody(v *DescribeRCImageListResponseBody
 }
 
 type DescribeRCInstanceAttributeRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -51360,134 +51609,246 @@ func (s *DescribeRCInstanceAttributeRequest) SetRegionId(v string) *DescribeRCIn
 }
 
 type DescribeRCInstanceAttributeResponseBody struct {
+	// The ID of the cluster to which the instance belongs.
+	//
+	// >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
+	//
 	// example:
 	//
 	// None
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-04-22T06:52:23Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The performance mode of the burstable instance.
+	//
 	// example:
 	//
 	// None
-	CreditSpecification *string                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	DataDisks           *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
+	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	// The details of the data disk.
+	DataDisks *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
+	// The attributes of the dedicated hosts.
+	//
 	// if can be null:
 	// true
 	DedicatedHostAttribute *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute `json:"DedicatedHostAttribute,omitempty" xml:"DedicatedHostAttribute,omitempty" type:"Struct"`
+	// The ID of the deployment set.
+	//
 	// example:
 	//
 	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The reserved parameter.
+	//
 	// example:
 	//
 	// None
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The Elastic Compute Service (ECS) instance family.
+	//
 	// example:
 	//
 	// ecs.g6.2xlarge
-	EcsInstanceType *string                                            `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	EipAddress      *DescribeRCInstanceAttributeResponseBodyEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
+	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	// The elastic IP address (EIP) associated with the instance.
+	EipAddress *DescribeRCInstanceAttributeResponseBodyEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
+	// Indicates whether the Jumbo Frame feature is enabled for the instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-08-10T00:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The instance hostname.
+	//
 	// example:
 	//
 	// iZ2zej1n3cin51rlmby****
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The storage type of the host. Valid values:
+	//
+	// 	- **dhg_cloud_ssd**: ESSD
+	//
+	// 	- **dhg_local_ssd**: local SSD
+	//
 	// example:
 	//
 	// dhg_cloud_ssd
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	// The image ID of the instance.
+	//
 	// example:
 	//
 	// m-2oqiu973jwcxe****
-	ImageId        *string                                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The private IP addresses of the instance in the classic network.
 	InnerIpAddress *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The network type. Valid values:
+	//
+	// 	- **classic**
+	//
+	// 	- **vpc**
+	//
 	// example:
 	//
 	// vpc
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The instance type of the instance.
+	//
 	// example:
 	//
 	// mysql.x4.xlarge.6cm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The billing method for network usage. Valid values:
+	//
+	// 	- **PayByBandwidth**: pay-by-bandwidth
+	//
+	// 	- **PayByTraffic**: pay-by-data-transfer
+	//
+	// >  If the **pay-by-traffic*	- billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth*	- billing method for network usage.
+	//
 	// example:
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The maximum inbound bandwidth from the Internet. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 1
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	// The maximum outbound bandwidth to the Internet. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 5
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// Indicates whether the instance is I/O optimized.
+	//
+	// 	- **optimized**: The instance is I/O optimized.
+	//
+	// 	- **none**: The instance is not I/O optimized.
+	//
 	// example:
 	//
 	// optimized
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	// The name of the key pair.
+	//
 	// example:
 	//
 	// test_01
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The memory capacity of the instance. Unit: MiB.
+	//
 	// example:
 	//
 	// 8192
-	Memory          *int32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OperationLocks  *DescribeRCInstanceAttributeResponseBodyOperationLocks  `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The reasons why the instance is locked.
+	OperationLocks *DescribeRCInstanceAttributeResponseBodyOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
+	// The public IP address of the instance.
 	PublicIpAddress *DescribeRCInstanceAttributeResponseBodyPublicIpAddress `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EA2D4F34-01A7-46EB-A339-D80882135206
-	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security groups.
 	SecurityGroupIds *DescribeRCInstanceAttributeResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	// The serial number of the instance.
+	//
 	// example:
 	//
 	// b076f6ff-46d1-4234-a608-4e951ed6****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The instance status. Valid values:
+	//
+	// 	- **Pending**
+	//
+	// 	- **Running**
+	//
+	// 	- **Starting**
+	//
+	// 	- **Stopping**
+	//
+	// 	- **Stopped**
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the billing of the instance continues after the instance is stopped. Valid values:
+	//
+	// 	- **KeepCharging**: The billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+	//
+	// 	- **StopCharging**: The billing of the instance stops after the instance is stopped. After the instance is stopped, resources such as CPU cores, memory resources, and public IP address are released. The instance may be unable to restart if some required resources are out of stock in the current region.
+	//
+	// 	- **Not-applicable**: The No Fees for Stopped Instances feature is not supported for the instance.
+	//
 	// example:
 	//
 	// Not-applicable
 	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	// The virtual LAN (VLAN) ID of the instance.
+	//
+	// >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
+	//
 	// example:
 	//
 	// None
 	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	// The virtual private cloud (VPC) attributes of the instance.
+	//
 	// if can be null:
 	// true
 	VpcAttributes *DescribeRCInstanceAttributeResponseBodyVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-b
@@ -51710,22 +52071,40 @@ func (s *DescribeRCInstanceAttributeResponseBodyDataDisks) SetDataDisk(v []*Desc
 }
 
 type DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk struct {
+	// The category of the data disk.
+	//
 	// example:
 	//
 	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Indicates whether the data disk is released when the instance is released. Valid values:
+	//
+	// 	- **true**: The data disk is released when the instance is released.
+	//
+	// 	- **false**: The data disk is reserved when the instance is released.
+	//
 	// example:
 	//
 	// true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// Indicates whether the data disk is encrypted. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// The performance level of data disk. This parameter is available when the data disk is an Enterprise SSD (ESSD).
+	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The size of the data disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 40
@@ -51766,10 +52145,14 @@ func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) SetSize(v int
 }
 
 type DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute struct {
+	// The ID of the dedicated host.
+	//
 	// example:
 	//
 	// None
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The name of the dedicated host.
+	//
 	// example:
 	//
 	// None
@@ -51795,18 +52178,32 @@ func (s *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute) SetDedic
 }
 
 type DescribeRCInstanceAttributeResponseBodyEipAddress struct {
+	// The EIP ID.
+	//
 	// example:
 	//
 	// eip-bp14k3rz6cbg6zxbe****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The maximum Internet bandwidth of the EIP. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 5
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The billing method of the Internet-facing instance. Valid values:
+	//
+	// 	- **paybytraffic:*	- pay-by-data-transfer
+	//
+	// 	- **paybybandwidth**: pay-by-bandwidth
+	//
+	// >  If the **pay-by-traffic*	- billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth*	- billing method for network usage.
+	//
 	// example:
 	//
 	// paybytraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The EIP.
+	//
 	// example:
 	//
 	// 8.147.XXX.XXX
@@ -51876,6 +52273,18 @@ func (s *DescribeRCInstanceAttributeResponseBodyOperationLocks) SetLockReason(v 
 }
 
 type DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason struct {
+	// The reason why the instance is locked. Valid values:
+	//
+	// 	- **financial**: The instance is locked due to overdue payments.
+	//
+	// 	- **security**: The instance is locked for security purposes.
+	//
+	// 	- **recycling**: The instance is locked because the instance is a preemptible instance and pending to be released.
+	//
+	// 	- **dedicatedhostfinancial**: The instance is locked due to overdue payments for the dedicated host.
+	//
+	// 	- **refunded**: The instance is locked because a refund was made for the instance.
+	//
 	// example:
 	//
 	// None
@@ -51930,15 +52339,22 @@ func (s *DescribeRCInstanceAttributeResponseBodySecurityGroupIds) SetSecurityGro
 }
 
 type DescribeRCInstanceAttributeResponseBodyVpcAttributes struct {
+	// The network address translation (NAT) IP address of the instance. The NAT IP address is used by instances in different VPCs for communication.
+	//
 	// example:
 	//
 	// None
-	NatIpAddress     *string                                                               `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
+	NatIpAddress *string `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
+	// The private IP addresses of the instance.
 	PrivateIpAddress *DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Struct"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp1nt15muovrc5qdj****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-2zeu747v4765aw2id****
@@ -52020,22 +52436,40 @@ func (s *DescribeRCInstanceAttributeResponse) SetBody(v *DescribeRCInstanceAttri
 }
 
 type DescribeRCInstancesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-2ze704f*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
+	// Page starts from page 1.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Maximum value: 100.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
 	// example:
 	//
 	// vpc-uf6f7l4fg90****
@@ -52076,19 +52510,28 @@ func (s *DescribeRCInstancesRequest) SetVpcId(v string) *DescribeRCInstancesRequ
 }
 
 type DescribeRCInstancesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The details of the instance.
 	RCInstances []*DescribeRCInstancesResponseBodyRCInstances `json:"RCInstances,omitempty" xml:"RCInstances,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -52129,42 +52572,74 @@ func (s *DescribeRCInstancesResponseBody) SetTotalCount(v int32) *DescribeRCInst
 }
 
 type DescribeRCInstancesResponseBodyRCInstances struct {
+	// The cluster name.
+	//
 	// example:
 	//
 	// testrdscustom
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The database type.
+	//
 	// example:
 	//
 	// rds_custom
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the task was created. The time is displayed in GMT.
+	//
 	// example:
 	//
 	// 2023-03-22 07:56:53.0
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The host IP address.
+	//
 	// example:
 	//
 	// 172.30.XXX.XXX
 	HostIp *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	// The host name.
+	//
 	// example:
 	//
 	// i-2zeaiz4g9u23f40m****
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-2ze704f*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance status. Valid values:
+	//
+	// 	- **Pending**
+	//
+	// 	- **Running**
+	//
+	// 	- **Starting**
+	//
+	// 	- **Stopping**
+	//
+	// 	- **Stopped**
+	//
+	// >  If the value returned for the DescribeRCInstances operation is different from the value that is returned for the **DescribeRCInstanceAttribute*	- operation, the value returned for the **DescribeRCInstanceAttribute*	- operation shall prevail.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-uf6f7l4fg90****
@@ -52259,40 +52734,68 @@ func (s *DescribeRCInstancesResponse) SetBody(v *DescribeRCInstancesResponseBody
 }
 
 type DescribeRCMetricListRequest struct {
+	// The end of the time range to query. The end time must be later than the start time. Example: `2024-08-06 10:15:00`.
+	//
 	// example:
 	//
 	// 2024-08-06 10:15:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The reserved parameter.
+	//
 	// example:
 	//
 	// None
 	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries per page.
+	//
+	// Default value: 1000.
+	//
+	// >  The maximum value of the Length parameter in a request is 1440.
+	//
 	// example:
 	//
 	// 1000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The metric that you want to use. For more information, see [CloudMonitor metrics](javascript:void\\(0\\)).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CPUUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// 6178f1825f9fb76ce0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The statistical period of the monitoring data.
+	//
+	// Set the value to 60 or an integer multiple of 60.
+	//
+	// Unit: seconds.
+	//
+	// Default value: 60.
+	//
 	// example:
 	//
 	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Example: `2024-08-06 10:05:00`.
+	//
 	// example:
 	//
 	// 2024-08-06 10:05:00
@@ -52353,30 +52856,50 @@ func (s *DescribeRCMetricListRequest) SetStartTime(v string) *DescribeRCMetricLi
 }
 
 type DescribeRCMetricListResponseBody struct {
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The monitoring data.
+	//
 	// example:
 	//
 	// [{\\"timestamp\\":1722909960000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988087373\\",\\"Minimum\\":0.097,\\"Maximum\\":0.097,\\"Average\\":0.097},{\\"timestamp\\":1722910020000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988087373\\",\\"Minimum\\":0.093,\\"Maximum\\":0.093,\\"Average\\":0.093}]
 	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
+	// The message that is returned for the request.
+	//
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// 6178f1825f9fb76ce0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The statistical period of the monitoring data.
+	//
 	// example:
 	//
 	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EA2D4F34-01A7-46EB-A339-D80882135206
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -62053,6 +62576,7 @@ type ListClassesRequest struct {
 	//
 	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The type of order that you want to query. Valid values:
 	//
 	// 	- **BUY**: specifies the query orders that are used to purchase instances.
@@ -62102,6 +62626,11 @@ func (s *ListClassesRequest) SetCommodityCode(v string) *ListClassesRequest {
 
 func (s *ListClassesRequest) SetDBInstanceId(v string) *ListClassesRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetEngine(v string) *ListClassesRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -62241,6 +62770,8 @@ type ListClassesResponseBodyItems struct {
 	//
 	// 2500
 	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
+	Category       *string `json:"category,omitempty" xml:"category,omitempty"`
+	StorageType    *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
 }
 
 func (s ListClassesResponseBodyItems) String() string {
@@ -62298,6 +62829,16 @@ func (s *ListClassesResponseBodyItems) SetMemoryClass(v string) *ListClassesResp
 
 func (s *ListClassesResponseBodyItems) SetReferencePrice(v string) *ListClassesResponseBodyItems {
 	s.ReferencePrice = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetCategory(v string) *ListClassesResponseBodyItems {
+	s.Category = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyItems) SetStorageType(v string) *ListClassesResponseBodyItems {
+	s.StorageType = &v
 	return s
 }
 
@@ -73708,26 +74249,54 @@ func (s *ModifyParameterGroupResponse) SetBody(v *ModifyParameterGroupResponseBo
 }
 
 type ModifyRCInstanceRequest struct {
+	// Specifies whether to enable the automatic payment feature. Valid values:
+	//
+	// 	- **true*	- (default): enables the feature. You must make sure that your account balance is sufficient.
+	//
+	// 	- **false**: disables the feature. An unpaid order is generated.
+	//
+	// >  If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
+	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The type of the change that you want to perform on the instance. Valid values:
+	//
+	// >  This parameter is optional. The system can automatically determine whether the instance change is an upgrade or a downgrade. If you want to specify this parameter, take note of the following items:
+	//
+	// 	- **Upgrade*	- (default): upgrades the instance type. Make sure that your account balance is sufficient.
+	//
+	// 	- **Down**: downgrades the instance type. If the new instance type specified by InstanceType has lower specifications than the current instance type, set Direction to Down.
+	//
 	// example:
 	//
 	// Up
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and resource inventory.
+	//
+	// 	- **false**: performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types of RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
+	//
 	// example:
 	//
 	// mysql.i8.large.2cm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hagnzhou
@@ -73773,10 +74342,14 @@ func (s *ModifyRCInstanceRequest) SetRegionId(v string) *ModifyRCInstanceRequest
 }
 
 type ModifyRCInstanceResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 100789370230206
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF82B07-28D2-48D1-B5D6-7E78FED277C7
@@ -76652,20 +77225,38 @@ func (s *QueryRecommendByCodeResponse) SetBody(v *QueryRecommendByCodeResponseBo
 }
 
 type RebootRCInstanceRequest struct {
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors. If the request passes the dry run, the DryRunOperation error code is returned. Otherwise, an error message is returned.
+	//
+	// 	- **false**: performs a dry run and performs the actual request. If the request passes the dry run, the instance is restarted.
+	//
+	// Default value: false
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to forcefully stop the instance before you restart the instance Valid values:
+	//
+	// 	- **true**: forcefully stops the instance. This operation is equivalent to the typical power-off operation. Cache data that is not written to storage devices on the instance is lost.
+	//
+	// 	- **false*	- (default): normally stops the instance.
+	//
 	// example:
 	//
 	// false
 	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rc-m5sc1271fv344a1r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -76701,6 +77292,8 @@ func (s *RebootRCInstanceRequest) SetRegionId(v string) *RebootRCInstanceRequest
 }
 
 type RebootRCInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E36DB6E-AE3B-53B6-A703-85F883FD1B2C
@@ -78430,26 +79023,52 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type ResizeRCInstanceDiskRequest struct {
+	// Specifies whether to enable the automatic payment feature for the instance. Valid values:
+	//
+	// 	- **true*	- (default): enables the feature. Make sure that your account balance is sufficient.
+	//
+	// 	- **false**: disables the feature. An unpaid order is generated.
+	//
+	// >  If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+	//
+	// 	- **false**: performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new disk size. Unit: GiB.
+	//
 	// example:
 	//
 	// 100
 	NewSize *int64 `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The method that you want to use to resize the disk. Valid values:
+	//
+	// 	- **offline*	- (default): resizes disks offline. After you resize a disk offline, you must restart the instance for the resizing operation to take effect.
+	//
+	// 	- **online**: resizes disks online. After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance.
+	//
 	// example:
 	//
 	// online
@@ -78495,10 +79114,14 @@ func (s *ResizeRCInstanceDiskRequest) SetType(v string) *ResizeRCInstanceDiskReq
 }
 
 type ResizeRCInstanceDiskResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 230546833080102
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
@@ -80209,12 +80832,16 @@ func (s *StartDBInstanceResponse) SetBody(v *StartDBInstanceResponseBody) *Start
 }
 
 type StartRCInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rc-l02u59b2kjfd2us0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -80240,6 +80867,8 @@ func (s *StartRCInstanceRequest) SetRegionId(v string) *StartRCInstanceRequest {
 }
 
 type StartRCInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
@@ -80395,16 +81024,26 @@ func (s *StopDBInstanceResponse) SetBody(v *StopDBInstanceResponseBody) *StopDBI
 }
 
 type StopRCInstanceRequest struct {
+	// Specifies whether to forcefully stop the instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// example:
 	//
 	// false
 	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rc-m5sc1271fv344a1r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -80435,6 +81074,8 @@ func (s *StopRCInstanceRequest) SetRegionId(v string) *StopRCInstanceRequest {
 }
 
 type StopRCInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E36DB6E-AE3B-53B6-A703-85F883FD1B2C
@@ -80927,10 +81568,14 @@ func (s *SwitchDBInstanceVpcResponse) SetBody(v *SwitchDBInstanceVpcResponseBody
 }
 
 type SyncRCKeyPairRequest struct {
+	// The name of the key pair.
+	//
 	// example:
 	//
 	// customer_keypairs
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -80956,7 +81601,10 @@ func (s *SyncRCKeyPairRequest) SetRegionId(v string) *SyncRCKeyPairRequest {
 }
 
 type SyncRCKeyPairResponseBody struct {
+	// The details of the result.
 	Data *SyncRCKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 60478CCB-95EA-5D06-8A51-CAC83A316E9A
@@ -80982,6 +81630,12 @@ func (s *SyncRCKeyPairResponseBody) SetRequestId(v string) *SyncRCKeyPairRespons
 }
 
 type SyncRCKeyPairResponseBodyData struct {
+	// Indicates whether the synchronization succeeded. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -84729,6 +85383,10 @@ func (client *Client) CloneDBInstanceWithOptions(tmpReq *CloneDBInstanceRequest,
 		query["DBInstanceClass"] = request.DBInstanceClass
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceDescription)) {
+		query["DBInstanceDescription"] = request.DBInstanceDescription
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -85476,11 +86134,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 //
 // 	- MariaDB
 //
-// ### [](#)Usage notes
+// ### [](#)Feature description
 //
-// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/2402073.html).
+// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2841997.html).
 //
-// ### [](#)Precautions
+// ### [](#)Prerequisites
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
@@ -85488,7 +86146,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 //
 // 	- The instance does not have ongoing backup tasks.
 //
-// 	- The number of backup files that are created per day for an instance cannot exceed 20.
+// 	- The number of backup sets that can be created for an instance per day cannot exceed 20.
 //
 // ### [](#)References
 //
@@ -85574,11 +86232,11 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // 	- MariaDB
 //
-// ### [](#)Usage notes
+// ### [](#)Feature description
 //
-// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/2402073.html).
+// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2841997.html).
 //
-// ### [](#)Precautions
+// ### [](#)Prerequisites
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
@@ -85586,7 +86244,7 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // 	- The instance does not have ongoing backup tasks.
 //
-// 	- The number of backup files that are created per day for an instance cannot exceed 20.
+// 	- The number of backup sets that can be created for an instance per day cannot exceed 20.
 //
 // ### [](#)References
 //
@@ -88440,7 +89098,7 @@ func (client *Client) CreatePostgresExtensions(request *CreatePostgresExtensions
 
 // Summary:
 //
-// 创建RDS CUSTOM部署集
+// Creates a deployment set for an RDS Custom instance in a region. Before you call this operation, you must specify parameters such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy.
 //
 // @param request - CreateRCDeploymentSetRequest
 //
@@ -88506,7 +89164,7 @@ func (client *Client) CreateRCDeploymentSetWithOptions(request *CreateRCDeployme
 
 // Summary:
 //
-// 创建RDS CUSTOM部署集
+// Creates a deployment set for an RDS Custom instance in a region. Before you call this operation, you must specify parameters such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy.
 //
 // @param request - CreateRCDeploymentSetRequest
 //
@@ -90916,7 +91574,7 @@ func (client *Client) DeletePostgresExtensions(request *DeletePostgresExtensions
 
 // Summary:
 //
-// 删除RDS CUSTOM部署集
+// Deletes a deployment set for an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId and DeploymentSetId.
 //
 // @param request - DeleteRCDeploymentSetRequest
 //
@@ -90962,7 +91620,7 @@ func (client *Client) DeleteRCDeploymentSetWithOptions(request *DeleteRCDeployme
 
 // Summary:
 //
-// 删除RDS CUSTOM部署集
+// Deletes a deployment set for an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId and DeploymentSetId.
 //
 // @param request - DeleteRCDeploymentSetRequest
 //
@@ -91048,7 +91706,11 @@ func (client *Client) DeleteRCInstance(request *DeleteRCInstanceRequest) (_resul
 
 // Summary:
 //
-// 批量删除RDS用户专属主机实例
+// Releases a subscription RDS Custom instance.
+//
+// Description:
+//
+// After an instance is released, all physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
 //
 // @param tmpReq - DeleteRCInstancesRequest
 //
@@ -91112,7 +91774,11 @@ func (client *Client) DeleteRCInstancesWithOptions(tmpReq *DeleteRCInstancesRequ
 
 // Summary:
 //
-// 批量删除RDS用户专属主机实例
+// Releases a subscription RDS Custom instance.
+//
+// Description:
+//
+// After an instance is released, all physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
 //
 // @param request - DeleteRCInstancesRequest
 //
@@ -102122,7 +102788,7 @@ func (client *Client) DescribeQuickSaleConfig(request *DescribeQuickSaleConfigRe
 
 // Summary:
 //
-// 描述RDS CUSTOM部署集
+// Queries the details of one or more deployment sets for RDS Custom instances. Before you call this operation, you must specify parameters such as DeploymentSetIds, Strategy, and DeploymentSetName.
 //
 // @param request - DescribeRCDeploymentSetsRequest
 //
@@ -102160,7 +102826,7 @@ func (client *Client) DescribeRCDeploymentSetsWithOptions(request *DescribeRCDep
 
 // Summary:
 //
-// 描述RDS CUSTOM部署集
+// Queries the details of one or more deployment sets for RDS Custom instances. Before you call this operation, you must specify parameters such as DeploymentSetIds, Strategy, and DeploymentSetName.
 //
 // @param request - DescribeRCDeploymentSetsRequest
 //
@@ -102178,7 +102844,7 @@ func (client *Client) DescribeRCDeploymentSets(request *DescribeRCDeploymentSets
 
 // Summary:
 //
-// 查询镜像资源
+// Queries custom images that can be used to create an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId.
 //
 // @param request - DescribeRCImageListRequest
 //
@@ -102216,7 +102882,7 @@ func (client *Client) DescribeRCImageListWithOptions(request *DescribeRCImageLis
 
 // Summary:
 //
-// 查询镜像资源
+// Queries custom images that can be used to create an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId.
 //
 // @param request - DescribeRCImageListRequest
 //
@@ -102234,7 +102900,7 @@ func (client *Client) DescribeRCImageList(request *DescribeRCImageListRequest) (
 
 // Summary:
 //
-// 查询RDS用户专属主机实例
+// Queries the details of an RDS Custom instance.
 //
 // @param request - DescribeRCInstanceAttributeRequest
 //
@@ -102272,7 +102938,7 @@ func (client *Client) DescribeRCInstanceAttributeWithOptions(request *DescribeRC
 
 // Summary:
 //
-// 查询RDS用户专属主机实例
+// Queries the details of an RDS Custom instance.
 //
 // @param request - DescribeRCInstanceAttributeRequest
 //
@@ -102290,7 +102956,7 @@ func (client *Client) DescribeRCInstanceAttribute(request *DescribeRCInstanceAtt
 
 // Summary:
 //
-// 查询RC实例列表
+// Queries the details of an RDS Custom instance.
 //
 // @param request - DescribeRCInstancesRequest
 //
@@ -102348,7 +103014,7 @@ func (client *Client) DescribeRCInstancesWithOptions(request *DescribeRCInstance
 
 // Summary:
 //
-// 查询RC实例列表
+// Queries the details of an RDS Custom instance.
 //
 // @param request - DescribeRCInstancesRequest
 //
@@ -102366,7 +103032,7 @@ func (client *Client) DescribeRCInstances(request *DescribeRCInstancesRequest) (
 
 // Summary:
 //
-// 查询指定云产品的指定监控项的监控数据
+// Queries the monitoring data of a metric for an RDS Custom instance.
 //
 // @param request - DescribeRCMetricListRequest
 //
@@ -102404,7 +103070,7 @@ func (client *Client) DescribeRCMetricListWithOptions(request *DescribeRCMetricL
 
 // Summary:
 //
-// 查询指定云产品的指定监控项的监控数据
+// Queries the monitoring data of a metric for an RDS Custom instance.
 //
 // @param request - DescribeRCMetricListRequest
 //
@@ -106233,6 +106899,10 @@ func (client *Client) ListClassesWithOptions(request *ListClassesRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
@@ -113074,7 +113744,23 @@ func (client *Client) ModifyParameterGroup(request *ModifyParameterGroupRequest)
 
 // Summary:
 //
-// ModifyRCInstance
+// Upgrades or downgrades the instance type of a subscription RDS Custom instance. The new instance type takes effect for the remaining lifecycle of the instance.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the billing methods, pricing, and refund rules of RDS Custom.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- You cannot change the instance type of an expired instance. You can renew the instance and try again.
+//
+// 	- When you downgrade the instance type of an instance, take note of the following items:
+//
+//     	- The instance must be in the Stopped state.
+//
+//     	- The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+//
+// 	- The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect. If the instance is in the Stopped state, you need only to start the instance. You do not need to restart the instance after it enters the Running state.
 //
 // @param request - ModifyRCInstanceRequest
 //
@@ -113136,7 +113822,23 @@ func (client *Client) ModifyRCInstanceWithOptions(request *ModifyRCInstanceReque
 
 // Summary:
 //
-// ModifyRCInstance
+// Upgrades or downgrades the instance type of a subscription RDS Custom instance. The new instance type takes effect for the remaining lifecycle of the instance.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the billing methods, pricing, and refund rules of RDS Custom.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- You cannot change the instance type of an expired instance. You can renew the instance and try again.
+//
+// 	- When you downgrade the instance type of an instance, take note of the following items:
+//
+//     	- The instance must be in the Stopped state.
+//
+//     	- The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+//
+// 	- The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect. If the instance is in the Stopped state, you need only to start the instance. You do not need to restart the instance after it enters the Running state.
 //
 // @param request - ModifyRCInstanceRequest
 //
@@ -114720,7 +115422,7 @@ func (client *Client) QueryRecommendByCode(request *QueryRecommendByCodeRequest)
 
 // Summary:
 //
-// 重启RDS用户专属主机实例
+// Restarts an RDS Custom instance that is in the Running state.
 //
 // @param request - RebootRCInstanceRequest
 //
@@ -114774,7 +115476,7 @@ func (client *Client) RebootRCInstanceWithOptions(request *RebootRCInstanceReque
 
 // Summary:
 //
-// 重启RDS用户专属主机实例
+// Restarts an RDS Custom instance that is in the Running state.
 //
 // @param request - RebootRCInstanceRequest
 //
@@ -116100,7 +116802,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
-// ResizeRCInstanceDisk
+// Expand the storage capacity of an RDS Custom instance.
 //
 // @param request - ResizeRCInstanceDiskRequest
 //
@@ -116162,7 +116864,7 @@ func (client *Client) ResizeRCInstanceDiskWithOptions(request *ResizeRCInstanceD
 
 // Summary:
 //
-// ResizeRCInstanceDisk
+// Expand the storage capacity of an RDS Custom instance.
 //
 // @param request - ResizeRCInstanceDiskRequest
 //
@@ -117146,7 +117848,7 @@ func (client *Client) StartDBInstance(request *StartDBInstanceRequest) (_result 
 
 // Summary:
 //
-// 启动RDS用户专属主机实例
+// Starts RDS Custom instances that are in the Stopped state. After the operation is successfully called, the instances enter the Starting state.
 //
 // @param request - StartRCInstanceRequest
 //
@@ -117192,7 +117894,7 @@ func (client *Client) StartRCInstanceWithOptions(request *StartRCInstanceRequest
 
 // Summary:
 //
-// 启动RDS用户专属主机实例
+// Starts RDS Custom instances that are in the Stopped state. After the operation is successfully called, the instances enter the Starting state.
 //
 // @param request - StartRCInstanceRequest
 //
@@ -117326,7 +118028,7 @@ func (client *Client) StopDBInstance(request *StopDBInstanceRequest) (_result *S
 
 // Summary:
 //
-// 停止RDS用户专属主机实例
+// Stops an RDS Custom instance that is in the Running state. After the operation is successfully called, the status of the RDS Custom instance changes from Stopping to Stopped.
 //
 // @param request - StopRCInstanceRequest
 //
@@ -117376,7 +118078,7 @@ func (client *Client) StopRCInstanceWithOptions(request *StopRCInstanceRequest, 
 
 // Summary:
 //
-// 停止RDS用户专属主机实例
+// Stops an RDS Custom instance that is in the Running state. After the operation is successfully called, the status of the RDS Custom instance changes from Stopping to Stopped.
 //
 // @param request - StopRCInstanceRequest
 //
@@ -117782,7 +118484,7 @@ func (client *Client) SwitchDBInstanceVpc(request *SwitchDBInstanceVpcRequest) (
 
 // Summary:
 //
-// 同步密钥对
+// Synchronizes a custom key pair to an RDS Custom instance. If you change the key pair that you created for your RDS Custom instance and you want the change to immediately take effect on the RDS Custom instance, you can call this operation to synchronize the new key pair to the RDS Custom instance. For example, you delete a key pair that has the same name as another key pair and recreate the key pair.
 //
 // @param request - SyncRCKeyPairRequest
 //
@@ -117828,7 +118530,7 @@ func (client *Client) SyncRCKeyPairWithOptions(request *SyncRCKeyPairRequest, ru
 
 // Summary:
 //
-// 同步密钥对
+// Synchronizes a custom key pair to an RDS Custom instance. If you change the key pair that you created for your RDS Custom instance and you want the change to immediately take effect on the RDS Custom instance, you can call this operation to synchronize the new key pair to the RDS Custom instance. For example, you delete a key pair that has the same name as another key pair and recreate the key pair.
 //
 // @param request - SyncRCKeyPairRequest
 //
