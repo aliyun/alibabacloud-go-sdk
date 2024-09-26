@@ -13055,6 +13055,7 @@ func (s *DescribeDBClusterTDERequest) SetResourceOwnerId(v int64) *DescribeDBClu
 }
 
 type DescribeDBClusterTDEResponseBody struct {
+	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
 	// The ID of the cluster.
 	//
 	// example:
@@ -13082,7 +13083,8 @@ type DescribeDBClusterTDEResponseBody struct {
 	// example:
 	//
 	// E37D1508-EC3B-4E06-A24A-C7AC31******
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	// The region where the TDE key resides.
 	//
 	// example:
@@ -13109,6 +13111,11 @@ func (s DescribeDBClusterTDEResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBClusterTDEResponseBody) SetAutomaticRotation(v string) *DescribeDBClusterTDEResponseBody {
+	s.AutomaticRotation = &v
+	return s
+}
+
 func (s *DescribeDBClusterTDEResponseBody) SetDBClusterId(v string) *DescribeDBClusterTDEResponseBody {
 	s.DBClusterId = &v
 	return s
@@ -13126,6 +13133,11 @@ func (s *DescribeDBClusterTDEResponseBody) SetEncryptionKey(v string) *DescribeD
 
 func (s *DescribeDBClusterTDEResponseBody) SetRequestId(v string) *DescribeDBClusterTDEResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBClusterTDEResponseBody) SetRotationInterval(v string) *DescribeDBClusterTDEResponseBody {
+	s.RotationInterval = &v
 	return s
 }
 
@@ -21679,7 +21691,8 @@ type DescribeScheduleTasksResponseBodyDataTimerInfos struct {
 	// example:
 	//
 	// CreateDBNodes
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action       *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	CrontabJobId *string `json:"CrontabJobId,omitempty" xml:"CrontabJobId,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -21765,6 +21778,11 @@ func (s DescribeScheduleTasksResponseBodyDataTimerInfos) GoString() string {
 
 func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetAction(v string) *DescribeScheduleTasksResponseBodyDataTimerInfos {
 	s.Action = &v
+	return s
+}
+
+func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetCrontabJobId(v string) *DescribeScheduleTasksResponseBodyDataTimerInfos {
+	s.CrontabJobId = &v
 	return s
 }
 
@@ -28174,6 +28192,7 @@ type ModifyDBClusterServerlessConfRequest struct {
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
+	CrontabJobId  *string `json:"CrontabJobId,omitempty" xml:"CrontabJobId,omitempty"`
 	// The ID of the serverless cluster.
 	//
 	// This parameter is required.
@@ -28261,6 +28280,7 @@ type ModifyDBClusterServerlessConfRequest struct {
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
 	ServerlessRuleCpuShrinkThreshold  *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
 	ServerlessRuleMode                *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
+	TaskId                            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDBClusterServerlessConfRequest) String() string {
@@ -28273,6 +28293,11 @@ func (s ModifyDBClusterServerlessConfRequest) GoString() string {
 
 func (s *ModifyDBClusterServerlessConfRequest) SetAllowShutDown(v string) *ModifyDBClusterServerlessConfRequest {
 	s.AllowShutDown = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetCrontabJobId(v string) *ModifyDBClusterServerlessConfRequest {
+	s.CrontabJobId = &v
 	return s
 }
 
@@ -28363,6 +28388,11 @@ func (s *ModifyDBClusterServerlessConfRequest) SetServerlessRuleCpuShrinkThresho
 
 func (s *ModifyDBClusterServerlessConfRequest) SetServerlessRuleMode(v string) *ModifyDBClusterServerlessConfRequest {
 	s.ServerlessRuleMode = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetTaskId(v string) *ModifyDBClusterServerlessConfRequest {
+	s.TaskId = &v
 	return s
 }
 
@@ -28631,6 +28661,10 @@ type ModifyDBClusterTDERequest struct {
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// false
+	EnableAutomaticRotation *string `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	// Specifies whether to enable automatic encryption for new tables. Valid values:
 	//
 	// 	- **ON**
@@ -28677,6 +28711,11 @@ func (s ModifyDBClusterTDERequest) GoString() string {
 
 func (s *ModifyDBClusterTDERequest) SetDBClusterId(v string) *ModifyDBClusterTDERequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterTDERequest) SetEnableAutomaticRotation(v string) *ModifyDBClusterTDERequest {
+	s.EnableAutomaticRotation = &v
 	return s
 }
 
@@ -44232,6 +44271,10 @@ func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDB
 		query["AllowShutDown"] = request.AllowShutDown
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CrontabJobId)) {
+		query["CrontabJobId"] = request.CrontabJobId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -44302,6 +44345,10 @@ func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDB
 
 	if !tea.BoolValue(util.IsUnset(request.ServerlessRuleMode)) {
 		query["ServerlessRuleMode"] = request.ServerlessRuleMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -44464,6 +44511,10 @@ func (client *Client) ModifyDBClusterTDEWithOptions(request *ModifyDBClusterTDER
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAutomaticRotation)) {
+		query["EnableAutomaticRotation"] = request.EnableAutomaticRotation
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EncryptNewTables)) {
