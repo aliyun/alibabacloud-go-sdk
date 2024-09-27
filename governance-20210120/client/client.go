@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -2473,6 +2474,7 @@ func (s *ListEvaluationMetricDetailsResponseBody) SetResources(v []*ListEvaluati
 }
 
 type ListEvaluationMetricDetailsResponseBodyResources struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -2503,6 +2505,11 @@ func (s ListEvaluationMetricDetailsResponseBodyResources) String() string {
 
 func (s ListEvaluationMetricDetailsResponseBodyResources) GoString() string {
 	return s.String()
+}
+
+func (s *ListEvaluationMetricDetailsResponseBodyResources) SetComplianceType(v string) *ListEvaluationMetricDetailsResponseBodyResources {
+	s.ComplianceType = &v
+	return s
 }
 
 func (s *ListEvaluationMetricDetailsResponseBodyResources) SetRegionId(v string) *ListEvaluationMetricDetailsResponseBodyResources {
@@ -2596,10 +2603,14 @@ func (s *ListEvaluationMetricDetailsResponse) SetBody(v *ListEvaluationMetricDet
 }
 
 type ListEvaluationResultsRequest struct {
+	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	//
 	// example:
 	//
 	// 176618589410****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2625,15 +2636,20 @@ func (s *ListEvaluationResultsRequest) SetRegionId(v string) *ListEvaluationResu
 }
 
 type ListEvaluationResultsResponseBody struct {
+	// The Alibaba Cloud account ID of the member.
+	//
 	// example:
 	//
 	// 176618589410****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BD57329E-131A-59F4-8746-E1CD8D7B****
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   *ListEvaluationResultsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The check results, including the status of the overall check and the results of check items.
+	Results *ListEvaluationResultsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 }
 
 func (s ListEvaluationResultsResponseBody) String() string {
@@ -2660,15 +2676,28 @@ func (s *ListEvaluationResultsResponseBody) SetResults(v *ListEvaluationResultsR
 }
 
 type ListEvaluationResultsResponseBodyResults struct {
+	// The end time of the overall check. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-13T03:35:00Z
-	EvaluationTime *string                                                  `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
-	MetricResults  []*ListEvaluationResultsResponseBodyResultsMetricResults `json:"MetricResults,omitempty" xml:"MetricResults,omitempty" type:"Repeated"`
+	EvaluationTime *string `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
+	// The check results.
+	MetricResults []*ListEvaluationResultsResponseBodyResultsMetricResults `json:"MetricResults,omitempty" xml:"MetricResults,omitempty" type:"Repeated"`
+	// The status of the overall check. Valid values:
+	//
+	// 	- Running: The check is in progress.
+	//
+	// 	- Finished: The check is complete.
+	//
+	// 	- failed: The check fails.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The overall score.
+	//
 	// example:
 	//
 	// 0.6453
@@ -2704,24 +2733,50 @@ func (s *ListEvaluationResultsResponseBodyResults) SetTotalScore(v float64) *Lis
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResults struct {
+	// The error information.
+	//
+	// >  This parameter is returned only if the value of `Status` is `Failed`.
 	ErrorInfo *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty" type:"Struct"`
+	// The end time of the check item. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-13T03:34:02Z
 	EvaluationTime *string `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
+	// The ID of the check item.
+	//
 	// example:
 	//
 	// r7xdcu****
-	Id               *string                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The checked resources.
 	ResourcesSummary *ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary `json:"ResourcesSummary,omitempty" xml:"ResourcesSummary,omitempty" type:"Struct"`
+	// The rate of the non-compliant resources.
+	//
 	// example:
 	//
 	// 0.67
 	Result *float64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The risk level. Valid values:
+	//
+	// 	- Error: high risk
+	//
+	// 	- Warning: medium risk
+	//
+	// 	- None: no risk
+	//
 	// example:
 	//
 	// Error
 	Risk *string `json:"Risk,omitempty" xml:"Risk,omitempty"`
+	// The status of the check item. Valid values:
+	//
+	// 	- Running: The check is in progress.
+	//
+	// 	- Finished: The check is complete.
+	//
+	// 	- failed: The check fails.
+	//
 	// example:
 	//
 	// Running
@@ -2772,7 +2827,17 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetStatus(v stri
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// EcsInsightEnableFailed
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Unable to enable ECS Insight due to a server error.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -2795,6 +2860,8 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) SetMess
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary struct {
+	// The number of non-compliant resources.
+	//
 	// example:
 	//
 	// 2
@@ -3223,7 +3290,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = tea.String("v2")
+	client.ProductId = tea.String("governance")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -3301,13 +3374,24 @@ func (client *Client) BatchEnrollAccountsWithOptions(request *BatchEnrollAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchEnrollAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchEnrollAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchEnrollAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3373,13 +3457,24 @@ func (client *Client) CreateAccountFactoryBaselineWithOptions(request *CreateAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3437,13 +3532,24 @@ func (client *Client) DeleteAccountFactoryBaselineWithOptions(request *DeleteAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3535,13 +3641,24 @@ func (client *Client) EnrollAccountWithOptions(request *EnrollAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnrollAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnrollAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnrollAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3605,13 +3722,24 @@ func (client *Client) GetAccountFactoryBaselineWithOptions(request *GetAccountFa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3669,13 +3797,24 @@ func (client *Client) GetEnrolledAccountWithOptions(request *GetEnrolledAccountR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEnrolledAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEnrolledAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEnrolledAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3749,13 +3888,24 @@ func (client *Client) ListAccountFactoryBaselineItemsWithOptions(request *ListAc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAccountFactoryBaselineItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAccountFactoryBaselineItemsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAccountFactoryBaselineItemsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3817,13 +3967,24 @@ func (client *Client) ListAccountFactoryBaselinesWithOptions(request *ListAccoun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAccountFactoryBaselinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAccountFactoryBaselinesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAccountFactoryBaselinesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3885,13 +4046,24 @@ func (client *Client) ListEnrolledAccountsWithOptions(request *ListEnrolledAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEnrolledAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEnrolledAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEnrolledAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3949,13 +4121,24 @@ func (client *Client) ListEvaluationMetadataWithOptions(request *ListEvaluationM
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationMetadataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationMetadataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationMetadataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4025,13 +4208,24 @@ func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvalua
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationMetricDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationMetricDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationMetricDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4054,7 +4248,7 @@ func (client *Client) ListEvaluationMetricDetails(request *ListEvaluationMetricD
 
 // Summary:
 //
-// 查看检测结果
+// Queries the result and status of a governance maturity check.
 //
 // @param request - ListEvaluationResultsRequest
 //
@@ -4089,18 +4283,29 @@ func (client *Client) ListEvaluationResultsWithOptions(request *ListEvaluationRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查看检测结果
+// Queries the result and status of a governance maturity check.
 //
 // @param request - ListEvaluationResultsRequest
 //
@@ -4161,13 +4366,24 @@ func (client *Client) ListEvaluationScoreHistoryWithOptions(request *ListEvaluat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationScoreHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationScoreHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationScoreHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4229,13 +4445,24 @@ func (client *Client) RunEvaluationWithOptions(request *RunEvaluationRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunEvaluationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunEvaluationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunEvaluationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4305,13 +4532,24 @@ func (client *Client) UpdateAccountFactoryBaselineWithOptions(request *UpdateAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
