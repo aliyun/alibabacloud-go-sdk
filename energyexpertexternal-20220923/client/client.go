@@ -643,7 +643,13 @@ func (s *OrgEmissionModuleEmissionList) SetRatio(v float64) *OrgEmissionModuleEm
 }
 
 type BatchSaveInstructionStatusRequest struct {
-	FactoryId  *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	// example:
+	//
+	// ***
+	FactoryId *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	// example:
+	//
+	// ib
 	PKey       *string `json:"pKey,omitempty" xml:"pKey,omitempty"`
 	StatusList *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
 }
@@ -672,7 +678,17 @@ func (s *BatchSaveInstructionStatusRequest) SetStatusList(v string) *BatchSaveIn
 }
 
 type BatchSaveInstructionStatusResponseBody struct {
-	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	// true
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -724,20 +740,62 @@ func (s *BatchSaveInstructionStatusResponse) SetBody(v *BatchSaveInstructionStat
 }
 
 type BatchUpdateSystemRunningPlanRequest struct {
-	ControlType         *int32   `json:"controlType,omitempty" xml:"controlType,omitempty"`
-	DateType            *int32   `json:"dateType,omitempty" xml:"dateType,omitempty"`
-	EarliestStartupTime *string  `json:"earliestStartupTime,omitempty" xml:"earliestStartupTime,omitempty"`
-	EndTime             *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	FactoryId           *string  `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
-	LatestShutdownTime  *string  `json:"latestShutdownTime,omitempty" xml:"latestShutdownTime,omitempty"`
-	MaxCarbonDioxide    *float64 `json:"maxCarbonDioxide,omitempty" xml:"maxCarbonDioxide,omitempty"`
-	MaxTem              *float64 `json:"maxTem,omitempty" xml:"maxTem,omitempty"`
-	MinTem              *float64 `json:"minTem,omitempty" xml:"minTem,omitempty"`
-	SeasonMode          *int32   `json:"seasonMode,omitempty" xml:"seasonMode,omitempty"`
-	StartTime           *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	SystemId            *string  `json:"systemId,omitempty" xml:"systemId,omitempty"`
-	WorkingEndTime      *string  `json:"workingEndTime,omitempty" xml:"workingEndTime,omitempty"`
-	WorkingStartTime    *string  `json:"workingStartTime,omitempty" xml:"workingStartTime,omitempty"`
+	// example:
+	//
+	// 0
+	ControlType *int32 `json:"controlType,omitempty" xml:"controlType,omitempty"`
+	// example:
+	//
+	// 0
+	DateType *int32 `json:"dateType,omitempty" xml:"dateType,omitempty"`
+	// example:
+	//
+	// 05:00:00
+	EarliestStartupTime *string `json:"earliestStartupTime,omitempty" xml:"earliestStartupTime,omitempty"`
+	// example:
+	//
+	// 2024-08-30
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// ***
+	FactoryId *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	// example:
+	//
+	// 05:30:00
+	LatestShutdownTime *string `json:"latestShutdownTime,omitempty" xml:"latestShutdownTime,omitempty"`
+	// example:
+	//
+	// 37.1
+	MaxCarbonDioxide *float64 `json:"maxCarbonDioxide,omitempty" xml:"maxCarbonDioxide,omitempty"`
+	// example:
+	//
+	// 25.3
+	MaxTem *float64 `json:"maxTem,omitempty" xml:"maxTem,omitempty"`
+	// example:
+	//
+	// 20.1
+	MinTem *float64 `json:"minTem,omitempty" xml:"minTem,omitempty"`
+	// example:
+	//
+	// 0
+	SeasonMode *int32 `json:"seasonMode,omitempty" xml:"seasonMode,omitempty"`
+	// example:
+	//
+	// 2024-08-21
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// system1
+	SystemId *string `json:"systemId,omitempty" xml:"systemId,omitempty"`
+	// example:
+	//
+	// 05:30:00
+	WorkingEndTime *string `json:"workingEndTime,omitempty" xml:"workingEndTime,omitempty"`
+	// example:
+	//
+	// 05:00:00
+	WorkingStartTime *string `json:"workingStartTime,omitempty" xml:"workingStartTime,omitempty"`
 }
 
 func (s BatchUpdateSystemRunningPlanRequest) String() string {
@@ -819,7 +877,15 @@ func (s *BatchUpdateSystemRunningPlanRequest) SetWorkingStartTime(v string) *Bat
 }
 
 type BatchUpdateSystemRunningPlanResponseBody struct {
-	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -871,9 +937,15 @@ func (s *BatchUpdateSystemRunningPlanResponse) SetBody(v *BatchUpdateSystemRunni
 }
 
 type EditProhibitedDevicesRequest struct {
+	// example:
+	//
+	// ***
 	FactoryId              *string                                               `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
 	HvacDeviceConfigVOList []*EditProhibitedDevicesRequestHvacDeviceConfigVOList `json:"hvacDeviceConfigVOList,omitempty" xml:"hvacDeviceConfigVOList,omitempty" type:"Repeated"`
-	SystemId               *string                                               `json:"systemId,omitempty" xml:"systemId,omitempty"`
+	// example:
+	//
+	// system1
+	SystemId *string `json:"systemId,omitempty" xml:"systemId,omitempty"`
 }
 
 func (s EditProhibitedDevicesRequest) String() string {
@@ -900,14 +972,38 @@ func (s *EditProhibitedDevicesRequest) SetSystemId(v string) *EditProhibitedDevi
 }
 
 type EditProhibitedDevicesRequestHvacDeviceConfigVOList struct {
-	BuildingId        *string `json:"buildingId,omitempty" xml:"buildingId,omitempty"`
-	DeviceId          *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	DeviceName        *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
-	DeviceType        *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
-	FenceId           *string `json:"fenceId,omitempty" xml:"fenceId,omitempty"`
-	FloorId           *string `json:"floorId,omitempty" xml:"floorId,omitempty"`
-	IsForbidden       *int32  `json:"isForbidden,omitempty" xml:"isForbidden,omitempty"`
-	IsUnfavorableArea *int32  `json:"isUnfavorableArea,omitempty" xml:"isUnfavorableArea,omitempty"`
+	// example:
+	//
+	// build_01
+	BuildingId *string `json:"buildingId,omitempty" xml:"buildingId,omitempty"`
+	// example:
+	//
+	// id1
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// example:
+	//
+	// name1
+	DeviceName *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
+	// example:
+	//
+	// 1
+	DeviceType *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
+	// example:
+	//
+	// fence_01
+	FenceId *string `json:"fenceId,omitempty" xml:"fenceId,omitempty"`
+	// example:
+	//
+	// floor_01
+	FloorId *string `json:"floorId,omitempty" xml:"floorId,omitempty"`
+	// example:
+	//
+	// 1
+	IsForbidden *int32 `json:"isForbidden,omitempty" xml:"isForbidden,omitempty"`
+	// example:
+	//
+	// 1
+	IsUnfavorableArea *int32 `json:"isUnfavorableArea,omitempty" xml:"isUnfavorableArea,omitempty"`
 }
 
 func (s EditProhibitedDevicesRequestHvacDeviceConfigVOList) String() string {
@@ -959,7 +1055,15 @@ func (s *EditProhibitedDevicesRequestHvacDeviceConfigVOList) SetIsUnfavorableAre
 }
 
 type EditProhibitedDevicesResponseBody struct {
-	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9bc20a5a-b26b-4c28-922a-7cd10b61f96f
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1011,9 +1115,15 @@ func (s *EditProhibitedDevicesResponse) SetBody(v *EditProhibitedDevicesResponse
 }
 
 type EditUnfavorableAreaDevicesRequest struct {
+	// example:
+	//
+	// ***
 	FactoryId              *string                                                    `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
 	HvacDeviceConfigVOList []*EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList `json:"hvacDeviceConfigVOList,omitempty" xml:"hvacDeviceConfigVOList,omitempty" type:"Repeated"`
-	SystemId               *string                                                    `json:"systemId,omitempty" xml:"systemId,omitempty"`
+	// example:
+	//
+	// system1
+	SystemId *string `json:"systemId,omitempty" xml:"systemId,omitempty"`
 }
 
 func (s EditUnfavorableAreaDevicesRequest) String() string {
@@ -1040,14 +1150,38 @@ func (s *EditUnfavorableAreaDevicesRequest) SetSystemId(v string) *EditUnfavorab
 }
 
 type EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList struct {
-	BuildingId        *string `json:"buildingId,omitempty" xml:"buildingId,omitempty"`
-	DeviceId          *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	DeviceName        *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
-	DeviceType        *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
-	FenceId           *string `json:"fenceId,omitempty" xml:"fenceId,omitempty"`
-	FloorId           *string `json:"floorId,omitempty" xml:"floorId,omitempty"`
-	IsForbidden       *int32  `json:"isForbidden,omitempty" xml:"isForbidden,omitempty"`
-	IsUnfavorableArea *int32  `json:"isUnfavorableArea,omitempty" xml:"isUnfavorableArea,omitempty"`
+	// example:
+	//
+	// buildingId1
+	BuildingId *string `json:"buildingId,omitempty" xml:"buildingId,omitempty"`
+	// example:
+	//
+	// id1
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// example:
+	//
+	// name1
+	DeviceName *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
+	// example:
+	//
+	// 1
+	DeviceType *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
+	// example:
+	//
+	// fenceId1
+	FenceId *string `json:"fenceId,omitempty" xml:"fenceId,omitempty"`
+	// example:
+	//
+	// floorId2
+	FloorId *string `json:"floorId,omitempty" xml:"floorId,omitempty"`
+	// example:
+	//
+	// 1
+	IsForbidden *int32 `json:"isForbidden,omitempty" xml:"isForbidden,omitempty"`
+	// example:
+	//
+	// 1
+	IsUnfavorableArea *int32 `json:"isUnfavorableArea,omitempty" xml:"isUnfavorableArea,omitempty"`
 }
 
 func (s EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) String() string {
@@ -1099,7 +1233,15 @@ func (s *EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList) SetIsUnfavorab
 }
 
 type EditUnfavorableAreaDevicesResponseBody struct {
-	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8166,22 +8308,70 @@ func (s *SendDocumentAskQuestionResponse) SetBody(v *SendDocumentAskQuestionResp
 }
 
 type SetRunningPlanRequest struct {
-	ControlType         *int32   `json:"controlType,omitempty" xml:"controlType,omitempty"`
-	DateType            *int32   `json:"dateType,omitempty" xml:"dateType,omitempty"`
-	EarliestStartupTime *string  `json:"earliestStartupTime,omitempty" xml:"earliestStartupTime,omitempty"`
-	EndTime             *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	FactoryId           *string  `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
-	LatestShutdownTime  *string  `json:"latestShutdownTime,omitempty" xml:"latestShutdownTime,omitempty"`
-	MaxCarbonDioxide    *float64 `json:"maxCarbonDioxide,omitempty" xml:"maxCarbonDioxide,omitempty"`
-	MaxTem              *float64 `json:"maxTem,omitempty" xml:"maxTem,omitempty"`
-	MinTem              *float64 `json:"minTem,omitempty" xml:"minTem,omitempty"`
-	PKey                *string  `json:"pKey,omitempty" xml:"pKey,omitempty"`
-	SeasonMode          *int32   `json:"seasonMode,omitempty" xml:"seasonMode,omitempty"`
-	StartTime           *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	StatisticsTime      *string  `json:"statisticsTime,omitempty" xml:"statisticsTime,omitempty"`
-	SystemId            *string  `json:"systemId,omitempty" xml:"systemId,omitempty"`
-	WorkingEndTime      *string  `json:"workingEndTime,omitempty" xml:"workingEndTime,omitempty"`
-	WorkingStartTime    *string  `json:"workingStartTime,omitempty" xml:"workingStartTime,omitempty"`
+	// example:
+	//
+	// 0
+	ControlType *int32 `json:"controlType,omitempty" xml:"controlType,omitempty"`
+	// example:
+	//
+	// 0
+	DateType *int32 `json:"dateType,omitempty" xml:"dateType,omitempty"`
+	// example:
+	//
+	// 05:00:00
+	EarliestStartupTime *string `json:"earliestStartupTime,omitempty" xml:"earliestStartupTime,omitempty"`
+	// example:
+	//
+	// 2024-07-21
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// ***
+	FactoryId *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	// example:
+	//
+	// 05:30:00
+	LatestShutdownTime *string `json:"latestShutdownTime,omitempty" xml:"latestShutdownTime,omitempty"`
+	// example:
+	//
+	// 2.1
+	MaxCarbonDioxide *float64 `json:"maxCarbonDioxide,omitempty" xml:"maxCarbonDioxide,omitempty"`
+	// example:
+	//
+	// 3.1
+	MaxTem *float64 `json:"maxTem,omitempty" xml:"maxTem,omitempty"`
+	// example:
+	//
+	// 2.1
+	MinTem *float64 `json:"minTem,omitempty" xml:"minTem,omitempty"`
+	// example:
+	//
+	// ib
+	PKey *string `json:"pKey,omitempty" xml:"pKey,omitempty"`
+	// example:
+	//
+	// 0
+	SeasonMode *int32 `json:"seasonMode,omitempty" xml:"seasonMode,omitempty"`
+	// example:
+	//
+	// 2024-07-20
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 2024-07-31
+	StatisticsTime *string `json:"statisticsTime,omitempty" xml:"statisticsTime,omitempty"`
+	// example:
+	//
+	// system1
+	SystemId *string `json:"systemId,omitempty" xml:"systemId,omitempty"`
+	// example:
+	//
+	// 05:30:00
+	WorkingEndTime *string `json:"workingEndTime,omitempty" xml:"workingEndTime,omitempty"`
+	// example:
+	//
+	// 05:00:00
+	WorkingStartTime *string `json:"workingStartTime,omitempty" xml:"workingStartTime,omitempty"`
 }
 
 func (s SetRunningPlanRequest) String() string {
@@ -8273,7 +8463,15 @@ func (s *SetRunningPlanRequest) SetWorkingStartTime(v string) *SetRunningPlanReq
 }
 
 type SetRunningPlanResponseBody struct {
-	Data      *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

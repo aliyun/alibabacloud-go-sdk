@@ -1,3 +1,6 @@
+2024-09-27 Version: v2.1.2
+- Generated golang 2022-09-23 for energyExpertExternal.
+
 2024-09-23 Version: v2.1.1
 - Update API SubmitDocumentAnalyzeJob: add param dataType.
 
