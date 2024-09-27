@@ -1,3 +1,10 @@
+2024-09-27 Version: v5.7.7
+- Update API CreateClusterNodePool: update param body.
+- Update API DescribeClusterNodePoolDetail: update response param.
+- Update API DescribeClusterNodePools: update response param.
+- Update API ModifyClusterNodePool: update param body.
+
+
 2024-09-24 Version: v5.7.6
 - Generated golang 2015-12-15 for CS.
 
